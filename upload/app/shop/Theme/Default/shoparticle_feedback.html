@@ -1,0 +1,49 @@
+<!--<include file="header" />-->
+
+<!--{script}-->
+
+<!--{/script}-->
+<!--{style}-->
+#feedbackform td label{text-align:right;}
+#feedbackform td {border:0px;}
+#feedbackform{margin-top:20px;}
+<!--{/style}-->
+
+	<div class="span12" style="text-align:left;margin-top:20px;">
+		<ul class="breadcrumb">
+			<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="#">帮助中心</a> <span class="divider">/</span></li>
+			<li><!--{$oShoparticle->shoparticle_title}--></li>
+		</ul>
+	</div>
+
+	<div class="span12">
+		<div id="feedbackguide"><!--{$oShoparticle->shoparticle_content}--></div>
+		<div>
+			<form action="<!--{:Dyhb::U('shop://shoparticle/addfeedback')}-->" method="post" name="feedbackform" id="feedbackform">
+				<table class="table" width="100%">
+					<tr>
+						<td width="30%"><label for="username" >用户名：</label></td>
+						<td width="70%"><input type="text" name="username" id="username" value="<!--{if isset($GLOBALS['___login___'])}--><!--{$GLOBALS['___login___']['user_name']}--><!--{/if}-->"></td>
+					</tr>
+					<tr>
+						<td><label for="email" >邮箱：</label></td>
+						<td><input type="text" name="email" id="email"  value="<!--{if isset($GLOBALS['___login___'])}--><!--{$GLOBALS['___login___']['user_email']}--><!--{/if}-->"></td>
+					</tr>
+					<tr>
+						<td><label for="content" >反馈内容：</label></td>
+						<td><textarea name="content" id="content" style="width:500px;height:150px;"></textarea></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="submit" value="提交" class="btn"/>&nbsp;
+							<input type="reset" value="取消" class="btn"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+<!--<include file="footer" />-->

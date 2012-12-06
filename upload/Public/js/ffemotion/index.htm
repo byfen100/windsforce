@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>飞飞表情插件v1.0_jq插件_基于新浪微博的表情/魔法表情插件</title>
+<link href="css/emotion.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {font:12px/1.4 Verdana,Arial; background:#eee; height:100%; margin:25px 0; padding:0}
+h1 {font:24px Georgia,Verdana; margin:0}
+h2 {font-size:12px; font-weight:normal; font-style:italic; margin:10px 0 20px}
+p {margin:5px 0;font-size:13px; line-height:1.5em;text-indent:2em}
+ul {margin:0; padding-left:20px}
+ 
+#testdiv {width:600px; height:1500px;margin:0 auto; border:1px solid #ccc; padding:20px 25px; background:#fff}
+ 
+#tinybox {position:absolute; display:none; padding:10px; background:#fff url(images/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
+#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
+#tinycontent {background:#fff}
+ 
+.button {font:14px Georgia,Verdana; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#eee; cursor:pointer}
+.button:hover {border:1px solid #bbb; background:#e3e3e3}
+ 
+ul{list-style-type: none;}
+ul li{float:left;padding:5px;}
+#ad{ text-align:center; margin:0 auto;}
+
+/***/
+.showemotion div{float:left}
+h3{ background-color:#aaa; padding:3px}
+</style>
+</head>
+<body>
+<div id="testdiv"> 
+<h1>飞飞表情插件v1.0_[普通表情/魔法表情]</h1> 
+ 
+	<h2>文章地址：<a href="http://www.ffasp.com/content.asp?newsid=1722" target="_blank">http://www.ffasp.com/content.asp?newsid=1722</a>  &nbsp;关注Web前端开发 - <a href="http://ffasp.com">ffasp.com</a></h2>
+<p>
+说明：<br />
+本插件是以新浪微博的表情发布功能为基础，内含 <strong>两大类表情</strong>：<strong>普通表情</strong>和<strong>魔法表情</strong>，而且两类表情都含有<strong>简体/繁体</strong>两个版本，本插件完美支持IE6,IE7,IE8,firefox3,firefox4浏览器。</p>
+<p>其中：</p>
+<p><strong>普通表情包含</strong>：默认/心情/爱情/休闲/搞怪/管不着/大耳兔/哈皮兔/天气/星座/小新小浪/亚运会/张小盒/悠嘻猴/阿狸</p>
+<p><strong>魔法表情包含</strong>：默认/心情/搞怪/浪漫爱情/时尚/闯堂兔/小新小浪/张小盒/旺狗/悠嘻猴/阿狸</p>
+<p>以上表情均含有简繁体双语，表情显示使用javascript的客户端浏览器替换。</p>
+<p><strong>文件目录说明：</strong></p>
+<p>css 样式目录</p>
+<p>　　－bgimg	背景图片目录</p>
+<p>　　－emotion.css 该插件使用的样式文件</p>
+<p>image 图片目录</p>
+<p>　　－emotions 表情文件目录</p>
+<p>　　　　－magic 魔法表情目录</p>
+<p>　　　　－normal 普通表情目录</p>
+<p>js 文件目录</p>
+<p>　　－emotion.js 表情插件文件</p>
+<p>　　－emotion_data.js 表情数据文件(数组格式)</p>
+<p>　　－jquery.min.js jquery类库</p>
+<p>　　－swfobject.js swf播放插件</p>
+<p>　　－zh_cn.js 简体中文语言包</p>
+<p>　　－zh_tw.js 繁体中文语言包</p>
+<p>&nbsp;</p>
+<p><strong>使用方法：</strong></p>
+<p><strong>1.语言版本的切换</strong>：js目录内有2个语言文件：zh_cn(简体)和zh_tw(繁体)，页面中加载对应的语言文件即可切换语言</p>
+<p><strong>2.选择表情调用方法</strong>：</p>
+<p>$('#test').showEmotion({input:$('#publish_text2')});</p>
+<p>tese为点击按钮的id,input为表单输入框：textarea或者input</p>
+<p><strong>普通表情：</strong></p>
+<p><span class="showemotion">[愛你][萌][发芽][强吻] </span></p>
+<p><strong>魔法表情：</strong></p>
+<p><span class="showemotion">[愛你][萌][发芽][强吻] </span></p>
+<p>&nbsp;</p>
+<p><strong>3.显示表情调用方法</strong></p>
+<p> $('#fftest').listEmotion();</p>
+<p>fftest为显示表情div的id;</p>
+<p>&nbsp;</p>
+<p><br />
+  <b>下面看效果:</b></p>
+
+<br />
+<div id='fftest'>
+<div class="showemotion">
+<h3>显示普通表情</h3><br/>
+[愛你][萌][发芽][强吻]
+
+<br /><br />
+<h3>显示魔法表情</h3><br />
+[mo.情人节快乐]
+[mo.新的一天]
+[mo.路过]
+[mo.迟到了]
+</div>
+<div style="clear:both"></div>
+</div>
+<br /><br />
+<textarea	id="publish_text"></textarea>
+<a	class="face-icon icon-bg" href="#">表情</a>
+<textarea id="publish_text2"></textarea>
+<a id="test"  href="#">表情</a>
+    
+<br /><br />
+<!-- <p><strong>下载地址：</strong>h<a href="http://www.rayfile.com/zh-cn/files/c125c90c-6658-11e0-b10f-0015c55db73d/">ttp://www.rayfile.com/zh-cn/files/c125c90c-6658-11e0-b10f-0015c55db73d/</a></p> -->
+</div>
+<div id="ad"><script src="/adjs/plugs.js"></script></div>
+<script src="/stat.js"></script>
+
+<script type="text/javascript" src="js/zh_cn.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/emotion_data.js"></script>
+<script type="text/javascript" src="js/emotion.js"></script> 
+<script type="text/javascript">
+
+$(function(){
+	$('a.face-icon').showEmotion({input:$('#publish_text')});
+	$('#test').showEmotion({input:$('#publish_text2')});
+	$('#fftest').listEmotion();
+})
+</script>
+</body>
+</html>

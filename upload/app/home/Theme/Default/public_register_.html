@@ -1,0 +1,63 @@
+<script src="<!--{:__PUBLIC__}-->/js/jquery/validate/jquery.validate.min.js"></script>
+<!--<load file="<!--{:__PUBLIC__}-->/js/jquery/validate/images/validate.css" />-->
+<script src="<!--{:__APPPUB__}-->/Js/register.js"></script>
+				
+				<form class="form-horizontal" method='post' name="register_form" id="register_form">
+					<fieldset>
+						<div class="control-group">
+							<div class="controls">
+								<div id="result" class="none"></div>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="user_name"><!--<lang package='Template/Public'>-->用户名<!--</lang>--><em class="red">*</em></label>
+							<div class="controls">
+								<input class="input-xlarge" id="user_name" name="user_name" type="text" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="user_nikename"><!--<lang package='Template/Public'>-->用户昵称<!--</lang>--></label>
+							<div class="controls">
+								<input class="input-xlarge" id="user_nikename" name="user_nikename" type="text" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="user_name"><!--<lang package='Template/Public'>-->密码<!--</lang>--><em class="red">*</em></label>
+							<div class="controls">
+								<input class="input-xlarge" type="password" id="user_password" name="user_password" type="text" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="user_name_confirm"><!--<lang package='Template/Public'>-->确认密码<!--</lang>--><em class="red">*</em></label>
+							<div class="controls">
+								<input class="input-xlarge" type="password" id="user_password_confirm" name="user_password_confirm" type="text" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="user_email">Email<em class="red">*</em></label>
+							<div class="controls">
+								<input class="input-xlarge" id="user_email" name="user_email" type="text" value="">
+								<span></span>
+							</div>
+						</div>
+						<!--{if $nDisplaySeccode==1}-->
+						<div class="control-group">
+							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--><em class="red">*</em></label>
+							<div class="controls">
+								<input class="input-small" name="seccode" id="seccode" type="text" value="">
+								<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
+							</div>
+						</div>
+						<!--{/if}-->
+						<div class="form-actions">
+							<input type="hidden" name="refer" value="<!--{$sRefer}-->">
+							<input type="hidden" name="ajax" value="1">
+							<button type="submit" class="btn btn-success" id="register_submit"><!--<lang package='__COMMON_LANG__@Template/Common'>-->注册<!--</lang>--></button>&nbsp;
+							<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+						</div>
+					</fieldset>
+				</form>

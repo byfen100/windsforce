@@ -1,0 +1,52 @@
+<!--<include file="public+header" />-->
+
+<!--{script}-->
+function option(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	$("#submit_button").attr("disabled", false);
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Option'>-->管理相关<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Option'>-->管理相关<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Option'>-->管理相关<!--</lang>--></h3>
+				<ul class="tabs">
+					<li><a href="<!--{:Dyhb::U('option/index')}-->"><!--<lang package='Template/Default/Option'>-->基本设置<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('option/show')}-->"><!--<lang package='Template/Default/Option'>-->首页显示<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('option/admin')}-->"><!--<lang package='Template/Default/Option'>-->管理相关<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Dyhb::U('option/update_option')}-->" method="post" onsubmit="return option();">
+				<div class="module_content">
+					<fieldset>
+						<label for="admin_email"><!--<lang package='Template/Default/Option'>-->系统管理员邮箱<!--</lang>--></label>
+						<input type="text" name="options[admin_email]" id="admin_email" size="40" value="<!--{$arrOptions['admin_email']}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Option'>-->这个非常重要，请注意填写正确<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for=""><!--<lang package='Template/Default/Option'>-->为了让系统管理员邮箱能够接收邮件，请确保一下邮件发送设置正确<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('mailoption/index')}-->"><!--<lang package='Template/Default/Option'>-->邮件设置<!--</lang>--></a></label>
+					</fieldset>
+					<fieldset>
+						<label for="admin_list_num"><!--<lang package='Template/Default/Option'>-->后台分页数据数量<!--</lang>--></label>
+						<input type="text" name="options[admin_list_num]" id="admin_list_num" size="40" value="<!--{$arrOptions['admin_list_num']}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Option'>-->后台系统通用分页数量，方便控制数据量<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+					</div>
+				</footer>
+			</form>
+			</div>
+		</article>
+
+<!--<include file="public+footer">-->

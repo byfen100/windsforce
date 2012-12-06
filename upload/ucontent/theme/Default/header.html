@@ -1,0 +1,194 @@
+<!--<include file="Core_Extend::template('cheader')" />-->
+
+<div id="wrapper">
+	<div id="top_header">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<div class="top_header_menu">
+						<div class="left">
+							<!--{if $GLOBALS['_option_']['language_switch_on']==1 && count($GLOBALS['_cache_']['lang'])>1}-->
+							<div id="lang_select_box" class="left">
+								<div class="btn-group">
+									<a href="javascript:void(0);" id="lang_select" data-toggle="dropdown">Language</a>
+									<ul class="dropdown-menu">
+									<!--<foreach for="GLOBALS['_cache_']['lang']" value=sLang>-->
+										<li><a href="?l=<!--{$sLang}-->" <!--{if strtolower(Dyhb+cookie('language'))==$sLang}-->style="font-weight:bold;"<!--{/if}-->><!--{$sLang}--></a></li>
+									<!--</foreach>-->
+									</ul>
+								</div>
+							</div>
+							<span class="pipe">|</span>
+							<!--{/if}-->
+							<i class="icon-signal"></i>
+							<a href="<!--{:Dyhb::U('home://public/mobile')}-->">手机版</a>
+							<span class="pipe">|</span>
+							<a href="<!--{:Dyhb::U('home://public/sitemap')}-->">网站地图</a>
+						</div>
+						<div class="right">
+							<!--{if $GLOBALS['_option_']['extendstyle_switch_on']==1}-->
+							<div id="extendstyle_select_box" class="left">
+								<div class="btn-group">
+									<a href="javascript:void(0);" id="extendstyle_select" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+									<ul class="dropdown-menu">
+									<!--<foreach for="GLOBALS['_style_']['_style_extend_icons_']" key=sStyleextendicon value=arrStyleextendicon>-->
+										<!--{if $sStyleextendicon=='0' && count($GLOBALS['_style_']['_style_extend_icons_'])!=1}-->
+										<li class="divider"></li>
+										<!--{/if}-->
+										<li style="background:<!--{$arrStyleextendicon[2]}-->;"><a href="javascript:void(0);" onclick="<!--{if count($GLOBALS['_style_']['_style_extend_icons_'])==1}-->javascript:void(0);<!--{d*else}-->setExtendstyle('<!--{$sStyleextendicon}-->','<!--{if $sStyleextendicon!='0'}--><!--{:Core_Extend::getCurstyleCacheurl()}-->/t_<!--{$sStyleextendicon}-->.css<!--{/if}-->');<!--{/if}-->" style="color:#FFF;<!--{if $GLOBALS['_extend_style_']==$sStyleextendicon}-->font-weight:bold;border:2px solid #FFF;<!--{/if}-->"><!--{$arrStyleextendicon[1]}--></a></li>
+									<!--</foreach>-->
+									</ul>
+								</div>
+							</div>
+							<span class="pipe">|</span>
+							<!--{/if}-->
+							<!--{~$arrHeaderNavs=$GLOBALS['_cache_']['nav']['header']}-->
+							<!--<foreach for=arrHeaderNavs value=arrHeaderNav>-->
+							<a <!--{$arrHeaderNav['style']}--> title="<!--{$arrHeaderNav['description']}-->" href="<!--{$arrHeaderNav['link']}-->" <!--{$arrHeaderNav['target']}--> <!--{if $arrHeaderNav['app']===APP_NAME}-->class="headernav_active"<!--{/if}-->>
+								<!--{$arrHeaderNav['title']}-->
+							</a>&nbsp;
+							<!--</foreach>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="header">
+		<div class="container">
+			<div class="row">
+				<div class="span7">
+					<a class="brand" href="<!--{:__APP__}-->" title="<!--{$GLOBALS['_option_']['site_name']}-->"><img src="<!--{:__PUBLIC__}-->/images/common/logo.png" alt="<!--{$GLOBALS['_option_']['site_name']}-->"/></a>
+				</div>
+				<div class="span5">
+					<div class="right">
+						<!--{if $GLOBALS['_option_']['style_switch_on']==1 && count($GLOBALS['_style_']['_style_icons_'])>1}-->
+						<div id="style_switch_box">
+							<ul id="style_switch">
+								<!--<foreach for="GLOBALS['_style_']['_style_icons_']" key=nStyleicon value=sStyleicon>-->
+								<li <!--{if Core_Extend+getStyleId()==$nStyleicon}-->class="current"<!--{/if}-->><a  href="javascript:void(0);" onclick="<!--{if Core_Extend+getStyleId()==$nStyleicon}-->javascript:void(0);<!--{d*else}-->setStyle(<!--{$nStyleicon}-->)<!--{/if}-->" title="<!--{$nStyleicon}-->" style="background: <!--{$sStyleicon}-->;"><!--{$nStyleicon}--></a></li>
+								<!--</foreach>-->
+							</ul>
+						</div>
+						<!--{/if}-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar-inner">
+			<div class="navbar">
+				<div class="container-fluid">
+					<ul class="nav">
+						<li class="dropdown <!--{if APP_NAME===$GLOBALS['_option_']['default_app'] && MODULE_NAME==='public' && ACTION_NAME=='index'}-->active<!--{/if}-->">
+							<a href="javascript:void(0);" class="dropdown-toggle brand" data-toggle="dropdown" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->首页<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->首页<!--</lang>-->&nbsp;<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<!--{:__APP__}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->首页<!--</lang>--></a></li>
+								<li class="divider"></li>
+								<li><a href="<!--{:Dyhb::U('home://public/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->个人空间<!--</lang>--></a></li>
+							</ul>
+						</li>
+						<!--{~$arrMainNavs=$GLOBALS['_cache_']['nav']['main']}-->
+						<!--<foreach for=arrMainNavs value=arrMainNav>-->
+						<!--{if $arrMainNav['sub']}-->
+						<li class="dropdown <!--{if $arrMainNav['app']===APP_NAME}-->active<!--{/if}-->">
+							<a <!--{$arrMainNav['style']}--> title="<!--{$arrMainNav['description']}-->" href="javascript:void(0);" <!--{$arrMainNav['target']}--> class="dropdown-toggle" data-toggle="dropdown">
+								<!--{$arrMainNav['title']}-->&nbsp;<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li <!--{if $arrMainNav['app']===APP_NAME}-->class="active"<!--{/if}-->>
+									<a <!--{$arrMainNav['style']}--> title="<!--{$arrMainNav['description']}-->" href="<!--{$arrMainNav['link']}-->" <!--{$arrMainNav['target']}-->><!--{$arrMainNav['title']}--></a>
+								</li>
+								<li class="divider"></li>
+								<!--{~$arrMainSubNavs=$arrMainNav['sub']}-->
+								<!--<foreach for=arrMainSubNavs value=arrMainSubNav>-->
+								<li <!--{if $arrMainSubNav['app']===APP_NAME}-->class="active"<!--{/if}-->>
+									<a <!--{$arrMainSubNav['style']}--> title="<!--{$arrMainSubNav['description']}-->" href="<!--{$arrMainSubNav['link']}-->" <!--{$arrMainSubNav['target']}-->><!--{$arrMainSubNav['title']}--></a>
+								</li>
+								<!--</foreach>-->
+							</ul>
+						</li>
+						<!--{d*else}-->
+						<li <!--{if $arrMainNav['app']===APP_NAME}-->class="active"<!--{/if}-->>
+							<a <!--{$arrMainNav['style']}--> title="<!--{$arrMainNav['description']}-->" href="<!--{$arrMainNav['link']}-->" <!--{$arrMainNav['target']}-->><!--{$arrMainNav['title']}--></a>
+						</li>
+						<!--{/if}-->
+						<!--</foreach>-->
+					</ul>
+					<div class="btn-group pull-right">
+						<!--{if $GLOBALS['___login___']===false}-->
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+							<i class="icon-user"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Header'>-->未登录<!--</lang>-->&nbsp;
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="<!--{:Dyhb::U('home://public/login')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->用户登录<!--</lang>--></a></li>
+							<li class="divider"></li>
+							<li><a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->用户注册<!--</lang>--></a></li>
+						</ul>
+						<!--{d*else}-->
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+							<!--{if $GLOBALS['___login___']['socia_login']===true}-->
+							<img src="<!--{$GLOBALS['___login___']['socia']['logo']}-->"/>&nbsp;
+							<!--{$GLOBALS['___login___']['socia']['sociauser_name']}-->
+							<!--{d*else}-->
+							<i class="icon-user"></i>&nbsp;
+							<!--{if $GLOBALS['___login___']['user_nikename']}-->
+								<!--{$GLOBALS['___login___']['user_nikename']}-->
+							<!--{d*else}-->
+								<!--{$GLOBALS['___login___']['user_name']}-->
+							<!--{/if}-->
+							<!--{/if}-->
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<!--{if Core_Extend+isAdmin()}-->
+							<li><a href="<!--{:__ROOT__}-->/admin.php" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Header'>-->管理中心<!--</lang>--></a></li>
+							<!--{/if}-->
+							<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->个人中心<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->修改资料<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://friend/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->我的好友<!--</lang>--></a></li>
+							<li class="divider"></li>
+							<li><a href="<!--{:Dyhb::U('home://public/logout?refer=1')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->注销<!--</lang>--></a></li>
+						</ul>
+						<!--{/if}-->
+					</div>
+
+					<ul class="nav pull-right">
+						<li class="dropdown <!--{if MODULE_NAME==='stat'}-->active<!--{/if}-->">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><!--<lang package='__COMMON_LANG__@Template/Header'>-->社区广场<!--</lang>-->&nbsp;<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<!--{:Dyhb::U('home://stat/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->基本概况<!--</lang>--></a></li>
+								<li><a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->会员列表<!--</lang>--></a></li>
+								<li><a href="<!--{:Dyhb::U('home://stat/feed')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->用户动态<!--</lang>--></a></li>
+								<li class="divider"></li>
+								<li><a href="<!--{:Dyhb::U('home://stat/explore')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->随便看看<!--</lang>--></a></li>
+							</ul>
+						</li>
+						<li class="divider-vertical"></li>
+						<!--{if $GLOBALS['___login___']!==false}-->
+						<li <!--{if MODULE_NAME==='pm'}-->class="active"<!--{/if}--> id="new-message-box">
+							<a title="短消息" href="<!--{:Dyhb::U('home://pm/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->短消息<!--</lang>--></a>
+						</li>
+						<!--{/if}-->
+					</ul>
+					<form class="navbar-search pull-left" action="">
+						<input type="text" class="search-query span2" placeholder="<!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>-->">
+					</form>
+				</div><!--/container-fluid-->
+			</div><!--/navbar-inner-->
+		</div><!--/navbar-->
+	</div>
+	<div id="content">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+				<!--{script}-->
+				var isIe6=false;
+				document.write("<!--[iflteIE6]><script>isIe6=true;</scr"+"ipt><![endif]-->");
+				if(isIe6){
+					document.write('<div class="alert"><strong>本站已停止支持 IE6, 请升级你的浏览器! <a href="http://www.getfirefox.com" target="_blank">Firefox</a> &nbsp; <a href="http://opera.com" target="_blank">Opera</a> &nbsp; <a href="http://apple.com/safari" target="_blank">Safari</a> &nbsp; <a href="http://chrome.google.com">Google Chrome</a> &nbsp; <a href="http://windows.microsoft.com/zh-CN/internet-explorer/products/ie/home" target="_blank">IE8+</a></strong></div>');
+				}
+				<!--{/script}-->
+				</div>
+			</div>

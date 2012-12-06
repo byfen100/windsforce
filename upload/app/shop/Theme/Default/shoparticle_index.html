@@ -1,0 +1,70 @@
+<!--<include file="header" />-->
+
+<!--{script}-->
+	$(document).ready(
+	function(){
+		$('.collapse').collapse({
+			toggle: true
+		});
+		$(".collapse").on('hidden', function (){
+			currentid='#i'+$(this).attr('id');
+			$(currentid).removeClass().addClass('icon-plus');
+		});
+		$(".collapse").on('show', function (){
+			currentid='#i'+$(this).attr('id');
+			$(currentid).removeClass().addClass('icon-minus');
+		});
+	});
+
+function getArticleContent(id){
+	var sParament='ajax=1&id='+id;
+	Dyhb.AjaxSend('<!--{:Dyhb::U('shop://shoparticle/getarticle')}-->',sParament,'',function(data,status){
+		if(status==1){
+			$("#articletitle").html(data.title);
+			$("#articlecontent").html(data.content);
+		}
+	});
+}
+<!--{/script}-->
+
+<!--{style}-->
+.help {border:1px solid #f1f1f1;}
+.help ul {list-style-type:none;margin:0px;}
+.help ul li {padding-left:18px;}
+.help h4 {background-color:;padding-left:12px;}
+.help h4 a {text-decoration: none;}
+.help h4:hover {cursor:pointer;}
+.help h4 i {float:right;margin-right:10px;border:1px solid #f1f1f1;}
+<!--{/style}-->
+
+	<div class="span12" style="text-align:left;margin-top:20px;">
+		<ul class="breadcrumb">
+			<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>帮助中心</li>
+		</ul>
+	</div>
+
+	<div class="span12">
+		<div class="row">
+			<div class="span2">
+				<div class="help">
+				<!--<foreach for=arrShoparticlecategory value=oShoparticlecategory>-->
+					<h4><a data-toggle="collapse" data-target="#collapseTwo<!--{$oShoparticlecategory->shoparticlecategory_id}-->" ><!--{$oShoparticlecategory->shoparticlecategory_name}--><i id="icollapseTwo<!--{$oShoparticlecategory->shoparticlecategory_id}-->" class="icon-minus"></i></a></h4>
+					<div id="collapseTwo<!--{$oShoparticlecategory->shoparticlecategory_id}-->" class="collapse">
+						<ul>
+							<!--{foreach $oShoparticlecategory->shoparticle $value}-->
+								 <li><a href="javascript:void(0);" onclick="getArticleContent(<!--{$value->shoparticle_id}-->)"><!--{$value->shoparticle_title}--></a></li>
+							<!--{/foreach}-->
+						</ul>
+					</div>
+				<!--</foreach>-->
+				</div>
+			</div>
+			<div class="span10">
+				<div style="text-align:center;"><h2 id="articletitle"></h2></div>
+				<div><div id="articlecontent"></div></div>
+			</div>
+		</div>
+	</div>
+
+<!--<include file="footer" />-->

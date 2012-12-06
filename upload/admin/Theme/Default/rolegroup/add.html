@@ -1,0 +1,91 @@
+<!--<include file="public+header">-->
+
+<!--{script}-->
+function add(){
+	if( $('#id').val()!='' && $('#id').val()!==null){
+		update();
+		return;
+	}
+	$("#submit_button").attr("disabled","disabled");
+	$("#submit_button").val('add...');
+	Dyhb.AjaxSubmit('rolegroupAdd','<!--{:Dyhb::U('rolegroup/insert')}-->','',complete);
+}
+
+function update(){
+	$("#submit_button").attr("disabled","disabled");
+	$("#submit_button").val( 'update...');
+	Dyhb.AjaxSubmit('rolegroupAdd','<!--{:Dyhb::U('rolegroup/update')}-->','',function(){ 
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
+	});
+}
+
+function complete(data,status){
+	$("#submit_button").attr("disabled",false);
+	$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->' );
+	if(status==1){
+		$('#id').val(data.rolegroup_id);
+	}
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Rolegroup'>-->添加分组<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Rolegroup'>-->编辑分组<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Rolegroup'>-->添加分组<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Rolegroup'>-->编辑分组<!--</lang>-->_<!--{$nId}--><!--</if>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template/Default/Rolegroup'>-->角色分组是为了更好地管理角色<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Rolegroup'>-->添加分组<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Rolegroup'>-->编辑分组<!--</lang>--><!--</if>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Dyhb::U('rolegroup/index')}-->"><!--<lang package='Template/Default/Rolegroup'>-->分组列表<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--<if condition="empty( $nId )" >--><!--{:Dyhb::U('rolegroup/insert')}--><!--<else/>--><!--{:Dyhb::U('rolegroup/update')}--><!--</if>-->" method="post" id="rolegroupAdd">
+				<div class="module_content">
+					<fieldset>
+						<label for="rolegroup_sort"><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></label>
+						<input type="text" name="rolegroup_sort" id="rolegroup_sort" size="10" value="<!--<if condition="isset( $oValue ) && !empty( $oValue:rolegroup_sort )">--><!--{$oValue:rolegroup_sort}--><!--<else/>-->0<!--</if>-->"/>
+						<div class="description"><!--<lang package='Template/Default/Rolegroup'>-->分组序号，用于分组排序<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="rolegroup_name"><!--<lang package='Template/Default/Rolegroup'>-->组名<!--</lang>--></label>
+						<input type="text" name="rolegroup_name" id="rolegroup_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:rolegroup_name}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='Template/Default/Rolegroup'>-->分组的名字<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="rolegroup_title"><!--<lang package='Template/Default/Rolegroup'>-->显示名<!--</lang>--></label>
+						<input type="text" name="rolegroup_title" id="rolegroup_title" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:rolegroup_title}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='Template/Default/Rolegroup'>-->分组的别名<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="rolegroup_status"><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></label>
+						<select name="rolegroup_status">
+							<option value="1" <!--<if condition="isset( $oValue ) && $oValue:rolegroup_status==1">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->启用<!--</lang>--></option>
+							<option value="0" <!--<if condition="!isset( $oValue ) || ( isset( $oValue ) && $oValue:rolegroup_status==0 ) ">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->禁用<!--</lang>--></option>
+						</select>
+						<div class="description"><!--<lang package='Template/Default/Rolegroup'>-->分组的状态，启用后才能够使用<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="id" id="id" value="<!--<if condition="isset( $nId )">--><!--{$nId}--><!--</if>-->"/>
+						<input type="button" id="submit_button" onclick="<!--<if condition="!empty( $nId )" >-->update()<!--<else/>-->add()<!--</if>-->" value="<!--<if condition="!empty( $nId )" >--><!--<lang package='Template/Default/Common'>-->更新<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Common'>-->发布<!--</lang>--><!--</if>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

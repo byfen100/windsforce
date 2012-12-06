@@ -1,0 +1,6 @@
+#
+# NeedForBug Robots
+#
+
+User-agent: *
+Disallow: /Public/

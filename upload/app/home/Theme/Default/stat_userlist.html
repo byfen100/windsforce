@@ -1,0 +1,83 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function findUser(){
+	if(!$('#key').val()){
+		needforbugAlert(D.L('用户关键字不能为空','AppJs'),'',3);
+		return false;
+	}else{
+		return true;
+	}
+}
+<!--{/script}-->
+
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Stat'>-->社区广场<!--</lang>--> <span class="divider">/</span></li>
+			<li><a href="<!--{:Dyhb::U('home://friend/index')}-->"><!--<lang package='Template/Stat'>-->我的好友<!--</lang>--></a></li>
+		</ul>
+		
+		<!--<include file="stat+menu" />-->
+		
+		<div class="row">
+			<div class="span12">
+				<form class="well form-search" action="<!--{:Dyhb::U('home://stat/userlist')}-->" method="get" onsubmit="return findUser();">
+					<input type="text" class="input-medium search-query" name="key" id="key">&nbsp;
+					<button type="submit" class="btn"><i class="icon-search"></i>&nbsp;<!--<lang package='Template/Stat'>-->查找会员<!--</lang>--></button>
+				</form>
+
+				<!--{if $sKey}-->
+				<div class="alert alert-success">
+					<!--<lang package='Template/Stat'>-->你搜索的关键字为<!--</lang>-->&nbsp;<strong><span class="label label-success"><a href="<!--{:Dyhb::U('home://stat/userlist?key='.$sKey)}-->"><!--{$sKey}--></a></span></strong>，<!--<lang package='Template/Stat'>-->你可以查看<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Stat'>-->会员列表<!--</lang>--></a>
+				</div>
+				<!--{/if}-->
+
+				<!--{if is_array($arrUsers)}-->
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th colspan="2"><a href="<!--{:Core_Extend::sortBy('user_name')}-->" <!--{:Core_Extend::sortField('user_name')}-->><!--<lang package='Template/Stat'>-->用户名<!--</lang>--></a></th>
+							<th><a href="<!--{:Core_Extend::sortBy('user_id')}-->" <!--{:Core_Extend::sortField('user_id')}-->>UID</a></th>
+							<th><!--<lang package='Template/Stat'>-->性别<!--</lang>--></th>
+							<th><a href="<!--{:Core_Extend::sortBy('create_dateline')}-->" <!--{:Core_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Stat'>-->注册日期<!--</lang>--></a></th>
+							<th><a href="<!--{:Core_Extend::sortBy('user_lastlogintime')}-->" <!--{:Core_Extend::sortField('user_lastlogintime')}-->><!--<lang package='Template/Stat'>-->上次访问<!--</lang>--></a></th>
+							<th><a href="<!--{:Core_Extend::sortBy('user_logincount')}-->" <!--{:Core_Extend::sortField('user_logincount')}-->><!--<lang package='Template/Stat'>-->登陆次数<!--</lang>--></a></th>
+							<th><a href="<!--{:Core_Extend::sortBy('user_status')}-->" <!--{:Core_Extend::sortField('user_status')}-->><!--<lang package='Template/Stat'>-->状态<!--</lang>--></a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--<foreach for=arrUsers value=oUser>-->
+						<tr>
+							<td><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oUser['user_id'],'small' )}-->" width="48px" height="48px" class="thumbnail" /></a></td>
+							<td><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oUser['user_id']}-->" ><!--{$oUser:user_name}--></a>&nbsp;<!--{if $oUser['user_nikename']}-->(<!--{$oUser['user_nikename']}-->)<!--{/if}-->
+								<!--{if $GLOBALS['___login___']!==false}--><br/>
+								<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($oUser['user_id'])}-->
+								<!--{if $nAlreadyFriendId==1}--><span class="label label-warning"><a href="javascript:void(0);" onclick="deleteFriend('<!--{$oUser['user_id']}-->','0');return false;"><!--<lang package='Template/Stat'>-->取消关注<!--</lang>--></a></span>
+								<!--{elseif $nAlreadyFriendId==2}--><span class="label"><!--<lang package='Template/Stat'>-->你自己<!--</lang>--></span>
+								<!--{elseif $nAlreadyFriendId==3}--><span class="label" ><!--<lang package='Template/Stat'>-->你粉丝<!--</lang>--></span><p style="margin-top:10px;"><span class="label label-success"><a href="javascript:void(0);" onclick="addFriend('<!--{$oUser:user_id}-->');return false;"><!--<lang package='Template/Stat'>-->关注<!--</lang>--></a></span>&nbsp;<span class="label label-warning"><a href="javascript:void(0);" onclick="deleteFriend('<!--{$oUser['user_id']}-->','1');return false;"><!--<lang package='Template/Stat'>-->移除粉丝<!--</lang>--></a></span></p>
+								<!--{elseif $nAlreadyFriendId==4}--><span class="label" ><!--<lang package='Template/Stat'>-->相互关注<!--</lang>--></span><p style="margin-top:10px;"><span class="label label-warning"><a href="javascript:void(0);" onclick="deleteFriend('<!--{$oUser['user_id']}-->','0');return false;"><!--<lang package='Template/Stat'>-->取消关注<!--</lang>--></a></span>&nbsp;<span class="label label-warning"><a href="javascript:void(0);" onclick="deleteFriend('<!--{$oUser['user_id']}-->','1');return false;"><!--<lang package='Template/Stat'>-->移除粉丝<!--</lang>--></a></span></p>
+								<!--{d*else}--><span class="label label-success"><a href="javascript:void(0);" onclick="addFriend('<!--{$oUser:user_id}-->');return false;"><!--<lang package='Template/Stat'>-->关注<!--</lang>--></a></span>
+								<!--{/if}-->
+								<p style="margin-top:5px;"><a href="<!--{:Dyhb::U('home://pm/pmnew?uid='.$oUser->user_id)}-->"><!--<lang package='Template/Stat'>-->发送短消息<!--</lang>--></a></p>
+								<!--{/if}-->
+							</td>
+							<td><!--{$oUser:user_id}--></td>
+							<td><!--{:Profile_Extend::getGender($oUser->userprofile->userprofile_gender)}--></td>
+							<td><!--{$oUser:create_dateline|Core_Extend+timeFormat}--></td>
+							<td><!--{if $oUser['user_lastlogintime']}--><!--{$oUser:user_lastlogintime|Core_Extend+timeFormat}--><!--{d*else}--><!--<lang package='Template/Stat'>-->注册访问<!--</lang>--><!--{/if}--></td>
+							<td><span class="badge badge-label-info"><!--{$oUser:user_logincount}--></span></td>
+							<td><!--{if $oUser['user_status']}--><i class="icon-ok"></i><!--{d*else}--><i class="icon-remove"></i><!--{/if}--></td>
+						</tr>
+						<!--</foreach>-->
+					</tbody>
+				</table>
+				<!--{d*else}-->
+				<!--<lang package='Template/Stat'>-->暂时没有发现任何会员<!--</lang>-->
+				<!--{/if}-->
+				
+				<!--{$sPageNavbar}-->
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

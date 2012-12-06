@@ -1,0 +1,131 @@
+<!--<include file="public+header">-->
+
+<!--{script}-->
+function add(){
+	if( $('#value').val()!='' && $('#value').val()!==null){
+		update();
+		return;
+	}
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'add...' );
+	Dyhb.AjaxSubmit('shopcategoryAdd','<!--{:Admin_Extend::insert(array('controller'=>'shopcategory'))}-->','',complete);
+}
+
+function update(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	Dyhb.AjaxSubmit('shopcategoryAdd','<!--{:Admin_Extend::update(array('controller'=>'shopcategory'))}-->','',function(){ 
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
+	});
+}
+
+function complete(data,status){
+	$("#submit_button").attr("disabled", false);
+	$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->' );
+	if(status==1){
+		location.href=D.U('app/config?controller=shopcategory&action=edit&id=<!--{$_GET['id']}-->&value='+data.shopcategory_id);
+	}
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="isset( $_GET['value'] )">--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->编辑商品分类<!--</lang>--><!--<else/>--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->添加商品分类<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="isset( $_GET['value'] )">--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->编辑商品分类<!--</lang>-->_<!--{$_GET['value']}--><!--<else/>--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->添加商品分类<!--</lang>--><!--</if>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类为重要的商品筛选属性<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<if condition="isset( $_GET['value'] )">--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->编辑商品分类<!--</lang>--><!--<else/>--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->添加商品分类<!--</lang>--><!--</if>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Admin_Extend::index(array('controller'=>'shopcategory'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类列表<!--</lang>--></a></li>
+					<li><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--<if condition="isset( $_GET['value'] )" >--><!--{:Admin_Extend::update(array('controller'=>'shopcategory'))}--><!--<else/>--><!--{:Admin_Extend::insert(array('controller'=>'shopcategory'))}--><!--</if>-->" method="post" id="shopcategoryAdd">
+				<div class="module_content">
+					<fieldset>
+						<label for="shopcategory_name"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类名字<!--</lang>--></label>
+						<input type="text" name="shopcategory_name" id="shopcategory_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:shopcategory_name}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类名字最大长度为32个字符<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_parentid"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品父亲分类<!--</lang>--></label>
+						<select name="shopcategory_parentid" id="shopcategory_parentid" >
+							<option value="0">- <!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->顶级分类<!--</lang>--> -</option>
+							<!--{~$arrShopcategory = $oShopcategoryTree->getChilds()}-->
+							<!--<foreach for=arrShopcategory value=nCId>-->
+							<option value="<!--{$nCId}-->" <!--<if condition="isset( $oValue ) && $nCId == $oValue:shopcategory_parentid">-->selected<!--</if>--> >|<!--{$oShopcategoryTree:getLayer( $nCId, '--' )}--><!--{$oShopcategoryTree:getValue( $nCId )}--></option>
+							<!--</foreach>-->
+						</select>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类的父级分类，不能为自己<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_measureunit"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品数量单位<!--</lang>--></label>
+						<input type="text" name="shopcategory_measureunit" id="shopcategory_measureunit" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:shopcategory_measureunit}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->不同类型的商品数量单位不一致,这里可以针对不同商品类型填写，也可以留空<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_sort"><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></label>
+						<input type="text" name="shopcategory_sort" id="shopcategory_sort" size="40" value="<!--<if condition="isset( $oValue ) && $oValue:shopcategory_sort">--><!--{$oValue:shopcategory_sort}--><!--<else/>-->0<!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类序号，用于排列商品分类访问顺序<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_status"><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></label>
+						<select name="node_status">
+							<option value="1" <!--<if condition="isset( $oValue ) && $oValue:shopcategory_status==1">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->是<!--</lang>--></option>
+							<option value="0" <!--<if condition="!isset( $oValue ) || ( isset( $oValue ) && $oValue:shopcategory_status eq 0 ) ">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->否<!--</lang>--></option>
+						</select>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->是否启用商品分类，启用商品分类才能够使用<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategoryrecommend"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类首页推荐<!--</lang>--></label>
+						<p style="padding-left:5px;"><input name="shopcategoryrecommend[]" value="1" type="checkbox">&nbsp;精品
+							<input name="shopcategoryrecommend[]" value="2" type="checkbox">&nbsp;最新
+							<input name="shopcategoryrecommend[]" value="3" type="checkbox">&nbsp;热门
+						</p>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->首页一些比如热门商品,新商品的商品分类信息是否显示<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_grade"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->价格区间个数<!--</lang>--></label>
+						<input type="text" name="shopcategory_grade" id="shopcategory_grade" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:shopcategory_grade}--><!--{d*else}-->0<!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->选项表示该分类下商品最低价与最高价之间的划分的等级个数，填0表示不做分级，最多不能超过10个。<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_template"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->分类单独模板文件<!--</lang>--></label>
+						<input type="text" name="shopcategory_template" id="shopcategory_template" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:shopcategory_template}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->这会在原分类模板名字变为原分类模板_单独文件，这可以为丰富商品列表起到很好效果<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_keywords"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类关键字<!--</lang>--></label>
+						<input type="text" name="shopcategory_keywords" id="shopcategory_keywords" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:shopcategory_keywords}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类关键字有助于提高搜索引擎收录<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopcategory_description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品分类描述<!--</lang>--></label>
+						<textarea name="shopcategory_description" id="shopcategory_description" rows="5"><!--<if condition="isset( $oValue )">--><!--{$oValue:shopcategory_description}--><!--</if>--></textarea>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopcategory'>-->商品描述有利于提高搜索引擎转化率,抓住用户<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="value" id="value" value="<!--<if condition="isset( $_GET['value'] )">--><!--{$_GET['value']}--><!--</if>-->"/>
+						<input type="button" id="submit_button" onclick="<!--<if condition="isset( $oValue )">-->update()<!--<else/>-->add()<!--</if>-->" value="<!--<if condition="isset( $oValue )">--><!--<lang package='Template/Default/Common'>-->更新<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Common'>-->发布<!--</lang>--><!--</if>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

@@ -1,0 +1,162 @@
+<!--<include file="Core_Extend::template('cheader')" />-->
+
+<!--{style}-->
+.nav-collapse .nav .dropdown .dropdown-menu li{width:100%;text-align:left;}
+.navbar-inner {
+padding-right: 0px;
+padding-left: 0px;
+-webkit-box-shadow:none;
+	-moz-box-shadow: none;
+		box-shadow: none;
+}
+
+.p0{margin-top:5px;}
+.p1{margin-top:20px;}
+.p1 a{font-size:11px;padding:5px 15px;margin:auto;}
+.p1 a:hover{background:#ddd;color:#000000; }
+.p1 a.shopgoods_current{background:#ddd;color:#000000;}
+<!--{/style}-->
+
+<div id="wrapper">
+	<div id="header">
+		<div class="navbar-fixed-top">
+			<div class="container">
+				<div class="span12" style="margin:auto;">
+					<div class="navbar-inner">
+						<div class="navbar">
+							<div class="row">
+								<div class="span9">
+									<div class="nav-collapse">
+										<ul class="nav">
+											<li style="width:60px;" class="dropdown <!--{if MODULE_NAME==='public' && ACTION_NAME==='index'}-->active<!--{/if}-->">
+												<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">首页&nbsp;<b class="caret"></b></a>
+												<ul class="dropdown-menu">
+													<li><a href="<!--{:Dyhb::U('shop://public/index')}-->">商城首页</a></li>
+													<li class="divider"></li>
+													<li><a href="<!--{:Dyhb::U('home://public/index')}-->">个人空间</a></li>
+												</ul>
+											</li>
+											<li class="span1 <!--{if MODULE_NAME==='shopartist'}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('shop://shopartist/index')}-->">艺术家</a></li>
+											<li class="span1 <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='category'}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('shop://shopgoods/category')}-->">阿文</a></li>
+											<li class="span1"><a href="<!--{:Dyhb::U('group://public/index')}-->">社区</a></li>
+											<li class="span2 <!--{if MODULE_NAME==='shopedu'}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('shop://shopedu/index')}-->">共育蓓蕾</a></li>
+											<li class="span2 <!--{if MODULE_NAME==='shopshow'}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('shop://shopshow/index')}-->">在线展览</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="span3">
+									<div class="nav-collapse">
+										<ul class="nav pull-right">
+											<li class="<!--{if MODULE_NAME==='shopcart' && ACTION_NAME==='index'}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('shop://shopcart/index')}-->"><i class="icon-shopping-cart"></i>我的购物车</a></li>
+											<li class="dropdown <!--{if MODULE_NAME==='shopucenter'}-->active<!--{/if}-->">
+												<!--{if $GLOBALS['___login___']===false}-->
+												<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">未登录&nbsp;<b class="caret"></b></a>
+												<ul class="dropdown-menu">
+													<li><a onclick="ajaxLogin();" href="javascript:void(0);">用户登录</a></li>
+													<li class="divider"></li>
+													<li><a onclick="ajaxRegister('<!--{:Dyhb::U('shop://public/index')}-->');" href="javascript:void(0);">用户注册</a></li>
+												</ul>
+												<!--{d*else}-->
+												<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+													<!--{if $GLOBALS['___login___']['socia_login']===true}-->
+													<img src="<!--{$GLOBALS['___login___']['socia']['logo']}-->"/>&nbsp;
+													<!--{$GLOBALS['___login___']['socia']['sociauser_name']}-->
+													<!--{d*else}-->
+													<i class="icon-user"></i>&nbsp;
+													<!--{if $GLOBALS['___login___']['user_nikename']}-->
+													<!--{$GLOBALS['___login___']['user_nikename']}-->
+													<!--{d*else}-->
+													<!--{$GLOBALS['___login___']['user_name']}-->
+													<!--{/if}-->
+													<!--{/if}-->
+													<span class="caret"></span>
+												</a>
+												<ul class="dropdown-menu">
+													<!--{if Core_Extend+isAdmin()}-->
+													<li><a href="<!--{:__ROOT__}-->/admin.php" target="_blank">管理中心</a></li>
+													<!--{/if}-->
+													<li><a href="<!--{:Dyhb::U('shop://shopucenter/index')}-->">个人中心</a></li>
+													<li class="divider"></li>
+													<li><a href="<!--{:Dyhb::U('shop://shopucenter/shopgoodsbuy')}-->">已买到的宝贝</a></li>
+													<li><a href="<!--{:Dyhb::U('shop://shopucenter/favorite')}-->">我的藏品</a></li>
+													<li><a href="<!--{:Dyhb::U('shop://shopucenter/friend')}-->">我的藏友</a></li>
+													<li><a href="<!--{:Dyhb::U('shop://shopucenter/profile')}-->">编辑资料</a></li>
+													<li><a href="<!--{:Dyhb::U('home://public/logout?refer=1')}-->">注销</a></li>
+												</ul>
+												<!--{/if}-->
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div><!--/navbar-->
+					</div><!--/navbar-inner-->
+				</div>
+			</div><!--/container-->
+		</div>
+	</div>
+
+	<div id="content" style="margin-top:25px;">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<!--{script}-->
+					var isIe6=false;
+					document.write("<!--[iflteIE6]><script>isIe6=true;</scr"+"ipt><![endif]-->");
+					if(isIe6){
+						document.write('<div class="alert"><strong>本站已停止支持 IE6, 请升级你的浏览器! <a href="http://www.getfirefox.com" target="_blank">Firefox</a> &nbsp; <a href="http://opera.com" target="_blank">Opera</a> &nbsp; <a href="http://apple.com/safari" target="_blank">Safari</a> &nbsp; <a href="http://chrome.google.com">Google Chrome</a> &nbsp; <a href="http://windows.microsoft.com/zh-CN/internet-explorer/products/ie/home" target="_blank">IE8+</a></strong></div>');
+					}
+					<!--{/script}-->
+				</div>
+			</div>
+
+			<div class="row" style="margin-top:30px;">
+				<!--{if MODULE_NAME!=='shopucenter'}-->
+				<div class="span12" style="text-align:center;margin-bottom:5px;">
+					<div class="p0">
+						<a href="<!--{:Dyhb::U('shop://public/index')}-->" title="返回商城首页"><img src="<!--{:__PUBLIC__}-->/images2/标志.gif" alt="" width="300" height="83"></a>
+					</div>
+				</div>
+				
+				<div class="span12" style="text-align:center;">
+					<div style="width:600px;text-align:center;margin:auto;">
+						<ul class="nav nav-pills">
+							<li <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='hot'}-->class="active"<!--{/if}-->><a style="margin-left:32px;" href="<!--{:Dyhb::U('shop://shopgoods/hot')}-->">最热</a></li>
+							<li <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='dateview'}-->class="active"<!--{/if}-->><a style="margin-left:32px;" href="<!--{:Dyhb::U('shop://shopgoods/dateview')}-->">限时抢购</a></li>
+							<li <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='original'}-->class="active"<!--{/if}-->><a style="margin-left:32px;" href="<!--{:Dyhb::U('shop://shopgoods/original')}-->">原创</a></li>
+							<li <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='like'}-->class="active"<!--{/if}-->><a style="margin-left:32px;" href="<!--{:Dyhb::U('shop://shopgoods/like')}-->">大家喜欢</a></li>
+							<li style="margin-left:32px;" class="dropdown <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='category'}-->active<!--{/if}-->">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">官方专辑<b class="caret"></b></a>
+								<ul class="dropdown-menu" style="text-align:left;">
+									<li><a href="<!--{:Dyhb::U('shop://shopgoods/category')}-->">书画</a></li>
+									<li><a href="<!--{:Dyhb::U('shop://shopgoods/category')}-->">美术</a></li>
+									<li><a href="<!--{:Dyhb::U('shop://shopgoods/category')}-->">阿拉伯文</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="span12" style="text-align:center;margin-bottom:5px;">
+					<form method="post" action="<!--{:Dyhb::U('shop://shopgoodssearch/index')}-->">
+						<div class="control-group margin:auto;">
+							<div class="controls">
+								<div class="input-append">
+									<input class="span2 search-query" id="appendedInputButton" size="16" type="text">
+									<button class="btn" type="submit" placeholder="Search">搜索吧!</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="span12" style="text-align:center;margin-bottom:5px;">
+					<div class="p1">
+						<h6><a <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='play' && G+getGpc('type')=='buy'}-->class="shopgoods_current"<!--{/if}--> href="<!--{:Dyhb::U('shop://shopgoods/play?type=buy')}-->">可买</a>
+							<a <!--{if MODULE_NAME==='shopgoods' && ((ACTION_NAME==='play' && G+getGpc('type')=='order') || ACTION_NAME==='add_order')}-->class="shopgoods_current"<!--{/if}--> style="margin-left:32px;" href="<!--{:Dyhb::U('shop://shopgoods/play?type=order')}-->">可订</a>
+							<a <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='play' && G+getGpc('type')=='sold'}-->class="shopgoods_current"<!--{/if}--> style="margin-left:32px;" href="<!--{:Dyhb::U('shop://shopgoods/play?type=sold')}-->">已售</a>
+							<a <!--{if MODULE_NAME==='shopgoods' && ACTION_NAME==='play' && G+getGpc('type')=='favorite'}-->class="shopgoods_current"<!--{/if}--> style="margin-left:32px;" href="<!--{:Dyhb::U('shop://shopgoods/play?type=favorite')}-->">推荐收藏</a>
+						</h6>
+					</div>
+				</div>
+				<!--{/if}-->

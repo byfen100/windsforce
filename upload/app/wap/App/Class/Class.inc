@@ -1,0 +1,1 @@
+a:3:{s:14:"InitController";s:35:"Controller/InitController.class.php";s:16:"PublicController";s:37:"Controller/PublicController.class.php";s:16:"HomeCache_Extend";s:36:"Extension/HomeCache_Extend.class.php";}

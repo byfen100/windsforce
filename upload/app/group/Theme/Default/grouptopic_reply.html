@@ -1,0 +1,88 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	editor=loadEditorThin('grouptopiccomment_message');
+	$('a.face-icon').showEmotion({input:editor});
+});
+
+function addGrouptopiccomment(){
+	$("#grouptopiccomment_message").val(editor.html());
+
+	if($("#grouptopiccomment_message").val()==""){
+		needforbugAlert('回复内容不能为空','',3);
+		return false;
+	}
+
+	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/add_reply')}-->','',function(data,status){
+		if(status==1){
+			window.location.href=data.url;
+		}
+	});
+}
+
+function showMedia(){
+	$('#grouptopicreply-media-box').toggle('fast');
+}
+
+function insertGrouptopicattachment(nAttachmentid){
+	insertAttachment(editor,nAttachmentid);
+}
+
+function insertGrouptopicvideo(sContent){
+	insertVideo(editor,sContent);
+}
+
+function insertGrouptopicmusic(sContent){
+	insertMusic(editor,sContent);
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->">群组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>帖子回复</li>
+		</ul>
+		
+		<div class="row">
+			<div class="span12">
+				<ul id="myTab" class="nav nav-tabs">
+					<li class="active"><a href="javascript:void(0);">发表回复</a></li>
+				</ul>
+			</div>
+			<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form">
+				<div class="span12">
+					<label>帖子标题</label>
+					<input type="text" class="span8" readonly value="Reply:<!--{$oGrouptopic->grouptopic_title}-->">
+					<label>回帖内容<!--{if $GLOBALS['___login___']!==false}-->&nbsp;(<a href="javascript:void(0);" onclick="showMedia();">媒体</a>)<!--{/if}--></label>
+					<!--{if $GLOBALS['___login___']!==false}-->
+					<div id="grouptopicreply-media-box" class="common-media-box none">
+						<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a>
+						<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
+						<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
+						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
+					</div>
+					<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="16" style="width:100%;"></textarea>
+					<!--{d*else}-->
+					<div style="background:#F5F5F5;padding:10px;">
+						<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:90px 0">
+							<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a> | 
+							<a href="<!--{:Dyhb::U('home://public/register')}-->">用户注册</a>
+						</div>
+					</div>
+					<!--{/if}-->
+					<div class="form-actions">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="tid" value="<!--{$oGrouptopic->grouptopic_id}-->">
+						<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>&nbsp;
+						<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->" class="btn">返回帖子</a>
+					</div>
+				</div>
+			</form>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

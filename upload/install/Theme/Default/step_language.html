@@ -1,0 +1,43 @@
+<include file="common+header">
+		
+	<ul class="breadcrumb">
+		<li><a href="{:__APP__}" title="<lang package='Template/Default/Common'>主页</lang>"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span></li>
+		<li>Select Language | NEEDFORBUG-{:NEEDFORBUG_SERVER_VERSION} - {:NEEDFORBUG_SERVER_RELEASE}</li>
+	</ul>
+
+	<div class="hero-unit">
+		<h1>NeedForBug</h1>
+		<p>Enjoy Online Shopping | 独属于我的社区购物</p>
+		<p><a class="btn btn-primary btn-large" href="http://doyouhaobaby.net" target="_blank">Learn more &raquo;</a></p>
+	</div>
+
+	<div class="row">
+		<div class="span12">
+			<h2>The preview</h2>
+			<p><img src="{:__TMPLPUB__}/images/preview.jpg" /></p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span12">
+			<h2>Please select your language!</h2>
+			<p>{~$sLangCookieName=$GLOBALS['_commonConfig_']['COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME']===true?APP_NAME.'_language':'language'}
+				<select name="lang-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+					<option value="">-- Please select your language --</option>
+					<foreach for=arrInstallLangs value=sInstallLangs>
+					<option value="?l={$sInstallLangs|strtolower}" {if strtolower(Dyhb+cookie($sLangCookieName))==strtolower($sInstallLangs)}selected{/if}>{$sInstallLangs}</option>
+					</foreach>
+				</select>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span12">
+			<div class="well">
+				<p><input type='button' value='Next' class='btn btn-primary' onclick="window.location.href='{:Dyhb::U( 'index/select' )}'"/></p>
+			</div>
+		</div>
+	</div>
+
+<include file="common+footer">

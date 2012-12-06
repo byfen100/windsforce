@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NeedForBug-{:NEEDFORBUG_SERVER_VERSION} | 
+			{if MODULE_NAME==='index' && ACTION_NAME=='index'}
+			Select Language
+			{elseif MODULE_NAME==='index'}<lang package='Template/Default/Install'>安装程序</lang>
+			{d*else}
+			<lang package='Template/Default/Update'>升级程序</lang>
+			{/if}
+	</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta content="Needforbug" name="Copyright" />
+	<load file="{:__TMPLPUB__}/Css/style.css" />
+	<!--[if lt IE 9]>
+	<script src="{:__PUBLIC__}/js/common/html5.js"></script>
+	<![endif]-->
+	<load file="{:__PUBLIC__}/extension/bootstrap/css/bootstrap.min.css" />
+	<load file="{:__PUBLIC__}/extension/bootstrap/css/bootstrap-responsive.min.css" />
+	<link rel="shortcut icon" href="{:__PUBLIC__}/images/common/favicon.png">
+	{script}
+	var __DYHB_JS_ENTER__='{:__APP__}';
+	{/script}
+	<script src="{:__PUBLIC__}/js/jquery/jquery.js"></script>
+	<import file="Js.Dyhb#package" />
+	{script}
+	Dyhb.Lang.SetCurrentLang('{:LANG_NAME}');
+	Dyhb.Ajax.Dyhb.Image=['{:__PUBLIC__}/images/common/ajax/loading.gif','{:__PUBLIC__}/images/common/ajax/ok.gif','{:__PUBLIC__}/images/common/ajax/update.gif'];
+	{:App::U()}
+	{/script}
+</head>
+<body>
+{script}
+function showMessage(sMessage){
+	document.getElementById('message-list').innerHTML+=sMessage+'<br />';
+}
+{/script}
+
+<div id="DyhbAjaxResult" class="none DyhbAjaxResult">&nbsp;</div>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="{:__APP__}">NeedForBug-{:NEEDFORBUG_SERVER_VERSION}</a>
+			<div class="nav-collapse pull-right">
+				<ul class="nav">
+					<li class="active"><a href="http://www.doyouhaobaby.net" target="_blank"><lang package='Template/Default/Common'>官方网站</lang></a></li>
+					<li><a href="http://bbs.doyouhaobaby.net" target="_blank"><lang package='Template/Default/Common'>技术论坛</lang></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">

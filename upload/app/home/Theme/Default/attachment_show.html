@@ -1,0 +1,68 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template/Attachment'>-->我的相册<!--</lang>--></a></li>
+		</ul>
+
+		<!--<include file="attachment+menu" />-->
+
+		<div class="row">
+			<div class="span12">
+				<div class="tabbable" style="margin-bottom: 0px;">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#attachment_view" data-toggle="tab">附件浏览</a></li>
+						<li><a href="#attachment_info" data-toggle="tab">附件详情</a></li>
+					</ul>
+					<div class="tab-content" style="padding-bottom: 0px;">
+						<div class="tab-pane active" id="attachment_view">
+							<p><!--{$TheController:show_attachment($oAttachment)}--></p>
+						</div>
+						<div class="attachment_info tab-pane" id="attachment_info">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th colspan="2"><!--{$oAttachment['attachment_name']}--></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="2"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|G+subString=0,30}--><!--{d*else}-->暂无附件描述<!--{/if}--></td>
+									</tr>
+									<tr>
+										<td width="150px">上传时间</td>
+										<td><!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></td>
+									</tr>
+									<tr>
+										<td>所属专辑</td>
+										<td><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachment['attachmentcategory_id'])}-->"><!--{if $oAttachment['attachmentcategory_id']>0}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}-->默认专辑<!--{/if}--></a></td>
+									</tr>						
+									<tr>
+										<td>下载次数</td>
+										<td><!--{$oAttachment:attachment_download}--></td>
+									</tr>						
+									<tr>
+										<td>评论次数</td>
+										<td><a href="#"><!--{$oAttachment:attachment_commentnum}--></a></td>
+									</tr>						
+									<tr>
+										<td>附件大小</td>
+										<td><!--{$oAttachment:attachment_size|G+changeFileSize}--></td>
+									</tr>						
+									<tr>
+										<td>附件类型</td>
+										<td><a href="<!--{:Dyhb::U('home://attachment/attachment?type='.$oAttachment['attachment_extension'])}-->"><!--{$oAttachment['attachment_extension']}--></a></td>
+									</tr>
+									<tr>
+										<td>上传用户</td>
+										<td><a href="<!--{:Dyhb::U('home://space@?id='.$oAttachment['user_id'])}-->"><!--{$oAttachment['attachment_username']}--></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

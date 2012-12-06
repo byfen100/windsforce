@@ -1,0 +1,42 @@
+<div class="bm_hover_card_content udline">
+	<div class="bm_hover_card_avator">
+		<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->" target="_blank">
+			<img src="<!--{:Core_Extend::avatar( $oUser['user_id'],'small' )}-->" height="50" width="50" />
+		</a>
+	</div>
+	<div class="bm_hover_card_name">
+		<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->" target="_blank"><!--{$oUser['user_name']}--></a>
+		<img src="<!--{$sUsergender}-->" height="14" width="14" />
+	</div>
+	<div class="bm_hover_card_from">
+		<!--{if $oUserprofile['userprofile_resideprovince']}-->
+		<span><!--{$oUserprofile['userprofile_resideprovince']}--></span>
+		<span><!--{$oUserprofile['userprofile_residecity']}--></span>
+		<!--{d*else}-->
+		<span>未设置现居地</span>
+		<!--{/if}-->
+	</div>
+	<div class="bm_hover_card_signaure"><!--{if $oUser['user_sign']}--><!--{$oUser['user_sign']|G+subString=0,16}--><!--{d*else}-->该用户还没有设置签名<!--{/if}--></div>
+	<span class="clear"></span>
+	<div class="bm_hover_card_info">
+		<p><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=friend')}-->" target="_blank">关注</a>
+			<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=friend&fan=1')}-->" target="_blank">粉丝</a>
+			<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=rating')}-->" target="_blank">积分</a>
+			<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=rating')}-->" target="_blank">金币</a>
+		</p>
+		<p><span><!--{$oUser->usercount->usercount_friends}--></span>
+			<span><!--{$oUser->usercount->usercount_fans}--></span>
+			<span><!--{$oUser->usercount->usercount_extendcredit1}--></span>
+			<span><!--{$oUser->usercount->usercount_extendcredit2}--></span>
+		</p>
+	</div>
+</div>
+<div class="bm_hover_card_bar">
+	<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($oUser['user_id'])}-->
+	<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
+	<a rel="nofollow" class="btn btn-mini" href="javascript:void(0);" onclick="deleteFriend(<!--{$oUser->user_id}-->);"><i class="icon-remove"></i>取消关注</a>
+	<!--{d*else}-->
+	<a rel="nofollow" class="btn btn-mini btn-success" href="javascript:void(0);" onclick="addFriend(<!--{$oUser->user_id}-->);"><i class="icon-plus icon-white"></i>加关注</a>
+	<!--{/if}-->&nbsp;
+	<a rel="nofollow" class="btn btn-mini btn-success" href="javascript:void(0);" onclick="addMessage('<!--{$oUser->user_id}-->');"><i class="icon-envelope icon-white"></i>写私信</a>
+</div>

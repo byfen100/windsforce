@@ -1,0 +1,58 @@
+<!--{style}-->
+.guide dl{list-style-type:none;margin:0px;}
+.guide dl dd{margin:0px;}
+<!--{/style}-->
+
+	</div>
+	<hr/>
+	<div class="row guide">
+		<div class="span3">
+			<dl>
+				<dt><!--{$GLOBALS['_cache_']['shop_article']['1']['0']}--></dt>
+				<!--{~$arrbuy=$GLOBALS['_cache_']['shop_article']['1']}-->
+				<!--<foreach for=arrbuy value=shoparticle key=nkey>-->
+					<!--{if $nkey>0}-->
+						<dd><a href="<!--{$shoparticle[0]}-->" target="_blank">
+						<!--{$shoparticle[1]}--></a></dd>
+					<!--{/if}-->
+				<!--</foreach>-->
+			</dl>
+		</div>
+		<div class="span3">
+			<dl>
+				<dt><!--{$GLOBALS['_cache_']['shop_article']['2']['0']}--></dt>
+				<!--{~$arrmap=$GLOBALS['_cache_']['shop_article']['2']}-->
+				<dd><a href="<!--{:Dyhb::U('shop://shopgoods/category')}-->" target="_blank">阿拉伯文书法</a></dd>
+				<dd><a href="<!--{:Dyhb::U('shop://shopartist/index')}-->" target="_blank">艺术家</a></dd>
+				<dd><a href="<!--{:Dyhb::U('group://public/index')}-->" target="_blank">社区</a></dd>
+				<dd><a href="<!--{:Dyhb::U('shop://shopedu/index')}-->" target="_blank">共育蓓蕾</a></dd>
+				<dd><a href="<!--{:Dyhb::U('shop://shopadvisory/index')}-->" target="_blank">在线咨询</a></dd>
+			</dl>
+		</div>
+		<div class="span3">
+			<dl>
+				<dt><!--{$GLOBALS['_cache_']['shop_article']['3']['0']}--></dt>
+				<!--{~$arrspecial=$GLOBALS['_cache_']['shop_article']['3']}-->
+				<!--<foreach for=arrspecial value=shoparticle key=nkey>-->
+					<!--{if $nkey>0}-->
+						<dd><a href="<!--{$shoparticle[0]}-->" target="_blank">
+						<!--{$shoparticle[1]}--></a></dd>
+					<!--{/if}-->
+				<!--</foreach>-->
+			</dl>
+		</div>
+		<div class="span3">
+			<dl>
+				<dt><!--{$GLOBALS['_cache_']['shop_article']['4']['0']}--></dt>
+				<!--{~$arraboutus=$GLOBALS['_cache_']['shop_article']['4']}-->
+				<!--<foreach for=arraboutus value=shoparticle key=nkey>-->
+					<!--{if $nkey>0}-->
+						<dd><a href="<!--{$shoparticle[0]}-->" target="_blank">
+						<!--{$shoparticle[1]}--></a></dd>
+					<!--{/if}-->
+				<!--</foreach>-->
+			</dl>
+		</div>
+	</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

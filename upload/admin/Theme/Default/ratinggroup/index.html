@@ -1,0 +1,101 @@
+<!--<include file="public+header" />-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Ratinggroup'>-->分组列表<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Ratinggroup'>-->分组列表<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template/Default/Ratinggroup'>-->等级分组的唯一目地是为了方便管理等级<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<div class="module_content">
+				<div class="left operate" >
+					<input type="button" name="add" value="<!--<lang package='Template/Default/Common'>-->新增<!--</lang>-->" onclick="add()" class="alt_btn">&nbsp;
+					<input type="button" name="edit" value="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="edit()" class="alt_btn">&nbsp;
+					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
+				</div>
+				<form method='get' action="<!--{:Dyhb::U( 'ratinggroup/index' )}-->" class="quick_search">
+					<input type="hidden" name="c" value="<!--{:MODULE_NAME}-->"/>
+					<input type="hidden" name="a" value="<!--{:ACTION_NAME}-->"/>
+					<input type="text" name="group_name" title="<!--<lang package='Template/Default/Ratinggroup'>-->分组名<!--</lang>-->">
+					&nbsp;<input type="submit" id="" value="<!--<lang package='Template/Default/Common'>-->查询<!--</lang>-->" onclick="" class="alt_btn">
+				</form>
+			</div>
+		</article>
+		
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Ratinggroup'>-->分组列表<!--</lang>--></h3>
+			</header>
+			<div class="module_content">
+				<table class="tablesorter" cellspacing="0" id="checkList">
+					<thead>
+						<tr>
+							<th><input type="checkbox" onclick="checkAll('checkList')"></th> 
+							<th><a href="javascript:sortBy('ratinggroup_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('ratinggroup_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('ratinggroup_name','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('ratinggroup_name')}-->><!--<lang package='Template/Default/Ratinggroup'>-->组名<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('ratinggroup_title','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('ratinggroup_title')}-->><!--<lang package='Template/Default/Ratinggroup'>-->显示名<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('ratinggroup_sort','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('ratinggroup_sort')}-->><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('ratinggroup_status','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('ratinggroup_status')}-->><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></a></th>
+							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--<foreach for=oList>-->
+						<tr>
+							<td><input type="checkbox" name="key" value="<!--{$value:ratinggroup_id}-->" <!--{if $value['ratinggroup_id']<=5}-->disabled="disabled"<!--{/if}-->></td>
+							<td><!--{$value:ratinggroup_id}--></td>
+							<td><a href="javascript:edit('<!--{$value:ratinggroup_id}-->')"><!--{$value:ratinggroup_name}--></a>
+								<div class="row-actions">
+									<span class='edit'><a href="javascript:edit('<!--{$value:ratinggroup_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
+									<span class='delete'><a href="javascript:foreverdel('<!--{$value:ratinggroup_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>|</span>
+									<span class='hide'><!--<if condition="$value:ratinggroup_status eq 1" >--><a href="javascript:forbid('<!--{$value:ratinggroup_id}-->')"><!--<lang package='Template/Default/Common'>-->禁用<!--</lang>--></a>
+									<!--<else/>--><a href="javascript:resume('<!--{$value:ratinggroup_id}-->')"><!--<lang package='Template/Default/Common'>-->恢复<!--</lang>--></a><!--</if>-->
+									</span>
+								</div>
+							</td>
+							<td><!--{$value:ratinggroup_title}--></td>
+							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
+							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="ratinggroup_sort_<!--{$value:ratinggroup_id}-->" onClick="clickToInput('ratinggroup_sort','<!--{$value:ratinggroup_id}-->')"><!--{$value:ratinggroup_sort}--></td>
+							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:ratinggroup_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><!--{if $value['ratinggroup_status']==1}-->
+								<a href="javascript:forbid('<!--{$value:ratinggroup_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<!--{d*else}-->
+								<a href="javascript:resume('<!--{$value:ratinggroup_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<!--{/if}-->
+								&nbsp;
+								<a href="javascript:edit('<!--{$value:ratinggroup_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+							</td>
+						</tr>
+						<!--</foreach>-->
+					</tbody>
+				</table>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<div class="module_content">
+				<!--{$sPageNavbar}-->
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<div class="module_content">
+				<div class="operate" >
+					<input type="button" name="add" value="<!--<lang package='Template/Default/Common'>-->新增<!--</lang>-->" onclick="add()" class="alt_btn">&nbsp;
+					<input type="button" name="edit" value="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="edit()" class="alt_btn">&nbsp;
+					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
+				</div>
+			</div>
+		</article>
+
+<!--<include file="public+footer">-->

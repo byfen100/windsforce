@@ -1,0 +1,34 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Pm'>-->短消息<!--</lang>--></li>
+		</ul>
+		
+		<!--<include file="pm+menu" />-->
+		
+		<div class="row">
+			<div class="span12">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th colspan="2"><i class="icon-user"></i>&nbsp;<!--<lang package='Template/Pm'>-->发布者<!--</lang>--> <a href="<!--{:Dyhb::U('home://space@?id='.$oPm->pm_msgfromid)}-->" target="_blank"><!--{$oPm:pm_msgfrom}--></a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="pm_<!--{$oPm:pm_id}-->" class="pmlist-even">
+							<td width="10px"><img src="<!--{:__PUBLIC__}-->/images/common/pm.gif" /></td>
+							<td><!--{if $oPm['pm_subject']}--><h5><!--{$oPm['pm_subject']}--></h5><!--{/if}-->
+								<p class="pm-cite"><a href="<!--{:Dyhb::U('home://space@?id='.$oPm->pm_msgfromid)}-->" target="_blank"><!--{$oPm:pm_msgfrom}--></a> <!--<lang package='Template/Pm'>-->发布<!--</lang>-->&nbsp;<em><!--{$oPm:create_dateline|Core_Extend+timeFormat}--></em></p>
+								<p class="pm-summary"><!--{$oPm:pm_message|Pm_Extend+ubb}--></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-share-alt"></i>&nbsp;<a href="<!--{:Dyhb::U('home://pm/index?type=system')}-->"><!--<lang package='Template/Pm'>-->公共消息<!--</lang>--></a></td>
+						<tr>
+					</tbody>
+				</table>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

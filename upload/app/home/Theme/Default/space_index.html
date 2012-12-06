@@ -1,0 +1,210 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function addFriend(userid){
+	Dyhb.AjaxSend('<!--{:Dyhb::U('home://friend/add')}-->','ajax=1&uid='+userid,'',function(data,status){
+		if(status==1){
+			window.location.reload();
+		}
+	});
+}
+
+function deleteFriend(friendid,fan){
+	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+		Dyhb.AjaxSend(D.U('home://friend/delete?friendid='+friendid+(fan=='1'?'&fan=1':'')),'','',function(data,status){
+			if(status==1){
+				window.location.reload();
+			}
+		});
+	});
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><!--{$oUserInfo:user_name}--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template/Space'>-->个人空间<!--</lang>--></li>
+		</ul>
+		
+		<!--<include file="space+menu" />-->
+		
+		<div class="row">
+			<div class="span8">
+				<ul class="nav nav-pills">
+					<!--<foreach for=arrInfoMenus key=sInfoMenuKey value=sInfoMenu>-->
+					<li <!--{if (!$sDo && !$sInfoMenuKey) || $sDo==$sInfoMenuKey}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://space@?id='.$nId.(!empty($sInfoMenuKey)?'&do='.$sInfoMenuKey:''))}-->"><!--{$sInfoMenu}--></a></li>
+					<!--</foreach>-->
+				</ul>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template/Space'>-->用户名<!--</lang>--></th>
+							<th><!--{$oUserInfo:user_name}--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--{if !$sDo}-->
+						<!--<foreach for=arrBases value=sBase>-->
+						<!--{if array_key_exists($sBase,$arrUserprofilesettingDatas)}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sBase]['userprofilesetting_title']}--></td>
+							<td>
+							<!--{if $sBase=='userprofile_gender'}-->
+							<!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}-->
+							<!--{elseif $sBase=='userprofile_birthday'}-->
+							<!--{$oUserInfo->userprofile->userprofile_birthyear}--><!--<lang package='__COMMON_LANG__@Common'>-->年<!--</lang>--><!--{$oUserInfo->userprofile->userprofile_birthmonth}--><!--<lang package='__COMMON_LANG__@Common'>-->月<!--</lang>--><!--{$oUserInfo->userprofile->userprofile_birthday}--><!--<lang package='__COMMON_LANG__@Common'>-->日<!--</lang>-->
+							<!--{elseif $sBase=='userprofile_birthcity'}-->
+							<!--{$sDirthDistrict}-->
+							<!--{elseif $sBase=='userprofile_residecity'}-->
+							<!--{$sResideDistrict}-->
+							<!--{d*else}-->
+							<!--{$oUserInfo:userprofile:$sBase}-->
+							<!--{/if}-->
+							</td>
+						</tr>
+						<!--{/if}-->
+						<!--</foreach>-->
+						
+						<!--<for start='1' end='8' var='nCustomFieldId'>-->
+						<!--{~$sCustomField='userprofile_field'.$nCustomFieldId}-->
+						<!--{if array_key_exists($sCustomField,$arrUserprofilesettingDatas)}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sCustomField}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</for>-->
+						<!--{elseif $sDo=='contact'}-->
+						<!--<foreach for=arrContacts value=sContact>-->
+						<!--{if array_key_exists($sContact,$arrUserprofilesettingDatas)}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sContact]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sContact}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<tr>
+							<td>Email</td>
+							<td><!--{$oUserInfo:user_email}--></td>
+						<tr/>
+						<!--{elseif $sDo=='edu'}-->
+						<!--<foreach for=arrEdus value=sEdu>-->
+						<!--{if array_key_exists($sEdu,$arrUserprofilesettingDatas)}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sEdu}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<!--{elseif $sDo=='work'}-->
+						<!--<foreach for=arrWorks value=sWork>-->
+						<!--{if array_key_exists($sWork,$arrUserprofilesettingDatas)}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sWork]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sWork}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<!--{elseif $sDo=='info'}-->
+						<!--<foreach for=arrInfos value=sInfo>-->
+						<!--{if array_key_exists($sInfo,$arrUserprofilesettingDatas)}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_title']}--></td>
+							<td><!--{if in_array($sInfo,array('userprofile_bio','userprofile_interest'))}--><!--{$oUserInfo:userprofile:$sInfo|Profile_Extend+formatUserinfo}--><!--{d*else}--><!--{$oUserInfo:userprofile:$sInfo}--><!--{/if}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<tr>
+							<td><!--<lang package='Template/Space'>-->昵称<!--</lang>--></td>
+							<td><!--{$oUserInfo:user_nikename}--></td>
+						<tr/>
+						<tr>
+							<td>Email</td>
+							<td><!--{$oUserInfo:user_email}--></td>
+						<tr/>
+						<tr>
+							<td><!--<lang package='Template/Space'>-->用户签名<!--</lang>--></td>
+							<td><!--{$oUserInfo:user_sign|Profile_Extend+formatUserinfo}--></td>
+						<tr/>
+						<!--{/if}-->
+					</tbody>
+				</table>
+			</div>
+
+			<div class="span4">
+				<table class="table">
+					<thead>
+						<tr>
+							<td style="text-align:center;">
+								<a href="<!--{:Dyhb::U('home://space@?id='.$nId.'&type=avatar')}-->"><img src="<!--{:Core_Extend::avatar( $nId,'small' )}-->" width="48px" height="48px" class="thumbnail"/></a>
+							</td>
+							<td>
+								<label class="control-label" for="email-input"><i class="icon-retweet"></i>&nbsp;<!--<lang package='Template/Space'>-->与用户 Email 交流<!--</lang>--></label>
+								<div class="input-prepend">
+									<span class="add-on"><i class="icon-envelope"></i></span><input style="width:140px;" id="email-input" type="text" value="<!--{$oUserInfo:user_email}-->">
+								</div>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2"><a href="<!--{:Dyhb::U('space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></a></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-info-sign"></i>&nbsp;<!--<lang package='Template/Space'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}--><!--<lang package='Template/Space'>-->注册<!--</lang>--></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-heart"></i>&nbsp;<!--<lang package='Template/Space'>-->等级<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$sRatingname}--></a></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-star"></i>&nbsp;<!--<lang package='Template/Space'>-->积分<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit1}--></a></span>&nbsp;
+							<!--<lang package='Template/Space'>-->金币<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit2}--></a></span></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div style="padding:5px;">
+					<!--{if $GLOBALS['___login___']===false}-->
+					<a class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$GLOBALS['___login___']['user_id']}-->);"><i class="icon-plus"></i>&nbsp;<!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
+					<!--{d*else}-->
+					<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($GLOBALS['___login___']['user_id']);}-->
+					<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
+					<a class="btn" rel="nofollow" href="javascript:void(0);" onclick="deleteFriend(<!--{$GLOBALS['___login___']['user_id']}-->);"><i class="icon-remove"></i>取消关注</a>
+					<!--{d*else}-->
+					<a rel="nofollow" class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$GLOBALS['___login___']['user_id']}-->);"><i class="icon-plus"></i><!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
+					<!--{/if}-->
+					<!--{/if}-->&nbsp;
+					<a href="<!--{:Dyhb::U('pm/pmnew?uid='.$oUserInfo['user_id'])}-->" rel="nofollow" class="btn"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template/Space'>-->发消息<!--</lang>--></a>
+				</div>
+
+				<div style="padding:5px;">
+					<h4><i class="icon-pencil"></i>&nbsp;<!--<lang package='Template/Space'>-->签名<!--</lang>--></h4>
+					<!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign|Profile_Extend+formatUserinfo}--><!--{d*else}--><!--<lang package='Template/Space'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
+				</div>
+
+				<div style="padding:5px;">
+					<h4><!--<lang package='Template/Space'>-->他关注的用户<!--</lang>--></h4>
+					<p><!--{if is_array($arrFriends)}-->
+					<ul class="thumbnails">
+						<!--<foreach for=arrFriends value=oFriend>-->
+						<li class="span1">
+							<div class="thumbnail">
+								<a href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><img src="<!--{:Core_Extend::avatar( $oFriend['friend_friendid'],'small' )}-->" width="100%" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" alt="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->"></a>
+								<a rel="tooltip" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oFriend['friend_friendid']),0,6)}--></h5></a>
+							</div>
+						</li>
+						<!--</foreach>-->
+					</ul>
+					<!--{d*else}-->
+					<!--<lang package='Template/Space'>-->他尚未关注任何人<!--</lang>-->
+					<!--{/if}-->
+					</p>
+				</div>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

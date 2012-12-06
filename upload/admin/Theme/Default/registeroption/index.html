@@ -1,0 +1,65 @@
+<!--<include file="public+header" />-->
+
+<!--{script}-->
+function option(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	$("#submit_button").attr("disabled", false);
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Registeroption'>-->注册设置<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Registeroption'>-->注册设置<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Registeroption'>-->注册设置<!--</lang>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Dyhb::U('registeroption/index')}-->"><!--<lang package='Template/Default/Registeroption'>-->注册设置<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('registeroption/visite')}-->"><!--<lang package='Template/Default/Registeroption'>-->访问控制<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('registeroption/login')}-->"><!--<lang package='Template/Default/Registeroption'>-->登陆安全设置<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Dyhb::U('registeroption/update_option')}-->" method="post" onsubmit="return option();">
+				<div class="module_content">
+					<fieldset>
+						<label for="disallowed_register"><!--<lang package='Template/Default/Registeroption'>-->关闭注册功能<!--</lang>--></label>
+						<input type="radio" id="disallowed_register" name="options[disallowed_register]" value="1" <!--{if $arrOptions['disallowed_register']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[disallowed_register]" value="0" <!--{if $arrOptions['disallowed_register']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->关闭注册功能后，新用户不能够注册<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="audit_register"><!--<lang package='Template/Default/Registeroption'>-->审核新用户注册<!--</lang>--></label>
+						<input type="radio" id="audit_register" name="options[audit_register]" value="1" <!--{if $arrOptions['audit_register']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[audit_register]" value="0" <!--{if $arrOptions['audit_register']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->开启本功能后，新用户只有审核后才能够使用账户<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="disallowed_register_user"><!--<lang package='Template/Default/Registeroption'>-->用户信息保留关键字<!--</lang>--></label>
+						<textarea name="options[disallowed_register_user]" rows="5"><!--{$arrOptions['disallowed_register_user']}--></textarea>
+						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->用户在其用户信息中无法使用这些关键字。每个关键字一行，可使用通配符 "*" 如 "*组长*"<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="allowed_register_email"><!--<lang package='Template/Default/Registeroption'>-->允许的 EMAIL 地址<!--</lang>--></label>
+						<textarea name="options[allowed_register_email]" rows="5"><!--{$arrOptions['allowed_register_email']}--></textarea>
+						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->只允许使用这些域名结尾的 Email 地址注册<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="disallowed_register_email"><!--<lang package='Template/Default/Registeroption'>-->禁止的 EMAIL 地址<!--</lang>--></label>
+						<textarea name="options[disallowed_register_email]" rows="5"><!--{$arrOptions['disallowed_register_email']}--></textarea>
+						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->禁止使用这些域名结尾的 Email 地址注册<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

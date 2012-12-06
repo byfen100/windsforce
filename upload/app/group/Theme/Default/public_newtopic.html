@@ -1,0 +1,268 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>新帖</li>
+		</ul>
+
+		<div class="row">
+			<div class="span8">
+				<!--<div class="row">
+					<div class="span4"> 
+						<div id="myCarousel" class="carousel slide">
+							<div class="carousel-inner">
+								<div class="item active" style="210px">
+									<img src="<!--{:__PUBLIC__}-->/images/common/slidebox/1.jpg" style="height:210px;" width="100%">
+									<div class="carousel-caption">
+										<h4><a href="#" title="注册">注册</a></h4>
+									</div>
+								</div>
+								<div class="item" style="210px">
+									<img src="<!--{:__PUBLIC__}-->/images/common/slidebox/2.jpg" style="height:210px;" width="100%">
+									<div class="carousel-caption">
+										<h4><a href="#" title="登录">登录</a></h4>
+									</div>
+								</div>
+							</div>
+							<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+							<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+						</div>
+					</div>
+					<div class="span4">
+						<div style="margin-left:-30px;" class="publicmodule_list publicmodule_list_sort publicmodule_list_line">
+							<ul>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<br/>-->
+				<div id="topic_list_box" class="topic_list_box">
+					<ul class="nav nav-tabs">
+						<li ><a href="<!--{:Dyhb::U('group://public/index')}-->">首页</a></li>
+						<li class="active"><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">新帖</a></li>
+					</ul>
+					<table width="100%" class="table">
+						<thead>
+							<tr>
+								<th>发帖人</th>
+								<th colspan="2" style="text-align:right;">
+									<a href="<!--{:Dyhb::U('group://public/index')}-->" style="<!--{if $sType=='create_dateline'}-->color:gray;<!--{/if}-->">最新</a>
+									<span class="pipe">|</span>
+									<a href="<!--{:Dyhb::U('group://public/index?type=view')}-->" style="<!--{if $sType=='grouptopic_views'}-->color:gray;<!--{/if}-->">浏览</a>
+									<span class="pipe">|</span>
+									<a href="<!--{:Dyhb::U('group://public/index?type=com')}-->" style="<!--{if $sType=='grouptopic_comments'}-->color:gray;<!--{/if}-->">回复</a>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--<foreach for=arrGrouptopics value=oGrouptopic>-->
+							<tr>
+								<td class="author">
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->">
+										<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
+									</a>
+								</td>
+								<td class="subject">
+									<p class="title">
+										<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
+										<a href="<!--{:Dyhb::U('group://group/show?id='.$oGrouptopic->group->group_name.'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
+										<!--{d*else}-->
+										<a href="javascript:void(0);">[默认分类]</a>
+										<!--{/if}-->
+										<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,26}--></a>
+									</p>
+									<p class="info">
+										楼主&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic['user_id']}-->" ><!--{$oGrouptopic->grouptopic_username}--></a>&nbsp;
+										<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+										<span class="pipe">|</span>
+										<!--{if $oGrouptopic->grouptopic_comments}-->
+										<!--{~$arrLatestComment=$TheController->unserialize($oGrouptopic->grouptopic_latestcomment)}-->
+										最后回复&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+										<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
+										<!--{d*else}-->
+										<span>暂无回复</span>
+										<!--{/if}-->
+									</p>
+								</td>
+								<td class="num" style="text-align:center;">
+									<span>回复<em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+									<span>浏览<em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+								</td>
+							</tr>
+							<!--</foreach>-->
+						</tbody>
+					</table>
+				</div>
+				<!--{$sPageNavbar}-->
+			</div>
+			<div class="span4">
+				<div id="group_sidebar">
+					<div class="group_sidebar_item <!--{if $GLOBALS['___login___']===FALSE}-->group_sidebar_login<!--{d*else}-->group_sidebar_userinfo<!--{/if}-->">
+						<!--{if $GLOBALS['___login___']===FALSE}-->
+						<div class="well" style="height:260px;">
+							<h3><!--<lang package='Template/Public'>-->用户登录<!--</lang>--></h3>
+								<form class="form-horizontal" method='post' name="login_form" id="login_form">
+									<label><div id="result" class="none"></div></label>
+									<p><label for="user_name"><!--<lang package='Template/Public'>-->用户名/E-mail<!--</lang>--></label>
+										<input class="span3" id="user_name" name="user_name" type="text" value="">
+									</p>
+									<p><label for="user_name"><!--<lang package='Template/Public'>-->密码<!--</lang>--></label>
+										<input class="span3" id="user_password" name="user_password" type="password" value="">
+									</p>
+									<p><label class="checkbox">
+											<input id="remember_me" type="checkbox" name="remember_me" value="1" onclick="rememberme();"/><!--<lang package='__COMMON_LANG__@Template/Common'>-->记住我<!--</lang>-->
+											<span class="pipe">|</span>
+											<a href="<!--{:Dyhb::U('home://getpassword/index')}-->" class="resetpassword-link"><!--<lang package='__COMMON_LANG__@Template/Common'>-->忘记密码?<!--</lang>--></a>
+											<span class="pipe">|</span>
+											<a href="<!--{:Dyhb::U('home://public/clear')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->清除痕迹<!--</lang>--></a>
+										</label>
+									</p>
+									<div id="remember_time" class="none">
+										<label for="remember_time"><!--<lang package='__COMMON_LANG__@Template/Common'>-->COOKIE有效期<!--</lang>--> <span class="pipe">|</span> <a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
+										<select name="remember_time">
+											<option value="0" <!--{if $nRememberTime==0}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->及时<!--</lang>--></option>
+											<option value="3600" <!--{if $nRememberTime==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
+											<option value="86400" <!--{if $nRememberTime==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>
+											<option value="604800" <!--{if $nRememberTime==604800}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一星期<!--</lang>--></option>
+											<option value="2592000" <!--{if $nRememberTime==2592000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一月<!--</lang>--></option>
+											<option value="31536000" <!--{if $nRememberTime==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
+										</select>
+										<p class="help-block">
+											<i class=" icon-info-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->注意在网吧等共同场所请不要记住我<!--</lang>-->
+										</p>
+									</div>
+									<!--{if $nDisplaySeccode==1}-->
+									<label for="user_name"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+									<input class="input-small" name="seccode" id="seccode" type="text" value="">
+									<p class="help-block">
+										<span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span>
+									</p>
+									<!--{/if}-->
+									<div class="space"></div>
+									<p><input type="hidden" name="ajax" value="1">
+										<button type="button" class="btn btn-success" onClick="Dyhb.AjaxSubmit('login_form','<!--{:Dyhb::U('home://public/check_login')}-->','result',login_handle);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></button>&nbsp;
+										<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->新用户注册<!--</lang>--></a>
+										<!--{if count($arrBindeds)>=3}-->
+										<span class="pipe">|</span>
+										<a href="javascript:void(0);" onclick="showSocialogin();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->社交帐号<!--</lang>--></a>
+										<!--{/if}-->
+									</p>
+								</form>
+								<hr/>
+								<div class="socialogin_box">
+									<div class="socialogin_content" style="margin-left:-20px;">
+										<!--<foreach for=arrBindeds value=arrBinded>-->
+										<!--{if $i==3}-->
+										<div id="socailogin_more" class="none">
+										<!--{/if}-->
+										<a style="border-bottom: none;" href="javascript:void(0);" onclick="sociaWinopen('<!--{:Dyhb::U('home://public/socia_login?vendor='.$arrBinded['sociatype_identifier'])}-->');">
+											<img style="margin:0px 3px 5px 3px; vertical-align: middle;" src="<!--{$arrBinded['sociatype_logo']}-->" />
+										</a>
+										<!--{if $i>=3 && $i==count($arrBindeds)}-->
+										</div>
+										<!--{/if}-->
+										<!--</foreach>-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--{d*else}-->
+						<div class="well" style="padding: 8px 0;margin-top:-15px;">
+							<div class="userinfo">
+								<div class="userpic">
+									<span id="my-face">
+										<a href='<!--{:Dyhb::U('home://spaceadmin/avatar')}-->' target='_self' class="bind_hover_card" bm_user_id="<!--{$GLOBALS['___login___']['user_id']}-->">
+											<img src='<!--{:Core_Extend::avatar( $GLOBALS['___login___']['user_id'],'small' )}-->' width="48px" height="48px" class="thumbnail">
+										</a>
+									</span>
+								</div>
+								<div class="user_name">
+									<h6><a href='<!--{:Dyhb::U('home://space@?id='.$GLOBALS['___login___']['user_id'])}-->' target='_self' class="bind_hover_card" bm_user_id="<!--{$GLOBALS['___login___']['user_id']}-->"><!--{$GLOBALS['___login___']['user_name']}--></a></h6>
+									<p>积分&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/rating')}-->"><!--{$GLOBALS['___login___']['usercount']['usercount_extendcredit1']}--></a></p>
+									<p>金币&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/rating')}-->"><!--{$GLOBALS['___login___']['usercount']['usercount_extendcredit2']}--></a></p>
+								</div>
+								<div class="user_follow">
+									<span><a href="<!--{:Dyhb::U('home://space@?id='.$GLOBALS['___login___']['user_id'].'&type=friend')}-->"><strong><!--{$GLOBALS['___login___']['usercount']['usercount_friends']}--></strong></a><br />关注</span>
+									<span><a href="<!--{:Dyhb::U('home://space@?id='.$GLOBALS['___login___']['user_id'].'&type=friend&fan=1')}-->"><strong><!--{$GLOBALS['___login___']['usercount']['usercount_fans']}--></strong></a><br />粉丝</span>
+									<span><a href="<!--{:Dyhb::U('group://space/topic?uid='.$GLOBALS['___login___']['user_id'])}-->"><strong><!--{$GLOBALS['___login___']['usercount']['usercount_friends']}--></strong></a><br />主题</span>
+									<span><a href="<!--{:Dyhb::U('group://space/topiccomment?uid='.$GLOBALS['___login___']['user_id'])}-->"><strong><!--{$GLOBALS['___login___']['usercount']['usercount_fans']}--></strong></a><br />帖子</span>
+								</div>
+								<div class="user_profile">
+									<!--{~$arrRatinginfo=UserModel::getUserrating($GLOBALS['___login___']['usercount']['usercount_extendcredit1'],false)}-->
+									<table class="table">
+										<tbody>
+											<tr>
+												<td colspan="2"><i class="icon-info-sign"></i>&nbsp;性别 保密</td>
+											</tr>
+											<tr>
+												<td colspan="2"><i class="icon-user"></i>&nbsp;2012-09-09注册</td>
+											</tr>
+											<tr>
+												<td colspan="2"><i class="icon-heart"></i>&nbsp;等级&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$GLOBALS['___login___']['user_id'].'&type=rating')}-->" title="当前积分&nbsp;<!--{$GLOBALS['___login___']['usercount']['usercount_extendcredit1']}-->,等级名字&nbsp;<!--{$arrRatinginfo['rating_name']}-->,距离下一个等级&nbsp;<!--{$arrRatinginfo['next_rating']['rating_name']}-->&nbsp;还差&nbsp;<!--{$arrRatinginfo['next_needscore']}-->&nbsp;积分"><!--{$arrRatinginfo['rating_name']}--></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="user_action">
+									<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success btn-large">发布帖子</a>
+									<!--<span class="pipe">|</span>
+									<a href="" class="btn btn-large">领取积分</a>-->
+								</div>
+							</div>
+						</div>
+						<!--{/if}-->
+					</div>
+					<div class="group_sidebar_item">
+						<h2 class="box_title">热门帖子</h2>
+						<ul class="grouphottopic_titles">
+							<!--{if is_array($arrGrouphottopics)}-->
+							<!--<foreach for=arrGrouphottopics value=oGrouphottopic>-->
+							<li>
+								<h3><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouphottopic->grouptopic_id)}-->" target="_blank" ><!--{$oGrouphottopic->grouptopic_title|G+subString=0,20}--></a></h3>
+								<span class="grouphottopic_commentnum"><!--{$oGrouphottopic->grouptopic_comments}--></span>
+								<!--<p class="grouphottopic_userinfo">
+									<span class="left">来自：<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>&nbsp;<!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}-->
+									<!--</span>
+								</p>-->
+								<span style="width:100%;" class="grouphottopic_commentnum">来自：<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" style="color:#999999;" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>&nbsp;<!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}-->
+								</span>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->">我要发布</a></li>
+							<!--{/if}-->
+						</ul>
+					</div>
+					<!--
+					<div class="group_sidebar_item">
+						<h2 class="box_title">热门标签</h2>
+						<div class="tags_hot">
+							<ul>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试</a></li>
+								<li><a href="#">测试一下话题</a></li>
+								<li><a href="#">测试</a></li>
+							</ul>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

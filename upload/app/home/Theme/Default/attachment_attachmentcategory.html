@@ -1,0 +1,78 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function recommendAttachmentcategory(id){
+	Dyhb.AjaxSend(D.U('home://attachment/recommend_attachmentcategory?id='+id),'ajax=1','',function(data,status){
+		if(status==1){
+			$('#recommendcategory_item_'+id).html('推荐成功');
+		}
+	});
+}
+
+function unrecommendAttachmentcategory(id){
+	Dyhb.AjaxSend(D.U('home://attachment/unrecommend_attachmentcategory?id='+id),'ajax=1','',function(data,status){
+		if(status==1){
+			$('#unrecommendcategory_item_'+id).html('取消推荐成功');
+		}
+	});
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template/Attachment'>-->我的相册<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--{if G+getGpc('recommend','G')==1}-->推荐专辑<!--{d*else}-->最新专辑<!--{/if}--></li>
+		</ul>
+
+		<!--<include file="attachment+menu" />-->
+
+		<div class="row">
+			<div class="span12" style="margin-bottom:20px;">
+				<span class="right">
+					<a class="btn btn-success" href="<!--{:Dyhb::U('home://attachment/my_attachmentcategory')}-->"><i class="icon-book icon-white"></i>&nbsp;我的专辑</a>
+					<span class="pipe">|</span>
+					<a href="<!--{:Dyhb::U('home://attachment/my_attachmentcategory')}-->">我的附件</a>
+				</span>
+				<h3><!--{if G+getGpc('recommend','G')==1}-->推荐专辑<!--{d*else}-->最新专辑<!--{/if}--></h3>
+			</div>
+			<div class="span12">
+				<!--{if is_array($arrAttachmentcategorys)}-->
+				<ul class="thumbnails">
+					<!--<foreach for=arrAttachmentcategorys value=oAttachmentcategory>-->
+					<!--{~$arrAttachmentcategorypreview=Attachment_Extend::getAttachmentpreviewimagesize($oAttachmentcategory)}-->
+					<li class="span3" id="attachmentcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->">
+						<div class="thumbnail">
+							<div class="img attachmentcategory_thumb">
+								<a href="<!--{:Dyhb::U('home://attachment/attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->">
+									<img src="<!--{:Attachment_Extend::getAttachmentcategoryPreview($oAttachmentcategory)}-->" alt="<!--{$oAttachmentcategory['attachmentcategory_name']}-->" <!--{if $arrAttachmentcategorypreview[1]>=150}-->height="150px"<!--{/if}-->>
+								</a>
+							</div>
+							<div class="caption">
+								<h5 id="attachmentcategory_name_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="<!--{:Dyhb::U('home://attachment/attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--{$oAttachmentcategory['attachmentcategory_name']|G+subString=0,15}--></a></h5>
+								<p id="attachmentcategory_description_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><!--{if $oAttachmentcategory['attachmentcategory_description']}--><!--{$oAttachmentcategory['attachmentcategory_description']|G+subString=0,30}--><!--{d*else}-->暂无附件描述<!--{/if}--></p>
+								<p>创建时间:&nbsp;<!--{$oAttachmentcategory['create_dateline']|Core_Extend+timeFormat}--></p>
+								<p>附件数量:&nbsp;<a href="<!--{:Dyhb::U('home://attachment/attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--{$oAttachmentcategory:attachmentcategory_attachmentnum}--></a></p>
+								<p>创建者:&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oAttachmentcategory['user_id'])}-->"><!--{$oAttachmentcategory['attachmentcategory_username']}--></a></p>
+								<!--{if Core_Extend+isAdmin()}-->
+								<p class="alert alert-success"><!--{if $oAttachmentcategory['attachmentcategory_recommend']==1}-->
+									<span id="unrecommendcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="javascript:void(0);" onclick="unrecommendAttachmentcategory('<!--{$oAttachmentcategory['attachmentcategory_id']}-->');" >取消推荐</a></span>
+									<!--{d*else}-->
+									<span id="recommendcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="javascript:void(0);" onclick="recommendAttachmentcategory('<!--{$oAttachmentcategory['attachmentcategory_id']}-->');">推荐</a></span>
+									<!--{/if}-->
+								</p>
+								<!--{/if}-->
+							</div>
+						</div>
+					</li>
+					<!--</foreach>-->
+				</ul>
+				<!--{d*else}-->
+				<p>暂时没有发现任何专辑</p>
+				<!--{/if}-->
+			</div>
+			<div class="span12">
+				<!--{$sPageNavbar}-->
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

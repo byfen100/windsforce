@@ -1,0 +1,62 @@
+<!--<include file="public+header" />-->
+
+<!--{script}-->
+function update(){
+	$("#submit_button").attr("disabled","disabled");
+	$("#submit_button").val('update...');
+	Dyhb.AjaxSubmit('informationUpd','<!--{:Dyhb::U('public/change_info')}-->','',function(data,status){ 
+		$("#submit_button").attr("disabled",false);
+		$("#submit_button").val("<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->");
+	});
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Public'>-->修改资料<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Public'>-->修改资料<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Public'>-->修改资料<!--</lang>--></h3>
+				<ul class="tabs">
+					<li><a href="<!--{:Dyhb::U('public/password')}-->"><!--<lang package='Template/Default/Public'>-->修改密码<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('avatar/index')}-->"><!--<lang package='Template/Default/Public'>-->修改头像<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('public/information')}-->"><!--<lang package='Template/Default/Public'>-->修改资料<!--</lang>--></a></li>
+				</ul>
+			</header>
+		
+			<form method="post" id="informationUpd">
+				<div class="module_content">
+					<fieldset><label for="user_nikename"><!--<lang package='Template/Default/Public'>-->昵称<!--</lang>--></label>
+						<input type="text" name="user_nikename" id="user_nikename" size="40" value="<!--{$oUserInfo:user_nikename}-->" />
+						<div class="description"><!--<lang package='Template/Default/Public'>-->相对于登录名的一种雅称<!--</lang>--></div>
+					</fieldset>
+					<fieldset><label for="user_email">Email</label>
+						<input type="text" name="user_email" id="user_email" size="40" value="<!--{$oUserInfo:user_email}-->" />
+						<div class="description"><!--<lang package='Template/Default/Public'>-->用户常用的电子邮件地址<!--</lang>--></div>
+					</fieldset>
+					<fieldset><label for="user_sign"><!--<lang package='Template/Default/Public'>-->用户签名<!--</lang>--></label>
+						<p style="padding-left:10px;"><textarea name="user_sign" id="user_sign" rows="5"><!--{$oUserInfo:user_sign}--></textarea></p>
+						<div class="description"><!--<lang package='Template/Default/Public'>-->用户可以在签名中发布一些自己的信息<!--</lang>--></div>
+					</fieldset>
+					<fieldset><label for="seccode"><!--<lang package='Template/Default/Public'>-->验证码<!--</lang>--></label>
+						<input type="text" name="seccode" size="6" id="seccode"/>
+						<div class="description"><!--<lang package='Template/Default/Public'>-->修改资料验证码<!--</lang>-->
+							<p><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('public/seccode')}-->" /></span></p>
+						</div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="user_id" value="<!--{$oUserInfo:user_id}-->">
+						<input id="submit_button" type="button" onclick="update()" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->" />
+						<input type="button" onClick="history.back()" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->取消<!--</lang>-->" />
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

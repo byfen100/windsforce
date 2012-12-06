@@ -1,0 +1,335 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<script src="<!--{:__ROOT__}-->/source/extension/socialization/static/js/socia.js"></script>
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+function goodnum(id){
+	Dyhb.AjaxSend(D.U('home://ucenter/update_homefreshgoodnum'),'ajax=1&id='+id,'',function(data,status,info){
+		if(status==1){
+			$('#goodnum_'+id).text(data.num);
+			$('#goodnum_'+id).css("color","#4A4A4A");
+		}
+	});
+}
+
+function getnewtopic(num){
+	$('#home_topiclist_box').html("<img src='<!--{:__PUBLIC__}-->/images/common/ajax/loading.gif'/>");
+	
+	var sHtml = $.ajax({
+		url: D.U('group://api/new_topic?num='+num),
+		async: false
+	}).responseText;
+
+	$('#home_topiclist_box').html(sHtml);
+}
+
+function gethottopic(num,cutnum,nDate){
+	$('#home_hottopiclist_box').html("<img src='<!--{:__PUBLIC__}-->/images/common/ajax/loading.gif'/>");
+	
+	var sHtml = $.ajax({
+		url: D.U('group://api/hot_topic?num='+num+'&cnum='+cutnum+'&date='+nDate),
+		async: false
+	}).responseText;
+
+	$('#home_hottopiclist_box').html(sHtml);
+}
+
+function getrecommendgroup(num,cutnum){
+	$('#home_recommendgroup_box').html("<img src='<!--{:__PUBLIC__}-->/images/common/ajax/loading.gif'/>");
+	
+	var sHtml = $.ajax({
+		url: D.U('group://api/recommend_group?num='+num+'&cnum='+cutnum),
+		async: false
+	}).responseText;
+
+	$('#home_recommendgroup_box').html(sHtml);
+}
+
+$(document).ready(function(){
+	getnewtopic(<!--{$GLOBALS['_option_']['home_newtopic_num']}-->);
+	gethottopic('<!--{$GLOBALS['_option_']['home_hottopic_num']}-->',18,'<!--{$GLOBALS['_option_']['home_hottopic_date']}-->');
+	getrecommendgroup('<!--{$GLOBALS['_option_']['home_recommendgroup_num']}-->',15);
+	$('.homefresh-content').listEmotion();
+});
+<!--{/script}-->
+	
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>--></li>
+			<li style='width:auto;text-align:right;float:right;overflow:hidden;'>
+				<!--<lang package='Template/Public'>-->会员<!--</lang>-->&nbsp;<!--{$arrSite['user']}--><span class='divider'>/</span>&nbsp;
+				<!--<lang package='Template/Public'>-->应用<!--</lang>-->&nbsp;<!--{$arrSite['app']}-->&nbsp;<span class='divider'>/</span>&nbsp;
+				<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<!--{$arrSite['homefresh']}-->&nbsp;<span class='divider'>/</span>&nbsp;
+				<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<!--{$arrSite['homefreshcomment']}-->
+			</li>
+		</ul>
+
+		<div class="row">
+			<div class="span8">
+				<div id="myCarousel" class="carousel slide">
+					<div class="carousel-inner">
+						<!--<foreach for=arrSlides value=arrSlide>-->
+						<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="350px">
+							<img src="<!--{$arrSlide['slide_img']}-->" style="height:300px;" width="100%">
+							<div class="carousel-caption">
+								<h4><a href="<!--{$arrSlide['slide_url']}-->" title="<!--{$arrSlide['slide_title']}-->"><!--{$arrSlide['slide_title']}--></a></h4>
+							</div>
+						</div>
+						<!--</foreach>-->
+					</div>
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+					<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="well" style="height:260px;">
+					<!--{if $GLOBALS['___login___']===false}-->
+					<h3><!--<lang package='Template/Public'>-->用户登录<!--</lang>--></h3>
+					<form class="form-horizontal" method='post' name="login_form" id="login_form">
+						<label><div id="result" class="none"></div></label>
+						<p><label for="user_name"><!--<lang package='Template/Public'>-->用户名/E-mail<!--</lang>--></label>
+							<input class="span3" id="user_name" name="user_name" type="text" value="">
+						</p>
+						<p><label for="user_name"><!--<lang package='Template/Public'>-->密码<!--</lang>--></label>
+							<input class="span3" id="user_password" name="user_password" type="password" value="">
+						</p>
+						<p><label class="checkbox">
+								<input id="remember_me" type="checkbox" name="remember_me" value="1" onclick="rememberme();"/><!--<lang package='__COMMON_LANG__@Template/Common'>-->记住我<!--</lang>-->
+								<span class="pipe">|</span>
+								<a href="<!--{:Dyhb::U('home://getpassword/index')}-->" class="resetpassword-link"><!--<lang package='__COMMON_LANG__@Template/Common'>-->忘记密码?<!--</lang>--></a>
+								<span class="pipe">|</span>
+								<a href="<!--{:Dyhb::U('home://public/clear')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->清除痕迹<!--</lang>--></a>
+							</label>
+						</p>
+						<div id="remember_time" class="none">
+							<label for="remember_time"><!--<lang package='__COMMON_LANG__@Template/Common'>-->COOKIE有效期<!--</lang>--> <span class="pipe">|</span> <a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
+							<select name="remember_time">
+								<option value="0" <!--{if $nRememberTime==0}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->及时<!--</lang>--></option>
+								<option value="3600" <!--{if $nRememberTime==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
+								<option value="86400" <!--{if $nRememberTime==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>
+								<option value="604800" <!--{if $nRememberTime==604800}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一星期<!--</lang>--></option>
+								<option value="2592000" <!--{if $nRememberTime==2592000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一月<!--</lang>--></option>
+								<option value="31536000" <!--{if $nRememberTime==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
+							</select>
+							<p class="help-block">
+								<i class=" icon-info-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->注意在网吧等共同场所请不要记住我<!--</lang>-->
+							</p>
+						</div>
+						<!--{if $nDisplaySeccode==1}-->
+						<label for="user_name"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+							<input class="input-small" name="seccode" id="seccode" type="text" value="">
+							<p class="help-block">
+								<span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span>
+							</p>
+						<!--{/if}-->
+						<div class="space"></div>
+						<p><input type="hidden" name="ajax" value="1">
+							<button type="button" class="btn btn-success" onClick="Dyhb.AjaxSubmit('login_form','<!--{:Dyhb::U('home://public/check_login')}-->','result',login_handle);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></button>&nbsp;
+							<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->新用户注册<!--</lang>--></a>
+							<!--{if count($arrBindeds)>=3}-->
+							<span class="pipe">|</span>
+							<a href="javascript:void(0);" onclick="showSocialogin();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->社交帐号<!--</lang>--></a>
+							<!--{/if}-->
+						</p>
+					</form>
+					<hr/>
+					<div class="socialogin_box">
+						<div class="socialogin_content" style="margin-left:-20px;">
+							<!--<foreach for=arrBindeds value=arrBinded>-->
+							<!--{if $i==3}-->
+							<div id="socailogin_more" class="none">
+							<!--{/if}-->
+							<a style="border-bottom: none;" href="javascript:void(0);" onclick="sociaWinopen('<!--{:Dyhb::U('home://public/socia_login?vendor='.$arrBinded['sociatype_identifier'])}-->');"><img style="margin:0px 3px 5px 3px; vertical-align: middle;" src="<!--{$arrBinded['sociatype_logo']}-->" /></a>
+							<!--{if $i>=3 && $i==count($arrBindeds)}-->
+							</div>
+							<!--{/if}-->
+							<!--</foreach>-->
+						</div>
+					</div>
+					<!--{d*else}-->
+					<h3><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Public'>-->返回个人中心<!--</lang>--></a></h3>
+					<table class="table">
+						<tbody>
+							<tr>
+								<td rowspan="4" width="40%">
+									<a href="<!--{:Dyhb::U('home://spaceadmin/avatar')}-->">
+									<img src="<!--{:Core_Extend::avatar($GLOBALS['___login___']['user_id'])}-->" width="120px" height="120px" class="thumbnail"/></a>
+								</td>
+								<td width="60%"><i class="icon-cog"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Public'>-->修改资料<!--</lang>--></a></td>
+							</tr>
+							<tr>
+								<td><i class="icon-lock"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/password')}-->"><!--<lang package='Template/Public'>-->修改密码<!--</lang>--></a></td>
+							</tr>
+							<tr>
+								<td><i class="icon-tags"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/tag')}-->"><!--<lang package='Template/Public'>-->我的标签<!--</lang>--></a></td>
+							</tr>
+							<tr>
+								<td><i class="icon-off"></i>&nbsp;<a href="<!--{:Dyhb::U('home://public/logout')}-->"><!--<lang package='Template/Public'>-->注销<!--</lang>--></a></td>
+							</tr>
+						</tbody>
+					</table>
+					<hr/>
+					<a class="btn btn-success btn-large" href="<!--{:Dyhb::U('home://ucenter/index')}-->"><i class="icon-info-sign icon-white"></i>&nbsp;<!--<lang package='Template/Public'>-->个人中心<!--</lang>--></a>
+					<!--{/if}-->
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+				<div class="alert alert-success site_introduction">
+					<h1><!--{$GLOBALS['_option_']['home_title']}--></h1>
+					<p><!--{$sHomeDescription}--></p>
+					<blockquote>
+						<small><!--{$GLOBALS['_option_']['site_description']}--></small>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span8">
+				<div class="commonbox">
+					<div class="message-box">
+						<!--{if is_array($arrHomefreshs)}-->
+						<table class="table">
+							<thead>
+								<tr>
+									<th colspan="2"><!--<lang package='Template/Homefresh'>-->新鲜事<!--</lang>--></th>
+								</tr>
+							</thead>
+							<tbody id="homefreshlist_box">
+								<!--<foreach for=arrHomefreshs value=oHomefresh>-->
+								<tr id="homefreshlist_item_<!--{$oHomefresh['homefresh_id']}-->">
+									<td style="width:48px;">
+										<div style="text-align:center;">
+											<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->"><img src="<!--{:Core_Extend::avatar($oHomefresh['user_id'],'small')}-->" width="48px" height="48px" class="thumbnail" /></a>
+										</div>
+									</td>
+									<td>
+										<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>-->
+										</h4>
+										<div class="homefresh-content">
+											<!--{$oHomefresh['homefresh_message']|strip_tags|G+subString=0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']|Core_Extend+ubb}-->
+										</div>
+										<div class="homefresh-count">
+											<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->style="color:#4A4A4A;"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
+											<span class="pipe">|</span>
+											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->评论<!--</lang>-->(<span id="homefreshcomment_<!--{$oHomefresh['homefresh_id']}-->"><!--{$oHomefresh['homefresh_commentnum']}--></span>)</a>
+											<span class="pipe">|</span>
+											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->" title="<!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>
+										</div>
+									</td>
+								</tr>
+								<!--</foreach>-->
+							</tbody>
+						</table>
+						<!--{d*else}-->
+						<p><!--<lang package='Template/Homefresh'>-->暂时没有发现任何新鲜事<!--</lang>--></p>
+						<!--{/if}-->
+					</div>
+				</div>
+
+				<div class="commonbox">
+					<div class="commonboxtitle">最新话题</div>
+					<div id="home_topiclist_box" class="home_topiclist_box">
+					</div>
+				</div>
+
+				<div class="commonbox grouplist_title">
+					<div class="commonboxtitle">推荐小组&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->" title="更多小组"><i class="icon-th-list"></i></a></div>
+					<ul class="groups" id="home_recommendgroup_box">
+					</ul>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="commonbox">
+					<div class="commonboxtitle">热门话题</div>
+					<div class="commonlist">
+						<ul id="home_hottopiclist_box" class="home_hottopiclist_box">
+						</ul>
+					</div>
+				</div>
+				<div class="commonbox">
+					<div class="commonboxtitle">最新会员</div>
+					<p><ul class="thumbnails">
+							<!--{if is_array($arrNewusers)}-->
+							<!--<foreach for=arrNewusers value=oNewuser>-->
+							<li class="span1">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNewuser['user_id'],'small' )}-->" width="100%" title="会员 <!--{$oNewuser['user_name']}-->" alt="会员 <!--{$oNewuser['user_name']}-->"></a>
+									<a rel="tooltip" title="会员 <!--{$oNewuser['user_name']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oNewuser['user_name']|G+subString=0,3}--></h5></a>
+								</div>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何新会员&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->">注册</a></li>
+							<!--{/if}-->
+						</ul>
+					</p>
+				</div>
+				<div class="commonbox">
+					<div class="commonboxtitle">最新帮助</div>
+					<div class="commonlist">
+						<ul id="home_newhelplist_box" class="home_newhelp_box">
+							<!--{if is_array($arrNewhelps)}-->
+							<!--<foreach for=arrNewhelps value=oNewhelp>-->
+							<li><a href="<!--{:Dyhb::U('home://help@?id='.$oNewhelp['homehelp_id'])}-->"><!--{$oNewhelp['homehelp_title']|G+subString=0,18}--></a></li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何帮助</li>
+							<!--{/if}-->
+						</ul>
+					</div>
+				</div>
+				<div class="commonbox">
+					<div class="commonboxtitle">关注我们</div>
+					<div class="commonlist">
+						<ul id="home_followus_box" class="home_followus_box">
+							<!--{if !empty($GLOBALS['_option_']['home_followus_tqqcom'])}-->
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_tqqcom']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/tqqcom.gif" border="0">&nbsp;腾讯微博</a></li>
+							<!--{/if}-->
+							<!--{if !empty($GLOBALS['_option_']['home_followus_renren'])}-->
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_renren']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/renren.gif" border="0">&nbsp;人人主页</a></li>
+							<!--{/if}-->
+							<!--{if !empty($GLOBALS['_option_']['home_followus_weibo'])}-->
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_weibo']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/weibo.gif" border="0">&nbsp;新浪微博</a></li>
+							<!--{/if}-->
+							<!--{if !empty($GLOBALS['_option_']['home_followus_qq'])}-->
+							<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<!--{$GLOBALS['_option_']['home_followus_qq']}-->&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=2:<!--{$GLOBALS['_option_']['home_followus_qq']}-->:41" alt="点击这里给我发消息" title="点击这里给我发消息" border="0"></a></li>
+							<!--{/if}-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--{if $arrLinkDatas['link_content'] || $arrLinkDatas['link_text'] || $arrLinkDatas['link_logo']}-->
+		<div class="row">
+			<div class="span12 commonbox">
+			<div class="commonboxtitle"><!--<lang package='Template/Public'>-->友情衔接<!--</lang>--></div>
+				<!--{if $arrLinkDatas['link_content']}-->
+				<div class="home-links">
+					<ul class="clear">
+						<!--{$arrLinkDatas['link_content']}-->
+					</ul>
+				</div>
+				<!--{/if}-->
+				<!--{if $arrLinkDatas['link_logo']}-->
+					<div class="home-img-link">
+						<!--{$arrLinkDatas['link_logo']}-->
+					</div>
+				<!--{/if}-->
+				<!--{if $arrLinkDatas['link_text']}-->
+				<hr/>
+				<div class="home-txt-link">
+					<ul class="clear">
+						<!--{$arrLinkDatas['link_text']}-->
+					</ul>
+				</div>
+				<!--{/if}-->
+			</div>
+		</div><!--/row-->
+		<!--{/if}-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

@@ -1,0 +1,43 @@
+					<div id="homefreshcommentform_box">
+						<h3><!--<lang package='Template/Homefresh'>-->发表评论<!--</lang>--></h3>
+						<!--{if $GLOBALS['_cache_']['home_option']['audit_comment']==1}-->
+						<div class="alert"><!--<lang package='Template/Homefresh'>-->系统开启了评论审核功能，你发表的评论只有新鲜事的作者审核通过了才能够显示<!--</lang>--></div>
+						<!--{/if}-->
+						<form class="well" method="post" name="homefresh-commentform" action="<!--{:Dyhb::U('home://ucenter/add_homefreshcomment')}-->" id="homefresh-commentform">
+							
+							<!--<label><!--<lang package='Template/Homefresh'>-->用户昵称<!--</lang>--><em class="red">*</em></label>
+							<input type="text" class="span3" name="homefreshcomment_name" id="homefreshcomment_name">
+							<label><!--<lang package='Template/Homefresh'>-->邮件地址<!--</lang>-->(<!--<lang package='Template/Homefresh'>-->选填<!--</lang>-->)</label>
+							<input type="text" class="span3" name="homefreshcomment_email" id="homefreshcomment_email">
+							<label><!--<lang package='Template/Homefresh'>-->个人主页<!--</lang>-->(<!--<lang package='Template/Homefresh'>-->选填<!--</lang>-->)</label>
+							<input type="text" class="span3" name="homefreshcomment_url" id="homefreshcomment_url">-->
+							<!--{if $GLOBALS['___login___']===false}-->
+							<label><!--<lang package='Template/Homefresh'>-->内容<!--</lang>--><em class="red">*</em></label>
+							<div style="background:#F5F5F5;padding:10px;">
+								<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:40px 0">
+									<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a> | 
+									<a href="<!--{:Dyhb::U('home://public/register')}-->">用户注册</a>
+								</div>
+							</div>
+							<!--{d*else}-->
+							<input type="hidden" name="homefreshcomment_name" id="homefreshcomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="homefreshcommentform_name">
+							<input type="hidden" name="homefreshcomment_email" id="homefreshcomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="homefreshcommentform_email">
+							<input type="hidden" name="homefreshcomment_url" id="homefreshcomment_url" value="<!--{$sUsersite}-->" class="homefreshcommentform_url">
+							<label><!--<lang package='Template/Homefresh'>-->内容<!--</lang>--><em class="red">*</em></label>
+							<textarea name="homefreshcomment_content" id="homefreshcomment_content" rows="6" class="homefreshcommentform_content homefreshcommentform_area"></textarea>
+							<label class="checkbox">
+								<input type="checkbox" name="homefreshcomment_isreplymail" id="homefreshcomment_isreplymail" value="1">&nbsp;<!--<lang package='Template/Homefresh'>-->回复时邮件通知<!--</lang>-->
+							</label>
+							<!--{if $nDisplaySeccode==1}-->
+							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+							<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
+							<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://ucenter/seccode')}-->" /></span></p>
+							<!--{/if}-->
+							<!--{/if}-->
+							<input type="hidden" name="homefreshcomment_parentid" id="homefreshcomment_parentid" value="0">
+							<input type="hidden" name="ajax" value="1" />
+							<input type="hidden" name="page" value="<!--{if isset($_GET['page'])}--><!--{$_GET['page']}--><!--{/if}-->"/>
+							<input type="hidden" name="homefresh_id" value="<!--{$oHomefresh['homefresh_id']}-->"/>
+							<button id="comment-submit" type="button" onclick="commentSubmit();" class="btn btn-success" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->><!--<lang package='Template/Homefresh'>-->提交评论<!--</lang>--></button>
+						</form>
+					</div>

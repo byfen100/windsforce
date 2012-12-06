@@ -1,0 +1,270 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function update(){
+	$("#submit_button").attr("disabled","disabled");
+	$("#submit_button").val('update...');
+	Dyhb.AjaxSubmit('informationUpd','<!--{:Dyhb::U('home://spaceadmin/change_info')}-->','',function(data,status){ 
+		$("#submit_button").attr("disabled",false);
+		$("#submit_button").val("<!--<lang package='__COMMON_LANG__@Template/Common'>-->更新<!--</lang>-->");
+	});
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template/Spaceadmin'>-->基本信息<!--</lang>--></li>
+		</ul>
+
+		<!--<include file="spaceadmin+menu" />-->
+		
+		<div class="row">
+			<div class="span9">
+				<ul class="nav nav-pills">
+					<!--<foreach for=arrInfoMenus key=sInfoMenuKey value=sInfoMenu>-->
+					<li <!--{if (!$sDo && !$sInfoMenuKey) || $sDo==$sInfoMenuKey}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://spaceadmin/index'.(!empty($sInfoMenuKey)?'?do='.$sInfoMenuKey:''))}-->"><!--{$sInfoMenu}--></a></li>
+					<!--</foreach>-->
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+				<form method="post" id="informationUpd" name="informationUpd">
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label" for="user_name"><!--<lang package='Template/Spaceadmin'>-->用户名<!--</lang>-->&nbsp;<!--{$oUserInfo:user_name}--></label>
+						</div>
+						<!--{if !$sDo}-->
+						<!--<foreach for=arrBases value=sBase>-->
+						<!--{if array_key_exists($sBase,$arrUserprofilesettingDatas)}-->
+						<!--{if $sBase=='userprofile_gender'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_gender"><!--{$arrUserprofilesettingDatas['userprofile_gender']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<select id="userprofile_gender" name="userprofile_gender">
+									<option value="0" <!--{if !$oUserInfo->userprofile->userprofile_gender}-->selected="selected"<!--{/if}-->><!--{:Profile_Extend::getGender(0)}--></option>
+									<option value="1" <!--{if $oUserInfo->userprofile->userprofile_gender==1}-->selected="selected"<!--{/if}-->><!--{:Profile_Extend::getGender(1)}--></option>
+									<option value="2" <!--{if $oUserInfo->userprofile->userprofile_gender==2}-->selected="selected"<!--{/if}-->><!--{:Profile_Extend::getGender(2)}--></option>
+								</select>
+							</div>
+						</div>
+						<!--{elseif $sBase=='userprofile_birthday'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_birthday"><!--{$arrUserprofilesettingDatas['userprofile_birthday']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<select name="userprofile_birthyear" id="userprofile_birthyear" style="width:80px;" onchange="showYearmonthday('userprofile_birthday','userprofile_birthmonth','userprofile_birthyear');">
+									<option value="" <!--{if !$oUserInfo->userprofile->userprofile_birthyear}-->selected="selected"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->年<!--</lang>--></option>
+									<!--<for start='0' end='100' var='nBirthyear'>-->
+									<!--{~$nTheNowYear=$nNowYear-$nBirthyear}-->
+									<option value="<!--{$nTheNowYear}-->" <!--{if $oUserInfo->userprofile->userprofile_birthyear==$nTheNowYear}-->selected="selected"<!--{/if}-->><!--{$nTheNowYear}--></option>
+									<!--</for>-->
+								</select>&nbsp;&nbsp;
+								<select name="userprofile_birthmonth" id="userprofile_birthmonth" style="width:60px;" onchange="showYearmonthday('userprofile_birthday','userprofile_birthmonth','userprofile_birthyear');">
+									<option value="" <!--{if !$oUserInfo->userprofile->userprofile_birthmonth}-->selected="selected"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->月<!--</lang>--></option>
+									<!--<for start='1' end='12' var='nBirthmonth'>-->
+									<option value="<!--{$nBirthmonth}-->" <!--{if $oUserInfo->userprofile->userprofile_birthmonth==$nBirthmonth}-->selected="selected"<!--{/if}-->><!--{$nBirthmonth}--></option>
+									<!--</for>-->
+								</select>&nbsp;&nbsp;
+								<select name="userprofile_birthday" id="userprofile_birthday" style="width:60px;">
+									<option value="" <!--{if !$oUserInfo->userprofile->userprofile_birthday}-->selected="selected"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->日<!--</lang>--></option>
+									<!--<for start='1' end='$nNowDays' var='nBirthday'>-->
+									<option value="<!--{$nBirthday}-->" <!--{if $oUserInfo->userprofile->userprofile_birthday==$nBirthday}-->selected="selected"<!--{/if}-->><!--{$nBirthday}--></option>
+									<!--</for>-->
+								</select>
+							</div>
+						</div>
+						<!--{elseif $sBase=='userprofile_birthcity'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_birthcity"><!--{$arrUserprofilesettingDatas['userprofile_birthcity']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<!--{$sDirthDistrict}-->
+							</div>
+						</div>
+						<!--{elseif $sBase=='userprofile_residecity'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_residecity"><!--{$arrUserprofilesettingDatas['userprofile_residecity']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<!--{$sResideDistrict}-->
+							</div>
+						</div>
+						<!--{elseif $sBase=='userprofile_bloodtype'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_bloodtype"><!--{$arrUserprofilesettingDatas['userprofile_bloodtype']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<select name="userprofile_bloodtype">
+									<option value="A" <!--{if $oUserInfo->userprofile->userprofile_bloodtype=='A'}-->selected="selected"<!--{/if}-->>A</option>
+									<option value="B" <!--{if $oUserInfo->userprofile->userprofile_bloodtype=='B'}-->selected="selected"<!--{/if}-->>B</option>
+									<option value="AB" <!--{if $oUserInfo->userprofile->userprofile_bloodtype=='AB'}-->selected="selected"<!--{/if}-->>AB</option>
+									<option value="O" <!--{if $oUserInfo->userprofile->userprofile_bloodtype=='O'}-->selected="selected"<!--{/if}-->>O</option><option value="<!--<lang package='Template/Spaceadmin'>-->其它<!--</lang>-->"><!--<lang package='Template/Spaceadmin'>-->其它<!--</lang>--></option>
+								</select>
+							</div>
+						</div>
+						<!--{d*else}-->
+						<div class="control-group">
+							<label class="control-label" for="<!--{$sBase}-->"><!--{$arrUserprofilesettingDatas[$sBase]['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="<!--{$sBase}-->" id="<!--{$sBase}-->" size="40" value="<!--{$oUserInfo:userprofile:$sBase}-->" />
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--{/if}-->
+						<!--</foreach>-->
+
+						<!--<for start='1' end='8' var='nCustomFieldId'>-->
+						<!--{~$sCustomField='userprofile_field'.$nCustomFieldId}-->
+						<!--{if array_key_exists($sCustomField,$arrUserprofilesettingDatas)}-->
+						<div class="control-group">
+							<label class="control-label" for="<!--{$sCustomField}-->"><!--{$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="<!--{$sCustomField}-->" id="<!--{$sCustomField}-->" size="40" value="<!--{$oUserInfo:userprofile:$sCustomField}-->" />
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--</for>-->
+						<!--{elseif $sDo=='contact'}-->
+						<!--<foreach for=arrContacts value=sContact>-->
+						<!--{if array_key_exists($sContact,$arrUserprofilesettingDatas)}-->
+						<div class="control-group">
+							<label class="control-label" for="<!--{$sContact}-->"><!--{$arrUserprofilesettingDatas[$sContact]['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="<!--{$sContact}-->" id="<!--{$sContact}-->" size="40" value="<!--{$oUserInfo:userprofile:$sContact}-->" />
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<div class="control-group">
+							<label class="control-label" for="user_email">Email</label>
+							<div class="controls">
+								<!--{$oUserInfo:user_email}-->&nbsp;(<a href="<!--{:Dyhb::U('home://spaceadmin/index?do=info')}-->"><!--<lang package='Template/Spaceadmin'>-->修改<!--</lang>--></a>)
+							</div>
+						</div>
+						<!--{elseif $sDo=='edu'}-->
+						<!--<foreach for=arrEdus value=sEdu>-->
+						<!--{if array_key_exists($sEdu,$arrUserprofilesettingDatas)}-->
+						<!--{if $sEdu=='userprofile_nowschool'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_nowschool"><!--{$arrUserprofilesettingDatas['userprofile_nowschool']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<select name="userprofile_nowschool">
+									<option value="<!--<lang package='Template/Spaceadmin'>-->博士<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("博士",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->博士<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->硕士<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("硕士",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->硕士<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->本科<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("本科",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->本科<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->专科<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("专科",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->专科<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->高中<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("高中",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->高中<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->初中<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("初中",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->初中<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->小学<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("小学",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->小学<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->幼儿班<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("幼儿班",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->幼儿班<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->其它<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("其它",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->其它<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->工作<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_nowschool==Dyhb+L("工作",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->工作<!--</lang>--></option>
+								</select>
+							</div>
+						</div>
+						<!--{elseif $sEdu=='userprofile_education'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_education"><!--{$arrUserprofilesettingDatas['userprofile_education']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<select name="userprofile_education">
+									<option value="<!--<lang package='Template/Spaceadmin'>-->博士<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_education==Dyhb+L("博士",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->博士<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->硕士<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_education==Dyhb+L("硕士",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->硕士<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->本科<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_education==Dyhb+L("本科",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->本科<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->专科<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_education==Dyhb+L("专科",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->专科<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->中学<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_education==Dyhb+L("中学",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->中学<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->小学<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_education==Dyhb+L("小学",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->小学<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->其它<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_education==Dyhb+L("其它",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->其它<!--</lang>--></option>
+								</select>
+							</div>
+						</div>
+						<!--{d*else}-->
+						<div class="control-group">
+							<label class="control-label" for="<!--{$sEdu}-->"><!--{$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="<!--{$sEdu}-->" id="<!--{$sEdu}-->" size="40" value="<!--{$oUserInfo:userprofile:$sEdu}-->" />
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--{/if}-->
+						<!--</foreach>-->
+						<!--{elseif $sDo=='work'}-->
+						<!--<foreach for=arrWorks value=sWork>-->
+						<!--{if array_key_exists($sWork,$arrUserprofilesettingDatas)}-->
+						<div class="control-group">
+							<label class="control-label" for="<!--{$sWork}-->"><!--{$arrUserprofilesettingDatas[$sWork]['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="<!--{$sWork}-->" id="<!--{$sWork}-->" size="40" value="<!--{$oUserInfo:userprofile:$sWork}-->" />
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<!--{elseif $sDo=='info'}-->
+						<!--<foreach for=arrInfos value=sInfo>-->
+						<!--{if array_key_exists($sInfo,$arrUserprofilesettingDatas)}-->
+						<!--{if $sInfo=='userprofile_idcardtype'}-->
+						<div class="control-group">
+							<label class="control-label" for="userprofile_idcardtype"><!--{$arrUserprofilesettingDatas['userprofile_idcardtype']['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<select name="userprofile_idcardtype">
+									<option value="<!--<lang package='Template/Spaceadmin'>-->身份证<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_idcardtype==Dyhb+L("身份证",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->身份证<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->护照<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_idcardtype==Dyhb+L("护照",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->护照<!--</lang>--></option>
+									<option value="<!--<lang package='Template/Spaceadmin'>-->驾驶证<!--</lang>-->" <!--{if $oUserInfo->userprofile->userprofile_idcardtype==Dyhb+L("驾驶证",'Template/Spaceadmin')}-->selected="selected"<!--{/if}-->><!--<lang package='Template/Spaceadmin'>-->驾驶证<!--</lang>--></option>
+								</select>
+							</div>
+						</div>
+						<!--{elseif in_array($sInfo,array('userprofile_bio','userprofile_interest'))}-->
+						<div class="control-group">
+							<label class="control-label" for="<!--{$sInfo}-->"><!--{$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<textarea class="input-xlarge" name="<!--{$sInfo}-->" id="<!--{$sInfo}-->" rows="5" style="width:400px;"><!--{$oUserInfo:userprofile:$sInfo}--></textarea>
+							</div>
+						</div>
+						<!--{d*else}-->
+						<div class="control-group">
+							<label class="control-label" for="<!--{$sInfo}-->"><!--{$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_title']}--></label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="<!--{$sInfo}-->" id="<!--{$sInfo}-->" size="40" value="<!--{$oUserInfo:userprofile:$sInfo}-->" />
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--{/if}-->
+						<!--</foreach>-->
+						<div class="control-group">
+							<label class="control-label" for="user_nikename"><!--<lang package='Template/Spaceadmin'>-->昵称<!--</lang>--></label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="user_nikename" id="user_nikename" size="40" value="<!--{$oUserInfo:user_nikename}-->" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="user_email">Email</label>
+							<div class="controls">
+								<input class="input-xlarge" type="text" name="user_email" id="user_email" size="40" value="<!--{$oUserInfo:user_email}-->" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="user_sign"><!--<lang package='Template/Spaceadmin'>-->用户签名<!--</lang>--></label>
+							<div class="controls">
+								<textarea class="input-xlarge" name="user_sign" id="user_sign" rows="5" style="width:400px;"><!--{$oUserInfo:user_sign}--></textarea>
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--{if $nDisplaySeccode==1}-->
+						<div class="control-group">
+							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+							<div class="controls">
+								<input class="input-small" name="seccode" id="seccode" type="text" value="">
+								<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://spaceadmin/seccode')}-->" /></span></p>
+							</div>
+						</div>
+						<!--{/if}-->
+						<div class="form-actions">
+							<input type="hidden" name="ajax" value="1">
+							<input type="hidden" name="user_id" value="<!--{$oUserInfo:user_id}-->">
+							<button id="submit_button" onclick="update()" type="button" class="btn btn-success"><!--<lang package='__COMMON_LANG__@Template/Common'>-->更新<!--</lang>--></button>&nbsp;
+							<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

@@ -1,0 +1,56 @@
+/*
+[name]橙[/name]
+[iconbgcolor]#FE9500[/iconbgcolor]
+Description: NeedForBug! Extend Stylecolor
+*/
+
+/**===============================
+           重新定义基础
+================================*/
+body { background:#FCFAF0 url({IMG_DIR}/../Style/t3/bgimg.jpg) no-repeat 50% 0; }
+a{color: #333333;}
+a:hover {color: #333333;}
+
+/**===============================
+           重新定义一些颜色
+================================*/
+.label-success{background-color: #FE9500;}
+.label-success[href]{background-color: #DF3200;}
+.alert-success{color: #c09853;background-color: #fcf8e3;border-color: #fbeed5;}
+.label a,.badge a{color:#fff;}
+.badge-success{background:#FE9500;}
+/* color */
+.nav-list > .active > a,.nav-list > .active > a:hover {background-color:#FE9500;}
+input:focus,textarea:focus {border-color: #FE9500;}
+.nav-pills > .active > a,.nav-pills > .active > a:hover {background-color: #FE9500;}
+.dropdown-menu a:hover{background-color: #FE9500;}
+.dropdown-menu li > a:hover,.dropdown-menu .active > a,.dropdown-menu .active > a:hover {background-color: #FE9500;}
+/* 按钮 */
+.btn-success{background-color: #faa732;*background-color: #f89406;background-image: -ms-linear-gradient(top, #fbb450, #f89406);background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));background-image: -webkit-linear-gradient(top, #fbb450, #f89406);background-image: -o-linear-gradient(top, #fbb450, #f89406);background-image: -moz-linear-gradient(top, #fbb450, #f89406);background-image: linear-gradient(top, #fbb450, #f89406);background-repeat: repeat-x;border-color: #f89406 #f89406 #ad6704;border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fbb450', endColorstr='#f89406', GradientType=0);filter: progid:dximagetransform.microsoft.gradient(enabled=false);}
+.btn-success:hover,.btn-success:active,.btn-success.active,.btn-success.disabled,.btn-success[disabled]{background-color: #f89406;*background-color: #df8505;}
+.btn-success:active,.btn-success.active{background-color: #c67605 \9;}
+
+/**===============================
+           重新定义头部和头部菜单
+================================*/
+/* 顶部条 */
+#top_header{background:none;border:none; }
+#header{background:none; }
+/* 菜单 */
+#header .navbar-inner {background:#FE9500;filter: none;}
+#header .navbar .divider-vertical {background-color: #DF3200;border-right: 1px solid #FE9500;}
+#header .navbar-inner .nav .active a {color:#ffffff;background: #DF3200;}
+#header .navbar-inner .nav .active a:hover {color:#ffffff;background:#DF3200;}
+#header .navbar-inner .nav a:hover {color:#ffffff;background:#DF3200;}
+#header .navbar-inner .nav .dropdown-menu a {color:{NORMAL_COLOR};}
+#header .navbar-inner .nav .dropdown-menu a:hover{background-color: #FE9500;}
+#header .dropdown-menu li > a:hover,#header .dropdown-menu .active > a,#header .dropdown-menu .active > a:hover {background-color: #FE9500;}
+/* 搜索 */
+#header .navbar-search .search-query {border: 1px solid #DF3200;}
+
+/**===============================
+           重写底部
+================================*/
+#footer{background: none;color:#333333;}
+#footer a{color:#333333;}
+#footer a:hover{color:#000;}

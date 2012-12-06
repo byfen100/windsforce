@@ -1,0 +1,24 @@
+			<div class="show_wmp">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th><img src="<!--{$sAttachmentIcon}-->">&nbsp;Windows Media Player文件</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="background:none;">
+								<a href="javascript:playmedia('player_<!--{$oAttachment['attachment_id']}-->','wmp','<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->','600','405','');"><!--{$oAttachment['attachment_name']}--></a>
+								<div id="player_<!--{$oAttachment['attachment_id']}-->" style="display: none;"></div>
+							</td>
+						</tr>
+						<!--{if $oAttachment['attachment_description']}-->
+						<tr>
+							<td style="background:none;">
+								<!--{$oAttachment['attachment_description']}-->
+							</td>
+						</tr>
+						<!--{/if}-->
+					</tbody>
+				</table>
+			</div>

@@ -1,0 +1,18 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Public'>-->用户注册<!--</lang>--></li>
+		</ul>
+		
+		<div class="row">
+			<div class="span7">
+				<!--<include file="public+register_" />-->
+			</div>
+			<div class="span5">
+				<h3><!--<lang package='Template/Public'>-->已有帐号？请直接登录<!--</lang>--></h3>
+				<p><a href="<!--{:Dyhb::U('home://public/login')}-->" class="btn btn-success"><!--<lang package='Template/Public'>-->用户登录<!--</lang>--></a></p>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

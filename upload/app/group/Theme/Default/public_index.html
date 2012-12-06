@@ -1,0 +1,116 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a></li>		</ul>
+
+		<div class="row">
+			<div class="span12">
+				<ul class="nav nav-tabs">
+					<li  class="active"><a href="<!--{:Dyhb::U('group://public/index')}-->">首页</a></li>
+					<li><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">新帖</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+				<!--{if is_array($arrGroupcategorys)}-->
+				<!--<foreach for=arrGroupcategorys value=oGroupcategory>-->
+				<table border="0" cellspacing="0" cellpadding="0" align="left" class="tableborder" width="100%">
+					<tr>
+						<td class="grouplist_td">
+							<table cellpadding="4" cellspacing="1" width="100%" border="0">
+								<tr>
+									<td colspan="7" class="grouplist_header">
+										<span class="grouplist_groupname">
+											<div style='display:inline;float:left;'>
+												<a href="<!--{:Dyhb::U('group://public/index?cid='.$oGroupcategory['groupcategory_id'])}-->">
+													<!--{$oGroupcategory['groupcategory_name']}-->
+												</a>
+											</div>
+											<div style='display:inline;float:right;'></div>
+										</span>
+									</td>
+								</tr>
+								<tr class="grouplist_index">
+									<td width="*" colspan="2"><span>小组名称</span></td>
+									<td width="40"><span>主题</span></td>
+									<td width="40"><span>回复</span></td>
+									<td width="40"><span>用户</span></td>
+									<td width="200"><span>最后更新</span></td>
+								</tr>
+								<!--{~$arrGroups=$oGroupcategory->group}-->
+								<!--{if is_array($arrGroups)}-->
+								<!--<foreach for=arrGroups value=oGroup>-->
+								<tr align="center" valign="middle" class="grouptopicone">
+									<td width="26" class="grouplist_borderbottom">
+										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">
+											<img src='<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->' border="0" alt="" />
+										</a>
+									</td>
+									<td width="*" align="left" class="grouplist_borderbottom">
+										<table width="100%" cellpadding="1">
+											<tr>
+												<td width="*" rowspan="2"></td>
+												<td width="1" rowspan="2"></td>
+												<td width="100%" height="10"><span class='grouplist_namelink'><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" href=""><!--{$oGroup:group_nikename}--></a></span><span class='grouplist_todaynum'><!--{if $oGroup['group_topictodaynum']>0}-->(今日<!--{$oGroup['group_topictodaynum']}-->)</span><!--{/if}-->
+												</td>
+											</tr>
+											<!--{if $oGroup->group_listdescription}-->
+											<tr>
+												<td valign="top"><span class="grouplist_description"><!--{$oGroup:group_listdescription}--></span></td>
+											</tr>
+											<!--{/if}-->
+										</table>
+									</td>
+									<td width="40" valign="middle" align="center" class="grouplist_borderbottom">
+										<span class="cau"><!--{$oGroup:group_topicnum}--></span>
+									</td>
+									<td width="40" valign="middle" align="center" class="grouplist_borderbottom">
+										<span class="cau"><!--{$oGroup:group_topiccomment}--></span>
+									</td>
+									<td width="40" valign="middle" align="center" class="grouplist_borderbottom">
+										<span class="cau"><!--{$oGroup:group_usernum}--></span>
+									</td>
+									<td width="168" align="right" class="grouplist_borderbottom">
+										<table width="100%" align="right">
+											<tr>
+												<td width="2%" align="right">&nbsp;</td>
+												<td class="indexsummaryalgin">
+												<!--{if !empty($oGroup->group_latestcomment)}-->
+												<!--{~$arrLatestComment=$TheController->unserialize($oGroup->group_latestcomment)}-->
+												<!--{if isset($arrLatestComment['commenttitle'])}-->
+												<a title="Re:<!--{$arrLatestComment['commenttitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['tid'])}-->">Re:<!--{$arrLatestComment['commenttitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;最后回复:<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>
+												<!--{d*else}-->
+												<a title="<!--{$arrLatestComment['topictitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['topicid'])}-->"><!--{$arrLatestComment['topictitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['topictime']|Core_Extend+timeFormat}-->&nbsp;楼主:<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['topicuserid'])}-->"><!--{$arrLatestComment['topicuserid']|UserModel+getUsernameById}--></a>
+												<!--{/if}-->
+												<!--{/if}-->
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<tr>
+									<td valign="middle" align="center" class="grouplist_borderbottom" colspan="6">
+										暂时没有发现任何小组
+									</td>
+								</tr>
+								<!--{/if}-->
+							</table>
+							<!--{if $key<=count($arrGroupcategorys)}-->
+							<div class="space"></div>
+							<!--{/if}-->
+						</td>
+					</tr>
+				</table>
+				<!--</foreach>-->
+				<!--{d*else}-->
+				<p>暂时没有发现任何小组分类</p>
+				<!--{/if}-->
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

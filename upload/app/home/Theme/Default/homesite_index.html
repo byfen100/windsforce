@@ -1,0 +1,26 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--{$sTitle}--></li>
+		</ul>
+
+		<div class="row">
+			<div class="span2">
+				<ul class="nav nav-list">
+					<li class="nav-header"><!--<lang package='Template/Homesite'>-->站点信息<!--</lang>--></li>
+					<!--<foreach for=arrHomesites value=oHomesite>-->
+					<!--{if $oHomesite['homesite_id']<=4}-->
+					<li <!--{if ACTION_NAME==$oHomesite['homesite_name']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://homesite/'.$oHomesite['homesite_name'])}-->"><!--{$oHomesite['homesite_nikename']}--></a></li>
+					<!--{d*else}-->
+					<li <!--{if ACTION_NAME=='site' && G+getGpc('id','G')==$oHomesite['homesite_name']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://homesite/site?id='.$oHomesite['homesite_name'])}-->"><!--{$oHomesite['homesite_nikename']}--></a></li>
+					<!--{/if}-->
+					<!--</foreach>-->
+				</ul>
+			</div>
+			<div class="span10">
+				<!--{$sContent}-->
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

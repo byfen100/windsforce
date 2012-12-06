@@ -1,0 +1,171 @@
+<!--<include file="header" />-->
+
+<!--{style}-->
+
+p.first:first-letter {font-size:25px;}
+<!--{/style}-->
+	<div class="span12" style="text-align:left;margin-top:20px;">
+		<ul class="breadcrumb">
+			<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li class="active">最热商品</li>
+		</ul>
+	</div>
+
+	<div class="span12">
+		<div class="row">
+			<div class="span4"style="margin-top:20px;">
+				<!--{if isset($arrShopgoods[0])}-->
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[0]->shopgoods_id)}-->" title="<!--{$arrShopgoods[0]->shopgoods_name}-->">
+				<img src="<!--{$arrShopgoods[0]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[0]->shopgoods_name}-->" style="" width="100%" height="375">
+				</a>
+				<p class="first" style="height:300px;">
+					<!--{$arrShopgoods[0]->shopgoods_name}-->
+					<!--{$arrShopgoods[0]->shopgoods_brief}-->
+				</p>
+				<!--{/if}-->
+			</div>
+			<div class="span3"style="margin-top:20px;">
+				<!--{if isset($arrShopgoods[1])}-->
+				<p class="first" style="height:130px;overflow:hidden;">
+					<!--{$arrShopgoods[1]->shopgoods_name}-->
+					<!--{$arrShopgoods[1]->shopgoods_brief}-->
+				</p>
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[1]->shopgoods_id)}-->" title="<!--{$arrShopgoods[1]->shopgoods_name}-->">
+				<img src="<!--{$arrShopgoods[1]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[1]->shopgoods_name}-->" style="" width="100%" height="265">
+				</a>
+				<!--{/if}-->
+				<hr>
+				<!--{if isset($arrShopgoods[2])}-->
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[2]->shopgoods_id)}-->" title="<!--{$arrShopgoods[2]->shopgoods_name}-->">
+				<img src="<!--{$arrShopgoods[2]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[2]->shopgoods_name}-->" style="" width="100%" height="265">
+				</a>
+				<!--{/if}-->
+			</div>
+			<div class="span5"style="margin-top:40px;">
+				<h1 style="font-size:90px">最热商品</h1>
+				<div class="row">
+					<div class="span3"style="margin-top:35px;">
+						<!--{if isset($arrShopgoods[3])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[3]->shopgoods_id)}-->" title="<!--{$arrShopgoods[3]->shopgoods_name}-->">
+						<img src="<!--{$arrShopgoods[3]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[3]->shopgoods_name}-->" style="" width="100%" height="265">
+						</a>
+						<!--{/if}-->
+						<hr>
+						<!--{if isset($arrShopgoods[4])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[4]->shopgoods_id)}-->" title="<!--{$arrShopgoods[4]->shopgoods_name}-->">
+						<img src="<!--{$arrShopgoods[4]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[4]->shopgoods_name}-->" style="" width="100%" height="265">
+						</a>
+					</div>
+					<div class="span2"style="margin-top:35px;">
+						<p  class="first" style="height:584px;">
+						<!--{$arrShopgoods[4]->shopgoods_name}-->
+						<!--{$arrShopgoods[4]->shopgoods_brief}-->
+						</p>
+					</div>
+						<!--{/if}-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="span12" style="margin-top:40px;">
+		<div class="row">
+			<div class="span5">
+				<!--{if isset($arrShopgoods[5])}-->
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[5]->shopgoods_id)}-->" title="<!--{$arrShopgoods[5]->shopgoods_name}-->">
+				<img src="<!--{$arrShopgoods[5]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[5]->shopgoods_name}-->" style="" width="100%" height="470">
+				</a>
+				<p  class="first" style="">
+						<!--{$arrShopgoods[5]->shopgoods_name}-->
+						<!--{$arrShopgoods[5]->shopgoods_brief}-->
+				</p>
+				<!--{/if}-->
+			</div>
+			<div class="span7">
+				<div class="row">
+					<div class="span3" style="margin-top:25px;">
+						<!--{if isset($arrShopgoods[6])}-->
+						<p  class="first" style="height:300px;">
+								<!--{$arrShopgoods[6]->shopgoods_name}-->
+								<!--{$arrShopgoods[6]->shopgoods_brief}-->
+						</p>
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[6]->shopgoods_id)}-->" title="<!--{$arrShopgoods[6]->shopgoods_name}-->">
+						<img src="<!--{$arrShopgoods[6]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[6]->shopgoods_name}-->" style="" width="100%" height="265">
+						</a>
+						<p class="first" style="height:200px;">
+								<!--{$arrShopgoods[6]->shopgoods_name}-->
+								<!--{$arrShopgoods[6]->shopgoods_brief}-->
+						</p>
+						<!--{/if}-->
+					</div>
+					<div class="span3">
+						<!--{if isset($arrShopgoods[7])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[7]->shopgoods_id)}-->" title="<!--{$arrShopgoods[7]->shopgoods_name}-->">
+						<img src="<!--{$arrShopgoods[7]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[7]->shopgoods_name}-->" style="" width="100%" height="265">
+						</a>
+						<p class="first" style="height:258px;">
+								<!--{$arrShopgoods[7]->shopgoods_name}-->
+								<!--{$arrShopgoods[7]->shopgoods_brief}-->
+						</p>
+						<!--{/if}-->
+						<!--{if isset($arrShopgoods[8])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[8]->shopgoods_id)}-->" title="<!--{$arrShopgoods[8]->shopgoods_name}-->">
+						<img src="<!--{$arrShopgoods[8]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[8]->shopgoods_name}-->" style="" width="100%" height="265">
+						</a>
+					</div>
+					<div class="span1">
+						<p class="first" style="height:815px;">
+								<!--{$arrShopgoods[8]->shopgoods_name}-->
+								<!--{$arrShopgoods[8]->shopgoods_brief}-->
+						</p>
+					</div>
+					<!--{/if}-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="span12" style="margin-top:50px;margin-bottom:20px;">
+		<div class="row">
+			<div class="span3">
+				<!--{if isset($arrShopgoods[9])}-->
+				<p class="first" style="min-height:400px;">
+					<!--{$arrShopgoods[9]->shopgoods_name}-->
+					<!--{$arrShopgoods[9]->shopgoods_brief}-->
+				</p>
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[9]->shopgoods_id)}-->" title="<!--{$arrShopgoods[9]->shopgoods_name}-->">
+				<img src="<!--{$arrShopgoods[9]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[9]->shopgoods_name}-->" style="" width="100%" height="265">
+				</a>
+				<!--{/if}-->
+			</div>
+			<div class="span6">
+				<!--{if isset($arrShopgoods[10])}-->
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[10]->shopgoods_id)}-->" title="<!--{$arrShopgoods[10]->shopgoods_name}-->">
+				<img src="<!--{$arrShopgoods[10]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[10]->shopgoods_name}-->" style="" width="100%" height="575">
+				</a>
+				<!--{/if}-->
+			</div>
+			<div class="span3">
+				<!--{if isset($arrShopgoods[11])}-->
+				<p class="first" style="min-height:400px;">
+					<!--{$arrShopgoods[11]->shopgoods_name}-->
+					<!--{$arrShopgoods[11]->shopgoods_brief}-->
+				</p>
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopgoods[11]->shopgoods_id)}-->" title="<!--{$arrShopgoods[11]->shopgoods_name}-->">
+				<img src="<!--{$arrShopgoods[11]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrShopgoods[11]->shopgoods_name}-->" style="" width="100%" height="265">
+				</a>
+			</div>
+		</div>
+		<p style="margin-top:10px">这个故事，对后人起到了一定的影响，如蒋骥《续书法论》谓：“作小楷能悬腕已非下乘，惟能悬臂，则静气益静，非端坐不能为之，此所以更高于悬腕一筹。”又如清代的汪云在《书法管见》中也讥笑了不能悬腕作小楷的人，他说：“古人悬腕书扇头，虽小楷不必倚案，细阅《黄庭》楷法，律度最严，而神机尽以行草流贯，人忽不察。今人多按定扇骨作小字，不敢作《淳化》《圣教》诸大字，以小者机熟掩过，大者病处尽露。”</p>
+		<!--{/if}-->
+	</div>
+
+	<div class="span12" style="text-align:left;margin-top:20px;">
+		<p>
+			<div id="pagination" class="pagination">
+					<!--{$sPageNavbar}-->
+			</div>
+		</p>
+	</div>
+
+<!--<include file="footer" />-->

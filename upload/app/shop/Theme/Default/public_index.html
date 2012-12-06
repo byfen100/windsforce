@@ -1,0 +1,190 @@
+<!--<include file="header" />-->
+
+<!--{style}-->
+.news li{ line-height:25px; }
+<!--{/style}-->
+
+	<div class="span12">
+		<div id="myCarousel" class="carousel slide">
+			<div class="carousel-inner" style="margin-top:30px;">
+				<!--{~$arrShopslidebox=array(1,2,3)}-->
+				<!--<foreach for=arrShopslidebox>-->
+				<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="height:450px">
+					<img src="<!--{:__APPPUB__}-->/Images/shopslidebox/<!--{$value}-->.jpg" alt="" width="100%" height="450">
+					<div class="carousel-caption">
+						<h4>第一张图片(<!--{$value}-->)</h4>
+						<p>这里就像你的家一样温暖，累了的时候，有个避风港，能让你倍感的踏实，那是因为有它在等你</p>
+					</div>
+				</div>
+				<!--</foreach>-->
+			</div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	</div>
+
+	<div class="span8">
+		<h3>人气排行榜</h3><p>
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab1" data-toggle="tab">全部</a></li>
+				<li><a href="#tab2" data-toggle="tab">书画</a></li>
+				<li><a href="#tab3" data-toggle="tab">字画</a></li>
+			</ul>
+			<div class="tab-content" style="padding-bottom: 9px;">
+				<div class="tab-pane active" id="tab1">
+					<p>
+						<ul class="thumbnails">
+							<!--<foreach for=arrPopularshopgoods value=oShopgoods>-->
+							<li class="span2">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><img src="<!--{$oShopgoods->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$oShopgoods->shopgoods_name}-->" width="100%" height="160"></a>
+									<div class="caption">
+										<h5><a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><!--{$oShopgoods->shopgoods_name}--></a></h5>
+										<p>￥<!--{$oShopgoods->shopgoods_price}--></p>
+									</div>
+								</div>
+							</li>
+							<!--</foreach>-->
+						</ul>
+					</p>
+				</div>
+				<div class="tab-pane" id="tab2">
+					<p>
+						<ul class="thumbnails">
+							<!--<foreach for=arrHandwritingshopgoods value=oShopgoods>-->
+							<li class="span2">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><img src="<!--{$oShopgoods->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$oShopgoods->shopgoods_name}-->" width="100%" height="160"></a>
+									<div class="caption">
+										<h5><a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><!--{$oShopgoods->shopgoods_name}--></a></h5>
+										<p>￥<!--{$oShopgoods->shopgoods_price}--></p>
+									</div>
+								</div>
+							</li>
+							<!--</foreach>-->
+						</ul>
+					</p>
+				</div>
+				<div class="tab-pane" id="tab3">
+					<p>
+						<ul class="thumbnails">
+							<!--<foreach for=arrpictureshopgoods value=oShopgoods>-->
+							<li class="span2">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><img src="<!--{$oShopgoods->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$oShopgoods->shopgoods_name}-->" width="100%" height="160"></a>
+									<div class="caption">
+										<h5><a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><!--{$oShopgoods->shopgoods_name}--></a></h5>
+										<p>￥<!--{$oShopgoods->shopgoods_price}--></p>
+									</div>
+								</div>
+							</li>
+							<!--</foreach>-->
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="span4">
+		<h3>商城公告&nbsp;<a href="<!--{:Dyhb::U('shop://shopnotice/noticelist')}-->" title="更多公告"><i class="icon-th-list"></i></a></h3>
+		<p>
+			<ul class="unstyled news">
+				<!--<foreach for=arrNew value=oNew>-->
+				<li style="clear:both;">
+					<span class="left"><a href="<!--{:Dyhb::U('shop://shopnotice/index?tid='.$oNew->shoparticle_id)}-->"><!--{$oNew->shoparticle_title|G+subString=0,16}--></a></span>
+					<span class="right"><!--{$oNew->create_dateline|Core_Extend+timeFormat}--></span>
+				</li>
+				<!--</foreach>-->
+			</ul>
+		</p>
+	</div>
+
+	<div class="span12">
+		<h3>我们精心为您推荐</h3>
+		<p>
+			<ul class="thumbnails">
+				<!--<foreach for=arrBestshopgoods value=oShopgoods>-->
+				<li class="span3">
+					<div class="thumbnail">
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->">
+						<img src="<!--{$oShopgoods->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$oShopgoods->shopgoods_name}-->" width="100%" height="260"></a>
+						<div class="caption">
+							<h5><a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><!--{$oShopgoods->shopgoods_name}--></a></h5>
+							<p>￥<!--{$oShopgoods->shopgoods_price}--></p>
+						</div>
+					</div>
+				</li>
+				<!--</foreach>-->
+			</ul>
+		</p>
+	</div>
+
+	<div class="span12">
+		<h3>最新原创</h3> 
+		<div class="row">
+			<div class="span6">
+				<!--{if isset($arrOriginalshopgoods[0])}-->
+				<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrOriginalshopgoods[0]->shopgoods_id)}-->" title="<!--{$arrOriginalshopgoods[0]->shopgoods_name}-->">
+					<img src="<!--{$arrOriginalshopgoods[0]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrOriginalshopgoods[0]->shopgoods_name}-->" width="100%" height="570">
+				</a>
+				<!--{/if}-->
+			</div>
+			<div class="span6">
+				<div class="row">
+					<div class="span3">
+						<!--{if isset($arrOriginalshopgoods[1])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrOriginalshopgoods[1]->shopgoods_id)}-->" title="<!--{$arrOriginalshopgoods[1]->shopgoods_name}-->">
+							<img src="<!--{$arrOriginalshopgoods[1]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrOriginalshopgoods[1]->shopgoods_name}-->" width="100%" height="270">
+						</a>
+						<!--{/if}-->
+					</div>
+					<div class="span3">
+						<!--{if isset($arrOriginalshopgoods[2])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrOriginalshopgoods[2]->shopgoods_id)}-->" title="<!--{$arrOriginalshopgoods[2]->shopgoods_name}-->">
+							<img src="<!--{$arrOriginalshopgoods[2]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrOriginalshopgoods[2]->shopgoods_name}-->" width="100%" height="270">
+						</a>
+						<!--{/if}-->
+					</div>
+				</div>
+				<div class="row" style="margin-top:30px;">
+					<div class="span3">
+						<!--{if isset($arrOriginalshopgoods[3])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrOriginalshopgoods[3]->shopgoods_id)}-->" title="<!--{$arrOriginalshopgoods[3]->shopgoods_name}-->">
+							<img src="<!--{$arrOriginalshopgoods[3]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrOriginalshopgoods[3]->shopgoods_name}-->" width="100%" height="270">
+						</a>
+						<!--{/if}-->
+					</div>
+					<div class="span3">
+						<!--{if isset($arrOriginalshopgoods[4])}-->
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$arrOriginalshopgoods[4]->shopgoods_id)}-->" title="<!--{$arrOriginalshopgoods[4]->shopgoods_name}-->">
+							<img src="<!--{$arrOriginalshopgoods[4]->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$arrOriginalshopgoods[4]->shopgoods_name}-->" width="100%" height="270">
+						</a>
+						<!--{/if}-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="span12" style="margin-top:30px;">
+		<h3>即将上市</h3>
+		<p>
+			<ul class="thumbnails">
+				<!--<foreach for=arrUpcomingshopgoods value=oShopgoods>-->
+				<li class="span2">
+					<div class="thumbnail">
+						<a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->">
+						<img src="<!--{$oShopgoods->shopgoods_thumb|Shopgoods_Extend+getShopgoodspath}-->" alt="<!--{$oShopgoods->shopgoods_name}-->" width="100%" height="160"></a>
+						<div class="caption">
+							<h5><a href="<!--{:Dyhb::U('shop://goods@?id='.$oShopgoods['shopgoods_id'])}-->" title="<!--{$oShopgoods->shopgoods_name}-->"><!--{$oShopgoods->shopgoods_name}--></a></h5>
+							<p>￥<!--{$oShopgoods->shopgoods_price}--></p>
+						</div>
+					</div>
+				</li>
+				<!--</foreach>-->
+			</ul>
+		</p>
+	</div>
+
+<!--<include file="footer" />-->

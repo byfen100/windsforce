@@ -1,0 +1,36 @@
+					<!--{~$arrAttachmentSize=Attachment_Extend::getImagesize($oAttachment)}-->
+					<table class="table">
+						<thead>
+							<tr valign="top">
+								<td width="200px"><p><a href="#" target="_blank"><img class="thumbnail" src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" alt="<!--{$oAttachment['attachment_name']}-->" width="46" height="60"></a>
+									</p>
+								</td>
+								<td><p><strong>文件名：</strong> <!--{$oAttachment['attachment_name']}--></p>
+									<p><strong>文件类型：</strong> <!--{$oAttachment['attachment_type']}--></p>
+									<p><strong>上传日期：</strong> <!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></p>
+									<!--{if $arrAttachmentSize}-->
+									<p><strong>尺寸：</strong> <!--{$arrAttachmentSize[0]}-->&nbsp;×&nbsp;<!--{$arrAttachmentSize[1]}--></p>
+									<!--{/if}-->
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>标题<em class="red">*</em></td>
+								<td><input class="span5" id="attachment_name" name="attachment_name" value="<!--{$oAttachment['attachment_name']}-->" type="text"></td>
+							</tr>
+							<tr>
+								<td>替代文本</td>
+								<td><input class="span5" id="attachment_alt" name="attachment_alt" value="<!--{$oAttachment['attachment_alt']}-->" type="text"></td>
+							</tr>
+							<tr>
+								<td>描述</td>
+								<td><textarea class="span5" id="attachment_description" name="attachment_description" rows="3"><!--{$oAttachment['attachment_description']}--></textarea></td>
+							</tr>
+							<tr>
+								<td>文件地址</td>
+								<td><input class="span5" value="<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->" type="text" disabled="disabled"></td>
+							</tr>
+						</tbody>
+					</table>
+					<input value="<!--{$oAttachment['attachment_id']}-->" type="hidden" name="attachment_id" id="attachment_id">

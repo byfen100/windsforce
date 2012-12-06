@@ -1,0 +1,146 @@
+<!--<include file="public+header">-->
+
+<!--{script}-->
+function importFileConfrim(){
+	if(confirm('<!--<lang package='Template/Default/Database'>-->你确定要导入选中数据吗？<!--</lang>-->')){
+		document.getElementById( 'upload_sql').submit();
+	}
+}
+
+function deleteFileConfrim(){
+	if(confirm('<!--<lang package='Template/Default/Database'>-->你确定要删除选中数据吗？<!--</lang>-->')){
+		document.getElementById( 'sqlList').submit();
+	}
+}
+
+function rowClick(obj){
+	var row=obj.parentNode.parentNode;
+	var tbl=row.parentNode.parentNode;
+	var test=false;
+	var img='';
+
+	if(obj.src.substr(obj.src.lastIndexOf('/')+1)=="menu_minus.gif"){
+		obj.src="<!--{:__TMPLPUB__}-->/Images/menu_plus.gif";
+	}else{
+		obj.src="<!--{:__TMPLPUB__}-->/Images/menu_minus.gif";
+	}
+
+	for(i=0;i< tbl.rows.length;i++){
+		var cell=tbl.rows[i].cells[1];
+		if(cell && cell.childNodes[0].src){
+			img=cell.childNodes[0].src.substr(cell.childNodes[0].src.lastIndexOf('/')+1);
+		}else{
+			img='';
+		}
+
+		if (test && img){
+			if(img=="menu_arrow.gif"){
+				tbl.rows[i].style.display=tbl.rows[i].style.display!='none'?'none':(Dyhb.Browser.Ie)?'block':'table-row';
+			}else{
+				test=false;
+			}
+		}
+
+		if(tbl.rows[i]==row){
+			test=true;
+		}
+	}
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Database'>-->数据库恢复<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Database'>-->数据库恢复<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template/Default/Database'>-->这里你可以管理你的数据库备份文件，你可以恢复数据库，也可以删除数据库备份文件<!--</lang>--></li>
+					<li><!--<lang package='Template/Default/Database'>-->恢复数据将会覆盖当前数据库，请谨慎操作，以免损害数据库<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Database'>-->数据库恢复<!--</lang>--></h3>
+				<ul class="tabs">
+					<li><a href="<!--{:Dyhb::U('database/index')}-->"><!--<lang package='Template/Default/Database'>-->数据库备份<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('database/runsql')}-->"><!--<lang package='Template/Default/Database'>-->运行SQL语句<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('database/optimize')}-->"><!--<lang package='Template/Default/Database'>-->数据库优化<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Dyhb::U('database/upload_sql')}-->" method="post" id="upload_sql" enctype="multipart/form-data" name="upload_sql" >
+				<div class="module_content">
+					<fieldset>
+						<label><!--<lang package='Template/Default/Database'>-->本地上传恢复备份<!--</lang>--></label>
+						<input type="file" name="sqlfile" size="50">
+						<div class="description"><!--<lang package='Template/Default/Database'>-->这里的数据库备份文件必须是Needforbug生成的备份格式<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="button" class="alt_btn" value="<!--<lang package='Template/Default/Database'>-->上传并执行sql语句<!--</lang>-->" onclick="importFileConfrim()" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+		
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Database'>-->备份文件列表<!--</lang>--></h3></header>
+			<form action="<!--{:Dyhb::U('database/remove')}-->" method="post" id="sqlList" name="sqlList" >
+				<div class="module_content">
+					<table class="tablesorter" cellspacing="0" id="checkList">
+						<thead>
+							<tr>
+								<th width="5px"><input onclick="checkAll('checkList')" type="checkbox"></th>
+								<th><!--<lang package='Template/Default/Database'>-->文件名<!--</lang>--></th>
+								<th><!--<lang package='Template/Default/Database'>-->时间<!--</lang>--></th>
+								<th><!--<lang package='Template/Default/Database'>-->大小<!--</lang>--></th>
+								<th><!--<lang package='Template/Default/Database'>-->卷<!--</lang>--></th>
+								<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--<foreach for=arrList>-->
+							<tr <!--{if $value['mark']==2}-->style="display:none;"<!--{/if}-->>
+								<td><input type="checkbox" name="file[]" value="<!--{$value['name']}-->" /></td>
+								<td><!--{if $value['mark']==1}-->
+									<img onClick="rowClick(this)" src="<!--{:__TMPLPUB__}-->/Images/menu_plus.gif" >
+									<!--{elseif $value['mark'] == 2}-->
+									<img src="<!--{:__TMPLPUB__}-->/Images/menu_arrow.gif">
+									<!--{/if}-->
+									<a href="<!--{:__ROOT__}-->/data/backup/<!--{$value['name']}-->"><!--{$value['name']}--></a>
+								</td>
+								<td><!--{$value['add_time']}-->
+									<div class="row-actions">
+										<span class='hide'><a href="<!--{:__ROOT__}-->/data/backup/<!--{$value['name']}-->"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a></span>
+									</div>
+								</td>
+								<td><!--{$value['file_size']}--></td>
+								<td>vol:<!--{$value['vol']}--></td>
+								<td><!--{if $value['mark']==1 || $value['mark']=='0'}-->
+									<a href="<!--{:Dyhb::U('database/import?file_name='.$value['name'])}-->">[<!--<lang package='Template/Default/Database'>-->导入<!--</lang>-->]</a>
+									<!--{d*else}-->
+									&nbsp;
+									<!--{/if}-->
+								</td>
+							</tr>
+							<!--</foreach>-->
+						</tbody> 
+					</table>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="button" value="<!--<lang package='Template/Default/Database'>-->删除备份文件<!--</lang>-->" class="alt_btn" onclick="deleteFileConfrim()"/>
+						<input type="reset" value="<!--<lang package='Template/Default/Database'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

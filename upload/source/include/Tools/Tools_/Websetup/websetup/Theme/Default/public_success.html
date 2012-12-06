@@ -1,0 +1,28 @@
+<include file="public+header">
+
+		<div id="col3_full">
+			<div id="col3_content" class="clearfix">
+				<div id="redirect_message">
+					<h3>{$__MessageTitle__}</h3>
+					<p><div id="__Loader__"><img src="{$__LoadingImg__}"></img></div>
+					 <if condition="!empty( $__Message__ )" >
+							 <font color="blue">{$__Message__}</font>
+					 </if>
+					 <if condition="!empty( $__ErrorMessage__ )" >
+							<font color="red">{$__ErrorMessage__}</td>
+					 </if>
+					</p>
+					<p>
+					<if condition="isset( $__CloseWindow__ ) AND !empty( $__CloseWindow__ )" >
+						<span class="red" id="__Seconds__">{$__WaitSecond__}</span> <lang package='__DYHB__@Dyhb'>系统即将自动关闭</lang><lang package='__DYHB__@Dyhb'>如果不想等待,直接点击</lang> <a href="{$__JumpUrl__}" class="lightlink"><lang package='__DYHB__@Dyhb'>这里</lang></a> <lang package='__DYHB__@Dyhb'>关闭</lang>
+					</if>
+					<if condition="!isset( $__CloseWindow__ ) OR empty( $__CloseWindow__ )" >
+						<span class="red" id="__Seconds__">{$__WaitSecond__}</span> <lang package='__DYHB__@Dyhb'>系统即将自动跳转</lang><lang package='__DYHB__@Dyhb'>如果不想等待,直接点击</lang> <a href="{$__JumpUrl__}" class="lightlink"><lang package='__DYHB__@Dyhb'>这里</lang></a> <lang package='__DYHB__@Dyhb'>跳转</lang>
+					</if>
+					</p>
+				</div>
+			</div>
+		</div>
+{$__JavaScript__}
+
+<include file="public+footer">

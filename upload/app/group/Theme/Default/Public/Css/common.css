@@ -1,0 +1,14 @@
+/*
+File Name: common.css
+File Type: 不必需
+Description: Group应用基本css元素
+*/
+
+/**===============================
+           基础
+================================*/
+
+/**===============================
+           通用侧边栏
+================================*/
+.group_sidebar_item .box_title{padding:7px 15px;border-bottom:1px solid #e8e8e8;font-size:12px;color:#666;}

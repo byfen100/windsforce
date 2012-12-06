@@ -1,0 +1,71 @@
+<!--<include file="public+header">-->
+
+<!--{script}-->
+function add(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'add...' );
+	Dyhb.AjaxSubmit('pmAdd','<!--{:Dyhb::U('pm/insert')}-->','',complete);
+}
+
+function complete(data,status){
+	$("#submit_button").attr("disabled", false);
+	$("#submit_button").val( '发布' );
+
+	if(status==1){
+		$("#pm_subject").val('');
+		$("#pm_message").val('');
+	}
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Pm'>-->发送短消息<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Pm'>-->发送短消息<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template/Default/Pm'>-->本短消息是系统消息，将会被所有用户接收<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Pm'>-->发送短消息<!--</lang>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Dyhb::U('pm/index')}-->"><!--<lang package='Template/Default/Pm'>-->短消息列表列表<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Dyhb::U('pm/insert')}-->" method="post" id="pmAdd" name="pmAdd">
+				<div class="module_content">
+					<fieldset>
+						<label for="pm_subject"><!--<lang package='Template/Default/Pm'>-->短消息主题<!--</lang>--></label>
+						<input type="text" name="pm_subject" id="pm_subject" size="40" value=""/>
+						<div class="description"><!--<lang package='Template/Default/Pm'>-->短消息主题，可以不填写，其最大字符不能够超过225<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label><!--<lang package='Template/Default/Pm'>-->短消息内容<!--</lang>--></label>
+						<textarea name="pm_message" id="pm_message" rows="5"></textarea>
+						<div class="description"><!--<lang package='Template/Default/Pm'>-->短消息内容不能为空，且最大字符不能够超过1000<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="pm_type" value="system">
+						<input type="hidden" name="pm_fromapp" value="admin">
+						<input type="hidden" name="pm_status" value="1">
+						<input type="hidden" name="pm_msgfrom" value="<!--{$GLOBALS['___login___']['user_name']}-->">
+						<input type="hidden" name="pm_msgfromid" value="<!--{$GLOBALS['___login___']['user_id']}-->">
+						<input type="button" id="submit_button" onclick="add()" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

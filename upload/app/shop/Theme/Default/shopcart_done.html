@@ -1,0 +1,38 @@
+<!--<include file="header" />-->
+
+<!--{script}-->
+
+<!--{/script}-->
+
+	<div class="span12" style="text-align:left;margin-top:20px;">
+		<ul class="breadcrumb">
+			<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li class="active">获得订单</li>
+		</ul>
+	</div>
+
+	<!--<include file="shopcart+menu" />-->
+	
+	<div class="span12" style="margin-top:30px;">
+		<h3 class="alert alert-success">谢您在本店购物！您的订单已提交成功，请记住您的订单号: <font style="color:red"><!--{$oShoporderinfo['shoporderinfo_sn']}--></font></h3>
+		<p>
+			<table class="table" width="99%" align="center" border="0" cellpadding="15" cellspacing="0" style="border:1px solid #ddd; margin:20px auto;" >
+				<tr>
+					<td align="center" bgcolor="#FFFFFF">
+					您选定的配送方式为: <strong><!--{$oShopshipping['shopshipping_name']}--></strong>，您选定的支付方式为: <strong><!--{$oShoppayment['shoppayment_name']}--></strong>。您的应付款金额为: <span style="color:red;font-size:25px;font-weight:bold;line-height:25px;">￥<!--{$oShoporderinfo['shoporderinfo_orderamount']}--></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="center"><!--{$oShoppayment['shoppayment_description']}--></td>
+				</tr>
+				<!--{if $oShoppayment['shoppayment_isonline']==1}-->
+				<tr>
+					<td align="center"><!--{$sShoppaymentReturnhtml}--></td>
+				</tr>
+				<!--{/if}-->
+			</table>
+		</p>
+		<p style="text-align:center; margin-bottom:20px;">您可以 <a href="<!--{:Dyhb::U('shop://public/index')}-->">返回首页</a> 或去 <a href="<!--{:Dyhb::U('shop://shopucenter/index')}-->">用户中心</a></p>
+	</div>
+
+<!--<include file="footer" />-->
