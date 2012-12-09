@@ -1,0 +1,21 @@
+/**
+ * WindsForce App Framework (风之力APP开发框架)
+ *
+ * @copyright    Copyright (c) 小牛哥Dyhb start this since from Mar 17, 2012(http://www.windsforce.com)
+ * @license        This is NOT a freeware, use is subject to license terms
+ * @notice         欢迎使用 WindsForce APP开发框架,在您开始使用之前,请务必完整阅读本软件附带的全部说明档
+ * @welcome     Welcome to http://www.windsforce.com & http://www.windsforce.net
+ */
+
+!defined('DYHB_PATH') && exit;
+
+WindsForce 使用技术
+
+    为了打造一个易于强大易于扩展的超级技术平台，WindsForce创始人早在2010便一直开发了一个用于支撑本产品的自有技术
+开发框架 DoYouHaoBaby（http://doyouhaobaby.net）.经过了长达2年的开发，框架已经十分成熟，基于DoYouHaoBaby框
+架技术的产品 WindsForce 以高姿态迎接市场挑战。
+
+
+                                                                                                                                    WindsForce Studio, 2012-12-09 11:17
+                                                                                                                                    http://www.windsforce.com
+                                                                                                                                    http://www.windsforce.net
