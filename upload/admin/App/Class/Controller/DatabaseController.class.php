@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    数据库备份处理控制器($)*/
 
 !defined('DYHB_PATH') && exit;

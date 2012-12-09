@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    鍙嬫儏琛旀帴鎺у埗鍣�$)*/
 
 !defined('DYHB_PATH') && exit;

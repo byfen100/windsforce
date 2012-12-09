@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
    语言包测试代码($)*/
 
 exit();

@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    Needforbug 后台入口文件($)*/
 
 /** 是否需要安装 */

@@ -1,4 +1,4 @@
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    Needforbug 后台公用($)*/
 
 // 选择表格行

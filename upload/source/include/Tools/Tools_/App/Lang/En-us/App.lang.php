@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
    创建应用程序英文语言包(En-us)($)*/
 
 return array(

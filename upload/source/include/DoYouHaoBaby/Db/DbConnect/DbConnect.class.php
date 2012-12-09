@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
    所有数据库连接类的基类($)*/
 
 !defined('DYHB_PATH') && exit;

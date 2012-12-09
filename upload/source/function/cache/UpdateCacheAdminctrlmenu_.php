@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    后台快捷菜单缓存($)*/
 
 !defined('DYHB_PATH') && exit;

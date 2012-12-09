@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    系统安装程序初始化控制器($)*/
 
 !defined('DYHB_PATH') && exit;

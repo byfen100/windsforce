@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    注册与访问控制配置处理控制器($)*/
 
 !defined('DYHB_PATH') && exit;

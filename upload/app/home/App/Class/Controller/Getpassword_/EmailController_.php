@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    通过邮件发送密码重置链接($)*/
 
 !defined('DYHB_PATH') && exit;

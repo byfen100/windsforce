@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
    ModelRelationManyToMany类封装了对象见的多对多关系($)*/
 
 !defined('DYHB_PATH') && exit;

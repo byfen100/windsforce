@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    Needforbug 安装程序入口文件($)*/
 
 //error_reporting(E_ERROR|E_PARSE|E_STRICT);

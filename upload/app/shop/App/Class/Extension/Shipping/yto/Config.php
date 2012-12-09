@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    商城圆通配送接口配置文件($)*/
 
 !defined('DYHB_PATH') && exit;

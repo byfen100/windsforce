@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
    文件上传 for jquery uploadify flash 文件上传($)*/
 
 !defined('DYHB_PATH') && exit;

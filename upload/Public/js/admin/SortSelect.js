@@ -1,4 +1,4 @@
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    Needforbug 后台排序($)*/
 
 function sortSelect(sFormName,sSortPan,sSearchName,nJumpNum){

@@ -1,6 +1,6 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
-   Ö÷ÌâÄ¬ÈÏ±äÁ¿ÁÐ±íÎÄ¼þ($)*/
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+   ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï±ï¿½ï¿½Ð±ï¿½ï¿½Ä¼ï¿½($)*/
 
 !defined('DYHB_PATH') && exit;
 

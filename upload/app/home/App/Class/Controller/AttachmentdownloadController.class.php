@@ -1,5 +1,5 @@
 <?php
-/* [NeedForBug!] (C)Dianniu From 2010.
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
    附件下载数量更新管理($)*/
 
 !defined('DYHB_PATH') && exit;
