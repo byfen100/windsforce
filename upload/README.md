@@ -14,7 +14,7 @@
   + 您使用本论坛前,请详细阅读用户授权文档 LICENSE.md.切记!在您认为可以满足授权文档
     中列出的要求时,方可使用 WindsForce,否则,请不要将 WindsForce 安装到您的网络上.
 
-  + 如果您不是从官方地址技术支持论坛 http://www.Discuz.net 或 WindsForce Studio 网站
+  + 如果您不是从官方地址技术支持论坛 http://www.windsforce.net 或 WindsForce Studio 网站
     http://www.windsforce.com 上下载的本程序,很可能获得的不是最新版本.所以安装之前请
     查询上述网址,使用最新的 WindsForce 版本安装.
 
