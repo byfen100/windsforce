@@ -1,7 +1,7 @@
 /**
  * WindsForce App Framework (风之力APP开发框架)
  *
- * @copyright    Copyright (c) 小牛哥Dyhb start this since from Mar 17, 2012(http://www.windsforce.com)
+ * @copyright    Copyright (c) 小牛哥Dyhb From 2012.03.17(http://www.windsforce.com)
  * @license        This is NOT a freeware, use is subject to license terms
  * @notice         欢迎使用 WindsForce APP开发框架,在您开始使用之前,请务必完整阅读本软件附带的全部说明档
  * @welcome     Welcome to http://www.windsforce.com & http://www.windsforce.net
