@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    数据库访问统一入口，可以通过这个接口与数据库进行交互($)*/
 
 !defined('DYHB_PATH') && exit;

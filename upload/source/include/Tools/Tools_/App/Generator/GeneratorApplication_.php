@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    应用程序创建类($) */
 
 class GeneratorApplication{

@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    Coll实现了一个类型安全的对象集合($)*/
 
 !defined('DYHB_PATH') && exit;

@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    对 PHP 原生Session 函数库的封装($)*/
 
 !defined('DYHB_PATH') && exit;

@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    Flash 图像查看类（flash地址位于DYHB_PATH.'/Resource_/Images/image_view.swf'）($)*/
 
 !defined('DYHB_PATH') && exit;

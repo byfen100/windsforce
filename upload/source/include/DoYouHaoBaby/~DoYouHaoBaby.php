@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    DoYouHaoBaby 框架基础文件($)*/
 /** 防止乱码 */
 header("Content-type:text/html;charset=utf-8");
@@ -19,7 +19,7 @@ if(!defined('APP_PATH')){
 if(!defined('APP_RUNTIME_PATH')){
 	define('APP_RUNTIME_PATH',APP_PATH.'/App/~Runtime');
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    DoYouHaoBaby 基础初始化文件($)*/
 /** 系统异常和错误处理 */
 set_exception_handler(array('Dyhb','exceptionHandler'));
@@ -507,7 +507,7 @@ class Dyhb{
 		exit;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    异常捕获($)*/
 class DException extends Exception{
 	private $_sType;
@@ -562,7 +562,7 @@ class DException extends Exception{
 		return $sFile;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    全局函数集($)*/
 class G{
 	static function getGpc($sKey,$sVar='R'){
@@ -1285,13 +1285,13 @@ class G{
 		return Xml::xmlSerialize($arrData);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    初始化基本配置($)*/
 if(!is_file(APP_RUNTIME_PATH.'/Config.php')){
 	require(DYHB_PATH.'/Common_/AppConfig.inc.php');
 }
 $GLOBALS['_commonConfig_']=Dyhb::C((array)(include APP_RUNTIME_PATH.'/Config.php'));
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    语言包管理类($)*/
 class LangPackage{
 	private $_sPackageName='';
@@ -1445,7 +1445,7 @@ class LangPackage{
 		return $this->_nUpdateTime;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    语言管理类($)*/
 class Lang{
 	const CURRENT_LANGUAGE=null;
@@ -1553,7 +1553,7 @@ class Lang{
 		return $sReallyValue;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    语言包($)*/
 class LangPackageForClient{
 	static public function getLangPackage($sLangName,$sPackageName){
@@ -1583,7 +1583,7 @@ class LangPackageForClient{
 		print '1';
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    全局控制器($)*/
 class App{
 	private static $_oControl;
@@ -1799,7 +1799,7 @@ class App{
 			$GLOBALS['_commonConfig_']['URL_HTML_SUFFIX']."';";
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    全局数据验证器($)*/
 class Check{
 	const SKIP_ON_FAILED='skip_on_failed';
@@ -2173,7 +2173,7 @@ class Check{
 		return self::$_sErrorMessage;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    控制器($)*/
 class Controller{
 	protected $_oView=null;
@@ -2350,7 +2350,7 @@ class SsmiController extends Controller{
 		call_user_func_array(array($_REQUEST['class'],$_REQUEST['method']),$arrParam);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    视图管理类($)*/
 class View{
 	private $_oPar=null;
@@ -2505,7 +2505,7 @@ class View{
 		return $oTemplate->getVar($Name);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    模板处理类($)*/
 class Template{
 	protected $TEMPLATE_OBJS=array();
@@ -2741,7 +2741,7 @@ class Template{
 		return isset($this->_arrVariable[$sName])?$this->_arrVariable[$sName]:null;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    对 PHP 原生Cookie 函数库的封装($)*/
 class Cookie{
 	public static function setCookie($sName,$sValue='',$nLife=0,$bPrefix=true,$bHttponly=false){
@@ -2790,7 +2790,7 @@ class Cookie{
 		return $nCookie;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    模型($)*/
 interface IModel{}
 class Model implements IModel,IModelCallback,ArrayAccess{
@@ -3581,7 +3581,7 @@ class Model implements IModel,IModelCallback,ArrayAccess{
 	protected function afterInit_(){ }
 	protected function afterInitPost_(){ }
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    模型回调($)*/
 interface IModelCallback{
 	const BEFORE_FIND='beforeFind';
@@ -3602,7 +3602,7 @@ interface IModelCallback{
 	const BEFORE_DESTROY='beforeDestroy';
 	const AFTER_DESTROY='afterDestroy';
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    ModelMeta元模式($)*/
 class ModelMeta{
 	public $_arrMethods=array();
@@ -4367,7 +4367,7 @@ class ModelMeta{
 		return $this->_sLastErrorMessage;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    数据库访问统一入口，可以通过这个接口与数据库进行交互($)*/
 class Db{
 	static public $_sDefaultFactoryName='DbFactoryMysql';
@@ -4688,7 +4688,7 @@ class Db{
 		return $oResult->fetchCol($nCol);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    数据库表入口($)*/
 class DbTableEnter{
 	public $_sSchema;
@@ -4998,7 +4998,7 @@ class DbTableEnter{
 		return $this->_sErrorMessage;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    Mysql数据库工厂类，用于生成数据库相关对象($)*/
 class DbFactoryMysql extends DbFactory{
 	public function createConnect(){
@@ -5008,13 +5008,13 @@ class DbFactoryMysql extends DbFactory{
 		return new DbRecordSetMysql($oConn,$nFetchMode);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    数据库工厂类，用于生成数据库相关对象 < 抽象类 >($)*/
 abstract class DbFactory{
 	abstract public function createConnect();
 	abstract public function createRecordSet(DbConnect $oConnect);
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    所有数据库连接类的基类($)*/
 abstract class DbConnect{
 	static public $_nQueryCount=0;
@@ -5893,7 +5893,7 @@ abstract class DbConnect{
 		return $sSql;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    Mysql数据连接管理类($)*/
 define('CLIENT_MULTI_RESULTS',131072);
 class DbConnectMysql extends DbConnect{
@@ -6346,7 +6346,7 @@ class DbConnectMysql extends DbConnect{
 		return $arrRet;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    使用硬盘文件进行缓存($)*/
 class FileCache{
 	protected $_arrOptions=array(
@@ -6455,7 +6455,7 @@ class FileCache{
 		return !is_null($arrOptions)?array_merge($this->_arrOptions,$arrOptions):$this->_arrOptions;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    模型行为扩展($)*/
 abstract class ModelBehavior implements IModelCallback{
 	protected $_oMeta;
@@ -6552,7 +6552,7 @@ abstract class ModelBehavior implements IModelCallback{
 		return $this->_sLastErrorMessage;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    模型RBAC 行为扩展($)*/
 class ModelBehaviorRbac extends ModelBehavior{
 	protected $_arrSettings=array(
@@ -7179,7 +7179,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		return $arrAccess;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    SQL表达式封装($)*/
 class DbExpression{
 	protected $_sExpr;
@@ -7196,7 +7196,7 @@ class DbExpression{
 		return $oConnect->qualifySql($this->_sExpr,$sTableName,$arrMapping,$hCallback);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    SQL Select 子句($)*/
 class DbSelect{
 	const DISTINCT='distinct';
@@ -8198,7 +8198,7 @@ class DbSelect{
 		return $sC;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    DbCond类封装复杂的查询条件($)*/
 class DbCond{
 	const BEGIN_GROUP='(';
@@ -8353,7 +8353,7 @@ class DbCond{
 		return implode(' ',$arrBigSql);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    MySQL 数据库记录集($)*/
 class DbRecordSetMysql extends DbRecordSet{
 	public function free(){
@@ -8377,7 +8377,7 @@ class DbRecordSetMysql extends DbRecordSet{
 		return $arrRow;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    数据库 记录集($)*/
 abstract class DbRecordSet{
 	public $_nFetchMode;
@@ -8525,7 +8525,7 @@ abstract class DbRecordSet{
 		return Coll::createFromArray($arrObjs,$sClassName);
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    Coll实现了一个类型安全的对象集合($)*/
 class Coll implements Iterator,ArrayAccess,Countable{
 	protected $_sType;
@@ -8671,7 +8671,7 @@ class Coll implements Iterator,ArrayAccess,Countable{
 		Dyhb::E(Dyhb::L('集合只能容纳 %s 类型的对象，而不是 %s 类型的值.','__DYHB__@Dyhb',null ,$this->_sType,$sType));
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    ModelRelation封装Model之间的关联关系($)*/
 class ModelRelation{
 	public $_sSourceKey;
@@ -8763,7 +8763,7 @@ class ModelRelation{
 		return $this;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    ModelAssociationBelongsTo类封装了对象见的隶属关系($)*/
 class ModelRelationBelongsTo extends ModelRelation{
 	public $_bOneToOne=true;
@@ -8788,7 +8788,7 @@ class ModelRelationBelongsTo extends ModelRelation{
 		return $this;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    ModelRelationHasMany类封装了对象见的一对多关系($)*/
 class ModelRelationHasMany extends ModelRelation{
 	public $_bOneToOne=false;
@@ -8857,7 +8857,7 @@ class ModelRelationHasMany extends ModelRelation{
 		return $this;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    ModelRelationHasOne类封装了对象见的一对一关系($)*/
 class ModelRelationHasOne extends ModelRelationHasMany{
 	public $_bOneToOne=true;
@@ -8878,7 +8878,7 @@ class ModelRelationHasOne extends ModelRelationHasMany{
 		return $this;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    ModelRelationManyToMany类封装了对象见的多对多关系($)*/
 class ModelRelationManyToMany extends ModelRelation{
 	public $_bOneToOne=false;
@@ -9034,10 +9034,10 @@ class ModelRelationManyToMany extends ModelRelation{
 		return $this;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    ModelRelationColl 封装了对象的关联关系，并且提供操作这些关联关系的方法($)*/
 class ModelRelationColl extends Coll{}
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    Page分页处理类($)*/
 class Page{
 	protected $_nCount;
@@ -9235,7 +9235,7 @@ class Page{
 		}
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    Web URL分析器($)*/
 /** 支持的URL模式 */
 define('URL_COMMON',0);// 普通模式
@@ -9525,7 +9525,7 @@ class Url{
 		return $sVal;
 	}
 }
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    系统路由解析类($)*/
 class Router{
 	protected $_sLastRouterName=null;

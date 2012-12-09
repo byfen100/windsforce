@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    数据库工厂类，用于生成数据库相关对象 < 抽象类 >($)*/
 
 !defined('DYHB_PATH') && exit;

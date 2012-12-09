@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)Dianniu From 2010.
+/* [DoYouHaoBaby!] (C)小牛哥Dyhb From 2010.10.04.
    DoYouHaoBaby 基础初始化文件($)*/
 
 /** 系统异常和错误处理 */
