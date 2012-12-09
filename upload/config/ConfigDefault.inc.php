@@ -7,8 +7,8 @@
 return array(
 	// 数据库相关
 	'DB_PASSWORD'=>'123456',
-	'DB_PREFIX'=>'needforbug_',
-	'DB_NAME'=>'needforbug',
+	'DB_PREFIX'=>'windsforce_',
+	'DB_NAME'=>'windsforce',
 	'DB_CACHE_FIELDS'=>TRUE,
 	'DB_CACHE'=>TRUE,
 	'DB_CACHE_TIME'=>86400000000,
@@ -20,8 +20,8 @@ return array(
 	'SHOW_GZIP_STATUS'=>TRUE,
 
 	// 重要前缀
-	'RBAC_DATA_PREFIX'=>'rbac_data_prefix_needforbug_',
-	'COOKIE_PREFIX'=>'needforbug_',
+	'RBAC_DATA_PREFIX'=>'rbac_data_prefix_windsforce_',
+	'COOKIE_PREFIX'=>'windsforce_',
 
 	// RBAC
 	'RBAC_ROLE_TABLE'=>'role',

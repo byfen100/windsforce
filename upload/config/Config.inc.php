@@ -2,8 +2,8 @@
  /* DoYouHaoBaby Framework Config File,Do not to modify this file! */ 
  return array (
   'DB_PASSWORD' => '123456',
-  'DB_PREFIX' => 'needforbug_',
-  'DB_NAME' => 'needforbug',
+  'DB_PREFIX' => 'windsforce_',
+  'DB_NAME' => 'windsforce',
   'DB_CACHE_FIELDS' => true,
   'DB_CACHE' => true,
   'DB_CACHE_TIME' => 86400000000,
@@ -35,7 +35,7 @@
   'TIME_ZONE' => 'Asia/Shanghai',
   'TEMPLATE_TAG_NOTE' => true,
   'APP_DEVELOP' => 0,
-  'FRONT_TPL_DIR' => 'Zhong',
+  'FRONT_TPL_DIR' => 'Default',
   'ADMIN_TPL_DIR' => 'Default',
   'CACHE_LIFE_TIME' => 8640000,
   'NOT_ALLOWED_EMPTYCONTROL_VIEW' => true,
@@ -47,6 +47,6 @@
   'ADMIN_LANG_DIR' => 'Zh-cn',
   'FRONT_LANG_DIR' => 'Zh-cn',
   'LANG_SWITCH' => true,
-  'DEFAULT_APP' => 'shop',
+  'DEFAULT_APP' => 'home',
 )
 ?>
