@@ -17,7 +17,7 @@ grouptopic_updateusername
 
 安装时将域名写入到配置文件中去
 
-笔误：将最大长度整成了最达长度，最后统一进行修复一下
+笔误：将最大长度整成了最大长度，最后统一进行修复一下
 
 新增Jquery loadzy load ，图片延迟加载和（jquery tab 后台用）
 

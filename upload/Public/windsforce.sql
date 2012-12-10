@@ -134,9 +134,9 @@ CREATE TABLE IF NOT EXISTS `windsforce_app` (
 --
 
 INSERT INTO `windsforce_app` (`app_id`, `app_identifier`, `app_name`, `app_version`, `app_description`, `app_url`, `app_email`, `app_author`, `app_authorurl`, `app_isadmin`, `app_isinstall`, `app_isuninstall`, `app_issystem`, `app_isappnav`, `app_status`) VALUES
-(1, 'home', '个人空间', '1.0', '个人空间应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'Dianniu Team', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1),
-(2, 'group', '小组', '1.0', '群组应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'Dianniu Team', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1),
-(3, 'wap', 'Wap手机', '1.0', '手机应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'Dianniu Team', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1);
+(1, 'home', '个人空间', '1.0', '个人空间应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Studio', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1),
+(2, 'group', '小组', '1.0', '群组应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Studio', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1),
+(3, 'wap', 'Wap手机', '1.0', '手机应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Studio', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -832,7 +832,7 @@ CREATE TABLE IF NOT EXISTS `windsforce_link` (
 
 INSERT INTO `windsforce_link` (`link_id`, `create_dateline`, `update_dateline`, `link_name`, `link_url`, `link_description`, `link_logo`, `link_status`, `link_sort`) VALUES
 (1, 1355150944, 0, 'DoYouHaoBaby', 'http://doyouhaobaby.net/', 'The DoYouHaoBaby Framework', '', 1, 0),
-(2, 1355151005, 0, '风之力', 'http://www.windsforce.net', '风之力APP开发框架', '', 1, 0);
+(2, 1355151005, 0, 'WindsForce', 'http://www.windsforce.net', '风之力APP开发框架', '', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1047,7 +1047,7 @@ CREATE TABLE IF NOT EXISTS `windsforce_option` (
 INSERT INTO `windsforce_option` (`option_name`, `option_value`) VALUES
 ('admin_list_num', '15'),
 ('site_name', 'WindsForce'),
-('site_description', 'To Make Prowerful App.应用从此而造'),
+('site_description', 'To Make Prowerful APP.天神下凡APP'),
 ('site_url', 'http://localhost/Windsforce/upload'),
 ('close_site', '0'),
 ('close_site_reason', 'update...'),
@@ -1062,7 +1062,7 @@ INSERT INTO `windsforce_option` (`option_name`, `option_value`) VALUES
 ('disallowed_register', '0'),
 ('icp', '蜀ICP备123456号'),
 ('home_description', '{site_name}是一个以社区为核心的APP开发框架。在这里你可以我们可以实现产品跨界融合，充分利用APP独立的模式来为网站提供无限动力，我们崇尚的是理念：<span class="label label-success">简单与分享</span>。'),
-('admin_email', 'xiaoniuge@dianniu.net'),
+('admin_email', 'admin@windsforce.com'),
 ('seccode_image_width_size', '160'),
 ('seccode_image_height_size', '60'),
 ('seccode_adulterate', '0'),
@@ -1133,7 +1133,7 @@ INSERT INTO `windsforce_option` (`option_name`, `option_value`) VALUES
 ('mail_testmessage_backup', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。\r\n{time}\r\n\r\n-----------------------------------------------------\r\n消息来源：{site_name}\r\n站点网址：{site_url}'),
 ('mail_testsubject_backup', '尊敬的{user_name}：{site_name}系统测试邮件发送成功'),
 ('mail_testmessage', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。<br />\n<br />\n2012-10-18 03:25<br />\n<br />\n<br />\n<br />\n-----------------------------------------------------<br />\n<br />\n消息来源：NeedForBug<br />\n<br />\n<p>\n	<br />\n站点网址：http://localhost/needforbug/upload\n</p>\n<br />\n<p>\n	<br />\n</p>\n<br />\n<p>\n	<br />\nadsadasd\n</p>'),
-('mail_testsubject', '尊敬的admin：NeedForBug系统测试邮件发送成功222'),
+('mail_testsubject', '尊敬的admin：WindsForce系统测试邮件发送成功222'),
 ('getpassword_expired', '36000'),
 ('style_switch_on', '1'),
 ('extendstyle_switch_on', '1'),
@@ -1785,7 +1785,7 @@ CREATE TABLE IF NOT EXISTS `windsforce_user` (
 --
 
 INSERT INTO `windsforce_user` (`user_id`, `user_name`, `user_nikename`, `user_password`, `user_registerip`, `user_lastlogintime`, `user_lastloginip`, `user_logincount`, `user_email`, `user_remark`, `user_sign`, `create_dateline`, `update_dateline`, `user_status`, `user_random`, `user_temppassword`, `user_extendstyle`) VALUES
-(1, 'admin', '', 'cd5be146ca5cc5985943ef02bd61f70d', '127.0.0.1', 1355150636, '::1', 861, 'xiaoniuge@dianniu.net', '', '每一天都是新的,欢迎大家光临我们的心空间，世界之巅，唯我读准。', 1333281705, 1355151458, 1, '90ad77', '', '0');
+(1, 'admin', '', 'cd5be146ca5cc5985943ef02bd61f70d', '127.0.0.1', 1355150636, '::1', 861, 'admin@windsforce.com', '', '每一天都是新的,欢迎大家光临我们的心空间，世界之巅，唯我读准。', 1333281705, 1355151458, 1, '90ad77', '', '0');
 
 -- --------------------------------------------------------
 
@@ -1873,7 +1873,7 @@ CREATE TABLE IF NOT EXISTS `windsforce_userprofile` (
   `userprofile_douban` varchar(255) NOT NULL COMMENT '豆瓣帐号',
   `userprofile_facebook` varchar(255) NOT NULL COMMENT 'Facebook',
   `userprofile_twriter` varchar(255) NOT NULL COMMENT 'TWriter',
-  `userprofile_dianniu` varchar(255) NOT NULL COMMENT '点牛帐号',
+  `userprofile_windsforce` varchar(255) NOT NULL COMMENT 'WindsForce帐号',
   `userprofile_skype` varchar(255) NOT NULL COMMENT 'Skype',
   `userprofile_weibocom` varchar(255) NOT NULL COMMENT '新浪微博',
   `userprofile_tqqcom` varchar(255) NOT NULL COMMENT '腾讯微博',
@@ -1901,8 +1901,8 @@ CREATE TABLE IF NOT EXISTS `windsforce_userprofile` (
 -- 转存表中的数据 `windsforce_userprofile`
 --
 
-INSERT INTO `windsforce_userprofile` (`user_id`, `userprofile_realname`, `userprofile_gender`, `userprofile_birthyear`, `userprofile_birthmonth`, `userprofile_birthday`, `userprofile_constellation`, `userprofile_zodiac`, `userprofile_telephone`, `userprofile_mobile`, `userprofile_idcardtype`, `userprofile_idcard`, `userprofile_address`, `userprofile_zipcode`, `userprofile_nationality`, `userprofile_birthprovince`, `userprofile_birthcity`, `userprofile_birthdist`, `userprofile_birthcommunity`, `userprofile_resideprovince`, `userprofile_residecity`, `userprofile_residedist`, `userprofile_residecommunity`, `userprofile_residesuite`, `userprofile_graduateschool`, `userprofile_company`, `userprofile_education`, `userprofile_occupation`, `userprofile_position`, `userprofile_revenue`, `userprofile_affectivestatus`, `userprofile_lookingfor`, `userprofile_bloodtype`, `userprofile_height`, `userprofile_weight`, `userprofile_alipay`, `userprofile_icq`, `userprofile_qq`, `userprofile_yahoo`, `userprofile_msn`, `userprofile_taobao`, `userprofile_site`, `userprofile_bio`, `userprofile_interest`, `userprofile_google`, `userprofile_baidu`, `userprofile_renren`, `userprofile_douban`, `userprofile_facebook`, `userprofile_twriter`, `userprofile_dianniu`, `userprofile_skype`, `userprofile_weibocom`, `userprofile_tqqcom`, `userprofile_diandian`, `userprofile_kindergarten`, `userprofile_primary`, `userprofile_juniorhighschool`, `userprofile_highschool`, `userprofile_university`, `userprofile_master`, `userprofile_dr`, `userprofile_nowschool`, `userprofile_field1`, `userprofile_field2`, `userprofile_field3`, `userprofile_field4`, `userprofile_field5`, `userprofile_field6`, `userprofile_field7`, `userprofile_field8`) VALUES
-(1, 'W先生', 1, 2012, 6, 14, '', '', '08188301355', '', '身份证', '', '', '', '', '', '凉山彝族自治州', '金阳县', '丝窝乡', '', '崇左市', '扶绥县', '', '', '', '', '本科', '秘书', '', '', '已婚', '交友', 'B', '', '', '', '', '63575056', '', '', '', 'http://baidu.com', '', '编程', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '博士', 'df', '我查', '', '', '', '', '', '');
+INSERT INTO `windsforce_userprofile` (`user_id`, `userprofile_realname`, `userprofile_gender`, `userprofile_birthyear`, `userprofile_birthmonth`, `userprofile_birthday`, `userprofile_constellation`, `userprofile_zodiac`, `userprofile_telephone`, `userprofile_mobile`, `userprofile_idcardtype`, `userprofile_idcard`, `userprofile_address`, `userprofile_zipcode`, `userprofile_nationality`, `userprofile_birthprovince`, `userprofile_birthcity`, `userprofile_birthdist`, `userprofile_birthcommunity`, `userprofile_resideprovince`, `userprofile_residecity`, `userprofile_residedist`, `userprofile_residecommunity`, `userprofile_residesuite`, `userprofile_graduateschool`, `userprofile_company`, `userprofile_education`, `userprofile_occupation`, `userprofile_position`, `userprofile_revenue`, `userprofile_affectivestatus`, `userprofile_lookingfor`, `userprofile_bloodtype`, `userprofile_height`, `userprofile_weight`, `userprofile_alipay`, `userprofile_icq`, `userprofile_qq`, `userprofile_yahoo`, `userprofile_msn`, `userprofile_taobao`, `userprofile_site`, `userprofile_bio`, `userprofile_interest`, `userprofile_google`, `userprofile_baidu`, `userprofile_renren`, `userprofile_douban`, `userprofile_facebook`, `userprofile_twriter`, `userprofile_windsforce`, `userprofile_skype`, `userprofile_weibocom`, `userprofile_tqqcom`, `userprofile_diandian`, `userprofile_kindergarten`, `userprofile_primary`, `userprofile_juniorhighschool`, `userprofile_highschool`, `userprofile_university`, `userprofile_master`, `userprofile_dr`, `userprofile_nowschool`, `userprofile_field1`, `userprofile_field2`, `userprofile_field3`, `userprofile_field4`, `userprofile_field5`, `userprofile_field6`, `userprofile_field7`, `userprofile_field8`) VALUES
+(1, 'W先生', 1, 2012, 6, 14, '', '', '08188301355', '', '身份证', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '本科', '秘书', '', '', '已婚', '交友', 'B', '', '', '', '', '123456789', '', '', '', 'http://windsforce.net', '', '编程', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '博士', 'df', '我查', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1984,7 +1984,7 @@ INSERT INTO `windsforce_userprofilesetting` (`userprofilesetting_id`, `userprofi
 ('userprofile_douban', 1, '豆瓣', '', 0, 0, 0, 0),
 ('userprofile_facebook', 1, 'Facebook', '', 0, 0, 0, 0),
 ('userprofile_twriter', 1, 'TWriter', '', 0, 0, 0, 0),
-('userprofile_dianniu', 1, '点牛', '', 0, 0, 0, 0),
+('userprofile_windsforce', 1, '风之力', '', 0, 0, 0, 0),
 ('userprofile_skype', 1, 'Skype', '', 0, 0, 0, 0),
 ('userprofile_weibocom', 1, '新浪微博', '', 0, 0, 0, 0),
 ('userprofile_tqqcom', 1, '腾讯微博', '', 0, 0, 0, 0),

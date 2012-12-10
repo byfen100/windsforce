@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<title><![CDATA[NeedForBug App]]></title>
+	<title><![CDATA[WindsForce App]]></title>
 	<version><![CDATA[1.0]]></version>
 	<time><![CDATA[2012-03-25]]></time>
-	<copyright><![CDATA[Dianniu]]></copyright>
+	<copyright><![CDATA[WindsForce Studio]]></copyright>
 	<data>
 		<identifier><![CDATA[home]]></identifier>
 		<name><![CDATA[个人空间]]></name>
@@ -11,7 +11,7 @@
 		<description><![CDATA[个人空间应用]]></description>
 		<url><![CDATA[http://doyouhaobaby.net]]></url>
 		<email><![CDATA[admin@doyouhaobaby.net]]></email>
-		<author><![CDATA[Dianniu Team]]></author>
+		<author><![CDATA[WindsForce Studio]]></author>
 		<authorurl><![CDATA[http://doyouhaobaby.net]]></authorurl>
 		<isadmin><![CDATA[1]]></isadmin>
 		<isinstall><![CDATA[1]]></isinstall>
