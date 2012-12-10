@@ -11,7 +11,7 @@
 
 特别说明: (用户必读!)
 
-  + 您使用本论坛前,请详细阅读用户授权文档 LICENSE.md.切记!在您认为可以满足授权文档
+  + 您使用本程序前,请详细阅读用户授权文档 LICENSE.md.切记!在您认为可以满足授权文档
     中列出的要求时,方可使用 WindsForce,否则,请不要将 WindsForce 安装到您的网络上.
 
   + 如果您不是从官方地址技术支持论坛 http://www.windsforce.net 或 WindsForce Studio 网站
