@@ -48,8 +48,8 @@ class Admin_Extend{
 		$sTabelPrefix=$GLOBALS['_commonConfig_']['DB_PREFIX'];
 		$sDbCharset=$GLOBALS['_commonConfig_']['DB_CHAR'];
 
-		$sSql=str_replace(array(' needforbug_',' `needforbug_',' prefix_',' `prefix_'),array(' {NEEDFORBUG}',' `{NEEDFORBUG}',' {NEEDFORBUG}',' `{NEEDFORBUG}'),$sSql);
-		$sSql=str_replace("\r","\n",str_replace(array(' {NEEDFORBUG}',' `{NEEDFORBUG}'),array(' '.$sTabelPrefix,' `'.$sTabelPrefix),$sSql));
+		$sSql=str_replace(array(' needforbug_',' `needforbug_',' prefix_',' `prefix_'),array(' {WINDSFORCE}',' `{WINDSFORCE}',' {WINDSFORCE}',' `{WINDSFORCE}'),$sSql);
+		$sSql=str_replace("\r","\n",str_replace(array(' {WINDSFORCE}',' `{WINDSFORCE}'),array(' '.$sTabelPrefix,' `'.$sTabelPrefix),$sSql));
 
 		$arrResult=array();
 		$nNum=0;
@@ -88,7 +88,7 @@ class Admin_Extend{
 	}
 
 	static public function testWrite($sPath){
-		$sFile='Needforbug.test.txt';
+		$sFile='WindsForce.test.txt';
 
 		$sPath=preg_replace("#\/$#",'',$sPath);
 
@@ -114,7 +114,7 @@ class Admin_Extend{
 			$sTemplate=$sTheme.'/'.$sTemplate;
 		}
 
-		$sUrl=NEEDFORBUG_PATH.'/app/'.$sApp.'/Theme/Admin/'.$sTemplate.'.html';
+		$sUrl=WINDSFORCE_PATH.'/app/'.$sApp.'/Theme/Admin/'.$sTemplate.'.html';
 
 		if(is_file($sUrl)){
 			return $sUrl;

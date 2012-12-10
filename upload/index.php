@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 主页入口文件($)*/
+   WindsForce 主页入口文件($)*/
 
 /** 是否需要安装 */
 if(!file_exists('data/Install.lock.php')){
@@ -9,22 +9,22 @@ if(!file_exists('data/Install.lock.php')){
 
 //error_reporting(E_ERROR|E_PARSE|E_STRICT);
 error_reporting(E_ALL);
-define('NEEDFORBUG_DEBUG',TRUE);
+define('WINDSFORCE_DEBUG',TRUE);
 
 /** Defined the version of needforbug */
-define('NEEDFORBUG_SERVER_VERSION','1.0');
-define('NEEDFORBUG_SERVER_RELEASE','20120104');
+define('WINDSFORCE_SERVER_VERSION','1.0');
+define('WINDSFORCE_SERVER_RELEASE','20120104');
 
 /** 系统应用路径定义 */
-define('NEEDFORBUG_PATH',getcwd());
+define('WINDSFORCE_PATH',getcwd());
 
 /** 应用路径解析，还可以加强 */
 if(isset($_GET['app'])){
 	$sAppName=strtolower(str_replace(array('/','\\'),'',strip_tags(urldecode($_GET['app']))));
 }else{
 	// 默认应用
-	if(is_file(NEEDFORBUG_PATH.'/config/Config.inc.php')){
-		$arrConfigs=(array)(include(NEEDFORBUG_PATH.'/config/Config.inc.php'));
+	if(is_file(WINDSFORCE_PATH.'/config/Config.inc.php')){
+		$arrConfigs=(array)(include(WINDSFORCE_PATH.'/config/Config.inc.php'));
 		$sDefaultAppname=isset($arrConfigs['DEFAULT_APP'])?$arrConfigs['DEFAULT_APP']:'home';
 		unset($arrConfigs);
 	}else{
@@ -74,21 +74,21 @@ if(isset($_GET['app'])){
 
 /** 项目及项目路径定义 */
 define('APP_NAME',$sAppName);
-define('APP_PATH',NEEDFORBUG_PATH.'/app/'.APP_NAME);
+define('APP_PATH',WINDSFORCE_PATH.'/app/'.APP_NAME);
 
 /** 项目运行时路径及数据库表缓存路径 */
-define('APP_RUNTIME_PATH',NEEDFORBUG_PATH.'/data/~runtime/app/'.APP_NAME);
-define('DB_META_CACHED_PATH',NEEDFORBUG_PATH.'/data/~runtime/cache_/field');
+define('APP_RUNTIME_PATH',WINDSFORCE_PATH.'/data/~runtime/app/'.APP_NAME);
+define('DB_META_CACHED_PATH',WINDSFORCE_PATH.'/data/~runtime/cache_/field');
 
 /** 项目语言包路径定义 */
-define('__COMMON_LANG__',NEEDFORBUG_PATH.'/ucontent/language');
+define('__COMMON_LANG__',WINDSFORCE_PATH.'/ucontent/language');
 
 /** 项目模板路径定义 */
 define('__STATICS__','app/'.APP_NAME.'/Static');
 define('__THEMES__','app/'.APP_NAME.'/Theme');
 
 /** 项目编译锁定文件定义 */
-define('APP_RUNTIME_LOCK',NEEDFORBUG_PATH.'/source/protected/~Runtime.inc.lock');
+define('APP_RUNTIME_LOCK',WINDSFORCE_PATH.'/source/protected/~Runtime.inc.lock');
 
 /** 加载框架编译版本 */
 define('STRIP_RUNTIME_SPACE',false);
@@ -98,5 +98,5 @@ define('DYHB_THIN',true);
 define('TMPL_STRIP_SPACE',true);
 
 /** 载入框架 */
-require(NEEDFORBUG_PATH.'/source/include/DoYouHaoBaby/~DoYouHaoBaby.php');
+require(WINDSFORCE_PATH.'/source/include/DoYouHaoBaby/~DoYouHaoBaby.php');
 App::RUN();

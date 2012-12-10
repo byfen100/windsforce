@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 安装函数库($)*/
+   WindsForce 安装函数库($)*/
 
 !defined('DYHB_PATH') && exit;
 
@@ -149,7 +149,7 @@ class Install_Extend extends Controller{
 	static public function removeDir($sDirName){
 		if(!is_dir($sDirName)){
 			@unlink($sDirName);
-			self::showJavascriptMessage(Dyhb::L('清理文件','Function/Install_Extend').' '.str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sDirName)));
+			self::showJavascriptMessage(Dyhb::L('清理文件','Function/Install_Extend').' '.str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sDirName)));
 
 			return false;
 		}
@@ -162,7 +162,7 @@ class Install_Extend extends Controller{
 					self::removeDir($sDir);
 				}else{
 					@unlink($sDir);
-					self::showJavascriptMessage(Dyhb::L('清理文件','Function/Install_Extend').' '.str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sDir)));
+					self::showJavascriptMessage(Dyhb::L('清理文件','Function/Install_Extend').' '.str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sDir)));
 				}
 			}
 		}
@@ -170,7 +170,7 @@ class Install_Extend extends Controller{
 		closedir($hHandle);
 
 		$bResult=rmdir($sDirName);
-		self::showJavascriptMessage(Dyhb::L('清理目录','Function/Install_Extend').' '.str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sDirName)));
+		self::showJavascriptMessage(Dyhb::L('清理目录','Function/Install_Extend').' '.str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sDirName)));
 
 		return $bResult;
 	}

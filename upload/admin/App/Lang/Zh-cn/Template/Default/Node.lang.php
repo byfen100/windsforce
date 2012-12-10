@@ -4,7 +4,7 @@ return array(
 'ce9e92bdb6aacaedc2a811ece5ed096a'=>"节点列表",
 'fac54c3430528339ac075d688db27ce8'=>"模块",
 '3712972d84adf48acbd6ad24b4d75ad0'=>"列表",
-'ca2ff096582047fa2e2b6cd2fba3bbd9'=>"Needforbug采用基于角色的权限认证体系(RBAC)来管理用户访问权限",
+'ca2ff096582047fa2e2b6cd2fba3bbd9'=>"WindsForce采用基于角色的权限认证体系(RBAC)来管理用户访问权限",
 '2ced341a191977bdbab1f5a16500e1a3'=>"节点在RBAC系统中属于资源容器，里面储存了资源的层级关系",
 '9911aa00261bbfde52d936a55d2c491e'=>"节点的最高级别为应用",
 'a04150973c60badc3d1777a500edb476'=>"应用的下面有模块，模块下面有操作方法",

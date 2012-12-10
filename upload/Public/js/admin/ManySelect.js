@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 后台将Option变成可以选择的checkbox($)*/
+   WindsForce 后台将Option变成可以选择的checkbox($)*/
 
 function selectAll(){
 	var arrColInputs=document.getElementsByTagName("input");

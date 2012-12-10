@@ -12,7 +12,7 @@ class Cache_Extend{
 		if(!$arrUpdateList){
 			$arrUpdatecache=array();
 
-			$arrAllCachefile=G::listDir(NEEDFORBUG_PATH.'/source/function/cache',false,true);
+			$arrAllCachefile=G::listDir(WINDSFORCE_PATH.'/source/function/cache',false,true);
 			foreach($arrAllCachefile as $sCachefile){
 				$sCachefile=strtolower(subStr($sCachefile,11,-5));
 				if(!in_array($sCachefile,$arrNotallowed)){
@@ -25,7 +25,7 @@ class Cache_Extend{
 			}
 		}else{
 			foreach($arrUpdateList as $sCache){
-				$sCachefile=NEEDFORBUG_PATH.'/source/function/cache/UpdateCache'.ucfirst($sCache).'_.php';
+				$sCachefile=WINDSFORCE_PATH.'/source/function/cache/UpdateCache'.ucfirst($sCache).'_.php';
 
 				if(is_file($sCachefile)){
 					$sCacheclass='UpdateCache'.ucfirst($sCache);

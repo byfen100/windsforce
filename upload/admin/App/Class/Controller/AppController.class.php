@@ -10,8 +10,8 @@ class AppController extends InitController{
 		$arrOptionData=$GLOBALS['_option_'];
 		
 		// 默认应用
-		if(is_file(NEEDFORBUG_PATH.'/config/Config.inc.php')){
-			$arrConfigs=(array)(include(NEEDFORBUG_PATH.'/config/Config.inc.php'));
+		if(is_file(WINDSFORCE_PATH.'/config/Config.inc.php')){
+			$arrConfigs=(array)(include(WINDSFORCE_PATH.'/config/Config.inc.php'));
 			$sDefaultAppname=isset($arrConfigs['DEFAULT_APP'])?$arrConfigs['DEFAULT_APP']:'home';
 			unset($arrConfigs);
 		}else{
@@ -23,7 +23,7 @@ class AppController extends InitController{
 
 	public function update_option(){Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller/App',null,5);
 		if($_POST['options']['default_app']!=$GLOBALS['_option_']['default_app']){
-			$sAppGlobaldefaultconfigFile=NEEDFORBUG_PATH.'/config/Config.inc.php';
+			$sAppGlobaldefaultconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 			if(!is_file($sAppGlobaldefaultconfigFile)){
 				$this->E(Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller/App',null,$sAppGlobaldefaultconfigFile));
 			}
@@ -63,10 +63,10 @@ class AppController extends InitController{
 			}
 
 			// 定义应用的语言包
-			define('__APP_ADMIN_LANG__',NEEDFORBUG_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Lang/Admin');
+			define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Lang/Admin');
 
 			// 导入应用扩展函数
-			$sExtensionDir=NEEDFORBUG_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Class/Extension';
+			$sExtensionDir=WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Class/Extension';
 			if(is_dir($sExtensionDir)){
 				Dyhb::import($sExtensionDir);
 			}
@@ -90,7 +90,7 @@ class AppController extends InitController{
 				$_GET['action']='index';
 			}
 			
-			$sControllerPath=NEEDFORBUG_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Class/Controller/Admin/'.$sController.'_.php';
+			$sControllerPath=WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Class/Controller/Admin/'.$sController.'_.php';
 			if(is_file($sControllerPath)){
 				require_once($sControllerPath);
 				$oController=null;
@@ -107,7 +107,7 @@ class AppController extends InitController{
 				exit();
 			}else{
 				$this->assign('__JumpUrl__',Dyhb::U('app/index'));
-				$this->E(Dyhb::L('后台管理模块文件 %s 不存在','Controller/App',null,str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sControllerPath))));
+				$this->E(Dyhb::L('后台管理模块文件 %s 不存在','Controller/App',null,str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sControllerPath))));
 			}
 		}
 	}
@@ -146,8 +146,8 @@ class AppController extends InitController{
 
 			$arrAppData=array();
 			$arrAppData['title']='NeedForBug App';
-			$arrAppData['version']=NEEDFORBUG_SERVER_VERSION;
-			$arrAppData['time']=NEEDFORBUG_SERVER_RELEASE;
+			$arrAppData['version']=WINDSFORCE_SERVER_VERSION;
+			$arrAppData['time']=WINDSFORCE_SERVER_RELEASE;
 			$arrAppData['copyright']='Dianniu';
 
 			foreach($arrApp as $key=>$value){

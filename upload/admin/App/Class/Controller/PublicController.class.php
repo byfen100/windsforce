@@ -5,10 +5,10 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入Home模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/home/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 
 /** 定义Home的语言包 */
-define('__APP_ADMIN_LANG__',NEEDFORBUG_PATH.'/app/home/App/Lang/Admin');
+define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
 
 class PublicController extends InitController{
 
@@ -54,13 +54,13 @@ class PublicController extends InitController{
 		$this->assign('arrInfo',$arrInfo);
 
 		// 系统文件权限检查
-		$arrTestDirs=(array)(include NEEDFORBUG_PATH.'/source/common/Cache.php');
+		$arrTestDirs=(array)(include WINDSFORCE_PATH.'/source/common/Cache.php');
 		$this->assign('arrTestDirs',$arrTestDirs);
 
 		// 程序信息
 		$arrVersionInfo=array(
-			'Needforbug '.Dyhb::L('程序版本','Controller/Public')=>"Needforbug " .NEEDFORBUG_SERVER_VERSION. "  Release ".
-			NEEDFORBUG_SERVER_RELEASE." <a href=\"http://doyouhaobaby.net\" target=\"_blank\">".
+			'WindsForce '.Dyhb::L('程序版本','Controller/Public')=>"WindsForce " .WINDSFORCE_SERVER_VERSION. "  Release ".
+			WINDSFORCE_SERVER_RELEASE." <a href=\"http://doyouhaobaby.net\" target=\"_blank\">".
 			Dyhb::L('查看最新版本','Controller/Public')."</a>&nbsp;"."<a href=\"http://doyouhaobaby.net\" target=\"_blank\">".
 			Dyhb::L('专业支持与服务','Controller/Public')."</a>",
 			'DoYouHaoBaby'.Dyhb::L('版本','Controller/Public')=>DYHB_VERSION.
@@ -102,8 +102,8 @@ class PublicController extends InitController{
 		$tipsTxt=$arrTipsTxt[$nTips];
 		$this->assign('sTipsTxt',$tipsTxt);
 		
-		$sUpdateUrl=__PUBLIC__.'/update.php?version='.urlencode(NEEDFORBUG_SERVER_VERSION).
-			'&release='.urlencode(NEEDFORBUG_SERVER_RELEASE).'&hostname='.
+		$sUpdateUrl=__PUBLIC__.'/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
+			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']);
 		$this->assign('sUpdateUrl',$sUpdateUrl);
 
@@ -267,8 +267,8 @@ class PublicController extends InitController{
 	}
 
 	public function program_update(){
-		$sUpdateUrl=__PUBLIC__.'/update.php?version='.urlencode(NEEDFORBUG_SERVER_VERSION).
-			'&release='.urlencode(NEEDFORBUG_SERVER_RELEASE).'&hostname='.
+		$sUpdateUrl=__PUBLIC__.'/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
+			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']).'&infolist=1';
 		$this->assign('sUpdateUrl',$sUpdateUrl);
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug URL跳转($)*/
+   WindsForce URL跳转($)*/
 
 /** 处理URL */
 $sUrl=isset($_GET['go'])?$_GET['go']:'';

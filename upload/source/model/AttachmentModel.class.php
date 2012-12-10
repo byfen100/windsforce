@@ -72,8 +72,8 @@ class AttachmentModel extends CommonModel{
 				$arrUploadinfoTemp['attachment_thumbprefix']='';
 			}
 			
-			$arrUploadinfoTemp['attachment_savepath']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/attachment').'/','',G::tidyPath($arrUploadinfoTemp['attachment_savepath']));
-			$arrUploadinfoTemp['attachment_thumbpath']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/attachment/').'/','',G::tidyPath($arrUploadinfoTemp['attachment_thumbpath']));
+			$arrUploadinfoTemp['attachment_savepath']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/attachment').'/','',G::tidyPath($arrUploadinfoTemp['attachment_savepath']));
+			$arrUploadinfoTemp['attachment_thumbpath']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/attachment/').'/','',G::tidyPath($arrUploadinfoTemp['attachment_thumbpath']));
 		
 			$oUpload=new self($arrUploadinfoTemp);
 			$oUpload->save(0);

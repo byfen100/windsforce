@@ -27,8 +27,8 @@ class DeleteattachmentController extends Controller{
 		}
 
 		// 删除附件图片
-		$sFilepath=NEEDFORBUG_PATH.'/data/upload/attachment/'.$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename'];
-		$sThumbfilepath=NEEDFORBUG_PATH.'/data/upload/attachment/'.$oAttachment['attachment_thumbpath'].'/'.$oAttachment['attachment_savename'];
+		$sFilepath=WINDSFORCE_PATH.'/data/upload/attachment/'.$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename'];
+		$sThumbfilepath=WINDSFORCE_PATH.'/data/upload/attachment/'.$oAttachment['attachment_thumbpath'].'/'.$oAttachment['attachment_savename'];
 
 		if(is_file($sFilepath)){
 			@unlink($sFilepath);

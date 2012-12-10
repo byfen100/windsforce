@@ -8,6 +8,6 @@
 $arrMyappConfigs=array();
 
 // 读取前台应用基本配置
-$arrFrontappconfigs=(array)require(NEEDFORBUG_PATH.'/source/common/Config.php');
+$arrFrontappconfigs=(array)require(WINDSFORCE_PATH.'/source/common/Config.php');
 
 return array_merge($arrMyappConfigs,$arrFrontappconfigs);

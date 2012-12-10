@@ -11,6 +11,6 @@ $arrMyappRouters=array(
 );
 
 // 读取前台应用基本路由配置
-$arrFrontapprouters=(array)require(NEEDFORBUG_PATH.'/source/common/Router.php');
+$arrFrontapprouters=(array)require(WINDSFORCE_PATH.'/source/common/Router.php');
 
 return array_merge($arrMyappRouters,$arrFrontapprouters);

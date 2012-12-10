@@ -9,7 +9,7 @@ class UpdateCacheLang{
 	public static function cache(){
 		$arrData=array();
 		
-		$arrLangs=G::listDir(NEEDFORBUG_PATH.'/ucontent/language');
+		$arrLangs=G::listDir(WINDSFORCE_PATH.'/ucontent/language');
 		if(is_array($arrLangs)){
 			foreach($arrLangs as $sLang){
 				$arrData[]=strtolower($sLang);

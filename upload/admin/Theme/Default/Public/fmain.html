@@ -111,7 +111,7 @@ function closeUpdateinfo(){
 					<tr>
 						<td><!--{$sTestDir}--></td>
 						<!--<php>-->
-						$sFullPath=NEEDFORBUG_PATH.'/'.str_replace('/*','',$sTestDir);
+						$sFullPath=WINDSFORCE_PATH.'/'.str_replace('/*','',$sTestDir);
 						$sRsta=(is_readable($sFullPath)?'<font color=green>[√]'.Dyhb::L('读','Template/Default/Public').'</font>':'<font color=red>[×]'.Dyhb::L('读','Template/Default/Public' ).'</font>');
 						$sWsta=((is_file($sFullPath)?is_writeable($sFullPath):Admin_Extend::testWrite($sFullPath))?'<font color=green>[√]'.Dyhb::L('写','Template/Default/Public').'</font>':'<font color=red>[×]'.Dyhb::L('写','Template/Default/Public').'</font>');
 						<!--</php>-->
@@ -213,11 +213,11 @@ function closeUpdateinfo(){
 						</tr>
 						<tr>
 							<td><!--<lang package='Template/Default/Public'>-->界面与用户体验团队<!--</lang>--></td>
-							<td>钟晓琴、刘祥敏</td>
+							<td>刘祥敏</td>
 						</tr>
 						<tr>
 							<td><!--<lang package='Template/Default/Public'>-->产品运维团队<!--</lang>--></td>
-							<td>马明录</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td><!--<lang package='Template/Default/Public'>-->应用APP贡献者<!--</lang>--></td>

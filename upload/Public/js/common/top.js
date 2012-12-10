@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 回到顶部($)*/
+   WindsForce 回到顶部($)*/
 
 $(function(){
 	var sBackToTopTxt=D.L('返回顶部','__COMMON_LANG__@Js/Common_Js'),oBackToTopEle=$('<div class="back-to-top"></div>').appendTo($("body"))

@@ -40,7 +40,7 @@
 					</tr>
 					<tr>
 						<td><lang package='Template/Default/Common'>系统安装目录</lang></td>
-						<td>{:NEEDFORBUG_PATH}</td>
+						<td>{:WINDSFORCE_PATH}</td>
 					</tr>
 				</tbody>
 			</table></p>
@@ -107,7 +107,7 @@
 					<tr>
 						<td>{$sSpTestDir}</td>
 						<php>
-							$sFullPath=NEEDFORBUG_PATH.'/'.str_replace('/*','',$sSpTestDir);
+							$sFullPath=WINDSFORCE_PATH.'/'.str_replace('/*','',$sSpTestDir);
 							$sRsta=(is_readable($sFullPath)?'<font color=green>[√]'.Dyhb::L('读','Template/Default/Common').'</font>':'<font color=red>[×]'.Dyhb::L('读','Template/Default/Common').'</font>');
 							$sWsta=((is_file($sFullPath)?is_writeable($sFullPath):Install_Extend::testWrite($sFullPath))?'<font color=green>[√]'.Dyhb::L('写','Template/Default/Common').'</font>':'<font color=red>[×]'.Dyhb::L('写','Template/Default/Common').'</font>');
 						</php>

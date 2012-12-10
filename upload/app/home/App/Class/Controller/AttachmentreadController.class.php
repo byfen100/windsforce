@@ -98,7 +98,7 @@ class AttachmentreadController extends InitController{
 		}
 
 		// 取得附件真实地址
-		$sAttachmentreallypath=NEEDFORBUG_PATH.$sAttachmentpathBackup;
+		$sAttachmentreallypath=WINDSFORCE_PATH.$sAttachmentpathBackup;
 
 		// 取得附件
 		if(is_readable($sAttachmentreallypath)){
@@ -135,7 +135,7 @@ class AttachmentreadController extends InitController{
 		header('Content-Type: image/gif');
 		header('Content-Disposition: inline; filename="no_leech.gif"');
 
-		$sNoleechpath=NEEDFORBUG_PATH.'/Public/images/common/no_leech.gif';
+		$sNoleechpath=WINDSFORCE_PATH.'/Public/images/common/no_leech.gif';
 
 		$oFp=fopen($sNoleechpath,'rb');
 		fpassthru($oFp);

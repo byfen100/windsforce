@@ -8,14 +8,14 @@ class Attachment_Extend{
 
 	static public function getImagesize($oAttachment){
 		if(in_array($oAttachment['attachment_extension'],array('gif','jpg','jpeg','png','bmp'))){
-			$sAttachmentFilepath=NEEDFORBUG_PATH.'/data/upload/attachment/'.(
+			$sAttachmentFilepath=WINDSFORCE_PATH.'/data/upload/attachment/'.(
 				$oAttachment['attachment_isthumb']?
 				$oAttachment['attachment_thumbpath'].'/'.$oAttachment['attachment_savename']:
 				$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename']
 			);
 
 			if(!is_file($sAttachmentFilepath)){
-				$sAttachmentFilepath=NEEDFORBUG_PATH.'/data/upload/attachment/'.$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename'];
+				$sAttachmentFilepath=WINDSFORCE_PATH.'/data/upload/attachment/'.$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename'];
 
 				if(!is_file($sAttachmentFilepath)){
 					return false;
@@ -64,7 +64,7 @@ class Attachment_Extend{
 
 	static public function getAttachmenturl($oAttachment,$bThumb=false,$bUrlpath=true){
 		if($bUrlpath===false){
-			return NEEDFORBUG_PATH.'/data/upload/attachment/'.
+			return WINDSFORCE_PATH.'/data/upload/attachment/'.
 				($oAttachment['attachment_isthumb'] && $bThumb===true?
 				$oAttachment['attachment_thumbpath'].'/'.$oAttachment['attachment_thumbprefix']:
 				$oAttachment['attachment_savepath'].'/').$oAttachment['attachment_savename'];
@@ -121,7 +121,7 @@ class Attachment_Extend{
 		if($bUrlpath===true){
 			return __PUBLIC__.'/images/common/default_attachmentcategory.png';
 		}else{
-			return NEEDFORBUG_PATH.'/Public/images/common/default_attachmentcategory.png';
+			return WINDSFORCE_PATH.'/Public/images/common/default_attachmentcategory.png';
 		}
 	}
 
@@ -162,7 +162,7 @@ class Attachment_Extend{
 			if($bUrlpath===true){
 				return __PUBLIC__.'/images/crystal/'.$sFileiconPath.'.png';
 			}else{
-				return NEEDFORBUG_PATH.'/Public/images/crystal/'.$sFileiconPath.'.png';
+				return WINDSFORCE_PATH.'/Public/images/crystal/'.$sFileiconPath.'.png';
 			}
 		}else{
 			return $sFileiconPath;

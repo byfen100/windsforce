@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 // 导入社会化登录组件
-Dyhb::import(NEEDFORBUG_PATH.'/source/extension/socialization');
+Dyhb::import(WINDSFORCE_PATH.'/source/extension/socialization');
 
 class RegisterController extends Controller{
 

@@ -1,4 +1,4 @@
--- NEEDFORBUG 博客数据库表
+-- WINDSFORCE 博客数据库表
 -- version 1.0
 -- http://www.doyouhaobaby.net
 --

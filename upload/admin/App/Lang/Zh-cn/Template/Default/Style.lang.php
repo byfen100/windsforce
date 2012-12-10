@@ -70,7 +70,7 @@ return array(
 '391e239c1cecc1fbcdeed09f5406fc9c'=>"可视化设置",
 'f342c6005817cb5f1fc320ac376236a1'=>"注意，DIY中如果添加外部图片作为背景，外部图片必须以http://开头，否则将无法正确显示",
 '893027bd2deb3d1348aabbd9342a8801'=>"系统计算当前的值为",
-'53c673bf466a3625a0b97fa1a5d39bad'=>"注意，DIY中的界面基础图片目录和扩展图片目录均相对于{NEEDFORBUG_PATH}/ucontent而言",
+'53c673bf466a3625a0b97fa1a5d39bad'=>"注意，DIY中的界面基础图片目录和扩展图片目录均相对于{WINDSFORCE_PATH}/ucontent而言",
 'dc1e42c233b44851142a23ea3edb87dc'=>"高级模式",
 'fcf82c2e5b7fa2ac5cce40c5f5c2ca5a'=>"切换到简单模式",
 '04270e4d4eeae740584508733cab9c52'=>"扩展配色",

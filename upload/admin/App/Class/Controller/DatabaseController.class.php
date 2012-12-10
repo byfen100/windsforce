@@ -16,11 +16,11 @@ class DatabaseController extends InitController{
 		$nAllowMaxSize=G::returnBytes(ini_get('upload_max_filesize'));// 单位为字节
 		$nAllowMaxSize=$nAllowMaxSize/1024;// 转换单位为 KB
 
-		$nMask=File_Extend::fileModeInfo(NEEDFORBUG_PATH.'/data/backup');
+		$nMask=File_Extend::fileModeInfo(WINDSFORCE_PATH.'/data/backup');
 		if($nMask===false){
-			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,NEEDFORBUG_PATH.'/data/backup'));
+			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,WINDSFORCE_PATH.'/data/backup'));
 		}elseif($nMask!=15){
-			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller/Database',null,NEEDFORBUG_PATH.'/data/backup');
+			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller/Database',null,WINDSFORCE_PATH.'/data/backup');
 			if(($nMask&1)<1){
 				$sWarning.=Dyhb::L('不可读','Controller/Database');
 			}
@@ -49,11 +49,11 @@ class DatabaseController extends InitController{
 	public function dumpsql(){
 		$oDb=Db::RUN();
 
-		$nMask=File_Extend::fileModeInfo(NEEDFORBUG_PATH.'/data/backup');
+		$nMask=File_Extend::fileModeInfo(WINDSFORCE_PATH.'/data/backup');
 		if($nMask===false){
-			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,NEEDFORBUG_PATH.'/data/backup'));
+			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,WINDSFORCE_PATH.'/data/backup'));
 		}else if($nMask!=15){
-			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller/Database',null,NEEDFORBUG_PATH.'/data/backup');
+			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller/Database',null,WINDSFORCE_PATH.'/data/backup');
 			if(($nMask&1)<1){
 				$sWarning.=Dyhb::L('不可读','Controller/Database');
 			}
@@ -75,7 +75,7 @@ class DatabaseController extends InitController{
 		@set_time_limit(300);
 		$oConnect=$oDb->getConnect();
 		$oBackup=new Backup($oConnect);
-		$sRunLog=NEEDFORBUG_PATH.'/data/backup/run.log';
+		$sRunLog=WINDSFORCE_PATH.'/data/backup/run.log';
 		$sSqlFileName=G::getGpc('sql_file_name');
 		if(empty($sSqlFileName)){
 			$sSqlFileName=BackUp::getRandomName();
@@ -130,7 +130,7 @@ class DatabaseController extends InitController{
 
 		if(empty($arrTables)){
 			if($nVol>1){
-				if(!@file_put_contents(NEEDFORBUG_PATH.'/data/backup/'.$sSqlFileName.'_'.$nVol.'.sql',$oBackup->getDumpSql())){
+				if(!@file_put_contents(WINDSFORCE_PATH.'/data/backup/'.$sSqlFileName.'_'.$nVol.'.sql',$oBackup->getDumpSql())){
 					$this->E(Dyhb::L('备份文件写入失败%s','Controller/Database',null,$sSqlFileName.'_'.$nVol.'.sql'));
 				}
 
@@ -150,7 +150,7 @@ class DatabaseController extends InitController{
 
 				$this->sql_dump_message($arrMessage);
 			}else{
-				if(!@file_put_contents(NEEDFORBUG_PATH.'/data/backup/'.$sSqlFileName. '.sql',$oBackup->getDumpSql())){
+				if(!@file_put_contents(WINDSFORCE_PATH.'/data/backup/'.$sSqlFileName. '.sql',$oBackup->getDumpSql())){
 					$this->E(Dyhb::L('备份文件写入失败%s','Controller/Database',null,$sSqlFileName.'_'.$nVol.'.sql'));
 				};
 
@@ -168,7 +168,7 @@ class DatabaseController extends InitController{
 				$this->sql_dump_message($arrMessage);
 			}
 		}else{
-			if(!@file_put_contents(NEEDFORBUG_PATH.'/data/backup/'.$sSqlFileName.'_'.$nVol.'.sql',$oBackup->getDumpSql())){
+			if(!@file_put_contents(WINDSFORCE_PATH.'/data/backup/'.$sSqlFileName.'_'.$nVol.'.sql',$oBackup->getDumpSql())){
 				$this->E(Dyhb::L('备份文件写入失败%s','Controller/Database',null,$sSqlFileName.'_'.$nVol.'.sql'));
 			}
 
@@ -346,15 +346,15 @@ class DatabaseController extends InitController{
 	public function restore(){
 		$arrList=array();
 
-		$nMask=File_Extend::fileModeInfo(NEEDFORBUG_PATH.'/data/backup');
+		$nMask=File_Extend::fileModeInfo(WINDSFORCE_PATH.'/data/backup');
 		if($nMask===false){
-			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,NEEDFORBUG_PATH.'/data/backup'));
+			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,WINDSFORCE_PATH.'/data/backup'));
 		}elseif(($nMask&1)<1){
 			$this->assign('sWarning',Dyhb::L('不可读','Controller/Database'));
 		}else{
 			$arrRealList=array();
 
-			$hFolder=opendir(NEEDFORBUG_PATH.'/data/backup');
+			$hFolder=opendir(WINDSFORCE_PATH.'/data/backup');
 			while(($sFile=readdir($hFolder))!==false){
 				if(strpos($sFile,'.sql')!==false){
 					$arrRealList[]=$sFile;
@@ -374,8 +374,8 @@ class DatabaseController extends InitController{
 					$nMark=0;
 				}
 
-				$nFileSize=filesize(NEEDFORBUG_PATH.'/data/backup/'.$sFile);
-				$arrInfo=Backup::getHead(NEEDFORBUG_PATH.'/data/backup/'.$sFile);
+				$nFileSize=filesize(WINDSFORCE_PATH.'/data/backup/'.$sFile);
+				$arrInfo=Backup::getHead(WINDSFORCE_PATH.'/data/backup/'.$sFile);
 
 				$arrList[]=array(
 					'name'=>$sFile,
@@ -408,9 +408,9 @@ class DatabaseController extends InitController{
 			if($arrMFile){
 				$arrMFile=array_unique($arrMFile);
 				$arrRealFile=array();
-				$hFolder=opendir(NEEDFORBUG_PATH.'/data/backup');
+				$hFolder=opendir(WINDSFORCE_PATH.'/data/backup');
 				while(($sFile=readdir($hFolder))!==false){
-					if(preg_match('/_[0-9]+\.sql$/',$sFile)&& is_file(NEEDFORBUG_PATH.'/data/backup/'.$sFile)){
+					if(preg_match('/_[0-9]+\.sql$/',$sFile)&& is_file(WINDSFORCE_PATH.'/data/backup/'.$sFile)){
 						$arrRealFile[]=$sFile;
 					}
 				}
@@ -418,14 +418,14 @@ class DatabaseController extends InitController{
 				foreach($arrRealFile as $sFile){
 					$sShortFile=substr($sFile,0,strrpos($sFile,'_'));
 					if(in_array($sShortFile,$arrMFile)){
-						@unlink(NEEDFORBUG_PATH.'/data/backup/'.$sFile);
+						@unlink(WINDSFORCE_PATH.'/data/backup/'.$sFile);
 					}
 				}
 			}
 
 			if($arrSFile){
 				foreach($arrSFile as $sFile){
-					@unlink(NEEDFORBUG_PATH.'/data/backup/'. $sFile);
+					@unlink(WINDSFORCE_PATH.'/data/backup/'. $sFile);
 				}
 			}
 
@@ -455,9 +455,9 @@ class DatabaseController extends InitController{
 			$sShortName=substr($sFileName,0,strrpos($sFileName,'_'));
 
 			$arrRealFile=array();
-			$hFolder=opendir(NEEDFORBUG_PATH.'/data/backup');
+			$hFolder=opendir(WINDSFORCE_PATH.'/data/backup');
 			while(($sFile=readdir($hFolder))!==false){
-				if(is_file(NEEDFORBUG_PATH.'/data/backup/'.$sFile) && preg_match('/_[0-9]+\.sql$/',$sFile)){
+				if(is_file(WINDSFORCE_PATH.'/data/backup/'.$sFile) && preg_match('/_[0-9]+\.sql$/',$sFile)){
 					$arrRealFile[]=$sFile;
 				}
 			}
@@ -472,16 +472,16 @@ class DatabaseController extends InitController{
 
 			natsort($arrPostList);
 			foreach($arrPostList as $sFile){
-				$arrInfo=Backup::getHead(NEEDFORBUG_PATH.'/data/backup/'. $sFile);
-				if(!$this->sql_import(NEEDFORBUG_PATH.'/data/backup/'. $sFile)){
+				$arrInfo=Backup::getHead(WINDSFORCE_PATH.'/data/backup/'. $sFile);
+				if(!$this->sql_import(WINDSFORCE_PATH.'/data/backup/'. $sFile)){
 					$this->E(Dyhb::L('导入数据库备份文件失败','Controller/Database'));
 				}
 			}
 			$this->assign("__JumpUrl__",Dyhb::U('database/restore'));
 			$this->S(Dyhb::L('数据导入成功','Controller/Database'));
 		}else{
-			$arrInfo=Backup::getHead(NEEDFORBUG_PATH.'/data/backup/'. $sFileName);
-			if($this->sql_import(NEEDFORBUG_PATH.'/data/backup/'. $sFileName)){
+			$arrInfo=Backup::getHead(WINDSFORCE_PATH.'/data/backup/'. $sFileName);
+			if($this->sql_import(WINDSFORCE_PATH.'/data/backup/'. $sFileName)){
 				$this->assign("__JumpUrl__",Dyhb::U('database/restore'));
 				$this->S(Dyhb::L('数据导入成功','Controller/Database'));
 			}else{
@@ -492,7 +492,7 @@ class DatabaseController extends InitController{
 
 	public function upload_sql(){
 		$oDb=Db::RUN();
-		$sSqlFile=NEEDFORBUG_PATH.'/data/backup/upload_database_bak.sql';
+		$sSqlFile=WINDSFORCE_PATH.'/data/backup/upload_database_bak.sql';
 		$sSqlVerConfirm=G::getGpc('sql_ver_confirm');
 		if(empty($sSqlVerConfirm)){
 			$arrSqlfile=G::getGpc('sqlfile','F');

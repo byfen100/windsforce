@@ -19,7 +19,7 @@ class UpdateCacheStyle{
 		}
 
 		$arrCacheStyledir=$arrTheStyles=array();
-		$arrCacheStyledir=G::listDir(NEEDFORBUG_PATH.'/data/~runtime/style_');
+		$arrCacheStyledir=G::listDir(WINDSFORCE_PATH.'/data/~runtime/style_');
 
 		$arrStyleObjects=StyleModel::F('style_status=?',1)->asArray()->getAll();
 		if(is_array($arrStyleObjects)){
@@ -57,8 +57,8 @@ class UpdateCacheStyle{
 					$arrStyle['logo_str']="<img src=\"".$arrStyle['logo']."\" alt=\"".$GLOBALS['_option_']['site_name']."\" border=\"0\" />";
 				}
 
-				$sStyleExtendDir=NEEDFORBUG_PATH.'/ucontent/theme/'.$arrStyle['doyouhaobaby_template_base'].'/Public/Style';
-				!is_dir($sStyleExtendDir) && $sStyleExtendDir=NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Style';
+				$sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/'.$arrStyle['doyouhaobaby_template_base'].'/Public/Style';
+				!is_dir($sStyleExtendDir) && $sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style';
 				if(is_dir($sStyleExtendDir)){
 					$arrStyleDirs=G::listDir($sStyleExtendDir);
 
@@ -118,7 +118,7 @@ class UpdateCacheStyle{
 		if(is_array($arrCacheStyledir)){
 			foreach($arrCacheStyledir as $nKey=>$sValue){
 				if(!in_array($sValue,$arrTheStyles)){
-					$sCurDeletedstyleDir=NEEDFORBUG_PATH.'/data/~runtime/style_/'.$sValue;
+					$sCurDeletedstyleDir=WINDSFORCE_PATH.'/data/~runtime/style_/'.$sValue;
 					$arrCurDeletedstyleFiles=G::listDir($sCurDeletedstyleDir,true,true);
 					foreach($arrCurDeletedstyleFiles as $sCurDeletedstyleFile){
 						@unlink($sCurDeletedstyleFile);
@@ -132,7 +132,7 @@ class UpdateCacheStyle{
 			foreach($arrStyles as $arrStyle){
 				$arrStyle['_style_icons_']=$arrStyleIcons;
 
-				$sStyleIdPath=NEEDFORBUG_PATH.'/data/~runtime/style_/'.intval($arrStyle['style_id']);
+				$sStyleIdPath=WINDSFORCE_PATH.'/data/~runtime/style_/'.intval($arrStyle['style_id']);
 				if(!is_dir($sStyleIdPath)&& !G::makeDir($sStyleIdPath)){
 					Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Function/Cache_Extend',null,$sStyleIdPath));
 				}
@@ -181,14 +181,14 @@ class UpdateCacheStyle{
 
 				foreach($arrCssData as $sCss){
 					if($sType=='@'){
-						$sCssfile=NEEDFORBUG_PATH.'/ucontent/theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Css/'.$sCss.'.css';
-						!is_file($sCssfile) && $sCssfile=NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Css/'.$sCss.'.css';
+						$sCssfile=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Css/'.$sCss.'.css';
+						!is_file($sCssfile) && $sCssfile=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Css/'.$sCss.'.css';
 					}elseif(strpos($sExtra,'t_')===0){
-						$sCssfile=NEEDFORBUG_PATH.'/ucontent/theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Style/'.$sCss.'/style.css';
-						!is_file($sCssfile) && $sCssfile=NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Style/'.$sCss.'/style.css';
+						$sCssfile=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Style/'.$sCss.'/style.css';
+						!is_file($sCssfile) && $sCssfile=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style/'.$sCss.'/style.css';
 					}else{
-						$sCssfile=NEEDFORBUG_PATH.'/app/'.$sType.'/Theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Css/'.$sCss.'.css';
-						!is_file($sCssfile) && $sCssfile=NEEDFORBUG_PATH.'/app/'.$sType.'/Theme/Default/Public/Css/'.$sCss.'.css';
+						$sCssfile=WINDSFORCE_PATH.'/app/'.$sType.'/Theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Css/'.$sCss.'.css';
+						!is_file($sCssfile) && $sCssfile=WINDSFORCE_PATH.'/app/'.$sType.'/Theme/Default/Public/Css/'.$sCss.'.css';
 					}
 
 					if(is_file($sCssfile)){

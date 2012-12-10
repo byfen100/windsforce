@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 安装程序配置文件($)*/
+   WindsForce 安装程序配置文件($)*/
 
 !defined('DYHB_PATH') && exit;
 

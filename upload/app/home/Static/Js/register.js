@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 用户注册验证($)*/
+   WindsForce 用户注册验证($)*/
 
 /* 注册数据处理 */
 function registerSubmit(){

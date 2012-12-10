@@ -25,7 +25,7 @@ class Core_Extend{
 			// 如果用户使用社会化帐号直接登录
 			if(Dyhb::cookie('SOCIA_LOGIN')==1 && Dyhb::cookie('SOCIA_LOGIN_TYPE')){
 				if(!Dyhb::classExists('SociauserModel')){
-					require_once(NEEDFORBUG_PATH.'/source/extension/socialization/lib/mvc/SociauserModel.class.php');
+					require_once(WINDSFORCE_PATH.'/source/extension/socialization/lib/mvc/SociauserModel.class.php');
 				}
 
 				$arrSociauser=SociauserModel::F('user_id=? AND sociauser_vendor=?',$arrUserData['user_id'],Dyhb::cookie('SOCIA_LOGIN_TYPE'))->asArray()->getOne();
@@ -144,7 +144,7 @@ class Core_Extend{
 		
 		$sPath=G::getAvatar($nUid,$sType);
 
-		return is_file(NEEDFORBUG_PATH.'/data/avatar/'.$sPath)?
+		return is_file(WINDSFORCE_PATH.'/data/avatar/'.$sPath)?
 			__ROOT__.'/data/avatar/'.$sPath:
 			__PUBLIC__.'/images/avatar/noavatar_'.($sType=='origin'?'big':$sType).'.gif';
 	}
@@ -156,7 +156,7 @@ class Core_Extend{
 
 		$arrAvatarInfo=array();
 
-		$arrAvatarInfo['exist']=is_file(NEEDFORBUG_PATH.'/data/avatar/'.G::getAvatar($nUserId,'big'))?true:false;
+		$arrAvatarInfo['exist']=is_file(WINDSFORCE_PATH.'/data/avatar/'.G::getAvatar($nUserId,'big'))?true:false;
 		$arrAvatarInfo['origin']=Core_Extend::avatar($nUserId,'origin');
 		$arrAvatarInfo['big']=Core_Extend::avatar($nUserId,'big');
 		$arrAvatarInfo['middle']=Core_Extend::avatar($nUserId,'middle');
@@ -249,7 +249,7 @@ class Core_Extend{
 		if($bIsFilecache){
 			$arrLostCaches=array();
 			foreach($CacheNames as $sCacheName){
-				$arrData[$sCacheName]=Dyhb::cache($sCacheName,'',array('cache_path'=>NEEDFORBUG_PATH.'/data/~runtime/cache_/data'));
+				$arrData[$sCacheName]=Dyhb::cache($sCacheName,'',array('cache_path'=>WINDSFORCE_PATH.'/data/~runtime/cache_/data'));
 				if($arrData[$sCacheName]===false){
 					$arrLostCaches[]=$sCacheName;
 					if(!Dyhb::classExists('Cache_Extend')){
@@ -271,7 +271,7 @@ class Core_Extend{
 			$arrData[$arrSyscache['syscache_name']]=$arrSyscache['syscache_type']?unserialize($arrSyscache['syscache_data']):$arrSyscache['syscache_data'];
 			$bAllowMem && (self::memory('set',$arrSyscache['syscache_name'],$arrData[$arrSyscache['syscache_name']]));
 			if($bIsFilecache){
-				Dyhb::cache($arrSyscache['syscache_name'],$arrData[$arrSyscache['syscache_name']],array('cache_path'=>NEEDFORBUG_PATH.'/data/~runtime/cache_/data'));
+				Dyhb::cache($arrSyscache['syscache_name'],$arrData[$arrSyscache['syscache_name']],array('cache_path'=>WINDSFORCE_PATH.'/data/~runtime/cache_/data'));
 			}
 		}
 
@@ -308,7 +308,7 @@ class Core_Extend{
 
 		$bAllowMem && self::memory('delete',$sCacheName);
 
-		$sCachefile=NEEDFORBUG_PATH.'/data/~runtime/cache_/data/~@'.$sCacheName.'.php';
+		$sCachefile=WINDSFORCE_PATH.'/data/~runtime/cache_/data/~@'.$sCacheName.'.php';
 		$bIsFilecache && (is_file($sCachefile) && @unlink($sCachefile));
 	}
 
@@ -331,7 +331,7 @@ class Core_Extend{
 	static public function appLogo($sApp,$bHtml=false){
 		$sLogo='';
 		
-		if(is_file(NEEDFORBUG_PATH.'/app/'.$sApp.'/logo.png')){
+		if(is_file(WINDSFORCE_PATH.'/app/'.$sApp.'/logo.png')){
 			$sLogo=__ROOT__.'/app/'.$sApp.'/logo.png';
 		}else{
 			$sLogo=__ROOT__.'/app/logo.png';
@@ -351,7 +351,7 @@ class Core_Extend{
 			$sIncludeFile='/source/'.$sFileName;
 		}
 
-		return preg_match('/^[\w\d\/_]+$/i',$sIncludeFile)?realpath(NEEDFORBUG_PATH.$sIncludeFile.$sType):false;
+		return preg_match('/^[\w\d\/_]+$/i',$sIncludeFile)?realpath(WINDSFORCE_PATH.$sIncludeFile.$sType):false;
 	}
 	
 	static function replaceSiteVar($sString,$arrReplaces=array()){
@@ -394,7 +394,7 @@ class Core_Extend{
 
 		if(!isset($GLOBALS['_cache_']['badword'])){
 			if(!Dyhb::classExists('Cache_Extend')){
-				require(NEEDFORBUG_PATH.'/source/function/Cache_Extend.class.php');
+				require(WINDSFORCE_PATH.'/source/function/Cache_Extend.class.php');
 			}
 			self::loadCache('badword');
 		}
@@ -528,12 +528,12 @@ class Core_Extend{
 		$sLangname=LANG_NAME?LANG_NAME:'Zh-cn';
 
 		$sPublic=__PUBLIC__;
-		$sKindeditorLang=is_file(NEEDFORBUG_PATH.'/Public/js/editor/kindeditor/lang/'.$arrLangmap[$sLangname].'.js')?$arrLangmap[$sLangname]:'zh_CN';
+		$sKindeditorLang=is_file(WINDSFORCE_PATH.'/Public/js/editor/kindeditor/lang/'.$arrLangmap[$sLangname].'.js')?$arrLangmap[$sLangname]:'zh_CN';
 
-		return <<<NEEDFORBUG
+		return <<<WINDSFORCE
 		<script type="text/javascript">var sEditorLang='{$sKindeditorLang}';</script>
 		<script src="{$sPublic}/js/editor/kindeditor/kindeditor-min.js" type="text/javascript"></script>
-NEEDFORBUG;
+WINDSFORCE;
 	}
 
 	static public function deleteAppconfig($sApp=null,$bCleanCookie=true){
@@ -556,7 +556,7 @@ NEEDFORBUG;
 		}else{
 			$sApp=strtolower($sApp);
 
-			$sAppConfigcachefile=NEEDFORBUG_PATH.'/data/~runtime/app/'.$sApp.'/Config.php';
+			$sAppConfigcachefile=WINDSFORCE_PATH.'/data/~runtime/app/'.$sApp.'/Config.php';
 			if(is_file($sAppConfigcachefile)){
 				@unlink($sAppConfigcachefile);
 			}
@@ -576,7 +576,7 @@ NEEDFORBUG;
 				self::changeAppconfig($sKey,$sValue);
 			}
 		}else{
-			$sAppGlobalconfigFile=NEEDFORBUG_PATH.'/Config/Config.inc.php';
+			$sAppGlobalconfigFile=WINDSFORCE_PATH.'/Config/Config.inc.php';
 			$arrAppconfig=(array)(include $sAppGlobalconfigFile);
 
 			$arrData=array();
@@ -604,9 +604,9 @@ NEEDFORBUG;
 		}
 
 		if(!empty($sApp)){
-			$sTemplatePath=NEEDFORBUG_PATH.'/app/'.$sApp.'/Theme';
+			$sTemplatePath=WINDSFORCE_PATH.'/app/'.$sApp.'/Theme';
 		}else{
-			$sTemplatePath=NEEDFORBUG_PATH.'/ucontent/theme';
+			$sTemplatePath=WINDSFORCE_PATH.'/ucontent/theme';
 		}
 
 		$sUrl=$sTemplatePath.'/'.$sTemplate.'.html';
@@ -667,7 +667,7 @@ NEEDFORBUG;
 		}
 
 		foreach(array('png','gif','jpg','jpeg') as $sExt){
-			if(is_file(NEEDFORBUG_PATH.'/'.$sPreviewPath.'/'.$sTemplate."/{$sPreview}.{$sExt}")){
+			if(is_file(WINDSFORCE_PATH.'/'.$sPreviewPath.'/'.$sTemplate."/{$sPreview}.{$sExt}")){
 				return __ROOT__.'/'.$sPreviewPath.'/'.$sTemplate."/{$sPreview}.{$sExt}";
 				continue;
 			}
@@ -782,9 +782,9 @@ NEEDFORBUG;
 			$GLOBALS['_extend_style_']=$sCurrentT;
 
 			// 取得扩展背景图片
-			if(is_dir(NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend')){
+			if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend')){
 				$arrBgimgPath=array();
-				$arrFiles=G::listDir(NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend',false,true);
+				$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend',false,true);
 				if(is_array($arrFiles)){
 					foreach($arrFiles as &$sFile){
 						$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend/'.$sFile.'"';
@@ -802,9 +802,9 @@ NEEDFORBUG;
 			$sScriptCss.='<link rel="stylesheet" id="extend_style" type="text/css" href="'.__PUBLIC__.'/images/common/none.css?'.$GLOBALS['_style_']['verhash']."\" />";
 
 			// 取得背景图片
-			if(is_dir(NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Images/bgextend')){
+			if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Images/bgextend')){
 				$arrBgimgPath='';
-				$arrFiles=G::listDir(NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Images/bgextend',false,true);
+				$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Images/bgextend',false,true);
 				if(is_array($arrFiles)){
 					foreach($arrFiles as &$sFile){
 						$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/Default/Public/Images/bgextend/'.$sFile.'"';
@@ -871,7 +871,7 @@ NEEDFORBUG;
 
 	static public function getCurstyleCachepath($nId=0){
 		$nId=self::getStyleId($nId);
-		return NEEDFORBUG_PATH.'/data/~runtime/style_/'.$nId;
+		return WINDSFORCE_PATH.'/data/~runtime/style_/'.$nId;
 	}
 
 	static public function getCurstyleCacheurl($nId=0){
@@ -918,7 +918,7 @@ NEEDFORBUG;
 
 	static public function thumb($sFilepath,$nWidth,$nHeight){
 		if(!is_file($sFilepath)){
-			$sFilepath=NEEDFORBUG_PATH.'/Public/images/common/none.gif';
+			$sFilepath=WINDSFORCE_PATH.'/Public/images/common/none.gif';
 		}
 		
 		Image::thumbGd($sFilepath,$nWidth,$nHeight);
@@ -941,15 +941,15 @@ NEEDFORBUG;
 		$sLangname=str_replace('-','_',$sLangname);
 
 		$sPublic=__PUBLIC__;
-		$sEmotionLang=is_file(NEEDFORBUG_PATH.'/Public/js/ffemotion/js/'.$sLangname.'.js')?$sLangname:'zh-cn';
+		$sEmotionLang=is_file(WINDSFORCE_PATH.'/Public/js/ffemotion/js/'.$sLangname.'.js')?$sLangname:'zh-cn';
 
-		return <<<NEEDFORBUG
+		return <<<WINDSFORCE
 		<link href="{$sPublic}/js/ffemotion/css/emotion.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/{$sEmotionLang}.js"></script>
 		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/swfobject.js"></script>
 		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/emotion_data.js"></script>
 		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/emotion.js"></script>
-NEEDFORBUG;
+WINDSFORCE;
 	}
 
 	static public function removeDir($sDirName){

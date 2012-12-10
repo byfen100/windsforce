@@ -5,10 +5,10 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入Home模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/home/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 
 /** 定义Home的语言包 */
-define('__APP_ADMIN_LANG__',NEEDFORBUG_PATH.'/app/home/App/Lang/Admin');
+define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
 
 /** 导入缓存组件 */
 require_once(Core_Extend::includeFile('function/Cache_Extend'));
@@ -37,15 +37,15 @@ class GlobalcacheController extends InitController{
 			Cache_Extend::updateCache('style');
 
 			// 清理模板缓存
-			if(is_dir(NEEDFORBUG_PATH.'/data/~runtime/app')){
-				Core_Extend::removeDir(NEEDFORBUG_PATH.'/data/~runtime/app');
+			if(is_dir(WINDSFORCE_PATH.'/data/~runtime/app')){
+				Core_Extend::removeDir(WINDSFORCE_PATH.'/data/~runtime/app');
 			}
 		}
 
 		// 数据库字段
 		if(in_array('field',$arrType)){
-			if(is_dir(NEEDFORBUG_PATH.'/data/~runtime/cache_/field')){
-				Core_Extend::removeDir(NEEDFORBUG_PATH.'/data/~runtime/cache_/field');
+			if(is_dir(WINDSFORCE_PATH.'/data/~runtime/cache_/field')){
+				Core_Extend::removeDir(WINDSFORCE_PATH.'/data/~runtime/cache_/field');
 			}
 		}
 

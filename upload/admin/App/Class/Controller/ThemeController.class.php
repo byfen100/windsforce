@@ -16,7 +16,7 @@ class ThemeController extends InitController{
 			$sThemeDirname=trim(G::getGpc('theme_dirname','P'));
 		}
 			
-		$sThemeDirname=NEEDFORBUG_PATH.'/ucontent/theme/'.$sThemeDirname;
+		$sThemeDirname=WINDSFORCE_PATH.'/ucontent/theme/'.$sThemeDirname;
 		if(!is_dir($sThemeDirname)){
 			$this->E(Dyhb::L('模板目录 %s 不存在','Controller/Theme',null,$sThemeDirname));
 		}

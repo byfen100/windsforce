@@ -26,7 +26,7 @@ class StyleController extends Controller{
 			$this->E(Dyhb::L('主题切换失败','Controller/Misc'));
 		}
 
-		$sThemeDir=NEEDFORBUG_PATH.'/ucontent/theme/'.ucfirst(strtolower($oTheme['theme_dirname']));
+		$sThemeDir=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst(strtolower($oTheme['theme_dirname']));
 		if(!is_dir($sThemeDir)){
 			$this->E(Dyhb::L('主题切换失败','Controller/Misc'));
 		}

@@ -4,5 +4,5 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 导入Needforbug 初始化文件 */
-require(NEEDFORBUG_PATH.'/source/common/Common.inc.php');
+/** 导入WindsForce 初始化文件 */
+require(WINDSFORCE_PATH.'/source/common/Common.inc.php');

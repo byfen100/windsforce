@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug系统缓存目录或文件($)*/
+   WindsForce系统缓存目录或文件($)*/
 
 !defined('DYHB_PATH') && exit;
 

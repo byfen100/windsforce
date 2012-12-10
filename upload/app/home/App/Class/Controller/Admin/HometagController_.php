@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入主页模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/home/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 
 class HometagController extends InitController{
 

@@ -21,18 +21,18 @@ class Style{
 			unset($arrTemps);
 
 			if(!is_file($sStylePath)){
-				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表丢失','__COMMON_LANG__@Class/Style'));
+				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表丢失','__COMMON_LANG__@Class/Style'));
 				continue;
 			}
 
 			if(!is_readable($sStylePath)){
-				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表不可读','__COMMON_LANG__@Class/Style'));
+				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表不可读','__COMMON_LANG__@Class/Style'));
 				continue;
 			}
 
 			$arrStyleData=$this->getStyleData($sStylePath);
 			if($arrStyleData===false){
-				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表已经损坏','__COMMON_LANG__@Class/Style'));
+				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表已经损坏','__COMMON_LANG__@Class/Style'));
 				continue;
 			}
 
@@ -81,16 +81,16 @@ class Style{
 				'Author URI'=>$arrStyleData['AuthorURI'],
 				'Version'=>$nVersion,
 				'Style'=>$sStyle,
-				'Stylesheet'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sStylePath)),
-				'Style Dir'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sStylesheet)),
-				'Stylesheet Dir'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sStyle.'/Public/Css/')),
+				'Stylesheet'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sStylePath)),
+				'Style Dir'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sStylesheet)),
+				'Stylesheet Dir'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sStyle.'/Public/Css/')),
 				'Status'=>$arrStyleData['Status'],
 				'preview'=>$arrPreviews[''],
 				'preview_mini'=>$arrPreviews['_mini'],
 				'preview_large'=>$arrPreviews['_large'],
 				'Tags'=>$arrStyleData['Tags'],
-				'Style Root'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath(dirname($sStylesheet))),
-				'Style Root URI'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath(dirname($sStylesheet))),
+				'Style Root'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath(dirname($sStylesheet))),
+				'Style Root URI'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath(dirname($sStylesheet))),
 			);
 		}
 

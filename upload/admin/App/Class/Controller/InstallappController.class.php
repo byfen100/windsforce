@@ -5,10 +5,10 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入Home模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/home/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 
 /** 定义Home的语言包 */
-define('__APP_ADMIN_LANG__',NEEDFORBUG_PATH.'/app/home/App/Lang/Admin');
+define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
 
 class InstallappController extends InitController{
 
@@ -21,15 +21,15 @@ class InstallappController extends InitController{
 			}
 		}
 
-		$arrAppLists=G::ListDir(NEEDFORBUG_PATH.'/app');
+		$arrAppLists=G::ListDir(WINDSFORCE_PATH.'/app');
 
 		$arrAppInfos=array();
 		$arrApps=array();
 		foreach($arrAppLists as $key=>$sAppList){
-			if($sAppList!='.svn' && !in_array($sAppList,$arrInstalledApps) && is_file(NEEDFORBUG_PATH.'/app/'.$sAppList.'/app.xml')){
+			if($sAppList!='.svn' && !in_array($sAppList,$arrInstalledApps) && is_file(WINDSFORCE_PATH.'/app/'.$sAppList.'/app.xml')){
 				$arrAppInfos[$key]['name']=$sAppList;
 				
-				$arrAppData=Xml::xmlUnserialize(file_get_contents(NEEDFORBUG_PATH.'/app/'.$sAppList.'/app.xml'));
+				$arrAppData=Xml::xmlUnserialize(file_get_contents(WINDSFORCE_PATH.'/app/'.$sAppList.'/app.xml'));
 				$arrAppData=$arrAppData['root']['data'];
 				$arrAppData['logo']=Core_Extend::appLogo($sAppList);
 
@@ -48,8 +48,8 @@ class InstallappController extends InitController{
 	public function import_app(){
 		$sName=G::getGpc('name','G');
 		
-		if(is_file(NEEDFORBUG_PATH.'/app/'.$sName.'/app.xml')){
-			$sImportTxt=file_get_contents(NEEDFORBUG_PATH.'/app/'.$sName.'/app.xml');
+		if(is_file(WINDSFORCE_PATH.'/app/'.$sName.'/app.xml')){
+			$sImportTxt=file_get_contents(WINDSFORCE_PATH.'/app/'.$sName.'/app.xml');
 			$arrAppData=Xml::xmlUnserialize(trim($sImportTxt));
 			$arrAppData=$arrAppData['root']['data'];
 			
@@ -64,7 +64,7 @@ class InstallappController extends InitController{
 			
 			$this->app_database($arrAppData);
 			
-			if(!empty($sName) && $arrAppData['isinstall'] && is_file(NEEDFORBUG_PATH.'/app/'.$sName.'/install.php')){
+			if(!empty($sName) && $arrAppData['isinstall'] && is_file(WINDSFORCE_PATH.'/app/'.$sName.'/install.php')){
 				$this->U('installapp/import_install&name='.$sName);
 			}
 
@@ -124,7 +124,7 @@ class InstallappController extends InitController{
 		if(!empty($oApp['app_id'])){
 			$oApp->destroy();
 			
-			if(!empty($oApp['app_identifier']) && $oApp['app_isuninstall'] && is_file(NEEDFORBUG_PATH.'/app/'.$oApp['app_identifier'].'/uninstall.php')){
+			if(!empty($oApp['app_identifier']) && $oApp['app_isuninstall'] && is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/uninstall.php')){
 				$this->U('installapp/import_uninstall&name='.$oApp['app_identifier']);
 			}
 
@@ -156,8 +156,8 @@ class InstallappController extends InitController{
 	public function import_install_or_uninstall($sOperation,$sName){
 		$bFinish=FALSE;
 
-		if(is_file(NEEDFORBUG_PATH.'/app/'.$sName.'/app.xml')){
-			$arrAppData=Xml::xmlUnserialize(file_get_contents(NEEDFORBUG_PATH.'/app/'.$sName.'/app.xml'));
+		if(is_file(WINDSFORCE_PATH.'/app/'.$sName.'/app.xml')){
+			$arrAppData=Xml::xmlUnserialize(file_get_contents(WINDSFORCE_PATH.'/app/'.$sName.'/app.xml'));
 			$arrAppData=$arrAppData['root']['data'];
 
 			if($sOperation=='install'){
@@ -167,7 +167,7 @@ class InstallappController extends InitController{
 			}
 
 			if(!empty($sFilename) && preg_match('/^[\w\.]+$/',$sFilename)){
-				$sFilename=NEEDFORBUG_PATH.'/app/'.$sName.'/'.$sFilename;
+				$sFilename=WINDSFORCE_PATH.'/app/'.$sName.'/'.$sFilename;
 		
 				if(is_file($sFilename)){
 					include_once $sFilename;

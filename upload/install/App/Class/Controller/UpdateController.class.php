@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 升级程序($)*/
+   WindsForce 升级程序($)*/
 
 !defined('DYHB_PATH') && exit;
 
@@ -13,10 +13,10 @@ class UpdateController extends Controller{
 	}
 
 	public function check_update(){
-		$this->_sUpdatefile=NEEDFORBUG_PATH.'/data/Update.lock.php';
+		$this->_sUpdatefile=WINDSFORCE_PATH.'/data/Update.lock.php';
 
 		if(is_file($this->_sUpdatefile)){
-			$this->E(Dyhb::L("程序已运行升级，如果你确定要重新升级（可能出现错误），请先从FTP中删除 %s",'Controller/Update',null,str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($this->_sUpdatefile))));
+			$this->E(Dyhb::L("程序已运行升级，如果你确定要重新升级（可能出现错误），请先从FTP中删除 %s",'Controller/Update',null,str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($this->_sUpdatefile))));
 		}
 	}
 
@@ -50,7 +50,7 @@ class UpdateController extends Controller{
 	public function step3(){
 		$this->check_update();
 
-		$sConfigfile=NEEDFORBUG_PATH.'/config/Config.inc.php';
+		$sConfigfile=WINDSFORCE_PATH.'/config/Config.inc.php';
 		if(is_file($sConfigfile)){
 			$arrConfig=(array)(include $sConfigfile);
 		}else{
@@ -65,7 +65,7 @@ class UpdateController extends Controller{
 	public function db_connect(){
 		global $hConn,$sSql4Tmp,$sDbprefix,$nMysqlVersion;
 
-		$arrConfig=(array)(include NEEDFORBUG_PATH.'/config/Config.inc.php');
+		$arrConfig=(array)(include WINDSFORCE_PATH.'/config/Config.inc.php');
 		if(empty($arrConfig['RBAC_DATA_PREFIX'])){
 			$this->E(Dyhb::L('Rbac前缀不能为空','Controller/Update'));
 		}
@@ -119,7 +119,7 @@ class UpdateController extends Controller{
 		Install_Extend::showJavascriptMessage('<h3 style="color:red;">'.Dyhb::L('程序将会在3秒后继续执行，请勿关闭窗口','Controller/Update').'</h3>');
 
 		// 系统跳转
-		echo<<<NEEDFORBUG
+		echo<<<WINDSFORCE
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
@@ -129,7 +129,7 @@ class UpdateController extends Controller{
 			}
 			setLaststep();
 		</script>
-NEEDFORBUG;
+WINDSFORCE;
 
 		exit();
 	}
@@ -146,16 +146,16 @@ NEEDFORBUG;
 		$this->display('update_message');
 
 		$sLangCookieName=$GLOBALS['_commonConfig_']['COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME']===true?APP_NAME.'_language':'language';
-		$sNeedforbugDatadir=APP_PATH.'/Static/Sql/Update';
+		$sWindsForceDatadir=APP_PATH.'/Static/Sql/Update';
 		
 		// 开始写入和更新数据库数据
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('数据库数据添加与更新','Controller/Update').'</h3>');
 
-		$sNeedforbugDatapath=$sNeedforbugDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/needforbug.data.sql';
-		if(!is_file($sNeedforbugDatapath)){
-			$sNeedforbugDatapath=$sNeedforbugDatadir.'/Zh-cn/needforbug.data.sql';
+		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/needforbug.data.sql';
+		if(!is_file($sWindsForceDatapath)){
+			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/needforbug.data.sql';
 		}
-		Install_Extend::runQuery($sNeedforbugDatapath);
+		Install_Extend::runQuery($sWindsForceDatapath);
 
 		// 执行结束
 		Install_Extend::showJavascriptMessage('');
@@ -163,7 +163,7 @@ NEEDFORBUG;
 		Install_Extend::showJavascriptMessage('<h3 style="color:red;">'.Dyhb::L('程序将会在3秒后继续执行，请勿关闭窗口','Controller/Update').'</h3>');
 
 		// 系统跳转
-		echo<<<NEEDFORBUG
+		echo<<<WINDSFORCE
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
@@ -173,7 +173,7 @@ NEEDFORBUG;
 			}
 			setLaststep();
 		</script>
-NEEDFORBUG;
+WINDSFORCE;
 
 		exit();
 	}
@@ -195,21 +195,21 @@ NEEDFORBUG;
 
 		// 写入锁定文件
 		if(!file_put_contents($this->_sUpdatefile,'ok')){
-			$this->E(Dyhb::L('写入升级锁定文件失败，请检查%s目录是否可写入','Controller/Update',null,NEEDFORBUG_PATH.'/data'));
+			$this->E(Dyhb::L('写入升级锁定文件失败，请检查%s目录是否可写入','Controller/Update',null,WINDSFORCE_PATH.'/data'));
 		}
 		Install_Extend::showJavascriptMessage(Dyhb::L('写入升级程序锁定文件','Controller/Update').'... '.Dyhb::L('成功','Controller/Common'));
 		Install_Extend::showJavascriptMessage(' ');
 
 		// 执行清理
-		if(is_dir(NEEDFORBUG_PATH.'/data/~runtime')){
+		if(is_dir(WINDSFORCE_PATH.'/data/~runtime')){
 			Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('清理系统缓存目录','Controller/Update').'</h3>');
-			Install_Extend::removeDir(NEEDFORBUG_PATH.'/data/~runtime');
+			Install_Extend::removeDir(WINDSFORCE_PATH.'/data/~runtime');
 		}
 
 		// 初始化系统和跳转
 		$sInitsystemUrl=trim(G::getGpc('baseurl')).'/index.php?app=home&c=misc&a=init_system';
 		
-		echo<<<NEEDFORBUG
+		echo<<<WINDSFORCE
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
@@ -221,7 +221,7 @@ NEEDFORBUG;
 		<script type="text/javascript">setTimeout(function(){window.location=window.location=D.U('update/success');},30000);
 		</script>
 		<iframe src="{$sInitsystemUrl}" style="display:none;" onload="setLaststep()"></iframe>
-NEEDFORBUG;
+WINDSFORCE;
 
 		exit();
 	}

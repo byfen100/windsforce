@@ -538,7 +538,7 @@ class PmController extends InitController{
 			header('Expires: 0');
 			
 			$this->assign('sCurrentTimestamp',date('Y-m-d H:i',CURRENT_TIMESTAMP));
-			$this->assign('sVersion',NEEDFORBUG_SERVER_VERSION." Release ".NEEDFORBUG_SERVER_RELEASE);
+			$this->assign('sVersion',WINDSFORCE_SERVER_VERSION." Release ".WINDSFORCE_SERVER_RELEASE);
 			$this->assign('sBlogName',$GLOBALS['_option_']['site_name']);
 			$this->assign('sBlogUrl',$GLOBALS['_option_']['site_url']);
 			$this->display('pm+archive');

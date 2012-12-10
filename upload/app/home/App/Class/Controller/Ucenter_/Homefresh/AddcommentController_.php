@@ -287,7 +287,7 @@ class AddcommentController extends Controller{
 		$sMessage.=Dyhb::L('消息来源','Controller/Homefresh').':'.$GLOBALS['_option_']['site_name']."{$sLine}";
 		$sMessage.=Dyhb::L('站点网址','Controller/Homefresh').':'.$GLOBALS['_option_']['site_url']."{$sLine}";
 		$sMessage.="-----------------------------------------------------{$sLine}";
-		$sMessage.=Dyhb::L('程序支持','Controller/Homefresh').':'.$GLOBALS['_option_']['needforbug_program_name']." " .NEEDFORBUG_SERVER_VERSION. " Release " .NEEDFORBUG_SERVER_RELEASE."{$sLine}";
+		$sMessage.=Dyhb::L('程序支持','Controller/Homefresh').':'.$GLOBALS['_option_']['needforbug_program_name']." " .WINDSFORCE_SERVER_VERSION. " Release " .WINDSFORCE_SERVER_RELEASE."{$sLine}";
 		$sMessage.=Dyhb::L('产品官网','Controller/Homefresh').':'.$GLOBALS['_option_']['needforbug_program_url']."{$sLine}";
 
 		return $sMessage;
@@ -324,7 +324,7 @@ class AddcommentController extends Controller{
 		$sMessage.=Dyhb::L('消息来源','Controller/Homefresh').':'.$GLOBALS['_option_']['site_name']."{$sLine}";
 		$sMessage.=Dyhb::L('站点网址','Controller/Homefresh').':'.$GLOBALS['_option_']['site_url']."{$sLine}";
 		$sMessage.="-----------------------------------------------------{$sLine}";
-		$sMessage.=Dyhb::L('程序支持','Controller/Homefresh').':'.$GLOBALS['_option_']['needforbug_program_name']." " .NEEDFORBUG_SERVER_VERSION. " Release " .NEEDFORBUG_SERVER_RELEASE."{$sLine}";
+		$sMessage.=Dyhb::L('程序支持','Controller/Homefresh').':'.$GLOBALS['_option_']['needforbug_program_name']." " .WINDSFORCE_SERVER_VERSION. " Release " .WINDSFORCE_SERVER_RELEASE."{$sLine}";
 		$sMessage.=Dyhb::L('产品官网','Controller/Homefresh').':'.$GLOBALS['_option_']['needforbug_program_url']."{$sLine}";
 
 		return $sMessage;

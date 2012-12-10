@@ -36,7 +36,7 @@ class Upload_Extend{
 			'uploadfile_maxsize'=>$GLOBALS['_cache_'][$sType.'_option'][$sType.'_icon_uploadfile_maxsize'],
 			'width'=>48,
 			'height'=>48,
-			'upload_path'=>NEEDFORBUG_PATH.'/data/upload/app/'.strtolower($sType).'/icon',
+			'upload_path'=>WINDSFORCE_PATH.'/data/upload/app/'.strtolower($sType).'/icon',
 		);
 
 		$arrUploadoption=array_merge($arrDefaultoption,$arrUploadoption);
@@ -74,7 +74,7 @@ class Upload_Extend{
 	
 	public static function deleteicon($sType,$sUrl,$arrUploadoption=array()){
 		$arrDefaultoption=array(
-			'upload_path'=>NEEDFORBUG_PATH.'/data/upload/app/'.strtolower($sType).'/icon',
+			'upload_path'=>WINDSFORCE_PATH.'/data/upload/app/'.strtolower($sType).'/icon',
 		);
 
 		$arrUploadoption=array_merge($arrDefaultoption,$arrUploadoption);
@@ -124,7 +124,7 @@ class Upload_Extend{
 			'upload_imageswater_textfonttype'=>$GLOBALS['_option_']['upload_imageswater_textfonttype'],
 			'upload_imageswater_offset'=>$GLOBALS['_option_']['upload_imageswater_offset'],
 			'upload_imageswater_position'=>$GLOBALS['_option_']['upload_imageswater_position'],
-			'upload_path'=>NEEDFORBUG_PATH.'/data/upload/attachment',
+			'upload_path'=>WINDSFORCE_PATH.'/data/upload/attachment',
 			'upload_thumb'=>'thumb_',
 			'flash_inputname'=>'Filedata',
 		);

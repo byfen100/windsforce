@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 前台公用($)*/
+   WindsForce 前台公用($)*/
 
 /** 浏览器复制变量 */
 var clipboardswfdata;

@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入商城模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/shop/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/shop/App/Class/Model');
 
 class ShopshippingController extends InitController{
 
@@ -28,7 +28,7 @@ class ShopshippingController extends InitController{
 		// 读取支付方式中的配置数据
 		$arrShippinglistData=array();
 
-		$sShippingpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Shipping';
+		$sShippingpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Shipping';
 		
 		$arrShippingdir=G::listDir($sShippingpath);
 		if(is_array($arrShippingdir)){
@@ -73,7 +73,7 @@ class ShopshippingController extends InitController{
 		}
 
 		// 保存配送方式数据
-		$sShippingpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Shipping';
+		$sShippingpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Shipping';
 
 		$sConfigfile=$sShippingpath.'/'.$sCode.'/Config.php';
 		if(!is_file($sConfigfile)){
@@ -127,7 +127,7 @@ class ShopshippingController extends InitController{
 			$this->E('待编辑的配送方式不存在');
 		}
 		
-		$sShippingpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Shipping';
+		$sShippingpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Shipping';
 
 		$sConfigfile=$sShippingpath.'/'.$oShopshipping['shopshipping_code'].'/Config.php';
 		if(!is_file($sConfigfile)){

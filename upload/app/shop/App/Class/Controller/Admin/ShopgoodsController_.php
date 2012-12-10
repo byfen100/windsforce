@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入商城模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/shop/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/shop/App/Class/Model');
 
 class ShopgoodsController extends InitController{
 
@@ -277,7 +277,7 @@ class ShopgoodsController extends InitController{
 				
 				$arrDefaultUploadoption=array(
 					'upload_allowed_type'=>'jpg|jpeg|gif|bmp|png',
-					'upload_path'=>NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods',
+					'upload_path'=>WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods',
 					'upload_create_thumb'=>1,
 					'flash_inputname'=>'shopgoodsimg',
 					'upload_thumb_size'=>$arrShopgoodsthumbimgsizes[0].','.$arrShopgoodsimgsizes[0].'|'.$arrShopgoodsthumbimgsizes[1].','.$arrShopgoodsimgsizes[1],
@@ -295,13 +295,13 @@ class ShopgoodsController extends InitController{
 
 				if(is_array($arrUploadinfos)){
 					foreach($arrUploadinfos as $nKey=>$arrUploadinfo){
-						$arrData[$nKey]['shopgoods_originalimg']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['savepath'])).'/'.$arrUploadinfo['savename'];
+						$arrData[$nKey]['shopgoods_originalimg']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['savepath'])).'/'.$arrUploadinfo['savename'];
 			
 						if($arrUploadoption['upload_create_thumb']==1){
-							$arrData[$nKey]['shopgoods_img']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsimgsizes[0].'_'.$arrUploadinfo['savename'];
+							$arrData[$nKey]['shopgoods_img']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsimgsizes[0].'_'.$arrUploadinfo['savename'];
 							
 							if(strpos($arrUploadoption['upload_thumb'],',')){
-								$arrData[$nKey]['shopgoods_thumb']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsthumbimgsizes[0].'_'.$arrUploadinfo['savename'];
+								$arrData[$nKey]['shopgoods_thumb']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsthumbimgsizes[0].'_'.$arrUploadinfo['savename'];
 							}
 						}
 						
@@ -391,7 +391,7 @@ class ShopgoodsController extends InitController{
 			$this->E('你要删除商品图片不存在');
 		}
 		
-		$sShopgoodsgalleryUrl=NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods/';
+		$sShopgoodsgalleryUrl=WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods/';
 		foreach(array('shopgoodsgallery_url','shopgoodsgallery_thumburl','shopgoodsgallery_imgoriginal') as $sValue){
 			if(is_file($sShopgoodsgalleryUrl.$sValue)){
 				@unlink($sShopgoodsgalleryUrl.$sValue);

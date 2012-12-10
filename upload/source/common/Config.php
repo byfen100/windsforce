@@ -14,7 +14,7 @@ $arrAppConfigs=array(
 );
 
 // 读取全局配置
-$arrGlobalConfig=(array)require(NEEDFORBUG_PATH.'/config/Config.inc.php');
+$arrGlobalConfig=(array)require(WINDSFORCE_PATH.'/config/Config.inc.php');
 
 // 模板设置
 $arrAppConfigs['TPL_DIR']=$arrGlobalConfig['FRONT_TPL_DIR'];

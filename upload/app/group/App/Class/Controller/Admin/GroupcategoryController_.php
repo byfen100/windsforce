@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入群组模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/group/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/group/App/Class/Model');
 
 class GroupcategoryController extends InitController{
 

@@ -22,7 +22,7 @@ class RatingController extends InitController{
 		$arrOptionData=$GLOBALS['_option_'];
 		$this->assign('arrOptions',$arrOptionData);
 
-		$arrRatingtype=G::listDir(NEEDFORBUG_PATH.'/Public/images/rating');
+		$arrRatingtype=G::listDir(WINDSFORCE_PATH.'/Public/images/rating');
 		$this->assign('arrRatingtype',$arrRatingtype);
 		
 		if(!$sSort){

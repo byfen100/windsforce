@@ -4,7 +4,7 @@ return array(
 'ce9e92bdb6aacaedc2a811ece5ed096a'=>"節點列表",
 'fac54c3430528339ac075d688db27ce8'=>"模塊",
 '3712972d84adf48acbd6ad24b4d75ad0'=>"列表",
-'ca2ff096582047fa2e2b6cd2fba3bbd9'=>"Needforbug採用基於角色的權限認證體系(RBAC)來管理用戶訪問權限",
+'ca2ff096582047fa2e2b6cd2fba3bbd9'=>"WindsForce採用基於角色的權限認證體系(RBAC)來管理用戶訪問權限",
 '2ced341a191977bdbab1f5a16500e1a3'=>"節點在RBAC系統中屬於資源容器，裡面儲存了資源的層級關係",
 '9911aa00261bbfde52d936a55d2c491e'=>"節點的最高級別為應用",
 'a04150973c60badc3d1777a500edb476'=>"應用的下面有模塊，模塊下面有操作方法",

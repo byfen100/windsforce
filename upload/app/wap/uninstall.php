@@ -9,7 +9,7 @@
 // 如果应用不需要清理数据，你可以删除本文件
 $sSql=<<<EOF
 
-DROP TABLE IF EXISTS {NEEDFORBUG}hello;
+DROP TABLE IF EXISTS {WINDSFORCE}hello;
 
 EOF;
 

@@ -13,7 +13,7 @@ $arrMyappConfigs=array(
 );
 
 // 读取全局配置
-$arrGlobalConfig=(array)require(NEEDFORBUG_PATH.'/config/Config.inc.php');
+$arrGlobalConfig=(array)require(WINDSFORCE_PATH.'/config/Config.inc.php');
 
 // 关闭调试
 $arrGlobalConfig['SHOW_RUN_TIME']=FALSE;

@@ -28,7 +28,7 @@ class DateoptionController extends OptionController{
 
 	public function update_option(){
 		if($_POST['options']['timeoffset']!=$GLOBALS['_option_']['timeoffset']){
-			$sAppGlobaldefaultconfigFile=NEEDFORBUG_PATH.'/config/Config.inc.php';
+			$sAppGlobaldefaultconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 			if(!is_file($sAppGlobaldefaultconfigFile)){
 				$this->E(Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppGlobaldefaultconfigFile));
 			}

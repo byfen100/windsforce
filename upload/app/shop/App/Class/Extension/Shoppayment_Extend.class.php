@@ -41,7 +41,7 @@ class Shoppayment_Extend{
 		// 读取配送方式数据
 		$arrShippinglistData=array();
 
-		$sShippingpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Shipping';
+		$sShippingpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Shipping';
 		$arrShippingdir=G::listDir($sShippingpath);
 		if(is_array($arrShippingdir)){
 			foreach($arrShippingdir as $sShippingdir){

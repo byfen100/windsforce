@@ -6,7 +6,7 @@
 
 /** 导入绑定数据模型 */
 if(!Dyhb::classExists('SociauserModel')){
-	require_once(NEEDFORBUG_PATH.'/source/extension/socialization/lib/mvc/SociauserModel.class.php');
+	require_once(WINDSFORCE_PATH.'/source/extension/socialization/lib/mvc/SociauserModel.class.php');
 }
 
 class SociauserController extends InitController{

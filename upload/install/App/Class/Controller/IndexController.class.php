@@ -1,11 +1,11 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Needforbug 安装程序($)*/
+   WindsForce 安装程序($)*/
 
 !defined('DYHB_PATH') && exit;
 
 /** 配置NeedForBug默认数据库名字 */
-define('NEEDFORBUG_DATABASE','needforbugv'.NEEDFORBUG_SERVER_RELEASE);
+define('WINDSFORCE_DATABASE','needforbugv'.WINDSFORCE_SERVER_RELEASE);
 
 class IndexController extends Controller{
 
@@ -18,8 +18,8 @@ class IndexController extends Controller{
 	}
 
 	public function check(){
-		$sInstallLockfile=NEEDFORBUG_PATH.'/data/Install.lock.php';
-		$sUpdateLockfile=NEEDFORBUG_PATH.'/data/Update.lock.php';
+		$sInstallLockfile=WINDSFORCE_PATH.'/data/Install.lock.php';
+		$sUpdateLockfile=WINDSFORCE_PATH.'/data/Update.lock.php';
 
 		if(is_file($sInstallLockfile) && is_file($sUpdateLockfile)){
 			$this->E(Dyhb::L("程序已经锁定，既不需要安装也不需要升级，如有需要请删除安装锁定文件 %s 或者升级锁定文件 %s",'Controller/Common'),null,$sInstallLockfile,$sUpdateLockfile);
@@ -27,10 +27,10 @@ class IndexController extends Controller{
 	}
 
 	public function check_install(){
-		$this->_sLockfile=NEEDFORBUG_PATH.'/data/Install.lock.php';
+		$this->_sLockfile=WINDSFORCE_PATH.'/data/Install.lock.php';
 
 		if(is_file($this->_sLockfile)){
-			$this->E(Dyhb::L("程序已运行安装，如果你确定要重新安装，请先从FTP中删除 %s",'Controller/Install',null,str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($this->_sLockfile))));
+			$this->E(Dyhb::L("程序已运行安装，如果你确定要重新安装，请先从FTP中删除 %s",'Controller/Install',null,str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($this->_sLockfile))));
 		}
 	}
 
@@ -101,7 +101,7 @@ class IndexController extends Controller{
 		}
 
 		// 系统安装权限检查
-		$arrSpTestDirs=(array)(include NEEDFORBUG_PATH.'/source/common/Cache.php');
+		$arrSpTestDirs=(array)(include WINDSFORCE_PATH.'/source/common/Cache.php');
 
 		$this->assign('arrInfo',$arrInfo);
 		$this->assign('bSpMysqlErr',$bSpMysqlErr);
@@ -186,7 +186,7 @@ class IndexController extends Controller{
 		Install_Extend::queryString("SET NAMES 'UTF8',character_set_client=binary,sql_mode='';");
 
 		// 写入配置文件
-		$arrConfig=(array)(include NEEDFORBUG_PATH.'/config/ConfigDefault.inc.php');
+		$arrConfig=(array)(include WINDSFORCE_PATH.'/config/ConfigDefault.inc.php');
 		$arrConfig['DB_HOST']=$sDbhost;
 		$arrConfig['DB_USER']=$sDbuser;
 		$arrConfig['DB_PASSWORD']=$sDbpwd;
@@ -195,12 +195,12 @@ class IndexController extends Controller{
 		$arrConfig['RBAC_DATA_PREFIX']=$sRbacprefix;
 		$arrConfig['COOKIE_PREFIX']=$sCookieprefix;
 		
-		if(!file_put_contents(NEEDFORBUG_PATH.'/config/Config.inc.php',
+		if(!file_put_contents(WINDSFORCE_PATH.'/config/Config.inc.php',
 			"<?php\n /* DoYouHaoBaby Framework Config File,Do not to modify this file! */ \n return ".
 			var_export($arrConfig,true).
 			"\n?>")
 		){
-			$this->E(Dyhb::L('写入配置失败，请检查 %s目录是否可写入','Controller/Install',null,NEEDFORBUG_PATH.'/Config'));
+			$this->E(Dyhb::L('写入配置失败，请检查 %s目录是否可写入','Controller/Install',null,WINDSFORCE_PATH.'/Config'));
 		}
 
 		// 输出消息框
@@ -218,22 +218,22 @@ class IndexController extends Controller{
 		Install_Extend::showJavascriptMessage(' ');
 
 		$sLangCookieName=$GLOBALS['_commonConfig_']['COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME']===true?APP_NAME.'_language':'language';
-		$sNeedforbugDatadir=APP_PATH.'/Static/Sql/Install';
+		$sWindsForceDatadir=APP_PATH.'/Static/Sql/Install';
 
 		// 执行系统初始化数据
-		$sNeedforbugDatapath=$sNeedforbugDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/needforbug.data.sql';
-		if(!is_file($sNeedforbugDatapath)){
-			$sNeedforbugDatapath=$sNeedforbugDatadir.'/Zh-cn/needforbug.data.sql';
+		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/needforbug.data.sql';
+		if(!is_file($sWindsForceDatapath)){
+			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/needforbug.data.sql';
 		}
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('初始化系统数据库数据','Controller/Install').'</h3>');
-		Install_Extend::runQuery($sNeedforbugDatapath);
+		Install_Extend::runQuery($sWindsForceDatapath);
 		Install_Extend::showJavascriptMessage(' ');
 
 		// 导入地理数据
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('导入地理数据库数据','Controller/Install').'</h3>');
 		for($nI=1;$nI<=6;$nI++){
 			Install_Extend::showJavascriptMessage(Dyhb::L('导入地理数据库数据','Controller/Install').$nI);
-			Install_Extend::runQuery($sNeedforbugDatadir.'/district/'.$nI.'.sql',false);
+			Install_Extend::runQuery($sWindsForceDatadir.'/district/'.$nI.'.sql',false);
 		}
 		Install_Extend::showJavascriptMessage(' ');
 
@@ -247,15 +247,15 @@ class IndexController extends Controller{
 		}else{
 			foreach($arrApps as $sApp){
 				Install_Extend::showJavascriptMessage(Dyhb::L('创建应用 %s 的数据库表','Controller/Install',null,$sApp));
-				Install_Extend::importTable($sNeedforbugDatadir.'/app/'.$sApp.'/needforbug.table.sql');
+				Install_Extend::importTable($sWindsForceDatadir.'/app/'.$sApp.'/needforbug.table.sql');
 				Install_Extend::showJavascriptMessage(' ');
 
-				$sNeedforbugAppDatapath=$sNeedforbugDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/app/'.$sApp.'/needforbug.data.sql';
-				if(!is_file($sNeedforbugAppDatapath)){
-					$sNeedforbugAppDatapath=$sNeedforbugDatadir.'/Zh-cn/app/'.$sApp.'/needforbug.data.sql';
+				$sWindsForceAppDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/app/'.$sApp.'/needforbug.data.sql';
+				if(!is_file($sWindsForceAppDatapath)){
+					$sWindsForceAppDatapath=$sWindsForceDatadir.'/Zh-cn/app/'.$sApp.'/needforbug.data.sql';
 				}
 				Install_Extend::showJavascriptMessage(Dyhb::L('导入应用 %s 的数据库数据','Controller/Install',null,$sApp));
-				Install_Extend::runQuery($sNeedforbugAppDatapath);
+				Install_Extend::runQuery($sWindsForceAppDatapath);
 				Install_Extend::showJavascriptMessage(' ');
 			}
 		}
@@ -284,21 +284,21 @@ class IndexController extends Controller{
 
 		// 写入锁定文件
 		if(!file_put_contents($this->_sLockfile,'ok')){
-			$this->E(Dyhb::L('写入安装锁定文件失败，请检查%s目录是否可写入','Controller/Install',null,NEEDFORBUG_PATH.'/data'));
+			$this->E(Dyhb::L('写入安装锁定文件失败，请检查%s目录是否可写入','Controller/Install',null,WINDSFORCE_PATH.'/data'));
 		}
 		Install_Extend::showJavascriptMessage(Dyhb::L('写入安装程序锁定文件','Controller/Install').'... '.Dyhb::L('成功','Controller/Common'));
 		Install_Extend::showJavascriptMessage(' ');
 
 		// 执行清理
-		if(is_dir(NEEDFORBUG_PATH.'/data/~runtime')){
+		if(is_dir(WINDSFORCE_PATH.'/data/~runtime')){
 			Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('清理系统缓存目录','Controller/Install').'</h3>');
-			Install_Extend::removeDir(NEEDFORBUG_PATH.'/data/~runtime');
+			Install_Extend::removeDir(WINDSFORCE_PATH.'/data/~runtime');
 		}
 
 		// 初始化系统和跳转
 		$sInitsystemUrl=trim(G::getGpc('baseurl')).'/index.php?app=home&c=misc&a=init_system';
 		
-		echo<<<NEEDFORBUG
+		echo<<<WINDSFORCE
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
@@ -310,7 +310,7 @@ class IndexController extends Controller{
 		<script type="text/javascript">setTimeout(function(){window.location=window.location=D.U('index/success');},30000);
 		</script>
 		<iframe src="{$sInitsystemUrl}" style="display:none;" onload="setLaststep()"></iframe>
-NEEDFORBUG;
+WINDSFORCE;
 
 		exit();
 	}

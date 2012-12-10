@@ -1,4 +1,4 @@
--- NEEDFORBUG 数据库表升级
+-- WINDSFORCE 数据库表升级
 -- version 1.0
 -- http://www.doyouhaobaby.net
 --

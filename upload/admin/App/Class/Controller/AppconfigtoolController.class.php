@@ -7,7 +7,7 @@
 class AppconfigtoolController extends InitController{
 
 	public function index($sName=null,$bDisplay=true){
-		$sAppGlobalconfigFile=NEEDFORBUG_PATH.'/config/Config.inc.php';
+		$sAppGlobalconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 		if(!is_file($sAppGlobalconfigFile)){
 			$this->E(Dyhb::L('框架全局配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppGlobalconfigFile));
 		}
@@ -16,9 +16,9 @@ class AppconfigtoolController extends InitController{
 		$arrAppGlobalconfigs=(array)(include $sAppGlobalconfigFile);
 
 		$this->assign('sAppGlobalconfig',$sAppGlobalconfig);
-		$this->assign('sAppGlobalconfigFile',str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sAppGlobalconfigFile)));
+		$this->assign('sAppGlobalconfigFile',str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sAppGlobalconfigFile)));
 		$this->assign('arrAppGlobalconfigs',$arrAppGlobalconfigs);
-		$this->assign('sAppGlobaldefaultconfigFile','{NEEDFORBUG_PATH}/config/ConfigDefault.inc.php');
+		$this->assign('sAppGlobaldefaultconfigFile','{WINDSFORCE_PATH}/config/ConfigDefault.inc.php');
 
 		$arrWhere=array();
 		$arrWhere['app_status']=1;
@@ -38,10 +38,10 @@ class AppconfigtoolController extends InitController{
 			'app_identifier'=>'admin',
 			'app_name'=>Dyhb::L('全局后台','Controller/Appconfigtool'),
 			'logo'=>__ROOT__.'/admin/logo.png',
-			'config_file'=>'{NEEDFORBUG_PATH}/'.$sConfigfile,
-			'config_file_exist'=>is_file(NEEDFORBUG_PATH.'/'.$sConfigfile)?true:false,
-			'config_cache_file'=>'{NEEDFORBUG_PATH}/'.$sConfigcachefile,
-			'config_cache_file_exist'=>is_file(NEEDFORBUG_PATH.'/'.$sConfigcachefile)?true:false,
+			'config_file'=>'{WINDSFORCE_PATH}/'.$sConfigfile,
+			'config_file_exist'=>is_file(WINDSFORCE_PATH.'/'.$sConfigfile)?true:false,
+			'config_cache_file'=>'{WINDSFORCE_PATH}/'.$sConfigcachefile,
+			'config_cache_file_exist'=>is_file(WINDSFORCE_PATH.'/'.$sConfigcachefile)?true:false,
 		);
 
 		$arrLists=AppModel::F()->where($arrWhere)->all()->order('app_id DESC')->limit($oPage->returnPageStart(),$nEverynum)->query();
@@ -55,10 +55,10 @@ class AppconfigtoolController extends InitController{
 					'app_identifier'=>$oList['app_identifier'],
 					'app_name'=>$oList['app_name'],
 					'logo'=>Core_Extend::appLogo($oList['app_identifier']),
-					'config_file'=>'{NEEDFORBUG_PATH}/'.$sConfigfile,
-					'config_file_exist'=>is_file(NEEDFORBUG_PATH.'/'.$sConfigfile)?true:false,
-					'config_cache_file'=>'{NEEDFORBUG_PATH}/'.$sConfigcachefile,
-					'config_cache_file_exist'=>is_file(NEEDFORBUG_PATH.'/'.$sConfigcachefile)?true:false,
+					'config_file'=>'{WINDSFORCE_PATH}/'.$sConfigfile,
+					'config_file_exist'=>is_file(WINDSFORCE_PATH.'/'.$sConfigfile)?true:false,
+					'config_cache_file'=>'{WINDSFORCE_PATH}/'.$sConfigcachefile,
+					'config_cache_file_exist'=>is_file(WINDSFORCE_PATH.'/'.$sConfigcachefile)?true:false,
 				);
 			}
 		}
@@ -70,7 +70,7 @@ class AppconfigtoolController extends InitController{
 	}
 
 	public function default_config(){
-		$sAppGlobaldefaultconfigFile=NEEDFORBUG_PATH.'/config/ConfigDefault.inc.php';
+		$sAppGlobaldefaultconfigFile=WINDSFORCE_PATH.'/config/ConfigDefault.inc.php';
 		if(!is_file($sAppGlobaldefaultconfigFile)){
 			$this->error_message(Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppGlobaldefaultconfigFile));
 		}
@@ -155,9 +155,9 @@ class AppconfigtoolController extends InitController{
 		}
 
 		if($sApp=='admin'){
-			$sAppConfigPath=NEEDFORBUG_PATH.'/admin/App/Config';
+			$sAppConfigPath=WINDSFORCE_PATH.'/admin/App/Config';
 		}else{
-			$sAppConfigPath=NEEDFORBUG_PATH.'/app/'.$sApp.'/App/Config';
+			$sAppConfigPath=WINDSFORCE_PATH.'/app/'.$sApp.'/App/Config';
 		}
 
 		if(!is_dir($sAppConfigPath)){
@@ -177,7 +177,7 @@ class AppconfigtoolController extends InitController{
 		foreach($arrConfigfiles as $nKey=>$sFile){
 			$arrSaveDatas[$nKey]=array(
 				'really_file'=>$sFile,
-				'file'=>str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sFile)),
+				'file'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sFile)),
 				'content'=>file_get_contents($sFile),
 			);
 		}
@@ -193,7 +193,7 @@ class AppconfigtoolController extends InitController{
 		$arrDatas=G::getGpc('data','P');
 		
 		foreach($arrDatas as $sKey=>$sData){
-			$sReallyconfigfile=str_replace('{NEEDFORBUG_PATH}',G::tidyPath(NEEDFORBUG_PATH),G::tidyPath($sKey));
+			$sReallyconfigfile=str_replace('{WINDSFORCE_PATH}',G::tidyPath(WINDSFORCE_PATH),G::tidyPath($sKey));
 			if(!@file_put_contents($sReallyconfigfile,$sData)){
 				$this->E(Dyhb::L('应用配置文件 %s 不可写','Controller/Appconfigtool',null,$sReallyconfigfile));
 			}
@@ -205,7 +205,7 @@ class AppconfigtoolController extends InitController{
 	}
 
 	public function edit_globalconfig(){
-		$sAppGlobalconfigFile=NEEDFORBUG_PATH.'/config/Config.inc.php';
+		$sAppGlobalconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 		if(!is_file($sAppGlobalconfigFile)){
 			$this->error_message(Dyhb::L('框架全局配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppGlobalconfigFile));
 		}
@@ -213,7 +213,7 @@ class AppconfigtoolController extends InitController{
 		$sAppGlobalconfig=file_get_contents($sAppGlobalconfigFile);
 
 		$this->assign('sAppGlobalconfig',$sAppGlobalconfig);
-		$this->assign('sAppGlobalconfigFile',str_replace(G::tidyPath(NEEDFORBUG_PATH),'{NEEDFORBUG_PATH}',G::tidyPath($sAppGlobalconfigFile)));
+		$this->assign('sAppGlobalconfigFile',str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sAppGlobalconfigFile)));
 
 		$this->display();
 	}
@@ -221,7 +221,7 @@ class AppconfigtoolController extends InitController{
 	public function save_globalconfig(){
 		$sData=G::getGpc('data','P');
 
-		$sAppGlobalconfigFile=NEEDFORBUG_PATH.'/config/Config.inc.php';
+		$sAppGlobalconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 		if(!@file_put_contents($sAppGlobalconfigFile,$sData)){
 			$this->E(Dyhb::L('全局配置文件 %s 不可写','Controller/Appconfigtool',null,$sAppGlobalconfigFile));
 		}
@@ -254,16 +254,16 @@ class AppconfigtoolController extends InitController{
 		}
 
 		if($sApp=='admin'){
-			$sAppConfigfile=NEEDFORBUG_PATH.'/admin/App/Config/Config.php';
+			$sAppConfigfile=WINDSFORCE_PATH.'/admin/App/Config/Config.php';
 		}else{
-			$sAppConfigfile=NEEDFORBUG_PATH.'/app/'.$sApp.'/App/Config/Config.php';
+			$sAppConfigfile=WINDSFORCE_PATH.'/app/'.$sApp.'/App/Config/Config.php';
 		}
 
 		return $sAppConfigfile;
 	}
 
 	public function get_configcachefile($sApp){
-		return NEEDFORBUG_PATH.'/data/~runtime/app/'.$sApp.'/Config.php';
+		return WINDSFORCE_PATH.'/data/~runtime/app/'.$sApp.'/Config.php';
 	}
 
 	public function error_message($sMessage){

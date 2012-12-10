@@ -24,8 +24,8 @@ class AvatarController extends InitController{
 			return;
 		}
 
-		if(!is_dir(dirname(NEEDFORBUG_PATH.'/data/avatar/temp')) && !G::makeDir(NEEDFORBUG_PATH.'/data/avatar/temp')){
-			$this->E(Dyhb::L('上传目录%s不可写','Controller/Avatar',null,NEEDFORBUG_PATH.'/data/avatar/temp'));
+		if(!is_dir(dirname(WINDSFORCE_PATH.'/data/avatar/temp')) && !G::makeDir(WINDSFORCE_PATH.'/data/avatar/temp')){
+			$this->E(Dyhb::L('上传目录%s不可写','Controller/Avatar',null,WINDSFORCE_PATH.'/data/avatar/temp'));
 		}
 
 		require_once(Core_Extend::includeFile('function/Avatar_Extend'));

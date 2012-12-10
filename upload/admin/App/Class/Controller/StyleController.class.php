@@ -17,7 +17,7 @@ class StyleController extends InitController{
 	}
 
 	public function bIndex_(){
-		$arrThemes=G::listDir(NEEDFORBUG_PATH.'/ucontent/theme');
+		$arrThemes=G::listDir(WINDSFORCE_PATH.'/ucontent/theme');
 				
 		$nAlreadyInstalledNums=0;
 		if(!empty($arrThemes)){
@@ -148,7 +148,7 @@ class StyleController extends InitController{
 		$oTheme=ThemeModel::F('theme_id=?',$GLOBALS['_option_']['front_style_id'])->getOne();
 		$this->_sCurrentStyle=ucfirst($oTheme['theme_dirname']);
 
-		$this->show_Styles(NEEDFORBUG_PATH.'/ucontent/theme');
+		$this->show_Styles(WINDSFORCE_PATH.'/ucontent/theme');
 		
 		$nAlreadyInstalledNums=0;
 		if(!empty($this->_arrOkStyles)){
@@ -169,13 +169,13 @@ class StyleController extends InitController{
 		if(empty($this->_sCurrentStyle)){
 			$this->_sCurrentStyle='Default';
 		}
-		$this->show_Styles(NEEDFORBUG_PATH.'/admin/Theme');
+		$this->show_Styles(WINDSFORCE_PATH.'/admin/Theme');
 		
-		if(!is_dir(NEEDFORBUG_PATH.'/ucontent/theme/'.$this->_sCurrentStyle)){
+		if(!is_dir(WINDSFORCE_PATH.'/ucontent/theme/'.$this->_sCurrentStyle)){
 			$this->assign('sCurrentStyle',false);
 		}else{
 			$arrStyles=array();
-			$arrStyles[]=NEEDFORBUG_PATH.'/ucontent/theme/'.$this->_sCurrentStyle;
+			$arrStyles[]=WINDSFORCE_PATH.'/ucontent/theme/'.$this->_sCurrentStyle;
 
 			require_once(Core_Extend::includeFile('class/Style'));
 
@@ -196,9 +196,9 @@ class StyleController extends InitController{
 	}
 
 	public function get_xml_num($sStyle,$bReturnNum=true){
-		$arrXmlFiles=glob(NEEDFORBUG_PATH.'/ucontent/theme/'.ucfirst($sStyle).'/*.xml');
+		$arrXmlFiles=glob(WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($sStyle).'/*.xml');
 
-		if(!in_array(NEEDFORBUG_PATH.'/ucontent/theme/'.ucfirst($sStyle).'/needforbug_style_'.strtolower($sStyle).'.xml',$arrXmlFiles)){
+		if(!in_array(WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($sStyle).'/needforbug_style_'.strtolower($sStyle).'.xml',$arrXmlFiles)){
 			return false;
 		}
 
@@ -270,14 +270,14 @@ class StyleController extends InitController{
 			if(!isset($arrStyleData['root']['version']) || empty($arrStyleData['root']['version'])){
 				$this->E(Dyhb::L('当前导入的主题配置文件版本号无法识别','Controller/Style'));
 			}else{
-				$nResult=strcmp($arrStyleData['root']['version'],NEEDFORBUG_SERVER_VERSION);
+				$nResult=strcmp($arrStyleData['root']['version'],WINDSFORCE_SERVER_VERSION);
 				if($nResult>0){
 					$this->E(Dyhb::L('当前导入的主题配置文件版本号为较新版本，请下载新版本程序','Controller/Style').
-							'<br/>'.Dyhb::L('主题配置文件版本','Controller/Style').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller/Style').NEEDFORBUG_SERVER_VERSION
+							'<br/>'.Dyhb::L('主题配置文件版本','Controller/Style').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller/Style').WINDSFORCE_SERVER_VERSION
 						);
 				}elseif($bIgnoreversion===false && $nResult<0){
 					$this->E(Dyhb::L('当前导入的主题配置文件版本号为较旧版本，请导入新版本配置文件，或者选择允许导入旧版本','Controller/Style').
-							'<br/>'.Dyhb::L('主题配置文件版本','Controller/Style').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller/Style').NEEDFORBUG_SERVER_VERSION
+							'<br/>'.Dyhb::L('主题配置文件版本','Controller/Style').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller/Style').WINDSFORCE_SERVER_VERSION
 					);
 				}
 			}
@@ -293,7 +293,7 @@ class StyleController extends InitController{
 		$bNotExistsSomesystemvar=false;
 		$arrStylevarKeys=array_keys($arrStyleData['style']);
 		
-		$arrCurtomStylevarList=(array)(include NEEDFORBUG_PATH.'/source/common/Style.php');
+		$arrCurtomStylevarList=(array)(include WINDSFORCE_PATH.'/source/common/Style.php');
 		foreach($arrCurtomStylevarList as $sCurtomStylevarList){
 			if(!in_array($sCurtomStylevarList,$arrStylevarKeys)){
 				if($bIgnoreversion===false){
@@ -354,7 +354,7 @@ class StyleController extends InitController{
 		$arrStylevars=StylevarModel::F('style_id=?',intval(G::getGpc('id','G')))->getAll();
 		$arrCustomStylevar=$arrSystemStylevar=array();
 
-		$arrCurtomStylevarList=(array)(include NEEDFORBUG_PATH.'/source/common/Style.php');
+		$arrCurtomStylevarList=(array)(include WINDSFORCE_PATH.'/source/common/Style.php');
 		if(is_array($arrStylevars)){
 			foreach($arrStylevars as $oStylevar){
 				if(!in_array(strtolower($oStylevar['stylevar_variable']),$arrCurtomStylevarList)){
@@ -396,9 +396,9 @@ class StyleController extends InitController{
 
 			$oTheme=ThemeModel::F('theme_id=?',$oModel['theme_id'])->getOne();
 			if(!empty($oTheme['theme_id'])){
-				$sStyleExtendDir=NEEDFORBUG_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/Public/Style';
+				$sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/Public/Style';
 				if(!is_dir($sStyleExtendDir)){
-					$sStyleExtendDir=NEEDFORBUG_PATH.'/ucontent/theme/Default/Public/Style';
+					$sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style';
 				}
 
 				if(is_dir($sStyleExtendDir)){
@@ -549,11 +549,11 @@ class StyleController extends InitController{
 	public function preview(){
 		$nId=intval(G::getGpc('id','G'));
 
-		if(!is_file(NEEDFORBUG_PATH.'/data/~runtime/style_/'.$nId.'/common.css')){
+		if(!is_file(WINDSFORCE_PATH.'/data/~runtime/style_/'.$nId.'/common.css')){
 			$this->update_css(false);
 		}
 
-		$arrStyle=(array)(include NEEDFORBUG_PATH.'/data/~runtime/style_/'.$nId.'/style.php');
+		$arrStyle=(array)(include WINDSFORCE_PATH.'/data/~runtime/style_/'.$nId.'/style.php');
 		$this->assign('sStylepath',__ROOT__.'/data/~runtime/style_/'.$nId.'/common.css?'.$arrStyle['verhash']);
 
 		$this->display();
@@ -574,8 +574,8 @@ class StyleController extends InitController{
 				
 				// 样式版权
 				$arrData['title']=$GLOBALS['_option_']['needforbug_program_name'].'! Style';
-				$arrData['version']=NEEDFORBUG_SERVER_VERSION;
-				$arrData['time']=NEEDFORBUG_SERVER_RELEASE;
+				$arrData['version']=WINDSFORCE_SERVER_VERSION;
+				$arrData['time']=WINDSFORCE_SERVER_RELEASE;
 				$arrData['url']=$GLOBALS['_option_']['needforbug_program_url'];
 				$arrData['copyright']='(C)'.$GLOBALS['_option_']['needforbug_program_year'].' '.$GLOBALS['_option_']['needforbug_program_company'];
 
@@ -601,7 +601,7 @@ class StyleController extends InitController{
 					'directory'=>'theme/'.ucfirst($oTheme['theme_dirname']),
 					'copyright'=>htmlspecialchars(trim($oTheme['theme_copyright'])),
 					'data'=>array_reverse($arrStylevarData),
-					'version'=>'For '.$GLOBALS['_option_']['needforbug_program_name'].'-'.NEEDFORBUG_SERVER_VERSION,
+					'version'=>'For '.$GLOBALS['_option_']['needforbug_program_name'].'-'.WINDSFORCE_SERVER_VERSION,
 				);
 				
 				// 保存文件
@@ -725,7 +725,7 @@ class StyleController extends InitController{
 					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller/Style',null,$oStyle['style_name']));
 				}
 
-				$sThemeXml=NEEDFORBUG_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/needforbug_style_'.strtolower($oTheme['theme_dirname']).'.xml';
+				$sThemeXml=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/needforbug_style_'.strtolower($oTheme['theme_dirname']).'.xml';
 				if(!is_file($sThemeXml)){
 					$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller/Style',null,$sThemeXml));
 				}
@@ -805,7 +805,7 @@ class StyleController extends InitController{
 		// 初始化其主题变量
 		$arrStyleData=array();
 
-		$arrCurtomStylevarList=(array)(include NEEDFORBUG_PATH.'/source/common/Style.php');
+		$arrCurtomStylevarList=(array)(include WINDSFORCE_PATH.'/source/common/Style.php');
 		foreach($arrCurtomStylevarList as $sCustomStylevar){
 			$arrStyleData[$sCustomStylevar]='';
 		}

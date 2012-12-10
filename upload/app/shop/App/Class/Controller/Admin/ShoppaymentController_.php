@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 /** 导入商城模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/shop/App/Class/Model');
+Dyhb::import(WINDSFORCE_PATH.'/app/shop/App/Class/Model');
 
 class ShoppaymentController extends InitController{
 
@@ -28,7 +28,7 @@ class ShoppaymentController extends InitController{
 		// 读取支付方式中的配置数据
 		$arrPaymentlistData=array();
 
-		$sParmentpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Payment';
+		$sParmentpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Payment';
 		
 		$arrPaymentdir=G::listDir($sParmentpath);
 		if(is_array($arrPaymentdir)){
@@ -76,7 +76,7 @@ class ShoppaymentController extends InitController{
 		}
 
 		// 保存支付方式数据
-		$sParmentpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Payment';
+		$sParmentpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Payment';
 
 		$sConfigfile=$sParmentpath.'/'.$sCode.'/Config.php';
 		if(!is_file($sConfigfile)){
@@ -149,7 +149,7 @@ class ShoppaymentController extends InitController{
 			$this->E('待编辑的支付方式不存在');
 		}
 		
-		$sParmentpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Payment';
+		$sParmentpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Payment';
 
 		$sConfigfile=$sParmentpath.'/'.$oShoppayment['shoppayment_code'].'/Config.php';
 		if(!is_file($sConfigfile)){
