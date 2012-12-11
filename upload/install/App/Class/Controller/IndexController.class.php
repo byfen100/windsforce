@@ -63,10 +63,10 @@ class IndexController extends Controller{
 		$this->check_install();
 
 		// 版权信息
-		if(is_file(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.MD")){
-			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.MD"));
+		if(is_file(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.dyhb")){
+			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.dyhb"));
 		}else{
-			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/LICENSE.MD"));
+			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/LICENSE.dyhb"));
 		}
 		$this->assign('sCopyTxt',$sCopyTxt);
 

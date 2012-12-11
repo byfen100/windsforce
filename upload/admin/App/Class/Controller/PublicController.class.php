@@ -70,19 +70,19 @@ class PublicController extends InitController{
 		$this->assign('arrVersionInfo',$arrVersionInfo);
 
 		// 版权信息
-		if(is_file(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.md")){
-			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.md"));
+		if(is_file(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.dyhb")){
+			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/".LANG_NAME."/LICENSE.dyhb"));
 		}else{
-			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/LICENSE.md"));
+			$sCopyTxt=nl2br(file_get_contents(APP_PATH."/LICENSE.dyhb"));
 		}
 		$this->assign('sCopyTxt',$sCopyTxt);
 
 		// 提示消息
 		$arrTipsTxt=array();
-		if(is_file(APP_PATH."/App/Lang/".LANG_NAME."/Tips.md")){
-			$tipsTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/".LANG_NAME."/Tips.md"));
+		if(is_file(APP_PATH."/App/Lang/".LANG_NAME."/Tips.dyhb")){
+			$tipsTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/".LANG_NAME."/Tips.dyhb"));
 		}else{
-			$tipsTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/Tips.md"));
+			$tipsTxt=nl2br(file_get_contents(APP_PATH."/App/Lang/Tips.dyhb"));
 		}
 		$tipsTxt=explode("\r\n",$tipsTxt);
 		foreach($tipsTxt as $sValue){
