@@ -1,5 +1,5 @@
 /**
- * WindsForce App Framework (风之力APP开发框架)
+ * WindsForce APP Framework (风之力APP开发框架)
  *
  * @copyright    Copyright (c) WindsForce Studio start this since from Mar 17, 2012(http://www.windsforce.com)
  * @license        This is NOT a freeware, use is subject to license terms
