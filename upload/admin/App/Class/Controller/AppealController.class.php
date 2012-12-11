@@ -4,16 +4,13 @@
 
 !defined('DYHB_PATH') && exit;
 
-require_once(Core_Extend::includeFile('function/Pm_Extend'));
-
 class AppealController extends InitController{
 
 	public function filter_(&$arrMap){
 		$arrMap['appeal_email']=array('like',"%".G::getGpc('appeal_email')."%");
 
-		
 		$nType=intval(G::getGpc('type','G'));
-		if($nType<4&&$nType>=0){
+		if($nType<4 && $nType>=0){
 			$arrMap['appeal_progress']=$nType;
 		}
 
@@ -145,4 +142,5 @@ class AppealController extends InitController{
 			$this->E(Dyhb::L('无法获取用户申诉信息','Controller/Appeal'));
 		}
 	}
+
 }
