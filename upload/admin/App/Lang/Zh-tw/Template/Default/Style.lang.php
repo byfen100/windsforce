@@ -193,7 +193,8 @@ return array(
 '785abc97bb7d653fc3ebe0b25a4c369c'=>"界面",
 'fe2df04a168059a153dcd0f18f75d789'=>"版本",
 '071e0509763f027f3746f362b0d9da22'=>"模板路徑",
-'e42cb56898f7a43105968ac1de0924c9'=>"默认配色",
+'333d88b17cf5119a80b85add5617e3ac'=>"特殊邊框顏色",
+'7f1ca3ff9be28da91035c374b5195e87'=>"注意，DIY中的界面基礎圖片目錄和擴展圖片目錄均相對於{WINDSFORCE_PATH}/ucontent而言",
 )
 
 ?>

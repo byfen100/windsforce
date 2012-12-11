@@ -14,6 +14,7 @@ return array(
 '6fef15ad51c245222b02405205​​b3fdc9'=>"添加模板",
 '986dd082dad29b4b8030ca3b720d8ae0'=>"模板的目錄，如Default",
 '6fef15ad51c245222b02405205b3fdc9'=>"添加模板",
+'986dd082dad29b4b8030ca3b720d8ae0'=>"模板的目錄，如Default",
 )
 
 ?>
