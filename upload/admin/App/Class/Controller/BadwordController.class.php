@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   璇嶈杩囨护鎺у埗鍣�$)*/
+   词语过滤($)*/
 
 !defined('DYHB_PATH') && exit;
 
@@ -25,7 +25,7 @@ class BadwordController extends InitController{
 	public function muit_insert(){
 		$sBadwords=G::getGpc('badwords','P');
 		if($sBadwords==''){
-			$this->E(Dyhb::L('瀵煎叆璇嶆眹涓嶈兘涓虹┖','Controller/Badword'));
+			$this->E(Dyhb::L('导入词汇不能为空','Controller/Badword'));
 		}
 
 		$oBadword=Dyhb::instance('BadwordModel');
@@ -34,7 +34,7 @@ class BadwordController extends InitController{
 		if($nType==0){
 			$bResult=$oBadword->truncateBadword();
 			if($bResult===false){
-				$this->E(Dyhb::L('娓呯┖badword鏁版嵁鍑洪敊','Controller/Badword'));
+				$this->E(Dyhb::L('清空badword数据出错','Controller/Badword'));
 			}
 
 			$nType=1;
@@ -54,7 +54,7 @@ class BadwordController extends InitController{
 			}
 		}
 
-		$this->S(Dyhb::L('瀵煎叆鏁版嵁鎴愬姛','Controller/Badword'));
+		$this->S(Dyhb::L('导入数据成功','Controller/Badword'));
 	}
 
 	public function export(){
