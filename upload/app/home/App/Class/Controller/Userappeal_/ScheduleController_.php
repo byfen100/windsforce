@@ -1,0 +1,29 @@
+<?php
+/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+   查询申诉页面($)*/
+
+!defined('DYHB_PATH') && exit;
+
+class ScheduleController extends GlobalchildController{
+
+	public function index(){
+		if(UserModel::M()->isLogin()){
+			$this->U('home://ucenter/index');
+		}
+
+		$this->display('userappeal+schedule');
+	}
+
+	public function schedule_title_(){
+		return '查询申诉进度';
+	}
+
+	public function schedule_keywords_(){
+		return $this->schedule_title_();
+	}
+
+	public function schedule_description_(){
+		return $this->schedule_title_();
+	}
+
+}

@@ -2,17 +2,22 @@
 
 <!--{script}-->
 var idSetInterval;
+
 function retrieve(id){
 	Dyhb.AjaxSend(D.U('userappeal/retrieve?id='+id),'ajax=1');
+
 	document.getElementById("obtain").disabled=true;
 	document.getElementById("second").style.marginRight='3px';
 	document.getElementById("second").innerHTML=60;
 	idSetInterval=setInterval("remaidertime()",1000);
 }
+
 function remaidertime(){
 	var second=--document.getElementById("second").innerHTML;
+
 	if(second==0){
 		clearInterval(idSetInterval);
+
 		document.getElementById("second").style.marginRight='0';
 		document.getElementById("second").innerHTML="";
 		var id=document.getElementById("obtain").name;
@@ -39,7 +44,7 @@ function remaidertime(){
 					</tbody>
 				</table>
 				<div class="progress progress-striped active">
-					<div class="bar" style="width: <!--{$TheController->schedule_progress($oAppeal['appeal_progress'])}-->%;"></div>
+					<div class="bar" style="width: <!--{:Userappeal_Extend::scheduleProgress($oAppeal['appeal_progress'])}-->%;"></div>
 				</div>
 				<hr/>
 				<!--{if in_array($oAppeal['appeal_progress'],array(0,1))}-->
