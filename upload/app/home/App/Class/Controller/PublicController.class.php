@@ -7,7 +7,7 @@
 class PublicController extends InitController{
 
 	public function index(){
-Dyhb::L('社会化帐号','Controller/Spaceadmin');Dyhb::L('访问推广','Controller/Spaceadmin');Dyhb::L('修改密码','Controller/Spaceadmin');Dyhb::L('修改资料','Controller/Spaceadmin');Dyhb::L('用户标签','Controller/Spaceadmin');Dyhb::L('修改头像','Controller/Spaceadmin');Dyhb::L('裁剪头像','Controller/Spaceadmin');
+Dyhb::L('基本概况','Controller/Stat');
 		//Core_Extend::doControllerAction('Public@Index','index');
 	}
 

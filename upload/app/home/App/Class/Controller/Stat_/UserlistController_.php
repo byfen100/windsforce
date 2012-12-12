@@ -35,7 +35,7 @@ class UserlistController extends Controller{
 	}
 
 	public function userlist_title_(){
-		return '会员列表';
+		return Dyhb::L('会员列表','Controller/Stat');
 	}
 
 	public function userlist_keywords_(){

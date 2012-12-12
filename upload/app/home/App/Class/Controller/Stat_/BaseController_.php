@@ -15,7 +15,7 @@ class BaseController extends Controller{
 	}
 
 	public function index_title_(){
-		return '基本概况';
+		return Dyhb::L('基本概况','Controller/Stat');
 	}
 
 	public function index_keywords_(){
