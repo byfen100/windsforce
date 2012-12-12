@@ -38,11 +38,11 @@ class IndexController extends GlobalchildController{
 	}
 
 	public function index_title_(){
-		return '帮助中心'.($this->_oHomehelpcategory?' - '.$this->_oHomehelpcategory['homehelpcategory_name']:'');
+		return Dyhb::L('帮助中心','Controller/Homehelp').($this->_oHomehelpcategory?' - '.$this->_oHomehelpcategory['homehelpcategory_name']:'');
 	}
 
 	public function index_keywords_(){
-		return $this->_oHomehelpcategory?$this->_oHomehelpcategory['homehelpcategory_name']:'帮助中心';
+		return $this->_oHomehelpcategory?$this->_oHomehelpcategory['homehelpcategory_name']:Dyhb::L('帮助中心','Controller/Homehelp');
 	}
 
 	public function index_description_(){
