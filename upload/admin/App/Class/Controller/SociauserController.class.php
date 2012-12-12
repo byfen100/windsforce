@@ -16,7 +16,7 @@ class SociauserController extends InitController{
 	}
 
 	public function add(){
-		$this->E('xx');
+		$this->E(Dyhb::L('后台无法直接添加绑定数据','Controller/Sociauser'));
 	}
 
 	public function AUpdateObject_($oModel){
