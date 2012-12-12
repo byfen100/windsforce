@@ -45,7 +45,7 @@ class ResetController extends Controller{
 	}
 
 	public function reset_title_(){
-		return '密码重置';
+		return Dyhb::L('密码重置','Controller/Getpassword');
 	}
 
 	public function reset_keywords_(){

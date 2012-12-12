@@ -7,8 +7,7 @@
 class PublicController extends InitController{
 
 	public function index(){
-		Dyhb::L('我的粉丝','Controller/Friend');
-		Dyhb::L('我的好友','Controller/Friend');
+	Dyhb::L('找回密码','Controller/Getpassword');
 		//Core_Extend::doControllerAction('Public@Index','index');
 	}
 
