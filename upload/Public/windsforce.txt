@@ -42,3 +42,5 @@ shoporderinfo_moneypaid
 用户设定余额和用户可用余额最小值
 shoporderinfo_orderamount
 应付款余额
+
+SociauserController.class

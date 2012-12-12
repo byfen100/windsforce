@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   鍙嬫儏琛旀帴鎺у埗鍣�$)*/
+   友情衔接控制器($)*/
 
 !defined('DYHB_PATH') && exit;
 
