@@ -10,4 +10,5 @@ return array(
 	'fresh'=>array('ucenter/view','id'),
 	'help'=>array('homehelp/show','id'),
 	'file'=>array('attachment/show','id'),
+	'site'=>array('homesite/site','id'),
 );

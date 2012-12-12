@@ -13,7 +13,7 @@
 					<!--{if $oHomesite['homesite_id']<=4}-->
 					<li <!--{if ACTION_NAME==$oHomesite['homesite_name']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://homesite/'.$oHomesite['homesite_name'])}-->"><!--{$oHomesite['homesite_nikename']}--></a></li>
 					<!--{d*else}-->
-					<li <!--{if ACTION_NAME=='site' && G+getGpc('id','G')==$oHomesite['homesite_name']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://homesite/site?id='.$oHomesite['homesite_name'])}-->"><!--{$oHomesite['homesite_nikename']}--></a></li>
+					<li <!--{if ACTION_NAME=='site' && G+getGpc('id','G')==$oHomesite['homesite_name']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://site@?id='.$oHomesite['homesite_name'])}-->"><!--{$oHomesite['homesite_nikename']}--></a></li>
 					<!--{/if}-->
 					<!--</foreach>-->
 				</ul>
