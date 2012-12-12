@@ -27,7 +27,7 @@ class DialogaddattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction),1,'专辑保存成功');
+		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction),1,Dyhb::L('专辑保存成功','Controller/Attachment'));
 	}
 
 }

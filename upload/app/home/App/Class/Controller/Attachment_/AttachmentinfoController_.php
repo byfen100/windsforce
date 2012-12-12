@@ -16,17 +16,17 @@ class AttachmentinfoController extends Controller{
 
 		if(empty($sCookieHashcode)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));
-			$this->E('附件信息编辑页面已过期');
+			$this->E(Dyhb::L('附件信息编辑页面已过期','Controller/Attachment'));
 		}
 
 		if($sCookieHashcode!=$sHashcode){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));
-			$this->E('附件信息编辑页面Hash验证失败');
+			$this->E(Dyhb::L('附件信息编辑页面Hash验证失败','Controller/Attachment'));
 		}
 
 		if(empty($sUploadids)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));
-			$this->E('你没有选择需要编辑的附件');
+			$this->E(Dyhb::L('你没有选择需要编辑的附件','Controller/Attachment'));
 		}
 
 		$arrAttachments=AttachmentModel::F('user_id=? AND attachment_id in('.$sUploadids.')',$GLOBALS['___login___']['user_id'])->getAll();
@@ -63,7 +63,7 @@ class AttachmentinfoController extends Controller{
 
 		Dyhb::cookie('_upload_hashcode_',null,-1);
 
-		$this->S('附件信息保存成功');
+		$this->S(Dyhb::L('附件信息保存成功','Controller/Attachment'));
 	}
 
 }

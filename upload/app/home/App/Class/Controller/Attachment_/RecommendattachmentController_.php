@@ -11,7 +11,7 @@ class RecommendattachmentController extends Controller{
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nId)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E('你推荐的附件不存在');
+			$this->E(Dyhb::L('你推荐的附件不存在','Controller/Attachment'));
 		}
 
 		$oAttachment->attachment_recommend=1;
@@ -21,7 +21,7 @@ class RecommendattachmentController extends Controller{
 			$this->E($oAttachment->getErrorMessage());
 		}
 
-		$this->S('附件推荐成功');
+		$this->S(Dyhb::L('附件推荐成功','Controller/Attachment'));
 	}
 
 	public function un(){
@@ -29,7 +29,7 @@ class RecommendattachmentController extends Controller{
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nId)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E('你推荐的附件不存在');
+			$this->E(Dyhb::L('你推荐的附件不存在','Controller/Attachment'));
 		}
 
 		$oAttachment->attachment_recommend=0;
@@ -39,7 +39,7 @@ class RecommendattachmentController extends Controller{
 			$this->E($oAttachment->getErrorMessage());
 		}
 
-		$this->S('附件取消推荐成功');
+		$this->S(Dyhb::L('附件取消推荐成功','Controller/Attachment'));
 	}
 
 }

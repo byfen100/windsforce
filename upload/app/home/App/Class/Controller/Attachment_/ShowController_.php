@@ -10,12 +10,12 @@ class ShowController extends Controller{
 		$nAttachmentid=intval(G::getGpc('id','G'));
 
 		if(empty($nAttachmentid)){
-			$this->E('你没有指定要查看的附件');
+			$this->E(Dyhb::L('你没有指定要查看的附件','Controller/Attachment'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentid)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E('你要查看的文件不存在');
+			$this->E(Dyhb::L('你要查看的文件不存在','Controller/Attachment'));
 		}
 
 		$this->assign('oAttachment',$oAttachment);
@@ -103,10 +103,10 @@ class ShowController extends Controller{
 
 		echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 				<playlist version=\"1\" xmlns=\"http://xspf.org/ns/0/\">
-					<title>{$oUser['user_name']}专辑</title>
+					<title>{$oUser['user_name']}".Dyhb::L('专辑','Controller/Attachment')."</title>
 					<creator>Dew</creator>
 					<link>{$GLOBALS['_option_']['site_url']}</link>
-					<info>{$oUser['user_name']}专辑</info>
+					<info>{$oUser['user_name']}".Dyhb::L('专辑','Controller/Attachment')."</info>
 					<image></image>
 					<trackList>";
 		
@@ -115,9 +115,9 @@ class ShowController extends Controller{
 
 			if($arrAttachments){
 				foreach($arrAttachments as $oAttachment){
-					$sAttachmentcategory=$oAttachment['attachmentcategory_id']>0?$oAttachment->attachmentcategory->attachmentcategory_name:'未分类';
+					$sAttachmentcategory=$oAttachment['attachmentcategory_id']>0?$oAttachment->attachmentcategory->attachmentcategory_name:Dyhb::L('未分类','Controller/Attachment');
 					echo "<track>
-							<location>{$this->get_attachment_url($oAttachment)}</location>
+							<location>".Attachment_Extend::getAttachmenturl($oAttachment)."</location>
 							<creator>{$oAttachment['attachment_username']}</creator>
 							<album>{$sAttachmentcategory}</album>
 							<title>{$oAttachment['attachment_name']}</title>

@@ -14,16 +14,16 @@ class DeleteattachmentController extends Controller{
 		}
 
 		if(empty($nAttachmentid)){
-			$this->E('你没有选择你要删除的附件');
+			$this->E(Dyhb::L('你没有选择你要删除的附件','Controller/Attachment'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentid)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E('你要删除的附件不存在');
+			$this->E(Dyhb::L('你要删除的附件不存在','Controller/Attachment'));
 		}
 
 		if($oAttachment['user_id']!=$GLOBALS['___login___']['user_id']){
-			$this->E('你不能删除别人的附件');
+			$this->E(Dyhb::L('你不能删除别人的附件','Controller/Attachment'));
 		}
 
 		// 删除附件图片
@@ -41,7 +41,7 @@ class DeleteattachmentController extends Controller{
 		$oAttachment->destroy();
 
 		if(!$nId){
-			$this->S('附件删除成功');
+			$this->S(Dyhb::L('附件删除成功','Controller/Attachment'));
 		}
 	}
 
@@ -55,7 +55,7 @@ class DeleteattachmentController extends Controller{
 			}
 		}
 			
-		$this->S('批量删除附件成功');
+		$this->S(Dyhb::L('批量删除附件成功','Controller/Attachment'));
 	}
 
 }

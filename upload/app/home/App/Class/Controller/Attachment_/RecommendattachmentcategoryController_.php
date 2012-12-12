@@ -11,7 +11,7 @@ class RecommendattachmentcategoryController extends Controller{
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nId)->getOne();
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			$this->E('你推荐的专辑不存在');
+			$this->E(Dyhb::L('你推荐的专辑不存在','Controller/Attachment'));
 		}
 
 		$oAttachmentcategory->attachmentcategory_recommend=1;
@@ -21,7 +21,7 @@ class RecommendattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		$this->S('专辑推荐成功');
+		$this->S(Dyhb::L('专辑推荐成功','Controller/Attachment'));
 	}
 
 	public function un(){
@@ -29,7 +29,7 @@ class RecommendattachmentcategoryController extends Controller{
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nId)->getOne();
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			$this->E('你推荐的专辑不存在');
+			$this->E(Dyhb::L('你推荐的专辑不存在','Controller/Attachment'));
 		}
 
 		$oAttachmentcategory->attachmentcategory_recommend=0;
@@ -39,7 +39,7 @@ class RecommendattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		$this->S('专辑取消推荐成功');
+		$this->S(Dyhb::L('专辑取消推荐成功','Controller/Attachment'));
 	}
 
 }

@@ -14,27 +14,27 @@ class DeleteattachmentcategoryController extends Controller{
 		}
 
 		if(empty($nAttachmentcategoryid)){
-			$this->E('你没有选择你要删除的专辑');
+			$this->E(Dyhb::L('你没有选择你要删除的专辑','Controller/Attachment'));
 		}
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->getOne();
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			$this->E('你要删除的专辑不存在');
+			$this->E(Dyhb::L('你要删除的专辑不存在','Controller/Attachment'));
 		}
 
 		if($oAttachmentcategory['user_id']!=$GLOBALS['___login___']['user_id']){
-			$this->E('你不能删除别人的专辑');
+			$this->E(Dyhb::L('你不能删除别人的专辑','Controller/Attachment'));
 		}
 
 		$nTotalRecord=AttachmentModel::F('attachmentcategory_id=?',$oAttachmentcategory['attachmentcategory_id'])->all()->getCounts();
 		if($nTotalRecord>0){
-			$this->E('专辑含有照片，请先删除照片后再删除专辑');
+			$this->E(Dyhb::L('专辑含有照片，请先删除照片后再删除专辑','Controller/Attachment'));
 		}
 
 		$oAttachmentcategory->destroy();
 
 		if(!$nId){
-			$this->S('专辑删除成功');
+			$this->S(Dyhb::L('专辑删除成功','Controller/Attachment'));
 		}
 	}
 

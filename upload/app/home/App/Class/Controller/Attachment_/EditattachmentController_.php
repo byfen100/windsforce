@@ -10,16 +10,16 @@ class EditattachmentController extends Controller{
 		$nAttachmentid=intval(G::getGpc('id'));
 
 		if(empty($nAttachmentid)){
-			$this->E('你没有选择你要编辑的附件');
+			$this->E(Dyhb::L('你没有选择你要编辑的附件','Controller/Attachment'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentid)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E('你要编辑的附件不存在');
+			$this->E(Dyhb::L('你要编辑的附件不存在','Controller/Attachment'));
 		}
 
 		if($oAttachment['user_id']!=$GLOBALS['___login___']['user_id']){
-			$this->E('你不能编辑别人的附件');
+			$this->E(Dyhb::L('你不能编辑别人的附件','Controller/Attachment'));
 		}
 
 		$this->assign('oAttachment',$oAttachment);
@@ -43,7 +43,7 @@ class EditattachmentController extends Controller{
 			$this->E($oAttachment->getErrorMessage());
 		}
 
-		$this->A($oAttachment->toArray(),'更新附件信息成功',1);
+		$this->A($oAttachment->toArray(),Dyhb::L('更新附件信息成功','Controller/Attachment'),1);
 	}
 
 }

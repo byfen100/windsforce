@@ -22,7 +22,7 @@ class NormaluploadController extends Controller{
 				G::urlGoTo(Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P')));
 			}else{
 				$this->assign('__JumpUrl__',Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid));
-				$this->S('附件上传成功');
+				$this->S(Dyhb::L('附件上传成功','Controller/Attachment'));
 			}
 		}catch(Exception $e){
 			$this->E($e->getMessage());

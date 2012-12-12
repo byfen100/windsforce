@@ -20,7 +20,6 @@ class GetajaximgController extends Controller{
 
 		$arrAttachments=AttachmentModel::F('user_id=? AND attachmentcategory_id=? AND attachment_extension in(\'gif\',\'jpeg\',\'jpg\',\'png\',\'bmp\')',$nUserid,$nAttachmentcategoryid)->order('attachment_id DESC')->getAll();
 
-		
 		$nIndex=0;
 		$sContent='';
 		if(is_array($arrAttachments)){
