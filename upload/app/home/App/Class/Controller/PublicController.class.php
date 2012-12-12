@@ -7,17 +7,12 @@
 class PublicController extends InitController{
 
 	public function index(){
-	Dyhb::L('未读短消息','Controller/Pm');
-Dyhb::L('私人短消息','Controller/Pm');
-Dyhb::L('已发短消息','Controller/Pm');
-Dyhb::L('未读公共短消息','Controller/Pm');
-Dyhb::L('公共短消息','Controller/Pm');
-Dyhb::L('私人短消息','Controller/Pm');
+Dyhb::L('登录','Controller/Public');Dyhb::L('社会化绑定','Controller/Public');
 		//Core_Extend::doControllerAction('Public@Index','index');
 	}
 
 	public function login(){
-		Core_Extend::doControllerAction('Public@Login','index');
+		Core_Extend::doControllerAction('Public@Login','index',$this);
 	}
 
 	public function socia_login(){
@@ -53,7 +48,7 @@ Dyhb::L('私人短消息','Controller/Pm');
 	}
 
 	public function register(){
-		Core_Extend::doControllerAction('Public@Register','index');
+		Core_Extend::doControllerAction('Public@Register','index',$this);
 	}
 	
 	public function check_user(){

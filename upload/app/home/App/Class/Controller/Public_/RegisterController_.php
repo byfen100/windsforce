@@ -7,7 +7,7 @@
 // 导入社会化登录组件
 Dyhb::import(WINDSFORCE_PATH.'/source/extension/socialization');
 
-class RegisterController extends Controller{
+class RegisterController extends GlobalchildController{
 
 	public function index(){
 		$nInajax=intval(G::getGpc('inajax','G'));
@@ -33,7 +33,7 @@ class RegisterController extends Controller{
 	}
 
 	public function register_title_(){
-		return '注册';
+		return Dyhb::L('注册','Controller/Public');
 	}
 
 	public function register_keywords_(){
@@ -78,7 +78,7 @@ class RegisterController extends Controller{
 		}
 
 		if($GLOBALS['_option_']['seccode_register_status']==1){
-			$this->check_seccode(true);
+			$this->_oParentcontroller->check_seccode(true);
 		}
 
 		$sPassword=trim(G::getGpc('user_password','P'));

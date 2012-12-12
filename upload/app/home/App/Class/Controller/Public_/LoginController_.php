@@ -7,7 +7,7 @@
 // 导入社会化登录组件
 Dyhb::import(WINDSFORCE_PATH.'/source/extension/socialization');
 
-class LoginController extends Controller{
+class LoginController extends GlobalchildController{
 
 	public function index(){
 		$nInajax=intval(G::getGpc('inajax','G'));
@@ -31,7 +31,7 @@ class LoginController extends Controller{
 	}
 
 	public function login_title_(){
-		return '登录';
+		return Dyhb::L('登录','Controller/Public');
 	}
 
 	public function login_keywords_(){
@@ -80,7 +80,7 @@ class LoginController extends Controller{
 	}
 
 	public function socia_bind_title_(){
-		return '社会化绑定';
+		return Dyhb::L('社会化绑定','Controller/Public');
 	}
 
 	public function socia_bind_keywords_(){
@@ -113,7 +113,7 @@ class LoginController extends Controller{
 
 	public function check_login(){
 		if($GLOBALS['_option_']['seccode_login_status']==1){
-			$this->check_seccode(true);
+			$this->_oParentcontroller->check_seccode(true);
 		}
 
 		$sUserName=G::getGpc('user_name','P');
