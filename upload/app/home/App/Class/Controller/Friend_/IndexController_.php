@@ -44,9 +44,9 @@ class IndexController extends Controller{
 
 	public function index_title_(){
 		if(G::getGpc('type','G')=='fan'){
-			return '我的粉丝';
+			return Dyhb::L('我的粉丝','Controller/Friend');
 		}else{
-			return '我的好友';
+			return Dyhb::L('我的好友','Controller/Friend');
 		}
 	}
 
