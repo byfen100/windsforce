@@ -79,7 +79,7 @@ class Step4Controller extends GlobalchildController{
 	}
 
 	public function step4_title_(){
-		return '获取申诉回执编号';
+		return Dyhb::L('获取申诉回执编号','Controller/Userappeal');
 	}
 
 	public function step4_keywords_(){

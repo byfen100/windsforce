@@ -15,7 +15,7 @@ class ScheduleController extends GlobalchildController{
 	}
 
 	public function schedule_title_(){
-		return '查询申诉进度';
+		return Dyhb::L('查询申诉进度','Controller/Userappeal');
 	}
 
 	public function schedule_keywords_(){

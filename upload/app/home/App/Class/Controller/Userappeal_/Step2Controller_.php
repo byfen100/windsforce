@@ -35,7 +35,7 @@ class Step2Controller extends GlobalchildController{
 	}
 
 	public function step2_title_(){
-		return '填写联系方式';
+		return Dyhb::L('填写联系方式','Controller/Userappeal');
 	}
 
 	public function step2_keywords_(){

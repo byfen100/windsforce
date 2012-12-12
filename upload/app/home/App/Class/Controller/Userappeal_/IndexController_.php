@@ -15,7 +15,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return '用户申诉';
+		return Dyhb::L('用户申诉','Controller/Userappeal');
 	}
 
 	public function index_keywords_(){

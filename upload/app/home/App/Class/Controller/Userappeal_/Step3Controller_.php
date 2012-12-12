@@ -99,7 +99,7 @@ class Step3Controller extends GlobalchildController{
 	}
 
 	public function step3_title_(){
-		return '填写申诉资料';
+		return Dyhb::L('填写申诉资料','Controller/Userappeal');
 	}
 
 	public function step3_keywords_(){

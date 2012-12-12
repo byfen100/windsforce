@@ -43,7 +43,7 @@ class ScheduleresultController extends Controller{
 	}
 
 	public function schedule_result_title_(){
-		return '申诉结果';
+		return Dyhb::L('申诉结果','Controller/Userappeal');
 	}
 
 	public function schedule_result_keywords_(){
