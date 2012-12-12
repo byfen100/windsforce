@@ -22,14 +22,14 @@ body{ background-color: #FFF; color: #000; font-family: Verdana, Tahoma; font-si
 		<br />
 		<!--<foreach for=arrPms value=oPm>-->
 		<div class="pm">
-			<strong><!--{$oPm['pm_msgfrom']}--></strong> <!--{$oPm['create_dateline']|date='Y-m-d H:i:s',**}--><br />
+			<strong><!--{$oPm['pm_msgfrom']}--></strong>&nbsp;<!--{$oPm['create_dateline']|date='Y-m-d H:i:s',**}--><br />
 			<br />
 			<div class="content"><!--{$oPm['pm_message']|Pm_Extend+ubb}--></div>
 		</div>
 		<!--</foreach>-->
 	</div>
 	<div id='copyright'>
-		Powered by <strong><a href="<!--{$GLOBALS['_option_']['needforbug_program_url']}-->" title="<!--{$GLOBALS['_option_']['needforbug_program_year']}-->"><!--{$GLOBALS['_option_']['needforbug_program_name']}--></a></strong> <!--{$sVersion}--></strong></a>
+		Powered by&nbsp;<strong><a href="<!--{$GLOBALS['_option_']['needforbug_program_url']}-->" title="<!--{$GLOBALS['_option_']['needforbug_program_year']}-->"><!--{$GLOBALS['_option_']['needforbug_program_name']}--></a></strong>&nbsp;<!--{$sVersion}--></strong></a>
 	</div>
 </body>
 </html>

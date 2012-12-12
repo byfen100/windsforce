@@ -55,4 +55,42 @@ class PmModel extends CommonModel{
 		}
 	}
 
+	public function readSystemmessage($nPmId){
+		$oPmsystemread=PmsystemreadModel::F('user_id=? AND pm_id=?',$GLOBALS['___login___']['user_id'],$nPmId)->query();
+
+		if(!empty($oPmsystemread['user_id'])){
+			return true;
+		}else{
+			$oPmsystemread=new PmsystemreadModel();
+			$oPmsystemread->user_id=$GLOBALS['___login___']['user_id'];
+			$oPmsystemread->pm_id=$nPmId;
+			$oPmsystemread->save(0);
+				
+			if($oPmsystemread->isError()){
+				$this->setErrorMessage($oPmsystemread->getErrorMessage());
+			}
+
+			return $oPmsystemread;
+		}
+	}
+
+	public function deleteSystemmessage($nPmId){
+		$oPmsystemdelete=PmsystemdeleteModel::F('user_id=? AND pm_id=?',$GLOBALS['___login___']['user_id'],$nPmId)->query();
+
+		if(!empty($oPmsystemdelete['user_id'])){
+			return true;
+		}else{
+			$oPmsystemdelete=new PmsystemdeleteModel();
+			$oPmsystemdelete->user_id=$GLOBALS['___login___']['user_id'];
+			$oPmsystemdelete->pm_id=$nPmId;
+			$oPmsystemdelete->save(0);
+				
+			if($oPmsystemdelete->isError()){
+				$this->setErrorMessage($oPmsystemdelete->getErrorMessage());
+			}
+
+			return $oPmsystemdelete;
+		}
+	}
+
 }

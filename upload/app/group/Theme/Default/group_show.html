@@ -30,9 +30,9 @@ function leaveGroup(gid){
 		<div class="row">
 			<div class="span12">
 				<dl>
-					<dt class="left"><a href=""><img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" width="48" height="48" alt="" /></a>
+					<dt class="left"><a href=""><img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" width="48" height="48" alt="" class="thumbnail"/></a>
 					</dt>
-					<dd style="padding-left:50px;">
+					<dd style="padding-left:60px;">
 						<p class="name"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;群组&nbsp;
 							<!--{if $nGroupuser==0}-->
 							<span id="join_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入小组</a></span>

@@ -250,7 +250,6 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 												</tr>
 											</table>
 										</div>
-										<!--{if $oGrouptopic->user_id!=$GLOBALS['___login___']['user_id']}-->
 										<div class="floor_userinfooperate">
 											<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($oGrouptopic->user_id)}-->
 											<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
@@ -260,7 +259,6 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 											<!--{/if}-->&nbsp;
 											<a rel="nofollow" href="javascript:void(0);" onclick="addMessage('<!--{$oGrouptopic->user_id}-->');"><img src="<!--{:__PUBLIC__}-->/images/common/pmto.gif"/>写私信</a>
 										</div>
-										<!--{/if}-->
 									</div>
 								</td>
 								<td class="floor_right"> 
@@ -314,7 +312,8 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 									</div>
 									<div class="space"></div>
 									<div class="signature">
-										<!--{:UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
+										<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
+										<!--{if $sUsersign}--><!--{$sUsersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
 									</div>
 								</td>
 							</tr>
@@ -441,7 +440,6 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 												</tr>
 											</table>
 										</div>
-										<!--{if $oComment->user_id!=$GLOBALS['___login___']['user_id']}-->
 										<div class="floor_userinfooperate">
 											<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($oComment->user_id)}-->
 											<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
@@ -451,7 +449,6 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 											<!--{/if}-->&nbsp;
 											<a rel="nofollow" href="javascript:void(0);" onclick="addMessage('<!--{$oComment->user_id}-->');"><img src="<!--{:__PUBLIC__}-->/images/common/pmto.gif"/>写私信</a>
 										</div>
-										<!--{/if}-->
 									</div>
 								</td>
 								<td class="floor_right floor_grouptopiccommenttd2">
@@ -464,7 +461,10 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 							</tr>
 							<tr>
 								<td class="floor_bottom" valign="bottom">
-									<div class="signature"><!--{:UserModel::getUsernameById($oComment['user_id'],'user_sign')}--></div>
+									<div class="signature">
+										<!--{~$sUsersign=UserModel::getUsernameById($oComment['user_id'],'user_sign')}-->
+										<!--{if $sUsersign}--><!--{$sUsersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
+									</div>
 								</td>
 							</tr>
 							<tr>

@@ -1,1 +1,0 @@
-a:2:{s:16:"HomeCache_Extend";s:26:"HomeCache_Extend.class.php";s:16:"Homefresh_Extend";s:26:"Homefresh_Extend.class.php";}
