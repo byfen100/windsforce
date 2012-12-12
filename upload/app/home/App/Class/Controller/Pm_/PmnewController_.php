@@ -55,7 +55,7 @@ class PmnewController extends GlobalchildController{
 	}
 
 	public function pmnew_title_(){
-		return '新建短消息';
+		return Dyhb::L('新建短消息','Controller/Pm');
 	}
 
 	public function pmnew_keywords_(){

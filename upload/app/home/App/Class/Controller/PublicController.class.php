@@ -7,7 +7,12 @@
 class PublicController extends InitController{
 
 	public function index(){
-	Dyhb::L('帮助中心','Controller/Homehelp');
+	Dyhb::L('未读短消息','Controller/Pm');
+Dyhb::L('私人短消息','Controller/Pm');
+Dyhb::L('已发短消息','Controller/Pm');
+Dyhb::L('未读公共短消息','Controller/Pm');
+Dyhb::L('公共短消息','Controller/Pm');
+Dyhb::L('私人短消息','Controller/Pm');
 		//Core_Extend::doControllerAction('Public@Index','index');
 	}
 

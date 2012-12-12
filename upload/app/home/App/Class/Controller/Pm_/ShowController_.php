@@ -135,7 +135,7 @@ class ShowController extends GlobalchildController{
 	}
 
 	public function show_title_(){
-		return '短消息聊天';
+		return Dyhb::L('短消息聊天','Controller/Pm');
 	}
 
 	public function show_keywords_(){
