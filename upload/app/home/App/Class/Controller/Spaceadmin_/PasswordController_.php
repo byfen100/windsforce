@@ -15,7 +15,7 @@ class PasswordController extends Controller{
 	}
 
 	public function password_title_(){
-		return '修改密码';
+		return Dyhb::L('修改密码','Controller/Spaceadmin');
 	}
 
 	public function password_keywords_(){

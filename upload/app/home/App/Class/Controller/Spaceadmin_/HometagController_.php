@@ -20,7 +20,7 @@ class HometagController extends Controller{
 	}
 
 	public function tag_title_(){
-		return '用户标签';
+		return Dyhb::L('用户标签','Controller/Spaceadmin');
 	}
 
 	public function tag_keywords_(){

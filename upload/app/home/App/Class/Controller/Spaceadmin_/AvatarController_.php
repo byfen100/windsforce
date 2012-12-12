@@ -19,7 +19,7 @@ class AvatarController extends Controller{
 	}
 
 	public function avatar_title_(){
-		return '修改头像';
+		return Dyhb::L('修改头像','Controller/Spaceadmin');
 	}
 
 	public function avatar_keywords_(){
@@ -60,7 +60,7 @@ class AvatarController extends Controller{
 	}
 
 	public function avatar_upload_title_(){
-		return '裁剪头像';
+		return Dyhb::L('裁剪头像','Controller/Spaceadmin');
 	}
 
 	public function avatar_upload_keywords_(){

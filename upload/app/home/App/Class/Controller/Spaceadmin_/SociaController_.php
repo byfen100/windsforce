@@ -32,7 +32,7 @@ class SociaController extends Controller{
 	}
 
 	public function socia_title_(){
-		return '社会化帐号';
+		return Dyhb::L('社会化帐号','Controller/Spaceadmin');
 	}
 
 	public function socia_keywords_(){

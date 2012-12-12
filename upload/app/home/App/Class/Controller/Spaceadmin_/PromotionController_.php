@@ -16,7 +16,7 @@ class PromotionController extends Controller{
 	}
 
 	public function promotion_title_(){
-		return '访问推广';
+		return Dyhb::L('访问推广','Controller/Spaceadmin');
 	}
 
 	public function promotion_keywords_(){

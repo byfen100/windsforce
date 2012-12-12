@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class InformationController extends Controller{
+class InformationController extends GlobalchildController{
 
 	public function index(){
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
@@ -59,7 +59,7 @@ class InformationController extends Controller{
 	}
 
 	public function index_title_(){
-		return '修改资料';
+		return Dyhb::L('修改资料','Controller/Spaceadmin');
 	}
 
 	public function index_keywords_(){
@@ -72,7 +72,7 @@ class InformationController extends Controller{
 
 	public function change(){
 		if($GLOBALS['_option_']['seccode_changeinformation_status']==1){
-			$this->check_seccode(true);
+			$this->_oParentcontroller->check_seccode(true);
 		}
 
 		$nUserId=G::getGpc('user_id','P');

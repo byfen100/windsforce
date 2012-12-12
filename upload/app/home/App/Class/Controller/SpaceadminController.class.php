@@ -13,11 +13,11 @@ class SpaceadminController extends InitController{
 	}
 
 	public function index(){
-		Core_Extend::doControllerAction('Spaceadmin@Information','index');
+		Core_Extend::doControllerAction('Spaceadmin@Information','index',$this);
 	}
 
 	public function change_info(){
-		Core_Extend::doControllerAction('Spaceadmin@Information','change');
+		Core_Extend::doControllerAction('Spaceadmin@Information','change',$this);
 	}
 
 	public function avatar(){
