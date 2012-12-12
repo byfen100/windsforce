@@ -7,7 +7,8 @@
 class PublicController extends InitController{
 
 	public function index(){
-Dyhb::L('基本概况','Controller/Stat');
+Dyhb::L('回复','Controller/Homefresh');
+Dyhb::L('评论了新鲜事','Controller/Homefresh');
 		//Core_Extend::doControllerAction('Public@Index','index');
 	}
 

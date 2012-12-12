@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class AddcommentController extends Controller{
+class AddcommentController extends GlobalchildController{
 
 	public function index(){
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
@@ -14,7 +14,7 @@ class AddcommentController extends Controller{
 		}
 
 		if($arrOptions['seccode_comment_status']==1){
-			$this->check_seccode(true);
+			$this->_oParentcontroller->check_seccode(true);
 		}
 
 		// IP禁止功能
@@ -167,7 +167,7 @@ class AddcommentController extends Controller{
 			// 发送feed
 			$oHomefresh=HomefreshModel::F('homefresh_id=?',intval(G::getGpc('homefresh_id')))->getOne();
 
-			$sFeedtemplate='<div class="feed_addhomefresh"><span class="feed_title">评论了新鲜事&nbsp;<a href="{@homefresh_commentlink}">{homefresh_title}</a></span><div class="feed_content"><div class="feed_quote"><span class="feed_quoteinfo">{homefresh_commentmessage}</span></div></div><div class="feed_action"><a href="{@homefresh_commentlink}">回复</a></div></div>';
+			$sFeedtemplate='<div class="feed_addhomefresh"><span class="feed_title">'.Dyhb::L('评论了新鲜事','Controller/Homefresh').'&nbsp;<a href="{@homefresh_commentlink}">{homefresh_title}</a></span><div class="feed_content"><div class="feed_quote"><span class="feed_quoteinfo">{homefresh_commentmessage}</span></div></div><div class="feed_action"><a href="{@homefresh_commentlink}">'.Dyhb::L('回复','Controller/Homefresh').'</a></div></div>';
 
 			$arrFeeddata=array(
 				'@homefresh_commentlink'=>'home://fresh@?id='.$oHomefresh['homefresh_id'].'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'],

@@ -25,7 +25,7 @@ class ViewController extends Controller{
 		if($nIsolationCommentid){
 			$result=HomefreshcommentModel::getCommenturlByid($nIsolationCommentid);
 			if($result===false){
-				$this->E('该条评论已被删除、屏蔽或者尚未通过审核');
+				$this->E(Dyhb::L('该条评论已被删除、屏蔽或者尚未通过审核','Controller/Homefresh'));
 			}
 
 			G::urlGoTo($result);

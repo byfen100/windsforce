@@ -70,7 +70,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return '用户中心';
+		return Dyhb::L('用户中心','Controller/Homefresh');
 	}
 
 	public function index_keywords_(){
