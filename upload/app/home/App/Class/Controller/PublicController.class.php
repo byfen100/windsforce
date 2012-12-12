@@ -7,7 +7,7 @@
 class PublicController extends InitController{
 
 	public function index(){
-Dyhb::L('登录','Controller/Public');Dyhb::L('社会化绑定','Controller/Public');
+Dyhb::L('我的头像','Controller/Space');
 		//Core_Extend::doControllerAction('Public@Index','index');
 	}
 

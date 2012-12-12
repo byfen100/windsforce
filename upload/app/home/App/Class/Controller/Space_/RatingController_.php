@@ -62,7 +62,7 @@ class RatingController extends Controller{
 	public $_oUserInfo=null;
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.'积分';
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('积分','Controller/Space');
 	}
 
 	public function index_keywords_(){

@@ -66,7 +66,7 @@ class BaseController extends Controller{
 	public $_oUserInfo=null;
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.'个人空间';
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('个人空间','Controller/Space');
 	}
 
 	public function index_keywords_(){

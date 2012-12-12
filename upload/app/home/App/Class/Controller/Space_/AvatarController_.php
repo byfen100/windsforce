@@ -33,7 +33,7 @@ class AvatarController extends Controller{
 	public $_oUserInfo=null;
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.'我的头像';
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('我的头像','Controller/Space');
 	}
 
 	public function index_keywords_(){
