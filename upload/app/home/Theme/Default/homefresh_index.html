@@ -81,7 +81,7 @@ function addHomefreshtopic(){
 		async: false
 	}).responseText;
 
-	oEditNewhomefreshtopic=needforbugAlert(sHtml,'插入话题','','','',500,100);
+	oEditNewhomefreshtopic=needforbugAlert(sHtml,'<!--<lang package='Template/Homefresh'>-->插入话题<!--</lang>-->','','','',500,100);
 }
 
 function insertHomefreshtopic(sContent){
@@ -115,11 +115,11 @@ var nHomefreshviewcomment=0;
 									<td colspan="2">
 										<textarea class="input-xlarge" name="homefresh_message" id="homefresh_message" rows="5" style="width:100%;"></textarea>
 										<div id="homefresh-media-box" class="common-media-box">
-											<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a> 
-											<a href="javascript:void(0);" onclick="addHomefreshtopic();" class="icon_add_topic">话题</a> 
-											<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshattachment');" class="icon_add_img">媒体</a>
-											<a href="javascript:void(0);" onclick="addVideo('insertHomefreshvideo');" class="icon_add_video" >视频</a>
-											<a href="javascript:void(0);" onclick="addMusic('insertHomefreshmusic');" class="icon_add_music">音乐</a>
+											<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a> 
+											<a href="javascript:void(0);" onclick="addHomefreshtopic();" class="icon_add_topic"><!--<lang package='Template/Homefresh'>-->话题<!--</lang>--></a> 
+											<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
+											<a href="javascript:void(0);" onclick="addVideo('insertHomefreshvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
+											<a href="javascript:void(0);" onclick="addMusic('insertHomefreshmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
 										</div>
 										<div id="homefresh-title-box" class="none">
 											<input type="text" class="span6" name="homefresh_title" id="homefresh_title" value="">&nbsp;<!--<lang package='Template/Homefresh'>-->新鲜事标题<!--</lang>-->
@@ -260,7 +260,7 @@ var nHomefreshviewcomment=0;
 						<div class="homefreshcommentform_btn">
 							<div class="left">
 								<label class="checkbox">
-									<input type="checkbox" name="homefreshcomment_isreplymail" id="homefreshcomment_isreplymail" value="1">&nbsp;回复时邮件通知
+									<input type="checkbox" name="homefreshcomment_isreplymail" id="homefreshcomment_isreplymail" value="1">&nbsp;<!--<lang package='Template/Homefresh'>-->回复时邮件通知<!--</lang>-->
 								</label>
 							</div>
 							<div class="right">
