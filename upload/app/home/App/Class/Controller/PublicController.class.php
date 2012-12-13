@@ -6,7 +6,7 @@
 
 class PublicController extends InitController{
 
-	public function index(){
+	public function index(){Dyhb::L('你没有选择任何文件','__COMMON_LANG__@Function/Upload_Extend');
 		Core_Extend::doControllerAction('Public@Index','index');
 	}
 

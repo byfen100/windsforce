@@ -64,7 +64,7 @@ class Core_Extend{
 
 	static public function title($oController){
 		$page=intval(G::getGpc('page','G'));
-		$page=$page>1?" | 第 {$page} 页":'';
+		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 		
 		$sTitleAction=ACTION_NAME.'_title_';
 		if(method_exists($oController,$sTitleAction)){
@@ -76,7 +76,7 @@ class Core_Extend{
 
 	static public function keywords($oController){
 		$page=intval(G::getGpc('page','G'));
-		$page=$page>1?",第 {$page} 页":'';
+		$page=$page>1?",".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 
 		$sKeywordsAction=ACTION_NAME.'_keywords_';
 		if(method_exists($oController,$sKeywordsAction)){
@@ -88,7 +88,7 @@ class Core_Extend{
 
 	static public function description($oController){
 		$page=intval(G::getGpc('page','G'));
-		$page=$page>1?" | 第 {$page} 页":'';
+		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 
 		$sDescriptionAction=ACTION_NAME.'_description_';
 		if(method_exists($oController,$sDescriptionAction)){

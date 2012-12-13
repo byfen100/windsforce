@@ -104,7 +104,7 @@ class Upload_Extend{
 
 	public static function uploadFlash($bUploadFlash=true,$bReturnUploadinfo=false,$bDatabase=true,$arrUploadoption=array()){
 		if(empty($_FILES)){
-			Dyhb::E('你没有选择任何文件');
+			Dyhb::E(Dyhb::L('你没有选择任何文件','__COMMON_LANG__@Function/Upload_Extend'));
 			return;
 		}
 
