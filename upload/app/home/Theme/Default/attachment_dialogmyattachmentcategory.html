@@ -5,11 +5,11 @@
 		<div class="row">
 			<div class="span12" style="margin-bottom:20px;">
 				<span class="right">
-					<a href="<!--{:Dyhb::U('home://attachment/dialog_add?dialog=1&function='.$sFunction)}-->" class="btn btn-success"><i class="icon-upload icon-white"></i>&nbsp;上传照片</a>
+					<a href="<!--{:Dyhb::U('home://attachment/dialog_add?dialog=1&function='.$sFunction)}-->" class="btn btn-success"><i class="icon-upload icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->上传照片<!--</lang>--></a>
 					<span class="pipe">|</span>
-					<a href="<!--{:Dyhb::U('home://attachment/dialog_addattachmentcategory?dialog=1&function='.$sFunction)}-->">+新建专辑</a>
+					<a href="<!--{:Dyhb::U('home://attachment/dialog_addattachmentcategory?dialog=1&function='.$sFunction)}-->">+<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>--></a>
 				</span>
-				<h3>我的专辑</h3>
+				<h3><!--<lang package='Template/Attachment'>-->我的专辑<!--</lang>--></h3>
 			</div>
 			<div class="span12">
 				<!--{if is_array($arrAttachmentcategorys)}-->
@@ -25,8 +25,8 @@
 							</div>
 							<div class="caption">
 								<h5 id="attachmentcategory_name_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->"><!--{$oAttachmentcategory['attachmentcategory_name']|G+subString=0,10}--></a></h5>
-								<p><a href="<!--{:Dyhb::U('home://attachment/dialog_add?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->">上传</a>&nbsp;
-									<a href="<!--{:Dyhb::U('home://attachment/edit_attachmentcategory?id='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->">编辑</a>
+								<p><a href="<!--{:Dyhb::U('home://attachment/dialog_add?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->上传<!--</lang>--></a>&nbsp;
+									<a href="<!--{:Dyhb::U('home://attachment/edit_attachmentcategory?id='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->编辑<!--</lang>--></a>
 								</p>
 							</div>
 						</div>
@@ -34,7 +34,7 @@
 					<!--</foreach>-->
 				</ul>
 				<!--{d*else}-->
-				<p>暂时没有发现任何附件</p>
+				<p><!--<lang package='Template/Attachment'>-->暂时没有发现任何附件<!--</lang>--></p>
 				<!--{/if}-->
 			</div>
 			<div class="span12">

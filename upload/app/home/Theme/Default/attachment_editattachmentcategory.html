@@ -4,20 +4,20 @@
 				<div style="width:100%;">
 					<table width='100%' class="table" align="left">
 						<thead>
-							<th>专辑项</th>
-							<th>专辑值</th>
+							<th><!--<lang package='Template/Attachment'>-->专辑项<!--</lang>--></th>
+							<th><!--<lang package='Template/Attachment'>-->专辑值<!--</lang>--></th>
 						</thead>
 						<tbody>
 							<tr>
-								<td valign="top">专辑排序</td>
+								<td valign="top"><!--<lang package='Template/Attachment'>-->专辑排序<!--</lang>--></td>
 								<td><input type="text" name="attachmentcategory_compositor" id="attachmentcategory_compositor" class="span4" size="20" value="<!--{$oAttachmentcategory['attachmentcategory_compositor']}-->" /></td>
 							</tr>
 							<tr>
-								<td valign="top">专辑名字<em class="red">*</em></td>
+								<td valign="top"><!--<lang package='Template/Attachment'>-->专辑名字<!--</lang>--><em class="red">*</em></td>
 								<td><input type="text" name="attachmentcategory_name" id="attachmentcategory_name" size="20" value="<!--{$oAttachmentcategory['attachmentcategory_name']}-->" class="span4"/></td>
 							</tr>
 							<tr>
-								<td valign="top">专辑描述</td>
+								<td valign="top"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></td>
 								<td><textarea name="attachmentcategory_description" id="attachmentcategory_description" class="span4" size="20" rows="5"><!--{$oAttachmentcategory['attachmentcategory_description']}--></textarea></td>
 							</tr>
 							<!--{if $nDialog==1}-->
@@ -26,7 +26,7 @@
 								<td>
 									<input type="hidden" name="dialog" value="1">
 									<input type="hidden" name="function" value="<!--{$sFunction}-->">
-									<button type="submit" class="btn btn-success">更新专辑</button>
+									<button type="submit" class="btn btn-success"><!--<lang package='Template/Attachment'>-->更新专辑<!--</lang>--></button>
 								</td>
 							</tr>
 							<!--{/if}-->

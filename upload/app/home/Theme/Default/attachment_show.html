@@ -11,8 +11,8 @@
 			<div class="span12">
 				<div class="tabbable" style="margin-bottom: 0px;">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#attachment_view" data-toggle="tab">附件浏览</a></li>
-						<li><a href="#attachment_info" data-toggle="tab">附件详情</a></li>
+						<li class="active"><a href="#attachment_view" data-toggle="tab"><!--<lang package='Template/Attachment'>-->附件浏览<!--</lang>--></a></li>
+						<li><a href="#attachment_info" data-toggle="tab"><!--<lang package='Template/Attachment'>-->附件详情<!--</lang>--></a></li>
 					</ul>
 					<div class="tab-content" style="padding-bottom: 0px;">
 						<div class="tab-pane active" id="attachment_view">
@@ -27,34 +27,34 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="2"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|G+subString=0,30}--><!--{d*else}-->暂无附件描述<!--{/if}--></td>
+										<td colspan="2"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|G+subString=0,30}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>--><!--{/if}--></td>
 									</tr>
 									<tr>
-										<td width="150px">上传时间</td>
+										<td width="150px"><!--<lang package='Template/Attachment'>-->上传时间<!--</lang>--></td>
 										<td><!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></td>
 									</tr>
 									<tr>
-										<td>所属专辑</td>
-										<td><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachment['attachmentcategory_id'])}-->"><!--{if $oAttachment['attachmentcategory_id']>0}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}-->默认专辑<!--{/if}--></a></td>
+										<td><!--<lang package='Template/Attachment'>-->所属专辑<!--</lang>--></td>
+										<td><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachment['attachmentcategory_id'])}-->"><!--{if $oAttachment['attachmentcategory_id']>0}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--><!--{/if}--></a></td>
 									</tr>						
 									<tr>
-										<td>下载次数</td>
+										<td><!--<lang package='Template/Attachment'>-->下载次数<!--</lang>--></td>
 										<td><!--{$oAttachment:attachment_download}--></td>
 									</tr>						
 									<tr>
-										<td>评论次数</td>
-										<td><a href="#"><!--{$oAttachment:attachment_commentnum}--></a></td>
+										<td><!--<lang package='Template/Attachment'>-->评论次数<!--</lang>--></td>
+										<td><a href="javascript:void(0);"><!--{$oAttachment:attachment_commentnum}--></a></td>
 									</tr>						
 									<tr>
-										<td>附件大小</td>
+										<td><!--<lang package='Template/Attachment'>-->附件大小<!--</lang>--></td>
 										<td><!--{$oAttachment:attachment_size|G+changeFileSize}--></td>
 									</tr>						
 									<tr>
-										<td>附件类型</td>
+										<td><!--<lang package='Template/Attachment'>-->附件类型<!--</lang>--></td>
 										<td><a href="<!--{:Dyhb::U('home://attachment/attachment?type='.$oAttachment['attachment_extension'])}-->"><!--{$oAttachment['attachment_extension']}--></a></td>
 									</tr>
 									<tr>
-										<td>上传用户</td>
+										<td><!--<lang package='Template/Attachment'>-->上传用户<!--</lang>--></td>
 										<td><a href="<!--{:Dyhb::U('home://space@?id='.$oAttachment['user_id'])}-->"><!--{$oAttachment['attachment_username']}--></a></td>
 									</tr>
 								</tbody>

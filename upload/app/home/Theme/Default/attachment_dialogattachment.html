@@ -5,10 +5,10 @@
 		<div class="row">
 			<div class="span12">
 				<ul class="nav nav-pills">
-					<li class="<!--{if $nAttachmentcategoryid===null && !G+getGpc('type','G') && !isset($_GET['photo'])}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('home://attachment/attachment?dialog=1&function='.$sFunction)}-->">附件列表</a></li>
+					<li class="<!--{if $nAttachmentcategoryid===null && !G+getGpc('type','G') && !isset($_GET['photo'])}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('home://attachment/attachment?dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->附件列表<!--</lang>--></a></li>
 					<li class="dropdown <!--{if $nAttachmentcategoryid!==null && $arrAttachmetncategoryinfo!==false}-->active<!--{/if}-->">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-							所有专辑
+							<!--<lang package='Template/Attachment'>-->所有专辑<!--</lang>-->
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu"> 
@@ -18,12 +18,12 @@
 							<!--{if is_array($arrAttachmentcategorys)}-->
 							<li class="divider"></li>
 							<!--{/if}-->
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?cid=0&dialog=1&function='.$sFunction)}-->">默认专辑</a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?cid=0&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></li>
 						</ul>
 					</li>
 					<li class="dropdown <!--{if G+getGpc('type','G') || isset($_GET['photo'])}-->active<!--{/if}-->">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-							所有类型
+							<!--<lang package='Template/Attachment'>-->所有类型<!--</lang>-->
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu"> 
@@ -31,8 +31,8 @@
 							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?type='.$sAllowedType.'&dialog=1&function='.$sFunction)}-->"><!--{$sAllowedType}--></a></li>
 							<!--</foreach>-->
 							<li class="divider"></li>
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=1&dialog=1&function='.$sFunction)}-->">图片</a></li>
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=0&dialog=1&function='.$sFunction)}-->">附件</a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=1&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->图片<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=0&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->附件<!--</lang>--></a></li>
 						</ul>
 					</li>
 				</ul>
@@ -51,7 +51,7 @@
 							</div>
 							<div class="caption">
 								<h5 id="attachment_name_<!--{$oAttachment['attachment_id']}-->"><a target="_blank" href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><!--{$oAttachment['attachment_name']|G+subString=0,5}--></a>(<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$oAttachment['attachment_extension'].'&dialog=1&function='.$sFunction)}-->"><!--{$oAttachment:attachment_extension}--></a>)</h5>
-								<p><a href="javascript:void(0);" onclick="javascript:parent.parent.<!--{$sFunction}-->('<!--{$oAttachment['attachment_id']}-->');">插入</a>&nbsp;
+								<p><a href="javascript:void(0);" onclick="javascript:parent.parent.<!--{$sFunction}-->('<!--{$oAttachment['attachment_id']}-->');"><!--<lang package='Template/Attachment'>-->插入<!--</lang>--></a>&nbsp;
 									<a target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oAttachment['user_id'])}-->"><!--{$oAttachment['attachment_username']}--></a>
 								</p>
 							</div>
@@ -60,7 +60,7 @@
 					<!--</foreach>-->
 				</ul>
 				<!--{d*else}-->
-				<p>暂时没有发现任何附件</p>
+				<p><!--<lang package='Template/Attachment'>-->暂时没有发现任何附件<!--</lang>--></p>
 				<!--{/if}-->
 			</div>
 			<div class="span12">
@@ -68,40 +68,40 @@
 			</div>
 			<!--{if $nAttachmentcategoryid!==null && $arrAttachmetncategoryinfo!==false}-->
 			<div class="span12">
-				<h3>专辑信息</h3>
+				<h3><!--<lang package='Template/Attachment'>-->专辑信息<!--</lang>--></h3>
 				<hr/>
 				<p><table class="table table-striped">
 						<!--{if $nAttachmentcategoryid>0}-->
 						<thead>
 							<tr>
-								<th width="150px">专辑描述</th>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></th>
 								<th><a href="<!--{:Dyhb::U('home://attachment/attachment?cid='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction)}-->"><!--{$arrAttachmetncategoryinfo['attachmentcategory_name']}--></a></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>创建时间</td>
+								<td><!--<lang package='Template/Attachment'>-->创建时间<!--</lang>--></td>
 								<td><!--{$arrAttachmetncategoryinfo['create_dateline']|Core_Extend+timeFormat}--></td>
 							</tr>
 							<!--{if $arrAttachmetncategoryinfo['update_dateline']}-->
 							<tr>
-								<td>更新时间</td>
+								<td><!--<lang package='Template/Attachment'>-->更新时间<!--</lang>--></td>
 								<td><!--{$arrAttachmetncategoryinfo['update_dateline']|Core_Extend+timeFormat}--></td>
 							</tr>
 							<!--{/if}-->
 							<tr>
-								<th width="150px">附件数量</th>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->附件数量<!--</lang>--></th>
 								<th><!--{$arrAttachmetncategoryinfo['attachmentcategory_attachmentnum']}--></th>
 							</tr>
 						</tbody>
 						<!--{d*else}-->
 						<thead>
 							<tr>
-								<th width="150px">专辑描述</th>
-								<th><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction)}-->">默认专辑</a></th>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></th>
+								<th><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></th>
 							</tr>
 							<tr>
-								<th width="150px">附件数量</th>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->附件数量<!--</lang>--></th>
 								<th><!--{$arrAttachmetncategoryinfo['totalnum']}--></th>
 							</tr>
 						</thead>

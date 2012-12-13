@@ -48,7 +48,7 @@ function createAttachmentcategory(nSelectedIndex,sId){
 			async: false
 		}).responseText;
 
-		oEditNewattachmentcategory=needforbugAlert(sHtml,'新建专辑','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
+		oEditNewattachmentcategory=needforbugAlert(sHtml,'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
 	}else{
 		uploadobject.addPostParam( 'attachmentcategory_id', nSelectedIndex);
 	}
@@ -75,7 +75,7 @@ function saveNewattachmentcategory(){
 
 function cancelNewattachmentcategory(){
 	if($('#new_attachmentcategory_name').val()!=''){
-		needforbugConfirm('你确定要放弃新建专辑?',function(){
+		needforbugConfirm('<!--<lang package='Template/Attachment'>-->你确定要放弃新建专辑?<!--</lang>-->',function(){
 			oEditNewattachmentcategory.close();
 			return true;
 		});
@@ -86,7 +86,7 @@ function cancelNewattachmentcategory(){
 
 				<form enctype="multipart/form-data" method="post" action="<!--{:Dyhb::U('home://attachment/normal_upload')}-->" id="attachment_form" name="attachment_form">
 					<div id="flash-upload-ui" class="well <!--{if $nUploadFileMode==1}-->none<!--{/if}-->">
-						<div><p><h3 class="left">选择文件上传</h3>
+						<div><p><h3 class="left"><!--<lang package='Template/Attachment'>-->选择文件上传<!--</lang>--></h3>
 								<span class="clear"></span>
 							</p>
 							<div class="attachment_flash_top">
@@ -100,56 +100,56 @@ function cancelNewattachmentcategory(){
 								<table class="table" id="attachment_flash_box">
 									<thead>
 										<tr>
-											<th class="no" width="50px">序号</th>
-											<th class="status" width="50px">状态</th>
-											<th class="name">名称</th>
-											<th class="size" width="50px">大小</th>
-											<th class="flashprogress" width="250px">进度</th>
-											<th class="exec" width="100px">操作</th>
+											<th class="no" width="50px"><!--<lang package='Template/Attachment'>-->序号<!--</lang>--></th>
+											<th class="status" width="50px"><!--<lang package='Template/Attachment'>-->状态<!--</lang>--></th>
+											<th class="name"><!--<lang package='Template/Attachment'>-->名称<!--</lang>--></th>
+											<th class="size" width="50px"><!--<lang package='Template/Attachment'>-->大小<!--</lang>--></th>
+											<th class="flashprogress" width="250px"><!--<lang package='Template/Attachment'>-->进度<!--</lang>--></th>
+											<th class="exec" width="100px"><!--<lang package='Template/Attachment'>-->操作<!--</lang>--></th>
 										</tr>
 									</thead>
 								</table>
 							</div>
 						</div>
 						<div id="messageinfo" class="alert"></div>
-						<p><h3>附件专辑</h3>
+						<p><h3><!--<lang package='Template/Attachment'>-->附件专辑<!--</lang>--></h3>
 							<select name="attachmentcategory_id_flash" id="attachmentcategory_id_flash" onchange="createAttachmentcategory(this.options[this.selectedIndex].value,'attachmentcategory_id_flash');" >
-								<option value="0" <!--{if $nAttachmentcategoryid===false}-->selected<!--{/if}-->>请选择专辑</option>
+								<option value="0" <!--{if $nAttachmentcategoryid===false}-->selected<!--{/if}-->><!--<lang package='Template/Attachment'>-->请选择专辑<!--</lang>--></option>
 								<!--<foreach for=arrAttachmentcategorys value=oAttachmentcategory>-->
 								<option value="<!--{$oAttachmentcategory['attachmentcategory_id']}-->" <!--{if $nAttachmentcategoryid==$oAttachmentcategory['attachmentcategory_id']}-->selected<!--{/if}-->><!--{$oAttachmentcategory['attachmentcategory_name']}--></option>
 								<!--</foreach>-->
-								<!--{if !isset($bDialog)}--><option value='new_category'>[+]新建专辑</option><!--{/if}-->
+								<!--{if !isset($bDialog)}--><option value='new_category'>[+]<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>--></option><!--{/if}-->
 							</select>
 						</p>
-						<p><h3>允许的上传类型</h3>
+						<p><h3><!--<lang package='Template/Attachment'>-->允许的上传类型<!--</lang>--></h3>
 							<p class="upload_type"><!--<foreach for=arrAllowedTypes value=sAllowedType>-->
 								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType.(isset($bDialog)?'&dialog=1&function='.$sFunction:''))}-->" class="btn btn-mini"><!--{$sAllowedType}--></a>&nbsp;
 								<!--</foreach>-->
 							</p>
 						</p>
-						<p class="none" id="flash_upload_box"><input type="button" name="flash-upload" id="flash-upload" class="btn btn-success" onclick="updateAttachmentinfo();" value="更新附件信息" />&nbsp;
+						<p class="none" id="flash_upload_box"><input type="button" name="flash-upload" id="flash-upload" class="btn btn-success" onclick="updateAttachmentinfo();" value="<!--<lang package='Template/Attachment'>-->更新附件信息<!--</lang>-->" />&nbsp;
 							<span class="clear"></span>
 						</p>
-						<div class="media-upload-size alert alert-success" style="margin-top:10px;">上传文件最大尺寸&nbsp;<!--{:G::changeFileSize($nUploadfileMaxsize)}-->(<!--{$nUploadfileMaxsize}-->)
+						<div class="media-upload-size alert alert-success" style="margin-top:10px;"><!--<lang package='Template/Attachment'>-->上传文件最大尺寸<!--</lang>-->&nbsp;<!--{:G::changeFileSize($nUploadfileMaxsize)}-->(<!--{$nUploadfileMaxsize}-->)
 						</div>
-						<p class="upload-flash-bypass">Flash上传工具<span class="pipe">|</span><a href="?flash=0">浏览器上传工具</a></p>
+						<p class="upload-flash-bypass"><!--<lang package='Template/Attachment'>-->Flash上传工具<!--</lang>--><span class="pipe">|</span><a href="?flash=0"><!--<lang package='Template/Attachment'>-->浏览器上传工具<!--</lang>--></a></p>
 					</div>
 					<div id="html-upload-ui" class="well <!--{if $nUploadFileMode==0}-->none<!--{/if}-->">
-						<h3>上传</h3>
+						<h3><!--<lang package='Template/Attachment'>-->上传<!--</lang>--></h3>
 						<p><!--<for start='1' end='$nFileInputNum'>-->
 							<input type="file" name="newfile[]">
 							<!--</for>-->
 						</p>
-						<p><h3>附件专辑</h3>
+						<p><h3><!--<lang package='Template/Attachment'>-->附件专辑<!--</lang>--></h3>
 							<select name="attachmentcategory_id" id="attachmentcategory_id" onchange="createAttachmentcategory(this.options[this.selectedIndex].value,'attachmentcategory_id');" >
-								<option value="0" <!--{if $nAttachmentcategoryid===false}-->selected<!--{/if}-->>请选择专辑</option>
+								<option value="0" <!--{if $nAttachmentcategoryid===false}-->selected<!--{/if}-->><!--<lang package='Template/Attachment'>-->请选择专辑<!--</lang>--></option>
 								<!--<foreach for=arrAttachmentcategorys value=oAttachmentcategory>-->
 								<option value="<!--{$oAttachmentcategory['attachmentcategory_id']}-->" <!--{if $nAttachmentcategoryid==$oAttachmentcategory['attachmentcategory_id']}-->selected<!--{/if}-->><!--{$oAttachmentcategory['attachmentcategory_name']}--></option>
 								<!--</foreach>-->
-								<!--{if !isset($bDialog)}--><option value='new_category'>[+]新建专辑</option><!--{/if}-->
+								<!--{if !isset($bDialog)}--><option value='new_category'>[+]<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>--></option><!--{/if}-->
 							</select>
 						</p>
-						<p><h3>允许的上传类型</h3>
+						<p><h3><!--<lang package='Template/Attachment'>-->允许的上传类型<!--</lang>--></h3>
 							<p class="upload_type"><!--<foreach for=arrAllowedTypes value=sAllowedType>-->
 								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType.(isset($bDialog)?'&dialog=1&function='.$sFunction:''))}-->" class="btn btn-mini"><!--{$sAllowedType}--></a>&nbsp;
 								<!--</foreach>-->
@@ -159,12 +159,12 @@ function cancelNewattachmentcategory(){
 							<!--{if isset($bDialog)}--><input type="hidden" name="dialog" value="1"/><!--{/if}-->
 							<!--{if isset($sFunction)}--><input type="hidden" name="function" value="<!--{$sFunction}-->"/><!--{/if}-->
 							<input type="hidden" name="user_name" value="<!--{$GLOBALS['___login___']['user_name']}-->"/>
-							<input type="submit" name="html-upload" id="html-upload" class="btn btn-success" value="上传" />&nbsp;
-							<input type="reset" class="btn" value="重置" />
+							<input type="submit" name="html-upload" id="html-upload" class="btn btn-success" value="<!--<lang package='Template/Attachment'>-->上传<!--</lang>-->" />&nbsp;
+							<input type="reset" class="btn" value="<!--<lang package='Template/Attachment'>-->重置<!--</lang>-->" />
 							<span class="clear"></span>
 						</p>
-						<div class="media-upload-size alert alert-success" style="margin-top:10px;">上传文件最大尺寸&nbsp;<!--{:G::changeFileSize($nUploadfileMaxsize)}-->(<!--{$nUploadfileMaxsize}-->)
+						<div class="media-upload-size alert alert-success" style="margin-top:10px;"><!--<lang package='Template/Attachment'>-->上传文件最大尺寸<!--</lang>-->&nbsp;<!--{:G::changeFileSize($nUploadfileMaxsize)}-->(<!--{$nUploadfileMaxsize}-->)
 						</div>
-						<p class="upload-html-bypass hide-if-no-js">浏览器上传工具<span class="pipe">|</span><a href="?flash=1">Flash上传工具</a></p>
+						<p class="upload-html-bypass hide-if-no-js"><!--<lang package='Template/Attachment'>-->浏览器上传工具<!--</lang>--><span class="pipe">|</span><a href="?flash=1"><!--<lang package='Template/Attachment'>-->Flash上传工具<!--</lang>--></a></p>
 					</div>
 				</form>

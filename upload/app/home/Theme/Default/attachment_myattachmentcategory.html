@@ -9,7 +9,7 @@ function editAttachmentcategory(id){
 		async: false
 	}).responseText;
 
-	oEditNewattachmentcategory=needforbugAlert(sHtml,'编辑专辑','',saveAttachmentcategory,'',600,300);
+	oEditNewattachmentcategory=needforbugAlert(sHtml,'<!--<lang package='Template/Attachment'>-->编辑专辑<!--</lang>-->','',saveAttachmentcategory,'',600,300);
 }
 
 function saveAttachmentcategory(){
@@ -23,7 +23,7 @@ function saveAttachmentcategory(){
 		function(data,status){
 			if(status==1){
 				$('#attachmentcategory_name_'+id).text(subStr(data.attachmentcategory_name,15));
-				$('#attachmentcategory_description_'+id).text(data.attachmentcategory_description?subStr(data.attachmentcategory_description,32):'暂无附件描述');
+				$('#attachmentcategory_description_'+id).text(data.attachmentcategory_description?subStr(data.attachmentcategory_description,32):'<!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>-->');
 				oEditNewattachment.close();
 				return true;
 			}
@@ -32,7 +32,7 @@ function saveAttachmentcategory(){
 }
 
 function deleteAttachmentcategory(id){
-	needforbugConfirm('你确定要删除专辑吗?',function(){
+	needforbugConfirm('<!--<lang package='Template/Attachment'>-->你确定要删除专辑吗?<!--</lang>-->',function(){
 		Dyhb.AjaxSend(D.U('home://attachment/delete_attachmentcategory?id='+id),
 			'ajax=1','',
 			function(data,status){
@@ -55,7 +55,7 @@ function createAttachmentcategory(){
 		async: false
 	}).responseText;
 
-	oEditCreateNewattachmentcategory=needforbugAlert(sHtml,'新建专辑','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
+	oEditCreateNewattachmentcategory=needforbugAlert(sHtml,'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
 }
 
 function saveNewattachmentcategory(){
@@ -75,7 +75,7 @@ function saveNewattachmentcategory(){
 
 function cancelNewattachmentcategory(){
 	if($('#new_attachmentcategory_name').val()!=''){
-		needforbugConfirm('你确定要放弃新建专辑?',function(){
+		needforbugConfirm('<!--<lang package='Template/Attachment'>-->你确定要放弃新建专辑?<!--</lang>-->',function(){
 			oEditCreateNewattachmentcategory.close();
 			return true;
 		});
@@ -86,7 +86,7 @@ function cancelNewattachmentcategory(){
 function recommendAttachmentcategory(id){
 	Dyhb.AjaxSend(D.U('home://attachment/recommend_attachmentcategory?id='+id),'ajax=1','',function(data,status){
 		if(status==1){
-			$('#recommendcategory_item_'+id).html('推荐成功');
+			$('#recommendcategory_item_'+id).html('<!--<lang package='Template/Attachment'>-->推荐成功<!--</lang>-->');
 		}
 	});
 }
@@ -94,7 +94,7 @@ function recommendAttachmentcategory(id){
 function unrecommendAttachmentcategory(id){
 	Dyhb.AjaxSend(D.U('home://attachment/unrecommend_attachmentcategory?id='+id),'ajax=1','',function(data,status){
 		if(status==1){
-			$('#unrecommendcategory_item_'+id).html('取消推荐成功');
+			$('#unrecommendcategory_item_'+id).html('<!--<lang package='Template/Attachment'>-->取消推荐成功<!--</lang>-->');
 		}
 	});
 }
@@ -103,7 +103,7 @@ function unrecommendAttachmentcategory(id){
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template/Attachment'>-->我的相册<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li>我的专辑</li>
+			<li><!--<lang package='Template/Attachment'>-->我的专辑<!--</lang>--></li>
 		</ul>
 
 		<!--<include file="attachment+menu" />-->
@@ -111,11 +111,11 @@ function unrecommendAttachmentcategory(id){
 		<div class="row">
 			<div class="span12" style="margin-bottom:20px;">
 				<span class="right">
-					<a href="<!--{:Dyhb::U('home://attachment/add')}-->" class="btn btn-success"><i class="icon-upload icon-white"></i>&nbsp;上传照片</a>
+					<a href="<!--{:Dyhb::U('home://attachment/add')}-->" class="btn btn-success"><i class="icon-upload icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->上传照片<!--</lang>--></a>
 					<span class="pipe">|</span>
-					<a href="javascript:void(0);" onclick="createAttachmentcategory();">+新建专辑</a>
+					<a href="javascript:void(0);" onclick="createAttachmentcategory();">+<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>--></a>
 				</span>
-				<h3>我的专辑</h3>
+				<h3><!--<lang package='Template/Attachment'>-->我的专辑<!--</lang>--></h3>
 			</div>
 			<div class="span12">
 				<!--{if is_array($arrAttachmentcategorys)}-->
@@ -131,21 +131,21 @@ function unrecommendAttachmentcategory(id){
 							</div>
 							<div class="caption">
 								<h5 id="attachmentcategory_name_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--{$oAttachmentcategory['attachmentcategory_name']|G+subString=0,15}--></a></h5>
-								<p id="attachmentcategory_description_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><!--{if $oAttachmentcategory['attachmentcategory_description']}--><!--{$oAttachmentcategory['attachmentcategory_description']|G+subString=0,30}--><!--{d*else}-->暂无附件描述<!--{/if}--></p>
-								<p>创建时间:&nbsp;<!--{$oAttachmentcategory['create_dateline']|Core_Extend+timeFormat}--></p>
-								<p>附件数量:&nbsp;<a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--{$oAttachmentcategory:attachmentcategory_attachmentnum}--></a></p>
-								<p><a href="javascript:void(0);" onclick="editAttachmentcategory(<!--{$oAttachmentcategory['attachmentcategory_id']}-->);"><i class="icon-pencil"></i>&nbsp;编辑</a>
+								<p id="attachmentcategory_description_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><!--{if $oAttachmentcategory['attachmentcategory_description']}--><!--{$oAttachmentcategory['attachmentcategory_description']|G+subString=0,30}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>--><!--{/if}--></p>
+								<p><!--<lang package='Template/Attachment'>-->创建时间<!--</lang>-->:&nbsp;<!--{$oAttachmentcategory['create_dateline']|Core_Extend+timeFormat}--></p>
+								<p><!--<lang package='Template/Attachment'>-->附件数量<!--</lang>-->:&nbsp;<a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--{$oAttachmentcategory:attachmentcategory_attachmentnum}--></a></p>
+								<p><a href="javascript:void(0);" onclick="editAttachmentcategory(<!--{$oAttachmentcategory['attachmentcategory_id']}-->);"><i class="icon-pencil"></i>&nbsp;<!--<lang package='Template/Attachment'>-->编辑<!--</lang>--></a>
 								<!--{if $oAttachmentcategory['attachmentcategory_attachmentnum']<1}-->
 								<span class="pipe">|</span>
-								<a href="javascript:void(0);" onclick="deleteAttachmentcategory(<!--{$oAttachmentcategory['attachmentcategory_id']}-->);"><i class="icon-remove"></i>&nbsp;删除</a>
+								<a href="javascript:void(0);" onclick="deleteAttachmentcategory(<!--{$oAttachmentcategory['attachmentcategory_id']}-->);"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Attachment'>-->删除<!--</lang>--></a>
 								<!--{/if}-->
 								</p>
-								<p><a href="<!--{:Dyhb::U('home://attachment/add?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->" class="btn btn-success btn-large"><i class="icon-upload icon-white"></i>&nbsp;开始上传附件</a></p>
+								<p><a href="<!--{:Dyhb::U('home://attachment/add?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->" class="btn btn-success btn-large"><i class="icon-upload icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->开始上传附件<!--</lang>--></a></p>
 								<!--{if Core_Extend+isAdmin()}-->
 								<p class="alert alert-success"><!--{if $oAttachmentcategory['attachmentcategory_recommend']==1}-->
-									<span id="unrecommendcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="javascript:void(0);" onclick="unrecommendAttachmentcategory('<!--{$oAttachmentcategory['attachmentcategory_id']}-->');" >取消推荐</a></span>
+									<span id="unrecommendcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="javascript:void(0);" onclick="unrecommendAttachmentcategory('<!--{$oAttachmentcategory['attachmentcategory_id']}-->');" ><!--<lang package='Template/Attachment'>-->取消推荐<!--</lang>--></a></span>
 									<!--{d*else}-->
-									<span id="recommendcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="javascript:void(0);" onclick="recommendAttachmentcategory('<!--{$oAttachmentcategory['attachmentcategory_id']}-->');">推荐</a></span>
+									<span id="recommendcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="javascript:void(0);" onclick="recommendAttachmentcategory('<!--{$oAttachmentcategory['attachmentcategory_id']}-->');"><!--<lang package='Template/Attachment'>-->推荐<!--</lang>--></a></span>
 									<!--{/if}-->
 								</p>
 								<!--{/if}-->
@@ -155,7 +155,7 @@ function unrecommendAttachmentcategory(id){
 					<!--</foreach>-->
 				</ul>
 				<!--{d*else}-->
-				<p>暂时没有发现任何附件</p>
+				<p><!--<lang package='Template/Attachment'>-->暂时没有发现任何附件<!--</lang>--></p>
 				<!--{/if}-->
 			</div>
 			<div class="span12">

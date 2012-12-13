@@ -4,7 +4,7 @@
 function recommendAttachment(id){
 	Dyhb.AjaxSend(D.U('home://attachment/recommend_attachment?id='+id),'ajax=1','',function(data,status){
 		if(status==1){
-			$('#recommend_item_'+id).html('推荐成功');
+			$('#recommend_item_'+id).html('<!--<lang package='Template/Attachment'>-->推荐成功<!--</lang>-->');
 		}
 	});
 }
@@ -12,7 +12,7 @@ function recommendAttachment(id){
 function unrecommendAttachment(id){
 	Dyhb.AjaxSend(D.U('home://attachment/unrecommend_attachment?id='+id),'ajax=1','',function(data,status){
 		if(status==1){
-			$('#unrecommend_item_'+id).html('取消推荐成功');
+			$('#unrecommend_item_'+id).html('<!--<lang package='Template/Attachment'>-->取消推荐成功<!--</lang>-->');
 		}
 	});
 }
@@ -59,14 +59,14 @@ function unrecommendAttachment(id){
 								</div>
 								<div class="caption">
 									<h5><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><!--{$oAttachment['attachment_name']|G+subString=0,15}--></a></h5>
-									<p>上传时间:&nbsp;<!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></p>
-									<p><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->" class="btn btn-success"><i class="icon-eye-open icon-white"></i>&nbsp;查看详情</a>
+									<p><!--<lang package='Template/Attachment'>-->上传时间<!--</lang>-->:&nbsp;<!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></p>
+									<p><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->" class="btn btn-success"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->查看详情<!--</lang>--></a>
 									</p>
 									<!--{if Core_Extend+isAdmin()}-->
 									<p class="alert alert-success"><!--{if $oAttachment['attachment_recommend']==1}-->
-										<span id="unrecommend_item_<!--{$oAttachment['attachment_id']}-->"><a href="javascript:void(0);" onclick="unrecommendAttachment('<!--{$oAttachment['attachment_id']}-->');" >取消推荐</a></span>
+										<span id="unrecommend_item_<!--{$oAttachment['attachment_id']}-->"><a href="javascript:void(0);" onclick="unrecommendAttachment('<!--{$oAttachment['attachment_id']}-->');" ><!--<lang package='Template/Attachment'>-->取消推荐<!--</lang>--></a></span>
 										<!--{d*else}-->
-										<span id="recommend_item_<!--{$oAttachment['attachment_id']}-->"><a href="javascript:void(0);" onclick="recommendAttachment('<!--{$oAttachment['attachment_id']}-->');">推荐</a></span>
+										<span id="recommend_item_<!--{$oAttachment['attachment_id']}-->"><a href="javascript:void(0);" onclick="recommendAttachment('<!--{$oAttachment['attachment_id']}-->');"><!--<lang package='Template/Attachment'>-->推荐<!--</lang>--></a></span>
 										<!--{/if}-->
 									</p>
 									<!--{/if}-->
@@ -79,8 +79,8 @@ function unrecommendAttachment(id){
 				<!--{$sPageNavbar}-->
 			</div>
 			<div class="span4">
-				<p><a href="<!--{:Dyhb::U('home://attachment/add')}-->" class="btn btn-success btn-large">快来分享照片</a></p>
-				<h4>推荐专辑</h4>
+				<p><a href="<!--{:Dyhb::U('home://attachment/add')}-->" class="btn btn-success btn-large"><!--<lang package='Template/Attachment'>-->快来分享照片<!--</lang>--></a></p>
+				<h4><!--<lang package='Template/Attachment'>-->推荐专辑<!--</lang>--></h4>
 				<!--{if is_array($arrRecommendAttachmentcategorys)}-->
 				<p><ul class="nav nav-tabs nav-stacked">
 						<!--<foreach for=arrRecommendAttachmentcategorys value=oRecommendAttachmentcategory>-->
@@ -89,7 +89,7 @@ function unrecommendAttachment(id){
 					</ul>
 				</p>
 				<!--{d*else}-->
-				<p>暂无推荐专辑</p>
+				<p><!--<lang package='Template/Attachment'>-->暂无推荐专辑<!--</lang>--></p>
 				<!--{/if}-->
 			</div>
 		</div>

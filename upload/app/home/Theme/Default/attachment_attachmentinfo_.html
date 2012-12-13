@@ -1,9 +1,9 @@
 <!--{script}-->
 function toggleAttachment(id){
-	if($('#attachment_action_'+id).text()=='隐藏'){
-		$('#attachment_action_'+id).text('显示');
+	if($('#attachment_action_'+id).text()=='<!--<lang package='Template/Attachment'>-->隐藏<!--</lang>-->'){
+		$('#attachment_action_'+id).text('<!--<lang package='Template/Attachment'>-->显示<!--</lang>-->');
 	}else{
-		$('#attachment_action_'+id).text('隐藏');
+		$('#attachment_action_'+id).text('<!--<lang package='Template/Attachment'>-->隐藏<!--</lang>-->');
 	}
 
 	$('#attachment_item_'+id).toggle();
@@ -32,7 +32,7 @@ function saveAttachmentinfo(){
 					<div class="attachment_item">
 						<div class="alert alert-success" style="margin-bottom:0px;border-bottom:none;">
 							<div class="left"><span class="title"><!--{$oAttachment['attachment_name']}--></span></div>
-							<a class="right" onclick="toggleAttachment(<!--{$oAttachment['attachment_id']}-->);" href="javascript:void(0);"><span id="attachment_action_<!--{$oAttachment['attachment_id']}-->">隐藏</span></a>
+							<a class="right" onclick="toggleAttachment(<!--{$oAttachment['attachment_id']}-->);" href="javascript:void(0);"><span id="attachment_action_<!--{$oAttachment['attachment_id']}-->"><!--<lang package='Template/Attachment'>-->隐藏<!--</lang>--></span></a>
 							<span class="clear"></span>
 						</div>
 						<div id="attachment_item_<!--{$oAttachment['attachment_id']}-->">
@@ -42,30 +42,30 @@ function saveAttachmentinfo(){
 										<td width="100px"><p><a href="javascript:void(0);" target="_blank"><img class="thumbnail" src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" alt="" width="46" height="60"></a>
 											</p>
 										</td>
-										<td><p><strong>文件名：</strong> <!--{$oAttachment['attachment_name']}--></p>
-											<p><strong>文件类型：</strong> <!--{$oAttachment['attachment_type']}--></p>
-											<p><strong>上传日期：</strong> <!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></p>
+										<td><p><strong><!--<lang package='Template/Attachment'>-->文件名<!--</lang>-->：</strong> <!--{$oAttachment['attachment_name']}--></p>
+											<p><strong><!--<lang package='Template/Attachment'>-->文件类型<!--</lang>-->：</strong> <!--{$oAttachment['attachment_type']}--></p>
+											<p><strong><!--<lang package='Template/Attachment'>-->上传日期<!--</lang>-->：</strong> <!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></p>
 											<!--{if $arrAttachmentSize}-->
-											<p><strong>尺寸：</strong> <!--{$arrAttachmentSize[0]}-->&nbsp;×&nbsp;<!--{$arrAttachmentSize[1]}--></p>
+											<p><strong><!--<lang package='Template/Attachment'>-->尺寸<!--</lang>-->：</strong> <!--{$arrAttachmentSize[0]}-->&nbsp;×&nbsp;<!--{$arrAttachmentSize[1]}--></p>
 											<!--{/if}-->
 										</td>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>标题<em class="red">*</em></td>
+										<td><!--<lang package='Template/Attachment'>-->标题<!--</lang>--><em class="red">*</em></td>
 										<td><input class="span5" id="attachments[<!--{$oAttachment['attachment_id']}-->][attachment_name]" name="attachments[<!--{$oAttachment['attachment_id']}-->][attachment_name]" value="<!--{$oAttachment['attachment_name']}-->" type="text"></td>
 									</tr>
 									<tr>
-										<td>替代文本</td>
+										<td><!--<lang package='Template/Attachment'>-->替代文本<!--</lang>--></td>
 										<td><input class="span5" id="attachments[<!--{$oAttachment['attachment_id']}-->][attachment_alt]" name="attachments[<!--{$oAttachment['attachment_id']}-->][attachment_alt]" value="<!--{$oAttachment['attachment_alt']}-->" type="text"></td>
 									</tr>
 									<tr>
-										<td>描述</td>
+										<td><!--<lang package='Template/Attachment'>-->描述<!--</lang>--></td>
 										<td><textarea class="span5" id="attachments[<!--{$oAttachment['attachment_id']}-->][attachment_description]" name="attachments[<!--{$oAttachment['attachment_id']}-->][attachment_description]" rows="3"><!--{$oAttachment['attachment_description']}--></textarea></td>
 									</tr>
 									<tr>
-										<td>文件地址</td>
+										<td><!--<lang package='Template/Attachment'>-->文件地址<!--</lang>--></td>
 										<td><input class="span5" value="<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->" type="text" disabled="disabled"></td>
 									</tr>
 								</tbody>
@@ -78,7 +78,7 @@ function saveAttachmentinfo(){
 						<input type="hidden" id="function" name="function" value="<!--{if $sFunction}--><!--{$sFunction}--><!--{/if}-->"/>
 						<input type="hidden" name="ajax" value="1"/>
 						<input type="hidden" name="attachmentcategory_id" id="attachmentcategory_id" value="<!--{$nAttachmentcategoryid}-->"/>
-						<input type="button" class="btn btn-success" onclick="saveAttachmentinfo();" value="保存附件信息">&nbsp;
-						<a class="btn" href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.($nDialog==1?'&dialog=1':'').($sFunction?'&function='.$sFunction:''))}-->">我的附件</a>
+						<input type="button" class="btn btn-success" onclick="saveAttachmentinfo();" value="<!--<lang package='Template/Attachment'>-->保存附件信息<!--</lang>-->">&nbsp;
+						<a class="btn" href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.($nDialog==1?'&dialog=1':'').($sFunction?'&function='.$sFunction:''))}-->"><!--<lang package='Template/Attachment'>-->我的附件<!--</lang>--></a>
 					</div>
 				</form>
