@@ -10,9 +10,9 @@
 		<div class="row">
 			<div class="span9">
 				<div class="alert alert-success">
-					<h5><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo['user_name']}--></a>&nbsp;(当前积分&nbsp;<!--{$nUserscore}-->)</h5>
+					<h5><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo['user_name']}--></a>&nbsp;(<!--<lang package='Template/Space'>-->当前积分<!--</lang>-->&nbsp;<!--{$nUserscore}-->)</h5>
 					<p><div class="current_ratinginfo">
-							等级名字&nbsp;<span class="badge"><!--{$arrRatinginfo['rating_name']}--></span>,距离下一个等级&nbsp;<span class="badge"><!--{$arrRatinginfo['next_rating']['rating_name']}--></span>&nbsp;还差&nbsp;<span class="badge badge-success"><!--{$arrRatinginfo['next_needscore']}--></span>&nbsp;积分
+							<!--<lang package='__COMMON_LANG__@Template/Common'>-->等级名字<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['rating_name']}--></span>,<!--<lang package='__COMMON_LANG__@Template/Common'>-->距离下一个等级<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['next_rating']['rating_name']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->还差<!--</lang>-->&nbsp;<span class="badge badge-success"><!--{$arrRatinginfo['next_needscore']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->积分<!--</lang>-->
 						</div>
 						<div class="progress">
 							<div class="bar" style="width: <!--{$arrRatinginfo['next_progress']}-->%;"></div>

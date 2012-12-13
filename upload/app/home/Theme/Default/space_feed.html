@@ -21,7 +21,7 @@ $(function(){
 				<!--{if is_array($arrFeeddatas)}-->
 				<table class="table">
 					<thead>
-						<th colspan="2"><h3>用户动态</h3></th>
+						<th colspan="2"><h3><!--<lang package='Template/Space'>-->用户动态<!--</lang>--></h3></th>
 					</thead>
 					<tbody>
 						<!--<foreach for=arrFeeddatas value=arrFeeddata>-->
@@ -45,7 +45,7 @@ $(function(){
 					</tbody>
 				</table>
 				<!--{d*else}-->
-				<p>暂无任何动态</p>
+				<p><!--<lang package='Template/Space'>-->暂无任何动态<!--</lang>--></p>
 				<!--{/if}-->
 
 				<!--{$sPageNavbar}-->
