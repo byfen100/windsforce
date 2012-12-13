@@ -50,3 +50,8 @@ SociauserController.class
 提炼未登录框CSS
 
 新鲜事话题功能开发
+
+
+数据库备份bug
+
+登录送积分功能
