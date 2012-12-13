@@ -16,8 +16,8 @@ return array(
 '0b3be10ddad95a93a594366ed2e6fa6b'=>"註銷",
 '5ac1e42b6f9f5023bca426a1bddbae4c'=>"短消息",
 'f09b1233cace4c9ed006366a821f2af1'=>"數據加載中",
-'42ddc62228bde29a075f2de4837c9f87'=>"个人空间",
-'f7871b7ba53411ef40a72b7287e91dac'=>"用户动态",
+'f7871b7ba53411ef40a72b7287e91dac'=>"用戶動態",
+'42ddc62228bde29a075f2de4837c9f87'=>"個人空間",
 )
 
 ?>
