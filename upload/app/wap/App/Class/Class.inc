@@ -1,1 +1,1 @@
-a:3:{s:14:"InitController";s:35:"Controller/InitController.class.php";s:16:"PublicController";s:37:"Controller/PublicController.class.php";s:16:"HomeCache_Extend";s:36:"Extension/HomeCache_Extend.class.php";}
+a:4:{s:14:"InitController";s:35:"Controller/InitController.class.php";s:16:"PublicController";s:37:"Controller/PublicController.class.php";s:15:"WapCache_Extend";s:35:"Extension/WapCache_Extend.class.php";s:14:"WapoptionModel";s:30:"Model/WapoptionModel.class.php";}

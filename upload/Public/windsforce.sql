@@ -582,6 +582,18 @@ CREATE TABLE IF NOT EXISTS `windsforce_groupuser` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_helloworldoption`
+--
+
+CREATE TABLE IF NOT EXISTS `windsforce_helloworldoption` (
+  `helloworldoption_name` varchar(32) NOT NULL DEFAULT '' COMMENT '名字',
+  `helloworldoption_value` text NOT NULL COMMENT '值',
+  PRIMARY KEY (`helloworldoption_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_homefresh`
 --
 
@@ -2009,6 +2021,20 @@ CREATE TABLE IF NOT EXISTS `windsforce_userrole` (
   `user_id` char(32) NOT NULL DEFAULT '' COMMENT '用户ID',
   PRIMARY KEY (`role_id`,`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_wapoption`
+--
+
+CREATE TABLE IF NOT EXISTS `windsforce_wapoption` (
+  `helloworldoption_name` varchar(32) NOT NULL DEFAULT '' COMMENT '名字',
+  `helloworldoption_value` text NOT NULL COMMENT '值',
+  PRIMARY KEY (`helloworldoption_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
