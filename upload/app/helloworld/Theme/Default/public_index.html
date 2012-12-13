@@ -1,7 +1,15 @@
-<!--<include file="header">-->
+<!--<include file="Core_Extend::template('header')" />-->
 
-	<div id="m">
-		<p>Hello wap!</p>
-	</div>
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Public'>-->Hello world！ - 世界你好！<!--</lang>--></li>
+		</ul>
 
-<!--<include file="footer">-->
+
+		<div class="row">
+			<div class="span12">
+				<p>Hello world!</p>
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->
