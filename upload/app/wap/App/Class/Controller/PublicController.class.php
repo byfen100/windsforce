@@ -10,4 +10,8 @@ class PublicController extends InitController{
 		$this->display('public+index');
 	}
 
+	public function login(){
+		$this->display('public+login');
+	}
+
 }

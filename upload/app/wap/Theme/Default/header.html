@@ -11,8 +11,8 @@
  .gray{ color:gray; }
  #top{background-color:#32598B; padding:1px 8px;}
  #top #sitename{font-weight:bold; color:#FFFFFF; font-size:18px;}
- #top .description{color:#B2D281;font-size:12px;}
- #navi{background:#d3edb8; padding:5px 3px;}
+ #top .description{color:#ffffff;font-size:12px;}
+ #navi{background:#EFEFEF; padding:5px 3px;}
  #navi a{ padding:5px; }
  #navi .active{color:red;}
  #m{padding:10px;}
@@ -49,5 +49,6 @@
 	<p class="description"><!--{$GLOBALS['_option_']['site_description']}--><p>
 </div>
 <div id="navi">
-	<a href="<!--{:Dyhb::U('wap://public/index')}-->" class="active">首页</a>
+	<a href="<!--{:Dyhb::U('wap://public/index')}-->" <!--{if ACTION_NAME==='index'}-->class="active"<!--{/if}-->><!--<lang package='Template/Common'>-->首页<!--</lang>--></a>
+	<a href="<!--{:Dyhb::U('wap://public/login')}-->" <!--{if ACTION_NAME==='login'}-->class="active"<!--{/if}-->><!--<lang package='Template/Common'>-->登录<!--</lang>--></a>
 </div>
