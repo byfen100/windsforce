@@ -53,6 +53,7 @@ function addHomefresh(){
 				'</tr>'
 			);
 
+			$('#homefresh_no').remove();
 			editor.html('');
 		}
 	});
@@ -166,7 +167,7 @@ var nHomefreshviewcomment=0;
 					</ul>
 				</div>
 				<div class="message-box">
-					<!--{if is_array($arrHomefreshs)}-->
+					
 					<table class="table">
 						<thead>
 							<tr>
@@ -174,6 +175,7 @@ var nHomefreshviewcomment=0;
 							</tr>
 						</thead>
 						<tbody id="homefreshlist_box">
+							<!--{if is_array($arrHomefreshs)}-->
 							<!--<foreach for=arrHomefreshs value=oHomefresh>-->
 							<tr id="homefreshlist_item_<!--{$oHomefresh['homefresh_id']}-->">
 								<td style="width:48px;">
@@ -246,6 +248,11 @@ var nHomefreshviewcomment=0;
 								</td>
 							</tr>
 							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr id="homefresh_no">
+								<td><p><!--<lang package='Template/Homefresh'>-->暂时没有发现任何新鲜事<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
 						</tbody>
 					</table>
 					<div id="homefreshcommentform_box" class="none">
@@ -276,9 +283,6 @@ var nHomefreshviewcomment=0;
 						<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://ucenter/seccode')}-->" /></span></p>
 						<!--{/if}-->
 					</div>
-					<!--{d*else}-->
-					<p><!--<lang package='Template/Homefresh'>-->暂时没有发现任何新鲜事<!--</lang>--></p>
-					<!--{/if}-->
 
 					<!--{$sPageNavbar}-->
 				</div>

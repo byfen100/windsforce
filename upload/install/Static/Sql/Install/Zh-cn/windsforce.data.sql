@@ -123,6 +123,24 @@ INSERT INTO `#@__link` (`link_id`, `create_dateline`, `update_dateline`, `link_n
 -- --------------------------------------------------------
 
 --
+-- 转存表中的数据 `windsforce_homefresh`
+--
+
+INSERT INTO `#@__homefresh` (`homefresh_id`, `homefresh_title`, `user_id`, `homefresh_username`, `homefresh_from`, `create_dateline`, `homefresh_message`, `homefresh_ip`, `homefresh_commentnum`, `homefresh_goodnum`, `homefresh_viewnum`, `homefresh_status`) VALUES
+(1, '', 1, '', '', 1355498903, 'Hello world! 世界你好！', '0.0.0.0', 0, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 转存表中的数据 `windsforce_homefreshcomment`
+--
+
+INSERT INTO `#@__homefreshcomment` (`homefreshcomment_id`, `create_dateline`, `update_dateline`, `user_id`, `homefreshcomment_name`, `homefreshcomment_content`, `homefreshcomment_email`, `homefreshcomment_url`, `homefreshcomment_status`, `homefreshcomment_ip`, `homefreshcomment_parentid`, `homefreshcomment_isreplymail`, `homefreshcomment_ismobile`, `homefreshcomment_auditpass`, `homefresh_id`) VALUES
+(1, 1355499576, 0, 1, 'admin', '理想很丰满，现实很骨感！', 'admin@admin.com', 'http://windsforce.net', 1, '0.0.0.0', 0, 0, 0, 0, '5');
+
+-- --------------------------------------------------------
+
+--
 -- 转存表中的数据 `windsforce_nav`
 --
 
@@ -536,7 +554,7 @@ INSERT INTO `#@__slide` (`slide_id`, `slide_sort`, `slide_title`, `slide_url`, `
 --
 
 INSERT INTO `#@__sociatype` (`sociatype_id`, `sociatype_title`, `sociatype_identifier`, `sociatype_appid`, `sociatype_appkey`, `sociatype_callback`, `sociatype_scope`, `sociatype_status`, `create_dateline`) VALUES
-(1, 'QQ互联', 'qq', '100303001', '2c8a05c6c7930f7bd0d481a8462c7db0', 'http://bbs.doyouhaobaby.net/index.php?app=home&c=public&a=socia_callback&vendor=qq', 'get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo', 1, 1345777926),
+(1, 'QQ互联', 'qq', '', '', 'http://youdomain.com/index.php?app=home&c=public&a=socia_callback&vendor=qq', 'get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo', 1, 1345777926),
 (2, '新浪微博', 'weibo', '', '', '', '', 1, 1347356728);
 
 -- --------------------------------------------------------
