@@ -240,8 +240,8 @@ CREATE TABLE `#@__badword` (
 -- 表的结构 `windsforce_creditrule`
 --
 
-DROP TABLE IF EXISTS `#@__badword`;
-CREATE TABLE `#@__badword`` (
+DROP TABLE IF EXISTS `#@__creditrule`;
+CREATE TABLE `#@__creditrule` (
   `creditrule_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '积分规则ID',
   `creditrule_name` varchar(20) NOT NULL DEFAULT '' COMMENT '积分规则名字',
   `creditrule_action` varchar(20) NOT NULL DEFAULT '' COMMENT '规则action唯一KEY',
@@ -1140,3 +1140,21 @@ CREATE TABLE `#@__wapoption` (
   `helloworldoption_value` text NOT NULL COMMENT '值',
   PRIMARY KEY (`helloworldoption_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_district`
+--
+
+DROP TABLE IF EXISTS `#@__district`;
+CREATE TABLE `#@__district` (
+  `district_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '地区ID',
+  `district_name` varchar(255) NOT NULL DEFAULT '' COMMENT '地区名字',
+  `district_level` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '地区级别，省份/城市/州县/乡镇',
+  `district_upid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '上级地址ID值',
+  `district_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '地区排序',
+  PRIMARY KEY (`district_id`),
+  KEY `district_upid` (`district_upid`),
+  KEY `district_sort` (`district_sort`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

@@ -1640,8 +1640,7 @@ INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `d
 (1622, '南关区', 3, 121, 0),
 (1623, '双阳区', 3, 121, 0),
 (1624, '宽城区', 3, 121, 0),
-(1625, '德惠市', 3, 121, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(1625, '德惠市', 3, 121, 0),
 (1626, '朝阳区', 3, 121, 0),
 (1627, '榆树市', 3, 121, 0),
 (1628, '绿园区', 3, 121, 0),
@@ -3264,8 +3263,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (3245, '凤山县', 3, 321, 0),
 (3246, '南丹县', 3, 321, 0),
 (3247, '大化瑶族自治县', 3, 321, 0),
-(3248, '天峨县', 3, 321, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(3248, '天峨县', 3, 321, 0),
 (3249, '宜州市', 3, 321, 0),
 (3250, '巴马瑶族自治县', 3, 321, 0),
 (3251, '环江毛南族自治县', 3, 321, 0),
@@ -4876,8 +4874,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (4856, '玛曲县', 3, 461, 0),
 (4857, '碌曲县', 3, 461, 0),
 (4858, '舟曲县', 3, 461, 0),
-(4859, '迭部县', 3, 461, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(4859, '迭部县', 3, 461, 0),
 (4860, '城东区', 3, 462, 0),
 (4861, '城中区', 3, 462, 0),
 (4862, '城北区', 3, 462, 0),
@@ -6400,8 +6397,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (6379, '肖官营乡', 4, 1231, 0),
 (6380, '辛桥乡', 4, 1231, 0),
 (6381, '辛立庄镇', 4, 1231, 0),
-(6382, '小王果庄', 4, 1232, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(6382, '小王果庄', 4, 1232, 0),
 (6383, '庞口镇', 4, 1232, 0),
 (6384, '庞家佐乡', 4, 1232, 0),
 (6385, '晋庄乡', 4, 1232, 0),
@@ -7908,8 +7904,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (7886, '东泉镇', 4, 1354, 0),
 (7887, '中都乡', 4, 1354, 0),
 (7888, '南政乡', 4, 1354, 0),
-(7889, '卜宜乡', 4, 1354, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(7889, '卜宜乡', 4, 1354, 0),
 (7890, '古陶镇', 4, 1354, 0),
 (7891, '孟山乡', 4, 1354, 0),
 (7892, '宁固镇', 4, 1354, 0),

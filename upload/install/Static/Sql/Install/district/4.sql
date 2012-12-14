@@ -108,8 +108,7 @@ INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `d
 (27212, '靖位乡', 4, 2953, 0),
 (27213, '飞仙桥乡', 4, 2953, 0),
 (27214, '马头桥乡', 4, 2953, 0),
-(27215, '高桥镇', 4, 2953, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(27215, '高桥镇', 4, 2953, 0),
 (27216, '麻林瑶族乡', 4, 2953, 0),
 (27217, '黄金瑶族乡', 4, 2953, 0),
 (27218, '黄龙镇', 4, 2953, 0),
@@ -1586,8 +1585,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (28689, '城中街道', 4, 3021, 0),
 (28690, '城北街道', 4, 3021, 0),
 (28691, '杨村乡', 4, 3021, 0),
-(28692, '盈口乡', 4, 3021, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(28692, '盈口乡', 4, 3021, 0),
 (28693, '石门乡', 4, 3021, 0),
 (28694, '红星街道', 4, 3021, 0),
 (28695, '芦坪乡', 4, 3021, 0),
@@ -3096,8 +3094,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (30198, '北惯镇', 4, 3133, 0),
 (30199, '合山镇', 4, 3133, 0),
 (30200, '塘坪镇', 4, 3133, 0),
-(30201, '大八镇', 4, 3133, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(30201, '大八镇', 4, 3133, 0),
 (30202, '大沟镇', 4, 3133, 0),
 (30203, '新洲镇', 4, 3133, 0),
 (30204, '那龙镇', 4, 3133, 0),
@@ -4623,8 +4620,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (31724, '菁盛乡', 4, 3253, 0),
 (31725, '隆福乡', 4, 3253, 0),
 (31726, '高岭镇', 4, 3253, 0),
-(31727, '龙湾乡', 4, 3253, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(31727, '龙湾乡', 4, 3253, 0),
 (31728, '东江镇', 4, 3254, 0),
 (31729, '九圩镇', 4, 3254, 0),
 (31730, '五圩镇', 4, 3254, 0),
@@ -6142,8 +6138,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (33242, '白龙镇', 4, 4263, 0),
 (33243, '盐店镇', 4, 4263, 0),
 (33244, '碑垭乡', 4, 4263, 0),
-(33245, '碗泉乡', 4, 4263, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(33245, '碗泉乡', 4, 4263, 0),
 (33246, '禾丰乡', 4, 4263, 0),
 (33247, '秀钟乡', 4, 4263, 0),
 (33248, '羊岭镇', 4, 4263, 0),

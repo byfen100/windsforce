@@ -1,2 +1,2 @@
-<?php  /* DoYouHaoBaby Framework 模板缓存文件生成时间：2012-08-27 10:22:51  */ ?>
+<?php  /* DoYouHaoBaby Framework 模板缓存文件生成时间：2012-12-14 17:04:07  */ ?>
 <hr><footer><p>&copy;2012 <a href="http://doyouhaobaby.net/">DoYouHaoBaby.NET</a> All rights reserved.</p></footer></div></body></html>

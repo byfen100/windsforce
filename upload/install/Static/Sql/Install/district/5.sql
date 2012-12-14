@@ -901,8 +901,7 @@ INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `d
 (34783, '龙安镇', 4, 4319, 0),
 (34784, '龙桥乡', 4, 4319, 0),
 (34785, '丝罗乡', 4, 4320, 0),
-(34786, '中坪乡', 4, 4320, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(34786, '中坪乡', 4, 4320, 0),
 (34787, '井溪乡', 4, 4320, 0),
 (34788, '八台乡', 4, 4320, 0),
 (34789, '固军乡', 4, 4320, 0),
@@ -2437,8 +2436,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (36318, '白鹤滩镇', 4, 4377, 0),
 (36319, '石梨乡', 4, 4377, 0),
 (36320, '稻谷乡', 4, 4377, 0),
-(36321, '竹寿镇', 4, 4377, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(36321, '竹寿镇', 4, 4377, 0),
 (36322, '红星乡', 4, 4377, 0),
 (36323, '葫芦口镇', 4, 4377, 0),
 (36324, '西瑶乡', 4, 4377, 0),
@@ -3886,8 +3884,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (37766, '兴发苗族彝族回族乡', 4, 4447, 0),
 (37767, '双坪彝族乡', 4, 4447, 0),
 (37768, '古基乡', 4, 4447, 0),
-(37769, '古达苗族彝族乡', 4, 4447, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(37769, '古达苗族彝族乡', 4, 4447, 0),
 (37770, '可乐彝族苗族乡', 4, 4447, 0),
 (37771, '哲庄乡', 4, 4447, 0),
 (37772, '城关镇', 4, 4447, 0),

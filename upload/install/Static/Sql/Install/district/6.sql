@@ -15,8 +15,7 @@
 -- 转存表中的数据 `windsforce_district`
 --
 
-INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
-
+INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 (39089, '广通镇', 4, 4548, 0),
 (39090, '碧城镇', 4, 4548, 0),
 (39091, '罗川镇', 4, 4548, 0),
@@ -182,8 +181,7 @@ INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_lev
 (39251, '花甲乡', 4, 4563, 0),
 (39252, '谷拉乡', 4, 4563, 0),
 (39253, '那能乡', 4, 4563, 0),
-(39254, '里达镇', 4, 4563, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(39254, '里达镇', 4, 4563, 0),
 (39255, '阿用乡', 4, 4563, 0),
 (39256, '五珠乡', 4, 4564, 0),
 (39257, '八宝镇', 4, 4564, 0),
@@ -1696,8 +1694,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (40764, '方里镇', 4, 4704, 0),
 (40765, '润镇', 4, 4704, 0),
 (40766, '石桥乡', 4, 4704, 0),
-(40767, '秦庄乡', 4, 4704, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(40767, '秦庄乡', 4, 4704, 0),
 (40768, '秦河乡', 4, 4704, 0),
 (40769, '胡家庙乡', 4, 4704, 0),
 (40770, '车坞乡', 4, 4704, 0),
@@ -3196,8 +3193,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (42263, '红堡镇', 4, 4791, 0),
 (42264, '草川铺乡', 4, 4791, 0),
 (42265, '贾川乡', 4, 4791, 0),
-(42266, '远门乡', 4, 4791, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(42266, '远门乡', 4, 4791, 0),
 (42267, '郭川乡', 4, 4791, 0),
 (42268, '金集镇', 4, 4791, 0),
 (42269, '陇东乡', 4, 4791, 0),
@@ -4699,8 +4695,7 @@ INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_lev
 (43765, '希里沟镇', 4, 4898, 0),
 (43766, '柯柯镇', 4, 4898, 0),
 (43767, '茶卡镇', 4, 4898, 0),
-(43768, '铜普镇', 4, 4898, 0);
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+(43768, '铜普镇', 4, 4898, 0),
 (43769, '冷湖镇', 4, 4899, 0),
 (43770, '大柴旦镇', 4, 4900, 0),
 (43771, '锡铁山镇', 4, 4900, 0),
