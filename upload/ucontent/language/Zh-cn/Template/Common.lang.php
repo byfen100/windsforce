@@ -28,6 +28,7 @@ return array(
 'bb221d0cdd630b9e688dd29e883c4fff'=>"距离下一个等级",
 'a1b490203a2a19bcf94eef09e70774a4'=>"还差",
 '9f68a8079815033b88fcc6601abd6642'=>"积分",
+'66eeacd93a7c1bda93906fe908ad11a0'=>"全选",
 )
 
 ?>
