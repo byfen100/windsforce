@@ -14,7 +14,9 @@ class IndexController extends Controller{
 	public function init__(){
 		parent::init__();
 
-		$this->check();
+		if(ACTION_NAME!=='success'){
+			$this->check();
+		}
 	}
 
 	public function check(){
@@ -22,7 +24,7 @@ class IndexController extends Controller{
 		$sUpdateLockfile=WINDSFORCE_PATH.'/data/Update.lock.php';
 
 		if(is_file($sInstallLockfile) && is_file($sUpdateLockfile)){
-			$this->E(Dyhb::L("程序已经锁定，既不需要安装也不需要升级，如有需要请删除安装锁定文件 %s 或者升级锁定文件 %s",'Controller/Common'),null,$sInstallLockfile,$sUpdateLockfile);
+			$this->E(Dyhb::L("程序已经锁定，既不需要安装也不需要升级，如有需要请删除安装锁定文件 %s 或者升级锁定文件 %s",'Controller/Common',null,$sInstallLockfile,$sUpdateLockfile));
 		}
 	}
 
