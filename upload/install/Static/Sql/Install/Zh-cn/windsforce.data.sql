@@ -88,7 +88,7 @@ INSERT INTO `#@__homeoption` (`homeoption_name`, `homeoption_value`) VALUES
 ('disallowed_spam_word_to_database', '1'),
 ('close_comment_feature', '0'),
 ('comment_repeat_check', '1'),
-('audit_comment', '1'),
+('audit_comment', '0'),
 ('seccode_comment_status', '0'),
 ('comment_mail_to_admin', '0'),
 ('comment_mail_to_author', '0'),
@@ -127,7 +127,7 @@ INSERT INTO `#@__link` (`link_id`, `create_dateline`, `update_dateline`, `link_n
 --
 
 INSERT INTO `#@__homefresh` (`homefresh_id`, `homefresh_title`, `user_id`, `homefresh_username`, `homefresh_from`, `create_dateline`, `homefresh_message`, `homefresh_ip`, `homefresh_commentnum`, `homefresh_goodnum`, `homefresh_viewnum`, `homefresh_status`) VALUES
-(1, '', 1, '', '', 1355498903, 'Hello world! 世界你好！', '0.0.0.0', 0, 0, 0, 1);
+(1, '', 1, '', '', 1355498903, 'Hello world! 世界你好！', '0.0.0.0', 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,7 @@ INSERT INTO `#@__homefresh` (`homefresh_id`, `homefresh_title`, `user_id`, `home
 --
 
 INSERT INTO `#@__homefreshcomment` (`homefreshcomment_id`, `create_dateline`, `update_dateline`, `user_id`, `homefreshcomment_name`, `homefreshcomment_content`, `homefreshcomment_email`, `homefreshcomment_url`, `homefreshcomment_status`, `homefreshcomment_ip`, `homefreshcomment_parentid`, `homefreshcomment_isreplymail`, `homefreshcomment_ismobile`, `homefreshcomment_auditpass`, `homefresh_id`) VALUES
-(1, 1355499576, 0, 1, 'admin', '理想很丰满，现实很骨感！', 'admin@admin.com', 'http://windsforce.net', 1, '0.0.0.0', 0, 0, 0, 0, '5');
+(1, 1355499576, 0, 1, 'admin', '理想很丰满，现实很骨感！', 'admin@admin.com', 'http://windsforce.net', 1, '0.0.0.0', 0, 0, 0, 1, '1');
 
 -- --------------------------------------------------------
 
