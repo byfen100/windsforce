@@ -1,9 +1,9 @@
 -- WINDSFORCE 地区数据库数据卷6
 -- version 1.0
--- http://www.doyouhaobaby.net
+-- http://www.windsforce.com
 --
--- 开发: DianniuTeam
--- 网站: http://dianniu.net
+-- 开发: Windsforce Studio
+-- 网站: http://www.windsforce.com
 
 --
 -- 数据库: 地区初始化数据卷6
@@ -12,10 +12,10 @@
 -- --------------------------------------------------------
 
 --
--- 转存表中的数据 `needforbug_district`
+-- 转存表中的数据 `windsforce_district`
 --
 
-INSERT INTO `needforbug_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 
 (39089, '广通镇', 4, 4548, 0),
 (39090, '碧城镇', 4, 4548, 0),

@@ -1,9 +1,9 @@
--- WINDSFORCE 数据库数据升级
+-- WINDSFORCE 数据库数据
 -- version 1.0
--- http://www.doyouhaobaby.net
+-- http://www.windsforce.com
 --
--- 开发: DianniuTeam
--- 网站: http://dianniu.net
+-- 开发: Windsforce Studio
+-- 网站: http://www.windsforce.com
 
 --
 -- 数据库: 升级数据
@@ -12,7 +12,7 @@
 -- --------------------------------------------------------
 
 --
--- 转存表中的数据 `needforbug_test`
+-- 转存表中的数据 `windsforce_test`
 --
 
 INSERT INTO `#@__test` (`test_id`, `test_value`, `create_dateline`, `update_dateline`) VALUES
@@ -22,7 +22,7 @@ INSERT INTO `#@__test` (`test_id`, `test_value`, `create_dateline`, `update_date
 -- --------------------------------------------------------
 
 --
--- 删除表中的数据 `needforbug_test`
+-- 删除表中的数据 `windsforce_test`
 --
 
 DELETE FROM `#@__test` WHERE `test_id`=1;

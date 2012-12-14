@@ -111,7 +111,7 @@ class UpdateController extends Controller{
 
 		// 开始执行数据库结构升级
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('数据库结构添加与更新','Controller/Update').'</h3>');
-		Install_Extend::runQuery(APP_PATH.'/Static/Sql/Update/needforbug.table.sql');
+		Install_Extend::runQuery(APP_PATH.'/Static/Sql/Update/windsforce.table.sql');
 
 		// 执行结束
 		Install_Extend::showJavascriptMessage('');
@@ -151,9 +151,9 @@ WINDSFORCE;
 		// 开始写入和更新数据库数据
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('数据库数据添加与更新','Controller/Update').'</h3>');
 
-		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/needforbug.data.sql';
+		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/windsforce.data.sql';
 		if(!is_file($sWindsForceDatapath)){
-			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/needforbug.data.sql';
+			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/windsforce.data.sql';
 		}
 		Install_Extend::runQuery($sWindsForceDatapath);
 
@@ -191,7 +191,7 @@ WINDSFORCE;
 
 		// 开始清理数据库数据
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('多余数据库结构删除','Controller/Update').'</h3>');
-		Install_Extend::runQuery(APP_PATH.'/Static/Sql/Update/needforbug.delete.sql');
+		Install_Extend::runQuery(APP_PATH.'/Static/Sql/Update/windsforce.delete.sql');
 
 		// 写入锁定文件
 		if(!file_put_contents($this->_sUpdatefile,'ok')){

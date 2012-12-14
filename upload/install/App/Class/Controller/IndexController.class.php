@@ -4,8 +4,8 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 配置NeedForBug默认数据库名字 */
-define('WINDSFORCE_DATABASE','needforbugv'.WINDSFORCE_SERVER_RELEASE);
+/** 配置WindsForce默认数据库名字 */
+define('WINDSFORCE_DATABASE','windsforce_v'.WINDSFORCE_SERVER_RELEASE);
 
 class IndexController extends Controller{
 
@@ -214,16 +214,16 @@ class IndexController extends Controller{
 		
 		// 创建系统表
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('创建系统数据库表','Controller/Install').'</h3>');
-		Install_Extend::importTable(APP_PATH.'/Static/Sql/Install/needforbug.table.sql');
+		Install_Extend::importTable(APP_PATH.'/Static/Sql/Install/windsforce.table.sql');
 		Install_Extend::showJavascriptMessage(' ');
 
 		$sLangCookieName=$GLOBALS['_commonConfig_']['COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME']===true?APP_NAME.'_language':'language';
 		$sWindsForceDatadir=APP_PATH.'/Static/Sql/Install';
 
 		// 执行系统初始化数据
-		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/needforbug.data.sql';
+		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/windsforce.data.sql';
 		if(!is_file($sWindsForceDatapath)){
-			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/needforbug.data.sql';
+			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/windsforce.data.sql';
 		}
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('初始化系统数据库数据','Controller/Install').'</h3>');
 		Install_Extend::runQuery($sWindsForceDatapath);
@@ -247,12 +247,12 @@ class IndexController extends Controller{
 		}else{
 			foreach($arrApps as $sApp){
 				Install_Extend::showJavascriptMessage(Dyhb::L('创建应用 %s 的数据库表','Controller/Install',null,$sApp));
-				Install_Extend::importTable($sWindsForceDatadir.'/app/'.$sApp.'/needforbug.table.sql');
+				Install_Extend::importTable($sWindsForceDatadir.'/app/'.$sApp.'/windsforce.table.sql');
 				Install_Extend::showJavascriptMessage(' ');
 
-				$sWindsForceAppDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/app/'.$sApp.'/needforbug.data.sql';
+				$sWindsForceAppDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/app/'.$sApp.'/windsforce.data.sql';
 				if(!is_file($sWindsForceAppDatapath)){
-					$sWindsForceAppDatapath=$sWindsForceDatadir.'/Zh-cn/app/'.$sApp.'/needforbug.data.sql';
+					$sWindsForceAppDatapath=$sWindsForceDatadir.'/Zh-cn/app/'.$sApp.'/windsforce.data.sql';
 				}
 				Install_Extend::showJavascriptMessage(Dyhb::L('导入应用 %s 的数据库数据','Controller/Install',null,$sApp));
 				Install_Extend::runQuery($sWindsForceAppDatapath);

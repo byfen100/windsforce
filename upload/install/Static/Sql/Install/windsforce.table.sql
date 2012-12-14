@@ -1,20 +1,20 @@
 -- WINDSFORCE 数据库表
 -- version 1.0
--- http://www.doyouhaobaby.net
+-- http://www.windsforce.com
 --
--- 开发: DianniuTeam
--- 网站: http://dianniu.net
+-- 开发: Windsforce Studio
+-- 网站: http://www.windsforce.com
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- 数据库: `needforbug`
+-- 数据库: `windsforce`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_access`
+-- 表的结构 `windsforce_access`
 --
 
 DROP TABLE IF EXISTS `#@__access`;
@@ -32,7 +32,7 @@ CREATE TABLE `#@__access` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_adminctrlmenu`
+-- 表的结构 `windsforce_adminctrlmenu`
 --
 
 DROP TABLE IF EXISTS `#@__adminctrlmenu`;
@@ -52,17 +52,61 @@ CREATE TABLE `#@__adminctrlmenu` (
   KEY `adminctrlmenu_sort` (`adminctrlmenu_sort`),
   KEY `user_id` (`user_id`),
   KEY `create_dateline` (`create_dateline`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_app`
+-- 表的结构 `windsforce_adminlog`
+--
+
+DROP TABLE IF EXISTS `#@__adminlog`;
+CREATE TABLE `#@__adminlog` (
+  `adminlog_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '后台管理ID',
+  `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `user_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '日志所记录的操作者ID',
+  `adminlog_username` varchar(50) NOT NULL COMMENT '后台管理记录用户名',
+  `adminlog_info` varchar(255) NOT NULL DEFAULT '' COMMENT '管理操作内容',
+  `adminlog_ip` varchar(40) NOT NULL DEFAULT '' COMMENT '登录者登录IP',
+  PRIMARY KEY (`adminlog_id`),
+  KEY `user_id` (`user_id`),
+  KEY `create_dateline` (`create_dateline`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_adminmessage`
+--
+
+DROP TABLE IF EXISTS `#@__adminmessage`;
+CREATE TABLE `#@__adminmessage` (
+  `adminlog_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '短消息ID',
+  `user_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '短消息发送者',
+  `adminmessage_username` varchar(50) NOT NULL COMMENT '信息发送者用户名',
+  `adminlog_receiverid` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '短消息接受者',
+  `adminmessage_receiverusername` varchar(50) NOT NULL COMMENT '管理员消息接受者用户名',
+  `create_dateline` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `adminlog_readtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '短消息阅读时间',
+  `adminlog_readed` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '短消息是否已经阅读',
+  `adminlog_status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '短消息状态',
+  `adminlog_title` varchar(150) NOT NULL DEFAULT '' COMMENT '后台短消息标题',
+  `adminlog_message` text NOT NULL COMMENT '后台短消息内容',
+  PRIMARY KEY (`adminlog_id`),
+  KEY `user_id` (`user_id`),
+  KEY `adminlog_receiverid` (`adminlog_receiverid`),
+  KEY `create_dateline` (`create_dateline`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_app`
 --
 
 DROP TABLE IF EXISTS `#@__app`;
 CREATE TABLE `#@__app` (
-  `app_id` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '应用ID',
+  `app_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '应用ID',
   `app_identifier` varchar(32) NOT NULL COMMENT '应用唯一识别符',
   `app_name` varchar(32) NOT NULL COMMENT '应用名字',
   `app_version` varchar(20) NOT NULL COMMENT '应用版本',
@@ -84,33 +128,96 @@ CREATE TABLE `#@__app` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_appeal`
+-- 表的结构 `windsforce_appeal`
 --
 
 DROP TABLE IF EXISTS `#@__appeal`;
 CREATE TABLE `#@__appeal` (
   `appeal_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '申诉ID',
   `user_id` int(10) NOT NULL COMMENT '申诉用户ID',
-  `appeal_realname` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '申诉真实姓名',
-  `appeal_address` varchar(300) CHARACTER SET utf8 NOT NULL COMMENT '申诉详细地址',
-  `appeal_idnumber` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '申诉身份证号码',
-  `appeal_email` varchar(150) CHARACTER SET utf8 NOT NULL COMMENT '申诉邮件地址',
-  `appeal_receiptnumber` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '申诉回执号码',
+  `appeal_realname` varchar(50) NOT NULL COMMENT '申诉真实姓名',
+  `appeal_address` varchar(300) NOT NULL COMMENT '申诉详细地址',
+  `appeal_idnumber` varchar(32) NOT NULL COMMENT '申诉身份证号码',
+  `appeal_email` varchar(150) NOT NULL COMMENT '申诉邮件地址',
+  `appeal_receiptnumber` varchar(50) NOT NULL COMMENT '申诉回执号码',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `appeal_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '申诉状态',
   `appeal_progress` tinyint(1) NOT NULL DEFAULT '0' COMMENT '申诉进度',
-  `appeal_reason` text CHARACTER SET utf8 NOT NULL COMMENT '驳回理由',
+  `appeal_reason` text NOT NULL COMMENT '驳回理由',
   PRIMARY KEY (`appeal_id`),
   KEY `user_id` (`user_id`),
-  KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+  KEY `create_dateline` (`create_dateline`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_badword`
+-- 表的结构 `windsforce_attachment`
+--
+
+DROP TABLE IF EXISTS `#@__attachment`;
+CREATE TABLE `#@__attachment` (
+  `attachment_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '附件ID',
+  `attachment_name` varchar(100) NOT NULL COMMENT '名字',
+  `attachment_type` varchar(40) NOT NULL COMMENT '类型',
+  `attachment_size` int(8) NOT NULL COMMENT '大小，单位KB',
+  `attachment_key` varchar(25) NOT NULL COMMENT '上传KEY',
+  `attachment_extension` varchar(20) NOT NULL COMMENT '后缀',
+  `attachment_savepath` varchar(50) NOT NULL COMMENT '保存路径',
+  `attachment_savename` char(50) NOT NULL COMMENT '保存名字',
+  `attachment_hash` varchar(50) NOT NULL COMMENT 'HASH',
+  `attachment_module` varchar(30) NOT NULL COMMENT '上传模块',
+  `attachment_isthumb` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否存在缩略图',
+  `attachment_thumbprefix` varchar(25) NOT NULL COMMENT '缩略图前缀',
+  `attachment_thumbpath` varchar(32) NOT NULL COMMENT '缩略图路径',
+  `create_dateline` int(10) NOT NULL COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
+  `attachmentcategory_id` mediumint(8) NOT NULL COMMENT '分类ID',
+  `attachment_description` varchar(500) NOT NULL COMMENT '描述',
+  `attachment_alt` varchar(100) NOT NULL,
+  `attachment_download` int(10) NOT NULL COMMENT '下载次数',
+  `attachment_commentnum` mediumint(8) NOT NULL DEFAULT '0' COMMENT '评论数量',
+  `attachment_islock` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `attachment_username` varchar(50) NOT NULL COMMENT '用户名',
+  `attachment_recommend` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐',
+  PRIMARY KEY (`attachment_id`),
+  KEY `user_id` (`user_id`),
+  KEY `create_dateline` (`create_dateline`),
+  KEY `attachment_recommend` (`attachment_recommend`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_attachmentcategory`
+--
+
+DROP TABLE IF EXISTS `#@__attachmentcategory`;
+CREATE TABLE `#@__attachmentcategory` (
+  `attachmentcategory_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '附件分类ID',
+  `attachmentcategory_name` varchar(50) NOT NULL COMMENT '分类名字',
+  `attachmentcategory_cover` int(10) NOT NULL DEFAULT '0' COMMENT '分类封面，可以为一个文章的图片地址或者附件库中一个图片附件的ID',
+  `attachmentcategory_compositor` smallint(8) NOT NULL DEFAULT '0' COMMENT '排序',
+  `attachmentcategory_description` varchar(500) NOT NULL COMMENT '专辑描述',
+  `attachmentcategory_attachmentnum` int(10) NOT NULL DEFAULT '0' COMMENT '专辑中附件数量',
+  `create_dateline` int(10) NOT NULL COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户',
+  `attachmentcategory_username` varchar(50) NOT NULL COMMENT '用户名',
+  `attachmentcategory_recommend` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐',
+  PRIMARY KEY (`attachmentcategory_id`),
+  KEY `create_dateline` (`create_dateline`),
+  KEY `user_id` (`user_id`),
+  KEY `attachmentcategory_compositor` (`attachmentcategory_compositor`),
+  KEY `attachmentcategory_recommend` (`attachmentcategory_recommend`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_badword`
 --
 
 DROP TABLE IF EXISTS `#@__badword`;
@@ -124,18 +231,17 @@ CREATE TABLE `#@__badword` (
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`badword_id`),
   UNIQUE KEY `find` (`badword_find`),
-  KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+  KEY `create_dateline` (`create_dateline`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_creditrule`
+-- 表的结构 `windsforce_creditrule`
 --
 
-DROP TABLE IF EXISTS `#@__creditrule`;
-CREATE TABLE `#@__creditrule` (
+DROP TABLE IF EXISTS `#@__badword`;
+CREATE TABLE `#@__badword`` (
   `creditrule_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '积分规则ID',
   `creditrule_name` varchar(20) NOT NULL DEFAULT '' COMMENT '积分规则名字',
   `creditrule_action` varchar(20) NOT NULL DEFAULT '' COMMENT '规则action唯一KEY',
@@ -157,7 +263,7 @@ CREATE TABLE `#@__creditrule` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_creditrulelog`
+-- 表的结构 `windsforce_creditrulelog`
 --
 
 DROP TABLE IF EXISTS `#@__creditrulelog`;
@@ -186,7 +292,26 @@ CREATE TABLE `#@__creditrulelog` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_friend`
+-- 表的结构 `windsforce_feed`
+--
+
+DROP TABLE IF EXISTS `#@__feed`;
+CREATE TABLE `#@__feed` (
+  `feed_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `feed_username` varchar(50) NOT NULL COMMENT '用户名',
+  `feed_template` varchar(1024) NOT NULL DEFAULT '' COMMENT '动态模板',
+  `feed_data` varchar(1024) NOT NULL DEFAULT '' COMMENT '动态数据',
+  `create_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '添加时间',
+  PRIMARY KEY (`feed_id`),
+  KEY `user_id` (`user_id`),
+  KEY `create_dateline` (`create_dateline`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_friend`
 --
 
 DROP TABLE IF EXISTS `#@__friend`;
@@ -209,7 +334,7 @@ CREATE TABLE `#@__friend` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_homefresh`
+-- 表的结构 `windsforce_homefresh`
 --
 
 DROP TABLE IF EXISTS `#@__homefresh`;
@@ -217,7 +342,7 @@ CREATE TABLE `#@__homefresh` (
   `homefresh_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '新鲜事ID',
   `homefresh_title` varchar(300) NOT NULL COMMENT '新鲜事标题',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户',
-  `homefresh_username` varchar(15) NOT NULL DEFAULT '' COMMENT '用户名',
+  `homefresh_username` varchar(50) NOT NULL DEFAULT '' COMMENT '用户名',
   `homefresh_from` varchar(20) NOT NULL DEFAULT '' COMMENT '来源',
   `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `homefresh_message` text NOT NULL COMMENT '新鲜事内容',
@@ -230,12 +355,12 @@ CREATE TABLE `#@__homefresh` (
   KEY `create_dateline` (`create_dateline`),
   KEY `homefresh_status` (`homefresh_status`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_homefreshcomment`
+-- 表的结构 `windsforce_homefreshcomment`
 --
 
 DROP TABLE IF EXISTS `#@__homefreshcomment`;
@@ -244,7 +369,7 @@ CREATE TABLE `#@__homefreshcomment` (
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID，在线用户评论',
-  `homefreshcomment_name` varchar(25) NOT NULL COMMENT '名字',
+  `homefreshcomment_name` varchar(50) NOT NULL COMMENT '名字',
   `homefreshcomment_content` text NOT NULL COMMENT '内容',
   `homefreshcomment_email` varchar(300) NOT NULL COMMENT '邮件',
   `homefreshcomment_url` varchar(300) NOT NULL COMMENT 'URL',
@@ -259,14 +384,13 @@ CREATE TABLE `#@__homefreshcomment` (
   KEY `user_id` (`user_id`),
   KEY `homefresh_id` (`homefresh_id`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`),
   KEY `homefreshcomment_status` (`homefreshcomment_status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_homehelp`
+-- 表的结构 `windsforce_homehelp`
 --
 
 DROP TABLE IF EXISTS `#@__homehelp`;
@@ -285,7 +409,6 @@ CREATE TABLE `#@__homehelp` (
   `homehelp_viewnum` int(10) NOT NULL DEFAULT '0' COMMENT '帮助浏览次数',
   PRIMARY KEY (`homehelp_id`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`),
   KEY `homehelp_status` (`homehelp_status`),
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -293,7 +416,7 @@ CREATE TABLE `#@__homehelp` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_homehelpcategory`
+-- 表的结构 `windsforce_homehelpcategory`
 --
 
 DROP TABLE IF EXISTS `#@__homehelpcategory`;
@@ -306,14 +429,13 @@ CREATE TABLE `#@__homehelpcategory` (
   `create_dateline` int(10) NOT NULL COMMENT '群组创建时间',
   PRIMARY KEY (`homehelpcategory_id`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`),
   KEY `homehelpcategory_sort` (`homehelpcategory_sort`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_homeoption`
+-- 表的结构 `windsforce_homeoption`
 --
 
 DROP TABLE IF EXISTS `#@__homeoption`;
@@ -326,7 +448,7 @@ CREATE TABLE `#@__homeoption` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_homesite`
+-- 表的结构 `windsforce_homesite`
 --
 
 DROP TABLE IF EXISTS `#@__homesite`;
@@ -342,7 +464,7 @@ CREATE TABLE `#@__homesite` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_hometag`
+-- 表的结构 `windsforce_hometag`
 --
 
 DROP TABLE IF EXISTS `#@__hometag`;
@@ -356,12 +478,12 @@ CREATE TABLE `#@__hometag` (
   KEY `hometag_name` (`hometag_name`),
   KEY `hometag_status` (`hometag_status`),
   KEY `create_dateline` (`create_dateline`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_hometagindex`
+-- 表的结构 `windsforce_hometagindex`
 --
 
 DROP TABLE IF EXISTS `#@__hometagindex`;
@@ -374,7 +496,7 @@ CREATE TABLE `#@__hometagindex` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_link`
+-- 表的结构 `windsforce_link`
 --
 
 DROP TABLE IF EXISTS `#@__link`;
@@ -391,14 +513,13 @@ CREATE TABLE `#@__link` (
   PRIMARY KEY (`link_id`),
   KEY `link_status` (`link_status`),
   KEY `link_sort` (`link_sort`),
-  KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`)
+  KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_loginlog`
+-- 表的结构 `windsforce_loginlog`
 --
 
 DROP TABLE IF EXISTS `#@__loginlog`;
@@ -414,14 +535,13 @@ CREATE TABLE `#@__loginlog` (
   PRIMARY KEY (`loginlog_id`),
   KEY `user_id` (`user_id`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `loginlog_status` (`loginlog_status`),
-  KEY `update_dateline` (`update_dateline`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+  KEY `loginlog_status` (`loginlog_status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_mail`
+-- 表的结构 `windsforce_mail`
 --
 
 DROP TABLE IF EXISTS `#@__mail`;
@@ -441,14 +561,13 @@ CREATE TABLE `#@__mail` (
   `mail_status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态，是否成功',
   `mail_application` varchar(20) NOT NULL COMMENT '来源应用',
   PRIMARY KEY (`mail_id`),
-  KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`)
+  KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_nav`
+-- 表的结构 `windsforce_nav`
 --
 
 DROP TABLE IF EXISTS `#@__nav`;
@@ -476,7 +595,7 @@ CREATE TABLE `#@__nav` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_node`
+-- 表的结构 `windsforce_node`
 --
 
 DROP TABLE IF EXISTS `#@__node`;
@@ -499,14 +618,13 @@ CREATE TABLE `#@__node` (
   KEY `node_parentid` (`node_parentid`),
   KEY `create_dateline` (`create_dateline`),
   KEY `nodegroup_id` (`nodegroup_id`),
-  KEY `update_dateline` (`update_dateline`),
   KEY `node_sort` (`node_sort`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_nodegroup`
+-- 表的结构 `windsforce_nodegroup`
 --
 
 DROP TABLE IF EXISTS `#@__nodegroup`;
@@ -520,7 +638,6 @@ CREATE TABLE `#@__nodegroup` (
   `nodegroup_sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`nodegroup_id`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`),
   KEY `nodegroup_sort` (`nodegroup_sort`),
   KEY `nodegroup_status` (`nodegroup_status`),
   KEY `nodegroup_name` (`nodegroup_name`)
@@ -529,7 +646,7 @@ CREATE TABLE `#@__nodegroup` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_option`
+-- 表的结构 `windsforce_option`
 --
 
 DROP TABLE IF EXISTS `#@__option`;
@@ -542,7 +659,7 @@ CREATE TABLE `#@__option` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_pm`
+-- 表的结构 `windsforce_pm`
 --
 
 DROP TABLE IF EXISTS `#@__pm`;
@@ -564,12 +681,12 @@ CREATE TABLE `#@__pm` (
   KEY `pm_msgtoid` (`pm_msgtoid`),
   KEY `create_dateline` (`create_dateline`),
   KEY `pm_status` (`pm_status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_pmsystemdelete`
+-- 表的结构 `windsforce_pmsystemdelete`
 --
 
 DROP TABLE IF EXISTS `#@__pmsystemdelete`;
@@ -582,7 +699,7 @@ CREATE TABLE `#@__pmsystemdelete` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_pmsystemread`
+-- 表的结构 `windsforce_pmsystemread`
 --
 
 DROP TABLE IF EXISTS `#@__pmsystemread`;
@@ -595,7 +712,7 @@ CREATE TABLE `#@__pmsystemread` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_rating`
+-- 表的结构 `windsforce_rating`
 --
 
 DROP TABLE IF EXISTS `#@__rating`;
@@ -609,18 +726,18 @@ CREATE TABLE `#@__rating` (
   `rating_creditstart` int(10) NOT NULL COMMENT '等级开始积分',
   `rating_creditend` int(10) NOT NULL COMMENT '等级结束积分',
   `ratinggroup_id` tinyint(3) NOT NULL COMMENT '等级分组',
+  `rating_icon` varchar(35) NOT NULL COMMENT '等级图标',
   PRIMARY KEY (`rating_id`),
   KEY `rating_name` (`rating_name`),
   KEY `rating_nikename` (`rating_nikename`),
   KEY `ratinggroup_id` (`ratinggroup_id`),
-  KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`)
+  KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_ratinggroup`
+-- 表的结构 `windsforce_ratinggroup`
 --
 
 DROP TABLE IF EXISTS `#@__ratinggroup`;
@@ -636,14 +753,13 @@ CREATE TABLE `#@__ratinggroup` (
   KEY `create_dateline` (`create_dateline`),
   KEY `ratinggroup_name` (`ratinggroup_name`),
   KEY `ratinggroup_status` (`ratinggroup_status`),
-  KEY `ratinggroup_sort` (`ratinggroup_sort`),
-  KEY `update_dateline` (`update_dateline`)
+  KEY `ratinggroup_sort` (`ratinggroup_sort`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_role`
+-- 表的结构 `windsforce_role`
 --
 
 DROP TABLE IF EXISTS `#@__role`;
@@ -663,14 +779,13 @@ CREATE TABLE `#@__role` (
   KEY `role_name` (`role_name`),
   KEY `create_dateline` (`create_dateline`),
   KEY `rolegroup_id` (`rolegroup_id`),
-  KEY `role_nikename` (`role_nikename`),
-  KEY `update_dateline` (`update_dateline`)
+  KEY `role_nikename` (`role_nikename`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_rolegroup`
+-- 表的结构 `windsforce_rolegroup`
 --
 
 DROP TABLE IF EXISTS `#@__rolegroup`;
@@ -684,7 +799,6 @@ CREATE TABLE `#@__rolegroup` (
   `rolegroup_sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`rolegroup_id`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`),
   KEY `rolegroup_name` (`rolegroup_name`),
   KEY `rolegroup_status` (`rolegroup_status`),
   KEY `rolegroup_sort` (`rolegroup_sort`)
@@ -693,7 +807,7 @@ CREATE TABLE `#@__rolegroup` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_session`
+-- 表的结构 `windsforce_session`
 --
 
 DROP TABLE IF EXISTS `#@__session`;
@@ -707,7 +821,28 @@ CREATE TABLE `#@__session` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_sociatype`
+-- 表的结构 `windsforce_slide`
+--
+
+DROP TABLE IF EXISTS `#@__slide`;
+CREATE TABLE `#@__slide` (
+  `slide_id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '滑动幻灯片状态ID',
+  `slide_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '排序',
+  `slide_title` varchar(50) NOT NULL COMMENT '标题',
+  `slide_url` varchar(325) NOT NULL COMMENT 'URL地址',
+  `slide_img` varchar(325) NOT NULL COMMENT '图片地址',
+  `slide_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
+  `create_dateline` int(10) NOT NULL COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`slide_id`),
+  KEY `slide_status` (`slide_status`),
+  KEY `create_dateline` (`create_dateline`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_sociatype`
 --
 
 DROP TABLE IF EXISTS `#@__sociatype`;
@@ -729,7 +864,7 @@ CREATE TABLE `#@__sociatype` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_sociauser`
+-- 表的结构 `windsforce_sociauser`
 --
 
 DROP TABLE IF EXISTS `#@__sociauser`;
@@ -756,34 +891,12 @@ CREATE TABLE `#@__sociauser` (
   PRIMARY KEY (`sociauser_id`),
   KEY `user_id` (`user_id`),
   KEY `create_dateline` (`create_dateline`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_slide`
---
-
-DROP TABLE IF EXISTS `#@__slide`;
-CREATE TABLE `#@__slide` (
-  `slide_id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '滑动幻灯片状态ID',
-  `slide_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '排序',
-  `slide_title` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '标题',
-  `slide_url` varchar(325) CHARACTER SET utf8 NOT NULL COMMENT 'URL地址',
-  `slide_img` varchar(325) CHARACTER SET utf8 NOT NULL COMMENT '图片地址',
-  `slide_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
-  `create_dateline` int(10) NOT NULL COMMENT '创建时间',
-  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
-  PRIMARY KEY (`slide_id`),
-  KEY `slide_status` (`slide_status`),
-  KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `needforbug_style`
+-- 表的结构 `windsforce_style`
 --
 
 DROP TABLE IF EXISTS `#@__style`;
@@ -800,7 +913,7 @@ CREATE TABLE `#@__style` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_stylevar`
+-- 表的结构 `windsforce_stylevar`
 --
 
 DROP TABLE IF EXISTS `#@__stylevar`;
@@ -816,7 +929,7 @@ CREATE TABLE `#@__stylevar` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_syscache`
+-- 表的结构 `windsforce_syscache`
 --
 
 DROP TABLE IF EXISTS `#@__syscache`;
@@ -827,14 +940,13 @@ CREATE TABLE `#@__syscache` (
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `syscache_data` mediumblob NOT NULL COMMENT '缓存数据',
   PRIMARY KEY (`syscache_name`),
-  KEY `create_dateline` (`create_dateline`),
-  KEY `update_dateline` (`update_dateline`)
+  KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_theme`
+-- 表的结构 `windsforce_theme`
 --
 
 DROP TABLE IF EXISTS `#@__theme`;
@@ -849,7 +961,7 @@ CREATE TABLE `#@__theme` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_user`
+-- 表的结构 `windsforce_user`
 --
 
 DROP TABLE IF EXISTS `#@__user`;
@@ -875,16 +987,14 @@ CREATE TABLE `#@__user` (
   KEY `user_status` (`user_status`),
   KEY `create_dateline` (`create_dateline`),
   KEY `user_email` (`user_email`),
-  KEY `update_dateline` (`update_dateline`),
   KEY `user_password` (`user_password`),
-  KEY `user_name` (`user_name`),
-  KEY `user_nikename` (`user_nikename`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+  KEY `user_name` (`user_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_usercount`
+-- 表的结构 `windsforce_usercount`
 --
 
 DROP TABLE IF EXISTS `#@__usercount`;
@@ -907,7 +1017,7 @@ CREATE TABLE `#@__usercount` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_userprofile`
+-- 表的结构 `windsforce_userprofile`
 --
 
 DROP TABLE IF EXISTS `#@__userprofile`;
@@ -962,7 +1072,7 @@ CREATE TABLE `#@__userprofile` (
   `userprofile_douban` varchar(255) NOT NULL COMMENT '豆瓣帐号',
   `userprofile_facebook` varchar(255) NOT NULL COMMENT 'Facebook',
   `userprofile_twriter` varchar(255) NOT NULL COMMENT 'TWriter',
-  `userprofile_dianniu` varchar(255) NOT NULL COMMENT '点牛帐号',
+  `userprofile_windsforce` varchar(255) NOT NULL COMMENT 'WindsForce帐号',
   `userprofile_skype` varchar(255) NOT NULL COMMENT 'Skype',
   `userprofile_weibocom` varchar(255) NOT NULL COMMENT '新浪微博',
   `userprofile_tqqcom` varchar(255) NOT NULL COMMENT '腾讯微博',
@@ -989,7 +1099,7 @@ CREATE TABLE `#@__userprofile` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_userprofilesetting`
+-- 表的结构 `windsforce_userprofilesetting`
 --
 
 DROP TABLE IF EXISTS `#@__userprofilesetting`;
@@ -1008,7 +1118,7 @@ CREATE TABLE `#@__userprofilesetting` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_userrole`
+-- 表的结构 `windsforce_userrole`
 --
 
 DROP TABLE IF EXISTS `#@__userrole`;
@@ -1021,17 +1131,12 @@ CREATE TABLE `#@__userrole` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `needforbug_district`
+-- 表的结构 `windsforce_wapoption`
 --
 
-DROP TABLE IF EXISTS `#@__district`;
-CREATE TABLE `#@__district` (
-  `district_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '地区ID',
-  `district_name` varchar(255) NOT NULL DEFAULT '' COMMENT '地区名字',
-  `district_level` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '地区级别，省份/城市/州县/乡镇',
-  `district_upid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '上级地址ID值',
-  `district_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '地区排序',
-  PRIMARY KEY (`district_id`),
-  KEY `district_upid` (`district_upid`),
-  KEY `district_sort` (`district_sort`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `#@__wapoption`;
+CREATE TABLE `#@__wapoption` (
+  `helloworldoption_name` varchar(32) NOT NULL DEFAULT '' COMMENT '名字',
+  `helloworldoption_value` text NOT NULL COMMENT '值',
+  PRIMARY KEY (`helloworldoption_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
