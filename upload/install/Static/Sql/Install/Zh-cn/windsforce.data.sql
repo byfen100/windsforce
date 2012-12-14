@@ -218,7 +218,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('allowed_register_email', ''),
 ('audit_register', '0'),
 ('disallowed_register', '0'),
-('icp', '蜀ICP备123456号'),
+('icp', ''),
 ('home_description', '{site_name}是一个以社区为核心的APP开发框架。在这里你可以我们可以实现产品跨界融合，充分利用APP独立的模式来为网站提供无限动力，我们崇尚的是理念：<span class="label label-success">简单与分享</span>。'),
 ('admin_email', 'admin@windsforce.com'),
 ('seccode_image_width_size', '160'),
