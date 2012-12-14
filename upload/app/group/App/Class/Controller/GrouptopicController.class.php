@@ -9,7 +9,9 @@ class GrouptopicController extends InitController{
 	public function init__(){
 		parent::init__();
 
-		//$this->is_login();
+		if(ACTION_NAME!=='view'){
+			$this->is_login();
+		}
 	}
 	
 	public function add(){
@@ -39,4 +41,5 @@ class GrouptopicController extends InitController{
 	public function add_reply(){
 		Core_Extend::doControllerAction('Grouptopic@Addreply','index');
 	}
+
 }

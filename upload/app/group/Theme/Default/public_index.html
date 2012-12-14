@@ -79,7 +79,7 @@
 												<td width="2%" align="right">&nbsp;</td>
 												<td class="indexsummaryalgin">
 												<!--{if !empty($oGroup->group_latestcomment)}-->
-												<!--{~$arrLatestComment=$TheController->unserialize($oGroup->group_latestcomment)}-->
+												<!--{~$arrLatestComment=unserialize($oGroup->group_latestcomment)}-->
 												<!--{if isset($arrLatestComment['commenttitle'])}-->
 												<a title="Re:<!--{$arrLatestComment['commenttitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['tid'])}-->">Re:<!--{$arrLatestComment['commenttitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;最后回复:<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>
 												<!--{d*else}-->

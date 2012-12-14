@@ -19,18 +19,7 @@ class GroupController extends InitController{
 	}
 
 	public function getcategory(){
-		$nGid=intval(G::getGpc('gid','P'));
-
-		if(empty($nGid)){
-			echo '';
-		}
-
-		echo "<option value=\"0\">"."默认分类</option>";
-		
-		$arrGrouptopiccategory=GrouptopiccategoryModel::F('group_id=?',$nGid)->getAll();
-		foreach($arrGrouptopiccategory as $key=>$oValue){
-			echo "<option value=\"$oValue->grouptopiccategory_id\">".$oValue->grouptopiccategory_name."</option>";
-		}
+		Core_Extend::doControllerAction('Group@Getcategory','index');
 	}
 
 }

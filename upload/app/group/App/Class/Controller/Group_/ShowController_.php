@@ -79,8 +79,4 @@ class ShowController extends Controller{
 		$this->display('group+show');
 	}
 
-	public function unserialize($slatestcomment){
-		$arrLatestcomment=unserialize($slatestcomment);
-		return $arrLatestcomment;
-	}
 }

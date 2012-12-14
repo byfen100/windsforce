@@ -54,4 +54,9 @@ SociauserController.class
 
 数据库备份bug
 
+
 登录送积分功能
+
+还没有部分头部一些东西灭有提炼
+
+另外还有部分JAVASCRIPT没有提炼

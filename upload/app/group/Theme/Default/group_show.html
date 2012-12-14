@@ -118,7 +118,7 @@ function leaveGroup(gid){
 										<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 										<span class="pipe">|</span>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
-										<!--{~$arrLatestComment=$TheController->unserialize($oGrouptopic->grouptopic_latestcomment)}-->
+										<!--{~$arrLatestComment=unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 										最后回复&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
 										<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
 										<!--{d*else}-->
