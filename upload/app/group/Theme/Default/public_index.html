@@ -43,18 +43,28 @@
 								<!--{~$arrGroups=$oGroupcategory->group}-->
 								<!--{if is_array($arrGroups)}-->
 								<!--<foreach for=arrGroups value=oGroup>-->
+								<!--{~$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id'])}-->
 								<tr align="center" valign="middle" class="grouptopicone">
-									<td width="26" class="grouplist_borderbottom">
+									<td width="80" class="grouplist_borderbottom">
 										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">
 											<img src='<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->' border="0" alt="" />
 										</a>
+										<!--{if $nGroupuser==0}--><br/>
+										<span id="joingroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+										<!--{elseif $nGroupuser==1}--><br/>
+										<span id="leavegroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:3px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+										<!--{/if}-->
 									</td>
 									<td width="*" align="left" class="grouplist_borderbottom">
 										<table width="100%" cellpadding="1">
 											<tr>
 												<td width="*" rowspan="2"></td>
 												<td width="1" rowspan="2"></td>
-												<td width="100%" height="10"><span class='grouplist_namelink'><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" href=""><!--{$oGroup:group_nikename}--></a></span><span class='grouplist_todaynum'><!--{if $oGroup['group_topictodaynum']>0}-->(今日<!--{$oGroup['group_topictodaynum']}-->)</span><!--{/if}-->
+												<td width="100%" height="10">
+													<span class='grouplist_namelink'><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a></span>
+													<!--{if $oGroup['group_topictodaynum']>0}-->
+													<span class='grouplist_todaynum'>&nbsp;(今日<!--{$oGroup['group_topictodaynum']}-->)</span>
+													<!--{/if}-->
 												</td>
 											</tr>
 											<!--{if $oGroup->group_listdescription}-->

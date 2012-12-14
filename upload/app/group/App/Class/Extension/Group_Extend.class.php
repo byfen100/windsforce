@@ -24,4 +24,14 @@ class Group_Extend{
 		return Dyhb::U('group://gid@?id='.(!empty($arrGroup['group_name'])?$arrGroup['group_name']:$arrGroup['group_id']));
 	}
 	
+	public static function getGroupuser($nGroupid){
+		if($GLOBALS['___login___']===false){
+			$nGroupuser=0;
+		}else{
+			$nGroupuser=GroupModel::isGroupuser($nGroupid,$GLOBALS['___login___']['user_id']);
+		}
+
+		return $nGroupuser;
+	}
+	
 }

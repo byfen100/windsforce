@@ -1,25 +1,5 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
-<!--{script}-->
-function joinGroup(gid){
-	var sUrl="<!--{:Dyhb::U('group://group/joingroup')}-->";
-	Dyhb.AjaxSend(sUrl,'gid='+gid,'',function(data,status){
-		if(status==1){
-			$('#join_group').html('加入小组成功');
-		}
-	});
-}
-
-function leaveGroup(gid){
-	var sUrl="<!--{:Dyhb::U('group://group/leavegroup')}-->";
-	Dyhb.AjaxSend(sUrl,'gid='+gid,'',function(data,status){
-		if(status==1){
-			$('#leave_group').html('退出小组成功');
-		}
-	});
-}
-<!--{/script}-->
-
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
@@ -35,9 +15,9 @@ function leaveGroup(gid){
 					<dd style="padding-left:60px;">
 						<p class="name"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;群组&nbsp;
 							<!--{if $nGroupuser==0}-->
-							<span id="join_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入小组</a></span>
+							<span id="joingroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
 							<!--{elseif $nGroupuser==1}-->
-							<span id="leave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出小组</a></span>
+							<span id="leavegroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
 							<!--{/if}-->
 						</p>
 						<p>共有 <span class="label label-success"><!--{$oGroup['group_usernum']}--></span>人关注了此小组

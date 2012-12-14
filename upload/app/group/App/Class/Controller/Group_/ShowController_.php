@@ -29,6 +29,7 @@ class ShowController extends Controller{
 		}else{
 			$oGroup=GroupModel::F('group_name=? AND group_status=1 AND group_isaudit=1',$sId)->getOne();
 		}
+
 		if(empty($oGroup['group_id'])){
 			$this->E('小组不存在或在审核中');
 		}
@@ -50,6 +51,7 @@ class ShowController extends Controller{
 		$nTotalComment=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
 		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+
 		$this->assign('arrGrouptopics',$arrGrouptopics);
 		$this->assign('nEverynum',$nEverynum);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
@@ -64,12 +66,7 @@ class ShowController extends Controller{
 		$this->assign('arrGrouptopiccategory',$arrGrouptopiccategory);
 
 		// 取得用户是否加入了小组
-		if($GLOBALS['___login___']===false){
-			$nGroupuser=0;
-		}else{
-			$nGroupuser=GroupModel::isGroupuser($oGroup['group_id'],$GLOBALS['___login___']['user_id']);
-		}
-
+		$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id']);
 		$this->assign('nGroupuser',$nGroupuser);
 
 		$this->assign('oGroup',$oGroup);
