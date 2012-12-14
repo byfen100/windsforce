@@ -11,7 +11,7 @@ if(!file_exists('data/Install.lock.php')){
 error_reporting(E_ALL);
 define('WINDSFORCE_DEBUG',TRUE);
 
-/** Defined the version of needforbug */
+/** Defined the version of WindsForce */
 define('WINDSFORCE_SERVER_VERSION','1.0');
 define('WINDSFORCE_SERVER_RELEASE','20120104');
 
