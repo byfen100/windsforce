@@ -30,6 +30,10 @@ class InstallappController extends InitController{
 				$arrAppInfos[$key]['name']=$sAppList;
 				
 				$arrAppData=Xml::xmlUnserialize(file_get_contents(WINDSFORCE_PATH.'/app/'.$sAppList.'/app.xml'));
+				if($arrAppData===null){
+					$this->E(Dyhb::L('应用%s的配置文件app.xml无法读取','Controller/App',null,$sAppList));
+				}
+
 				$arrAppData=$arrAppData['root']['data'];
 				$arrAppData['logo']=Core_Extend::appLogo($sAppList);
 
