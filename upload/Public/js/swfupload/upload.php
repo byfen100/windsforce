@@ -1,5 +1,4 @@
 <?php
-
 $updir="./upload/";//上传目录
 
 $upload_file = $_FILES["Filedata"];
@@ -28,4 +27,5 @@ function writefile($filename, $data, $method = 'wb', $chmod = 1) {
 	}
 	return $return;
 }
+
 ?>
