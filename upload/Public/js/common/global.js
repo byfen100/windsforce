@@ -282,11 +282,11 @@ function globalAddattachment(sFunction){
 	var sUrl=_ROOT_+'/index.php?app=home&c=attachment&a=dialog_add&function='+sFunction;
 	var sHtml='<iframe id="iframe_dialog" name="iframe_dialog" frameborder="0" style="margin: 0;width: 500px; height: 200px;overflow-x:hidden;margin:0;padding:0;" src="'+sUrl+'"></iframe>';
 
-	oEditNewattachmentcategory=needforbugAlert(sHtml,'媒体管理器','',globalCancelattachment,'',500,200,1);
+	oEditNewattachmentcategory=needforbugAlert(sHtml,D.L('媒体管理器','__COMMON_LANG__@Js/Global_Js'),'',globalCancelattachment,'',500,200,1);
 }
 
 function globalCancelattachment(){
-	needforbugConfirm('你确定关闭媒体管理器?',function(){
+	needforbugConfirm(D.L('你确定关闭媒体管理器?','__COMMON_LANG__@Js/Global_Js'),function(){
 		oEditNewattachmentcategory.close();
 		return true;
 	},function(){
@@ -297,7 +297,7 @@ function globalCancelattachment(){
 
 function addEditorContent(oEditor,sContent){
 	if(oEditor.designMode==false){
-		needforbugAlert('请先切换到所见所得模式','',3);
+		needforbugAlert(D.L('请先切换到所见所得模式','__COMMON_LANG__@Js/Global_Js'),'',3);
 	}else{
 		oEditor.insertHtml(sContent);
 	}
@@ -305,7 +305,7 @@ function addEditorContent(oEditor,sContent){
 
 function replaceEditorContent(oEditor,sContent){
 	if(oEditor.designMode==false){
-		needforbugAlert('请先切换到所见所得模式','',3);
+		needforbugAlert(D.L('请先切换到所见所得模式','__COMMON_LANG__@Js/Global_Js'),'',3);
 	}else{
 		oEditor.html(sContent);
 	}
@@ -322,12 +322,12 @@ function addMusic(sFunction){
 		async: false
 	}).responseText;
 
-	oEditNewmusic=needforbugAlert(sHtml,'插入音乐','','','',500,100);
+	oEditNewmusic=needforbugAlert(sHtml,D.L('插入音乐','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
 }
 
 function insertMusic(editor,sContent){
 	if(!sContent){
-		needforbugAlert('音乐地址不能够为空','',3);
+		needforbugAlert(D.L('音乐地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
 		return false;
 	}
 
@@ -343,12 +343,12 @@ function addVideo(sFunction){
 		async: false
 	}).responseText;
 
-	oEditNewvideo=needforbugAlert(sHtml,'插入视频','','','',500,100);
+	oEditNewvideo=needforbugAlert(sHtml,D.L('插入视频','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
 }
 
 function insertVideo(editor,sContent){
 	if(!sContent){
-		needforbugAlert('视频地址不能够为空','',3);
+		needforbugAlert(D.L('视频地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
 		return false;
 	}
 

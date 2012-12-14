@@ -268,7 +268,7 @@ function copy(text2copy,title){
 	}else{
 		var divinfo=AC_FL_RunContent('id','clipboardswf','name','clipboardswf','devicefont','false','width','200','height','40','src',_ROOT_+'/Public/images/common/clipboard.swf','menu','false','allowScriptAccess','sameDomain','swLiveConnect','true','wmode','transparent','style','margin-top:-20px');
 
-		divinfo='<div><div style="width: 200px; text-align: center; text-decoration:underline;">点此复制到剪贴板</div>'+divinfo+'</div>';
+		divinfo='<div><div style="width: 200px; text-align: center; text-decoration:underline;">'+D.L('点此复制到剪贴板','__COMMON_LANG__@Js/Common_Js')+'</div>'+divinfo+'</div>';
 
 		text2copy=text2copy.replace(/[\xA0]/g,' ');
 		clipboardswfdata=text2copy;
@@ -399,7 +399,7 @@ function ajaxLogin(){
 		async: false
 	}).responseText;
 
-	needforbugAlert(sHtml,'用户登录','','','',600,200);
+	needforbugAlert(sHtml,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 }
 
 function ajaxRegister(refer){
@@ -408,7 +408,7 @@ function ajaxRegister(refer){
 		async: false
 	}).responseText;
 
-	needforbugAlert(sHtml,'用户注册','','','',600,200);
+	needforbugAlert(sHtml,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 }
 
 /** 播放器 */
@@ -489,7 +489,7 @@ function playout(sUrl,id){
 		async: false
 	}).responseText;
 
-	oEditNewattachmentcategory=needforbugAlert(sHtml,'Flash播放','','','',600,200);
+	oEditNewattachmentcategory=needforbugAlert(sHtml,D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 
 	objDiv=document.getElementById(id);
 	objDiv.innerHTML='';
@@ -502,32 +502,32 @@ function makemedia(strType,strURL,intWidth,intHeight,strID,sBgColor){
 	switch(strType){
 		case 'wmp':
 			strHtml="<object width='"+intWidth+"' height='"+intHeight+"' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6'><param name='url' value='"+strURL+"'/><embed width='"+intWidth+"' height='"+intHeight+"' type='application/x-mplayer2' src='"+strURL+"' ></embed></object>";
-			strHtml+='<div><a href="'+strURL+'">下载</a></div>';
+			strHtml+='<div><a href="'+strURL+'">'+D.L('下载','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 		case 'swf':
 			strHtml="<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width='"+intWidth+"' height='"+intHeight+"''><param name='movie' value='"+strURL+"'/><param name='quality' value='high' /><embed src='"+strURL+"' quality='high' type='application/x-shockwave-flash' width='"+intWidth+"' height='"+intHeight+"' "+strBg+" id='size_"+strID+"'></embed></object>";
-			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34);">缩小</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34);">放大</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405);">原始</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540);">小屏</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621);">大屏</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="fullplayFrame(\''+strURL+'\',\''+strID+'\');">全屏</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="playout(\''+strURL+'\',\''+strID+'\');">弹出</a><span class="pipe">|</span><a href="'+strURL+'">下载</a></div>';
+			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34);">'+D.L('缩小','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34);">'+D.L('放大','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405);">'+D.L('原始','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540);">'+D.L('小屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621);">'+D.L('大屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="fullplayFrame(\''+strURL+'\',\''+strID+'\');">'+D.L('全屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="playout(\''+strURL+'\',\''+strID+'\');">'+D.L('弹出','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="'+strURL+'">'+D.L('下载','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 		case 'flv':
 			var sFlvurl=_ROOT_+"/Public/js/mediaplayer/player.swf?file="+encodeURIComponent(strURL);
 			strHtml="<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width='"+intWidth+"' height='"+intHeight+"'><param name='movie' value='"+sFlvurl+"&bufferlength=10'/><param name='quality' value='high' /><param name='allowFullScreen' value='true' /><embed src='"+sFlvurl+"&bufferlength=10' quality='high' allowFullScreen='true' type='application/x-shockwave-flash' width='"+intWidth+"' height='"+intHeight+"' id='size_"+strID+"' ></embed></object>";
-			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34,1,\''+strURL+'\',\''+strID+'\');">缩小</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34,1,\''+strURL+'\',\''+strID+'\');">放大</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405,1,\''+strURL+'\',\''+strID+'\');">原始</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540,1,\''+strURL+'\',\''+strID+'\');">小屏</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621,1,\''+strURL+'\',\''+strID+'\');">大屏</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="fullplayFrame(\''+sFlvurl+'\',\''+strID+'\');">全屏</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="playout(\''+sFlvurl+'\',\''+strID+'\');">弹出</a><span class="pipe">|</span><a href="'+strURL+'">下载</a></div>';
+			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34,1,\''+strURL+'\',\''+strID+'\');">'+D.L('缩小','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34,1,\''+strURL+'\',\''+strID+'\');">'+D.L('放大','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405,1,\''+strURL+'\',\''+strID+'\');">'+D.L('原始','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540,1,\''+strURL+'\',\''+strID+'\');">'+D.L('小屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621,1,\''+strURL+'\',\''+strID+'\');">'+D.L('大屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="fullplayFrame(\''+sFlvurl+'\',\''+strID+'\');">'+D.L('全屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="playout(\''+sFlvurl+'\',\''+strID+'\');">'+D.L('弹出','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="'+strURL+'">'+D.L('下载','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 		case 'qvod':
 			strHtml='<iframe id="iframe_down" name="iframe_down" scrolling="no" frameborder="0" style="margin: 0;width: 635px; height: 500px; display: none;" src=""></iframe><object classid="clsid:F3D0D36F-23F8-4682-A195-74C92B03D4AF" width="'+intWidth+'" height="'+intHeight+'" id="QvodPlayer" name="QvodPlayer" onerror="document.getElementById(\'QvodPlayer\').style.display=\'none\';document.getElementById(\'iframe_down\').style.display=\'\';document.getElementById(\'iframe_down\').src=\'http://error2.qvod.com/error2.htm\';"><param name="url" value="'+strURL+'"><param name="Autoplay" value="1"><embed url="'+strURL+'" type="application/qvod-plugin" width="'+intWidth+'" height="'+intHeight+'" id="size_'+strID+'"></embed></object>';
-			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34);">缩小</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34);">放大</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405);">原始</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540);">小屏</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621);">大屏</a><span class="pipe">|</span><a href="'+strURL+'">下载</a></div>';
+			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34);">'+D.L('缩小','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34);">'+D.L('放大','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405);">'+D.L('原始','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540);">'+D.L('小屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621);">'+D.L('大屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="'+strURL+'">'+D.L('下载','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 		case 'mp3':
 			var sMp3playurl=_ROOT_+"/Public/js/dewplayer/dewplayer-vol.swf?mp3="+encodeURIComponent(strURL);
 			var sMp3url='showtime=true&autoreplay=true&autostart=1';
 			strHtml="<object type='application/x-shockwave-flash' data='"+sMp3playurl+"' width='"+intWidth+"' height='"+intHeight+"'><param name='wmode' value='transparent' /><param name='movie' value='"+sMp3playurl+"' /><param name='flashvars' value='showtime=true&autoreplay=true&autostart=1' /></object>";
-			strHtml+='<div><a href="'+sMp3playurl+'&'+sMp3url+'" target="_blank">新窗口</a><span class="pipe">|</span><a href="'+strURL+'">下载</a></div>';
+			strHtml+='<div><a href="'+sMp3playurl+'&'+sMp3url+'" target="_blank">'+D.L('新窗口','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="'+strURL+'">'+D.L('下载','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 		case 'mp3list':
 			var sMp3playurl=_ROOT_+"/Public/js/dewplayer/dewplayer-playlist.swf";
 			var sMp3listurl='showtime=true&autoreplay=true&autostart=1&xml='+encodeURIComponent(strURL);
 			strHtml="<object type='application/x-shockwave-flash' data='"+sMp3playurl+"' width='"+intWidth+"' height='"+intHeight+"'><param name='wmode' value='transparent' /><param name='movie' value='"+sMp3playurl+"' /><param name='flashvars' value='"+sMp3listurl+"' /></object>";
-			strHtml+='<div><a href="'+sMp3playurl+'?'+sMp3listurl+'" target="_blank">新窗口</a></div>';
+			strHtml+='<div><a href="'+sMp3playurl+'?'+sMp3listurl+'" target="_blank">'+D.L('新窗口','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 	}
 
@@ -571,7 +571,7 @@ function addMessage(nUid){
 		arrReturn=eval('('+sHtml+')');
 		alert(arrReturn.info);
 	}catch(ex){
-		oEditNewmessage=needforbugAlert(sHtml,'发送短消息','',addMessageok,'',500,100);
+		oEditNewmessage=needforbugAlert(sHtml,D.L('发送短消息','__COMMON_LANG__@Js/Common_Js'),'',addMessageok,'',500,100);
 	};
 }
 
