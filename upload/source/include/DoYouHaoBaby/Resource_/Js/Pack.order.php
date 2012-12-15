@@ -24,6 +24,7 @@ Dyhb/Dom.class.js
 Dyhb/Dom/Ready.class.js
 Dyhb/Ajax.class.js
 Dyhb/Fn.class.js
+Dyhb/Fn/Blank.class.js
 Dyhb/Ajax/Request.class.js
 Dyhb/Ajax/Post.class.js
 Dyhb/Ajax/Get.class.js
