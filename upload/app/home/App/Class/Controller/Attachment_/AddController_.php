@@ -86,7 +86,10 @@ class AddController extends Controller{
 
 	public function dialog(){
 		$sFunction=trim(G::getGpc('function','G'));
+		$nFiletype=intval(G::getGpc('filetype','G'));
+
 		$this->assign('sFunction',$sFunction);
+		$this->assign('nFiletype',$nFiletype);
 		$this->assign('bDialog',true);
 
 		$this->index(true);

@@ -5,9 +5,9 @@
 		<div class="row">
 			<div class="span12" style="margin-bottom:20px;">
 				<span class="right">
-					<a href="<!--{:Dyhb::U('home://attachment/dialog_add?dialog=1&function='.$sFunction)}-->" class="btn btn-success"><i class="icon-upload icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->上传照片<!--</lang>--></a>
+					<a href="<!--{:Dyhb::U('home://attachment/dialog_add?dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->" class="btn btn-success"><i class="icon-upload icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->上传照片<!--</lang>--></a>
 					<span class="pipe">|</span>
-					<a href="<!--{:Dyhb::U('home://attachment/dialog_addattachmentcategory?dialog=1&function='.$sFunction)}-->">+<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>--></a>
+					<a href="<!--{:Dyhb::U('home://attachment/dialog_addattachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->">+<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>--></a>
 				</span>
 				<h3><!--<lang package='Template/Attachment'>-->我的专辑<!--</lang>--></h3>
 			</div>
@@ -19,14 +19,14 @@
 					<li class="span3" id="attachmentcategory_item_<!--{$oAttachmentcategory['attachmentcategory_id']}-->">
 						<div class="thumbnail">
 							<div class="img dialogattachmentcategory_thumb">
-								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->">
+								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->">
 									<img src="<!--{:Attachment_Extend::getAttachmentcategoryPreview($oAttachmentcategory)}-->" alt="<!--{$oAttachmentcategory['attachmentcategory_name']}-->" <!--{if $arrAttachmentcategorypreview[1]>=110}-->height="110px"<!--{/if}--> width="110">
 								</a>
 							</div>
 							<div class="caption">
-								<h5 id="attachmentcategory_name_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->"><!--{$oAttachmentcategory['attachmentcategory_name']|G+subString=0,10}--></a></h5>
-								<p><a href="<!--{:Dyhb::U('home://attachment/dialog_add?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->上传<!--</lang>--></a>&nbsp;
-									<a href="<!--{:Dyhb::U('home://attachment/edit_attachmentcategory?id='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction)}-->"><!--<lang package='Template/Attachment'>-->编辑<!--</lang>--></a>
+								<h5 id="attachmentcategory_name_<!--{$oAttachmentcategory['attachmentcategory_id']}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--{$oAttachmentcategory['attachmentcategory_name']|G+subString=0,10}--></a></h5>
+								<p><a href="<!--{:Dyhb::U('home://attachment/dialog_add?cid='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template/Attachment'>-->上传<!--</lang>--></a>&nbsp;
+									<a href="<!--{:Dyhb::U('home://attachment/edit_attachmentcategory?id='.$oAttachmentcategory['attachmentcategory_id'].'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template/Attachment'>-->编辑<!--</lang>--></a>
 								</p>
 							</div>
 						</div>

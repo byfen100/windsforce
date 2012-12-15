@@ -30,7 +30,8 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_indextopicnum', '10'),
 ('group_listtopicnum', '10'),
 ('group_hottopic_date', '604800'),
-('group_hottopic_num', '10');
+('group_hottopic_num', '10'),
+('group_thumbtopic_num', '5');
 
 -- --------------------------------------------------------
 

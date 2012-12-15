@@ -156,6 +156,7 @@ CREATE TABLE IF NOT EXISTS `#@__grouptopic` (
   `grouptopic_updateusername` varchar(50) NOT NULL COMMENT '最后更新用户',
   `create_dateline` int(10) DEFAULT '0' COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `grouptopic_thumb` int(10) NOT NULL DEFAULT '0' COMMENT '缩略图',
   PRIMARY KEY (`grouptopic_id`),
   KEY `grounptopiccategory_id` (`grouptopiccategory_id`),
   KEY `group_id` (`group_id`),

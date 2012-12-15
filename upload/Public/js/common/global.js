@@ -278,8 +278,13 @@ function needforbugConfirm(sContent,ok,cancel,sTitle,nTime,width,height,lock){
 
 /** 媒体对话框 */
 var oEditNewattachmentcategory;
-function globalAddattachment(sFunction){
-	var sUrl=_ROOT_+'/index.php?app=home&c=attachment&a=dialog_add&function='+sFunction;
+function globalAddattachment(sFunction,nType){
+	/* type：0 所有，1 图片，2附件*/
+	if(!nType){
+		nType=0;
+	}
+
+	var sUrl=_ROOT_+'/index.php?app=home&c=attachment&a=dialog_add&function='+sFunction+'&filetype='+nType;
 	var sHtml='<iframe id="iframe_dialog" name="iframe_dialog" frameborder="0" style="margin: 0;width: 500px; height: 200px;overflow-x:hidden;margin:0;padding:0;" src="'+sUrl+'"></iframe>';
 
 	oEditNewattachmentcategory=needforbugAlert(sHtml,D.L('媒体管理器','__COMMON_LANG__@Js/Global_Js'),'',globalCancelattachment,'',500,200,1);
@@ -312,7 +317,11 @@ function replaceEditorContent(oEditor,sContent){
 }
 
 function insertAttachment(editor,nAttachmentid){
-	addEditorContent(editor,'[attachment]'+nAttachmentid+'[/attachment]')
+	addEditorContent(editor,'[attachment]'+nAttachmentid+'[/attachment]');
+}
+
+function insertAttachmentthumb(sId,nAttachmentid){
+	$('#'+sId).val(nAttachmentid);
 }
 
 var oEditNewmusic='';

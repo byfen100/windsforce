@@ -44,6 +44,10 @@ function insertGrouptopicattachment(nAttachmentid){
 	insertAttachment(editor,nAttachmentid);
 }
 
+function insertGrouptopicthumb(nAttachmentid){
+	insertAttachmentthumb('grouptopic_thumb',nAttachmentid);
+}
+
 function reloadCategory(){
 	var nGid=$('#group_id').val();
 	var sUrl="<!--{:Dyhb::U('group://group/getcategory')}-->";
@@ -90,9 +94,9 @@ function reloadCategory(){
 					<div class="grouptopic_tabs">
 						<ul id="grouptopic_tabcontent" class="nav nav-tabs">
 							<li class="active"><a href="#grouptopiccategory" data-toggle="tab">帖子分类</a></li>
-							<!--<li><a href="#readperm" data-toggle="tab">阅读权限</a></li>-->
+							<li><a href="#thumb" data-toggle="tab">缩略图</a></li>
 							<li><a href="#price" data-toggle="tab">售价</a></li>
-							<!--<li><a href="#tags" data-toggle="tab">帖子标签</a></li></li>-->
+							<li><a href="#tags" data-toggle="tab">帖子标签</a></li></li>
 						</ul>
 						<div id="grouptopic_tabcontent" class="tab-content">
 							<div class="tab-pane fade in active alert alert-success" id="grouptopiccategory">
@@ -110,21 +114,16 @@ function reloadCategory(){
 									</tr>
 								</table>
 							</div>
-							<!--<div class="tab-pane fade alert alert-success" id="readperm">
+							<div class="tab-pane fade alert alert-success" id="thumb">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
-										<td class="grouptopictabs_title">阅读权限&nbsp;</td>
-										<td><select name="grouptopic_readperm" id="grouptopic_readperm" style="width:90px">
-												<option value="">不限</option>
-												<option value="1" title="阅读权限: 1">游客</option>
-												<option value="10" title="阅读权限: 10">新手上路</option>
-												<option value="20" title="阅读权限: 20">注册会员</option>
-											</select>&nbsp;
-											<span class="grouptopictabs_description">阅读权限按由高到低排列，高于或等于选中组的用户才可以阅读</span>
+										<td class="grouptopictabs_title">缩略图&nbsp;</td>
+										<td><input type="text" id="grouptopic_thumb" name="grouptopic_thumb" value="<!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_thumb}--><!--{/if}-->"/>&nbsp;<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicthumb',1);"><i class="icon-film"></i>媒体</a>&nbsp;
+											<span class="grouptopictabs_description">(从附件管理器中选择)</span>
 										</td>
 									</tr>
 								</table>
-							</div>-->
+							</div>
 							<div class="tab-pane fade alert alert-success" id="price">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
@@ -135,7 +134,7 @@ function reloadCategory(){
 									</tr>
 								</table>
 							</div>
-							<!--<div class="tab-pane fade alert alert-success" id="tags">
+							<div class="tab-pane fade alert alert-success" id="tags">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
 										<td class="grouptopictabs_title">标签&nbsp;</td>
@@ -153,7 +152,7 @@ function reloadCategory(){
 										</td>
 									</tr>
 								</table>
-							</div></li>-->
+							</div>
 						</div>
 					</div>
 				</div>

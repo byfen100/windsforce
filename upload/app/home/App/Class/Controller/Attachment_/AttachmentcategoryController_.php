@@ -10,6 +10,7 @@ class AttachmentcategoryController extends Controller{
 		$nRecommend=intval(G::getGpc('recommend','G'));
 		$nDialog=intval(G::getGpc('dialog'));
 		$sFunction=trim(G::getGpc('function'));
+		$nFiletype=intval(G::getGpc('filetype','G'));
 
 		$arrWhere=array();
 		if($nRecommend==1){
@@ -31,6 +32,7 @@ class AttachmentcategoryController extends Controller{
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 		$this->assign('nDialog',$nDialog);
 		$this->assign('sFunction',$sFunction);
+		$this->assign('nFiletype',$nFiletype);
 
 		if($nDialog==1){
 			$this->display('attachment+dialogattachmentcategory');

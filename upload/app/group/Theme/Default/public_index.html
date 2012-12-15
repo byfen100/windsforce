@@ -15,8 +15,8 @@
 
 		<div class="row">
 			<div class="span12">
-					<div class="clear" style="margin-bottom:12px;">
-						<span class="postbtn" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success">发帖</a></span>
+					<div style="margin-bottom:10px;">
+						<span class="" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success">发帖</a></span>
 						<!--{if $GLOBALS['___login___']===false}-->
 						<p>你可以&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</p>
 						<!--{d*else}-->
@@ -25,6 +25,7 @@
 						<a href="/user/value/1.html" target="_blank">我的帖子</a>, <a href="/search/result/search_date/86400/searchsubmit/yes.html" class="lightlink">查看新帖</a></p>
 						<!--{/if}-->
 					</div>
+					<span class="clear"></span>
 			</div>
 		</div>
 
@@ -34,18 +35,29 @@
 					<div class="span7"> 
 						<div id="myCarousel" class="carousel slide">
 							<div class="carousel-inner">
-								<div class="item active" style="250px">
-									<img src="<!--{:__PUBLIC__}-->/images/common/slidebox/1.jpg" style="height:250px;" width="100%">
+								<!--{if is_array($arrGroupthumbtopics)}-->
+								<!--<foreach for=arrGroupthumbtopics value=oGroupthumbtopic>-->
+								<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="280px">
+									<img src="<!--{:Attachment_Extend::getAttachmentPreview($oGroupthumbtopic['grouptopic_thumb'])}-->" style="height:280px;" width="100%">
 									<div class="carousel-caption">
-										<h4><a href="#" title="注册">注册</a></h4>
+										<h4><a href="<!--{:Dyhb::U('group://topic@?id='.$oGroupthumbtopic->grouptopic_id)}-->" title="<!--{$oGroupthumbtopic->grouptopic_title}-->"><!--{$oGroupthumbtopic->grouptopic_title|G+subString=0,30}--></a></h4>
 									</div>
 								</div>
-								<div class="item" style="250px">
-									<img src="<!--{:__PUBLIC__}-->/images/common/slidebox/2.jpg" style="height:250px;" width="100%">
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<div class="item active" style="280px">
+									<img src="<!--{:__PUBLIC__}-->/images/common/slidebox/1.jpg" style="height:280px;" width="100%">
 									<div class="carousel-caption">
-										<h4><a href="#" title="登录">登录</a></h4>
+										<h4><a href="<!--{:Dyhb::U('home://public/register')}-->" title="注册">注册</a></h4>
 									</div>
 								</div>
+								<div class="item" style="280px">
+									<img src="<!--{:__PUBLIC__}-->/images/common/slidebox/2.jpg" style="height:280px;" width="100%">
+									<div class="carousel-caption">
+										<h4><a href="<!--{:Dyhb::U('home://public/login')}-->" title="登录">登录</a></h4>
+									</div>
+								</div>
+								<!--{/if}-->
 							</div>
 							<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 							<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
@@ -54,14 +66,13 @@
 					<div class="span5">
 						<div style="margin-left:-30px;" class="publicmodule_list publicmodule_list_sort publicmodule_list_line">
 							<ul>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
-								<li><a href="#">据日本共同社报道，针对中国在钓鱼</a></li>
+								<!--{if is_array($arrGrouphottopics)}-->
+								<!--<foreach for=arrGrouphottopics value=oGrouphottopic>-->
+								<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouphottopic->grouptopic_id)}-->" target="_blank" ><!--{$oGrouphottopic->grouptopic_title|G+subString=0,30}--></a></li>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->">我要发布</a></li>
+								<!--{/if}-->
 							</ul>
 						</div>
 					</div>
@@ -105,12 +116,6 @@
 										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">
 											<img src='<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->' border="0" alt="" />
 										</a>
-										<!--{if $nGroupuser==0}-->
-										<p style="padding:5px;"><span id="joingroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
-										</p>
-										<!--{elseif $nGroupuser==1}-->
-										<p style="padding:5px;"><span id="leavegroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:3px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span></p>
-										<!--{/if}-->
 									</td>
 									<td width="*" align="left" class="grouplist_borderbottom">
 										<table width="100%" cellpadding="1">
@@ -121,6 +126,11 @@
 													<span class='grouplist_namelink'><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a></span>
 													<!--{if $oGroup['group_topictodaynum']>0}-->
 													<span class='grouplist_todaynum'>&nbsp;(今日<!--{$oGroup['group_topictodaynum']}-->)</span>
+													<!--{/if}-->
+													<!--{if $nGroupuser==0}-->
+													&nbsp;<span id="joingroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+													<!--{elseif $nGroupuser==1}-->
+													&nbsp;<span id="leavegroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:3px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
 													<!--{/if}-->
 												</td>
 											</tr>

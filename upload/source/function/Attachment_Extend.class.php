@@ -86,8 +86,16 @@ class Attachment_Extend{
 	}
 
 	static public function getAttachmentPreview($oAttachment,$bUrlpath=true){
+		if(is_int($oAttachment)){
+			$oAttachment=AttachmentModel::F('attachment_id=?',$oAttachment)->getOne();
+		}
+		
 		if(empty($oAttachment['attachment_id'])){
-			return '';
+			if($bUrlpath===true){
+				return __PUBLIC__.'/images/common/none.gif';
+			}else{
+				return WINDSFORCE_PATH.'/Public/images/common/none.gif';
+			}
 		}
 
 		$sAttachmentPreview=self::getFileicon($oAttachment['attachment_extension'],false,true,$bUrlpath);
@@ -99,8 +107,16 @@ class Attachment_Extend{
 	}
 
 	static public function getAttachmentcategoryPreview($oAttachmentcategory,$bUrlpath=true){
+		if(is_int($oAttachmentcategory)){
+			$oAttachmentcategory=AttachmentModel::F('attachment_id=?',$oAttachmentcategory)->getOne();
+		}
+		
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			return '';
+			if($bUrlpath===true){
+				return __PUBLIC__.'/images/common/none.gif';
+			}else{
+				return WINDSFORCE_PATH.'/Public/images/common/none.gif';
+			}
 		}
 
 		// 已设置封面

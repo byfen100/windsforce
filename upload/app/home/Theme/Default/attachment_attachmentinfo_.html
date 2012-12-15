@@ -16,7 +16,7 @@ function saveAttachmentinfo(){
 		function(data,status){
 			if(status==1){
 				if($('#dialog').val()==1){
-					window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategory+'&dialog=1&function='+$('#function').val());
+					window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategory+'&dialog=1&function='+$('#function').val()+'&filetype='+$('#filetype').val());
 				}else{
 					window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategory);
 				}
@@ -76,9 +76,10 @@ function saveAttachmentinfo(){
 					<div class="form-actions">
 						<input type="hidden" id="dialog" name="dialog" value="<!--{if $nDialog==1}-->1<!--{d*else}-->0<!--{/if}-->"/>
 						<input type="hidden" id="function" name="function" value="<!--{if $sFunction}--><!--{$sFunction}--><!--{/if}-->"/>
+						<input type="hidden" id="filetype" name="filetype" value="<!--{if $nFiletype}--><!--{$nFiletype}--><!--{/if}-->"/>
 						<input type="hidden" name="ajax" value="1"/>
 						<input type="hidden" name="attachmentcategory_id" id="attachmentcategory_id" value="<!--{$nAttachmentcategoryid}-->"/>
 						<input type="button" class="btn btn-success" onclick="saveAttachmentinfo();" value="<!--<lang package='Template/Attachment'>-->保存附件信息<!--</lang>-->">&nbsp;
-						<a class="btn" href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.($nDialog==1?'&dialog=1':'').($sFunction?'&function='.$sFunction:''))}-->"><!--<lang package='Template/Attachment'>-->我的附件<!--</lang>--></a>
+						<a class="btn" href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.($nDialog==1?'&dialog=1':'').($sFunction?'&function='.$sFunction.'&filetype='.$nFiletype:''))}-->"><!--<lang package='Template/Attachment'>-->我的附件<!--</lang>--></a>
 					</div>
 				</form>

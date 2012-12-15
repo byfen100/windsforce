@@ -11,6 +11,7 @@ class FlashinfoController extends Controller{
 		$nAttachmentcategoryid=intval(G::getGpc('attachmentcategory_id_flash'));
 		$nDialog=intval(G::getGpc('dialog'));
 		$sFunction=trim(G::getGpc('function'));
+		$nFiletype=intval(G::getGpc('filetype','G'));
 
 		$sHashcode=G::randString(32);
 		Dyhb::cookie('_upload_hashcode_',$sHashcode,3600);
@@ -18,7 +19,7 @@ class FlashinfoController extends Controller{
 		$sUploadids=implode(',',$arrUploadids);
 
 		if($nDialog==1){
-			$this->U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&functon='.$sFunction);
+			$this->U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&functon='.$sFunction.'&filetype='.$nFiletype);
 		}else{
 			$this->U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid);
 		}

@@ -9,9 +9,11 @@ class DialogaddattachmentcategoryController extends Controller{
 	public function index(){
 		$nDialog=intval(G::getGpc('dialog','G'));
 		$sFunction=trim(G::getGpc('function','G'));
+		$nFiletype=intval(G::getGpc('filetype','G'));
 
 		$this->assign('nDialog',$nDialog);
 		$this->assign('sFunction',$sFunction);
+		$this->assign('nFiletype',$nFiletype);
 		
 		$this->display('attachment+dialogaddattachmentcategory');
 	}
@@ -19,6 +21,7 @@ class DialogaddattachmentcategoryController extends Controller{
 	public function save(){
 		$nDialog=intval(G::getGpc('dialog','P'));
 		$sFunction=trim(G::getGpc('function','P'));
+		$nFiletype=intval(G::getGpc('filetype','G'));
 
 		$oAttachmentcategory=new AttachmentcategoryModel();
 		$oAttachmentcategory->save(0);
@@ -27,7 +30,7 @@ class DialogaddattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction),1,Dyhb::L('专辑保存成功','Controller/Attachment'));
+		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),1,Dyhb::L('专辑保存成功','Controller/Attachment'));
 	}
 
 }

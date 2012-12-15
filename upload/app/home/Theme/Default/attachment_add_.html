@@ -123,7 +123,7 @@ function cancelNewattachmentcategory(){
 						</p>
 						<p><h3><!--<lang package='Template/Attachment'>-->允许的上传类型<!--</lang>--></h3>
 							<p class="upload_type"><!--<foreach for=arrAllowedTypes value=sAllowedType>-->
-								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType.(isset($bDialog)?'&dialog=1&function='.$sFunction:''))}-->" class="btn btn-mini"><!--{$sAllowedType}--></a>&nbsp;
+								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType.(isset($bDialog)?'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype:''))}-->" class="btn btn-mini"><!--{$sAllowedType}--></a>&nbsp;
 								<!--</foreach>-->
 							</p>
 						</p>
@@ -151,13 +151,14 @@ function cancelNewattachmentcategory(){
 						</p>
 						<p><h3><!--<lang package='Template/Attachment'>-->允许的上传类型<!--</lang>--></h3>
 							<p class="upload_type"><!--<foreach for=arrAllowedTypes value=sAllowedType>-->
-								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType.(isset($bDialog)?'&dialog=1&function='.$sFunction:''))}-->" class="btn btn-mini"><!--{$sAllowedType}--></a>&nbsp;
+								<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType.(isset($bDialog)?'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype:''))}-->" class="btn btn-mini"><!--{$sAllowedType}--></a>&nbsp;
 								<!--</foreach>-->
 							</p>
 						</p>
 						<p><input type="hidden" name="user_id" value="<!--{$GLOBALS['___login___']['user_id']}-->"/>
 							<!--{if isset($bDialog)}--><input type="hidden" name="dialog" value="1"/><!--{/if}-->
 							<!--{if isset($sFunction)}--><input type="hidden" name="function" value="<!--{$sFunction}-->"/><!--{/if}-->
+							<!--{if isset($nFiletype)}--><input type="hidden" name="filetype" value="<!--{$nFiletype}-->"/><!--{/if}-->
 							<input type="hidden" name="user_name" value="<!--{$GLOBALS['___login___']['user_name']}-->"/>
 							<input type="submit" name="html-upload" id="html-upload" class="btn btn-success" value="<!--<lang package='Template/Attachment'>-->上传<!--</lang>-->" />&nbsp;
 							<input type="reset" class="btn" value="<!--<lang package='Template/Attachment'>-->重置<!--</lang>-->" />
