@@ -19,11 +19,10 @@
 <!--{script}-->
 $(function(){
 	var oFixedTips=new FixedTips("grouptopicview_tip");
-	$$A.forEach($$("grouptopicview_list").getElementsByTagName("avatar"),function(o){
+	$$A.forEach($$("grouptopicview_list").getElementsByTagName("center"),function(o){
 		oFixedTips.add(o.getElementsByTagName("img")[0],{
 				relative: { customLeft: -12, customTop: -13},
-				onShow: function(){ oFixedTips.tip.innerHTML = o.innerHTML;
-			}
+				onShow: function(){ oFixedTips.tip.innerHTML = o.innerHTML;}
 		});
 	});
 	
@@ -152,7 +151,7 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 											</div>
 										</div>
 										<div>
-											<avatar>
+											<center>
 												<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank">
 													<img src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'middle')}-->" target="_blank" width="120px" alt="<!--{$oGrouptopic->grouptopic_username}-->" class="group_avatar">
 												</a>
@@ -198,7 +197,7 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 														<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank" title="查看详细资料"><img src="<!--{:__PUBLIC__}-->/images/common/userinfo.gif" alt="查看详细资料"></a>
 													</div>
 												</div>
-											</avatar>
+											</center>
 										</div>
 										<div class="floor_groupuserfollow">
 											<table cellspacing="0" cellpadding="0" width="100%">
@@ -338,7 +337,7 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 											</div>
 										</div>
 										<div>
-											<avatar>
+											<center>
 												<a href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->" target="_blank">
 													<img src="<!--{:Core_Extend::avatar($oComment['user_id'],'middle')}-->" width="120px" alt="<!--{$oComment->user->user_name}-->" class="group_avatar">
 												</a>
@@ -384,7 +383,7 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 														<a href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->" target="_blank" title="查看详细资料"><img src="<!--{:__PUBLIC__}-->/images/common/userinfo.gif" alt="查看详细资料"></a>
 													</div>
 												</div>
-											</avatar>
+											</center>
 										</div>
 										<div class="floor_groupuserfollow">
 											<table cellspacing="0" cellpadding="0" width="100%">
