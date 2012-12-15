@@ -1,16 +1,23 @@
 <script src="<!--{:__PUBLIC__}-->/extension/bootstrap/js/bootstrap.min.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="<!--{:__PUBLIC__}-->/extension/bootstrap/ie6/bootstrap-ie.js"></script>
+<![endif]-->
 <script src="<!--{:__PUBLIC__}-->/js/common/global.js"></script>
 <script src="<!--{:__PUBLIC__}-->/js/common/common.js"></script>
 <script src="<!--{:__PUBLIC__}-->/js/common/top.js"></script>
 
 <!--{script}-->
 $(document).ready(function(){
+	$.bootstrapIE6(el);
+	
 	$('.thumbnails').tooltip({selector: "a[rel=tooltip]"});
+	
 	$('.carousel').carousel({
 		<!--{if $GLOBALS['_option_']['slide_delay']>0}-->
 		interval: <!--{$GLOBALS['_option_']['slide_delay']*1000}-->
 		<!--{/if}-->
 	});
+
 	$("a[rel=popover]")
 		.popover()
 		.click(function(e){
