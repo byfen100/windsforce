@@ -29,17 +29,6 @@
 		<!--{if $GLOBALS['_option_']['bgextend_on']==1}-->
 		setInterval("changeGlobalbg();",<!--{$GLOBALS['_option_']['bgextend_time']*1000}-->);
 		<!--{/if}-->
-		$('.thumbnails').tooltip({selector: "a[rel=tooltip]"});
-		$('.carousel').carousel({
-			<!--{if $GLOBALS['_option_']['slide_delay']>0}-->
-			interval: <!--{$GLOBALS['_option_']['slide_delay']*1000}-->
-			<!--{/if}-->
-		});
-		$("a[rel=popover]")
-			.popover()
-			.click(function(e){
-			e.preventDefault();
-		});
 	});
 	<!--{/script}-->
 	<!--{~$sAppjsPath=APP_PATH.'/Static/Js/'.APP_NAME.'.js'}-->

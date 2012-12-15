@@ -70,4 +70,8 @@ class PublicController extends InitController{
 		Core_Extend::doControllerAction('Public@Sitemap','index');
 	}
 
+	public function test2(){
+		$this->display('test2');
+	}
+
 }

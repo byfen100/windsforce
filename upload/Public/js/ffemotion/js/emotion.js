@@ -1068,6 +1068,8 @@ function findParentElement(tagName, $ele){
 		};
 
 	})();
-	//调用初始化对象	
-	wbSubjoin.init();
+	$(document).ready(function(){
+		// 调用初始化对象
+		wbSubjoin.init();
+	});
 })(jQuery)
