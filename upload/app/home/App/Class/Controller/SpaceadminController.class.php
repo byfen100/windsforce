@@ -21,15 +21,15 @@ class SpaceadminController extends InitController{
 	}
 
 	public function avatar(){
-		Core_Extend::doControllerAction('Spaceadmin@Avatar','index');
+		Core_Extend::doControllerAction('Spaceadmin@Avatar/Index','index');
 	}
 
 	public function avatar_upload(){
-		Core_Extend::doControllerAction('Spaceadmin@Avatar','upload');
+		Core_Extend::doControllerAction('Spaceadmin@Avatar/Upload','index');
 	}
 
 	public function avatar_savecrop(){
-		Core_Extend::doControllerAction('Spaceadmin@Avatar','save_crop');
+		Core_Extend::doControllerAction('Spaceadmin@Avatar/Savecrop','index');
 	}
 
 	public function password(){
@@ -49,15 +49,15 @@ class SpaceadminController extends InitController{
 	}
 
 	public function tag(){
-		Core_Extend::doControllerAction('Spaceadmin@Hometag','index');
+		Core_Extend::doControllerAction('Spaceadmin@Hometag/Index','index');
 	}
 
 	public function add_hometag(){
-		Core_Extend::doControllerAction('Spaceadmin@Hometag','add');
+		Core_Extend::doControllerAction('Spaceadmin@Hometag/Add','index');
 	}
 
 	public function delete_hometag(){
-		Core_Extend::doControllerAction('Spaceadmin@Hometag','delete');
+		Core_Extend::doControllerAction('Spaceadmin@Hometag/Delete','index');
 	}
 
 	public function promotion(){
