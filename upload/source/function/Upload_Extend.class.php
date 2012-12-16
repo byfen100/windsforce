@@ -53,6 +53,7 @@ class Upload_Extend{
 		$oUploadfile->_sThumbPath=$arrUploadoption['upload_path'].$sUploadDir;
 		$oUploadfile->_bThumbRemoveOrigin=FALSE;
 		$oUploadfile->_bThumbFixed=true;
+		$oUploadfile->_bUploadReplace=true;
 			
 		// 文件上传规则
 		$oUploadfile->_sSaveRule=array(ucfirst($sType).'_Extend','getIconName');

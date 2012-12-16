@@ -159,6 +159,19 @@ class GroupController extends InitController{
 		if(!empty($oGroup['group_id'])){
 			require_once(Core_Extend::includeFile('function/Upload_Extend'));
 			try{
+				// 上传前删除早前的icon
+				if(!empty($oGroup['group_icon'])){
+					require_once(Core_Extend::includeFile('function/Upload_Extend'));
+					Upload_Extend::deleteIcon('group',$oGroup['group_icon']);
+			
+					$oGroup->group_icon='';
+					$oGroup->save(0,'update');
+					if($oGroup->isError()){
+						$this->E($oGroup->getErrorMessage());
+					}
+				}
+
+				// 执行上传
 				$sPhotoDir=Upload_Extend::uploadIcon('group');
 			
 				$oGroup->group_icon=$sPhotoDir;
