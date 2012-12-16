@@ -123,6 +123,16 @@ INSERT INTO `#@__link` (`link_id`, `create_dateline`, `update_dateline`, `link_n
 -- --------------------------------------------------------
 
 --
+-- 转存表中的数据 `windsforce_feed`
+--
+
+INSERT INTO `#@__feed` (`feed_id`, `user_id`, `feed_username`, `feed_template`, `feed_data`, `create_dateline`) VALUES
+(1, 1, 'admin', '<div class="feed_addhomefresh"><span class="feed_title">发布了一条新鲜事&nbsp;<a href="{@homefresh_link}">查看</a></span><div class="feed_content">{homefresh_message}</div><div class="feed_action"><a href="{@homefresh_link}#comments">回复</a></div></div>', 'a:2:{s:15:"@homefresh_link";s:18:"home://fresh@?id=1";s:17:"homefresh_message";s:28:"Hello world! 世界你好！";}', 1355633251),
+(2, 1, 'admin', '<div class="feed_addhomefresh"><span class="feed_title">评论了新鲜事&nbsp;<a href="{@homefresh_commentlink}">{homefresh_title}</a></span><div class="feed_content"><div class="feed_quote"><span class="feed_quoteinfo">{homefresh_commentmessage}</span></div></div><div class="feed_action"><a href="{@homefresh_commentlink}">回复</a></div></div>', 'a:3:{s:22:"@homefresh_commentlink";s:40:"home://fresh@?id=1&isolation_commentid=1";s:15:"homefresh_title";s:28:"Hello world! 世界你好！";s:24:"homefresh_commentmessage";s:36:"理想很丰满，现实很骨感！";}', 1355633264);
+
+-- --------------------------------------------------------
+
+--
 -- 转存表中的数据 `windsforce_homefresh`
 --
 
@@ -308,8 +318,8 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('programeupdate_on', '0'),
 ('mail_testmessage_backup', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。\r\n{time}\r\n\r\n-----------------------------------------------------\r\n消息来源：{site_name}\r\n站点网址：{site_url}'),
 ('mail_testsubject_backup', '尊敬的{user_name}：{site_name}系统测试邮件发送成功'),
-('mail_testmessage', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。<br />\n<br />\n2012-10-18 03:25<br />\n<br />\n<br />\n<br />\n-----------------------------------------------------<br />\n<br />\n消息来源：NeedForBug<br />\n<br />\n<p>\n	<br />\n站点网址：http://localhost/needforbug/upload\n</p>\n<br />\n<p>\n	<br />\n</p>\n<br />\n<p>\n	<br />\nadsadasd\n</p>'),
-('mail_testsubject', '尊敬的admin：WindsForce系统测试邮件发送成功222'),
+('mail_testmessage', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。\r\n{time}\r\n\r\n-----------------------------------------------------\r\n消息来源：{site_name}\r\n站点网址：{site_url}'),
+('mail_testsubject', '尊敬的admin：WindsForce系统测试邮件发送成功'),
 ('getpassword_expired', '36000'),
 ('style_switch_on', '1'),
 ('extendstyle_switch_on', '1'),
