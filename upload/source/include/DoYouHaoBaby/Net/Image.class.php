@@ -79,6 +79,13 @@ class Image{
 				imageinterlace($oThumbImg,$bInterlace);
 			}
 
+			if($sType=='png'){
+				$nQuality=ceil($nQuality/10)-1;
+				if($nQuality<0){
+					$nQuality=0;
+				}
+			}
+
 			$sImageFun='image'.($sType=='jpg'?'jpeg':$sType);// 生成图片
 			$sImageFun($oThumbImg,$sThumbName,$nQuality);
 			imagedestroy($oThumbImg);
