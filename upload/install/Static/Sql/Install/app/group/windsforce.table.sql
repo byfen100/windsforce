@@ -223,11 +223,9 @@ CREATE TABLE `#@__grouptopictag` (
   `grouptopictag_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '帖子标签',
   `grouptopictag_name` char(32) NOT NULL DEFAULT '' COMMENT '标签名字',
   `grouptopictag_count` int(10) NOT NULL DEFAULT '0' COMMENT '标签字体数量',
-  `grouptopictag_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否可用',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`grouptopictag_id`),
   KEY `grouptopictag_name` (`grouptopictag_name`),
-  KEY `grouptopictag_status` (`grouptopictag_status`),
   KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

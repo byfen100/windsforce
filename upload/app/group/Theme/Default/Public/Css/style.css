@@ -140,7 +140,7 @@ Description: Group应用模块CSS
 [/CURSCRIPT]
 
 /**===============================
-           热门帖子列表
+           新贴右边用户栏
 ================================*/
 [CURSCRIPT=group::public::newtopic]
 .group_sidebar_userinfo{

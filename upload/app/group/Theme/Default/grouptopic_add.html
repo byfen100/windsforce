@@ -138,17 +138,13 @@ function reloadCategory(){
 								<table cellspacing="0" cellpadding="0">
 									<tr>
 										<td class="grouptopictabs_title">标签&nbsp;</td>
-										<td><input type="text" size="60" id="tags" name="tags" value=""/>&nbsp;
-											<a href="javascript:void(0);" id="clickbutton[]">自动获取</a>
-											<span class="pipe">|</span>
-											<a href="javascript:void(0);" id="choosetag">选择标签</a>
+										<td><input type="text" size="60" id="tags" name="tags" value="<!--{if isset($oGrouptopic)}--><!--{$sTag}--><!--{/if}-->"/>
 										</td>
 									</tr>
 									<tr>
 										<td></td>
 										<td>
 											<p class="grouptopictabs_description">用逗号或空格隔开多个标签，最多可填写 5 个</p>
-											<p class="mtn">最近使用标签:&nbsp;<a href="javascript:void(0);" class="grouptopictabs_description" onclick="$('tags').value == '' ? $('tags').value += '福鼎市' : $('tags').value += ',福鼎市';extraCheck(4);doane();">福鼎市</a></p>
 										</td>
 									</tr>
 								</table>

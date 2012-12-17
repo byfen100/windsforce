@@ -65,7 +65,7 @@ class GrouptopictagModel extends CommonModel{
 
 					// 标签索引
 					$nTagId=$oTag->grouptopictag_id;
-					$nTagIndexCount=GrouptopictagindexModel::F('grouptopictag_id=? AND user_id=?',$nTagId,$nGrouptopicid)->all()->getCounts();
+					$nTagIndexCount=GrouptopictagindexModel::F('grouptopictag_id=? AND grouptopic_id=?',$nTagId,$nGrouptopicid)->all()->getCounts();
 
 					if(!$nTagIndexCount){
 						$oHometagindex=new GrouptopictagindexModel();

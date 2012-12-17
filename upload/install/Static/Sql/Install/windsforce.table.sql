@@ -472,11 +472,9 @@ CREATE TABLE `#@__hometag` (
   `hometag_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户标签',
   `hometag_name` char(32) NOT NULL DEFAULT '' COMMENT '标签名字',
   `hometag_count` int(10) NOT NULL DEFAULT '0' COMMENT '标签用户数量',
-  `hometag_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否可用',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`hometag_id`),
   KEY `hometag_name` (`hometag_name`),
-  KEY `hometag_status` (`hometag_status`),
   KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

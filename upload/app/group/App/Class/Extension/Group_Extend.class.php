@@ -70,4 +70,26 @@ class Group_Extend{
 		return $arrGroupthumbtopics;
 	}
 
+	public static function getGrouphotag($nNum=0,$nDate=0){
+		// 热门标签时间
+		if($nDate==0){
+			$nDate=$GLOBALS['_cache_']['group_option']['group_hottag_date'];
+			if($nDate<3600){
+				$nDate=3600;
+			}
+		}
+
+		// 热门标签数量
+		if($nNum==0){
+			$nNum=$GLOBALS['_cache_']['group_option']['group_hottag_num'];
+			if($nNum<1){
+				$nNum=1;
+			}
+		}
+		
+		$arrGrouphottags=GrouptopictagModel::F('create_dateline>?',CURRENT_TIMESTAMP-$nDate)->order('grouptopictag_count DESC')->top($nNum)->get();
+
+		return $arrGrouphottopics;
+	}
+
 }
