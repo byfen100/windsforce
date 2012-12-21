@@ -41,16 +41,4 @@ class HometagController extends InitController{
 		parent::foreverdelete('hometag',$sId);
 	}
 
-	public function forbid($sModel=null,$sId=null,$bApp=false){
-		$nId=intval(G::getGpc('value','G'));
-
-		parent::forbid('hometag',$nId,true);
-	}
-
-	public function resume($sModel=null,$sId=null,$bApp=false){
-		$nId=intval(G::getGpc('value','G'));
-
-		parent::resume('hometag',$nId,true);
-	}
-	
 }

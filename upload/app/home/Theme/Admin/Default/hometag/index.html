@@ -46,7 +46,6 @@
 						<th><a href="<!--{:Admin_Extend::soryBy('hometag_id',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
 						<th><a href="<!--{:Admin_Extend::soryBy('hometag_name',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_name')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->标签名字<!--</lang>--></a></th>
 						<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
-						<th><a href="<!--{:Admin_Extend::soryBy('hometag_status',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_status')}-->><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></a></th>
 						<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
 						</tr> 
 					</thead> 
@@ -62,14 +61,7 @@
 								</div>
 							</td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:hometag_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
-							<td>
-								<!--<if condition="$value:hometag_status eq 1" >-->
-								<a href="javascript:forbidApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
-								<!--<else/>-->
-								<a href="javascript:resumeApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
-								<!--</if>-->
-								&nbsp;<a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
+							<td><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
 							</td>
 						</tr>
 						<!--</foreach>-->
