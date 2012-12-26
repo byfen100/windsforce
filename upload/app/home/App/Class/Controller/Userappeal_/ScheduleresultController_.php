@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class ScheduleresultController extends Controller{
+class ScheduleresultController extends GlobalchildController{
 
 	public function index(){
 		if(UserModel::M()->isLogin()){
