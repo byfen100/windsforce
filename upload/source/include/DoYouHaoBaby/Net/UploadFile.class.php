@@ -496,7 +496,11 @@ class UploadFile{
 	protected function getExt($sFilename){
 		$arrPathinfo=pathinfo($sFilename);
 
-		return $arrPathinfo['extension'];
+		if(isset($arrPathinfo['extension'])){
+			return $arrPathinfo['extension'];
+		}else{
+			return '';
+		}
 	}
 
 	public function getLastInput(){
