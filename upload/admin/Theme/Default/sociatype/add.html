@@ -85,7 +85,8 @@ function complete(data,status){
 					<fieldset>
 						<label for="sociatype_callback"><!--<lang package='Template/Default/Sociatype'>-->社会化帐号回调地址<!--</lang>--></label>
 						<input type="text" name="sociatype_callback" id="sociatype_callback" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociatype_callback}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociatype'>-->这里是你的服务商的回调地址<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Sociatype'>-->这里是你的服务商的回调地址<!--</lang>--><br/>
+						http://<font color="red">youdomain.com</font>/index.php?app=home&c=public&a=socia_callback&vendor=<font color="red">qq</font></div>
 					</fieldset>
 					<fieldset>
 						<label for="sociatype_scope"><!--<lang package='Template/Default/Sociatype'>-->社会化帐号允许的权限<!--</lang>--></label>
