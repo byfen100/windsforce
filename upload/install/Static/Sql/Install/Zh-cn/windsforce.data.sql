@@ -565,7 +565,7 @@ INSERT INTO `#@__slide` (`slide_id`, `slide_sort`, `slide_title`, `slide_url`, `
 
 INSERT INTO `#@__sociatype` (`sociatype_id`, `sociatype_title`, `sociatype_identifier`, `sociatype_appid`, `sociatype_appkey`, `sociatype_callback`, `sociatype_scope`, `sociatype_status`, `create_dateline`) VALUES
 (1, 'QQ互联', 'qq', '', '', 'http://youdomain.com/index.php?app=home&c=public&a=socia_callback&vendor=qq', 'get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo', 1, 1345777926),
-(2, '新浪微博', 'weibo', '', '', '', '', 1, 1347356728);
+(2, '新浪微博', 'weibo', '', '', 'http://youdomain.com/index.php?app=home&c=public&a=socia_callback&vendor=weibo', '', 1, 1347356728);
 
 -- --------------------------------------------------------
 
