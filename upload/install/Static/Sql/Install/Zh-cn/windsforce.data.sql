@@ -665,7 +665,7 @@ INSERT INTO `#@__theme` (`theme_id`, `theme_name`, `theme_dirname`, `theme_copyr
 --
 
 INSERT INTO `#@__user` (`user_id`, `user_name`, `user_nikename`, `user_password`, `user_registerip`, `user_lastlogintime`, `user_lastloginip`, `user_logincount`, `user_email`, `user_remark`, `user_sign`, `create_dateline`, `update_dateline`, `user_status`, `user_random`, `user_temppassword`, `user_extendstyle`) VALUES
-(1, 'admin', '', 'cd5be146ca5cc5985943ef02bd61f70d', '127.0.0.1', 1355150636, '::1', 861, 'admin@windsforce.com', '', '每一天都是新的,欢迎大家光临我们的心空间，世界之巅，唯我读准。', 1333281705, 1355151458, 1, '90ad77', '', '0');
+(1, 'admin', '', 'cd5be146ca5cc5985943ef02bd61f70d', '127.0.0.1', 1355150636, '::1', 861, 'admin@windsforce.com', '', '每天都需要可以！', 1333281705, 1355151458, 1, '90ad77', '', '0');
 
 -- --------------------------------------------------------
 
