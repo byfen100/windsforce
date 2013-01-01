@@ -22,7 +22,7 @@ class AvatarController extends Controller{
 		$this->_oUserInfo=$oUserInfo;
 
 		$arrAvatarInfo=array();
-		$arrAvatarInfo=Core_Extend::avatars($GLOBALS['___login___']['user_id']);
+		$arrAvatarInfo=Core_Extend::avatars($nId);
 
 		$this->assign('arrAvatarInfo',$arrAvatarInfo);
 		$this->assign('nId',$nId);
