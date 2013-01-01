@@ -13,5 +13,5 @@ http://doyouhaobaby.net
 ----------------------------------
 
 Modified 2012/09/20
-for NeedForBug
+for WindsForce
 http://needforbug.doyouhaobaby.net 
