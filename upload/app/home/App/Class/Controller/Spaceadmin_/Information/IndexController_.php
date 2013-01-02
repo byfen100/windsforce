@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class InformationController extends GlobalchildController{
+class IndexController extends Controller{
 
 	public function index(){
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
@@ -68,36 +68,6 @@ class InformationController extends GlobalchildController{
 
 	public function index_description_(){
 		return $this->index_title_();
-	}
-
-	public function change(){
-		if($GLOBALS['_option_']['seccode_changeinformation_status']==1){
-			$this->_oParentcontroller->check_seccode(true);
-		}
-
-		$nUserId=G::getGpc('user_id','P');
-		$oUser=UserModel::F('user_id=?',$nUserId)->query();
-		$oUser->safeInput();
-		$arrUserprofilesettings=UserprofilesettingModel::F()->getAll();
-		if(is_array($arrUserprofilesettings)){
-			foreach($arrUserprofilesettings as $oUserprofilesetting){
-				if(isset($_POST[$oUserprofilesetting['userprofilesetting_id']])){
-					if(in_array($oUserprofilesetting['userprofilesetting_id'],array('userprofile_bio','userprofile_interest','user_remark','user_sign'))){
-						$oUser->userprofile->{$oUserprofilesetting['userprofilesetting_id']}=G::cleanJs($_POST[$oUserprofilesetting['userprofilesetting_id']]);
-					}else{
-						$oUser->userprofile->{$oUserprofilesetting['userprofilesetting_id']}=$_POST[$oUserprofilesetting['userprofilesetting_id']];
-					}
-				}
-			}
-		}
-
-		$oUser->save(1,'update');
-
-		if($oUser->isError()){
-			$this->E($oUser->getErrorMessage());
-		}else{
-			$this->S(Dyhb::L('修改用户资料成功','Controller/Spaceadmin'));
-		}
 	}
 
 }

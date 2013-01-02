@@ -7,7 +7,7 @@
 // 导入社会化登录组件
 Dyhb::import(WINDSFORCE_PATH.'/source/extension/socialization');
 
-class SociaController extends Controller{
+class IndexController extends Controller{
 
 	public function index(){
 		Socia::clearCookie();

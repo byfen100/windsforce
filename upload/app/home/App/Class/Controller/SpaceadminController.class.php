@@ -13,11 +13,11 @@ class SpaceadminController extends InitController{
 	}
 
 	public function index(){
-		Core_Extend::doControllerAction('Spaceadmin@Information','index',$this);
+		Core_Extend::doControllerAction('Spaceadmin@Information/Index','index');
 	}
 
 	public function change_info(){
-		Core_Extend::doControllerAction('Spaceadmin@Information','change',$this);
+		Core_Extend::doControllerAction('Spaceadmin@Information/Change','index',$this);
 	}
 
 	public function avatar(){
@@ -33,15 +33,15 @@ class SpaceadminController extends InitController{
 	}
 
 	public function password(){
-		Core_Extend::doControllerAction('Spaceadmin@Password','index');
+		Core_Extend::doControllerAction('Spaceadmin@Password/Index','index');
 	}
 
 	public function change_pass(){
-		Core_Extend::doControllerAction('Spaceadmin@Password','change');
+		Core_Extend::doControllerAction('Spaceadmin@Password/Change','index',$this);
 	}
 
 	public function socia(){
-		Core_Extend::doControllerAction('Spaceadmin@Socia','index');
+		Core_Extend::doControllerAction('Spaceadmin@Socia/Index','index');
 	}
 
 	public function socia_account(){
@@ -61,7 +61,7 @@ class SpaceadminController extends InitController{
 	}
 
 	public function promotion(){
-		Core_Extend::doControllerAction('Spaceadmin@Promotion','index');
+		Core_Extend::doControllerAction('Spaceadmin@Promotion/Index','index');
 	}
 
 }

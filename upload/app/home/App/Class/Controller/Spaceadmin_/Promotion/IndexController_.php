@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class PromotionController extends Controller{
+class IndexController extends Controller{
 
 	public function index(){
 		$this->assign('nUserId',Core_Extend::aidencode(intval($GLOBALS['___login___']['user_id'])));
