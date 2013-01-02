@@ -315,7 +315,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('mail_auth_username', ''),
 ('mail_auth_password', ''),
 ('mail_delimiter', '1'),
-('programeupdate_on', '0'),
+('programeupdate_on', '1'),
 ('mail_testmessage_backup', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。\r\n{time}\r\n\r\n-----------------------------------------------------\r\n消息来源：{site_name}\r\n站点网址：{site_url}'),
 ('mail_testsubject_backup', '尊敬的{user_name}：{site_name}系统测试邮件发送成功'),
 ('mail_testmessage', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。\r\n{time}\r\n\r\n-----------------------------------------------------\r\n消息来源：{site_name}\r\n站点网址：{site_url}'),
