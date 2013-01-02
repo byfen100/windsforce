@@ -496,7 +496,7 @@ class Ubb2html{
 				<table width="100%" class="table" style="table-layout:fixed;word-wrap:break-word; word-break;break-all;">
 					<thead>
 						<tr>
-							<th>{$sTitle}</th>
+							<td>{$sTitle}</td>
 						</tr>
 					</thead>
 					<tbody>
