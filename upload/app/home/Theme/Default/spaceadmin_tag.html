@@ -49,10 +49,8 @@ function completeDelete(data,status){
 			<div class="span12">
 				<!--{if is_array($arrHometags)}-->
 				<!--<foreach for=arrHometags value=oHometag>-->
-				<!--{if $oHometag['hometag_status']}-->
 				<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>-->" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><i class=" icon-remove-sign"></i></a>
 				<span class="label label-success"><!--{$oHometag['hometag_name']}--></span>&nbsp;&nbsp;
-				<!--{/if}-->
 				<!--</foreach>-->
 				<!--{d*else}-->
 				<!--<lang package='Template/Spaceadmin'>-->你还没有个人标签，请点击添加。<!--</lang>-->
