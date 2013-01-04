@@ -57,8 +57,5 @@ SociauserController.class
 
 登录送积分功能
 
-还没有部分头部一些东西灭有提炼
 
-另外还有部分JAVASCRIPT没有提炼
-
-favicon.ico相关提炼
+后台统计信息，应用数量，评论数量相关衔接还灭有对上

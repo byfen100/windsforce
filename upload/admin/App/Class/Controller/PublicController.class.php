@@ -30,6 +30,7 @@ class PublicController extends InitController{
 			array(Dyhb::L('应用数量','Controller/Public'),$GLOBALS['_cache_']['site']['app'],Dyhb::U('app/index')),
 			array(Dyhb::L('新鲜事数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefresh'],Dyhb::U('app/index')),
 			array(Dyhb::L('评论数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefreshcomment'],Dyhb::U('app/index')),
+			array(Dyhb::L('附件','Controller/Public'),$GLOBALS['_cache_']['site']['attachment'],Dyhb::U('attachment/index')),
 		);
 		$this->assign('arrStaticInfo',$arrStaticInfo);
 

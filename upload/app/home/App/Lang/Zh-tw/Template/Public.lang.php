@@ -71,6 +71,7 @@ return array(
 '53ecb71dcca1b977c94937fa0c3a528b'=>"更多照片",
 'b4741744b6f4e8b7a93c17ea6e9468d2'=>"我要上傳",
 '24c0f1a5f64409c7019cedf282ff8afd'=>"暫時沒有任何描述",
+'c9a6ee90f5d43732e3f6cf4dcaa8493c'=>"附件",
 )
 
 ?>
