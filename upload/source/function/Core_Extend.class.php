@@ -67,7 +67,7 @@ class Core_Extend{
 		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 		
 		$sTitleAction=ACTION_NAME.'_title_';
-		if(method_exists($oController,$sTitleAction)){
+		if(method_exists($oController,$sTitleAction) && $oController->{$sTitleAction}()){
 			return $oController->{$sTitleAction}().' | '.$GLOBALS['_option_']['site_name'].$page;
 		}else{
 			return $GLOBALS['_option_']['site_name'].$page;
@@ -79,7 +79,7 @@ class Core_Extend{
 		$page=$page>1?",".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 
 		$sKeywordsAction=ACTION_NAME.'_keywords_';
-		if(method_exists($oController,$sKeywordsAction)){
+		if(method_exists($oController,$sKeywordsAction) && $oController->{$sKeywordsAction}()){
 			return $oController->{$sKeywordsAction}().','.$GLOBALS['_option_']['site_name'].$page;
 		}else{
 			return '';
@@ -95,7 +95,12 @@ class Core_Extend{
 			$sDescription=trim(strip_tags($oController->{$sDescriptionAction}()));
 			$sDescription=preg_replace('/\s(?=\s)/','',$sDescription);// 接着去掉两个空格以上的
 			$sDescription=preg_replace('/[\n\r\t]/','',$sDescription);// 最后将非空格替换为一个空格
-			return G::subString($sDescription,0,300).$page;
+			
+			if($sDescription){
+				return G::subString($sDescription,0,300).$page;
+			}else{
+				return $GLOBALS['_option_']['site_name'].$page;
+			}
 		}else{
 			return $GLOBALS['_option_']['site_name'].$page;
 		}
