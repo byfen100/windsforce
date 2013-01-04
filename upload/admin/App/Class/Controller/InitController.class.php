@@ -21,7 +21,7 @@ class InitController extends Controller{
 	}
 
 	public function page404(){
-		$this->display('public+404');
+		$this->display('Public+404');
 		exit();
 	}
 
