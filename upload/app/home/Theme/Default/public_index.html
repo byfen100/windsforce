@@ -231,7 +231,7 @@ $(document).ready(function(){
 				</div>
 
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新照片<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->" title="<!--<lang package='Template/Public'>-->更多照片<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新照片<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->" title="<!--<lang package='Template/Public'>-->更多照片<!--</lang>-->"><i class="icon-th-list"></i></a><!--{if $GLOBALS['___login___']!==false}-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/add')}-->" title="<!--<lang package='Template/Public'>-->我要上传<!--</lang>-->"><i class="icon-upload"></i></a><!--{/if}--></div>
 					<div id="home_attachmentlist_box" class="home_attachmentlist_box">
 						<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/slidedeck.skin.css" media="screen" />
 						
