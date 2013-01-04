@@ -91,4 +91,24 @@ class AttachmentlistController extends Controller{
 		}
 	}
 
+	public function attachment_title_(){
+		if(G::getGpc('recommend','G')==1){
+			if(G::getGpc('photo','G')==1){
+				return Dyhb::L('推荐照片','Controller/Attachment');
+			}else{
+				return Dyhb::L('推荐附件','Controller/Attachment');
+			}
+		}else{
+			return Dyhb::L('最新附件','Controller/Attachment');
+		}
+	}
+
+	public function attachment_keywords_(){
+		return $this->attachment_title_();
+	}
+
+	public function attachment_description_(){
+		return $this->attachment_title_();
+	}
+
 }

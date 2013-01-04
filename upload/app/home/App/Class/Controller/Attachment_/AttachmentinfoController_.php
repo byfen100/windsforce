@@ -68,4 +68,16 @@ class AttachmentinfoController extends Controller{
 		$this->S(Dyhb::L('附件信息保存成功','Controller/Attachment'));
 	}
 
+	public function attachmentinfo_title_(){
+		return Dyhb::L('保存附件信息','Controller/Attachment');
+	}
+
+	public function attachmentinfo_keywords_(){
+		return $this->attachmentinfo_title_();
+	}
+
+	public function attachmentinfo_description_(){
+		return $this->attachmentinfo_title_();
+	}
+
 }

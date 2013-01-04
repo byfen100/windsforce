@@ -6,6 +6,8 @@
 
 class ShowController extends Controller{
 
+	protected $_oAttachment=null;
+	
 	public function index(){
 		$nAttachmentid=intval(G::getGpc('id','G'));
 
@@ -17,6 +19,8 @@ class ShowController extends Controller{
 		if(empty($oAttachment['attachment_id'])){
 			$this->E(Dyhb::L('你要查看的文件不存在','Controller/Attachment'));
 		}
+
+		$this->_oAttachment=$oAttachment;
 
 		$this->assign('oAttachment',$oAttachment);
 
@@ -138,6 +142,18 @@ class ShowController extends Controller{
 	public function get_attachmentcategory_playlist($oAttachment){
 		return $GLOBALS['_option_']['site_url'].'/index.php?app=home&c=attachment&a=mp3list&cid='.
 			$oAttachment['attachmentcategory_id'].'&uid='.$oAttachment['user_id'];
+	}
+
+	public function show_title_(){
+		return $this->_oAttachment['attachment_name'];
+	}
+
+	public function show_keywords_(){
+		return $this->show_title_();
+	}
+
+	public function show_description_(){
+		return $this->show_title_();
 	}
 
 }

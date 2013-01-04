@@ -26,4 +26,16 @@ class IndexController extends Controller{
 		$this->display('attachment+index');
 	}
 
+	public function index_title_(){
+		return Dyhb::L('我的相册','Controller/Attachment');
+	}
+
+	public function index_keywords_(){
+		return $this->index_title_();
+	}
+
+	public function index_description_(){
+		return $this->index_title_();
+	}
+
 }

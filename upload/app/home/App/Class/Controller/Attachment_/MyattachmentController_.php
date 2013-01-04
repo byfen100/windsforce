@@ -87,4 +87,16 @@ class MyattachmentController extends Controller{
 		}
 	}
 
+	public function my_attachment_title_(){
+		return Dyhb::L('我的附件','Controller/Attachment');
+	}
+
+	public function my_attachment_keywords_(){
+		return $this->my_attachment_title_();
+	}
+
+	public function my_attachment_description_(){
+		return $this->my_attachment_title_();
+	}
+
 }

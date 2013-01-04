@@ -38,4 +38,16 @@ class MyattachmentcategoryController extends Controller{
 		}
 	}
 
+	public function my_attachmentcategory_title_(){
+		return Dyhb::L('我的专辑','Controller/Attachment');
+	}
+
+	public function my_attachmentcategory_keywords_(){
+		return $this->my_attachmentcategory_title_();
+	}
+
+	public function my_attachmentcategory_description_(){
+		return $this->my_attachmentcategory_title_();
+	}
+
 }

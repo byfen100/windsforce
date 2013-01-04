@@ -95,4 +95,16 @@ class AddController extends Controller{
 		$this->index(true);
 	}
 
+	public function add_title_(){
+		return Dyhb::L('上传附件','Controller/Attachment');
+	}
+
+	public function add_keywords_(){
+		return $this->add_title_();
+	}
+
+	public function add_description_(){
+		return $this->add_title_();
+	}
+
 }

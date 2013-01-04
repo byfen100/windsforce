@@ -41,4 +41,20 @@ class AttachmentcategoryController extends Controller{
 		}
 	}
 
+	public function attachmentcategory_title_(){
+		if(G::getGpc('recommend','G')==1){
+			return Dyhb::L('推荐专辑','Controller/Attachment');
+		}else{
+			return Dyhb::L('最新专辑','Controller/Attachment');
+		}
+	}
+
+	public function attachmentcategory_keywords_(){
+		return $this->attachmentcategory_title_();
+	}
+
+	public function attachmentcategory_description_(){
+		return $this->attachmentcategory_title_();
+	}
+
 }
