@@ -21,9 +21,9 @@
 							<span class="pipe">|</span>
 							<!--{/if}-->
 							<i class="icon-signal"></i>
-							<a href="<!--{:Dyhb::U('home://public/mobile')}-->">手机版</a>
+							<a href="<!--{:Dyhb::U('home://public/mobile')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->手机版<!--</lang>--></a>
 							<span class="pipe">|</span>
-							<a href="<!--{:Dyhb::U('home://public/sitemap')}-->">网站地图</a>
+							<a href="<!--{:Dyhb::U('home://public/sitemap')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->网站地图<!--</lang>--></a>
 						</div>
 						<div class="right">
 							<!--{if $GLOBALS['_option_']['extendstyle_switch_on']==1}-->
@@ -167,10 +167,13 @@
 								<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->精彩美图<!--</lang>--></a></li>
 							</ul>
 						</li>
+						<li <!--{if MODULE_NAME==='app'}-->class="active"<!--{/if}-->>
+							<a title="<!--<lang package='__COMMON_LANG__@Template/Header'>-->应用<!--</lang>-->" href="<!--{:Dyhb::U('home://app/index')}-->"><img src="http://localhost/windsforce/upload/app/logo_small.png" />&nbsp;<!--<lang package='__COMMON_LANG__@Template/Header'>-->应用<!--</lang>--></a>
+						</li>
 						<li class="divider-vertical"></li>
 						<!--{if $GLOBALS['___login___']!==false}-->
 						<li <!--{if MODULE_NAME==='pm'}-->class="active"<!--{/if}--> id="new-message-box">
-							<a title="短消息" href="<!--{:Dyhb::U('home://pm/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->短消息<!--</lang>--></a>
+							<a title="<!--<lang package='__COMMON_LANG__@Template/Header'>-->短消息<!--</lang>-->" href="<!--{:Dyhb::U('home://pm/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->短消息<!--</lang>--></a>
 						</li>
 						<!--{/if}-->
 					</ul>
