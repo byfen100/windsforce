@@ -384,7 +384,8 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('home_followus_renren', ''),
 ('front_dialog_style', 'simple'),
 ('admin_dialog_style', 'default'),
-('default_app', 'home');
+('default_app', 'home'),
+('home_newattachment_num', '5');
 
 -- --------------------------------------------------------
 

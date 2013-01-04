@@ -76,7 +76,7 @@ class IndexController extends Controller{
 	}
 
 	protected function get_newattachment_(){
-		$nHomenewattachmentnum=intval($GLOBALS['_option_']['home_newhelp_num']);
+		$nHomenewattachmentnum=intval($GLOBALS['_option_']['home_newattachment_num']);
 		if($nHomenewattachmentnum<1){
 			$nHomenewattachmentnum=1;
 		}
