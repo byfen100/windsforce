@@ -5,6 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 class UploadFile{
+
 	const UPLOAD_ERR_OK=0;// 文件成功上传
 	const UPLOAD_ERR_INI_SIZE=1;// 其值为 1，上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值
 	const UPLOAD_ERR_FORM_SIZE=2;// 其值为 2，上传文件的大小超过了 HTML 表单中 MAX_FILE_SIZE 选项指定的值
