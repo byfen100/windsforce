@@ -43,12 +43,12 @@ function unrecommendAttachment(id){
 						</a>
 						<ul class="dropdown-menu"> 
 							<!--<foreach for=arrAttachmentcategorys value=oAttachmentcategory>-->
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--{$oAttachmentcategory['attachmentcategory_name']}--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?cid='.$oAttachmentcategory['attachmentcategory_id'].(isset($_GET['photo']) && in_array(intval($_GET['photo']),array(0,1))?'&recommend=1&photo='.$_GET['photo']:''))}-->"><!--{$oAttachmentcategory['attachmentcategory_name']}--></a></li>
 							<!--</foreach>-->
 							<!--{if is_array($arrAttachmentcategorys)}-->
 							<li class="divider"></li>
 							<!--{/if}-->
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?cid=0')}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?cid=0'.(isset($_GET['photo']) && in_array(intval($_GET['photo']),array(0,1))?'&recommend=1&photo='.$_GET['photo']:''))}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></li>
 						</ul>
 					</li>
 					<li class="dropdown <!--{if G+getGpc('type','G') || isset($_GET['photo'])}-->active<!--{/if}-->">
@@ -58,11 +58,11 @@ function unrecommendAttachment(id){
 						</a>
 						<ul class="dropdown-menu"> 
 							<!--<foreach for=arrAllowedTypes value=sAllowedType>-->
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?type='.$sAllowedType)}-->"><!--{$sAllowedType}--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?type='.$sAllowedType.(isset($_GET['photo']) && in_array(intval($_GET['photo']),array(0,1))?'&recommend=1&photo='.$_GET['photo']:''))}-->"><!--{$sAllowedType}--></a></li>
 							<!--</foreach>-->
 							<li class="divider"></li>
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=1')}-->"><!--<lang package='Template/Attachment'>-->图片<!--</lang>--></a></li>
-							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=0')}-->"><!--<lang package='Template/Attachment'>-->附件<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=1'.(isset($_GET['photo']) && in_array(intval($_GET['photo']),array(0,1))?'&recommend=1&photo='.$_GET['photo']:''))}-->"><!--<lang package='Template/Attachment'>-->图片<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/attachment?photo=0'.(isset($_GET['photo']) && in_array(intval($_GET['photo']),array(0,1))?'&recommend=1&photo='.$_GET['photo']:''))}-->"><!--<lang package='Template/Attachment'>-->附件<!--</lang>--></a></li>
 						</ul>
 					</li>
 				</ul>
