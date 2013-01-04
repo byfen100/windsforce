@@ -57,11 +57,11 @@ $(document).ready(function(){
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>--></li>
 			<li style='width:auto;text-align:right;float:right;overflow:hidden;'>
-				<!--<lang package='Template/Public'>-->会员<!--</lang>-->&nbsp;<!--{$arrSite['user']}--><span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->应用<!--</lang>-->&nbsp;<!--{$arrSite['app']}-->&nbsp;<span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<!--{$arrSite['homefresh']}-->&nbsp;<span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<!--{$arrSite['homefreshcomment']}-->&nbsp;<span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->附件<!--</lang>-->&nbsp;<!--{$arrSite['attachment']}-->
+				<!--<lang package='Template/Public'>-->会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><b><!--{$arrSite['user']}--></b></a><span class='divider'>/</span>&nbsp;
+				<!--<lang package='Template/Public'>-->应用<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://apps/index')}-->"><b><!--{$arrSite['app']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
+				<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<b><!--{$arrSite['homefresh']}--></b>&nbsp;<span class='divider'>/</span>&nbsp;
+				<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<b><!--{$arrSite['homefreshcomment']}--></b>&nbsp;<span class='divider'>/</span>&nbsp;
+				<!--<lang package='Template/Public'>-->附件<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->"><b><!--{$arrSite['attachment']}--></b></a>
 			</li>
 		</ul>
 
