@@ -32,6 +32,9 @@ class IndexController extends Controller{
 		// 取得最新帮助
 		$this->get_newhelp_();
 
+		// 取得最新照片
+		$this->get_newattachment_();
+
 		$this->display('public+index');
 	}
 
@@ -70,6 +73,17 @@ class IndexController extends Controller{
 		$arrNewhelps=HomehelpModel::F()->where('homehelp_status=?',1)->order('create_dateline DESC')->limit(0,$nHomenewhelpnum)->getAll();
 
 		$this->assign('arrNewhelps',$arrNewhelps);
+	}
+
+	protected function get_newattachment_(){
+		$nHomenewattachmentnum=intval($GLOBALS['_option_']['home_newhelp_num']);
+		if($nHomenewattachmentnum<1){
+			$nHomenewattachmentnum=1;
+		}
+
+		$arrNewattachments=AttachmentModel::F()->where(array('attachment_extension'=>array('in','gif,jpeg,jpg,png,bmp')))->order('create_dateline DESC')->limit(0,$nHomenewattachmentnum)->getAll();
+
+		$this->assign('arrNewattachments',$arrNewattachments);
 	}
 
 }

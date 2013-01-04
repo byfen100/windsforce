@@ -94,6 +94,14 @@ Tags: admin, light
 [/CURSCRIPT]
 
 /**===============================
+           最新照片
+================================*/
+[CURSCRIPT=home::public::index]
+.home_attachmentlist_box{margin-bottom:20px;}
+#slidedeck_frame{width: 93%;height: 330px;}
+[/CURSCRIPT]
+
+/**===============================
            帖子列表
 ================================*/
 [CURSCRIPT=home::public::index]

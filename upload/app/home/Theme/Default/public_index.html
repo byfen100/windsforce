@@ -231,45 +231,88 @@ $(document).ready(function(){
 				</div>
 
 				<div class="commonbox">
-					<div class="commonboxtitle">最新话题</div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新照片<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->" title="<!--<lang package='Template/Public'>-->更多照片<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div id="home_attachmentlist_box" class="home_attachmentlist_box">
+						<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/slidedeck.skin.css" media="screen" />
+						
+						<!--[if lte IE 8]>
+						<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/slidedeck.skin.ie.css" media="screen,handheld" />
+						<![endif]-->
+						
+						<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/slidedeck.jquery.lite.pack.js"></script>
+
+						<div id="slidedeck_frame" class="skin-slidedeck">
+							<dl class="slidedeck">
+								<!--{if is_array($arrNewattachments)}-->
+								<!--<foreach for=arrNewattachments value=oAttachment>-->
+								<dt><!--{$oAttachment['attachment_name']|G+subString=0,25}--></dt>
+								<dd><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><img src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" alt="<!--{$oAttachment['attachment_name']}-->"/></a><!--{$oAttachment['attachment_description']|G+subString=0,60}--></dd>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<dt><!--<lang package='Template/Public'>-->只<!--</lang>--></dt>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg"/><!--<lang package='Template/Public'>-->花<!--</lang>--></dd>
+								<dt><!--<lang package='Template/Public'>-->为<!--</lang>--></dt>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
+								<dt><!--<lang package='Template/Public'>-->你<!--</lang>--></dt>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg"/><!--<lang package='Template/Public'>-->人<!--</lang>--></dd>
+								<dt><!--<lang package='Template/Public'>-->精<!--</lang>--></dt>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg"/><!--<lang package='Template/Public'>-->更<!--</lang>--></dd>
+								<dt><!--<lang package='Template/Public'>-->彩<!--</lang>--></dt>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
+								<!--{/if}-->
+							</dl>
+						</div>
+
+						<!--{script}-->
+						$('.slidedeck').slidedeck({
+							autoPlay: true,
+							cycle: true, 
+							autoPlayInterval: 3000 
+						});
+						<!--{/script}-->
+					</div>
+				</div>
+
+				<div class="commonbox">
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新话题<!--</lang>--></div>
 					<div id="home_topiclist_box" class="home_topiclist_box">
 					</div>
 				</div>
 
 				<div class="commonbox grouplist_title">
-					<div class="commonboxtitle">推荐小组&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->" title="更多小组"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->推荐小组<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<ul class="groups" id="home_recommendgroup_box">
 					</ul>
 				</div>
 			</div>
 			<div class="span4">
 				<div class="commonbox">
-					<div class="commonboxtitle">热门话题</div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->热门话题<!--</lang>--></div>
 					<div class="commonlist">
 						<ul id="home_hottopiclist_box" class="home_hottopiclist_box">
 						</ul>
 					</div>
 				</div>
 				<div class="commonbox">
-					<div class="commonboxtitle">最新会员</div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新会员<!--</lang>--></div>
 					<p><ul class="thumbnails">
 							<!--{if is_array($arrNewusers)}-->
 							<!--<foreach for=arrNewusers value=oNewuser>-->
 							<li class="span1">
 								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNewuser['user_id'],'small' )}-->" width="100%" title="会员 <!--{$oNewuser['user_name']}-->" alt="会员 <!--{$oNewuser['user_name']}-->"></a>
-									<a rel="tooltip" title="会员 <!--{$oNewuser['user_name']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oNewuser['user_name']|G+subString=0,3}--></h5></a>
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNewuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}-->" alt="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oNewuser['user_name']|G+subString=0,3}--></h5></a>
 								</div>
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<li>暂时没有发现任何新会员&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->">注册</a></li>
+							<li><!--<lang package='Template/Public'>-->暂时没有发现任何新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a></li>
 							<!--{/if}-->
 						</ul>
 					</p>
 				</div>
 				<div class="commonbox">
-					<div class="commonboxtitle">最新帮助</div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新帮助<!--</lang>--></div>
 					<div class="commonlist">
 						<ul id="home_newhelplist_box" class="home_newhelp_box">
 							<!--{if is_array($arrNewhelps)}-->
@@ -277,26 +320,26 @@ $(document).ready(function(){
 							<li><a href="<!--{:Dyhb::U('home://help@?id='.$oNewhelp['homehelp_id'])}-->"><!--{$oNewhelp['homehelp_title']|G+subString=0,18}--></a></li>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<li>暂时没有发现任何帮助</li>
+							<li><!--<lang package='Template/Public'>-->暂时没有发现任何帮助<!--</lang>--></li>
 							<!--{/if}-->
 						</ul>
 					</div>
 				</div>
 				<div class="commonbox">
-					<div class="commonboxtitle">关注我们</div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->关注我们<!--</lang>--></div>
 					<div class="commonlist">
 						<ul id="home_followus_box" class="home_followus_box">
 							<!--{if !empty($GLOBALS['_option_']['home_followus_tqqcom'])}-->
-							<li><a href="<!--{$GLOBALS['_option_']['home_followus_tqqcom']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/tqqcom.gif" border="0">&nbsp;腾讯微博</a></li>
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_tqqcom']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/tqqcom.gif" border="0">&nbsp;<!--<lang package='Template/Public'>-->腾讯微博<!--</lang>--></a></li>
 							<!--{/if}-->
 							<!--{if !empty($GLOBALS['_option_']['home_followus_renren'])}-->
-							<li><a href="<!--{$GLOBALS['_option_']['home_followus_renren']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/renren.gif" border="0">&nbsp;人人主页</a></li>
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_renren']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/renren.gif" border="0">&nbsp;<!--<lang package='Template/Public'>-->人人主页<!--</lang>--></a></li>
 							<!--{/if}-->
 							<!--{if !empty($GLOBALS['_option_']['home_followus_weibo'])}-->
-							<li><a href="<!--{$GLOBALS['_option_']['home_followus_weibo']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/weibo.gif" border="0">&nbsp;新浪微博</a></li>
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_weibo']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/weibo.gif" border="0">&nbsp;<!--<lang package='Template/Public'>-->新浪微博<!--</lang>--></a></li>
 							<!--{/if}-->
 							<!--{if !empty($GLOBALS['_option_']['home_followus_qq'])}-->
-							<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<!--{$GLOBALS['_option_']['home_followus_qq']}-->&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=2:<!--{$GLOBALS['_option_']['home_followus_qq']}-->:41" alt="点击这里给我发消息" title="点击这里给我发消息" border="0"></a></li>
+							<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<!--{$GLOBALS['_option_']['home_followus_qq']}-->&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=2:<!--{$GLOBALS['_option_']['home_followus_qq']}-->:41" alt="<!--<lang package='Template/Public'>-->点击这里给我发消息<!--</lang>-->" title="<!--<lang package='Template/Public'>-->点击这里给我发消息<!--</lang>-->" border="0"></a></li>
 							<!--{/if}-->
 						</ul>
 					</div>
