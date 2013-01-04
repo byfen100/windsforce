@@ -86,4 +86,18 @@ class IndexController extends Controller{
 		$this->assign('arrNewattachments',$arrNewattachments);
 	}
 
+	public function index_title_(){
+		if($GLOBALS['_commonConfig_']['DEFAULT_APP']!='home'){
+			return Dyhb::L('个人空间','Controller/Public');
+		}
+	}
+
+	public function index_keywords_(){
+		return $this->index_title_();
+	}
+
+	public function index_description_(){
+		return $this->index_title_();
+	}
+
 }
