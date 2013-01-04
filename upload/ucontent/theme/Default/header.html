@@ -155,7 +155,7 @@
 					</div>
 
 					<ul class="nav pull-right">
-						<li class="dropdown <!--{if MODULE_NAME==='stat'}-->active<!--{/if}-->">
+						<li class="dropdown <!--{if in_array(MODULE_NAME,array('stat','attachment'))}-->active<!--{/if}-->">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><!--<lang package='__COMMON_LANG__@Template/Header'>-->社区广场<!--</lang>-->&nbsp;<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<!--{:Dyhb::U('home://stat/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->基本概况<!--</lang>--></a></li>

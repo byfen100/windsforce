@@ -18,7 +18,10 @@ class AttachmentController extends InitController{
 		}
 
 		parent::init__();
-		$this->is_login();
+
+		if(!in_array(ACTION_NAME,array('index','attachment','attachmentcategory','show','mp3list','get_ajaximg','fullplay_frame','playout'))){
+			$this->is_login();
+		}
 	}
 	
 	public function index(){
