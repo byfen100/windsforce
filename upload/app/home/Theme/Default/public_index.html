@@ -246,19 +246,19 @@ $(document).ready(function(){
 								<!--{if is_array($arrNewattachments)}-->
 								<!--<foreach for=arrNewattachments value=oAttachment>-->
 								<dt><!--{$oAttachment['attachment_name']|G+subString=0,25}--></dt>
-								<dd><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><img src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" alt="<!--{$oAttachment['attachment_name']}-->"/></a><!--{$oAttachment['attachment_description']|G+subString=0,60}--></dd>
+								<dd><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><img src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" alt="<!--{$oAttachment['attachment_name']}-->" height="296" width="100%"/></a><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|G+subString=0,60}--><!--{d*else}--><!--<lang package='Template/Public'>-->暂时没有任何描述<!--</lang>--><!--{/if}--></dd>
 								<!--</foreach>-->
 								<!--{d*else}-->
 								<dt><!--<lang package='Template/Public'>-->只<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg"/><!--<lang package='Template/Public'>-->花<!--</lang>--></dd>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->花<!--</lang>--></dd>
 								<dt><!--<lang package='Template/Public'>-->为<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
 								<dt><!--<lang package='Template/Public'>-->你<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg"/><!--<lang package='Template/Public'>-->人<!--</lang>--></dd>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->人<!--</lang>--></dd>
 								<dt><!--<lang package='Template/Public'>-->精<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg"/><!--<lang package='Template/Public'>-->更<!--</lang>--></dd>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->更<!--</lang>--></dd>
 								<dt><!--<lang package='Template/Public'>-->彩<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
+								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
 								<!--{/if}-->
 							</dl>
 						</div>
