@@ -344,7 +344,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('upload_imageswater_textfontsize', '30'),
 ('upload_imageswater_textfontpath', 'framework-font'),
 ('upload_imageswater_textfonttype', 'FetteSteinschrift.ttf'),
-('upload_loginuser_view', '1'),
+('upload_loginuser_view', '0'),
 ('upload_attach_expirehour', '0'),
 ('upload_limit_leech', '1'),
 ('upload_notlimit_leechdomail', ''),
