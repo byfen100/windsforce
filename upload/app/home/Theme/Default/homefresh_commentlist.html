@@ -17,8 +17,10 @@
 											</h5>
 											<div class="homefreshcomment-content">
 												<!--{$oHomefreshcommentList['homefreshcomment_content']|nl2br}-->
+												<!--{if $GLOBALS['___login___']!==false}-->
 												<span class="pipe">|</span>
 												<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefreshcommentList['homefresh_id']}-->','<!--{$oHomefreshcommentList['homefreshcomment_id']}-->');"><!--<lang package='Template/Homefresh'>-->回复<!--</lang>--></a>
+												<!--{/if}-->
 												<!--{if $bAuditpass===true}-->
 												&nbsp;
 												<!--{if $oHomefreshcommentList['homefreshcomment_auditpass']==0}-->
@@ -51,8 +53,10 @@
 														<div class="homefreshcomment_content">
 															<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshchildcomment['user_id'])}-->"><!--{$oHomefreshchildcomment->user_id|UserModel+getUsernameById}--></a>:
 															<!--{$oHomefreshchildcomment->homefreshcomment_content|nl2br}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em>
+															<!--{if $GLOBALS['___login___']!==false}-->
 															<span class="pipe">|</span>
 															<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshchildcomment['homefreshcomment_parentid']}-->',1,'<!--{$oHomefreshchildcomment:user:user_name}-->','<!--{$oHomefreshchildcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->回复<!--</lang>--></a>
+															<!--{/if}-->
 															<!--{if $bAuditpass===true}-->
 															&nbsp;
 															<!--{if $oHomefreshchildcomment['homefreshcomment_auditpass']==0}-->
