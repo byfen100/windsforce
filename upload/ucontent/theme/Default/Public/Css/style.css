@@ -242,3 +242,10 @@ Tags: admin, light
 }
 .feed_quote .feed_quoteinfo{background: url("{IMG_DIR}/quoter.gif") no-repeat scroll right bottom transparent;color: #333333;display: inline-block;padding-right: 15px;}
 [/CURSCRIPT]
+
+/**===============================
+           应用列表
+================================*/
+[CURSCRIPT=home::apps::index]
+.apps_info{position:relative;padding-left:50px;}
+[/CURSCRIPT]

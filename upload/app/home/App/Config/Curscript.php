@@ -18,4 +18,5 @@ return array(
 	'attachment::show',
 	'space::index',
 	'stat::feed',
+	'apps::index'
 );
