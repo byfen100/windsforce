@@ -50,5 +50,17 @@ class FeedController extends Controller{
 
 		$this->display('stat+feed');
 	}
+
+	public function feed_title_(){
+		return Dyhb::L('用户动态','Controller/Stat');
+	}
+
+	public function feed_keywords_(){
+		return $this->feed_title_();
+	}
+
+	public function feed_description_(){
+		return $this->feed_title_();
+	}
 	
 }
