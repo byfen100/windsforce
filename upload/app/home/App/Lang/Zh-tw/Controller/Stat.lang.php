@@ -6,6 +6,7 @@ return array(
 'f7871b7ba53411ef40a72b7287e91dac'=>"用戶動態",
 '02bf863a224b14de19b887cfe6e0f80b'=>"隨便看看",
 '181f1ab4e4a6baac5f9158b265767ebc'=>"系統管理員",
+'7f8bd3115acfdd9c6210dbead0d1310d'=>"新註冊會員",
 )
 
 ?>

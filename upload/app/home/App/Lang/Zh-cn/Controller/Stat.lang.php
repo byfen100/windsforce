@@ -6,6 +6,7 @@ return array(
 'f7871b7ba53411ef40a72b7287e91dac'=>"用户动态",
 '02bf863a224b14de19b887cfe6e0f80b'=>"随便看看",
 '181f1ab4e4a6baac5f9158b265767ebc'=>"系统管理员",
+'7f8bd3115acfdd9c6210dbead0d1310d'=>"新注册会员",
 )
 
 ?>

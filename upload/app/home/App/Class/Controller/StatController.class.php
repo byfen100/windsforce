@@ -25,5 +25,9 @@ class StatController extends InitController{
 	public function adminuser(){
 		Core_Extend::doControllerAction('Stat@Adminuser','index');
 	}
+
+	public function newuser(){
+		Core_Extend::doControllerAction('Stat@Newuser','index');
+	}
 	
 }
