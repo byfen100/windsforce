@@ -72,6 +72,7 @@ return array(
 'b4741744b6f4e8b7a93c17ea6e9468d2'=>"我要上传",
 '24c0f1a5f64409c7019cedf282ff8afd'=>"暂时没有任何描述",
 'c9a6ee90f5d43732e3f6cf4dcaa8493c'=>"附件",
+'7f8bd3115acfdd9c6210dbead0d1310d'=>"新注册会员",
 )
 
 ?>
