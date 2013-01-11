@@ -62,6 +62,11 @@ function option(){
 						<div class="description"><!--<lang package='Template/Default/Option'>-->将系统推荐的小组放置在首页,可以更好地吸收会员<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
+						<label for="home_activeuser_num"><!--<lang package='Template/Default/Option'>-->首页活跃会员数量<!--</lang>--></label>
+						<input type="text" name="options[home_activeuser_num]" id="home_activeuser_num" size="40" value="<!--{$arrOptions['home_activeuser_num']}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Option'>-->可以看到那些会员一直积极地支持网站<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
 						<label for="home_newuser_num"><!--<lang package='Template/Default/Option'>-->首页最新会员数量<!--</lang>--></label>
 						<input type="text" name="options[home_newuser_num]" id="home_newuser_num" size="40" value="<!--{$arrOptions['home_newuser_num']}-->"/>
 						<div class="description"><!--<lang package='Template/Default/Option'>-->可以清楚地看到社区的人气不断增加,可以吸引会员加入<!--</lang>--></div>

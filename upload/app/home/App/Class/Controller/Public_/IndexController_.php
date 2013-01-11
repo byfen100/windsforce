@@ -26,6 +26,9 @@ class IndexController extends Controller{
 		// 首页新鲜事
 		$this->get_homefresh_();
 
+		// 取得活跃会员
+		$this->get_activeuser_();
+
 		// 取得最新用户
 		$this->get_newuser_();
 
@@ -51,6 +54,17 @@ class IndexController extends Controller{
 
 		$this->assign('arrGoodCookie',$arrGoodCookie);
 		$this->assign('arrHomefreshs',$arrHomefreshs);
+	}
+
+	protected function get_activeuser_(){
+		$nHomeactiveusernum=intval($GLOBALS['_option_']['home_activeuser_num']);
+		if($nHomeactiveusernum<1){
+			$nHomeactiveusernum=1;
+		}
+		
+		$arrActiveusers=UserModel::F()->where('user_status=?',1)->order('update_dateline DESC')->limit(0,$nHomeactiveusernum)->getAll();
+
+		$this->assign('arrActiveusers',$arrActiveusers);
 	}
 
 	protected function get_newuser_(){

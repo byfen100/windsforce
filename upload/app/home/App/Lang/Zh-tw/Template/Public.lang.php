@@ -73,6 +73,8 @@ return array(
 '24c0f1a5f64409c7019cedf282ff8afd'=>"暫時沒有任何描述",
 'c9a6ee90f5d43732e3f6cf4dcaa8493c'=>"附件",
 '7f8bd3115acfdd9c6210dbead0d1310d'=>"新註冊會員",
+'bebd2b37c3e28afef89ca30eb0cb2eed'=>"活躍會員",
+'19fcb9eb2594059036dfede5f4ec53e8'=>"時間",
 )
 
 ?>
