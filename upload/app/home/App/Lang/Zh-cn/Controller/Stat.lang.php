@@ -7,6 +7,7 @@ return array(
 '02bf863a224b14de19b887cfe6e0f80b'=>"随便看看",
 '181f1ab4e4a6baac5f9158b265767ebc'=>"系统管理员",
 '7f8bd3115acfdd9c6210dbead0d1310d'=>"新注册会员",
+'ff9eae4f2d5d7ea8896da57ae8b5ccf4'=>"会员排行",
 )
 
 ?>

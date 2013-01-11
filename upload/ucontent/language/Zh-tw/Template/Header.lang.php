@@ -24,6 +24,7 @@ return array(
 '51d1f9cd81a7ad0c25afc25a2010437c'=>"手機版",
 '5fc067de81066ec9baa79bac38cf0138'=>"網站地圖",
 '5b0520a9bf5e8d87c0b8c6e58766e184'=>"應用",
+'a5cfad478e75aa135d5d56d2434cb80d'=>"用戶排行",
 )
 
 ?>
