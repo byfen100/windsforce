@@ -63,7 +63,7 @@ function goodnum(id){
 	Dyhb.AjaxSend(D.U('home://ucenter/update_homefreshgoodnum'),'ajax=1&id='+id,'',function(data,status,info){
 		if(status==1){
 			$('#goodnum_'+id).text(data.num);
-			$('#goodnum_'+id).css("color","#4A4A4A");
+			$('#goodnum_'+id).addClass('goodnum_click');
 		}
 	});
 }

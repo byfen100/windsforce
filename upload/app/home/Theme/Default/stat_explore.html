@@ -5,7 +5,7 @@ function goodnum(id){
 	Dyhb.AjaxSend(D.U('home://ucenter/update_homefreshgoodnum'),'ajax=1&id='+id,'',function(data,status,info){
 		if(status==1){
 			$('#goodnum_'+id).text(data.num);
-			$('#goodnum_'+id).css("color","#4A4A4A");
+			$('#goodnum_'+id).addClass('goodnum_click');
 		}
 	});
 }
@@ -44,7 +44,7 @@ function goodnum(id){
 											<!--{$oHomefresh['homefresh_message']|strip_tags|G+subString=0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']|Core_Extend+ubb}-->
 										</div>
 										<div class="homefresh-count">
-											<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->style="color:#4A4A4A;"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
+											<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->class="goodnum_click"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
 											<span class="pipe">|</span>
 											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->评论<!--</lang>-->(<span id="homefreshcomment_<!--{$oHomefresh['homefresh_id']}-->"><!--{$oHomefresh['homefresh_commentnum']}--></span>)</a>
 											<span class="pipe">|</span>
