@@ -17,6 +17,6 @@ return array(
 	'attachment::attachmentinfo',
 	'attachment::show',
 	'space::index',
-	'stat::feed',
+	'stat::feed,stat::explore',
 	'apps::index'
 );

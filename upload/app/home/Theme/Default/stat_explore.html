@@ -1,5 +1,16 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{script}-->
+function goodnum(id){
+	Dyhb.AjaxSend(D.U('home://ucenter/update_homefreshgoodnum'),'ajax=1&id='+id,'',function(data,status,info){
+		if(status==1){
+			$('#goodnum_'+id).text(data.num);
+			$('#goodnum_'+id).css("color","#4A4A4A");
+		}
+	});
+}
+<!--{/script}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Stat'>-->随便看看<!--</lang>--></li>
@@ -8,8 +19,87 @@
 		<!--<include file="stat+menu" />-->
 
 		<div class="row">
-			<div class="span12">
-				wait to do...
+			<div class="span8">
+				<div class="commonbox">
+					<div class="message-box">
+						<!--{if is_array($arrHomefreshs)}-->
+						<table class="table">
+							<thead>
+								<tr>
+									<th colspan="2"><!--<lang package='Template/Homefresh'>-->新鲜事<!--</lang>--></th>
+								</tr>
+							</thead>
+							<tbody id="homefreshlist_box">
+								<!--<foreach for=arrHomefreshs value=oHomefresh>-->
+								<tr id="homefreshlist_item_<!--{$oHomefresh['homefresh_id']}-->">
+									<td style="width:48px;">
+										<div style="text-align:center;">
+											<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->"><img src="<!--{:Core_Extend::avatar($oHomefresh['user_id'],'small')}-->" width="48px" height="48px" class="thumbnail" /></a>
+										</div>
+									</td>
+									<td>
+										<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>-->
+										</h4>
+										<div class="homefresh-content">
+											<!--{$oHomefresh['homefresh_message']|strip_tags|G+subString=0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']|Core_Extend+ubb}-->
+										</div>
+										<div class="homefresh-count">
+											<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->style="color:#4A4A4A;"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
+											<span class="pipe">|</span>
+											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->评论<!--</lang>-->(<span id="homefreshcomment_<!--{$oHomefresh['homefresh_id']}-->"><!--{$oHomefresh['homefresh_commentnum']}--></span>)</a>
+											<span class="pipe">|</span>
+											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->" title="<!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>
+										</div>
+									</td>
+								</tr>
+								<!--</foreach>-->
+							</tbody>
+						</table>
+						<!--{d*else}-->
+						<p><!--<lang package='Template/Homefresh'>-->暂时没有发现任何新鲜事<!--</lang>--></p>
+						<!--{/if}-->
+
+						<p><!--{$sPageNavbar}--></p>
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="commonbox">
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->活跃会员<!--</lang>--></div>
+					<p><ul class="thumbnails">
+							<!--{if is_array($arrActiveusers)}-->
+							<!--<foreach for=arrActiveusers value=oActiveuser>-->
+							<li class="span1">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oActiveuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['update_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['update_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oActiveuser['user_name']|G+subString=0,3}--></h5></a>
+								</div>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li><!--<lang package='Template/Public'>-->暂时没有发现任何新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a></li>
+							<!--{/if}-->
+						</ul>
+					</p>
+				</div>
+				<div class="commonbox">
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新会员<!--</lang>--></div>
+					<p><ul class="thumbnails">
+							<!--{if is_array($arrNewusers)}-->
+							<!--<foreach for=arrNewusers value=oNewuser>-->
+							<li class="span1">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNewuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oNewuser['user_name']|G+subString=0,3}--></h5></a>
+								</div>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li><!--<lang package='Template/Public'>-->暂时没有发现任何新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a></li>
+							<!--{/if}-->
+						</ul>
+					</p>
+				</div>
 			</div>
 		</div><!--/row-->
 

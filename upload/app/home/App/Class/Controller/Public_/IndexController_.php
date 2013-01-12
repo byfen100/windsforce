@@ -57,24 +57,12 @@ class IndexController extends Controller{
 	}
 
 	protected function get_activeuser_(){
-		$nHomeactiveusernum=intval($GLOBALS['_option_']['home_activeuser_num']);
-		if($nHomeactiveusernum<1){
-			$nHomeactiveusernum=1;
-		}
-		
-		$arrActiveusers=UserModel::F()->where('user_status=?',1)->order('update_dateline DESC')->limit(0,$nHomeactiveusernum)->getAll();
-
+		$arrActiveusers=Home_Extend::getActiveuser();
 		$this->assign('arrActiveusers',$arrActiveusers);
 	}
 
 	protected function get_newuser_(){
-		$nHomenewusernum=intval($GLOBALS['_option_']['home_newuser_num']);
-		if($nHomenewusernum<1){
-			$nHomenewusernum=1;
-		}
-		
-		$arrNewusers=UserModel::F()->where('user_status=?',1)->order('create_dateline DESC')->limit(0,$nHomenewusernum)->getAll();
-
+		$arrNewusers=Home_Extend::getNewuser();
 		$this->assign('arrNewusers',$arrNewusers);
 	}
 

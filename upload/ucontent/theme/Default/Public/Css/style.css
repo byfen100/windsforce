@@ -27,7 +27,7 @@ Tags: admin, light
 /**===============================
            新鲜事
 ================================*/
-[CURSCRIPT=home::ucenter,home::public::index]
+[CURSCRIPT=home::ucenter,home::public::index,home::stat::explore]
 /* 主容器 */
 .homefresh-box{ table-layout:fixed; word-break: break-all; overflow:hidden;}
 .homefresh-box .max-limit-doing{ margin:5px 70px 0px 0px; }
@@ -73,7 +73,7 @@ Tags: admin, light
 /**===============================
            首页其它
 ================================*/
-[CURSCRIPT=home::public::index]
+[CURSCRIPT=home::public::index,home::stat::explore]
 .message-box{border:1px solid #EEEEEE;padding:10px;margin-bottom:20px;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;border-radius: 5px 5px 5px 5px;}
 .site_introduction h1{color:#000;font-size:16px;}
 [/CURSCRIPT]
