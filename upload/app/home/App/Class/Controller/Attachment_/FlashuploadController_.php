@@ -14,6 +14,8 @@ class FlashuploadController extends Controller{
 
 			$arrUploadids=Upload_Extend::uploadFlash();
 			echo ($arrUploadids[0]);
+
+			$this->cache_site_();
 		}catch(Exception $e){
 			echo '<div class="upload-error">'.
 						sprintf('&#8220;%s&#8221; has failed to upload due to an error',htmlspecialchars($_FILES['Filedata']['name'])).'</strong><br />'.
@@ -21,6 +23,13 @@ class FlashuploadController extends Controller{
 				'</div>';
 			exit;
 		}
+	}
+
+	protected function cache_site_(){
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('site');
 	}
 
 }

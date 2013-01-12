@@ -40,6 +40,8 @@ class DeleteattachmentController extends Controller{
 
 		$oAttachment->destroy();
 
+		$this->cache_site_();
+
 		if(!$nId){
 			$this->S(Dyhb::L('附件删除成功','Controller/Attachment'));
 		}
@@ -56,6 +58,13 @@ class DeleteattachmentController extends Controller{
 		}
 			
 		$this->S(Dyhb::L('批量删除附件成功','Controller/Attachment'));
+	}
+
+	protected function cache_site_(){
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('site');
 	}
 
 }

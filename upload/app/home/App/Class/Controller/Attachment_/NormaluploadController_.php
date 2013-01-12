@@ -18,6 +18,8 @@ class NormaluploadController extends Controller{
 			$arrUploadids=Upload_Extend::uploadNormal();
 			$sUploadids=implode(',',$arrUploadids);
 
+			$this->cache_site_();
+			
 			if(G::getGpc('dialog','P')==1){
 				G::urlGoTo(Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P')));
 			}else{
@@ -27,6 +29,13 @@ class NormaluploadController extends Controller{
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}
+	}
+
+	protected function cache_site_(){
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('site');
 	}
 
 }
