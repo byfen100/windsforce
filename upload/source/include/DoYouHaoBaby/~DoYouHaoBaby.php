@@ -23,10 +23,10 @@ if(!defined('APP_RUNTIME_PATH')){
    DoYouHaoBaby 基础初始化文件($)*/
 /** 系统异常和错误处理 */
 set_exception_handler(array('Dyhb','exceptionHandler'));
-if(!defined('WINDSFORCE_DEBUG')){
-	define('WINDSFORCE_DEBUG',FALSE);
+if(!defined('DOYOUHAOBABY_DEBUG')){
+	define('DOYOUHAOBABY_DEBUG',FALSE);
 }
-if(WINDSFORCE_DEBUG===TRUE){
+if(DOYOUHAOBABY_DEBUG===TRUE){
 	set_error_handler(array('Dyhb','errorHandel'));
 	register_shutdown_function(array('Dyhb','shutdownHandel'));
 }
