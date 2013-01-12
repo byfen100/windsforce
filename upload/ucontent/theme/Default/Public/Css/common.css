@@ -134,11 +134,7 @@ table thead th .order_asc { padding-right: 8px; background: url({IMG_DIR}/order_
 /**===============================
            分页条
 ================================*/
-.pagenav {padding:3px 0px;margin:3px 0px; 
-  height: 36px;
-  margin: 18px 0;
-
-}
+.pagenav {padding:3px 0px;margin:3px 0px; height: 36px;margin: 18px 0;}
 .pagenav a {border: #dedfde 1px solid; padding:2px 6px 2px 6px; margin-right: 3px; text-decoration: none;-moz-border-radius: 2px;-khtml-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
 .pagenav a:hover {background-image: none; background-color: #f5f5f5;border: #ddd 1px solid;}
 .pagenav a:active {color:#999999; background-image: none; background-color: #f5f5f5;border: #000 1px solid;}

@@ -7,7 +7,7 @@
 return array(
 	'public::index',
 	'pm',
-	'ucenter,ucenter::index',
+	'ucenter,ucenter::index,ucenter::view',
 	'attachment::index',
 	'attachment::add,attachment::dialog_add',
 	'attachment::attachment',
