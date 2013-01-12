@@ -9,7 +9,7 @@ if(!file_exists('data/Install.lock.php')){
 
 //error_reporting(E_ERROR|E_PARSE|E_STRICT);
 error_reporting(E_ALL);
-define('WINDSFORCE_DEBUG',TRUE);
+define('DOYOUHAOBABY_DEBUG',TRUE);
 
 /** Defined the version of WindsForce */
 define('WINDSFORCE_SERVER_VERSION','1.0');
