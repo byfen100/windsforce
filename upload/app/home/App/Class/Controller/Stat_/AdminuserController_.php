@@ -7,6 +7,10 @@
 class AdminuserController extends Controller{
 
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('siteadminuser')){
+			$this->E(Dyhb::L('你没有权限访问系统管理员','Controller/Stat'));
+		}
+		
 		// 取得管理员配置
 		$arrAdminuserid=explode(',',$GLOBALS['_commonConfig_']['ADMIN_USERID']);
 		if(empty($arrAdminuserid)){

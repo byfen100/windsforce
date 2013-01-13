@@ -389,7 +389,16 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('admin_dialog_style', 'default'),
 ('default_app', 'home'),
 ('home_newattachment_num', '5'),
-('home_activeuser_num', '12');
+('home_activeuser_num', '12'),
+('allowed_view_sitebase', '0'),
+('allowed_view_siteuserlist', '1'),
+('allowed_view_siteadminuser', '1'),
+('allowed_view_sitenewuser', '0'),
+('allowed_view_sitefeed', '0'),
+('allowed_view_siteexplore', '0'),
+('allowed_view_siteusertop', '0'),
+('allowed_view_attachment', '0'),
+('allowed_view_siteapps', '0');
 
 -- --------------------------------------------------------
 

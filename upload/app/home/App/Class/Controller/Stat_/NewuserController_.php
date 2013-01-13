@@ -7,6 +7,10 @@
 class NewuserController extends Controller{
 
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('sitenewuser')){
+			$this->E(Dyhb::L('你没有权限访问新注册会员','Controller/Stat'));
+		}
+		
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 		$nCurrentTimeStamp=CURRENT_TIMESTAMP;
 

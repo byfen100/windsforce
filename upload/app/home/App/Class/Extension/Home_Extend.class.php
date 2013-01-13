@@ -30,4 +30,28 @@ class Home_Extend{
 		return $arrActiveusers;
 	}
 
+	public static function getVisiteallowed($sType){
+		if(Core_Extend::isAdmin()){
+			return true;
+		}else{
+			if(isset($GLOBALS['_option_']['allowed_view_'.$sType])){
+				$nVisiteallowed=intval($GLOBALS['_option_']['allowed_view_'.$sType]);
+
+				if($nVisiteallowed==2){
+						return false;
+				}elseif($nVisiteallowed==1){
+					if($GLOBALS['___login___']===false){
+						return false;
+					}else{
+						return true;
+					}
+				}else{
+					return true;
+				}
+			}else{
+				return false;
+			}
+		}
+	}
+
 }

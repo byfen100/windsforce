@@ -7,8 +7,11 @@
 class BaseController extends Controller{
 
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('sitebase')){
+			$this->E(Dyhb::L('你没有权限访问基本概况','Controller/Stat'));
+		}
+		
 		Core_Extend::loadCache('site');
-
 		$this->assign('arrSite',$GLOBALS['_cache_']['site']);
 
 		$this->display('stat+base');

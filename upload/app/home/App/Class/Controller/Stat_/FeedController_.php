@@ -7,6 +7,10 @@
 class FeedController extends Controller{
 
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('sitefeed')){
+			$this->E(Dyhb::L('你没有权限访问用户动态','Controller/Stat'));
+		}
+		
 		$arrOptionData['feed_list_num']=20;
 
 		// 动态列表

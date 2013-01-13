@@ -21,6 +21,10 @@ class AttachmentController extends InitController{
 
 		if(!in_array(ACTION_NAME,array('index','attachment','attachmentcategory','show','mp3list','get_ajaximg','fullplay_frame','playout'))){
 			$this->is_login();
+		}else{
+			if(!Home_Extend::getVisiteallowed('attachment')){
+				$this->E(Dyhb::L('你没有权限访问附件库','Controller/Attachment'));
+			}
 		}
 	}
 	

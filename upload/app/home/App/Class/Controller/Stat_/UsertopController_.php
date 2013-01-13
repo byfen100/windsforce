@@ -7,6 +7,10 @@
 class UsertopController extends Controller{
 
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('siteusertop')){
+			$this->E(Dyhb::L('你没有权限访问会员排行','Controller/Stat'));
+		}
+		
 		$nTopusernum=$GLOBALS['_cache_']['home_option']['topuser_num'];
 		if($nTopusernum<1){
 			$nTopusernum=1;

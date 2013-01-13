@@ -7,6 +7,10 @@
 class ExploreController extends Controller{
 
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('siteexplore')){
+			$this->E(Dyhb::L('你没有权限访问随便看看','Controller/Stat'));
+		}
+		
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
 		// 读取新鲜事

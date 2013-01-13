@@ -7,6 +7,10 @@
 class UserlistController extends Controller{
 
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('siteuserlist')){
+			$this->E(Dyhb::L('你没有权限访问会员列表','Controller/Stat'));
+		}
+		
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
 
 		$arrWhere=array();

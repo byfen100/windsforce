@@ -17,4 +17,8 @@ class RegisteroptionController extends OptionController{
 		$this->index();
 	}
 
+	public function visite(){
+		$this->index();
+	}
+
 }

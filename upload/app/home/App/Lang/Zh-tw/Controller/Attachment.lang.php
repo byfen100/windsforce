@@ -47,6 +47,7 @@ return array(
 'e25bdba895cf3da60219ac0b69635f91'=>"我的附件",
 '0063c51e228e58fddadbff82a79cf3c0'=>"上傳附件",
 '2dc4d4bddf58b8bb6d297fed92425daa'=>"保存附件信息",
+'dacb7042c444c074e5b2fe1acb393e62'=>"你沒有權限訪問附件庫",
 )
 
 ?>

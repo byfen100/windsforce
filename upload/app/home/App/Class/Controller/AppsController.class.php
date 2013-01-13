@@ -7,6 +7,10 @@
 class AppsController extends InitController{
 	
 	public function index(){
+		if(!Home_Extend::getVisiteallowed('siteapps')){
+			$this->E(Dyhb::L('你没有权限访问应用列表','Controller/Apps'));
+		}
+		
 		$arrAppinfos=array();
 
 		$arrApps=AppModel::F('app_status=?',1)->order('app_id DESC')->getAll();
