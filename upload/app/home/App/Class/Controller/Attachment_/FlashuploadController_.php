@@ -26,6 +26,18 @@ class FlashuploadController extends Controller{
 	}
 
 	protected function cache_site_(){
+		// 更新附件专辑附件数量统计
+		$nAttachmentcategoryid=intval(G::getGpc('attachmentcategory_id'));
+
+		if($nAttachmentcategoryid>0){
+			$oAttachmentcategory=Dyhb::instance('AttachmentcategoryModel');
+			$oAttachmentcategory->updateAttachmentnum($nAttachmentcategoryid);
+
+			if($oAttachmentcategory->isError()){
+				$this->E($oAttachmentcategory->getErrorMessage());
+			}
+		}
+		
 		if(!Dyhb::classExists('Cache_Extend')){
 			require_once(Core_Extend::includeFile('function/Cache_Extend'));
 		}

@@ -6,6 +6,8 @@
 
 class DeleteattachmentController extends Controller{
 
+	protected $_nAttachmentcategoryid=0;
+	
 	public function index($nId=''){
 		if(empty($nId)){
 			$nAttachmentid=intval(G::getGpc('id','G'));
@@ -25,6 +27,8 @@ class DeleteattachmentController extends Controller{
 		if($oAttachment['user_id']!=$GLOBALS['___login___']['user_id']){
 			$this->E(Dyhb::L('你不能删除别人的附件','Controller/Attachment'));
 		}
+
+		$this->_nAttachmentcategoryid=$oAttachment['attachmentcategory_id'];
 
 		// 删除附件图片
 		$sFilepath=WINDSFORCE_PATH.'/data/upload/attachment/'.$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename'];
@@ -61,6 +65,18 @@ class DeleteattachmentController extends Controller{
 	}
 
 	protected function cache_site_(){
+		// 更新附件专辑附件数量统计
+		$nAttachmentcategoryid=intval($this->_nAttachmentcategoryid);
+
+		if($nAttachmentcategoryid>0){
+			$oAttachmentcategory=Dyhb::instance('AttachmentcategoryModel');
+			$oAttachmentcategory->updateAttachmentnum($nAttachmentcategoryid);
+
+			if($oAttachmentcategory->isError()){
+				$this->E($oAttachmentcategory->getErrorMessage());
+			}
+		}
+		
 		if(!Dyhb::classExists('Cache_Extend')){
 			require_once(Core_Extend::includeFile('function/Cache_Extend'));
 		}

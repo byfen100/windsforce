@@ -39,6 +39,25 @@ class AttachmentcategoryModel extends CommonModel{
 		return self::F('user_id=?',$nUserid)->getAll();
 	}
 
+	public function updateAttachmentnum($nAttachmentcategoryid){
+		$nAttachmentcategoryid=intval($nAttachmentcategoryid);
+
+		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->getOne();
+		if(!empty($oAttachmentcategory['attachmentcategory_id'])){
+			$nAttachmentnum=AttachmentModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->all()->getCounts();
+
+			$oAttachmentcategory->attachmentcategory_attachmentnum=$nAttachmentnum;
+			$oAttachmentcategory->save(0,'update');
+
+			if($oAttachmentcategory->isError()){
+				$this->setErrorMessage($oAttachmentcategory->getErrorMessage());
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	protected function userId(){
 		return intval($GLOBALS['___login___']['user_id']);
 	}
