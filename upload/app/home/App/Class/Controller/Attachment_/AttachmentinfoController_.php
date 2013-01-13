@@ -13,7 +13,7 @@ class AttachmentinfoController extends Controller{
 		$nAttachmentcategoryid=intval(G::getGpc('cid'));
 		$nDialog=intval(G::getGpc('dialog'));
 		$sFunction=trim(G::getGpc('function'));
-		$nFiletype=intval(G::getGpc('filetype','G'));
+		$nFiletype=intval(G::getGpc('filetype'));
 
 		if(empty($sCookieHashcode)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));

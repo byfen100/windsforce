@@ -21,7 +21,7 @@ class NormaluploadController extends Controller{
 			$this->cache_site_();
 			
 			if(G::getGpc('dialog','P')==1){
-				G::urlGoTo(Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P')));
+				G::urlGoTo(Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P').(G::getGpc('filetype','P')==1?'&filetype=1':'')));
 			}else{
 				$this->assign('__JumpUrl__',Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid));
 				$this->S(Dyhb::L('附件上传成功','Controller/Attachment'));
