@@ -1,6 +1,10 @@
 <!--<include file="public+header" />-->
 
 <!--{script}-->
+$(document).ready(function() {
+	$("#homeoption_tab ul").idTabs();
+});
+
 function option(){
 	$("#submit_button").attr("disabled", "disabled");
 	$("#submit_button").val( 'update...' );
@@ -28,80 +32,100 @@ function option(){
 			</header>
 			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
 				<div class="module_content">
-					<div class="content-tab-box">
-						<a href="<!--{:Admin_Extend::base()}-->" class="content-tab-active"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->基本设置<!--</lang>--></a>
-						<a href="<!--{:Admin_Extend::base(array('type'=>'comment'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->评论设置<!--</lang>--></a>
+					<!--<include file="Admin_Extend::template('home','homeoption/menu')" />-->
+
+					<div id="homeoption_tab" class="nfb_tab">
+						<div class="nfb_tabtitlebox">
+							<ul class="nfb_tabtitle">
+								<li><a href="#tab1"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->基本<!--</lang>--></a></li>
+								<li><a href="#tab2"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场<!--</lang>--></a></li>
+								<li><a href="#tab3"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息<!--</lang>--></a></li>
+								<li><a href="#tab4"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->好友<!--</lang>--></a></li>
+								<li><a href="#tab5"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->帮助<!--</lang>--></a></li>
+							</ul>
+						</div>
+
+						<div id="tab1" class="nfb_tabcontent">
+							<fieldset>
+								<label for="homefresh_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事每页列表数量<!--</lang>--></label>
+								<input type="text" id="homefresh_list_num" name="options[homefresh_list_num]" value="<!--{$arrOptions['homefresh_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->可以将新鲜事的每页列表数量设置大一点，方便一次读取更多的数据<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="homefresh_list_substring_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事列表摘要截取数量<!--</lang>--></label>
+								<input type="text" id="homefresh_list_substring_num" name="options[homefresh_list_substring_num]" value="<!--{$arrOptions['homefresh_list_substring_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->可以根据首页新鲜事的数量进行大小调整，最好不要将网页拉得太长<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="homefreshcomment_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事评论每页数量<!--</lang>--></label>
+								<input type="text" id="homefreshcomment_list_num" name="options[homefreshcomment_list_num]" value="<!--{$arrOptions['homefreshcomment_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个不要设置过大，以免影响用户阅读新鲜事<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="homefreshtitle_substring_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事没有标题内容截取数量<!--</lang>--></label>
+								<input type="text" id="homefreshtitle_substring_num" name="options[homefreshtitle_substring_num]" value="<!--{$arrOptions['homefreshtitle_substring_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->如果新鲜事没有标题，那么将截取一定数量的内容作为标题<!--</lang>--></div>
+							</fieldset>
+						</div>
+						<div id="tab2" class="nfb_tabcontent">
+							<fieldset>
+								<label for="user_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场会员每页列表数量<!--</lang>--></label>
+								<input type="text" id="user_list_num" name="options[user_list_num]" value="<!--{$arrOptions['user_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->全站会员列表，可以在这里添加好友等操作<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="newuser_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场新注册会员每页列表数量<!--</lang>--></label>
+								<input type="text" id="newuser_list_num" name="options[newuser_list_num]" value="<!--{$arrOptions['newuser_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->查看网站成长人气重要参数<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="topuser_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场会员排行榜数量<!--</lang>--></label>
+								<input type="text" id="topuser_num" name="options[topuser_num]" value="<!--{$arrOptions['topuser_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->排行榜代表着对网站做出贡献的一些用户数据<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="explorefresh_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场随便看看新鲜事每页列表数量<!--</lang>--></label>
+								<input type="text" id="explorefresh_list_num" name="options[explorefresh_list_num]" value="<!--{$arrOptions['explorefresh_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这可以适当大一些，全面展示会员动态<!--</lang>--></div>
+							</fieldset>
+						</div>
+						<div id="tab3" class="nfb_tabcontent">
+							<fieldset>
+								<label for="pm_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息每页列表数量<!--</lang>--></label>
+								<input type="text" id="pm_list_num" name="options[pm_list_num]" value="<!--{$arrOptions['pm_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个可以调整大一些，将展示更多的短消息<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="pm_list_substring_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息列表摘要截取数量<!--</lang>--></label>
+								<input type="text" id="pm_list_substring_num" name="options[pm_list_substring_num]" value="<!--{$arrOptions['pm_list_substring_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个可以不要设置过大，提供一个预览即可<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="pm_single_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息用户聊天界面短消息每页数量<!--</lang>--></label>
+								<input type="text" id="pm_single_list_num" name="options[pm_single_list_num]" value="<!--{$arrOptions['pm_single_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个将是一个非常重要的环节，将短消息变成聊天室<!--</lang>--></div>
+							</fieldset>
+						</div>
+						<div id="tab4" class="nfb_tabcontent">
+							<fieldset>
+								<label for="friend_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->好友每页列表数量<!--</lang>--></label>
+								<input type="text" id="friend_list_num" name="options[friend_list_num]" value="<!--{$arrOptions['friend_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->将控制着前台好友和粉丝每页分页数量<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="my_friend_limit_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->个人空间中的关注好友数量<!--</lang>--></label>
+								<input type="text" id="my_friend_limit_num" name="options[my_friend_limit_num]" value="<!--{$arrOptions['my_friend_limit_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个数量可以根据实际进行调整<!--</lang>--></div>
+							</fieldset>
+						</div>
+						<div id="tab5" class="nfb_tabcontent">
+							<fieldset>
+								<label for="homehelp_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->帮助文章每页列表数量<!--</lang>--></label>
+								<input type="text" id="homehelp_list_num" name="options[homehelp_list_num]" value="<!--{$arrOptions['homehelp_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这将控制这前台帮助文件每页的数量<!--</lang>--></div>
+							</fieldset>
+						</div>
 					</div>
-					<fieldset>
-						<label for="homehelp_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->帮助文章每页列表数量<!--</lang>--></label>
-						<input type="text" id="homehelp_list_num" name="options[homehelp_list_num]" value="<!--{$arrOptions['homehelp_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这将控制这前台帮助文件每页的数量<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="homefresh_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事每页列表数量<!--</lang>--></label>
-						<input type="text" id="homefresh_list_num" name="options[homefresh_list_num]" value="<!--{$arrOptions['homefresh_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->可以将新鲜事的每页列表数量设置大一点，方便一次读取更多的数据<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="homefresh_list_substring_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事列表摘要截取数量<!--</lang>--></label>
-						<input type="text" id="homefresh_list_substring_num" name="options[homefresh_list_substring_num]" value="<!--{$arrOptions['homefresh_list_substring_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->可以根据首页新鲜事的数量进行大小调整，最好不要将网页拉得太长<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="user_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场会员每页列表数量<!--</lang>--></label>
-						<input type="text" id="user_list_num" name="options[user_list_num]" value="<!--{$arrOptions['user_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->全站会员列表，可以在这里添加好友等操作<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="newuser_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场新注册会员每页列表数量<!--</lang>--></label>
-						<input type="text" id="newuser_list_num" name="options[newuser_list_num]" value="<!--{$arrOptions['newuser_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->查看网站成长人气重要参数<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="topuser_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场会员排行榜数量<!--</lang>--></label>
-						<input type="text" id="topuser_num" name="options[topuser_num]" value="<!--{$arrOptions['topuser_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->排行榜代表着对网站做出贡献的一些用户数据<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="explorefresh_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场随便看看新鲜事每页列表数量<!--</lang>--></label>
-						<input type="text" id="explorefresh_list_num" name="options[explorefresh_list_num]" value="<!--{$arrOptions['explorefresh_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这可以适当大一些，全面展示会员动态<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="friend_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->好友每页列表数量<!--</lang>--></label>
-						<input type="text" id="friend_list_num" name="options[friend_list_num]" value="<!--{$arrOptions['friend_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->将控制着前台好友和粉丝每页分页数量<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="my_friend_limit_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->个人空间中的关注好友数量<!--</lang>--></label>
-						<input type="text" id="my_friend_limit_num" name="options[my_friend_limit_num]" value="<!--{$arrOptions['my_friend_limit_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个数量可以根据实际进行调整<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="pm_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息每页列表数量<!--</lang>--></label>
-						<input type="text" id="pm_list_num" name="options[pm_list_num]" value="<!--{$arrOptions['pm_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个可以调整大一些，将展示更多的短消息<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="pm_list_substring_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息列表摘要截取数量<!--</lang>--></label>
-						<input type="text" id="pm_list_substring_num" name="options[pm_list_substring_num]" value="<!--{$arrOptions['pm_list_substring_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个可以不要设置过大，提供一个预览即可<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="pm_single_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息用户聊天界面短消息每页数量<!--</lang>--></label>
-						<input type="text" id="pm_single_list_num" name="options[pm_single_list_num]" value="<!--{$arrOptions['pm_single_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个将是一个非常重要的环节，将短消息变成聊天室<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="homefreshcomment_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事评论每页数量<!--</lang>--></label>
-						<input type="text" id="homefreshcomment_list_num" name="options[homefreshcomment_list_num]" value="<!--{$arrOptions['homefreshcomment_list_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个不要设置过大，以免影响用户阅读新鲜事<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
-						<label for="homefreshtitle_substring_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事没有标题内容截取数量<!--</lang>--></label>
-						<input type="text" id="homefreshtitle_substring_num" name="options[homefreshtitle_substring_num]" value="<!--{$arrOptions['homefreshtitle_substring_num']}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->如果新鲜事没有标题，那么将截取一定数量的内容作为标题<!--</lang>--></div>
-					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">
