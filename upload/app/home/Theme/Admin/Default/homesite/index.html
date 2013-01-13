@@ -53,7 +53,7 @@
 					<tbody> 
 						<!--<foreach for=oList>-->
 						<tr>
-							<td><input type="checkbox" name="key" value="<!--{$value:homesite_id}-->" <!--{if $value['homesite_id']<=4}-->disabled="disabled"<!--{/if}-->></td>
+							<td><input type="checkbox" name="key" value="<!--{$value:homesite_id}-->" <!--{if $TheController:is_system_homesite($value['homesite_id'])}-->disabled="disabled"<!--{/if}-->></td>
 							<td><!--{$value:homesite_id}--></td>
 							<td><a href="<!--{:Admin_Extend::edit(array('controller'=>'homesite','value'=>$value['homesite_id']))}-->"><!--{$value:homesite_name}--></a>
 								<div class="row-actions">

@@ -59,3 +59,5 @@ SociauserController.class
 
 
 后台统计信息，应用数量，评论数量相关衔接还灭有对上
+
+http://dianniu.net/app/group/topic/141.html

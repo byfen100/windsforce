@@ -2,7 +2,6 @@
 /** DoYouHaoBaby Framework Lang File, Do not to modify it! */
 return array(
 'd46288678e0a67e66ddbe73aa7ced0ec'=>"主頁入口",
-'f74689759c4b8b04e155c27170196c70'=>"站點信息",
 'ea836584cf1b65d221cd41627b8caff4'=>"幫助文章每頁列表數量",
 '0bfd34b9d6f38e17c9b663d9b1f06912'=>"這將控制這前台幫助文件每頁的數量",
 '29e75071c78fc745232f28a11edf98e2'=>"新鮮事每頁列表數量",

@@ -16,6 +16,7 @@ class HomefreshModel extends CommonModel{
 			'attr_protected'=>'homefresh_id',
 			'autofill'=>array(
 				array('user_id','userId','create','callback'),
+				array('homefresh_username','userName','create','callback'),
 				array('homefresh_ip','homefreshIp','create','callback'),
 			),
 			'check'=>array(
@@ -40,6 +41,12 @@ class HomefreshModel extends CommonModel{
 		$arrUserData=$GLOBALS['___login___'];
 
 		return $arrUserData['user_id']?$arrUserData['user_id']:0;
+	}
+
+	protected function userName(){
+		$arrUserData=$GLOBALS['___login___'];
+
+		return $arrUserData['user_name']?$arrUserData['user_name']:'';
 	}
 	
 	protected function homefreshIp(){

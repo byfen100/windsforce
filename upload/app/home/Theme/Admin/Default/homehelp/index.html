@@ -76,7 +76,7 @@ function changeHomehelpcategory(oObj,id){
 					<tbody> 
 						<!--<foreach for=oList>-->
 						<tr>
-							<td><input type="checkbox" name="key" value="<!--{$value:homehelp_id}-->" <!--{if $value['homehelp_id']<=8}-->disabled="disabled"<!--{/if}-->></td>
+							<td><input type="checkbox" name="key" value="<!--{$value:homehelp_id}-->" <!--{if $TheController:is_system_homehelp($value['homehelp_id'])}-->disabled="disabled"<!--{/if}-->></td>
 							<td><!--{$value:homehelp_id}--></td>
 							<td><a href="<!--{:Admin_Extend::edit(array('controller'=>'homehelp','value'=>$value['homehelp_id']))}-->"><!--{$value:homehelp_title}--></a>
 								<div class="row-actions">

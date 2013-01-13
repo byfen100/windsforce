@@ -1,0 +1,89 @@
+<!--<include file="public+header">-->
+
+<!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	editor=loadEditor('homefresh_message');
+	$('a.face-icon').showEmotion({input:editor});
+});
+
+function update(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	$('#homefresh_message').val(editor.html());
+	Dyhb.AjaxSubmit('homefreshAdd','<!--{:Admin_Extend::update(array('controller'=>'homefresh'))}-->','',function(){ 
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
+	});
+}
+
+function insertHomefreshmessageattachment(nAttachmentid){
+	insertAttachment(editor,nAttachmentid);
+}
+
+function insertHomefreshmessagemusic(sContent){
+	insertMusic(editor,sContent);
+}
+
+function insertHomefreshmessagevideo(sContent){
+	insertVideo(editor,sContent);
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->编辑新鲜事<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->编辑新鲜事<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+				<div class="module_content">
+					<ul>
+						<li><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->这里可以对新鲜事进行编辑<!--</lang>--></li>
+					</ul>
+				</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->编辑新鲜事<!--</lang>--></h3>
+				<ul class="tabs">
+					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment','fid'=>$oValue['homefresh_id']))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事评论<!--</lang>--></li>
+					<li class="active"><a href="<!--{:Admin_Extend::index(array('controller'=>'homefresh'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事列表<!--</lang>--></a></li>
+					<li><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Admin_Extend::update(array('controller'=>'homefresh'))}-->" method="post" id="homefreshAdd">
+				<div class="module_content">
+					<fieldset>
+						<label for="homefresh_title"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事标题<!--</lang>--></label>
+						<input type="text" name="homefresh_title" id="homefresh_title" size="40" value="<!--{$oValue:homefresh_title}-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事标题可有可无，最大字符为300<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="homefresh_message"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事内容<!--</lang>--></label>
+						<div id="homefreshmessage-media-box" class="common-media-box">
+							<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='Template/Default/Mediabox'>-->表情<!--</lang>--></a> 
+							<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshmessageattachment');" class="icon_add_img"><!--<lang package='Template/Default/Mediabox'>-->媒体<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addVideo('insertHomefreshmessagevideo');" class="icon_add_video" ><!--<lang package='Template/Default/Mediabox'>-->视频<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addMusic('insertHomefreshmessagemusic');" class="icon_add_music"><!--<lang package='Template/Default/Mediabox'>-->音乐<!--</lang>--></a>
+						</div>
+						<p style="padding-left:10px;"><textarea name="homefresh_message" id="homefresh_message" style="width:700px;height:400px;visibility:hidden;"><!--{$oValue:homefresh_message}--></textarea></p>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事内容信息，可以插入附件等等<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="value" id="value" value="<!--{$_GET['value']}-->"/>
+						<input type="button" id="submit_button" onclick="update()" value="<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->
