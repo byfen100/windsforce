@@ -16,6 +16,10 @@ class BadwordController extends InitController{
 		$this->assign('arrOptions',$arrOptionData);
 	}
 
+	public function muit_add(){
+		$this->display();
+	}
+
 	public function update_option(){
 		$oOptionController=new OptionController();
 
