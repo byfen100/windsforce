@@ -348,7 +348,7 @@ class RoleController extends InitController{
 		$sPageNavbar=$oPage->P();
 		$this->assign('sPageNavbar',$sPageNavbar);
 
-		$arrList=UserModel::F()->setColumns('user_id,user_name,user_nikename')->asArray()->where($arrWhere)->all()->limit($oPage->returnPageStart(),$nEverynum)->query();
+		$arrList=UserModel::F()->setColumns('user_id,user_name,user_nikename')->order('user_id DESC')->asArray()->where($arrWhere)->all()->limit($oPage->returnPageStart(),$nEverynum)->query();
 		
 		$arrUserList=array();
 		foreach($arrList as $arrVo){
