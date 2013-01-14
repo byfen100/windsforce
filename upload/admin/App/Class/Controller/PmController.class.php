@@ -21,8 +21,19 @@ class PmController extends InitController{
 
 	public function aForeverdelete($sId){
 		// 删除数据相关的记录
-		PmsystemdeleteModel::M()->deleteWhere(array('pm_id'=>array('in',$sId)));
-		PmsystemreadModel::M()->deleteWhere(array('pm_id'=>array('in',$sId)));
+		$oPmsystemdeleteMeta=PmsystemdeleteModel::M();
+		$oPmsystemdeleteMeta->deleteWhere(array('pm_id'=>array('in',$sId)));
+
+		if($oPmsystemdeleteMeta->isError()){
+			$this->E($oPmsystemdeleteMeta->getErrorMessage());
+		}
+
+		$oPmsystemreadMeta=PmsystemreadModel::M();
+		$oPmsystemreadMeta->deleteWhere(array('pm_id'=>array('in',$sId)));
+
+		if($oPmsystemreadMeta->isError()){
+			$this->E($oPmsystemreadMeta->getErrorMessage());
+		}
 	}
 
 	public function show(){

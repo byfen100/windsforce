@@ -15,6 +15,10 @@ class DeletetopicController extends Controller{
 			foreach($arrGrouptopics as $nGrouptopic){
 				$oGrouptopicMeta=GrouptopicModel::M();
 				$oGrouptopicMeta->deleteWhere(array('grouptopic_id'=>$nGrouptopic));
+				
+				if($oGrouptopicMeta->isError()){
+					$this->E($oGrouptopicMeta->getErrorMessage());
+				}
 			}
 		}
 

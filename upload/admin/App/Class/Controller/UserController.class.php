@@ -89,8 +89,19 @@ class UserController extends InitController{
 		$arrIds=explode(',',$sId);
 
 		foreach($arrIds as $nId){
-			UserprofileModel::M()->deleteWhere(array('user_id'=>$nId));
-			UserCountModel::M()->deleteWhere(array('user_id'=>$nId));
+			$oUserprofileMeta=UserprofileModel::M();
+			$oUserprofileMeta->deleteWhere(array('user_id'=>$nId));
+
+			if($oUserprofileMeta->isError()){
+				$this->E($oUserprofileMeta->getErrorMessage());
+			}
+
+			$oUsercountMeta=UsercountModel::M();
+			$oUsercountMeta->deleteWhere(array('user_id'=>$nId));
+			
+			if($oUsercountMeta->isError()){
+				$this->E($oUsercountMeta->getErrorMessage());
+			}
 		}
 
 		$this->cache_site_();

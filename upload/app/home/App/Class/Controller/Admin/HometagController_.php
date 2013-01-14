@@ -31,7 +31,12 @@ class HometagController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			// 清理标签索引
-			HometagindexModel::M()->deleteWhere(array('hometag_id'=>$nId));
+			$oHometagindexMeta=HometagindexModel::M();
+			$oHometagindexMeta->deleteWhere(array('hometag_id'=>$nId));
+
+			if($oHometagindexMeta->isError()){
+				$this->E($oHometagindexMeta->getErrorMessage());
+			}
 		}
 	}
 	

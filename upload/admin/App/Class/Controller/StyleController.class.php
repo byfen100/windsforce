@@ -506,7 +506,12 @@ class StyleController extends InitController{
 						}
 					}
 
-					StylevarModel::M()->deleteWhere($arrWhere);
+					$oStylevarMeta=StylevarModel::M();
+					$oStylevarMeta->deleteWhere($arrWhere);
+
+					if($oStylevarMeta->isError()){
+						$this->E($oStylevarMeta->getErrorMessage());
+					}
 				}
 
 				// 新增
@@ -693,7 +698,12 @@ class StyleController extends InitController{
 		// 删除主题后清除它的变量
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
-			StylevarModel::M()->deleteWhere(array('style_id'=>$nId));
+			$oStylevarMeta=StylevarModel::M();
+			$oStylevarMeta->deleteWhere(array('style_id'=>$nId));
+
+			if($oStylevarMeta->isError()){
+				$this->E($oStylevarMeta->getErrorMessage());
+			}
 
 			// 删除一个主题
 			if($GLOBALS['_option_']['front_style_id']==$nId){
@@ -764,7 +774,13 @@ class StyleController extends InitController{
 					$arrWhere=array();
 					$arrWhere['style_id']=$oStyle['style_id'];
 					$arrWhere['stylevar_variable']=array('in',$arrDeletevars);
-					StylevarModel::M()->deleteWhere($arrWhere);
+
+					$oStylevarMeta=StylevarModel::M();
+					$oStylevarMeta->deleteWhere($arrWhere);
+
+					if($oStylevarMeta->isError()){
+						$this->E($oStylevarMeta->getErrorMessage());
+					}
 				}
 
 				// 更新变量 & 没有则写入新的变量

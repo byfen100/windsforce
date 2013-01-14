@@ -79,7 +79,11 @@ class GroupController extends InitController{
 			// wait to do
 
 			// 删除小组的帖子分类
-			GrouptopiccategoryModel::M()->deleteWhere(array('group_id'=>$nId));
+			$oGrouptopiccategoryMeta=GrouptopiccategoryModel::M();
+			$oGrouptopiccategoryMeta->deleteWhere(array('group_id'=>$nId));
+			if($oGrouptopiccategoryMeta->isError()){
+				$this->E($oGrouptopiccategoryMeta->getErrorMessage());
+			}
 		}
 	}
 	
@@ -327,7 +331,12 @@ class GroupController extends InitController{
 		
 		$oGroupcategory=GrouptopiccategoryModel::F('grouptopiccategory_id=? AND group_id=?',$nId,$nGroupId)->query();
 		if(!empty($oGroupcategory['grouptopiccategory_id'])){
-			GrouptopiccategoryModel::M()->deleteWhere(array('grouptopiccategory_id'=>$nId));
+			$oGrouptopiccategoryMeta=GrouptopiccategoryModel::M();
+			$oGrouptopiccategoryMeta->deleteWhere(array('grouptopiccategory_id'=>$nId));
+			
+			if($oGrouptopiccategoryMeta->isError()){
+				$this->E($oGrouptopiccategoryMeta->getErrorMessage());
+			}
 			
 			$this->S(Dyhb::L('删除帖子分类成功','__APP_ADMIN_LANG__@Controller/Group'));
 		}else{

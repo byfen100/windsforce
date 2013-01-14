@@ -94,7 +94,12 @@ class LoginController extends GlobalchildController{
 	public function unbind(){
 		$sVendor=trim(G::getGpc('vendor','G'));
 
-		SociauserModel::M()->deleteWhere(array('sociauser_vendor'=>$sVendor,'user_id'=>$GLOBALS['___login___']['user_id']));
+		$oSociauserMeta=SociauserModel::M();
+		$oSociauserMeta->deleteWhere(array('sociauser_vendor'=>$sVendor,'user_id'=>$GLOBALS['___login___']['user_id']));
+
+		if($oSociauserMeta->isError()){
+			$this->E($oSociauserMeta->getErrorMessage());
+		}
 
 		$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
 		$this->S(Dyhb::L('帐号解除绑定成功','Controller/Public'));
