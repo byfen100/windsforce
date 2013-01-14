@@ -272,7 +272,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('needforbug_company_name', 'WindsForce Studio.'),
 ('needforbug_company_url', 'http://www.windsforce.com'),
 ('needforbug_program_url', 'http://www.windsforce.net'),
-('needforbug_program_year', '2012'),
+('needforbug_program_year', '2012-2013'),
 ('needforbug_company_year', '2012'),
 ('site_year', '2012'),
 ('stat_code', ''),
