@@ -210,7 +210,7 @@ CREATE TABLE `#@__attachmentcategory` (
   PRIMARY KEY (`attachmentcategory_id`),
   KEY `create_dateline` (`create_dateline`),
   KEY `user_id` (`user_id`),
-  KEY `attachmentcategory_compositor` (`attachmentcategory_compositor`),
+  KEY `attachmentcategory_sort` (`attachmentcategory_sort`),
   KEY `attachmentcategory_recommend` (`attachmentcategory_recommend`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

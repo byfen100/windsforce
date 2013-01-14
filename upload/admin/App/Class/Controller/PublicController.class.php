@@ -104,7 +104,7 @@ class PublicController extends InitController{
 		$tipsTxt=$arrTipsTxt[$nTips];
 		$this->assign('sTipsTxt',$tipsTxt);
 		
-		$sUpdateUrl=__PUBLIC__.'/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
+		$sUpdateUrl='http://dianniu.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
 			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']);
 		$this->assign('sUpdateUrl',$sUpdateUrl);
@@ -269,7 +269,7 @@ class PublicController extends InitController{
 	}
 
 	public function program_update(){
-		$sUpdateUrl=__PUBLIC__.'/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
+		$sUpdateUrl='http://dianniu.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
 			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']).'&infolist=1';
 		$this->assign('sUpdateUrl',$sUpdateUrl);
