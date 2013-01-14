@@ -71,4 +71,7 @@ return array(
 
 	// 默认应用
 	'DEFAULT_APP'=>'home',
+
+	// URL模式
+	'URL_MODEL'=>1,
 );
