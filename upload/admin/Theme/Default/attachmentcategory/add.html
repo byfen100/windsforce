@@ -1,0 +1,84 @@
+<!--<include file="public+header">-->
+
+<!--{script}-->
+function update(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	Dyhb.AjaxSubmit('attachmentcategoryAdd','<!--{:Dyhb::U('attachmentcategory/update')}-->','',function(){
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
+	});
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Attachmentcategory'>-->编辑多媒体专辑<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Attachmentcategory'>-->编辑多媒体专辑<!--</lang>-->_<!--{$nId}-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template/Default/Attachmentcategory'>-->您可以在这里编辑多媒体专辑<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Attachmentcategory'>-->编辑多媒体专辑<!--</lang>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Dyhb::U('attachmentcategory/index')}-->"><!--<lang package='Template/Default/Attachmentcategory'>-->多媒体专辑列表<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Dyhb::U('attachmentcategory/update')}-->" method="post" id="attachmentcategoryAdd">
+				<div class="module_content">
+					<fieldset>
+						<div style="padding:3px 20px;">
+							<table>
+								<tr valign="top">
+									<td width="50px"><p><a href="javascript:void(0);" target="_blank"><img src="<!--{:Attachment_Extend::getAttachmentPreview($oValue)}-->" alt="<!--{$oValue['attachmentcategory_name']}-->" width="46" height="60"></a>
+										</p>
+									</td>
+									<td><p><strong><!--<lang package='Template/Default/Attachmentcategory'>-->专辑名字<!--</lang>-->：</strong> <!--{$oValue['attachmentcategory_name']}--></p>
+										<p><strong><!--<lang package='Template/Default/Attachmentcategory'>-->附件数量<!--</lang>-->：</strong> <!--{$oValue['attachmentcategory_attachmentnum']}--></p>
+										<p><strong><!--<lang package='Template/Default/Attachmentcategory'>-->创建日期<!--</lang>-->：</strong> <!--{$oValue['create_dateline']|Core_Extend+timeFormat}--></p>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label for="attachmentcategory_name"><!--<lang package='Template/Default/Attachmentcategory'>-->专辑名字<!--</lang>--><em class="red">*</em></label>
+						<input type="text" name="attachmentcategory_name" id="attachmentcategory_name" size="40" value="<!--{$oValue:attachmentcategory_name}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Attachmentcategory'>-->专辑名字，不能为空<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="attachmentcategory_sort"><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></label>
+						<input type="text" name="attachmentcategory_sort" id="attachmentcategory_sort" size="40" value="<!--<if condition="isset( $oValue ) && $oValue:attachmentcategory_sort">--><!--{$oValue:attachmentcategory_sort}--><!--<else/>-->0<!--</if>-->"/>
+						<div class="description"><!--<lang package='Template/Default/Attachmentcategory'>-->专辑序号，用于排列专辑顺序<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="attachmentcategory_cover"><!--<lang package='Template/Default/Common'>-->专辑封面<!--</lang>--></label>
+						<input type="text" name="attachmentcategory_cover" id="attachmentcategory_cover" size="40" value="<!--{$oValue:attachmentcategory_cover}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Attachmentcategory'>-->专辑封面为一个附件的ID值,最好是图片附件<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="attachmentcategory_description"><!--<lang package='Template/Default/Attachmentcategory'>-->专辑描述<!--</lang>--></label>
+						<textarea name="attachmentcategory_description" id="attachmentcategory_description" rows="5"><!--{$oValue:attachmentcategory_description}--></textarea>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="id" id="id" value="<!--{$nId}-->"/>
+						<input type="button" id="submit_button" onclick="update()" value="<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

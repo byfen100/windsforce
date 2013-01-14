@@ -59,9 +59,11 @@ class RatingController extends InitController{
 		$sId=G::getGpc('id','G');
 
 		$arrIds=explode(',',$sId);
-		foreach($arrIds as $nId){
-			if($this->is_system_rating($nId)){
-				$this->E(Dyhb::L('系统级别无法删除','Controller/Rating'));
+		if(is_array($arrIds)){
+			foreach($arrIds as $nId){
+				if($this->is_system_rating($nId)){
+					$this->E(Dyhb::L('系统级别无法删除','Controller/Rating'));
+				}
 			}
 		}
 	}

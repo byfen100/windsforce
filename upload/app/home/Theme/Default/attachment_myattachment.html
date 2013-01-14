@@ -127,7 +127,15 @@ function unrecommendAttachment(id){
 								<p><!--<lang package='Template/Attachment'>-->评论次数<!--</lang>-->:&nbsp;<a href="javascript:void(0);"><!--{$oAttachment:attachment_commentnum}--></a></p>
 								<p><!--<lang package='Template/Attachment'>-->附件大小<!--</lang>-->:&nbsp;<!--{$oAttachment:attachment_size|G+changeFileSize}--></p>
 								<p><!--<lang package='Template/Attachment'>-->附件类型<!--</lang>-->:&nbsp;<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$oAttachment['attachment_extension'])}-->"><!--{$oAttachment:attachment_extension}--></a></p>
-								<p><a href="javascript:void(0);" onclick="editAttachment(<!--{$oAttachment['attachment_id']}-->);" class="btn btn-success"><i class="icon-pencil icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->编辑<!--</lang>--></a>&nbsp;<a href="javascript:void(0);" onclick="deleteAttachment(<!--{$oAttachment['attachment_id']}-->);" class="btn"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Attachment'>-->删除<!--</lang>--></a></p>
+								<p><a href="javascript:void(0);" onclick="editAttachment(<!--{$oAttachment['attachment_id']}-->);" class="btn btn-success"><i class="icon-pencil icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->编辑<!--</lang>--></a>&nbsp;<a href="javascript:void(0);" onclick="deleteAttachment(<!--{$oAttachment['attachment_id']}-->);" class="btn"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Attachment'>-->删除<!--</lang>--></a>
+									<!--{if in_array($oAttachment['attachment_extension'],array('png','jpg','jpeg','gif','bmp')) && $oAttachment['attachmentcategory_id']>0}-->&nbsp;
+									<!--{if $oAttachment['attachment_id']==$oAttachment:attachmentcategory:attachmentcategory_cover}-->
+									<a href="<!--{:Dyhb::U('home://attachment/uncover?id='.$oAttachment['attachmentcategory_id'])}-->" class="btn"><!--<lang package='Template/Attachment'>-->删除封面<!--</lang>--></a>
+									<!--{d*else}-->
+									<a href="<!--{:Dyhb::U('home://attachment/cover?id='.$oAttachment['attachment_id'])}-->" class="btn"><!--<lang package='Template/Attachment'>-->封面<!--</lang>--></a>
+									<!--{/if}-->
+									<!--{/if}-->
+								</p>
 								<!--{if Core_Extend+isAdmin()}-->
 								<p class="alert alert-success"><!--{if $oAttachment['attachment_recommend']==1}-->
 									<span id="unrecommend_item_<!--{$oAttachment['attachment_id']}-->"><a href="javascript:void(0);" onclick="unrecommendAttachment('<!--{$oAttachment['attachment_id']}-->');" ><!--<lang package='Template/Attachment'>-->取消推荐<!--</lang>--></a></span>

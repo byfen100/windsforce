@@ -11,12 +11,12 @@ class NewattachmentcategoryController extends Controller{
 	}
 
 	public function save(){
-		$nAttachmentcategoryCompositor=intval(G::getGpc('attachmentcategory_compositor','G'));
+		$nAttachmentcategorySort=intval(G::getGpc('attachmentcategory_sort','G'));
 		$sAttachmentcategoryName=trim(G::getGpc('attachmentcategory_name','G'));
 		$sAttachmentcategoryDescription=trim(G::getGpc('attachmentcategory_description','G'));
 
 		$oAttachmentcategory=new AttachmentcategoryModel();
-		$oAttachmentcategory->attachmentcategory_compositor=$nAttachmentcategoryCompositor;
+		$oAttachmentcategory->attachmentcategory_sort=$nAttachmentcategorySort;
 		$oAttachmentcategory->attachmentcategory_name=$sAttachmentcategoryName;
 		$oAttachmentcategory->attachmentcategory_description=$sAttachmentcategoryDescription;
 		$oAttachmentcategory->save(0);

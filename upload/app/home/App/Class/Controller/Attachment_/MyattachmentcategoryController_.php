@@ -23,7 +23,7 @@ class MyattachmentcategoryController extends Controller{
 
 		$nTotalRecord=AttachmentcategoryModel::F()->where($arrWhere)->all()->getCounts();
 		$oPage=Page::RUN($nTotalRecord,$nEverynum,G::getGpc('page','G'));
-		$arrAttachmentcategorys=AttachmentcategoryModel::F()->where($arrWhere)->order('attachmentcategory_compositor DESC,create_dateline DESC')->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrAttachmentcategorys=AttachmentcategoryModel::F()->where($arrWhere)->order('attachmentcategory_sort DESC,create_dateline DESC')->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('arrAttachmentcategorys',$arrAttachmentcategorys);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));

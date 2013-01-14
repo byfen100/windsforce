@@ -19,7 +19,8 @@ function saveAttachmentcategory(){
 		'&attachmentcategory_compositor='+encodeURIComponent( $('#attachmentcategory_compositor').val())+
 		'&attachmentcategory_name='+encodeURIComponent( $('#attachmentcategory_name').val())+
 		'&attachmentcategory_description='+encodeURIComponent( $('#attachmentcategory_description').val())+
-		'&attachmentcategory_id='+ $('#attachmentcategory_id').val(),'',
+		'&attachmentcategory_id='+ $('#attachmentcategory_id').val()+
+		'&attachmentcategory_cover='+ $('#attachmentcategory_cover').val(),'',
 		function(data,status){
 			if(status==1){
 				$('#attachmentcategory_name_'+id).text(subStr(data.attachmentcategory_name,15));
@@ -138,6 +139,10 @@ function unrecommendAttachmentcategory(id){
 								<!--{if $oAttachmentcategory['attachmentcategory_attachmentnum']<1}-->
 								<span class="pipe">|</span>
 								<a href="javascript:void(0);" onclick="deleteAttachmentcategory(<!--{$oAttachmentcategory['attachmentcategory_id']}-->);"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Attachment'>-->删除<!--</lang>--></a>
+								<!--{/if}-->
+								<!--{if $oAttachmentcategory['attachmentcategory_cover']>0}-->
+								<span class="pipe">|</span>
+								<a href="<!--{:Dyhb::U('attachment/uncover?id='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--<lang package='Template/Attachment'>-->删除封面<!--</lang>--></a>
 								<!--{/if}-->
 								</p>
 								<p><a href="<!--{:Dyhb::U('home://attachment/add?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->" class="btn btn-success btn-large"><i class="icon-upload icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->开始上传附件<!--</lang>--></a></p>

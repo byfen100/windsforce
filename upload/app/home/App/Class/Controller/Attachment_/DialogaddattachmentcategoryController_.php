@@ -22,8 +22,16 @@ class DialogaddattachmentcategoryController extends Controller{
 		$nDialog=intval(G::getGpc('dialog','P'));
 		$sFunction=trim(G::getGpc('function','P'));
 		$nFiletype=intval(G::getGpc('filetype','G'));
+		$sAttachmentcategoryname=trim(G::getGpc('attachmentcategory_name'));
+
+		if(!$sAttachmentcategoryname){
+			G::urlGoTo(Dyhb::U('home://attachment/dialog_addattachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),2,Dyhb::L('专辑名字不能为空','Controller/Attachment'));
+			exit();
+		}
 
 		$oAttachmentcategory=new AttachmentcategoryModel();
+		$oAttachmentcategory->attachmentcategory_sort=intval(G::getGpc('attachementcategory_sort'));
+		$oAttachmentcategory->attachmentcategory_name=$sAttachmentcategoryname;
 		$oAttachmentcategory->save(0);
 
 		if($oAttachmentcategory->isError()){

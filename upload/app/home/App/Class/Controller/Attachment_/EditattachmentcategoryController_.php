@@ -40,13 +40,15 @@ class EditattachmentcategoryController extends Controller{
 	public function save(){
 		$nAttachmentcategoryid=intval(G::getGpc('attachmentcategory_id','G'));
 		$sAttachmentcategoryname=trim(G::getGpc('attachmentcategory_name','G'));
-		$sAttachmentcategorycompositor=intval(G::getGpc('attachmentcategory_compositor','G'));
+		$sAttachmentcategorysort=intval(G::getGpc('attachmentcategory_sort','G'));
 		$sAttachmentcategorydescription=trim(G::getGpc('attachmentcategory_description','G'));
+		$sAttachmentcategorycover=trim(G::getGpc('attachmentcategory_cover','G'));
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->getOne();
 		$oAttachmentcategory->attachmentcategory_name=$sAttachmentcategoryname;
-		$oAttachmentcategory->attachmentcategory_compositor=$sAttachmentcategorycompositor;
+		$oAttachmentcategory->attachmentcategory_sort=$sAttachmentcategorysort;
 		$oAttachmentcategory->attachmentcategory_description=$sAttachmentcategorydescription;
+		$oAttachmentcategory->attachmentcategory_cover=$sAttachmentcategorycover;
 		$oAttachmentcategory->save(0,'update');
 
 		if($oAttachmentcategory->isError()){
@@ -57,12 +59,20 @@ class EditattachmentcategoryController extends Controller{
 	}
 
 	public function dialogsave(){
-		$nAttachmentcategoryid=intval(G::getGpc('attachmentcategory_id','G'));
+		$nAttachmentcategoryid=intval(G::getGpc('attachmentcategory_id'));
 		$nDialog=intval(G::getGpc('dialog'));
 		$sFunction=trim(G::getGpc('function'));
 		$nFiletype=intval(G::getGpc('filetype','G'));
+		$sAttachmentcategoryname=trim(G::getGpc('attachmentcategory_name'));
+
+		if(!$sAttachmentcategoryname){
+			G::urlGoTo(Dyhb::U('home://attachment/edit_attachmentcategory?id='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype),2,Dyhb::L('专辑名字不能为空','Controller/Attachment'));
+			exit();
+		}
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->getOne();
+		$oAttachmentcategory->attachmentcategory_sort=intval(G::getGpc('attachementcategory_sort'));
+		$oAttachmentcategory->attachmentcategory_name=$sAttachmentcategoryname;
 		$oAttachmentcategory->save(0,'update');
 
 		if($oAttachmentcategory->isError()){

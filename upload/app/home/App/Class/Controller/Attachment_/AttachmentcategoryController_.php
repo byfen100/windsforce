@@ -26,7 +26,7 @@ class AttachmentcategoryController extends Controller{
 
 		$nTotalRecord=AttachmentcategoryModel::F($arrWhere)->all(array())->getCounts();
 		$oPage=Page::RUN($nTotalRecord,$nEverynum,G::getGpc('page','G'));
-		$arrAttachmentcategorys=AttachmentcategoryModel::F($arrWhere)->order('attachmentcategory_id DESC')->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrAttachmentcategorys=AttachmentcategoryModel::F($arrWhere)->order('attachmentcategory_sort DESC,attachmentcategory_id DESC')->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('arrAttachmentcategorys',$arrAttachmentcategorys);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));

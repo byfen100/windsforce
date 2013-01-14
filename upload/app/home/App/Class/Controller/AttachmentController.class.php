@@ -160,4 +160,12 @@ class AttachmentController extends InitController{
 		Core_Extend::doControllerAction('Attachment@Playout','index');
 	}
 
+	public function cover(){
+		Core_Extend::doControllerAction('Attachment@Cover','index');
+	}
+
+	public function uncover(){
+		Core_Extend::doControllerAction('Attachment@Uncover','index');
+	}
+
 }

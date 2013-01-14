@@ -16,7 +16,7 @@ class IndexController extends Controller{
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 
 		// 取得推荐专辑
-		$arrRecommendAttachmentcategorys=AttachmentcategoryModel::F('attachmentcategory_recommend=?',1)->order('attachmentcategory_compositor DESC')->limit(0,$GLOBALS['_option_']['attachment_recommendcategorynum'])->getAll();
+		$arrRecommendAttachmentcategorys=AttachmentcategoryModel::F('attachmentcategory_recommend=?',1)->order('attachmentcategory_sort DESC')->limit(0,$GLOBALS['_option_']['attachment_recommendcategorynum'])->getAll();
 		$this->assign('arrRecommendAttachmentcategorys',$arrRecommendAttachmentcategorys);
 
 		// 取得推荐附件

@@ -27,7 +27,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="2"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|G+subString=0,30}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>--><!--{/if}--></td>
+										<td colspan="2"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|nl2br}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>--><!--{/if}--></td>
 									</tr>
 									<tr>
 										<td width="150px"><!--<lang package='Template/Attachment'>-->上传时间<!--</lang>--></td>
@@ -36,19 +36,19 @@
 									<tr>
 										<td><!--<lang package='Template/Attachment'>-->所属专辑<!--</lang>--></td>
 										<td><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachment['attachmentcategory_id'])}-->"><!--{if $oAttachment['attachmentcategory_id']>0}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--><!--{/if}--></a></td>
-									</tr>						
+									</tr>
 									<tr>
 										<td><!--<lang package='Template/Attachment'>-->下载次数<!--</lang>--></td>
 										<td><!--{$oAttachment:attachment_download}--></td>
-									</tr>						
+									</tr>
 									<tr>
 										<td><!--<lang package='Template/Attachment'>-->评论次数<!--</lang>--></td>
 										<td><a href="javascript:void(0);"><!--{$oAttachment:attachment_commentnum}--></a></td>
-									</tr>						
+									</tr>
 									<tr>
 										<td><!--<lang package='Template/Attachment'>-->附件大小<!--</lang>--></td>
 										<td><!--{$oAttachment:attachment_size|G+changeFileSize}--></td>
-									</tr>						
+									</tr>
 									<tr>
 										<td><!--<lang package='Template/Attachment'>-->附件类型<!--</lang>--></td>
 										<td><a href="<!--{:Dyhb::U('home://attachment/attachment?type='.$oAttachment['attachment_extension'])}-->"><!--{$oAttachment['attachment_extension']}--></a></td>

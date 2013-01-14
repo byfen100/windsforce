@@ -199,7 +199,7 @@ CREATE TABLE `#@__attachmentcategory` (
   `attachmentcategory_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '附件分类ID',
   `attachmentcategory_name` varchar(50) NOT NULL COMMENT '分类名字',
   `attachmentcategory_cover` int(10) NOT NULL DEFAULT '0' COMMENT '分类封面，可以为一个文章的图片地址或者附件库中一个图片附件的ID',
-  `attachmentcategory_compositor` smallint(8) NOT NULL DEFAULT '0' COMMENT '排序',
+  `attachmentcategory_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '排序',
   `attachmentcategory_description` varchar(500) NOT NULL COMMENT '专辑描述',
   `attachmentcategory_attachmentnum` int(10) NOT NULL DEFAULT '0' COMMENT '专辑中附件数量',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
