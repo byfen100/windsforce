@@ -64,7 +64,7 @@ function closeQuickreplay(){
 function addGrouptopiccommentquick(){
 	var sCommentMessage=$("#grouptopiccomment_quickmessage").val();
 	if(!sCommentMessage){
-		needforbugAlert('回复内容不能为空','',3);
+		windsforceAlert('回复内容不能为空','',3);
 		return false;
 	}
 
@@ -82,7 +82,7 @@ function addGrouptopiccomment(){
 	$('#grouptopiccomment_message').val(sGrouptopiccommentmessage);
 
 	if(!sGrouptopiccommentmessage){
-		needforbugAlert('回复内容不能为空','',3);
+		windsforceAlert('回复内容不能为空','',3);
 		return false;
 	}
 	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/add_reply')}-->','',function(data,status){

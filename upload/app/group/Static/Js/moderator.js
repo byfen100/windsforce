@@ -7,7 +7,7 @@ function modTopicdelete(){
 		async: false
 	}).responseText;
 
-	oEditNewmodtopics=needforbugAlert(sHtml,'你选择了一篇帖子','',modTopicdeletetopic,'',400,100);
+	oEditNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopicdeletetopic,'',400,100);
 }
 
 function modTopicdeletetopic(){

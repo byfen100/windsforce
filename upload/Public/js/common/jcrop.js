@@ -56,7 +56,7 @@ function checkCoords(){
 	if (parseInt($('#w').val())){ 
 		return true;
 	}
-	needforbugAlert(D.L('请先裁剪，然后点击提交','__COMMON_LANG__@Js/Jcrop_Js'),'',3);
+	windsforceAlert(D.L('请先裁剪，然后点击提交','__COMMON_LANG__@Js/Jcrop_Js'),'',3);
 
 	return false;
 };

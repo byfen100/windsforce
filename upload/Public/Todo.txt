@@ -25,14 +25,14 @@ http://www.hihey.com/art-6056.html
 
 何城骏 201231001118 
 
-http://localhost/needforbug/upload/index.php/app/group/test/index9 商城公告内容
-http://localhost/needforbug/upload/index.php/app/group/test/index21 商城公告列表
-http://localhost/needforbug/upload/index.php/app/group/test/index22 帮助中心
+http://localhost/windsforce/upload/index.php/app/group/test/index9 商城公告内容
+http://localhost/windsforce/upload/index.php/app/group/test/index21 商城公告列表
+http://localhost/windsforce/upload/index.php/app/group/test/index22 帮助中心
 
-http://localhost/needforbug/upload/index.php/app/group/test/index26 藏家资料
+http://localhost/windsforce/upload/index.php/app/group/test/index26 藏家资料
 
 
-http://localhost/needforbug/upload/index.php/app/group/test/index18 订单确认页
+http://localhost/windsforce/upload/index.php/app/group/test/index18 订单确认页
 
 37集
 http://www.tingchina.com/yousheng/23337/play_23337_40.htm

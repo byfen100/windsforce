@@ -145,7 +145,7 @@ class UpdateCacheStyle{
 
 	private static function writeToCache($sStylePath,$arrStyle){
 		if(!file_put_contents($sStylePath,
-			"<?php\n /* NeedForBug Style File,Do not to modify this file! */ \n return ".
+			"<?php\n /* WindsForce Style File,Do not to modify this file! */ \n return ".
 				var_export($arrStyle,true).
 			"\n?>")
 		){

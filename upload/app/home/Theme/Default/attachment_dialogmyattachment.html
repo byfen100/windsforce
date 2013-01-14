@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function deleteAttachment(id){
-	needforbugConfirm('<!--<lang package='Template/Attachment'>-->你确定要删除附件吗?<!--</lang>-->',function(){
+	windsforceConfirm('<!--<lang package='Template/Attachment'>-->你确定要删除附件吗?<!--</lang>-->',function(){
 		Dyhb.AjaxSend(D.U('home://attachment/delete_attachment?id='+id),
 			'ajax=1','',
 			function(data,status){

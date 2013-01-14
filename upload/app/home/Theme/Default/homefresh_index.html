@@ -15,7 +15,7 @@ $(function(){
 function addHomefresh(){
 	$('#homefresh_message').val(editor.html());
 	if($('#homefresh_message').val()==''){
-		needforbugAlert('<!--<lang package='Template/Homefresh'>-->新鲜事内容不能为空<!--</lang>-->','',3);
+		windsforceAlert('<!--<lang package='Template/Homefresh'>-->新鲜事内容不能为空<!--</lang>-->','',3);
 		return false;
 	}
 	
@@ -82,7 +82,7 @@ function addHomefreshtopic(){
 		async: false
 	}).responseText;
 
-	oEditNewhomefreshtopic=needforbugAlert(sHtml,'<!--<lang package='Template/Homefresh'>-->插入话题<!--</lang>-->','','','',500,100);
+	oEditNewhomefreshtopic=windsforceAlert(sHtml,'<!--<lang package='Template/Homefresh'>-->插入话题<!--</lang>-->','','','',500,100);
 }
 
 function insertHomefreshtopic(sContent){

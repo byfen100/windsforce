@@ -2,13 +2,13 @@
 
 <!--{script}-->
 function deleteMyPm(id){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSend(D.U('home://pm/del_my_one_pm?id='+id),'','',completeDelete);
 	});
 }
 
 function deletePm(id,userid){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSend(D.U('home://pm/del_one_pm?id='+id+'&uid='+userid),'','',completeDelete);
 	});
 }
@@ -20,7 +20,7 @@ function completeDelete(data,status){
 }
 
 function deletePms(){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		document.getElementById('pmform').submit();
 	});
 
@@ -34,7 +34,7 @@ function readPms(){
 }
 
 function deleteMyPms(){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		document.getElementById('pmform').submit();
 	});
 
@@ -42,7 +42,7 @@ function deleteMyPms(){
 }
 
 function deleteSystemPms(){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSubmit('pmform','<!--{:Dyhb::U('home://pm/delete_systempm?ajax=1')}-->','',function(data,status){ 
 			if(status==1){
 				window.location.reload();

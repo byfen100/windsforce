@@ -11,7 +11,7 @@ function addFavorite(url,title){
 		try{
 			window.sidebar.addPanel(title,url,'');
 		}catch(e){
-			needforbugAlert(D.L('请按 Ctrl+D 键添加到收藏夹','__COMMON_LANG__@Js/Common_Js'),'',3);
+			windsforceAlert(D.L('请按 Ctrl+D 键添加到收藏夹','__COMMON_LANG__@Js/Common_Js'),'',3);
 		}
 	}
 }
@@ -21,7 +21,7 @@ function setHomepage(sURL){
 		document.body.style.behavior='url(#default#homepage)';
 		document.body.setHomePage(sURL);
 	}else{
-		needforbugAlert(D.L('非 IE 浏览器请手动将本站设为首页','__COMMON_LANG__@Js/Common_Js'),'',3);
+		windsforceAlert(D.L('非 IE 浏览器请手动将本站设为首页','__COMMON_LANG__@Js/Common_Js'),'',3);
 		return false;
 	}
 }
@@ -273,13 +273,13 @@ function copy(text2copy,title){
 		text2copy=text2copy.replace(/[\xA0]/g,' ');
 		clipboardswfdata=text2copy;
 
-		oCopyToClipboard=needforbugAlert(divinfo,title,9);
+		oCopyToClipboard=windsforceAlert(divinfo,title,9);
 	}
 }
 
 function copyToClipboard(meintext,title){
 	if(window.clipboardData){
-		needforbugAlert("ie",title,3);
+		windsforceAlert("ie",title,3);
 			/* the IE-manier */
 			window.clipboardData.setData("Text", meintext);
 			/* waarschijnlijk niet de beste manier om Moz/NS te detecteren;
@@ -294,7 +294,7 @@ function copyToClipboard(meintext,title){
 			if(!clip){
 				return
 			};
-			needforbugAlert("mozilla",title,3);
+			windsforceAlert("mozilla",title,3);
 
 			/* maak een transferable*/
 			var trans=Components.classes['@mozilla.org/widget/transferable;1']
@@ -324,7 +324,7 @@ function copyToClipboard(meintext,title){
 			clip.setData(trans,null,clipid.kGlobalClipboard);
 		}
 
-		needforbugAlert(meintext,title,3);
+		windsforceAlert(meintext,title,3);
 
 		return false;
 }
@@ -399,7 +399,7 @@ function ajaxLogin(){
 		async: false
 	}).responseText;
 
-	needforbugAlert(sHtml,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	windsforceAlert(sHtml,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 }
 
 function ajaxRegister(refer){
@@ -408,7 +408,7 @@ function ajaxRegister(refer){
 		async: false
 	}).responseText;
 
-	needforbugAlert(sHtml,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	windsforceAlert(sHtml,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 }
 
 /** 播放器 */
@@ -474,7 +474,7 @@ function flashResizeDown(obj,width,height,reload,url,idbox){
 }
 
 function fullplayFrame(sUrl,id){
-	window.open(D.U('home://attachment/fullplay_frame?url='+encodeURIComponent(sUrl)),"NeedForBug","menubar=no,toolbar=no,location=no,status=no,fullscreen=yes");
+	window.open(D.U('home://attachment/fullplay_frame?url='+encodeURIComponent(sUrl)),"WindsForce","menubar=no,toolbar=no,location=no,status=no,fullscreen=yes");
 	window.opener =null;
 	window.close();
 
@@ -489,7 +489,7 @@ function playout(sUrl,id){
 		async: false
 	}).responseText;
 
-	oEditNewattachmentcategory=needforbugAlert(sHtml,D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	oEditNewattachmentcategory=windsforceAlert(sHtml,D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 
 	objDiv=document.getElementById(id);
 	objDiv.innerHTML='';
@@ -571,7 +571,7 @@ function addMessage(nUid){
 		arrReturn=eval('('+sHtml+')');
 		alert(arrReturn.info);
 	}catch(ex){
-		oEditNewmessage=needforbugAlert(sHtml,D.L('发送短消息','__COMMON_LANG__@Js/Common_Js'),'',addMessageok,'',500,100);
+		oEditNewmessage=windsforceAlert(sHtml,D.L('发送短消息','__COMMON_LANG__@Js/Common_Js'),'',addMessageok,'',500,100);
 	};
 }
 
@@ -598,7 +598,7 @@ function addFriend(userid){
 }
 
 function deleteFriend(friendid,fan){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSend(D.U('home://friend/delete?friendid='+friendid+(fan=='1'?'&fan=1':'')),'','',function(data,status){
 			if(status==1){
 				window.location.reload();

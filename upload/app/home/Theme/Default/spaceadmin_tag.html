@@ -7,7 +7,7 @@ function showTag(){
 
 function add(){
 	if($('#hometag_name').val()==''){
-		needforbugAlert(D.L('用户标签不能为空','AppJs'),'',3);
+		windsforceAlert(D.L('用户标签不能为空','AppJs'),'',3);
 		return false;
 	}
 
@@ -25,7 +25,7 @@ function add(){
 }
 
 function deleteHometag(tagid){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSend(D.U('home://spaceadmin/delete_hometag&id='+tagid),'','',completeDelete);
 	});
 }

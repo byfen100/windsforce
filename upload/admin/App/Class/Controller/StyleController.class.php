@@ -198,7 +198,7 @@ class StyleController extends InitController{
 	public function get_xml_num($sStyle,$bReturnNum=true){
 		$arrXmlFiles=glob(WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($sStyle).'/*.xml');
 
-		if(!in_array(WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($sStyle).'/needforbug_style_'.strtolower($sStyle).'.xml',$arrXmlFiles)){
+		if(!in_array(WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($sStyle).'/windsforce_style_'.strtolower($sStyle).'.xml',$arrXmlFiles)){
 			return false;
 		}
 
@@ -578,11 +578,11 @@ class StyleController extends InitController{
 				$arrData=array();
 				
 				// 样式版权
-				$arrData['title']=$GLOBALS['_option_']['needforbug_program_name'].'! Style';
+				$arrData['title']=$GLOBALS['_option_']['windsforce_program_name'].'! Style';
 				$arrData['version']=WINDSFORCE_SERVER_VERSION;
 				$arrData['time']=WINDSFORCE_SERVER_RELEASE;
-				$arrData['url']=$GLOBALS['_option_']['needforbug_program_url'];
-				$arrData['copyright']='(C)'.$GLOBALS['_option_']['needforbug_program_year'].' '.$GLOBALS['_option_']['needforbug_program_company'];
+				$arrData['url']=$GLOBALS['_option_']['windsforce_program_url'];
+				$arrData['copyright']='(C)'.$GLOBALS['_option_']['windsforce_program_year'].' '.$GLOBALS['_option_']['windsforce_program_company'];
 
 				// 主题信息
 				$arrStylevarData=array();
@@ -606,11 +606,11 @@ class StyleController extends InitController{
 					'directory'=>'theme/'.ucfirst($oTheme['theme_dirname']),
 					'copyright'=>htmlspecialchars(trim($oTheme['theme_copyright'])),
 					'data'=>array_reverse($arrStylevarData),
-					'version'=>'For '.$GLOBALS['_option_']['needforbug_program_name'].'-'.WINDSFORCE_SERVER_VERSION,
+					'version'=>'For '.$GLOBALS['_option_']['windsforce_program_name'].'-'.WINDSFORCE_SERVER_VERSION,
 				);
 				
 				// 保存文件
-				$sPath='STYLE-needforbug_style_'.strtolower($oTheme['theme_dirname']).'_'.intval($oStyle['style_id']).'-'.date('Y_m_d_H_i_s',CURRENT_TIMESTAMP).'.xml';
+				$sPath='STYLE-windsforce_style_'.strtolower($oTheme['theme_dirname']).'_'.intval($oStyle['style_id']).'-'.date('Y_m_d_H_i_s',CURRENT_TIMESTAMP).'.xml';
 				
 				ob_end_clean();
 			
@@ -735,7 +735,7 @@ class StyleController extends InitController{
 					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller/Style',null,$oStyle['style_name']));
 				}
 
-				$sThemeXml=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/needforbug_style_'.strtolower($oTheme['theme_dirname']).'.xml';
+				$sThemeXml=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/windsforce_style_'.strtolower($oTheme['theme_dirname']).'.xml';
 				if(!is_file($sThemeXml)){
 					$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller/Style',null,$sThemeXml));
 				}

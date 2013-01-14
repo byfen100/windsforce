@@ -35,7 +35,7 @@ return array(
 'bb5ea0f3cf96bbc27f5ccc8ee7c21101'=>"開始安裝",
 '0d61245eae4731c9e97c37bbd75242d6'=>"請仔細查看安裝過程消息",
 '4c9dbf92dad181abbeb81862d7f71d57'=>"恭喜你安裝成功",
-'fbff072f153fd172bc898a61f94a305c'=>"尊敬的用戶，你已經成功安裝了NeedForBug",
+'fbff072f153fd172bc898a61f94a305c'=>"尊敬的用戶，你已經成功安裝了WindsForce",
 '7b3cddadfbe28047cb9af2c2cd322500'=>"系統將進入首頁",
 '86005c9db231d9813cbdd64c1d64f4f1'=>"瀏覽器會在3秒後自動跳轉頁面，無需人工干預",
 'a6d02f5b190c44c97bcf87fa1076498e'=>"正在升級",

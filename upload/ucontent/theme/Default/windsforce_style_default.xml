@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><root>
-<title><![CDATA[NeedForBug! Style]]></title>
+<title><![CDATA[WindsForce! Style]]></title>
 <version><![CDATA[1.0]]></version>
 <time><![CDATA[20120104]]></time>
-<url><![CDATA[http://needforbug.doyouhaobaby.net]]></url>
+<url><![CDATA[http://windsforce.doyouhaobaby.net]]></url>
 <copyright><![CDATA[点牛]]></copyright>
 <data>
 	<name>默认主题</name>
@@ -82,6 +82,6 @@
 		<style_img_dir></style_img_dir>
 		<img_dir></img_dir>
 	</data>
-	<version>For NeedForBug-1.0</version>
+	<version>For WindsForce-1.0</version>
 </data>
 </root>

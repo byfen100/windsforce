@@ -3,7 +3,7 @@
 <!--{script}-->
 function findUser(){
 	if(!$('#key').val()){
-		needforbugAlert(D.L('用户关键字不能为空','AppJs'),'',3);
+		windsforceAlert(D.L('用户关键字不能为空','AppJs'),'',3);
 		return false;
 	}else{
 		return true;
@@ -39,7 +39,7 @@ function preg_replace(search, replace, str){
 }
 
 function deleteFriend(friendid,fan){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSend(D.U('home://friend/delete?friendid='+friendid+(fan=='1'?'&fan=1':'')),'','',function(data,status){
 			if(status==1){
 				window.location.reload();

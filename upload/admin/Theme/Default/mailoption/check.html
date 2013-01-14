@@ -14,7 +14,7 @@ function mailCheck(){
 
 	var sTestmailto=$("#test_mail_to").val();
 	if(sTestmailto==''){
-		needforbugAlert('<!--<lang package='Template/Default/Mailoption'>-->接收邮件地址不能为空<!--</lang>-->','',3);
+		windsforceAlert('<!--<lang package='Template/Default/Mailoption'>-->接收邮件地址不能为空<!--</lang>-->','',3);
 		$("#submit_button").attr("disabled", false);
 		$("#submit_button").val( '<!--<lang package='Template/Default/Mailoption'>-->开始测试发送邮件<!--</lang>-->' );
 		return false;
@@ -26,7 +26,7 @@ function mailCheck(){
 		$("#submit_button").attr("disabled", false);
 		$("#submit_button").val( '<!--<lang package='Template/Default/Mailoption'>-->开始测试发送邮件<!--</lang>-->' );
 		if(status==1){
-			needforbugAlert('<!--<lang package='Template/Default/Mailoption'>-->邮件测试成功<!--</lang>-->','',1);
+			windsforceAlert('<!--<lang package='Template/Default/Mailoption'>-->邮件测试成功<!--</lang>-->','',1);
 		}
 	});
 };

@@ -35,7 +35,7 @@ return array(
 'bb5ea0f3cf96bbc27f5ccc8ee7c21101'=>"开始安装",
 '0d61245eae4731c9e97c37bbd75242d6'=>"请仔细查看安装过程消息",
 '4c9dbf92dad181abbeb81862d7f71d57'=>"恭喜你安装成功",
-'fbff072f153fd172bc898a61f94a305c'=>"尊敬的用户，你已经成功安装了NeedForBug",
+'fbff072f153fd172bc898a61f94a305c'=>"尊敬的用户，你已经成功安装了WindsForce",
 '7b3cddadfbe28047cb9af2c2cd322500'=>"系统将进入首页",
 '86005c9db231d9813cbdd64c1d64f4f1'=>"浏览器会在3秒后自动跳转页面，无需人工干预",
 'a6d02f5b190c44c97bcf87fa1076498e'=>"正在升级",

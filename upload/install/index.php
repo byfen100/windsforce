@@ -5,7 +5,7 @@
 //error_reporting(E_ERROR|E_PARSE|E_STRICT);
 error_reporting(E_ALL);
 
-/** Defined the version of needforbug */
+/** Defined the version of windsforce */
 define('WINDSFORCE_SERVER_VERSION','1.0');
 define('WINDSFORCE_SERVER_RELEASE','20120104');
 

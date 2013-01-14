@@ -16,7 +16,7 @@ function complete(data,status){
 }
 
 function deleteGrouptopcategory(category_id,group_id){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSend(D.U('app/config?id=<!--{$_GET['id']}-->&controller=group&action=delete_topic_category'),'value='+category_id+'&group_id='+group_id+'&ajax=1','',completeDelete);
 	});
 }

@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function truncatePms(id,userid,date){
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		window.location.href=D.U('home://pm/truncatepm?id='+id+'&uid='+userid+'&date='+date);
 	});
 

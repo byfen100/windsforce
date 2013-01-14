@@ -25,7 +25,7 @@ class GlobalinitController extends Controller{
 	
 			if(!$this->isAjax()){
 				// 发送当前URL
-				Dyhb::cookie('needforbug_referer',__SELF__);
+				Dyhb::cookie('windsforce_referer',__SELF__);
 			}
 			
 			$this->assign('__JumpUrl__',Dyhb::U('home://public/login'));

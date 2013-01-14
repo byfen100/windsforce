@@ -664,11 +664,11 @@ WINDSFORCE;
 		}
 
 		if($sType=='large'){
-			$sPreview='needforbug_preview_large';
+			$sPreview='windsforce_preview_large';
 		}elseif($sType=='mini'){
-			$sPreview='needforbug_preview_mini';
+			$sPreview='windsforce_preview_mini';
 		}else{
-			$sPreview='needforbug_preview';
+			$sPreview='windsforce_preview';
 		}
 
 		foreach(array('png','gif','jpg','jpeg') as $sExt){

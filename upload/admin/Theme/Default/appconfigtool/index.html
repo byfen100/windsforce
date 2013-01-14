@@ -8,7 +8,7 @@ function editGlobalconfig(){
 		url: D.U('appconfigtool/edit_globalconfig'),
 		async: false
 	}).responseText;
-	oEditGlobalconfig=needforbugAlert(sHtml,'<!--<lang package='Template/Default/Appconfigtool'>-->编辑全局配置<!--</lang>-->','',saveGlobalconfig,cancelGlobalconfig);
+	oEditGlobalconfig=windsforceAlert(sHtml,'<!--<lang package='Template/Default/Appconfigtool'>-->编辑全局配置<!--</lang>-->','',saveGlobalconfig,cancelGlobalconfig);
 }
 
 function saveGlobalconfig(){
@@ -16,7 +16,7 @@ function saveGlobalconfig(){
 		if(status==1){
 			oEditGlobalconfig.close();
 		}else{
-			needforbugAlert(info);
+			windsforceAlert(info);
 		}
 		return true;
 	});
@@ -24,7 +24,7 @@ function saveGlobalconfig(){
 }
 
 function cancelGlobalconfig(){
-	needforbugConfirm('<!--<lang package='Template/Default/Appconfigtool'>-->你确定放弃修改配置文件？<!--</lang>-->',function(){
+	windsforceConfirm('<!--<lang package='Template/Default/Appconfigtool'>-->你确定放弃修改配置文件？<!--</lang>-->',function(){
 		oEditGlobalconfig.close();
 		return true;
 	});
@@ -50,7 +50,7 @@ function viewAppconfig(sApp,type){
 		async: false
 	}).responseText;
 
-	needforbugAlert(sHtml,sApp+'  '+(type==1?'<!--<lang package='Template/Default/Appconfigtool'>-->配置文件<!--</lang>-->':'<!--<lang package='Template/Default/Appconfigtool'>-->缓存文件<!--</lang>-->'));
+	windsforceAlert(sHtml,sApp+'  '+(type==1?'<!--<lang package='Template/Default/Appconfigtool'>-->配置文件<!--</lang>-->':'<!--<lang package='Template/Default/Appconfigtool'>-->缓存文件<!--</lang>-->'));
 }
 
 function deleteAppconfig(sApp){
@@ -68,7 +68,7 @@ function editAppconfig(sApp){
 		url: D.U('appconfigtool/edit_appconfig?app='+sApp),
 		async: false
 	}).responseText;
-	oEditAppconfig=needforbugAlert(sHtml,'<!--<lang package='Template/Default/Appconfigtool'>-->编辑应用配置<!--</lang>-->'+'  '+sApp,'',saveAppconfig,cancelAppconfig);
+	oEditAppconfig=windsforceAlert(sHtml,'<!--<lang package='Template/Default/Appconfigtool'>-->编辑应用配置<!--</lang>-->'+'  '+sApp,'',saveAppconfig,cancelAppconfig);
 }
 
 function saveAppconfig(){
@@ -76,7 +76,7 @@ function saveAppconfig(){
 		if(status==1){
 			oEditAppconfig.close();
 		}else{
-			needforbugAlert(info);
+			windsforceAlert(info);
 		}
 		return true;
 	});
@@ -84,7 +84,7 @@ function saveAppconfig(){
 }
 
 function cancelAppconfig(){
-	needforbugConfirm('<!--<lang package='Template/Default/Appconfigtool'>-->你确定放弃修改配置文件？<!--</lang>-->',function(){
+	windsforceConfirm('<!--<lang package='Template/Default/Appconfigtool'>-->你确定放弃修改配置文件？<!--</lang>-->',function(){
 		oEditAppconfig.close();
 		return true;
 	});

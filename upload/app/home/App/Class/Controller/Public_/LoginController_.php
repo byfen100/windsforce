@@ -143,9 +143,9 @@ class LoginController extends GlobalchildController{
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());
 		}else{
-			if(Dyhb::cookie('needforbug_referer')){
-				$sUrl=Dyhb::cookie('needforbug_referer');
-				Dyhb::cookie('needforbug_referer','',-1);
+			if(Dyhb::cookie('windsforce_referer')){
+				$sUrl=Dyhb::cookie('windsforce_referer');
+				Dyhb::cookie('windsforce_referer','',-1);
 			}else{
 				$sUrl=Dyhb::U('home://ucenter/index');
 			}

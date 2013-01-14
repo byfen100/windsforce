@@ -48,7 +48,7 @@ function createAttachmentcategory(nSelectedIndex,sId){
 			async: false
 		}).responseText;
 
-		oEditNewattachmentcategory=needforbugAlert(sHtml,'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
+		oEditNewattachmentcategory=windsforceAlert(sHtml,'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
 	}else{
 		uploadobject.addPostParam( 'attachmentcategory_id', nSelectedIndex);
 	}
@@ -75,7 +75,7 @@ function saveNewattachmentcategory(){
 
 function cancelNewattachmentcategory(){
 	if($('#new_attachmentcategory_name').val()!=''){
-		needforbugConfirm('<!--<lang package='Template/Attachment'>-->你确定要放弃新建专辑?<!--</lang>-->',function(){
+		windsforceConfirm('<!--<lang package='Template/Attachment'>-->你确定要放弃新建专辑?<!--</lang>-->',function(){
 			oEditNewattachmentcategory.close();
 			return true;
 		});

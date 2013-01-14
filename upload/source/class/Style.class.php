@@ -53,8 +53,8 @@ class Style{
 
 			foreach($arrPreviews as $sKey=>$sType){
 				foreach(array('png','gif','jpg','jpeg') as $sExt){
-					if(is_file("{$sStylesheet}/needforbug_preview{$sType}.{$sExt}")){
-						$arrPreviews[$sKey]="needforbug_preview{$sKey}.{$sExt}";
+					if(is_file("{$sStylesheet}/windsforce_preview{$sType}.{$sExt}")){
+						$arrPreviews[$sKey]="windsforce_preview{$sKey}.{$sExt}";
 					}
 				}
 
@@ -157,7 +157,7 @@ class Style{
 	}
 
 	public function getNoneimg($sKey){
-		return "needforbug_preview{$sKey}.png";
+		return "windsforce_preview{$sKey}.png";
 	}
 
 	public function cleanupHeadercomment($sValue){

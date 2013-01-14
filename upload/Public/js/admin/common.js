@@ -51,7 +51,7 @@ function edit(id,controller,appId,sMore){
 	}
 
 	if(!keyValue){
-		needforbugAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
+		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
 		return false;
 	}
 
@@ -76,11 +76,11 @@ function foreverdel(id,appId,controller,sMore){
 	}
 
 	if(!keyValue){
-		needforbugAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
+		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
 		return false;
 	}
 
-	needforbugConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		if(controller){
 			Dyhb.AjaxSend(D.U('app/config?action=foreverdelete'),'id='+appId+'&ajax=1'+'&value='+keyValue+'&controller='+controller+(sMore?'&'+sMore:''),'',completeDelete);
 		}else{
