@@ -15,7 +15,7 @@ class LoginlogController extends InitController{
 	}
 	
 	public function filter_(&$arrMap){
-		$arrMap['loginlog_user']=array('like',"%".G::getGpc('loginlog_user')."%");
+		$arrMap['loginlog_username']=array('like',"%".G::getGpc('loginlog_username')."%");
 	}
 
 	public function clear(){

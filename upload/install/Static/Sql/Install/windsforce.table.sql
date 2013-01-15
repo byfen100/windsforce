@@ -501,7 +501,7 @@ CREATE TABLE `#@__loginlog` (
   `user_id` mediumint(8) NOT NULL COMMENT '用户ID',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
-  `loginlog_user` varchar(50) NOT NULL COMMENT '登录用户',
+  `loginlog_username` varchar(50) NOT NULL COMMENT '登录用户',
   `loginlog_ip` varchar(40) NOT NULL COMMENT '登录IP',
   `loginlog_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '登录状态',
   `login_application` varchar(20) NOT NULL COMMENT '登录应用',

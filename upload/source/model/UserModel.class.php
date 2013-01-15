@@ -146,7 +146,7 @@ class UserModel extends CommonModel{
 		$oUser=UserModel::M()->checkLogin($sUserName,$sPassword,$bEmail);
 
 		$oLoginlog=new LoginlogModel();
-		$oLoginlog->loginlog_user=$sUserName;
+		$oLoginlog->loginlog_username=$sUserName;
 		$oLoginlog->login_application=$sApp;
 
 		if(G::isImplementedTo($oUser,'IModel')){
