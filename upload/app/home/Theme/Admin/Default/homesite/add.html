@@ -1,10 +1,12 @@
 <!--<include file="public+header">-->
 
 <!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
 
 <!--{script}-->
 $(function(){
 	editor=loadEditor('homesite_content');
+	$('a.face-icon').showEmotion({input:editor});
 });
 
 function add(){
@@ -34,6 +36,18 @@ function complete(data,status){
 	if(status==1){
 		location.href=D.U('app/config?controller=homesite&action=edit&id=<!--{$_GET['id']}-->&value='+data.homesite_id);
 	}
+}
+
+function insertHomesitecontentattachment(nAttachmentid){
+	insertAttachment(editor,nAttachmentid);
+}
+
+function insertHomesitecontentmusic(sContent){
+	insertMusic(editor,sContent);
+}
+
+function insertHomesitecontentvideo(sContent){
+	insertVideo(editor,sContent);
 }
 <!--{/script}-->
 
@@ -74,6 +88,12 @@ function complete(data,status){
 					</fieldset>
 					<fieldset>
 						<label for="homesite_content"><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息内容<!--</lang>--></label>
+						<div id="homesitecontent-media-box" class="common-media-box">
+							<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='Template/Default/Mediabox'>-->表情<!--</lang>--></a> 
+							<a href="javascript:void(0);" onclick="globalAddattachment('insertHomesitecontentattachment');" class="icon_add_img"><!--<lang package='Template/Default/Mediabox'>-->媒体<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addVideo('insertHomesitecontentvideo');" class="icon_add_video" ><!--<lang package='Template/Default/Mediabox'>-->视频<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addMusic('insertHomesitecontentmusic');" class="icon_add_music"><!--<lang package='Template/Default/Mediabox'>-->音乐<!--</lang>--></a>
+						</div>
 						<p style="padding-left:10px;"><textarea name="homesite_content" id="homesite_content" style="width:700px;height:400px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:homesite_content}--><!--</if>--></textarea></p>
 						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息的详细内容，请更具自己网站的性质进行适当的修改<!--</lang>--><br/>
 						<!--<lang package='Template/Default/Common'>-->系统变量替换: {site_name} 网站标题,{site_description} 网站描述,{site_url} 站点信息,{time} 当前时间,{user_name} 登录用户,{user_nikename} 登录用户昵称,{admin_email} 系统管理员邮箱<!--</lang>--></div>
