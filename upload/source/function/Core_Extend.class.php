@@ -690,6 +690,12 @@ WINDSFORCE;
 	}
 
 	static public function initFront(){
+		// 判断应用是否启用
+		Core_Extend::loadCache('app');
+		if(!in_array(APP_NAME,$GLOBALS['_cache_']['app'])){
+			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
+		}
+		
 		// 配置&菜单&登陆信息
 		Core_Extend::loadCache('option');
 		Core_Extend::loadCache('nav');
