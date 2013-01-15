@@ -17,7 +17,20 @@ class InitController extends Controller{
 			$this->E(UserModel::M()->getBehaviorErrorMessage());
 		}
 
-		Core_Extend::page404($this);
+		Core_Extend::page404($this);
+		
+		// 记录后台操作记录
+		if(!in_array(MODULE_NAME,array('public','index'))){
+			$sUrl=parse_url(__SELF__,PHP_URL_QUERY);
+
+			$oAdminlog=new AdminlogModel();
+			$oAdminlog->adminlog_info=$sUrl;
+			$oAdminlog->save(0);
+
+			if($oAdminlog->isError()){
+				$this->E($oAdminlog->getErrorMessage());
+			}
+		}
 	}
 
 	public function page404(){

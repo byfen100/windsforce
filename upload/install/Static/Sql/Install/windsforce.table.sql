@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS `#@__adminlog`;
 CREATE TABLE `#@__adminlog` (
   `adminlog_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '后台管理ID',
   `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `user_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '日志所记录的操作者ID',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '日志所记录的操作者ID',
   `adminlog_username` varchar(50) NOT NULL COMMENT '后台管理记录用户名',
   `adminlog_info` varchar(255) NOT NULL DEFAULT '' COMMENT '管理操作内容',
   `adminlog_ip` varchar(40) NOT NULL DEFAULT '' COMMENT '登录者登录IP',

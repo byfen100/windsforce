@@ -28,7 +28,7 @@ class LoginlogModel extends CommonModel{
 		return ModelMeta::instance(__CLASS__);
 	}
 
-	public function getIp(){
+	protected function getIp(){
 		return G::getIp();
 	}
 

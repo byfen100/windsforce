@@ -13,6 +13,11 @@ class AdminlogModel extends CommonModel{
 				'adminlog_id'=>array('readonly'=>true),
 			),
 			'attr_protected'=>'adminlog_id',
+			'autofill'=>array(
+				array('user_id','userId','create','callback'),
+				array('adminlog_username','userName','create','callback'),
+				array('adminlog_ip','getIp','create','callback'),
+			),
 		);
 	}
 
@@ -23,6 +28,22 @@ class AdminlogModel extends CommonModel{
 
 	static function M(){
 		return ModelMeta::instance(__CLASS__);
+	}
+
+	protected function userId(){
+		$arrUserData=$GLOBALS['___login___'];
+
+		return $arrUserData['user_id'];
+	}
+
+	protected function userName(){
+		$arrUserData=$GLOBALS['___login___'];
+
+		return $arrUserData['user_name'];
+	}
+
+	protected function getIp(){
+		return G::getIp();
 	}
 
 }
