@@ -43,7 +43,6 @@ class UrloptionController extends OptionController{
 		$sCachefile=WINDSFORCE_PATH.'/data/~runtime/cache_/data/~@nav.php';
 		$bIsFilecache && (is_file($sCachefile) && @unlink($sCachefile));
 
-
 		$this->S(Dyhb::L('修改URL模式成功','Controller/Urloption'));
 	}
 

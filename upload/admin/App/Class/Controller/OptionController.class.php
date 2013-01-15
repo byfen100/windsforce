@@ -37,10 +37,33 @@ class OptionController extends InitController{
 		}
 		Cache_Extend::updateCache('option');
 
+		// 保存管理员设置
+		$sUid=trim(G::getGpc('admin_userid','P'));
+
+		$arrUserid=explode(',',$sUid);
+		$arrUserid=array_unique($arrUserid);
+		if(!in_array(1,$arrUserid)){
+			$arrUserid[]=1;
+		}
+
+		$sUid=implode(',',$arrUserid);
+		Core_Extend::changeAppconfig('ADMIN_USERID',$sUid);
+
 		$this->S(Dyhb::L('配置更新成功','Controller/Option'));
 	}
 
 	public function admin(){
+		if($GLOBALS['___login___']['user_id']!=1){
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+		}
+
+		// 读取超级管理员信息
+		$sUid=Dyhb::C('ADMIN_USERID');
+		$arrUsers=UserModel::F()->where(array('user_id'=>array('in',$sUid)))->order('user_id DESC')->getAll();
+		
+		$this->assign('arrUsers',$arrUsers);
+		$this->assign('sUid',$sUid);
+		
 		$this->index();
 	}
 
