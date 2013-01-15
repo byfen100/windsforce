@@ -43,6 +43,31 @@ function closeUpdateinfo(){
 		<h4 class="alert_info" id="welcome_info"><!--{$sTipsTxt}--></h4>
 
 		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Public'>-->后台在线管理员<!--</lang>--></h3></header>
+			<div class="module_content">
+				<p><!--<lang package='Template/Default/Public'>-->这里你可以看到后台当前在线的管理员<!--</lang>--></p>
+				<table class="tablesorter" cellspacing="0">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template/Default/Public'>-->后台在线用户<!--</lang>--></th>
+							<th><!--<lang package='Template/Default/Public'>-->IP地址<!--</lang>--></th>
+							<th><!--<lang package='Template/Default/Public'>-->最后活动时间<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+					<!--<foreach for=arrUsers value=oUser>-->
+					<tr>
+						<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oUser['user_id']}-->" target="_blank"><!--{$oUser['user_name']}--></a></td>
+						<td><!--{$oUser['user_lastloginip']}--></td>
+						<td><!--{$oUser['user_lastlogintime']|date='Y-m-d H:i:s',**}--></td>
+					</tr>
+					<!--</foreach>-->
+					</tbody>
+				</table>
+			</div>
+		</article>
+
+		<article class="module width_full">
 			<header><h3><!--<lang package='Template/Default/Public'>-->控制面板<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul class="controlpanel-buttons-set">

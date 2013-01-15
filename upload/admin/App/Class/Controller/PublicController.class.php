@@ -104,10 +104,25 @@ class PublicController extends InitController{
 		$tipsTxt=$arrTipsTxt[$nTips];
 		$this->assign('sTipsTxt',$tipsTxt);
 		
+		// 升级服务端信息
 		$sUpdateUrl='http://dianniu.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
 			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']);
 		$this->assign('sUpdateUrl',$sUpdateUrl);
+
+		// 后台在线用户
+		$arrUserids=array();
+		$sUid=Dyhb::C('ADMIN_USERID');
+
+		$arrSessions=SessionModel::F()->where(array('user_id'=>array('in',$sUid)))->getAll();
+		if(is_array($arrSessions)){
+			foreach($arrSessions as $oSession){
+				$arrUserids[]=$oSession['user_id'];
+			}
+		}
+
+		$arrUsers=UserModel::F()->where(array('user_id'=>array('in',$arrUserids)))->order('user_id DESC')->getAll();
+		$this->assign('arrUsers',$arrUsers);
 
 		$this->display();
 	}
