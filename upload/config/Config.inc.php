@@ -11,8 +11,8 @@
   'SHOW_RUN_TIME' => true,
   'SHOW_DB_TIMES' => true,
   'SHOW_GZIP_STATUS' => true,
-  'RBAC_DATA_PREFIX' => 'windsforce_rbac_B5067B_',
-  'COOKIE_PREFIX' => 'windsforce_A1384A_',
+  'RBAC_DATA_PREFIX' => 'windsforce_rbac_EadE92_',
+  'COOKIE_PREFIX' => 'windsforce_67f8e7_',
   'RBAC_ROLE_TABLE' => 'role',
   'RBAC_USERROLE_TABLE' => 'userrole',
   'RBAC_ACCESS_TABLE' => 'access',
@@ -44,8 +44,8 @@
   'ADMIN_LANGUAGE_DIR' => 'Zh-cn',
   'LANG_SWITCH' => true,
   'DEFAULT_APP' => 'home',
+  'URL_MODEL' => 1,
   'DB_HOST' => 'localhost',
   'DB_USER' => 'root',
-  'URL_MODEL' => 1,
 )
 ?>

@@ -123,10 +123,14 @@ class AppController extends InitController{
 	}
 
 	public function disable(){
+		$this->check_();
+		
 		$this->change_status_('status',0,'app');
 	}
 
 	public function enable(){
+		$this->check_();
+		
 		$this->change_status_('status',1,'app');
 	}
 
@@ -253,6 +257,12 @@ class AppController extends InitController{
 			require_once(Core_Extend::includeFile('function/Cache_Extend'));
 		}
 		Cache_Extend::updateCache("nav");
+	}
+
+	protected function check_(){
+		if($GLOBALS['___login___']['user_id']!=1){
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+		}
 	}
 	
 }

@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 class OptionController extends InitController{
-
+	
 	public function index($sModel=null,$bDisplay=true){
 		$arrOptionData=$GLOBALS['_option_'];
 

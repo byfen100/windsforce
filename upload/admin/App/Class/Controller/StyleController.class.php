@@ -12,6 +12,14 @@ class StyleController extends InitController{
 	public $_nOkStyleNums=0;
 	public $_nBrokenStyleNums=0;
 
+	public function init__(){
+		parent::init__();
+
+		if($GLOBALS['___login___']['user_id']!=1){
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+		}
+	}
+	
 	public function filter_(&$arrMap){
 		$arrMap['style_name']=array('like',"%".G::getGpc('style_name')."%");
 	}

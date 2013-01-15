@@ -10,6 +10,22 @@ class ThemeController extends InitController{
 		$arrMap['theme_name']=array('like',"%".G::getGpc('theme_name')."%");
 	}
 
+	public function init__(){
+		parent::init__();
+
+		if($GLOBALS['___login___']['user_id']!=1){
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+		}
+	}
+	
+	public function init__(){
+		parent::init__();
+
+		if($GLOBALS['___login___']['user_id']!=1){
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+		}
+	}
+	
 	public function bUpdate_($sThemeDirname=''){
 		if(empty($sThemeDirname)){
 			$_POST['theme_dirname']=ucfirst($_POST['theme_dirname']);
