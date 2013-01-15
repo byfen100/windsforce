@@ -20,7 +20,7 @@ class InitController extends Controller{
 		Core_Extend::page404($this);
 		
 		// 记录后台操作记录
-		if(!in_array(MODULE_NAME,array('public','index'))){
+		if($GLOBALS['_option_']['adminlog_record']==1 && !in_array(MODULE_NAME,array('public','index'))){
 			$sUrl=parse_url(__SELF__,PHP_URL_QUERY);
 
 			$oAdminlog=new AdminlogModel();

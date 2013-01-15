@@ -145,26 +145,41 @@ class UserModel extends CommonModel{
 		UserModel::M()->initLoginlife($nLoginCookieTime);
 		$oUser=UserModel::M()->checkLogin($sUserName,$sPassword,$bEmail);
 
-		$oLoginlog=new LoginlogModel();
-		$oLoginlog->loginlog_username=$sUserName;
-		$oLoginlog->login_application=$sApp;
+		if($GLOBALS['_option_']['loginlog_record']==1){
+			$oLoginlog=new LoginlogModel();
+			$oLoginlog->loginlog_username=$sUserName;
+			$oLoginlog->login_application=$sApp;
+		}
 
-		if(G::isImplementedTo($oUser,'IModel')){
+		if($GLOBALS['_option_']['loginlog_record']==1 && G::isImplementedTo($oUser,'IModel')){
 			$oLoginlog->user_id=$oUser->user_id;
 		}
 
 		if(UserModel::M()->isBehaviorError()){
-			$oLoginlog->loginlog_status=0;
-			$oLoginlog->save(0);
+			if($GLOBALS['_option_']['loginlog_record']==1){
+				$oLoginlog->loginlog_status=0;
+				$oLoginlog->save(0);
+			}
+
 			$this->setErrorMessage(UserModel::M()->getBehaviorErrorMessage());
 		}else{
 			if($oUser->isError()){
-				$oLoginlog->loginlog_status=0;
-				$oLoginlog->save(0);
+				if($GLOBALS['_option_']['loginlog_record']==1){
+					$oLoginlog->loginlog_status=0;
+					$oLoginlog->save(0);
+				}
+
 				$this->setErrorMessage($oUser->getErrorMessage());
 			}
-			$oLoginlog->loginlog_status=1;
-			$oLoginlog->save(0);
+
+			if($GLOBALS['_option_']['loginlog_record']==1){
+				$oLoginlog->loginlog_status=1;
+				$oLoginlog->save(0);
+
+				if($oLoginlog->isError()){
+					$this->E($oLoginlog->getErrorMessage());
+				}
+			}
 		}
 
 		return true;

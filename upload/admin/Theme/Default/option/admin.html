@@ -53,6 +53,18 @@ function option(){
 							<!--</foreach>-->
 						</div>
 					</fieldset>
+					<fieldset>
+						<label for="adminlog_record"><!--<lang package='Template/Default/Option'>-->是否记录后台管理数据<!--</lang>--></label>
+						<input type="radio" id="adminlog_record" name="options[adminlog_record]" value="1" <!--{if $arrOptions['adminlog_record']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[adminlog_record]" value="0" <!--{if $arrOptions['adminlog_record']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Option'>-->为了系统安全，请尽量开启本功能，可以记录后台管理数据<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="loginlog_record"><!--<lang package='Template/Default/Option'>-->是否记录登录数据<!--</lang>--></label>
+						<input type="radio" id="loginlog_record" name="options[loginlog_record]" value="1" <!--{if $arrOptions['loginlog_record']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[close_site]" value="0" <!--{if $arrOptions['loginlog_record']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Option'>-->本功能可以记录登录数据，但会加大服务器开销<!--</lang>--></div>
+					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">

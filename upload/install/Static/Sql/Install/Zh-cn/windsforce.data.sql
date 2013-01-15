@@ -402,7 +402,9 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('allowed_view_siteusertop', '0'),
 ('allowed_view_attachment', '0'),
 ('allowed_view_siteapps', '0'),
-('url_model', '1');
+('url_model', '1'),
+('adminlog_record', '1'),
+('loginlog_record', '1');
 
 -- --------------------------------------------------------
 
