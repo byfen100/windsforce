@@ -1015,4 +1015,8 @@ WINDSFORCE;
 		}
 	}
 
+	static public function checkSpam(){
+		
+	}
+
 }
