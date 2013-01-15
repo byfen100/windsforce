@@ -124,6 +124,15 @@ class PublicController extends InitController{
 		$arrUsers=UserModel::F()->where(array('user_id'=>array('in',$arrUserids)))->order('user_id DESC')->getAll();
 		$this->assign('arrUsers',$arrUsers);
 
+		// 待处理事情
+		$arrTodos=array();
+		$nTotalAppeal=AppealModel::F()->where(array('appeal_progress'))->all()->getCounts();
+
+		$arrTodos=array(
+			array($nTotalAppeal,Dyhb::L('待申诉用户','Controller/Public'),Dyhb::U('appeal/index?type=0')),
+		);
+		$this->assign('arrTodos',$arrTodos);
+
 		$this->display();
 	}
 

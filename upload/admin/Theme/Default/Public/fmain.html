@@ -41,32 +41,7 @@ function closeUpdateinfo(){
 		<!--</if>-->
 
 		<h4 class="alert_info" id="welcome_info"><!--{$sTipsTxt}--></h4>
-
-		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Public'>-->后台在线管理员<!--</lang>--></h3></header>
-			<div class="module_content">
-				<p><!--<lang package='Template/Default/Public'>-->这里你可以看到后台当前在线的管理员<!--</lang>--></p>
-				<table class="tablesorter" cellspacing="0">
-					<thead>
-						<tr>
-							<th><!--<lang package='Template/Default/Public'>-->后台在线用户<!--</lang>--></th>
-							<th><!--<lang package='Template/Default/Public'>-->IP地址<!--</lang>--></th>
-							<th><!--<lang package='Template/Default/Public'>-->最后活动时间<!--</lang>--></th>
-						</tr>
-					</thead>
-					<tbody>
-					<!--<foreach for=arrUsers value=oUser>-->
-					<tr>
-						<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oUser['user_id']}-->" target="_blank"><!--{$oUser['user_name']}--></a></td>
-						<td><!--{$oUser['user_lastloginip']}--></td>
-						<td><!--{$oUser['user_lastlogintime']|date='Y-m-d H:i:s',**}--></td>
-					</tr>
-					<!--</foreach>-->
-					</tbody>
-				</table>
-			</div>
-		</article>
-
+		
 		<article class="module width_full">
 			<header><h3><!--<lang package='Template/Default/Public'>-->控制面板<!--</lang>--></h3></header>
 			<div class="module_content">
@@ -116,6 +91,54 @@ function closeUpdateinfo(){
 					</li>
 				</ul>
 				<div class="clear"></div>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Public'>-->待做数据统计<!--</lang>--></h3></header>
+			<div class="module_content">
+				<p><!--<lang package='Template/Default/Public'>-->这里为当前急需要做的事情<!--</lang>--></p>
+				<table class="tablesorter" cellspacing="0">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template/Default/Public'>-->系统名字<!--</lang>--></th> 
+							<th><!--<lang package='Template/Default/Public'>-->当前值<!--</lang>--></th> 
+						</tr>
+					</thead>
+					<tbody>
+						<!--<foreach for=arrTodos value=arrTodo>-->
+						<tr>
+							<td><!--{$arrTodo[1]}--></td> 
+							<td><!--{if $arrTodo[0]>0}--><span style="color:red;"><a href="<!--{$arrTodo[2]}-->" target="_blank"><!--{$arrTodo[0]}--></a></span><!--{d*else}--><!--{$arrTodo[0]}--><!--{/if}--></td> 
+						</tr>
+						<!--</foreach>-->
+					</tbody>
+				</table>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Public'>-->后台在线管理员<!--</lang>--></h3></header>
+			<div class="module_content">
+				<p><!--<lang package='Template/Default/Public'>-->这里你可以看到后台当前在线的管理员<!--</lang>--></p>
+				<table class="tablesorter" cellspacing="0">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template/Default/Public'>-->后台在线用户<!--</lang>--></th>
+							<th><!--<lang package='Template/Default/Public'>-->IP地址<!--</lang>--></th>
+							<th><!--<lang package='Template/Default/Public'>-->最后活动时间<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+					<!--<foreach for=arrUsers value=oUser>-->
+					<tr>
+						<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oUser['user_id']}-->" target="_blank"><!--{$oUser['user_name']}--></a></td>
+						<td><!--{$oUser['user_lastloginip']}--></td>
+						<td><!--{$oUser['user_lastlogintime']|date='Y-m-d H:i:s',**}--></td>
+					</tr>
+					<!--</foreach>-->
+					</tbody>
+				</table>
 			</div>
 		</article>
 

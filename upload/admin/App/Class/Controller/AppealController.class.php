@@ -64,7 +64,7 @@ class AppealController extends InitController{
 					$this->E($oUser->getErrorMessage());
 				}
 				
-				$sGetPasswordUrl=$GLOBALS['_option_']['site_url'].'/index.php?c=getpassword&a=reset&email='.urlencode($sEmail).'&appeal=1'.'&hash='.urlencode(G::authcode($sTemppassword,false,null,$GLOBALS['_option_']['appeal_expired']));
+				$sGetPasswordUrl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=getpassword&a=reset&email='.urlencode($sEmail).'&appeal=1'.'&hash='.urlencode(G::authcode($sTemppassword,false,null,$GLOBALS['_option_']['appeal_expired']));
 				$oMailModel=Dyhb::instance('MailModel');
 				$oMailConnect=$oMailModel->getMailConnect();
 
@@ -110,7 +110,7 @@ class AppealController extends InitController{
 			if(!$oAppeal->isError()){
 				$sEmail=$oAppeal->appeal_email;
 				
-				$sAppealUrl=$GLOBALS['_option_']['site_url'].'/index.php?c=userappeal&a=index';
+				$sAppealUrl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=userappeal&a=index';
 
 				$oMailModel=Dyhb::instance('MailModel');
 				$oMailConnect=$oMailModel->getMailConnect();

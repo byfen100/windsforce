@@ -54,7 +54,7 @@ class Step3Controller extends GlobalchildController{
 		$sHashcode=G::randString(32);
 		$sUserid=G::authcode($oUser['user_id'],false,null,$GLOBALS['_option_']['appeal_expired']);
 
-		$sGetPasswordUrl=$GLOBALS['_option_']['site_url'].'/index.php?c=userappeal&a=step4&user_id='.
+		$sGetPasswordUrl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=userappeal&a=step4&user_id='.
 			urlencode($sUserid).'&real_name='.urlencode($sRealname).'&address='.urlencode($sAddress).'&id_number='.urlencode($sIdnumber).'&appeal_email='.urlencode($sAppealemail).'&emaillink=1';
 
 		$oMailModel=Dyhb::instance('MailModel');
