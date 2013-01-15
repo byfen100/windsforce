@@ -11,9 +11,14 @@ class ChangeController extends GlobalchildController{
 			$this->_oParentcontroller->check_seccode(true);
 		}
 
+		// 查找用户
 		$nUserId=G::getGpc('user_id','P');
 		$oUser=UserModel::F('user_id=?',$nUserId)->query();
 		$oUser->safeInput();
+
+		$sOldemail=$oUser['user_email'];
+
+		// 扩展信息
 		$arrUserprofilesettings=UserprofilesettingModel::F()->getAll();
 		if(is_array($arrUserprofilesettings)){
 			foreach($arrUserprofilesettings as $oUserprofilesetting){
@@ -32,6 +37,17 @@ class ChangeController extends GlobalchildController{
 		if($oUser->isError()){
 			$this->E($oUser->getErrorMessage());
 		}else{
+			// Email如果修改了，则删除其认证信息
+			if($sOldemail!=$oUser['user_email']){
+				$oUser->user_verifycode='';
+				$oUser->user_isverify='0';
+				$oUser->save(0,'update');
+
+				if($oUser->isError()){
+					$this->E($oUser->getErrorMessage());
+				}
+			}
+
 			$this->S(Dyhb::L('修改用户资料成功','Controller/Spaceadmin'));
 		}
 	}

@@ -17,6 +17,7 @@ class RetrieveController extends GlobalchildController{
 			$sTemppassword=md5(G::randString(32));
 			$oUser->user_temppassword=$sTemppassword;
 			$oUser->save(0,'update');
+			
 			if($oUser->isError()){
 				$this->E($oUser->getErrorMessage());
 			}
@@ -40,9 +41,11 @@ class RetrieveController extends GlobalchildController{
 			$oMailConnect->setEmailSubject($sEmailSubject);
 			$oMailConnect->setEmailMessage($sEmailContent);
 			$oMailConnect->send();
+			
 			if($oMailConnect->isError()){
 				$this->E($oMailConnect->getErrorMessage());
 			}
+
 			$this->S(Dyhb::L('发送成功,请注意查收','Controller/Userappeal'));
 		}else{
 			$this->E(Dyhb::L('读取数据失败','Controller/Userappeal'));

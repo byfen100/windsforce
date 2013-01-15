@@ -38,7 +38,7 @@ class EmailController extends GlobalchildController{
 			$this->E($oUser->getErrorMessage());
 		}
 		
-		$sGetPasswordUrl=$GLOBALS['_option_']['site_url'].'/index.php?c=getpassword&a=reset&email='.urlencode($sEmail).'&hash='.urlencode(G::authcode($sTemppassword,false,null,$GLOBALS['_option_']['getpassword_expired']));
+		$sGetPasswordUrl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=getpassword&a=reset&email='.urlencode($sEmail).'&hash='.urlencode(G::authcode($sTemppassword,false,null,$GLOBALS['_option_']['getpassword_expired']));
 
 		$oMailModel=Dyhb::instance('MailModel');
 		$oMailConnect=$oMailModel->getMailConnect();

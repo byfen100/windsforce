@@ -326,10 +326,10 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('mail_testsubject_backup', '尊敬的{user_name}：{site_name}系统测试邮件发送成功'),
 ('mail_testmessage', '这是系统发出的一封用于测试邮件是否设置成功的测试邮件。\r\n{time}\r\n\r\n-----------------------------------------------------\r\n消息来源：{site_name}\r\n站点网址：{site_url}'),
 ('mail_testsubject', '尊敬的admin：WindsForce系统测试邮件发送成功'),
-('getpassword_expired', '36000'),
+('getpassword_expired', '3600'),
 ('style_switch_on', '1'),
 ('extendstyle_switch_on', '1'),
-('appeal_expired', '360000'),
+('appeal_expired', '3600'),
 ('language_switch_on', '1'),
 ('admin_language_name', 'zh-cn'),
 ('front_language_name', 'zh-cn'),
@@ -404,7 +404,8 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('allowed_view_siteapps', '0'),
 ('url_model', '1'),
 ('adminlog_record', '1'),
-('loginlog_record', '1');
+('loginlog_record', '1'),
+('verifyemail_expired', '3600');
 
 -- --------------------------------------------------------
 
@@ -684,8 +685,8 @@ INSERT INTO `#@__theme` (`theme_id`, `theme_name`, `theme_dirname`, `theme_copyr
 -- 转存表中的数据 `windsforce_user`
 --
 
-INSERT INTO `#@__user` (`user_id`, `user_name`, `user_nikename`, `user_password`, `user_registerip`, `user_lastlogintime`, `user_lastloginip`, `user_logincount`, `user_email`, `user_remark`, `user_sign`, `create_dateline`, `update_dateline`, `user_status`, `user_random`, `user_temppassword`, `user_extendstyle`) VALUES
-(1, 'admin', '', 'cd5be146ca5cc5985943ef02bd61f70d', '127.0.0.1', 1355150636, '::1', 861, 'admin@windsforce.com', '', '每天都需要可以！', 1333281705, 1355151458, 1, '90ad77', '', '0');
+INSERT INTO `#@__user` (`user_id`, `user_name`, `user_nikename`, `user_password`, `user_registerip`, `user_lastlogintime`, `user_lastloginip`, `user_logincount`, `user_email`, `user_remark`, `user_sign`, `create_dateline`, `update_dateline`, `user_status`, `user_random`, `user_temppassword`, `user_extendstyle`, `user_verifycode`, `user_isverify`) VALUES
+(1, 'admin', '', 'cd5be146ca5cc5985943ef02bd61f70d', '127.0.0.1', 1355150636, '::1', 861, 'admin@windsforce.com', '', '每天都需要可以！', 1333281705, 1355151458, 1, '90ad77', '', '0', '', 0);
 
 -- --------------------------------------------------------
 

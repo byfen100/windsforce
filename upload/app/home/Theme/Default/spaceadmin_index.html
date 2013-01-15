@@ -238,6 +238,14 @@ function update(){
 							<label class="control-label" for="user_email">Email</label>
 							<div class="controls">
 								<input class="input-xlarge" type="text" name="user_email" id="user_email" size="40" value="<!--{$oUserInfo:user_email}-->" />
+								<p class="help-block">
+									<!--{if $GLOBALS['___login___']['user_isverify']==0}-->
+									<img src="<!--{:__PUBLIC__}-->/images/common/mail_inactive.png" />&nbsp;<!--<lang package='Template/Spaceadmin'>-->你尚未通过邮件验证<!--</lang>--></a>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/verifyemail')}-->"><!--<lang package='Template/Spaceadmin'>-->我要验证<!--</lang>--></a>
+									<!--{d*else}-->
+									<span style="color:green;font-weight:bold;"><!--<lang package='Template/Spaceadmin'>-->恭喜你已通过邮件验证<!--</lang>--></span></a>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/verifyemail')}-->"><!--<lang package='Template/Spaceadmin'>-->管理验证<!--</lang>--></a>
+									<!--{/if}-->&nbsp;
+									(<!--<lang package='Template/Spaceadmin'>-->注意修改电子邮件需要重新验证数据<!--</lang>-->)
+								</p>
 							</div>
 						</div>
 						<div class="control-group">

@@ -956,6 +956,8 @@ CREATE TABLE `#@__user` (
   `user_random` char(6) NOT NULL COMMENT '用户随机码',
   `user_temppassword` varchar(255) NOT NULL COMMENT '密码重置临时密码',
   `user_extendstyle` varchar(35) NOT NULL COMMENT '用户扩展样式',
+  `user_verifycode` varchar(255) NOT NULL COMMENT 'Email验证码',
+  `user_isverify` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Email是否验证',
   PRIMARY KEY (`user_id`),
   KEY `user_status` (`user_status`),
   KEY `create_dateline` (`create_dateline`),

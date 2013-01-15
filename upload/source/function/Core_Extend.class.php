@@ -16,13 +16,17 @@ class Core_Extend{
 			$GLOBALS['___login___']=false;
 		}else{
 			$GLOBALS['___login___']=$arrUserData;
+			
+			// Email验证信息确认
+			$oUser=UserModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
+			$GLOBALS['___login___']['user_isverify']=$oUser['user_isverify'];
 
 			// 读取用户统计信息
 			$GLOBALS['___login___']['usercount']=UsercountModel::F('user_id=?',$arrUserData['user_id'])->asArray()->getOne();
-
+			
+			// 如果用户使用社会化帐号直接登录
 			$GLOBALS['___login___']['socia_login']=false;
 
-			// 如果用户使用社会化帐号直接登录
 			if(Dyhb::cookie('SOCIA_LOGIN')==1 && Dyhb::cookie('SOCIA_LOGIN_TYPE')){
 				if(!Dyhb::classExists('SociauserModel')){
 					require_once(WINDSFORCE_PATH.'/source/extension/socialization/lib/mvc/SociauserModel.class.php');
@@ -38,7 +42,7 @@ class Core_Extend{
 			}
 		}
 
-		return $arrUserData;
+		return $GLOBALS['___login___'];
 	}
 
 	static public function isAdmin(){
@@ -1015,8 +1019,48 @@ WINDSFORCE;
 		}
 	}
 
-	static public function checkSpam(){
+	static public function checkSpam($arrData,$bLogincheck=true){
+		// 是否登录检查
+		if($bLogincheck===TRUE && $GLOBALS['___login___']===FALSE){
+			Dyhb::E(Dyhb::L('你没有登录，无法发布信息','__COMMON_LANG__@Function/Core_Extend').'<br/><a href="'.Dyhb::U('home://public/login').'">'.Dyhb::L('前往登录','__COMMON_LANG__@Function/Core_Extend').'</a>');
+		}
 		
+		// 两次发表时间间隔
+		$nFloodctrl=intval($GLOBALS['_option_']['flood_ctrl']);
+		if($nFloodctrl>0 && isset($arrData['lasttime'])){
+			$nLasttime=intval($arrData['lasttime']);
+
+			if($nLasttime>0 && CURRENT_TIMESTAMP-$nLasttime<=$nFloodctrl){
+				Dyhb::E(Dyhb::L('为防止灌水,发表评论时间间隔为 %d 秒','__COMMON_LANG__@Function/Core_Extend',null,$nLasttime));
+			}
+		}
+
+		// 强制用户激活邮箱
+		if($GLOBALS['_option_']['need_email']==1 && $GLOBALS['___login___']['user_isverify']==0){
+			Dyhb::E(Dyhb::L('你只有验证邮箱 %s 后才能够发布信息','__COMMON_LANG__@Function/Core_Extend',null,$GLOBALS['___login___']['user_email']).'<br/><a href="'.Dyhb::U('home://spaceadmin/verifyemail').'">'.Dyhb::L('前往验证邮箱','__COMMON_LANG__@Function/Core_Extend').'</a>');
+		}
+
+		// 强制用户上传头像
+		if($GLOBALS['_option_']['need_avatar']){
+			$arrAvatarInfo=Core_Extend::avatars($GLOBALS['___login___']['user_id']);
+			if(!$arrAvatarInfo['exist']){
+				Dyhb::E(Dyhb::L('你只有上传头像后才能够发布信息','__COMMON_LANG__@Function/Core_Extend').'<br/><a href="'.Dyhb::U('home://spaceadmin/avatar').'">'.Dyhb::L('前往上传头像','__COMMON_LANG__@Function/Core_Extend').'</a>');
+			}
+		}
+
+		// 强制用户好友个数
+		$nNeedfriendnum=intval($GLOBALS['_option_']['need_friendnum']);
+		if($nNeedfriendnum>0){
+			$oUsercount=UsercountModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
+			if(!empty($oUsercount['user_id'])){
+				$nHavefriendnum=intval($oUsercount['usercount_friends']);
+				if($nHavefriendnum<$nNeedfriendnum){
+					Dyhb::E(Dyhb::L('你只有至少添加 %d 个好友后才能够发布信息','__COMMON_LANG__@Function/Core_Extend',null,$nNeedfriendnum).'<br/><a href="'.Dyhb::U('home://spaceadmin/avatar').'">'.Dyhb::L('前往添加好友','__COMMON_LANG__@Function/Core_Extend').'</a>');
+				}
+			}else{
+				Dyhb::E(Dyhb::L('用户统计数据不存在，请联系管理员修复','__COMMON_LANG__@Function/Core_Extend').'<br/>'.Dyhb::L('管理员邮箱地址','__COMMON_LANG__@Function/Core_Extend').' '.$GLOBALS['_option_']['admin_email']);
+			}
+		}
 	}
 
 }

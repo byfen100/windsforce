@@ -64,4 +64,20 @@ class SpaceadminController extends InitController{
 		Core_Extend::doControllerAction('Spaceadmin@Promotion/Index','index');
 	}
 
+	public function verifyemail(){
+		Core_Extend::doControllerAction('Spaceadmin@Verifyemail/Index','index');
+	}
+
+	public function dorevifyemail(){
+		Core_Extend::doControllerAction('Spaceadmin@Verifyemail/Do','index');
+	}
+
+	public function checkrevifyemail(){
+		Core_Extend::doControllerAction('Spaceadmin@Verifyemail/Check','index');
+	}
+
+	public function unrevifyemail(){
+		Core_Extend::doControllerAction('Spaceadmin@Verifyemail/Un','index');
+	}
+
 }
