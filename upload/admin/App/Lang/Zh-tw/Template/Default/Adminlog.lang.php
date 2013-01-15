@@ -12,6 +12,8 @@ return array(
 'dac99e5f2b97ce0d699c280665e664a3'=>"清空後台管理記錄",
 'dad023a734dee7ab541d89bafbc3b08b'=>"後台管理記錄主要是為了系統的安全性，檢查系統後台管理狀況",
 'dcb7620d0ba47fb25cc2ac17f8cc920e'=>"點擊下面的按鈕開始清理後台管理數據",
+'e8a6a0389b3a6d9f0faaf3fee81c9fed'=>"后台管理URL",
+'e8613bad47a2da03220e4d84b4bdf955'=>"后台管理记录设置",
 )
 
 ?>

@@ -405,7 +405,9 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('url_model', '1'),
 ('adminlog_record', '1'),
 ('loginlog_record', '1'),
-('verifyemail_expired', '3600');
+('verifyemail_expired', '3600'),
+('adminlog_record_time', '60');
+
 
 -- --------------------------------------------------------
 

@@ -60,6 +60,11 @@ function option(){
 						<div class="description"><!--<lang package='Template/Default/Option'>-->为了系统安全，请尽量开启本功能，可以记录后台管理数据<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
+						<label for="adminlog_record_time"><!--<lang package='Template/Default/Option'>-->后台管理数据防重复记录时间<!--</lang>--></label>
+						<input type="text" name="options[adminlog_record_time]" id="adminlog_record_time" size="40" value="<!--{$arrOptions['adminlog_record_time']}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Option'>-->重复记录时间会自动屏蔽一段时间内的重复记录，时间为秒，0表示不防止重复记录<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
 						<label for="loginlog_record"><!--<lang package='Template/Default/Option'>-->是否记录登录数据<!--</lang>--></label>
 						<input type="radio" id="loginlog_record" name="options[loginlog_record]" value="1" <!--{if $arrOptions['loginlog_record']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
 						<input type="radio" id="" name="options[close_site]" value="0" <!--{if $arrOptions['loginlog_record']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->

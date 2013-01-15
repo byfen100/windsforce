@@ -34,6 +34,7 @@
 		<article class="module width_full">
 			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Adminlog'>-->后台管理记录列表<!--</lang>--></h3>
 				<ul class="tabs">
+					<li><a href="<!--{:Dyhb::U('option/admin')}-->"><!--<lang package='Template/Default/Adminlog'>-->后台管理记录设置<!--</lang>--></a></li>
 					<li class="active"><a href="<!--{:Dyhb::U('adminlog/clear')}-->"><!--<lang package='Template/Default/Adminlog'>-->清理后台管理记录<!--</lang>--></a></li>
 				</ul>
 			</header>
@@ -44,6 +45,7 @@
 							<th width="25px"><input type="checkbox" onclick="checkAll('checkList')"></th> 
 							<th width="55px"><a href="javascript:sortBy('adminlog_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('adminlog_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
 							<th><a href="javascript:sortBy('adminlog_username','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('adminlog_username')}-->><!--<lang package='Template/Default/Adminlog'>-->后台管理用户<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('adminlog_info','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('adminlog_info')}-->><!--<lang package='Template/Default/Adminlog'>-->后台管理URL<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('adminlog_ip','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('adminlog_ip')}-->><!--<lang package='Template/Default/Adminlog'>-->后台管理IP<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Adminlog'>-->操作时间<!--</lang>--></a></th>
 						</tr>
@@ -58,8 +60,9 @@
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:adminlog_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 								</div>
 							</td>
+							<td><a href="<!--{:__APP__}-->?<!--{$value['adminlog_info']}-->"><!--{$value['adminlog_info']}--></a></td>
 							<td><!--{$value['adminlog_ip']}--></td>
-							<td><!--{$value:create_dateline|date='Y-m-d',**}--></td>
+							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 						</tr>
 						<!--</foreach>-->
 					</tbody>

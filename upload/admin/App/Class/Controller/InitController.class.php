@@ -20,15 +20,32 @@ class InitController extends Controller{
 		Core_Extend::page404($this);
 		
 		// 记录后台操作记录
-		if($GLOBALS['_option_']['adminlog_record']==1 && !in_array(MODULE_NAME,array('public','index'))){
+		if($GLOBALS['_option_']['adminlog_record']==1 && 
+			G::getGpc('page')<2 && 
+			!in_array(MODULE_NAME,array('public','index','adminctrlmenu','adminlog'))
+		)
+		{
 			$sUrl=parse_url(__SELF__,PHP_URL_QUERY);
 
-			$oAdminlog=new AdminlogModel();
-			$oAdminlog->adminlog_info=$sUrl;
-			$oAdminlog->save(0);
+			// 重复记录判断
+			$bRecord=true;
 
-			if($oAdminlog->isError()){
-				$this->E($oAdminlog->getErrorMessage());
+			$nAdminlogrecordtime=intval($GLOBALS['_option_']['adminlog_record_time']);
+			if($nAdminlogrecordtime>0){
+				$oTryadminlogModel=AdminlogModel::F('adminlog_info=?',$sUrl)->order('adminlog_id DESC')->getOne();
+				if(!empty($oTryadminlogModel['adminlog_id']) && CURRENT_TIMESTAMP-$oTryadminlogModel['create_dateline']<=$nAdminlogrecordtime){
+					$bRecord=false;
+				}
+			}
+
+			if($bRecord===true){
+				$oAdminlog=new AdminlogModel();
+				$oAdminlog->adminlog_info=$sUrl;
+				$oAdminlog->save(0);
+
+				if($oAdminlog->isError()){
+					$this->E($oAdminlog->getErrorMessage());
+				}
 			}
 		}
 	}
