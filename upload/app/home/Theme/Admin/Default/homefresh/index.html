@@ -72,7 +72,7 @@
 									</span>
 								</div>
 							</td>
-							<td><!--{$value:homefresh_message|G+subString=0,80}--></td>
+							<td><!--{$value:homefresh_message|strip_tags|G+subString=0,80}--></td>
 							<td><!--{$value:homefresh_ip}--></td>
 							<td><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment','fid'=>$value['homefresh_id']))}-->"><!--{$value:homefresh_commentnum}--></a></td>
 							<td><!--{$value:homefresh_goodnum}--></td>
