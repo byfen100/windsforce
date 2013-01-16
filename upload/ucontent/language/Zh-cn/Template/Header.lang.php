@@ -25,6 +25,7 @@ return array(
 '5fc067de81066ec9baa79bac38cf0138'=>"网站地图",
 '5b0520a9bf5e8d87c0b8c6e58766e184'=>"应用",
 'a5cfad478e75aa135d5d56d2434cb80d'=>"用户排行",
+'1fd02a90c38333badc226309fea6fecb'=>"用户",
 )
 
 ?>

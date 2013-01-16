@@ -49,10 +49,10 @@ class SearchresultController extends Controller{
 
 		// 年龄段
 		$nUserstartage=$nUserendage=0;
-		if($_GET['user_endage']){
+		if(!empty($_GET['user_endage'])){
 			$nUserstartage=$nNowyear-intval($_GET['user_endage']);
 		}
-		if($_GET['user_startage']){
+		if(!empty($_GET['user_startage'])){
 			$nUserendage=$nNowyear-intval($_GET['user_startage']);
 		}
 
