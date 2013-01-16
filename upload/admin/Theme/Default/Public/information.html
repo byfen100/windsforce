@@ -35,7 +35,14 @@ function update(){
 					</fieldset>
 					<fieldset><label for="user_email">Email</label>
 						<input type="text" name="user_email" id="user_email" size="40" value="<!--{$oUserInfo:user_email}-->" />
-						<div class="description"><!--<lang package='Template/Default/Public'>-->用户常用的电子邮件地址<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Public'>-->用户常用的电子邮件地址<!--</lang>--><br/>
+							<!--{if $GLOBALS['___login___']['user_isverify']==0}-->
+							<img src="<!--{:__PUBLIC__}-->/images/common/mail_inactive.png" />&nbsp;<!--<lang package='Template/Default/Public'>-->你尚未通过邮件验证<!--</lang>--></a>&nbsp;<a href="<!--{:__ROOT__}-->/index.php?app=home&c=spaceadmin&a=verifyemail" target="_blank"><!--<lang package='Template/Default/Public'>-->我要验证<!--</lang>--></a>
+							<!--{d*else}-->
+							<span style="color:green;font-weight:bold;"><!--<lang package='Template/Default/Public'>-->恭喜你已通过邮件验证<!--</lang>--></span></a>&nbsp;<a href="<!--{:__ROOT__}-->/index.php?app=home&c=spaceadmin&a=verifyemail" target="_blank"><!--<lang package='Template/Default/Public'>-->管理验证<!--</lang>--></a>
+							<!--{/if}-->&nbsp;
+							(<!--<lang package='Template/Default/Public'>-->注意修改电子邮件需要重新验证数据<!--</lang>-->)
+						</div>
 					</fieldset>
 					<fieldset><label for="user_sign"><!--<lang package='Template/Default/Public'>-->用户签名<!--</lang>--></label>
 						<p style="padding-left:10px;"><textarea name="user_sign" id="user_sign" rows="5"><!--{$oUserInfo:user_sign}--></textarea></p>
