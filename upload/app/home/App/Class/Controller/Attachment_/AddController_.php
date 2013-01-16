@@ -8,7 +8,14 @@ class AddController extends Controller{
 
 	public function index($bDialog=false){
 		try{
-			Core_Extend::checkSpam();
+			$arrData=array();
+
+			$oLastattachment=AttachmentModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->order('create_dateline DESC')->getOne();
+			if(!empty($oLastattachment['attachment_id'])){
+				$arrData['lasttime']=$oLastattachment['create_dateline'];
+			}
+
+			Core_Extend::checkSpam($arrData);
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}

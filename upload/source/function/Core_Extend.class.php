@@ -1037,7 +1037,7 @@ WINDSFORCE;
 			$nLasttime=intval($arrData['lasttime']);
 
 			if($nLasttime>0 && CURRENT_TIMESTAMP-$nLasttime<=$nFloodctrl){
-				Dyhb::E(Dyhb::L('为防止灌水,发表评论时间间隔为 %d 秒','__COMMON_LANG__@Function/Core_Extend',null,$nLasttime));
+				Dyhb::E(Dyhb::L('为防止灌水,发布信息时间间隔为 %d 秒','__COMMON_LANG__@Function/Core_Extend',null,$nFloodctrl));
 			}
 		}
 
