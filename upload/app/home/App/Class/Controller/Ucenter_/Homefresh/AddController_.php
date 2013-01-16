@@ -7,6 +7,12 @@
 class AddController extends Controller{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		if($GLOBALS['_option_']['seccode_publish_status']==1){
 			$this->check_seccode(true);
 		}

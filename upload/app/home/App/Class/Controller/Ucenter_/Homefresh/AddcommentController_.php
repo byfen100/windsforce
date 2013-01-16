@@ -7,6 +7,12 @@
 class AddcommentController extends GlobalchildController{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 
 		if($arrOptions['close_comment_feature']==1){

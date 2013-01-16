@@ -7,6 +7,12 @@
 class NewattachmentcategoryController extends Controller{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			exit($e->getMessage());
+		}
+		
 		$this->display('attachment+newattachmentcategory');
 	}
 

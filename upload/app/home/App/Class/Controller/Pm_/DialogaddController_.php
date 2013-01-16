@@ -7,6 +7,12 @@
 class DialogaddController extends GlobalchildController{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			exit($e->getMessage());
+		}
+		
 		$this->_oParentcontroller->check_pm();
 		
 		$nUserid=intval(G::getGpc('uid','G'));

@@ -1025,7 +1025,7 @@ WINDSFORCE;
 		}
 	}
 
-	static public function checkSpam($arrData,$bLogincheck=true){
+	static public function checkSpam($arrData=array(),$bLogincheck=true){
 		// 是否登录检查
 		if($bLogincheck===TRUE && $GLOBALS['___login___']===FALSE){
 			Dyhb::E(Dyhb::L('你没有登录，无法发布信息','__COMMON_LANG__@Function/Core_Extend').'<br/><a href="'.Dyhb::U('home://public/login').'">'.Dyhb::L('前往登录','__COMMON_LANG__@Function/Core_Extend').'</a>');
@@ -1061,7 +1061,7 @@ WINDSFORCE;
 			if(!empty($oUsercount['user_id'])){
 				$nHavefriendnum=intval($oUsercount['usercount_friends']);
 				if($nHavefriendnum<$nNeedfriendnum){
-					Dyhb::E(Dyhb::L('你只有至少添加 %d 个好友后才能够发布信息','__COMMON_LANG__@Function/Core_Extend',null,$nNeedfriendnum).'<br/><a href="'.Dyhb::U('home://spaceadmin/avatar').'">'.Dyhb::L('前往添加好友','__COMMON_LANG__@Function/Core_Extend').'</a>');
+					Dyhb::E(Dyhb::L('你只有至少添加 %d 个好友后才能够发布信息','__COMMON_LANG__@Function/Core_Extend',null,$nNeedfriendnum).'<br/><a href="'.Dyhb::U('home://friend/search').'">'.Dyhb::L('前往添加好友','__COMMON_LANG__@Function/Core_Extend').'</a>');
 				}
 			}else{
 				Dyhb::E(Dyhb::L('用户统计数据不存在，请联系管理员修复','__COMMON_LANG__@Function/Core_Extend').'<br/>'.Dyhb::L('管理员邮箱地址','__COMMON_LANG__@Function/Core_Extend').' '.$GLOBALS['_option_']['admin_email']);

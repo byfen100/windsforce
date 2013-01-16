@@ -7,6 +7,12 @@
 class AddController extends Controller{
 
 	public function index($bDialog=false){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		$nAttachmentcategoryid=intval(G::getGpc('cid','G'));
 
 		$nUploadfileMaxsize=Core_Extend::getUploadSize($GLOBALS['_option_']['uploadfile_maxsize']);

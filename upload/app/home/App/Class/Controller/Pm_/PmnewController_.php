@@ -7,6 +7,12 @@
 class PmnewController extends GlobalchildController{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		$this->_oParentcontroller->check_pm();
 		
 		$nUserId=intval(G::getGpc('uid'));
