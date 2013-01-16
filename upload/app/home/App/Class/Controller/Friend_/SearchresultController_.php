@@ -30,10 +30,15 @@ class SearchresultController extends Controller{
 
 		// 用户ID,用户名，头像情况
 		foreach(array('user_id','user_name') as $sValue){
+			$_GET[$sValue]=trim($_GET[$sValue]);
+			
 			if($_GET[$sValue]){
 				if($sValue=='user_name' && empty($_GET['username_precision'])){
 					$_GET[$sValue]=strip_tags($_GET[$sValue]);
 					$arrWhere[]='u.'.$sValue.' LIKE '.'"%'.$_GET[$sValue].'%"';
+				}elseif($sValue=='user_id'){
+					$_GET[$sValue]=Dyhb::normalize($_GET[$sValue]);
+					$arrWhere[]='u.'.$sValue.' in( '.implode(',',$_GET[$sValue]).')';
 				}else{
 					$arrWhere[]='u.'.$sValue.'="'.$_GET[$sValue].'"';
 				}
@@ -61,7 +66,9 @@ class SearchresultController extends Controller{
 		$bHavefield=FALSE;
 
 		foreach($arrFields as $sKey=>$arrValue){
+			$_GET[$sValue]=trim($_GET[$sValue]);
 			$_GET[$sKey]=empty($_GET[$sKey])?'':strip_tags($_GET[$sKey]);
+
 			if($_GET[$sKey]){
 				$bHavefield=TRUE;
 				$arrWhere[]='up.'.$sKey.'  LIKE '.'"%'.$_GET[$sKey].'%"';
