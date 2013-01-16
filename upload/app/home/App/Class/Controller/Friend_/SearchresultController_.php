@@ -7,6 +7,10 @@
 class SearchresultController extends Controller{
 
 	public function index(){
+		if($GLOBALS['_option_']['allow_search_user']==0){
+			$this->E(Dyhb::L('系统关闭了好友搜索功能','Controller/Friend'));
+		}
+		
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
 		
 		// 扩展信息字段
@@ -87,9 +91,9 @@ class SearchresultController extends Controller{
 			$arrCount=$oDb->getRow("SELECT COUNT(*) AS row_count FROM ".implode(',',$arrFrom)." WHERE ".implode(' AND ',$arrWhere));
 			$nTotalRecord=$arrCount['row_count'];
 
-			$oPage=Page::RUN($nTotalRecord,10,G::getGpc('page','G'));
+			$oPage=Page::RUN($nTotalRecord,$GLOBALS['_option_']['searchuser_list_num'],G::getGpc('page','G'));
 			
-			$sSql="SELECT u.* FROM ".implode(',',$arrFrom)." WHERE ".implode(' AND ',$arrWhere).' LIMIT '.$oPage->returnPageStart().','.'10';
+			$sSql="SELECT u.* FROM ".implode(',',$arrFrom)." WHERE ".implode(' AND ',$arrWhere).' LIMIT '.$oPage->returnPageStart().','.$GLOBALS['_option_']['searchuser_list_num'];
 			$arrUsers=$oDb->getAllRows($sSql);
 
 			$this->assign('nTotalUser',$nTotalRecord);

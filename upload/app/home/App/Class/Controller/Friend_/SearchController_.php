@@ -7,6 +7,10 @@
 class SearchController extends Controller{
 
 	public function index(){
+		if($GLOBALS['_option_']['allow_search_user']==0){
+			$this->E(Dyhb::L('系统关闭了好友搜索功能','Controller/Friend'));
+		}
+		
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
 		
 		Core_Extend::loadCache('userprofilesetting');
