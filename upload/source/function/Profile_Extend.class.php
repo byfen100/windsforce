@@ -220,4 +220,37 @@ class Profile_Extend{
 		return $sUsergender;
 	}
 
+	static public function checkPrivacy($nUserid,$nPrivacy=0){
+		$nUserid=intval($nUserid);
+		$nPrivacy=intval($nPrivacy);
+
+		// 公开权限直接放行
+		if($nPrivacy==0){
+			return true;
+		}
+		
+		if($GLOBALS['___login___']===false){
+			return false;
+		}
+
+		// 自己 && 后台管理员
+		$nLoginuserid=intval($GLOBALS['___login___']['user_id']);
+		if($nUserid===$nLoginuserid || Core_Extend::isAdmin()){
+			return true;
+		}
+
+		// 好友可见
+		if($nPrivacy==1){
+			$oTryfriend=FriendModel::F('user_id=? AND friend_friendid=? AND friend_status=1',$nUserid,$nLoginuserid)->getOne();
+
+			if(!empty($oTryfriend['user_id'])){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+
 }

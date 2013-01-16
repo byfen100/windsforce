@@ -46,7 +46,9 @@ function deleteFriend(friendid,fan){
 					<tbody>
 						<!--{if !$sDo}-->
 						<!--<foreach for=arrBases value=sBase>-->
-						<!--{if array_key_exists($sBase,$arrUserprofilesettingDatas)}-->
+						<!--{if array_key_exists($sBase,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sBase]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sBase]['userprofilesetting_privacy'])}-->
 						<tr>
 							<td><!--{$arrUserprofilesettingDatas[$sBase]['userprofilesetting_title']}--></td>
 							<td>
@@ -77,7 +79,9 @@ function deleteFriend(friendid,fan){
 						<!--</for>-->
 						<!--{elseif $sDo=='contact'}-->
 						<!--<foreach for=arrContacts value=sContact>-->
-						<!--{if array_key_exists($sContact,$arrUserprofilesettingDatas)}-->
+						<!--{if array_key_exists($sContact,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sContact]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sContact]['userprofilesetting_privacy'])}-->
 						<tr>
 							<td><!--{$arrUserprofilesettingDatas[$sContact]['userprofilesetting_title']}--></td>
 							<td><!--{$oUserInfo:userprofile:$sContact}--></td>
@@ -90,7 +94,9 @@ function deleteFriend(friendid,fan){
 						<tr/>
 						<!--{elseif $sDo=='edu'}-->
 						<!--<foreach for=arrEdus value=sEdu>-->
-						<!--{if array_key_exists($sEdu,$arrUserprofilesettingDatas)}-->
+						<!--{if array_key_exists($sEdu,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_privacy'])}-->
 						<tr>
 							<td><!--{$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_title']}--></td>
 							<td><!--{$oUserInfo:userprofile:$sEdu}--></td>
@@ -99,7 +105,9 @@ function deleteFriend(friendid,fan){
 						<!--</foreach>-->
 						<!--{elseif $sDo=='work'}-->
 						<!--<foreach for=arrWorks value=sWork>-->
-						<!--{if array_key_exists($sWork,$arrUserprofilesettingDatas)}-->
+						<!--{if array_key_exists($sWork,$arrUserprofilesettingDatas) &&  
+								$arrUserprofilesettingDatas[$sWork]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sWork]['userprofilesetting_privacy'])}-->
 						<tr>
 							<td><!--{$arrUserprofilesettingDatas[$sWork]['userprofilesetting_title']}--></td>
 							<td><!--{$oUserInfo:userprofile:$sWork}--></td>
@@ -108,7 +116,9 @@ function deleteFriend(friendid,fan){
 						<!--</foreach>-->
 						<!--{elseif $sDo=='info'}-->
 						<!--<foreach for=arrInfos value=sInfo>-->
-						<!--{if array_key_exists($sInfo,$arrUserprofilesettingDatas)}-->
+						<!--{if array_key_exists($sInfo,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_privacy'])}-->
 						<tr>
 							<td><!--{$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_title']}--></td>
 							<td><!--{if in_array($sInfo,array('userprofile_bio','userprofile_interest'))}--><!--{$oUserInfo:userprofile:$sInfo|Profile_Extend+formatUserinfo}--><!--{d*else}--><!--{$oUserInfo:userprofile:$sInfo}--><!--{/if}--></td>

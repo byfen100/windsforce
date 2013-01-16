@@ -46,7 +46,7 @@ function complete(data,status){
 					<fieldset>
 						<label for="userprofilesetting_sort"><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></label>
 						<input type="text" name="userprofilesetting_sort" id="userprofilesetting_sort" size="40" value="<!--{$oValue:userprofilesetting_sort}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Userprofilesetting'>-->节点序号，用于排列节点顺序<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Userprofilesetting'>-->用户栏目序号，用于排列用户栏目顺序<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
 						<label for="userprofilesetting_title"><!--<lang package='Template/Default/Userprofilesetting'>-->栏目标题<!--</lang>--></label>
@@ -91,7 +91,7 @@ function complete(data,status){
 							<option value="1" <!--<if condition="$oValue:userprofilesetting_status==1">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->启用<!--</lang>--></option>
 							<option value="0" <!--<if condition="$oValue:userprofilesetting_status eq 0">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->禁用<!--</lang>--></option>
 						</select>
-						<div class="description"><!--<lang package='Template/Default/Userprofilesetting'>-->是否启用用户栏目，启用节点才能够使用<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Userprofilesetting'>-->是否启用用户栏目，启用用户栏目才能够使用<!--</lang>--></div>
 					</fieldset>
 				</div>
 				<footer>

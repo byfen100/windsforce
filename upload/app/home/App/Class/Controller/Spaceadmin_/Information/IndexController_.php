@@ -9,6 +9,7 @@ class IndexController extends Controller{
 	public function index(){
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
 		
+		// 资料类型
 		$sDo=G::getGpc('do','G');
 		if(!in_array($sDo,array('','base','contact','edu','work','info'))){
 			$sDo='';
@@ -21,6 +22,7 @@ class IndexController extends Controller{
 		$oUserInfo=UserModel::F()->getByuser_id($arrUserData['user_id']);
 		$this->assign('oUserInfo',$oUserInfo);
 
+		// 生日计算
 		$arrUserprofile=$oUserInfo->userprofile->toArray();
 		$nNowYear=date('Y',CURRENT_TIMESTAMP);
 		if(in_array($arrUserprofile['userprofile_birthmonth'],array(1,3,5,7,8,10,12))){

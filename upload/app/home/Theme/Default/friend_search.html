@@ -1,5 +1,9 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{style}-->
+#birthdistrictbox select,#residedistrictbox select{ width:100px;margin-bottom:5px;}
+<!--{/style}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Friend'>-->查找好友<!--</lang>--></li>
@@ -9,7 +13,101 @@
 			<!--<include file="friend+menu" />-->
 
 			<div class="span10">
-				wait to do...
+				<div class="hero-unit">
+					<h4><i class="icon-search"></i>&nbsp;高级方式查找</h4>
+				</div>
+				<form class="form-horizontal">
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label" for="focusedInput">用户名</label>
+							<div class="controls">
+								<p><input class="input-xlarge" id="focusedInput" type="text" value=""></p>
+								<label class="checkbox">
+									<input type="checkbox" id="optionsCheckbox2" value="option1">精确搜索
+								</label>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">用户ID</label>
+							<div class="controls">
+								<input class="input-xlarge" id="disabledInput" type="text">
+								<span class="help-inline">用户 ID使用英文逗号进行分割，例如1,2,3</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="disabledInput">性别</label>
+							<div class="controls">
+								<select id="gender" name="gender">
+									<option value="0">任意</option>
+									<option value="1">男</option>
+									<option value="2">女</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="optionsCheckbox2">年龄段</label>
+							<div class="controls">
+								<input type="text" name="startage" value="" size="10" class="px" style="width: 114px;" />&nbsp;~ 
+								<input type="text" name="endage" value="" size="10" class="px" style="width: 114px;" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">上传头像</label>
+							<div class="controls">
+								<label class="checkbox">
+									<input type="checkbox" id="optionsCheckbox2" value="option1">
+									已经上传头像
+								</label>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputError">居住地</label>
+							<div class="controls">
+								<!--{$sResideDistrict}-->
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputSuccess">出生地</label>
+							<div class="controls">
+								<!--{$sDirthDistrict}-->
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputSuccess">生日</label>
+							<div class="controls">
+								<select name="userprofile_birthyear" id="userprofile_birthyear" style="width:80px;" onchange="showYearmonthday('userprofile_birthday','userprofile_birthmonth','userprofile_birthyear');">
+									<option value=""><!--<lang package='__COMMON_LANG__@Common'>-->年<!--</lang>--></option>
+									<!--<for start='0' end='100' var='nBirthyear'>-->
+									<!--{~$nTheNowYear=$nNowYear-$nBirthyear}-->
+									<option value="<!--{$nTheNowYear}-->"><!--{$nTheNowYear}--></option>
+									<!--</for>-->
+								</select>&nbsp;&nbsp;
+								<select name="userprofile_birthmonth" id="userprofile_birthmonth" style="width:60px;" onchange="showYearmonthday('userprofile_birthday','userprofile_birthmonth','userprofile_birthyear');">
+									<option value=""><!--<lang package='__COMMON_LANG__@Common'>-->月<!--</lang>--></option>
+									<!--<for start='1' end='12' var='nBirthmonth'>-->
+									<option value="<!--{$nBirthmonth}-->"><!--{$nBirthmonth}--></option>
+									<!--</for>-->
+								</select>&nbsp;&nbsp;
+								<select name="userprofile_birthday" id="userprofile_birthday" style="width:60px;">
+									<option value=""><!--<lang package='__COMMON_LANG__@Common'>-->日<!--</lang>--></option>
+									<!--<for start='1' end='$nNowDays' var='nBirthday'>-->
+									<option value="<!--{$nBirthday}-->"><!--{$nBirthday}--></option>
+									<!--</for>-->
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">真实姓名</label>
+							<div class="controls">
+								<input class="input-xlarge" id="disabledInput" type="text">
+							</div>
+						</div>
+						<div class="form-actions">
+							<button type="submit" class="btn btn-success">查找</button>&nbsp;
+							<button class="btn">返回好友列表</button>
+						</div>
+					</fieldset>
+				</form>
 			</div>
 		</div><!--/row-->
 		
