@@ -33,10 +33,8 @@ class SearchresultController extends Controller{
 		$arrFrom['user']=UserModel::F()->query()->getTablePrefix().'user as u';
 
 		// 用户ID,用户名，头像情况
-		foreach(array('user_id','user_name') as $sValue){
-			$_GET[$sValue]=trim($_GET[$sValue]);
-			
-			if($_GET[$sValue]){
+		foreach(array('user_id','user_name','user_avatar') as $sValue){
+			if(isset($_GET[$sValue]) && $_GET[$sValue]){
 				if($sValue=='user_name' && empty($_GET['username_precision'])){
 					$_GET[$sValue]=strip_tags($_GET[$sValue]);
 					$arrWhere[]='u.'.$sValue.' LIKE '.'"%'.$_GET[$sValue].'%"';
@@ -70,7 +68,6 @@ class SearchresultController extends Controller{
 		$bHavefield=FALSE;
 
 		foreach($arrFields as $sKey=>$arrValue){
-			$_GET[$sValue]=trim($_GET[$sValue]);
 			$_GET[$sKey]=empty($_GET[$sKey])?'':strip_tags($_GET[$sKey]);
 
 			if($_GET[$sKey]){
