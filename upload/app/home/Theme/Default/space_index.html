@@ -70,7 +70,9 @@ function deleteFriend(friendid,fan){
 						
 						<!--<for start='1' end='8' var='nCustomFieldId'>-->
 						<!--{~$sCustomField='userprofile_field'.$nCustomFieldId}-->
-						<!--{if array_key_exists($sCustomField,$arrUserprofilesettingDatas)}-->
+						<!--{if array_key_exists($sCustomField,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_privacy'])}-->
 						<tr>
 							<td><!--{$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_title']}--></td>
 							<td><!--{$oUserInfo:userprofile:$sCustomField}--></td>

@@ -3,7 +3,7 @@
 					<ul class="nav nav-list">
 						<li class="nav-header"><i class="icon-user"></i>&nbsp;<!--<lang package='Template/Friend'>-->我的好友<!--</lang>--></li>
 						<li <!--{if ACTION_NAME=='index' && !isset($_GET['type'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://friend/index')}-->"><!--<lang package='Template/Friend'>-->好友列表<!--</lang>--></a></li>
-						<li <!--{if ACTION_NAME=='search'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://friend/search')}-->"><!--<lang package='Template/Friend'>-->查找好友<!--</lang>--></a></li>
+						<li <!--{if in_array(ACTION_NAME,array('search','searchresult'))}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://friend/search')}-->"><!--<lang package='Template/Friend'>-->查找好友<!--</lang>--></a></li>
 						<li <!--{if ACTION_NAME=='mayknow'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://friend/mayknow')}-->"><!--<lang package='Template/Friend'>-->可能认识的人<!--</lang>--></a></li>
 						<li class="divider"></li>
 						<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><i class="icon-cog"></i>&nbsp;<!--<lang package='Template/Friend'>-->修改资料<!--</lang>--></a></li>

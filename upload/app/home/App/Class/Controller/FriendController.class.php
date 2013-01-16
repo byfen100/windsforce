@@ -32,6 +32,10 @@ class FriendController extends InitController{
 		Core_Extend::doControllerAction('Friend@Search','index');
 	}
 
+	public function searchresult(){
+		Core_Extend::doControllerAction('Friend@Searchresult','index');
+	}
+
 	public function mayknow(){
 		Core_Extend::doControllerAction('Friend@Mayknow','index');
 	}

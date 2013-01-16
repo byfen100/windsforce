@@ -9,6 +9,9 @@ class SearchController extends Controller{
 	public function index(){
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
 		
+		Core_Extend::loadCache('userprofilesetting');
+		$this->assign('arrUserprofilesettingDatas',$GLOBALS['_cache_']['userprofilesetting']);
+		
 		// 时间计算
 		$nNowYear=date('Y',CURRENT_TIMESTAMP);
 		$nNowMonth=date('m',CURRENT_TIMESTAMP);
@@ -28,6 +31,18 @@ class SearchController extends Controller{
 		$this->assign('nNowDays',$nDays);
 		$this->assign('sDirthDistrict',Profile_Extend::getDistrict(array(),'birth'));
 		$this->assign('sResideDistrict',Profile_Extend::getDistrict(array(),'reside'));
+
+		// 视图
+		$arrProfileSetting=Profile_Extend::getProfileSetting();
+
+		$this->assign('arrBases',$arrProfileSetting[0]);
+		$this->assign('arrContacts',$arrProfileSetting[1]);
+		$this->assign('arrEdus',$arrProfileSetting[2]);
+		$this->assign('arrWorks',$arrProfileSetting[3]);
+		$this->assign('arrInfos',$arrProfileSetting[4]);
+
+		$arrInfoMenus=Profile_Extend::getInfoMenu();
+		$this->assign('arrInfoMenus',$arrInfoMenus);
 		
 		$this->display('friend+search');
 	}
