@@ -1,5 +1,13 @@
 <!--<include file="public+header">-->
 
+<!--{script}-->
+function deleteAvatar(){
+	windsforceConfirm('<!--<lang package='Template/Default/Avatar'>-->你确定要删除当前头像？<!--</lang>-->',function(){
+		window.location.href="<!--{:Dyhb::U('avatar/un')}-->";
+	});
+}
+<!--{/script}-->
+
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Avatar'>-->头像上传<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Avatar'>-->头像上传<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
@@ -7,7 +15,11 @@
 	</section>
 
 	<section id="main" class="column">
-		<!--{if !$arrAvatarInfo['exist']}--><h4 class="alert_info"><!--<lang package='Template/Default/Avatar'>-->你还没有上传头像，头像为系统默认头像<!--</lang>--></h4><!--{/if}-->
+		<!--{if !$arrAvatarInfo['exist']}-->
+		<h4 class="alert_info"><!--<lang package='Template/Default/Avatar'>-->你还没有上传头像，头像为系统默认头像<!--</lang>--></h4>
+		<!--{d*else}-->
+		<h4 class="alert_warning"><!--<lang package='Template/Default/Avatar'>-->头像不是很满意或者正在做一个更漂亮的头像?<!--</lang>-->&nbsp;<a href="javascript:void(0);" onclick="deleteAvatar();" style="color:red;"><!--<lang package='Template/Default/Avatar'>-->我要删除当前头像<!--</lang>--></a></h4>
+		<!--{/if}-->
 		<article class="module width_full">
 			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">

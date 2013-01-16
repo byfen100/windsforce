@@ -32,6 +32,10 @@ class SpaceadminController extends InitController{
 		Core_Extend::doControllerAction('Spaceadmin@Avatar/Savecrop','index');
 	}
 
+	public function avatar_un(){
+		Core_Extend::doControllerAction('Spaceadmin@Avatar/Un','index');
+	}
+
 	public function password(){
 		Core_Extend::doControllerAction('Spaceadmin@Password/Index','index');
 	}

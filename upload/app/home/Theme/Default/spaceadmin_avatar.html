@@ -1,5 +1,13 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{script}-->
+function deleteAvatar(){
+	windsforceConfirm('<!--<lang package='Template/Spaceadmin'>-->你确定要删除当前头像？<!--</lang>-->',function(){
+		window.location.href="<!--{:Dyhb::U('home://spaceadmin/avatar_un')}-->";
+	});
+}
+<!--{/script}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
@@ -14,6 +22,10 @@
 				<div class="alert fade in">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 					<!--<lang package='Template/Spaceadmin'>-->你还没有上传头像，头像为系统默认头像<!--</lang>-->
+				</div>
+				<!--{d*else}-->
+				<div class="hero-unit">
+					<h4><!--<lang package='Template/Spaceadmin'>-->头像不是很满意或者正在做一个更漂亮的头像?<!--</lang>-->&nbsp;<a href="javascript:void(0);" onclick="deleteAvatar();" style="color:red;"><!--<lang package='Template/Spaceadmin'>-->我要删除当前头像<!--</lang>--></a></h4>
 				</div>
 				<!--{/if}-->
 				<h3><!--<lang package='Template/Spaceadmin'>-->当前头像<!--</lang>--></h3>

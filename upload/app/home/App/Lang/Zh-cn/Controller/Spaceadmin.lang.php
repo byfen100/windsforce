@@ -33,6 +33,7 @@ return array(
 '01ace932b77b243bab4543bc915473a3'=>"恭喜Email验证通过",
 'f84cc35872be3bccc86cddcb8c985f18'=>"Email验证信息不存在，无需删除",
 '5d47524bef925f32f90bb7e97d4d02f8'=>"成功删除Email验证信息",
+'249dfbef8b012c94962a75318d455385'=>"删除头像成功了",
 )
 
 ?>

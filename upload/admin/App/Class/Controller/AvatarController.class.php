@@ -63,4 +63,16 @@ class AvatarController extends InitController{
 		$this->S(Dyhb::L('头像上传成功','Controller/Avatar'));
 	}
 
+	public function un(){
+		require_once(Core_Extend::includeFile('function/Avatar_Extend'));
+		
+		try{
+			Avatar_Extend::deleteAvatar();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
+		$this->S(Dyhb::L('删除头像成功了','Controller/Avatar'));
+	}
+
 }

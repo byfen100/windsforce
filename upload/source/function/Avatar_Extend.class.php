@@ -88,7 +88,33 @@ class Avatar_Extend{
 		$oImgR=$sImageCreateFromFunc($sSrc);
 		imagejpeg($oImgR,WINDSFORCE_PATH.'/data/avatar/'.G::getAvatar($GLOBALS['___login___']['user_id'],'origin'),100);
 		imagedestroy($oImgR);
-		@unlink($sSrc);
+		
+		if(is_file($sSrc)){
+			@unlink($sSrc);
+		}
+	}
+
+	static public function deleteAvatar($nUserId=null){
+		if($nUserId===null){
+			$nUserId=$GLOBALS['___login___']['user_id'];
+		}
+
+		foreach(array('origin','big','middle','small') as $sValue){
+			$sAvatarfile=WINDSFORCE_PATH.'/data/avatar/'.G::getAvatar($nUserId,$sValue);
+			if(is_file($sAvatarfile)){
+				@unlink($sAvatarfile);
+			}
+		}
+
+		$oUser=UserModel::F('user_id=?',$nUserId)->getOne();
+		if(!empty($oUser['user_id'])){
+			$oUser->user_avatar='0';
+			$oUser->save(0,'update');
+
+			if($oUser->isError()){
+				Dyhb::E($oUser->getErrorMessage());
+			}
+		}
 	}
 
 }
