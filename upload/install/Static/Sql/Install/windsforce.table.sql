@@ -136,7 +136,7 @@ CREATE TABLE `#@__attachment` (
   `attachment_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '附件ID',
   `attachment_name` varchar(100) NOT NULL COMMENT '名字',
   `attachment_type` varchar(40) NOT NULL COMMENT '类型',
-  `attachment_size` int(8) NOT NULL COMMENT '大小，单位KB',
+  `attachment_size` int(10) NOT NULL COMMENT '大小，单位KB',
   `attachment_key` varchar(25) NOT NULL COMMENT '上传KEY',
   `attachment_extension` varchar(20) NOT NULL COMMENT '后缀',
   `attachment_savepath` varchar(50) NOT NULL COMMENT '保存路径',
@@ -148,11 +148,11 @@ CREATE TABLE `#@__attachment` (
   `attachment_thumbpath` varchar(32) NOT NULL COMMENT '缩略图路径',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
-  `attachmentcategory_id` mediumint(8) NOT NULL COMMENT '分类ID',
+  `attachmentcategory_id` int(10) NOT NULL COMMENT '分类ID',
   `attachment_description` varchar(500) NOT NULL COMMENT '描述',
   `attachment_alt` varchar(100) NOT NULL,
   `attachment_download` int(10) NOT NULL COMMENT '下载次数',
-  `attachment_commentnum` mediumint(8) NOT NULL DEFAULT '0' COMMENT '评论数量',
+  `attachment_commentnum` int(10) NOT NULL DEFAULT '0' COMMENT '评论数量',
   `attachment_islock` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定',
   `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',
   `attachment_username` varchar(50) NOT NULL COMMENT '用户名',
@@ -246,8 +246,8 @@ CREATE TABLE `#@__creditrulelog` (
   `creditrulelog_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '策略日志ID',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '策略日志所有者uid',
   `creditrule_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '策略ID',
-  `creditrulelog_total` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '策略被执行总次数',
-  `creditrulelog_cyclenum` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '周期被执行次数',
+  `creditrulelog_total` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '策略被执行总次数',
+  `creditrulelog_cyclenum` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '周期被执行次数',
   `creditrulelog_extendcredit1` int(10) NOT NULL DEFAULT '0' COMMENT '第一种积分类型',
   `creditrulelog_extendcredit2` int(10) NOT NULL DEFAULT '0' COMMENT '第二种积分类型',
   `creditrulelog_extendcredit3` int(10) NOT NULL DEFAULT '0' COMMENT '第三种积分类型',
@@ -428,7 +428,7 @@ CREATE TABLE `#@__homeoption` (
 
 DROP TABLE IF EXISTS `#@__homesite`;
 CREATE TABLE `#@__homesite` (
-  `homesite_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `homesite_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `homesite_name` char(32) NOT NULL DEFAULT '' COMMENT '键值',
   `homesite_nikename` char(32) NOT NULL COMMENT '站点信息别名',
   `homesite_content` text NOT NULL COMMENT '内容',
@@ -474,7 +474,7 @@ CREATE TABLE `#@__hometagindex` (
 
 DROP TABLE IF EXISTS `#@__link`;
 CREATE TABLE `#@__link` (
-  `link_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '衔接ID',
+  `link_id` mediumint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT '衔接ID',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `link_name` varchar(32) NOT NULL COMMENT '名字',
@@ -497,8 +497,8 @@ CREATE TABLE `#@__link` (
 
 DROP TABLE IF EXISTS `#@__loginlog`;
 CREATE TABLE `#@__loginlog` (
-  `loginlog_id` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '登录ID',
-  `user_id` mediumint(8) NOT NULL COMMENT '用户ID',
+  `loginlog_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '登录ID',
+  `user_id` int(10) NOT NULL COMMENT '用户ID',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `loginlog_username` varchar(50) NOT NULL COMMENT '登录用户',
@@ -520,8 +520,8 @@ CREATE TABLE `#@__loginlog` (
 DROP TABLE IF EXISTS `#@__mail`;
 CREATE TABLE `#@__mail` (
   `mail_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '邮件ID',
-  `mail_touserid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '接受用户ID',
-  `mail_fromuserid` mediumint(8) NOT NULL DEFAULT '0' COMMENT '发送用户ID',
+  `mail_touserid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '接受用户ID',
+  `mail_fromuserid` int(10) NOT NULL DEFAULT '0' COMMENT '发送用户ID',
   `mail_tomail` varchar(100) NOT NULL COMMENT '接收者邮件地址',
   `mail_frommail` varchar(100) NOT NULL COMMENT '发送者邮件地址',
   `mail_subject` varchar(300) NOT NULL COMMENT '主题',
@@ -787,7 +787,7 @@ DROP TABLE IF EXISTS `#@__session`;
 CREATE TABLE `#@__session` (
   `session_hash` varchar(6) NOT NULL COMMENT 'HASH',
   `session_auth_key` varchar(32) NOT NULL COMMENT 'AUTH_KEY',
-  `user_id` mediumint(8) NOT NULL COMMENT '用户ID',
+  `user_id` int(10) NOT NULL COMMENT '用户ID',
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -975,7 +975,7 @@ CREATE TABLE `#@__user` (
 
 DROP TABLE IF EXISTS `#@__usercount`;
 CREATE TABLE `#@__usercount` (
-  `user_id` mediumint(8) unsigned NOT NULL COMMENT '用户ID',
+  `user_id` int(10) unsigned NOT NULL COMMENT '用户ID',
   `usercount_extendcredit1` int(10) NOT NULL DEFAULT '0' COMMENT '第一种积分类型',
   `usercount_extendcredit2` int(10) NOT NULL DEFAULT '0' COMMENT '第二种积分类型',
   `usercount_extendcredit3` int(10) NOT NULL DEFAULT '0' COMMENT '第三种积分类型',
@@ -998,7 +998,7 @@ CREATE TABLE `#@__usercount` (
 
 DROP TABLE IF EXISTS `#@__userprofile`;
 CREATE TABLE `#@__userprofile` (
-  `user_id` mediumint(8) unsigned NOT NULL COMMENT '用户ID',
+  `user_id` int(10) unsigned NOT NULL COMMENT '用户ID',
   `userprofile_realname` varchar(255) NOT NULL DEFAULT '' COMMENT '真实姓名',
   `userprofile_gender` tinyint(1) NOT NULL DEFAULT '0' COMMENT '性别',
   `userprofile_birthyear` smallint(6) unsigned NOT NULL DEFAULT '0' COMMENT '出生年份',
@@ -1099,7 +1099,7 @@ CREATE TABLE `#@__userprofilesetting` (
 
 DROP TABLE IF EXISTS `#@__userrole`;
 CREATE TABLE `#@__userrole` (
-  `role_id` mediumint(9) unsigned NOT NULL DEFAULT '0' COMMENT '角色ID',
+  `role_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '角色ID',
   `user_id` char(32) NOT NULL DEFAULT '' COMMENT '用户ID',
   PRIMARY KEY (`role_id`,`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1125,10 +1125,10 @@ CREATE TABLE `#@__wapoption` (
 
 DROP TABLE IF EXISTS `#@__district`;
 CREATE TABLE `#@__district` (
-  `district_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '地区ID',
+  `district_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '地区ID',
   `district_name` varchar(255) NOT NULL DEFAULT '' COMMENT '地区名字',
   `district_level` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '地区级别，省份/城市/州县/乡镇',
-  `district_upid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '上级地址ID值',
+  `district_upid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级地址ID值',
   `district_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '地区排序',
   PRIMARY KEY (`district_id`),
   KEY `district_upid` (`district_upid`),
