@@ -1,5 +1,7 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{:Core_Extend::emotion()}-->
+
 <!--{script}-->
 function goodnum(id){
 	Dyhb.AjaxSend(D.U('home://ucenter/update_homefreshgoodnum'),'ajax=1&id='+id,'',function(data,status,info){
@@ -9,6 +11,10 @@ function goodnum(id){
 		}
 	});
 }
+
+$(document).ready(function(){
+	$('.homefresh-content').listEmotion();
+});
 <!--{/script}-->
 
 		<ul class="breadcrumb">
