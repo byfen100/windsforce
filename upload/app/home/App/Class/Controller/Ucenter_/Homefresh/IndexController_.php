@@ -9,6 +9,7 @@ class IndexController extends Controller{
 	public function index(){
 		$arrWhere=array();
 		
+		// 类型
 		$sType=trim(G::getGpc('type','G'));
 		if(empty($sType)){
 			$sType='';
@@ -45,8 +46,20 @@ class IndexController extends Controller{
 				break;
 		}
 
+		// 话题
+		$sKey=trim(G::getGpc('key','G'));
+		if(!empty($sKey)){
+			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
+			if(empty($oHomefreshtag['homefreshtag_id'])){
+				$this->E('话题不存在或者被禁止了');
+			}
+
+			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");
+		}
+
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
+		// 赞
 		$sGoodCookie=Dyhb::cookie('homefresh_goodnum');
 		$arrGoodCookie=explode(',',$sGoodCookie);
 		$this->assign('arrGoodCookie',$arrGoodCookie);

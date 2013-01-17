@@ -1069,4 +1069,88 @@ WINDSFORCE;
 		}
 	}
 
+	static public function contentParsetag($sContent,$bUser=true,$bTag=true,$nTagmaxnum=5){
+		// 初始化一些变量
+		$arrReturn=array();
+		$arrTags=$arrContentsearch=$arrContentreplace=array();
+
+		if($nTagmaxnum<1){
+			$nTagmaxnum=1;
+		}
+		//$tuid = (int) $topic_info['uid'];
+		
+		// @user功能解析
+		/*if (false!==strpos($sContent,'@')){
+			if (preg_match_all('~\@([\w\d\_\-\x7f-\xff]+)(?:[\r\n\t\s ]+|[\xa1\xa1]+|[\xa3\xac]|[\xef\xbc\x8c]|[\,\.\;\[\#])~', $content, $match)) {
+				if (is_array($match[1]) && count($match[1])) {
+					foreach ($match[1] as $k => $v) {
+						$v = trim($v);
+						if ('　' == substr($v, -2)) {
+							$v = substr($v, 0, -2);
+						}
+
+						if ($v && strlen($v) < 16) {
+							$match[1][$k] = $v;
+						}
+					}
+
+					$sql = "select `uid`,`nickname`,`username` from `" .
+					TABLE_PREFIX . "members` where `nickname` in ('" . implode("','", $match[1]) .
+                        "') ";
+					$query = $this->DatabaseHandler->Query($sql);
+					while (false != ($row = $query->GetRow())) {
+						if($row['uid']>0 && !is_blacklist($tuid, $row['uid']) && !jsg_role_check_allow('topic_at', $row['uid'], $tuid)) {
+							$_at = "@{$row['nickname']}";
+							$cont_sch[$_at] = $_at;
+							$cont_rpl[$_at] = "<M {$row['username']}>@{$row['nickname']}</M> ";
+							$at_uids[$row['uid']] = $row['uid'];
+						}
+					}
+				}
+			}
+		}*/
+
+		// #你的话题#功能解析
+		if($bTag===true && false!==strpos($sContent,'#')){
+			$arrMatch=array();
+			if(preg_match_all('~\#([^\/\-\@\#\[\$\{\}\(\)\;\<\>\\\\]+?)\#~',$sContent,$arrMatch)){
+				$nI=0;
+				foreach($arrMatch[1] as $sValue){
+					$sValue=trim($sValue);
+					if (($nValuelen=strlen($sValue))<2 || $nValuelen>50){
+						continue;
+					}
+
+					$arrTags[$sValue]=$sValue;
+					$sTag="#{$sValue}#";
+					$arrContentsearch[$sTag]=$sTag;
+					$arrContentreplace[$sTag]="[TAG]#{$sValue}#[/TAG]";
+
+					if(++$nI>=$nTagmaxnum){
+						break;
+					}
+				}
+			}
+		}
+
+		// 内容替换
+		if($arrContentsearch && $arrContentreplace){
+			uasort($arrContentsearch,create_function('$sA,$sB','return(strlen($sA)<strlen($sB));'));
+
+			foreach($arrContentsearch as $sKey=>$sValue){
+				if($sValue && isset($arrContentreplace[$sKey])){
+					$sContent=str_replace($sValue,$arrContentreplace[$sKey],$sContent);
+				}
+			}
+		}
+
+		$sContent=trim($sContent);
+
+		$arrReturn['content']=$sContent;
+		//$return['at_uids'] = $at_uids;
+		$arrReturn['tags']=$arrTags;
+
+		return $arrReturn;
+	}
+
 }

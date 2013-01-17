@@ -365,6 +365,30 @@ CREATE TABLE `#@__homefreshcomment` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_homefreshtag`
+--
+
+DROP TABLE IF EXISTS `#@__homefreshtag`;
+CREATE TABLE `#@__homefreshtag` (
+  `homefreshtag_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '新鲜事话题ID',
+  `homefreshtag_name` varchar(50) NOT NULL DEFAULT '' COMMENT '新鲜事话题名字',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '话题创建者',
+  `homefreshtag_username` varchar(50) NOT NULL DEFAULT '' COMMENT '话题创建者用户名',
+  `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发布时间',
+  `update_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后更新时间',
+  `homefreshtag_usercount` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户数量',
+  `homefreshtag_homefreshcount` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '新鲜事数量',
+  `homefreshtag_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '话题状态',
+  PRIMARY KEY (`homefreshtag_id`),
+  KEY `user_id` (`user_id`),
+  KEY `create_dateline` (`create_dateline`),
+  KEY `homefreshtag_status` (`homefreshtag_status`),
+  KEY `homefreshtag_name` (`homefreshtag_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_homehelp`
 --
 

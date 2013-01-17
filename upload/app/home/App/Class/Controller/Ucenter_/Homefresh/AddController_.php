@@ -28,9 +28,27 @@ class AddController extends Controller{
 		if(empty($sMessage)){
 			$this->E(Dyhb::L('新鲜事内容不能为空','Controller/Homefresh'));
 		}
+
+		// 解析新鲜事内容
+		$arrParsemessage=Core_Extend::contentParsetag($sMessage);
+		$sMessage=$arrParsemessage['content'];
+
+		// 话题功能
+		if(!empty($arrParsemessage['tags'])){
+			foreach($arrParsemessage['tags'] as $sHomefreshtag){
+				$oHomefreshtag=Dyhb::instance('HomefreshtagModel');
+				$oHomefreshtag->insertHomefreshtag($sHomefreshtag);
+
+				if($oHomefreshtag->isError()){
+					$this->E($oHomefreshtag->getErrorMessage());
+				}
+			}
+		}
 		
+		// 新鲜事模型
 		$oHomefresh=new HomefreshModel();
 		$oHomefresh->safeInput();
+		$oHomefresh->homefresh_message=$sMessage;
 		$oHomefresh->homefresh_status=1;
 		$oHomefresh->save(0,'save');
 

@@ -121,11 +121,18 @@ class Ubb2html{
 		$sContent=preg_replace("/\[mp3\]\s*(\S+?)\s*\[\/mp3\]/ise","\$this->makeMp3('\\1')",$sContent);
 		$sContent=preg_replace("/\[video\]\s*(\S+?)\s*\[\/video\]/ise","\$this->makeVideo('\\1')",$sContent);
 
+		// 解析话题
+		$sContent=preg_replace("/\[TAG\]#\s*(\S+?)\s*#\[\/TAG\]/ise","\$this->makeTag('\\1')",$sContent);
+
 		return $sContent;
 	}
 
 	public function makeimgWithurl($sUrl,$sAlignCode,$sWidthCode,$sHeightCode,$sSrc){
 		return $this->makeImg($sAlignCode,$sWidthCode,$sHeightCode,$sSrc,$sUrl);
+	}
+
+	public function makeTag($sTag){
+		return '<a href="'.__ROOT__.'/index.php?app=home&c=ucenter&a=index&key='.urlencode($sTag).'">#'.$sTag.'#</a>';
 	}
 
 	public function makeMp3($sSrc){
