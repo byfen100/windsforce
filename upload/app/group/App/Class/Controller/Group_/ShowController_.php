@@ -152,6 +152,13 @@ class ShowController extends Controller{
 
 		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 
+		// 读取小组回收站帖子数量
+		if(Core_Extend::isAdmin()){
+			$nTotalRecyclebinGrouptopic=GrouptopicModel::F()->where(array('group_id'=>$oGroup->group_id,'grouptopic_status'=>'0'))->all()->getCounts();
+			
+			$this->assign('nTotalRecyclebinGrouptopic',$nTotalRecyclebinGrouptopic);
+		}
+
 		$this->assign('oGroup',$oGroup);
 		$this->assign('nCid',$nCid);
 		$this->assign('nDid',$nDid);

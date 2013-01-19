@@ -58,7 +58,13 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 							<!--{d*else}-->
 							<span>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
 							<span class="pipe">|</span>
-							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->">我的小组帖子</a>, <a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->">查看小组新帖</a></span>
+							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->">我的小组帖子</a>, <a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->">查看小组新帖</a>
+							<!--{if Core_Extend+isAdmin()}-->
+							<span class="pipe">|</span>
+							<img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;
+							<a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0','admin.php')}-->" target="_blank">主题回收站</a>&nbsp;<span><a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0','admin.php')}-->" target="_blank" <!--{if $nTotalRecyclebinGrouptopic>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinGrouptopic}-->)</a></span>
+							<!--{/if}-->
+							</span>
 							<!--{/if}-->
 						</div>
 
