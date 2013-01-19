@@ -95,32 +95,38 @@ Description: Group应用模块CSS
 
 /* 小组新风格 */
 #grouptopicnew_show h1{font-size:22px;color:#333;text-align:left;line-height:100%;margin-bottom:8px}
-#grouptopicnew_show .infos{position:relative;margin-bottom:10px;margin-right:56px;border-bottom:1px solid #ddd;margin:0 -10px;padding:0 10px 5px 10px}
+#grouptopicnew_show .infos{position:relative;margin-bottom:10px;margin-right:56px;border-bottom:1px dashed #ddd;margin:5px -10px;padding:0 10px 15px 10px}
 
 #grouptopicnew_show .avatar_large{width:48px;}
-.grouptopicsnew .grouptopic a:link,.grouptopicsnew .grouptopic a:visited{color:#2c64d7;text-decoration:none;}
-.grouptopicsnew .grouptopic .title a:hover{text-decoration:underline;}
+.grouptopicsnew .grouptopic a:link,.grouptopicsnew .grouptopic a:visited{}
+.grouptopicsnew .grouptopic .title a:hover{}
 .grouptopicsnew .grouptopic .avatar{width:56px;margin-left:10px;}
 .grouptopicsnew .grouptopic .infos{padding-right:74px;}
 .grouptopicsnew .grouptopic .info{color:#bbb;margin-bottom:2px;font-size:12px;}
-.grouptopicsnew .grouptopic .info .grouptopiccategory{padding:1px 5px;color:#778087;text-decoration:none;background-color:#f5f5f5;}
+.grouptopicsnew .grouptopic .info a{color:#778087;}
+.grouptopicsnew .grouptopic .info .grouptopiccategory{padding:1px 5px;color:#778087;}
 .grouptopicsnew .grouptopic .info em{font-style:normal;}
-.grouptopicsnew .grouptopic a:link,.grouptopicsnew .grouptopic a:visited{color:#999;text-decoration:underline;}
+.grouptopicsnew .grouptopic a:link,.grouptopicsnew .grouptopic a:visited{}
 .grouptopic .grouptopic-content{margin-bottom:10px;margin-top:8px;}
 .grouptopic .grouptopic-content img{max-width:690px;}
 
-#grouptopiccomments .total{padding:0 10px 6px 10px;border-bottom:1px solid #DDD;color:#999;margin:0 -10px;}
-#grouptopiccomments .grouptopiccommentnew_reply{border-bottom:1px solid #DDD;padding:8px 10px;margin:0 -10px;background:#FFF;}
+#grouptopiccomments .total{padding:0 10px 6px 10px;border-bottom:1px solid #DDD;color:#999;margin:0 -10px;margin-bottom:10px;}
+#grouptopiccomments .grouptopiccomment_items{padding:5px 10px;}
+#grouptopiccomments .grouptopiccommentnew_reply{background:#fff;padding:8px 10px;margin:0 -10px;-webkit-border-radius: 5px;-moz-border-radius:5px;border-radius:5px;}
+#grouptopiccomments .info a,#grouptopiccomments .grouptopiccomment-content a{color:#778087;}
 #grouptopiccomments .grouptopiccommentnew_reply .face{padding-right:8px;width:48px;margin-left:0;}
-#grouptopiccomments .grouptopiccommentnew_reply .infos{padding-left:58px;}
+#grouptopiccomments .grouptopiccommentnew_reply .infos{padding-left:70px;}
 #grouptopiccomments .grouptopiccommentnew_reply .info{font-size:12px;color:#bbb;height:20px;}
 #grouptopiccomments .grouptopiccommentnew_reply .info a:link,#replies .reply .info a:visited{color:#999;}
 #grouptopiccomments .grouptopiccommentnew_reply .info .name{float:left;}
-#grouptopiccomments .grouptopiccommentnew_reply .info .name a{text-decoration:underline;margin-right:8px;}
+#grouptopiccomments .grouptopiccommentnew_reply .info .name a{margin-right:8px;}
 #grouptopiccomments .grouptopiccommentnew_reply .info .floorcopy_box{float:right;text-align:right;}
 #grouptopiccomments .grouptopiccommentnew_reply .info .floorcopy_box a{margin-left:5px;}
-#grouptopiccomments .grouptopiccommentnew_reply .info .floorcopy_box a:hover{text-decoration:none;}
-#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content{margin-bottom:20px;}
+#grouptopiccomments .grouptopiccommentnew_reply .info .floorcopy_box a:hover{}
+#grouptopiccomments .grouptopiccomment_title{margin:15px 0;}
+#grouptopiccomments .grouptopiccomment_title h1{font-size:14px;}
+#grouptopiccomments .grouptopiccomment_parent{margin:15px 0;}
+#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content{margin-bottom:20px;margin-top:10px;}
 #grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content img{max-width:622px;}
 
 .grouptopicsnew .grouptopic .grouptopic-content,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content{position:relative;line-height:160%;font-size:14px;text-overflow:ellipsis;word-wrap:break-word;}
@@ -128,8 +134,8 @@ Description: Group应用模块CSS
 .grouptopicsnew .grouptopic .grouptopic-content blockquote p,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content blockquote p{font-size:13px;color:#666;font-weight:normal;line-height:150%;}
 .grouptopicsnew .grouptopic .grouptopic-content code,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content code{margin:0 2px;font-family:Monaco,Menlo, "Courier New", monospace;}
 .grouptopicsnew .grouptopic .grouptopic-content pre,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content pre{font-family:Monaco,Menlo,"Courier New", monospace;}
-.grouptopicsnew .grouptopic .grouptopic-content a:link,.grouptopicsnew .grouptopic .grouptopic-content a:visited,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content a:link,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content a:visited{font-size:13px;color:#0069D6;text-decoration:none;}
-.grouptopicsnew .grouptopic .grouptopic-content a:hover,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content a:hover{text-decoration:underline;color:#00438A;}
+.grouptopicsnew .grouptopic .grouptopic-content a:link,.grouptopicsnew .grouptopic .grouptopic-content a:visited,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content a:link,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content a:visited{font-size:13px;}
+.grouptopicsnew .grouptopic .grouptopic-content a:hover,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content a:hover{}
 .grouptopicsnew .grouptopic .grouptopic-content strong,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content strong{color:#000;}
 .grouptopicsnew .grouptopic .grouptopic-content ul,.grouptopicsnew .grouptopic .grouptopic-content ol,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ul,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ol{list-style-position:inside;margin:0;padding:5px 14px;}
 .grouptopicsnew .grouptopic .grouptopic-content ul p,.grouptopicsnew .grouptopic .grouptopic-content ol p,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ul p,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ol p{margin:0;}
@@ -258,8 +264,6 @@ a#moderate_reason:hover{text-decoration:none;}
 .tags_hot{padding:5px 0;}
 .tags_hot ul{margin-left:0px;}
 .tags_hot li{float:left;margin:0 5px 5px 0px;}
-.tags_hot li a{float:left;line-height:24px;height:24px;display:block;background:#E8F2F9;padding:0 8px;color:#333333;text-decoration:none;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;white-space:nowrap;}
-.tags_hot li a:hover{background:{LINK_COLOR};color:#fff;}
 .tags_hot li {list-style: none outside none;}
 [/CURSCRIPT]
 

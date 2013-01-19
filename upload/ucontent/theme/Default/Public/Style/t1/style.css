@@ -57,6 +57,12 @@ input:focus,textarea:focus {border-color: #BA350F;}
 #footer a:hover{color:#000;}
 
 /**===============================
+           重写通用标签
+================================*/
+a.common_tag{background:#FFECEC;}
+a.common_tag:hover{background:#BA350F;}
+
+/**===============================
            重写系统主题元素CSS
 ================================*/
 .WindsforceSystem-link_color,.WindsforceSystem-14{color:#840000;}/* 14 */
