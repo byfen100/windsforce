@@ -11,8 +11,11 @@ class StyleoptionController extends OptionController{
 
 		$sLogo=$GLOBALS['_option_']['site_logo']?$GLOBALS['_option_']['site_logo']:__PUBLIC__.'/images/common/logo.png';
 
+		$sFavicon=$GLOBALS['_option_']['site_favicon']?$GLOBALS['_option_']['site_favicon']:__PUBLIC__.'/images/common/favicon.png';
+
 		$this->assign('arrOptions',$arrOptionData);
 		$this->assign('sLogo',$sLogo);
+		$this->assign('sFavicon',$sFavicon);
 
 		$this->display();
 	}

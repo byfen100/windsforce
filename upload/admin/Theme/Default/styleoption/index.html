@@ -26,8 +26,15 @@ function option(){
 					<fieldset>
 						<label for="site_logo"><!--<lang package='Template/Default/Styleoption'>-->网站Logo<!--</lang>--></label>
 						<input type="text" name="options[site_logo]" id="site_logo" size="60" value="<!--{$arrOptions['site_logo']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Styleoption'>-->如果不填，则为系统默认Logo，地址为Public/images/common/logo.png<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Styleoption'>-->如果不填，则为系统默认Logo，地址为Public/images/common/logo.png<!--</lang>-->&nbsp;(<!--<lang package='Template/Default/Styleoption'>-->优先级别最高,一旦设置其他地方将失效<!--</lang>-->)
 						<br/><img src="<!--{$sLogo}-->"/>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label for="site_favicon"><!--<lang package='Template/Default/Styleoption'>-->网站Favicon<!--</lang>--></label>
+						<input type="text" name="options[site_favicon]" id="site_favicon" size="60" value="<!--{$arrOptions['site_favicon']}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Styleoption'>-->如果不填，则为系统默认Favicon，地址为Public/images/common/favicon.png<!--</lang>-->&nbsp;(<!--<lang package='Template/Default/Styleoption'>-->优先级别最高,一旦设置其他地方将失效<!--</lang>-->)
+						<br/><img src="<!--{$sFavicon}-->"/>
 						</div>
 					</fieldset>
 					<fieldset>

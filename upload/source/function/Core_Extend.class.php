@@ -1308,28 +1308,32 @@ WINDSFORCE;
 	}
 
 	static public function getLogo(){
-		$sLogo=$GLOBALS['_style_']['logo'];
-
-		if(empty($sLogo)){
+		if($GLOBALS['_option_']['site_logo']){
 			$sLogo=$GLOBALS['_option_']['site_logo'];
-		}
+		}else{
+			$sLogo=$GLOBALS['_style_']['logo'];
 
-		if(empty($sLogo)){
-			$sLogo=__PUBLIC__.'/images/common/logo.png';
+			if(empty($sLogo)){
+				$sLogo=__PUBLIC__.'/images/common/logo.png';
+			}
 		}
 
 		return $sLogo;
 	}
 
 	static public function getFavicon(){
-		$sFavicon=__ROOT__.'/ucontent/theme/'.Dyhb::cookie('template').'/favicon.png';
+		if($GLOBALS['_option_']['site_favicon']){
+			$sFavicon=$GLOBALS['_option_']['site_favicon'];
+		}else{
+			$sFavicon=__ROOT__.'/ucontent/theme/'.Dyhb::cookie('template').'/favicon.png';
 
-		if(!is_file(WINDSFORCE_PATH.'/ucontent/theme/'.Dyhb::cookie('template').'/favicon.png')){
-			$sFavicon=__ROOT__.'/ucontent/theme/Zh-cn/favicon.png';
-		}
+			if(!is_file(WINDSFORCE_PATH.'/ucontent/theme/'.Dyhb::cookie('template').'/favicon.png')){
+				$sFavicon=__ROOT__.'/ucontent/theme/Default/favicon.png';
+			}
 
-		if(!is_file(WINDSFORCE_PATH.'/ucontent/theme/Zh-cn/favicon.png')){
-			$sFavicon=__PUBLIC__.'/images/common/favicon.png';
+			if(!is_file(WINDSFORCE_PATH.'/ucontent/theme/Default/favicon.png')){
+				$sFavicon=__PUBLIC__.'/images/common/favicon.png';
+			}
 		}
 
 		return $sFavicon;

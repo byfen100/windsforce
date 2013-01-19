@@ -28,6 +28,9 @@ return array(
 '7fdb2daeb8687c0f81b15d451b366fc9'=>"圖片延遲加載可以減少頁面加載資源",
 '4fbb9ec219b6e0dc9da5139cd28a5493'=>"是否開啟simplebox 圖片效果",
 'f8d1c791e9a6bc09667d14fdf3dbba95'=>"開啟後，點擊一個圖片鏈接將會很酷",
+'f6064e81c382b5464c65ee2b3a3bb79d'=>"網站Favicon",
+'0dae80e5096e63f08c5261a9d6f30016'=>"如果不填，則為系統默認Favicon，地址為Public/images/common/favicon.png",
+'881132fe18109f160ddd18ce261e86c4'=>"優先級別最高,一旦設置其他地方將失效",
 )
 
 ?>
