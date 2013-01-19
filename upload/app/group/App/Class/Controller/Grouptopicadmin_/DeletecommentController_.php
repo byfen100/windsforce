@@ -22,27 +22,35 @@ class DeletecommentController extends Controller{
 
 		$arrGrouptopiccomments=explode(',',$sGrouptopiccomments);
 
+		$bAdmincredit=false;
+		
 		if(is_array($arrGrouptopiccomments)){
 			foreach($arrGrouptopiccomments as $nGrouptopiccomment){
-				// 回帖回收站功能开启
-				if($GLOBALS['_cache_']['group_option']['group_deletecomment_recyclebin']==1){
-					$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccomment)->getOne();
+				$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=? AND grouptopiccomment_status=1',$nGrouptopiccomment)->getOne();
 
-					if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
+				if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
+					$nUserid=$oGrouptopiccomment['user_id'];
+
+					// 回帖回收站功能开启
+					if($GLOBALS['_cache_']['group_option']['group_deletecomment_recyclebin']==1){
 						$oGrouptopiccomment->grouptopiccomment_status='0';
 						$oGrouptopiccomment->save(0,'update');
 
 						if($oGrouptopiccomment->isError()){
 							$this->E($oGrouptopiccomment->getErrorMessage());
 						}
+					}else{
+						$oGrouptopiccommentMeta=GrouptopiccommentModel::M();
+						$oGrouptopiccommentMeta->deleteWhere(array('grouptopiccomment_id'=>$nGrouptopiccomment));
+							
+						if($oGrouptopiccommentMeta->isError()){
+							$this->E($oGrouptopiccommentMeta->getErrorMessage());
+						}
 					}
-				}else{
-					$oGrouptopiccommentMeta=GrouptopiccommentModel::M();
-					$oGrouptopiccommentMeta->deleteWhere(array('grouptopiccomment_id'=>$nGrouptopiccomment));
-						
-					if($oGrouptopiccommentMeta->isError()){
-						$this->E($oGrouptopiccommentMeta->getErrorMessage());
-					}
+
+					Core_Extend::updateCreditByAction('group_commentdelete',$nUserid);
+
+					$bAdmincredit=true;
 				}
 			}
 
@@ -56,6 +64,11 @@ class DeletecommentController extends Controller{
 					$this->E($oGrouptopic->getErrorMessage());
 				}
 			}
+		}
+
+		// 管理积分
+		if($bAdmincredit===true){
+			Core_Extend::updateCreditByAction('group_commentadmin',$GLOBALS['___login___']['user_id']);
 		}
 
 		$sGrouptopicurl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);

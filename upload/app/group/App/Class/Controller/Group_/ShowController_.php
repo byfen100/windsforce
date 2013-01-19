@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入附件函数库 */
+require_once(Core_Extend::includeFile('function/Attachment_Extend'));
+
 class ShowController extends Controller{
 
 	protected $_oGroup=null;
@@ -143,6 +146,11 @@ class ShowController extends Controller{
 
 		// 取得小组会员
 		$this->get_user($oGroup['group_id']);
+
+		// 取得缩略图帖子
+		$arrGroupthumbtopics=Groupdata_Extend::getGroupthumbtopic(0,$GLOBALS['_cache_']['group_option']['onegroup_thumbtopic_num'],$oGroup['group_id']);
+
+		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 
 		$this->assign('oGroup',$oGroup);
 		$this->assign('nCid',$nCid);

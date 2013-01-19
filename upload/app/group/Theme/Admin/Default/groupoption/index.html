@@ -71,6 +71,17 @@ function option(){
 								</div>
 							</fieldset>
 							<fieldset>
+								<label for="group_thumbtopic_date"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->群组图片帖子调用时间<!--</lang>--></label>
+								<select name="options[group_thumbtopic_date]" id="group_thumbtopic_date">
+									<option value="3600" <!--{if $arrOptions['group_thumbtopic_date']==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
+									<option value="86400" <!--{if $arrOptions['group_thumbtopic_date']==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>
+									<option value="604800" <!--{if $arrOptions['group_thumbtopic_date']==604800}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一星期<!--</lang>--></option>
+									<option value="2592000" <!--{if $arrOptions['group_thumbtopic_date']==2592000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一月<!--</lang>--></option>
+									<option value="31536000" <!--{if $arrOptions['group_thumbtopic_date']==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这里的时间为图片帖子调用时间，如果为一星期，那么图片帖子只会从当前一个星期中取出<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
 								<label for="index_systemrecommendtopic_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->群组首页系统推荐帖子帖子数量<!--</lang>--></label>
 								<input type="text" name="options[index_systemrecommendtopic_num]" id="index_systemrecommendtopic_num" size="60" value="<!--{$arrOptions['index_systemrecommendtopic_num']}-->"/>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->推荐帖子可以用来展示一些非常棒的帖子<!--</lang>-->
@@ -195,6 +206,12 @@ function option(){
 							<fieldset>
 								<label for="groupshow_newuser_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->小组浏览首页最新会员数量<!--</lang>--></label>
 								<input type="text" name="options[groupshow_newuser_num]" id="groupshow_newuser_num" size="60" value="<!--{$arrOptions['groupshow_newuser_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个可以设置小一点<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="onegroup_thumbtopic_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->小组浏览首页最新图片帖子数量<!--</lang>--></label>
+								<input type="text" name="options[onegroup_thumbtopic_num]" id="onegroup_thumbtopic_num" size="60" value="<!--{$arrOptions['onegroup_thumbtopic_num']}-->"/>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个可以设置小一点<!--</lang>-->
 								</div>
 							</fieldset>

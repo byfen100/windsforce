@@ -39,12 +39,29 @@ class SubmiteditController extends Controller{
 				$_POST[$sCheckbox]=0;
 			}
 		}
+
+		$nIsrecommend=$oGrouptopic->grouptopic_isrecommend;
+		$nAddtodigest=$oGrouptopic->grouptopic_addtodigest;
+		$nSticktopic=$oGrouptopic->grouptopic_sticktopic;
 		
 		$oGrouptopic->grouptopic_updateusername=$GLOBALS['___login___']['user_name'];
 		$oGrouptopic->save(0,'update');
 
 		if($oGrouptopic->isError()){
 			$this->E($oGrouptopic->getErrorMessage());
+		}
+
+		// 更新积分
+		if($oGrouptopic->grouptopic_addtodigest>0 && $nAddtodigest<$oGrouptopic->grouptopic_addtodigest){
+			Core_Extend::updateCreditByAction('group_topicdigest'.$oGrouptopic['grouptopic_addtodigest'],$oGrouptopic['user_id']);
+		}
+
+		if($oGrouptopic->grouptopic_sticktopic>0 && $nSticktopic<$oGrouptopic->grouptopic_sticktopic){
+			Core_Extend::updateCreditByAction('group_topicstick'.$oGrouptopic['grouptopic_sticktopic'],$oGrouptopic['user_id']);
+		}
+
+		if($oGrouptopic->grouptopic_isrecommend>0 && $nIsrecommend<$oGrouptopic->grouptopic_isrecommend){
+			Core_Extend::updateCreditByAction('group_trecommend'.$oGrouptopic['grouptopic_isrecommend'],$oGrouptopic['user_id']);
 		}
 
 		// 保存帖子标签

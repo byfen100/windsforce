@@ -52,6 +52,21 @@ class AddtopicController extends Controller{
 			$this->E($oGrouptopic->getErrorMessage());
 		}
 
+		// 更新积分
+		Core_Extend::updateCreditByAction('group_addtopic',$GLOBALS['___login___']['user_id']);
+
+		if($oGrouptopic['grouptopic_addtodigest']>0){
+			Core_Extend::updateCreditByAction('group_topicdigest'.$oGrouptopic['grouptopic_addtodigest'],$GLOBALS['___login___']['user_id']);
+		}
+
+		if($oGrouptopic['grouptopic_sticktopic']>0){
+			Core_Extend::updateCreditByAction('group_topicstick'.$oGrouptopic['grouptopic_sticktopic'],$GLOBALS['___login___']['user_id']);
+		}
+
+		if($oGrouptopic['grouptopic_isrecommend']>0){
+			Core_Extend::updateCreditByAction('group_trecommend'.$oGrouptopic['grouptopic_isrecommend'],$GLOBALS['___login___']['user_id']);
+		}
+
 		// 保存帖子标签
 		$sTags=trim(G::getGpc('tags','P'));
 		if($sTags){

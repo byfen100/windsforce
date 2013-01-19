@@ -18,6 +18,8 @@ class TagtopicController extends Controller{
 
 		$arrGrouptopics=explode(',',$sGrouptopics);
 
+		$bAdmincredit=false;
+		
 		if(is_array($arrGrouptopics)){
 			foreach($arrGrouptopics as $nGrouptopic){
 				$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopic)->getOne();
@@ -31,9 +33,16 @@ class TagtopicController extends Controller{
 						if($oGrouptopictag->isError()){
 							$this->E($oGrouptopictag->getErrorMessage());
 						}
+
+						$bAdmincredit=true;
 					}
 				}
 			}
+		}
+
+		// 管理积分
+		if($bAdmincredit===true){
+			Core_Extend::updateCreditByAction('group_topicadmin',$GLOBALS['___login___']['user_id']);
 		}
 
 		$this->A(array('group_id'=>$nGroupid),Dyhb::L('主题标签更新成功','Controller/Grouptopicadmin'));

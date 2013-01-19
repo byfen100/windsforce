@@ -21,6 +21,31 @@ INSERT INTO `#@__app` (`app_id`, `app_identifier`, `app_name`, `app_version`, `a
 -- --------------------------------------------------------
 
 --
+-- 转存表中的数据 `windsforce_creditrule`
+--
+
+INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_action`, `creditrule_cycletype`, `creditrule_cycletime`, `creditrule_rewardnum`, `creditrule_extendcredit1`, `creditrule_extendcredit2`, `creditrule_extendcredit3`, `creditrule_extendcredit4`, `creditrule_extendcredit5`, `creditrule_extendcredit6`, `creditrule_extendcredit7`, `creditrule_extendcredit8`) VALUES
+(10, '发布主题', 'group_addtopic', 4, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0),
+(11, '发布回帖', 'group_addcomment', 4, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
+(12, '帖子被设置精华1', 'group_topicdigest1', 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0),
+(13, '帖子被设置精华2', 'group_topicdigest2', 4, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0),
+(14, '帖子被设置精华3', 'group_topicdigest3', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0),
+(15, '帖子被设置精华4', 'group_topicdigest4', 4, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0),
+(16, '帖子被组长推荐', 'group_trecommend1', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0),
+(17, '帖子被系统推荐', 'group_trecommend2', 4, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+(18, '帖子被小组置顶1', 'group_topicstick1', 4, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0),
+(19, '帖子被小组置顶2', 'group_topicstick2', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0),
+(20, '帖子被全局置顶', 'group_topicstick3', 4, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+(21, '帖子被回复', 'group_topicreply', 1, 0, 30, 2, 0, 0, 0, 0, 0, 0, 0),
+(22, '管理主题', 'group_topicadmin', 4, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+(23, '管理回帖', 'group_commentadmin', 4, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
+(24, '主题被删除', 'group_topicdelete', 4, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0),
+(25, '回帖被删除', 'group_commentdelete', 4, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0),
+(26, '回帖被置顶', 'group_stickreply', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- 转存表中的数据 `windsforce_cron`
 --
 
@@ -73,7 +98,9 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_tag_listnum', '50'),
 ('group_tag_hotnum', '15'),
 ('group_deletetopic_recyclebin', '1'),
-('group_deletecomment_recyclebin', '1');
+('group_deletecomment_recyclebin', '1'),
+('group_thumbtopic_date', '86400'),
+('onegroup_thumbtopic_num', '5');
 
 -- --------------------------------------------------------
 

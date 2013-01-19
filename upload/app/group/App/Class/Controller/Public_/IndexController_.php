@@ -4,6 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入附件函数库 */
 require_once(Core_Extend::includeFile('function/Attachment_Extend'));
 
 class IndexController extends Controller{

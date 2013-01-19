@@ -65,6 +65,13 @@ class AddreplyController extends Controller{
 			$this->E($oGrouptopiccomment->getErrorMessage());
 		}
 
+		// 更新积分
+		Core_Extend::updateCreditByAction('group_addcomment',$GLOBALS['___login___']['user_id']);
+
+		if($GLOBALS['___login___']['user_id']!=$oGrouptopiccomment['user_id']){
+			Core_Extend::updateCreditByAction('group_topicreply',$oGrouptopiccomment['user_id']);
+		}
+
 		// 更新帖子的最后更新回复
 		$arrLatestData=array(
 			'commenttime'=>$oGrouptopiccomment->create_dateline,

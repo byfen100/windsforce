@@ -23,6 +23,8 @@ class HidecommentController extends Controller{
 		
 		$arrGrouptopiccomments=explode(',',$sGrouptopiccomments);
 
+		$bAdmincredit=false;
+		
 		if(is_array($arrGrouptopiccomments)){
 			foreach($arrGrouptopiccomments as $nGrouptopiccomment){
 				$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccomment)->getOne();
@@ -35,9 +37,16 @@ class HidecommentController extends Controller{
 					if($oGrouptopiccomment->isError()){
 						$this->E($oGrouptopiccomment->getErrorMessage());
 					}
+
+					$bAdmincredit=true;
 				}
 			}
 			
+		}
+
+		// 管理积分
+		if($bAdmincredit===true){
+			Core_Extend::updateCreditByAction('group_commentadmin',$GLOBALS['___login___']['user_id']);
 		}
 
 		$sGrouptopicurl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);

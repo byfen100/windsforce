@@ -311,7 +311,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 							<div class="groupshow_thumbtopic">
 								<div id="myCarousel" class="carousel slide">
 									<div class="carousel-inner">
-										<!--{if isset($arrGroupthumbtopics)}-->
+										<!--{if is_array($arrGroupthumbtopics)}-->
 										<!--<foreach for=arrGroupthumbtopics value=oGroupthumbtopic>-->
 										<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="height:340px;">
 											<img src="<!--{:Attachment_Extend::getAttachmentPreview($oGroupthumbtopic['grouptopic_thumb'])}-->" style="height:340px;" width="100%">

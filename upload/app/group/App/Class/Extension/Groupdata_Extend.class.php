@@ -28,7 +28,15 @@ class Groupdata_Extend{
 		return $arrGrouphottopics;
 	}
 
-	public static function getGroupthumbtopic($nNum=0){
+	public static function getGroupthumbtopic($nNum=0,$nDate=0,$nGroupid=0){
+		// 幻灯片帖子时间
+		if($nDate==0){
+			$nDate=$GLOBALS['_cache_']['group_option']['group_thumbtopic_date'];
+			if($nDate<3600){
+				$nDate=3600;
+			}
+		}
+		
 		// 首页幻灯片帖子数量
 		if($nNum==0){
 			$nNum=$GLOBALS['_cache_']['group_option']['group_thumbtopic_num'];
@@ -37,7 +45,7 @@ class Groupdata_Extend{
 			}
 		}
 
-		$arrGroupthumbtopics=GrouptopicModel::F('grouptopic_status=? AND grouptopic_thumb>0 AND grouptopic_isaudit=1',1)->order('create_dateline DESC')->top($nNum)->get();
+		$arrGroupthumbtopics=GrouptopicModel::F('grouptopic_status=? AND grouptopic_thumb>0 AND grouptopic_isaudit=1 AND create_dateline>?'.($nGroupid>0?' AND group_id='.$nGroupid:''),1,CURRENT_TIMESTAMP-$nDate)->order('create_dateline DESC')->top($nNum)->get();
 
 		return $arrGroupthumbtopics;
 	}

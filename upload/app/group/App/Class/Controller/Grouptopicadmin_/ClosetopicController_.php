@@ -17,6 +17,8 @@ class ClosetopicController extends Controller{
 
 		$arrGrouptopics=explode(',',$sGrouptopics);
 
+		$bAdmincredit=false;
+		
 		if(is_array($arrGrouptopics)){
 			foreach($arrGrouptopics as $nGrouptopic){
 				$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopic)->getOne();
@@ -29,8 +31,15 @@ class ClosetopicController extends Controller{
 					if($oGrouptopic->isError()){
 						$this->E($oGrouptopic->getErrorMessage());
 					}
+
+					$bAdmincredit=true;
 				}
 			}
+		}
+
+		// 管理积分
+		if($bAdmincredit===true){
+			Core_Extend::updateCreditByAction('group_topicadmin',$GLOBALS['___login___']['user_id']);
 		}
 
 		$this->A(array('group_id'=>$nGroupid),$nStatus==0?Dyhb::L('打开主题成功','Controller/Grouptopicadmin'):Dyhb::L('关闭主题成功','Controller/Grouptopicadmin'));
