@@ -40,12 +40,6 @@ class ThemeModel extends CommonModel{
 
 			if(!empty($oTryTheme['theme_id'])){
 				$bThemeExists=true;
-				$oTryTheme->changeProp($arrThemeData);
-				$oTryTheme->save(0,'update');
-
-				if($oTryTheme->isError()){
-					$this->setErrorMessage($oTryTheme->getErrorMessage());
-				}
 			}
 		}
 

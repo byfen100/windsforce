@@ -1443,8 +1443,8 @@ WINDSFORCE;
 		if(is_array($arrDatas) && $bIsArray===false){
 			$arrTemp=array();
 			if(is_array($arrDatas)){
-				foreach($arrDatas as $oData){
-					$arrTemp[]=$oData->toArray();
+				foreach($arrDatas as $nKey=>$oData){
+					$arrTemp['api_'.$nKey]=$oData->toArray();
 				}
 			}
 
@@ -1455,10 +1455,10 @@ WINDSFORCE;
 
 		if($sType=='json'){
 			header("Content-Type:text/html; charset=utf-8");
-			exit(json_encode($arrGrouptopics));
+			exit(json_encode($arrDatas));
 		}elseif($sType=='xml'){
 			header("Content-Type:text/xml; charset=utf-8");
-			exit(G::xmlEncode($arrResult));
+			exit(G::xmlEncode($arrDatas));
 		}
 
 		return;

@@ -294,12 +294,12 @@ class StyleController extends InitController{
 		}
 		
 		// 数据变量值验证（依靠默认的系统默认的主题变量来判断）
-		if(!isset($arrStyleData['style']) || empty($arrStyleData['style'])){
+		if(empty($arrStyleData['data'])){
 			$this->E(Dyhb::L('程序无法正常读取到主题配置变量信息','Controller/Style'));
 		}
 		
 		$bNotExistsSomesystemvar=false;
-		$arrStylevarKeys=array_keys($arrStyleData['style']);
+		$arrStylevarKeys=array_keys($arrStyleData['data']);
 		
 		$arrCurtomStylevarList=(array)(include WINDSFORCE_PATH.'/source/common/Style.php');
 		foreach($arrCurtomStylevarList as $sCurtomStylevarList){
@@ -307,13 +307,13 @@ class StyleController extends InitController{
 				if($bIgnoreversion===false){
 					$this->E(Dyhb::L('导入的配置文件变量数据不完整','Controller/Style'));
 				}else{
-					$arrStyleData['style'][$sCurtomStylevarList]='';
+					$arrStyleData['data'][$sCurtomStylevarList]='';
 				}
 			}
 		}
 		
 		// 写入模板数据
-		$nThemeId=isset($arrStyleData['template_id'])?intval($arrStyleData['template_id']):0;
+		$nThemeId=isset($arrStyleData['theme_id'])?intval($arrStyleData['theme_id']):0;
 		$arrSaveThemeData=array(
 			'theme_name'=>$arrStyleData['theme_name'],
 			'theme_dirname'=>ucfirst($arrStyleData['theme_dirname']),
@@ -344,7 +344,7 @@ class StyleController extends InitController{
 		}
 
 		// 写入主题变量数据
-		$arrSaveStylevariableData=$arrStyleData['style'];
+		$arrSaveStylevariableData=$arrStyleData['data'];
 
 		$oStylevar=Dyhb::instance('StylevarModel');
 		$oStylevar->saveStylevarData($arrSaveStylevariableData,$nStyleId);

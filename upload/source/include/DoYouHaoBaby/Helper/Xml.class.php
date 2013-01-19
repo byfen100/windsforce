@@ -32,7 +32,7 @@ class Xml{
 		return $oXmlParser->parse($sXml);
 	}
 
-	static public function xmlSerialize(&$arrData,$bHtmlOn=false,$nLevel=0,$sPriorKey=NULL,$sCharset='UTF-8'){
+	static public function xmlSerialize(&$arrData,$bHtmlOn=true,$nLevel=0,$sPriorKey=NULL,$sCharset='UTF-8'){
 		if($nLevel == 0){
 			ob_start();
 			echo '<?xml version="1.0" encoding="'.$sCharset.'"?><root>',"\n";
