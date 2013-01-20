@@ -54,6 +54,18 @@ class Grouptopic_Extend{
 		return '';
 	}
 
+	static public function grouptopicThumb($nThumbstatus,$bReturnImg=false){
+		if($nThumbstatus>0){
+			if($bReturnImg===true){
+				return ' <img class="grouptopicthumb_date" src="'.__APPPUB__.'/Images/image.gif" border="0" align="absmiddle" title="'.Dyhb::L('缩略图主题','__APP_ADMIN_LANG__@Function/Grouptopic_Extend').'"/> ';
+			}else{
+				return __APPPUB__.'/Images/image.gif';
+			}
+		}
+
+		return '';
+	}
+
 	static public function grouptopicHighlight($sColor,$bReturnImg=false){
 		if(!$sColor){
 			return '';

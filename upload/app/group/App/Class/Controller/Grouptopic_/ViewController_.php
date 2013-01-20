@@ -59,9 +59,6 @@ class ViewController extends Controller{
 		
 		$this->_oGrouptopic=$oGrouptopic;
 
-		$this->assign('oGrouptopic',$oGrouptopic);
-		$this->assign('oGroup',$oGrouptopic->group);
-
 		// 取得用户是否加入了小组 && 用户在小组中的角色
 		$this->get_groupuser($oGrouptopic->group->group_id);
 
@@ -73,6 +70,13 @@ class ViewController extends Controller{
 		if($oGrouptopic->isError()){
 			$this->E($oGrouptopic->getErrorMessage());
 		}
+
+		if($oGrouptopic->grouptopic_thumb>0){
+			$oGrouptopic->grouptopic_content='<div class="grouptopicthumb"><div class="grouptopicthumb_title">'.Dyhb::L('主题缩略图','Controller/Grouptopic').'</div><p>[attachment]'.$oGrouptopic->grouptopic_thumb.'[/attachment]</p></div>'.$oGrouptopic->grouptopic_content;
+		}
+		
+		$this->assign('oGrouptopic',$oGrouptopic);
+		$this->assign('oGroup',$oGrouptopic->group);
 
 		// 读取用户个人资料
 		$oUserprofile=UserprofileModel::F('user_id=?',$oGrouptopic->user_id)->getOne();

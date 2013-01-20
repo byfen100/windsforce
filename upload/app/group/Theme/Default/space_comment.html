@@ -91,7 +91,7 @@ $(function(){
 										<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'])}-->"><!--<lang package='Template/Topiclist'>-->查看该回帖<!--</lang>--></a>
 									</p>
 									<p class="commentbox">
-										<!--{if $oGrouptopiccomment->grouptopiccomment_title}--><h3><!--{$oGrouptopiccomment->grouptopiccomment_title}--></h3><!--{/if}-->
+										<!--{if $oGrouptopiccomment->grouptopiccomment_title}--><h6 style="margin:5px 0px;"><!--{$oGrouptopiccomment->grouptopiccomment_title}--></h6><!--{/if}-->
 										<div class="comment_content">
 											<!--{$oGrouptopiccomment->grouptopiccomment_content|Core_Extend+ubb}-->
 										</div>

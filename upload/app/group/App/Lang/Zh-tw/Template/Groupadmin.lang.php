@@ -54,6 +54,7 @@ return array(
 '14d342362f66aa86e2aa1c1e11aa1204'=>"標籤",
 'db22b37938d47d5d86487ae131217d8c'=>"回帖回收站",
 '08b55fea3c93ac86c02f7668ed2ce8cf'=>"管理",
+'dce5379cb978a8259ecfca8f08f00817'=>"隱藏",
 )
 
 ?>
