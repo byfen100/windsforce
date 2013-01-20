@@ -6,11 +6,11 @@
 	</a>
 	<div class="grouplist_txt">
 		<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
-		<span><!--{$oGroup['group_usernum']}-->人加入</span>
+		<span><!--{$oGroup['group_usernum']}--><!--<lang package='Template/Grouplist'>-->人加入<!--</lang>--></span>
 		<p class="grouplist_description"><!--{$oGroup['group_listdescription']|G+subString=0,$nCutNum}--></p>
 	</div>
 </li>
 <!--</foreach>-->
 <!--{d*else}-->
-<li>暂时没有发现任何推荐小组&nbsp;<a href="<!--{:Dyhb::U('group://create/index')}-->">申请创建小组</a></li>
+<li><!--<lang package='Template/Grouplist'>-->暂时没有发现任何推荐小组<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://create/index')}-->"><!--<lang package='Template/Grouplist'>-->申请创建小组<!--</lang>--></a></li>
 <!--{/if}-->

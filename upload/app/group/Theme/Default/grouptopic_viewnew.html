@@ -11,8 +11,8 @@ $(function(){
 					<table width="100%" class="floor_table">
 						<tr>
 							<td width="200px">
-								<div><a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->" class="btn btn-success">发帖</a>&nbsp;
-									<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" class="btn btn-success">回复</a>
+								<div><a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->" class="btn btn-success"><!--<lang package='Template/Grouptopic'>-->发帖<!--</lang>--></a>&nbsp;
+									<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" class="btn btn-success"><!--<lang package='Template/Grouptopic'>-->回复<!--</lang>--></a>
 								</div>
 							</td>
 							<td style="text-align:right;"><!--{$sPageNavbar}--></td>
@@ -30,7 +30,7 @@ $(function(){
 								<div class="pull-right avatar_large">
 									<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
 									<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic'))}-->
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->">匿名</a><!--{d*else}-->匿名<!--{/if}-->
+									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->"><!--<lang package='Template/Grouptopic'>-->匿名<!--</lang>--></a><!--{d*else}--><!--<lang package='Template/Grouptopic'>-->匿名<!--</lang>--><!--{/if}-->
 									<!--{d*else}-->
 									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->"><img alt="2" class="uface" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" style="width:48px;height:48px;" style="padding:20px;" /></a>
 									<!--{/if}-->
@@ -38,28 +38,28 @@ $(function(){
 								<h1 class="grouptopic-title">
 									<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
 									<!--{:Grouptopic_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
-									<span class="floor_copy" style="color:gray;font-size:13px;font-weight:normal;" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','楼层复制成功');">[复制链接]</span>
+									<span class="floor_copy" style="color:gray;font-size:13px;font-weight:normal;" title="<!--<lang package='Template/Grouptopic'>-->复制此楼地址<!--</lang>-->" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','<!--<lang package='Template/Grouptopic'>-->楼层复制成功<!--</lang>-->');">[<!--<lang package='Template/Grouptopic'>-->复制链接<!--</lang>-->]</span>
 								</h1>
 								<div class="info">
 									<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 									<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->" class="grouptopiccategory">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
-									<!--{d*else}--><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->" class="grouptopiccategory">[默认分类]</a><!--{/if}-->
+									<!--{d*else}--><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->" class="grouptopiccategory">[<!--<lang package='Template/Grouptopic'>-->默认分类<!--</lang>-->]</a><!--{/if}-->
 									<span class="pipe">|</span>
 									<span>
 									<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-									<!--{:Core_Extend::getUsericon(0)}-->&nbsp;匿名
+									<!--{:Core_Extend::getUsericon(0)}-->&nbsp;<!--<lang package='Template/Grouptopic'>-->匿名<!--</lang>-->
 									<!--{d*else}-->
 									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->"  class="bind_hover_card" bm_user_id="<!--{$oGrouptopic['user_id']}-->"><!--{$oGrouptopic:grouptopic_username}--></a>
 									<!--{/if}-->
-									&nbsp;发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+									&nbsp;<!--<lang package='Template/Grouptopic'>-->发布于<!--</lang>-->&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 									<span class="pipe">|</span>
-									<!--{$oGrouptopic->grouptopic_views}-->次阅读
+									<!--{$oGrouptopic->grouptopic_views}--><!--<lang package='Template/Grouptopic'>-->次阅读<!--</lang>-->
 									<span class="pipe">|</span>
 									<!--{if $oGrouptopic->grouptopic_comments}-->
 									<!--{~$arrLatestComment=unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-									最后由 <a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;于&nbsp;<!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;回复
+									<!--<lang package='Template/Grouptopic'>-->最后由<!--</lang>--> <a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;<!--<lang package='Template/Grouptopic'>-->于<!--</lang>-->&nbsp;<!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Grouptopic'>-->回复<!--</lang>-->
 									<!--{d*else}-->
-									<span>暂无回复</span>
+									<span><!--<lang package='Template/Grouptopic'>-->暂无回复<!--</lang>--></span>
 									<!--{/if}-->&nbsp;
 									<!--{:Grouptopic_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
 									<!--{:Grouptopic_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
@@ -67,7 +67,7 @@ $(function(){
 									<!--{:Grouptopic_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 									<!--{:Grouptopic_Extend::grouptopicHighlight($oGrouptopic->grouptopic_color,true)}-->
 									<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oGrouptopic->user_id)==0}-->&nbsp;
-									<span style="margin-top:10px;"><a href="<!--{if $oGrouptopic['grouptopic_isanonymous']=='0' || ($oGrouptopic['grouptopic_isanonymous']==1 && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}--><!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}--><!--{d*else}-->javascript:void(0);<!--{/if}-->" class="btn btn-inverse btn-mini" title="感谢他曾经停留在本小组，我要访问他的小组空间"><i class="icon-eye-open icon-white"></i>&nbsp;非小组成员</a></span>
+									<span style="margin-top:10px;"><a href="<!--{if $oGrouptopic['grouptopic_isanonymous']=='0' || ($oGrouptopic['grouptopic_isanonymous']==1 && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}--><!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}--><!--{d*else}-->javascript:void(0);<!--{/if}-->" class="btn btn-inverse btn-mini" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>
 									<!--{/if}-->
 								</div>
 							</div>
@@ -75,11 +75,11 @@ $(function(){
 							<div class="grouptopic-content">
 								<div class="grouptopiccontent_box">
 									<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
-									<div class="locked">本帖已经隐藏，仅具有管理权限的人才能够浏览</div>
+									<div class="locked"><!--<lang package='Template/Grouptopic'>-->本帖已经隐藏，仅具有管理权限的人才能够浏览<!--</lang>--></div>
 									<!--{/if}-->
 									
 									<!--{if $oGrouptopic['grouptopic_onlycommentview']==1}-->
-									<div class="locked">本帖需要回复后才能够浏览</div>
+									<div class="locked"><!--<lang package='Template/Grouptopic'>-->本帖需要回复后才能够浏览<!--</lang>--></div>
 									<!--{/if}-->
 									
 									<!--{if ($oGrouptopic['grouptopic_isaudit']=='1' || ($oGrouptopic['grouptopic_isaudit']=='0' ) && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')) && in_array(Groupadmin_Extend+getGroupUserrole($oGrouptopic['group_id']),array(1,2,4))) && ($oGrouptopic['grouptopic_onlycommentview']=='0' || $bHavecomment===true)}-->
@@ -99,7 +99,7 @@ $(function(){
 								<div class="space"></div>
 								<div class="edit_log">
 									<blockquote>
-										<em>[<!--{$oGrouptopic->grouptopic_updateusername}-->于&nbsp;<!--{$oGrouptopic->update_dateline|Core_Extend+timeFormat}-->&nbsp;编辑了帖子]</em>
+										<em>[<!--{$oGrouptopic->grouptopic_updateusername}--><!--<lang package='Template/Grouptopic'>-->于<!--</lang>-->&nbsp;<!--{$oGrouptopic->update_dateline|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Grouptopic'>-->编辑了帖子<!--</lang>-->]</em>
 									</blockquote>
 								</div>
 								<!--{/if}-->
@@ -109,40 +109,40 @@ $(function(){
 									
 							<div class="signature" style="margin-top:20px;">
 								<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
-								<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
+								<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 							</div>
 
 							<div class="floor_quickreply">
-								<h4 style="font-size:13px;">快速回复</h4>
+								<h4 style="font-size:13px;"><!--<lang package='Template/Grouptopic'>-->快速回复<!--</lang>--></h4>
 								<!--{if $GLOBALS['___login___']!==false}-->
-								<textarea class="grouptopiccomment_quickmessage" name="grouptopiccomment_content" id="grouptopiccomment_quickmessage" placeholder="我也说两句" rows="2" cols="10"></textarea>
+								<textarea class="grouptopiccomment_quickmessage" name="grouptopiccomment_content" id="grouptopiccomment_quickmessage" placeholder="<!--<lang package='Template/Grouptopic'>-->我也说两句<!--</lang>-->" rows="2" cols="10"></textarea>
 								<input type="hidden" name="grouptopiccomment_name" id="grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
 								<input type="hidden" name="grouptopiccomment_email" id="grouptopiccomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
 								<input type="hidden" name="grouptopiccomment_url" id="grouptopiccomment_url" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
 								<!--{d*else}-->
 								<div class="commoncommentform_needloginbox">
 									<div class="commoncommentform_needloginboxinner">
-										<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a> | 
-										<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">用户注册</a>
+										<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></a> | 
+										<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->用户注册<!--</lang>--></a>
 									</div>
 								</div>
 								<!--{/if}-->
 
 								<div class="grouptopiccomment_reply none" id="grouptopiccomment_reply">
-									<button onclick="addGrouptopiccommentquick();" class="btn btn-success grouptopiccomment_btn">回复</button>
-									<a href="javascript:void(0);" onclick="closeQuickreplay();"><i class="icon-remove"></i>&nbsp;关闭</a>&nbsp;
-									<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" >进入高级模式&gt;&gt;</a>
+									<button onclick="addGrouptopiccommentquick();" class="btn btn-success grouptopiccomment_btn"><!--<lang package='Template/Grouptopic'>-->回复<!--</lang>--></button>
+									<a href="javascript:void(0);" onclick="closeQuickreplay();"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->关闭<!--</lang>--></a>&nbsp;
+									<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" ><!--<lang package='Template/Grouptopic'>-->进入高级模式<!--</lang>-->&gt;&gt;</a>
 								</div>
 
 								<div class="extend_tool" style="margin-top:10px;">
 									<em class="left">
-										<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->');">回复</a>
+										<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->');"><!--<lang package='Template/Grouptopic'>-->回复<!--</lang>--></a>
 										<!--{if Groupadmin_Extend+checkTopicedit($oGrouptopic)}-->
-										<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'])}-->">编辑</a>
+										<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'])}-->"><!--<lang package='Template/Grouptopic'>-->编辑<!--</lang>--></a>
 										<!--{/if}-->
 									</em>
 									<p class="right">
-										<a href="" onclick="">举报</a>
+										<a href="" onclick=""><!--<lang package='Template/Grouptopic'>-->举报<!--</lang>--></a>
 									</p>
 								</div>
 
@@ -155,7 +155,7 @@ $(function(){
 								<div class="pull-right avatar_large">
 									<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
 									<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic'))}-->
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->">匿名</a><!--{d*else}-->匿名<!--{/if}-->
+									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->"><!--<lang package='Template/Grouptopic'>-->匿名<!--</lang>--></a><!--{d*else}--><!--<lang package='Template/Grouptopic'>-->匿名<!--</lang>--><!--{/if}-->
 									<!--{d*else}-->
 									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->"><img alt="2" class="uface" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" style="width:48px;height:48px;" style="padding:20px;" /></a>
 									<!--{/if}-->
@@ -163,14 +163,14 @@ $(function(){
 								<h1 class="grouptopic-title">
 									<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
 									<!--{:Grouptopic_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
-									<span class="floor_copy" style="color:gray;font-size:13px;font-weight:normal;" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','楼层复制成功');">[复制链接]</span>
+									<span class="floor_copy" style="color:gray;font-size:13px;font-weight:normal;" title="<!--<lang package='Template/Grouptopic'>-->复制此楼地址<!--</lang>-->" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','<!--<lang package='Template/Grouptopic'>-->楼层复制成功<!--</lang>-->');">[<!--<lang package='Template/Grouptopic'>-->复制链接<!--</lang>-->]</span>
 								</h1>
 							</div>
 						</div>
 						<!--{/if}-->
 
 						<div id="grouptopiccomments" class="commonbox_mini commonbox_mini_gray">
-							<div class="total">共收到&nbsp;<b><!--{$oGrouptopic->grouptopic_comments}--></b>&nbsp;条回复</div>
+							<div class="total"><!--<lang package='Template/Grouptopic'>-->共收到<!--</lang>-->&nbsp;<b><!--{$oGrouptopic->grouptopic_comments}--></b>&nbsp;<!--<lang package='Template/Grouptopic'>-->条回复<!--</lang>--></div>
 							<div class="grouptopiccomment_items">
 								<!--{if is_array($arrComments)}-->
 								<!--<foreach for=arrComments value=oComment>-->
@@ -181,9 +181,9 @@ $(function(){
 									</div>
 									<div class="infos">
 										<div class="info">
-											<span class="name"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a>回复于&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
+											<span class="name"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a><!--<lang package='Template/Grouptopic'>-->回复于<!--</lang>-->&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
 											<span class="floorcopy_box">
-												<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:__APPPUB__}-->/Images/settop.png" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
+												<span class="floor_copy" title="<!--<lang package='Template/Grouptopic'>-->复制此楼地址<!--</lang>-->" onclick="copy('<!--<lang package='Template/Grouptopic'>-->楼层<!--</lang>--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','<!--<lang package='Template/Grouptopic'>-->楼层复制成功<!--</lang>-->');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:__APPPUB__}-->/Images/settop.png" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}--><!--<lang package='Template/Grouptopic'>-->楼<!--</lang>--><sup>#</sup></span>
 											</span>
 										</div>
 										
@@ -195,11 +195,11 @@ $(function(){
 										
 										<div class="grouptopiccomment-content">
 											<!--{if $oComment['grouptopiccomment_auditpass']=='0'}-->
-											<div class="locked locked_highlight">此回尚未通过审核，仅具有管理权限的人才能够浏览</div>
+											<div class="locked locked_highlight"><!--<lang package='Template/Grouptopic'>-->此回尚未通过审核，仅具有管理权限的人才能够浏览<!--</lang>--></div>
 											<!--{elseif $oComment['grouptopiccomment_ishide']==1}-->
-											<div class="locked">此回帖已被屏蔽，仅具有管理权限的人才能够浏览</div>
+											<div class="locked"><!--<lang package='Template/Grouptopic'>-->此回帖已被屏蔽，仅具有管理权限的人才能够浏览<!--</lang>--></div>
 											<!--{elseif $oGrouptopic['grouptopic_hiddenreplies']==1}-->
-											<div class="locked">此回帖仅作者可见</div>
+											<div class="locked"><!--<lang package='Template/Grouptopic'>-->此回帖仅作者可见<!--</lang>--></div>
 											<!--{/if}-->
 											
 											<!--{if $oComment['grouptopiccomment_ishide']=='0' || ($oComment['grouptopiccomment_ishide']=='1' && Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment')))}-->
@@ -210,8 +210,8 @@ $(function(){
 											<div class="grouptopiccomment_parent">
 												<div class="commonbox_mini commonbox_mini_gray">
 													<h2 class="title">
-														你参与了&nbsp;<a class="bind_hover_card" href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" bm_user_id="<!--{$oParentcomment['user_id']}-->"><img alt="<!--{$oParentcomment['grouptopiccomment_name']}-->" src="<!--{:Core_Extend::avatar($oParentcomment['user_id'],'small')}-->" width="32px" height="32px"></a>
-														&nbsp;他的回帖&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oParentcomment['user_id']}-->"><!--{$oParentcomment['grouptopiccomment_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oParentcomment['grouptopic_id'].'&isolation_commentid='.$oParentcomment['grouptopiccomment_id'])}-->" title="查看该回帖"><i class="icon-eye-open"></i></a>
+														<!--<lang package='Template/Grouptopic'>-->你参与了<!--</lang>-->&nbsp;<a class="bind_hover_card" href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" bm_user_id="<!--{$oParentcomment['user_id']}-->"><img alt="<!--{$oParentcomment['grouptopiccomment_name']}-->" src="<!--{:Core_Extend::avatar($oParentcomment['user_id'],'small')}-->" width="32px" height="32px"></a>
+														&nbsp;<!--<lang package='Template/Grouptopic'>-->他的回帖<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oParentcomment['user_id']}-->"><!--{$oParentcomment['grouptopiccomment_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oParentcomment['grouptopic_id'].'&isolation_commentid='.$oParentcomment['grouptopiccomment_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->查看该回帖<!--</lang>-->"><i class="icon-eye-open"></i></a>
 													</h2>
 													<div class="grouptopiccomment_parentcontent">
 														<p><!--{$oParentcomment['grouptopiccomment_content']|strip_tags|G+subString=0,100|Core_Extend+ubb}--></p>
@@ -228,20 +228,20 @@ $(function(){
 
 										<span class="extend_tool" >
 											<em class="left">
-												<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->','<!--{$oComment['grouptopiccomment_id']}-->');">回复</a>
+												<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->','<!--{$oComment['grouptopiccomment_id']}-->');"><!--<lang package='Template/Grouptopic'>-->回复<!--</lang>--></a>
 												<!--{if Groupadmin_Extend+checkCommentRbac($oGrouptopic->group,$oComment)}-->
-												<a class="editp" href="javascript:void(0);" onclick="grouptopiceditComment('<!--{$oComment['grouptopiccomment_id']}-->');">编辑</a>
+												<a class="editp" href="javascript:void(0);" onclick="grouptopiceditComment('<!--{$oComment['grouptopiccomment_id']}-->');"><!--<lang package='Template/Grouptopic'>-->编辑<!--</lang>--></a>
 												<!--{/if}-->
 											</em>
 											<p class="right">
 												<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oComment->user_id)==0}-->
-												<span style="margin-top:10px;"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" class="btn btn-inverse btn-mini" title="感谢他曾经停留在本小组，我要访问他的小组空间"><i class="icon-eye-open icon-white"></i>&nbsp;非小组成员</a></span>&nbsp;
+												<span style="margin-top:10px;"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" class="btn btn-inverse btn-mini" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>&nbsp;
 												<!--{/if}-->
-												<a href="" onclick="">举报</a>
+												<a href="" onclick=""><!--<lang package='Template/Grouptopic'>-->举报<!--</lang>--></a>
 												<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
 												<span class="pipe">|</span>
 												<label for="manage<!--{$oComment['grouptopiccomment_id']}-->" class="checkbox right">
-													<input type="checkbox" autocomplete="off" value="<!--{$oComment['grouptopiccomment_id']}-->" onclick="dataidChecked(this);modClick(this,<!--{$oComment['grouptopiccomment_id']}-->)">管理
+													<input type="checkbox" autocomplete="off" value="<!--{$oComment['grouptopiccomment_id']}-->" onclick="dataidChecked(this);modClick(this,<!--{$oComment['grouptopiccomment_id']}-->)"><!--<lang package='Template/Groupadmin'>-->管理<!--</lang>-->
 												</label>
 												<!--{/if}-->
 											</p>
@@ -250,7 +250,7 @@ $(function(){
 								</div>
 								<!--</foreach>-->
 								<!--{d*else}-->
-								<p>暂时没有任何人回应，赶快来抢沙发吧。</p>
+								<p><!--<lang package='Template/Grouptopic'>-->暂时没有任何人回应，赶快来抢沙发吧。<!--</lang>--></p>
 								<!--{/if}-->
 							</div>
 						</div>
@@ -262,8 +262,8 @@ $(function(){
 						<tr>
 							<td width="200px">
 								<div>
-									<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->" class="btn btn-success" >发帖</a>&nbsp;
-									<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" class="btn btn-success">回复</a>
+									<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->" class="btn btn-success" ><!--<lang package='Template/Grouptopic'>-->发帖<!--</lang>--></a>&nbsp;
+									<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" class="btn btn-success"><!--<lang package='Template/Grouptopic'>-->回复<!--</lang>--></a>
 								</div>
 							</td>
 							<td style="text-align:right;"><!--{$sPageNavbar}--></td>

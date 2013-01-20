@@ -2,6 +2,7 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://space@?id='.$nId)}-->"><!--{$oUserInfo:user_name}--></a> <span class="divider">/</span></li>
 			<li><!--<lang package='Template/Space'>-->小组个人空间<!--</lang>--></li>
 		</ul>
@@ -12,19 +13,19 @@
 			<div class="span8">
 				<div class="alert alert-success">
 					<button class="close" data-dismiss="alert">&times;</button>
-					这里为他的帖子&nbsp;<b><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">查看全部</a></b>
+					<!--<lang package='Template/Space'>-->这里为他的帖子<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('group://public/newtopic')}-->"><!--<lang package='Template/Space'>-->查看全部<!--</lang>--></a></b>
 				</div>
 
 				<!--{if $nYouself}-->
 				<div class="alert">
 					<button class="close" data-dismiss="alert">&times;</button>
-					你已经登录，你如果看到有高亮显示的主题，他是有一定意义的。<br/>
-					关于待审核主题和回收站主题，如有疑问可以向相关管理员发送站内短消息提出。&nbsp;<b><a href="<!--{:Dyhb::U('home://pm/pmnew')}-->">发送短消息</a></b>
+					<!--<lang package='Template/Space'>-->你已经登录，你如果看到有高亮显示的主题，他是有一定意义的。<!--</lang>--><br/>
+					<!--<lang package='Template/Space'>-->关于待审核主题和回收站主题，如有疑问可以向相关管理员发送站内短消息提出。<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('home://pm/pmnew')}-->"><!--<lang package='Template/Space'>-->发送短消息<!--</lang>--></a></b>
 				</div>
 				<p class="well">
-					<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="回收站主题，这里仅你自己可见"/>&nbsp;回收站主题&nbsp;<span class="pipe">|</span>
-					<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="待审核主题，这里仅你自己可见"/>&nbsp;待审核主题&nbsp;<span class="pipe">|</span>
-					<img src="<!--{:__APPPUB__}-->/Images/sign_question.png" title="匿名发布主题，这里仅你自己可见"/>&nbsp;匿名发布主题
+					<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="<!--<lang package='Template/Space'>-->回收站主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->回收站主题<!--</lang>-->&nbsp;<span class="pipe">|</span>
+					<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Space'>-->待审核主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->待审核主题<!--</lang>-->&nbsp;<span class="pipe">|</span>
+					<img src="<!--{:__APPPUB__}-->/Images/sign_question.png" title="<!--<lang package='Template/Space'>-->匿名发布主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->匿名发布主题<!--</lang>-->
 				</p>
 				<!--{/if}-->
 				
@@ -32,19 +33,19 @@
 					<table width="100%" class="table">
 						<thead>
 							<tr style="border-bottom:1px solid #eeeeee;">
-								<th style="width:61px;">发帖人</th>
-								<th><a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a>
+								<th style="width:61px;"><!--<lang package='Template/Topiclist'>-->发帖人<!--</lang>--></th>
+								<th><a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&recommend=1')}-->" style="<!--{if G+getGpc('recommend')=='1'}-->color:gray;<!--{/if}-->">推荐</a>
+									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&recommend=1')}-->" style="<!--{if G+getGpc('recommend')=='1'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->推荐<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&t=lastreply')}-->" style="<!--{if $sT=='lastreply'}-->color:gray;<!--{/if}-->">最后回复</a>
+									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&t=lastreply')}-->" style="<!--{if $sT=='lastreply'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>--></a>
 								</th>
 								<th style="text-align:center;width:130px;">
-									<a href="<!--{:Dyhb::U('group://space@?id='.$nId)}-->" style="<!--{if $sT==''}-->color:gray;<!--{/if}-->">最新</a>
+									<a href="<!--{:Dyhb::U('group://space@?id='.$nId)}-->" style="<!--{if $sT==''}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&t=com')}-->" style="<!--{if $sT=='com'}-->color:gray;<!--{/if}-->">回复</a>
+									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&t=com')}-->" style="<!--{if $sT=='com'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&t=view')}-->" style="<!--{if $sT=='view'}-->color:gray;<!--{/if}-->">浏览</a>
+									<a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&t=view')}-->" style="<!--{if $sT=='view'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
 								</th>
 							</tr>
 						</thead>
@@ -60,23 +61,23 @@
 								<td class="subject">
 									<p class="title">
 										<!--{if $oGrouptopic['grouptopic_status']=='0'}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="回收站主题，这里仅你自己可见"/>&nbsp;<!--{/if}-->
+										<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="<!--<lang package='Template/Topiclist'>-->回收站主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--{/if}-->
 										<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="待审核主题，这里仅你自己可见"/>&nbsp;<!--{/if}-->
+										<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Topiclist'>-->待审核主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--{/if}-->
 										<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_question.png" title="匿名发布主题，这里仅你自己可见"/>&nbsp;
+										<img src="<!--{:__APPPUB__}-->/Images/sign_question.png" title="<!--<lang package='Template/Topiclist'>-->匿名发布主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;
 										<!--{/if}-->
 										<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 										<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 										<!--{d*else}-->
-										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[默认分类]</a>
+										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template/Topiclist'>-->默认分类<!--</lang>-->]</a>
 										<!--{/if}-->
 										<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
 										<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 										<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-										&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="查看新回复">New</a>&nbsp;
+										&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template/Topiclist'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
@@ -88,28 +89,28 @@
 										<!--{/if}-->
 									</p>
 									<p class="info">
-										楼主&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+										<!--<lang package='Template/Topiclist'>-->楼主<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
 										&nbsp;
 										<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 										<span class="pipe">|</span>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
 										<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-										最后回复&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+										<!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
 										<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
 										<!--{d*else}-->
-										<span>暂无回复</span>
+										<span><!--<lang package='Template/Topiclist'>-->暂无回复<!--</lang>--></span>
 										<!--{/if}-->
 									</p>
 								</td>
 								<td class="num" style="text-align:center;">
-									<span>浏览<em><!--{$oGrouptopic->grouptopic_views}--></em></span>
-									<span>回复<em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+									<span><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+									<span><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
 								</td>
 							</tr>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<tr>
-								<td colspan="3">暂时没有发现任何帖子</td>
+								<td colspan="3"><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>--></td>
 							</tr>
 							<!--{/if}-->
 						</tbody>
@@ -170,7 +171,7 @@
 
 				<div style="padding:10px 5px;">
 					<h4><i class="icon-pencil"></i>&nbsp;<!--<lang package='Template/Space'>-->签名<!--</lang>--></h4>
-					<p style="margin-top:10px;"><!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign||Core_Extend+usersign}--><!--{d*else}--><!--<lang package='Template/Space'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}--></p>
+					<p style="margin-top:10px;"><!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign||Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}--></p>
 				</div>
 			</div>
 		</div><!--/row-->

@@ -2,7 +2,8 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li>标签列表</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Tag'>-->标签列表<!--</lang>--></li>
 		</ul>
 
 		<!--<include file="tag+menu" />-->
@@ -11,16 +12,16 @@
 			<div class="span12">
 				<div class="alert alert-success">
 					<button class="close" data-dismiss="alert">&times;</button>
-					这里为系统所有标签列表
+					<!--<lang package='Template/Tag'>-->这里为系统所有标签列表<!--</lang>-->
 				</div>
 
 				<div id="tag_list_box" class="tag_list_box">
 					<!--{if is_array($arrGrouptopictags)}-->
 					<!--<foreach for=arrGrouptopictags value=oGrouptopictag>-->
-					<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+					<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="<!--<lang package='Template/Taglist'>-->帖子数量<!--</lang>--> <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
 					<!--</foreach>-->
 					<!--{d*else}-->
-					<p>暂时没有发现任何标签</p>
+					<p><!--<lang package='Template/Taglist'>-->暂时没有发现任何标签<!--</lang>--></p>
 					<!--{/if}-->
 				</div>
 				

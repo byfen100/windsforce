@@ -2,9 +2,9 @@
 		
 		<p>
 			<select name="status">
-				<option value="0">取消精华</option>
+				<option value="0"><!--<lang package='Template/Groupadmin'>-->取消精华<!--</lang>--></option>
 				<!--<for start='1' end='4' var='nMyvalue'>-->
-				<option value="<!--{$nMyvalue}-->" <!--{if isset($nStatus) && $nStatus==$nMyvalue}-->selected<!--{/if}-->>精华&nbsp;<!--{$nMyvalue}--></option>
+				<option value="<!--{$nMyvalue}-->" <!--{if isset($nStatus) && $nStatus==$nMyvalue}-->selected<!--{/if}-->><!--<lang package='Template/Groupadmin'>-->精华<!--</lang>-->&nbsp;<!--{$nMyvalue}--></option>
 				<!--</for>-->
 			</select>
 		</p>

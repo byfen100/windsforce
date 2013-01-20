@@ -14,7 +14,8 @@ function completeSet(data,status){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a></li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Public'>-->首页<!--</lang>--><!--</lang>--></li>
 		</ul>
 
 		<div class="row">
@@ -26,13 +27,13 @@ function completeSet(data,status){
 		<div class="row">
 			<div class="span12">
 				<div style="margin-bottom:10px;">
-					<span class="" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success">发帖</a></span>
+					<span class="" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success"><!--<lang package='Template/Public'>-->发帖<!--</lang>--></a></span>
 					<!--{if $GLOBALS['___login___']===false}-->
-					<p>你可以&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</p>
+					<p><!--<lang package='Template/Public'>-->你可以<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a>&nbsp;<!--<lang package='Template/Public'>-->一个帐号，并以此<!--</lang>-->&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='Template/Public'>-->登录<!--</lang>--></a>&nbsp;，<!--<lang package='Template/Public'>-->以浏览更多精彩内容，并随时发布观点，与大家交流。<!--</lang>--></p>
 					<!--{d*else}-->
-					<p>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
+					<p><!--<lang package='Template/Public'>-->欢迎回来<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, <!--<lang package='Template/Public'>-->你上次访问时间是在<!--</lang>-->&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
 					<span class="pipe">|</span>
-					<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank">我的帖子</a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->">查看新帖</a></p>
+					<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--<lang package='Template/Public'>-->我的帖子<!--</lang>--></a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->"><!--<lang package='Template/Public'>-->查看新帖<!--</lang>--></a></p>
 					<!--{/if}-->
 				</div>
 				<span class="clear"></span>
@@ -58,13 +59,13 @@ function completeSet(data,status){
 								<div class="item active" style="height:280px;">
 									<img src="<!--{:__APPPUB__}-->/Images/slide/1.jpg" style="height:280px;" width="100%">
 									<div class="carousel-caption">
-										<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="注册">注册</a></h4>
+										<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->注册<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->注册<!--</lang>--></a></h4>
 									</div>
 								</div>
 								<div class="item" style="height:280px">
 									<img src="<!--{:__APPPUB__}-->/Images/slide/2.jpg" style="height:280px;" width="100%">
 									<div class="carousel-caption">
-										<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="登录">登录</a></h4>
+										<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a></h4>
 									</div>
 								</div>
 								<!--{/if}-->
@@ -81,7 +82,7 @@ function completeSet(data,status){
 								<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouphottopic->grouptopic_id)}-->" target="_blank" ><!--{$oGrouphottopic->grouptopic_title|G+subString=0,30}--></a></li>
 								<!--</foreach>-->
 								<!--{d*else}-->
-								<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
+								<li><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->"><!--<lang package='Template/Topiclist'>-->我要发布<!--</lang>--></a></li>
 								<!--{/if}-->
 							</ul>
 						</div>
@@ -89,8 +90,8 @@ function completeSet(data,status){
 					<div class="span4">
 						<div class="grouptopicrecommend_list">
 							<ul id="myTab" class="nav nav-tabs">
-								<li class="active"><a href="#system_recommendtopic" data-toggle="tab"><img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_2.gif" />&nbsp;系统推荐</a></li>
-								<li><a href="#groupadmin_recommendtopic" data-toggle="tab"><img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_1.gif" />&nbsp;组长推荐</a></li>
+								<li class="active"><a href="#system_recommendtopic" data-toggle="tab"><img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_2.gif" />&nbsp;<!--<lang package='Template/Public'>-->系统推荐<!--</lang>--></a></li>
+								<li><a href="#groupadmin_recommendtopic" data-toggle="tab"><img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_1.gif" />&nbsp;<!--<lang package='Template/Public'>-->组长推荐<!--</lang>--></a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
 								<div class="tab-pane fade in active" id="system_recommendtopic">
@@ -105,7 +106,7 @@ function completeSet(data,status){
 												</li>
 												<!--</foreach>-->
 												<!--{d*else}-->
-												<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
+												<li><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->"><!--<lang package='Template/Topiclist'>-->我要发布<!--</lang>--></a></li>
 												<!--{/if}-->
 											</ul>
 										</div>
@@ -123,7 +124,7 @@ function completeSet(data,status){
 												</li>
 												<!--</foreach>-->
 												<!--{d*else}-->
-												<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
+												<li><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->"><!--<lang package='Template/Topiclist'>-->我要发布<!--</lang>--></a></li>
 												<!--{/if}-->
 											</ul>
 										</div>
@@ -141,8 +142,8 @@ function completeSet(data,status){
 			<div class="span12">
 				<div class="tabb-menu">
 					<ul class="nav nav-pills">
-						<li <!--{if $nStyle==1}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setHomepagestyle(1);">传统BBS</a></li>
-						<li <!--{if $nStyle==2}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setHomepagestyle(2);">小组新风格</a></li>
+						<li <!--{if $nStyle==1}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setHomepagestyle(1);"><!--<lang package='Template/Public'>-->传统<!--</lang>-->BBS</a></li>
+						<li <!--{if $nStyle==2}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setHomepagestyle(2);"><!--<lang package='Template/Public'>-->小组新风格<!--</lang>--></a></li>
 					</ul>
 				</div>
 			</div>

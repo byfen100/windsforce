@@ -16,7 +16,7 @@ function grouptopicSubmit(){
 
 	Dyhb.AjaxSubmit('grouptopic_form','<!--{:Dyhb::U('group://grouptopic/add_topic')}-->','',function(data,status){
 		$("#submit_button").attr("disabled", false);
-		$("#submit_button").val( '发布帖子' );
+		$("#submit_button").val( '<!--<lang package='Template/Group'>-->发布帖子<!--</lang>-->' );
 		if(status==1){
 			setTimeout(function(){window.location.href=data.url;},1000);
 		}
@@ -34,9 +34,9 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 
 			<ul class="breadcrumb">
 				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-				<li>小组首页</li>
+				<li><!--<lang package='Template/Group'>-->小组首页<!--</lang>--></li>
 			</ul>
 
 			<!--<include file="group+header" />-->
@@ -44,25 +44,25 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 			<div class="span12">
 				<div class="row">
 					<div class="span9">
-						<h4>小组介绍</h4>
+						<h4><!--<lang package='Template/Group'>-->小组介绍<!--</lang>--></h4>
 						<div class="group_description" style="background-color: #F8F8F8;margin: 10px 0 15px;padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
 							<div class="group_createdateline" style="margin-bottom:10px;">
-								<b>创建时间</b>:&nbsp;<span class="label label-success"><!--{$oGroup['create_dateline']|date='Y-m-d',**}--></span>
+								<b><!--<lang package='Template/Group'>-->创建时间<!--</lang>--></b>:&nbsp;<span class="label label-success"><!--{$oGroup['create_dateline']|date='Y-m-d',**}--></span>
 							</div>
 							<!--{$oGroup['group_description']}-->
 						</div>
 
 						<div class="alert alert-success">
 							<!--{if $GLOBALS['___login___']===false}-->
-							<span>你可以&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</span>
+							<span><!--<lang package='Template/Public'>-->你可以<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a>&nbsp;<!--<lang package='Template/Public'>-->一个帐号，并以此<!--</lang>-->&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='Template/Public'>-->登录<!--</lang>--></a>&nbsp;，<!--<lang package='Template/Public'>-->以浏览更多精彩内容，并随时发布观点，与大家交流。<!--</lang>--></span>
 							<!--{d*else}-->
-							<span>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
+							<span><!--<lang package='Template/Public'>-->欢迎回来<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, <!--<lang package='Template/Public'>-->你上次访问时间是在<!--</lang>-->&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
 							<span class="pipe">|</span>
-							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->">我的小组帖子</a>, <a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->">查看小组新帖</a>
+							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->"><!--<lang package='Template/Group'>-->我的小组帖子<!--</lang>--></a>, <a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->"><!--<lang package='Template/Group'>-->查看小组新帖<!--</lang>--></a>
 							<!--{if Core_Extend+isAdmin()}-->
 							<span class="pipe">|</span>
 							<img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;
-							<a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank">主题回收站</a>&nbsp;<span><a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank" <!--{if $nTotalRecyclebinGrouptopic>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinGrouptopic}-->)</a></span>
+							<a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank"><!--<lang package='Template/Group'>-->主题回收站<!--</lang>--></a>&nbsp;<span><a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank" <!--{if $nTotalRecyclebinGrouptopic>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinGrouptopic}-->)</a></span>
 							<!--{/if}-->
 							</span>
 							<!--{/if}-->
@@ -71,7 +71,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 						<div class="row">
 							<div class="span7">
 								<ul class="nav nav-pills" id="navPills">
-									<li class="<!--{if empty($nCid)}-->active<!--{/if}-->"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">全部帖子</a></li>
+									<li class="<!--{if empty($nCid)}-->active<!--{/if}-->"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--<lang package='Template/Group'>-->全部帖子<!--</lang>--></a></li>
 									<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
 									<!--{if $i<8}-->
 									<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
@@ -81,7 +81,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 									<!--{elseif $i==8}-->
 									<li class="dropdown <!--{if in_array($nCid,$arrCids)}-->active<!--{/if}-->">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-											更多类别<b class="caret"></b>
+											<!--<lang package='Template/Group'>-->更多类别<!--</lang>--><b class="caret"></b>
 										</a>
 										<ul class="dropdown-menu">
 											<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
@@ -100,8 +100,8 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 							</div>
 
 							<div class="span2" style="text-align:right;">
-								<p><a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" class="btn btn-success">发帖</a>&nbsp;
-								<a href="<!--{:Dyhb::U('group://public/index')}-->" class="btn">返回</a>
+								<p><a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" class="btn btn-success"><!--<lang package='Template/Group'>-->发帖<!--</lang>--></a>&nbsp;
+								<a href="<!--{:Dyhb::U('group://public/index')}-->" class="btn"><!--<lang package='Template/Group'>-->返回<!--</lang>--></a>
 								</p>
 							</div>
 						</div>
@@ -113,14 +113,14 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<table width="100%" class="table">
 											<thead>
 												<tr style="border-bottom:1px solid #eeeeee;">
-													<th style="width:61px;">发帖人</th>
-													<th><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&did=1'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a></th>
+													<th style="width:61px;"><!--<lang package='Template/Topiclist'>-->发帖人<!--</lang>--></th>
+													<th><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&did=1'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a></th>
 													<th style="text-align:center;width:130px;">
-														<a href="<!--{:Group_Extend::getGroupurl($oGroup,($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType==''}-->color:gray;<!--{/if}-->">最新</a>
+														<a href="<!--{:Group_Extend::getGroupurl($oGroup,($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType==''}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
 														<span class="pipe">|</span>
-														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=com'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType=='com'}-->color:gray;<!--{/if}-->">回复</a>
+														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=com'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType=='com'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
 														<span class="pipe">|</span>
-														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=view'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType=='view'}-->color:gray;<!--{/if}-->">浏览</a>
+														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=view'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType=='view'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
 													</th>
 												</tr>
 											</thead>
@@ -130,12 +130,12 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 												<!--<foreach for=arrGrouptopics value=oGrouptopic>-->
 												<!--{if $bFindnormaltopic===false && $oGrouptopic['grouptopic_sticktopic']=='0'}-->
 												<!--{~$bFindnormaltopic=true}-->
-												<tr><td colspan="3" class="ordinary">普通主题</td></tr>
+												<tr><td colspan="3" class="ordinary"><!--<lang package='Template/Topiclist'>-->普通主题<!--</lang>--></td></tr>
 												<!--{/if}-->
 												<tr <!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->class="highlight"<!--{/if}-->>
 													<td class="author">
 														<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-														匿名
+														<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
 														<!--{d*else}-->
 														<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->">
 															<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
@@ -145,20 +145,20 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 													<td class="subject">
 														<p class="title">
 															<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
-															<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="待审核主题"/>&nbsp;<!--{/if}-->
+															<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Topiclist'>-->待审核主题<!--</lang>-->"/>&nbsp;<!--{/if}-->
 															<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
 															<!--{/if}-->
 															<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 															<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 															<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 															<!--{d*else}-->
-															<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[默认分类]</a>
+															<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[<!--<lang package='Template/Topiclist'>-->默认分类<!--</lang>-->]</a>
 															<!--{/if}-->
 															<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 															<!--{if $oGrouptopic->grouptopic_comments>0}-->
 															<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 															<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-															&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="查看新回复">New</a>&nbsp;
+															&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template/Topiclist'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
 															<!--{/if}-->
 															<!--{/if}-->
 															<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
@@ -170,30 +170,30 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 															<!--{/if}-->
 														</p>
 														<p class="info">
-															楼主&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-															匿名
+															<!--<lang package='Template/Topiclist'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+															<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
 															<!--{d*else}--><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
 															<!--{/if}-->&nbsp;
 															<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 															<span class="pipe">|</span>
 															<!--{if $oGrouptopic->grouptopic_comments>0}-->
 															<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-															最后回复&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+															<!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
 															<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
 															<!--{d*else}-->
-															<span>暂无回复</span>
+															<span><!--<lang package='Template/Topiclist'>-->暂无回复<!--</lang>--></span>
 															<!--{/if}-->
 														</p>
 													</td>
 													<td class="num" style="text-align:center;">
-														<span>浏览<em><!--{$oGrouptopic->grouptopic_views}--></em></span>
-														<span>回复<em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+														<span><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+														<span><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
 													</td>
 												</tr>
 												<!--</foreach>-->
 												<!--{d*else}-->
 												<tr>
-													<td colspan="3">暂时没有发现任何帖子</td>
+													<td colspan="3"><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>--></td>
 												</tr>
 												<!--{/if}-->
 											</tbody>
@@ -202,41 +202,41 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup)}-->
 										<div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display: none;">
 											<label class="checkbox right checkbox_checkall">
-												<input type="checkbox" name="chkall" onclick="if(!($('mdct').innerHTML = modclickcount = checkall(this.form, 'moderate'))) {$('mdly').style.display = 'none';}" />全选
+												<input type="checkbox" name="chkall" onclick="if(!($('mdct').innerHTML = modclickcount = checkall(this.form, 'moderate'))) {$('mdly').style.display = 'none';}" /><!--<lang package='Template/Groupadmin'>-->全选<!--</lang>-->
 											</label>
-											<a class="smallmodaction" href="javascript:;" title="最小化" onclick="$WF('modActionSelect').className='smallmodaction_done'">最小化</a>
-											<h2 class="title">选中&nbsp;<strong id="modActionSelectnum" onclick="$WF('modActionSelect').className='commonbox_mini commonbox_mini_gray';" onmouseover="this.title='最大化'"></strong>&nbsp;篇</h2>
+											<a class="smallmodaction" href="javascript:;" title="<!--<lang package='Template/Groupadmin'>-->最小化<!--</lang>-->" onclick="$WF('modActionSelect').className='smallmodaction_done'"><!--<lang package='Template/Groupadmin'>-->最小化<!--</lang>--></a>
+											<h2 class="title"><!--<lang package='Template/Groupadmin'>-->选中<!--</lang>-->&nbsp;<strong id="modActionSelectnum" onclick="$WF('modActionSelect').className='commonbox_mini commonbox_mini_gray';" onmouseover="this.title='<!--<lang package='Template/Groupadmin'>-->最大化<!--</lang>-->'"></strong>&nbsp;<!--<lang package='Template/Groupadmin'>-->篇<!--</lang>--></h2>
 											<div class="modActionSelectcontent">
 												<p>
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@deletetopic'))}-->
-													<strong><a href="javascript:void(0);" onclick="tmodTopics('deletetopic');return false;">删除</a></strong>
+													<strong><a href="javascript:void(0);" onclick="tmodTopics('deletetopic');return false;"><!--<lang package='Template/Groupadmin'>-->删除<!--</lang>--></a></strong>
 													<span class="pipe">|</span>
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@categorytopic'))}-->
-													<strong><a href="javascript:void(0);" onclick="tmodTopics('categorytopic');return false;">分类</a></strong>
+													<strong><a href="javascript:void(0);" onclick="tmodTopics('categorytopic');return false;"><!--<lang package='Template/Groupadmin'>-->分类<!--</lang>--></a></strong>
 													<span class="pipe">|</span>
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))}-->
-													<strong><a href="javascript:void(0);" onclick="tmodTopics('hidetopic');return false;">隐藏显示</a></strong>
+													<strong><a href="javascript:void(0);" onclick="tmodTopics('hidetopic');return false;"><!--<lang package='Template/Groupadmin'>-->隐藏显示<!--</lang>--></a></strong>
 													<!--{/if}-->
 												</p>
 												<p>
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@sticktopic'))}-->
-													<a href="javascript:void(0);" onclick="tmodTopics('sticktopic');return false;">置顶</a>&nbsp;
+													<a href="javascript:void(0);" onclick="tmodTopics('sticktopic');return false;"><!--<lang package='Template/Groupadmin'>-->置顶<!--</lang>--></a>&nbsp;
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@digesttopic'))}-->
-													<a href="javascript:void(0);" onclick="tmodTopics('digesttopic');return false;">精华</a>&nbsp;
+													<a href="javascript:void(0);" onclick="tmodTopics('digesttopic');return false;"><!--<lang package='Template/Groupadmin'>-->精华<!--</lang>--></a>&nbsp;
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@colortopic'))}-->
-													<a href="javascript:void(0);" onclick="tmodTopics('colortopic');return false;">高亮</a>
+													<a href="javascript:void(0);" onclick="tmodTopics('colortopic');return false;"><!--<lang package='Template/Groupadmin'>-->高亮<!--</lang>--></a>
 													<span class="pipe">|</span>
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))}-->
-													<a href="javascript:void(0);" onclick="tmodTopics('closetopic');return false;">关闭打开</a>
+													<a href="javascript:void(0);" onclick="tmodTopics('closetopic');return false;"><!--<lang package='Template/Groupadmin'>-->关闭打开<!--</lang>--></a>
 													<span class="pipe">|</span>
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@recommendtopic'))}-->
-													<a href="javascript:void(0);" onclick="tmodTopics('recommendtopic');return false;">推荐</a>
+													<a href="javascript:void(0);" onclick="tmodTopics('recommendtopic');return false;"><!--<lang package='Template/Groupadmin'>-->推荐<!--</lang>--></a>
 													<!--{/if}-->
 												</p>
 											</div>
@@ -252,7 +252,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 						<div class="floor">
 							<table width="100%" class="floor_table floor_footerpostcontenttable WindsforceSystem-interval_line_color-border">
 								<tr>
-									<td class="floor_left floor_footerposttitle WindsforceSystem-special_bg" width="350px" >快捷发帖</td>
+									<td class="floor_left floor_footerposttitle WindsforceSystem-special_bg" width="350px" ><!--<lang package='Template/Groupadmin'>-->快捷发帖<!--</lang>--></td>
 									<td class="floor_right floor_footerposttitle WindsforceSystem-special_bg"></td>
 								</tr>
 								<tr>
@@ -265,28 +265,28 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<form method="post" name="grouptopic_form" id="grouptopic_form" class="grouptopi_form">
 											<!--{if is_array($arrGrouptopiccategorys)}-->
 											<select style="width:120px;" name="grouptopiccategory_id">
-												<option value="0">默认分类</option>
+												<option value="0"><!--<lang package='Template/Groupadmin'>-->默认分类<!--</lang>--></option>
 												<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
 												<option value="<!--{$oGrouptopiccategory['grouptopiccategory_id']}-->" <!--{if isset($nCid) && $nCid==$oGrouptopiccategory['grouptopiccategory_id']}-->selected<!--{/if}-->><!--{$oGrouptopiccategory['grouptopiccategory_name']}--></option>
 												<!--</foreach>-->
 											</select>&nbsp;
 											<!--{/if}-->
-											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:55%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;请输入帖子标题
+											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:55%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;<!--<lang package='Template/Groupadmin'>-->请输入帖子标题<!--</lang>-->
 											<!--{if $GLOBALS['___login___']!==false}-->
 											<div id="emotion_parentcontainer">
 												<textarea class="input-xlarge" name="grouptopic_content" id="grouptopic_content" rows="8" style="width:100%;"></textarea>
 											</div>
 											<div id="grouptopic-media-box" class="common-media-box none">
-												<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a>
-												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
-												<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
-												<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
+												<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
+												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
+												<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
+												<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
 											</div>
 											<!--{d*else}-->
 											<div style="background:#F5F5F5;padding:10px;">
 												<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:45px 0">
-													<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a> | 
-													<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">用户注册</a>
+													<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a> | 
+													<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->用户注册<!--</lang>--></a>
 												</div>
 											</div>
 											<!--{/if}-->
@@ -296,12 +296,12 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 												<input type="hidden" name="grouptopic_usesign" value="1">
 												<input type="hidden" name="grouptopic_allownoticeauthor" value="1">
 												<input type="hidden" name="grouptopic_iscomment" value="1">
-												<input id="submit_button" onclick="grouptopicSubmit();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布帖子" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
+												<input id="submit_button" onclick="grouptopicSubmit();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="<!--<lang package='Template/Group'>-->发布帖子<!--</lang>-->" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
 												<!--{if $GLOBALS['___login___']!==false}-->
-												&nbsp;<a href="javascript:void(0);" onclick="showMedia();">媒体</a>
+												&nbsp;<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
 												<!--{/if}-->
 												<span class="pipe">|</span>
-												<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" >进入高级模式&gt;&gt;</a>
+												<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" ><!--<lang package='Template/Group'>-->进入高级模式<!--</lang>-->&gt;&gt;</a>
 											</div>
 										</form>
 									</td>
@@ -330,13 +330,13 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<div class="item active" style="height:340px;">
 											<img src="<!--{:__APPPUB__}-->/Images/groupshow/1.jpg" style="height:340px;" width="100%">
 											<div class="carousel-caption">
-												<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="注册">注册</a></h4>
+												<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->注册<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->注册<!--</lang>--></a></h4>
 											</div>
 										</div>
 										<div class="item" style="height:340px;">
 											<img src="<!--{:__APPPUB__}-->/Images/groupshow/2.jpg" style="height:340px;" width="100%">
 											<div class="carousel-caption">
-												<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="登录">登录</a></h4>
+												<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a></h4>
 											</div>
 										</div>
 										<!--{/if}-->
@@ -348,60 +348,60 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 						</div>
 
 						<div class="commonbox" style="margin-top:300px;">
-							<div class="commonboxtitle">小组<!--{$oGroup['group_roleleader']}--></div>
+							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组<!--</lang>--><!--{$oGroup['group_roleleader']}--></div>
 							<p>
 								<ul class="thumbnails">
 									<!--{if is_array($arrGroupleaders)}-->
 									<!--<foreach for=arrGroupleaders value=oGroupleader>-->
 									<li class="span1">
 										<div class="thumbnail">
-											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupleader:user:user_name}-->"></a>
-											<a rel="tooltip" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></h5></a>
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Groupuser'>-->组长<!--</lang>--> <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | <!--<lang package='Template/Groupuser'>-->创建时间<!--</lang>--> <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Groupuser'>-->组长<!--</lang>--> <!--{$oGroupleader:user:user_name}-->"></a>
+											<a rel="tooltip" title="<!--<lang package='Template/Groupuser'>-->组长<!--</lang>--> <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | <!--<lang package='Template/Groupuser'>-->创建时间<!--</lang>--> <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></h5></a>
 										</div>
 									</li>
 									<!--</foreach>-->
 									<!--{d*else}-->
-									<li>暂时没有发现任何小组长</li>
+									<li><!--<lang package='Template/Groupuser'>-->暂时没有发现任何小组长<!--</lang>--></li>
 									<!--{/if}-->
 								</ul>
 							</p>
 						</div>
 
 						<div class="commonbox">
-							<div class="commonboxtitle">小组<!--{$oGroup['group_roleadmin']}--></div>
+							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组<!--</lang>--><!--{$oGroup['group_roleadmin']}--></div>
 							<p>
 								<ul class="thumbnails">
 									<!--{if is_array($arrGroupadmins)}-->
 									<!--<foreach for=arrGroupadmins value=oGroupadmin>-->
 									<li class="span1">
 										<div class="thumbnail">
-											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupadmin['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupadmin:user:user_name}-->"></a>
-											<a rel="tooltip" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></h5></a>
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupadmin['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Groupuser'>-->管理员<!--</lang>--> <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | <!--<lang package='Template/Groupuser'>-->创建时间<!--</lang>--> <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Groupuser'>-->管理员<!--</lang>--> <!--{$oGroupadmin:user:user_name}-->"></a>
+											<a rel="tooltip" title="<!--<lang package='Template/Groupuser'>-->管理员<!--</lang>--> <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | <!--<lang package='Template/Groupuser'>-->创建时间<!--</lang>--> <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></h5></a>
 										</div>
 									</li>
 									<!--</foreach>-->
 									<!--{d*else}-->
-									<li>暂时没有发现任何管理员</li>
+									<li><!--<lang package='Template/Groupuser'>-->暂时没有发现任何管理员<!--</lang>--></li>
 									<!--{/if}-->
 								</ul>
 							</p>
 						</div>
 
 						<div class="commonbox">
-							<div class="commonboxtitle">最新<!--{$oGroup['group_roleuser']}-->&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&recommend=1')}-->" title="更多成员"><i class="icon-th-list"></i></a></div>
+							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->最新<!--</lang>--><!--{$oGroup['group_roleuser']}-->&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&recommend=1')}-->" title="<!--<lang package='Template/Group'>-->更多成员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 							<p>
 								<ul class="thumbnails">
 									<!--{if is_array($arrGroupusers)}-->
 									<!--<foreach for=arrGroupusers value=oGroupuser>-->
 									<li class="span1">
 										<div class="thumbnail">
-											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupuser['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupuser:user:user_name}-->"></a>
-											<a rel="tooltip" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></h5></a>
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Groupuser'>-->成员<!--</lang>--> <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | <!--<lang package='Template/Groupuser'>-->创建时间<!--</lang>--> <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Groupuser'>-->成员<!--</lang>--> <!--{$oGroupuser:user:user_name}-->"></a>
+											<a rel="tooltip" title="<!--<lang package='Template/Groupuser'>-->成员<!--</lang>--> <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | <!--<lang package='Template/Groupuser'>-->创建时间<!--</lang>--> <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></h5></a>
 										</div>
 									</li>
 									<!--</foreach>-->
 									<!--{d*else}-->
-									<li>暂时没有发现任何成员</li>
+									<li><!--<lang package='Template/Groupuser'>-->暂时没有发现任何成员<!--</lang>--></li>
 									<!--{/if}-->
 								</ul>
 							</p>
