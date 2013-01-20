@@ -66,6 +66,28 @@ class Grouptopic_Extend{
 		return '';
 	}
 
+	static public function grouptopicHot($nCommentnum,$nViewnum,$bReturnImg=false){
+		$nHot=0;
+		
+		if($nCommentnum>=$GLOBALS['_cache_']['group_option']['group_hottopic3_comments'] && $nViewnum>=$GLOBALS['_cache_']['group_option']['group_hottopic3_views']){
+			$nHot=3;
+		}elseif($nCommentnum>=$GLOBALS['_cache_']['group_option']['group_hottopic2_comments'] && $nViewnum>=$GLOBALS['_cache_']['group_option']['group_hottopic2_views']){
+			$nHot=2;
+		}elseif($nCommentnum>=$GLOBALS['_cache_']['group_option']['group_hottopic1_comments'] && $nViewnum>=$GLOBALS['_cache_']['group_option']['group_hottopic1_views']){
+			$nHot=1;
+		}
+		
+		if($nHot>0){
+			if($bReturnImg===true){
+				return ' <img class="grouptopicthumb_date" src="'.__APPPUB__.'/Images/hot_'.$nHot.'.gif'.'" border="0" align="absmiddle" title="'.Dyhb::L('热门主题','__APP_ADMIN_LANG__@Function/Grouptopic_Extend').$nHot.'"/> ';
+			}else{
+				return __APPPUB__.'/Images/hot_'.$nHot.'.gif';
+			}
+		}
+
+		return '';
+	}
+
 	static public function grouptopicHighlight($sColor,$bReturnImg=false){
 		if(!$sColor){
 			return '';

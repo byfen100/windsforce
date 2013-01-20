@@ -35,6 +35,7 @@ function option(){
 							<ul class="windsforce_tabtitle">
 								<li><a href="#tab1"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->基本功能<!--</lang>--></a></li>
 								<li><a href="#tab2"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->发布功能<!--</lang>--></a></li>
+								<li><a href="#tab3"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->管理功能<!--</lang>--></a></li>
 							</ul>
 						</div>
 						<div id="tab1" class="windsforce_tabcontent">
@@ -70,6 +71,39 @@ function option(){
 								<input type="radio" id="" name="options[group_deletecomment_recyclebin]" value="0" <!--{if $arrOptions['group_deletecomment_recyclebin']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->启用回收站功能可以防止误删，便于系统恢复数据<!--</lang>--></div>
 							</fieldset>
+							<fieldset>
+								<label for="group_hottopic1_comments"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->火帖1的规则<!--</lang>--></label>
+								<p style="margin-left:15px;"><span class="left"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->最少回帖数量<!--</lang>-->&nbsp;</span><input type="text" name="options[group_hottopic1_comments]" id="group_hottopic1_comments" size="60" value="<!--{$arrOptions['group_hottopic1_comments']}-->" style="width:50px;"/>
+								</p>
+								<p style="margin-left:15px;"><span class="left"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->最少浏览数量<!--</lang>-->&nbsp;</span><input type="text" name="options[group_hottopic1_views]" id="group_hottopic1_views" size="60" value="<!--{$arrOptions['group_hottopic1_views']}-->" style="width:50px;"/>
+								</p>
+								<div class="description">
+									<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->注意，火帖的配置数量必须为依次递增<!--</lang>--><br/>
+									<img src="<!--{:__ROOT__}-->/app/group/Static/Images/hot_1.gif" />
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_hottopic2_comments"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->火帖2的规则<!--</lang>--></label>
+								<p style="margin-left:15px;"><span class="left"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->最少回帖数量<!--</lang>-->&nbsp;</span><input type="text" name="options[group_hottopic2_comments]" id="group_hottopic2_comments" size="60" value="<!--{$arrOptions['group_hottopic2_comments']}-->" style="width:50px;"/>
+								</p>
+								<p style="margin-left:15px;"><span class="left"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->最少浏览数量<!--</lang>-->&nbsp;</span><input type="text" name="options[group_hottopic2_views]" id="group_hottopic2_views" size="60" value="<!--{$arrOptions['group_hottopic2_views']}-->" style="width:50px;"/>
+								</p>
+								<div class="description">
+									<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->注意，火帖的配置数量必须为依次递增<!--</lang>--><br/>
+									<img src="<!--{:__ROOT__}-->/app/group/Static/Images/hot_2.gif" />
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_hottopic3_comments"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->火帖3的规则<!--</lang>--></label>
+								<p style="margin-left:15px;"><span class="left"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->最少回帖数量<!--</lang>-->&nbsp;</span><input type="text" name="options[group_hottopic3_comments]" id="group_hottopic3_comments" size="60" value="<!--{$arrOptions['group_hottopic3_comments']}-->" style="width:50px;"/>
+								</p>
+								<p style="margin-left:15px;"><span class="left"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->最少浏览数量<!--</lang>-->&nbsp;</span><input type="text" name="options[group_hottopic3_views]" id="group_hottopic3_views" size="60" value="<!--{$arrOptions['group_hottopic3_views']}-->" style="width:50px;"/>
+								</p>
+								<div class="description">
+									<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->注意，火帖的配置数量必须为依次递增<!--</lang>--><br/>
+									<img src="<!--{:__ROOT__}-->/app/group/Static/Images/hot_3.gif" />
+								</div>
+							</fieldset>
 						</div>
 						<div id="tab2" class="windsforce_tabcontent">
 							<fieldset>
@@ -95,6 +129,18 @@ function option(){
 								</select>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->用户发布回帖后一般一天之内可以编辑回帖<!--</lang>-->
 								</div>
+							</fieldset>
+						</div>
+						<div id="tab3" class="windsforce_tabcontent">
+							<fieldset>
+								<label for="group_reason_support"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->主题和回帖管理支持原因<!--</lang>--></label>
+								<textarea name="options[group_reason_support]" rows="5"><!--{$arrOptions['group_reason_support']}--></textarea>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->用于支持方面的原因，每行一条<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="group_reason_opposition"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->主题和回帖管理反对原因<!--</lang>--></label>
+								<textarea name="options[group_reason_opposition]" rows="5"><!--{$arrOptions['group_reason_opposition']}--></textarea>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->用于反对方面的原因，每行一条<!--</lang>--></div>
 							</fieldset>
 						</div>
 					</div>

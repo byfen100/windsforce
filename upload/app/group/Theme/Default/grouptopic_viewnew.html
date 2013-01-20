@@ -67,6 +67,7 @@ $(function(){
 									<!--{:Grouptopic_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 									<!--{:Grouptopic_Extend::grouptopicHighlight($oGrouptopic->grouptopic_color,true)}-->
 									<!--{:Grouptopic_Extend::grouptopicThumb($oGrouptopic->grouptopic_thumb,true)}-->
+									<!--{:Grouptopic_Extend::grouptopicHot($oGrouptopic->grouptopic_comments,$oGrouptopic->grouptopic_views,true)}-->
 									<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
 									<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oGrouptopic->user_id)==0}-->&nbsp;
 									<span style="margin-top:10px;"><a href="<!--{if $oGrouptopic['grouptopic_isanonymous']=='0' || ($oGrouptopic['grouptopic_isanonymous']==1 && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}--><!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}--><!--{d*else}-->javascript:void(0);<!--{/if}-->" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>

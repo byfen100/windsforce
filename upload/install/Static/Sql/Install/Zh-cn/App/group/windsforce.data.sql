@@ -100,7 +100,15 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_deletetopic_recyclebin', '1'),
 ('group_deletecomment_recyclebin', '1'),
 ('group_thumbtopic_date', '86400'),
-('onegroup_thumbtopic_num', '5');
+('onegroup_thumbtopic_num', '5'),
+('group_reason_support', '我很赞同\r\n精品文章\r\n原创内容\r\n眼前一亮\r\n必须得支持'),
+('group_reason_opposition', '广告/SPAM\r\n恶意灌水\r\n违规内容\r\n文不对题\r\n重复发帖\r\n影响组容'),
+('group_hottopic1_comments', '30'),
+('group_hottopic2_comments', '50'),
+('group_hottopic3_comments', '100'),
+('group_hottopic1_views', '200'),
+('group_hottopic2_views', '500'),
+('group_hottopic3_views', '1000');
 
 -- --------------------------------------------------------
 
