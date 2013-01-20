@@ -19,7 +19,7 @@ function update(){
 		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
 
 		if(status==1){
-			window.location.href=D.U('cron/index');
+			setTimeout(function(){window.location.href=D.U('cron/index');},1000);
 		}
 	});
 }
@@ -28,7 +28,7 @@ function complete(data,status){
 	$("#submit_button").attr("disabled", false);
 	$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->' );
 	if(status==1){
-		window.location.href=D.U('cron/edit?id='+data.cron_id);
+		setTimeout(function(){window.location.href=D.U('cron/edit?id='+data.cron_id);},1000);
 	}
 }
 <!--{/script}-->

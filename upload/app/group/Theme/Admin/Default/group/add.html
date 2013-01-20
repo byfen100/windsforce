@@ -41,7 +41,7 @@ function complete(data,status){
 	$("#submit_button").attr("disabled", false);
 	$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->' );
 	if(status==1){
-		location.href=D.U('app/config?controller=group&action=edit&id=<!--{$_GET['id']}-->&value='+data.group_id);
+		setTimeout(function(){window.location.href=D.U('app/config?controller=group&action=edit&id=<!--{$_GET['id']}-->&value='+data.group_id);},1000);
 	}
 }
 <!--{/script}-->

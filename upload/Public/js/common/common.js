@@ -582,7 +582,7 @@ function addMessageok(){
 function addFriend(userid){
 	Dyhb.AjaxSend(D.U('home://friend/add'),'ajax=1&uid='+userid,'',function(data,status){
 		if(status==1){
-			window.location.reload();
+			setTimeout("window.location.reload();",1000);
 		}
 	});
 }
@@ -591,7 +591,7 @@ function deleteFriend(friendid,fan){
 	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSend(D.U('home://friend/delete?friendid='+friendid+(fan=='1'?'&fan=1':'')),'','',function(data,status){
 			if(status==1){
-				window.location.reload();
+				setTimeout("window.location.reload();",1000);
 			}
 		});
 	});

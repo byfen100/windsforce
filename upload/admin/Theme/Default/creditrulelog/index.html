@@ -9,7 +9,7 @@ function clearCreditrulelog(nUserid){
 
 function completeDelete(data,status){
 	if(status==1){
-		window.location.href=D.U('creditrulelog/index');
+		setTimeout(function(){window.location.href=D.U('creditrulelog/index');},1000);
 	}
 }
 <!--{/script}-->

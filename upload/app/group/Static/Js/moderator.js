@@ -124,9 +124,9 @@ function modTopiccommontopic(){
 function commonComplete(data,status){
 	if(status==1){
 		if(sCurrentAction=='deletetopic'){
-			window.location.href=data.group_url;
+			setTimeout(function(){window.location.href=data.group_url;},1000);
 		}else{
-			window.location.reload();
+			setTimeout("window.location.reload();",1000);
 		}
 	}
 

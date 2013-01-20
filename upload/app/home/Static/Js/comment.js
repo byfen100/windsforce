@@ -54,7 +54,7 @@ function commentComplete(data,status){
 	$("#comment-submit").attr("disabled", false);
 	$("#comment-submit").val(D.L('提交评论','__COMMON_LANG__@Js/Commoncomment_Js'));
 	if(status==1){
-		window.location.href=data.jumpurl;
+		setTimeout(function(){window.location.href=data.jumpurl;},1000);
 	}
 }
 
@@ -374,7 +374,7 @@ function homefreshchildcommentCancel(){
 function homefreshcommentAudit(nCommentid,nStatus){
 	Dyhb.AjaxSend(D.U('home://ucenter/audit_homefreshcomment?id='+nCommentid+'&status='+nStatus),'ajax=1','',function(data,status){
 		if(status==1){
-			window.location.reload();
+			setTimeout("window.location.reload();",1000);
 		}
 	});
 }

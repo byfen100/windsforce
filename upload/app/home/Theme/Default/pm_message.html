@@ -24,7 +24,7 @@ function complete(data,status){
 	if(status==1){
 		$('#pm_subject').val('');
 		$('#pm_message').val('');
-		window.location.href='<!--{:Dyhb::U('home://pm/show?id='.$oPm['pm_id'].'&uid='.$nUserId)}-->'+data.jumpurl;
+		setTimeout(function(){window.location.href='<!--{:Dyhb::U('home://pm/show?id='.$oPm['pm_id'].'&uid='.$nUserId)}-->'+data.jumpurl;},1000);
 	}
 }
 <!--{/script}-->

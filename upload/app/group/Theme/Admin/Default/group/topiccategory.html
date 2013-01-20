@@ -11,7 +11,7 @@ function complete(data,status){
 	$("#submit_button").attr("disabled",false);
 	$("#submit_button").val('<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->');
 	if(status==1){
-		location.href='<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$_GET['value']))}-->';
+		setTimeout(function(){window.location.href='<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$_GET['value']))}-->';},1000);
 	}
 }
 
@@ -23,7 +23,7 @@ function deleteGrouptopcategory(category_id,group_id){
 
 function completeDelete(data,status){
 	if(status==1){
-		window.location.href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$_GET['value']))}-->";
+		setTimeout(function(){window.location.href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$_GET['value']))}-->";},1000)
 	}
 }
 

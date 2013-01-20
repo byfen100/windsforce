@@ -16,7 +16,7 @@ function complete(data,status){
 	if(status==1){
 		$('#pm_subject').val('');
 		$('#pm_message').val('');
-		window.location.href=data.jumpurl;
+		setTimeout(function(){window.location.href=data.jumpurl;},1000);
 	}
 }
 

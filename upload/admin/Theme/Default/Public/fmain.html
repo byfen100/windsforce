@@ -7,8 +7,10 @@
 function closeUpdateinfo(){
 	Dyhb.AjaxSend(D.U('public/close_updateinfo'),'ajax=1','',function(data,status){
 		if(status==1){
-			parent.menu.location=D.U( 'public/fmenu?title='+encodeURIComponent('<!--<lang package='Template/Default/Common'>-->首页<!--</lang>-->')+'&notrefershmain=1' );
-			setTimeout("window.location.reload();",1000);
+			setTimeout(function(){
+				parent.menu.location=D.U( 'public/fmenu?title='+encodeURIComponent('<!--<lang package='Template/Default/Common'>-->首页<!--</lang>-->')+'&notrefershmain=1' );
+				window.location.reload();
+			},1000);
 		}
 	});
 }

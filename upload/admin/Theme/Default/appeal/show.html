@@ -4,7 +4,7 @@
 	function appeal_pass(id){
 		Dyhb.AjaxSend(D.U('appeal/pass?id='+id),'ajax=1','',function(data,status){
 			if(status==1){
-				window.location.href=D.U('appeal/index');
+				setTimeout("window.location.href=D.U('appeal/index');",1000);
 			}
 		});
 	}

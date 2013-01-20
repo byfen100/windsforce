@@ -16,9 +16,9 @@ function saveAttachmentinfo(){
 		function(data,status){
 			if(status==1){
 				if($('#dialog').val()==1){
-					window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategory+'&dialog=1&function='+$('#function').val()+'&filetype='+$('#filetype').val());
+					setTimeout(function(){window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategory+'&dialog=1&function='+$('#function').val()+'&filetype='+$('#filetype').val());},1000);
 				}else{
-					window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategory);
+					setTimeout(function(){window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategory);},1000);
 				}
 			}
 		}

@@ -14,7 +14,7 @@ function deleteGroupIcon(id){
 
 function completeDelete(data,status){
 	if(status==1){
-		window.location.href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'icon','value'=>$oGroup['group_id']))}-->";
+		setTimeout(function(){window.location.href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'icon','value'=>$oGroup['group_id']))}-->";},1000);
 	}
 }
 <!--{/script}-->

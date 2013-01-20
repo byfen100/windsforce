@@ -24,7 +24,7 @@ var URL='<!--{:__URL__}-->';
 <!--{:App::U()}-->
 function login_handle(data,status){
 	if(status==1){
-		setTimeout("window.location='<!--{:__APP__}-->';",1000);
+		setTimeout(function(){window.location='<!--{:__APP__}-->';},1000);
 	}
 }
 <!--{/script}-->

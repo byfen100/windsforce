@@ -13,7 +13,7 @@ function registerComplete(data,status){
 	$("#register_submit").val(D.L('注册','__COMMON_LANG__@Js/Register_Js'));
 	if(status==1){
 		sUrl=data.jumpurl?data.jumpurl:Dyhb.U('home://public/login');
-		setTimeout("window.location=sUrl;",1000);
+		setTimeout(function(){window.location.href=sUrl;},1000);
 	}
 };
 

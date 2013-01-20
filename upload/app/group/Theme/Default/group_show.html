@@ -18,7 +18,7 @@ function grouptopicSubmit(){
 		$("#submit_button").attr("disabled", false);
 		$("#submit_button").val( '发布帖子' );
 		if(status==1){
-			window.location.href=data.url;
+			setTimeout(function(){window.location.href=data.url;},1000);
 		}
 	});
 }

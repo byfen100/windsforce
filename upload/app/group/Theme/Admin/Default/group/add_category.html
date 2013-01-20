@@ -4,7 +4,7 @@
 function addGroupcategory(id,category_id){
 	Dyhb.AjaxSend(D.U('app/config?id=<!--{$_GET['id']}-->&controller=group&action=add_category_id&value='+id),'ajax=1&category_id='+category_id,'',function(data,status){ 
 		if(status==1){
-			location.href=D.U('app/config?id=<!--{$_GET['id']}-->&controller=group&action=groupcategory&value=<!--{$_GET['value']}-->');
+			setTimeout(function(){window.location.href=D.U('app/config?id=<!--{$_GET['id']}-->&controller=group&action=groupcategory&value=<!--{$_GET['value']}-->');},1000);
 		}
 	});
 }

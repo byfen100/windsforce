@@ -6,7 +6,7 @@
 function setAdminStyle(sStyle){
 	Dyhb.AjaxSend(D.U('style/set_admin_style?style='+sStyle),'ajax=1','',function(data,status){ 
 		if(status==1){
-			refreshFrame();
+			window.setTimeout(function (){refreshFrame();},20000);
 		}
 	});
 

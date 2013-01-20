@@ -11,7 +11,7 @@ function complete(data,status){
 	$("#submit_button").attr("disabled", false);
 	$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' );
 	if(status==1){
-		location.href='<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$nValue))}-->';
+		setTimeout(function(){location.href='<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$nValue))}-->';},1000);
 	}
 }
 <!--{/script}-->

@@ -15,7 +15,7 @@ function deletePm(id,userid){
 
 function completeDelete(data,status){
 	if(status==1){
-		window.location.reload();
+		setTimeout("window.location.reload();",1000);
 	}
 }
 
@@ -45,7 +45,7 @@ function deleteSystemPms(){
 	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
 		Dyhb.AjaxSubmit('pmform','<!--{:Dyhb::U('home://pm/delete_systempm?ajax=1')}-->','',function(data,status){ 
 			if(status==1){
-				window.location.reload();
+				setTimeout("window.location.reload();",1000);
 			}
 		});
 	});

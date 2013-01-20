@@ -26,9 +26,9 @@ function addGrouptopiccomment(){
 		
 		if(status==1){
 			<!--{if isset($oEditGrouptopiccomment)}-->
-			window.location.reload();
+			setTimeout("window.location.reload();",1000);
 			<!--{d*else}-->
-			window.location.href=data.url;
+			setTimeout(function(){window.location.href=data.url;},1000);
 			<!--{/if}-->
 		}
 	});
