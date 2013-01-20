@@ -9,6 +9,12 @@ class AddController extends Controller{
 	protected $_oGroup=null;
 	
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		$nGroupid=intval(G::getGpc('gid','G'));
 
 		// 快捷发贴

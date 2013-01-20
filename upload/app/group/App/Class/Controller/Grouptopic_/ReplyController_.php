@@ -7,6 +7,12 @@
 class ReplyController extends Controller{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		$nId=intval(G::getGpc('id','G'));
 		
 		if(empty($nId)){

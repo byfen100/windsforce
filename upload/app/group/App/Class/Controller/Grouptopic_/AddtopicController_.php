@@ -7,6 +7,12 @@
 class AddtopicController extends Controller{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		// 处理checkbox
 		$arrCheckbox=array(
 			'grouptopic_usesign','grouptopic_isanonymous','grouptopic_hiddenreplies',

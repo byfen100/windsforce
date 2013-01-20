@@ -7,6 +7,12 @@
 class AddreplyController extends Controller{
 
 	public function index(){
+		try{
+			Core_Extend::checkSpam();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+		
 		$nId=intval(G::getGpc('tid'));
 		$nSimple=intval(G::getGpc('simple_comment'));
 
