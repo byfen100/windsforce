@@ -252,7 +252,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 						<div class="floor">
 							<table width="100%" class="floor_table floor_footerpostcontenttable WindsforceSystem-interval_line_color-border">
 								<tr>
-									<td class="floor_left floor_footerposttitle WindsforceSystem-special_bg" width="350px" ><!--<lang package='Template/Groupadmin'>-->快捷发帖<!--</lang>--></td>
+									<td class="floor_left floor_footerposttitle WindsforceSystem-special_bg" width="350px" ><!--<lang package='Template/Group'>-->快捷发帖<!--</lang>--></td>
 									<td class="floor_right floor_footerposttitle WindsforceSystem-special_bg"></td>
 								</tr>
 								<tr>
@@ -265,13 +265,13 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<form method="post" name="grouptopic_form" id="grouptopic_form" class="grouptopi_form">
 											<!--{if is_array($arrGrouptopiccategorys)}-->
 											<select style="width:120px;" name="grouptopiccategory_id">
-												<option value="0"><!--<lang package='Template/Groupadmin'>-->默认分类<!--</lang>--></option>
+												<option value="0"><!--<lang package='Template/Group'>-->默认分类<!--</lang>--></option>
 												<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
 												<option value="<!--{$oGrouptopiccategory['grouptopiccategory_id']}-->" <!--{if isset($nCid) && $nCid==$oGrouptopiccategory['grouptopiccategory_id']}-->selected<!--{/if}-->><!--{$oGrouptopiccategory['grouptopiccategory_name']}--></option>
 												<!--</foreach>-->
 											</select>&nbsp;
 											<!--{/if}-->
-											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:55%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;<!--<lang package='Template/Groupadmin'>-->请输入帖子标题<!--</lang>-->
+											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:55%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;<!--<lang package='Template/Group'>-->请输入帖子标题<!--</lang>-->
 											<!--{if $GLOBALS['___login___']!==false}-->
 											<div id="emotion_parentcontainer">
 												<textarea class="input-xlarge" name="grouptopic_content" id="grouptopic_content" rows="8" style="width:100%;"></textarea>

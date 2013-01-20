@@ -20,6 +20,7 @@ return array(
 '7fe4cddce2a8ddd03464a1043dc648c4'=>"暫時沒有發現任何評論",
 'cf13b1a67881f454af469aa874f087e5'=>"審核",
 'bec530cbd841c30c7933aff20027a5f5'=>"查看內容支持的UBB代碼",
+'fe0e8bf76839940dac08c7941e6f98f2'=>"註冊",
 )
 
 ?>

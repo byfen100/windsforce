@@ -30,6 +30,8 @@ return array(
 '9f68a8079815033b88fcc6601abd6642'=>"积分",
 '66eeacd93a7c1bda93906fe908ad11a0'=>"全选",
 '38cf16f2204ffab8a6e0187070558721'=>"确定",
+'1fbfe6074ac1e305a48c0cc5ec9ccbba'=>"该用户暂时没有设置签名",
+'e804a9a2158eb06e6609b0b7ac9c3cb9'=>"用户注册",
 )
 
 ?>

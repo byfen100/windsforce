@@ -30,6 +30,8 @@ return array(
 '9f68a8079815033b88fcc6601abd6642'=>"積分",
 '66eeacd93a7c1bda93906fe908ad11a0'=>"全選",
 '38cf16f2204ffab8a6e0187070558721'=>"確定",
+'1fbfe6074ac1e305a48c0cc5ec9ccbba'=>"該用戶暫時沒有設置簽名",
+'e804a9a2158eb06e6609b0b7ac9c3cb9'=>"用戶註冊",
 )
 
 ?>

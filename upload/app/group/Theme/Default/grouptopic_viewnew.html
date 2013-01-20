@@ -67,7 +67,7 @@ $(function(){
 									<!--{:Grouptopic_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 									<!--{:Grouptopic_Extend::grouptopicHighlight($oGrouptopic->grouptopic_color,true)}-->
 									<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oGrouptopic->user_id)==0}-->&nbsp;
-									<span style="margin-top:10px;"><a href="<!--{if $oGrouptopic['grouptopic_isanonymous']=='0' || ($oGrouptopic['grouptopic_isanonymous']==1 && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}--><!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}--><!--{d*else}-->javascript:void(0);<!--{/if}-->" class="btn btn-inverse btn-mini" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>
+									<span style="margin-top:10px;"><a href="<!--{if $oGrouptopic['grouptopic_isanonymous']=='0' || ($oGrouptopic['grouptopic_isanonymous']==1 && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}--><!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}--><!--{d*else}-->javascript:void(0);<!--{/if}-->" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>
 									<!--{/if}-->
 								</div>
 							</div>
@@ -235,7 +235,7 @@ $(function(){
 											</em>
 											<p class="right">
 												<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oComment->user_id)==0}-->
-												<span style="margin-top:10px;"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" class="btn btn-inverse btn-mini" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>&nbsp;
+												<span style="margin-top:10px;"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>&nbsp;
 												<!--{/if}-->
 												<a href="" onclick=""><!--<lang package='Template/Grouptopic'>-->举报<!--</lang>--></a>
 												<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group)}-->

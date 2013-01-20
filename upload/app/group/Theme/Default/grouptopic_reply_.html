@@ -118,7 +118,7 @@ function insertGrouptopicmusic(sContent){
 					
 					<!--{if !isset($nDialog) && !isset($oEditGrouptopiccomment)}-->
 					<div class="form-actions">
-						<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" value="<!--<lang package='Template/Grouptopic'>-->发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>&nbsp;
+						<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" value="<!--<lang package='Template/Grouptopic'>-->发布<!--</lang>-->" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>&nbsp;
 						<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->" class="btn"><!--<lang package='Template/Grouptopic'>-->返回帖子<!--</lang>--></a>
 					</div>
 					<!--{/if}-->

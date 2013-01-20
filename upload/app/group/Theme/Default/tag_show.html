@@ -108,7 +108,7 @@
 						<ul>
 							<!--{if is_array($arrHottags)}-->
 							<!--<foreach for=arrHottags value=oHottag>-->
-							<li><a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oHottag['grouptopictag_name']),array(),true)}-->" title="<!--<lang package='Template/Taglist'>-->帖子数量<!--</lang>--> <!--{$oHottag['grouptopictag_count']}-->"><!--{$oHottag['grouptopictag_name']}--></a></li>
+							<li><a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oHottag['grouptopictag_name']),array(),true)}-->" title="<!--<lang package='Template/Taglist'>-->帖子数量<!--</lang>--> <!--{$oHottag['grouptopictag_count']}-->" class="common_tag"><!--{$oHottag['grouptopictag_name']}--></a></li>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<li><!--<lang package='Template/Taglist'>-->暂时没有发现任何标签<!--</lang>--></li>
