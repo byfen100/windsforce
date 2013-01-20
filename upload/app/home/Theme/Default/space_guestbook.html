@@ -143,7 +143,8 @@ function insertUserguestbookmusic(sContent){
 				</table>
 
 				<div class="common_usersign">
-					<!--{$oUserInfo:user_sign|Core_Extend+usersign}-->
+					<!--{~$sUsersign=UserModel::getUsernameById($oUserInfo['user_id'],'user_sign')}-->
+					<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 				</div>
 
 				<!--{# 评论表单}-->
