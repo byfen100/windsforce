@@ -1531,4 +1531,56 @@ WINDSFORCE;
 		return $bCheck;
 	}
 
+	/**
+	 * 后台函数生成
+	 *
+	 * < 参数 >
+	 * < $sFmain='app/config?id=3&controller=grouptopic';
+	 *   $sHeader=4; 
+	 *   $sMenu='fmenu=4&fmenucurid=1&fmenutitle=testtitle' || 4; >
+	 */
+	static public function adminUrl($sFmain,$nFheader='',$sFmenu=''){
+		if($sFmain){
+			$sController=$sAction=$sExtend='';
+
+			if(strpos($sFmain,'?')!==false){
+				$arrTemp=explode('?',$sFmain);
+				
+				if(isset($arrTemp[1])){
+					$sExtend=$arrTemp[1];
+				}
+
+				$sFmain=$arrTemp[0];
+			}
+
+			if(strpos($sFmain,'/')!==false){
+				$arrTemp=explode('/',$sFmain);
+
+				if(isset($arrTemp[1])){
+					$sAction=$arrTemp[1];
+				}
+
+				$sFmain=$arrTemp[0];
+			}
+
+			$sController=$sFmain;
+
+			if(empty($sAction)){
+				$sAction='index';
+			}
+
+			if(empty($nFheader)){
+				$nFheader=4;
+			}
+			
+			if(empty($sFmenu)){
+				$sFmenu=4;
+			}
+			
+			return Core_Extend::windsforceOuter("fmainc={$sController}&fmaina={$sAction}".($sExtend?'&'.$sExtend:'').(!empty($nFheader)?'&fheader='.$nFheader:'').'&'.(Core_Extend::isPostInt($sFmenu)?'fmenu='.$sFmenu:$sFmenu),'admin.php');
+		}else{
+			return Core_Extend::windsforceOuter('','admin.php');
+		}
+	}
+
 }

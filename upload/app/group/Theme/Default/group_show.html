@@ -62,7 +62,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 							<!--{if Core_Extend+isAdmin()}-->
 							<span class="pipe">|</span>
 							<img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;
-							<a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0','admin.php')}-->" target="_blank">主题回收站</a>&nbsp;<span><a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0','admin.php')}-->" target="_blank" <!--{if $nTotalRecyclebinGrouptopic>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinGrouptopic}-->)</a></span>
+							<a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank">主题回收站</a>&nbsp;<span><a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank" <!--{if $nTotalRecyclebinGrouptopic>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinGrouptopic}-->)</a></span>
 							<!--{/if}-->
 							</span>
 							<!--{/if}-->
