@@ -72,4 +72,56 @@ class Groupdata_Extend{
 		return $arrGrouphottags;
 	}
 
+	static public function getGroup($oGroupcategeory){
+		if(!$oGroupcategeory['groupcategory_groupmaxnum']){
+			$nNum=$GLOBALS['_cache_']['group_option']['group_indexgroupmaxnum'];
+			
+			if($nNum<1){
+				$nNum=1;
+			}
+		}else{
+			$nNum=$oGroupcategeory['groupcategory_groupmaxnum'];
+		}
+
+		// 查询条件
+		$arrWhere=array();
+		$arrWhere['group_status']=1;
+		$arrWhere['group_isaudit']=1;
+
+		$arrGroupcategoryindexs=GroupcategoryindexModel::F('groupcategory_id=?',$oGroupcategeory['groupcategory_id'])->getAll();
+		if(is_array($arrGroupcategoryindexs)){
+			$arrTempdata=array();
+			foreach($arrGroupcategoryindexs as $oGroupcategoryindex){
+				$arrTempdata[]=$oGroupcategoryindex['group_id'];
+			}
+			
+			$arrWhere['group_id']=array('in',$arrTempdata);
+		}else{
+			$arrGroups='';
+		}
+
+		// 排序
+		switch($oGroupcategeory['groupcategory_groupsorttype']){
+			case 1:
+				$sOrdertype='update_dateline DESC';
+				break;
+			case 2:
+				$sOrdertype='group_totaltodaynum DESC';
+				break;
+			case 3:
+				$sOrdertype='group_usernum DESC';
+				break;
+			case 0:
+			default:
+				$sOrdertype='group_isrecommend DESC,create_dateline DESC';
+				break;
+		}
+
+		if(!isset($arrGroups)){
+			$arrGroups=GroupModel::F()->where($arrWhere)->order($sOrdertype)->limit(0,$nNum)->getAll();
+		}
+
+		return $arrGroups;
+	}
+
 }

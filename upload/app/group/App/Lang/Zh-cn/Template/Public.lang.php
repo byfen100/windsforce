@@ -57,6 +57,10 @@ return array(
 '274243fdb8dfb3a0687baa5e2464eefb'=>"更多标签",
 '3b150c147ad9457b08474bc9ccdb28fa'=>"子分类",
 'a3add62c048dac4d57fa66c11947892e'=>"最后回复",
+'a14e673af3ce74e3e1fa161bce82506f'=>"更多小组",
+'9174f83d98c6791aac36eb8765f6cbae'=>"发贴时间",
+'50ae2d71d519f5809152ecb7df8d007f'=>"今日发帖量",
+'2e51abf4b110b467232fd24f20d9d58a'=>"用户数量",
 )
 
 ?>

@@ -39,11 +39,10 @@ class GroupcategoryModel extends CommonModel{
 	}
 
 	public function groupcategoryParentId(){
-		$nGroupcategoryId=G::getGpc('id');
+		$nGroupcategoryId=G::getGpc('value');
 		$nGroupcategoryParentid=G::getGpc('groupcategory_parentid');
-		if(($nGroupcategoryId==$nGroupcategoryParentid)
-				and !empty($nGroupcategoryId)
-				and !empty($nGroupcategoryParentid)){
+
+		if(!empty($nGroupcategoryId) && !empty($nGroupcategoryParentid) && $nGroupcategoryId==$nGroupcategoryParentid){
 			return false;
 		}
 

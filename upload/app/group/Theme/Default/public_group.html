@@ -18,6 +18,12 @@
 					<button class="close" data-dismiss="alert">&times;</button>
 					<!--<lang package='Template/Public'>-->这里列出分类或者全部的小组<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('group://public/group')}-->"><!--<lang package='Template/Public'>-->查看全部<!--</lang>--></a></b>
 				</div>
+
+				<ul class="nav nav-pills">
+					<li <!--{if $nType==0}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://public/group'.(isset($oParentGroupcategory)?'?cid='.$oParentGroupcategory['groupcategory_id']:''))}-->"><!--<lang package='Template/Public'>-->发贴时间<!--</lang>--></a></li>
+					<li <!--{if $nType==1}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://public/group?t=1'.(isset($oParentGroupcategory)?'&cid='.$oParentGroupcategory['groupcategory_id']:''))}-->"><!--<lang package='Template/Public'>-->今日发帖量<!--</lang>--></a></li>
+					<li <!--{if $nType==2}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://public/group?t=2'.(isset($oParentGroupcategory)?'&cid='.$oParentGroupcategory['groupcategory_id']:''))}-->"><!--<lang package='Template/Public'>-->用户数量<!--</lang>--></a></li>
+				</ul>
 				
 				<div id="groupcategory" class="commonbox_mini commonbox_mini_gray">
 					<h2><!--<lang package='Template/Public'>-->小组分类<!--</lang>-->&nbsp;<!--{if isset($oParentGroupcategory)}-->

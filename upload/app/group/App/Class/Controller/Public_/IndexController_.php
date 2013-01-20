@@ -48,17 +48,17 @@ class IndexController extends Controller{
 		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 
 		// 推荐小组
-		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_recommendgroupnum'])->getAll();
+		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1 AND group_isaudit=1',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_recommendgroupnum'])->getAll();
 
 		$this->assign('arrRecommendgroups',$arrRecommendgroups);
 
 		// 最新小组
-		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_newgroupnum'])->getAll();
+		$arrNewgroups=GroupModel::F('group_status=? AND group_isaudit=1',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_newgroupnum'])->getAll();
 		
 		$this->assign('arrNewgroups',$arrNewgroups);
 
 		// 24小时热门小组
-		$arrHotgroups=GroupModel::F()->order('group_totaltodaynum DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_hotgroupnum'])->getAll();
+		$arrHotgroups=GroupModel::F('group_status=? AND group_isaudit=1',1)->order('group_totaltodaynum DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_hotgroupnum'])->getAll();
 		
 		$this->assign('arrHotgroups',$arrHotgroups);
 

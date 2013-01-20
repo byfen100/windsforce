@@ -26,13 +26,15 @@ class GroupmainController extends InitController{
 	public function update_option(){
 		$arrOptions=G::getGpc('options','P');
 
-		// 对火帖配置进行判断一下
-		if($arrOptions['group_hottopic2_views']>$arrOptions['group_hottopic3_views'] || $arrOptions['group_hottopic2_views']<$arrOptions['group_hottopic1_views']){
-			$this->E(Dyhb::L('火帖浏览次数配置参数没有依次递增','__APP_ADMIN_LANG__@Controller/Groupoption'));
-		}
+		if(isset($arrOptions['group_hottopic2_views'])){
+			// 对火帖配置进行判断一下
+			if($arrOptions['group_hottopic2_views']>$arrOptions['group_hottopic3_views'] || $arrOptions['group_hottopic2_views']<$arrOptions['group_hottopic1_views']){
+				$this->E(Dyhb::L('火帖浏览次数配置参数没有依次递增','__APP_ADMIN_LANG__@Controller/Groupoption'));
+			}
 
-		if($arrOptions['group_hottopic2_comments']>$arrOptions['group_hottopic3_comments'] || $arrOptions['group_hottopic2_comments']<$arrOptions['group_hottopic1_comments']){
-			$this->E(Dyhb::L('火帖回帖次数配置参数没有依次递增','__APP_ADMIN_LANG__@Controller/Groupoption'));
+			if($arrOptions['group_hottopic2_comments']>$arrOptions['group_hottopic3_comments'] || $arrOptions['group_hottopic2_comments']<$arrOptions['group_hottopic1_comments']){
+				$this->E(Dyhb::L('火帖回帖次数配置参数没有依次递增','__APP_ADMIN_LANG__@Controller/Groupoption'));
+			}
 		}
 
 		foreach($arrOptions as $sKey=>$val){

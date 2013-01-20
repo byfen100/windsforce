@@ -3,20 +3,22 @@
 			<div class="span9">
 				<div id="groupcategory" class="commonbox_mini commonbox_mini_gray">
 					<h2><!--<lang package='Template/Public'>-->小组分类<!--</lang>-->&nbsp;<!--{if isset($oParentGroupcategory)}-->
-					-&nbsp;<a href="<!--{:Dyhb::U('group://public/index?cid='.$oParentGroupcategory['groupcategory_id'])}-->"><!--{$oParentGroupcategory['groupcategory_name']}--></a>
-					&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->返回全部小组分类<!--</lang>-->"><i class="icon-share-alt"></i></a><!--{/if}-->
+					-&nbsp;<a href="<!--{:Dyhb::U('group://public/index?cid='.$oParentGroupcategory['groupcategory_id'])}-->"><!--{$oParentGroupcategory['groupcategory_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://public/group?cid='.$oParentGroupcategory['groupcategory_id'])}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-th-list"></i></a>&nbsp;&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->返回全部小组分类<!--</lang>-->"><i class="icon-share-alt"></i></a><!--{/if}-->
 					</h2>
 					<!--{if is_array($arrGroupcategorys)}-->
 					<ul>
 						<!--<foreach for=arrGroupcategorys value=oGroupcategory>-->
 						<!--{~$arrChildGroupcategorys=$TheController->get_childGroupcategory($oGroupcategory['groupcategory_id'])}-->
 						<li>
-							<label><b><a href="<!--{:Dyhb::U('group://public/index?cid='.$oGroupcategory['groupcategory_id'])}-->"><!--{$oGroupcategory['groupcategory_name']}--></a></b><span class="pipe">|</span>
+							<label><b><a href="<!--{:Dyhb::U('group://public/index?cid='.$oGroupcategory['groupcategory_id'])}-->"><!--{$oGroupcategory['groupcategory_name']}--></a></b>
+							<a href="<!--{:Dyhb::U('group://public/group?cid='.$oGroupcategory['groupcategory_id'])}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-th"></i></a>
+							<span class="pipe">|</span>
 							</label>
 							<span class="childgroupcategory">
 								<!--{if is_array($arrChildGroupcategorys)}-->
 								<!--<foreach for=arrChildGroupcategorys value=oChildGroupcategory>-->
 								<a href="<!--{:Dyhb::U('group://public/index?cid='.$oChildGroupcategory['groupcategory_id'])}-->"><!--{$oChildGroupcategory['groupcategory_name']}--></a>
+								<a href="<!--{:Dyhb::U('group://public/group?cid='.$oChildGroupcategory['groupcategory_id'])}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-star"></i></a>&nbsp;
 								<!--</foreach>-->
 								<!--{d*else}-->
 								<!--<lang package='Template/Public'>-->暂时没有发现任何小组子分类<!--</lang>-->
@@ -35,7 +37,7 @@
 				</div>
 
 				<!--{if isset($oParentGroupcategory)}-->
-				<!--{~$arrGroups=$oParentGroupcategory->group}-->
+				<!--{~$arrGroups=Groupdata_Extend::getGroup($oParentGroupcategory)}-->
 				<div id="groupcategory_groups" class="commonbox_mini clearfix">
 					<h2 class="title"><!--<lang package='Template/Public'>-->分类小组<!--</lang>-->&nbsp;-&nbsp;<a href="<!--{:Dyhb::U('group://public/index?cid='.$oParentGroupcategory['groupcategory_id'])}-->"><!--{$oParentGroupcategory['groupcategory_name']}--></a>
 					&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->返回全部小组分类<!--</lang>-->"><i class="icon-share-alt"></i></a></h2>

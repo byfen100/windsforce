@@ -108,7 +108,8 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_hottopic3_comments', '100'),
 ('group_hottopic1_views', '200'),
 ('group_hottopic2_views', '500'),
-('group_hottopic3_views', '1000');
+('group_hottopic3_views', '1000'),
+('group_indexgroupmaxnum', '6');
 
 -- --------------------------------------------------------
 
@@ -125,8 +126,8 @@ INSERT INTO `#@__group` (`group_id`, `user_id`, `group_name`, `group_nikename`, 
 -- 转存表中的数据 `windsforce_groupcategory`
 --
 
-INSERT INTO `#@__groupcategory` (`groupcategory_id`, `groupcategory_name`, `groupcategory_parentid`, `groupcategory_count`, `groupcategory_sort`, `update_dateline`, `create_dateline`) VALUES
-(1, 'WindsForce', 0, 1, 0, 1355499162, 1355499102);
+INSERT INTO `#@__groupcategory` (`groupcategory_id`, `groupcategory_name`, `groupcategory_parentid`, `groupcategory_count`, `groupcategory_sort`, `update_dateline`, `create_dateline`, `groupcategory_groupmaxnum`, `groupcategory_groupsorttype`) VALUES
+(1, 'WindsForce', 0, 1, 0, 1355499162, 1355499102, 0, 0);
 
 -- --------------------------------------------------------
 

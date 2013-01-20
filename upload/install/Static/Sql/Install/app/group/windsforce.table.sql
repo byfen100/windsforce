@@ -73,6 +73,8 @@ CREATE TABLE `#@__groupcategory` (
   `groupcategory_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '群组分类排序名字',
   `update_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '最后更新时间',
   `create_dateline` int(10) NOT NULL COMMENT '群组创建时间',
+  `groupcategory_groupmaxnum` tinyint(3) NOT NULL DEFAULT '0' COMMENT '首页小组最大数量',
+  `groupcategory_groupsorttype` tinyint(1) NOT NULL DEFAULT '0' COMMENT '首页小组排序：0创建时间 1：最后活动时间 2：今日发帖数 3：小组用户数',
   PRIMARY KEY (`groupcategory_id`),
   KEY `create_dateline` (`create_dateline`),
   KEY `groupcategory_parentid` (`groupcategory_parentid`),
