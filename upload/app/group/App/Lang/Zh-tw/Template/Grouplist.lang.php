@@ -14,6 +14,8 @@ return array(
 '5a517d83a8dcf5a3cde4d7c80fc27584'=>"暫時沒有發現任何熱門小組",
 '8cfef1099ae4a342bbf914c4c424bd31'=>"共有",
 'cd3995b738c1f4bd0304afedb76e639a'=>"人關注了此小組",
+'6af9b1befa88d75df1d6e63ed3862f98'=>"系統推薦小組",
+'50ae2d71d519f5809152ecb7df8d007f'=>"今日發帖量",
 )
 
 ?>

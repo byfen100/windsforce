@@ -29,7 +29,14 @@ class GroupoptionModel extends CommonModel{
 		$oOptionModel->groupoption_value=G::html($sOptionValue);
 		$oOptionModel->save(0,'update');
 
-		GroupCache_Extend::updateCache("option");
+		if($oOptionModel->isError()){
+			Dyhb::E($oOptionModel->getErrorMessage());
+		}
+
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('group_option');
 	}
 
 }

@@ -17,6 +17,10 @@ class NewtopicController extends Controller{
 			$nNum=1;
 		}
 
+		if($nNum>100){
+			$nNum=100;
+		}
+
 		// 获取帖子
 		$arrGrouptopics=GrouptopicModel::F('grouptopic_status=? AND grouptopic_isaudit=1',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
 

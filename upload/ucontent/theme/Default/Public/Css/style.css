@@ -105,6 +105,8 @@ Tags: admin, light
 [CURSCRIPT=home::public::index,home::stat::explore]
 .message-box{border:1px solid #EEEEEE;padding:10px;margin-bottom:20px;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;border-radius: 5px 5px 5px 5px;}
 .site_introduction h1{color:#000;font-size:16px;}
+.public_todaynum{color:{NOTICETEXT_COLOR};}
+a.public_todaynum{color:{NOTICETEXT_COLOR};}
 [/CURSCRIPT]
 
 /**===============================
@@ -157,6 +159,7 @@ Tags: admin, light
 .grouplist_txt {overflow:hidden;*zoom:1;background:#EEEEEE;padding:0px 3px 0px 8px;-webkit-border-radius:3px 3px 3px 3px;-moz-border-radius:3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;}
 .grouplist_txt:hover{background:#f5f5f5;}
 .grouplist_txt h3{margin-right:4px;display:inline;}
+.grouplist_txt h3 .grouplist_todaynum{font-size:13px;font-weight:bold;color:{NOTICETEXT_COLOR};}
 .grouplist_txt span {color:#999;}
 .grouplist_description {margin-top:5px;color:#666;}
 .grouplist_txt h3 a{font-size:13px;}

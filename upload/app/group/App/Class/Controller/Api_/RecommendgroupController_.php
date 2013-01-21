@@ -17,6 +17,14 @@ class RecommendgroupController extends Controller{
 			$nNum=1;
 		}
 
+		if($nNum>30){
+			$nNum=30;
+		}
+
+		if(empty($nCutNum)){
+			$nCutNum=30;
+		}
+
 		// 获取小组
 		$arrGroups=GroupModel::F('group_isrecommend=? AND group_status=1 AND group_isaudit=1',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
 		

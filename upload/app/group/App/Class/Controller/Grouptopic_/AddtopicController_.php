@@ -87,6 +87,8 @@ class AddtopicController extends Controller{
 		// 更新小组帖子数量和最后更新
 		$nTopicnum=GrouptopicModel::F('group_id=?',$oGrouptopic->group_id)->getCounts();
 		$oGroup->group_topicnum=$nTopicnum;
+		$oGroup->group_topictodaynum=$oGroup->group_topictodaynum+1;
+		$oGroup->group_totaltodaynum=$oGroup->group_topictodaynum+$oGroup->group_topiccommenttodaynum;
 
 		$arrLatestData=array(
 			'topictime'=>$oGrouptopic->create_dateline,
@@ -101,6 +103,10 @@ class AddtopicController extends Controller{
 		if($oGroup->isError()){
 			$this->E($oGroup->getErrorMessage());
 		}
+
+		// 保存小组今日数据
+		GroupoptionModel::uploadOption('group_topictodaynum',$GLOBALS['_cache_']['group_option']['group_topictodaynum']+1);
+		GroupoptionModel::uploadOption('group_totaltodaynum',$GLOBALS['_cache_']['group_option']['group_totaltodaynum']+1);
 
 		// 跳转到帖子
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);

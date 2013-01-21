@@ -100,6 +100,7 @@ return array(
 '4fbfb332118ee38140926ffb8c085aad'=>"回帖内容",
 '98b863dd96e33efeb4c6fc02cd30ca9b'=>"帖子回复",
 '68c93aba3c1beb75d17f92569c3f1f79'=>"发表回复",
+'320d12544f9d83612f7f701a2cf039ad'=>"打开侧边栏",
 )
 
 ?>

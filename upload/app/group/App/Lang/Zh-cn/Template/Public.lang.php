@@ -61,6 +61,8 @@ return array(
 '9174f83d98c6791aac36eb8765f6cbae'=>"发贴时间",
 '50ae2d71d519f5809152ecb7df8d007f'=>"今日发帖量",
 '2e51abf4b110b467232fd24f20d9d58a'=>"用户数量",
+'24ad8d8490fce41a9725e794160ffbbc'=>"今日发贴",
+'8ac482a5add86cddb48f0b1c91e87af1'=>"回帖",
 )
 
 ?>

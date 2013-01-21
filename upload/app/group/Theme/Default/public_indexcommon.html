@@ -16,6 +16,11 @@ function completeSet(data,status){
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Public'>-->首页<!--</lang>--></li>
+			<li style='width:auto;text-align:right;float:right;overflow:hidden;'>
+				<!--<lang package='Template/Public'>-->今日发贴<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_cache_']['group_option']['group_totaltodaynum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_cache_']['group_option']['group_totaltodaynum']}--></b><span class='divider'>=</span>
+				<!--<lang package='Template/Public'>-->主题<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_cache_']['group_option']['group_topictodaynum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_cache_']['group_option']['group_topictodaynum']}--></b><span class='divider'>+</span>
+				<!--<lang package='Template/Public'>-->回帖<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_cache_']['group_option']['group_topiccommenttodaynum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_cache_']['group_option']['group_topiccommenttodaynum']}--></b>
+			</li>
 		</ul>
 
 		<div class="row">

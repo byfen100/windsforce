@@ -18,6 +18,10 @@ class HottopicController extends Controller{
 			$nNum=1;
 		}
 
+		if($nNum>100){
+			$nNum=100;
+		}
+
 		if(empty($nCutNum)){
 			$nCutNum=20;
 		}

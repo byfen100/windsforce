@@ -5,8 +5,8 @@
 		<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
 	</a>
 	<div class="grouplist_txt">
-		<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
-		<span><!--{$oGroup['group_usernum']}--><!--<lang package='Template/Grouplist'>-->人加入<!--</lang>--></span>
+		<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a><!--{if $oGroup['group_totaltodaynum']}-->&nbsp;<span class="grouplist_todaynum" title="<!--<lang package='Template/Grouplist'>-->今日发帖量<!--</lang>-->">(<!--{$oGroup['group_totaltodaynum']}-->)</span><!--{/if}--></h3>
+		<span>&nbsp;<!--{$oGroup['group_usernum']}--><!--<lang package='Template/Grouplist'>-->人加入<!--</lang>--></span>
 		<p class="grouplist_description"><!--{$oGroup['group_listdescription']|G+subString=0,$nCutNum}--></p>
 	</div>
 </li>

@@ -109,7 +109,10 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_hottopic1_views', '200'),
 ('group_hottopic2_views', '500'),
 ('group_hottopic3_views', '1000'),
-('group_indexgroupmaxnum', '6');
+('group_indexgroupmaxnum', '6'),
+('group_topictodaynum', '0'),
+('group_topiccommenttodaynum', '0'),
+('group_totaltodaynum', '0');
 
 -- --------------------------------------------------------
 

@@ -97,6 +97,9 @@
 													<!--{elseif $nGroupuser==1}-->
 													&nbsp;<span id="listgroup_<!--{$oGroup['group_id']}-->"class="commonjoinleave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->,'listgroup_<!--{$oGroup['group_id']}-->');"><!--<lang package='Template/Grouplist'>-->退出<!--</lang>--></a></span>
 													<!--{/if}-->
+													<!--{if $oGroup['group_isrecommend']}-->
+													<span>&nbsp;<i class="icon-thumbs-up" title="<!--<lang package='Template/Grouplist'>-->系统推荐小组<!--</lang>-->"></i></span>
+													<!--{/if}-->
 												</td>
 											</tr>
 											<!--{if $oGroup->group_listdescription}-->

@@ -99,6 +99,9 @@ class AddreplyController extends Controller{
 		
 		$oGroup->group_latestcomment=serialize($arrLatestData);
 		$oGroup->group_topiccomment=$nCommnum;
+		$oGroup->group_topiccommenttodaynum=$oGroup->group_topiccommenttodaynum+1;
+		$oGroup->group_totaltodaynum=$oGroup->group_topictodaynum+$oGroup->group_topiccommenttodaynum;
+		
 		$oGroup->save(0,'update');
 
 		if($oGroup->isError()){
@@ -112,6 +115,10 @@ class AddreplyController extends Controller{
 		if($oGrouptopic->isError()){
 			$this->E($oGrouptopic->getErrorMessage());
 		}
+
+		// 保存小组今日数据
+		GroupoptionModel::uploadOption('group_topiccommenttodaynum',$GLOBALS['_cache_']['group_option']['group_topiccommenttodaynum']+1);
+		GroupoptionModel::uploadOption('group_totaltodaynum',$GLOBALS['_cache_']['group_option']['group_totaltodaynum']+1);
 
 		$nTotalComment=GrouptopiccommentModel::F('grouptopic_id=?',$oGrouptopic->grouptopic_id)->getCounts();
 		$nPage=ceil($nTotalComment/$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum']);

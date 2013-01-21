@@ -29,7 +29,14 @@ class WapoptionModel extends CommonModel{
 		$oOptionModel->wapoption_value=G::html($sOptionValue);
 		$oOptionModel->save(0,'update');
 
-		WapCache_Extend::updateCache("option");
+		if($oOptionModel->isError()){
+			Dyhb::E($oOptionModel->getErrorMessage());
+		}
+
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('wap_option');
 	}
 
 }

@@ -40,11 +40,11 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 			</ul>
 
 			<!--<include file="group+header" />-->
-			
+
 			<div class="span12">
 				<div class="row">
 					<div class="span9">
-						<h4><!--<lang package='Template/Group'>-->小组介绍<!--</lang>--></h4>
+						<h4><!--<lang package='Template/Group'>-->小组介绍<!--</lang>--><span class="groupshow_todayinfo">(&nbsp;<!--<lang package='Template/Group'>-->今日<!--</lang>-->&nbsp;<b class="groupshow_todaynum"><!--{$oGroup['group_totaltodaynum']}--></b><span class="pipe">=</span><!--<lang package='Template/Group'>-->主题<!--</lang>-->&nbsp;<b class="groupshow_todaynum"><!--{$oGroup['group_topictodaynum']}--></b><span class="pipe">+</span><!--<lang package='Template/Group'>-->回帖<!--</lang>-->&nbsp;<b class="groupshow_todaynum"><!--{$oGroup['group_topiccommenttodaynum']}--></b>&nbsp;)</span></h4>
 						<div class="group_description" style="background-color: #F8F8F8;margin: 10px 0 15px;padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
 							<div class="group_createdateline" style="margin-bottom:10px;">
 								<b><!--<lang package='Template/Group'>-->创建时间<!--</lang>--></b>:&nbsp;<span class="label label-success"><!--{$oGroup['create_dateline']|date='Y-m-d',**}--></span>
@@ -350,7 +350,23 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 						</div>
 
 						<div class="commonbox" style="margin-top:300px;">
-							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组<!--</lang>--><!--{$oGroup['group_roleleader']}--></div>
+							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组统计<!--</lang>--></div>
+							<div class="commonlist">
+								<ul id="group_info_box" class="group_info_box">
+									<li><!--<lang package='Template/Group'>-->主题数<!--</lang>-->&nbsp;<span class="right"><b><!--{$oGroup['group_topicnum']}--></b></span></li>
+									<li><!--<lang package='Template/Group'>-->回帖数<!--</lang>-->&nbsp;<span class="right"><b><!--{$oGroup['group_topiccomment']}--></b></span></li>
+									<li><!--<lang package='Template/Group'>-->成员数<!--</lang>-->&nbsp;<span class="right"><b><a href="<!--{:Dyhb::U('group://group/user?gid='.$oGroup['group_id'])}-->"><!--{$oGroup['group_usernum']}--></a></b></span></li>
+									<li><!--<lang package='Template/Group'>-->浏览权限<!--</lang>-->&nbsp;<span class="right"><!--{if $oGroup['group_isopen']==1}--><!--<lang package='Template/Group'>-->完全开放<!--</lang>--><!--{d*else}--><!--<lang package='Template/Group'>-->仅组员<!--</lang>--><!--{/if}--></span></li>
+									<li><!--<lang package='Template/Group'>-->发贴方式<!--</lang>-->&nbsp;<span class="right"><!--{if $oGroup['group_ispost']=='0'}--><!--<lang package='Template/Group'>-->允许会员发帖<!--</lang>--><!--{elseif $oGroup['group_ispost']==1}--><!--<lang package='Template/Group'>-->不允许会员发帖<!--</lang>--><!--{d*else}--><!--<lang package='Template/Group'>-->自由发帖<!--</lang>--><!--{/if}--></span></li>
+									<li><!--<lang package='Template/Group'>-->是否允许加入<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $oGroup['group_joinway']=='0'}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
+									<li><!--<lang package='Template/Group'>-->发贴不审核<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $oGroup['group_audittopic']=='0'}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
+									<li><!--<lang package='Template/Group'>-->回帖不审核<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $oGroup['group_auditcomment']=='0'}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="commonbox">
+							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组<!--</lang>--><!--{$oGroup['group_roleleader']}-->&nbsp;<b style="font-size:12px;">(<!--{if is_array($arrGroupleaders)}--><!--{$arrGroupleaders|count}--><!--{d*else}-->0<!--{/if}-->)</b></div>
 							<p>
 								<ul class="thumbnails">
 									<!--{if is_array($arrGroupleaders)}-->
@@ -370,7 +386,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 						</div>
 
 						<div class="commonbox">
-							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组<!--</lang>--><!--{$oGroup['group_roleadmin']}--></div>
+							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组<!--</lang>--><!--{$oGroup['group_roleadmin']}-->&nbsp;<b style="font-size:12px;">(<!--{if is_array($arrGroupadmins)}--><!--{$arrGroupadmins|count}--><!--{d*else}-->0<!--{/if}-->)</b></div>
 							<p>
 								<ul class="thumbnails">
 									<!--{if is_array($arrGroupadmins)}-->
@@ -390,7 +406,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 						</div>
 
 						<div class="commonbox">
-							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->最新<!--</lang>--><!--{$oGroup['group_roleuser']}-->&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&recommend=1')}-->" title="<!--<lang package='Template/Group'>-->更多成员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->最新<!--</lang>--><!--{$oGroup['group_roleuser']}-->&nbsp;<b style="font-size:12px;">(<!--{$oGroup['group_usernum']}-->)</b>&nbsp;&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&recommend=1')}-->" title="<!--<lang package='Template/Group'>-->更多成员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 							<p>
 								<ul class="thumbnails">
 									<!--{if is_array($arrGroupusers)}-->
