@@ -70,4 +70,16 @@ class MayknowController extends Controller{
 		$this->display('friend+mayknow');
 	}
 
+	public function mayknow_title_(){
+		return Dyhb::L('可能认识的人','Controller/Friend');
+	}
+
+	public function mayknow_keywords_(){
+		return $this->mayknow_title_();
+	}
+
+	public function mayknow_description_(){
+		return $this->mayknow_title_();
+	}
+
 }

@@ -51,4 +51,16 @@ class SearchController extends Controller{
 		$this->display('friend+search');
 	}
 
+	public function search_title_(){
+		return Dyhb::L('查找好友','Controller/Friend');
+	}
+
+	public function search_keywords_(){
+		return $this->search_title_();
+	}
+
+	public function search_description_(){
+		return $this->search_title_();
+	}
+
 }

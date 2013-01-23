@@ -114,4 +114,16 @@ class SearchresultController extends Controller{
 		return Profile_Extend::getGender($nGender);
 	}
 
+	public function searchresult_title_(){
+		return Dyhb::L('好友搜索结果','Controller/Friend');
+	}
+
+	public function searchresult_keywords_(){
+		return $this->searchresult_title_();
+	}
+
+	public function searchresult_description_(){
+		return $this->searchresult_title_();
+	}
+
 }
