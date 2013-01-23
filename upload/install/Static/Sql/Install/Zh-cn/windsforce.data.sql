@@ -98,7 +98,7 @@ INSERT INTO `#@__homeoption` (`homeoption_name`, `homeoption_value`) VALUES
 ('homefreshcomment_substring_num', '80'),
 ('homefreshtitle_substring_num', '36'),
 ('newuser_list_num', '36'),
-('topuser_num', '36'),
+('topuser_num', '12'),
 ('explorefresh_list_num', '20');
 
 -- --------------------------------------------------------
