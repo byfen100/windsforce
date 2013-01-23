@@ -6,7 +6,7 @@
 <!--{script}-->
 $(function(){
 	editor=loadEditorThin('grouptopiccomment_message');
-	$('a.face-icon').showEmotion({input:editor});
+	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 });
 
 function addGrouptopiccomment(){
@@ -47,7 +47,7 @@ function insertGrouptopicmusic(sContent){
 			<li><a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li>帖子回复</li>
 		</ul>
-		
+
 		<div class="row">
 			<div class="span12">
 				<ul id="myTab" class="nav nav-tabs">
@@ -66,11 +66,13 @@ function insertGrouptopicmusic(sContent){
 						<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
 						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
 					</div>
-					<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="16" style="width:100%;"></textarea>
+					<div id="emotion_parentcontainer">
+						<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="16" style="width:100%;"></textarea>
+					</div>
 					<!--{d*else}-->
 					<div style="background:#F5F5F5;padding:10px;">
 						<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:90px 0">
-							<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a> | 
+							<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a> |
 							<a href="<!--{:Dyhb::U('home://public/register')}-->">用户注册</a>
 						</div>
 					</div>

@@ -28,7 +28,7 @@ $(function(){
 	
 	<!--{if $GLOBALS['___login___']!==false}-->
 	editor=loadEditorThin('grouptopiccomment_message');
-	$('a.face-icon').showEmotion({input:editor});
+	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 	
 	$('.grouptopiccomment_quickmessage').autoResize({
 		onResize:function(){
@@ -47,7 +47,7 @@ $(function(){
 		$("#grouptopiccomment_reply").css("display","block");
 	});
 
-	$('.grouptopiccontent_box').listEmotion();
+	$('.grouptopiccontent_box').emotionsToHtml();
 });
 
 function login_handle(data,status){
@@ -512,7 +512,9 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 							<td class="floor_right">
 								<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form" class="grouptopiccomment_form">
 									<!--{if $GLOBALS['___login___']!==false}-->
-									<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="8" style="width:100%;"></textarea>
+									<div id="emotion_parentcontainer">
+										<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="8" style="width:100%;"></textarea>
+									</div>
 									<div id="grouptopiccomment-media-box" class="common-media-box none">
 										<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a>
 										<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>

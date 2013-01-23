@@ -952,18 +952,14 @@ WINDSFORCE;
 
 	static public function emotion(){
 		$sLangname=LANG_NAME?LANG_NAME:'Zh-cn';
-		$sLangname=strtolower($sLangname);
-		$sLangname=str_replace('-','_',$sLangname);
 
 		$sPublic=__PUBLIC__;
-		$sEmotionLang=is_file(WINDSFORCE_PATH.'/Public/js/ffemotion/js/'.$sLangname.'.js')?$sLangname:'zh-cn';
+		$sEmotionLang=is_file(WINDSFORCE_PATH.'/Public/js/emotions/language/'.$sLangname.'.js')?$sLangname:'Zh-cn';
 
 		return <<<WINDSFORCE
-		<link href="{$sPublic}/js/ffemotion/css/emotion.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/{$sEmotionLang}.js"></script>
-		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/swfobject.js"></script>
-		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/emotion_data.js"></script>
-		<script type="text/javascript" src="{$sPublic}/js/ffemotion/js/emotion.js"></script>
+		<link href="{$sPublic}/js/emotions/emoticon.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{$sPublic}/js/emotions/language/{$sEmotionLang}.js"></script>
+		<script type="text/javascript" src="{$sPublic}/js/emotions/jquery.emoticons.js"></script>
 WINDSFORCE;
 	}
 

@@ -8,8 +8,8 @@
 <!--{script}-->
 $(function(){
 	editor=loadEditorThin('homefresh_message');
-	$('a.face-icon').showEmotion({input:editor});
-	$('.homefresh-content').listEmotion();
+	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+	$('.homefresh-content').emotionsToHtml();
 });
 
 function addHomefresh(){
@@ -53,8 +53,10 @@ function addHomefresh(){
 				'</tr>'
 			);
 
+			$('#homefreshlist_item_'+data.homefresh_id+' .homefresh-content').emotionsToHtml();
 			$('#homefresh_no').remove();
 			editor.html('');
+			editor.focus();
 		}
 	});
 }
@@ -96,7 +98,6 @@ var nHomefreshviewcomment=0;
 <!--{/script}-->
 <script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
 <script src="<!--{:__APPPUB__}-->/Js/comment.js"></script>
-
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></li>
@@ -114,7 +115,9 @@ var nHomefreshviewcomment=0;
 							<tbody>
 								<tr>
 									<td colspan="2">
-										<textarea class="input-xlarge" name="homefresh_message" id="homefresh_message" rows="5" style="width:100%;"></textarea>
+										<div id="emotion_parentcontainer">
+											<textarea class="input-xlarge" name="homefresh_message" id="homefresh_message" rows="5" style="width:100%;"></textarea>
+										</div>
 										<div id="homefresh-media-box" class="common-media-box">
 											<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a> 
 											<a href="javascript:void(0);" onclick="addHomefreshtopic();" class="icon_add_topic"><!--<lang package='Template/Homefresh'>-->话题<!--</lang>--></a> 
