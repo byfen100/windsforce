@@ -81,6 +81,16 @@ Tags: admin, light
 [/CURSCRIPT]
 
 /**===============================
+           新鲜事对话框热门话题
+================================*/
+[CURSCRIPT=home::ucenter::index]
+.tags_list{line-height: 150%;}
+.tags_list a.tagslist_size{font-size: 12px;}
+.tags_list a{margin: 10px 0 0;}
+.tags_list a{display: inline-block;margin: 0 8px 10px 0;word-wrap: break-word;}
+[/CURSCRIPT]
+
+/**===============================
            首页其它
 ================================*/
 [CURSCRIPT=home::public::index,home::stat::explore]

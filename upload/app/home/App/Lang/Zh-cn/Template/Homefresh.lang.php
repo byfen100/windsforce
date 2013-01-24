@@ -49,6 +49,11 @@ return array(
 'e804a9a2158eb06e6609b0b7ac9c3cb9'=>"用户注册",
 'bffa61f1f8210047380013fe63c1e31b'=>"请在这里输入自定义话题",
 '14f4526e6cfb67675916ab2a37e5ab20'=>"热门话题",
+'c9bc89cfc99eac042ce97ccdb6929acd'=>"大约",
+'9440212944ef1c576ce5f96824314dc9'=>"用户参与该话题",
+'cc1bacb5117aa3f27e5e430cd28dbaed'=>"条",
+'c00b5e4878bb5f0f61df036850b7cb00'=>"相关新鲜事",
+'6f917a9eafbefd0aae975e9783dd617d'=>"你没有发现任何话题",
 )
 
 ?>

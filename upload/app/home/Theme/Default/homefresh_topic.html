@@ -1,32 +1,14 @@
-<!--{style}-->
-.tags_list {
-    line-height: 150%;
-}
-
-.tags_list a.tagslist_size {
-    font-size: 12px;
-}
-
-.layer_send_topic .tags_list a {
-    margin: 10px 0 0;
-}
-.tags_list a {
-    display: inline-block;
-    margin: 0 8px 10px 0;
-    word-wrap: break-word;
-}
-<!--{/style}-->
-			
 			<div class="homefresh_topic">
 					<p><input type="button" class="btn btn-large btn-success" onclick="parent.insertHomefreshtopic('#<!--<lang package='Template/Homefresh'>-->请在这里输入自定义话题<!--</lang>-->#');" value="<!--<lang package='Template/Homefresh'>-->插入话题<!--</lang>-->"/></p>
 					<hr/>
 					<h4><!--<lang package='Template/Homefresh'>-->热门话题<!--</lang>--></h4>
 					<div class="tags_list" node-type="inner">
-						<span> <a href="javascript:void(0);" class="tagslist_size" onclick="parent.insertHomefreshtopic('#好声音杨坤组决赛#');">好声音杨坤组决赛</a> </span>
-						<span> <a href="javascript:void(0);" class="tagslist_size" onclick="parent.insertHomefreshtopic('#坑爹国庆试卷大礼包#');">坑爹国庆试卷大礼包</a> </span>
-						<span> <a href="javascript:void(0);" class="tagslist_size" onclick="parent.insertHomefreshtopic('#我姓曾神回复走红#');">我姓曾神回复走红</a> </span>
-						<span> <a href="javascript:void(0);" class="tagslist_size" onclick="parent.insertHomefreshtopic('#好声音那英酷似杨过#');">好声音那英酷似杨过</a> </span>
-						<span> <a href="javascript:void(0);" class="tagslist_size" onclick="parent.insertHomefreshtopic('#章子怡否认有染高官#');">章子怡否认有染高官</a> </span>
-						<span> <a href="javascript:void(0);" class="tagslist_size" onclick="parent.insertHomefreshtopic('#好男儿宋晓波结婚了#');">好男儿宋晓波结婚了</a> </span>
+						<!--{if is_array($arrHothomefreshtags)}-->
+						<!--<foreach for=arrHothomefreshtags>-->
+						<span><a href="javascript:void(0);" class="tagslist_size" onclick="parent.insertHomefreshtopic('#<!--{$value['homefreshtag_name']}-->#');"><!--{$value['homefreshtag_name']}--></a></span>
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<p><!--<lang package='Template/Homefresh'>-->你没有发现任何话题<!--</lang>--></p>
+						<!--{/if}-->
 				</div>
 			</div>

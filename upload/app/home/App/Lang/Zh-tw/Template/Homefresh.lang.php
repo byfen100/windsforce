@@ -49,6 +49,11 @@ return array(
 'e804a9a2158eb06e6609b0b7ac9c3cb9'=>"用戶註冊",
 'bffa61f1f8210047380013fe63c1e31b'=>"請在這裡輸入自定義話題",
 '14f4526e6cfb67675916ab2a37e5ab20'=>"熱門話題",
+'c9bc89cfc99eac042ce97ccdb6929acd'=>"大約",
+'9440212944ef1c576ce5f96824314dc9'=>"用戶參與該話題",
+'cc1bacb5117aa3f27e5e430cd28dbaed'=>"條",
+'c00b5e4878bb5f0f61df036850b7cb00'=>"相關新鮮事",
+'6f917a9eafbefd0aae975e9783dd617d'=>"你沒有發現任何話題",
 )
 
 ?>

@@ -6,16 +6,39 @@
 
 class IndexController extends Controller{
 
+	protected $_sHomefreshtag='';
+
 	public function index(){
 		$arrWhere=array();
+
+		// 热门话题
+		$this->get_homefreshtag_();
+
+		// 话题
+		$sKey=trim(G::getGpc('key','G'));
+		if(!empty($sKey)){
+			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
+			if(empty($oHomefreshtag['homefreshtag_id'])){
+				$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
+				$this->E('话题不存在或者被禁止了');
+			}
+
+			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");
+			$this->assign('oHomefreshtag',$oHomefreshtag);
+			$this->_sHomefreshtag=$oHomefreshtag['homefreshtag_name'];
+		}
 		
 		// 类型
-		$sType=trim(G::getGpc('type','G'));
-		if(empty($sType)){
-			$sType='';
+		if(!empty($oHomefreshtag['homefreshtag_id'])){
+			$sType='all';
+		}else{
+			$sType=trim(G::getGpc('type','G'));
+			if(empty($sType)){
+				$sType='';
+			}
 		}
 		$this->assign('sType',$sType);
-		
+
 		switch($sType){
 			case 'myself':
 				$arrWhere['user_id']=$GLOBALS['___login___']['user_id'];
@@ -46,17 +69,6 @@ class IndexController extends Controller{
 				break;
 		}
 
-		// 话题
-		$sKey=trim(G::getGpc('key','G'));
-		if(!empty($sKey)){
-			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
-			if(empty($oHomefreshtag['homefreshtag_id'])){
-				$this->E('话题不存在或者被禁止了');
-			}
-
-			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");
-		}
-
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
 		// 赞
@@ -83,7 +95,8 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('用户中心','Controller/Homefresh');
+		return ($this->_sHomefreshtag?$this->_sHomefreshtag.' | ':'').
+			Dyhb::L('用户中心','Controller/Homefresh');
 	}
 
 	public function index_keywords_(){
@@ -92,6 +105,17 @@ class IndexController extends Controller{
 
 	public function index_description_(){
 		return $this->index_title_();
+	}
+
+	protected function get_homefreshtag_(){
+		$nHomefreshucenterhottagnum=intval($GLOBALS['_cache_']['home_option']['homefresh_ucenterhottagnum']);
+		if($nHomefreshucenterhottagnum<1){
+			$nHomefreshucenterhottagnum=1;
+		}
+		
+		// 读取热门话题
+		$arrHothomefreshtags=HomefreshtagModel::F('homefreshtag_status=?',1)->order('homefreshtag_totalcount DESC')->limit(0,$nHomefreshucenterhottagnum)->getAll();
+		$this->assign('arrHothomefreshtags',$arrHothomefreshtags);
 	}
 
 }

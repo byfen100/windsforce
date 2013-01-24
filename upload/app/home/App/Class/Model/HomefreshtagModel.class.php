@@ -55,6 +55,7 @@ class HomefreshtagModel extends CommonModel{
 			if($GLOBALS['___login___']['user_id']!=$oHomefreshtag->user_id){
 				$oHomefreshtag->homefreshtag_usercount=$oHomefreshtag->homefreshtag_usercount+1;
 			}
+			$oHomefreshtag->homefreshtag_totalcount=$oHomefreshtag->homefreshtag_usercount+$oHomefreshtag->homefreshtag_homefreshcount;
 			$oHomefreshtag->save(0,'update');
 
 			if($oHomefreshtag->isError()){
@@ -65,6 +66,7 @@ class HomefreshtagModel extends CommonModel{
 			$oHomefreshtag->homefreshtag_name=$sHomefreshtag;
 			$oHomefreshtag->homefreshtag_usercount=1;
 			$oHomefreshtag->homefreshtag_homefreshcount=1;
+			$oHomefreshtag->homefreshtag_totalcount=2;
 			$oHomefreshtag->save(0);
 
 			if($oHomefreshtag->isError()){
