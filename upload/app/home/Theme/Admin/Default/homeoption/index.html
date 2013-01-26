@@ -76,6 +76,17 @@ function option(){
 								<input type="text" id="homefresh_ucenterhottagnum" name="options[homefresh_ucenterhottagnum]" value="<!--{$arrOptions['homefresh_ucenterhottagnum']}-->"/>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->个人中心侧边栏中的热门话题数量<!--</lang>--></div>
 							</fieldset>
+							<fieldset>
+								<label for="home_hothomefreshtag_date"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->首页热门话题调用时间<!--</lang>--></label>
+								<select name="options[home_hothomefreshtag_date]" id="home_hothomefreshtag_date">
+									<option value="3600" <!--{if $arrOptions['home_hothomefreshtag_date']==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
+									<option value="86400" <!--{if $arrOptions['home_hothomefreshtag_date']==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>
+									<option value="604800" <!--{if $arrOptions['home_hothomefreshtag_date']==604800}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一星期<!--</lang>--></option>
+									<option value="2592000" <!--{if $arrOptions['home_hothomefreshtag_date']==2592000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一月<!--</lang>--></option>
+									<option value="31536000" <!--{if $arrOptions['home_hothomefreshtag_date']==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这里的时间为热门话题调用时间，如果为一星期，那么热门帖子只会从当前一个星期中取出<!--</lang>--></div>
+							</fieldset>
 						</div>
 						<div id="tab2" class="nfb_tabcontent">
 							<fieldset>

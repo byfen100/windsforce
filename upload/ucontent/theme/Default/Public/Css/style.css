@@ -84,6 +84,7 @@ Tags: admin, light
            新鲜事对话框热门话题
 ================================*/
 [CURSCRIPT=home::ucenter::index]
+.homefresh_topic{width:100%;}
 .tags_list{line-height: 150%;}
 .tags_list a.tagslist_size{font-size: 12px;}
 .tags_list a{margin: 10px 0 0;}
