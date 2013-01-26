@@ -1,6 +1,10 @@
 <!--<include file="public+header" />-->
 
 <!--{script}-->
+$(document).ready(function() {
+	$("#uploadoption_tab ul").idTabs();
+});
+
 function option(){
 	$("#submit_button").attr("disabled", "disabled");
 	$("#submit_button").val( 'update...' );
@@ -27,72 +31,87 @@ function option(){
 			</header>
 			<form action="<!--{:Dyhb::U('uploadoption/update_option')}-->" method="post" onsubmit="return option();">
 				<div class="module_content">
-					<fieldset>
-						<label for="attachment_recommendcategorynum"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐专辑数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_recommendcategorynum]" id="attachment_recommendcategorynum" size="60" value="<!--{$arrOptions['attachment_recommendcategorynum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐专辑数量，可以适当设置大一些，比如15<!--</lang>-->
+					<div id="uploadoption_tab" class="nfb_tab">
+						<div class="nfb_tabtitlebox">
+							<ul class="nfb_tabtitle">
+								<li><a href="#tab1"><!--<lang package='Template/Default/Uploadoption'>-->基本<!--</lang>--></a></li>
+								<li><a href="#tab2"><!--<lang package='Template/Default/Uploadoption'>-->首页<!--</lang>--></a></li>
+								<li><a href="#tab3"><!--<lang package='Template/Default/Uploadoption'>-->对话框<!--</lang>--></a></li>
+							</ul>
 						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_recommendnum"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐相片数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_recommendnum]" id="attachment_recommendcategorynum" size="60" value="<!--{$arrOptions['attachment_recommendnum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐相片数量，这里为幻灯片展示，设置3-5即可<!--</lang>-->
+
+						<div id="tab1" class="nfb_tabcontent">
+							<fieldset>
+								<label for="attachment_myattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->我的附件每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_myattachmentnum]" id="attachment_myattachmentnum" size="60" value="<!--{$arrOptions['attachment_myattachmentnum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中我的个人附件的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_mycategorynum"><!--<lang package='Template/Default/Uploadoption'>-->我的专辑每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_mycategorynum]" id="attachment_mycategorynum" size="60" value="<!--{$arrOptions['attachment_mycategorynum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中我的个人专辑的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_categorynum"><!--<lang package='Template/Default/Uploadoption'>-->最新专辑每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_categorynum]" id="attachment_categorynum" size="60" value="<!--{$arrOptions['attachment_categorynum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中最新专辑的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_attachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->最新附件每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_attachmentnum]" id="attachment_attachmentnum" size="60" value="<!--{$arrOptions['attachment_attachmentnum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中最新附件的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_showimgnum"><!--<lang package='Template/Default/Uploadoption'>-->照片展示前后读取数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_showimgnum]" id="attachment_showimgnum" size="60" value="<!--{$arrOptions['attachment_showimgnum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->前台相片展示中的相关幻灯片前后照片读取数量<!--</lang>-->
+								</div>
+							</fieldset>
 						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_myattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->我的附件每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_myattachmentnum]" id="attachment_myattachmentnum" size="60" value="<!--{$arrOptions['attachment_myattachmentnum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中我的个人附件的每页分页数量<!--</lang>-->
+						<div id="tab2" class="nfb_tabcontent">
+							<fieldset>
+								<label for="attachment_recommendcategorynum"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐专辑数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_recommendcategorynum]" id="attachment_recommendcategorynum" size="60" value="<!--{$arrOptions['attachment_recommendcategorynum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐专辑数量，可以适当设置大一些，比如15<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_recommendnum"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐相片数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_recommendnum]" id="attachment_recommendcategorynum" size="60" value="<!--{$arrOptions['attachment_recommendnum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐相片数量，这里为幻灯片展示，设置3-5即可<!--</lang>-->
+								</div>
+							</fieldset>
 						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_dialogmyattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框我的附件每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_dialogmyattachmentnum]" id="attachment_dialogmyattachmentnum" size="60" value="<!--{$arrOptions['attachment_dialogmyattachmentnum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中我的个人附件的每页分页数量<!--</lang>-->
+						<div id="tab3" class="nfb_tabcontent">
+							<fieldset>
+								<label for="attachment_dialogmyattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框我的附件每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_dialogmyattachmentnum]" id="attachment_dialogmyattachmentnum" size="60" value="<!--{$arrOptions['attachment_dialogmyattachmentnum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中我的个人附件的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_dialogmycategorynum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框我的专辑每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_dialogmycategorynum]" id="attachment_dialogmycategorynum" size="60" value="<!--{$arrOptions['attachment_dialogmycategorynum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中我的个人专辑的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_dialogcategorynum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框最新专辑每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_dialogcategorynum]" id="attachment_dialogcategorynum" size="60" value="<!--{$arrOptions['attachment_dialogcategorynum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中最新专辑的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="attachment_dialogattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框最新附件每页列表数量<!--</lang>--></label>
+								<input type="text" name="options[attachment_dialogattachmentnum]" id="attachment_dialogattachmentnum" size="60" value="<!--{$arrOptions['attachment_dialogattachmentnum']}-->"/>
+								<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中最新附件的每页分页数量<!--</lang>-->
+								</div>
+							</fieldset>
 						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_mycategorynum"><!--<lang package='Template/Default/Uploadoption'>-->我的专辑每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_mycategorynum]" id="attachment_mycategorynum" size="60" value="<!--{$arrOptions['attachment_mycategorynum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中我的个人专辑的每页分页数量<!--</lang>-->
-						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_dialogmycategorynum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框我的专辑每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_dialogmycategorynum]" id="attachment_dialogmycategorynum" size="60" value="<!--{$arrOptions['attachment_dialogmycategorynum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中我的个人专辑的每页分页数量<!--</lang>-->
-						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_categorynum"><!--<lang package='Template/Default/Uploadoption'>-->最新专辑每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_categorynum]" id="attachment_categorynum" size="60" value="<!--{$arrOptions['attachment_categorynum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中最新专辑的每页分页数量<!--</lang>-->
-						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_dialogcategorynum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框最新专辑每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_dialogcategorynum]" id="attachment_dialogcategorynum" size="60" value="<!--{$arrOptions['attachment_dialogcategorynum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中最新专辑的每页分页数量<!--</lang>-->
-						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_attachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->最新附件每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_attachmentnum]" id="attachment_attachmentnum" size="60" value="<!--{$arrOptions['attachment_attachmentnum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为相册中最新附件的每页分页数量<!--</lang>-->
-						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_dialogattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框最新附件每页列表数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_dialogattachmentnum]" id="attachment_dialogattachmentnum" size="60" value="<!--{$arrOptions['attachment_dialogattachmentnum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->这里为媒体管理器中最新附件的每页分页数量<!--</lang>-->
-						</div>
-					</fieldset>
-					<fieldset>
-						<label for="attachment_showimgnum"><!--<lang package='Template/Default/Uploadoption'>-->照片展示前后读取数量<!--</lang>--></label>
-						<input type="text" name="options[attachment_showimgnum]" id="attachment_showimgnum" size="60" value="<!--{$arrOptions['attachment_showimgnum']}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->前台相片展示中的相关幻灯片前后照片读取数量<!--</lang>-->
-						</div>
-					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">
