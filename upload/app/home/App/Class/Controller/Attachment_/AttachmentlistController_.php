@@ -66,8 +66,8 @@ class AttachmentlistController extends Controller{
 		}
 
 		$nTotalRecord=AttachmentModel::F()->where($arrWhere)->all()->getCounts();
-		$oPage=Page::RUN($nTotalRecord,10,G::getGpc('page','G'));
-		$arrAttachments=AttachmentModel::F()->where($arrWhere)->order('attachment_id DESC')->limit($oPage->returnPageStart(),10)->getAll();
+		$oPage=Page::RUN($nTotalRecord,$nEverynum,G::getGpc('page','G'));
+		$arrAttachments=AttachmentModel::F()->where($arrWhere)->order('attachment_id DESC')->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		// 附件分类
 		$arrAttachmentcategorys=Attachment_Extend::getAttachmentcategory();
