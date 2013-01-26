@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入积分相关函数 */
+require_once(Core_Extend::includeFile('function/Credit_Extend'));
+
 class RatingController extends Controller{
 
 	public function index(){
@@ -22,26 +25,6 @@ class RatingController extends Controller{
 			$this->assign('oUserInfo',$oUserInfo);
 		}
 
-		$nCId=intval(G::getGpc('cid','G'));
-
-		$arrRatinggroups=$GLOBALS['_cache_']['ratinggroup'];
-
-		$arrRatinggroupIds=array();
-		foreach($arrRatinggroups as $oRatinggroup){
-			$arrRatinggroupIds[]=$oRatinggroup['ratinggroup_id'];
-		}
-
-		if(!empty($nCId) && in_array($nCId,$arrRatinggroupIds)){
-			$arrRatings=array();
-			foreach($GLOBALS['_cache_']['rating'] as $arrRating){
-				if($arrRating['ratinggroup_id']==$nCId){
-					$arrRatings[]=$arrRating;
-				}
-			}
-		}else{
-			$arrRatings=$GLOBALS['_cache_']['rating'];
-		}
-
 		$this->_oUserInfo=$oUserInfo;
 
 		// 用户等级名字
@@ -49,11 +32,13 @@ class RatingController extends Controller{
 		$arrRatinginfo=UserModel::getUserrating($nUserscore,false);
 		$this->assign('arrRatinginfo',$arrRatinginfo);
 		$this->assign('nUserscore',$nUserscore);
+		$this->assign('oUsercount',$oUserInfo->usercount);
+
+		// 所有可用积分
+		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
+		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 
 		$this->assign('nId',$nId);
-		$this->assign('nCId',$nCId);
-		$this->assign('arrRatings',$arrRatings);
-		$this->assign('arrRatinggroups',$arrRatinggroups);
 		$this->assign('oUserInfo',$oUserInfo);
 
 		$this->display('space+rating');

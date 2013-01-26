@@ -2,13 +2,14 @@
 	
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><!--<lang package='Template/Space'>-->个人空间<!--</lang>--></a> <span class="divider">/</span></li>
 			<li><!--<lang package='Template/Space'>-->用户等级<!--</lang>--></li>
 		</ul>
 		
 		<!--<include file="space+menu" />-->
 
 		<div class="row">
-			<div class="span9">
+			<div class="span12">
 				<div class="alert alert-success">
 					<h5><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo['user_name']}--></a>&nbsp;(<!--<lang package='Template/Space'>-->当前积分<!--</lang>-->&nbsp;<!--{$nUserscore}-->)</h5>
 					<p><div class="current_ratinginfo">
@@ -20,35 +21,26 @@
 						<div><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></div>
 					</p>
 				</div>
+				<p><i class="icon-question-sign"></i>&nbsp;<a href="<!--{:Dyhb::U('home://space/ratings')}-->"><!--<lang package='Template/Space'>-->了解等级规则</a><!--</lang>--></p>
+
+				<p><h5><!--<lang package='Template/Space'>-->当前积分<!--</lang>--></h5></p>
 				<p><table class="table table-bordered">
 						<thead>
 							<tr>
-								<th width="50px"><!--<lang package='Template/Space'>-->等级ID<!--</lang>--></th>
-								<th><!--<lang package='Template/Space'>-->等级名字<!--</lang>--></th>
-								<th><!--<lang package='Template/Space'>-->等级积分<!--</lang>--></th>
+								<th><!--<lang package='Template/Space'>-->积分类型<!--</lang>--></th>
+								<th><!--<lang package='Template/Space'>-->积分数量<!--</lang>--></th>
 							</tr>
 						</thead>
 						<tbody>
-							<!--<foreach for=arrRatings value=arrRating>-->
-							<tr <!--{if $arrRatinginfo['rating_name']==$arrRating['rating_name']}-->class="current_rating"<!--{/if}-->>
-								<td><!--{$arrRating['rating_id']}--></td>
-								<td><!--{$arrRating['rating_name']}-->&nbsp;<img src="<!--{$arrRating['rating_icon']}-->"/>&nbsp;<!--{if $arrRating['rating_nikename']}-->&nbsp;(<!--{$arrRating['rating_nikename']}-->)<!--{/if}--></td>
-								<td><span class="badge"><!--{$arrRating['rating_creditstart']}--></span> - <span class="badge badge-success"><!--{$arrRating['rating_creditend']}--></span></td>
+							<!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit value=arrAvailableExtendCredit>-->
+							<tr>
+								<td><!--{$arrAvailableExtendCredit['title']}--></td>
+								<td><span class="badge"><!--{$oUsercount['usercount_extendcredit'.$nAvailableExtendCredit]}--></span></td>
 							</tr>
 						</tbody>
 						<!--</foreach>-->
 					</table>
 				</p>
-			</div>
-
-			<div class="span3">
-				<h4><!--<lang package='Template/Space'>-->等级分组<!--</lang>--></h4>
-				<p><ul class="nav nav-tabs nav-stacked">
-					<li <!--{if empty($nCId)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--<lang package='Template/Space'>-->全部<!--</lang>--></a></li>
-					<!--<foreach for=arrRatinggroups value=oRatinggroup>-->
-					<li <!--{if $nCId==$oRatinggroup['ratinggroup_id']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating'.'&cid='.$oRatinggroup['ratinggroup_id'])}-->"><!--{$oRatinggroup['ratinggroup_title']}-->&nbsp;(<!--{$oRatinggroup['ratinggroup_name']}-->)</a></li>
-					<!--</foreach>-->
-				</ul></p>
 			</div>
 		</div><!--row-->
 

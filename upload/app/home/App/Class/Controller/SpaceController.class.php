@@ -11,7 +11,13 @@ class SpaceController extends InitController{
 		$this->assign('sType',$sType);
 
 		if(empty($sType)){
-			Core_Extend::doControllerAction('Space@Base','index');
+			$sId=trim(G::getGpc('id','G'));
+
+			if(!in_array($sId,array('ratings'))){
+				Core_Extend::doControllerAction('Space@Base','index');
+			}else{
+				$this->{$sId}();
+			}
 		}else{
 			if(method_exists($this,$sType)){
 				$this->{$sType}();
@@ -31,6 +37,10 @@ class SpaceController extends InitController{
 
 	public function feed(){
 		Core_Extend::doControllerAction('Space@Feed','index');
+	}
+	
+	public function ratings(){
+		Core_Extend::doControllerAction('Space@Ratings','index');
 	}
 
 }

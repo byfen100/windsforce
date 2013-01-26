@@ -247,8 +247,6 @@ Tags: admin, light
            首页等级
 ================================*/
 [CURSCRIPT=home::space::index]
-.current_rating{font-weight:bold;color:{NOTICETEXT_COLOR};}
-.current_ratinginfo{margin-bottom:10px;}
 [/CURSCRIPT]
 
 /**===============================
