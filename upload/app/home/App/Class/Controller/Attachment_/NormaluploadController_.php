@@ -27,7 +27,12 @@ class NormaluploadController extends Controller{
 				$this->S(Dyhb::L('附件上传成功','Controller/Attachment'));
 			}
 		}catch(Exception $e){
-			$this->E($e->getMessage());
+			if(G::getGpc('dialog','P')==1){
+				G::urlGoTo(Dyhb::U('home://attachment/dialog_add?dialog=1&function='.G::getGpc('function','P').(G::getGpc('filetype','P')==1?'&filetype=1':'')),2,$e->getMessage());
+				exit();
+			}else{
+				$this->E($e->getMessage());
+			}
 		}
 	}
 
