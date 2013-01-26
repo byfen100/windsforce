@@ -38,7 +38,11 @@ function mb_strlen(str){
 function subStr(str,len,elli){
 	if(!str || !len){
 		return '';
-	} 
+	}
+
+	if(!elli){
+		elli='';
+	}
 
 	var a=0;
 	var i=0;
