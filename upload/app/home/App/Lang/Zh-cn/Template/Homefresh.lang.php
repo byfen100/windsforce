@@ -54,6 +54,7 @@ return array(
 'cc1bacb5117aa3f27e5e430cd28dbaed'=>"条",
 'c00b5e4878bb5f0f61df036850b7cb00'=>"相关新鲜事",
 '6f917a9eafbefd0aae975e9783dd617d'=>"你没有发现任何话题",
+'7ed4bde08d24c695a280c20389640648'=>"话题发起人",
 )
 
 ?>

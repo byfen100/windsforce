@@ -82,7 +82,7 @@ class Mail{
 		}else if(strtolower($this->_sEmailSendType)==self::SOCKET_SMTP){
 			$nErrNo=0;// 发送
 			$nErrStr='';
-			if(!$hFp=fsockopen($this->_sServer,$this->_nPort,$nErrNo,$nErrStr,30)){
+			if(!($hFp=fsockopen($this->_sServer,$this->_nPort,$nErrNo,$nErrStr,30))){
 				$this->setErrorMessage(sprintf("%s:%d CONNECT - can not connect to the SMTP server",$this->_sServer,$this->_nPort));
 				return false;
 			}
