@@ -15,65 +15,26 @@ WindsForce 即将做的
 
 	用户提醒
 
-	防灌水相关功能开发，EMAIL验证等等
-
 	在线时间功能开发
 
 	创建小组，自己也加入小组
 
 	小组管理员相关设置
 
-	加入了新的字段
-	grouptopic_hiddenreplies
-	group_topiccomment
-	grouptopic_updateusername
-
 	安装时将域名写入到配置文件中去
 
-	笔误：将最大长度整成了最大长度，最后统一进行修复一下
-
-	新增Jquery loadzy load ，图片延迟加载和（jquery tab 后台用）
-
-	http://www.hihey.com/art-6056.html
-
-	何城骏 201231001118 
-
-	http://localhost/windsforce/upload/index.php/app/group/test/index9 商城公告内容
-	http://localhost/windsforce/upload/index.php/app/group/test/index21 商城公告列表
-	http://localhost/windsforce/upload/index.php/app/group/test/index22 帮助中心
-
-	http://localhost/windsforce/upload/index.php/app/group/test/index26 藏家资料
-
-
-	http://localhost/windsforce/upload/index.php/app/group/test/index18 订单确认页
-
-	37集
-	http://www.tingchina.com/yousheng/23337/play_23337_40.htm
-
-	且试天下 41 中集
-
-
-	http://www.tingchina.com/yousheng/23337/play_23337_5.htm
-
-	何城骏 201231001118
-	SociauserController.class
-
-	新鲜事赞颜色变化
-
-	提炼未登录框CSS
-
-	新鲜事话题功能开发
-
+	新增Jquery loadzy load ，图片延迟加载
 
 	数据库备份bug
 
-
 	登录送积分功能
 
+	// 语言包提炼
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Homefresh.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Admin\Zh-cn\Template\Homeoption.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Uploadoption.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Space.lang.php
 
-	后台统计信息，应用数量，评论数量相关衔接还灭有对上
-
-	http://dianniu.net/app/group/topic/141.html
 
 
                                                                                                                                     WindsForce Studio, 2012-12-09 11:17
