@@ -14,7 +14,7 @@
 				{$sCopyTxt}
 				</div>
 			</p>
-			<form class="alert alert-info">
+			<form class="alert alert-success">
 				<label class="checkbox">
 					<input name="readpact" type="checkbox" id="readpact"> <lang package='Template/Default/Install'>我已经阅读并同意此协议</lang>
 				</label>
@@ -27,7 +27,7 @@
 			<div class="well">
 				<p><input type="button" class="btn" value="<lang package='Template/Default/Common'>后退</lang>" onclick="window.location.href='{:Dyhb::U( 'index/select' )}';" />
 					<span class="pipe">|</span>
-					<input type="button" class="btn btn-primary" value="<lang package='Template/Default/Common'>继续</lang>" onclick="document.getElementById('readpact').checked ?window.location.href='{:Dyhb::U( 'index/step2' )}' : alert('<lang package='Template/Default/Install'>您必须同意软件许可协议才能安装！</lang>');" />
+					<input type="button" class="btn btn-success" value="<lang package='Template/Default/Common'>继续</lang>" onclick="document.getElementById('readpact').checked ?window.location.href='{:Dyhb::U( 'index/step2' )}' : alert('<lang package='Template/Default/Install'>您必须同意软件许可协议才能安装！</lang>');" />
 				</p>
 			</div>
 		</div>

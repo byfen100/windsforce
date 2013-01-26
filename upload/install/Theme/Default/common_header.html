@@ -24,6 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="{:__PUBLIC__}/extension/bootstrap/ie6/bootstrap-ie6.css">
 	<link rel="stylesheet" type="text/css" href="{:__PUBLIC__}/extension/bootstrap/ie6/ie.css">
 	<![endif]-->
+	<load file="{:__TMPLPUB__}/Css/style_append.css" />
 	<link rel="shortcut icon" href="{:__PUBLIC__}/images/common/favicon.png">
 	{script}
 	var __DYHB_JS_ENTER__='{:__APP__}';
@@ -44,20 +45,22 @@ function showMessage(sMessage){
 {/script}
 
 <div id="DyhbAjaxResult" class="none DyhbAjaxResult">&nbsp;</div>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="brand" href="{:__APP__}">WindsForce-{:WINDSFORCE_SERVER_VERSION}</a>
-			<div class="nav-collapse pull-right">
-				<ul class="nav">
-					<li class="active"><a href="http://www.windsforce.net" target="_blank"><lang package='Template/Default/Common'>官方网站</lang></a></li>
-					<li><a href="http://bbs.windsforce.net" target="_blank"><lang package='Template/Default/Common'>技术论坛</lang></a></li>
-				</ul>
+<div id="header">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="{:__APP__}">WindsForce-{:WINDSFORCE_SERVER_VERSION}</a>
+				<div class="nav-collapse pull-right">
+					<ul class="nav">
+						<li class="active"><a href="http://www.windsforce.net" target="_blank"><lang package='Template/Default/Common'>官方网站</lang></a></li>
+						<li><a href="http://bbs.windsforce.net" target="_blank"><lang package='Template/Default/Common'>技术论坛</lang></a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
