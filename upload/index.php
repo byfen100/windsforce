@@ -91,7 +91,7 @@ define('__THEMES__','app/'.APP_NAME.'/Theme');
 define('APP_RUNTIME_LOCK',WINDSFORCE_PATH.'/source/protected/~Runtime.inc.lock');
 
 /** 加载框架编译版本 */
-define('STRIP_RUNTIME_SPACE',false);
+//define('STRIP_RUNTIME_SPACE',false);
 define('DYHB_THIN',true);
 
 /** 去掉模板空格 */
