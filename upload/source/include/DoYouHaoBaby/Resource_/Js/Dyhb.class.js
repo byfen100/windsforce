@@ -4,7 +4,7 @@
 var D,Dyhb=D=Dyhb || function(){}; 
 
 /* Js框架版本 */
-Dyhb.Version='20120730';
+Dyhb.Version='20130127';
 
 /* 建立唯一标识符 */
 Dyhb.Guid="%DYHB%";

@@ -55,28 +55,6 @@ Dyhb.Ajax.Dyhb.AjaxResponse=function(oRequest,sTarget,Response,sTips){
 	}
 
 	/* 显示提示信息 */
-	if(Dyhb.Ajax.Dyhb.Display && Dyhb.Ajax.Dyhb.ShowTip && Dyhb.Ajax.Dyhb.Info!=undefined && Dyhb.Ajax.Dyhb.Info!=''){
-		var sOldTarget=sTarget;
-		sTarget=document.getElementById(sTarget);
-		sTarget.style.display="block";
+	Dyhb.Ajax.Dyhb.Message(Dyhb.Ajax.Dyhb.Info,Dyhb.Ajax.Dyhb.Status,Dyhb.Ajax.Dyhb.Display,sTarget,Dyhb.Ajax.Dyhb.ShowTip);
 
-		if(Dyhb.Ajax.Dyhb.Status==1){
-			if(''!=Dyhb.Ajax.Dyhb.Image[1]){
-				sTarget.innerHTML=Dyhb.Ajax.Dyhb.MessageTable('<span style="color:blue">'+Dyhb.Ajax.Dyhb.Info+'</span>','<img src="'+Dyhb.Ajax.Dyhb.Image[1]+'" class="'+sOldTarget+'Success" border="0" alt="success..." align="absmiddle">');
-			}else{
-				sTarget.innerHTML=Dyhb.Ajax.Dyhb.MessageTable('<span style="color:blue">'+Dyhb.Ajax.Dyhb.Info+'</span>');
-			}
-		}else{
-			if(''!=Dyhb.Ajax.Dyhb.Image[2]){
-				sTarget.innerHTML=Dyhb.Ajax.Dyhb.MessageTable('<span style="color:red">'+Dyhb.Ajax.Dyhb.Info+'</span>','<img src="'+Dyhb.Ajax.Dyhb.Image[2]+'" class="'+sOldTarget+'Error" border="0" alt="error..." align="absmiddle">');
-			}else{
-				sTarget.innerHTML=Dyhb.Ajax.Dyhb.MessageTable('<span style="color:red">'+Dyhb.Ajax.Dyhb.Info+'</span>');
-			}
-		}
-	}
-
-	/* 提示信息停留 Dyhb.Ajax.Dyhb.Display 秒 */
-	if(Dyhb.Ajax.Dyhb.Display && Dyhb.Ajax.Dyhb.ShowTip && Dyhb.Ajax.Dyhb.Info!=undefined && Dyhb.Ajax.Dyhb.Info!=''){
-		setTimeout(function(){sTarget.style.display="none";},Dyhb.Ajax.Dyhb.Display*1000);
-	}
 };
