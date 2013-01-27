@@ -30,16 +30,16 @@ function option(){
 				<div class="module_content">
 					<!--<include file="Admin_Extend::template('home','homeoption/menu')" />-->
 
-					<div id="homeoption_tab" class="nfb_tab">
-						<div class="nfb_tabtitlebox">
-							<ul class="nfb_tabtitle">
+					<div id="homeoption_tab" class="windsforce_tab">
+						<div class="windsforce_tabtitlebox">
+							<ul class="windsforce_tabtitle">
 								<li><a href="#tab1"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->基本<!--</lang>--></a></li>
 								<li><a href="#tab2"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->验证<!--</lang>--></a></li>
 								<li><a href="#tab3"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->显示<!--</lang>--></a></li>
 							</ul>
 						</div>
 
-						<div id="tab1" class="nfb_tabcontent">
+						<div id="tab1" class="windsforce_tabcontent">
 							<fieldset>
 								<label><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->注意，这里受系统全局防灌水影响<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('secoption/index')}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->全局防灌水设置<!--</lang>--></a></label>
 							</fieldset>
@@ -76,7 +76,7 @@ function option(){
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->开启验证码会影响用户发布评论体验，建议没有特别必要不要开启<!--</lang>--></div>
 							</fieldset>
 						</div>
-						<div id="tab2" class="nfb_tabcontent">
+						<div id="tab2" class="windsforce_tabcontent">
 							<fieldset>
 								<label for="comment_repeat_check"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->评论是否验证重复数据<!--</lang>--></label>
 								<input type="radio" name="options[comment_repeat_check]" value="1" <!--{if $arrOptions['comment_repeat_check']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
@@ -143,7 +143,7 @@ function option(){
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->如果不开启此项，那么垃圾数据会被变成待审核状态，但是还是会写入数据库<!--</lang>--><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->如果，你启用了此项，所有被系统鉴别为垃圾的数据都会被拒绝<!--</lang>--></div>
 							</fieldset>
 						</div>
-						<div id="tab3" class="nfb_tabcontent">
+						<div id="tab3" class="windsforce_tabcontent">
 							<fieldset>
 								<label for="homefreshcomment_limit_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事最新评论数量<!--</lang>--></label>
 								<input type="text" id="homefreshcomment_limit_num" name="options[homefreshcomment_limit_num]" value="<!--{$arrOptions['homefreshcomment_limit_num']}-->"/>

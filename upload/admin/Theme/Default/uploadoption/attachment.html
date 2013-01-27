@@ -31,16 +31,16 @@ function option(){
 			</header>
 			<form action="<!--{:Dyhb::U('uploadoption/update_option')}-->" method="post" onsubmit="return option();">
 				<div class="module_content">
-					<div id="uploadoption_tab" class="nfb_tab">
-						<div class="nfb_tabtitlebox">
-							<ul class="nfb_tabtitle">
+					<div id="uploadoption_tab" class="windsforce_tab">
+						<div class="windsforce_tabtitlebox">
+							<ul class="windsforce_tabtitle">
 								<li><a href="#tab1"><!--<lang package='Template/Default/Uploadoption'>-->基本<!--</lang>--></a></li>
 								<li><a href="#tab2"><!--<lang package='Template/Default/Uploadoption'>-->首页<!--</lang>--></a></li>
 								<li><a href="#tab3"><!--<lang package='Template/Default/Uploadoption'>-->对话框<!--</lang>--></a></li>
 							</ul>
 						</div>
 
-						<div id="tab1" class="nfb_tabcontent">
+						<div id="tab1" class="windsforce_tabcontent">
 							<fieldset>
 								<label for="attachment_myattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->我的附件每页列表数量<!--</lang>--></label>
 								<input type="text" name="options[attachment_myattachmentnum]" id="attachment_myattachmentnum" size="60" value="<!--{$arrOptions['attachment_myattachmentnum']}-->"/>
@@ -72,7 +72,7 @@ function option(){
 								</div>
 							</fieldset>
 						</div>
-						<div id="tab2" class="nfb_tabcontent">
+						<div id="tab2" class="windsforce_tabcontent">
 							<fieldset>
 								<label for="attachment_recommendcategorynum"><!--<lang package='Template/Default/Uploadoption'>-->首页推荐专辑数量<!--</lang>--></label>
 								<input type="text" name="options[attachment_recommendcategorynum]" id="attachment_recommendcategorynum" size="60" value="<!--{$arrOptions['attachment_recommendcategorynum']}-->"/>
@@ -92,7 +92,7 @@ function option(){
 								</div>
 							</fieldset>
 						</div>
-						<div id="tab3" class="nfb_tabcontent">
+						<div id="tab3" class="windsforce_tabcontent">
 							<fieldset>
 								<label for="attachment_dialogmyattachmentnum"><!--<lang package='Template/Default/Uploadoption'>-->媒体对话框我的附件每页列表数量<!--</lang>--></label>
 								<input type="text" name="options[attachment_dialogmyattachmentnum]" id="attachment_dialogmyattachmentnum" size="60" value="<!--{$arrOptions['attachment_dialogmyattachmentnum']}-->"/>
