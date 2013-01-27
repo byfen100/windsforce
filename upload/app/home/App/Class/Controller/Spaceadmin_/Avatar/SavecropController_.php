@@ -25,6 +25,8 @@ class SavecropController extends Controller{
 			}
 		}
 
+		Core_Extend::updateCreditByAction('setavatar',$GLOBALS['___login___']['user_id']);
+
 		$this->assign('__JumpUrl__',Dyhb::U('spaceadmin/avatar'));
 		$this->S(Dyhb::L('头像上传成功','Controller/Spaceadmin'));
 	}

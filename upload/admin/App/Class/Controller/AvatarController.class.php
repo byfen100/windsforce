@@ -59,6 +59,8 @@ class AvatarController extends InitController{
 			}
 		}
 
+		Core_Extend::updateCreditByAction('setavatar',$GLOBALS['___login___']['user_id']);
+
 		$this->assign('__JumpUrl__',Dyhb::U('avatar/index'));
 		$this->S(Dyhb::L('头像上传成功','Controller/Avatar'));
 	}
