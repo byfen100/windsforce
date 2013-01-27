@@ -11,6 +11,7 @@ class DoController extends Controller{
 			$this->E(Dyhb::L('Email已经验证过了，无需重复验证','Controller/Spaceadmin'));
 		}
 		
+		// 部分验证
 		$sEmail=trim($GLOBALS['___login___']['user_email']);
 		if(empty($sEmail)){
 			$this->E(Dyhb::L('Email地址不能为空','Controller/Spaceadmin'));
@@ -29,13 +30,8 @@ class DoController extends Controller{
 			$this->E(Dyhb::L('该账户已经被禁止','Controller/Spaceadmin'));
 		}
 
+		// 随机码
 		$sUserverifycode=md5(G::randString(32));
-		$oUser->user_verifycode=$sUserverifycode;
-		$oUser->save(0,'update');
-		if($oUser->isError()){
-			$this->E($oUser->getErrorMessage());
-		}
-		
 		$sUserverifyUrl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=spaceadmin&a=checkrevifyemail&email='.urlencode($sEmail).'&hash='.urlencode(G::authcode($sUserverifycode,false,null,$GLOBALS['_option_']['verifyemail_expired']));
 
 		$oMailModel=Dyhb::instance('MailModel');
@@ -57,6 +53,13 @@ class DoController extends Controller{
 		$oMailConnect->send();
 		if($oMailConnect->isError()){
 			$this->E($oMailConnect->getErrorMessage());
+		}
+
+		// 保存随机码
+		$oUser->user_verifycode=$sUserverifycode;
+		$oUser->save(0,'update');
+		if($oUser->isError()){
+			$this->E($oUser->getErrorMessage());
 		}
 
 		$this->S(Dyhb::L('邮件已发送到你指定的邮箱','Controller/Spaceadmin'));
