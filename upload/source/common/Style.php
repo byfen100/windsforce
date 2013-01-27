@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   ����Ĭ�ϱ��б��ļ�($)*/
+   系统主题风格元素($)*/
 
 !defined('DYHB_PATH') && exit;
 
