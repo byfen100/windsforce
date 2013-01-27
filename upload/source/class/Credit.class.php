@@ -26,7 +26,7 @@ class Credit{
 				}
 			}
 		}
-	
+
 		if($bEnabled){
 			$arrRulelog=array();
 
