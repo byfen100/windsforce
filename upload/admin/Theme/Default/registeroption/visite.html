@@ -16,6 +16,16 @@ function option(){
 
 	<section id="main" class="column">
 		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template/Default/Registeroption'>-->这里可以设置网站前台部分内容访问权限<!--</lang>--></li>
+					<li><!--<lang package='Template/Default/Registeroption'>-->这里的访问权限针对管理员，用户和游客<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+		
+		<article class="module width_full">
 			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Registeroption'>-->访问控制<!--</lang>--></h3>
 				<ul class="tabs">
 					<li><a href="<!--{:Dyhb::U('registeroption/index')}-->"><!--<lang package='Template/Default/Registeroption'>-->注册设置<!--</lang>--></a></li>
@@ -26,76 +36,85 @@ function option(){
 			<form action="<!--{:Dyhb::U('registeroption/update_option')}-->" method="post" onsubmit="return option();">
 				<div class="module_content">
 					<fieldset>
-						<label for="allowed_view_sitebase"><!--<lang package='Template/Default/Registeroption'>-->网站基本资料查看权限<!--</lang>--></label>
+						<label for="allowed_view_sitebase"><!--<lang package='Template/Default/Registeroption'>-->基本资料<!--</lang>--></label>
 						<input type="radio" id="allowed_view_sitebase" name="options[allowed_view_sitebase]" value="2" <!--{if $arrOptions['allowed_view_sitebase']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_sitebase]" value="1" <!--{if $arrOptions['allowed_view_sitebase']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_sitebase]" value="0" <!--{if $arrOptions['allowed_view_sitebase']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站基本信息访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=index" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->基本信息<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=index" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->基本信息<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteuserlist"><!--<lang package='Template/Default/Registeroption'>-->网站会员列表查看权限<!--</lang>--></label>
+						<label for="allowed_view_siteuserlist"><!--<lang package='Template/Default/Registeroption'>-->会员列表<!--</lang>--></label>
 						<input type="radio" id="allowed_view_siteuserlist" name="options[allowed_view_siteuserlist]" value="2" <!--{if $arrOptions['allowed_view_siteuserlist']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteuserlist]" value="1" <!--{if $arrOptions['allowed_view_siteuserlist']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteuserlist]" value="0" <!--{if $arrOptions['allowed_view_siteuserlist']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站会员列表访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->会员列表<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->会员列表<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteadminuser"><!--<lang package='Template/Default/Registeroption'>-->网站系统管理员查看权限<!--</lang>--></label>
+						<label for="allowed_view_siteadminuser"><!--<lang package='Template/Default/Registeroption'>-->系统管理员<!--</lang>--></label>
 						<input type="radio" id="allowed_view_siteadminuser" name="options[allowed_view_siteadminuser]" value="2" <!--{if $arrOptions['allowed_view_siteadminuser']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteadminuser]" value="1" <!--{if $arrOptions['allowed_view_siteadminuser']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteadminuser]" value="0" <!--{if $arrOptions['allowed_view_siteadminuser']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站系统管理员访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=adminuser" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->系统管理员<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=adminuser" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->系统管理员<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_sitenewuser"><!--<lang package='Template/Default/Registeroption'>-->网站新注册会员查看权限<!--</lang>--></label>
+						<label for="allowed_view_sitenewuser"><!--<lang package='Template/Default/Registeroption'>-->新注册会员<!--</lang>--></label>
 						<input type="radio" id="allowed_view_sitenewuser" name="options[allowed_view_sitenewuser]" value="2" <!--{if $arrOptions['allowed_view_sitenewuser']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_sitenewuser]" value="1" <!--{if $arrOptions['allowed_view_sitenewuser']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_sitenewuser]" value="0" <!--{if $arrOptions['allowed_view_sitenewuser']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站新注册会员访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=newuser" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->新注册会员<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=newuser" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->新注册会员<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_sitefeed"><!--<lang package='Template/Default/Registeroption'>-->网站用户动态查看权限<!--</lang>--></label>
+						<label for="allowed_view_sitefeed"><!--<lang package='Template/Default/Registeroption'>-->用户动态<!--</lang>--></label>
 						<input type="radio" id="allowed_view_sitefeed" name="options[allowed_view_sitefeed]" value="2" <!--{if $arrOptions['allowed_view_sitefeed']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_sitefeed]" value="1" <!--{if $arrOptions['allowed_view_sitefeed']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_sitefeed]" value="0" <!--{if $arrOptions['allowed_view_sitefeed']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站用户动态访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=feed" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->用户动态<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=feed" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->用户动态<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteexplore"><!--<lang package='Template/Default/Registeroption'>-->网站随便看看查看权限<!--</lang>--></label>
+						<label for="allowed_view_siteexplore"><!--<lang package='Template/Default/Registeroption'>-->随便看看<!--</lang>--></label>
 						<input type="radio" id="allowed_view_siteexplore" name="options[allowed_view_siteexplore]" value="2" <!--{if $arrOptions['allowed_view_siteexplore']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteexplore]" value="1" <!--{if $arrOptions['allowed_view_siteexplore']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteexplore]" value="0" <!--{if $arrOptions['allowed_view_siteexplore']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站随便看看访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=explore" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->随便看看<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=explore" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->随便看看<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteusertop"><!--<lang package='Template/Default/Registeroption'>-->网站用户排行查看权限<!--</lang>--></label>
+						<label for="allowed_view_siteusertop"><!--<lang package='Template/Default/Registeroption'>-->用户排行<!--</lang>--></label>
 						<input type="radio" id="allowed_view_siteusertop" name="options[allowed_view_siteusertop]" value="2" <!--{if $arrOptions['allowed_view_siteusertop']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteusertop]" value="1" <!--{if $arrOptions['allowed_view_siteusertop']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteusertop]" value="0" <!--{if $arrOptions['allowed_view_siteusertop']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站用户排行访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=usertop" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->用户排行<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=usertop" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->用户排行<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_attachment"><!--<lang package='Template/Default/Registeroption'>-->网站附件库查看权限<!--</lang>--></label>
+						<label for="allowed_view_attachment"><!--<lang package='Template/Default/Registeroption'>-->附件库<!--</lang>--></label>
 						<input type="radio" id="allowed_view_attachment" name="options[allowed_view_attachment]" value="2" <!--{if $arrOptions['allowed_view_attachment']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_attachment]" value="1" <!--{if $arrOptions['allowed_view_attachment']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_attachment]" value="0" <!--{if $arrOptions['allowed_view_attachment']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站附件库访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=attachment&a=index" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->附件库<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=attachment&a=index" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->附件库<!--</lang>--></a>
+						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteapps"><!--<lang package='Template/Default/Registeroption'>-->网站应用列表查看权限<!--</lang>--></label>
+						<label for="allowed_view_siteapps"><!--<lang package='Template/Default/Registeroption'>-->应用列表<!--</lang>--></label>
 						<input type="radio" id="allowed_view_siteapps" name="options[allowed_view_siteapps]" value="2" <!--{if $arrOptions['allowed_view_siteapps']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteapps]" value="1" <!--{if $arrOptions['allowed_view_siteapps']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
 						<input type="radio" id="" name="options[allowed_view_siteapps]" value="0" <!--{if $arrOptions['allowed_view_siteapps']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->这里为网站应用列表访问权限<!--</lang>--><br/>
-						<a href="<!--{:__ROOT__}-->/index.php?app=home&c=apps&a=index" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->应用列表<!--</lang>--></a></div>
+						<div class="description">
+							<a href="<!--{:__ROOT__}-->/index.php?app=home&c=apps&a=index" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->应用列表<!--</lang>--></a>
+						</div>
 					</fieldset>
 				</div>
 				<footer>
