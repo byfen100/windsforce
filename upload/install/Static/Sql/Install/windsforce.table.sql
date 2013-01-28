@@ -710,6 +710,20 @@ CREATE TABLE `#@__pmsystemread` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_promotion`
+--
+
+DROP TABLE IF EXISTS `#@__promotion`;
+CREATE TABLE `#@__promotion` (
+  `promotion_ip` varchar(40) NOT NULL DEFAULT '' COMMENT '访问推广IP值',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `promotion_username` varchar(50) NOT NULL DEFAULT '' COMMENT '访问推广用户名',
+  KEY `promotion_ip` (`promotion_ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_rating`
 --
 

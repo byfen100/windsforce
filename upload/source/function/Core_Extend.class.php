@@ -689,6 +689,11 @@ WINDSFORCE;
 		return __PUBLIC__.'/images/common/none.gif';
 	}
 
+	static public function promotion(){
+		$oPromotion=Dyhb::instance('PromotionController');
+		$oPromotion->index();
+	}
+
 	static public function initFront(){
 		// 判断应用是否启用
 		Core_Extend::loadCache('app');
@@ -700,6 +705,11 @@ WINDSFORCE;
 		Core_Extend::loadCache('option');
 		Core_Extend::loadCache('nav');
 		Core_Extend::loginInformation();
+
+		// 访问推广
+		if(!empty($_GET['fromuid'])){
+			Core_Extend::promotion();
+		}
 		
 		// CSS资源定义
 		if(isset($GLOBALS['_commonConfig_']['_CURSCRIPT_'])){

@@ -181,6 +181,13 @@ class RegisterController extends GlobalchildController{
 			$arrData=$oUser->toArray();
 			$arrData['jumpurl']=$sJumpUrl;
 
+			// 注册推广
+			$nCookiepromotion=Dyhb::cookie('_promotion_');
+			if(!empty($nCookiepromotion) && $oUser['user_id']!=$nCookiepromotion){
+				Core_Extend::updateCreditByAction('promotion_register',$nCookiepromotion);
+				Dyhb::cookie('_promotion_',null,-1);
+			}
+
 			$this->A($arrData,Dyhb::L('注册成功','Controller/Public'),1);
 		}
 	}

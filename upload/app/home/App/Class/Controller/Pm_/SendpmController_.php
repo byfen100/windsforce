@@ -53,7 +53,11 @@ class SendpmController extends GlobalchildController{
 				$this->E($oPmModel->getErrorMessage());
 			}
 		}
+
+		// 更新积分
+		Core_Extend::updateCreditByAction('sendpm',$GLOBALS['___login___']['user_id']);
 		
+		// 成功消息
 		if(G::getGpc('type')=='back'){
 			$arrData=$oLastPmModel->toArray();
 			$arrData['jumpurl']=($GLOBALS['_commonConfig_']['URL_MODEL'] && $GLOBALS['_commonConfig_']['URL_MODEL']!=3?'?':'&').

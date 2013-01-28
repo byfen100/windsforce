@@ -26,7 +26,7 @@ INSERT INTO `#@__app` (`app_id`, `app_identifier`, `app_name`, `app_version`, `a
 --
 
 INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_action`, `creditrule_cycletype`, `creditrule_cycletime`, `creditrule_rewardnum`, `creditrule_extendcredit1`, `creditrule_extendcredit2`, `creditrule_extendcredit3`, `creditrule_extendcredit4`, `creditrule_extendcredit5`, `creditrule_extendcredit6`, `creditrule_extendcredit7`, `creditrule_extendcredit8`) VALUES
-(1, '发短消息', 'sendpm', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(1, '发短消息', 'sendpm', 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
 (2, '访问推广', 'promotion_visit', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
 (3, '注册推广', 'promotion_register', 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
 (4, '设置头像', 'setavatar', 0, 0, 1, 5, 0, 0, 0, 0, 0, 0, 0),
