@@ -12,12 +12,12 @@ class AttachmentdownloadController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if(empty($nId)){
-			$this->E('没有指定更新的附件ID');
+			$this->E(Dyhb::L('没有指定更新的附件ID','Controller/Attachmentdownload'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nId)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E('你请求的附件不存在');
+			$this->E(Dyhb::L('你请求的附件不存在','Controller/Attachmentdownload'));
 		}
 
 		$bHidereallypath=Attachment_Extend::attachmentHidereallypath($oAttachment);
@@ -45,7 +45,7 @@ class AttachmentdownloadController extends InitController{
 			}
 		}
 		
-		$this->S('下载成功',1);
+		$this->S(Dyhb::L('下载成功','Controller/Attachmentdownload'),1);
 	}
 
 }

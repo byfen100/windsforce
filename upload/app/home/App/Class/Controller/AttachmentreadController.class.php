@@ -18,12 +18,12 @@ class AttachmentreadController extends InitController{
 		$nThumb=intval(G::getGpc('thumb','G'));
 
 		if(empty($nAttachmentId)){
-			$this->E('你未指定请求附件的ID');
+			$this->E(Dyhb::L('你未指定请求附件的ID','Controller/Attachmentread'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentId)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E('你请求的附件不存在');
+			$this->E(Dyhb::L('你请求的附件不存在','Controller/Attachmentread'));
 		}
 
 		// 附件过期检测
@@ -38,7 +38,7 @@ class AttachmentreadController extends InitController{
 				if(in_array($oAttachment['attachment_extension'],array('gif','jpg','png','bmp','jpeg'))){
 					header('location: '.$GLOBALS['_option_']['site_url'].'/Public/images/common/none.gif');
 				}else{
-					$this->E('你请求的附件已过期');
+					$this->E(Dyhb::L('你请求的附件已过期','Controller/Attachmentread'));
 				}
 			}
 		}
@@ -126,7 +126,7 @@ class AttachmentreadController extends InitController{
 
 			exit();
 		}else{
-			$this->E('你请求的附件不可读，可能已经损坏');
+			$this->E(Dyhb::L('你请求的附件不可读，可能已经损坏','Controller/Attachmentread'));
 		}
 	}
 
