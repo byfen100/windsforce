@@ -39,7 +39,7 @@ class ViewController extends Controller{
 			$this->E($oHomefresh->getErrorMessage());
 		}
 
-		$sHomefreshtitle=$oHomefresh->homefresh_title?$oHomefresh->homefresh_title:G::subString(strip_tags($oHomefresh['homefresh_message']),0,$arrOptionData['homefreshtitle_substring_num']);
+		$sHomefreshtitle=$oHomefresh->homefresh_title?G::subString($oHomefresh->homefresh_title,0,$arrOptionData['homefreshtitle_substring_num']):'Title Not Found!';
 
 		// 读取评论列表
 		$arrWhere=array();
