@@ -15,9 +15,11 @@
 					<p><div class="current_ratinginfo">
 							<!--<lang package='__COMMON_LANG__@Template/Common'>-->等级名字<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['rating_name']}--></span>,<!--<lang package='__COMMON_LANG__@Template/Common'>-->距离下一个等级<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['next_rating']['rating_name']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->还差<!--</lang>-->&nbsp;<span class="badge badge-success"><!--{$arrRatinginfo['next_needscore']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->积分<!--</lang>-->
 						</div>
-						<div class="progress">
-							<div class="bar" style="width: <!--{$arrRatinginfo['next_progress']}-->%;"></div>
-						</div>
+						<p>
+							<div class="progress">
+								<div class="bar" style="width: <!--{$arrRatinginfo['next_progress']}-->%;"></div>
+							</div>
+						</p>
 						<div><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></div>
 					</p>
 				</div>
