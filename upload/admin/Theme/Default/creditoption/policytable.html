@@ -44,7 +44,7 @@
 							<td><!--{$oCreditrule['creditrule_id']}--></td>
 							<td><!--{$oCreditrule['creditrule_name']}--> (<!--{$oCreditrule['creditrule_action']}-->)</td>
 							<td><!--{:Credit_Extend::getCreditType($oCreditrule['creditrule_cycletype'])}--></td>
-							<td><!--{if $oCreditrule['creditrule_cycletype']==0}-->N/A<!--{d*else}--><!--{$oCreditrule['creditrule_cycletime']}--><!--{/if}--></td>
+							<td><!--{if $oCreditrule['creditrule_cycletype']==0}-->N/A<!--{d*else}--><!--{$oCreditrule['creditrule_rewardnum']}--><!--{/if}--></td>
 							<!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit>-->
 							<td><!--{$oCreditrule['creditrule_extendcredit'.$nAvailableExtendCredit]}--></td>
 							<!--</foreach>-->
