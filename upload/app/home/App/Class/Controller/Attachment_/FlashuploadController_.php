@@ -16,6 +16,9 @@ class FlashuploadController extends Controller{
 			echo ($arrUploadids[0]);
 
 			$this->cache_site_();
+
+			// 更新积分
+			Core_Extend::updateCreditByAction('postattachment',$GLOBALS['___login___']['user_id']);
 		}catch(Exception $e){
 			echo '<div class="upload-error">'.
 						sprintf('&#8220;%s&#8221; has failed to upload due to an error',htmlspecialchars($_FILES['Filedata']['name'])).'</strong><br />'.

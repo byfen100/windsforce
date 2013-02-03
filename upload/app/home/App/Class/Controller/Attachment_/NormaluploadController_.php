@@ -19,6 +19,9 @@ class NormaluploadController extends Controller{
 			$sUploadids=implode(',',$arrUploadids);
 
 			$this->cache_site_();
+
+			// 更新积分
+			Core_Extend::updateCreditByAction('postattachment',$GLOBALS['___login___']['user_id']);
 			
 			if(G::getGpc('dialog','P')==1){
 				G::urlGoTo(Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P').(G::getGpc('filetype','P')==1?'&filetype=1':'')));

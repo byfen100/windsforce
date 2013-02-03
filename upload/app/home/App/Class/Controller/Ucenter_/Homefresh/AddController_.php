@@ -92,8 +92,10 @@ class AddController extends Controller{
 
 			$this->cache_site_();
 
-			$arrHomefreshData['homefresh_count']=Homefresh_Extend::getMyhomefreshnum($GLOBALS['___login___']['user_id']);
+			// 更新积分
+			Core_Extend::updateCreditByAction('posthomefresh',$GLOBALS['___login___']['user_id']);
 			
+			$arrHomefreshData['homefresh_count']=Homefresh_Extend::getMyhomefreshnum($GLOBALS['___login___']['user_id']);
 			$this->A($arrHomefreshData,Dyhb::L('添加新鲜事成功','Controller/Homefresh'),1);
 		}
 	}

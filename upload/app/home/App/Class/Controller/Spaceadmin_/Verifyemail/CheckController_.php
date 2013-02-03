@@ -37,6 +37,9 @@ class CheckController extends Controller{
 			$this->E($oUser->getErrorMessage());
 		}
 
+		// 更新积分
+		Core_Extend::updateCreditByAction('verifyemail',$GLOBALS['___login___']['user_id']);
+
 		$this->assign('__JumpUrl__',Dyhb::U('home://spaceadmin/verifyemail'));
 		$this->S(Dyhb::L('恭喜Email验证通过','Controller/Spaceadmin'));
 	}

@@ -207,6 +207,9 @@ class AddcommentController extends GlobalchildController{
 
 		$this->cache_site_();
 
+		// 更新积分
+		Core_Extend::updateCreditByAction('commenthomefresh',$GLOBALS['___login___']['user_id']);
+
 		$this->A($arrCommentData,Dyhb::L('添加新鲜事评论成功','Controller/Homefresh'),1);
 	}
 
