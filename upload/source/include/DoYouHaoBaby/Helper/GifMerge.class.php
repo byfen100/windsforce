@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Gif动画验证码生成类（Modify from Discuz!）($)*/
+   Gif动画验证码生成类（Modify from Discuz!）($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

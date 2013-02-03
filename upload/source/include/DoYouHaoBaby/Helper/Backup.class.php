@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   数据库备份类($)*/
+   数据库备份类($Liu.XiangMin)*/
 
 class Backup{
 

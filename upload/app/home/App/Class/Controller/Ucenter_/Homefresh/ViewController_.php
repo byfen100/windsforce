@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   查看新鲜事($)*/
+   查看新鲜事($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

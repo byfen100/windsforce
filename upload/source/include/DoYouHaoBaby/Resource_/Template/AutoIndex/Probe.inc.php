@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-	 DoYouHaoBaby探针文件($)*/
+	 DoYouHaoBaby探针文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

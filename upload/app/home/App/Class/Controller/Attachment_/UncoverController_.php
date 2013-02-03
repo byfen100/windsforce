@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   删除专辑封面操作($)*/
+   删除专辑封面操作($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

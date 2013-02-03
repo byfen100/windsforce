@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 安装程序配置文件($)*/
+   WindsForce 安装程序配置文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

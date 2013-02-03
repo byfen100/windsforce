@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   站点统计显示($)*/
+   站点统计显示($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

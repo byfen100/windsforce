@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   用户和标签之间的索引模型($)*/
+   用户和标签之间的索引模型($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

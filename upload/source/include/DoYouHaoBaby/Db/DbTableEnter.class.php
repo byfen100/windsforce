@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   数据库表入口($)*/
+   数据库表入口($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

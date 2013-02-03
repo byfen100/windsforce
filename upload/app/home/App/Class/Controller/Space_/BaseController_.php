@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   个人空间基本资料($)*/
+   个人空间基本资料($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

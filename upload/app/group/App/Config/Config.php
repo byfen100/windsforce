@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   群组基本配置文件($)*/
+   群组基本配置文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

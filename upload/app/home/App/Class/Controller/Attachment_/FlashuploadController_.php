@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Flash上传逻辑处理($)*/
+   Flash上传逻辑处理($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

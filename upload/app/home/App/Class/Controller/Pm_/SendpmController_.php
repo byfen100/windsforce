@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   发送短消息处理逻辑($)*/
+   发送短消息处理逻辑($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

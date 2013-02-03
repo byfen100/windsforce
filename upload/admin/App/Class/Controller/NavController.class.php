@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   菜单控制器($)*/
+   菜单控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

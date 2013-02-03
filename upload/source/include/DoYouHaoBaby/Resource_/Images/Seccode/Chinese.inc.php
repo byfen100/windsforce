@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   框架中文验证码中文字体($)*/
+   框架中文验证码中文字体($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

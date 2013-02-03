@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   创建应用程序英文语言包(En-us)($)*/
+   创建应用程序英文语言包(En-us)($Liu.XiangMin)*/
 
 return array(
 '0'=>'Set the application name (%s) is invalid.',

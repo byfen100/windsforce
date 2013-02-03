@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 裁剪($)*/
+   WindsForce 裁剪($Liu.XiangMin)*/
 
 $(function(){
 	var jcrop_api, boundx, boundy;

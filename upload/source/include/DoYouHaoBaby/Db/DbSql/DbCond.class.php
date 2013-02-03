@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   DbCond类封装复杂的查询条件($)*/
+   DbCond类封装复杂的查询条件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

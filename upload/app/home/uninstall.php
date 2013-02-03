@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   主页卸载清理程序($)*/
+   主页卸载清理程序($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   所有数据库连接类的基类($)*/
+   所有数据库连接类的基类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

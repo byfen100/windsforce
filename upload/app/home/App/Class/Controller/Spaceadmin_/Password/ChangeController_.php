@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   密码修改确认($)*/
+   密码修改确认($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

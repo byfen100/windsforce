@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   DoYouHaoBaby 基础初始化文件($)*/
+   DoYouHaoBaby 基础初始化文件($Liu.XiangMin)*/
 
 /** 系统异常和错误处理 */
 set_exception_handler(array('Dyhb','exceptionHandler'));

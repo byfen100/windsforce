@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Ubb代码解析($)*/
+   Ubb代码解析($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

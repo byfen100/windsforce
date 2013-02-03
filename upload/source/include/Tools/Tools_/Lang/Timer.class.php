@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   计时器($)*/
+   计时器($Liu.XiangMin)*/
 
 class Timer{
 

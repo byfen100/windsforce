@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   站点新鲜事评论控制器($)*/
+   站点新鲜事评论控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

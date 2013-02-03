@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   打包文件 ($)*/
+   打包文件 ($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

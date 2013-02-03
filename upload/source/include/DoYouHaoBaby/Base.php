@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   DoYouHaoBaby 框架基础文件($)*/
+   DoYouHaoBaby 框架基础文件($Liu.XiangMin)*/
 
 /** 防止乱码 */
 header("Content-type:text/html;charset=utf-8");

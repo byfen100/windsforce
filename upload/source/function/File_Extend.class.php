@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   文件处理相关函数($)*/
+   文件处理相关函数($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

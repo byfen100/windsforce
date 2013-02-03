@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce URL跳转($)*/
+   WindsForce URL跳转($Liu.XiangMin)*/
 
 /** 处理URL */
 $sUrl=isset($_GET['go'])?$_GET['go']:'';

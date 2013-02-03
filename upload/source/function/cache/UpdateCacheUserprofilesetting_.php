@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   个人信息配置缓存($)*/
+   个人信息配置缓存($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

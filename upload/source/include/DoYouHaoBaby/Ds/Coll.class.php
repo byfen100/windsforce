@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Coll实现了一个类型安全的对象集合($)*/
+   Coll实现了一个类型安全的对象集合($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   用户中心显示($)*/
+   用户中心显示($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

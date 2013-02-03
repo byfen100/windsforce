@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   更新赞数量($)*/
+   更新赞数量($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

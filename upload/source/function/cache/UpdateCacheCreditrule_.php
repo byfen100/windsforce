@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   积分等级缓存($)*/
+   积分等级缓存($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   社会化帐号管理($)*/
+   社会化帐号管理($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

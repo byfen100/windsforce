@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   创建一个应用程序($)*/
+   创建一个应用程序($Liu.XiangMin)*/
 
 /** 防止PHP页面乱码 */
 ini_set('default_charset','utf-8');

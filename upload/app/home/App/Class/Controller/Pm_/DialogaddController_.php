@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   对话框发送短消息($)*/
+   对话框发送短消息($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

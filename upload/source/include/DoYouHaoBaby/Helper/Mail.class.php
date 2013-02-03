@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Mail 邮件发送类($)*/
+   Mail 邮件发送类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce HTML5($)*/
+   WindsForce HTML5($Liu.XiangMin)*/
 
 /*! HTML5 Shiv pre3.5 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed 
     Uncompressed source: https://github.com/aFarkas/html5shiv */

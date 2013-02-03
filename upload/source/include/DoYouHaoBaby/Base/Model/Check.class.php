@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   全局数据验证器($)*/
+   全局数据验证器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

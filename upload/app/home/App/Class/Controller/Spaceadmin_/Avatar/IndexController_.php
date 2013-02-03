@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   头像上传界面($)*/
+   头像上传界面($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   前台站点信息($)*/
+   前台站点信息($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

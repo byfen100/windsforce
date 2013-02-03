@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   PHP 队列和栈抽象类($)*/
+   PHP 队列和栈抽象类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

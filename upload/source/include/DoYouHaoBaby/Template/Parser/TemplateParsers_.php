@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   this($)*/
+   this($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

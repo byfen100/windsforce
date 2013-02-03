@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   你可能认识的好友($)*/
+   你可能认识的好友($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   删除标签($)*/
+   删除标签($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

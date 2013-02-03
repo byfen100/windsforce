@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   用户申诉首页($)*/
+   用户申诉首页($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

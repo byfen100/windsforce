@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 安装程序入口文件($)*/
+   WindsForce 安装程序入口文件($Liu.XiangMin)*/
 
 //error_reporting(E_ERROR|E_PARSE|E_STRICT);
 error_reporting(E_ALL);

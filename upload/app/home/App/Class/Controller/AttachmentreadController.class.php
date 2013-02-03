@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   附件读取管理($)*/
+   附件读取管理($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   推荐和取消附件($)*/
+   推荐和取消附件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

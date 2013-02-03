@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   语言包测试代码($)*/
+   语言包测试代码($Liu.XiangMin)*/
 
 exit();
 

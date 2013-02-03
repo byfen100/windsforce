@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Home应用基础Javascript($)*/
+   Home应用基础Javascript($Liu.XiangMin)*/
 
 /** 登录回调 */
 function login_handle(data,status){

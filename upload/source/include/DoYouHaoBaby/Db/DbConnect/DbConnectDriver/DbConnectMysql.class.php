@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Mysql数据连接管理类($)*/
+   Mysql数据连接管理类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

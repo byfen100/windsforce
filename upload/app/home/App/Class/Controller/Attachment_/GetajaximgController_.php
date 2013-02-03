@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Ajax取得图片($)*/
+   Ajax取得图片($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

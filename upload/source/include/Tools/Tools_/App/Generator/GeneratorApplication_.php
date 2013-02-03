@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   应用程序创建类($) */
+   应用程序创建类($Liu.XiangMin)*/
 
 class GeneratorApplication{
 

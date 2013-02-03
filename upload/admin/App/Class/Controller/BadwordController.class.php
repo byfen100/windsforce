@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   词语过滤($)*/
+   词语过滤($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

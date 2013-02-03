@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   离开小组控制器($)*/
+   离开小组控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 附件地址($)*/
+   WindsForce 附件地址($Liu.XiangMin)*/
 
 /** 处理URL */
 $sUrl=http_build_query($_GET);

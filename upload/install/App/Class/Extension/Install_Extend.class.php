@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 安装函数库($)*/
+   WindsForce 安装函数库($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

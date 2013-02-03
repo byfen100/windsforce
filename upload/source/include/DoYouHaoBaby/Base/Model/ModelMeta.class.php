@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   ModelMeta元模式($)*/
+   ModelMeta元模式($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

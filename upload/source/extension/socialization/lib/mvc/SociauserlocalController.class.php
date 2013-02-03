@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   社会化登录数据本地化($)*/
+   社会化登录数据本地化($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

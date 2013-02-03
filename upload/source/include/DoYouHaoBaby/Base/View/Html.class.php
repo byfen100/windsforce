@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   HTML静态化生成管理类($)*/
+   HTML静态化生成管理类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

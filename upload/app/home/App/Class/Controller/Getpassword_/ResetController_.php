@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   重置密码页面($)*/
+   重置密码页面($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

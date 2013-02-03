@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   标记阅读系统短消息($)*/
+   标记阅读系统短消息($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

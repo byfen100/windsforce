@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   DoYouHaoBaby 入口文件($)*/
+   DoYouHaoBaby 入口文件($Liu.XiangMin)*/
 
 /** DoYouHaoBaby系统目录定义 */
 define('DYHB_PATH',str_replace('\\','/',dirname(__FILE__)));

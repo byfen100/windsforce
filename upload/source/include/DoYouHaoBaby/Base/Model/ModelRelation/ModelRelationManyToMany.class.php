@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   ModelRelationManyToMany类封装了对象见的多对多关系($)*/
+   ModelRelationManyToMany类封装了对象见的多对多关系($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

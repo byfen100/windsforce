@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   前台路由配置文件($)*/
+   前台路由配置文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   添加帖子控制器($)*/
+   添加帖子控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

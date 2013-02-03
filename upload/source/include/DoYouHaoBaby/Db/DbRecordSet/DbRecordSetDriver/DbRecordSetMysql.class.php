@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   MySQL 数据库记录集($)*/
+   MySQL 数据库记录集($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

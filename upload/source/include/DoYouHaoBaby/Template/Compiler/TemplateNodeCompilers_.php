@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   节点编译器列表($)*/
+   节点编译器列表($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

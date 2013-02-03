@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   图片本地化实现类($)*/
+   图片本地化实现类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

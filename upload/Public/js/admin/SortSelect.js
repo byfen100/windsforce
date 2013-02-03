@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 后台排序($)*/
+   WindsForce 后台排序($Liu.XiangMin)*/
 
 function sortSelect(sFormName,sSortPan,sSearchName,nJumpNum){
 	//对象属性

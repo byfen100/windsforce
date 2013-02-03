@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   模型RBAC 行为扩展($)*/
+   模型RBAC 行为扩展($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

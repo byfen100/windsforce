@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   SQL Select 子句($)*/
+   SQL Select 子句($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

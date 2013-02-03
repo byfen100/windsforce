@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Rss 生成类($)*/
+   Rss 生成类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

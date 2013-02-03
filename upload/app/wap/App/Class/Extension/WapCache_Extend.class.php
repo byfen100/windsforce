@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   Wap缓存文件($)*/
+   Wap缓存文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   上传配置处理控制器($)*/
+   上传配置处理控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

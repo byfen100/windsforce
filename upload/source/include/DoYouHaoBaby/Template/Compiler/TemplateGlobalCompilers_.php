@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   模板全局编译器($)*/
+   模板全局编译器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Page分页处理类($)*/
+   Page分页处理类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

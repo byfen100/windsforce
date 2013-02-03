@@ -1,5 +1,5 @@
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 新鲜事评论AJAX提交($)*/
+   WindsForce 新鲜事评论AJAX提交($Liu.XiangMin)*/
 
 /** 前端验证 */
 function commentCheckForm(comment_content,customContent){

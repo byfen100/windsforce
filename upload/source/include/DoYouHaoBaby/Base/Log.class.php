@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   日志类($)*/
+   日志类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

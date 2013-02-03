@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   WindsForce 后台入口文件($)*/
+   WindsForce 后台入口文件($Liu.XiangMin)*/
 
 /** 是否需要安装 */
 if(!is_file('data/Install.lock.php')){

@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   全站缓存更新控制器($)*/
+   全站缓存更新控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

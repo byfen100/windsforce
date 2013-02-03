@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   登录状态记录模型($)*/
+   登录状态记录模型($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

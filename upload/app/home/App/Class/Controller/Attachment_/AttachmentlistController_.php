@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   最近附件展示（包括推荐附件和推荐相片）($)*/
+   最近附件展示（包括推荐附件和推荐相片）($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

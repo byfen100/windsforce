@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   用户密码安全($)*/
+   用户密码安全($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

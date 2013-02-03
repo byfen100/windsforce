@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   帮助首页($)*/
+   帮助首页($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

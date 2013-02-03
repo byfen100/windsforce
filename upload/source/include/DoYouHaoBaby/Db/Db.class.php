@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   数据库访问统一入口，可以通过这个接口与数据库进行交互($)*/
+   数据库访问统一入口，可以通过这个接口与数据库进行交互($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

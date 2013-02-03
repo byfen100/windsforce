@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   新注册会员($)*/
+   新注册会员($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

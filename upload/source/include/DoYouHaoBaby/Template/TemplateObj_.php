@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   模版对象类($)*/
+   模版对象类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

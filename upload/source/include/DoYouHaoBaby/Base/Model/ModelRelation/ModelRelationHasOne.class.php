@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   ModelRelationHasOne类封装了对象见的一对一关系($)*/
+   ModelRelationHasOne类封装了对象见的一对一关系($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

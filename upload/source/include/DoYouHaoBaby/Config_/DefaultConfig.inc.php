@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   系统默认配置文件($)*/
+   系统默认配置文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

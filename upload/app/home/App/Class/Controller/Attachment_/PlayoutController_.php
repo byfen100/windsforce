@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   弹出播放($)*/
+   弹出播放($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

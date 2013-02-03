@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   创建应用程序中文语言包(Zh-cn)($)*/
+   创建应用程序中文语言包(Zh-cn)($Liu.XiangMin)*/
 
 return array(
 '0'=>'设置的应用程序名 ( %s ) 无效.',

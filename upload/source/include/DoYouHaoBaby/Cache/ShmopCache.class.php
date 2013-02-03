@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   使用Shmop来缓存数据($)*/
+   使用Shmop来缓存数据($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

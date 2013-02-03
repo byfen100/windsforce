@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Template对象: Node($)*/
+   Template对象: Node($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

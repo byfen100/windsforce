@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   广场随便看看($)*/
+   广场随便看看($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

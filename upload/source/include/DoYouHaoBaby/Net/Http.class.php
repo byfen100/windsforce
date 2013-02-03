@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   Http 工具类($)*/
+   Http 工具类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

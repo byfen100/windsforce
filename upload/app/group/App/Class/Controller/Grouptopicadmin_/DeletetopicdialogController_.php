@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   删除单个帖子对话框控制器($)*/
+   删除单个帖子对话框控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

@@ -1,6 +1,6 @@
 <?php
 /* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
-   系统验证码（Modify from Discuz!）($)*/
+   系统验证码（Modify from Discuz!）($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

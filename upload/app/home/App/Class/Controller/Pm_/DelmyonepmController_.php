@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   删除一条已发短消息($)*/
+   删除一条已发短消息($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

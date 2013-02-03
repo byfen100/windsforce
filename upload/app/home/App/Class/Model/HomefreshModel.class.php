@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   新鲜事模型($)*/
+   新鲜事模型($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
