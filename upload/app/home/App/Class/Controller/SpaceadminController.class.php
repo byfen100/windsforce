@@ -84,4 +84,20 @@ class SpaceadminController extends InitController{
 		Core_Extend::doControllerAction('Spaceadmin@Verifyemail/Un','index');
 	}
 
+	public function rating(){
+		Core_Extend::doControllerAction('Spaceadmin@Rating/Index','index');
+	}
+
+	public function creditrule(){
+		Core_Extend::doControllerAction('Spaceadmin@Rating/Creditrule','index');
+	}
+
+	public function creditlog(){
+		Core_Extend::doControllerAction('Spaceadmin@Rating/Creditlog','index');
+	}
+
+	public function creditrulelog(){
+		Core_Extend::doControllerAction('Spaceadmin@Rating/Creditrulelog','index');
+	}
+
 }
