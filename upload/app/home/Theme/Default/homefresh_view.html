@@ -29,7 +29,11 @@ $(function(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<!--{if $GLOBALS['___login___']!==false}-->
 			<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<!--{d*else}-->
+			<li><a href="<!--{:Dyhb::U('home://stat/explore')}-->"><!--<lang package='Template/Homefresh'>-->随便看看<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<!--{/if}-->
 			<li><!--<lang package='Template/Homefresh'>-->新鲜事<!--</lang>--></li>
 		</ul>
 		

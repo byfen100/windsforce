@@ -56,6 +56,7 @@ return array(
 '6f917a9eafbefd0aae975e9783dd617d'=>"你没有发现任何话题",
 '7ed4bde08d24c695a280c20389640648'=>"话题发起人",
 '19fcb9eb2594059036dfede5f4ec53e8'=>"时间",
+'02bf863a224b14de19b887cfe6e0f80b'=>"随便看看",
 )
 
 ?>
