@@ -6,6 +6,8 @@
 
 class ExploreController extends Controller{
 
+	protected $_sHomefreshtag='';
+	
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteexplore')){
 			$this->E(Dyhb::L('你没有权限访问随便看看','Controller/Stat'));
@@ -63,7 +65,8 @@ class ExploreController extends Controller{
 	}
 
 	public function explore_title_(){
-		return Dyhb::L('随便看看','Controller/Stat');
+		return ($this->_sHomefreshtag?$this->_sHomefreshtag.' | ':'').
+			Dyhb::L('随便看看','Controller/Stat');
 	}
 
 	public function explore_keywords_(){

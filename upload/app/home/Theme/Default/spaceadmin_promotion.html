@@ -10,8 +10,20 @@
 
 		<div class="row">
 			<div class="span12">
-				<p><!--<lang package='Template/Spaceadmin'>-->如果您的朋友通过下面链接访问站点，您将获得积分奖励<!--</lang>--> &nbsp;<span class="label label-success"><!--<lang package='Template/Spaceadmin'>-->金币<!--</lang>-->+1&nbsp;</span></p>
-				<p><!--<lang package='Template/Spaceadmin'>-->如果您的朋友不但访问并且注册成为会员，您将再获得积分奖励<!--</lang>-->&nbsp;<span class="label label-success"><!--<lang package='Template/Spaceadmin'>-->金币<!--</lang>-->+2&nbsp;</span></p>
+				<p><!--<lang package='Template/Spaceadmin'>-->如果您的朋友通过下面链接访问站点，您将获得积分奖励<!--</lang>-->&nbsp;
+					<span class="label label-success">
+					<!--<foreach for="arrCreditdata['promotion_visit']" value=arrData>-->
+					<!--{$arrData['title']}-->&nbsp;<!--{if $arrData['data']>=0}-->+<!--{/if}--><!--{$arrData['data']}-->&nbsp;
+					<!--</foreach>-->
+					</span>
+				</p>
+				<p><!--<lang package='Template/Spaceadmin'>-->如果您的朋友不但访问并且注册成为会员，您将再获得积分奖励<!--</lang>-->&nbsp;
+					<span class="label label-success">
+					<!--<foreach for="arrCreditdata['promotion_register']" value=arrData>-->
+					<!--{$arrData['title']}-->&nbsp;<!--{if $arrData['data']>=0}-->+<!--{/if}--><!--{$arrData['data']}-->&nbsp;
+					<!--</foreach>-->
+					</span>
+				</p>
 				<table class="table">
 					<thead>
 						<tr>
