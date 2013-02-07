@@ -20,7 +20,7 @@ class IndexController extends Controller{
 			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
 			if(empty($oHomefreshtag['homefreshtag_id'])){
 				$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
-				$this->E('话题不存在或者被禁止了');
+				$this->E(Dyhb::L('话题不存在或者被禁止了','Controller/Homefresh'));
 			}
 
 			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");

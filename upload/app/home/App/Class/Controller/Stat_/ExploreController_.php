@@ -13,10 +13,27 @@ class ExploreController extends Controller{
 		
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
+		$arrWhere=array();
+		$arrWhere['homefresh_status']=1;
+
+		// 话题
+		$sKey=trim(G::getGpc('key','G'));
+		if(!empty($sKey)){
+			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
+			if(empty($oHomefreshtag['homefreshtag_id'])){
+				$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
+				$this->E(Dyhb::L('话题不存在或者被禁止了','Controller/Stat'));
+			}
+
+			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");
+			$this->assign('oHomefreshtag',$oHomefreshtag);
+			$this->_sHomefreshtag=$oHomefreshtag['homefreshtag_name'];
+		}
+
 		// 读取新鲜事
-		$nTotalRecord=HomefreshModel::F('homefresh_status=?',1)->all()->getCounts();
+		$nTotalRecord=HomefreshModel::F()->where($arrWhere)->all()->getCounts();
 		$oPage=Page::RUN($nTotalRecord,$arrOptionData['explorefresh_list_num'],G::getGpc('page','G'));
-		$arrHomefreshs=HomefreshModel::F('homefresh_status=?',1)->order('create_dateline DESC')->limit($oPage->returnPageStart(),$arrOptionData['explorefresh_list_num'])->getAll();
+		$arrHomefreshs=HomefreshModel::F()->where($arrWhere)->order('create_dateline DESC')->limit($oPage->returnPageStart(),$arrOptionData['explorefresh_list_num'])->getAll();
 
 		$sGoodCookie=Dyhb::cookie('homefresh_goodnum');
 		$arrGoodCookie=explode(',',$sGoodCookie);

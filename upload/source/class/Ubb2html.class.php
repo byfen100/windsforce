@@ -132,7 +132,13 @@ class Ubb2html{
 	}
 
 	public function makeTag($sTag){
-		return '<a href="'.__ROOT__.'/index.php?app=home&c=ucenter&a=index&key='.urlencode($sTag).'">#'.$sTag.'#</a>';
+		if($GLOBALS['___login___']!==FALSE){
+			$sUrl=__ROOT__.'/index.php?app=home&c=ucenter&a=index&key=';
+		}else{
+			$sUrl=__ROOT__.'/index.php?app=home&c=stat&a=explore&key=';
+		}
+
+		return '<a href="'.$sUrl.urlencode($sTag).'">#'.$sTag.'#</a>';
 	}
 
 	public function makeMp3($sSrc){

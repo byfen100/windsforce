@@ -28,6 +28,12 @@ $(document).ready(function(){
 		<div class="row">
 			<div class="span8">
 				<div class="commonbox">
+					<!--{if isset($oHomefreshtag)}-->
+					<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>
+						<!--<lang package='Template/Homefresh'>-->话题<!--</lang>-->&nbsp;(<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshtag['user_id'])}-->" title="<!--<lang package='Template/Homefresh'>-->话题发起人<!--</lang>-->&nbsp;<!--{$oHomefreshtag['homefreshtag_username']}--> | <!--<lang package='Template/Homefresh'>-->时间<!--</lang>-->&nbsp;<!--{$oHomefreshtag['create_dateline']|Core_Extend+timeFormat}-->"><!--{$oHomefreshtag['homefreshtag_username']}--></a>)&nbsp;<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=explore&key=<!--{$oHomefreshtag['homefreshtag_name']|urlencode}-->">#<!--{$oHomefreshtag['homefreshtag_name']}-->#</a>&nbsp;,<!--<lang package='Template/Homefresh'>-->大约<!--</lang>-->&nbsp;<span class="badge "><!--{$oHomefreshtag['homefreshtag_usercount']}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->用户参与该话题<!--</lang>-->,<!--<lang package='Template/Homefresh'>-->大约<!--</lang>-->&nbsp;<span class="badge "><!--{$oHomefreshtag['homefreshtag_homefreshcount']}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->条<!--</lang>--><!--<lang package='Template/Homefresh'>-->相关新鲜事<!--</lang>-->
+					</div>
+					<!--{/if}-->
+					
 					<div class="message-box">
 						<!--{if is_array($arrHomefreshs)}-->
 						<table class="table">
