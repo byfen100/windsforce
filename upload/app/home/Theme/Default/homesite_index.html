@@ -1,5 +1,13 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	$('.homesite-content').emotionsToHtml();
+});
+<!--{/script}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--{$sTitle}--></li>
@@ -19,7 +27,7 @@
 				</ul>
 			</div>
 			<div class="span10">
-				<!--{$sContent|Core_Extend+ubb}-->
+				<div class="homesite-content"><!--{$sContent|Core_Extend+ubb}--></div>
 			</div>
 		</div><!--/row-->
 
