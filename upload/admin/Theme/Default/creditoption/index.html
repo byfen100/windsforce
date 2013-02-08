@@ -74,19 +74,15 @@ function option(){
 								<td><input type="text" size="2" name="options[extend_credit][<!--{$key}-->][lowerlimit]" value="<!--{$arrExtendCredit['lowerlimit']}-->"></td>
 								<td><!--{if $key<=3}-->0<!--{d*else}-->
 									<input type="text" size="2" name="options[extend_credit][<!--{$key}-->][ratio]" value="<!--{$arrExtendCredit['ratio']}-->"><!--{/if}--></td>
-								<td><!--{if $key<=3}-->
+								<td><!--{if in_array($key,array(1,3))}-->
 									<input type="checkbox" name="options[extend_credit][<!--{$key}-->][allowexchangein]" value="0" disabled/>
 									<input type="hidden" name="options[extend_credit][<!--{$key}-->][allowexchangein]" value="0">
 									<!--{d*else}-->
 									<input type="checkbox" name="options[extend_credit][<!--{$key}-->][allowexchangein]" value="1" <!--{if $arrExtendCredit['allowexchangein']==1}-->checked<!--{/if}-->/>
 									<!--{/if}-->
 								</td>
-								<td><!--{if $key<=3}-->
-									<input type="checkbox" name="" value="1" disabled />
-									<input type="hidden" name="options[extend_credit][<!--{$key}-->][allowexchangeout]" value="0">
-									<!--{d*else}-->
+								<td>
 									<input type="checkbox" name="options[extend_credit][<!--{$key}-->][allowexchangeout]" value="1" <!--{if $arrExtendCredit['allowexchangeout']==1}-->checked<!--{/if}-->/>
-									<!--{/if}-->
 								</td>
 							</tr>
 							<!--</foreach>-->
