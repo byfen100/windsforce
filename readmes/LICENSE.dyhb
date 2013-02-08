@@ -1,7 +1,7 @@
 /**
  * WindsForce APP Framework (风之力APP开发框架)
  *
- * @copyright    Copyright (c) WindsForce Studio From 2012.03.17(http://www.windsforce.com)
+ * @copyright    Copyright (C) WindsForce Team Start This From 2012.03.17.(http://www.windsforce.com)
  * @license        This is NOT a freeware, use is subject to license terms
  * @notice         欢迎使用 WindsForce APP开发框架,在您开始使用之前,请务必完整阅读本软件附带的全部说明档
  * @welcome     Welcome to http://www.windsforce.com & http://www.windsforce.net
@@ -9,7 +9,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-版权所有 (c) 2012-2099, WindsForce Studio
+版权所有 (c) 2012-2099, WindsForce Team
 保留所有权利.
 
     感谢您选择 WindsForce App Framework产品。希望我们的努力能为您提供一个高效快速和强大的 web
@@ -17,13 +17,13 @@ APP开发框架解决方案，致力于最佳最简的应用开发。
 
     WindsForce 英文全称为 WindsForce App Framework，中文全称为 风之力APP开发框架，以下简称
 WindsForce。
-    WindsForce Studio 为 WindsForce 项目开发的工作室，
+    WindsForce Team 为 WindsForce 项目开发的工作室，
 依法拥有 WindsForce App Framework 的著作权。
 
     WindsForce 由 WindsForce App Framework 独立开发，官方网站为 http://www.windsforce.com, 技术支
     持论坛 http://www.windsforce.net。
 
-    本授权协议适用且仅适用于 WindsForce 1.x 版本，WindsForce Studio
+    本授权协议适用且仅适用于 WindsForce 1.x 版本，WindsForce Team
 拥有对本版 WindsForce 授权协议的最终解释权权。
 
     在开始安装 WindsForce 之前，请务必仔细阅读本授权文档，在确定同意并满足授权协议的
@@ -53,18 +53,18 @@ WindsForce。
     (4) 不得对本软件进行出租、租借、发放子许可证、出售或抵押。
     (5) 无论如何，即无论用途如何、是否经过修改或美化、修改程度如何，只要使用
 WindsForce 的任何整体或任何部分，未经书面许可，网站页面页脚处的 WindsForce 名称和
-WindsForce Studio (http://www.windsforce.net) 的链接都必须保留而不能清除或修改。
+WindsForce Team (http://www.windsforce.net) 的链接都必须保留而不能清除或修改。
     (6) 如果您未能遵守本协议的条款，您的授权将被终止，所被许可的权利将被收回。
 
     3. 有限担保和免责声明：
     (1) WindsForce 及所附带的文件是作为不提供任何明确的或隐含的赔偿或担保的形式出售
 的。
-    (2) WindsForce Studio 不对使用 WindsForce 构建的网站中的文章或信息承担责任。
-    (3) 您必须了解使用本软件的风险。必要时，WindsForce Studio 所承担的责任仅限于产
+    (2) WindsForce Team 不对使用 WindsForce 构建的网站中的文章或信息承担责任。
+    (3) 您必须了解使用本软件的风险。必要时，WindsForce Team 所承担的责任仅限于产
 品版本更换，或在第一次成功安装 WindsForce 前退还购买费用。
 
     有关 WindsForce 授权包含的服务范围，付费方式等，WindsForce 官方网站提供惟一的解释
-和官方价目表。WindsForce Studio 拥有在不提前通知的情况下，修改授权协议和价目表的权
+和官方价目表。WindsForce Team 拥有在不提前通知的情况下，修改授权协议和价目表的权
 力，修改后的协议或价目表对自改变之日起的新授权用户生效。
 
     电子文本形式的授权协议如同双方书面签署的协议一样，具有完全的和等同的法律效
@@ -73,6 +73,6 @@ WindsForce Studio (http://www.windsforce.net) 的链接都必须保留而不能�
 权协议并构成侵权，我们有权随时终止授权，责令停止损害，并保留追究相关责任的权力。
 
 
-                                                                                                                                    WindsForce Studio, 2012-12-09 11:17
+                                                                                                                                    WindsForce Team, 2012-12-09 11:17
                                                                                                                                     http://www.windsforce.com
                                                                                                                                     http://www.windsforce.net
