@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入通用评论检测相关函数 */
+require_once(Core_Extend::includeFile('function/Comment_Extend'));
+
 class AddcommentController extends GlobalchildController{
 
 	public function index(){
@@ -24,19 +27,9 @@ class AddcommentController extends GlobalchildController{
 		}
 
 		// IP禁止功能
-		$sCommentBanIp=trim($arrOptions['comment_ban_ip']);
 		$sOnlineip=G::getIp();
-		if($arrOptions['comment_banip_enable']==1 && $sCommentBanIp){
-			$sCommentBanIp=str_replace('，',',',$sCommentBanIp);
-			$arrCommentBanIp=Dyhb::normalize(explode(',', $sCommentBanIp));
-			if(is_array($arrCommentBanIp) && count($arrCommentBanIp)){
-				foreach($arrCommentBanIp as $sValueCommentBanIp){
-					$sValueCommentBanIp=str_replace('\*','.*',preg_quote($sValueCommentBanIp,"/"));
-					if(preg_match("/^{$sValueCommentBanIp}/",$sOnlineip)){
-						$this->E(Dyhb::L('您的IP %s 已经被系统禁止发表评论','Controller/Homefresh',null,$sOnlineip));
-					}
-				}
-			}
+		if(!Comment_Extend::banIp($sOnlineip)){
+			$this->E(Dyhb::L('您的IP %s 已经被系统禁止发表评论','Controller/Homefresh',null,$sOnlineip));
 		}
 
 		// 评论名字检测
@@ -44,81 +37,65 @@ class AddcommentController extends GlobalchildController{
 		if(empty($sCommentName)){
 			$this->E(Dyhb::L('评论名字不能为空','Controller/Homefresh'));
 		}
-		$arrNamekeys=array("\\",'&',' ',"'",'"','/','*',',','<','>',"\r","\t","\n",'#','$','(',')','%','@','+','?',';','^');
-		foreach($arrNamekeys as $sNamekeys){
-			if(strpos($sCommentName,$sNamekeys)!==false){
-				$this->E(Dyhb::L('此评论名字包含不可接受字符或被管理员屏蔽,请选择其它名字','Controller/Homefresh'));
-			}
+
+		if(!Comment_Extend::commentName($sCommentName)){
+			$this->E(Dyhb::L('此评论名字包含不可接受字符或被管理员屏蔽,请选择其它名字','Controller/Homefresh'));
 		}
 
 		// 评论内容长度检测
 		$sCommentContent=trim(G::getGpc('homefreshcomment_content'));
 		$nCommentMinLen=intval($arrOptions['comment_min_len']);
-		if($nCommentMinLen && strlen($sCommentContent)<$nCommentMinLen){
+		if(!Comment_Extend::commentMinLen($sCommentContent)){
 			$this->E(Dyhb::L('评论内容最少的字节数为 %d','Controller/Homefresh',null,$nCommentMinLen));
 		}
 
 		$nCommentMaxLen=intval($arrOptions['comment_max_len']);
-		if($nCommentMaxLen && strlen($sCommentContent)>$nCommentMaxLen){
+		if(!Comment_Extend::commentMaxLen($sCommentContent)){
 			$this->E(Dyhb::L('评论内容最大的字节数为 %d','Controller/Homefresh',null,$nCommentMaxLen));
 		}
 
 		// 创建评论模型
 		$oHomefreshcomment=new HomefreshcommentModel();
 
-		// SPAM 垃圾信息阻止
-		$bDisallowedSpamWordToDatabase=$arrOptions['disallowed_spam_word_to_database']?true:false;
-		if($arrOptions['comment_spam_enable']){
+		// SPAM 垃圾信息阻止: URL数量限制
+		$result=Comment_Extend::commentSpamUrl($sCommentContent);
+		if($result===false){
 			$nCommentSpamUrlNum=intval($arrOptions['comment_spam_url_num']);
-			if($nCommentSpamUrlNum){
-				if(substr_count($sCommentContent,'http://')>=$nCommentSpamUrlNum){
-					if($bDisallowedSpamWordToDatabase){
-						$this->E(Dyhb::L('评论内容中出现的衔接数量超过了系统的限制 %d 条','Controller/Homefresh',null,$nCommentSpamUrlNum));
-					}else{
-						$oHomefreshcomment->homefreshcomment_status=0;
-					}
-				}
-			}
+			$this->E(Dyhb::L('评论内容中出现的衔接数量超过了系统的限制 %d 条','Controller/Homefresh',null,$nCommentSpamUrlNum));
+		}
+		if($result===0){
+			$oHomefreshcomment->homefreshcomment_status=0;
+		}
 
-			$sSpamWords=trim($arrOptions['comment_spam_words']);
-			if($sSpamWords){
-				$sSpamWords=str_replace('，',',',$sSpamWords);
-				$arrSpamWords=Dyhb::normalize(explode(',',$sSpamWords));
-				if(is_array($arrSpamWords) && count($arrSpamWords)){
-					foreach($arrSpamWords as $sValueSpamWords){
-						if($sValueSpamWords){
-							if(preg_match("/".preg_quote($sValueSpamWords,'/')."/i",$sCommentContent)){
-								if($bDisallowedSpamWordToDatabase){
-									$this->E(Dyhb::L("你的评论内容包含系统屏蔽的词语%s",'Controller/Homefresh',null,$sValueSpamWords));
-								}else{
-									$oHomefreshcomment->homefreshcomment_status=0;
-								}
-								break;
-							}
-						}
-					}
-				}
+		// SPAM 垃圾信息阻止: 屏蔽字符检测
+		$result=Comment_Extend::commentSpamWords($sCommentContent);
+		if($result===false){
+			if(is_array($result)){
+				$this->E(Dyhb::L("你的评论内容包含系统屏蔽的词语%s",'Controller/Homefresh',null,$result[1]));
 			}
+		}
+		if($result===0){
+			$oHomefreshcomment->homefreshcomment_status=0;
+		}
 
+		// SPAM 垃圾信息阻止: 评论内容长度限制
+		$result=Comment_Extend::commentSpamContentsize($sCommentContent);
+		if($result===false){
 			$nCommentSpamContentSize=intval($arrOptions['comment_spam_content_size']);
-			if($nCommentSpamContentSize){
-				if(strlen($sCommentContent)>=$nCommentSpamContentSize){
-					if($bDisallowedSpamWordToDatabase){
-						$this->E(Dyhb::L('评论内容最大的字节数为%d','Controller/Homefresh',null,$nCommentSpamContentSize));
-					}else{
-						$oHomefreshcomment->homefreshcomment_status=0;
-					}
-				}
-			}
+			$this->E(Dyhb::L('评论内容最大的字节数为%d','Controller/Homefresh',null,$nCommentSpamContentSize));
+		}
+		if($result===0){
+			$oHomefreshcomment->homefreshcomment_status=0;
 		}
 
 		// 发表评论间隔时间
 		$nCommentPostSpace=intval($arrOptions['comment_post_space']);
 		if($nCommentPostSpace){
 			$oUserLasthomefreshcomment=HomefreshcommentModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->order('homefreshcomment_id DESC')->getOne();
+
 			if(!empty($oUserLasthomefreshcomment['homefreshcomment_id'])){
 				$nLastPostTime=$oUserLasthomefreshcomment['create_dateline'];
-				if(CURRENT_TIMESTAMP-$nLastPostTime<=$nCommentPostSpace){
+				if(!Comment_Extend::commentSpamPostSpace($nLastPostTime)){
 					$this->E(Dyhb::L('为防止灌水,发表评论时间间隔为 %d 秒','Controller/Homefresh',null,$nCommentPostSpace));
 				}
 			}
@@ -134,15 +111,12 @@ class AddcommentController extends GlobalchildController{
 		}
 
 		// 纯英文评论阻止
-		if($arrOptions['disallowed_all_english_word']){
-			$sPattern='/[一-龥]/u';
-			if(!preg_match_all($sPattern,$sCommentContent, $arrMatch)){
-				if($bDisallowedSpamWordToDatabase){
-					$this->E('You should type some Chinese word(like 你好)in your comment to pass the spam-check, thanks for your patience! '.Dyhb::L('您的评论中必须包含汉字','Controller/Homefresh'));
-				}else{
-					$oHomefreshcomment->homefreshcomment_status=0;
-				}
-			}
+		$result=Comment_Extend::commentDisallowedallenglishword($sCommentContent);
+		if($result===false){
+			$this->E('You should type some Chinese word(like 你好)in your comment to pass the spam-check, thanks for your patience! '.Dyhb::L('您的评论中必须包含汉字','Controller/Homefresh'));
+		}
+		if($result===0){
+			$oHomefreshcomment->homefreshcomment_status=0;
 		}
 
 		// 评论审核
