@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    邮件发送设置控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

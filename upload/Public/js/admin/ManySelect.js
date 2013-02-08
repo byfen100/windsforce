@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    WindsForce 后台将Option变成可以选择的checkbox($Liu.XiangMin)*/
 
 function selectAll(){

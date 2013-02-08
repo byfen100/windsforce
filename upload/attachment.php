@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    WindsForce 附件地址($Liu.XiangMin)*/
 
 /** 处理URL */

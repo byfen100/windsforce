@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
    ModelRelation封装Model之间的关联关系($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

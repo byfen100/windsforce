@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    Helloworld卸载清理程序($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

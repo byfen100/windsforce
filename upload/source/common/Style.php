@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    系统主题风格元素($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

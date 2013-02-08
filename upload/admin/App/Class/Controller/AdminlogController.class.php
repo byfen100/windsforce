@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    后台操作记录控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

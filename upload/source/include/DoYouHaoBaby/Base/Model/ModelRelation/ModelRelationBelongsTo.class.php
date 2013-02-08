@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
    ModelAssociationBelongsTo类封装了对象见的隶属关系($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

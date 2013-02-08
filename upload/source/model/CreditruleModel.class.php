@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    积分规则模型($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

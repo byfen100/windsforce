@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    WindsForce 用户注册验证($Liu.XiangMin)*/
 
 /* 注册数据处理 */

@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Studio start this From 2010.10.04.
+/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
    语言包制作工具($Liu.XiangMin)*/
 
 /** 防止PHP页面乱码 */

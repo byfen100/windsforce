@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    Group应用帖子操作($Liu.XiangMin)*/
 
 function modTopicdelete(){

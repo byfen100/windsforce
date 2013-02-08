@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    对话框增加附件处理($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

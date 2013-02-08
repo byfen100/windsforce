@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    站点帮组分类控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

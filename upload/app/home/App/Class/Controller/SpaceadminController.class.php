@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    前台个人中心管理($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
@@ -98,6 +98,10 @@ class SpaceadminController extends InitController{
 
 	public function creditrulelog(){
 		Core_Extend::doControllerAction('Spaceadmin@Rating/Creditrulelog','index');
+	}
+
+	public function transfer(){
+		Core_Extend::doControllerAction('Spaceadmin@Rating/Transfer','index');
 	}
 
 }

@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    WindsForce 前台公用($Liu.XiangMin)*/
 
 /** 浏览器复制变量 */

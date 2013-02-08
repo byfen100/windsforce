@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
+/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
    WindsForce 前后台公用($Liu.XiangMin)*/
 
 function isUndefined(variable){
