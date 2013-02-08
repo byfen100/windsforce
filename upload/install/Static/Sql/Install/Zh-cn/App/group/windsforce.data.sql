@@ -16,7 +16,7 @@
 --
 
 INSERT INTO `#@__app` (`app_id`, `app_identifier`, `app_name`, `app_version`, `app_description`, `app_url`, `app_email`, `app_author`, `app_authorurl`, `app_isadmin`, `app_isinstall`, `app_isuninstall`, `app_issystem`, `app_isappnav`, `app_status`) VALUES
-(3,'group', '小组', '1.0', '群组应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Studio', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1);
+(3,'group', '小组', '1.0', '群组应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Team', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 

@@ -16,8 +16,8 @@
 --
 
 INSERT INTO `#@__app` (`app_id`, `app_identifier`, `app_name`, `app_version`, `app_description`, `app_url`, `app_email`, `app_author`, `app_authorurl`, `app_isadmin`, `app_isinstall`, `app_isuninstall`, `app_issystem`, `app_isappnav`, `app_status`) VALUES
-(1, 'home', '个人空间', '1.0', '个人空间应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Studio', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1),
-(2, 'wap', 'Wap手机', '1.0', '手机应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Studio', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1);
+(1, 'home', '个人空间', '1.0', '个人空间应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Team', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1),
+(2, 'wap', 'Wap手机', '1.0', '手机应用', 'http://doyouhaobaby.net', 'admin@doyouhaobaby.net', 'WindsForce Team', 'http://doyouhaobaby.net', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -278,7 +278,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('seccode_type', '1'),
 ('windsforce_program_name', 'WindsForce'),
 ('windsforce_program_version', '1.0'),
-('windsforce_company_name', 'WindsForce Studio.'),
+('windsforce_company_name', 'WindsForce Team.'),
 ('windsforce_company_url', 'http://www.windsforce.com'),
 ('windsforce_program_url', 'http://www.windsforce.net'),
 ('windsforce_program_year', '2012-2013'),

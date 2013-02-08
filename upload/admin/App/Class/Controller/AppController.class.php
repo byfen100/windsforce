@@ -152,7 +152,7 @@ class AppController extends InitController{
 			$arrAppData['title']='WindsForce App';
 			$arrAppData['version']=WINDSFORCE_SERVER_VERSION;
 			$arrAppData['time']=WINDSFORCE_SERVER_RELEASE;
-			$arrAppData['copyright']='WindsForce Studio';
+			$arrAppData['copyright']='WindsForce Team';
 
 			foreach($arrApp as $key=>$value){
 				$arrAppData['data'][str_replace('app_','',$key)]=$value;
