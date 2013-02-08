@@ -12,7 +12,38 @@
 			<div class="span12">
 				<!--<include file="spaceadmin+ratingmenu" />-->
 					
-				<a href="<!--{:Dyhb::U('home://spaceadmin/creditlog')}-->"><!--<lang package='Template/Spaceadmin'>-->积分收益<!--</lang>--></a><span class="pipe">|</span><a href="<!--{:Dyhb::U('home://spaceadmin/creditrulelog')}-->"><b><!--<lang package='Template/Spaceadmin'>-->系统奖励<!--</lang>--></b></a>
+				<p>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditlog')}-->"><!--<lang package='Template/Spaceadmin'>-->积分收益<!--</lang>--></a>
+					<span class="pipe">|</span>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditrulelog')}-->"><b><!--<lang package='Template/Spaceadmin'>-->系统奖励<!--</lang>--></b></a>
+				</p>
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template/Spaceadmin'>-->动作名称<!--</lang>--></th>
+							<th><!--<lang package='Template/Spaceadmin'>-->总次数<!--</lang>--></th>
+							<th><!--<lang package='Template/Spaceadmin'>-->周期次数<!--</lang>--></th>
+							<!--<foreach for=arrAvailableExtendCredits value=arrAvailableExtendCredit>-->
+							<th><!--{$arrAvailableExtendCredit['title']}--></th>
+							<!--</foreach>-->
+							<th><!--<lang package='Template/Spaceadmin'>-->最后奖励时间<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--<foreach for=arrCreditrulelogs value=oCreditrulelog>-->
+						<tr>
+							<td><!--{$oCreditrulelog:creditrule:creditrule_name}--></td>
+							<td><!--{$oCreditrulelog['creditrulelog_total']}--></td>
+							<td><!--{$oCreditrulelog['creditrulelog_cyclenum']}--></td>
+							<!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit>-->
+							<td><!--{$oCreditrulelog['creditrulelog_extendcredit'.$nAvailableExtendCredit]}--></td>
+							<!--</foreach>-->
+							<td><!--{$oCreditrulelog['update_dateline']|Core_Extend+timeFormat}--></td>
+						</tr>
+						<!--</foreach>-->
+					</tbody>
+				</table>
 			</div>
 		</div><!--/row-->
 

@@ -4,21 +4,20 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入积分相关函数 */
+require_once(Core_Extend::includeFile('function/Credit_Extend'));
+
 class CreditrulelogController extends Controller{
 
 	public function index(){
-		$arrCreditrulelogs=CreditrulelogModel::F('user_id')->order('creditrulelog_id DESC')->getAll();
-		G::dump($arrCreditrulelogs);
-	/*$count = C::t('common_credit_rule_log')->count_by_uid($_G['uid']);
-	if($count) {
-		$rulelogs = C::t('common_credit_rule_log')->fetch_all_by_uid($_G['uid'], $start, $perpage);
-		$rules = C::t('common_credit_rule')->fetch_all_by_rid(C::t('common_credit_rule_log')->get_rids());
-		foreach($rulelogs as $value) {
-			$value['rulename'] = $rules[$value['rid']]['rulename'];
-			$list[] = $value;
-		}
-	}*/
+		// 系统积分记录
+		$arrCreditrulelogs=CreditrulelogModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->order('creditrulelog_id DESC')->getAll();
 		$this->assign('arrCreditrulelogs',$arrCreditrulelogs);
+
+		// 可用积分
+		$arrAvailableExtendCredits=array();
+		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
+		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 
 		$this->display('spaceadmin+creditrulelog');
 	}
