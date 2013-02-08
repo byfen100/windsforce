@@ -212,6 +212,32 @@ CREATE TABLE `#@__badword` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_creditlog`
+--
+
+DROP TABLE IF EXISTS `#@__creditlog`;
+CREATE TABLE `#@__creditlog` (
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `creditlog_operation` varchar(25) NOT NULL DEFAULT '' COMMENT '操作类型',
+  `creditlog_relatedid` int(10) unsigned NOT NULL COMMENT '关联ID',
+  `create_dateline` int(10) unsigned NOT NULL COMMENT '创建时间',
+  `creditlog_extcredits1` int(10) NOT NULL COMMENT '第一种扩展积分',
+  `creditlog_extcredits2` int(10) NOT NULL COMMENT '第二种扩展积分',
+  `creditlog_extcredits3` int(10) NOT NULL COMMENT '第三种扩展积分',
+  `creditlog_extcredits4` int(10) NOT NULL COMMENT '第四种扩展积分',
+  `creditlog_extcredits5` int(10) NOT NULL COMMENT '第五种扩展积分',
+  `creditlog_extcredits6` int(10) NOT NULL COMMENT '第六种扩展积分',
+  `creditlog_extcredits7` int(10) NOT NULL COMMENT '第七种扩展积分',
+  `creditlog_extcredits8` int(10) NOT NULL COMMENT '第八种扩展积分',
+  KEY `create_dateline` (`create_dateline`),
+  KEY `creditlog_relatedid` (`creditlog_relatedid`),
+  KEY `creditlog_operation` (`creditlog_operation`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_creditrule`
 --
 
