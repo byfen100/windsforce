@@ -1,6 +1,6 @@
 <?php
 /* [WindsForce!] (C)WindsForce Studio start this From 2012.03.17.
-   互联接口积基类($Liu.XiangMin)*/
+   互联接口基类($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
