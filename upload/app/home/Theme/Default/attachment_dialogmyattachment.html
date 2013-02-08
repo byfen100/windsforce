@@ -69,7 +69,7 @@ function deleteAttachment(id){
 							</div>
 							<div class="caption">
 								<h5 id="attachment_name_<!--{$oAttachment['attachment_id']}-->"><a target="_blank" href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><!--{$oAttachment['attachment_name']|G+subString=0,5}--></a>(<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$oAttachment['attachment_extension'].'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--{$oAttachment:attachment_extension}--></a>)</h5>
-								<p><a href="javascript:void(0);" onclick="javascript:parent.parent.<!--{$sFunction}-->('<!--{$oAttachment['attachment_id']}-->');"><!--<lang package='Template/Attachment'>-->插入<!--</lang>--></a>&nbsp;
+								<p><a href="javascript:void(0);" onclick="javascript:parent.<!--{$sFunction}-->('<!--{$oAttachment['attachment_id']}-->');"><!--<lang package='Template/Attachment'>-->插入<!--</lang>--></a>&nbsp;
 									<a href="javascript:void(0);" onclick="deleteAttachment(<!--{$oAttachment['attachment_id']}-->);"><!--<lang package='Template/Attachment'>-->删除<!--</lang>--></a>
 								</p>
 							</div>
