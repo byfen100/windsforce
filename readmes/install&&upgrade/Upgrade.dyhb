@@ -9,16 +9,13 @@
 
 !defined('DYHB_PATH') && exit;
 
-【本文将介绍一下本软件的一些基础使用方法.】
+【本文将介绍一下本软件的安装方法.】
 
-WindsForce 帮助教程
+WindsForce 安装教程
 
----- 程序安装
-    ---- 访问 ./readmes/install&&upgrade 查看详情.
 
----- 程序惯性配置（Config.inc.php）
 
----- 常见问题
+
 
 
                                                                                                                                     WindsForce Team, 2012-12-09 11:17
