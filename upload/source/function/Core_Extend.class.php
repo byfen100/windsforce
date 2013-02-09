@@ -585,7 +585,7 @@ WINDSFORCE;
 				self::changeAppconfig($sKey,$sValue);
 			}
 		}else{
-			$sAppGlobalconfigFile=WINDSFORCE_PATH.'/Config/Config.inc.php';
+			$sAppGlobalconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 			$arrAppconfig=(array)(include $sAppGlobalconfigFile);
 
 			$arrData=array();
