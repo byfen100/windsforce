@@ -14,7 +14,7 @@ class TopicController extends Controller{
 
 		$nDate=intval($GLOBALS['_cache_']['home_option']['home_hothomefreshtag_date']);
 		if($nDate<3600){
-			$nData=3600;
+			$nDate=3600;
 		}
 		
 		// 读取热门话题
