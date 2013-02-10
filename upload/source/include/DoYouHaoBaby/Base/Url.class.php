@@ -102,7 +102,10 @@ class Url{
 				}else{
 					$nLength=strlen(_PHP_FILE_)-1;
 				}
-				$_SERVER['DOCUMENT_ROOT']=substr(preg_replace('/\+/','/',$_SERVER['PATH_TRANSLATED']),0,$nLength);
+
+				if(strpos($_SERVER['PATH_TRANSLATED'],'redirect:')!==0){
+					$_SERVER['DOCUMENT_ROOT']=substr(preg_replace('/\+/','/',$_SERVER['PATH_TRANSLATED']),0,$nLength);
+				}
 			}
 
 			$_SERVER['DOCUMENT_ROOT']=rtrim($_SERVER['DOCUMENT_ROOT'],'\\/');
