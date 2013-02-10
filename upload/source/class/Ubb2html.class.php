@@ -60,9 +60,9 @@ class Ubb2html{
 			$sContent
 		);
 		
-		//if($GLOBALS['_option_']['ubb_content_autoaddlink']==1){
+		if($GLOBALS['_option_']['ubb_content_autoaddlink']==1){
 			$sContent=preg_replace("/(?<=[^\]a-z0-9-=\"'\\/])((https?|ftp|gopher|news|telnet|rtsp|mms|callto|ed2k):\/\/|www\.)([a-z0-9\/\-_+=.~!%@?#%&;:$\\()|]+)/i","[autourl]\\1\\3[/autourl]",$sContent);
-		//}
+		}
 		
 		$arrRegUbbSearch=array(
 			"/\[size=([^\[\<]+?)\](.+?)\[\/size\]/ie",
@@ -121,8 +121,9 @@ class Ubb2html{
 		$sContent=preg_replace("/\[mp3\]\s*(\S+?)\s*\[\/mp3\]/ise","\$this->makeMp3('\\1')",$sContent);
 		$sContent=preg_replace("/\[video\]\s*(\S+?)\s*\[\/video\]/ise","\$this->makeVideo('\\1')",$sContent);
 
-		// 解析话题
+		// 解析话题和@user_name
 		$sContent=preg_replace("/\[TAG\]#\s*(\S+?)\s*#\[\/TAG\]/ise","\$this->makeTag('\\1')",$sContent);
+		$sContent=preg_replace("/\[MESSAGE\]@\s*(\S+?)\s*\[\/MESSAGE\]/ise","\$this->makeMessage('\\1')",$sContent);
 
 		return $sContent;
 	}
@@ -139,6 +140,16 @@ class Ubb2html{
 		}
 
 		return '<a href="'.$sUrl.urlencode($sTag).'">#'.$sTag.'#</a>';
+	}
+
+	public function makeMessage($sMessage){
+		if($GLOBALS['___login___']!==FALSE){
+			$sUrl=__ROOT__.'/index.php?app=home&c=ucenter&a=index&at=';
+		}else{
+			$sUrl=__ROOT__.'/index.php?app=home&c=stat&a=explore&at=';
+		}
+
+		return '<a href="'.$sUrl.urlencode($sMessage).'">@'.$sMessage.'</a>';
 	}
 
 	public function makeMp3($sSrc){

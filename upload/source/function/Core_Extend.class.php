@@ -1078,45 +1078,42 @@ WINDSFORCE;
 	static public function contentParsetag($sContent,$bUser=true,$bTag=true,$nTagmaxnum=5){
 		// 初始化一些变量
 		$arrReturn=array();
-		$arrTags=$arrContentsearch=$arrContentreplace=array();
+		$arrTags=$arrAtuserids=$arrContentsearch=$arrContentreplace=array();
 
 		if($nTagmaxnum<1){
 			$nTagmaxnum=1;
 		}
-		//$tuid = (int) $topic_info['uid'];
-		
-		// @user功能解析
-		/*if (false!==strpos($sContent,'@')){
-			if (preg_match_all('~\@([\w\d\_\-\x7f-\xff]+)(?:[\r\n\t\s ]+|[\xa1\xa1]+|[\xa3\xac]|[\xef\xbc\x8c]|[\,\.\;\[\#])~', $content, $match)) {
-				if (is_array($match[1]) && count($match[1])) {
-					foreach ($match[1] as $k => $v) {
-						$v = trim($v);
-						if ('　' == substr($v, -2)) {
-							$v = substr($v, 0, -2);
+
+		// @user_name 功能解析
+		if(false!==strpos($sContent,'@')){
+			if (preg_match_all('~\@([\w\d\_\-\x7f-\xff]+)(?:[\r\n\t\s ]+|[\xa1\xa1]+|[\xa3\xac]|[\xef\xbc\x8c]|[\,\.\;\[\#])~',$sContent,$arrMatch)){
+				if(isset($arrMatch[1]) && is_array($arrMatch[1]) && count($arrMatch[1])){
+					foreach($arrMatch[1] as $nKey=>$sValue){
+						$sValue=trim($sValue);
+						if('　'==substr($sValue,-2)){
+							$sValue=substr($sValue,0,-2);
 						}
 
-						if ($v && strlen($v) < 16) {
-							$match[1][$k] = $v;
+						if($sValue && strlen($sValue)<50){
+							$arrMatch[1][$nKey]=$sValue;
 						}
 					}
 
-					$sql = "select `uid`,`nickname`,`username` from `" .
-					TABLE_PREFIX . "members` where `nickname` in ('" . implode("','", $match[1]) .
-                        "') ";
-					$query = $this->DatabaseHandler->Query($sql);
-					while (false != ($row = $query->GetRow())) {
-						if($row['uid']>0 && !is_blacklist($tuid, $row['uid']) && !jsg_role_check_allow('topic_at', $row['uid'], $tuid)) {
-							$_at = "@{$row['nickname']}";
-							$cont_sch[$_at] = $_at;
-							$cont_rpl[$_at] = "<M {$row['username']}>@{$row['nickname']}</M> ";
-							$at_uids[$row['uid']] = $row['uid'];
+					$arrUsers=UserModel::F()->setColumns('user_id,user_name')->where(array('user_name'=>array('in',$arrMatch[1]),'user_status'=>1))->getAll();
+
+					if(is_array($arrUsers)){
+						foreach($arrUsers as $oUser){
+							$sAtuser="@{$oUser['user_name']}";
+							$arrContentsearch[$sAtuser]=$sAtuser;
+							$arrContentreplace[$sAtuser]="[MESSAGE]@{$oUser['user_name']}[/MESSAGE] ";
+							$arrAtuserids[$oUser['user_id']]=$oUser['user_id'];
 						}
 					}
 				}
 			}
-		}*/
+		}
 
-		// #你的话题#功能解析
+		// #你的话题# 功能解析
 		if($bTag===true && false!==strpos($sContent,'#')){
 			$arrMatch=array();
 			if(preg_match_all('~\#([^\/\-\@\#\[\$\{\}\(\)\;\<\>\\\\]+?)\#~',$sContent,$arrMatch)){
@@ -1151,9 +1148,8 @@ WINDSFORCE;
 		}
 
 		$sContent=trim($sContent);
-
 		$arrReturn['content']=$sContent;
-		//$return['at_uids'] = $at_uids;
+		$arrReturn['atuserids']=$arrAtuserids;
 		$arrReturn['tags']=$arrTags;
 
 		return $arrReturn;
