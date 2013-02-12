@@ -139,28 +139,28 @@ class Backup{
 
 		$this->_sDumpSql=$this->makeHead($nVol);
 
-		foreach($arrTables as $sTable=> $nPos){
+		foreach($arrTables as $sTable=>$nPos){
 			if($nPos==-1){
 				$sTableDf=$this->getTableDf($sTable,true);// 获取表定义，如果没有超过限制则保存
 				if(strlen($this->_sDumpSql)+strlen($sTableDf)>$this->_nMaxSize-32){
 					if($this->_nSqlNum==0){// 第一条记录，强制写入
 						$this->_sDumpSql.=$sTableDf;
-						$this->_nSqlNum +=2;
-						$arrTables[ $sTable ]=0;
+						$this->_nSqlNum+=2;
+						$arrTables[$sTable]=0;
 					}
 					break;
 				}else{// 已经达到上限
 					$this->_sDumpSql.=$sTableDf;
-					$this->_nSqlNum +=2;
+					$this->_nSqlNum+=2;
 					$nPos=0;
 				}
 			}
 
 			$nPostPos=$this->getTableData($sTable,$nPos);// 尽可能多获取数据表数据
 			if($nPostPos==-1){// 该表已经完成，清除该表
-				unset($arrTables[ $sTable ]);
+				unset($arrTables[$sTable]);
 			}else{// 该表未完成。说明将要到达上限,记录备份数据位置
-				$arrTables[ $sTable ]=$nPostPos;
+				$arrTables[$sTable]=$nPostPos;
 				break;
 			}
 		}
@@ -252,7 +252,7 @@ class Backup{
 	public function putTablesList($sPath,$arrData){
 		if(is_array($arrData)){
 			$sStr='';
-			foreach($arrData as $sKey=> $sVal){
+			foreach($arrData as $sKey=>$sVal){
 				$sStr.=$sKey.':'.$sVal.";\r\n";
 			}
 

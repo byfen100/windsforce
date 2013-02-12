@@ -103,9 +103,9 @@ class DatabaseController extends InitController{
 		$bIsShort=$bIsShort==0?false:true;
 		$oBackup->setIsShort($bIsShort);
 		
-		$nAllowMaxSize=intval(@ini_get('upload_max_filesize'));//单位M
+		$nAllowMaxSize=intval(@ini_get('upload_max_filesize'));// 单位M
 		if($nAllowMaxSize>0 && $nMaxSize>($nAllowMaxSize*1024)){
-			$nMaxSize=$nAllowMaxSize*1024;//单位K
+			$nMaxSize=$nAllowMaxSize*1024;// 单位K
 		}
 
 		if($nMaxSize>0){
@@ -113,7 +113,7 @@ class DatabaseController extends InitController{
 		}
 
 		$sType=G::getGpc('type');
-		$sType=empty($sType)?'full':trim($sType);
+		$sType=empty($sType)?'':trim($sType);
 		$arrTables=array();
 		switch($sType){
 			case 'full':
@@ -154,7 +154,9 @@ class DatabaseController extends InitController{
 					'list'=>$arrList
 				);
 
-				@unlink($sRunLog);
+				if(is_file($sRunLog)){
+					@unlink($sRunLog);
+				}
 
 				$this->sql_dump_message($arrMessage);
 			}else{
@@ -171,7 +173,9 @@ class DatabaseController extends InitController{
 					'list'=>$arrList
 				);
 
-				@unlink($sRunLog);
+				if(is_file($sRunLog)){
+					@unlink($sRunLog);
+				}
 
 				$this->sql_dump_message($arrMessage);
 			}
@@ -184,7 +188,6 @@ class DatabaseController extends InitController{
 				'sql_file_name'=>$sSqlFileName,
 				'vol_size'=>$nMaxSize,
 				'vol'=>$nVol+1,
-				'type'=>$sType,
 			);
 
 			$sLink=Dyhb::U('database/dumpsql',$arrList);
@@ -203,7 +206,9 @@ class DatabaseController extends InitController{
 	private function sql_dump_message($arrMessage){
 		$sBackMsg="";
 
-		if(isset($arrMessage['auto_redirect'])&& $arrMessage['auto_redirect']){
+		if(isset($arrMessage['auto_redirect']) && $arrMessage['auto_redirect']){
+			$sBackMsg="<a href=\"{$arrMessage['auto_link']}\">{$arrMessage['done_file']}</a>";
+
 			$this->assign('__JumpUrl__',$arrMessage['auto_link']);
 			$this->assign('__WaitSecond__',3);
 		}else{
@@ -212,6 +217,7 @@ class DatabaseController extends InitController{
 					$sBackMsg.="<a href=\"{$arrFile['href']}\">{$arrFile['name']}</a><br/>";
 				}
 			}
+
 			$this->assign('__JumpUrl__',Dyhb::U('database/restore'));
 			$this->assign('__WaitSecond__',5);
 		}
@@ -426,14 +432,18 @@ class DatabaseController extends InitController{
 				foreach($arrRealFile as $sFile){
 					$sShortFile=substr($sFile,0,strrpos($sFile,'_'));
 					if(in_array($sShortFile,$arrMFile)){
-						@unlink(WINDSFORCE_PATH.'/data/backup/'.$sFile);
+						if(is_file(WINDSFORCE_PATH.'/data/backup/'.$sFile)){
+							@unlink(WINDSFORCE_PATH.'/data/backup/'.$sFile);
+						}
 					}
 				}
 			}
 
 			if($arrSFile){
 				foreach($arrSFile as $sFile){
-					@unlink(WINDSFORCE_PATH.'/data/backup/'. $sFile);
+					if(is_file(WINDSFORCE_PATH.'/data/backup/'. $sFile)){
+						@unlink(WINDSFORCE_PATH.'/data/backup/'. $sFile);
+					}
 				}
 			}
 
