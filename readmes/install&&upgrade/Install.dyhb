@@ -13,9 +13,24 @@
 
 WindsForce 安装教程
 
+---- 将 WindsForce-1.0 压缩包解压至一个空文件夹.
 
+---- 上传 upload 中所有文件到服务器.
 
+---- 上传后,如果你是Linux 主机,那么还需要设定一些目录或者文件的权限为0777,具体根据安装程序的提示来做.
+      return array(
+          '/config/Config.inc.php',
+          '/data/*',
+          '/data/upload/*',
+          '/data/avatar/*',
+          '/data/backup/*',
+      );
 
+---- 在浏览器中访问 index.php，WindsForce 会自动建立数据库表。程序会自动检测你是否连接上数据库，如果
+      一直提示错误，请仔细检查你填写的数据库信息是否正确。要是依然错误，请前往 WindsForce 官方论坛寻求
+      解决方法.
+
+---- 安装程序执行结束后，程序将自动跳转到首页.
 
 
                                                                                                                                     WindsForce Team, 2012-12-09 11:17
