@@ -90,9 +90,10 @@ define('__THEMES__','app/'.APP_NAME.'/Theme');
 /** 项目编译锁定文件定义 */
 define('APP_RUNTIME_LOCK',WINDSFORCE_PATH.'/source/protected/~Runtime.inc.lock');
 
-/** 加载框架编译版本 */
+/** 加载框架编译版本和设置父级目录为应用名 */
 //define('STRIP_RUNTIME_SPACE',false);
 define('DYHB_THIN',true);
+define('APPNAME_IS_PARENTDIR',false);
 
 /** 去掉模板空格 */
 define('TMPL_STRIP_SPACE',true);

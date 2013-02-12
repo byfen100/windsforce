@@ -84,8 +84,12 @@ class Url{
 			}
 
 			/** 网站URL根目录 */
-			if(strtoupper(APP_NAME)==strtoupper(basename(dirname(_PHP_FILE_)))){
-				$sRoot=dirname(dirname(_PHP_FILE_));
+			if(strtoupper(APP_NAME)==strtoupper(basename(dirname(_PHP_FILE_)))){ 
+				if(defined('APPNAME_IS_PARENTDIR') && APPNAME_IS_PARENTDIR===FALSE){
+					$sRoot=dirname(_PHP_FILE_);
+				}else{
+					$sRoot=dirname(dirname(_PHP_FILE_));
+				}
 			}else{
 				$sRoot=dirname(_PHP_FILE_);
 			}
@@ -97,12 +101,6 @@ class Url{
 			if(!isset($_SERVER['DOCUMENT_ROOT']) OR 
 				(isset($_SERVER['PATH_TRANSLATED']) AND !preg_match('/'.str_replace('/','\/',str_replace('\\','/',dirname($_SERVER['DOCUMENT_ROOT']))).'/i',str_replace('\\','/', dirname($_SERVER['PATH_TRANSLATED']))))
 			){
-				if(strtoupper(APP_NAME)==strtoupper(basename(dirname(_PHP_FILE_)))){
-					$nLength=strlen(_PHP_FILE_)-strlen(APP_NAME)-1;
-				}else{
-					$nLength=strlen(_PHP_FILE_)-1;
-				}
-
 				if(strpos($_SERVER['PATH_TRANSLATED'],'redirect:')!==0){
 					$_SERVER['DOCUMENT_ROOT']=substr(preg_replace('/\+/','/',$_SERVER['PATH_TRANSLATED']),0,$nLength);
 				}
