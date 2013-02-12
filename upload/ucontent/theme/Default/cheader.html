@@ -55,6 +55,25 @@
 	<!--{/script}-->
 	<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/sh.js"></script>
 	<link rel="stylesheet" href="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/sh.css">
+	<!--{if $GLOBALS['_option_']['js_lazyload_on']==1}-->
+	<script src="<!--{:__PUBLIC__}-->/js/jquery/lazyload/jquery.lazyload.pack.js?v=1.5.0"></script>
+	<!--{script}-->
+	$(document).ready(function(){
+		$("img").lazyload({
+			effect: "fadeIn"
+		});
+	});
+	<!--{/script}-->
+	<!--{/if}-->
+	<!--{if $GLOBALS['_option_']['js_slimbox_on']==1}-->
+	<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/slimbox/slimbox.css?v=2.0.3"/>
+	<script src="<!--{:__PUBLIC__}-->/js/slimbox/slimbox.js?v=2.0.3"></script>
+	<!--{script}-->
+	$(document).ready(function(){
+		$("a[href$=jpg],a[href$=gif],a[href$=png],a[href$=jpeg],a[href$=bmp]").slimbox({});
+	});
+	<!--{/script}-->
+	<!--{/if}-->
 	<link rel="shortcut icon" href="<!--{:__PUBLIC__}-->/images/common/favicon.png">
 </head>
 

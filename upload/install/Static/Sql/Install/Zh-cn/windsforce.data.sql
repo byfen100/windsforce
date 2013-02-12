@@ -421,7 +421,9 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('show_search_result_message', ''),
 ('searchuser_list_num', '15'),
 ('search_list_num', '20'),
-('attachment_homeattachmentlistnum', '10');
+('attachment_homeattachmentlistnum', '10'),
+('js_slimbox_on', '1'),
+('js_lazyload_on', '1');
 
 -- --------------------------------------------------------
 
