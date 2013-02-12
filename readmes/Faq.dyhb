@@ -20,8 +20,9 @@ WindsForce 帮助教程
     ---- 暂无
 
 ---- 常见问题
-    ---- 暂无
-
+    ---- 让网址中的URL地址支持域名
+          如果你希望将网址加入域名，你可以修改 upload/config/Config.inc.php ，修改 URL_DOMAIN 项的值为 http://windsforce.net,
+          然后删除应用中的缓存配置文件 upload/data/~runtime/app/应用名(如home)/Config.php.
 
                                                                                                                                     WindsForce Team, 2012-12-09 11:17
                                                                                                                                     http://www.windsforce.com
