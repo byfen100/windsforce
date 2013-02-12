@@ -7,6 +7,7 @@
 class IndexController extends Controller{
 
 	protected $_sHomefreshtag='';
+	protected $_sAtusername='';
 
 	public function index(){
 		$arrWhere=array();
@@ -27,9 +28,23 @@ class IndexController extends Controller{
 			$this->assign('oHomefreshtag',$oHomefreshtag);
 			$this->_sHomefreshtag=$oHomefreshtag['homefreshtag_name'];
 		}
+
+		// @user_name
+		$sAtusername=trim(G::getGpc('at','G'));
+		if(!empty($sAtusername)){
+			$oUser=UserModel::F('user_status=1 AND user_name=?',$sAtusername)->getOne();
+			if(empty($oUser['user_id'])){
+				$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
+				$this->E(Dyhb::L('用户不存在或者被禁止了','Controller/Homefresh'));
+			}
+
+			$arrWhere['homefresh_message']=array('like',"%[MESSAGE]@{$sAtusername}[/MESSAGE]%");
+			$this->assign('oAtuser',$oUser);
+			$this->_sAtusername=$oUser['user_name'];
+		}
 		
 		// 类型
-		if(!empty($oHomefreshtag['homefreshtag_id'])){
+		if(!empty($oHomefreshtag['homefreshtag_id']) || !empty($oUser['user_id'])){
 			$sType='all';
 		}else{
 			$sType=trim(G::getGpc('type','G'));
@@ -86,6 +101,7 @@ class IndexController extends Controller{
 		$nMyhomefreshnum=Homefresh_Extend::getMyhomefreshnum($GLOBALS['___login___']['user_id']);
 
 		$this->assign('arrHomefreshs',$arrHomefreshs);
+		$this->assign('nTotalHomefreshnum',$nTotalRecord);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_publish_status']);
 		$this->assign('nDisplayCommentSeccode',$GLOBALS['_cache_']['home_option']['seccode_comment_status']);
@@ -95,8 +111,15 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return ($this->_sHomefreshtag?$this->_sHomefreshtag.' | ':'').
-			Dyhb::L('用户中心','Controller/Homefresh');
+		$sTitle='';
+
+		if($this->_sHomefreshtag){
+			$sTitle=$this->_sHomefreshtag.' | ';
+		}elseif($this->_sAtusername){
+			$sTitle='@'.$this->_sAtusername.' | ';
+		}
+
+		return $sTitle.Dyhb::L('用户中心','Controller/Homefresh');
 	}
 
 	public function index_keywords_(){

@@ -54,6 +54,7 @@ return array(
 'cc1bacb5117aa3f27e5e430cd28dbaed'=>"條",
 'c00b5e4878bb5f0f61df036850b7cb00'=>"相關新鮮事",
 '6f917a9eafbefd0aae975e9783dd617d'=>"你沒有發現任何話題",
+'02bf863a224b14de19b887cfe6e0f80b'=>"随便看看",
 )
 
 ?>

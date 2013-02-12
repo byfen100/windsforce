@@ -75,6 +75,7 @@ return array(
 '7f8bd3115acfdd9c6210dbead0d1310d'=>"新註冊會員",
 'bebd2b37c3e28afef89ca30eb0cb2eed'=>"活躍會員",
 '19fcb9eb2594059036dfede5f4ec53e8'=>"時間",
+'d58a4a7920232a78ad120e7ce6865526'=>"最新话题",
 )
 
 ?>

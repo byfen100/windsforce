@@ -193,6 +193,12 @@ var nHomefreshviewcomment=0;
 					</div>
 					<!--{/if}-->
 
+					<!--{if isset($oAtuser)}-->
+					<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>
+						@<a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&at=<!--{$oAtuser['user_name']|urlencode}-->" title="@<!--{$oAtuser['user_name']}-->"><!--{$oAtuser['user_name']}--></a>&nbsp;(<a href="<!--{:Dyhb::U('home://space@?id='.$oAtuser['user_id'])}-->" title="@<!--{$oAtuser['user_name']}-->"><!--<lang package='Template/Homefresh'>-->个人空间<!--</lang>--></a>)&nbsp;<!--<lang package='Template/Homefresh'>-->共<!--</lang>-->&nbsp;<span class="badge "><!--{$nTotalHomefreshnum}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->条<!--</lang>--><!--<lang package='Template/Homefresh'>-->相关新鲜事<!--</lang>-->
+					</div>
+					<!--{/if}-->
+
 					<table class="table">
 						<thead>
 							<tr>

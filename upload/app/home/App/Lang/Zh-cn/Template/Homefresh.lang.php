@@ -57,6 +57,8 @@ return array(
 '7ed4bde08d24c695a280c20389640648'=>"话题发起人",
 '19fcb9eb2594059036dfede5f4ec53e8'=>"时间",
 '02bf863a224b14de19b887cfe6e0f80b'=>"随便看看",
+'fbd2b1fb73bbf51487ec69e93e869fd9'=>"共",
+'42ddc62228bde29a075f2de4837c9f87'=>"个人空间",
 )
 
 ?>

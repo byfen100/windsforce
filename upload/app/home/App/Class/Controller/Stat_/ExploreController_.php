@@ -7,6 +7,7 @@
 class ExploreController extends Controller{
 
 	protected $_sHomefreshtag='';
+	protected $_sAtusername='';
 	
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteexplore')){
@@ -23,13 +24,27 @@ class ExploreController extends Controller{
 		if(!empty($sKey)){
 			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
 			if(empty($oHomefreshtag['homefreshtag_id'])){
-				$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
+				$this->assign('__JumpUrl__',Dyhb::U('home://stat/explore'));
 				$this->E(Dyhb::L('话题不存在或者被禁止了','Controller/Stat'));
 			}
 
 			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");
 			$this->assign('oHomefreshtag',$oHomefreshtag);
 			$this->_sHomefreshtag=$oHomefreshtag['homefreshtag_name'];
+		}
+
+		// @user_name
+		$sAtusername=trim(G::getGpc('at','G'));
+		if(!empty($sAtusername)){
+			$oUser=UserModel::F('user_status=1 AND user_name=?',$sAtusername)->getOne();
+			if(empty($oUser['user_id'])){
+				$this->assign('__JumpUrl__',Dyhb::U('home://stat/explore'));
+				$this->E(Dyhb::L('用户不存在或者被禁止了','Controller/Stat'));
+			}
+
+			$arrWhere['homefresh_message']=array('like',"%[MESSAGE]@{$sAtusername}[/MESSAGE]%");
+			$this->assign('oAtuser',$oUser);
+			$this->_sAtusername=$oUser['user_name'];
 		}
 
 		// 读取新鲜事
@@ -65,8 +80,15 @@ class ExploreController extends Controller{
 	}
 
 	public function explore_title_(){
-		return ($this->_sHomefreshtag?$this->_sHomefreshtag.' | ':'').
-			Dyhb::L('随便看看','Controller/Stat');
+		$sTitle='';
+
+		if($this->_sHomefreshtag){
+			$sTitle=$this->_sHomefreshtag.' | ';
+		}elseif($this->_sAtusername){
+			$sTitle='@'.$this->_sAtusername.' | ';
+		}
+		
+		return $sTitle.Dyhb::L('随便看看','Controller/Stat');
 	}
 
 	public function explore_keywords_(){

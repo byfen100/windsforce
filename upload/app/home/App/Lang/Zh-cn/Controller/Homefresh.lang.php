@@ -41,6 +41,7 @@ return array(
 '1edff073d48e05b9e79bb7516da23a6e'=>"回复",
 '3b8d60f8aefcab601c89eb98a6f1f7e8'=>"评论了新鲜事",
 'e97f7330d039fe82b44bf1ac478b442b'=>"话题不存在或者被禁止了",
+'ffc018913fd4fba8d9d4c1d3870206f2'=>"用户不存在或者被禁止了",
 )
 
 ?>
