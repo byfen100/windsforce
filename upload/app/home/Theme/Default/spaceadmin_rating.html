@@ -39,7 +39,7 @@
 							<!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit value=arrAvailableExtendCredit>-->
 							<tr>
 								<td><!--{$arrAvailableExtendCredit['title']}--></td>
-								<td><span class="badge"><!--{$oUsercount['usercount_extendcredit'.$nAvailableExtendCredit]}--></span></td>
+								<td><span class="badge <!--{if $nAvailableExtendCredit==2}-->badge-success<!--{/if}-->"><!--{$oUsercount['usercount_extendcredit'.$nAvailableExtendCredit]}--></span></td>
 							</tr>
 						</tbody>
 						<!--</foreach>-->

@@ -101,13 +101,13 @@ function option(){
 						<div class="description"><!--<lang package='Template/Default/Creditoption'>-->积分交易税(损失率)为用户在利用积分进行转让、兑换、买卖时扣除的税率，范围为 0～1 之间的浮点数，例如设置为 0.2，则用户在转换 100 个单位积分时，损失掉的积分为 20 个单位，0 为不损失<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="exchange_mincredits"><!--<lang package='Template/Default/Creditoption'>-->转账最低余额<!--</lang>--></label>
-						<input type="text" name="options[exchange_mincredits]" id="exchange_mincredits" size="40" value="<!--{$arrOptions['exchange_mincredits']}-->"/>
+						<label for="transfermin_credits"><!--<lang package='Template/Default/Creditoption'>-->转账最低余额<!--</lang>--></label>
+						<input type="text" name="options[transfermin_credits]" id="transfermin_credits" size="40" value="<!--{$arrOptions['transfermin_credits']}-->"/>
 						<div class="description"><!--<lang package='Template/Default/Creditoption'>-->积分转账后要求用户所拥有的余额最小数值。利用此功能，您可以设置较大的余额限制，使积分小于这个数值的用户无法转账；也可以将余额限制设置为负数，使得转账在限额内可以透支<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="transfermin_credits"><!--<lang package='Template/Default/Creditoption'>-->兑换最低余额<!--</lang>--></label>
-						<input type="text" name="options[transfermin_credits]" id="transfermin_credits" size="40" value="<!--{$arrOptions['transfermin_credits']}-->"/>
+						<label for="exchange_mincredits"><!--<lang package='Template/Default/Creditoption'>-->兑换最低余额<!--</lang>--></label>
+						<input type="text" name="options[exchange_mincredits]" id="exchange_mincredits" size="40" value="<!--{$arrOptions['exchange_mincredits']}-->"/>
 						<div class="description"><!--<lang package='Template/Default/Creditoption'>-->积分兑换后要求用户所拥有的余额最小数值。利用此功能，您可以设置较大的余额限制，使积分小于这个数值的用户无法兑换；也可以将余额限制设置为负数，使得兑换在限额内可以透支<!--</lang>--></div>
 					</fieldset>
 				</div>

@@ -104,4 +104,8 @@ class SpaceadminController extends InitController{
 		Core_Extend::doControllerAction('Spaceadmin@Rating/Transfer','index');
 	}
 
+	public function do_transfer(){
+		Core_Extend::doControllerAction('Spaceadmin@Rating/Dotransfer','index');
+	}
+
 }

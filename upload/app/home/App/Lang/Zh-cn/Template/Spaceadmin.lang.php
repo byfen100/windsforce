@@ -97,6 +97,7 @@ return array(
 '6c4a584d6dadede888076c64908a04dd'=>"周期次数",
 '9f95a8f4871ea8971c50ac6af108f72a'=>"最后奖励时间",
 'acaf665ffd5ef2fe03b0daaa12d79aab'=>"转账",
+'ae72bd8506eee6ec286392aa3cebdb0e'=>"我要转账",
 )
 
 ?>

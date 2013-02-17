@@ -27,4 +27,16 @@ class CreditlogModel extends CommonModel{
 		return ModelMeta::instance(__CLASS__);
 	}
 
+	public function insert($arrData){
+		$oCreditlog=new self($arrData);
+		$oCreditlog->save(0);
+
+		if($oCreditlog->isError()){
+			$this->setErrorMessage($oCreditlog->getErrorMessage());
+			return false;
+		}
+
+		return true;
+	}
+
 }
