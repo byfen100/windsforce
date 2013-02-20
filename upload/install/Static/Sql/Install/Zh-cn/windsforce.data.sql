@@ -25,6 +25,16 @@ INSERT INTO `#@__app` (`app_id`, `app_identifier`, `app_name`, `app_version`, `a
 -- 转存表中的数据 `windsforce_creditrule`
 --
 
+INSERT INTO `#@__creditoperation` (`creditoperation_name`, `creditoperation_title`) VALUES
+('transferin', '转账接收'),
+('transferout', '转账转出');
+
+-- --------------------------------------------------------
+
+--
+-- 转存表中的数据 `windsforce_creditrule`
+--
+
 INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_action`, `creditrule_cycletype`, `creditrule_cycletime`, `creditrule_rewardnum`, `creditrule_extendcredit1`, `creditrule_extendcredit2`, `creditrule_extendcredit3`, `creditrule_extendcredit4`, `creditrule_extendcredit5`, `creditrule_extendcredit6`, `creditrule_extendcredit7`, `creditrule_extendcredit8`) VALUES
 (1, '发短消息', 'sendpm', 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
 (2, '访问推广', 'promotion_visit', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
@@ -423,7 +433,8 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('search_list_num', '20'),
 ('attachment_homeattachmentlistnum', '10'),
 ('js_slimbox_on', '0'),
-('js_lazyload_on', '0');
+('js_lazyload_on', '0'),
+('baselistnum', '10');
 
 -- --------------------------------------------------------
 

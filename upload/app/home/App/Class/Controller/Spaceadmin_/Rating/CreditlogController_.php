@@ -7,6 +7,17 @@
 class CreditlogController extends Controller{
 
 	public function index(){
+		$nBaselistnum=$GLOBALS['_option_']['baselistnum'];
+
+		// 列表数据
+		$nTotalRecord=CreditlogModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->all()->getCounts();
+
+		$oPage=Page::RUN($nTotalRecord,$nBaselistnum,G::getGpc('page','G'));
+
+		$arrCreditlogs=CreditlogModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->order('create_dateline DESC')->limit($oPage->returnPageStart(),$nBaselistnum)->getAll();
+		$this->assign('arrCreditlogs',$arrCreditlogs);
+		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
+		
 		$this->display('spaceadmin+creditlog');
 	}
 

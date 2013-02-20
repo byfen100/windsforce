@@ -238,6 +238,19 @@ CREATE TABLE `#@__creditlog` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_creditoperation`
+--
+
+DROP TABLE IF EXISTS `#@__creditoperation`;
+CREATE TABLE `#@__creditoperation` (
+  `creditoperation_name` varchar(25) NOT NULL COMMENT '积分操作名字',
+  `creditoperation_title` varchar(25) NOT NULL COMMENT '积分操作标题',
+  PRIMARY KEY (`creditoperation_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_creditrule`
 --
 

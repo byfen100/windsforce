@@ -31,6 +31,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($arrCreditrulelogs)}-->
 						<!--<foreach for=arrCreditrulelogs value=oCreditrulelog>-->
 						<tr>
 							<td><!--{$oCreditrulelog:creditrule:creditrule_name}--></td>
@@ -42,6 +43,11 @@
 							<td><!--{$oCreditrulelog['update_dateline']|Core_Extend+timeFormat}--></td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="7"><!--<lang package='Template/Spaceadmin'>-->暂时没有发现任何系统奖励<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

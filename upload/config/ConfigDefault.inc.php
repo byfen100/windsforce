@@ -74,4 +74,7 @@ return array(
 
 	// URL模式
 	'URL_MODEL'=>1,
+
+	// 网址加上域名
+	'URL_DOMAIN'=>'',
 );

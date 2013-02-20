@@ -12,7 +12,40 @@
 			<div class="span12">
 				<!--<include file="spaceadmin+ratingmenu" />-->
 					
-				<a href="<!--{:Dyhb::U('home://spaceadmin/creditlog')}-->"><b><!--<lang package='Template/Spaceadmin'>-->积分收益<!--</lang>--></b></a><span class="pipe">|</span><a href="<!--{:Dyhb::U('home://spaceadmin/creditrulelog')}-->"><!--<lang package='Template/Spaceadmin'>-->系统奖励<!--</lang>--></a>
+				<p>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditlog')}-->"><b><!--<lang package='Template/Spaceadmin'>-->积分收益<!--</lang>--></b></a>
+					<span class="pipe">|</span>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditrulelog')}-->"><!--<lang package='Template/Spaceadmin'>-->系统奖励<!--</lang>--></a>
+				</p>
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template/Spaceadmin'>-->操作<!--</lang>--></th>
+							<th><!--<lang package='Template/Spaceadmin'>-->积分变更<!--</lang>--></th>
+							<th><!--<lang package='Template/Spaceadmin'>-->详情<!--</lang>--></th>
+							<th><!--<lang package='Template/Spaceadmin'>-->变更时间<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--{if is_array($arrCreditlogs)}-->
+						<!--<foreach for=arrCreditlogs value=oCreditlog>-->
+						<tr>
+							<td><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
+							<td><!--<lang package='Template/Spaceadmin'>-->金钱<!--</lang>-->&nbsp;<!--{$oCreditlog:creditlog_extcredits2}--></td>
+							<td><!--{if $oCreditlog['creditlog_extcredits2']<0}--><!--<lang package='Template/Spaceadmin'>-->向<!--</lang>--><!--{d*else}--><!--<lang package='Template/Spaceadmin'>-->来自<!--</lang>--><!--{/if}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oCreditlog['creditlog_relatedid'])}-->" target="_blank"><!--{$oCreditlog:related:user_name}--></a>&nbsp;<!--{if $oCreditlog['creditlog_extcredits2']<0}--><!--<lang package='Template/Spaceadmin'>-->进行<!--</lang>--><!--{d*else}--><!--<lang package='Template/Spaceadmin'>-->的<!--</lang>--><!--{/if}--><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
+							<td><!--{$oCreditlog['create_dateline']|Core_Extend+timeFormat}--></td>
+						</tr>
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="4"><!--<lang package='Template/Spaceadmin'>-->暂时没有发现任何积分记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
+					</tbody>
+				</table>
+
+				<!--{$sPageNavbar}-->
 			</div>
 		</div><!--/row-->
 

@@ -11,6 +11,8 @@ class CreditlogModel extends CommonModel{
 			'table_name'=>'creditlog',
 			'props'=>array(
 				'creditlog_id'=>array('readonly'=>true),
+				'creditoperation'=>array(Db::HAS_ONE=>'CreditoperationModel','source_key'=>'creditlog_operation','target_key'=>'creditoperation_name'),
+				'related'=>array(Db::HAS_ONE=>'UserModel','source_key'=>'creditlog_relatedid','target_key'=>'user_id'),
 			),
 			'attr_protected'=>'creditlog_id',
 			'check'=>array(
