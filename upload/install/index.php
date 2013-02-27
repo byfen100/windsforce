@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce 安装程序入口文件($Liu.XiangMin)*/
 
 //error_reporting(E_ERROR|E_PARSE|E_STRICT);

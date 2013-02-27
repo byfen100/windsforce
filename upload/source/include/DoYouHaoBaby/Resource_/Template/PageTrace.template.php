@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
 	 系统调试模版($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    前台公用配置文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

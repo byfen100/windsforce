@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    前台短消息提醒($Liu.XiangMin)*/
 
 function getNewpms(userid){

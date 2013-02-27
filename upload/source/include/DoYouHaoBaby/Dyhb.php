@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    DoYouHaoBaby 基础初始化文件($Liu.XiangMin)*/
 
 /** 系统异常和错误处理 */

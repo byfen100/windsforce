@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    创建应用程序中文语言包(Zh-cn)($Liu.XiangMin)*/
 
 return array(

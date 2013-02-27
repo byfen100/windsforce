@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    对 PHP 原生Cookie 函数库的封装($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    Ajax取得图片($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

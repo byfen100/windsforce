@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    群组帖子分类模型($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

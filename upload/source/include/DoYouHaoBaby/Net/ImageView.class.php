@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    Flash 图像查看类（flash地址位于DYHB_PATH.'/Resource_/Images/image_view.swf'）($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

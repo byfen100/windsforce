@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    DoYouHaoBaby 框架基础文件($Liu.XiangMin)*/
 
 /** 防止乱码 */

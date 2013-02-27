@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce系统缓存目录或文件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    密码修改确认($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

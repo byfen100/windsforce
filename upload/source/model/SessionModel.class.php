@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    会话模型($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

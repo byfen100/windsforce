@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    Gif动画验证码生成类（Modify from Discuz!）($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    框架中文验证码中文字体($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

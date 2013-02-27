@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    Group应用基础Javascript($Liu.XiangMin)*/
 
 /** 登录回调 */

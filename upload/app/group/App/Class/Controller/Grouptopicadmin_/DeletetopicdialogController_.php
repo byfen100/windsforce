@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    删除单个帖子对话框控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

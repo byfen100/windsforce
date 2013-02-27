@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    DbCond类封装复杂的查询条件($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

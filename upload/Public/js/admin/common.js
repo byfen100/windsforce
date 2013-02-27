@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce 后台公用($Liu.XiangMin)*/
 
 // 选择表格行

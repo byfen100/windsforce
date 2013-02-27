@@ -1,5 +1,5 @@
 <?php
-/* [DoYouHaoBaby!] (C)WindsForce Team Start This From 2010.10.04.
+/* [$DoYouHaoBaby] (C)WindsForce TEAM Since 2010.10.04.
    Mysql数据库工厂类，用于生成数据库相关对象($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

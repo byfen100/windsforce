@@ -1,5 +1,5 @@
 <?php
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    用户个人信息字段配置模型($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;

@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce 回到顶部($Liu.XiangMin)*/
 
 $(function(){

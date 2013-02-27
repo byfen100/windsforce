@@ -1,4 +1,4 @@
-/* [WindsForce!] (C)WindsForce Team Start This From 2012.03.17.
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce 新鲜事评论AJAX提交($Liu.XiangMin)*/
 
 /** 前端验证 */
