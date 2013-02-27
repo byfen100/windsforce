@@ -86,7 +86,7 @@ return array(
 'ed23ff5bc989c79723d1800f375c9925'=>"周期内最多奖励次数",
 '89438cb21161b4222ce47f9ad5ac0a2e'=>"我的积分",
 '701a03c043716058fe966a6dbde7ccdd'=>"当前积分",
-'49095da372fdbf4f72eae3bb50a624ab'=>"了解等级规则</a>",
+'8bcdbcd0900f314cbdfe829cfa7eb482'=>"了解等级规则",
 '4ab744318edf7c767f39ea3a59641a1c'=>"积分类型",
 'e70e0ad9d675e57ddd15acc1995d8074'=>"积分数量",
 'dc8c3737da5acb0b0658305e73c2e5dc'=>"积分记录",
