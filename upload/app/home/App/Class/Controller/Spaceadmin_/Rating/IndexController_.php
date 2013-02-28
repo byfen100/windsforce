@@ -32,6 +32,10 @@ class IndexController extends Controller{
 
 		$this->assign('nId',$nId);
 		$this->assign('oUserInfo',$oUserInfo);
+
+		// 最近积分记录
+		$arrCreditlogs=CreditlogModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->order('create_dateline DESC')->limit(0,10)->getAll();
+		$this->assign('arrCreditlogs',$arrCreditlogs);
 		
 		$this->display('spaceadmin+rating');
 	}
