@@ -7,7 +7,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->"><!--{$oAttachment['attachment_name']}--></a>&nbsp;(<!--{$oAttachment:attachment_size|G+changeFileSize}-->)</td>
+							<td><a href="<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->" onclick="updateDownload('<!--{$oAttachment['attachment_id']}-->');updateDownload('<!--{$oAttachment['attachment_id']}-->');"><!--{$oAttachment['attachment_name']}--></a>&nbsp;(<!--{$oAttachment:attachment_size|G+changeFileSize}-->)</td>
 						</tr>
 					</tbody>
 				</table>

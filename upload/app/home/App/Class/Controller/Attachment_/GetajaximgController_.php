@@ -43,10 +43,11 @@ class GetajaximgController extends Controller{
 			foreach($arrAttachments as $nKey=>$oAttachment){
 				if($nKey>=$nAttachmentimgstartnum && $nKey<=$nAttachmentimgendnum){
 					$arrShowimgid[]=$oAttachment['attachment_id'];
+					$sLinkurl=__ROOT__.'/data/upload/attachment/'.$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename'];
 					
 					$sContent.='<li>
-							<a href="'.__ROOT__.'/data/upload/attachment/'.$oAttachment['attachment_savepath'].'/'.$oAttachment['attachment_savename'].'">
-								<img height="60px" src="'.Attachment_Extend::getAttachmentPreview($oAttachment).'" title="'.$oAttachment['attachment_name'].'" alt="'.$oAttachment['attachment_alt'].'" class="image'.$oAttachment['attachment_id'].'">
+							<a href="'.$sLinkurl.'">
+								<img height="60px" src="'.Attachment_Extend::getAttachmentPreview($oAttachment).'" title="'.$oAttachment['attachment_name'].'" alt="'.$oAttachment['attachment_alt'].'" class="image'.$oAttachment['attachment_id'].'" longdesc="'.$sLinkurl.'">
 							</a>
 						</li>';
 				}

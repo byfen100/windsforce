@@ -8,7 +8,7 @@
 					<tbody>
 						<tr>
 							<td style="background:none;">
-								<a href="javascript:playmedia('player_<!--{$oAttachment['attachment_id']}-->','mp3','<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->','240','20','');"><!--{$oAttachment['attachment_name']}--></a>
+								<a href="javascript:playmedia('player_<!--{$oAttachment['attachment_id']}-->','mp3','<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->','240','20','');updateDownload('<!--{$oAttachment['attachment_id']}-->');"><!--{$oAttachment['attachment_name']}--></a>
 								<div id="player_<!--{$oAttachment['attachment_id']}-->" style="display: none;"></div>
 							</td>
 						</tr>
