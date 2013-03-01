@@ -112,4 +112,8 @@ class SpaceadminController extends InitController{
 		Core_Extend::doControllerAction('Spaceadmin@Rating/Exchange','index');
 	}
 
+	public function do_exchange(){
+		Core_Extend::doControllerAction('Spaceadmin@Rating/Doexchange','index');
+	}
+
 }

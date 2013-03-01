@@ -27,9 +27,6 @@ class ExchangeController extends Controller{
 		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 
 		// 提示性数据
-		//$nCreditstax=$GLOBALS['_option_']['credit_stax'];
-		//$nCreditstax=sprintf("%.2f",$nCreditstax*100);
-		//$this->assign('nCreditstax',$nCreditstax);
 		$this->assign('nExchangeMincredits',$GLOBALS['_option_']['exchange_mincredits']);
 
 		$this->display('spaceadmin+exchange');

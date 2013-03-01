@@ -38,12 +38,31 @@
 							<tr>
 								<td><!--<lang package='Template/Spaceadmin'>-->兑换<!--</lang>--></td>
 								<td>
-									<input type="text" name="transfer_amount" id="transfer_amount" class="span2" size="5" style="width: auto;" value="0" />&nbsp;<!--<lang package='Template/Spaceadmin'>-->兑换<!--</lang>-->&nbsp;<!--<lang package='Template/Spaceadmin'>-->为<!--</lang>-->&nbsp;
-									<input type="text" name="to_username" id="to_username" class="span3" size="15" style="width: auto;" />
+									<select name="from_credits" id="from_credits" class="span3">
+										<option value="">-- <!--<lang package='Template/Spaceadmin'>-->待兑换的积分<!--</lang>--> --</option>
+										<!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit value=arrAvailableExtendCredit>-->
+										<!--{if $arrAvailableExtendCredit['allowexchangeout']==1}-->
+										<option value="<!--{$nAvailableExtendCredit}-->"><!--{$arrAvailableExtendCredit['title']}--></option>
+										<!--{/if}-->
+										<!--</foreach>-->
+									</select>&nbsp;<!--<lang package='Template/Spaceadmin'>-->兑换<!--</lang>-->&nbsp;<!--<lang package='Template/Spaceadmin'>-->为<!--</lang>-->&nbsp;
+									<select name="to_credits" id="to_credits" class="span3">
+										<option value="">-- <!--<lang package='Template/Spaceadmin'>-->需要兑换成的积分<!--</lang>--> --</option>
+										<!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit value=arrAvailableExtendCredit>-->
+										<!--{if $arrAvailableExtendCredit['allowexchangein']==1}-->
+										<option value="<!--{$nAvailableExtendCredit}-->"><!--{$arrAvailableExtendCredit['title']}--></option>
+										<!--{/if}-->
+										<!--</foreach>-->
+									</select>
 								</td>
 								<td width="300">
 								<!--<lang package='Template/Spaceadmin'>-->兑换后最低余额<!--</lang>-->&nbsp;<!--{$nExchangeMincredits}-->
 								</td>
+							</tr>
+							<tr>
+								<td><!--<lang package='Template/Spaceadmin'>-->兑换数量<!--</lang>--></td>
+								<td><input type="text" name="exchange_amount" id="exchange_amount" class="span3" value="0" /></td>
+								<td>&nbsp;</td>
 							</tr>
 							<tr>
 								<td><!--<lang package='Template/Spaceadmin'>-->登录密码<!--</lang>--><span class="red">*</span></td>
