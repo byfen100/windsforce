@@ -35,7 +35,7 @@ class UrloptionController extends OptionController{
 		Core_Extend::changeAppconfig('URL_MODEL',$nUrlmodel);
 
 		// 需要删除导航缓存
-		$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND']=='FileCache';
+		$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND'];
 		$bAllowMem=Core_Extend::memory('check');
 
 		$bAllowMem && self::memory('delete','nav');

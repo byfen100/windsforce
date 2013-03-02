@@ -81,7 +81,6 @@ class InstallappController extends InitController{
 			}
 
 			$this->cache_site_();
-			
 			$this->S(Dyhb::L('应用 %s 安装成功','Controller/App',null,$sName));
 		}else{
 			$this->E(Dyhb::L('你准备安装的应用不存在','Controller/App'));

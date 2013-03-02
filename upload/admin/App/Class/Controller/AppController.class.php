@@ -129,7 +129,7 @@ class AppController extends InitController{
 	}
 
 	protected function aForbid(){
-		$this->updatecachenav();
+		$this->updatecachenav_();
 	}
 
 	public function enable(){
@@ -139,7 +139,7 @@ class AppController extends InitController{
 	}
 
 	protected function aResume(){
-		$this->updatecachenav();
+		$this->updatecachenav_();
 	}
 
 	public function export(){
@@ -206,7 +206,7 @@ class AppController extends InitController{
 			if($oNav->isError()){
 				$this->E($oNav->getErrorMessage());
 			}else{
-				$this->updatecachenav();
+				$this->updatecachenav_();
 				$this->S(Dyhb::L('菜单写入成功','Controller/App'));
 			}
 		}
@@ -232,8 +232,7 @@ class AppController extends InitController{
 				$oTryNav->destroy();
 			}
 
-			$this->updatecachenav();
-			
+			$this->updatecachenav_();
 			$this->S(Dyhb::L('菜单取消成功','Controller/App'));
 		}
 	}
@@ -260,11 +259,14 @@ class AppController extends InitController{
 		}
 	}
 
-	protected function updatecachenav(){
-		if(!Dyhb::classExists('Cache_Extend')){
-			require_once(Core_Extend::includeFile('function/Cache_Extend'));
-		}
-		Cache_Extend::updateCache("nav");
+	protected function updatecachenav_(){
+		$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND'];
+		$bAllowMem=Core_Extend::memory('check');
+
+		$bAllowMem && self::memory('delete','nav');
+
+		$sCachefile=WINDSFORCE_PATH.'/data/~runtime/cache_/data/~@nav.php';
+		$bIsFilecache && (is_file($sCachefile) && @unlink($sCachefile));
 	}
 
 	protected function check_(){
