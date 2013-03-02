@@ -128,10 +128,18 @@ class AppController extends InitController{
 		$this->change_status_('status',0,'app');
 	}
 
+	protected function aForbid(){
+		$this->updatecachenav();
+	}
+
 	public function enable(){
 		$this->check_();
 		
 		$this->change_status_('status',1,'app');
+	}
+
+	protected function aResume(){
+		$this->updatecachenav();
 	}
 
 	public function export(){
