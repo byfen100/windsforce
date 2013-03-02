@@ -370,23 +370,25 @@ $(document).ready(function(){
 		<!--{if $arrLinkDatas['link_content'] || $arrLinkDatas['link_text'] || $arrLinkDatas['link_logo']}-->
 		<div class="row">
 			<div class="span12 commonbox">
-			<div class="commonboxtitle"><!--<lang package='Template/Public'>-->友情衔接<!--</lang>--></div>
+				<div class="commonboxtitle"><!--<lang package='Template/Public'>-->友情衔接<!--</lang>--></div>
 				<!--{if $arrLinkDatas['link_content']}-->
 				<div class="home-links">
-					<ul class="clear">
+					<ul class="clear span12">
 						<!--{$arrLinkDatas['link_content']}-->
 					</ul>
 				</div>
 				<!--{/if}-->
 				<!--{if $arrLinkDatas['link_logo']}-->
-					<div class="home-img-link">
+					<div class="home-img-link span12">
 						<!--{$arrLinkDatas['link_logo']}-->
 					</div>
 				<!--{/if}-->
 				<!--{if $arrLinkDatas['link_text']}-->
+				<!--{if $arrLinkDatas['link_content'] || $arrLinkDatas['link_logo']}-->
 				<hr/>
+				<!--{/if}-->
 				<div class="home-txt-link">
-					<ul class="clear">
+					<ul class="clear span12">
 						<!--{$arrLinkDatas['link_text']}-->
 					</ul>
 				</div>
