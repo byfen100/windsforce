@@ -60,6 +60,9 @@ class ExploreController extends Controller{
 		$this->assign('arrHomefreshs',$arrHomefreshs);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 		
+		// 热门话题
+		$this->get_homefreshtag_();
+		
 		// 取得活跃会员
 		$this->get_activeuser_();
 
@@ -97,6 +100,23 @@ class ExploreController extends Controller{
 
 	public function explore_description_(){
 		return $this->explore_title_();
+	}
+
+	protected function get_homefreshtag_(){
+		$nHomefreshucenterhottagnum=intval($GLOBALS['_cache_']['home_option']['homefresh_ucenterhottagnum']);
+		if($nHomefreshucenterhottagnum<1){
+			$nHomefreshucenterhottagnum=1;
+		}
+
+		$nDate=intval($GLOBALS['_cache_']['home_option']['home_hothomefreshtag_date']);
+		if($nDate<3600){
+			$nDate=3600;
+		}
+		
+		// 读取热门话题
+		$arrHothomefreshtags=HomefreshtagModel::F('homefreshtag_status=? AND create_dateline>?',1,(CURRENT_TIMESTAMP-$nDate))->order('homefreshtag_totalcount DESC')->limit(0,$nHomefreshucenterhottagnum)->getAll();
+
+		$this->assign('arrHothomefreshtags',$arrHothomefreshtags);
 	}
 	
 }
