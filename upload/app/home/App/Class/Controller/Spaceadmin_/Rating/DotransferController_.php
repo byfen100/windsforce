@@ -21,7 +21,7 @@ class DotransferController extends Controller{
 		// 转账检测
 		$nTransferamount=intval(G::getGpc('transfer_amount','P'));
 		$sTousername=trim(G::getGpc('to_username','P'));
-		$sUserpassword=trim(G::getGpc('user_password','P'));
+		$sUserpassword=trim(G::getGpc('password','P'));
 
 		if($nTransferamount<=0){
 			$this->E(Dyhb::L('你要转账的积分输入有误','Controller/Spaceadmin'));
@@ -44,10 +44,9 @@ class DotransferController extends Controller{
 		}
 
 		// 验证登录密码
-		$oUserModel=Dyhb::instance('UserModel');
-		$oUserModel->checkLogin($GLOBALS['___login___']['user_name'],$sUserpassword,false,'home');
-		if($oUserModel->isError()){
-			$this->E(Dyhb::L('登录密码输入失败','Controller/Spaceadmin'));
+		$oUserlogin=UserModel::M()->checkLogin($GLOBALS['___login___']['user_name'],$sUserpassword,false,false,false);
+		if(UserModel::M()->isBehaviorError()){
+			$this->E(Dyhb::L('登录密码输入失败','Controller/Spaceadmin').'<br/>'.UserModel::M()->getBehaviorErrorMessage());
 		}
 
 		// 确认转账

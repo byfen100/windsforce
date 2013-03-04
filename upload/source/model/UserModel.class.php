@@ -131,7 +131,7 @@ class UserModel extends CommonModel{
 		return true;
 	}
 
-	public function checkLogin($sUserName,$sPassword,$bEmail,$sApp='admin'){
+	public function checkLoginCommon($sUserName,$sPassword,$bEmail,$sApp='admin'){
 		// 是否记住登陆状态
 		$nLoginCookieTime=null;
 		if(G::getGpc('remember_me','P')){
@@ -162,6 +162,7 @@ class UserModel extends CommonModel{
 			}
 
 			$this->setErrorMessage(UserModel::M()->getBehaviorErrorMessage());
+			return false;
 		}else{
 			if($oUser->isError()){
 				if($GLOBALS['_option_']['loginlog_record']==1){
@@ -170,6 +171,7 @@ class UserModel extends CommonModel{
 				}
 
 				$this->setErrorMessage($oUser->getErrorMessage());
+				return false;
 			}
 
 			if($GLOBALS['_option_']['loginlog_record']==1){
@@ -177,7 +179,8 @@ class UserModel extends CommonModel{
 				$oLoginlog->save(0);
 
 				if($oLoginlog->isError()){
-					$this->E($oLoginlog->getErrorMessage());
+					$this->setErrorMessage($oLoginlog->getErrorMessage());
+					return false;
 				}
 			}
 		}

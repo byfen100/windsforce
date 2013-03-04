@@ -139,7 +139,7 @@ class LoginController extends GlobalchildController{
 		}
 
 		$oUserModel=Dyhb::instance('UserModel');
-		$oUserModel->checkLogin($sUserName,$sPassword,$bEmail,'admin');
+		$oUserModel->checkLoginCommon($sUserName,$sPassword,$bEmail,'admin');
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());
 		}else{

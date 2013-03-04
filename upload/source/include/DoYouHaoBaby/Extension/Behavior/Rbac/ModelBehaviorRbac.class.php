@@ -67,7 +67,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$this->_arrSettings['rbac_login_life']=$nTime;
 	}
 
-	public function checkLogin($sUsername,$sPassword,$bEmail=false,$bUpdateLogin=true){
+	public function checkLogin($sUsername,$sPassword,$bEmail=false,$bUpdateLogin=true,$bThin=false){
 		if(!empty($this->_arrSettings['check_login_field'])){
 			$sPn=trim($this->_arrSettings['check_login_field']);
 		}else{
@@ -96,10 +96,12 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 
 		if($this->_arrSettings['encode_type']=='authcode'){
-			$this->tryToDeleteOldSession($oMember['user_id']);
+			if($bThin===FALSE && $this->_arrSettings['auth_thin']===FALSE){
+				$this->tryToDeleteOldSession($oMember['user_id']);
+			}
 		}
 
-		if($this->_arrSettings['auth_thin']===TRUE){// 如果为简化版的验证，直接返回
+		if($bThin===TRUE || $this->_arrSettings['auth_thin']===TRUE){// 如果为简化版的验证，直接返回
 			return $oMember;
 		}
 
@@ -497,6 +499,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 
 		$oSession=SessionModel::M()->deleteWhere("`session_hash`='$sHash' OR($nUserId<>0 AND `user_id`=$nUserId OR(`user_id`=0))");// 删除SESSION
+
 		if($bInsert){// 新插入Session数据
 			$oSession=new SessionModel();
 			$oSession->session_hash=$sHash;

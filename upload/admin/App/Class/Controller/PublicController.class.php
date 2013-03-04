@@ -191,7 +191,7 @@ class PublicController extends InitController{
 		}
 
 		$oUserModel=Dyhb::instance('UserModel');
-		$oUserModel->checkLogin($sUserName,$sPassword,$bEmail);
+		$oUserModel->checkLoginCommon($sUserName,$sPassword,$bEmail);
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());
 		}else{
