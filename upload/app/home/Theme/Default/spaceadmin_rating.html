@@ -63,7 +63,7 @@
 							<tr>
 								<td><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
 								<td><!--<lang package='Template/Spaceadmin'>-->金钱<!--</lang>-->&nbsp;<!--{$oCreditlog:creditlog_extcredits2}--></td>
-								<td><!--{if $oCreditlog['creditlog_extcredits2']<0}--><!--<lang package='Template/Spaceadmin'>-->向<!--</lang>--><!--{d*else}--><!--<lang package='Template/Spaceadmin'>-->来自<!--</lang>--><!--{/if}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oCreditlog['creditlog_relatedid'])}-->" target="_blank"><!--{$oCreditlog:related:user_name}--></a>&nbsp;<!--{if $oCreditlog['creditlog_extcredits2']<0}--><!--<lang package='Template/Spaceadmin'>-->进行<!--</lang>--><!--{d*else}--><!--<lang package='Template/Spaceadmin'>-->的<!--</lang>--><!--{/if}--><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
+								<td><!--<lang package='Template/Spaceadmin'>-->与<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oCreditlog['creditlog_relatedid'])}-->" target="_blank"><!--{$oCreditlog:related:user_name}--></a>&nbsp;<!--<lang package='Template/Spaceadmin'>-->进行<!--</lang>--><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
 								<td><!--{$oCreditlog['create_dateline']|Core_Extend+timeFormat}--></td>
 							</tr>
 							<!--</foreach>-->

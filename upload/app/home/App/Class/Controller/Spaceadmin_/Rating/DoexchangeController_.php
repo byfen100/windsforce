@@ -75,7 +75,7 @@ class DoexchangeController extends Controller{
 
 		// 确认兑换
 		try{
-			Credit_Extend::updateUsercount($GLOBALS['___login___']['user_id'],array('extcredits'.$nFromcredits=>-$nNetamount,'extcredits'.$nTocredits=>$nExchangeamount),'transferout',$GLOBALS['___login___']['user_id']);
+			Credit_Extend::updateUsercount($GLOBALS['___login___']['user_id'],array('extcredits'.$nFromcredits=>-$nNetamount,'extcredits'.$nTocredits=>$nExchangeamount),'exchange',$GLOBALS['___login___']['user_id']);
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}

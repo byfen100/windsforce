@@ -4,10 +4,18 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入积分相关函数 */
+require_once(Core_Extend::includeFile('function/Credit_Extend'));
+
 class CreditlogController extends Controller{
 
 	public function index(){
 		$nBaselistnum=$GLOBALS['_option_']['baselistnum'];
+		
+		// 可用积分
+		$arrAvailableExtendCredits=array();
+		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
+		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 
 		// 列表数据
 		$nTotalRecord=CreditlogModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->all()->getCounts();

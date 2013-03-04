@@ -27,7 +27,8 @@ INSERT INTO `#@__app` (`app_id`, `app_identifier`, `app_name`, `app_version`, `a
 
 INSERT INTO `#@__creditoperation` (`creditoperation_name`, `creditoperation_title`) VALUES
 ('transferin', '转账接收'),
-('transferout', '转账转出');
+('transferout', '转账转出'),
+('exchange', '积分兑换');
 
 -- --------------------------------------------------------
 
