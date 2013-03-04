@@ -41,6 +41,7 @@ return array(
 '3ecb2cdcaf6ba5bb16ef4b05d14e7184'=>"查看消息详情",
 '5660bcd256ba0012c41d3d6f22c17472'=>"通知",
 '4b027f3979224227ba69dafa09f4be38'=>"提醒",
+'db66238e6ab2a069f6a6728cc6cbd567'=>"已读提醒",
 )
 
 ?>

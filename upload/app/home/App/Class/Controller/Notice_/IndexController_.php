@@ -86,6 +86,8 @@ class IndexController extends Controller{
 		$this->assign('sType',($sType?$sType:'user'));
 		$this->assign('sFormAction',$sFormAction);
 		*/
+		$sType='new';
+		$this->assign('sType',($sType?$sType:'isread'));
 		$this->display('notice+index');
 	}
 
