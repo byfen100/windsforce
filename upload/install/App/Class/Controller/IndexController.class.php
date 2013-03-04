@@ -280,7 +280,7 @@ class IndexController extends Controller{
 		
 		$sRandom=G::randString(6);
 		$sPassword=md5(md5($sAdminpwd).trim($sRandom));
-		Install_Extend::queryString("Update `{$sDbprefix}user` set user_name='".$sAdminuser."',user_password='".$sPassword."',user_random='".$sRandom."',user_password='".$sPassword."',user_registerip='".G::getIp()."',user_email='".trim(G::getGpc('adminmail'))."',user_lastloginip='".G::getIp()."' where user_id=1;");
+		Install_Extend::queryString("Update `{$sDbprefix}user` set user_name='".$sAdminuser."',user_password='".$sPassword."',user_random='".$sRandom."',user_password='".$sPassword."',user_registerip='".G::getIp()."',user_email='".trim(G::getGpc('adminmail'))."',user_lastloginip='".G::getIp()."',create_dateline='".CURRENT_TIMESTAMP."' where user_id=1;");
 		Install_Extend::showJavascriptMessage(Dyhb::L('初始化超级管理员帐号','Controller/Install').'... '.Dyhb::L('成功','Controller/Common'));
 		Install_Extend::showJavascriptMessage(' ');
 
