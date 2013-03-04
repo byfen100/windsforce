@@ -24,6 +24,8 @@ return array(
 '402d19e50fff44c827a4f3b608bd5812'=>"登录",
 'd1c2512efa29c4dcc991a2bda737f681'=>"社会化绑定",
 '42ddc62228bde29a075f2de4837c9f87'=>"个人空间",
+'51d1f9cd81a7ad0c25afc25a2010437c'=>"手机版",
+'5fc067de81066ec9baa79bac38cf0138'=>"网站地图",
 )
 
 ?>

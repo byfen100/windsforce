@@ -10,4 +10,16 @@ class SitemapController extends Controller{
 		$this->display('public+sitemap');
 	}
 
+	public function sitemap_title_(){
+		return Dyhb::L('网站地图','Controller/Public');
+	}
+
+	public function sitemap_keywords_(){
+		return $this->sitemap_title_();
+	}
+
+	public function sitemap_description_(){
+		return $this->sitemap_title_();
+	}
+
 }

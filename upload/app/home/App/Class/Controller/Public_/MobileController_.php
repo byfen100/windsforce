@@ -10,4 +10,16 @@ class MobileController extends Controller{
 		$this->display('public+mobile');
 	}
 
+	public function mobile_title_(){
+		return Dyhb::L('手机版','Controller/Public');
+	}
+
+	public function mobile_keywords_(){
+		return $this->mobile_title_();
+	}
+
+	public function mobile_description_(){
+		return $this->mobile_title_();
+	}
+
 }
