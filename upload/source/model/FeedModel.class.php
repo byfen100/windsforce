@@ -16,6 +16,15 @@ class FeedModel extends CommonModel{
 		);
 	}
 
+	static function F(){
+		$arrArgs=func_get_args();
+		return ModelMeta::instance(__CLASS__)->findByArgs($arrArgs);
+	}
+
+	static function M(){
+		return ModelMeta::instance(__CLASS__);
+	}
+
 	public function addFeed($sTemplate,$arrData,$nUserid,$nUsername){
 		$nUserid=intval($nUserid);
 
@@ -34,18 +43,11 @@ class FeedModel extends CommonModel{
 			$oFeed->save(0);
 			if($oFeed->isError()){
 				$this->setErrorMessage($oFeed->getErrorMessage());
+				return false;
 			}
 		}
-		
-	}
 
-	static function F(){
-		$arrArgs=func_get_args();
-		return ModelMeta::instance(__CLASS__)->findByArgs($arrArgs);
-	}
-
-	static function M(){
-		return ModelMeta::instance(__CLASS__);
+		return true;
 	}
 
 }

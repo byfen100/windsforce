@@ -1,5 +1,5 @@
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   前台短消息提醒($Liu.XiangMin)*/
+   前台短消息&&提醒($Liu.XiangMin)*/
 
 function getNewpms(userid){
 	$.ajax({
@@ -43,6 +43,32 @@ function getNewpms(userid){
 				}
 
 				window.setInterval('flashTitle();',500);
+			}
+		}
+	});
+}
+
+function getNewnotices(userid){
+	$.ajax({
+		type:"GET",
+		url:_ROOT_+"/index.php?app=home&c=misc&a=newnoticenum&uid="+userid,
+		success: function(data){
+			var dataJson=eval('('+data+')');
+
+			if(dataJson.num>0){
+				// 显示消息框
+				var sMessage='<a href="'+D.U('home://pm/index?type=new')+'" title="'+D.L('未读提醒','__COMMON_LANG__@Js/Pm_Js')+'('+dataJson.num+')"><img src="'+_ROOT_+'/Public/images/common/notice_new.gif"/> '+D.L('新提醒','__COMMON_LANG__@Js/Pm_Js')+'+'+dataJson.num+'</a>';
+
+				$('#new-notice-box').html(sMessage);
+
+				// 赋值
+				if(document.getElementById('usernew-notice-num')){
+					if(dataJson.num){
+						document.getElementById('usernew-notice-num').innerHTML='<span class="badge badge-important">'+dataJson.num+'</span>';
+					}else{
+						document.getElementById('usernew-notice-num').innerHTML='<span class="badge">'+dataJson.num+'</span>';
+					}
+				}
 			}
 		}
 	});

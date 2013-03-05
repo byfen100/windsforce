@@ -1031,6 +1031,24 @@ WINDSFORCE;
 		}
 	}
 
+	public static function addNotice($sTemplate,$arrData,$nTouserid,$sType='system',$nFromid=0,$nUserid=0,$sUsername=''){
+		if(empty($nUserid)){
+			$nUserid=$GLOBALS['___login___']['user_id'];
+		}
+		$nUserid=intval($nUserid);
+		
+		if(empty($sUsername)){
+			$sUsername=$GLOBALS['___login___']['user_name'];
+		}
+
+		$oNotice=Dyhb::instance('NoticeModel');
+		$oNotice->addNotice($sTemplate,$arrData,$nTouserid,$sType,$nFromid,$nUserid,$sUsername);
+
+		if($oNotice->isError()){
+			Dyhb::E($oNotice->getErrorMessage());
+		}
+	}
+
 	static public function checkSpam($arrData=array(),$bLogincheck=true){
 		// 是否登录检查
 		if($bLogincheck===TRUE && $GLOBALS['___login___']===FALSE){

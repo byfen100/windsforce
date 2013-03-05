@@ -7,121 +7,89 @@
 class IndexController extends Controller{
 
 	public function index(){
-		/*$arrWhere=array();
+		$arrWhere=array();
 		
 		$sType=trim(G::getGpc('type','G'));
-
-		if(in_array($sType,array('system','systemnew'))){
-			$sFormAction=Dyhb::U('home://pm/readselect');
-		}elseif($sType=='my'){
-			$sFormAction=Dyhb::U('home://pm/delmyselect');
-		}else{
-			$sFormAction=Dyhb::U('home://pm/delselect');
+		if(!$sType){
+			$sType='new';
 		}
+
+		$arrWhere['user_id']=$GLOBALS['___login___']['user_id'];
 
 		if($sType=='new'){
-			$arrWhere['pm_isread']=0;
-			$arrWhere['pm_type']='user';
-		}elseif($sType=='system' || $sType=='systemnew'){
-			$arrWhere['pm_type']='system';
+			$arrWhere['notice_isread']=0;
 		}else{
-			$arrWhere['pm_type']='user';
-		}
-
-		if($sType!='system' && $sType!='systemnew'){
-			if($sType=='my'){
-				// 我发送的消息如果被对方删除了，这里status=1的话就无法取出来 && 我的发件箱状态为1
-				$arrWhere['pm_msgfromid']=$GLOBALS['___login___']['user_id'];
-				$arrWhere['pm_mystatus']=1;
-			}else{
-				$arrWhere['pm_status']=1;
-				$arrWhere['pm_msgtoid']=$GLOBALS['___login___']['user_id'];
-			}
-
-			$arrReadPms=array();
-		}else{
-			// 已删短消息
-			$arrSystemdeleteMessages=PmsystemdeleteModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getAll();
-			if(is_array($arrSystemdeleteMessages)){
-				foreach($arrSystemdeleteMessages as $oSystemdeleteMessage){
-					$arrDeletePms[]=$oSystemdeleteMessage['pm_id'];
-				}
-			}else{
-				$arrDeletePms=array();
-			}
-
-			$arrNotinPms=$arrDeletePms;
-
-			// 已读短消息
-			$arrSystemreadMessages=PmsystemreadModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getAll();
-			if(is_array($arrSystemreadMessages)){
-				foreach($arrSystemreadMessages as $oSystemreadMessage){
-					$arrReadPms[]=$oSystemreadMessage['pm_id'];
-					if($sType=='systemnew'){
-						$arrNotinPms[]=$oSystemreadMessage['pm_id'];
-					}
-				}
-			}else{
-				$arrReadPms=array();
-			}
-			
-			if(!empty($arrNotinPms)){
-				$arrWhere['pm_id']=array('NOT IN',$arrNotinPms);
-			}
+			$arrWhere['notice_isread']=1;
 		}
 
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
-		$nTotalRecord=PmModel::F()->where($arrWhere)->all()->getCounts();
+		$nTotalRecord=NoticeModel::F()->where($arrWhere)->all()->getCounts();
 
-		$oPage=Page::RUN($nTotalRecord,$arrOptionData['pm_list_num'],G::getGpc('page','G'));
+		$oPage=Page::RUN($nTotalRecord,$arrOptionData['notice_list_num'],G::getGpc('page','G'));
 
-		$arrPmLists=PmModel::F()->where($arrWhere)->all()->order('`create_dateline` DESC')->limit($oPage->returnPageStart(),$arrOptionData['pm_list_num'])->getAll();
+		$arrNoticeLists=NoticeModel::F()->where($arrWhere)->all()->order('`create_dateline` DESC')->limit($oPage->returnPageStart(),$arrOptionData['notice_list_num'])->getAll();
+
+		// 最后处理结果
+		$arrNoticedatas=array();
+		if(is_array($arrNoticeLists)){
+			foreach($arrNoticeLists as $nKey=>$oNotice){
+				$arrData=@unserialize($oNotice['notice_data']);
 		
-		$this->assign('nTotalPm',$nTotalRecord);
+				$arrTempdata=array();
+				if(is_array($arrData)){
+					foreach($arrData as $nK=>$sValueTemp){
+						$sTempkey='{'.$nK.'}';
+
+						// @开头表示URL，调用Dyhb::U来生成地址
+						if(strpos($nK,'@')===0){
+							$sValueTemp=Dyhb::U($sValueTemp);
+						}
+
+						$arrTempdata[$sTempkey]=$sValueTemp;
+					}
+				}
+
+				$arrNoticedatas[]=array(
+					'user_id'=>$oNotice['notice_authorid'],
+					'notice_username'=>$oNotice['notice_authorusername'],
+					'notice_content'=>strtr($oNotice['notice_template'],$arrTempdata),
+					'create_dateline'=>$oNotice['notice_fromnum']>1?$oNotice['update_dateline']:$oNotice['create_dateline'],
+					'notice_fromnum'=>$oNotice['notice_fromnum'],
+				);
+			}
+		}
+		
+		$this->assign('nTotalNotice',$nTotalRecord);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
-		$this->assign('arrPmLists',$arrPmLists);
-		$this->assign('sPmType',$sType);
-		$this->assign('arrReadPms',$arrReadPms);
-		$this->assign('sType',($sType?$sType:'user'));
-		$this->assign('sFormAction',$sFormAction);
-		*/
-		$sType='new';
-		$this->assign('sType',($sType?$sType:'isread'));
+		$this->assign('arrNoticedatas',$arrNoticedatas);
+		$this->assign('sNoticeType',$sType);
+		$this->assign('sType',$sType);
+
 		$this->display('notice+index');
 	}
 
-	public function index2_title_(){
+	public function index_title_(){
 		$sType=trim(G::getGpc('type','G'));
 
 		switch($sType){
 			case 'new':
-				return Dyhb::L('未读短消息','Controller/Pm');
+				return Dyhb::L('未读提醒','Controller/Notice');
 				break;
-			case 'user':
-				return Dyhb::L('私人短消息','Controller/Pm');
-				break;
-			case 'my':
-				return Dyhb::L('已发短消息','Controller/Pm');
-				break;
-			case 'systemnew':
-				return Dyhb::L('未读公共短消息','Controller/Pm');
-				break;
-			case 'system':
-				return Dyhb::L('公共短消息','Controller/Pm');
-				break;
+			case 'isread':
+				return Dyhb::L('已读提醒','Controller/Notice');
 			default:
-				return Dyhb::L('私人短消息','Controller/Pm');
+				return Dyhb::L('未读提醒','Controller/Notice');
 				break;
 		}
 	}
 
-	public function index2_keywords_(){
-		return $this->index2_title_();
+	public function index_keywords_(){
+		return $this->index_title_();
 	}
 
-	public function index2_description_(){
-		return $this->index2_title_();
+	public function index_description_(){
+		return $this->index_title_();
 	}
 
 }

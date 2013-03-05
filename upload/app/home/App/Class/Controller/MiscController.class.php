@@ -42,4 +42,8 @@ class MiscController extends InitController{
 		Core_Extend::doControllerAction('Misc@Dialogstyle','index');
 	}
 
+	public function newnoticenum(){
+		Core_Extend::doControllerAction('Misc@Newnoticenum','index');
+	}
+
 }

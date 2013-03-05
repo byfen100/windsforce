@@ -152,10 +152,33 @@ class AddcommentController extends GlobalchildController{
 			$arrFeeddata=array(
 				'@homefresh_commentlink'=>'home://fresh@?id='.$oHomefresh['homefresh_id'].'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'],
 				'homefresh_title'=>$oHomefresh['homefresh_title']?G::subString($oHomefresh['homefresh_title'],0,30):G::subString(strip_tags($oHomefresh['homefresh_message']),0,30),
-				'homefresh_commentmessage'=>Core_Extend::ubb(G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100)),
+				'homefresh_commentmessage'=>G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100),
 			);
 
-			Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+			try{
+				Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+
+			// 发送提醒
+			if($oHomefresh['user_id']!=$GLOBALS['___login___']['user_id']){
+				$sNoticetemplate='<div class="notice_addhomefreshcomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('评论了新鲜事','Controller/Homefresh').'&nbsp;<a href="{@homefresh_commentlink}">{homefresh_title}</a></span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{homefresh_commentmessage}</span></div></div><div class="notice_action"><a href="{@homefresh_commentlink}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
+
+				$arrNoticedata=array(
+					'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
+					'user_name'=>$GLOBALS['___login___']['user_name'],
+					'@homefresh_commentlink'=>'home://fresh@?id='.$oHomefresh['homefresh_id'].'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'],
+					'homefresh_title'=>$oHomefresh['homefresh_title']?G::subString($oHomefresh['homefresh_title'],0,30):G::subString(strip_tags($oHomefresh['homefresh_message']),0,30),
+					'homefresh_commentmessage'=>G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100),
+				);
+
+				try{
+					Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
+				}catch(Exception $e){
+					$this->E($e->getMessage());
+				}
+			}
 			
 			// 邮件通知
 			$this->comment_sendmail($oHomefreshcomment);

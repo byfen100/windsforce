@@ -80,7 +80,11 @@ class AddController extends Controller{
 				'homefresh_message'=>G::subString(strip_tags($oHomefresh['homefresh_message']),0,100),
 			);
 
-			Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+			try{
+				Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
 
 			$arrHomefreshData=$oHomefresh->toArray();
 			$arrHomefreshData['space']=Dyhb::U('home://space@?id='.$oHomefresh['user_id']);
