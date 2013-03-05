@@ -7,6 +7,7 @@
 return array(
 	'public::index',
 	'pm',
+	'notice::index',
 	'ucenter,ucenter::index,ucenter::view',
 	'attachment::index',
 	'attachment::add,attachment::dialog_add',
@@ -18,5 +19,5 @@ return array(
 	'attachment::show',
 	'space::index',
 	'stat::feed,stat::explore',
-	'apps::index'
+	'apps::index',
 );

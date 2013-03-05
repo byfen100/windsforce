@@ -116,7 +116,8 @@ INSERT INTO `#@__homeoption` (`homeoption_name`, `homeoption_value`) VALUES
 ('explorefresh_list_num', '20'),
 ('homefresh_dialoghottagnum', '8'),
 ('homefresh_ucenterhottagnum', '8'),
-('home_hothomefreshtag_date', 'home_hothomefreshtag_date');
+('home_hothomefreshtag_date', '3600'),
+('notice_list_num', '10');
 
 -- --------------------------------------------------------
 

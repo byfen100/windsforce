@@ -48,6 +48,15 @@ class IndexController extends Controller{
 
 						$arrTempdata[$sTempkey]=$sValueTemp;
 					}
+
+					// 标记已经阅读
+					$oNotice->notice_isread=1;
+					$oNotice->setAutofill(false);
+					$oNotice->save(0,'update');
+
+					if($oNotice->isError()){
+						$this->E($oNotice->getErrorMessage());
+					}
 				}
 
 				$arrNoticedatas[]=array(

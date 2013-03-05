@@ -314,8 +314,8 @@ CREATE TABLE `#@__feed` (
   `feed_id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',
   `feed_username` varchar(50) NOT NULL COMMENT '用户名',
-  `feed_template` varchar(1024) NOT NULL DEFAULT '' COMMENT '动态模板',
-  `feed_data` varchar(1024) NOT NULL DEFAULT '' COMMENT '动态数据',
+  `feed_template` text NOT NULL COMMENT '动态模板',
+  `feed_data` text NOT NULL COMMENT '动态数据',
   `create_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`feed_id`),
   KEY `user_id` (`user_id`),
@@ -678,6 +678,32 @@ CREATE TABLE `#@__nodegroup` (
   KEY `nodegroup_sort` (`nodegroup_sort`),
   KEY `nodegroup_status` (`nodegroup_status`),
   KEY `nodegroup_name` (`nodegroup_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_notice`
+--
+
+DROP TABLE IF EXISTS `#@__notice`;
+CREATE TABLE `#@__notice` (
+  `notice_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '提醒ID',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `notice_type` varchar(20) NOT NULL DEFAULT '' COMMENT '提醒类型',
+  `notice_isread` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已经查看',
+  `notice_authorid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '作者ID',
+  `notice_authorusername` varchar(50) NOT NULL DEFAULT '' COMMENT '作者用户名字',
+  `notice_template` text NOT NULL COMMENT '提示模板',
+  `notice_data` text NOT NULL COMMENT '提示数据',
+  `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '通知最后更新时间',
+  `notice_fromid` int(10) NOT NULL COMMENT '通知来源ID',
+  `notice_fromnum` int(10) NOT NULL DEFAULT '0' COMMENT '通知数量',
+  PRIMARY KEY (`notice_id`),
+  KEY `user_id` (`user_id`),
+  KEY `notice_isread` (`notice_isread`),
+  KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

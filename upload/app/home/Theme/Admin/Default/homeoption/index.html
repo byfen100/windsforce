@@ -39,7 +39,7 @@ function option(){
 							<ul class="windsforce_tabtitle">
 								<li><a href="#tab1"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->基本<!--</lang>--></a></li>
 								<li><a href="#tab2"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->广场<!--</lang>--></a></li>
-								<li><a href="#tab3"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息<!--</lang>--></a></li>
+								<li><a href="#tab3"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息<!--</lang>-->&nbsp;&&nbsp;<!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->提醒<!--</lang>--></a></li>
 								<li><a href="#tab4"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->好友<!--</lang>--></a></li>
 								<li><a href="#tab5"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->帮助<!--</lang>--></a></li>
 							</ul>
@@ -120,6 +120,11 @@ function option(){
 								<label for="pm_single_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->短消息用户聊天界面短消息每页数量<!--</lang>--></label>
 								<input type="text" id="pm_single_list_num" name="options[pm_single_list_num]" value="<!--{$arrOptions['pm_single_list_num']}-->"/>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个将是一个非常重要的环节，将短消息变成聊天室<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="notice_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->提醒每页列表数量<!--</lang>--></label>
+								<input type="text" id="notice_list_num" name="options[notice_list_num]" value="<!--{$arrOptions['notice_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个可以调整大一些，将展示更多的提醒<!--</lang>--></div>
 							</fieldset>
 						</div>
 						<div id="tab4" class="windsforce_tabcontent">

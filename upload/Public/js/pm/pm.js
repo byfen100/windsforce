@@ -57,7 +57,7 @@ function getNewnotices(userid){
 
 			if(dataJson.num>0){
 				// 显示消息框
-				var sMessage='<a href="'+D.U('home://pm/index?type=new')+'" title="'+D.L('未读提醒','__COMMON_LANG__@Js/Pm_Js')+'('+dataJson.num+')"><img src="'+_ROOT_+'/Public/images/common/notice_new.gif"/> '+D.L('新提醒','__COMMON_LANG__@Js/Pm_Js')+'+'+dataJson.num+'</a>';
+				var sMessage='<a href="'+D.U('home://notice/index?type=new')+'" title="'+D.L('未读提醒','__COMMON_LANG__@Js/Pm_Js')+'('+dataJson.num+')"><img src="'+_ROOT_+'/Public/images/common/notice_new.gif"/> '+D.L('新提醒','__COMMON_LANG__@Js/Pm_Js')+'+'+dataJson.num+'</a>';
 
 				$('#new-notice-box').html(sMessage);
 
