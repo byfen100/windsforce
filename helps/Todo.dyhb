@@ -19,6 +19,9 @@ WindsForce 即将做的
 
 	小组管理员相关设置
 
+	权限
+	用户加入角色
+
 	// 语言包提炼
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Creditoption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Option.lang.php
@@ -26,6 +29,7 @@ WindsForce 即将做的
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Homefresh.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Stat.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Admin\Zh-cn\Template\Homeoption.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Admin\Zh-cn\Template\Pm.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Uploadoption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Space.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Registeroption.lang.php
@@ -35,6 +39,7 @@ WindsForce 即将做的
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Spaceadmin.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Styleoption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Public.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-cn\Template\Header.lang.php
 
 
                                                                                                                                     WindsForce Team, 2012-12-09 11:17
