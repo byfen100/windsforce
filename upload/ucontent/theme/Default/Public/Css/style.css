@@ -267,7 +267,7 @@ Tags: admin, light
 /**===============================
            用户动态
 ================================*/
-[CURSCRIPT=home::stat::feed]
+[CURSCRIPT=home::stat::feed,home::space::index]
 .feed_addhomefresh{}
 .feed_title{}
 .feed_content{color: #505050;padding: 5px 15px 5px 0px;}

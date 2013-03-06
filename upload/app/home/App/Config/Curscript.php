@@ -20,4 +20,5 @@ return array(
 	'space::index',
 	'stat::feed,stat::explore',
 	'apps::index',
+	'space::index',
 );
