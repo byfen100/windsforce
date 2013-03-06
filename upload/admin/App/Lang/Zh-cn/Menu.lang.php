@@ -39,6 +39,7 @@ return array(
 '7401fa809005e868a08dfb9e451405f2'=>"URL优化",
 'cf8e1f0925761be67f072851e3935496'=>"操作记录",
 '4a3ebd0ef27212de3b0c39e6a9701b1d'=>"搜索设置",
+'bbff05f1dea5e29b035bb0f3a8ff4e50'=>"用户提醒",
 )
 
 ?>

@@ -11,6 +11,7 @@ class NoticeModel extends CommonModel{
 			'table_name'=>'notice',
 			'props'=>array(
 				'notice_id'=>array('readonly'=>true),
+				'user'=>array(Db::HAS_ONE=>'UserModel','source_key'=>'user_id','target_key'=>'user_id'),
 			),
 			'attr_protected'=>'notice_id',
 			'check'=>array(
