@@ -22,7 +22,6 @@ class ExchangeController extends Controller{
 		}
 
 		// 可用积分
-		$arrAvailableExtendCredits=array();
 		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
 		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 

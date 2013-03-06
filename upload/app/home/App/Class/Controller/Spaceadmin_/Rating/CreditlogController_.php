@@ -13,7 +13,6 @@ class CreditlogController extends Controller{
 		$nBaselistnum=$GLOBALS['_option_']['baselistnum'];
 		
 		// 可用积分
-		$arrAvailableExtendCredits=array();
 		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
 		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 

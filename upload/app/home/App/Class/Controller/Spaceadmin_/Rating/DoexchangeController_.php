@@ -25,8 +25,7 @@ class DoexchangeController extends Controller{
 		$nExchangeamount=intval(G::getGpc('exchange_amount','P'));
 		$sUserpassword=trim(G::getGpc('password','P'));
 		
-		$arrAvailableExtendCredits=array();// 可用积分
-		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
+		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();// 可用积分
 
 		if(!$nFromcredits){
 			$this->E(Dyhb::L('待兑换的积分不能为空','Controller/Spaceadmin'));

@@ -15,7 +15,6 @@ class CreditruleController extends Controller{
 		$this->assign('arrCreditrules',$arrCreditrules);
 
 		// 可用积分类型
-		$arrAvailableExtendCredits=array();
 		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
 		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 

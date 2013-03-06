@@ -15,7 +15,6 @@ class CreditrulelogController extends Controller{
 		$this->assign('arrCreditrulelogs',$arrCreditrulelogs);
 
 		// 可用积分
-		$arrAvailableExtendCredits=array();
 		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();
 		$this->assign('arrAvailableExtendCredits',$arrAvailableExtendCredits);
 
