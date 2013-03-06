@@ -11,22 +11,24 @@
 
 WindsForce 即将做的
 
-	用户提醒
-
 	在线时间功能开发
+	
+	权限
+	用户加入角色
 
 	创建小组，自己也加入小组
 
 	小组管理员相关设置
 
-	权限
-	用户加入角色
-
 	// 语言包提炼
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Adminlog.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Menu.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Registeroption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Creditoption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Option.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Homefresh.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Homefresh.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Friend.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Stat.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Admin\Zh-cn\Template\Homeoption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Admin\Zh-cn\Template\Pm.lang.php
