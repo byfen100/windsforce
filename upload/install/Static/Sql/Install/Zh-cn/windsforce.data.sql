@@ -437,7 +437,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('js_slimbox_on', '0'),
 ('js_lazyload_on', '0'),
 ('baselistnum', '10'),
-('register_welcome', '尊敬的{user_name}，您已经注册成为{site_name}的会员，请您在发表言论时，遵守当地法律法规。如果您有什么疑问可以联系管理员，Email: {admin_email}。');
+('register_welcome', '尊敬的{user_name}，您已经注册成为{site_name}的会员，请您在发表言论时，遵守当地法律法规。如果您有什么疑问可以联系管理员，Email: {admin_email}。\r\n\r\n\r\n{site_name} {static_time}');
 
 -- --------------------------------------------------------
 

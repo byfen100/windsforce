@@ -55,8 +55,11 @@ function option(){
 					<fieldset>
 						<label for="register_welcome"><!--<lang package='Template/Default/Registeroption'>-->网站主页介绍<!--</lang>--></label>
 						<textarea name="options[register_welcome]" rows="5"><!--{$arrOptions['register_welcome']}--></textarea>
-						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->会员注册时候的欢迎提醒模板<!--</lang>--><br/>
-						<!--<lang package='Template/Default/Common'>-->系统变量替换: {site_name} 网站标题,{site_description} 网站描述,{site_url} 站点信息,{time} 当前时间,{user_name} 登录用户,{user_nikename} 登录用户昵称,{admin_email} 系统管理员邮箱<!--</lang>--></div>
+						<div class="description">
+							<!--<lang package='Template/Default/Registeroption'>-->会员注册时候的欢迎提醒模板<!--</lang>--><br/>
+							<!--<lang package='Template/Default/Common'>-->系统变量替换: {site_name} 网站标题,{site_description} 网站描述,{site_url} 站点信息,{time} 当前时间,{user_name} 登录用户,{user_nikename} 登录用户昵称,{admin_email} 系统管理员邮箱<!--</lang>--><br/>
+							<!--<lang package='Template/Default/Registeroption'>-->静态变量替换: {static_time} 一直为用户创建的当前时间<!--</lang>-->
+						</div>
 					</fieldset>
 				</div>
 				<footer>
