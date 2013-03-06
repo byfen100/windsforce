@@ -41,6 +41,7 @@ class NoticeModel extends CommonModel{
 				if(!empty($oNotice['notice_id'])){
 					$bNewnotice=false;
 					
+					$oNotice->notice_isread=0;
 					$oNotice->notice_fromnum=$oNotice->notice_fromnum+1;
 					$oNotice->save(0,'update');
 					
