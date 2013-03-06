@@ -149,6 +149,23 @@ class RegisterController extends GlobalchildController{
 
 			$this->cache_site_();
 
+			// 注册推广
+			$nCookiepromotion=Dyhb::cookie('_promotion_');
+			if(!empty($nCookiepromotion) && $oUser['user_id']!=$nCookiepromotion){
+				Core_Extend::updateCreditByAction('promotion_register',$nCookiepromotion);
+				Dyhb::cookie('_promotion_',null,-1);
+			}
+
+			// 发送注册提醒
+			$sNoticetemplate='<div class="notice_register"><div class="notice_content">'.$GLOBALS['_option_']['register_welcome'].'</div></div>';
+			$arrNoticedata=array();
+
+			try{
+				Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$oUser['user_id'],'system',0,0,'');
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+			
 			// 判断是否绑定社会化帐号
 			if(G::getGpc('sociabind','P')==1){
 				// 绑定社会化登录数据，以便于下次直接调用
@@ -180,13 +197,6 @@ class RegisterController extends GlobalchildController{
 
 			$arrData=$oUser->toArray();
 			$arrData['jumpurl']=$sJumpUrl;
-
-			// 注册推广
-			$nCookiepromotion=Dyhb::cookie('_promotion_');
-			if(!empty($nCookiepromotion) && $oUser['user_id']!=$nCookiepromotion){
-				Core_Extend::updateCreditByAction('promotion_register',$nCookiepromotion);
-				Dyhb::cookie('_promotion_',null,-1);
-			}
 
 			$this->A($arrData,Dyhb::L('注册成功','Controller/Public'),1);
 		}

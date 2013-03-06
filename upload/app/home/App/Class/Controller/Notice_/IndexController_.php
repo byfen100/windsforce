@@ -65,6 +65,7 @@ class IndexController extends Controller{
 					'notice_content'=>strtr($oNotice['notice_template'],$arrTempdata),
 					'create_dateline'=>$oNotice['notice_fromnum']>1?$oNotice['update_dateline']:$oNotice['create_dateline'],
 					'notice_fromnum'=>$oNotice['notice_fromnum'],
+					'notice_type'=>$oNotice['notice_type'],
 				);
 			}
 		}

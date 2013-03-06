@@ -186,11 +186,11 @@ Tags: admin, light
 [CURSCRIPT=home::notice::index]
 .notice_addhomefresh{}
 .notice_title{}
-.notice_content{color: #999999;padding: 5px 15px;}
+.notice_content{color: #505050;padding: 5px 15px 5px 0px;}
 .notice_action{padding: 3px 15px;}
 .notice_quote{background: url("{IMG_DIR}/quotel.gif") no-repeat scroll left 4px transparent;margin: 8px 0 0 0px;overflow: hidden;padding: 0 24px 5px 15px;width: auto;word-wrap: break-word;
 }
-.notice_quote .notice_quoteinfo{background: url("{IMG_DIR}/quoter.gif") no-repeat scroll right bottom transparent;color: #333333;display: inline-block;padding-right: 15px;}
+.notice_quote .notice_quoteinfo{color: #999999;background: url("{IMG_DIR}/quoter.gif") no-repeat scroll right bottom transparent;display: inline-block;padding-right: 15px;}
 .notice-note{color:#a6a6a4;font-size:12px;}
 [/CURSCRIPT]
 
@@ -270,11 +270,11 @@ Tags: admin, light
 [CURSCRIPT=home::stat::feed]
 .feed_addhomefresh{}
 .feed_title{}
-.feed_content{color: #999999;padding: 5px 15px;}
+.feed_content{color: #505050;padding: 5px 15px 5px 0px;}
 .feed_action{padding: 3px 15px;}
 .feed_quote{background: url("{IMG_DIR}/quotel.gif") no-repeat scroll left 4px transparent;margin: 8px 0 0 0px;overflow: hidden;padding: 0 24px 5px 15px;width: auto;word-wrap: break-word;
 }
-.feed_quote .feed_quoteinfo{background: url("{IMG_DIR}/quoter.gif") no-repeat scroll right bottom transparent;color: #333333;display: inline-block;padding-right: 15px;}
+.feed_quote .feed_quoteinfo{color: #999999;background: url("{IMG_DIR}/quoter.gif") no-repeat scroll right bottom transparent;display: inline-block;padding-right: 15px;}
 [/CURSCRIPT]
 
 /**===============================
