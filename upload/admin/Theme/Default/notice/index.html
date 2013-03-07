@@ -49,6 +49,7 @@
 							<td><!--{$value:notice_id}--></td>
 							<td><!--{$value:user:user_name}-->
 								<div class="row-actions">
+									<span class='view'><a href="<!--{:Dyhb::U('notice/show?id='.$value->notice_id)}-->"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:notice_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 								</div>
 							</td>
