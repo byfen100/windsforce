@@ -42,8 +42,10 @@ class BaseController extends Controller{
 		$this->assign('arrFriends',$arrFriends);
 
 		// 用户等级名字
-		$sRatingname=UserModel::getUserrating($oUserInfo->usercount->usercount_extendcredit1);
-		$this->assign('sRatingname',$sRatingname);
+		$nUserscore=$oUserInfo->usercount->usercount_extendcredit1;
+		$arrRatinginfo=UserModel::getUserrating($nUserscore,false);
+		$this->assign('arrRatinginfo',$arrRatinginfo);
+		$this->assign('nUserscore',$nUserscore);
 
 		// 视图
 		$arrProfileSetting=Profile_Extend::getProfileSetting();
