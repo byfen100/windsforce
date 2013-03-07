@@ -20,6 +20,8 @@ WindsForce 即将做的
 
 	小组管理员相关设置
 
+	// group应用默认安装，后台禁止卸载
+
 	// 语言包提炼
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Controller\Default\Notice.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Notice.lang.php
