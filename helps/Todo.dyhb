@@ -23,6 +23,8 @@ WindsForce 即将做的
 	// group应用默认安装，后台禁止卸载
 
 	// 语言包提炼
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Public.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Public.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Controller\Default\Notice.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Notice.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Adminlog.lang.php
