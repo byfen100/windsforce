@@ -620,7 +620,6 @@ class ModelBehaviorRbac extends ModelBehavior{
 					}
 
 					if($bTrueRbacGuestAccessLevel>0 && $bTrueRbacGuestAccess===true && $bTrueRbacGuestAccessLevel>$bFalseRbacGuestAccessLevel){
-						Dyhb::cookie($sAccessGuid,true,$this->_arrSettings['rbac_login_life']);
 						return false;
 					}
 
