@@ -30,6 +30,11 @@
 	'home@public@*'=>true,
 	'home@*@*'=>true,
  ),
+  // 说明：登录用户访问的黑/白名单
+  // 规则：同游客访问一致
+ 'RBAC_USER_ACCESS'=>array(
+	'home@spaceadmin@*'=>true,
+ ),
 
 // 数据库表
 DROP TABLE IF EXISTS `doyouhaobaby_access`;

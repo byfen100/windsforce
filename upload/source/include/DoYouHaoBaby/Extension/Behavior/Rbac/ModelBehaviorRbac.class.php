@@ -26,7 +26,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		'register_ip_prop'=>'user_registerip',
 		'register_at_prop'=>'create_dateline',
 		'unique_username'=>true,
-		'rbac_login_life'=>86400
+		'rbac_login_life'=>86400,
 	);
 	private $_arrSavedState=array();
 
@@ -43,7 +43,6 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$this->addStaticMethod_('checkRbac',array($this,'checkRbac'));// 启动权限检查
 		$this->addStaticMethod_('isLogin',array($this,'isLogin'));// 判断是否登录
 		$this->addStaticMethod_('alreadyLogout',array($this,'alreadyLogout'));// 检测是否已经登出
-		$this->addStaticMethod_('checkRbacLogin',array($this,'checkRbacLogin'));// 启动权限检查，包含游客检查
 		$this->addStaticMethod_('logout',array($this,'logout'));// 登出
 		$this->addStaticMethod_('replaceSession',array($this,'replaceSession'));
 		$this->addStaticMethod_('updateSession',array($this,'updateSession'));
@@ -129,7 +128,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 	}
 
 	public function tryToDeleteOldSession($nUserId){
-		SessionModel::M()->deleteWhere("`user_id`=$nUserId OR(`user_id`=0)");
+		SessionModel::M()->deleteWhere("`user_id`=$nUserId OR (`user_id`=0)");
 	}
 
 	public function getAuthData($sUserModel=null){
@@ -193,8 +192,8 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 
 		$sHash=isset($arrUserInformation['session_hash'])?$arrUserInformation['session_hash']:$sHash;// hash
-		$nUserId=isset($arrUserInformation['user_id'])? $arrUserInformation['user_id']:$nUserId;// 用户名和用户密码
-		$sUserName=isset($arrUserInformation['user_name'])? $arrUserInformation['user_name'] :'';
+		$nUserId=isset($arrUserInformation['user_id'])?$arrUserInformation['user_id']:$nUserId;// 用户名和用户密码
+		$sUserName=isset($arrUserInformation['user_name'])?$arrUserInformation['user_name']:'';
 
 		if(!$sHash || $sHash!=Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash')){// 设置hash值
 			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',$sHash,$this->_arrSettings['rbac_login_life']);
@@ -247,23 +246,6 @@ class ModelBehaviorRbac extends ModelBehavior{
 		return empty($arrUser['user_id']);
 	}
 
-	public function checkRbacLogin(){
-		if($this->checkAccess()){// 检查当前操作是否需要认证
-			if(!Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']))){// 检查认证识别号
-				if($GLOBALS['_commonConfig_']['GUEST_AUTH_ON']){
-					$arrAccessList=Dyhb::cookie('_access_list_');
-					if($arrAccessList!==false){// 开启游客授权访问
-						$this->saveAccessList($GLOBALS['_commonConfig_']['GUEST_AUTH_ID']);// 保存游客权限
-					}
-				}else{// 禁止游客访问跳转到认证网关
-					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));
-				}
-			}
-		}
-
-		return true;
-	}
-
 	public function clearAllCookie(){
 		Dyhb::cookie(null);
 	}
@@ -275,11 +257,12 @@ class ModelBehaviorRbac extends ModelBehavior{
 	}
 
 	public function clearThisCookie(){
-		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']),'',-1);
-		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY']),'',-1);
-		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash','',-1);
-		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth','',-1);
-		Dyhb::cookie(md5(APP_NAME.MODULE_NAME.ACTION_NAME),'',-1);
+		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']),null,-1);
+		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY']),null,-1);
+		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',null,-1);
+		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth',null,-1);
+		Dyhb::cookie(md5(APP_NAME.MODULE_NAME.ACTION_NAME),null,-1);
+		Dyhb::cookie('_access_list_',null,-1);
 	}
 
 	public function checkUsername($sUsername){
@@ -630,15 +613,58 @@ class ModelBehaviorRbac extends ModelBehavior{
 			$bAdminAuthKey=Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY']));
 
 			if(empty($bAdminAuthKey)){
+				// 登录用户访问黑白名单
+				if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'] && is_array($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
+					if(array_key_exists(APP_NAME.'@*@*',$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
+						if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@*@*']===true){
+							$bRbacUserAccess=true;
+						}elseif($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@*@*']===false){
+							$bRbacUserAccess=false;
+						}
+					}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@*',$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
+						if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===true){
+							$bRbacUserAccess=true;
+						}elseif($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===false){
+							$bRbacUserAccess=false;
+						}
+					}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
+						if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
+							$bRbacUserAccess=true;
+						}elseif($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===false){
+							$bRbacUserAccess=false;
+						}
+					}
+				}
+
+				if($bRbacUserAccess===true){
+					Dyhb::cookie($sAccessGuid,true,$this->_arrSettings['rbac_login_life']);
+					return true;
+				}elseif($bRbacUserAccess===false){
+					Dyhb::cookie($sAccessGuid,false,$this->_arrSettings['rbac_login_life']);
+					return false;
+				}
+				
+				// 游客访问权限判断
+				$nAuthid=Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']));
+				if(!$nAuthid && $GLOBALS['_commonConfig_']['GUEST_AUTH_ON']){
+					$nAuthid=$GLOBALS['_commonConfig_']['GUEST_AUTH_ID'];
+					$arrAccessList=Dyhb::cookie('_access_list_');
+					if($arrAccessList!==false){
+						$this->saveAccessList($GLOBALS['_commonConfig_']['GUEST_AUTH_ID']);// 保存游客权限
+					}
+				}
+
 				if($GLOBALS['_commonConfig_']['USER_AUTH_TYPE']==2){
-					$arrAccessList=$this->getAccessList(Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY'])));
+					$arrAccessList=$this->getAccessList($nAuthid);
 				}else{
-					if($this->getAccessList(Dyhb::cookie($sAccessGuid))){
+					if(Dyhb::cookie($sAccessGuid)){
 						return true;
 					}
+
 					$arrAccessList=Dyhb::cookie('_access_list_');
 				}
 
+				// 权限认证
 				$sLowerAppName=strtolower($sAppName);
 				$sLowerModule=MODULE_NAME;
 				$sLowerAction=ACTION_NAME;
