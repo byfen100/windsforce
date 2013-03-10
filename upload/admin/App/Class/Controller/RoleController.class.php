@@ -346,6 +346,12 @@ class RoleController extends InitController{
 	}
 
 	public function user(){
+		$nGroupId=G::getGpc('id');
+
+		if($nGroupId==7){
+			$this->E(Dyhb::L('游客用户ID为-1，无法进行授权','Controller/Role'));
+		}
+		
 		$arrWhere=array();
 		$arrWhere['user_name']=array('like','%'.G::getGpc('user_name').'%');
 
@@ -370,8 +376,6 @@ class RoleController extends InitController{
 			}
 		}
 		$this->assign("arrGroupList",$arrGroupList);
-
-		$nGroupId=G::getGpc('id');
 		$this->assign('nId',$nGroupId);
 
 		$arrGroupUserList=array();

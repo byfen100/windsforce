@@ -15,6 +15,11 @@ class GlobalinitController extends Controller{
 		//前端初始化
 		Core_Extend::initFront();
 
+		UserModel::M()->checkRbac();
+		if(UserModel::M()->isBehaviorError()){
+			$this->E(UserModel::M()->getBehaviorErrorMessage());
+		}
+
 		// 404
 		Core_Extend::page404($this);
 	}

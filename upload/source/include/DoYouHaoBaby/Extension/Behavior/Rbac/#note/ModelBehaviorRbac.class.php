@@ -22,6 +22,14 @@
  'GUEST_AUTH_ON'=>false,
  'GUEST_AUTH_ID'=>0,
  'RBAC_ERROR_PAGE'=>'',
+  // 说明：游客访问的黑/白名单（登录用户继承此权限）
+  // 规则：设置的key由APP_NAME@MODULE_NAME@ACTION_NAME组成，只要设置在当前数组中，游客就可以访问
+  // 例如：设置成'home@public@index'=>true, 用户就可以访问home应用首页，否则必须先登录到系统才能访问
+ 'RBAC_GUEST_ACCESS'=>array(
+	'home@public@index'=>true,
+	'home@public@*'=>true,
+	'home@*@*'=>true,
+ ),
 
 // 数据库表
 DROP TABLE IF EXISTS `doyouhaobaby_access`;

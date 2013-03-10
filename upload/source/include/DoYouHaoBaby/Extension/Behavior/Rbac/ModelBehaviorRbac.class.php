@@ -43,7 +43,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$this->addStaticMethod_('checkRbac',array($this,'checkRbac'));// 启动权限检查
 		$this->addStaticMethod_('isLogin',array($this,'isLogin'));// 判断是否登录
 		$this->addStaticMethod_('alreadyLogout',array($this,'alreadyLogout'));// 检测是否已经登出
-		$this->addStaticMethod_('checkRbacLogin',array($this,'checkRbacLogin'));// 检测是否已经登出
+		$this->addStaticMethod_('checkRbacLogin',array($this,'checkRbacLogin'));// 启动权限检查，包含游客检查
 		$this->addStaticMethod_('logout',array($this,'logout'));// 登出
 		$this->addStaticMethod_('replaceSession',array($this,'replaceSession'));
 		$this->addStaticMethod_('updateSession',array($this,'updateSession'));
@@ -219,17 +219,20 @@ class ModelBehaviorRbac extends ModelBehavior{
 				}
 
 				if($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE']){// 没有权限 抛出错误
-					G::urlGoTo($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE']);
+					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE']));
 				}else{
-					if($GLOBALS['_commonConfig_']['GUEST_AUTH_ON']){
+					/* 修复不断提示你已经登录的bug
+					 if($GLOBALS['_commonConfig_']['GUEST_AUTH_ON']){
 						G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));
-					}
+					} */
 					$this->setErrorMessage(Dyhb::L('你没有访问权限','__DYHB__@RbacDyhb'));
 
 					return false;
 				}
 			}
 		}
+
+		return true;
 	}
 
 	public function isLogin(){
@@ -253,7 +256,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 						$this->saveAccessList($GLOBALS['_commonConfig_']['GUEST_AUTH_ID']);// 保存游客权限
 					}
 				}else{// 禁止游客访问跳转到认证网关
-					G::urlGoTo(PHP_FILE.$GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']);
+					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));
 				}
 			}
 		}
@@ -557,7 +560,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 			Dyhb::cookie('_access_list_',$this->getAccessList($nAuthId),$this->_arrSettings['rbac_login_life']);
 		}
 
-		return ;
+		return;
 	}
 
 	static function getRecordAcessList($nAuthId=null,$sModule=''){
@@ -598,6 +601,17 @@ class ModelBehaviorRbac extends ModelBehavior{
 				if((!empty($arrAction['no']) and !in_array(strtoupper(ACTION_NAME),$arrAction['no'])) ||
 					(!empty($arrAction['yes']) and in_array(strtoupper(ACTION_NAME),$arrAction['yes'])) || empty($arrAction['yes'])
 				){
+					// 游客访问权限检查
+					if($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'] && is_array($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'])){
+						if(array_key_exists(APP_NAME.'@*@*',$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@*@*']===true){
+							return false;
+						}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@*',$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===true){
+							return false;
+						}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
+							return false;
+						}
+					}
+
 					return true;
 				}else{
 					return false;
@@ -628,11 +642,12 @@ class ModelBehaviorRbac extends ModelBehavior{
 				$sLowerAppName=strtolower($sAppName);
 				$sLowerModule=MODULE_NAME;
 				$sLowerAction=ACTION_NAME;
-				if(is_array($arrAccessList) && !isset($arrAccessList[$sLowerAppName][$sLowerAppName.'@'.$sLowerModule][$sLowerAppName.'@'.$sLowerModule.'@'.$sLowerAction])){
+				if(empty($arrAccessList) || !isset($arrAccessList[$sLowerAppName][$sLowerAppName.'@'.$sLowerModule][$sLowerAppName.'@'.$sLowerModule.'@'.$sLowerAction])){
 					Dyhb::cookie($sAccessGuid,false,$this->_arrSettings['rbac_login_life']);
 					return false;
 				}else{
 					Dyhb::cookie($sAccessGuid,true,$this->_arrSettings['rbac_login_life']);
+					return true;
 				}
 			}else{
 				return true;
@@ -642,7 +657,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		return true;
 	}
 
-	public function getAccessList( $nAuthId){
+	public function getAccessList($nAuthId){
 		$oDb=Db::RUN();
 
 		$arrTable=array(

@@ -14,6 +14,9 @@ class NodeModel extends CommonModel{
 				'nodegroup'=>array(Db::BELONGS_TO=>'NodegroupModel','target_key'=>'nodegroup_id','skip_empty'=>true),
 			),
 			'attr_protected'=>'node_id',
+			'autofill'=>array(
+				array('node_level','getLevel','all','callback'),
+			),
 			'check'=>array(
 				'node_name'=>array(
 					array('require',Dyhb::L('节点名不能为空','__COMMON_LANG__@Model/Node')),
@@ -76,6 +79,18 @@ class NodeModel extends CommonModel{
 		}
 
 		return true;
+	}
+
+	public function getLevel(){
+		$sNodeaccess=trim(G::getGpc('node_access','P'));
+
+		if($sNodeaccess=='module'){
+			return 3;
+		}elseif($sNodeaccess=='app'){
+			return 2;
+		}else{
+			return 1;
+		}
 	}
 
 	public function safeInput(){

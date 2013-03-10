@@ -74,9 +74,9 @@ function complete(data,status){
 					<fieldset>
 						<label for="node_access"><!--<lang package='Template/Default/Node'>-->授权<!--</lang>--></label>
 						<select name="node_access" id="node_access">
-						<option value="0" <!--<if condition="isset( $oValue ) && $oValue:node_level==1">-->selected<!--</if>-->>-- <!--<lang package='Template/Default/Node'>-->请选择<!--</lang>--> --</option>
-						<option value="app" <!--<if condition="isset( $oValue ) && $oValue:node_level==2">-->selected<!--</if>-->><!--<lang package='Template/Default/Node'>-->应用<!--</lang>--></option>
-						<option value="module" <!--<if condition="isset( $oValue ) && $oValue:node_level==3">-->selected<!--</if>-->><!--<lang package='Template/Default/Node'>-->模块<!--</lang>--></option>
+							<option value="0" <!--<if condition="isset( $oValue ) && $oValue:node_level==1">-->selected<!--</if>-->>-- <!--<lang package='Template/Default/Node'>-->请选择<!--</lang>--> --</option>
+							<option value="app" <!--<if condition="isset( $oValue ) && $oValue:node_level==2">-->selected<!--</if>-->><!--<lang package='Template/Default/Node'>-->应用<!--</lang>--></option>
+							<option value="module" <!--<if condition="isset( $oValue ) && $oValue:node_level==3">-->selected<!--</if>-->><!--<lang package='Template/Default/Node'>-->模块<!--</lang>--></option>
 						</select>
 						<div class="description"><!--<lang package='Template/Default/Node'>-->请选择授权应用和模块<!--</lang>--></div>
 					</fieldset>

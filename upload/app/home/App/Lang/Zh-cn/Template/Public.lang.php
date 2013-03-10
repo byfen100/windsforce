@@ -75,6 +75,9 @@ return array(
 '7f8bd3115acfdd9c6210dbead0d1310d'=>"新注册会员",
 'bebd2b37c3e28afef89ca30eb0cb2eed'=>"活跃会员",
 '19fcb9eb2594059036dfede5f4ec53e8'=>"时间",
+'f1711ce54e161263b8ec9e4b498ccb6c'=>"你没有权限访问",
+'1fc8d87b8068097f1b87e97aabaefffb'=>"访问权限",
+'46c62e150a570fc3e4156d4beb2719fc'=>"尊敬的用户你好，你没有权限访问本页!",
 )
 
 ?>

@@ -26,6 +26,7 @@ return array(
 '42ddc62228bde29a075f2de4837c9f87'=>"个人空间",
 '51d1f9cd81a7ad0c25afc25a2010437c'=>"手机版",
 '5fc067de81066ec9baa79bac38cf0138'=>"网站地图",
+'db19acb993fa08bf34f16ad54704e4d0'=>"没有权限访问",
 )
 
 ?>
