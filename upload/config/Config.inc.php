@@ -42,6 +42,8 @@
 	 ),
 	'RBAC_USER_ACCESS'=>array(
 		'home@spaceadmin@*'=>true,
+		'home@spaceadmin@transfer'=>false,
+		'home@spaceadmin@dotransfer'=>false,
 		'home@pm@*'=>true,
 		'home@notice@*'=>true,
 		'home@friend@*'=>true,

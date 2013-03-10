@@ -44,18 +44,6 @@ class Controller{
 		return $value;
 	}
 
-	protected function isAjax(){
-		if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])){
-			if('xmlhttprequest'==strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])){return true;}
-		}
-
-		if(!empty($_POST['ajax']) || !empty($_GET['ajax'])){
-			return true;
-		}
-
-		return false;
-	}
-
 	protected function E($sMessage='',$nDisplay=3,$bAjax=FALSE){
 		$this->J($sMessage,0,$nDisplay,$bAjax);
 	}
@@ -96,7 +84,7 @@ class Controller{
 
 	private function J($sMessage,$nStatus=1,$nDisplay=1,$bAjax=FALSE){
 		// 判断是否为AJAX返回
-		if($bAjax || $this->isAjax()){
+		if($bAjax || G::isAjax()){
 			$this->A('',$sMessage,$nStatus,$nDisplay);
 		}
 

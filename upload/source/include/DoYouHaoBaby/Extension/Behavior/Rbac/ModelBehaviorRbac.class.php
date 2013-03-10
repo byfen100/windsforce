@@ -213,19 +213,18 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		if($GLOBALS['_commonConfig_']['USER_AUTH_ON'] && !in_array(MODULE_NAME,Dyhb::normalize($GLOBALS['_commonConfig_']['NOT_AUTH_MODULE']))){// 用户权限检查
 			if(!$this->accessDecision()){
-				if(!Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']))){// 检查认证识别号
+				if(!Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY'])) && !G::isAjax()){// 检查认证识别号
 					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));// 跳转到认证网关
 				}
 
-				if($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE']){// 没有权限 抛出错误
+				if($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE'] && !G::isAjax()){// 没有权限 抛出错误
 					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE']));
 				}else{
 					/* 修复不断提示你已经登录的bug
-					 if($GLOBALS['_commonConfig_']['GUEST_AUTH_ON']){
+					 if($GLOBALS['_commonConfig_']['GUEST_AUTH_ON'] && !G::isAjax()){
 						G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));
 					} */
 					$this->setErrorMessage(Dyhb::L('你没有访问权限','__DYHB__@RbacDyhb'));
-
 					return false;
 				}
 			}
@@ -585,14 +584,44 @@ class ModelBehaviorRbac extends ModelBehavior{
 					(!empty($arrAction['yes']) and in_array(strtoupper(ACTION_NAME),$arrAction['yes'])) || empty($arrAction['yes'])
 				){
 					// 游客访问权限检查
+					$bTrueRbacGuestAccess=$bFalseRbacGuestAccess='';
+					$bTrueRbacGuestAccessLevel=$bFalseRbacGuestAccessLevel=0;
+
 					if($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'] && is_array($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'])){
-						if(array_key_exists(APP_NAME.'@*@*',$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@*@*']===true){
-							return false;
-						}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@*',$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===true){
-							return false;
-						}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
-							return false;
+						if(array_key_exists(APP_NAME.'@*@*',$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'])){
+							if($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@*@*']===true){
+								$bTrueRbacGuestAccess=true;
+								$bTrueRbacGuestAccessLevel=1;
+							}elseif($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@*@*']===false){
+								$bFalseRbacGuestAccess=false;
+								$bFalseRbacGuestAccessLevel=1;
+							}
 						}
+						
+						if(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@*',$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'])){
+							if($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===true){
+								$bTrueRbacGuestAccess=true;
+								$bTrueRbacGuestAccessLevel=2;
+							}elseif($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===false){
+								$bFalseRbacGuestAccess=false;
+								$bFalseRbacGuestAccessLevel=2;
+							}
+						}
+						
+						if(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
+							if($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
+								$bTrueRbacGuestAccess=true;
+								$bTrueRbacGuestAccessLevel=3;
+							}elseif($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===false){
+								$bFalseRbacGuestAccess=false;
+								$bFalseRbacGuestAccessLevel=3;
+							}
+						}
+					}
+
+					if($bTrueRbacGuestAccessLevel>0 && $bTrueRbacGuestAccess===true && $bTrueRbacGuestAccessLevel>$bFalseRbacGuestAccessLevel){
+						Dyhb::cookie($sAccessGuid,true,$this->_arrSettings['rbac_login_life']);
+						return false;
 					}
 
 					return true;
@@ -614,36 +643,44 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 			if(empty($bAdminAuthKey)){
 				// 登录用户访问黑白名单
-				$bRbacUserAccess='';
+				$bTrueRbacUserAccess=$bFalseRbacUserAccess='';
+				$bTrueRbacUserAccessLevel=$bFalseRbacUserAccessLevel=0;
 				
 				if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'] && is_array($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
 					if(array_key_exists(APP_NAME.'@*@*',$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
 						if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@*@*']===true){
-							$bRbacUserAccess=true;
+							$bTrueRbacUserAccess=true;
+							$bTrueRbacUserAccessLevel=1;
 						}elseif($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@*@*']===false){
-							$bRbacUserAccess=false;
+							$bFalseRbacUserAccess=false;
+							$bFalseRbacUserAccessLevel=1;
 						}
-					}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@*',$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
+					}
+					
+					if(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@*',$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
 						if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===true){
-							$bRbacUserAccess=true;
+							$bTrueRbacUserAccess=true;
+							$bTrueRbacUserAccessLevel=2;
 						}elseif($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@*']===false){
-							$bRbacUserAccess=false;
+							$bFalseRbacUserAccess=false;
+							$bFalseRbacUserAccessLevel=2;
 						}
-					}elseif(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
+					}
+					
+					if(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
 						if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
-							$bRbacUserAccess=true;
+							$bTrueRbacUserAccess=true;
+							$bTrueRbacUserAccessLevel=3;
 						}elseif($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===false){
-							$bRbacUserAccess=false;
+							$bFalseRbacUserAccess=false;
+							$bFalseRbacUserAccessLevel=3;
 						}
 					}
 				}
 
-				if($bRbacUserAccess===true){
+				if($bTrueRbacUserAccessLevel>0 && $bTrueRbacUserAccess===true && $bTrueRbacUserAccessLevel>$bFalseRbacUserAccessLevel){
 					Dyhb::cookie($sAccessGuid,true,$this->_arrSettings['rbac_login_life']);
 					return true;
-				}elseif($bRbacUserAccess===false){
-					Dyhb::cookie($sAccessGuid,false,$this->_arrSettings['rbac_login_life']);
-					return false;
 				}
 				
 				// 游客访问权限判断

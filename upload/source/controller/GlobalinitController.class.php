@@ -28,7 +28,7 @@ class GlobalinitController extends Controller{
 		if($GLOBALS['___login___']===false){
 			UserModel::M()->clearThisCookie();
 	
-			if(!$this->isAjax()){
+			if(!G::isAjax()){
 				// 发送当前URL
 				Dyhb::cookie('windsforce_referer',__SELF__);
 			}
@@ -70,7 +70,7 @@ class GlobalinitController extends Controller{
 	}
 
 	protected function S($sMessage,$nDisplay=1,$bAjax=FALSE){
-		if(G::getGpc('dialog')==1 && !$this->isAjax()){
+		if(G::getGpc('dialog')==1 && !G::isAjax()){
 			$this->dialog_message($sMessage);
 		}else{
 			parent::S($sMessage,$nDisplay,$bAjax);

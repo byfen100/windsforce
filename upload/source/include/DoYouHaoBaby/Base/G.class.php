@@ -854,4 +854,18 @@ class G{
 		return Xml::xmlSerialize($arrData);
 	}
 
+	static public function isAjax(){
+		if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])){
+			if('xmlhttprequest'==strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])){
+				return true;
+			}
+		}
+
+		if(!empty($_POST['ajax']) || !empty($_GET['ajax'])){
+			return true;
+		}
+
+		return false;
+	}
+
 }

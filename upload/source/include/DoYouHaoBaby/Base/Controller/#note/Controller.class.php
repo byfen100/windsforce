@@ -69,14 +69,6 @@ class Controller{
 	protected function G($sName,$sViewName=null ){}
 
 	/**
-	 * 是否AJAX请求
-	 *
-	 * @access protected
-	 * @return bool
-	 */
-	protected function isAjax(){}
-
-	/**
 	 * 操作成功跳转的快捷方法
 	 *
 	 * @access protected
