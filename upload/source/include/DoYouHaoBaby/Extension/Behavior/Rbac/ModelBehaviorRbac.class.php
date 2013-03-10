@@ -312,6 +312,11 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		$oMember->changePropForce($this->_arrSettings['password_prop'],$sNewPassword);
 		$oMember->save(0,'update');
+
+		if($oMember->isError()){
+			$this->setErrorMessage($oMember->getErrorMessage());
+			return false;
+		}
 	}
 
 	public function updateLoginDyn(Model $oMember,array $arrData=null){
@@ -342,6 +347,11 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 
 		$oMember->save(0,'update');
+
+		if($oMember->isError()){
+			$this->setErrorMessage($oMember->getErrorMessage());
+			return false;
+		}
 	}
 
 	public function userDataDyn(){
@@ -473,6 +483,11 @@ class ModelBehaviorRbac extends ModelBehavior{
 			$oSession->session_hash=$sHash;
 			$oSession->user_id=$nUserId;
 			$oSession->save(0,'update');
+
+			if($oSession->isError()){
+				$this->setErrorMessage($oSession->getErrorMessage());
+				return false;
+			}
 		}else{
 			$this->replaceSession($sHash,$nUserId,$sAuthKey,TRUE);// 写入Session数据
 		}
@@ -491,6 +506,11 @@ class ModelBehaviorRbac extends ModelBehavior{
 			$oSession->session_auth_key=$sAuthKey;
 			$oSession->user_id=$nUserId;
 			$oSession->save(0);
+
+			if($oSession->isError()){
+				$this->setErrorMessage($oSession->getErrorMessage());
+				return false;
+			}
 		}
 	}
 
@@ -608,7 +628,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 							}
 						}
 						
-						if(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS']) && $GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
+						if(array_key_exists(APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME,$GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'])){
 							if($GLOBALS['_commonConfig_']['RBAC_GUEST_ACCESS'][APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME]===true){
 								$bTrueRbacGuestAccess=true;
 								$bTrueRbacGuestAccessLevel=3;
