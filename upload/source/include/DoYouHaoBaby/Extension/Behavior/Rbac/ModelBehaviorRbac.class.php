@@ -614,6 +614,8 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 			if(empty($bAdminAuthKey)){
 				// 登录用户访问黑白名单
+				$bRbacUserAccess='';
+				
 				if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'] && is_array($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
 					if(array_key_exists(APP_NAME.'@*@*',$GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'])){
 						if($GLOBALS['_commonConfig_']['RBAC_USER_ACCESS'][APP_NAME.'@*@*']===true){
