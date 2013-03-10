@@ -35,14 +35,33 @@ return array(
 	'ADMIN_AUTH_KEY'=>'administrator',
 	'USER_AUTH_MODEL'=>'user',
 	'AUTH_PWD_ENCODER'=>'md5',
-	'USER_AUTH_GATEWAY'=>'public/login',
-	'NOT_AUTH_MODULE'=>'public',
+	'USER_AUTH_GATEWAY'=>'home://public/login',
+	'NOT_AUTH_MODULE'=>'public,api',
 	'REQUIRE_AUTH_MODULE'=>'',
 	'NOT_AUTH_ACTION'=>'',
 	'REQUIRE_AUTH_ACTION'=>'',
 	'GUEST_AUTH_ON'=>FALSE,
-	'GUEST_AUTH_ID'=>0,
-	'RBAC_ERROR_PAGE'=>'',
+	'GUEST_AUTH_ID'=>'-1',
+	'RBAC_ERROR_PAGE'=>'home://public/rbacerror',
+	'RBAC_GUEST_ACCESS'=>array(
+		/* home应用 */
+		'home@stat@*'=>true,
+		'home@apps@*'=>true,
+		'home@attachment@*'=>true,
+		'home@space@*'=>true,
+		'home@homesite@*'=>true,
+		'home@homehelp@*'=>true,
+	 ),
+	'RBAC_USER_ACCESS'=>array(
+		/* home应用 */
+		'home@spaceadmin@*'=>true,
+		'home@pm@*'=>true,
+		'home@notice@*'=>true,
+		'home@friend@*'=>true,
+		'home@ucenter@index'=>true,
+		'home@ucenter@homefreshtopic'=>true,
+		'home@ucenter@audit_homefreshcomment'=>true,
+	 ),
 
 	// 时区
 	'TIME_ZONE'=>'Asia/Shanghai',
