@@ -188,7 +188,7 @@ Tags: admin, light
 .notice_title{}
 .notice_content{color: #505050;padding: 5px 15px 5px 0px;}
 .notice_action{padding: 3px 15px;font-size:12px;}
-.notice_action a{padding:1px 5px;background-color:#ccc;color:#fff;-moz-border-radius: 2px;-khtml-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
+.notice_action a{padding:1px 5px;background-color:#ccc;color:#505050;-moz-border-radius: 2px;-khtml-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
 .notice_quote{background: url("{IMG_DIR}/quotel.gif") no-repeat scroll left 4px transparent;margin: 8px 0 0 0px;overflow: hidden;padding: 0 24px 5px 15px;width: auto;word-wrap: break-word;
 }
 .notice_quote .notice_quoteinfo{color: #999999;background: url("{IMG_DIR}/quoter.gif") no-repeat scroll right bottom transparent;display: inline-block;padding-right: 15px;}
@@ -273,7 +273,7 @@ Tags: admin, light
 .feed_title{}
 .feed_content{color: #505050;padding: 5px 15px 5px 0px;}
 .feed_action{padding: 3px 15px;font-size:12px;}
-.feed_action a{padding:1px 5px;background-color:#ccc;color:#fff;-moz-border-radius: 2px;-khtml-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
+.feed_action a{padding:1px 5px;background-color:#ccc;color:#505050;-moz-border-radius: 2px;-khtml-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
 .feed_quote{background: url("{IMG_DIR}/quotel.gif") no-repeat scroll left 4px transparent;margin: 8px 0 0 0px;overflow: hidden;padding: 0 24px 5px 15px;width: auto;word-wrap: break-word;
 }
 .feed_quote .feed_quoteinfo{color: #999999;background: url("{IMG_DIR}/quoter.gif") no-repeat scroll right bottom transparent;display: inline-block;padding-right: 15px;}

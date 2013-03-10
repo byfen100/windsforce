@@ -19,8 +19,8 @@ $arrGlobalConfig['SHOW_DB_TIMES']=FALSE;
 $arrGlobalConfig['SHOW_GZIP_STATUS']=FALSE;
 
 // RBAC重置
-$arrGlobalConfig['USER_AUTH_GATEWAY']='public/login',
-$arrGlobalConfig['RBAC_ERROR_PAGE']='',
+$arrGlobalConfig['USER_AUTH_GATEWAY']='public/login';
+$arrGlobalConfig['RBAC_ERROR_PAGE']='';
 
 // 后台模板重设置
 $arrAppConfigs['TPL_DIR']=$arrGlobalConfig['ADMIN_TPL_DIR'];
