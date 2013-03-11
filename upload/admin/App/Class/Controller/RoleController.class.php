@@ -127,7 +127,9 @@ class RoleController extends InitController{
 		$arrList=NodeModel::F('node_level=?',1)->setColumns('node_id,node_title')->asArray()->all()->query();
 		if(is_array($arrList)){
 			foreach($arrList as $arrVo){
-				$arrAppList[$arrVo['node_id']]=$arrVo['node_title'];
+				if($arrVo['node_id']!=1){
+					$arrAppList[$arrVo['node_id']]=$arrVo['node_title'];
+				}
 			}
 		}
 
