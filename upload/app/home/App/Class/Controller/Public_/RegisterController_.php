@@ -147,6 +147,16 @@ class RegisterController extends GlobalchildController{
 				$oUserCount->getErrorMessage();
 			}
 
+			// 将用户加入注册会员角色
+			$oUserrole=new UserroleModel();
+			$oUserrole->role_id=1;
+			$oUserrole->user_id=$oUser['user_id'];
+			$oUserrole->save(0);
+
+			if($oUserrole->isError()){
+				$oUserrole->getErrorMessage();
+			}
+
 			$this->cache_site_();
 
 			// 注册推广

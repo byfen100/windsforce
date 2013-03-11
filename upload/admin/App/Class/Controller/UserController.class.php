@@ -4,6 +4,12 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入Home模型 */
+Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
+
+/** 定义Home的语言包 */
+define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
+
 class UserController extends InitController{
 
 	public function init__(){
@@ -86,9 +92,27 @@ class UserController extends InitController{
 		$oUserprofile->user_id=$nId;
 		$oUserprofile->save(0);
 
+		if($oUserprofile->isError()){
+			$oUserprofile->getErrorMessage();
+		}
+
 		$oUserCount=new UsercountModel();
 		$oUserCount->user_id=$oUser->user_id;
 		$oUserCount->save(0);
+
+		if($oUserCount->isError()){
+			$oUserCount->getErrorMessage();
+		}
+
+		// 将用户加入注册会员角色
+		$oUserrole=new UserroleModel();
+		$oUserrole->role_id=1;
+		$oUserrole->user_id=$nId;
+		$oUserrole->save(0);
+
+		if($oUserrole->isError()){
+			$oUserrole->getErrorMessage();
+		}
 
 		$this->cache_site_();
 	}
@@ -109,6 +133,13 @@ class UserController extends InitController{
 			
 			if($oUsercountMeta->isError()){
 				$this->E($oUsercountMeta->getErrorMessage());
+			}
+
+			$oUserroleMeta=UserroleModel::M();
+			$oUserroleMeta->deleteWhere(array('user_id'=>$nId));
+			
+			if($oUserroleMeta->isError()){
+				$this->E($oUserroleMeta->getErrorMessage());
 			}
 		}
 

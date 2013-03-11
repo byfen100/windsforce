@@ -330,7 +330,7 @@ class InitController extends Controller{
 				$this->E($oModelMeta->getErrorMessage());
 			}else{
 				$this->aForeverdelete($sId);
-				if($this->isAjax()){
+				if(G::isAjax()){
 					$this->A('',Dyhb::L('删除记录成功','Controller/Common'),1);
 				}else{
 					$this->S(Dyhb::L('删除记录成功','Controller/Common'));
