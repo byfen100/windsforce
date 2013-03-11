@@ -145,7 +145,9 @@ class LoginController extends GlobalchildController{
 		}else{
 			if(Dyhb::cookie('windsforce_referer')){
 				$sUrl=Dyhb::cookie('windsforce_referer');
-				Dyhb::cookie('windsforce_referer','',-1);
+				Dyhb::cookie('windsforce_referer',null,-1);
+			}elseif(G::getGpc('windsforce_referer')){
+				$sUrl=G::getGpc('windsforce_referer');
 			}else{
 				$sUrl=Dyhb::U('home://ucenter/index');
 			}

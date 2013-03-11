@@ -27,6 +27,7 @@ return array(
 '51d1f9cd81a7ad0c25afc25a2010437c'=>"手机版",
 '5fc067de81066ec9baa79bac38cf0138'=>"网站地图",
 'db19acb993fa08bf34f16ad54704e4d0'=>"没有权限访问",
+'29f5a3f2a2f695904a2925bbbb5febef'=>"我的权限",
 )
 
 ?>

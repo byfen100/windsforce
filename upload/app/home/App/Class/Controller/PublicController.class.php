@@ -74,4 +74,8 @@ class PublicController extends InitController{
 		Core_Extend::doControllerAction('Public@Rbacerror','index');
 	}
 
+	public function myrbac(){
+		Core_Extend::doControllerAction('Public@Myrbac','index');
+	}
+
 }

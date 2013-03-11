@@ -47,6 +47,7 @@ return array(
 		/* home应用 */
 		'home@stat@*'=>true,
 		'home@apps@*'=>true,
+		'home@misc@*'=>true,
 		'home@attachment@*'=>true,
 		'home@attachment@show'=>false,
 		'home@attachment@add'=>false,

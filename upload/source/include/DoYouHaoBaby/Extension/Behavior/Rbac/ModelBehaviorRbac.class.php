@@ -50,6 +50,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$this->addStaticMethod_('getTopMenuList',array($this,'getTopMenuList'));
 		$this->addStaticMethod_('clearThisCookie',array($this,'clearThisCookie'));
 		$this->addStaticMethod_('initLoginlife',array($this,'initRbacloginlife'));// 登录时间设置
+		$this->addStaticMethod_('getAccessList',array($this,'getAccessList'));// 获取权限数据
 
 		// 添加动态方法
 		$this->addDynamicMethod_('checkPassword',array($this,'checkPasswordDyn'));
@@ -213,6 +214,8 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		if($GLOBALS['_commonConfig_']['USER_AUTH_ON'] && !in_array(MODULE_NAME,Dyhb::normalize($GLOBALS['_commonConfig_']['NOT_AUTH_MODULE']))){// 用户权限检查
 			if(!$this->accessDecision()){
+				Dyhb::cookie('_rbacerror_referer_',__SELF__,$this->_arrSettings['rbac_login_life']);
+				
 				if(!Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY'])) && !G::isAjax()){// 检查认证识别号
 					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));// 跳转到认证网关
 				}
@@ -262,6 +265,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth',null,-1);
 		Dyhb::cookie(md5(APP_NAME.MODULE_NAME.ACTION_NAME),null,-1);
 		Dyhb::cookie('_access_list_',null,-1);
+		Dyhb::cookie('_rbacerror_referer_',null,-1);
 	}
 
 	public function checkUsername($sUsername){

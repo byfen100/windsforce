@@ -1,0 +1,38 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Public'>-->我的权限<!--</lang>--></li>
+		</ul>
+		
+		<div class="row">
+			<div class="span12">
+				<p>
+					<!--<foreach for=arrAccessListall value=arrValue>-->
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--{$arrValue['title']}-->&nbsp;(<!--{$key}-->)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--{~$arrAccessdata=$arrValue['data']}-->
+							<!--<foreach for=arrAccessdata key=nKey value=arrTemp>-->
+							<tr>
+								<td><!--{$arrTemp['title']}--></td>
+								<td><img src="<!--{:__PUBLIC__}-->/images/common/data_<!--{if $arrTemp['access']==true}-->valid<!--{d*else}-->invalid<!--{/if}-->.gif" /></td>
+							</tr>
+							<!--</foreach>-->
+						</tbody>
+					</table>
+					<!--</foreach>-->
+				</p>
+
+				<p>
+					<img src="<!--{:__PUBLIC__}-->/images/common/data_valid.gif" />&nbsp;<!--<lang package='Template/Public'>-->表示拥有权限<!--</lang>-->&nbsp;&nbsp;
+					<img src="<!--{:__PUBLIC__}-->/images/common/data_invalid.gif" />&nbsp;<!--<lang package='Template/Public'>-->表示没有权限<!--</lang>-->
+				</p>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

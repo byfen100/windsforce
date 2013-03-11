@@ -7,6 +7,15 @@
 class RbacerrorController extends Controller{
 
 	public function index(){
+		$sRbacerrorreferer=trim(Dyhb::cookie('_rbacerror_referer_'));
+
+		if(empty($sRbacerrorreferer)){
+			Dyhb::cookie('_rbacerror_referer_',null,-1);
+			$this->U('home://public/index');
+		}
+
+		$this->assign('sRbacerrorreferer',$sRbacerrorreferer);
+		
 		$this->display('public+rbacerror');
 	}
 

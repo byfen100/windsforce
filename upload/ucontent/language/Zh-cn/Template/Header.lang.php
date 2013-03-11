@@ -27,6 +27,7 @@ return array(
 'a5cfad478e75aa135d5d56d2434cb80d'=>"用户排行",
 '1fd02a90c38333badc226309fea6fecb'=>"用户",
 '4b027f3979224227ba69dafa09f4be38'=>"提醒",
+'7eb05a33a55259025ed1afac4252a96f'=>"游客权限",
 )
 
 ?>
