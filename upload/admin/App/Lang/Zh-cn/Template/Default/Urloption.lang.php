@@ -9,6 +9,8 @@ return array(
 '69a1615c02212f4cdf2d74505d5ef598'=>"普通模式(URL_MODEL:0),PATHINFO模式(URL_MODEL:1),REWRITE模式(URL_MODEL:2),兼容模式(URL_MODEL:3)",
 '2b5d7891733bee2a848d721149d881fc'=>"URL模式设置",
 '40e4b35491de787cc88ecccc691bd944'=>"URL模式详细资料",
+'802e7efed9acbfaafc5c5c573dd6341b'=>"网址域名前缀",
+'429fdb9169fed28c907cfded020270a6'=>"让网址看起来非常漂亮，如http://example.com",
 )
 
 ?>

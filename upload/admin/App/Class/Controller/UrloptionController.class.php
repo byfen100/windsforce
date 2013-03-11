@@ -25,6 +25,7 @@ class UrloptionController extends OptionController{
 	public function update_option(){
 		$arrOptions=G::getGpc('options','P');
 		$nUrlmodel=intval($arrOptions['url_model']);
+		$sUrldomain=trim($arrOptions['url_domain']);
 
 		if(!in_array($nUrlmodel,array(0,1,2,3))){
 			$nUrlmodel=1;
@@ -32,7 +33,10 @@ class UrloptionController extends OptionController{
 
 		// 修改URL模式设置
 		OptionModel::uploadOption('url_model',$nUrlmodel);
+		OptionModel::uploadOption('url_domain',$sUrldomain);
+
 		Core_Extend::changeAppconfig('URL_MODEL',$nUrlmodel);
+		Core_Extend::changeAppconfig('URL_DOMAIN',$sUrldomain);
 
 		// 需要删除导航缓存
 		$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND'];

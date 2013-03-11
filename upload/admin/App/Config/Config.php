@@ -37,4 +37,7 @@ $arrAppConfigs['LANG']=$arrGlobalConfig['ADMIN_LANGUAGE_DIR'];
 unset($arrGlobalConfig['ADMIN_LANGUAGE_DIR']);
 $arrGlobalConfig['LANG_SWITCH']=TRUE;
 
+// 重置URL_DOMAIN
+$arrGlobalConfig['URL_DOMAIN']='';
+
 return array_merge($arrAppConfigs,$arrGlobalConfig);
