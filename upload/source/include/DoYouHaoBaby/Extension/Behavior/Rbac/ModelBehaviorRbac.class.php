@@ -819,8 +819,9 @@ class ModelBehaviorRbac extends ModelBehavior{
 						$arrNodename=Dyhb::normalize($arrA['node_name'],'|');
 						foreach($arrNodename as $nKey=>&$sNodename){
 							if($nKey>0){
-								if(strrpos($arrA['node_name'],'@')!==false)
-								$sNodename=G::subString($arrA['node_name'],0,strrpos($arrA['node_name'],'@')).'@'.$sNodename;
+								if(strrpos($arrA['node_name'],'@')!==false){
+									$sNodename=G::subString($arrA['node_name'],0,strrpos($arrA['node_name'],'@')).'@'.$sNodename;
+								}
 							}
 						}
 					}else{
