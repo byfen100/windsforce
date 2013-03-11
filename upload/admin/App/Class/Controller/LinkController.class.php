@@ -18,6 +18,25 @@ class LinkController extends InitController{
 		$arrMap['link_name']=array('like',"%".G::getGpc('link_name')."%");
 	}
 
+	public function bForeverdelete_(){
+		$sId=G::getGpc('id','G');
+
+		$arrIds=explode(',',$sId);
+		foreach($arrIds as $nId){
+			if($this->is_system_link($nId)){
+				$this->E(Dyhb::L('系统衔接无法删除','Controller/Link'));
+			}
+		}
+	}
+
+	public function bEdit_(){
+		$nId=intval(G::getGpc('id','G'));
+
+		if($this->is_system_link($nId)){
+			$this->E(Dyhb::L('系统衔接无法编辑','Controller/Link'));
+		}
+	}
+
 	protected function aInsert($nId=null){
 		if(!Dyhb::classExists('Cache_Extend')){
 			require_once(Core_Extend::includeFile('function/Cache_Extend'));
@@ -47,6 +66,21 @@ class LinkController extends InitController{
 
 	public function AUpdateObject_($oModel){
 		$oModel->safeInput();
+	}
+
+	public function is_system_link($nId){
+		$nId=intval($nId);
+
+		$oLink=LinkModel::F('link_id=?',$nId)->getOne();
+		if(empty($oLink['link_id'])){
+			return false;
+		}
+
+		if($oLink['link_issystem']==1){
+			return true;
+		}
+
+		return false;
 	}
 
 }

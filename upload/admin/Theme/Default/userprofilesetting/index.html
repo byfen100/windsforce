@@ -49,7 +49,7 @@
 					<tbody>
 						<!--<foreach for=oList>-->
 						<tr>
-							<td><input type="checkbox" name="key" value="<!--{$value:userprofilesetting_id}-->" disabled="disabled"></td>
+							<td><input type="checkbox" name="key" value="<!--{$value:userprofilesetting_id}-->" <!--{if $TheController->is_system_userprofilesetting($value->userprofilesetting_id)}-->disabled="disabled"<!--{/if}-->></td>
 							<td><!--{$value:userprofilesetting_id}--></td>
 							<td><!--{$value:userprofilesetting_title}-->
 								<div class="row-actions">

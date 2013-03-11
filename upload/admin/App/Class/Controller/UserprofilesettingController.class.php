@@ -17,6 +17,17 @@ class UserprofilesettingController extends InitController{
 	public function filter_(&$arrMap){
 		$arrMap['userprofilesetting_id']=array('like',"%".G::getGpc('userprofilesetting_id')."%");
 	}
+
+	public function bForeverdelete_(){
+		$sId=G::getGpc('id','G');
+
+		$arrIds=explode(',',$sId);
+		foreach($arrIds as $nId){
+			if($this->is_system_userprofilesetting($nId)){
+				$this->E(Dyhb::L('系统用户栏目无法删除','Controller/Userprofilesetting'));
+			}
+		}
+	}
 	
 	protected function aInsert($nId=null){
 		if(!Dyhb::classExists('Cache_Extend')){
@@ -39,6 +50,21 @@ class UserprofilesettingController extends InitController{
 
 	protected function aResume($nId=null){
 		$this->aInsert();
+	}
+
+	public function is_system_userprofilesetting($nId){
+		$nId=intval($nId);
+
+		$oUserprofilesetting=UserprofilesettingModel::F('userprofilesetting_id=?',$nId)->getOne();
+		if(empty($oUserprofilesetting['userprofilesetting_id'])){
+			return false;
+		}
+
+		if($oUserprofilesetting['userprofilesetting_issystem']==1){
+			return true;
+		}
+
+		return false;
 	}
 
 }

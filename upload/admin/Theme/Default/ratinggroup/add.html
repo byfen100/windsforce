@@ -60,7 +60,7 @@ function complete(data,status){
 					</fieldset>
 					<fieldset>
 						<label for="ratinggroup_name"><!--<lang package='Template/Default/Ratinggroup'>-->组名<!--</lang>--></label>
-						<input type="text" name="ratinggroup_name" id="ratinggroup_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:ratinggroup_name}--><!--</if>-->"/>
+						<input type="text" name="ratinggroup_name" id="ratinggroup_name" size="40" <!--<if condition="isset( $oValue )">-->value="<!--{$oValue:ratinggroup_name}-->" readonly="readonly"<!--</if>-->/>
 						<div class="description"><!--<lang package='Template/Default/Ratinggroup'>-->分组的名字<!--</lang>--></div>
 					</fieldset>
 					<fieldset>

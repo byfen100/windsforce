@@ -41,6 +41,8 @@ function complete(data,status){
 			<div class="module_content">
 				<ul>
 					<li><!--<lang package='Template/Default/Link'>-->您可以在这里添加或编辑链接，衔接名不能为空。<!--</lang>--></li>
+					<li><!--<lang package='Template/Default/Link'>-->衔接图像和URL地址均支持{*}风格值，其中*表示能够正确运行的PHP代码，如{Dyhb::U('home://public/login')}<!--</lang>--></li>
+					<li><!--<lang package='Template/Default/Link'>-->当采用{*}风格值的时候，如果*表示的PHP代码不能正常运行，前台将引发致命错误<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
@@ -79,7 +81,12 @@ function complete(data,status){
 					<fieldset>
 						<label for="link_logo"><!--<lang package='Template/Default/Link'>-->衔接 LOGO<!--</lang>--></label>
 						<input type="text" name="link_logo" id="link_logo" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:link_logo}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Link'>-->衔接的Logo 地址，可以为空。<!--</lang>--></div>
+						<div class="description">
+							<!--<lang package='Template/Default/Link'>-->衔接的Logo 地址，可以为空。<!--</lang>-->
+							<!--{if isset( $oValue ) && $oValue['link_logo']}-->
+							<br/><img src="<!--{$oValue['link_logo']|Core_Extend+getEvalValue}-->" />
+							<!--{/if}-->
+						</div>
 					</fieldset>
 					<fieldset>
 						<label for="link_description"><!--<lang package='Template/Default/Link'>-->衔接描述<!--</lang>--></label>

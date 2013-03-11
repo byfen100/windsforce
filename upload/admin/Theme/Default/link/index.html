@@ -55,7 +55,7 @@
 					<tbody>
 						<!--<foreach for=oList>-->
 						<tr>
-							<td><input type="checkbox" name="key" value="<!--{$value:link_id}-->"></td>
+							<td><input type="checkbox" name="key" value="<!--{$value:link_id}-->" <!--{if $TheController->is_system_link($value->link_id)}-->disabled="disabled"<!--{/if}-->></td>
 							<td><!--{$value:link_id}--></td>
 							<td><a href="<!--{$value:link_url}-->" target="_blank"><!--{$value:link_name}--></a>
 								<div class="row-actions">
@@ -70,7 +70,7 @@
 									</span>
 								</div>
 							</td>
-							<td><!--{if $value['link_logo']}--><img src="<!--{$value['link_logo']}-->"/><!--{/if}--></td>
+							<td><!--{if $value['link_logo']}--><img src="<!--{$value['link_logo']|Core_Extend+getEvalValue}-->"/><!--{/if}--></td>
 							<td><!--{$value:link_description}--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="link_sort_<!--{$value:link_id}-->" onClick="clickToInput('link_sort','<!--{$value:link_id}-->')"><!--{$value:link_sort}--></td>
 							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:link_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>

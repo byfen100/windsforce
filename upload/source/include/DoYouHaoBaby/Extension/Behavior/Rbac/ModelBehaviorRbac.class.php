@@ -815,7 +815,21 @@ class ModelBehaviorRbac extends ModelBehavior{
 				$arrRs=$oDb->getAllRows($sSql);
 				$arrAction=array();
 				foreach($arrRs as $arrA){
-					$arrAction[$arrA['node_name']]=$arrA['node_id'];
+					if(strpos($arrA['node_name'],'|')!==false){
+						$arrNodename=Dyhb::normalize($arrA['node_name'],'|');
+						foreach($arrNodename as $nKey=>&$sNodename){
+							if($nKey>0){
+								if(strrpos($arrA['node_name'],'@')!==false)
+								$sNodename=G::subString($arrA['node_name'],0,strrpos($arrA['node_name'],'@')).'@'.$sNodename;
+							}
+						}
+					}else{
+						$arrNodename=array($arrA['node_name']);
+					}
+
+					foreach($arrNodename as $sValue){
+						$arrAction[$sValue]=$arrA['node_id'];
+					}
 				}
 				$arrAction+=$arrPublicAction;// 和公共模块的操作权限合并
 				$arrAccess[strtolower($sAppName)][strtolower($sModuleName)]=array_change_key_case($arrAction,CASE_LOWER);

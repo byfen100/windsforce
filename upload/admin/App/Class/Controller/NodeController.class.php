@@ -218,7 +218,12 @@ class NodeController extends InitController{
 	public function is_system_node($nId){
 		$nId=intval($nId);
 
-		if($nId<=41){
+		$oNode=NodeModel::F('node_id=?',$nId)->getOne();
+		if(empty($oNode['node_id'])){
+			return false;
+		}
+
+		if($oNode['node_issystem']==1){
 			return true;
 		}
 

@@ -48,7 +48,12 @@ class RatinggroupController extends InitController{
 	public function is_system_ratinggroup($nId){
 		$nId=intval($nId);
 
-		if($nId<=5){
+		$oRatinggroup=RatinggroupModel::F('ratinggroup_id=?',$nId)->getOne();
+		if(empty($oRatinggroup['ratinggroup_id'])){
+			return false;
+		}
+
+		if($oRatinggroup['ratinggroup_issystem']==1){
 			return true;
 		}
 

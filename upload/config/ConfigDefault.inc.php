@@ -48,6 +48,7 @@ return array(
 		'home@stat@*'=>true,
 		'home@apps@*'=>true,
 		'home@attachment@*'=>true,
+		'home@attachment@show'=>false,
 		'home@attachment@add'=>false,
 		'home@attachment@normal_upload'=>false,
 		'home@attachment@flash_upload'=>false,

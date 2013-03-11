@@ -12,21 +12,24 @@ class UpdateCacheLink{
 		$arrLinks=LinkModel::F('link_status=?',1)->order('link_sort DESC')->getAll();
 		if(is_array($arrLinks)){
 			foreach($arrLinks as $oLink){
+				$sLinklogo=Core_Extend::getEvalValue($oLink['link_logo']);
+				$sLinkurl=Core_Extend::getEvalValue($oLink['link_url']);
+				
 				if($oLink['link_description']){
 					if($oLink['link_logo']){
-						$sTightlinkContent.='<li><div class="home-logo"><img src="'.$oLink['link_logo'].'" border="0" alt="'.$oLink['link_name'].'" /></div>
-							<div class="home-content"><h5><a href="'.$oLink['link_url'].'" target="_blank">'.
+						$sTightlinkContent.='<li><div class="home-logo"><img src="'.$sLinklogo.'" border="0" alt="'.$oLink['link_name'].'" /></div>
+							<div class="home-content"><h5><a href="'.$sLinkurl.'" target="_blank">'.
 							$oLink['link_name'].'</a></h5><p>'.$oLink['link_description'].'</p></div></li>';
 					}else{
-						$sTightlinkContent.='<li><div class="home-content"><h5><a href="'.$oLink['link_url'].'" target="_blank">'.
+						$sTightlinkContent.='<li><div class="home-content"><h5><a href="'.$sLinkurl.'" target="_blank">'.
 							$oLink['link_name'].'</a></h5><p>'.$oLink['link_description'].'</p></div></li>';
 					}
 				}else{
 					if($oLink['link_logo']){
-						$sTightlinkLogo.='<a href="'.$oLink['link_url'].'" target="_blank"><img src="'.$oLink['link_logo'].
+						$sTightlinkLogo.='<a href="'.$sLinkurl.'" target="_blank"><img src="'.$sLinklogo.
 							'" border="0" alt="'.$oLink['link_name'].'" /></a>';
 					}else{
-						$sTightlinkText.='<li><a href="'.$oLink['link_url'].'" target="_blank" title="'.
+						$sTightlinkText.='<li><a href="'.$sLinkurl.'" target="_blank" title="'.
 							$oLink['link_name'].'">'.$oLink['link_name'].'</a></li>';
 					}
 				}

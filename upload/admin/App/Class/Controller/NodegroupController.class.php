@@ -83,7 +83,12 @@ class NodegroupController extends InitController{
 	public function is_system_nodegroup($nId){
 		$nId=intval($nId);
 
-		if($nId<=8){
+		$oNodegroup=NodegroupModel::F('nodegroup_id=?',$nId)->getOne();
+		if(empty($oNodegroup['nodegroup_id'])){
+			return false;
+		}
+
+		if($oNodegroup['nodegroup_issystem']==1){
 			return true;
 		}
 

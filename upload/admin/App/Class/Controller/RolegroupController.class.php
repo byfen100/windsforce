@@ -56,7 +56,12 @@ class RolegroupController extends InitController{
 	public function is_system_rolegroup($nId){
 		$nId=intval($nId);
 
-		if($nId<=5){
+		$oRolegroup=RolegroupModel::F('rolegroup_id=?',$nId)->getOne();
+		if(empty($oRolegroup['rolegroup_id'])){
+			return false;
+		}
+
+		if($oRolegroup['rolegroup_issystem']==1){
 			return true;
 		}
 

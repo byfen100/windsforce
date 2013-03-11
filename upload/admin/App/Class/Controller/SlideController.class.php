@@ -99,7 +99,12 @@ class SlideController extends InitController{
 	public function is_system_slide($nId){
 		$nId=intval($nId);
 
-		if($nId<=3){
+		$oSlide=SlideModel::F('slide_id=?',$nId)->getOne();
+		if(empty($oSlide['slide_id'])){
+			return false;
+		}
+
+		if($oSlide['slide_issystem']==1){
 			return true;
 		}
 

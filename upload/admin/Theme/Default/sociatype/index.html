@@ -57,7 +57,7 @@
 					<tbody>
 						<!--<foreach for=oList>-->
 						<tr>
-							<td><input type="checkbox" name="key" value="<!--{$value:sociatype_id}-->"></td>
+							<td><input type="checkbox" name="key" value="<!--{$value:sociatype_id}-->" <!--{if $TheController->is_system_sociatype($value->sociatype_id)}-->disabled="disabled"<!--{/if}-->></td>
 							<td><!--{$value:sociatype_id}--></td>
 							<td><!--{$value:sociatype_title}-->
 								<div class="row-actions">

@@ -43,6 +43,10 @@ class RoleController extends InitController{
 		$this->getRolegroup();
 	}
 
+	public function bAdd_(){
+		$this->getRolegroup();
+	}
+
 	public function bForbid_(){
 		$nId=intval(G::getGpc('id','G'));
 
@@ -348,7 +352,7 @@ class RoleController extends InitController{
 	public function user(){
 		$nGroupId=G::getGpc('id');
 
-		if($nGroupId==7){
+		if($nGroupId==4){
 			$this->E(Dyhb::L('游客用户ID为-1，无法进行授权','Controller/Role'));
 		}
 		
@@ -459,7 +463,12 @@ class RoleController extends InitController{
 	public function is_system_role($nId){
 		$nId=intval($nId);
 
-		if($nId<=19){
+		$oRole=RoleModel::F('role_id=?',$nId)->getOne();
+		if(empty($oRole['role_id'])){
+			return false;
+		}
+
+		if($oRole['role_issystem']==1){
 			return true;
 		}
 

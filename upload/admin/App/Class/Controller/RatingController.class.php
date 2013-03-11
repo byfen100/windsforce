@@ -113,7 +113,12 @@ class RatingController extends InitController{
 	public function is_system_rating($nId){
 		$nId=intval($nId);
 
-		if($nId<=100){
+		$oRating=RatingModel::F('rating_id=?',$nId)->getOne();
+		if(empty($oRating['rating_id'])){
+			return false;
+		}
+
+		if($oRating['rating_issystem']==1){
 			return true;
 		}
 
