@@ -707,7 +707,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 				if(!$nAuthid && $GLOBALS['_commonConfig_']['GUEST_AUTH_ON']){
 					$nAuthid=$GLOBALS['_commonConfig_']['GUEST_AUTH_ID'];
 					$arrAccessList=Dyhb::cookie('_access_list_');
-					if($arrAccessList!==false){
+					if($arrAccessList===false || $arrAccessList==''){
 						$this->saveAccessList($GLOBALS['_commonConfig_']['GUEST_AUTH_ID']);// 保存游客权限
 					}
 				}
