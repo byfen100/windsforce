@@ -1,12 +1,12 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   主页缓存文件($Liu.XiangMin)*/
+   home应用配置缓存($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
-class HomeCache_Extend{
+class AppUpdateCacheOption{
 
-	public static function updateCacheOption(){
+	public static function cache(){
 		$arrData=array();
 
 		$arrOptionData=HomeoptionModel::F()->asArray()->all()->query();

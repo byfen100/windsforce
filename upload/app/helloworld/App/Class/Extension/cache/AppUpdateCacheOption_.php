@@ -1,12 +1,12 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   Helloworld缓存文件($Liu.XiangMin)*/
+   helloworld应用配置缓存($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
-class HelloworldCache_Extend{
+class AppUpdateCacheOption{
 
-	public static function updateCacheOption(){
+	public static function cache(){
 		$arrData=array();
 
 		$arrOptionData=HelloworldoptionModel::F()->asArray()->all()->query();

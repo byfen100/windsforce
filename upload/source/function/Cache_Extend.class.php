@@ -40,13 +40,12 @@ class Cache_Extend{
 						Dyhb::E('$Callback is not a callback');
 					}
 				}else{
-					$arrCaches=explode('_',$sCache);
-					$Callback=array(ucfirst($arrCaches[0]).'Cache_Extend','updateCache'.ucfirst($arrCaches[1]));
+					if(strpos($sCache,'_')!==false){
+						$arrCaches=explode('_',$sCache);
 
-					if(is_callable($Callback)){
-						call_user_func($Callback);
+						Core_Extend::appUpdateCache(strtolower($arrCaches[1]),strtolower($arrCaches[0]),$arrNotallowed);
 					}else{
-						Dyhb::E('$Callback is not a callback');
+						Dyhb::E('cache parameter is error');
 					}
 				}
 			}

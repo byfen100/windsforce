@@ -18,6 +18,7 @@ class GroupmainController extends InitController{
 		$this->assign('nUploadSize',Core_Extend::getUploadSize($arrOptionData['group_icon_uploadfile_maxsize']));
 		$this->assign('nId',intval(G::getGpc('id','G')));
 		$this->assign('arrOptions',$arrOptionData);
+
 		$this->display(Admin_Extend::template('group','groupoption/index'));
 	}
 
@@ -31,7 +32,10 @@ class GroupmainController extends InitController{
 			$oOptionModel->save(0,'update');
 		}
 
-		GroupCache_Extend::updateCacheOption();
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('group_option');
 
 		$this->S(Dyhb::L('配置更新成功','__APP_ADMIN_LANG__@Controller/Groupoption'));
 	}

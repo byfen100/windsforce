@@ -1,1 +1,1 @@
-a:1:{s:15:"WapCache_Extend";s:25:"WapCache_Extend.class.php";}
+a:0:{}

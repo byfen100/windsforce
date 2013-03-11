@@ -39,7 +39,10 @@ class HomemainController extends InitController{
 			$oOptionModel->save(0,'update');
 		}
 
-		HomeCache_Extend::updateCacheOption();
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('home_option');
 
 		$this->S(Dyhb::L('配置更新成功','__APP_ADMIN_LANG__@Controller/Homeoption'));
 	}

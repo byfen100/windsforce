@@ -29,7 +29,7 @@
   'REQUIRE_AUTH_MODULE' => '',
   'NOT_AUTH_ACTION' => '',
   'REQUIRE_AUTH_ACTION' => '',
-  'GUEST_AUTH_ON' => false,
+  'GUEST_AUTH_ON' => true,
   'GUEST_AUTH_ID' => '-1',
   'RBAC_ERROR_PAGE' => 'home://public/rbacerror',
   'RBAC_GUEST_ACCESS' => 

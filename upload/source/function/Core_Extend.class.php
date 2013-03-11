@@ -355,7 +355,7 @@ class Core_Extend{
 
 	static public function includeFile($sFileName,$sApp=null,$sType='.class.php'){
 		if(!empty($sApp)){
-			$sIncludeFile='/app/'.$sApp.'/App/Class/'.($sType=='_.php'?'Extendsion/':'').$sFileName;
+			$sIncludeFile='/app/'.$sApp.'/App/Class/'.($sType=='_.php'?'Extension/':'').$sFileName;
 		}else{
 			$sIncludeFile='/source/'.$sFileName;
 		}
@@ -1171,6 +1171,46 @@ WINDSFORCE;
 		$arrReturn['tags']=$arrTags;
 
 		return $arrReturn;
+	}
+
+	public static function appUpdateCache($sCacheName='',$sApp='home',$arrNotallowed=array()){
+		$arrUpdateList=empty($sCacheName)?array():(is_array($sCacheName)?$sCacheName:array($sCacheName));
+
+		if(!$arrUpdateList){
+			$arrUpdatecache=array();
+
+			$arrAllCachefile=G::listDir(WINDSFORCE_PATH.'/app/'.$sApp.'/App/Class/Extension/cache',false,true);
+			foreach($arrAllCachefile as $sCachefile){
+				$sCachefile=strtolower(subStr($sCachefile,14,-5));
+				if(!in_array($sCachefile,$arrNotallowed)){
+					$arrUpdatecache[]=$sCachefile;
+				}
+			}
+
+			foreach($arrUpdatecache as $sUpdatecache){
+				self::appUpdateCache($sUpdatecache);
+			}
+		}else{
+			foreach($arrUpdateList as $sCache){
+				$sCachefile=WINDSFORCE_PATH.'/app/'.$sApp.'/App/Class/Extension/cache/AppUpdateCache'.ucfirst($sCache).'_.php';
+
+				if(is_file($sCachefile)){
+					$sCacheclass='AppUpdateCache'.ucfirst($sCache);
+					if(!Dyhb::classExists($sCacheclass)){
+						require_once(Core_Extend::includeFile('cache/'.$sCacheclass,$sApp,'_.php'));
+					}
+
+					$Callback=array($sCacheclass,'cache');
+					if(is_callable($Callback)){
+						call_user_func($Callback);
+					}else{echo 'x';
+						Dyhb::E('$Callback is not a callback');
+					}
+				}else{
+					Dyhb::E('$sCachefile %s is not exists');
+				}
+			}
+		}
 	}
 
 }
