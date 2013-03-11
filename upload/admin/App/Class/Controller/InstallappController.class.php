@@ -127,8 +127,8 @@ class InstallappController extends InitController{
 	public function uninstall_app(){
 		$sName=trim(G::getGpc('name','G'));
 
-		if($sName=='home'){
-			$this->E(Dyhb::L('home应用无系统必须的应用，无法卸载','Controller/App'));
+		if(in_array($sName,array('home','wap','group'))){
+			$this->E(Dyhb::L('系统应用无法卸载','Controller/App'));
 		}
 
 		$oApp=AppModel::F('app_identifier=?',$sName)->getOne();

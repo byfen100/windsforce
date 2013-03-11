@@ -110,7 +110,7 @@
 								<!--{if Dyhb+C('APP_DEVELOP')}-->
 								<a href="<!--{:Dyhb::U('app/edit?id='.$value['app_id'])}-->"><!--<lang package='Template/Default/App'>-->设计<!--</lang>--></a>&nbsp;
 								<!--{/if}-->
-								<!--{if $value['app_identifier']!='home'}-->
+								<!--{if !in_array($value['app_identifier'],array('home','group','wap'))}-->
 								<a href="<!--{:Dyhb::U('installapp/uninstall_app?name='.$value['app_identifier'])}-->"><!--<lang package='Template/Default/App'>-->卸载<!--</lang>--></a>
 								<!--{/if}-->
 							</td>

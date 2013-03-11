@@ -43,10 +43,14 @@ class NavController extends InitController{
 	}
 
 	protected function aInsert($nId=null){
-		if(!Dyhb::classExists('Cache_Extend')){
-			require_once(Core_Extend::includeFile('function/Cache_Extend'));
-		}
-		Cache_Extend::updateCache("Nav");
+		// 需要删除导航缓存
+		$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND'];
+		$bAllowMem=Core_Extend::memory('check');
+
+		$bAllowMem && self::memory('delete','nav');
+
+		$sCachefile=WINDSFORCE_PATH.'/data/~runtime/cache_/data/~@nav.php';
+		$bIsFilecache && (is_file($sCachefile) && @unlink($sCachefile));
 	}
 
 	protected function aUpdate($nId=null){

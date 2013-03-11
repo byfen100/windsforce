@@ -130,6 +130,8 @@ class AppController extends InitController{
 
 	protected function aForbid(){
 		$this->updatecachenav_();
+
+		$this->updatecacheapp_();
 	}
 
 	public function enable(){
@@ -140,6 +142,8 @@ class AppController extends InitController{
 
 	protected function aResume(){
 		$this->updatecachenav_();
+
+		$this->updatecacheapp_();
 	}
 
 	public function export(){
@@ -273,6 +277,13 @@ class AppController extends InitController{
 		if($GLOBALS['___login___']['user_id']!=1){
 			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
 		}
+	}
+
+	protected function updatecacheapp_($nId=null){
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('app');
 	}
 	
 }
