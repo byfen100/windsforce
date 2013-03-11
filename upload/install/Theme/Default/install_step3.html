@@ -149,7 +149,12 @@ function doInstall(){
 						<tr>
 							<td><strong>{$sApp}</strong></td>
 							<td>
+								{if $sApp=='group'}
+								<input type="checkbox" name="" value="{$sApp}" checked="true" disabled="true">
+								<input type="hidden" name="app[]" value="{$sApp}">
+								{d*else}
 								<input type="checkbox" name="app[]" value="{$sApp}" checked="true">
+								{/if}
 							</td>
 						</tr>
 						</foreach>

@@ -918,6 +918,7 @@ CREATE TABLE `#@__slide` (
   `slide_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
+  `slide_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统幻灯片',
   PRIMARY KEY (`slide_id`),
   KEY `slide_status` (`slide_status`),
   KEY `create_dateline` (`create_dateline`)
@@ -1225,9 +1226,9 @@ CREATE TABLE `#@__userrole` (
 
 DROP TABLE IF EXISTS `#@__wapoption`;
 CREATE TABLE `#@__wapoption` (
-  `helloworldoption_name` varchar(32) NOT NULL DEFAULT '' COMMENT '名字',
-  `helloworldoption_value` text NOT NULL COMMENT '值',
-  PRIMARY KEY (`helloworldoption_name`)
+  `wapoption_name` varchar(32) NOT NULL DEFAULT '' COMMENT '名字',
+  `wapoption_value` text NOT NULL COMMENT '值',
+  PRIMARY KEY (`wapoption_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

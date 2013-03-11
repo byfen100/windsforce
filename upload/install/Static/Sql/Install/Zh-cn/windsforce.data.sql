@@ -202,7 +202,7 @@ INSERT INTO `#@__homesite` (`homesite_id`, `homesite_name`, `homesite_nikename`,
 -- 转存表中的数据 `windsforce_link`
 --
 
-INSERT INTO `#@__link` (`link_id`, `create_dateline`, `update_dateline`, `link_name`, `link_url`, `link_description`, `link_logo`, `link_status`, `link_sort`) VALUES
+INSERT INTO `#@__link` (`link_id`, `create_dateline`, `update_dateline`, `link_name`, `link_url`, `link_description`, `link_logo`, `link_status`, `link_sort`, `link_issystem`) VALUES
 (1, 1355150944, 0, 'DoYouHaoBaby', 'http://doyouhaobaby.net/', 'The DoYouHaoBaby Framework', '{__PUBLIC__.''/images/common/iconlogo/framework_logo.gif''}', 1, 0, 1),
 (2, 1355151005, 0, 'WindsForce', 'http://www.windsforce.net', '风之力APP开发框架', '{__PUBLIC__.''/images/common/iconlogo/logo.gif''}', 1, 0, 1);
 
@@ -256,7 +256,7 @@ INSERT INTO `#@__nav` (`nav_id`, `nav_parentid`, `nav_name`, `nav_identifier`, `
 -- 转存表中的数据 `windsforce_node`
 --
 
-INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `node_remark`, `node_sort`, `node_parentid`, `node_level`, `nodegroup_id`, `create_dateline`, `update_dateline`) VALUES
+INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `node_remark`, `node_sort`, `node_parentid`, `node_level`, `nodegroup_id`, `create_dateline`, `update_dateline`, `node_issystem`) VALUES
 (1, 'admin', 'admin后台管理', 1, '', 1, 0, 1, 0, 0, 1338558614, 1),
 (14, 'admin@rating', '角色等级', 1, '', 5, 1, 2, 1, 1338612283, 1341116051, 1),
 (2, 'admin@role', '角色管理', 1, '', 3, 1, 2, 1, 0, 1341116051, 1),
@@ -318,7 +318,7 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 -- 转存表中的数据 `windsforce_nodegroup`
 --
 
-INSERT INTO `#@__nodegroup` (`nodegroup_id`, `nodegroup_name`, `nodegroup_title`, `create_dateline`, `update_dateline`, `nodegroup_status`, `nodegroup_sort`) VALUES
+INSERT INTO `#@__nodegroup` (`nodegroup_id`, `nodegroup_name`, `nodegroup_title`, `create_dateline`, `update_dateline`, `nodegroup_status`, `nodegroup_sort`, `nodegroup_issystem`) VALUES
 (1, 'rbac', '权限', 1296454621, 1343878985, 1, 5, 1),
 (2, 'option', '设置', 1334071384, 1343878985, 1, 1, 1),
 (3, 'admin', '站长', 1334394747, 1343878985, 1, 8, 1),
@@ -524,7 +524,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 -- 转存表中的数据 `windsforce_rating`
 --
 
-INSERT INTO `#@__rating` (`rating_id`, `rating_name`, `rating_remark`, `rating_nikename`, `create_dateline`, `update_dateline`, `rating_creditstart`, `rating_creditend`, `ratinggroup_id`, `rating_icon`) VALUES
+INSERT INTO `#@__rating` (`rating_id`, `rating_name`, `rating_remark`, `rating_nikename`, `create_dateline`, `update_dateline`, `rating_creditstart`, `rating_creditend`, `ratinggroup_id`, `rating_icon`, `rating_issystem`) VALUES
 (1, '列兵1', '', '', 1295530584, 1343975315, 0, 456, 1, '1.gif', 1),
 (2, '列兵2', '', NULL, 1295530598, 1338883899, 457, 912, 1, '2.gif', 1),
 (3, '三等兵', '', NULL, 1338403516, 1338883899, 913, 1824, 1, '3.gif', 1),
@@ -632,7 +632,7 @@ INSERT INTO `#@__rating` (`rating_id`, `rating_name`, `rating_remark`, `rating_n
 -- 转存表中的数据 `windsforce_ratinggroup`
 --
 
-INSERT INTO `#@__ratinggroup` (`ratinggroup_id`, `ratinggroup_name`, `ratinggroup_title`, `create_dateline`, `update_dateline`, `ratinggroup_status`, `ratinggroup_sort`) VALUES
+INSERT INTO `#@__ratinggroup` (`ratinggroup_id`, `ratinggroup_name`, `ratinggroup_title`, `create_dateline`, `update_dateline`, `ratinggroup_status`, `ratinggroup_sort`, `ratinggroup_issystem`) VALUES
 (1, 'soldiers', '士兵', 1338469985, 0, 1, 0, 1),
 (2, 'nco', '士官', 1338470021, 0, 1, 0, 1),
 (3, 'lieutenant', '尉官', 1338470314, 1343585867, 1, 0, 1),
@@ -645,7 +645,7 @@ INSERT INTO `#@__ratinggroup` (`ratinggroup_id`, `ratinggroup_name`, `ratinggrou
 -- 转存表中的数据 `windsforce_role`
 --
 
-INSERT INTO `#@__role` (`role_id`, `role_name`, `role_parentid`, `role_status`, `role_remark`, `role_nikename`, `create_dateline`, `update_dateline`, `rolegroup_id`) VALUES
+INSERT INTO `#@__role` (`role_id`, `role_name`, `role_parentid`, `role_status`, `role_remark`, `role_nikename`, `create_dateline`, `update_dateline`, `rolegroup_id`, `role_issystem`) VALUES
 (1, '管理员', 0, 1, '', '管理员', 1295530584, 1338614986, 2, 1),
 (2, '超级组长', 0, 1, '', '超级群主', 1295530598, 1338615068, 2, 1),
 (3, '组长', 0, 1, '', '群主', 1338403516, 1338615084, 2, 1),
@@ -658,7 +658,7 @@ INSERT INTO `#@__role` (`role_id`, `role_name`, `role_parentid`, `role_status`, 
 -- 转存表中的数据 `windsforce_rolegroup`
 --
 
-INSERT INTO `#@__rolegroup` (`rolegroup_id`, `rolegroup_name`, `rolegroup_title`, `create_dateline`, `update_dateline`, `rolegroup_status`, `rolegroup_sort`) VALUES
+INSERT INTO `#@__rolegroup` (`rolegroup_id`, `rolegroup_name`, `rolegroup_title`, `create_dateline`, `update_dateline`, `rolegroup_status`, `rolegroup_sort`, `rolegroup_issystem`) VALUES
 (1, 'usergroup', '用户组', 1338469985, 1338614736, 1, 0, 1),
 (2, 'admingroup', '管理组', 1338470021, 1338614767, 1, 0, 1),
 (3, 'specialgroup', '特殊分组', 1338470314, 1338615164, 1, 0, 1),
@@ -670,10 +670,10 @@ INSERT INTO `#@__rolegroup` (`rolegroup_id`, `rolegroup_name`, `rolegroup_title`
 -- 转存表中的数据 `windsforce_slide`
 --
 
-INSERT INTO `#@__slide` (`slide_id`, `slide_sort`, `slide_title`, `slide_url`, `slide_img`, `slide_status`, `create_dateline`, `update_dateline`) VALUES
-(1, 0, '欢迎加入', '{Dyhb::U(''home://public/register'')}', '{__PUBLIC__.''/images/common/slidebox/1.jpg''}', 1, 1345357086, 1345364471),
-(2, 0, '立刻登录', '{Dyhb::U(''home://public/login'')}', '{__PUBLIC__.''/images/common/slidebox/2.jpg''}', 1, 1345357086, 0),
-(3, 0, '关于我们', '{Dyhb::U(''home://homesite/aboutus'')}', '{__PUBLIC__.''/images/common/slidebox/3.jpg''}', 1, 1345357086, 0);
+INSERT INTO `#@__slide` (`slide_id`, `slide_sort`, `slide_title`, `slide_url`, `slide_img`, `slide_status`, `create_dateline`, `update_dateline`, `slide_issystem`) VALUES
+(1, 0, '欢迎加入', '{Dyhb::U(''home://public/register'')}', '{__PUBLIC__.''/images/common/slidebox/1.jpg''}', 1, 1345357086, 1345364471, 1),
+(2, 0, '立刻登录', '{Dyhb::U(''home://public/login'')}', '{__PUBLIC__.''/images/common/slidebox/2.jpg''}', 1, 1345357086, 0, 1),
+(3, 0, '关于我们', '{Dyhb::U(''home://homesite/aboutus'')}', '{__PUBLIC__.''/images/common/slidebox/3.jpg''}', 1, 1345357086, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -681,7 +681,7 @@ INSERT INTO `#@__slide` (`slide_id`, `slide_sort`, `slide_title`, `slide_url`, `
 -- 转存表中的数据 `windsforce_sociatype`
 --
 
-INSERT INTO `#@__sociatype` (`sociatype_id`, `sociatype_title`, `sociatype_identifier`, `sociatype_appid`, `sociatype_appkey`, `sociatype_callback`, `sociatype_scope`, `sociatype_status`, `create_dateline`) VALUES
+INSERT INTO `#@__sociatype` (`sociatype_id`, `sociatype_title`, `sociatype_identifier`, `sociatype_appid`, `sociatype_appkey`, `sociatype_callback`, `sociatype_scope`, `sociatype_status`, `create_dateline`, `sociatype_issystem`) VALUES
 (1, 'QQ互联', 'qq', '', '', 'http://youdomain.com/index.php?app=home&c=public&a=socia_callback&vendor=qq', 'get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo', 1, 1345777926, 1),
 (2, '新浪微博', 'weibo', '', '', 'http://youdomain.com/index.php?app=home&c=public&a=socia_callback&vendor=weibo', '', 1, 1347356728, 1);
 
@@ -808,7 +808,7 @@ INSERT INTO `#@__userprofile` (`user_id`, `userprofile_realname`, `userprofile_g
 -- 转存表中的数据 `windsforce_userprofilesetting`
 --
 
-INSERT INTO `#@__userprofilesetting` (`userprofilesetting_id`, `userprofilesetting_status`, `userprofilesetting_title`, `userprofilesetting_description`, `userprofilesetting_sort`, `userprofilesetting_showinfo`, `userprofilesetting_allowsearch`, `userprofilesetting_privacy`) VALUES
+INSERT INTO `#@__userprofilesetting` (`userprofilesetting_id`, `userprofilesetting_status`, `userprofilesetting_title`, `userprofilesetting_description`, `userprofilesetting_sort`, `userprofilesetting_showinfo`, `userprofilesetting_allowsearch`, `userprofilesetting_privacy`, `userprofilesetting_issystem`) VALUES
 ('userprofile_realname', 1, '真实姓名', '', 0, 0, 1, 0, 1),
 ('userprofile_gender', 1, '性别', '', 0, 1, 1, 0, 1),
 ('userprofile_birthyear', 1, '出生年份', '', 0, 1, 1, 0, 1),
