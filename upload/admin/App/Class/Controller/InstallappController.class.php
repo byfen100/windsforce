@@ -53,7 +53,15 @@ class InstallappController extends InitController{
 			$arrApps[]=$arrAppInfo;
 		}
 
+		// 语言包
+		$sLanguage=Dyhb::cookie('language');
+		if(empty($sLanguage)){
+			$sLanguage='Zh-cn';
+		}
+
 		$this->assign('arrApps',$arrApps);
+		$this->assign('sLanguage',$sLanguage);
+
 		$this->display();
 	}
 
@@ -213,7 +221,6 @@ class InstallappController extends InitController{
 
 	public function runQuery($sSql){
 		$nSqlprotected=intval(G::getGpc('sqlprotected','G'));
-		
 		if($nSqlprotected==1){
 			return;
 		}

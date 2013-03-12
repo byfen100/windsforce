@@ -138,15 +138,65 @@ class Admin_Extend{
 	}
 
 	static public function installApp($sApp){
+		$nSqlprotected=intval(G::getGpc('sqlprotected','G'));
+		if($nSqlprotected==1){
+			return;
+		}
 		
+		if(empty($sApp)){
+			return false;
+		}
+
+		// 表结构
+		$sInstallapptable=WINDSFORCE_PATH.'/app/'.$sApp.'/Static/Sql/Install/windsforce.table.sql';
+		if(is_file($sInstallapptable)){
+			$sContent=file_get_contents($sInstallapptable);
+			self::runQuery($sContent);
+		}
+
+		// 数据
+		$sLanguage=Dyhb::cookie('language');
+		if(empty($sLanguage)){
+			$sLanguage='Zh-cn';
+		}
+
+		$sInstallappdata=WINDSFORCE_PATH.'/app/'.$sApp.'/Static/Sql/Install/'.$sLanguage.'/windsforce.data.sql';
+		if(!is_file($sInstallappdata)){
+			$sInstallappdata=WINDSFORCE_PATH.'/app/'.$sApp.'/Static/Sql/Install/Zh-cn/windsforce.data.sql';
+		}
+
+		if(is_file($sInstallappdata)){
+			$sContent=file_get_contents($sInstallappdata);
+			self::runQuery($sContent);
+		}
 	}
 
 	static public function uninstallApp($sApp){
+		$nSqlprotected=intval(G::getGpc('sqlprotected','G'));
+		if($nSqlprotected==1){
+			return;
+		}
 		
+		if(empty($sApp)){
+			return;
+		}
+
+		$sUninstallapp=WINDSFORCE_PATH.'/app/'.$sApp.'/Static/Sql/Install/windsforce.delete.sql';
+		if(is_file($sUninstallapp)){
+			$sContent=file_get_contents($sUninstallapp);
+			self::runQuery($sContent);
+		}
 	}
 
 	static public function updateApp($sApp){
-	
+		$nSqlprotected=intval(G::getGpc('sqlprotected','G'));
+		if($nSqlprotected==1){
+			return;
+		}
+
+		if(empty($sApp)){
+			return;
+		}
 	}
 
 }
