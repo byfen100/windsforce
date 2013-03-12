@@ -12,17 +12,15 @@
 WindsForce 即将做的
 
 	在线时间功能开发
-	
-	权限
-	用户加入角色
 
 	创建小组，自己也加入小组
-
 	小组管理员相关设置
 
-	// group应用默认安装，后台禁止卸载
+	// 后台helloworld安装卸载
 
 	// 语言包提炼
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Registeroption.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Urloption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Controller\App.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Controller\Sociatype.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Link.lang.php
@@ -51,7 +49,8 @@ WindsForce 即将做的
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Spaceadmin.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Spaceadmin.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Styleoption.lang.php
-	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Public.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller(Template)\Public.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Ucenter.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-cn\Template\Header.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-cn\Js\Pm_Js.lang.php
 
