@@ -2,7 +2,7 @@
 -- version 1.0
 -- http://www.windsforce.com
 --
--- 开发: Windsforce Studio
+-- 开发: Windsforce TEAM
 -- 网站: http://www.windsforce.com
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";

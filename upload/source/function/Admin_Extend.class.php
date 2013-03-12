@@ -80,7 +80,7 @@ class Admin_Extend{
 		}
 	}
 
-	public function createTable($sSql,$sDbCharset){
+	static public function createTable($sSql,$sDbCharset){
 		$sType=strtoupper(preg_replace("/^\s*CREATE TABLE\s+.+\s+\(.+?\).*(ENGINE|TYPE)\s*=\s*([a-z]+?).*$/isU", "\\2",$sSql));
 		$sType=in_array($sType,array('MYISAM','HEAP'))?$sType:'MYISAM';
 

@@ -4,21 +4,18 @@
 
 !defined('DYHB_PATH') && exit;
 
-/**
-// 这里仅为需要数据库或者其它初始化数据所使用
-// 如果应用不需要初始化一些数据，你可以删除本文件
+// 初始化应用表数据
 $sSql=<<<EOF
 
-DROP TABLE IF EXISTS {WINDSFORCE}hello;
-CREATE TABLE {WINDSFORCE}hello (
-  `test_id` int(10) NOT NULL auto_increment COMMENT '测试ID',
-  `test_value` varchar(50) character set utf8 NOT NULL COMMENT '测试效果',
-  PRIMARY KEY  (`test_id`)
-) TYPE=MyISAM;
+DROP TABLE IF EXISTS {WINDSFORCE}helloworldoption;
+CREATE TABLE {WINDSFORCE}helloworldoption (
+  `helloworldoption_name` varchar(32) NOT NULL DEFAULT '' COMMENT '名字',
+  `helloworldoption_value` text NOT NULL COMMENT '值',
+  PRIMARY KEY (`helloworldoption_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 EOF;
 
 $this->runQuery($sSql);
-*/
 
 $bFinish=TRUE;
