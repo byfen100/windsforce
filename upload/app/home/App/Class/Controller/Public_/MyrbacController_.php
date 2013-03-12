@@ -19,9 +19,13 @@ class MyrbacController extends Controller{
 		$arrMyaccesslist=array();
 		if(is_array($arrAccesslist)){
 			foreach($arrAccesslist as $arrTemp){
-				foreach($arrTemp as $arrTempTwo){
-					foreach($arrTempTwo as $sKey=>$nTemp){
-						$arrMyaccesslist[]=$sKey;
+				if(is_array($arrTemp)){
+					foreach($arrTemp as $arrTempTwo){
+						if(is_array($arrTempTwo)){
+							foreach($arrTempTwo as $sKey=>$nTemp){
+								$arrMyaccesslist[]=$sKey;
+							}
+						}
 					}
 				}
 			}

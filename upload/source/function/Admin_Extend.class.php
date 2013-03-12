@@ -48,7 +48,7 @@ class Admin_Extend{
 		$sTabelPrefix=$GLOBALS['_commonConfig_']['DB_PREFIX'];
 		$sDbCharset=$GLOBALS['_commonConfig_']['DB_CHAR'];
 
-		$sSql=str_replace(array(' windsforce_',' `windsforce_',' prefix_',' `prefix_'),array(' {WINDSFORCE}',' `{WINDSFORCE}',' {WINDSFORCE}',' `{WINDSFORCE}'),$sSql);
+		$sSql=str_replace(array(' windsforce_',' `windsforce_',' prefix_',' `prefix_',' #@__'),array(' {WINDSFORCE}',' `{WINDSFORCE}',' {WINDSFORCE}',' `{WINDSFORCE}',' {WINDSFORCE}'),$sSql);
 		$sSql=str_replace("\r","\n",str_replace(array(' {WINDSFORCE}',' `{WINDSFORCE}'),array(' '.$sTabelPrefix,' `'.$sTabelPrefix),$sSql));
 
 		$arrResult=array();
@@ -135,6 +135,18 @@ class Admin_Extend{
 		}
 
 		Dyhb::E(sprintf('Template File %s is not exist',$sUrl));
+	}
+
+	static public function installApp($sApp){
+		
+	}
+
+	static public function uninstallApp($sApp){
+		
+	}
+
+	static public function updateApp($sApp){
+	
 	}
 
 }

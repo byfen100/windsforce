@@ -167,7 +167,7 @@ class RegisterController extends GlobalchildController{
 			}
 
 			// 发送注册提醒
-			$sNoticetemplate='<div class="notice_register"><div class="notice_content">'.str_replace('{static_time}',date('Y-m-d H:i:s',CURRENT_TIMESTAMP),$GLOBALS['_option_']['register_welcome']).'</div></div>';
+			$sNoticetemplate='<div class="notice_register"><div class="notice_content">'.str_replace(array('{static_time}','{static_user_name}'),array(date('Y-m-d H:i:s',CURRENT_TIMESTAMP),$oUser['user_name']),$GLOBALS['_option_']['register_welcome']).'</div></div>';
 			$arrNoticedata=array();
 
 			try{

@@ -4,7 +4,10 @@
 
 !defined('DYHB_PATH') && exit;
 
-// 初始化应用表数据
+/** 初始化应用表数据 */
+
+/*
+// 第一种方法
 $sSql=<<<EOF
 
 DROP TABLE IF EXISTS {WINDSFORCE}helloworldoption;
@@ -17,5 +20,9 @@ CREATE TABLE {WINDSFORCE}helloworldoption (
 EOF;
 
 $this->runQuery($sSql);
+*/
+
+// 第二种方法（注意本方法需要helloworld一样保证SQL文件位置）
+Admin_Extend::installApp('helloworld');
 
 $bFinish=TRUE;
