@@ -1173,4 +1173,18 @@ WINDSFORCE;
 		return $arrReturn;
 	}
 
+	static public function getLogo(){
+		$sLogo=$GLOBALS['_style_']['logo'];
+
+		if(empty($sLogo)){
+			$sLogo=$GLOBALS['_option_']['site_logo'];
+		}
+
+		if(empty($sLogo)){
+			$sLogo=__PUBLIC__.'/images/common/logo.png';
+		}
+
+		return $sLogo;
+	}
+
 }
