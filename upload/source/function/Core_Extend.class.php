@@ -1187,4 +1187,18 @@ WINDSFORCE;
 		return $sLogo;
 	}
 
+	static public function getFavicon(){
+		$sFavicon=__ROOT__.'/ucontent/theme/'.Dyhb::cookie('template').'/favicon.png';
+
+		if(!is_file(WINDSFORCE_PATH.'/ucontent/theme/'.Dyhb::cookie('template').'/favicon.png')){
+			$sFavicon=__ROOT__.'/ucontent/theme/Zh-cn/favicon.png';
+		}
+
+		if(!is_file(WINDSFORCE_PATH.'/ucontent/theme/Zh-cn/favicon.png')){
+			$sFavicon=__PUBLIC__.'/images/common/favicon.png';
+		}
+
+		return $sFavicon;
+	}
+
 }
