@@ -16,12 +16,6 @@ WindsForce 即将做的
 	创建小组，自己也加入小组
 	小组管理员相关设置
 
-	// 后台helloworld安装卸载
-
-	icon  favicon 前台应用设置
-
-	模板 logo 
-
 	// 语言包提炼
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Registeroption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Urloption.lang.php
