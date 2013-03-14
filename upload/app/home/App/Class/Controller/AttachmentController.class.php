@@ -172,4 +172,8 @@ class AttachmentController extends InitController{
 		Core_Extend::doControllerAction('Attachment@Addcomment','index');
 	}
 
+	public function audit_attachmentcomment(){
+		Core_Extend::doControllerAction('Attachment@Auditattachmentcomment','index');
+	}
+
 }

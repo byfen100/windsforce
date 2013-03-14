@@ -1,6 +1,6 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   新鲜事审核($Liu.XiangMin)*/
+   新鲜事评论审核($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

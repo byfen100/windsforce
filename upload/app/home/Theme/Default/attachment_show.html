@@ -55,6 +55,14 @@ function commentComplete(data,status){
 		window.location.href=data.jumpurl;
 	}
 }
+
+function attachmentcommentAudit(nCommentid,nStatus){
+	Dyhb.AjaxSend(D.U('home://attachment/audit_attachmentcomment?id='+nCommentid+'&status='+nStatus),'ajax=1','',function(data,status){
+		if(status==1){
+			window.location.reload();
+		}
+	});
+}
 <!--{/script}-->
 
 		<ul class="breadcrumb">

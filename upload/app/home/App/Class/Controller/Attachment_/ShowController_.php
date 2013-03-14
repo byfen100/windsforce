@@ -22,6 +22,18 @@ class ShowController extends Controller{
 
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
+		// 判断邮件等外部地址过来的查找评论地址
+		$nIsolationCommentid=intval(G::getGpc('isolation_commentid','G'));
+		if($nIsolationCommentid){
+			$result=AttachmentcommentModel::getCommenturlByid($nIsolationCommentid);
+			if($result===false){
+				$this->E(Dyhb::L('该条评论已被删除、屏蔽或者尚未通过审核','Controller/Attachment'));
+			}
+
+			G::urlGoTo($result);
+			exit();
+		}
+
 		$this->_oAttachment=$oAttachment;
 
 		// 取得个人主页

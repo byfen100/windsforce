@@ -66,4 +66,49 @@ class AttachmentcommentModel extends CommonModel{
 		}
 	}
 
+	static public function getParentCommentsPage($nFinecommentid,$nHomefreshcommentParentid=0,$nEveryCommentnum=1,$nAttachmentid=0,$bAdminuser=false){
+		$arrWhere['attachmentcomment_status']=1;
+		$arrWhere['attachmentcomment_parentid']=$nHomefreshcommentParentid;
+		$arrWhere['attachment_id']=$nAttachmentid;
+
+		if($bAdminuser===false){
+			$arrWhere['attachmentcomment_auditpass']=1;
+		}
+		
+		// 查找当前评论的记录
+		$nTheSearchKey='';
+
+		$arrAttachmentcommentLists=self::F()->where($arrWhere)->all()->order('`attachmentcomment_id` DESC')->query();
+		foreach($arrAttachmentcommentLists as $nKey=>$oAttachmentcommentList){
+			if($oAttachmentcommentList['attachmentcomment_id']==$nFinecommentid){
+				$nTheSearchKey=$nKey+1;
+			}
+		}
+
+		$nPage=ceil($nTheSearchKey/$nEveryCommentnum);
+		if($nPage<1){
+			$nPage=1;
+		}
+
+		return $nPage;
+	}
+
+	static public function getCommenturlByid($nCommentnumId){
+		// 判断评论是否存在
+		$oTryAttachmentcomment=AttachmentcommentModel::F('attachmentcomment_id=? AND attachmentcomment_status=1',$nCommentnumId)->getOne();
+		if(empty($oTryAttachmentcomment['attachmentcomment_id'])){
+			return false;
+		}
+
+		$bAdminuser=$GLOBALS['___login___']['user_id']!=$oTryAttachmentcomment->attachment->user_id?false:true;
+		if($oTryAttachmentcomment['attachmentcomment_auditpass']==0 && $bAdminuser===false){
+			return false;
+		}
+
+		// 分析出评论所在的分页值
+		$nPage=self::getParentCommentsPage($nCommentnumId,0,$GLOBALS['_cache_']['home_option']['homefreshcomment_list_num'],$oTryAttachmentcomment['attachment_id'],$bAdminuser);
+
+		return Dyhb::U('home://file@?id='.$oTryAttachmentcomment['attachment_id'].($nPage>1?'&page='.$nPage:'')).'#comment-'.$nCommentnumId;
+	}
+
 }
