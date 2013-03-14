@@ -192,6 +192,36 @@ CREATE TABLE `#@__attachmentcategory` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_attachmentcomment`
+--
+
+DROP TABLE IF EXISTS `#@__attachmentcomment`;
+CREATE TABLE `#@__attachmentcomment` (
+  `attachmentcomment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+  `create_dateline` int(10) NOT NULL COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID，在线用户评论',
+  `attachmentcomment_name` varchar(50) NOT NULL COMMENT '名字',
+  `attachmentcomment_content` text NOT NULL COMMENT '内容',
+  `attachmentcomment_email` varchar(300) NOT NULL COMMENT '邮件',
+  `attachmentcomment_url` varchar(300) NOT NULL COMMENT 'URL',
+  `attachmentcomment_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否显示',
+  `attachmentcomment_ip` varchar(16) NOT NULL COMMENT 'IP',
+  `attachmentcomment_parentid` int(10) NOT NULL DEFAULT '0' COMMENT '父级ID',
+  `attachmentcomment_isreplymail` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否邮件通知，通知给评论者',
+  `attachmentcomment_ismobile` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为手机评论',
+  `attachmentcomment_auditpass` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核是否通过',
+  `attachment_id` char(10) NOT NULL COMMENT '附件ID',
+  PRIMARY KEY (`attachmentcomment_id`),
+  KEY `user_id` (`user_id`),
+  KEY `create_dateline` (`create_dateline`),
+  KEY `attachment_id` (`attachment_id`),
+  KEY `attachmentcomment_status` (`attachmentcomment_status`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_badword`
 --
 
