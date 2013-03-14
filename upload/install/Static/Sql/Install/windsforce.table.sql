@@ -446,6 +446,7 @@ CREATE TABLE `#@__homehelp` (
   `homehelp_updateuserid` int(10) NOT NULL DEFAULT '0' COMMENT '最新更新帮助的用户',
   `homehelp_updateusername` varchar(50) NOT NULL COMMENT '文章最后更新用户',
   `homehelp_viewnum` int(10) NOT NULL DEFAULT '0' COMMENT '帮助浏览次数',
+  `homehelp_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统帮助',
   PRIMARY KEY (`homehelp_id`),
   KEY `create_dateline` (`create_dateline`),
   KEY `homehelp_status` (`homehelp_status`),
@@ -466,6 +467,7 @@ CREATE TABLE `#@__homehelpcategory` (
   `homehelpcategory_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '帮助分类排序名字',
   `update_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '最后更新时间',
   `create_dateline` int(10) NOT NULL COMMENT '群组创建时间',
+  `homehelpcategory_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统帮助分类',
   PRIMARY KEY (`homehelpcategory_id`),
   KEY `create_dateline` (`create_dateline`),
   KEY `homehelpcategory_sort` (`homehelpcategory_sort`)
@@ -496,6 +498,7 @@ CREATE TABLE `#@__homesite` (
   `homesite_name` char(32) NOT NULL DEFAULT '' COMMENT '键值',
   `homesite_nikename` char(32) NOT NULL COMMENT '站点信息别名',
   `homesite_content` text NOT NULL COMMENT '内容',
+  `homesite_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统站点信息',
   PRIMARY KEY (`homesite_id`),
   UNIQUE KEY `homesite_name` (`homesite_name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

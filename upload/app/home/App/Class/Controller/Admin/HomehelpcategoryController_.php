@@ -81,10 +81,17 @@ class HomehelpcategoryController extends InitController{
 	}
 
 	public function is_system_homehelpcategory($nId){
-		if($nId<=3){
-			return true;
-		}
-
+		$nId=intval($nId);
+	
+		$oHomehelpcategory=HomehelpcategoryModel::F('homehelpcategory_id=?',$nId)->getOne();
+		if(empty($oHomehelpcategory['homehelpcategory_id'])){
+			return false;
+		}
+
+		if($oHomehelpcategory['homehelpcategory_issystem']==1){
+			return true;
+		}
+
 		return false;
 	}
 	

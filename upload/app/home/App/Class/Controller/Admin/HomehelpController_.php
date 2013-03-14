@@ -168,7 +168,14 @@ class HomehelpController extends InitController{
 	}
 
 	public function is_system_homehelp($nId){
-		if($nId<=8){
+		$nId=intval($nId);
+	
+		$oHomehelp=HomehelpModel::F('homehelp_id=?',$nId)->getOne();
+		if(empty($oHomehelp['homehelp_id'])){
+			return false;
+		}
+
+		if($oHomehelp['homehelp_issystem']==1){
 			return true;
 		}
 

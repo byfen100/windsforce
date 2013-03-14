@@ -70,10 +70,17 @@ class HomesiteController extends InitController{
 	}
 	
 	public function is_system_homesite($nId){
-		if($nId<=4){
+		$nId=intval($nId);
+	
+		$oHomesite=HomesiteModel::F('homesite_id=?',$nId)->getOne();
+		if(empty($oHomesite['homesite_id'])){
+			return false;
+		}
+
+		if($oHomesite['homesite_issystem']==1){
 			return true;
 		}
-	
+
 		return false;
 	}
 
