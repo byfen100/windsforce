@@ -168,4 +168,8 @@ class AttachmentController extends InitController{
 		Core_Extend::doControllerAction('Attachment@Uncover','index');
 	}
 
+	public function add_attachmentcomment(){
+		Core_Extend::doControllerAction('Attachment@Addcomment','index');
+	}
+
 }

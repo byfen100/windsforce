@@ -20,9 +20,36 @@ class ShowController extends Controller{
 			$this->E(Dyhb::L('你要查看的文件不存在','Controller/Attachment'));
 		}
 
+		$arrOptionData=$GLOBALS['_cache_']['home_option'];
+
 		$this->_oAttachment=$oAttachment;
 
+		// 取得个人主页
+		$oUserprofile=UserprofileModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
+
+		// 读取评论列表
+		$arrWhere=array();
+		$arrWhere['attachmentcomment_parentid']=0;
+		$arrWhere['attachmentcomment_status']=1;
+		$arrWhere['attachment_id']=$nAttachmentid;
+
+		if($GLOBALS['___login___']['user_id']!=$oAttachment['user_id']){
+			$arrWhere['attachmentcomment_auditpass']=1;
+			$this->assign('bAuditpass',false);
+		}else{
+			$this->assign('bAuditpass',true);
+		}
+
+		$nTotalRecord=AttachmentcommentModel::F()->where($arrWhere)->all()->getCounts();
+		$oPage=Page::RUN($nTotalRecord,$arrOptionData['homefreshcomment_list_num'],G::getGpc('page','G'));
+		$arrAttachmentcommentLists=AttachmentcommentModel::F()->where($arrWhere)->all()->order('`create_dateline` DESC')->limit($oPage->returnPageStart(),$arrOptionData['homefreshcomment_list_num'])->getAll();
+
 		$this->assign('oAttachment',$oAttachment);
+		$this->assign('sUsersite',$oUserprofile['userprofile_site']);
+		$this->assign('nDisplaySeccode',$GLOBALS['_cache_']['home_option']['seccode_comment_status']);
+		$this->assign('nTotalAttachmentcomment',$nTotalRecord);
+		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
+		$this->assign('arrAttachmentcommentLists',$arrAttachmentcommentLists);
 
 		$this->display('attachment+show');
 	}

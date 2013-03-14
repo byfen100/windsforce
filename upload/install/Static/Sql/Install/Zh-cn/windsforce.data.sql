@@ -109,7 +109,7 @@ INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_ac
 (5, '每天登录', 'daylogin', 1, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0),
 (6, '邮箱验证', 'verifyemail', 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
 (7, '发布新鲜事', 'posthomefresh', 4, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
-(8, '评论新鲜事', 'commenthomefresh', 4, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
+(8, '通用评论', 'commoncomment', 4, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
 (9, '上传附件', 'postattachment', 1, 0, 20, 2, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -214,7 +214,7 @@ INSERT INTO `#@__link` (`link_id`, `create_dateline`, `update_dateline`, `link_n
 
 INSERT INTO `#@__feed` (`feed_id`, `user_id`, `feed_username`, `feed_template`, `feed_data`, `create_dateline`) VALUES
 (1, 1, 'admin', '<div class="feed_addhomefresh"><span class="feed_title">发布了一条新鲜事&nbsp;<a href="{@homefresh_link}">查看</a></span><div class="feed_content">{homefresh_message}</div><div class="feed_action"><a href="{@homefresh_link}#comments">回复</a></div></div>', 'a:2:{s:15:"@homefresh_link";s:18:"home://fresh@?id=1";s:17:"homefresh_message";s:28:"Hello world! 世界你好！";}', 1355633251),
-(2, 1, 'admin', '<div class="feed_addhomefresh"><span class="feed_title">评论了新鲜事&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="feed_content"><div class="feed_quote"><span class="feed_quoteinfo">{commentmessage}</span></div></div><div class="feed_action"><a href="{@commentlink}">回复</a></div></div>', 'a:3:{s:12:"@commentlink";s:40:"home://fresh@?id=1&isolation_commentid=9";s:12:"commenttitle";s:28:"Hello world! 世界你好！";s:14:"commentmessage";s:36:"理想很丰满，现实很骨感！";}', 1355633264);
+(2, 1, 'admin', '<div class="feed_addhomefreshcomment"><span class="feed_title">评论了新鲜事&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="feed_content"><div class="feed_quote"><span class="feed_quoteinfo">{commentmessage}</span></div></div><div class="feed_action"><a href="{@commentlink}">回复</a></div></div>', 'a:3:{s:12:"@commentlink";s:40:"home://fresh@?id=1&isolation_commentid=9";s:12:"commenttitle";s:28:"Hello world! 世界你好！";s:14:"commentmessage";s:36:"理想很丰满，现实很骨感！";}', 1355633264);
 
 -- --------------------------------------------------------
 

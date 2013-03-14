@@ -154,7 +154,7 @@ class AddcommentController extends GlobalchildController{
 				$sCommentMessage=strip_tags($oHomefreshcomment['homefreshcomment_content']);
 
 				try{
-					Comment_Extend::addFeed(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefresh',$sCommentLink,$sCommentTitle,$sCommentMessage);
+					Comment_Extend::addFeed(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
@@ -166,7 +166,7 @@ class AddcommentController extends GlobalchildController{
 					$sCommentMessage=strip_tags($oHomefreshcomment['homefreshcomment_content']);
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefresh',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
+						Comment_Extend::addNotice(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}
@@ -226,7 +226,7 @@ class AddcommentController extends GlobalchildController{
 		$this->cache_site_();
 
 		// 更新积分
-		Core_Extend::updateCreditByAction('commenthomefresh',$GLOBALS['___login___']['user_id']);
+		Core_Extend::updateCreditByAction('commoncomment',$GLOBALS['___login___']['user_id']);
 
 		$this->A($arrCommentData,Dyhb::L('添加新鲜事评论成功','Controller/Homefresh'),1);
 	}

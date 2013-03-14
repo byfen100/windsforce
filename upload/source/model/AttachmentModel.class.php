@@ -96,4 +96,23 @@ class AttachmentModel extends CommonModel{
 		return G::getGpc('user_name');
 	}
 
+	public function updateAttachmentcommentnum($nAttachmentid){
+		$nAttachmentid=intval($nAttachmentid);
+
+		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentid)->getOne();
+		if(!empty($oAttachment['attachment_id'])){
+			$nAttachmentcommentnum=AttachmentcommentModel::F('attachmentcomment_status=1 AND attachmentcomment_auditpass=1 AND attachment_id=?',$nAttachmentid)->all()->getCounts();
+
+			$oAttachment->attachment_commentnum=$nAttachmentcommentnum;
+			$oAttachment->save(0,'update');
+
+			if($oAttachment->isError()){
+				$this->setErrorMessage($oAttachment->getErrorMessage());
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 }
