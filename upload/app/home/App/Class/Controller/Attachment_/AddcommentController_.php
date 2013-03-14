@@ -154,7 +154,7 @@ class AddcommentController extends GlobalchildController{
 				$sCommentMessage=strip_tags($oAttachmentcomment['attachmentcomment_content']);
 
 				try{
-					Comment_Extend::addFeed(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
+					Comment_Extend::addFeed(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
@@ -166,7 +166,7 @@ class AddcommentController extends GlobalchildController{
 					$sCommentMessage=strip_tags($oAttachmentcomment['attachmentcomment_content']);
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachment['user_id'],'addattachmentcomment',$oAttachment['attachment_id']);
+						Comment_Extend::addNotice(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachment['user_id'],'addattachmentcomment',$oAttachment['attachment_id'],'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}

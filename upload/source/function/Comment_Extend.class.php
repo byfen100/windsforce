@@ -181,8 +181,8 @@ class Comment_Extend{
 		Dyhb::cookie('the_comment_email',$sCommentemail,86400);
 	}
 
-	static public function addFeed($sTitle,$sType,$sCommentLink,$sCommentTitle,$sCommentMessage){
-		$sFeedtemplate='<div class="feed_'.$sType.'"><span class="feed_title">'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="feed_content"><div class="feed_quote"><span class="feed_quoteinfo">{commentmessage}</span></div></div><div class="feed_action"><a href="{@commentlink}">'.Dyhb::L('回复','__COMMON_LANG__@Function/Comment_Extend').'</a></div></div>';
+	static public function addFeed($sTitle,$sType,$sCommentLink,$sCommentTitle,$sCommentMessage,$sFileinfo){
+		$sFeedtemplate='<div class="feed_'.$sType.'"><span class="feed_title">'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="feed_content">'.$sFileinfo.'<div class="feed_quote"><span class="feed_quoteinfo">{commentmessage}</span></div></div><div class="feed_action"><a href="{@commentlink}">'.Dyhb::L('回复','__COMMON_LANG__@Function/Comment_Extend').'</a></div></div>';
 
 		$arrFeeddata=array(
 			'@commentlink'=>$sCommentLink,
@@ -193,8 +193,8 @@ class Comment_Extend{
 		Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
 	}
 
-	static public function addNotice($sTitle,$sType,$sCommentLink,$sCommentTitle,$sCommentMessage,$nUserid,$sNoticeType,$nFromId){
-		$sNoticetemplate='<div class="notice_'.$sType.'"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{commentmessage}</span></div></div><div class="notice_action"><a href="{@commentlink}">'.Dyhb::L('查看','__COMMON_LANG__@Function/Comment_Extend').'</a></div></div>';
+	static public function addNotice($sTitle,$sType,$sCommentLink,$sCommentTitle,$sCommentMessage,$nUserid,$sNoticeType,$nFromId,$sFileinfo){
+		$sNoticetemplate='<div class="notice_'.$sType.'"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="notice_content">'.$sFileinfo.'<div class="notice_quote"><span class="notice_quoteinfo">{commentmessage}</span></div></div><div class="notice_action"><a href="{@commentlink}">'.Dyhb::L('查看','__COMMON_LANG__@Function/Comment_Extend').'</a></div></div>';
 
 		$arrNoticedata=array(
 			'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
