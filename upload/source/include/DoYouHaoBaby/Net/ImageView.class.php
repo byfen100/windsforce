@@ -61,7 +61,7 @@ class ImageView{
 			$oItemValue=$this->_oDOMDocment->createTextNode($arrData['image']);
 			$oItemName->appendChild($oItemValue);
 
-			$oItemName=$this->_oDOMDocment->createAttribute("link");// 创建URL衔接
+			$oItemName=$this->_oDOMDocment->createAttribute("link");// 创建URL链接
 			$oTtem->appendChild($oItemName);
 
 			$oItemValue=$this->_oDOMDocment->createTextNode($arrData['url']);

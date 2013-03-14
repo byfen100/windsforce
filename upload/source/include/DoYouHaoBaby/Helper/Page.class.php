@@ -225,7 +225,7 @@ class Page{
 	}
 
 	protected function home($sTyle='span'){
-		// 页面不为第一页，加上超衔接
+		// 页面不为第一页，加上超链接
 		if($this->_nPage!=1){
 			return ($sTyle=='li'?'<li>':'').'<a href="'.$this->pageReplace(1).'" title="Home" >&laquo; First</a>'.($sTyle=='li'?'</li>':'');
 		}

@@ -1,14 +1,14 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   友情衔接控制器($Liu.XiangMin)*/
+   友情链接控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
 class LinkController extends InitController{
 
 	public function init__(){
-		parent::init__();
-
+		parent::init__();Dyhb::L('系统链接无法删除','Controller/Link');
+Dyhb::L('系统链接无法编辑','Controller/Link');
 		if($GLOBALS['___login___']['user_id']!=1){
 			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
 		}
@@ -24,7 +24,7 @@ class LinkController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_link($nId)){
-				$this->E(Dyhb::L('系统衔接无法删除','Controller/Link'));
+				$this->E(Dyhb::L('系统链接无法删除','Controller/Link'));
 			}
 		}
 	}
@@ -33,7 +33,7 @@ class LinkController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_link($nId)){
-			$this->E(Dyhb::L('系统衔接无法编辑','Controller/Link'));
+			$this->E(Dyhb::L('系统链接无法编辑','Controller/Link'));
 		}
 	}
 

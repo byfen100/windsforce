@@ -110,10 +110,10 @@ class NavController extends InitController{
 
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
-			// 系统衔接不能够被删除
+			// 系统链接不能够被删除
 			$oNavModel=NavModel::F('nav_id=?',$nId)->getOne();
 			if(!$oNavModel['nav_type']){
-				$this->E(Dyhb::L('内置的衔接不能够被删除','Controller/Nav'));
+				$this->E(Dyhb::L('内置的菜单不能够被删除','Controller/Nav'));
 			}
 		}
 	}

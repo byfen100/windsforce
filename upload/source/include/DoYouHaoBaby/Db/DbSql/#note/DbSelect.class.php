@@ -612,7 +612,7 @@ class DbSelect{
 	 * < 关联会在指定查询条件和进行递归查询时起作用 >
 	 *
 	 * @access public
-	 * @param DbActiveRecordAssociation|array $Link 衔接
+	 * @param DbActiveRecordAssociation|array $Link 链接
 	 * @return DbRecordSet
 	 */
 	public function link($Link){}

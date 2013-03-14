@@ -538,7 +538,7 @@ CREATE TABLE `#@__hometagindex` (
 
 DROP TABLE IF EXISTS `#@__link`;
 CREATE TABLE `#@__link` (
-  `link_id` mediumint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT '衔接ID',
+  `link_id` mediumint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT '链接ID',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `link_name` varchar(32) NOT NULL COMMENT '名字',
@@ -547,7 +547,7 @@ CREATE TABLE `#@__link` (
   `link_logo` varchar(360) NOT NULL DEFAULT '0' COMMENT 'LOGO',
   `link_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否显示',
   `link_sort` smallint(6) NOT NULL COMMENT '排序',
-  `link_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统衔接',
+  `link_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统链接',
   PRIMARY KEY (`link_id`),
   KEY `link_status` (`link_status`),
   KEY `link_sort` (`link_sort`),

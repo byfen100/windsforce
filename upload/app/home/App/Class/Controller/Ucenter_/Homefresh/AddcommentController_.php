@@ -61,7 +61,7 @@ class AddcommentController extends GlobalchildController{
 		$result=Comment_Extend::commentSpamUrl($sCommentContent);
 		if($result===false){
 			$nCommentSpamUrlNum=intval($arrOptions['comment_spam_url_num']);
-			$this->E(Dyhb::L('评论内容中出现的衔接数量超过了系统的限制 %d 条','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamUrlNum));
+			$this->E(Dyhb::L('评论内容中出现的链接数量超过了系统的限制 %d 条','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamUrlNum));
 		}
 		if($result===0){
 			$oHomefreshcomment->homefreshcomment_status=0;

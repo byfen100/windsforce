@@ -29,7 +29,7 @@ class IndexController extends Controller{
 
 		$this->assign('arrCreditdata',$arrData);
 		
-		// URL衔接信息
+		// URL链接信息
 		$this->assign('nUserId',Core_Extend::aidencode(intval($GLOBALS['___login___']['user_id'])));
 		$this->assign('sUserName',rawurlencode(trim($GLOBALS['___login___']['user_name'])));
 		$this->assign('sSiteName',$GLOBALS['_option_']['site_name']);

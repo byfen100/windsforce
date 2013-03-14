@@ -1,6 +1,6 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   衔接缓存($Liu.XiangMin)*/
+   友情链接缓存($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 

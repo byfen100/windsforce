@@ -31,7 +31,7 @@ function complete(data,status){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Link'>-->添加衔接<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Link'>-->编辑衔接<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Link'>-->添加衔接<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Link'>-->编辑衔接<!--</lang>-->_<!--{$nId}--><!--</if>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Link'>-->添加链接<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Link'>-->编辑链接<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Link'>-->添加链接<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Link'>-->编辑链接<!--</lang>-->_<!--{$nId}--><!--</if>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
@@ -40,17 +40,17 @@ function complete(data,status){
 			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Link'>-->您可以在这里添加或编辑链接，衔接名不能为空。<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Link'>-->衔接图像和URL地址均支持{*}风格值，其中*表示能够正确运行的PHP代码，如{Dyhb::U('home://public/login')}<!--</lang>--></li>
+					<li><!--<lang package='Template/Default/Link'>-->您可以在这里添加或编辑链接，链接名不能为空。<!--</lang>--></li>
+					<li><!--<lang package='Template/Default/Link'>-->链接图像和URL地址均支持{*}风格值，其中*表示能够正确运行的PHP代码，如{Dyhb::U('home://public/login')}<!--</lang>--></li>
 					<li><!--<lang package='Template/Default/Link'>-->当采用{*}风格值的时候，如果*表示的PHP代码不能正常运行，前台将引发致命错误<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Link'>-->添加衔接<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Link'>-->编辑衔接<!--</lang>--><!--</if>--></h3>
+			<header><h3 class="tabs_involved"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/Link'>-->添加链接<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Link'>-->编辑链接<!--</lang>--><!--</if>--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Dyhb::U('link/index')}-->"><!--<lang package='Template/Default/Link'>-->衔接列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('link/index')}-->"><!--<lang package='Template/Default/Link'>-->链接列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--<if condition="empty( $nId )" >--><!--{:Dyhb::U('link/insert')}--><!--<else/>--><!--{:Dyhb::U('link/update')}--><!--</if>-->" method="post" id="linkAdd">
@@ -58,12 +58,12 @@ function complete(data,status){
 					<fieldset>
 						<label for="link_sort"><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></label>
 						<input type="text" name="link_sort" id="link_sort" size="40" value="<!--<if condition="isset( $oValue ) && $oValue:link_sort">--><!--{$oValue:link_sort}--><!--<else/>-->0<!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Link'>-->衔接序号，用于排列节点顺序<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Link'>-->链接序号，用于排列节点顺序<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="link_name"><!--<lang package='Template/Default/Link'>-->衔接名字<!--</lang>--></label>
+						<label for="link_name"><!--<lang package='Template/Default/Link'>-->链接名字<!--</lang>--></label>
 						<input type="text" name="link_name" id="link_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:link_name}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Link'>-->衔接的名字，不能为空<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Link'>-->链接的名字，不能为空<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
 						<label for="link_status"><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></label>
@@ -71,27 +71,27 @@ function complete(data,status){
 							<option value="1" <!--<if condition="isset( $oValue ) && $oValue:link_status==1">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->启用<!--</lang>--></option>
 							<option value="0" <!--<if condition="!isset( $oValue ) || ( isset( $oValue ) && $oValue:link_status==0 ) ">-->selected<!--</if>--> ><!--<lang package='Template/Default/Common'>-->禁用<!--</lang>--></option>
 						</select>
-						<div class="description"><!--<lang package='Template/Default/Link'>-->衔接状态，决定衔接是否在前台显示。<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Link'>-->链接状态，决定链接是否在前台显示。<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="link_url"><!--<lang package='Template/Default/Link'>-->衔接 URL<!--</lang>--></label>
+						<label for="link_url"><!--<lang package='Template/Default/Link'>-->链接 URL<!--</lang>--></label>
 						<input type="text" name="link_url" id="link_url" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:link_url}--><!--</if>-->"/>
 						<div class="description"><!--<lang package='Template/Default/Link'>-->接的URL 地址，不能为空。<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="link_logo"><!--<lang package='Template/Default/Link'>-->衔接 LOGO<!--</lang>--></label>
+						<label for="link_logo"><!--<lang package='Template/Default/Link'>-->链接 LOGO<!--</lang>--></label>
 						<input type="text" name="link_logo" id="link_logo" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:link_logo}--><!--</if>-->"/>
 						<div class="description">
-							<!--<lang package='Template/Default/Link'>-->衔接的Logo 地址，可以为空。<!--</lang>-->
+							<!--<lang package='Template/Default/Link'>-->链接的Logo 地址，可以为空。<!--</lang>-->
 							<!--{if isset( $oValue ) && $oValue['link_logo']}-->
 							<br/><img src="<!--{$oValue['link_logo']|Core_Extend+getEvalValue}-->" />
 							<!--{/if}-->
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="link_description"><!--<lang package='Template/Default/Link'>-->衔接描述<!--</lang>--></label>
+						<label for="link_description"><!--<lang package='Template/Default/Link'>-->链接描述<!--</lang>--></label>
 						<input type="text" name="link_description" id="link_description" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:link_description}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Link'>-->对衔接进行描述，出现在衔接标题上。<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template/Default/Link'>-->对链接进行描述，出现在链接标题上。<!--</lang>--></div>
 					</fieldset>
 				</div>
 				<footer>
