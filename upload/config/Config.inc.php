@@ -42,6 +42,7 @@
     'home@attachment@add' => false,
     'home@attachment@normal_upload' => false,
     'home@attachment@flash_upload' => false,
+   'home@attachment@add_attachmentcomment'=>false,
     'home@space@*' => true,
     'home@homesite@*' => true,
     'home@homehelp@*' => true,
