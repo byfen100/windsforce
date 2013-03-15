@@ -23,6 +23,14 @@ class LoginController extends GlobalchildController{
 		$this->assign('nRememberTime',$GLOBALS['_option_']['remember_time']);
 		$this->assign('arrBindeds',$GLOBALS['_cache_']['sociatype']);
 
+		$sRbacerrorreferer=trim(Dyhb::cookie('_rbacerror_referer_'));
+
+		if(empty($sRbacerrorreferer)){
+			Dyhb::cookie('_rbacerror_referer_',null,-1);
+		}
+
+		$this->assign('sRbacerrorreferer',$sRbacerrorreferer);
+
 		if($nInajax==1){
 			$this->display('public+ajaxlogin');
 		}else{
