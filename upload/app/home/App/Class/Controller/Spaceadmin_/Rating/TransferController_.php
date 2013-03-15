@@ -10,6 +10,7 @@ require_once(Core_Extend::includeFile('function/Credit_Extend'));
 class TransferController extends Controller{
 
 	public function index(){
+
 		// 用户积分数据
 		$nId=intval($GLOBALS['___login___']['user_id']);
 		
