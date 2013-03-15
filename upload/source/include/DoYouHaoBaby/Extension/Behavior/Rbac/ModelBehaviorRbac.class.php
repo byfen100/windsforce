@@ -266,6 +266,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		Dyhb::cookie(md5(APP_NAME.MODULE_NAME.ACTION_NAME),null,-1);
 		Dyhb::cookie('_access_list_',null,-1);
 		Dyhb::cookie('_rbacerror_referer_',null,-1);
+		Dyhb::cookie('_rbacerror_referer_',null,-1);
 	}
 
 	public function checkUsername($sUsername){
