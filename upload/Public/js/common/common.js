@@ -538,7 +538,7 @@ function makemedia(strType,strURL,intWidth,intHeight,strID,sBgColor){
 function updateDownload(nAttachmentid){
 	Dyhb.AjaxSend(D.U('home://attachmentdownload/index?id='+nAttachmentid),'','',function(data,status){
 		if(status==0){
-			alert(data.info);
+			Dyhb.Message(data.info,0,2);
 		}
 	});
 }
@@ -569,7 +569,7 @@ function addMessage(nUid){
 
 	try{
 		arrReturn=eval('('+sHtml+')');
-		alert(arrReturn.info);
+		Dyhb.Message(arrReturn.info,0,2);
 	}catch(ex){
 		oEditNewmessage=windsforceAlert(sHtml,D.L('发送短消息','__COMMON_LANG__@Js/Common_Js'),'',addMessageok,'',500,100);
 	};
