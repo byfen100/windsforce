@@ -17,6 +17,19 @@ WindsForce 即将做的
 	小组管理员相关设置
 
 	// 语言包提炼
+	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-tw\Model\Commoncomment
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Admin\Zh-cn\Template\Homeoption
+	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-cn\Js\Commoncomment
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Js\Comment_Js
+	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-cn\Template\Common.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Commoncomment_Js.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Commoncomment.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Controller\(Link,Nav)
+	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Uploadopiton(Styleoption，Sociatype，Slide,Searchoption,nav)
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Public.php
+	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-cn\Model\Link.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller（template）\Homefresh.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\ucontent\language\Zh-cn\Function\Comment_Extend.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Registeroption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Urloption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Controller\App.lang.php
@@ -44,6 +57,7 @@ WindsForce 即将做的
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Registeroption.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Attachmentdownload.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Attachmentread.lang.php
+	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller(template)\Attachment.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Controller\Spaceadmin.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\app\home\App\Lang\Zh-cn\Template\Spaceadmin.lang.php
 	D:\php2\xampp\htdocs\Windsforce\upload\admin\App\Lang\Zh-cn\Template\Default\Styleoption.lang.php
