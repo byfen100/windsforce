@@ -974,7 +974,7 @@ CREATE TABLE `#@__sociatype` (
   `sociatype_scope` varchar(200) NOT NULL COMMENT '允许的权限',
   `sociatype_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
   `create_dateline` int(10) NOT NULL COMMENT '创建时间',
-  `sociatype_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统社会化类型',
+  `sociatype_issystem` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统系统社会化类型',
   PRIMARY KEY (`sociatype_id`),
   KEY `status` (`sociatype_status`),
   KEY `create_dateline` (`create_dateline`)

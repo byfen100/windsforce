@@ -37,6 +37,8 @@
     'home@stat@*' => true,
     'home@apps@*' => true,
     'home@misc@*' => true,
+    'home@attachmentdownload@*' => true,
+    'home@attachmentread@*' => true,
     'home@attachment@*' => true,
     'home@attachment@show' => false,
     'home@attachment@add' => false,
