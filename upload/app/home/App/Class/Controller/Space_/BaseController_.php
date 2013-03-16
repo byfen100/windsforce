@@ -4,11 +4,14 @@
 
 !defined('DYHB_PATH') && exit;
 
-class BaseController extends Controller{
+/** 导入个人信息处理函数 */
+require_once(Core_Extend::includeFile('function/Profile_Extend'));
 
+class BaseController extends Controller{
+	
+	public $_oUserInfo=null;
+	
 	public function index(){
-		require_once(Core_Extend::includeFile('function/Profile_Extend'));
-		
 		$nId=intval(G::getGpc('id','G'));
 		if(empty($nId)){
 			$nId=$GLOBALS['___login___']['user_id'];
@@ -64,8 +67,6 @@ class BaseController extends Controller{
 
 		$this->display('space+index');
 	}
-
-	public $_oUserInfo=null;
 
 	public function index_title_(){
 		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('个人空间','Controller/Space');

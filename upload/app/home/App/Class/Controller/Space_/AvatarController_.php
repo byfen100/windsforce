@@ -6,6 +6,8 @@
 
 class AvatarController extends Controller{
 
+	public $_oUserInfo=null;
+
 	public function index(){
 		$nId=intval(G::getGpc('id','G'));
 		if(empty($nId)){
@@ -29,8 +31,6 @@ class AvatarController extends Controller{
 
 		$this->display('space+avatar');
 	}
-
-	public $_oUserInfo=null;
 
 	public function index_title_(){
 		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('我的头像','Controller/Space');

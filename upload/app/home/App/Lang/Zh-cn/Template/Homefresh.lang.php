@@ -43,6 +43,7 @@ return array(
 '4cd6f69bb7ed0180a2750bd515fa35d4'=>"暂时没有发现任何新鲜事",
 '42ddc62228bde29a075f2de4837c9f87'=>"个人空间",
 'fbd2b1fb73bbf51487ec69e93e869fd9'=>"共",
+'02bf863a224b14de19b887cfe6e0f80b'=>"随便看看",
 )
 
 ?>

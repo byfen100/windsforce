@@ -30,6 +30,8 @@ Tags: admin, light
 [CURSCRIPT=@comment,home::ucenter,home::public::index,home::stat::explore,home::attachment::show]
 .commoncommentform_content{height:100px;width:80%;}
 .commoncommentform_box{margin-top:30px;}
+.commoncommentform_needloginbox{background:#F5F5F5;padding:10px;}
+.commoncommentform_needloginboxinner{border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:40px 0;}
 [/CURSCRIPT]
 
 /**===============================
@@ -76,14 +78,6 @@ Tags: admin, light
 .homefreshviewcommentlist_box{margin-top:10px;}
 /* 新鲜事已赞 */
 .goodnum_click{color:#4A4A4A;}
-[/CURSCRIPT]
-
-/**===============================
-           新鲜事
-================================*/
-[CURSCRIPT=home::ucenter::view]
-.homefresh_needloginbox{background:#F5F5F5;padding:10px;}
-.homefresh_needloginboxinner{border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:40px 0;}
 [/CURSCRIPT]
 
 /**===============================

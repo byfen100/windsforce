@@ -6,6 +6,8 @@
 
 class RatingsController extends Controller{
 
+	public $_oUserInfo=null;
+	
 	public function index(){
 		Core_Extend::loadCache('rating');
 		Core_Extend::loadCache('ratinggroup');
@@ -36,8 +38,6 @@ class RatingsController extends Controller{
 
 		$this->display('space+ratings');
 	}
-
-	public $_oUserInfo=null;
 
 	public function index_title_(){
 		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('积分','Controller/Space');

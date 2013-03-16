@@ -6,6 +6,8 @@
 
 class FeedController extends Controller{
 
+	public $_oUserInfo=null;
+	
 	public function index(){
 		$nId=intval(G::getGpc('id','G'));
 		if(empty($nId)){
@@ -17,6 +19,7 @@ class FeedController extends Controller{
 			$this->E(Dyhb::L('你指定的用户不存在','Controller/Space'));
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
+			$this->_oUserInfo=$oUserInfo;
 		}
 
 		$this->assign('nId',$nId);
@@ -66,6 +69,18 @@ class FeedController extends Controller{
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 
 		$this->display('space+feed');
+	}
+
+	public function index_title_(){
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('用户动态','Controller/Space');
+	}
+
+	public function index_keywords_(){
+		return $this->index_title_();
+	}
+
+	public function index_description_(){
+		return $this->index_title_();
 	}
 
 }

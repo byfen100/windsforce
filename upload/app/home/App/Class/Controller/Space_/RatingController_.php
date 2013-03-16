@@ -8,7 +8,9 @@
 require_once(Core_Extend::includeFile('function/Credit_Extend'));
 
 class RatingController extends Controller{
-
+	
+	public $_oUserInfo=null;
+	
 	public function index(){
 		Core_Extend::loadCache('rating');
 		Core_Extend::loadCache('ratinggroup');
@@ -43,8 +45,6 @@ class RatingController extends Controller{
 
 		$this->display('space+rating');
 	}
-
-	public $_oUserInfo=null;
 
 	public function index_title_(){
 		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('积分','Controller/Space');

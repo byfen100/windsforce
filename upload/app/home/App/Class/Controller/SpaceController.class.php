@@ -43,4 +43,12 @@ class SpaceController extends InitController{
 		Core_Extend::doControllerAction('Space@Ratings','index');
 	}
 
+	public function friend(){
+		Core_Extend::doControllerAction('Space@Friend','index');
+	}
+
+	public function guestbook(){
+		Core_Extend::doControllerAction('Space@Guestbook','index');
+	}
+
 }

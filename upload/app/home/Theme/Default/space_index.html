@@ -1,25 +1,5 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
-<!--{script}-->
-function addFriend(userid){
-	Dyhb.AjaxSend('<!--{:Dyhb::U('home://friend/add')}-->','ajax=1&uid='+userid,'',function(data,status){
-		if(status==1){
-			window.location.reload();
-		}
-	});
-}
-
-function deleteFriend(friendid,fan){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
-		Dyhb.AjaxSend(D.U('home://friend/delete?friendid='+friendid+(fan=='1'?'&fan=1':'')),'','',function(data,status){
-			if(status==1){
-				window.location.reload();
-			}
-		});
-	});
-}
-<!--{/script}-->
-
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><!--{$oUserInfo:user_name}--></a> <span class="divider">/</span></li>
