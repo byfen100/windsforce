@@ -66,9 +66,9 @@ class AttachmentcommentModel extends CommonModel{
 		}
 	}
 
-	static public function getParentCommentsPage($nFinecommentid,$nHomefreshcommentParentid=0,$nEveryCommentnum=1,$nAttachmentid=0,$bAdminuser=false){
+	static public function getParentCommentsPage($nFinecommentid,$nAttachmentcommentParentid=0,$nEveryCommentnum=1,$nAttachmentid=0,$bAdminuser=false){
 		$arrWhere['attachmentcomment_status']=1;
-		$arrWhere['attachmentcomment_parentid']=$nHomefreshcommentParentid;
+		$arrWhere['attachmentcomment_parentid']=$nAttachmentcommentParentid;
 		$arrWhere['attachment_id']=$nAttachmentid;
 
 		if($bAdminuser===false){

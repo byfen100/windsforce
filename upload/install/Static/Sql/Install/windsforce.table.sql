@@ -211,7 +211,7 @@ CREATE TABLE `#@__attachmentcomment` (
   `attachmentcomment_isreplymail` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否邮件通知，通知给评论者',
   `attachmentcomment_ismobile` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为手机评论',
   `attachmentcomment_auditpass` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核是否通过',
-  `attachment_id` char(10) NOT NULL COMMENT '附件ID',
+  `attachment_id` int(10) NOT NULL DEFAULT '0' COMMENT '附件ID',
   PRIMARY KEY (`attachmentcomment_id`),
   KEY `user_id` (`user_id`),
   KEY `create_dateline` (`create_dateline`),
@@ -423,7 +423,7 @@ CREATE TABLE `#@__homefreshcomment` (
   `homefreshcomment_isreplymail` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否邮件通知，通知给评论者',
   `homefreshcomment_ismobile` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为手机评论',
   `homefreshcomment_auditpass` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核是否通过',
-  `homefresh_id` char(10) NOT NULL COMMENT '新鲜事ID',
+  `homefresh_id` int(10) NOT NULL DEFAULT '0' COMMENT '新鲜事ID',
   PRIMARY KEY (`homefreshcomment_id`),
   KEY `user_id` (`user_id`),
   KEY `homefresh_id` (`homefresh_id`),
@@ -1112,6 +1112,36 @@ CREATE TABLE `#@__user` (
   KEY `user_password` (`user_password`),
   KEY `user_name` (`user_name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_userguestbook`
+--
+
+DROP TABLE IF EXISTS `#@__userguestbook`;
+CREATE TABLE `#@__userguestbook` (
+  `userguestbook_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+  `create_dateline` int(10) NOT NULL COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID，在线用户评论',
+  `userguestbook_name` varchar(50) NOT NULL COMMENT '名字',
+  `userguestbook_content` text NOT NULL COMMENT '内容',
+  `userguestbook_email` varchar(300) NOT NULL COMMENT '邮件',
+  `userguestbook_url` varchar(300) NOT NULL COMMENT 'URL',
+  `userguestbook_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否显示',
+  `userguestbook_ip` varchar(16) NOT NULL COMMENT 'IP',
+  `userguestbook_parentid` int(10) NOT NULL DEFAULT '0' COMMENT '父级ID',
+  `userguestbook_isreplymail` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否邮件通知，通知给留言者',
+  `userguestbook_ismobile` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为手机评论',
+  `userguestbook_auditpass` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核是否通过',
+  `userguestbook_userid` int(10) NOT NULL DEFAULT '0' COMMENT '被评论用户ID',
+  PRIMARY KEY (`userguestbook_id`),
+  KEY `user_id` (`user_id`),
+  KEY `create_dateline` (`create_dateline`),
+  KEY `userguestbook_status` (`userguestbook_status`),
+  KEY `userguestbook_userid_id` (`userguestbook_userid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

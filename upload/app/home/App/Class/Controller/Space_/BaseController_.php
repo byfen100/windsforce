@@ -65,6 +65,27 @@ class BaseController extends Controller{
 
 		$this->assign('arrInfoMenus',$arrInfoMenus);
 
+		// 最近留言
+		$arrWhere=array();
+		$arrWhere['userguestbook_parentid']=0;
+		$arrWhere['userguestbook_status']=1;
+		$arrWhere['userguestbook_userid']=$nId;
+
+		if($GLOBALS['___login___']['user_id']!=$oUserInfo['user_id']){
+			$arrWhere['userguestbook_auditpass']=1;
+			$this->assign('bAuditpass',false);
+		}else{
+			$this->assign('bAuditpass',true);
+		}
+
+		$nTotalRecord=UserguestbookModel::F()->where($arrWhere)->all()->getCounts();
+		$arrUserguestbookLists=UserguestbookModel::F()->where($arrWhere)->limit(0,$arrOptionData['homefreshcomment_list_num'])->all()->order('`create_dateline` DESC')->limit(0,$arrOptionData['homefreshcomment_list_num'])->getAll();
+
+		$this->assign('nDisplaySeccode',$GLOBALS['_cache_']['home_option']['seccode_comment_status']);
+		$this->assign('sUsersite',$arrUserprofile['userprofile_site']);
+		$this->assign('nTotalUserguestbook',$nTotalRecord);
+		$this->assign('arrUserguestbookLists',$arrUserguestbookLists);
+
 		$this->display('space+index');
 	}
 

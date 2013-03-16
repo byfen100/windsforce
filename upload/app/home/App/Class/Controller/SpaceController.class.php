@@ -51,4 +51,12 @@ class SpaceController extends InitController{
 		Core_Extend::doControllerAction('Space@Guestbook','index');
 	}
 
+	public function add_userguestbook(){
+		Core_Extend::doControllerAction('Space@Adduserguestbook','index');
+	}
+
+	public function audit_userguestbook(){
+		Core_Extend::doControllerAction('Space@Audituserguestbook','index');
+	}
+
 }

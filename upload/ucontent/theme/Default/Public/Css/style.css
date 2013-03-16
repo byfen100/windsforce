@@ -27,7 +27,7 @@ Tags: admin, light
 /**===============================
            评论公用CSS
 ================================*/
-[CURSCRIPT=@comment,home::ucenter,home::public::index,home::stat::explore,home::attachment::show]
+[CURSCRIPT=@comment,home::ucenter,home::public::index,home::stat::explore,home::attachment::show,home::space]
 .commoncommentform_content{height:100px;width:80%;}
 .commoncommentform_box{margin-top:30px;}
 .commoncommentform_needloginbox{background:#F5F5F5;padding:10px;}
