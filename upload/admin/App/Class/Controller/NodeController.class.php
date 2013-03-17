@@ -53,10 +53,12 @@ class NodeController extends InitController{
 
 	public function AInsertObject_($oModel){
 		$oModel->safeInput();
+		$oModel->node_level=$oModel->getLevel();
 	}
 
 	public function AUpdateObject_($oModel){
 		$oModel->safeInput();
+		$oModel->node_level=$oModel->getLevel();
 	}
 
 	public function bForeverdelete_(){
