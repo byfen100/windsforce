@@ -1,7 +1,7 @@
 <?php
 /** DoYouHaoBaby Framework Lang File, Do not to modify it! */
 return array(
-'9cfec2a1fd4b361b60f85e6dd3a560d6'=>"Ïµ½yÉç•þ»¯Ž¤Ì–Ÿo·¨„h³ý",
+'9cfec2a1fd4b361b60f85e6dd3a560d6'=>"ç³»çµ±ç¤¾æœƒåŒ–å¸³è™Ÿç„¡æ³•åˆªé™¤",
 )
 
 ?>

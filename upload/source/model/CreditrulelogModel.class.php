@@ -12,6 +12,7 @@ class CreditrulelogModel extends CommonModel{
 			'props'=>array(
 				'creditrulelog_id'=>array('readonly'=>true),
 				'creditrule'=>array(Db::HAS_ONE=>'CreditruleModel','source_key'=>'creditrule_id','target_key'=>'creditrule_id'),
+				'user'=>array(Db::HAS_ONE=>'UserModel','source_key'=>'user_id','target_key'=>'user_id'),
 			),
 			'attr_protected'=>'creditrulelog_id',
 			'check'=>array(

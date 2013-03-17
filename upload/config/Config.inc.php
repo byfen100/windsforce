@@ -20,7 +20,7 @@
   'USER_AUTH_ON' => true,
   'USER_AUTH_TYPE' => 1,
   'USER_AUTH_KEY' => 'auth_id',
-  'ADMIN_USERID' => '1',
+  'ADMIN_USERID' => ',1',
   'ADMIN_AUTH_KEY' => 'administrator',
   'USER_AUTH_MODEL' => 'user',
   'AUTH_PWD_ENCODER' => 'md5',

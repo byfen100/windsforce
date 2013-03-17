@@ -41,6 +41,7 @@ return array(
 '4a3ebd0ef27212de3b0c39e6a9701b1d'=>"搜索設置",
 'bbff05f1dea5e29b035bb0f3a8ff4e50'=>"用戶提醒",
 'f7871b7ba53411ef40a72b7287e91dac'=>"用戶動態",
+'e97a25df3c65098df94d39f432241b9a'=>"積分收益",
 )
 
 ?>

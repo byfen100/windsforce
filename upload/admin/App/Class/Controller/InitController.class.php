@@ -108,7 +108,7 @@ class InitController extends Controller{
 		}
 
 		$sSortBy=strtoupper(G::getGpc('sort_'))=='ASC'?'ASC':'DESC' ;
-		$sOrder=G::getGpc('order_')? G::getGpc('order_'):$sName.'_id';
+		$sOrder=G::getGpc('order_')?G::getGpc('order_'):$sName.'_id';
 		$this->assign('sSortByUrl',strtolower($sSortBy)=='desc'? 'asc':'desc');
 		$this->assign('sSortByDescription',strtolower($sSortBy)=='desc'?Dyhb::L('倒序','Controller/Common'):Dyhb::L('升序','Controller/Common'));
 		$this->assign('sOrder',$sOrder);
