@@ -949,12 +949,12 @@ WINDSFORCE;
 		Image::thumbGd($sFilepath,$nWidth,$nHeight);
 	}
 
-	static public function ubb($sContent){
+	static public function ubb($sContent,$bHomefreshmessage=true,$nOuter=0){
 		if(!Dyhb::classExists('Ubb2html')){
 			require_once(Core_Extend::includeFile('class/Ubb2html'));
 		}
 
-		$oUbb2html=Dyhb::instance('Ubb2html',$sContent);
+		$oUbb2html=Dyhb::instance('Ubb2html',array($sContent,$bHomefreshmessage,$nOuter));
 		$sContent=$oUbb2html->convert();
 
 		return $sContent;

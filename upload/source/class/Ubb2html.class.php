@@ -15,12 +15,23 @@ class Ubb2html{
 	public $_sLoginurl='';
 	public $_sRegisterurl='';
 	public $_nOuter=0;
+	public $_bHomefreshmessage=true;
 
-	public function __construct($sContent,$nOuter=0){
-		$this->_sContent=$sContent;
+	public function __construct($arrData=array()){
+		if(isset($arrData[0])){
+			$this->_sContent=$arrData[0];
+		}
+
 		$this->_sLoginurl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=public&a=login';
 		$this->_sRegisterurl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=public&a=register';
-		$this->_nOuter=$nOuter;
+
+		if(isset($arrData[1])){
+			$this->_bHomefreshmessage=$arrData[1];
+		}
+
+		if(isset($arrData[2])){
+			$this->_nOuter=$arrData[2];
+		}
 	}
 
 	public function convert($sContent=null){
@@ -143,13 +154,24 @@ class Ubb2html{
 	}
 
 	public function makeMessage($sMessage){
-		if($GLOBALS['___login___']!==FALSE){
-			$sUrl=__ROOT__.'/index.php?app=home&c=ucenter&a=index&at=';
+		if($this->_bHomefreshmessage===true){
+			if($GLOBALS['___login___']!==FALSE){
+				$sUrl=__ROOT__.'/index.php?app=home&c=ucenter&a=index&at=';
+			}else{
+				$sUrl=__ROOT__.'/index.php?app=home&c=stat&a=explore&at=';
+			}
+
+			$sUrl.=urlencode($sMessage);
 		}else{
-			$sUrl=__ROOT__.'/index.php?app=home&c=stat&a=explore&at=';
+			$oUser=UserModel::F('user_name=?',$sMessage)->getOne();
+			if(!empty($oUser['user_id'])){
+				$sUrl=__ROOT__.'/index.php?app=home&c=space&a=index&id='.$oUser['user_id'];
+			}else{
+				$sUrl="javascript:void(0);";
+			}
 		}
 
-		return '<a href="'.$sUrl.urlencode($sMessage).'">@'.$sMessage.'</a>';
+		return '<a href="'.$sUrl.'"'.($this->_bHomefreshmessage===true?'':' target="_blank"').'>@'.$sMessage.'</a>';
 	}
 
 	public function makeMp3($sSrc){

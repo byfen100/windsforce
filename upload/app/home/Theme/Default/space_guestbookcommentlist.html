@@ -16,7 +16,7 @@
 										<td><h5><a href="<!--{:Dyhb::U('home://space@?id='.$oUserguestbookList['user_id'])}-->"><!--{$oUserguestbookList:user:user_name}--></a>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->于<!--</lang>-->&nbsp;<!--{$oUserguestbookList['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->发布<!--</lang>-->
 											</h5>
 											<div class="userguestbook-content">
-												<!--{$oUserguestbookList['userguestbook_content']|nl2br|Core_Extend+ubb}-->
+												<!--{$oUserguestbookList['userguestbook_content']|nl2br|Core_Extend+ubb=false}-->
 												<!--{if $bAuditpass===true}-->
 												&nbsp;
 												<!--{if $oUserguestbookList['userguestbook_auditpass']==0}-->
