@@ -28,6 +28,8 @@ Tags: admin, light
            评论公用CSS
 ================================*/
 [CURSCRIPT=@comment,home::ucenter,home::public::index,home::stat::explore,home::attachment::show,home::space]
+.commoncomment_box{margin-top:30px;}
+.commoncommentlist{margin-top:10px;}
 .commoncommentform_content{height:100px;width:80%;}
 .commoncommentform_box{margin-top:30px;}
 .commoncommentform_needloginbox{background:#F5F5F5;padding:10px;}
@@ -73,9 +75,6 @@ Tags: admin, light
 .homefreshcomment_date{}
 .homefreshcommentitem_separator{width:100%;margin-top:9px;margin-bottom:8px;border-bottom:1px dashed {INTERVAL_LINE_COLOR};}
 .homefreshchildcommentlist_box{margin-top:15px;}
-/* 新鲜事查看 */
-#homefreshviewcomment_box{margin-top:30px;}
-.homefreshviewcommentlist_box{margin-top:10px;}
 /* 新鲜事已赞 */
 .goodnum_click{color:#4A4A4A;}
 [/CURSCRIPT]
