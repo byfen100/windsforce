@@ -43,7 +43,7 @@ class AddcommentController extends GlobalchildController{
 		}
 
 		// 评论内容长度检测
-		$sCommentContent=trim(G::getGpc('homefreshcomment_content'));
+		$sCommentContent=G::cleanJs(strip_tags(trim(G::getGpc('homefreshcomment_content'))));
 		$nCommentMinLen=intval($arrOptions['comment_min_len']);
 		if(!Comment_Extend::commentMinLen($sCommentContent)){
 			$this->E(Dyhb::L('评论内容最少的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMinLen));
@@ -127,6 +127,11 @@ class AddcommentController extends GlobalchildController{
 		// 保存评论数据
 		$_POST=array_merge($_POST,$_GET);
 		$oHomefreshcomment->safeInput();
+
+		$arrParsecontent=Core_Extend::contentParsetag($sCommentContent);
+		$sCommentContent=$arrParsecontent['content'];
+
+		$oHomefreshcomment->homefreshcomment_content=$sCommentContent;
 		$oHomefreshcomment->save(0);
 
 		if($oHomefreshcomment->isError()){
@@ -169,6 +174,30 @@ class AddcommentController extends GlobalchildController{
 						Comment_Extend::addNotice(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
+					}
+				}
+			}
+
+			// 发送评论提醒
+			if($arrParsecontent['atuserids']){
+				foreach($arrParsecontent['atuserids'] as $nAtuserid){
+					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
+						$sHomefreshcommentmessage=G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100);
+						
+						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事评论中提到了你','Controller/Homefresh').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefreshcomment_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
+
+						$arrNoticedata=array(
+							'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
+							'user_name'=>$GLOBALS['___login___']['user_name'],
+							'@homefreshcomment_link'=>'home://fresh@?id='.$oHomefreshcomment['homefresh_id'].'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'],
+							'content_message'=>$sHomefreshcommentmessage,
+						);
+
+						try{
+							Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$nAtuserid,'athomefreshcomment',$oHomefreshcomment['homefreshcomment_id']);
+						}catch(Exception $e){
+							$this->E($e->getMessage());
+						}
 					}
 				}
 			}

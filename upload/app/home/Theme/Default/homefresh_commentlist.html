@@ -16,7 +16,7 @@
 										<td><h5><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshcommentList['user_id'])}-->"><!--{$oHomefreshcommentList:user:user_name}--></a>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->于<!--</lang>-->&nbsp;<!--{$oHomefreshcommentList['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->发布<!--</lang>-->
 											</h5>
 											<div class="homefreshcomment-content">
-												<!--{$oHomefreshcommentList['homefreshcomment_content']|nl2br}-->
+												<!--{$oHomefreshcommentList['homefreshcomment_content']|nl2br|Core_Extend+ubb}-->
 												<!--{if $GLOBALS['___login___']!==false}-->
 												<span class="pipe">|</span>
 												<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefreshcommentList['homefresh_id']}-->','<!--{$oHomefreshcommentList['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->回复<!--</lang>--></a>
@@ -52,7 +52,7 @@
 														</div>
 														<div class="homefreshcomment_content">
 															<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshchildcomment['user_id'])}-->"><!--{$oHomefreshchildcomment->user_id|UserModel+getUsernameById}--></a>:
-															<!--{$oHomefreshchildcomment->homefreshcomment_content|nl2br}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em>
+															<!--{$oHomefreshchildcomment->homefreshcomment_content|nl2br|Core_Extend+ubb}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em>
 															<!--{if $GLOBALS['___login___']!==false}-->
 															<span class="pipe">|</span>
 															<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshchildcomment['homefreshcomment_parentid']}-->',1,'<!--{$oHomefreshchildcomment:user:user_name}-->','<!--{$oHomefreshchildcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->回复<!--</lang>--></a>

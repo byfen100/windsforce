@@ -86,6 +86,31 @@ class AddController extends Controller{
 				$this->E($e->getMessage());
 			}
 
+			// 发送提醒
+			if($arrParsemessage['atuserids']){
+				foreach($arrParsemessage['atuserids'] as $nAtuserid){
+					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
+						$sHomefreshmessage=G::subString(strip_tags($oHomefresh['homefresh_message']),0,100);
+						
+						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事中提到了你','Controller/Homefresh').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefresh_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
+
+						$arrNoticedata=array(
+							'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
+							'user_name'=>$GLOBALS['___login___']['user_name'],
+							'@homefresh_link'=>'home://fresh@?id='.$oHomefresh['homefresh_id'],
+							'content_message'=>$sHomefreshmessage,
+						);
+
+						try{
+							Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$nAtuserid,'athomefresh',$oHomefresh['homefresh_id']);
+						}catch(Exception $e){
+							$this->E($e->getMessage());
+						}
+					}
+				}
+			}
+
+
 			$arrHomefreshData=$oHomefresh->toArray();
 			$arrHomefreshData['space']=Dyhb::U('home://space@?id='.$oHomefresh['user_id']);
 			$arrHomefreshData['avatar']=Core_Extend::avatar($oHomefresh['user_id'],'small');

@@ -12,7 +12,7 @@ class UserguestbookModel extends CommonModel{
 			'props'=>array(
 				'userguestbook_id'=>array('readonly'=>true),
 				'user'=>array(Db::BELONGS_TO=>'UserModel','source_key'=>'user_id','target_key'=>'user_id'),
-				'guestbookuser'=>array(Db::BELONGS_TO=>'UserguestbookModel','source_key'=>'userguestbook_id','target_key'=>'user_id','skip_empty'=>true),
+				'userguestbook'=>array(Db::BELONGS_TO=>'UserguestbookModel','source_key'=>'userguestbook_id','target_key'=>'user_id','skip_empty'=>true),
 			),
 			'attr_protected'=>'userguestbook_id',
 			'autofill'=>array(
@@ -100,15 +100,15 @@ class UserguestbookModel extends CommonModel{
 			return false;
 		}
 
-		$bAdminuser=$GLOBALS['___login___']['user_id']!=$oTryUserguestbook->attachment->user_id?false:true;
+		$bAdminuser=$GLOBALS['___login___']['user_id']!=$oTryUserguestbook->userguestbook->user_id?false:true;
 		if($oTryUserguestbook['userguestbook_auditpass']==0 && $bAdminuser===false){
 			return false;
 		}
 
 		// 分析出评论所在的分页值
-		$nPage=self::getParentCommentsPage($nCommentnumId,0,$GLOBALS['_cache_']['home_option']['homefreshcomment_list_num'],$oTryUserguestbook['attachment_id'],$bAdminuser);
+		$nPage=self::getParentCommentsPage($nCommentnumId,0,$GLOBALS['_cache_']['home_option']['homefreshcomment_list_num'],$oTryUserguestbook['userguestbook_id'],$bAdminuser);
 
-		return Dyhb::U('home://file@?id='.$oTryUserguestbook['attachment_id'].($nPage>1?'&page='.$nPage:'')).'#comment-'.$nCommentnumId;
+		return Dyhb::U('home://space@?id='.$oTryUserguestbook['userguestbook_userid'].'&type=guestbook'.($nPage>1?'&page='.$nPage:'')).'#comment-'.$nCommentnumId;
 	}
 
 }

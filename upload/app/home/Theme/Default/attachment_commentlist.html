@@ -16,7 +16,7 @@
 										<td><h5><a href="<!--{:Dyhb::U('home://space@?id='.$oAttachmentcommentList['user_id'])}-->"><!--{$oAttachmentcommentList:user:user_name}--></a>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->于<!--</lang>-->&nbsp;<!--{$oAttachmentcommentList['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->发布<!--</lang>-->
 											</h5>
 											<div class="attachmentcomment-content">
-												<!--{$oAttachmentcommentList['attachmentcomment_content']|nl2br}-->
+												<!--{$oAttachmentcommentList['attachmentcomment_content']|nl2br|Core_Extend+ubb}-->
 												<!--{if $bAuditpass===true}-->
 												&nbsp;
 												<!--{if $oAttachmentcommentList['attachmentcomment_auditpass']==0}-->
