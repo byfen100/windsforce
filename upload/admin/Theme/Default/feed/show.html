@@ -1,0 +1,53 @@
+<!--<include file="public+header" />-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Feed'>-->查看用户动态<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Feed'>-->查看用户动态<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template/Default/Feed'>-->在这里你会看到用户动态的详情<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+		
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Feed'>-->用户动态详情<!--</lang>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Dyhb::U('feed/index')}-->"><!--<lang package='Template/Default/Feed'>-->用户动态列表<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<div class="module_content">
+				<table class="tablesorter" cellspacing="0" id="checkList">
+					<tbody>
+						<tr>
+							<td><!--<lang package='Template/Default/Feed'>-->用户动态来源<!--</lang>--></td>
+							<td>
+								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$arrFeeddata['user_id']}-->" target="_blank">
+									<img src="<!--{:Core_Extend::avatar( $arrFeeddata['user_id'],'small' )}-->" width="48px" height="48px" title="<!--{$arrFeeddata['feed_username']}-->" alt="<!--{$arrFeeddata['feed_username']}-->" style="margin:auto;"/>
+								</a><br/>
+								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$arrFeeddata['user_id']}-->" target="_blank"><!--{$arrFeeddata['feed_username']}--></a>
+
+							</td>
+						</tr>
+						<tr>
+							<td><!--<lang package='Template/Default/Feed'>-->用户动态日期<!--</lang>--></td>
+							<td><!--{$arrFeeddata['create_dateline']|date='Y-m-d H:i',**}--></td>
+						</tr>
+						<tr>
+							<td><!--<lang package='Template/Default/Feed'>-->用户动态内容<!--</lang>--></td>
+							<td>
+								<!--{$arrFeeddata['feed_content']|Core_Extend+ubb}-->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</article>
+
+<!--<include file="public+footer">-->

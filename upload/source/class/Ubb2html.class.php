@@ -537,6 +537,14 @@ class Ubb2html{
 	}
 
 	protected function template($sTitle,$sContent,$sId='ubb_box'){
+		if(APP_NAME==='admin'){
+			return <<<WINDSFORCE
+				<div class="ubb_media_box {$sId}" style="overflow:hidden;width:100%;">
+					<p>{$sContent}</p>
+				</div>
+WINDSFORCE;
+		}
+		
 		return <<<WINDSFORCE
 			<div class="ubb_media_box {$sId}" style="overflow:hidden;width:100%;">
 				<table width="100%" class="table" style="table-layout:fixed;word-wrap:break-word; word-break;break-all;">
