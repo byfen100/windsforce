@@ -6,6 +6,9 @@
 
 class ViewController extends Controller{
 
+	protected $_oHomefresh=null;
+	protected $_sHomefreshtitle='';
+	
 	public function index(){
 		$nId=intval(G::getGpc('id','G'));
 
@@ -41,6 +44,9 @@ class ViewController extends Controller{
 
 		$sHomefreshtitle=$oHomefresh->homefresh_title?G::subString($oHomefresh->homefresh_title,0,$arrOptionData['homefreshtitle_substring_num']):'Title Not Found!';
 
+		$sHomefreshwebtitle=G::subString($oHomefresh->homefresh_title?$oHomefresh->homefresh_title:strip_tags(Core_Extend::ubb($oHomefresh->homefresh_message)),0,30);
+		$this->_sHomefreshtitle=$sHomefreshwebtitle;
+
 		// 读取评论列表
 		$arrWhere=array();
 		$arrWhere['homefreshcomment_parentid']=0;
@@ -70,7 +76,6 @@ class ViewController extends Controller{
 
 		// 取得个人主页
 		$oUserprofile=UserprofileModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
-		$this->_sHomefreshtitle=$sHomefreshtitle;
 
 		// 我的新鲜事数量
 		$nMyhomefreshnum=Homefresh_Extend::getMyhomefreshnum($GLOBALS['___login___']['user_id']);
@@ -86,8 +91,6 @@ class ViewController extends Controller{
 
 		$this->display('homefresh+view');
 	}
-
-	protected $_oHomefresh=null;
 
 	public function view_title_(){
 		return $this->_sHomefreshtitle;
