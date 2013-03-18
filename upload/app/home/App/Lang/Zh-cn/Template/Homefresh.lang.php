@@ -44,6 +44,7 @@ return array(
 '42ddc62228bde29a075f2de4837c9f87'=>"个人空间",
 'fbd2b1fb73bbf51487ec69e93e869fd9'=>"共",
 '02bf863a224b14de19b887cfe6e0f80b'=>"随便看看",
+'0d828feb8e1083e70fbfb44fda54a6e4'=>"更多新鲜事",
 )
 
 ?>

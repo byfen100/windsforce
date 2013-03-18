@@ -197,7 +197,7 @@ $(document).ready(function(){
 						<table class="table">
 							<thead>
 								<tr>
-									<th colspan="2"><!--<lang package='Template/Homefresh'>-->新鲜事<!--</lang>--></th>
+									<th colspan="2"><!--<lang package='Template/Homefresh'>-->新鲜事<!--</lang>-->&nbsp;<a href="<!--{if $GLOBALS['___login___']===false}--><!--{:Dyhb::U('home://stat/explore')}--><!--{d*else}--><!--{:Dyhb::U('home://ucenter/index?type=all')}--><!--{/if}-->" title="<!--<lang package='Template/Homefresh'>-->更多新鲜事<!--</lang>-->"><i class="icon-th-list"></i></a></th>
 								</tr>
 							</thead>
 							<tbody id="homefreshlist_box">
@@ -276,7 +276,7 @@ $(document).ready(function(){
 				</div>
 
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新话题<!--</lang>--></div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新话题<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" title="<!--<lang package='Template/Public'>-->更多话题<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<div id="home_topiclist_box" class="home_topiclist_box">
 					</div>
 				</div>
@@ -296,7 +296,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->活跃会员<!--</lang>--></div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->活跃会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template/Public'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<p><ul class="thumbnails">
 							<!--{if is_array($arrActiveusers)}-->
 							<!--<foreach for=arrActiveusers value=oActiveuser>-->
@@ -314,7 +314,7 @@ $(document).ready(function(){
 					</p>
 				</div>
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新会员<!--</lang>--></div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template/Public'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<p><ul class="thumbnails">
 							<!--{if is_array($arrNewusers)}-->
 							<!--<foreach for=arrNewusers value=oNewuser>-->
@@ -332,7 +332,7 @@ $(document).ready(function(){
 					</p>
 				</div>
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新帮助<!--</lang>--></div>
+					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新帮助<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://homehelp/index')}-->" title="<!--<lang package='Template/Public'>-->更多帮助<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<div class="commonlist">
 						<ul id="home_newhelplist_box" class="home_newhelp_box">
 							<!--{if is_array($arrNewhelps)}-->

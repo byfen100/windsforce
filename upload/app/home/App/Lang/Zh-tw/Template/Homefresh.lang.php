@@ -43,6 +43,8 @@ return array(
 '4cd6f69bb7ed0180a2750bd515fa35d4'=>"暫時沒有發現任何新鮮事",
 '42ddc62228bde29a075f2de4837c9f87'=>"個人空間",
 'fbd2b1fb73bbf51487ec69e93e869fd9'=>"共",
+'02bf863a224b14de19b887cfe6e0f80b'=>"隨便看看",
+'0d828feb8e1083e70fbfb44fda54a6e4'=>"更多新鮮事",
 )
 
 ?>

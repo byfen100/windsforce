@@ -16,9 +16,6 @@ class RatingController extends Controller{
 		Core_Extend::loadCache('ratinggroup');
 
 		$nId=intval(G::getGpc('id','G'));
-		if(empty($nId)){
-			$nId=$GLOBALS['___login___']['user_id'];
-		}
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
