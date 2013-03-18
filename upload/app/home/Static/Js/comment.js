@@ -207,7 +207,7 @@ function homefreshcommentSubmit(){
 					'<div class="homefreshcomment_avatar">'+
 						'<img src="'+data.avatar+'" class="thumbnail"/>'+
 					'</div>'+
-					'<div class="homefreshcomment-content">'+
+					'<div class="homefreshcomment_content">'+
 						'<a href="'+data.url+'">'+data.comment_name+'</a>:'+data.homefreshcomment_content+'<br/>'+
 						'<em class="homefreshcomment_date">'+data.create_dateline+'</em>'+
 						'<span class="pipe">|</span>';
@@ -245,7 +245,7 @@ function homefreshcommentSubmit(){
 			}
 
 			$("#homefreshcomment_"+nCurrentHomefreshid).html(data.num);
-			$('#homefreshcommentitem_'+data.homefreshcomment_id+' .homefreshcomment-content').emotionsToHtml();
+			$('#homefreshcommentitem_'+data.homefreshcomment_id+' .homefreshcomment_content').emotionsToHtml();
 		}
 	});
 }
