@@ -13,6 +13,8 @@ var nHomefreshviewcomment=1;
 <!--{script}-->
 $(function(){
 	$('.homefresh-content').emotionsToHtml();
+	$('.homefreshcomment-content').emotionsToHtml();
+	
 	$('#homefreshcomment_content').autoResize({
 		onResize:function(){
 			$(this).css({opacity:0.8});
@@ -24,7 +26,25 @@ $(function(){
 		extraSpace:0,
 		min:'100px'
 	});
+
+	$(".face-icon").jqfaceedit({txtAreaObj:$("#homefreshcomment_content"),textareaid:'homefreshcomment_content',containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 });
+
+function showMedia(){
+	$('#homefreshcomment-media-box').toggle('fast');
+}
+
+function insertHomefreshcommentattachment(nAttachmentid){
+	insertAttachmentNormal('homefreshcomment_content',nAttachmentid);
+}
+
+function insertHomefreshcommentvideo(sContent){
+	insertVideoNormal('homefreshcomment_content',sContent);
+}
+
+function insertHomefreshcommentmusic(sContent){
+	insertMusicNormal('homefreshcomment_content',sContent);
+}
 <!--{/script}-->
 
 		<ul class="breadcrumb">

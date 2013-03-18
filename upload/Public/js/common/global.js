@@ -369,3 +369,28 @@ function insertVideo(editor,sContent){
 	addEditorContent(editor,sContent);
 	oEditNewvideo.close();
 }
+
+/** 普通文本框插入附件 && 需要Public/js/jquery/jquery.insertcontent.js */
+function insertAttachmentNormal(id,nAttachmentid){
+	$('#'+id).insertAtCaret('[attachment]'+nAttachmentid+'[/attachment]');
+}
+
+function insertVideoNormal(id,sContent){
+	if(!sContent){
+		windsforceAlert(D.L('视频地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
+		return false;
+	}
+	
+	$('#'+id).insertAtCaret('[video]'+sContent+'[/video]');
+	oEditNewvideo.close();
+}
+
+function insertMusicNormal(id,sContent){
+	if(!sContent){
+		windsforceAlert(D.L('音乐地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
+		return false;
+	}
+	
+	$('#'+id).insertAtCaret('[mp3]'+sContent+'[/mp3]');
+	oEditNewmusic.close();
+}

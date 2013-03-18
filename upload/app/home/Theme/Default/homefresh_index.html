@@ -10,6 +10,7 @@ $(function(){
 	editor=loadEditorThin('homefresh_message');
 	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 	$('.homefresh-content').emotionsToHtml();
+	$('.homefreshcomment-content').emotionsToHtml();
 });
 
 function addHomefresh(){
@@ -236,7 +237,7 @@ var nHomefreshviewcomment=0;
 										<div class="homefreshcomment_item" id="homefreshcommentitem_<!--{$oHomefreshcomment['homefreshcomment_id']}-->">
 											<div class="homefreshcomment_avatar"><img src="<!--{:Core_Extend::avatar($oHomefreshcomment['user_id'],'small')}-->" width="48px" height="48px" class="thumbnail" />
 											</div>
-											<div class="homefreshcomment_content">
+											<div class="homefreshcomment-content">
 												<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefreshcomment['user_id']}-->"><!--{$oHomefreshcomment->user_id|UserModel+getUsernameById}--></a>:
 												<!--{$oHomefreshcomment->homefreshcomment_content|G+subString=0,$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num']|Core_Extend+ubb}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshcomment->create_dateline|Core_Extend+timeFormat}--></em>
 												<span class="pipe">|</span>
@@ -249,7 +250,7 @@ var nHomefreshviewcomment=0;
 														<div class="homefreshcomment_avatar">
 															<img src="<!--{:Core_Extend::avatar($oHomefreshchildcomment['user_id'],'small')}-->" width="48px" height="48px" class="thumbnail" />
 														</div>
-														<div class="homefreshcomment_content">
+														<div class="homefreshcomment-content">
 															<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshchildcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefreshchildcomment['user_id']}-->"><!--{$oHomefreshchildcomment->user_id|UserModel+getUsernameById}--></a>:
 															<!--{$oHomefreshchildcomment->homefreshcomment_content|G+subString=0,$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num']|Core_Extend+ubb}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em>
 															<span class="pipe">|</span>

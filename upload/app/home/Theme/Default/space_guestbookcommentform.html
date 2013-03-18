@@ -23,8 +23,16 @@
 							<input type="hidden" name="userguestbook_name" id="userguestbook_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="userguestbookform_name">
 							<input type="hidden" name="userguestbook_email" id="userguestbook_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="userguestbookform_email">
 							<input type="hidden" name="userguestbook_url" id="userguestbook_url" value="<!--{$sUsersite}-->" class="userguestbookform_url">
-							<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->内容<!--</lang>--><em class="red">*</em></label>
-							<textarea name="userguestbook_content" id="userguestbook_content" rows="6" class="commoncommentform_content userguestbookcommentform_area"></textarea>
+							<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->内容<!--</lang>--><em class="red">*</em>&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>)</label>
+							<div id="userguestbook-media-box" class="common-media-box none">
+								<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
+								<a href="javascript:void(0);" onclick="globalAddattachment('insertUserguestbookattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
+								<a href="javascript:void(0);" onclick="addVideo('insertUserguestbookvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
+								<a href="javascript:void(0);" onclick="addMusic('insertUserguestbookmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+							</div>
+							<div id="emotion_parentcontainer">
+								<textarea name="userguestbook_content" id="userguestbook_content" rows="6" class="commoncommentform_content userguestbookcommentform_area"></textarea>
+							</div>
 							<label class="checkbox">
 								<input type="checkbox" name="userguestbook_isreplymail" id="userguestbook_isreplymail" value="1">&nbsp;<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->回复时邮件通知<!--</lang>-->
 							</label>

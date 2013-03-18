@@ -50,7 +50,7 @@
 														<div class="homefreshcomment_avatar">
 															<img src="<!--{:Core_Extend::avatar($oHomefreshchildcomment['user_id'],'small')}-->" width="48px" height="48px" class="thumbnail" />
 														</div>
-														<div class="homefreshcomment_content">
+														<div class="homefreshcomment-content">
 															<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshchildcomment['user_id'])}-->"><!--{$oHomefreshchildcomment->user_id|UserModel+getUsernameById}--></a>:
 															<!--{$oHomefreshchildcomment->homefreshcomment_content|nl2br|Core_Extend+ubb=false}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em>
 															<!--{if $GLOBALS['___login___']!==false}-->
