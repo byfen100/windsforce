@@ -8,7 +8,8 @@
 <!--{script}-->
 $(function(){
 	editor=loadEditorThin('homefresh_message');
-	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+	$(".homefresh-face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+
 	$('.homefresh-content').emotionsToHtml();
 	$('.homefreshcomment-content').emotionsToHtml();
 });
@@ -92,6 +93,27 @@ function insertHomefreshtopic(sContent){
 	addEditorContent(editor,sContent);
 	oEditNewhomefreshtopic.close();
 }
+
+function showMedia(){
+	$('#homefreshcomment-media-box').toggle('fast');
+	showEmotion();
+}
+
+function insertHomefreshcommentattachment(nAttachmentid){
+	insertAttachmentNormal('homefreshcomment_content',nAttachmentid);
+}
+
+function insertHomefreshcommentvideo(sContent){
+	insertVideoNormal('homefreshcomment_content',sContent);
+}
+
+function insertHomefreshcommentmusic(sContent){
+	insertMusicNormal('homefreshcomment_content',sContent);
+}
+
+function showEmotion(){
+	$(".face-icon").jqfaceedit({txtAreaObj:$("#homefreshcomment_content"),textareaid:'homefreshcomment_content',containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+}
 <!--{/script}-->
 
 <!--{script}-->
@@ -137,7 +159,7 @@ var nHomefreshviewcomment=0;
 											<textarea class="input-xlarge" name="homefresh_message" id="homefresh_message" rows="5" style="width:100%;"><!--{if isset($oHomefreshtag)}-->#<!--{$oHomefreshtag['homefreshtag_name']}-->#&nbsp;<!--{/if}--></textarea>
 										</div>
 										<div id="homefresh-media-box" class="common-media-box">
-											<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a> 
+											<a href="javascript:void(0);" class="homefresh-face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a> 
 											<a href="javascript:void(0);" onclick="addHomefreshtopic();" class="icon_add_topic"><!--<lang package='Template/Homefresh'>-->话题<!--</lang>--></a> 
 											<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
 											<a href="javascript:void(0);" onclick="addVideo('insertHomefreshvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
@@ -291,7 +313,10 @@ var nHomefreshviewcomment=0;
 						<!--{if $GLOBALS['_cache_']['home_option']['audit_comment']==1}-->
 						<div class="alert"><!--<lang package='Template/Homefresh'>-->系统开启了评论审核功能，你发表的评论只有新鲜事的作者审核通过了才能够显示<!--</lang>--></div>
 						<!--{/if}-->
-						<textarea class="homefreshcommentform_area"></textarea><br />
+						<div id="emotion_parentcontainer">
+							<textarea name="homefreshcomment_content" id="homefreshcomment_content" class="commoncommentform_content homefreshcommentform_area"></textarea>
+						</div>
+						<br />
 						<input type="hidden" name="homefreshcomment_name" id="homefreshcomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->">
 						<input type="hidden" name="homefreshcomment_email" id="homefreshcomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->">
 						<input type="hidden" name="homefreshcomment_url" id="homefreshcomment_url" value="<!--{:UserprofileModel::getUserprofileById($GLOBALS['___login___']['user_id'])}-->">
@@ -300,7 +325,14 @@ var nHomefreshviewcomment=0;
 							<div class="left">
 								<label class="checkbox">
 									<input type="checkbox" name="homefreshcomment_isreplymail" id="homefreshcomment_isreplymail" value="1">&nbsp;<!--<lang package='Template/Homefresh'>-->回复时邮件通知<!--</lang>-->
+									&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>)
 								</label>
+								<div id="homefreshcomment-media-box" class="common-media-box none">
+									<a href="javascript:void(0);" onclick="showEmotion();" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshcommentattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="addVideo('insertHomefreshcommentvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="addMusic('insertHomefreshcommentmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+								</div>
 							</div>
 							<div class="right">
 								<input class="btn" type="button" value="<!--<lang package='Template/Homefresh'>-->取消<!--</lang>-->" onclick="homefreshcommentCancel();"/>&nbsp;

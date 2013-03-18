@@ -32,6 +32,7 @@ $(function(){
 
 function showMedia(){
 	$('#homefreshcomment-media-box').toggle('fast');
+	showEmotion();
 }
 
 function insertHomefreshcommentattachment(nAttachmentid){
@@ -44,6 +45,10 @@ function insertHomefreshcommentvideo(sContent){
 
 function insertHomefreshcommentmusic(sContent){
 	insertMusicNormal('homefreshcomment_content',sContent);
+}
+
+function showEmotion(){
+	$(".face-icon").jqfaceedit({txtAreaObj:$("#homefreshcomment_content"),textareaid:'homefreshcomment_content',containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 }
 <!--{/script}-->
 

@@ -203,11 +203,11 @@ function homefreshcommentSubmit(){
 
 	Dyhb.AjaxSend(D.U('home://ucenter/add_homefreshcomment'),sUrlParameter,'',function(data,status){
 		if(status==1){
-			var sCommentReply='<div class="homefreshcomment_item">'+
+			var sCommentReply='<div class="homefreshcomment_item" id="homefreshcommentitem_'+data.homefreshcomment_id+'">'+
 					'<div class="homefreshcomment_avatar">'+
 						'<img src="'+data.avatar+'" class="thumbnail"/>'+
 					'</div>'+
-					'<div class="homefreshcomment_content">'+
+					'<div class="homefreshcomment-content">'+
 						'<a href="'+data.url+'">'+data.comment_name+'</a>:'+data.homefreshcomment_content+'<br/>'+
 						'<em class="homefreshcomment_date">'+data.create_dateline+'</em>'+
 						'<span class="pipe">|</span>';
@@ -245,6 +245,7 @@ function homefreshcommentSubmit(){
 			}
 
 			$("#homefreshcomment_"+nCurrentHomefreshid).html(data.num);
+			$('#homefreshcommentitem_'+data.homefreshcomment_id+' .homefreshcomment-content').emotionsToHtml();
 		}
 	});
 }
