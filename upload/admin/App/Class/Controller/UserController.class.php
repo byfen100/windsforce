@@ -121,6 +121,7 @@ class UserController extends InitController{
 		$arrIds=explode(',',$sId);
 
 		foreach($arrIds as $nId){
+			// 用户资料数据
 			$oUserprofileMeta=UserprofileModel::M();
 			$oUserprofileMeta->deleteWhere(array('user_id'=>$nId));
 
@@ -128,6 +129,7 @@ class UserController extends InitController{
 				$this->E($oUserprofileMeta->getErrorMessage());
 			}
 
+			// 用户统计数据
 			$oUsercountMeta=UsercountModel::M();
 			$oUsercountMeta->deleteWhere(array('user_id'=>$nId));
 			
@@ -135,11 +137,21 @@ class UserController extends InitController{
 				$this->E($oUsercountMeta->getErrorMessage());
 			}
 
+			
+			// 用户角色数据
 			$oUserroleMeta=UserroleModel::M();
 			$oUserroleMeta->deleteWhere(array('user_id'=>$nId));
 			
 			if($oUserroleMeta->isError()){
 				$this->E($oUserroleMeta->getErrorMessage());
+			}
+
+			// 用户留言数据
+			$oUserguestbookMeta=UserguestbookModel::M();
+			$oUserguestbookMeta->deleteWhere(array('userguestbook_userid'=>$nId));
+			
+			if($oUserguestbookMeta->isError()){
+				$this->E($oUserguestbookMeta->getErrorMessage());
 			}
 		}
 

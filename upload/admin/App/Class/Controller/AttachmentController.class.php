@@ -118,6 +118,20 @@ class AttachmentController extends InitController{
 				$this->update_attachmentnum_($nAttachmentcategory);
 			}
 		}
+
+		$arrIds=explode(',',$sId);
+
+		foreach($arrIds as $nId){
+			// 附件评论数据
+			$oAttachmentcommentMeta=AttachmentcommentModel::M();
+			$oAttachmentcommentMeta->deleteWhere(array('attachment_id'=>$nId));
+			
+			if($oAttachmentcommentMeta->isError()){
+				$this->E($oAttachmentcommentMeta->getErrorMessage());
+			}
+		}
+
+		$this->cache_site_();
 	}
 
 	protected function delete_attachment_($nId){

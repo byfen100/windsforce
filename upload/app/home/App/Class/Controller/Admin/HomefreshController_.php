@@ -67,9 +67,9 @@ class HomefreshController extends InitController{
 
 		$arrIds=explode(',',$sId);
 
-		$oHomefreshcommentMeta=HomefreshcommentModel::M();
 		if(is_array($arrIds)){
 			foreach($arrIds as $nId){
+				$oHomefreshcommentMeta=HomefreshcommentModel::M();
 				$oHomefreshcommentMeta->deleteWhere(array('homefresh_id'=>$nId));
 
 				if($oHomefreshcommentMeta->isError()){
