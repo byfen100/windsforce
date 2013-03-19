@@ -392,7 +392,7 @@ class Ubb2html{
 				return $this->template($sTitle,$sContent);
 			}
 		}else{
-			return "<a onclick=\"updateDownload('".$oAttachment['attachment_id']."');\" href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"/></a>";
+			return "<a href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"/></a>";
 		}
 	}
 	
@@ -408,7 +408,9 @@ class Ubb2html{
 			
 			return $this->template($sTitle,$sContent);
 		}else{
-			return "<a href=\"".Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			
+
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
 
@@ -424,7 +426,7 @@ class Ubb2html{
 			
 			return $this->template($sTitle,$sContent);
 		}else{
-			return "<a href=\"".Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
 
@@ -440,7 +442,7 @@ class Ubb2html{
 			
 			return $this->template($sTitle,$sContent);
 		}else{
-			return "<a href=\"".Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
 
@@ -456,7 +458,7 @@ class Ubb2html{
 			
 			return $this->template($sTitle,$sContent);
 		}else{
-			return "<a href=\"".Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
 
@@ -472,7 +474,7 @@ class Ubb2html{
 			
 			return $this->template($sTitle,$sContent);
 		}else{
-			return "<a href=\"".Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
 
@@ -491,7 +493,7 @@ class Ubb2html{
 			
 			return $this->template($sTitle,$sContent);
 		}else{
-			return "<a onclick=\"updateDownload('".$oAttachment['attachment_id']."');\" href=\"".Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
 
@@ -510,7 +512,7 @@ class Ubb2html{
 			
 			return $this->template($sTitle,$sContent);
 		}else{
-			return "<a href=\"".Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
 	
@@ -561,6 +563,10 @@ WINDSFORCE;
 				</table>
 			</div>
 WINDSFORCE;
+	}
+
+	protected function getAttachmentouterurl($nId){
+		return __ROOT__.'/index.php?app=home&c=attachment&a=show&id='.$nId;
 	}
 
 }
