@@ -1,5 +1,13 @@
 <!--<include file="public+header" />-->
 
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	$('.feed-content').emotionsToHtml();
+});
+<!--{/script}-->
+
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Feed'>-->用户动态列表<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Feed'>-->用户动态列表<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
@@ -34,6 +42,7 @@
 							<th width="25px"><input type="checkbox" onclick="checkAll('checkList')"></th> 
 							<th width="55px"><a href="javascript:sortBy('feed_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('feed_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
 							<th><a href="javascript:sortBy('user_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_id')}-->><!--<lang package='Template/Default/Feed'>-->用户<!--</lang>--></a></th>
+							<th><!--<lang package='Template/Default/Feed'>-->动态内容<!--</lang>--></th>
 							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
 						</tr>
 					</thead>
@@ -48,6 +57,7 @@
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:feed_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 								</div>
 							</td>
+							<td><div class="feed-content"><!--{$TheController:feedContent($value)|Core_Extend+ubb=false}--></div></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 						</tr>
 						<!--</foreach>-->

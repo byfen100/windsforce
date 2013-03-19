@@ -37,9 +37,13 @@
 									</td>
 									<td width="*" class="notice-content">
 										<!--{if $arrNoticedata['notice_type']=='system'}-->
-										<!--{$arrNoticedata['notice_content']|Core_Extend+replaceSiteVar|nl2br|Core_Extend+ubb}-->
+										<!--{$arrNoticedata['notice_content']|Core_Extend+replaceSiteVar|nl2br|Core_Extend+ubb=false}-->
 										<!--{d*else}-->
+										<!--{if $arrNoticedata['notice_type']=='athomefresh'}-->
 										<!--{$arrNoticedata['notice_content']|Core_Extend+ubb}-->
+										<!--{d*else}-->
+										<!--{$arrNoticedata['notice_content']|Core_Extend+ubb=false}-->
+										<!--{/if}-->
 										<!--{/if}-->
 										<!--{if $arrNoticedata['notice_fromnum']>1}-->
 										<div class="notice-note"><!--<lang package='Template/Notice'>-->还有<!--</lang>-->&nbsp;<!--{$arrNoticedata['notice_fromnum']-1}-->&nbsp;<!--<lang package='Template/Notice'>-->个相同通知被忽略<!--</lang>--></div>

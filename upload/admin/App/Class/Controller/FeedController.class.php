@@ -58,4 +58,25 @@ class FeedController extends InitController{
 		}
 	}
 
+	public function feedContent($oFeed){
+		$arrData=@unserialize($oFeed['feed_data']);
+
+		$arrTempdata=array();
+		if(is_array($arrData)){
+			foreach($arrData as $nK=>$sValueTemp){
+				$sTempkey='{'.$nK.'}';
+
+				// @开头表示URL，调用Dyhb::U来生成地址
+				if(strpos($nK,'@')===0){
+					$sValueTemp='Dyhb::U('.$sValueTemp.')';
+					$sValueTemp='javascript:alert(\''.$sValueTemp.'\');';
+				}
+
+				$arrTempdata[$sTempkey]=$sValueTemp;
+			}
+		}
+
+		return strtr($oFeed['feed_template'],$arrTempdata);
+	}
+
 }

@@ -39,7 +39,7 @@ $(function(){
 								<!--{/if}-->
 								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrFeeddata['user_id'])}-->"><!--{$arrFeeddata['feed_username']}--></a>
 							</td>
-							<td width="*" class="statfeed-content"><!--{$arrFeeddata['feed_content']|Core_Extend+ubb}--></td>
+							<td width="*" class="statfeed-content"><!--{$arrFeeddata['feed_content']|Core_Extend+ubb=false}--></td>
 						</tr>
 						<!--</foreach>-->
 					</tbody>
