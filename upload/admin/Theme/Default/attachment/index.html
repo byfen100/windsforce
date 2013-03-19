@@ -59,6 +59,7 @@ a.preview img{margin:10px 5px;}
 					<!--{if isset($oUser)}-->
 					<li><a href="<!--{:Dyhb::U('attachment/index?uid='.$oUser['user_id'])}-->"><!--<lang package='Template/Default/Attachment'>-->用户<!--</lang>-->&nbsp;(<!--{$oUser['user_name']}-->)</a></li>
 					<!--{/if}-->
+					<li><a href="<!--{:Dyhb::U('attachmentcomment/index')}-->"><!--<lang package='Template/Default/Attachment'>-->多媒体评论列表<!--</lang>--></a></li>
 					<li class="active"><a href="<!--{:Dyhb::U('attachmentcategory/index')}-->"><!--<lang package='Template/Default/Attachment'>-->多媒体专辑列表<!--</lang>--></a></li>
 				</ul>
 			</header>

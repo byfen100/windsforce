@@ -4,6 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入附件函数 */
 require_once(Core_Extend::includeFile('function/Attachment_Extend'));
 
 /** 导入Home模型 */

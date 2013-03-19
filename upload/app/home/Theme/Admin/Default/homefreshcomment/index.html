@@ -1,5 +1,13 @@
 <!--<include file="public+header" />-->
 
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	$('.homefreshcomment_content').emotionsToHtml();
+});
+<!--{/script}-->
+
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
@@ -81,7 +89,7 @@
 							</td>
 							<td><!--{$value:homefreshcomment_email}--></td>
 							<td><!--{$value:homefreshcomment_url}--></td>
-							<td><!--{$value:homefreshcomment_content|strip_tags|G+subString=0,80}--></td>
+							<td><div class="homefreshcomment_content"><!--{$value:homefreshcomment_content|strip_tags|G+subString=0,80|Core_Extend+ubb=false}--></div></td>
 							<td><!--{$value:homefreshcomment_ip}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:homefreshcomment_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
