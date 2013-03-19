@@ -4,7 +4,7 @@
 function update(){
 	$("#submit_button").attr("disabled", "disabled");
 	$("#submit_button").val( 'update...' );
-	Dyhb.AjaxSubmit('attachmentAdd','<!--{:Dyhb::U('attachment/update')}-->','',function(){
+	Dyhb.AjaxSubmit('attachmentcommentAdd','<!--{:Dyhb::U('attachmentcomment/update')}-->','',function(){
 		$("#submit_button").attr("disabled", false);
 		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
 	});
@@ -13,7 +13,7 @@ function update(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Attachment'>-->编辑多媒体<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Attachment'>-->编辑多媒体<!--</lang>-->_<!--{$nId}-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Attachmentcomment'>-->编辑多媒体评论<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Attachmentcomment'>-->编辑多媒体评论<!--</lang>-->_<!--{$nId}-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
@@ -22,54 +22,38 @@ function update(){
 			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Attachment'>-->您可以在这里编辑多媒体<!--</lang>--></li>
+					<li><!--<lang package='Template/Default/Attachmentcomment'>-->这里可以对多媒体评论进行编辑<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Attachment'>-->编辑多媒体<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Attachmentcomment'>-->编辑多媒体评论<!--</lang>--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Dyhb::U('attachment/index')}-->"><!--<lang package='Template/Default/Attachment'>-->多媒体列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('attachmentcomment/index')}-->"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体评论列表<!--</lang>--></a></li>
 				</ul>
 			</header>
-			<form action="<!--{:Dyhb::U('attachment/update')}-->" method="post" id="attachmentAdd">
+			<form action="<!--{:Dyhb::U('attachmentcomment/update')}-->" method="post" id="attachmentcommentAdd">
 				<div class="module_content">
 					<fieldset>
-						<!--{~$arrAttachmentSize=Attachment_Extend::getImagesize($oValue)}-->
-						<div style="padding:3px 20px;">
-							<table>
-								<tr valign="top">
-									<td width="50px"><p><a href="javascript:void(0);" target="_blank"><img src="<!--{:Attachment_Extend::getAttachmentPreview($oValue)}-->" alt="<!--{$oValue['attachment_name']}-->" width="46" height="60"></a>
-										</p>
-									</td>
-									<td><p><strong><!--<lang package='Template/Default/Attachment'>-->文件名<!--</lang>-->：</strong> <!--{$oValue['attachment_name']}--></p>
-										<p><strong><!--<lang package='Template/Default/Attachment'>-->文件类型<!--</lang>-->：</strong> <!--{$oValue['attachment_type']}--></p>
-										<p><strong><!--<lang package='Template/Default/Attachment'>-->上传日期<!--</lang>-->：</strong> <!--{$oValue['create_dateline']|Core_Extend+timeFormat}--></p>
-										<!--{if $arrAttachmentSize}-->
-										<p><strong><!--<lang package='Template/Default/Attachment'>-->尺寸<!--</lang>-->：</strong> <!--{$arrAttachmentSize[0]}-->&nbsp;×&nbsp;<!--{$arrAttachmentSize[1]}--></p>
-										<!--{/if}-->
-									</td>
-								</tr>
-							</table>
-						</div>
+						<label for="attachmentcomment_name"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体评论名字<!--</lang>--></label>
+						<input type="text" name="attachmentcomment_name" id="attachmentcomment_name" size="40" value="<!--{$oValue:attachmentcomment_name}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体评论名字，最大字符为50<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="attachment_name"><!--<lang package='Template/Default/Attachment'>-->多媒体名字<!--</lang>--><em class="red">*</em></label>
-						<input type="text" name="attachment_name" id="attachment_name" size="40" value="<!--{$oValue:attachment_name}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Attachment'>-->多媒体名字，不能为空<!--</lang>--></div>
+						<label for="attachmentcomment_email"><!--<lang package='Template/Default/Attachmentcomment'>-->邮件地址<!--</lang>--></label>
+						<input type="text" name="attachmentcomment_email" id="attachmentcomment_email" size="40" value="<!--{$oValue:attachmentcomment_email}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体评论邮件地址，最大字符为300<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="attachment_alt"><!--<lang package='Template/Default/Attachment'>-->多媒体替代文本<!--</lang>--></label>
-						<input type="text" name="attachment_alt" id="attachment_alt" size="40" value="<!--{$oValue:attachment_alt}-->"/>
+						<label for="attachmentcomment_url"><!--<lang package='Template/Default/Attachmentcomment'>-->作者URL<!--</lang>--></label>
+						<input type="text" name="attachmentcomment_url" id="attachmentcomment_url" size="40" value="<!--{$oValue:attachmentcomment_url}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体评论作者URL，最大字符为300<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="attachment_description"><!--<lang package='Template/Default/Attachment'>-->多媒体描述<!--</lang>--></label>
-						<textarea name="attachment_description" id="attachment_description" rows="5"><!--{$oValue:attachment_description}--></textarea>
-					</fieldset>
-					<fieldset>
-						<label for="url"><!--<lang package='Template/Default/Attachment'>-->多媒体文件地址<!--</lang>--></label>
-						<input type="text" name="url" id="url" size="40" value="<!--{:Attachment_Extend::getAttachmenturl($oValue)}-->" readonly/>
+						<label for="attachmentcomment_content"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体评论内容<!--</lang>--></label>
+						<p style="padding-left:10px;"><textarea name="attachmentcomment_content" id="attachmentcomment_content" style="width:700px;height:200px;"><!--{$oValue:attachmentcomment_content}--></textarea></p>
+						<div class="description"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体评论内容信息<!--</lang>--></div>
 					</fieldset>
 				</div>
 				<footer>
