@@ -96,7 +96,8 @@ class Ubb2html{
 			"/\[strike\](.+?)\[\/strike\]/i",
 			"/\[sup\](.+?)\[\/sup\]/i",
 			"/\[sub\](.+?)\[\/sub\]/i",
-			"/\s*\[php\][\n\r]*(.+?)[\n\r]*\[\/php\]\s*/ie"
+			"/\s*\[php\][\n\r]*(.+?)[\n\r]*\[\/php\]\s*/ie",
+			"/\[fly\](.+?)\[\/fly\]/i",
 		);
 		
 		$arrRegUbbReplace=array(
@@ -120,7 +121,8 @@ class Ubb2html{
 			"<del>\\1</del>",
 			"<sup>\\1</sup>",
 			"<sub>\\1</sub>",
-			"\$this->xhtmlHighlightString('\\1')"
+			"\$this->xhtmlHighlightString('\\1')",
+			"<marquee scrollamount=\"3\" behavior=\"alternate\" width=\"90%\">\\1</marquee>",
 		);
 		
 		$sContent=preg_replace($arrRegUbbSearch,$arrRegUbbReplace,$sContent);
@@ -138,6 +140,68 @@ class Ubb2html{
 
 		return $sContent;
 	}
+
+	public function convertUsersign($sContent=null){
+		if($sContent===null){
+			$sContent=$this->_sContent;
+		}
+
+		// 解析特殊标签
+		$sContent=str_replace(array('{','}'),array('&#123;','&#125;'),$sContent);
+
+		// 换行和分割线
+		$arrBasicUbbSearch=array('[hr]','[br]');
+		$arrBasicUbbReplace=array('<hr/>','<br/>');
+		$sContent=str_replace($arrBasicUbbSearch,$arrBasicUbbReplace,$sContent);
+
+		// URL和图像标签
+		$sContent=preg_replace(
+			"/\[url=([^\[]*)\]\[img(align=L| align=M| align=R)?(width=[0-9]+)?(height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]\[\/url\]/ise",
+			"\$this->makeimgWithurl('\\1','\\2','\\3','\\4','\\5')",
+			$sContent
+		);
+		
+		$sContent=preg_replace(
+			"/\[img(align=L| align=M| align=R)?(width=[0-9]+)?(height=[0-9]+)?\]\s*(\S+?)\s*\[\/img\]/ise",
+			"\$this->makeImg('\\1','\\2','\\3','\\4')",
+			$sContent
+		);
+
+		$sContent=preg_replace("/(?<=[^\]a-z0-9-=\"'\\/])((https?|ftp|gopher|news|telnet|rtsp|mms|callto|ed2k):\/\/|www\.)([a-z0-9\/\-_+=.~!%@?#%&;:$\\()|]+)/i","[autourl]\\1\\3[/autourl]",$sContent);
+
+		$arrRegUbbSearch=array(
+			"/\[autourl\]([^\[]*)\[\/autourl\]/ie",
+			"/\[url\]([^\[]*)\[\/url\]/ie",
+			"/\[url=([^\[]*)\](.+?)\[\/url\]/ie",
+			"/\[email\]([^\[]*)\[\/email\]/is",
+			"/\[color=([a-zA-Z0-9#]+?)\](.+?)\[\/color\]/i",
+			"/\[b\](.+?)\[\/b\]/i",
+			"/\[i\](.+?)\[\/i\]/i",
+			"/\[u\](.+?)\[\/u\]/i",
+			"/\[strike\](.+?)\[\/strike\]/i",
+			"/\[sup\](.+?)\[\/sup\]/i",
+			"/\[sub\](.+?)\[\/sub\]/i",
+		);
+		
+		$arrRegUbbReplace=array(
+			"\$this->makeUrl('\\1',1)",
+			"\$this->makeUrl('\\1','0')",
+			"\$this->makeUrl('\\1','0','\\2')",
+			"<a href=\"mailto:\\1\">\\1</a>",
+			"<span style=\"color: \\1;\">\\2</span>",
+			"<strong>\\1</strong>",
+			"<em>\\1</em>",
+			"<u>\\1</u>",
+			"<del>\\1</del>",
+			"<sup>\\1</sup>",
+			"<sub>\\1</sub>",
+		);
+		
+		$sContent=preg_replace($arrRegUbbSearch,$arrRegUbbReplace,$sContent);
+
+		return $sContent;
+	}
+
 
 	public function makeimgWithurl($sUrl,$sAlignCode,$sWidthCode,$sHeightCode,$sSrc){
 		return $this->makeImg($sAlignCode,$sWidthCode,$sHeightCode,$sSrc,$sUrl);
@@ -320,10 +384,12 @@ class Ubb2html{
 	}
 	
 	public function makeCode($sStr){
+		$sTitle=Dyhb::L('代码','__COMMON_LANG__@Class/Ubb2html');
+		
 		$sStr=str_replace('[autourl]','',$sStr);
 		$sStr=str_replace('[/autourl]','',$sStr);
 		
-		return "<div class=\"ubb_code\">{$sStr}</div>";
+		return $this->template($sTitle,$sStr,'ubb_code');
 	}
 	
 	public function makeUrl($sUrl,$nAutolink=0,$sLinkText=''){
@@ -350,15 +416,17 @@ class Ubb2html{
 	}
 	
 	public function xhtmlHighlightString($sStr){
+		$sTitle=Dyhb::L('代码','__COMMON_LANG__@Class/Ubb2html');
+
 		$sHlt=highlight_string($sStr,true);
 		if(PHP_VERSION>'5'){
-			return "<div class=\"ubb_code\" style=\"overflow: auto;\">{$sHlt}</div>";
+			return $this->template($sTitle,$sHlt,'ubb_code');
 		}
 		
 		$sFon=str_replace(array('<font ','</font>'),array('<span ','</span>'),$sHlt);
 		$sRet=preg_replace('#color="(.*?)"#','style="color: \\1"',$sFon);
 		
-		return "<div class=\"ubb_code\" style=\"overflow: auto;\">{$sRet}</div>";
+		return $this->template($sTitle,$sHlt,'ubb_code');
 	}
 
 	public function makeAttachment($nId){

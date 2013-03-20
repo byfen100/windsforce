@@ -19,6 +19,7 @@ return array(
 'fe0e8bf76839940dac08c7941e6f98f2'=>"注册",
 '072ca6daf7f23935032a7fc4b1c3e97a'=>"或者",
 '402d19e50fff44c827a4f3b608bd5812'=>"登录",
+'06e004ef21414c06d3e4ff2cefaf6a04'=>"代码",
 )
 
 ?>

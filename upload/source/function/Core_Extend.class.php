@@ -949,13 +949,18 @@ WINDSFORCE;
 		Image::thumbGd($sFilepath,$nWidth,$nHeight);
 	}
 
-	static public function ubb($sContent,$bHomefreshmessage=true,$nOuter=0){
+	static public function ubb($sContent,$bHomefreshmessage=true,$bUsersign=false,$nOuter=0){
 		if(!Dyhb::classExists('Ubb2html')){
 			require_once(Core_Extend::includeFile('class/Ubb2html'));
 		}
 
 		$oUbb2html=Dyhb::instance('Ubb2html',array($sContent,$bHomefreshmessage,$nOuter));
-		$sContent=$oUbb2html->convert();
+		
+		if($bUsersign===true){
+			$sContent=$oUbb2html->convertUsersign();
+		}else{
+			$sContent=$oUbb2html->convert();
+		}
 
 		return $sContent;
 	}

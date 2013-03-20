@@ -46,4 +46,8 @@ class MiscController extends InitController{
 		Core_Extend::doControllerAction('Misc@Newnoticenum','index');
 	}
 
+	public function ubb(){
+		Core_Extend::doControllerAction('Misc@Ubb','index');
+	}
+
 }
