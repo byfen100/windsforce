@@ -29,6 +29,7 @@ body{height:100%;overflow:auto;}
 				<ul class="nav nav-list">
 					<li class="nav-header"><!--<lang package='Template/Ucenter'>-->我的动态<!--</lang>--></li>
 					<li <!--{if ACTION_NAME==='index'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><i class="icon-envelope <!--{if ACTION_NAME==='index'}-->icon-white<!--{/if}-->"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->新鲜事<!--</lang>--></a></li>
+					<li <!--{if in_array(ACTION_NAME,array('tag','tags'))}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag')}-->"><i class="icon-star <!--{if in_array(ACTION_NAME,array('tag','tags'))}-->icon-white<!--{/if}-->"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->新鲜事话题<!--</lang>--></a></li>
 					<li <!--{if ACTION_NAME==='feed'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed')}-->"><i class="icon-list <!--{if ACTION_NAME==='feed'}-->icon-white<!--{/if}-->"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->用户动态<!--</lang>--></a></li>
 					<li class="nav-header"><!--<lang package='Template/Ucenter'>-->我的地盘<!--</lang>--></li>
 					<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><i class="icon-cog"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->修改资料<!--</lang>--></a></li>

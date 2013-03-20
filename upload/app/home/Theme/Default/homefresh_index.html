@@ -10,7 +10,7 @@ $(function(){
 	editor=loadEditorThin('homefresh_message');
 	$(".homefresh-face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 
-	$('.homefresh_content').emotionsToHtml();
+	$('.homefresh-content').emotionsToHtml();
 	$('.homefreshcomment_content').emotionsToHtml();
 });
 
@@ -139,7 +139,7 @@ var nHomefreshviewcomment=0;
 						<ul id="home_hotfreshtaglist_box" class="home_hotfreshtaglist_box">
 							<!--{if is_array($arrHothomefreshtags)}-->
 							<!--<foreach for=arrHothomefreshtags value=oHothomefreshtag>-->
-							<li><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&key=<!--{$oHothomefreshtag['homefreshtag_name']|urlencode}-->"><!--{$oHothomefreshtag['homefreshtag_name']|G+subString=0,20}--></a>&nbsp;(<!--{$oHothomefreshtag['homefreshtag_totalcount']}-->)</li>
+							<li><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&key=<!--{$oHothomefreshtag['homefreshtag_name']|urlencode}-->">#<!--{$oHothomefreshtag['homefreshtag_name']|G+subString=0,20}-->#</a>&nbsp;(<!--{$oHothomefreshtag['homefreshtag_totalcount']}-->)</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<li><!--<lang package='Template/Homefresh'>-->你没有发现任何话题<!--</lang>--></li>
@@ -245,7 +245,7 @@ var nHomefreshviewcomment=0;
 								<td>
 									<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>-->
 									</h4>
-									<div class="homefresh_content">
+									<div class="homefresh-content">
 										<!--{$oHomefresh['homefresh_message']|strip_tags|G+subString=0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']|Core_Extend+ubb}-->
 									</div>
 									<div class="homefresh-count">

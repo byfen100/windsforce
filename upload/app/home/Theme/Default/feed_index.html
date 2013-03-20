@@ -1,5 +1,13 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	$('.feed_content').emotionsToHtml();
+});
+<!--{/script}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></a> <span class="divider">/</span></li>
@@ -46,12 +54,12 @@
 									<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrFeeddata['user_id'])}-->"><!--{$arrFeeddata['feed_username']}--></a>
 								</td>
 								<td>
-									<!--{$arrFeeddata['feed_content']|Core_Extend+ubb=false}-->
+									<div class="feed_content"><!--{$arrFeeddata['feed_content']|Core_Extend+ubb=false}--></div>
 								</td>
 							</tr>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<tr id="homefresh_no">
+							<tr id="feed_no">
 								<td><p><!--<lang package='Template/Feed'>-->暂无任何动态<!--</lang>--></p></td>
 							</tr>
 							<!--{/if}-->

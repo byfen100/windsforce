@@ -53,4 +53,19 @@ class Homefresh_Extend{
 		}
 	}
 
+	public static function getHomefreshtagBydate($nDate,$nNum){
+		$nData=intval($nDate);
+		$nNum=intval($nNum);
+
+		if($nNum<1){
+			$nNum=1;
+		}
+
+		if($nDate<3600){
+			$nDate=3600;
+		}
+
+		return HomefreshtagModel::F('homefreshtag_status=? AND create_dateline>?',1,(CURRENT_TIMESTAMP-$nDate))->order('homefreshtag_totalcount DESC')->limit(0,$nNum)->getAll();
+	}
+
 }

@@ -130,17 +130,10 @@ class IndexController extends Controller{
 
 	protected function get_homefreshtag_(){
 		$nHomefreshucenterhottagnum=intval($GLOBALS['_cache_']['home_option']['homefresh_ucenterhottagnum']);
-		if($nHomefreshucenterhottagnum<1){
-			$nHomefreshucenterhottagnum=1;
-		}
-
 		$nDate=intval($GLOBALS['_cache_']['home_option']['home_hothomefreshtag_date']);
-		if($nDate<3600){
-			$nDate=3600;
-		}
-		
+
 		// 读取热门话题
-		$arrHothomefreshtags=HomefreshtagModel::F('homefreshtag_status=? AND create_dateline>?',1,(CURRENT_TIMESTAMP-$nDate))->order('homefreshtag_totalcount DESC')->limit(0,$nHomefreshucenterhottagnum)->getAll();
+		$arrHothomefreshtags=Homefresh_Extend::getHomefreshtagBydate($nDate,$nHomefreshucenterhottagnum);
 
 		$this->assign('arrHothomefreshtags',$arrHothomefreshtags);
 	}

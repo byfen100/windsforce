@@ -71,6 +71,9 @@ return array(
 		'home@ucenter@index'=>true,
 		'home@ucenter@homefreshtopic'=>true,
 		'home@ucenter@audit_homefreshcomment'=>true,
+		'home@ucenter@feed'=>true,
+		'home@ucenter@tag'=>true,
+		'home@ucenter@tags'=>true,
 	 ),
 
 	// 时区

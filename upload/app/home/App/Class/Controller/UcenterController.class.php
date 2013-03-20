@@ -45,5 +45,13 @@ class UcenterController extends InitController{
 	public function feed(){
 		Core_Extend::doControllerAction('Ucenter@Feed/Index','index');
 	}
+
+	public function tag(){
+		Core_Extend::doControllerAction('Ucenter@Tag/Index','index');
+	}	
+	
+	public function tags(){
+		Core_Extend::doControllerAction('Ucenter@Tag/Tags','index');
+	}
 	
 }

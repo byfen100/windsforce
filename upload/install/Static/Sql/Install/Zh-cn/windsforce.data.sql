@@ -188,7 +188,9 @@ INSERT INTO `#@__homeoption` (`homeoption_name`, `homeoption_value`) VALUES
 ('homefresh_ucenterhottagnum', '8'),
 ('home_hothomefreshtag_date', '3600'),
 ('notice_list_num', '10'),
-('feed_list_num', '20');
+('feed_list_num', '20'),
+('homefreshtag_list_num', '15'),
+('homefreshtag_hot_num', '10');
 
 -- --------------------------------------------------------
 

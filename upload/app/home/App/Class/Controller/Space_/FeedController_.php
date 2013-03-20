@@ -22,7 +22,6 @@ class FeedController extends Controller{
 		$this->assign('nId',$nId);
 
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
-		$arrOptionData['feed_list_num']=20;
 
 		// 动态列表
 		$arrWhere['user_id']=$nId;

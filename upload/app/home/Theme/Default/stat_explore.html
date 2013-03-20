@@ -89,7 +89,7 @@ $(document).ready(function(){
 						<ul id="stat_hotfreshtaglist_box" class="stat_hotfreshtaglist_box">
 							<!--{if is_array($arrHothomefreshtags)}-->
 							<!--<foreach for=arrHothomefreshtags value=oHothomefreshtag>-->
-							<li><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&key=<!--{$oHothomefreshtag['homefreshtag_name']|urlencode}-->"><!--{$oHothomefreshtag['homefreshtag_name']|G+subString=0,20}--></a>&nbsp;(<!--{$oHothomefreshtag['homefreshtag_totalcount']}-->)</li>
+							<li><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&key=<!--{$oHothomefreshtag['homefreshtag_name']|urlencode}-->">#<!--{$oHothomefreshtag['homefreshtag_name']|G+subString=0,20}-->#</a>&nbsp;(<!--{$oHothomefreshtag['homefreshtag_totalcount']}-->)</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<li><!--<lang package='Template/Homefresh'>-->你没有发现任何话题<!--</lang>--></li>

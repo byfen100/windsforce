@@ -12,7 +12,6 @@ class FeedController extends Controller{
 		}
 		
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
-		$arrOptionData['feed_list_num']=20;
 
 		// 动态列表
 		$nTotalRecord=FeedModel::F()->all()->getCounts();
