@@ -34,6 +34,9 @@ class ShowController extends Controller{
 			exit();
 		}
 
+		// 需要登录跳转
+		Core_Extend::windsforceReferer();
+
 		$this->_oAttachment=$oAttachment;
 
 		// 取得个人主页

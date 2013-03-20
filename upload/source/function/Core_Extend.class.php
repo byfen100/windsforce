@@ -1206,4 +1206,10 @@ WINDSFORCE;
 		return $sFavicon;
 	}
 
+	static public function windsforceReferer(){
+		if($GLOBALS['___login___']===false){
+			Dyhb::cookie('windsforce_referer',__SELF__);
+		}
+	}
+
 }

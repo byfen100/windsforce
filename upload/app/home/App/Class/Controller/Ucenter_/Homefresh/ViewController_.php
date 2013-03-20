@@ -35,6 +35,9 @@ class ViewController extends Controller{
 			exit();
 		}
 
+		// 需要登录跳转
+		Core_Extend::windsforceReferer();
+
 		$oHomefresh->homefresh_viewnum=$oHomefresh->homefresh_viewnum+1;
 		$oHomefresh->save(0,'update');
 
