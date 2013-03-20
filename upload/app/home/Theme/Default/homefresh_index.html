@@ -119,8 +119,10 @@ function showEmotion(){
 <!--{script}-->
 var nHomefreshviewcomment=0;
 <!--{/script}-->
+
 <script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
 <script src="<!--{:__APPPUB__}-->/Js/comment.js"></script>
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></li>
@@ -129,7 +131,7 @@ var nHomefreshviewcomment=0;
 		<div class="row">
 
 			<div class="span3">
-				<!--<include file="ucenter_sidebar" />-->
+				<!--<include file="ucenter+sidebar" />-->
 
 				<div class="commonbox well">
 					<div class="commonboxtitle"><!--<lang package='Template/Homefresh'>-->热门话题<!--</lang>--></div>
@@ -202,13 +204,16 @@ var nHomefreshviewcomment=0;
 				</div>
 
 				<div class="tabb-menu">
+					<!--<include file="ucenter+homefreshfeedmenu" />-->
+					
 					<ul class="nav nav-tabs">
-						<li <!--{if empty($sType)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('ucenter/index')}-->"><!--<lang package='Template/Homefresh'>-->我关注的<!--</lang>--></a></li>
-						<li <!--{if $sType=='myself'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('ucenter/index?type=myself')}-->"><!--<lang package='Template/Homefresh'>-->我自己的<!--</lang>--></a></li>
-						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('ucenter/index?type=friend')}-->"><!--<lang package='Template/Homefresh'>-->好友的<!--</lang>--></a></li>
-						<li <!--{if $sType=='all' || isset($_GET['uid'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('ucenter/index?type=all')}-->"><!--<lang package='Template/Homefresh'>-->正在发生<!--</lang>--></a></li>
+						<li <!--{if empty($sType)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Homefresh'>-->我关注的<!--</lang>--></a></li>
+						<li <!--{if $sType=='myself'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/index?type=myself')}-->"><!--<lang package='Template/Homefresh'>-->我自己的<!--</lang>--></a></li>
+						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/index?type=friend')}-->"><!--<lang package='Template/Homefresh'>-->好友的<!--</lang>--></a></li>
+						<li <!--{if $sType=='all' || isset($_GET['uid'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/index?type=all')}-->"><!--<lang package='Template/Homefresh'>-->正在发生<!--</lang>--></a></li>
 					</ul>
 				</div>
+
 				<div class="message-box">
 					<!--{if isset($oHomefreshtag)}-->
 					<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>

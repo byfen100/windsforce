@@ -62,6 +62,11 @@ function option(){
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这个不要设置过大，以免影响用户阅读新鲜事<!--</lang>--></div>
 							</fieldset>
 							<fieldset>
+								<label for="feed_list_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->用户动态每页列表数量<!--</lang>--></label>
+								<input type="text" id="feed_list_num" name="options[feed_list_num]" value="<!--{$arrOptions['feed_list_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->可以将用户动态的每页列表数量设置大一点，方便一次读取更多的数据<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
 								<label for="homefresh_dialoghottagnum"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->对话框热门话题<!--</lang>--></label>
 								<input type="text" id="homefresh_dialoghottagnum" name="options[homefresh_dialoghottagnum]" value="<!--{$arrOptions['homefresh_dialoghottagnum']}-->"/>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->这是插入话题对话框中的热门话题数量<!--</lang>--></div>

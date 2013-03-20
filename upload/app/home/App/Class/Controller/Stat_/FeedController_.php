@@ -11,6 +11,7 @@ class FeedController extends Controller{
 			$this->E(Dyhb::L('你没有权限访问用户动态','Controller/Stat'));
 		}
 		
+		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 		$arrOptionData['feed_list_num']=20;
 
 		// 动态列表
@@ -41,6 +42,7 @@ class FeedController extends Controller{
 				}
 
 				$arrFeeddatas[]=array(
+					'feed_id'=>$oFeed['feed_id'],
 					'user_id'=>$oFeed['user_id'],
 					'feed_username'=>$oFeed['feed_username'],
 					'feed_content'=>strtr($oFeed['feed_template'],$arrTempdata),

@@ -22,11 +22,14 @@ body{height:100%;overflow:auto;}
 					<div class="user_follow">
 						<span><a href="<!--{:Dyhb::U('home://friend/index')}-->"><strong><!--{$GLOBALS['___login___']['usercount']['usercount_friends']}--></strong></a><br /><!--<lang package='Template/Ucenter'>-->关注<!--</lang>--></span>
 						<span><a href="<!--{:Dyhb::U('home://friend/index?type=fan')}-->"><strong><!--{$GLOBALS['___login___']['usercount']['usercount_fans']}--></strong></a><br /><!--<lang package='Template/Ucenter'>-->粉丝<!--</lang>--></span>
-						<span><a href="<!--{:Dyhb::U('home://ucenter/index?type=myself')}-->"><strong id="homefresh_count"><!--{$nMyhomefreshnum}--></strong></a><br /><!--<lang package='Template/Ucenter'>-->新鲜事<!--</lang>--></span>
+						<span><a href="<!--{:Dyhb::U('home://ucenter/index?type=myself')}-->"><strong id="homefresh_count"><!--{$GLOBALS['___login___']['user_id']|Homefresh_Extend+getMyhomefreshnum}--></strong></a><br /><!--<lang package='Template/Ucenter'>-->新鲜事<!--</lang>--></span>
 					</div>
 				</div>
 
 				<ul class="nav nav-list">
+					<li class="nav-header"><!--<lang package='Template/Ucenter'>-->我的动态<!--</lang>--></li>
+					<li <!--{if ACTION_NAME==='index'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><i class="icon-envelope <!--{if ACTION_NAME==='index'}-->icon-white<!--{/if}-->"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->新鲜事<!--</lang>--></a></li>
+					<li <!--{if ACTION_NAME==='feed'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed')}-->"><i class="icon-list <!--{if ACTION_NAME==='feed'}-->icon-white<!--{/if}-->"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->用户动态<!--</lang>--></a></li>
 					<li class="nav-header"><!--<lang package='Template/Ucenter'>-->我的地盘<!--</lang>--></li>
 					<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><i class="icon-cog"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->修改资料<!--</lang>--></a></li>
 					<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment')}-->"><i class="icon-picture"></i>&nbsp;<!--<lang package='Template/Ucenter'>-->我的相册<!--</lang>--></a></li>

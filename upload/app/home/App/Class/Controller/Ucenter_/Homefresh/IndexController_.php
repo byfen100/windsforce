@@ -94,18 +94,16 @@ class IndexController extends Controller{
 		// 新鲜事
 		$arrWhere['homefresh_status']=1;
 		$nTotalRecord=HomefreshModel::F()->where($arrWhere)->all()->getCounts();
-		$oPage=Page::RUN($nTotalRecord,$arrOptionData['homefresh_list_num'],G::getGpc('page','G'));
-		$arrHomefreshs=HomefreshModel::F()->where($arrWhere)->order('create_dateline DESC')->limit($oPage->returnPageStart(),$arrOptionData['homefresh_list_num'])->getAll();
 
-		// 我的新鲜事数量
-		$nMyhomefreshnum=Homefresh_Extend::getMyhomefreshnum($GLOBALS['___login___']['user_id']);
+		$oPage=Page::RUN($nTotalRecord,$arrOptionData['homefresh_list_num'],G::getGpc('page','G'));
+
+		$arrHomefreshs=HomefreshModel::F()->where($arrWhere)->order('create_dateline DESC')->limit($oPage->returnPageStart(),$arrOptionData['homefresh_list_num'])->getAll();
 
 		$this->assign('arrHomefreshs',$arrHomefreshs);
 		$this->assign('nTotalHomefreshnum',$nTotalRecord);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_publish_status']);
 		$this->assign('nDisplayCommentSeccode',$GLOBALS['_cache_']['home_option']['seccode_comment_status']);
-		$this->assign('nMyhomefreshnum',$nMyhomefreshnum);
 		
 		$this->display('homefresh+index');
 	}

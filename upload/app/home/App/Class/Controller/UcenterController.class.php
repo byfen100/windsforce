@@ -41,5 +41,9 @@ class UcenterController extends InitController{
 	public function audit_homefreshcomment(){
 		Core_Extend::doControllerAction('Ucenter@Homefresh/Audit','index');
 	}
+
+	public function feed(){
+		Core_Extend::doControllerAction('Ucenter@Feed/Index','index');
+	}
 	
 }
