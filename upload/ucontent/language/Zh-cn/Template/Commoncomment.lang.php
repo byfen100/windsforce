@@ -19,6 +19,7 @@ return array(
 'f013ea9dcba3f5ca1278aa850931fec8'=>"加载中",
 '7fe4cddce2a8ddd03464a1043dc648c4'=>"暂时没有发现任何评论",
 'cf13b1a67881f454af469aa874f087e5'=>"审核",
+'bec530cbd841c30c7933aff20027a5f5'=>"查看内容支持的UBB代码",
 )
 
 ?>
