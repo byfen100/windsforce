@@ -20,16 +20,18 @@ function saveAttachmentcategory(){
 		'&attachmentcategory_name='+encodeURIComponent( $('#attachmentcategory_name').val())+
 		'&attachmentcategory_description='+encodeURIComponent( $('#attachmentcategory_description').val())+
 		'&attachmentcategory_id='+ $('#attachmentcategory_id').val()+
-		'&attachmentcategory_cover='+ $('#attachmentcategory_cover').val(),'',
+		'&attachmentcategory_cover='+ $('#attachmentcategory_cover').val(),'result',
 		function(data,status){
 			if(status==1){
 				$('#attachmentcategory_name_'+id).text(subStr(data.attachmentcategory_name,15));
 				$('#attachmentcategory_description_'+id).text(data.attachmentcategory_description?subStr(data.attachmentcategory_description,32):'<!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>-->');
-				oEditNewattachment.close();
+				oEditNewattachmentcategory.close();
 				return true;
 			}
 		}
 	);
+
+	return false;
 }
 
 function deleteAttachmentcategory(id){
@@ -45,6 +47,7 @@ function deleteAttachmentcategory(id){
 		);
 		return true;
 	});
+
 	return false;
 }
 
@@ -63,7 +66,7 @@ function saveNewattachmentcategory(){
 	Dyhb.AjaxSend(D.U('home://attachment/new_attachmentcategorysave'),
 		'ajax=1&attachmentcategory_compositor='+encodeURIComponent($('#new_attachmentcategory_compositor').val())+
 		'&attachmentcategory_name='+encodeURIComponent( $('#new_attachmentcategory_name').val())+
-		'&attachmentcategory_description='+encodeURIComponent( $('#new_attachmentcategory_description').val()),'',
+		'&attachmentcategory_description='+encodeURIComponent( $('#new_attachmentcategory_description').val()),'result',
 		function(data,status){
 			if(status==1){
 				oEditCreateNewattachmentcategory.close();
@@ -72,6 +75,8 @@ function saveNewattachmentcategory(){
 			}
 		}
 	);
+
+	return false;
 }
 
 function cancelNewattachmentcategory(){
@@ -80,6 +85,7 @@ function cancelNewattachmentcategory(){
 			oEditCreateNewattachmentcategory.close();
 			return true;
 		});
+
 		return false;
 	}
 }
@@ -118,6 +124,11 @@ function unrecommendAttachmentcategory(id){
 				</span>
 				<h3><!--<lang package='Template/Attachment'>-->我的专辑<!--</lang>--></h3>
 			</div>
+
+			<div class="span12" style="margin-bottom:20px;">
+				<div id="result" class="none"></div>
+			</div>
+
 			<div class="span12">
 				<!--{if is_array($arrAttachmentcategorys)}-->
 				<ul class="thumbnails">

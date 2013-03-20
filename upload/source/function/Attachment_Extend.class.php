@@ -185,9 +185,13 @@ class Attachment_Extend{
 		}
 	}
 
-	static public function getAttachmentcategory(){
+	static public function getAttachmentcategory($nUserid=null){
+		if($nUserid===null){
+			$nUserid=$GLOBALS['___login___']['user_id'];
+		}
+		
 		$oAttachmentcategory=Dyhb::instance('AttachmentcategoryModel');
-		return $oAttachmentcategory->getAttachmentcategoryByUserid($GLOBALS['___login___']['user_id']);
+		return $oAttachmentcategory->getAttachmentcategoryByUserid($nUserid);
 	}
 
 	static public function getAllowedtype(){

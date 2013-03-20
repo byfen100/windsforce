@@ -38,6 +38,12 @@ class AttachmentlistController extends Controller{
 			$arrWhere['attachment_recommend']=1;
 		}
 
+		if($GLOBALS['___login___']===false){
+			$nUserid='';
+		}else{
+			$nUserid=$GLOBALS['___login___']['user_id'];
+		}
+
 		if($nAttachmentcategoryid!==null){
 			$arrWhere['attachmentcategory_id']=intval($nAttachmentcategoryid);
 
@@ -50,6 +56,7 @@ class AttachmentlistController extends Controller{
 				$oAttachmentcategoryinfo=AttachmentcategoryModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->getOne();
 				if(!empty($oAttachmentcategoryinfo['attachmentcategory_id'])){
 					$arrAttachmetncategoryinfo=$oAttachmentcategoryinfo->toArray();
+					$nUserid=$oAttachmentcategoryinfo['user_id'];
 				}else{
 					$arrAttachmetncategoryinfo=false;
 				}
@@ -70,7 +77,7 @@ class AttachmentlistController extends Controller{
 		$arrAttachments=AttachmentModel::F()->where($arrWhere)->order('attachment_id DESC')->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		// 附件分类
-		$arrAttachmentcategorys=Attachment_Extend::getAttachmentcategory();
+		$arrAttachmentcategorys=Attachment_Extend::getAttachmentcategory($nUserid);
 		$this->assign('arrAttachmentcategorys',$arrAttachmentcategorys);
 
 		// 所有允许的分类

@@ -18,7 +18,7 @@ function saveAttachment(){
 		'ajax=1&attachment_name='+encodeURIComponent($('#attachment_name').val())+
 		'&attachment_alt='+encodeURIComponent( $('#attachment_alt').val())+
 		'&attachment_description='+encodeURIComponent( $('#attachment_description').val())+
-		'&attachment_id='+ $('#attachment_id').val(),'',
+		'&attachment_id='+ $('#attachment_id').val(),'result',
 		function(data,status){
 			if(status==1){
 				$('#attachment_name_'+id).text(subStr(data.attachment_name,15));
@@ -28,6 +28,8 @@ function saveAttachment(){
 			}
 		}
 	);
+
+	return false;
 }
 
 function deleteAttachment(id){
@@ -43,6 +45,7 @@ function deleteAttachment(id){
 		);
 		return true;
 	});
+
 	return false;
 }
 
@@ -72,6 +75,10 @@ function unrecommendAttachment(id){
 		<!--<include file="attachment+menu" />-->
 
 		<div class="row">
+			<div class="span12" style="margin-bottom:20px;">
+				<div id="result" class="none"></div>
+			</div>
+			
 			<div class="span12">
 				<ul class="nav nav-pills">
 					<li class="<!--{if $nAttachmentcategoryid===null && !G+getGpc('type','G') && !isset($_GET['photo'])}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment')}-->"><!--<lang package='Template/Attachment'>-->附件列表<!--</lang>--></a></li>
