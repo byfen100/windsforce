@@ -1,5 +1,13 @@
 <!--<include file="public+header" />-->
 
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	$('.homefresh_content').emotionsToHtml();
+});
+<!--{/script}-->
+
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
@@ -25,7 +33,7 @@
 					<input type="hidden" name="c" value="<!--{:MODULE_NAME}-->"/>
 					<input type="hidden" name="a" value="<!--{:ACTION_NAME}-->"/>
 					<input type="hidden" name="id" value="<!--{$_GET['id']}-->"/>
-					<input type="hidden" name="controller" value="home"/>
+					<input type="hidden" name="controller" value="homefresh"/>
 					<input type="text" name="homefresh_title" title="<!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事标题<!--</lang>-->">
 					&nbsp;<input type="submit" id="" value="<!--<lang package='Template/Default/Common'>-->查询<!--</lang>-->" onclick="" class="alt_btn">
 				</form>
@@ -38,6 +46,7 @@
 					<!--{if isset($oUser)}-->
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homefresh','uid'=>$oUser['user_id']))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->用户<!--</lang>-->&nbsp;(<!--{$oUser['user_name']}-->)</a></li>
 					<!--{/if}-->
+					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshtag'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事话题<!--</lang>--></li>
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事评论<!--</lang>--></li>
 					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
 				</ul>
@@ -72,7 +81,7 @@
 									</span>
 								</div>
 							</td>
-							<td><!--{$value:homefresh_message|strip_tags|G+subString=0,80}--></td>
+							<td><div class="homefresh_content"><!--{$value:homefresh_message|strip_tags|G+subString=0,80|Core_Extend+ubb}--></div></td>
 							<td><!--{$value:homefresh_ip}--></td>
 							<td><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment','fid'=>$value['homefresh_id']))}-->"><!--{$value:homefresh_commentnum}--></a></td>
 							<td><!--{$value:homefresh_goodnum}--></td>
