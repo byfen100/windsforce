@@ -54,4 +54,19 @@ class Home_Extend{
 		}
 	}
 
+	public static function getHometagBydate($nDate,$nNum){
+		$nData=intval($nDate);
+		$nNum=intval($nNum);
+
+		if($nNum<1){
+			$nNum=1;
+		}
+
+		if($nDate<3600){
+			$nDate=3600;
+		}
+
+		return HometagModel::F('create_dateline>?',1,(CURRENT_TIMESTAMP-$nDate))->order('hometag_count DESC')->limit(0,$nNum)->getAll();
+	}
+
 }

@@ -190,7 +190,9 @@ INSERT INTO `#@__homeoption` (`homeoption_name`, `homeoption_value`) VALUES
 ('notice_list_num', '10'),
 ('feed_list_num', '20'),
 ('homefreshtag_list_num', '15'),
-('homefreshtag_hot_num', '10');
+('homefreshtag_hot_num', '10'),
+('hometag_list_num', '15'),
+('hometag_hot_num', '10');
 
 -- --------------------------------------------------------
 

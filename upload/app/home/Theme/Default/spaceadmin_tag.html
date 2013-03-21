@@ -50,7 +50,7 @@ function completeDelete(data,status){
 				<!--{if is_array($arrHometags)}-->
 				<!--<foreach for=arrHometags value=oHometag>-->
 				<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>-->" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><i class=" icon-remove-sign"></i></a>
-				<span class="label label-success"><!--{$oHometag['hometag_name']}--></span>&nbsp;&nbsp;
+				<span class="label label-success"><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></span>&nbsp;&nbsp;
 				<!--</foreach>-->
 				<!--{d*else}-->
 				<!--<lang package='Template/Spaceadmin'>-->你还没有个人标签，请点击添加。<!--</lang>-->
@@ -65,6 +65,14 @@ function completeDelete(data,status){
 						</form>
 					</p>
 				</div>
+			</div>
+
+			<div class="span12" style="margin-top:20px;">
+				<p>
+					<a href="<!--{:Dyhb::U('home://stat/hometag')}-->"><!--<lang package='Template/Spaceadmin'>-->查看用户标签<!--</lang>--></a>
+					<span class="pipe">|</span>
+					<a href="<!--{:Dyhb::U('home://stat/hometags')}-->"><!--<lang package='Template/Spaceadmin'>-->查看用户标签排行榜<!--</lang>--></a>
+				</p>
 			</div>
 		</div><!--/row-->
 

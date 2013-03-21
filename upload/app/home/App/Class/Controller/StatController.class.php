@@ -14,6 +14,14 @@ class StatController extends InitController{
 		Core_Extend::doControllerAction('Stat@Userlist','index');
 	}
 
+	public function hometag(){
+		Core_Extend::doControllerAction('Stat@Hometag','index');
+	}
+	
+	public function hometags(){
+		Core_Extend::doControllerAction('Stat@Hometags','index');
+	}
+
 	public function feed(){
 		Core_Extend::doControllerAction('Stat@Feed','index');
 	}

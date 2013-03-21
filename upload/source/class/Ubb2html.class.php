@@ -599,6 +599,9 @@ class Ubb2html{
 	}
 	
 	protected function needLogin(){
+		// 需要登录跳转
+		Core_Extend::windsforceReferer();
+		
 		return $this->template(
 					Dyhb::L('隐藏内容','__COMMON_LANG__@Class/Ubb2html'),
 					Dyhb::L('这部分内容只能在登入之后看到。请先','__COMMON_LANG__@Class/Ubb2html').' <a href="'.$this->_sRegisterurl.'">'.Dyhb::L('注册','__COMMON_LANG__@Class/Ubb2html').'</a> '.Dyhb::L('或者','__COMMON_LANG__@Class/Ubb2html').' <a href="'.$this->_sLoginurl.'">'.Dyhb::L('登录','__COMMON_LANG__@Class/Ubb2html').'</a>',

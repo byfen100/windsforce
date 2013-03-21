@@ -1,0 +1,211 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://stat/index')}-->"><!--<lang package='Template/Stat'>-->社区广场<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template/Stat'>-->用户标签排行榜<!--</lang>--></li>
+		</ul>
+		
+		<!--<include file="stat+menu" />-->
+		
+		<div class="row">
+			<div class="span12">
+				<!--<include file="stat+userlisthometagmenu" />-->
+
+				<div class="tabb-menu">
+					<ul class="nav nav-tabs">
+						<li><a href="<!--{:Dyhb::U('home://stat/hometag')}-->"><!--<lang package='Template/Stat'>-->全部用户标签<!--</lang>--></a></li>
+						<li class="active"><a href="<!--{:Dyhb::U('home://stat/hometags')}-->"><!--<lang package='Template/Stat'>-->用户标签排行榜<!--</lang>--></a></li>
+						<li><a href="<!--{:Dyhb::U('home://spaceadmin/tag')}-->"><!--<lang package='Template/Stat'>-->我的用户标签<!--</lang>--></a></li>
+					</ul>
+				</div>
+				
+				<div class="hometaglist-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--<lang package='Template/Stat'>-->一小时排行<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody class="hometaglist_box">
+							<!--{if is_array($arrHourHothometags)}-->
+							<!--<foreach for=arrHourHothometags value=oHometag>-->
+							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
+								<td width="*">
+									<b><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></b>
+									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--></p>
+								</td>
+								<td width="100px">
+									<p>
+										<i class="icon-user"></i>&nbsp;<span class="badge badge-success"><!--{$oHometag['hometag_count']}--></span>
+									</p>
+								</td>
+							</tr>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr class="hometag_no">
+								<td><p><!--<lang package='Template/Stat'>-->暂无任何用户标签<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
+						</tbody>
+					</table>
+				</div>
+
+				<div class="hometaglist-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--<lang package='Template/Stat'>-->今日排行<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody class="hometaglist_box">
+							<!--{if is_array($arrTodayHothometags)}-->
+							<!--<foreach for=arrTodayHothometags value=oHometag>-->
+							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
+								<td width="*">
+									<b><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></b>
+									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--></p>
+								</td>
+								<td width="100px">
+									<p>
+										<i class="icon-user"></i>&nbsp;<span class="badge badge-success"><!--{$oHometag['hometag_count']}--></span>
+									</p>
+								</td>
+							</tr>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr class="hometag_no">
+								<td><p><!--<lang package='Template/Stat'>-->暂无任何用户标签<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
+						</tbody>
+					</table>
+				</div>
+
+				<div class="hometaglist-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--<lang package='Template/Stat'>-->本周排行<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody class="hometaglist_box">
+							<!--{if is_array($arrWeekHothometags)}-->
+							<!--<foreach for=arrWeekHothometags value=oHometag>-->
+							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
+								<td width="*">
+									<b><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></b>
+									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--></p>
+								</td>
+								<td width="100px">
+									<p>
+										<i class="icon-user"></i>&nbsp;<span class="badge badge-success"><!--{$oHometag['hometag_count']}--></span>
+									</p>
+								</td>
+							</tr>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr class="hometag_no">
+								<td><p><!--<lang package='Template/Stat'>-->暂无任何用户标签<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
+						</tbody>
+					</table>
+				</div>
+
+				<div class="hometaglist-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--<lang package='Template/Stat'>-->当月排行<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody class="hometaglist_box">
+							<!--{if is_array($arrMonthHothometags)}-->
+							<!--<foreach for=arrMonthHothometags value=oHometag>-->
+							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
+								<td width="*">
+									<b><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></b>
+									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--></p>
+								</td>
+								<td width="100px">
+									<p>
+										<i class="icon-user"></i>&nbsp;<span class="badge badge-success"><!--{$oHometag['hometag_count']}--></span>
+									</p>
+								</td>
+							</tr>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr class="hometag_no">
+								<td><p><!--<lang package='Template/Stat'>-->暂无任何用户标签<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
+						</tbody>
+					</table>
+				</div>
+
+				<div class="hometaglist-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--<lang package='Template/Stat'>-->年度排行<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody class="hometaglist_box">
+							<!--{if is_array($arrYearHothometags)}-->
+							<!--<foreach for=arrYearHothometags value=oHometag>-->
+							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
+								<td width="*">
+									<b><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></b>
+									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--></p>
+								</td>
+								<td width="100px">
+									<p>
+										<i class="icon-user"></i>&nbsp;<span class="badge badge-success"><!--{$oHometag['hometag_count']}--></span>
+									</p>
+								</td>
+							</tr>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr class="hometag_no">
+								<td><p><!--<lang package='Template/Stat'>-->暂无任何用户标签<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
+						</tbody>
+					</table>
+				</div>
+
+				<div class="hometaglist-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--<lang package='Template/Stat'>-->总排行<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody class="hometaglist_box">
+							<!--{if is_array($arrTotalHothometags)}-->
+							<!--<foreach for=arrTotalHothometags value=oHometag>-->
+							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
+								<td width="*">
+									<b><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></b>
+									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--></p>
+								</td>
+								<td width="100px">
+									<p>
+										<i class="icon-user"></i>&nbsp;<span class="badge badge-success"><!--{$oHometag['hometag_count']}--></span>
+									</p>
+								</td>
+							</tr>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr class="hometag_no">
+								<td><p><!--<lang package='Template/Stat'>-->暂无任何用户标签<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

@@ -146,6 +146,14 @@ class UserController extends InitController{
 				$this->E($oUserroleMeta->getErrorMessage());
 			}
 
+			// 用户标签数据
+			$oHometagindexMeta=HometagindexModel::M();
+			$oHometagindexMeta->deleteWhere(array('user_id'=>$nId));
+			
+			if($oHometagindexMeta->isError()){
+				$this->E($oHometagindexMeta->getErrorMessage());
+			}
+
 			// 用户留言数据
 			$oUserguestbookMeta=UserguestbookModel::M();
 			$oUserguestbookMeta->deleteWhere(array('userguestbook_userid'=>$nId));

@@ -11,7 +11,6 @@ function findUser(){
 }
 <!--{/script}-->
 
-
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://stat/index')}-->"><!--<lang package='Template/Stat'>-->社区广场<!--</lang>--></a> <span class="divider">/</span></li>
@@ -23,6 +22,8 @@ function findUser(){
 		
 		<div class="row">
 			<div class="span12">
+				<!--<include file="stat+userlisthometagmenu" />-->
+				
 				<form class="well form-search" action="<!--{:Dyhb::U('home://stat/userlist')}-->" method="get" onsubmit="return findUser();">
 					<input type="text" class="input-medium search-query" name="key" id="key">&nbsp;
 					<button type="submit" class="btn"><i class="icon-search"></i>&nbsp;<!--<lang package='Template/Stat'>-->查找会员<!--</lang>--></button>
@@ -30,7 +31,13 @@ function findUser(){
 
 				<!--{if $sKey}-->
 				<div class="alert alert-success">
-					<!--<lang package='Template/Stat'>-->你搜索的关键字为<!--</lang>-->&nbsp;<strong><span class="label label-success"><a href="<!--{:Dyhb::U('home://stat/userlist?key='.$sKey)}-->"><!--{$sKey}--></a></span></strong>，<!--<lang package='Template/Stat'>-->你可以查看<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Stat'>-->会员列表<!--</lang>--></a>
+					<!--<lang package='Template/Stat'>-->你搜索的关键字为<!--</lang>-->&nbsp;<strong><span class="label label-success"><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&key=<!--{$sKey|urlencode}-->"><!--{$sKey}--></a></span></strong>，<!--<lang package='Template/Stat'>-->你可以查看<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Stat'>-->会员列表<!--</lang>--></a>
+				</div>
+				<!--{/if}-->
+
+				<!--{if isset($oHometag)}-->
+				<div class="alert alert-success">
+					<!--<lang package='Template/Stat'>-->你搜索的用户标签为<!--</lang>-->&nbsp;<strong><span class="label label-success"><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></span></strong>，<!--<lang package='Template/Stat'>-->你可以查看<!--</lang>--><!--{if $GLOBALS['___login___']!==false}-->&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/tag')}-->"><!--<lang package='Template/Stat'>-->我的标签<!--</lang>--></a><!--{/if}-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/hometag')}-->"><!--<lang package='Template/Stat'>-->用户标签<!--</lang>--></a>&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Stat'>-->会员列表<!--</lang>--></a>
 				</div>
 				<!--{/if}-->
 
