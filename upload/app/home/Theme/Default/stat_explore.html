@@ -84,7 +84,7 @@ $(document).ready(function(){
 			</div>
 			<div class="span4">
 				<div class="commonbox well">
-					<div class="commonboxtitle"><!--<lang package='Template/Homefresh'>-->热门话题<!--</lang>--></div>
+					<div class="commonboxtitle"><!--<lang package='Template/Homefresh'>-->热门话题<!--</lang>-->&nbsp;<!--{if $GLOBALS['___login___']!==false}--><a href="<!--{:Dyhb::U('home://ucenter/tag?type=all')}-->" title="<!--<lang package='Template/Homefresh'>-->更多新鲜事话题<!--</lang>-->"><i class="icon-th-list"></i></a><!--{/if}--></div>
 					<div class="commonlist">
 						<ul id="stat_hotfreshtaglist_box" class="stat_hotfreshtaglist_box">
 							<!--{if is_array($arrHothomefreshtags)}-->
