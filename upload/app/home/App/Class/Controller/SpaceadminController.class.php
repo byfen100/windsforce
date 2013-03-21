@@ -20,6 +20,10 @@ class SpaceadminController extends InitController{
 		Core_Extend::doControllerAction('Spaceadmin@Information/Change','index',$this);
 	}
 
+	public function usersign(){
+		Core_Extend::doControllerAction('Spaceadmin@Information/Usersign','index',$this);
+	}
+
 	public function avatar(){
 		Core_Extend::doControllerAction('Spaceadmin@Avatar/Index','index');
 	}

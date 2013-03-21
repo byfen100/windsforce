@@ -9,6 +9,15 @@ function update(){
 		$("#submit_button").val("<!--<lang package='__COMMON_LANG__@Template/Common'>-->更新<!--</lang>-->");
 	});
 }
+
+function usersignPreview(){
+	var sHtml = $.ajax({
+		url: _ROOT_+'/index.php?app=home&c=spaceadmin&a=usersign&content='+$('#user_sign').val(),
+		async: false
+	}).responseText;
+
+	$('#usersign_preview').html(sHtml);
+}
 <!--{/script}-->
 
 		<ul class="breadcrumb">
@@ -252,7 +261,12 @@ function update(){
 							<label class="control-label" for="user_sign"><!--<lang package='Template/Spaceadmin'>-->用户签名<!--</lang>--></label>
 							<div class="controls">
 								<textarea class="input-xlarge" name="user_sign" id="user_sign" rows="5" style="width:400px;"><!--{$oUserInfo:user_sign}--></textarea>
-								<p class="help-block"><a href="<!--{:Dyhb::U('home://misc/ubb?type=sign')}-->" target="_blank"><!--<lang package='Template/Spaceadmin'>-->查看用户签名支持的UBB代码<!--</lang>--></a></p>
+								<p class="help-block">
+									<a href="javascript:void(0);" onclick="usersignPreview();"><b><!--<lang package='Template/Spaceadmin'>-->预览签名<!--</lang>--></b></a><span class="pipe">|</span><a href="<!--{:Dyhb::U('home://misc/ubb?type=sign')}-->" target="_blank"><!--<lang package='Template/Spaceadmin'>-->查看用户签名支持的UBB代码<!--</lang>--></a>
+									<div id="usersign_preview" style="border:2px dashed #CCC;padding:5px;">
+										<!--{$oUserInfo['user_sign']|Core_Extend+usersign}-->
+									</div>
+								</p>
 							</div>
 						</div>
 						<!--{/if}-->

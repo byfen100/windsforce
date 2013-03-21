@@ -5,7 +5,7 @@ function isUndefined(variable){
 	return typeof variable=='undefined'?true:false;
 }
 
-function in_array(needle, haystack){
+function in_array(needle,haystack){
 	if(typeof needle=='string' || typeof needle=='number'){
 		for(var i in haystack){
 			if(haystack[i]==needle){
