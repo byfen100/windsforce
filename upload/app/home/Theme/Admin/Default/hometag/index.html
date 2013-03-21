@@ -35,6 +35,7 @@
 		<article class="module width_full">
 			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->用户标签列表<!--</lang>--></h3>
 				<ul class="tabs">
+					<li><a href="<!--{:Dyhb::U('user/index')}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->用户列表<!--</lang>--></a></li>
 					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
 				</ul>
 			</header>
@@ -45,6 +46,7 @@
 						<th><input type="checkbox" onclick="checkAll('checkList')"></th> 
 						<th><a href="<!--{:Admin_Extend::soryBy('hometag_id',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
 						<th><a href="<!--{:Admin_Extend::soryBy('hometag_name',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_name')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->标签名字<!--</lang>--></a></th>
+						<th><a href="<!--{:Admin_Extend::soryBy('hometag_count',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_count')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->用户数量<!--</lang>--></a></th>
 						<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
 						<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
 						</tr> 
@@ -54,12 +56,13 @@
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:hometag_id}-->"></td>
 							<td><!--{$value:hometag_id}--></td>
-							<td><a href="<!--{:Admin_Extend::edit(array('controller'=>'hometag','value'=>$value['hometag_id']))}-->"><!--{$value:hometag_name}--></a>
+							<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$value['hometag_name']|urlencode}-->" target="_blank"><!--{$value:hometag_name}--></a>
 								<div class="row-actions">
 									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 									</span>
 								</div>
 							</td>
+							<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$value['hometag_name']|urlencode}-->" target="_blank"><!--{$value:hometag_count}--></a></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
 							</td>
