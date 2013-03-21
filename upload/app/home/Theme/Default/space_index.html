@@ -284,27 +284,28 @@ function insertUserguestbookmusic(sContent){
 					<a href="<!--{:Dyhb::U('pm/pmnew?uid='.$oUserInfo['user_id'])}-->" rel="nofollow" class="btn"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template/Space'>-->发消息<!--</lang>--></a>
 				</div>
 
-				<div style="padding:5px;">
+				<div style="padding:10px 5px;">
 					<h4><i class="icon-pencil"></i>&nbsp;<!--<lang package='Template/Space'>-->签名<!--</lang>--></h4>
-					<!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign|Profile_Extend+formatUserinfo}--><!--{d*else}--><!--<lang package='Template/Space'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
+					<p style="margin-top:10px;"><!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign||Core_Extend+usersign}--><!--{d*else}--><!--<lang package='Template/Space'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}--></p>
 				</div>
 
-				<div style="padding:5px;">
+				<div style="padding:10px 5px;">
 					<h4><!--<lang package='Template/Space'>-->他关注的用户<!--</lang>--></h4>
-					<p><!--{if is_array($arrFriends)}-->
-					<ul class="thumbnails">
-						<!--<foreach for=arrFriends value=oFriend>-->
-						<li class="span1">
-							<div class="thumbnail">
-								<a href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><img src="<!--{:Core_Extend::avatar( $oFriend['friend_friendid'],'small' )}-->" width="100%" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" alt="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->"></a>
-								<a rel="tooltip" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oFriend['friend_friendid']),0,3)}--></h5></a>
-							</div>
-						</li>
-						<!--</foreach>-->
-					</ul>
-					<!--{d*else}-->
-					<!--<lang package='Template/Space'>-->他尚未关注任何人<!--</lang>-->
-					<!--{/if}-->
+					<p style="margin-top:10px;">
+						<!--{if is_array($arrFriends)}-->
+						<ul class="thumbnails">
+							<!--<foreach for=arrFriends value=oFriend>-->
+							<li class="span1">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><img src="<!--{:Core_Extend::avatar( $oFriend['friend_friendid'],'small' )}-->" width="100%" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" alt="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oFriend['friend_friendid']),0,3)}--></h5></a>
+								</div>
+							</li>
+							<!--</foreach>-->
+						</ul>
+						<!--{d*else}-->
+						<!--<lang package='Template/Space'>-->他尚未关注任何人<!--</lang>-->
+						<!--{/if}-->
 					</p>
 				</div>
 			</div>

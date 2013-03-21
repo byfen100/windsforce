@@ -8,7 +8,7 @@ return array(
 	'public::index',
 	'pm',
 	'notice::index',
-	'ucenter,ucenter::index,ucenter::view',
+	'ucenter,ucenter::index,ucenter::view,ucenter::feed',
 	'attachment::index',
 	'attachment::add,attachment::dialog_add',
 	'attachment::attachment',

@@ -38,8 +38,11 @@ $(function(){
 								</a>
 								<!--{/if}-->
 								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrFeeddata['user_id'])}-->"><!--{$arrFeeddata['feed_username']}--></a>
+								<p><!--{:Core_Extend::newData($arrFeeddata['create_dateline'],true)}--></p>
 							</td>
-							<td width="*" class="statfeed-content"><!--{$arrFeeddata['feed_content']|Core_Extend+ubb=false}--></td>
+							<td width="*" >
+								<div class="statfeed-content"><!--{$arrFeeddata['feed_content']|Core_Extend+ubb=false}--></div>
+							</td>
 						</tr>
 						<!--</foreach>-->
 					</tbody>

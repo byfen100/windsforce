@@ -23,6 +23,7 @@
 					<a href="javascript:void(0);">[默认分类]</a>
 					<!--{/if}-->
 					<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,26}--></a>
+					<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
 				</p>
 				<p class="info">
 					楼主&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic['user_id']}-->" ><!--{$oGrouptopic->grouptopic_username}--></a>&nbsp;

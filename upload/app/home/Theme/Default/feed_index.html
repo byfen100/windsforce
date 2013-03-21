@@ -55,6 +55,10 @@ $(function(){
 								</td>
 								<td>
 									<div class="feed_content"><!--{$arrFeeddata['feed_content']|Core_Extend+ubb=false}--></div>
+									<p class="feed_dateline">
+										<b><!--{$arrFeeddata['create_dateline']|Core_Extend+timeFormat}--></b>
+										<!--{:Core_Extend::newData($arrFeeddata['create_dateline'],true)}-->
+									</p>
 								</td>
 							</tr>
 							<!--</foreach>-->

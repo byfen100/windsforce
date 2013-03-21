@@ -1212,4 +1212,26 @@ WINDSFORCE;
 		}
 	}
 
+	static public function newData($nCreatedateline,$bReturnImg=false,$nDate=86400){
+		$bIsNew=false;
+
+		if(CURRENT_TIMESTAMP-$nCreatedateline<=$nDate){
+			$bIsNew=true;
+		}
+
+		if($bReturnImg===true){
+			if($bIsNew===true){
+				return '<img class="new_data" src="'.__ROOT__.'/Public/images/common/new.gif" />';
+			}else{
+				return '';
+			}
+		}else{
+			return $bIsNew;
+		}
+	}
+
+	static public function usersign($sUsersign){
+		return Core_Extend::ubb(nl2br(htmlspecialchars($sUsersign)),true,true);
+	}
+
 }

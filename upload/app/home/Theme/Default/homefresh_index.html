@@ -243,7 +243,7 @@ var nHomefreshviewcomment=0;
 									</div>
 								</td>
 								<td>
-									<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>-->
+									<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>--><!--{:Core_Extend::newData($oHomefresh['create_dateline'],true)}-->
 									</h4>
 									<div class="homefresh-content">
 										<!--{$oHomefresh['homefresh_message']|strip_tags|G+subString=0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']|Core_Extend+ubb}-->
@@ -266,7 +266,7 @@ var nHomefreshviewcomment=0;
 											</div>
 											<div class="homefreshcomment_content">
 												<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefreshcomment['user_id']}-->"><!--{$oHomefreshcomment->user_id|UserModel+getUsernameById}--></a>:
-												<!--{$oHomefreshcomment->homefreshcomment_content|G+subString=0,$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num']|Core_Extend+ubb}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshcomment->create_dateline|Core_Extend+timeFormat}--></em>
+												<!--{$oHomefreshcomment->homefreshcomment_content|G+subString=0,$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num']|Core_Extend+ubb}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshcomment->create_dateline|Core_Extend+timeFormat}--></em><!--{:Core_Extend::newData($oHomefreshcomment['create_dateline'],true)}-->
 												<span class="pipe">|</span>
 												<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefreshcomment->homefresh_id.'&isolation_commentid='.$oHomefreshcomment->homefreshcomment_id)}-->"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->查看<!--</lang>--></a>&nbsp;
 												<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->回复<!--</lang>--></a>
@@ -279,7 +279,7 @@ var nHomefreshviewcomment=0;
 														</div>
 														<div class="homefreshcomment_content">
 															<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshchildcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefreshchildcomment['user_id']}-->"><!--{$oHomefreshchildcomment->user_id|UserModel+getUsernameById}--></a>:
-															<!--{$oHomefreshchildcomment->homefreshcomment_content|G+subString=0,$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num']|Core_Extend+ubb}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em>
+															<!--{$oHomefreshchildcomment->homefreshcomment_content|G+subString=0,$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num']|Core_Extend+ubb}--><br/><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em><!--{:Core_Extend::newData($oHomefreshchildcomment['create_dateline'],true)}-->
 															<span class="pipe">|</span>
 															<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefreshchildcomment->homefresh_id.'&isolation_commentid='.$oHomefreshchildcomment->homefreshcomment_id)}-->"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->查看<!--</lang>--></a>&nbsp;
 															<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshchildcomment['homefreshcomment_parentid']}-->',1,'<!--{$oHomefreshchildcomment:user:user_name}-->','<!--{$oHomefreshchildcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->回复<!--</lang>--></a>

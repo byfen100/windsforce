@@ -59,7 +59,7 @@ function unrecommendAttachment(id){
 								</div>
 								<div class="caption">
 									<h5><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><!--{$oAttachment['attachment_name']|G+subString=0,15}--></a></h5>
-									<p><!--<lang package='Template/Attachment'>-->上传时间<!--</lang>-->:&nbsp;<!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></p>
+									<p><!--<lang package='Template/Attachment'>-->上传时间<!--</lang>-->:&nbsp;<!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oAttachment['create_dateline'],true)}--></p>
 									<p><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->" class="btn btn-success"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->查看详情<!--</lang>--></a>
 									</p>
 									<!--{if Core_Extend+isAdmin()}-->
