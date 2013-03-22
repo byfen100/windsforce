@@ -41,6 +41,7 @@ class ChangeController extends GlobalchildController{
 			if($sOldemail!=$oUser['user_email']){
 				$oUser->user_verifycode='';
 				$oUser->user_isverify='0';
+				$oUser->setAutofill(false);
 				$oUser->save(0,'update');
 
 				if($oUser->isError()){

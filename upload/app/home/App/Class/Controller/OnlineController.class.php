@@ -25,7 +25,7 @@ class OnlineController extends InitController{
 
 		$oPage=Page::RUN($nTotalRecord,$GLOBALS['_option_']['online_list_num'],G::getGpc('page','G'));
 
-		$arrOnlineLists=OnlineModel::F()->all()->order('`create_dateline` DESC')->limit($oPage->returnPageStart(),$GLOBALS['_option_']['online_list_num'])->getAll();
+		$arrOnlineLists=OnlineModel::F()->order('`create_dateline` DESC')->limit($oPage->returnPageStart(),$GLOBALS['_option_']['online_list_num'])->getAll();
 
 		$this->assign('nTotalOnline',$nTotalRecord);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));

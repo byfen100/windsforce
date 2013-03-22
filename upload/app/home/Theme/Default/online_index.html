@@ -26,23 +26,25 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if $arrOnlineLists}-->
+						<!--<foreach for=arrOnlineLists value=oOnlineList>-->
 						<tr>
-							<!--{if $arrOnlineLists}-->
-							<!--<foreach for=arrOnlineLists value=oOnlineList>-->
-							<td><img src="<!--{$oOnlineList['user_id']|Core_Extend+getUseronlineIcon=true}-->" border="0" align="absmiddle" />&nbsp;
+							<td><img src="<!--{$oOnlineList['user_id']|Core_Extend+getUsericon}-->" border="0" align="absmiddle" />&nbsp;
 							<!--{if $oOnlineList['user_id']>0}-->
-							<a href='<!--{:Dyhb::U('home://space?id='.$oOnlineList['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnlineList['online_username']}--></a>
+							<a href='<!--{:Dyhb::U('home://space@?id='.$oOnlineList['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnlineList['online_username']}--></a>
 							<!--{d*else}-->
 							<span title="<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}-->"><!--<lang package='Template/Online'>-->游客<!--</lang>--></span>
 							<!--{/if}--></td>
 							<td><!--{$oOnlineList['create_dateline']|Core_Extend+timeFormat}--></td>
 							<td><!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}--></td>
 							<td><!--{$oOnlineList['online_atpage']}--></td>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<td><!--<lang package='Template/Online'>-->暂无任何在线用户<!--</lang>--></td>
-							<!--{/if}-->
 						</tr>
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="4"><!--<lang package='Template/Online'>-->暂无任何在线用户<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 

@@ -109,6 +109,7 @@ class Avatar_Extend{
 		$oUser=UserModel::F('user_id=?',$nUserId)->getOne();
 		if(!empty($oUser['user_id'])){
 			$oUser->user_avatar='0';
+			$oUser->setAutofill(false);
 			$oUser->save(0,'update');
 
 			if($oUser->isError()){

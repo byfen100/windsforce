@@ -13,6 +13,7 @@ return array(
 '5c83b1cd6af4da9824f9aab49962f4fe'=>"一年",
 '7229ecc63125adf7fcf2867d792a77be'=>"次",
 '0c1fec657f7865ded377b43250a015fc'=>"秒",
+'1862f804e0042b4c7f316c4763dc3b49'=>"设置在线状态",
 )
 
 ?>

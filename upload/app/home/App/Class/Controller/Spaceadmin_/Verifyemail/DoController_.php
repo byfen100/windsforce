@@ -57,7 +57,9 @@ class DoController extends Controller{
 
 		// 保存随机码
 		$oUser->user_verifycode=$sUserverifycode;
+		$oUser->setAutofill(false);
 		$oUser->save(0,'update');
+
 		if($oUser->isError()){
 			$this->E($oUser->getErrorMessage());
 		}

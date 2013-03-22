@@ -33,6 +33,7 @@ class EmailController extends GlobalchildController{
 
 		$sTemppassword=md5(G::randString(32));
 		$oUser->user_temppassword=$sTemppassword;
+		$oUser->setAutofill(false);
 		$oUser->save(0,'update');
 		if($oUser->isError()){
 			$this->E($oUser->getErrorMessage());

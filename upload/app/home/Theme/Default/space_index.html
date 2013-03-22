@@ -252,10 +252,10 @@ function insertUserguestbookmusic(sContent){
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="2"><a href="<!--{:Dyhb::U('space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></a></td>
+							<td colspan="2"><img src="<!--{$nId|Core_Extend+getUsericon}-->" border="0" align="absmiddle" />&nbsp;<a href="<!--{:Dyhb::U('space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></a><img src="<!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}-->" /></td>
 						</tr>
 						<tr>
-							<td colspan="2"><i class="icon-info-sign"></i>&nbsp;<!--<lang package='Template/Space'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>
+							<td colspan="2"><img src="<!--{:Profile_Extend::getUserprofilegender($oUserInfo->userprofile->userprofile_gender)}-->" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Space'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>
 						</tr>
 						<tr>
 							<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}--><!--<lang package='Template/Space'>-->注册<!--</lang>--></td>

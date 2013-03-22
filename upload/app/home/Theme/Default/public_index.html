@@ -149,7 +149,7 @@ $(document).ready(function(){
 						</div>
 					</div>
 					<!--{d*else}-->
-					<h3><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Public'>-->返回个人中心<!--</lang>--></a></h3>
+					<h3><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Public'>-->返回个人中心<!--</lang>--></a>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->设置在线状态<!--</lang>-->"><img src="<!--{$GLOBALS['___login___']['user_id']|Core_Extend+getUseronlineicon}-->" /></a></h3>
 					<table class="table">
 						<tbody>
 							<tr>
@@ -389,9 +389,9 @@ $(document).ready(function(){
 					<ul>
 						<!--<foreach for=arrOnlines value=oOnline>-->
 						<li>
-							<img src="<!--{$oOnline['user_id']|Core_Extend+getUseronlineIcon=true}-->" border="0" align="absmiddle" />&nbsp;
+							<img src="<!--{$oOnline['user_id']|Core_Extend+getUsericon}-->" border="0" align="absmiddle" />&nbsp;
 							<!--{if $oOnline['user_id']>0}-->
-							<a href='<!--{:Dyhb::U('home://space?id='.$oOnline['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnline['online_username']}--></a>
+							<a href='<!--{:Dyhb::U('home://space@?id='.$oOnline['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnline['online_username']}--></a>
 							<!--{d*else}-->
 							<span title="<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}-->"><!--<lang package='Template/Online'>-->游客<!--</lang>--></span>
 							<!--{/if}-->
@@ -399,6 +399,7 @@ $(document).ready(function(){
 						<!--</foreach>-->
 					</ul>
 					<!--{d*else}-->
+					<p><!--<lang package='Template/Online'>-->暂无任何在线用户<!--</lang>--></p>
 					<!--{/if}-->
 				</div>
 				<!--{/if}-->

@@ -749,7 +749,30 @@ WINDSFORCE;
 			}
 		}
 
-		// 清理过期在线用户数据
+		// 清理过期在线用户数据 && 记录会员的在线时间
+		$arrOnlines=OnlineModel::F('user_id>0 AND online_activetime<?',(CURRENT_TIMESTAMP-$GLOBALS['_option_']['online_keeptime']*60))->getAll();
+		if(is_array($arrOnlines)){
+			foreach($arrOnlines as $oValue){
+				if($GLOBALS['_option_']['online_stealtholtime']==0 && $oValue['online_isstealth']==1){
+					continue;
+				}
+
+				// 写入数据
+				$nOnlinetime=$oValue['online_activetime']-$oValue['create_dateline'];
+				$nOnlinetime=round($nOnlinetime/3600,1);
+
+				$oUsercount=UsercountModel::F('user_id=?',$oValue['user_id'])->getOne();
+				if(!empty($oUsercount['user_id'])){
+					$oUsercount->usercount_oltime=$oUsercount->usercount_oltime+$nOnlinetime;
+					$oUsercount->save(0,'update');
+
+					if($oUsercount->isError()){
+						Dyhb::E($oUsercount->getErrorMessage());
+					}
+				}
+			}
+		}
+		
 		$oDb->query('DELETE FROM '.OnlineModel::F()->query()->getTablePrefix().'online WHERE online_activetime<'.(CURRENT_TIMESTAMP-$GLOBALS['_option_']['online_keeptime']*60));
 	}
 
@@ -1298,25 +1321,34 @@ WINDSFORCE;
 		return Core_Extend::ubb(nl2br(htmlspecialchars($sUsersign)),true,true);
 	}
 
-	static public function getUseronlineIcon($nUserid,$bSelect=false,$bReturnImage=true){
+	static public function getUsericon($nUserid,$bReturnImage=true){
 		if($nUserid>0){
 			$arrAdmins=explode(',',$GLOBALS['_commonConfig_']['ADMIN_USERID']);
 			
-			if($bSelect===false){
-				$oOnline=OnlineModel::F('user_id=?',$nUserid)->getOne();
-				if(empty($oOnline['user_id'])){
-					return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':-1;
-				}
-			}
-
 			if(in_array($nUserid,$arrAdmins)){
 				return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_admin.gif':3;
 			}else{
-				return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':2;
+				return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_member.gif':2;
 			}
 		}else{
 			return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':-1;
 		}
+	}
+	
+	static public function getUseronlineicon($nUserid,$bReturnImage=true,$bReally=false){
+		$oOnline=OnlineModel::F('user_id=?',$nUserid)->getOne();
+
+		if(!empty($oOnline['user_id'])){
+			if($oOnline['online_isstealth']==1 && $bReally===false){
+				$bOnline=false;
+			}else{
+				$bOnline=true;
+			}
+		}else{
+			$bOnline=false;
+		}
+
+		return $bReturnImage===true?__ROOT__.'/Public/images/common/onlineicon/'.($bOnline===true?'ol.gif':'not_ol.gif'):$bOnline;
 	}
 
 }

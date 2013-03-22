@@ -73,6 +73,12 @@ function option(){
 						<input type="text" name="options[online_list_num]" id="online_list_num" size="60" value="<!--{$arrOptions['online_list_num']}-->"/>
 						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->用户在线列表，这个可以设置大一点<!--</lang>--></div>
 					</fieldset>
+					<fieldset>
+						<label for="online_stealtholtime"><!--<lang package='Template/Default/Optimizationoption'>-->隐身会员是否统计其在线时间<!--</lang>--></label>
+						<input type="radio" id="online_stealtholtime" name="options[online_stealtholtime]" value="1" <!--{if $arrOptions['online_stealtholtime']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[online_stealtholtime]" value="0" <!--{if $arrOptions['online_stealtholtime']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->我们建议开启，不然可能影响会员的积极性<!--</lang>--></div>
+					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">

@@ -159,7 +159,7 @@ function insertAttachmentcommentmusic(sContent){
 									</tr>
 									<tr>
 										<td><!--<lang package='Template/Attachment'>-->上传用户<!--</lang>--></td>
-										<td><a href="<!--{:Dyhb::U('home://space@?id='.$oAttachment['user_id'])}-->"><!--{$oAttachment['attachment_username']}--></a></td>
+										<td><img src="<!--{$oAttachment['user_id']|Core_Extend+getUsericon}-->" border="0" align="absmiddle" />&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oAttachment['user_id'])}-->"><!--{$oAttachment['attachment_username']}--></a></td>
 									</tr>
 								</tbody>
 							</table>

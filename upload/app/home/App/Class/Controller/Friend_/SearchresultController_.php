@@ -4,14 +4,15 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入个人信息函数 */
+require_once(Core_Extend::includeFile('function/Profile_Extend'));
+
 class SearchresultController extends Controller{
 
 	public function index(){
 		if($GLOBALS['_option_']['allow_search_user']==0){
 			$this->E(Dyhb::L('系统关闭了好友搜索功能','Controller/Friend'));
 		}
-		
-		require_once(Core_Extend::includeFile('function/Profile_Extend'));
 		
 		// 扩展信息字段
 		Core_Extend::loadCache('userprofilesetting');
@@ -112,6 +113,18 @@ class SearchresultController extends Controller{
 		}
 
 		return Profile_Extend::getGender($nGender);
+	}
+
+	public function get_gender_icon($arrUser){
+		$oUserprofile=UserprofileModel::F('user_id=?',$arrUser['user_id'])->getOne();
+
+		if(!empty($oUserprofile['user_id'])){
+			$nGender=$oUserprofile['userprofile_gender'];
+		}else{
+			$nGender=0;
+		}
+
+		return Profile_Extend::getUserprofilegender($nGender);
 	}
 
 	public function searchresult_title_(){

@@ -31,6 +31,7 @@ class CheckController extends Controller{
 		// 确认验证状态
 		$oUser->user_verifycode='';
 		$oUser->user_isverify='1';
+		$oUser->setAutofill(false);
 		$oUser->save(0,'update');
 
 		if($oUser->isError()){

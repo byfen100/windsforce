@@ -52,6 +52,7 @@ class AvatarController extends InitController{
 		$oUser=UserModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
 		if(!empty($oUser['user_id'])){
 			$oUser->user_avatar='1';
+			$oUser->setAutofill(false);
 			$oUser->save(0,'update');
 
 			if($oUser->isError()){

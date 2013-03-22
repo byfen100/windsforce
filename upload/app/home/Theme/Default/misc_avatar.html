@@ -5,8 +5,9 @@
 		</a>
 	</div>
 	<div class="bm_hover_card_name">
+		<img src="<!--{$sUsergender}-->" />&nbsp;
 		<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->" target="_blank"><!--{$oUser['user_name']}--></a>
-		<img src="<!--{$sUsergender}-->" height="14" width="14" />
+		<img src="<!--{$oUser['user_id']|Core_Extend+getUseronlineicon}-->" />
 	</div>
 	<div class="bm_hover_card_from">
 		<!--{if $oUserprofile['userprofile_resideprovince']}-->

@@ -15,7 +15,7 @@ class UserModel extends CommonModel{
 					'password_prop'=>'user_password',
 					'rbac_data_props'=>'user_id,user_name,user_lastlogintime,user_lastloginip,
 										user_logincount,user_email,user_remark,create_dateline,user_registerip,
-										update_dateline,user_status,user_nikename,user_isverify,user_extendstyle'
+										update_dateline,user_status,user_nikename,user_isverify,user_extendstyle,user_isstealth'
 				),
 			),
 			'table_name'=>'user',

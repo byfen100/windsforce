@@ -50,4 +50,8 @@ class MiscController extends InitController{
 		Core_Extend::doControllerAction('Misc@Ubb','index');
 	}
 
+	public function stealth_online(){
+		Core_Extend::doControllerAction('Misc@Stealthonline','index');
+	}
+
 }

@@ -18,6 +18,22 @@ function usersignPreview(){
 
 	$('#usersign_preview').html(sHtml);
 }
+
+function stealthOnline(nUserid){
+	Dyhb.AjaxSend(D.U('home://misc/stealth_online?uid='+nUserid),'ajax=1','',function(data,status){
+		if(status==1){
+			setTimeout("window.location.reload();",1000);
+		}
+	});
+}
+
+function unstealthOnline(nUserid){
+	Dyhb.AjaxSend(D.U('home://misc/stealth_online?un=1&uid='+nUserid),'ajax=1','',function(data,status){
+		if(status==1){
+			setTimeout("window.location.reload();",1000);
+		}
+	});
+}
 <!--{/script}-->
 
 		<ul class="breadcrumb">
@@ -43,7 +59,22 @@ function usersignPreview(){
 				<form method="post" id="informationUpd" name="informationUpd">
 					<fieldset>
 						<div class="control-group">
-							<label class="control-label" for="user_name"><!--<lang package='Template/Spaceadmin'>-->用户名<!--</lang>-->&nbsp;<!--{$oUserInfo:user_name}--></label>
+							<label class="control-label" for="user_name">
+								<!--<lang package='Template/Spaceadmin'>-->用户名<!--</lang>-->&nbsp;&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}--></a>&nbsp;
+								<span id="set_online">
+									<img src="<!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}-->" />
+									<!--{if $GLOBALS['___login___']['user_isstealth']==1}-->
+									<a href="javascript:void(0);" onclick="unstealthOnline('<!--{$oUserInfo['user_id']}-->');" ><!--<lang package='Template/Spaceadmin'>-->取消隐身<!--</lang>--></a>
+									<!--{d*else}-->
+									<a href="javascript:void(0);" onclick="stealthOnline('<!--{$oUserInfo['user_id']}-->');"><!--<lang package='Template/Spaceadmin'>-->隐身<!--</lang>--></a>
+									<!--{/if}-->
+								</span>
+							</label>
+							<p class="alert alert-success"><!--<lang package='Template/Spaceadmin'>-->在这里你可以修改在线状态，点击图标修改在线状态<!--</lang>-->&nbsp;&nbsp;
+							<!--{if $GLOBALS['_option_']['online_stealtholtime']==1}--><b>
+							<!--<lang package='Template/Spaceadmin'>-->注意，隐身状态系统还是可以记录你的在线时间<!--</lang>--></b>
+							<!--{d*else}-->
+							<span style="color:red;font-weight:bold;"><!--<lang package='Template/Spaceadmin'>-->注意，隐身状态系统不会记录你的在线时间<!--</lang>--></span><!--{/if}--></p>
 						</div>
 						<!--{if !$sDo}-->
 						<!--<foreach for=arrBases value=sBase>-->

@@ -1124,13 +1124,14 @@ CREATE TABLE `#@__user` (
   `user_verifycode` varchar(255) NOT NULL COMMENT 'Email验证码',
   `user_isverify` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Email是否验证',
   `user_avatar` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否上传头像',
+  `user_isstealth` tinyint(1) NOT NULL DEFAULT '0' COMMENT '用户是否隐身',
   PRIMARY KEY (`user_id`),
   KEY `user_status` (`user_status`),
   KEY `create_dateline` (`create_dateline`),
   KEY `user_email` (`user_email`),
   KEY `user_password` (`user_password`),
   KEY `user_name` (`user_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

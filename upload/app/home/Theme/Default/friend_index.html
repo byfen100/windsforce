@@ -81,9 +81,9 @@ function deleteFriend(friendid,fan){
 						<div class="thumbnail">
 							<img src="<!--{:Core_Extend::avatar( $nUserId,'middle' )}-->" width="120px" height="120px" alt="">
 							<div class="caption" style="text-align:center;">
-								<a href="<!--{:Dyhb::U('home://space@?id='.$nUserId)}-->"><h5><!--{:UserModel::getUsernameById($nUserId)}-->@<!--{$nUserId}--></h5></a>
+								<p style="margin-bottom:10px;"><a href="<!--{:Dyhb::U('home://space@?id='.$nUserId)}-->"><h5><img src="<!--{$TheController:get_gender_icon($nUserId)}-->" border="0" align="absmiddle" />&nbsp;<!--{:UserModel::getUsernameById($nUserId)}-->@<!--{$nUserId}--><img src="<!--{$nUserId|Core_Extend+getUseronlineicon}-->" /></h5></a></p>
 								<p><!--{~$sUsersign=UserModel::getUsernameById($nUserId,'user_sign')}-->
-									<!--{if $sUsersign}--><!--{$sUsersign|strip_tags}--><!--{d*else}--><!--<lang package='Template/Friend'>-->该用户很懒，暂时没有签名<!--</lang>--><!--{/if}--><br/>
+									<!--{if $sUsersign}--><!--{$sUsersign|strip_tags|G+subString=0,10}--><!--{d*else}--><!--<lang package='Template/Friend'>-->该用户很懒，暂时没有签名<!--</lang>--><!--{/if}--><br/>
 									<span id="commenthide_<!--{$nUserId}-->"><!--{if $sType=='fan'}--><!--{$oFriend['friend_fancomment']}--><!--{d*else)}--><!--{$oFriend['friend_comment']}--><!--{/if}--></span> <span id="commentedit_<!--{$nUserId}-->">[<a href="javascript:;" onclick="editComment(<!--{$nUserId}-->)">+<!--<lang package='Template/Friend'>-->添加备注<!--</lang>--></a>]</span>
 									<span id="commentbox_<!--{$nUserId}-->" style="display:none"><input name="comment_<!--{$nUserId}-->" value="" id="comment_<!--{$nUserId}-->" onBlur="updateComment(<!--{$nUserId}-->,'<!--{if $sType=='fan'}-->1<!--{d*else}-->0<!--{/if}-->')" class="input-small"></span>
 								</p>

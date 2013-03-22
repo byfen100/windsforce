@@ -19,6 +19,7 @@ class ExtendstyleController extends Controller{
 		if($GLOBALS['___login___']!==false){
 			$oUser=UserModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
 			$oUser->user_extendstyle=$sStyleId;
+			$oUser->setAutofill(false);
 			$oUser->save(0,'update');
 
 			if($oUser->isError()){

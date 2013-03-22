@@ -32,6 +32,7 @@ class UnController extends Controller{
 		// 删除验证状态
 		$oUser->user_verifycode='';
 		$oUser->user_isverify='0';
+		$oUser->setAutofill(false);
 		$oUser->save(0,'update');
 
 		if($oUser->isError()){

@@ -30,11 +30,14 @@ class ChangepassController extends GlobalchildController{
 
 		$oUserModel=Dyhb::instance('UserModel');
 		$oUserModel->changePassword($sPassword,$sNewPassword,'',true,$oUser->toArray(),true);
+		
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());
 		}else{
 			$oUser->user_temppassword='';
+			$oUser->setAutofill(false);
 			$oUser->save(0,'update');
+
 			if($oUser->isError()){
 				$this->E($oUser->getErrorMessage());
 			}

@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入个人信息函数 */
+require_once(Core_Extend::includeFile('function/Profile_Extend'));
+
 class IndexController extends Controller{
 
 	public function index(){
@@ -40,6 +43,18 @@ class IndexController extends Controller{
 		$this->assign('sKey',$sKey);
 		
 		$this->display('friend+index');
+	}
+
+	public function get_gender_icon($nUserid){
+		$oUserprofile=UserprofileModel::F('user_id=?',$nUserid)->getOne();
+
+		if(!empty($oUserprofile['user_id'])){
+			$nGender=$oUserprofile['userprofile_gender'];
+		}else{
+			$nGender=0;
+		}
+
+		return Profile_Extend::getUserprofilegender($nGender);
 	}
 
 	public function index_title_(){

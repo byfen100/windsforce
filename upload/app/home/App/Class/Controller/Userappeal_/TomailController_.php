@@ -59,6 +59,7 @@ class TomailController extends GlobalchildController{
 		$oMailConnect->setEmailSubject($sEmailSubject);
 		$oMailConnect->setEmailMessage($sEmailContent);
 		$oMailConnect->send();
+
 		if($oMailConnect->isError()){
 			$this->E($oMailConnect->getErrorMessage());
 		}
