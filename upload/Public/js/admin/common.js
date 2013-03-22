@@ -181,3 +181,7 @@ function clickToInputComplete(data,status){
 		$('#'+data.id).html(data.value);
 	}
 }
+
+function showMianmenu(){
+	$('#main-menu').toggle('fast');
+}

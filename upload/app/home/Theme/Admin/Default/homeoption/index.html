@@ -3,6 +3,7 @@
 <!--{script}-->
 $(document).ready(function() {
 	$("#homeoption_tab ul").idTabs();
+	$("#homemain_tab ul").idTabs();
 });
 
 function option(){
@@ -20,7 +21,7 @@ function option(){
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->主页入口<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->主页入口<!--</lang>-->&nbsp;&nbsp;<a href="javascript:void(0);" onclick="showMianmenu();"><img src="<!--{:__TMPLPUB__}-->/Images/map.gif" /></a>&nbsp;<a href="javascript:void(0);" onclick="showMianmenu();"><!--<lang package='Template/Default/Common'>-->应用地图<!--</lang>--></a></h3>
 				<ul class="tabs">
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homefresh'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefresh'>-->新鲜事<!--</lang>--></a></li>
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homesite'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息<!--</lang>--></a></li>
@@ -32,6 +33,55 @@ function option(){
 			</header>
 			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
 				<div class="module_content">
+					<div id="main-menu" class="none">
+						<div id="homemain_tab" class="windsforce_tab">
+							<ul class="windsforce_tabtitle">
+								<li><a href="#mian_tab1"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->主页入口<!--</lang>--></a></li>
+								<li><a href="#mian_tab2"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事<!--</lang>--></a></li>
+								<li><a href="#mian_tab3"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点信息<!--</lang>--></a></li>
+								<li><a href="#mian_tab4"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点帮助<!--</lang>--></a></li>
+								<li><a href="#mian_tab5"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->用户标签列表<!--</lang>--></a></li>
+							</ul>
+							<div id="mian_tab1" class="windsforce_tabcontent">
+								<div class="content-tab-box content-tab-line">
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homefresh'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事<!--</lang>--></a>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshtag'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事话题<!--</lang>--></a>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事评论<!--</lang>--></a>
+									<p class="content-tab-separationline"></p>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homesite'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点信息<!--</lang>--></a>
+									<p class="content-tab-separationline"></p>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homehelp'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点帮助<!--</lang>--></a>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homehelpcategory'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点帮助分类<!--</lang>--></a>
+									<p class="content-tab-separationline"></p>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'hometag'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->用户标签列表<!--</lang>--></a>
+								</div>
+							</div>
+							<div id="mian_tab2" class="windsforce_tabcontent">
+								<div class="content-tab-box content-tab-line">
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homefresh'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事<!--</lang>--></a>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshtag'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事话题<!--</lang>--></a>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->新鲜事评论<!--</lang>--></a>
+								</div>
+							</div>
+							<div id="mian_tab3" class="windsforce_tabcontent">
+								<div class="content-tab-box content-tab-line">
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homesite'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点信息<!--</lang>--></a>
+								</div>
+							</div>
+							<div id="mian_tab4" class="windsforce_tabcontent">
+								<div class="content-tab-box content-tab-line">
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homehelp'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点帮助<!--</lang>--></a>
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'homehelpcategory'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->站点帮助分类<!--</lang>--></a>
+								</div>
+							</div>
+							<div id="mian_tab5" class="windsforce_tabcontent">
+								<div class="content-tab-box content-tab-line">
+									<a href="<!--{:Admin_Extend::base(array('controller'=>'hometag'))}-->" class="content-tab"><!--<lang package='__APP_ADMIN_LANG__@Template/Homeoption'>-->用户标签列表<!--</lang>--></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 					<!--<include file="Admin_Extend::template('home','homeoption/menu')" />-->
 
 					<div id="homeoption_tab" class="windsforce_tab">
