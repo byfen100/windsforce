@@ -9,6 +9,15 @@ function update(){
 		$("#submit_button").val("<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->");
 	});
 }
+
+function usersignPreview(){
+	var sHtml = $.ajax({
+		url: _ROOT_+'/index.php?app=home&c=spaceadmin&a=usersign&content='+$('#user_sign').val(),
+		async: false
+	}).responseText;
+
+	$('#usersign_preview').html(sHtml);
+}
 <!--{/script}-->
 
 	<section class="secondary_bar">
@@ -46,7 +55,13 @@ function update(){
 					</fieldset>
 					<fieldset><label for="user_sign"><!--<lang package='Template/Default/Public'>-->用户签名<!--</lang>--></label>
 						<p style="padding-left:10px;"><textarea name="user_sign" id="user_sign" rows="5"><!--{$oUserInfo:user_sign}--></textarea></p>
-						<div class="description"><!--<lang package='Template/Default/Public'>-->用户可以在签名中发布一些自己的信息<!--</lang>--></div>
+						<div class="description">
+							<!--<lang package='Template/Default/Public'>-->用户可以在签名中发布一些自己的信息<!--</lang>-->&nbsp;
+							<a href="javascript:void(0);" onclick="usersignPreview();"><b><!--<lang package='Template/Default/Public'>-->预览签名<!--</lang>--></b></a>&nbsp;<a href="<!--{:__ROOT__}-->/index.php?app=home&c=misc&a=ubb&type=sign" target="_blank"><!--<lang package='Template/Default/Public'>-->查看用户签名支持的UBB代码<!--</lang>--></a>
+							<div id="usersign_preview" style="border:2px dashed #CCC;padding:5px;margin-top:10px;">
+								<!--{$oUserInfo['user_sign']|Core_Extend+usersign}-->
+							</div>
+						</div>
 					</fieldset>
 					<fieldset><label for="seccode"><!--<lang package='Template/Default/Public'>-->验证码<!--</lang>--></label>
 						<input type="text" name="seccode" size="6" id="seccode"/>
