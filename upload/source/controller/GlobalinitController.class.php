@@ -13,7 +13,11 @@ class GlobalinitController extends Controller{
 		Core_Extend::loadCache(APP_NAME.'_option');
 
 		//前端初始化
-		Core_Extend::initFront();
+		try{
+			Core_Extend::initFront();
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
 
 		UserModel::M()->checkRbac();
 		if(UserModel::M()->isBehaviorError()){

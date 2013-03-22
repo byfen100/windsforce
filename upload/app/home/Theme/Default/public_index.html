@@ -295,6 +295,7 @@ $(document).ready(function(){
 						</ul>
 					</div>
 				</div>
+
 				<div class="commonbox">
 					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->活跃会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template/Public'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<p><ul class="thumbnails">
@@ -313,6 +314,7 @@ $(document).ready(function(){
 						</ul>
 					</p>
 				</div>
+
 				<div class="commonbox">
 					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template/Public'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<p><ul class="thumbnails">
@@ -331,6 +333,7 @@ $(document).ready(function(){
 						</ul>
 					</p>
 				</div>
+
 				<div class="commonbox">
 					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新帮助<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://homehelp/index')}-->" title="<!--<lang package='Template/Public'>-->更多帮助<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<div class="commonlist">
@@ -345,6 +348,7 @@ $(document).ready(function(){
 						</ul>
 					</div>
 				</div>
+
 				<div class="commonbox">
 					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->关注我们<!--</lang>--></div>
 					<div class="commonlist">
@@ -366,6 +370,41 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
+
+		<!--{if $GLOBALS['_option_']['online_on']==1 && $GLOBALS['_option_']['online_indexon']==1}-->
+		<div class="row">
+			<div class="span12 commonbox">
+				<div class="commonboxtitle"><!--<lang package='Template/Public'>-->在线会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://online/index')}-->" title="<!--<lang package='Template/Public'>-->更多在线会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+				<div class="alert alert-success">
+					<a href="<!--{:Dyhb::U('home://online/index')}-->"><b><!--<lang package='Template/Online'>-->在线会员<!--</lang>--></b></a> - <b><!--{$arrOnlinedata['online_allnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->人在线<!--</lang>--> - <b><!--{$arrOnlinedata['online_usernum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->会员<!--</lang>-->(<b><!--{$arrOnlinedata['online_stealthusernum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->隐身<!--</lang>-->), <b><!--{$arrOnlinedata['online_guestnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->位游客<!--</lang>--> - <!--<lang package='Template/Online'>-->最高记录是<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_totalmostnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->于<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_mosttime']}--></b>.
+				</div>
+				<!--{if $GLOBALS['_option_']['online_indexmost']>0}-->
+				<div class="index_online">
+					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_admin.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Online'>-->管理员<!--</lang>-->&nbsp;&nbsp;
+					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_member.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Online'>-->会员<!--</lang>-->&nbsp;&nbsp;
+					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_guest.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Online'>-->游客<!--</lang>-->&nbsp;<!--{if $GLOBALS['_option_']['online_indexgueston']==0}-->(><!--<lang package='Template/Online'>-->未列出<!--</lang>-->)<!--{/if}-->
+				</div>
+				<div class="index_online_list">
+					<!--{if is_array($arrOnlines)}-->
+					<ul>
+						<!--<foreach for=arrOnlines value=oOnline>-->
+						<li>
+							<img src="<!--{$oOnline['user_id']|Core_Extend+getUseronlineIcon=true}-->" border="0" align="absmiddle" />&nbsp;
+							<!--{if $oOnline['user_id']>0}-->
+							<a href='<!--{:Dyhb::U('home://space?id='.$oOnline['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnline['online_username']}--></a>
+							<!--{d*else}-->
+							<span title="<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}-->"><!--<lang package='Template/Online'>-->游客<!--</lang>--></span>
+							<!--{/if}-->
+						</li>
+						<!--</foreach>-->
+					</ul>
+					<!--{d*else}-->
+					<!--{/if}-->
+				</div>
+				<!--{/if}-->
+			</div>
+		</div>
+		<!--{/if}-->
 
 		<!--{if $arrLinkDatas['link_content'] || $arrLinkDatas['link_text'] || $arrLinkDatas['link_logo']}-->
 		<div class="row">

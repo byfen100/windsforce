@@ -37,11 +37,21 @@ Tags: admin, light
 [/CURSCRIPT]
 
 /**===============================
+           首页在线用户
+================================*/
+[CURSCRIPT=home::public::index,home::online::index]
+.index_online{margin:0 10px 10px 10px;}
+.index_online_list{border-top: 1px dotted #E0E0E0; margin: 0 10px;padding: 10px;}
+.index_online_list ul,.index_online_list li{list-style: none outside none;margin: 0;padding: 0;}
+.index_online_list li{display: block;float: left;height: 28px;overflow: hidden;width: 150px;}
+[/CURSCRIPT]
+
+/**===============================
            新鲜事
 ================================*/
 [CURSCRIPT=home::ucenter,home::public::index,home::stat::explore]
 /* 主容器 */
-.homefresh-box{ table-layout:fixed; word-break: break-all; overflow:hidden;}
+.homefresh-box{table-layout:fixed; word-break: break-all; overflow:hidden;}
 .homefresh-box .max-limit-doing{ margin:5px 70px 0px 0px; }
 .homefresh-content{table-layout:fixed; word-break: break-all; overflow:hidden;margin:10px 0px;padding:5px 10px 5px 10px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;margin-top:5px;}
 .homefresh-content:hover{}

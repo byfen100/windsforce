@@ -48,6 +48,7 @@ return array(
 		'home@stat@*'=>true,
 		'home@apps@*'=>true,
 		'home@misc@*'=>true,
+		'home@online@*'=>true,
 		'home@attachmentdownload@*'=>true,
 		'home@attachmentread@*'=>true,
 		'home@attachment@*'=>true,

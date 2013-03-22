@@ -21,4 +21,5 @@ return array(
 	'stat::feed,stat::explore',
 	'apps::index',
 	'space::index',
+	'online::index',
 );

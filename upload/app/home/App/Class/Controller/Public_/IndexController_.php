@@ -38,6 +38,11 @@ class IndexController extends Controller{
 		// 取得最新照片
 		$this->get_newattachment_();
 
+		// 取得在线用户数据
+		if($GLOBALS['_option_']['online_on']==1 && $GLOBALS['_option_']['online_indexon']==1){
+			$this->get_online_();
+		}
+
 		$this->display('public+index');
 	}
 
@@ -86,6 +91,24 @@ class IndexController extends Controller{
 		$arrNewattachments=AttachmentModel::F()->where(array('attachment_extension'=>array('in','gif,jpeg,jpg,png,bmp')))->order('create_dateline DESC')->limit(0,$nHomenewattachmentnum)->getAll();
 
 		$this->assign('arrNewattachments',$arrNewattachments);
+	}
+
+	protected function get_online_(){
+		// 读取在线数据
+		$arrOnlinedata=Home_Extend::getOnlinedata();
+
+		$this->assign('arrOnlinedata',$arrOnlinedata);
+
+		// 用户在线列表
+		if($GLOBALS['_option_']['online_indexmost']>0){
+			if($GLOBALS['_option_']['online_indexgueston']==1){
+				$arrOnlines=OnlineModel::F('online_isstealth=?',0)->order('create_dateline DESC')->limit(0,$GLOBALS['_option_']['online_indexmost'])->getAll();
+			}else{
+				$arrOnlines=OnlineModel::F('user_id>? AND online_isstealth=0',0)->order('create_dateline DESC')->limit(0,$GLOBALS['_option_']['online_indexmost'])->getAll();
+			}
+
+			$this->assign('arrOnlines',$arrOnlines);
+		}
 	}
 
 	public function index_title_(){

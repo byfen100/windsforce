@@ -694,22 +694,70 @@ WINDSFORCE;
 		$oPromotion->index();
 	}
 
-	static public function initFront(){
-		// 判断应用是否启用
-		Core_Extend::loadCache('app');
-		if(!in_array(APP_NAME,$GLOBALS['_cache_']['app'])){
-			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
+	static public function online(){
+		// 忽略项
+		$sAtpage=APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME;
+		if(MODULE_NAME==='api' || (APP_NAME.'@'.MODULE_NAME=='home@misc' && $sAtpage!='home@misc@ubb')){
+			return;
 		}
-		
+
+		// 在线基本数据
+		$arrOnline['online_ip']=G::getIp();
+		$arrOnline['online_activetime']=CURRENT_TIMESTAMP;
+		$arrOnline['online_atpage']=APP_NAME.'@'.MODULE_NAME.'@'.ACTION_NAME;
+
+		// 最大在线人数检测
+		$nOnlinenum=OnlineModel::F()->all()->getCounts();
+
+		$nOnlinemostnum=intval($GLOBALS['_option_']['online_mostnum']);
+		if($nOnlinemostnum>0 && $nOnlinenum>$nOnlinemostnum){
+			Dyhb::E(Dyhb::L('当前在线人数 %d 超过了网站最大负载量 %d','__COMMON_LANG__@Function/Core_Extend',null,$nOnlinenum,$nOnlinemostnum));
+		}
+
+		// 数据库对象
+		$oDb=Db::RUN();
+
+		if($GLOBALS['___login___']!==false){
+			$arrOnline['user_id']=$GLOBALS['___login___']['user_id'];
+			$arrOnline['online_username']=$GLOBALS['___login___']['user_name'];
+			
+			$oOnline=OnlineModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
+			if(!empty($oOnline['user_id'])){
+				$oDb->query('UPDATE '.OnlineModel::F()->query()->getTablePrefix().'online SET online_ip="'.$arrOnline['online_ip'].'",online_activetime="'.$arrOnline['online_activetime'].'",online_atpage="'.$arrOnline['online_atpage'].'" WHERE user_id='.$GLOBALS['___login___']['user_id']);
+			}else{
+				$oOnline=new OnlineModel($arrOnline);
+				$oOnline->save(0);
+
+				if($oOnline->isError()){
+					Dyhb::E($oOnline->getErrorMessage());
+				}
+			}
+		}else{
+			$arrOnline['user_id']=0;
+			$arrOnline['online_username']='';
+
+			$oOnline=OnlineModel::F('user_id=0 AND online_ip=?',$arrOnline['online_ip'])->getOne();
+			if(!empty($oOnline['online_ip'])){
+				$oDb->query('UPDATE '.OnlineModel::F()->query()->getTablePrefix().'online SET online_ip="'.$arrOnline['online_ip'].'",online_activetime="'.$arrOnline['online_activetime'].'",online_atpage="'.$arrOnline['online_atpage'].'" WHERE user_id=0 AND online_ip="'.$arrOnline['online_ip'].'"');
+			}else{
+				$oOnline=new OnlineModel($arrOnline);
+				$oOnline->save(0);
+
+				if($oOnline->isError()){
+					Dyhb::E($oOnline->getErrorMessage());
+				}
+			}
+		}
+
+		// 清理过期在线用户数据
+		$oDb->query('DELETE FROM '.OnlineModel::F()->query()->getTablePrefix().'online WHERE online_activetime<'.(CURRENT_TIMESTAMP-$GLOBALS['_option_']['online_keeptime']*60));
+	}
+
+	static public function initFront(){
 		// 配置&菜单&登陆信息
 		Core_Extend::loadCache('option');
 		Core_Extend::loadCache('nav');
 		Core_Extend::loginInformation();
-
-		// 访问推广
-		if(!empty($_GET['fromuid'])){
-			Core_Extend::promotion();
-		}
 		
 		// CSS资源定义
 		if(isset($GLOBALS['_commonConfig_']['_CURSCRIPT_'])){
@@ -780,6 +828,22 @@ WINDSFORCE;
 		
 		// 读取语言缓存
 		Core_Extend::loadCache('lang');
+
+		// 判断应用是否启用
+		Core_Extend::loadCache('app');
+		if(!in_array(APP_NAME,$GLOBALS['_cache_']['app'])){
+			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
+		}
+
+		// 访问推广
+		if(!empty($_GET['fromuid'])){
+			Core_Extend::promotion();
+		}
+		
+		// 在线统计
+		if($GLOBALS['_option_']['online_on']==1){
+			Core_Extend::online();
+		}
 	}
 
 	static public function loadCss(){
@@ -1232,6 +1296,27 @@ WINDSFORCE;
 
 	static public function usersign($sUsersign){
 		return Core_Extend::ubb(nl2br(htmlspecialchars($sUsersign)),true,true);
+	}
+
+	static public function getUseronlineIcon($nUserid,$bSelect=false,$bReturnImage=true){
+		if($nUserid>0){
+			$arrAdmins=explode(',',$GLOBALS['_commonConfig_']['ADMIN_USERID']);
+			
+			if($bSelect===false){
+				$oOnline=OnlineModel::F('user_id=?',$nUserid)->getOne();
+				if(empty($oOnline['user_id'])){
+					return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':-1;
+				}
+			}
+
+			if(in_array($nUserid,$arrAdmins)){
+				return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_admin.gif':3;
+			}else{
+				return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':2;
+			}
+		}else{
+			return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':-1;
+		}
 	}
 
 }

@@ -69,4 +69,42 @@ class Home_Extend{
 		return HometagModel::F('create_dateline>?',1,(CURRENT_TIMESTAMP-$nDate))->order('hometag_count DESC')->limit(0,$nNum)->getAll();
 	}
 
+	public static function getOnlinedata(){
+		$oDb=Db::RUN();
+
+		// 查询在线统计
+		$arrOnline=$oDb->getAllRows("SELECT k,COUNT(0) As countnum FROM(SELECT CASE WHEN user_id=0 THEN 'eq0' WHEN online_isstealth=1 THEN 'neq0s' ELSE 'neq0' END AS k FROM `windsforce_online`) AS temptable GROUP BY k");
+
+		$nOnlineAllnum=$nOnlineGuestnum=$nOnlineUsernum=$nOnlineStealthusernum=0;
+
+		foreach($arrOnline as $arrTemp){
+			if($arrTemp['k']=='eq0'){
+				$nOnlineGuestnum=intval($arrTemp['countnum']);
+			}elseif($arrTemp['k']=='neq0s'){
+				$nOnlineStealthusernum=intval($arrTemp['countnum']);
+			}elseif($arrTemp['k']=='neq0'){
+				$nOnlineUsernum=intval($arrTemp['countnum']);
+			}
+		}
+
+		$nOnlineUsernum+=$nOnlineStealthusernum;
+		$nOnlineAllnum=$nOnlineGuestnum+$nOnlineUsernum;
+
+		// 保存最大在线用户数量
+		if($nOnlineAllnum>$GLOBALS['_option_']['online_totalmostnum']){
+			OptionModel::uploadOption('online_totalmostnum',$nOnlineAllnum);
+			OptionModel::uploadOption('online_mosttime',CURRENT_TIMESTAMP);
+		}
+
+		// 首页的统计数据
+		$arrOnlinedata['online_allnum']=$nOnlineAllnum;
+		$arrOnlinedata['online_guestnum']=$nOnlineGuestnum;
+		$arrOnlinedata['online_usernum']=$nOnlineUsernum;
+		$arrOnlinedata['online_stealthusernum']=$nOnlineStealthusernum;
+		$arrOnlinedata['online_totalmostnum']=$GLOBALS['_option_']['online_totalmostnum'];
+		$arrOnlinedata['online_mosttime']=date('Y-m-d',$GLOBALS['_option_']['online_mosttime']);
+
+		return $arrOnlinedata;
+	}
+
 }

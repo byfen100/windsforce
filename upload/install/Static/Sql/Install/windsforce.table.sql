@@ -758,6 +758,25 @@ CREATE TABLE `#@__option` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_online`
+--
+
+DROP TABLE IF EXISTS `#@__online`;
+CREATE TABLE `#@__online` (
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `online_username` varchar(50) NOT NULL DEFAULT '' COMMENT '用户名字',
+  `online_atpage` varchar(50) NOT NULL DEFAULT '' COMMENT '用户所在页面',
+  `online_ip` varchar(40) NOT NULL DEFAULT '' COMMENT '活动IP',
+  `online_activetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后活动时间',
+  `create_dateline` int(10) NOT NULL COMMENT '创建时间',
+  `online_isstealth` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐身',
+  KEY `user_activetime` (`online_activetime`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_pm`
 --
 

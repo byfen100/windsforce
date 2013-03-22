@@ -1,0 +1,53 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Online'>-->用户在线<!--</lang>--></li>
+		</ul>
+	
+		<div class="row">
+			<div class="span12">
+				<div class="hero-unit">
+					<button class="close" data-dismiss="alert">&times;</button>
+					<!--<lang package='Template/Online'>-->这里为整个站点的用户在线情况<!--</lang>-->
+				</div>
+
+				<div class="alert alert-success">
+					<b><!--<lang package='Template/Online'>-->在线会员<!--</lang>--></b> - <b><!--{$arrOnlinedata['online_allnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->人在线<!--</lang>--> - <b><!--{$arrOnlinedata['online_usernum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->会员<!--</lang>-->(<b><!--{$arrOnlinedata['online_stealthusernum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->隐身<!--</lang>-->), <b><!--{$arrOnlinedata['online_guestnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->位游客<!--</lang>--> - <!--<lang package='Template/Online'>-->最高记录是<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_totalmostnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->于<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_mosttime']}--></b>.
+				</div>
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template/Online'>-->用户名<!--</lang>--></th>
+							<th><!--<lang package='Template/Online'>-->开始时间<!--</lang>--></th>
+							<th><!--<lang package='Template/Online'>-->最后活动时间<!--</lang>--></th>
+							<th><!--<lang package='Template/Online'>-->访问页面<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<!--{if $arrOnlineLists}-->
+							<!--<foreach for=arrOnlineLists value=oOnlineList>-->
+							<td><img src="<!--{$oOnlineList['user_id']|Core_Extend+getUseronlineIcon=true}-->" border="0" align="absmiddle" />&nbsp;
+							<!--{if $oOnlineList['user_id']>0}-->
+							<a href='<!--{:Dyhb::U('home://space?id='.$oOnlineList['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnlineList['online_username']}--></a>
+							<!--{d*else}-->
+							<span title="<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}-->"><!--<lang package='Template/Online'>-->游客<!--</lang>--></span>
+							<!--{/if}--></td>
+							<td><!--{$oOnlineList['create_dateline']|Core_Extend+timeFormat}--></td>
+							<td><!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}--></td>
+							<td><!--{$oOnlineList['online_atpage']}--></td>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<td><!--<lang package='Template/Online'>-->暂无任何在线用户<!--</lang>--></td>
+							<!--{/if}-->
+						</tr>
+					</tbody>
+				</table>
+
+				<!--{$sPageNavbar}-->
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

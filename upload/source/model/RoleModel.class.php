@@ -83,15 +83,15 @@ class RoleModel extends CommonModel{
 
 	public function getGroupAppList($nGroupId){
 		$oDb=$this->getDb();
-		return $oDb->getAllRows('select b.node_id,b.node_title,b.node_name from '.
-				AccessModel::F()->query()->getTablePrefix().'access as a ,'.
-				NodeModel::F()->query()->getTablePrefix().'node as b where a.node_id=b.node_id and  b.node_parentid=0 and a.role_id='.$nGroupId);
+		return $oDb->getAllRows('SELECT b.node_id,b.node_title,b.node_name FROM '.
+				AccessModel::F()->query()->getTablePrefix().'access AS a,'.
+				NodeModel::F()->query()->getTablePrefix().'node AS b WHERE a.node_id=b.node_id AND  b.node_parentid=0 AND a.role_id='.$nGroupId);
 	}
 
 	public function delGroupApp($nGroupId){
 		$oDb=$this->getDb();
 
-		$bResult=$oDb->query('delete from '.AccessModel::F()->query()->getTablePrefix().'access where `access_level`=1 and role_id='.$nGroupId);
+		$bResult=$oDb->query('DELETE FROM '.AccessModel::F()->query()->getTablePrefix().'access WHERE `access_level`=1 AND role_id='.$nGroupId);
 		if($bResult===false){
 			return false;
 		}else{
@@ -122,16 +122,16 @@ class RoleModel extends CommonModel{
 	public function getGroupModuleList($nGroupId,$nAppId){
 		$oDb=$this->getDb();
 
-		return $oDb->getAllRows('select b.node_id,b.node_title,b.node_name from '.
-				AccessModel::F()->query()->getTablePrefix().'access as a ,'.
+		return $oDb->getAllRows('SELECT b.node_id,b.node_title,b.node_name FROM '.
+				AccessModel::F()->query()->getTablePrefix().'access AS a ,'.
 				NodeModel::F()->query()->getTablePrefix().
-				'node as b where a.node_id=b.node_id and  b.node_parentid='.$nAppId.' and a.role_id='.$nGroupId);
+				'node AS b WHERE a.node_id=b.node_id AND b.node_parentid='.$nAppId.' AND a.role_id='.$nGroupId);
 	}
 
 	public function delGroupModule($nGroupId,$nAppId){
 		$oDb=$this->getDb();
 
-		$nResult=$oDb->query('delete from '.AccessModel::F()->query()->getTablePrefix().'access where access_level=2 and access_parentid='.$nAppId.' and role_id='.$nGroupId);
+		$nResult=$oDb->query('DELETE FROM '.AccessModel::F()->query()->getTablePrefix().'access WHERE access_level=2 AND access_parentid='.$nAppId.' AND role_id='.$nGroupId);
 		if($nResult===false){
 			return false;
 		}else{
@@ -164,17 +164,17 @@ class RoleModel extends CommonModel{
 	public function getGroupActionList($nGroupId,$nModuleId){
 		$oDb=$this->getDb();
 
-		return $oDb->getAllRows('select b.node_id,b.node_title,b.node_name from '.
-			AccessModel::F()->query()->getTablePrefix().'access as a ,'.
-			NodeModel::F()->query()->getTablePrefix().'node as b where a.node_id=b.node_id and  b.node_parentid='.$nModuleId.' and  a.role_id='.$nGroupId);
+		return $oDb->getAllRows('SELECT b.node_id,b.node_title,b.node_name FROM '.
+			AccessModel::F()->query()->getTablePrefix().'access AS a ,'.
+			NodeModel::F()->query()->getTablePrefix().'node AS b WHERE a.node_id=b.node_id AND b.node_parentid='.$nModuleId.' AND a.role_id='.$nGroupId);
 
 	}
 
 	public function delGroupAction($nGroupId,$nModuleId){
 		$oDb=$this->getDb();
 
-		$bResult=$oDb->query('delete from '.AccessModel::F()->query()->getTablePrefix().
-				'access where access_level=3 and access_parentid='.$nModuleId.' and role_id='.$nGroupId);
+		$bResult=$oDb->query('DELETE FROM '.AccessModel::F()->query()->getTablePrefix().
+				'access WHERE access_level=3 AND access_parentid='.$nModuleId.' AND role_id='.$nGroupId);
 		if($bResult===false){
 			return false;
 		}else{
@@ -207,15 +207,15 @@ class RoleModel extends CommonModel{
 	public function getGroupUserList($nGroupId){
 		$oDb=$this->getDb();
 
-		return $oDb->getAllRows('select b.user_id,b.user_nikename,b.user_email from '.
-				UserroleModel::F()->query()->getTablePrefix().'Userrole as a ,'.
-				UserModel::F()->query()->getTablePrefix().'user as b where a.user_id=b.user_id and  a.role_id='.$nGroupId);
+		return $oDb->getAllRows('SELECT b.user_id,b.user_nikename,b.user_email FROM '.
+				UserroleModel::F()->query()->getTablePrefix().'Userrole AS a ,'.
+				UserModel::F()->query()->getTablePrefix().'user AS b WHERE a.user_id=b.user_id AND a.role_id='.$nGroupId);
 	}
 
 	public function delGroupUser($nGroupId){
 		$oDb=$this->getDb();
 
-		$bResult=$oDb->query('delete from '.UserroleModel::F()->query()->getTablePrefix().'Userrole where role_id='.$nGroupId);
+		$bResult=$oDb->query('DELETE FROM '.UserroleModel::F()->query()->getTablePrefix().'Userrole WHERE role_id='.$nGroupId);
 		if($bResult===false){
 			return false;
 		}else{
