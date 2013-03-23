@@ -68,7 +68,6 @@ Tags: admin, light
 .message-box .homefresh-header h3{margin-bottom:0px;}
 .message-box .homefresh-header ul li{margin:10px 0px;}
 .message-box .homefresh-author-avatar{position:absolute;margin-left:-100px;}
-.message-box .user_sign{background:url("{__ROOT__}/Public/images/common/signature.png") no-repeat;padding-top:20px;}
 .homefreshcomment-content{ table-layout:fixed; word-break: break-all; overflow:hidden;padding:3px 0px 10px 5px;}
 /* 评论相关 */
 .homefreshcomment_div{border:1px solid {INTERVAL_LINE_COLOR};padding:2px 2px;width:99%;}

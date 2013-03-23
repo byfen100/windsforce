@@ -168,3 +168,8 @@ table thead th .order_asc { padding-right: 8px; background: url({IMG_DIR}/order_
 .commonlist{}
 .commonlist ul{}
 .commonlist ul li{list-style:none;margin-left:-25px;padding:5px;border-bottom:dashed 1px #DDDDDD;}
+
+/**===============================
+           通用签名
+================================*/
+.common_usersign{background:url("{__ROOT__}/Public/images/common/signature.png") no-repeat;padding-top:20px;}
