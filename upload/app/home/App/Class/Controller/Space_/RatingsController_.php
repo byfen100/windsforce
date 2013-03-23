@@ -40,7 +40,7 @@ class RatingsController extends Controller{
 	}
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('积分','Controller/Space');
+		return Dyhb::L('系统等级','Controller/Space');
 	}
 
 	public function index_keywords_(){
