@@ -45,7 +45,7 @@ class ViewController extends Controller{
 			$this->E($oHomefresh->getErrorMessage());
 		}
 
-		$sHomefreshtitle=$oHomefresh->homefresh_title?G::subString($oHomefresh->homefresh_title,0,$arrOptionData['homefreshtitle_substring_num']):'Title Not Found!';
+		$sHomefreshtitle=$oHomefresh->homefresh_title?$oHomefresh->homefresh_title:'Title Not Found!';
 
 		$sHomefreshwebtitle=G::subString($oHomefresh->homefresh_title?$oHomefresh->homefresh_title:strip_tags(Core_Extend::ubb($oHomefresh->homefresh_message)),0,30);
 		$this->_sHomefreshtitle=$sHomefreshwebtitle;
