@@ -209,7 +209,7 @@ function homefreshcommentSubmit(){
 					'</div>'+
 					'<div class="homefreshcomment_content">'+
 						'<a href="'+data.url+'">'+data.comment_name+'</a>:'+data.homefreshcomment_content+'<br/>'+
-						'<em class="homefreshcomment_date">'+data.create_dateline+'</em>'+
+						'<em class="homefreshcomment_date">'+data.create_dateline+'</em><img class="new_data" src="'+_ROOT_+'/Public/images/common/new.gif" />'+
 						'<span class="pipe">|</span>';
 
 			sCommentReply+='<a href="'+data.viewurl+'">'+D.L('查看','Js/Comment_Js')+'</a>&nbsp;';
