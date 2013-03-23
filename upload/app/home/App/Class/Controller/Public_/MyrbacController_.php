@@ -45,7 +45,12 @@ class MyrbacController extends Controller{
 						$arrActions=NodeModel::F('node_status=1 AND node_parentid=?',$oModule['node_id'])->getAll();
 						if(is_array($arrActions)){
 							foreach($arrActions as $oAction){
-								$arrAccessListall[$oApp['node_name']]['data'][]=array('name'=>$oAction['node_name'],'title'=>$oAction['node_title'],'access'=>Core_Extend::isAdmin()?true:(in_array($oAction['node_name'],$arrMyaccesslist)?true:false));
+								$sNodename=$oAction['node_name'];
+								if(strpos($sNodename,'|')){
+									$sNodename=G::subString($sNodename,0,strpos($sNodename,'|'));
+								}
+								
+								$arrAccessListall[$oApp['node_name']]['data'][]=array('name'=>$sNodename,'title'=>$oAction['node_title'],'access'=>Core_Extend::isAdmin()?true:(in_array($sNodename,$arrMyaccesslist)?true:false));
 							}
 						}
 					}
