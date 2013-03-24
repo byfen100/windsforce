@@ -112,6 +112,16 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 <!--{/script}-->
 
 		<div class="row">
+			<div class="span12">
+				<div class="tabb-menu">
+					<ul class="nav nav-pills">
+						<li class="active"><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->">传统BBS</a></li>
+						<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&side=1')}-->">传统BBS(侧边栏)</a></li>
+						<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&new=1')}-->">小组新风格</a></li>
+					</ul>
+				</div>
+			</div>
+			
 			<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
 			<div class="span12" style="margin-bottom:15px;">
 				<div>
@@ -503,6 +513,10 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 			<div class="span12">
 				<div class="floor">
 					<table width="100%" class="floor_table floor_footerpostcontenttable">
+						<tr>
+									<td class="floor_left" width="350px" style="background:#ccc;padding:5px 10px;">快捷回复</td>
+									<td class="floor_right" style="background:#ccc;padding:5px 10px;"></td>
+								</tr>
 						<tr>
 							<td class="floor_left floor_footerpostcontenttd1" width="350px">
 								<div class="avatar">

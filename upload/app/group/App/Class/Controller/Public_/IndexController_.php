@@ -8,7 +8,8 @@ require_once(Core_Extend::includeFile('function/Attachment_Extend'));
 
 class IndexController extends Controller{
 
-	public function index(){	
+	public function index(){
+		$nNew=intval(G::getGpc('new','G'));
 		$nCid=intval(G::getGpc('cid','G'));
 
 		// 取得小组分类
@@ -37,7 +38,11 @@ class IndexController extends Controller{
 		$arrGroupthumbtopics=Group_Extend::getGroupthumbtopic();
 		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 
-		$this->display('public+index');
+		if($nNew==1){
+			$this->display('public+indexnew');
+		}else{
+			$this->display('public+index');
+		}
 	}
 
 }

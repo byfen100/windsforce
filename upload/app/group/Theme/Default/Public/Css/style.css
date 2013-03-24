@@ -7,7 +7,7 @@ Description: Group应用模块CSS
 /**===============================
            查看帖子
 ================================*/
-[CURSCRIPT=group::grouptopic::view,group::grouptopic::reply]
+[CURSCRIPT=group::grouptopic::view,group::grouptopic::reply,group::group::show]
 .floor{margin:0px;padding:0px;}
 .floor_footerpost{margin-top:10px;padding-bottom:10px;}
 .floor_headerpost{margin-top:-20px;padding:0;}
@@ -78,7 +78,7 @@ Description: Group应用模块CSS
 .grouptopicview_tip .grouptopicview_info{ display:block; position:absolute; top:10px; left:150px; line-height:25px;}
 .grouptopicview_info table td{padding:0 8px;}
 .group_avatar{background:#FFFFFF;padding: 4px 4px 6px 4px;}
-. grouptopicview_tablebox{ margin-left:-8px; }
+.grouptopicview_tablebox{ margin-left:-8px; }
 [/CURSCRIPT]
 
 /**===============================
@@ -102,6 +102,7 @@ Description: Group应用模块CSS
            帖子列表
 ================================*/
 [CURSCRIPT=group::public::newtopic,group::group::show]
+.newtopic_currentmenu{color:#999999;}
 .topic_list_box .num {color: #999999;line-height: 18px;text-align: center;width: 140px;text-align:center;}
 .topic_list_box .num span {background: none repeat scroll 0 0 #f3f1f1;-webkit-border-radius:3px 3px 3px 3px;-moz-border-radius:3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;display: block;float: right;height: 36px;margin: 0 0 0 10px;overflow: hidden;padding: 4px 0;width: 54px;}
 .topic_list_box .num em {display: block;font-weight: 700;}

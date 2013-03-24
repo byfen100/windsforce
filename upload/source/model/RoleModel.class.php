@@ -208,14 +208,14 @@ class RoleModel extends CommonModel{
 		$oDb=$this->getDb();
 
 		return $oDb->getAllRows('SELECT b.user_id,b.user_nikename,b.user_email FROM '.
-				UserroleModel::F()->query()->getTablePrefix().'Userrole AS a ,'.
+				UserroleModel::F()->query()->getTablePrefix().'userrole AS a ,'.
 				UserModel::F()->query()->getTablePrefix().'user AS b WHERE a.user_id=b.user_id AND a.role_id='.$nGroupId);
 	}
 
 	public function delGroupUser($nGroupId){
 		$oDb=$this->getDb();
 
-		$bResult=$oDb->query('DELETE FROM '.UserroleModel::F()->query()->getTablePrefix().'Userrole WHERE role_id='.$nGroupId);
+		$bResult=$oDb->query('DELETE FROM '.UserroleModel::F()->query()->getTablePrefix().'userrole WHERE role_id='.$nGroupId);
 		if($bResult===false){
 			return false;
 		}else{
@@ -237,7 +237,7 @@ class RoleModel extends CommonModel{
 		array_walk($arrUserIdList,array($this,'fieldFormat'));
 		$arrUserIdList=implode(',',$arrUserIdList);
 		$bResult=$oDb->query('INSERT INTO '.UserroleModel::F()->query()->getTablePrefix().
-					'Userrole(role_id,user_id)SELECT a.role_id,b.user_id FROM '.
+					'userrole(role_id,user_id)SELECT a.role_id,b.user_id FROM '.
 					RoleModel::F()->query()->getTablePrefix().'role a,'.
 					UserModel::F()->query()->getTablePrefix().'user b WHERE '.'a.role_id='.$nGroupId.' AND b.user_id in('.$arrUserIdList.')');
 		if($bResult===false){

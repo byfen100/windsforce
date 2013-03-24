@@ -12,21 +12,23 @@
 					<ul class="nav nav-tabs">
 						<li ><a href="<!--{:Dyhb::U('group://public/index')}-->">首页</a></li>
 						<li class="active"><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">新帖</a></li>
+						<li><a href="<!--{:Dyhb::U('group://public/group')}-->">小组</a></li>
 					</ul>
 					<table width="100%" class="table">
 						<thead>
 							<tr>
 								<th>发帖人</th>
 								<th colspan="2" style="text-align:right;">
-									<a href="<!--{:Dyhb::U('group://public/index')}-->" style="<!--{if $sType=='create_dateline'}-->color:gray;<!--{/if}-->">最新</a>
+									<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" class="<!--{if $sType=='create_dateline'}-->newtopic_currentmenu<!--{/if}-->">最新</a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/index?type=view')}-->" style="<!--{if $sType=='grouptopic_views'}-->color:gray;<!--{/if}-->">浏览</a>
+									<a href="<!--{:Dyhb::U('group://public/newtopic?type=view')}-->" class="<!--{if $sType=='grouptopic_views'}-->newtopic_currentmenu<!--{/if}-->">浏览</a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/index?type=com')}-->" style="<!--{if $sType=='grouptopic_comments'}-->color:gray;<!--{/if}-->">回复</a>
+									<a href="<!--{:Dyhb::U('group://public/newtopic?type=com')}-->" class="<!--{if $sType=='grouptopic_comments'}-->newtopic_currentmenu<!--{/if}-->">回复</a>
 								</th>
 							</tr>
 						</thead>
 						<tbody>
+							<!--{if is_array($arrGrouptopics)}-->
 							<!--<foreach for=arrGrouptopics value=oGrouptopic>-->
 							<tr>
 								<td class="author">
@@ -62,6 +64,11 @@
 								</td>
 							</tr>
 							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr>
+								<td colspan="3">暂时没有发现任何帖子</td>
+							</tr>
+							<!--{/if}-->
 						</tbody>
 					</table>
 				</div>

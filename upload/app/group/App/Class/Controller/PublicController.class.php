@@ -13,5 +13,9 @@ class PublicController extends InitController{
 	public function newtopic(){
 		Core_Extend::doControllerAction('Public@Newtopic','index');
 	}
+	
+	public function group(){
+		Core_Extend::doControllerAction('Public@Group','index');
+	}
 
 }

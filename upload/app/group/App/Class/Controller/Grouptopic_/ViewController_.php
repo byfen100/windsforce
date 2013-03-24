@@ -12,6 +12,8 @@ class ViewController extends Controller{
 	public function index(){
 		$nId=intval(G::getGpc('id','G'));
 		$nPage=intval(G::getGpc('page','G'));
+		$nNew=intval(G::getGpc('new','G'));
+		$nSide=intval(G::getGpc('side','G'));
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nId)->getOne();
 		if(empty($oGrouptopic->user_id)){
@@ -45,7 +47,13 @@ class ViewController extends Controller{
 		$this->assign('nPage',$nPage);
 		$this->assign('oGrouptopic',$oGrouptopic);
 
-		$this->display('grouptopic+view');
+		if($nSide==1){
+			$this->display('grouptopic+viewside');
+		}elseif($nNew==1){
+			$this->display('grouptopic+viewnew');
+		}else{
+			$this->display('grouptopic+view');
+		}
 	}
 
 	public function totalTopic($nUserid,$bAddtodigest=false){

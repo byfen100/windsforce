@@ -4,120 +4,320 @@
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li>查看小组</li>
+			<li>小组首页</li>
 		</ul>
 
 		<div class="row">
-			<div class="span12">
-				<dl>
+			
+
+
+			<!--{style}-->
+#content_top {
+    background: url("/img/bg-v3.png") repeat scroll 0 0 #F2F2F2;
+    padding: 10px 0 0;
+    position: relative;
+}
+
+.group_title {
+    border-radius: 10px 10px 0 0;
+    height: 150px;
+    position: relative;
+}
+.group_title .gr_info {
+   background-color: rgba(0, 0, 0, 0.5);
+    left: 20px;
+    overflow: hidden;
+    padding: 7px 10px 8px;
+    position: absolute;
+    top: 14px;
+	color:#fff;
+}
+
+.group_title .gr_info a{
+	color:#fff;
+}
+
+.nav-groupmenu li a{color:#fff;}
+.nav-groupmenu li a:hover{color:green;}
+
+
+.pic_ps {
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+    height: 360px;
+    margin-top: -100px;
+    padding: 10px;
+    position: absolute;
+    width: 240px;
+	
+}
+
+			<!--{/style}-->
+
+			<div class="span12" style="margin-top:10px;">
+				
+				<div class="content-top">
+				<div style="background:url('<!--{:__TMPLPUB__}-->/Images/cover_default_02.jpg_960x150.jpg') center repeat ;" im="" gid="12l4c" jw="0" class="group_title">
+				<div class="span12">
+
+				<dl class="gr_info">
 					<dt class="left"><a href=""><img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" width="48" height="48" alt="" class="thumbnail"/></a>
 					</dt>
 					<dd style="padding-left:60px;">
-						<p class="name"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;群组&nbsp;
+						<p class="name"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;
 							<!--{if $nGroupuser==0}-->
-							<span id="joingroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+							<span id="joingroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" style="color:#000;" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
 							<!--{elseif $nGroupuser==1}-->
-							<span id="leavegroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+							<span id="leavegroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" style="color:#000;" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
 							<!--{/if}-->
 						</p>
-						<p>共有 <span class="label label-success"><!--{$oGroup['group_usernum']}--></span>人关注了此小组
+						<p>共有&nbsp;<span class="label label-success"><!--{$oGroup['group_usernum']}--></span>&nbsp;人关注了此小组
 					</dd>
 				</dl>
-			</div>
-			<div class="span12">
-				<h4>小组介绍</h4>
-				<p class="well" style="margin-top:5px;"><!--{$oGroup['group_description']}--></p>
-			</div>
-			<div class="span10">
-				<ul class="nav nav-pills" id="navPills">
-					<li class="<!--{if empty($nCid)}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name)}-->">全部帖子</a></li>
-					<!--<foreach for=arrGrouptopiccategory value=oGrouptopiccategory>-->
-					<!--{if $i<8}-->
-					<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
-						<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
-					</li>
-					<!--{~array_shift($arrCid)}-->
-					<!--{elseif $i==8}-->
-					<li class="dropdown <!--{if in_array($nCid,$arrCid)}-->active<!--{/if}-->">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-							更多类别<b class="caret"></b>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
-								<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
-							</li>
-							<!--{elseif $i>8}-->
-							<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
-								<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
-							</li>
-							<!--{d*else}-->
-						</ul>
-					</li>
-					<!--{/if}-->
-					<!--</foreach>-->
-				</ul>
-			</div>
-			<div class="span2" style="text-align:right;">
-				<p><a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" class="btn btn-success">发布帖子</a></p>
-			</div>
-			<div class="span12">
-				<div id="topic_list_box" class="topic_list_box">
-					<table width="100%" class="table">
-						<thead>
-							<tr style="border-bottom:1px solid #eeeeee;">
-								<th style="width:61px;">发帖人</th>
-								<th><a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a></th>
-								<th style="text-align:center;width:130px;">
-									<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid)}-->" style="<!--{if $sType=='create_dateline'}-->color:gray;<!--{/if}-->">最新</a>
-									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&type=view')}-->" style="<!--{if $sType=='grouptopic_views'}-->color:gray;<!--{/if}-->">浏览</a>
-									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&type=com')}-->" style="<!--{if $sType=='grouptopic_comments'}-->color:gray;<!--{/if}-->">回复</a>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!--<foreach for=arrGrouptopics value=oGrouptopic>-->
-							<tr>
-								<td class="author">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->">
-										<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
-									</a>
-								</td>
-								<td class="subject">
-									<p class="title">
-										<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
-										<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
-										<!--{d*else}-->
-										<a href="javascript:void(0);">[默认分类]</a>
-										<!--{/if}-->
-										<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
-									</p>
-									<p class="info">
-										楼主&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>&nbsp;
-										<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
-										<span class="pipe">|</span>
-										<!--{if $oGrouptopic->grouptopic_comments>0}-->
-										<!--{~$arrLatestComment=unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-										最后回复&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
-										<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
-										<!--{d*else}-->
-										<span>暂无回复</span>
-										<!--{/if}-->
-									</p>
-								</td>
-								<td class="num" style="text-align:center;">
-									<span>浏览<em><!--{$oGrouptopic->grouptopic_views}--></em></span>
-									<span>回复<em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
-								</td>
-							</tr>
-							<!--</foreach>-->
-						</tbody>
-					</table>
 				</div>
-
-				<!--{$sPageNavbar}-->
+				
+					<div class="" style="position: absolute;bottom:-19px;left:15px;" >
+						<div class="tabb-menu">
+							<ul class="nav nav-tabs nav-groupmenu">
+								<li class="active"><a href="<!--{:Dyhb::U('group://public/index')}-->">小组首页</a></li>
+								<li><a  href="<!--{:Dyhb::U('group://public/index?new=1')}-->">推荐</a></li>
+								<li><a href="<!--{:Dyhb::U('group://public/index?new=1')}-->">成员</a></li>
+							</ul>
+						</div>
+						</div>
+				</div>
+				</div>
 			</div>
+
+			<div class="span12" style="margin-top:20px;">
+				<div class="row">
+					<div class="span9">
+						<div class="row">
+							<div class="span9">
+								<h4>小组介绍</h4>
+								<div class="" style=" background-color: #F8F8F8;
+    margin: 10px 0 15px;
+    padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
+								<div class="" style="margin-bottom:10px;">
+										<b>创建时间</b>:&nbsp;<span class="label label-success">2012-02-32</span>
+									</div>
+									<!--{$oGroup['group_description']}-->
+									
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="span7">
+								<ul class="nav nav-pills" id="navPills">
+									<li class="<!--{if empty($nCid)}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name)}-->">全部帖子</a></li>
+									<!--<foreach for=arrGrouptopiccategory value=oGrouptopiccategory>-->
+									<!--{if $i<8}-->
+									<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
+										<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
+									</li>
+									<!--{~array_shift($arrCid)}-->
+									<!--{elseif $i==8}-->
+									<li class="dropdown <!--{if in_array($nCid,$arrCid)}-->active<!--{/if}-->">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+											更多类别<b class="caret"></b>
+										</a>
+										<ul class="dropdown-menu">
+											<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
+												<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
+											</li>
+											<!--{elseif $i>8}-->
+											<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
+												<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
+											</li>
+											<!--{d*else}-->
+										</ul>
+									</li>
+									<!--{/if}-->
+									<!--</foreach>-->
+								</ul>
+							</div>
+							<div class="span2" style="text-align:right;">
+								<p><a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" class="btn btn-success">发帖</a>&nbsp;
+								<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" class="btn">返回</a>
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="span9">
+								<div id="topic_list_box" class="topic_list_box">
+									<table width="100%" class="table">
+										<thead>
+											<tr style="border-bottom:1px solid #eeeeee;">
+												<th style="width:61px;">发帖人</th>
+												<th><a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a></th>
+												<th style="text-align:center;width:130px;">
+													<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid)}-->" style="<!--{if $sType=='create_dateline'}-->color:gray;<!--{/if}-->">最新</a>
+													<span class="pipe">|</span>
+													<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&type=view')}-->" style="<!--{if $sType=='grouptopic_views'}-->color:gray;<!--{/if}-->">浏览</a>
+													<span class="pipe">|</span>
+													<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&type=com')}-->" style="<!--{if $sType=='grouptopic_comments'}-->color:gray;<!--{/if}-->">回复</a>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--<foreach for=arrGrouptopics value=oGrouptopic>-->
+											<tr>
+												<td class="author">
+													<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->">
+														<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
+													</a>
+												</td>
+												<td class="subject">
+													<p class="title">
+														<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
+														<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
+														<!--{d*else}-->
+														<a href="javascript:void(0);">[默认分类]</a>
+														<!--{/if}-->
+														<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
+													</p>
+													<p class="info">
+														楼主&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>&nbsp;
+														<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+														<span class="pipe">|</span>
+														<!--{if $oGrouptopic->grouptopic_comments>0}-->
+														<!--{~$arrLatestComment=unserialize($oGrouptopic->grouptopic_latestcomment)}-->
+														最后回复&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+														<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
+														<!--{d*else}-->
+														<span>暂无回复</span>
+														<!--{/if}-->
+													</p>
+												</td>
+												<td class="num" style="text-align:center;">
+													<span>浏览<em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+													<span>回复<em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+												</td>
+											</tr>
+											<!--</foreach>-->
+										</tbody>
+									</table>
+								</div>
+
+								<!--{$sPageNavbar}-->
+							</div>
+						</div>
+
+						<div class="floor floor_footerpost" style="margin-bottom:30px;">
+							<table width="100%" class="floor_footerposttable">
+								<tr>
+									<td width="200px">
+										<div>
+											<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->" class="btn btn-success" >发布帖子</a>
+										</div>
+									</td>
+									<td style="text-align:right;"><a href="" class="btn">返回</a></td>
+								</tr>
+							</table>
+						</div>
+						
+						<div class="floor">
+							<table width="100%" class="floor_table floor_footerpostcontenttable">
+								<tr>
+									<td class="floor_left" width="350px" style="background:#ccc;padding:5px 10px;">快捷发帖</td>
+									<td class="floor_right" style="background:#ccc;padding:5px 10px;"></td>
+								</tr>
+								<tr>
+									<td class="floor_left floor_footerpostcontenttd1" width="350px">
+										<div class="avatar">
+											<img src="<!--{:Core_Extend::avatar($GLOBALS['___login___']['user_id'],'middle')}-->" width="120px" class="group_avatar">
+										</div>
+									</td>
+									<td class="floor_right">
+										<input class="input-xlarge" type="text" style="width:60%;" />&nbsp;请输入帖子标题
+										
+										<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form" class="grouptopiccomment_form">
+											<!--{if $GLOBALS['___login___']!==false}-->
+											<div id="emotion_parentcontainer">
+												<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="8" style="width:100%;"></textarea>
+											</div>
+											<div id="grouptopiccomment-media-box" class="common-media-box none">
+												<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a>
+												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
+												<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
+												<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
+											</div>
+											<!--{d*else}-->
+											<div style="background:#F5F5F5;padding:10px;">
+												<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:45px 0">
+													<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a> | 
+													<a href="<!--{:Dyhb::U('home://public/register')}-->">用户注册</a>
+												</div>
+											</div>
+											<!--{/if}-->
+											<div class="form-actions">
+												<input type="hidden" name="ajax" value="1">
+												<input type="hidden" name="tid" value="<!--{$oGrouptopic->grouptopic_id}-->">
+												<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
+												<!--{if $GLOBALS['___login___']!==false}-->
+												&nbsp;<a href="javascript:void(0);" onclick="showMedia();">媒体</a>
+												<!--{/if}-->
+												<span class="pipe">|</span>
+												<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" >进入高级模式&gt;&gt;</a>
+											</div>
+										</form>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="space"></div>
+					</div>
+					<div class="span3">
+						<div class="commonbox">
+							
+							<div class="pic_ps""><img src="<!--{:__TMPLPUB__}-->/Images/n5qh5_kqyxa4slm5begws7gfjeg5sckzsew_400x422.jpg_240x340.jpg">
+							</div>
+						</div>
+						
+						<div class="commonbox">
+							<div class="common2" style="margin-top:300px;">
+								<div class="facebox bbox pd10">
+									<div class="face">
+										<a href=""  ><img title="22" alt="22" src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" width="48"></a>
+									</div>
+
+									<div class="info">
+										<h3><a href="#">测试小组</a></h3>
+									</div>
+									<span><a class="btn btn-mini" href="#">加入</a></span>
+								</div>
+
+								<div class="clear"></div>
+								<ul class="other">
+									<li class="br"><span class="fs14"><a href="#">5721</a></span><br />帖子</li>
+										<li><span class="fs14"><a href="#">10035</a></span><br />成员</li>
+								</ul>
+
+								<a href="">查看全部小组</a>
+							</div>
+						</div>
+
+						<div class="commonbox">
+							<div class="commonboxtitle">小组管理员</div>
+							<div class="common2">xxx
+							</div>
+						</div>
+
+						<div class="commonbox">
+							<div class="commonboxtitle">最新成员</div>
+							<div class="commonlist">
+								<ul id="home_followus_box" class="home_followus_box">
+									<li><a href="">xxxxxxx</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 <!--<include file="Core_Extend::template('footer')" />-->

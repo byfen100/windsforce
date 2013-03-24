@@ -9,6 +9,7 @@
 				<ul class="nav nav-tabs">
 					<li  class="active"><a href="<!--{:Dyhb::U('group://public/index')}-->">首页</a></li>
 					<li><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">新帖</a></li>
+					<li><a href="<!--{:Dyhb::U('group://public/group')}-->">小组</a></li>
 				</ul>
 			</div>
 		</div>
@@ -31,6 +32,7 @@
 
 		<div class="row">
 			<div class="span12">
+				
 				<div class="row">
 					<div class="span7"> 
 						<div id="myCarousel" class="carousel slide">
@@ -82,6 +84,15 @@
 
 		<div class="row">
 			<div class="span12">
+				<div class="tabb-menu">
+					<ul class="nav nav-pills">
+						<li class="active"><a href="<!--{:Dyhb::U('group://public/index')}-->">传统BBS</a></li>
+						<li><a href="<!--{:Dyhb::U('group://public/index?new=1')}-->">小组新风格</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="span9">
 				<!--{if is_array($arrGroupcategorys)}-->
 				<!--<foreach for=arrGroupcategorys value=oGroupcategory>-->
 				<table border="0" cellspacing="0" cellpadding="0" align="left" class="tableborder" width="100%">
@@ -187,6 +198,54 @@
 				<!--{d*else}-->
 				<p>暂时没有发现任何小组分类</p>
 				<!--{/if}-->
+			</div>
+
+			<div class="span3">
+				<div class="commonbox">
+					<div class="commonboxtitle">申请小组</div>
+					<div class="commonlist">
+						<ul id="home_followus_box" class="home_followus_box">
+							<li><a href="">xxxxxxx</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="commonbox">
+					<div class="commonboxtitle">小组长</div>
+					<div class="commonlist">
+						<ul id="home_followus_box" class="home_followus_box">
+							<li><a href="">xxxxxxx</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="commonbox">
+					<div class="commonboxtitle">推荐小组</div>
+					<div class="commonlist">
+						<ul id="home_followus_box" class="home_followus_box">
+							<li><a href="">xxxxxxx</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				
+				<div class="commonbox">
+					<div class="commonboxtitle">最新小组</div>
+					<div class="commonlist">
+						<ul id="home_followus_box" class="home_followus_box">
+							<li><a href="">xxxxxxx</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="commonbox">
+					<div class="commonboxtitle">24小时最热</div>
+					<div class="commonlist">
+						<ul id="home_followus_box" class="home_followus_box">
+							<li><a href="">xxxxxxx</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 
