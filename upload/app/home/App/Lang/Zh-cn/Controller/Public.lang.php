@@ -28,6 +28,8 @@ return array(
 '5fc067de81066ec9baa79bac38cf0138'=>"网站地图",
 'db19acb993fa08bf34f16ad54704e4d0'=>"没有权限访问",
 '29f5a3f2a2f695904a2925bbbb5febef'=>"我的权限",
+'86a1be00f6ae394f41f7ecd19dce4c2b'=>"角色权限",
+'7e337deb43b3272625a4554af1dbd471'=>"系统角色",
 )
 
 ?>

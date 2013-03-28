@@ -6,16 +6,37 @@
 
 class MyrbacController extends Controller{
 
+	public $_oRole=null;
+	
 	public function index(){
-		// 处理我的权限
-		if($GLOBALS['___login___']!==false){
-			$nAuthid=$GLOBALS['___login___']['user_id'];
+		$nRId=intval(G::getGpc('rid','G'));
+
+		if($nRId){
+			$oRole=RoleModel::F('role_id=?',$nRId)->getOne();
+			if(empty($oRole['role_id'])){
+				$this->U('home://public/myrbac');
+			}
+
+			$this->_oRole=$oRole;
+			$this->assign('oRole',$oRole);
+
+			// 角色权限
+			$arrAccesslist=UserModel::M()->getAccessList(null,$nRId);
 		}else{
-			$nAuthid=$GLOBALS['_commonConfig_']['GUEST_AUTH_ID'];
+			if($GLOBALS['___login___']!==false){
+				$nAuthid=$GLOBALS['___login___']['user_id'];
+			}else{
+				$nAuthid=$GLOBALS['_commonConfig_']['GUEST_AUTH_ID'];
+			}
+
+			// 读取我的角色
+			$arrUserroles=UserroleModel::F('user_id=?',$nAuthid)->getAll();
+			$this->assign('arrUserroles',$arrUserroles);
+			
+			// 处理我的权限
+			$arrAccesslist=UserModel::M()->getAccessList($nAuthid);
 		}
 
-		$arrAccesslist=UserModel::M()->getAccessList($nAuthid);
-		
 		$arrMyaccesslist=array();
 		if(is_array($arrAccesslist)){
 			foreach($arrAccesslist as $arrTemp){
@@ -64,7 +85,11 @@ class MyrbacController extends Controller{
 	}
 
 	public function myrbac_title_(){
-		return Dyhb::L('我的权限','Controller/Public');
+		if($this->_oRole){
+			return Dyhb::L('角色权限','Controller/Public').' - '.$this->_oRole['role_name'];
+		}else{
+			return Dyhb::L('我的权限','Controller/Public');
+		}
 	}
 
 	public function myrbac_keywords_(){

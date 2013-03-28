@@ -15,6 +15,18 @@ class DeleteController extends Controller{
 			$oHometag->destroy();
 		}
 
+		// 更新标签数量
+		$oHometag=HometagModel::F('hometag_id=?',$nHometagId)->getOne();
+		if(!empty($oHometag['hometag_id'])){
+			$nTagIdCount=HometagindexModel::F('hometag_id=?',$nHometagId)->all()->getCounts();
+			$oHometag->hometag_count=$nTagIdCount;
+			$oHometag->save(0,'update');
+
+			if($oHometag->isError()){
+				$this->setErrorMessage($oHometag->getErrorMessage());
+			}
+		}
+
 		$this->S(Dyhb::L('删除用户标签成功','Controller/Spaceadmin'));
 	}
 

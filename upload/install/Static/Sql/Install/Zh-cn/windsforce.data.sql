@@ -676,8 +676,8 @@ INSERT INTO `#@__ratinggroup` (`ratinggroup_id`, `ratinggroup_name`, `ratinggrou
 
 INSERT INTO `#@__role` (`role_id`, `role_name`, `role_parentid`, `role_status`, `role_remark`, `role_nikename`, `create_dateline`, `update_dateline`, `rolegroup_id`, `role_issystem`) VALUES
 (1, '管理员', 0, 1, '', '管理员', 1295530584, 1338614986, 2, 1),
-(2, '超级组长', 0, 1, '', '超级群主', 1295530598, 1338615068, 2, 1),
-(3, '组长', 0, 1, '', '群主', 1338403516, 1338615084, 2, 1),
+(2, '超级组长', 0, 1, '', '超级组长', 1295530598, 1338615068, 2, 1),
+(3, '组长', 0, 1, '', '组长', 1338403516, 1338615084, 2, 1),
 (4, '游客', 0, 1, '', '游客', 1338403594, 1338615517, 3, 1),
 (5, '注册会员', 0, 1, '', '注册会员', 1338403666, 1338615675, 1, 1);
 

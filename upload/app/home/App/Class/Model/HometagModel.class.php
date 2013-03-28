@@ -80,7 +80,7 @@ class HometagModel extends CommonModel{
 					}
 
 					// 更新标签中用户数量
-					$nTagIdCount=self::F('hometag_id=?',$nTagId)->all()->getCounts();
+					$nTagIdCount=HometagindexModel::F('hometag_id=?',$nTagId)->all()->getCounts();
 					$oTag->hometag_count=$nTagIdCount;
 					unset($_POST['hometag_name']);// 这里放置自动填充
 					$oTag->save(0,'update');

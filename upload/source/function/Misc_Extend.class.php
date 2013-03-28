@@ -228,4 +228,18 @@ class Misc_Extend{
 		return '- '.G::gbkToUtf8($ipaddr,'GB2312');
 	}
 
+	static public function hometag($nHometagid,$nUserid=null){
+		if($nUserid===null){
+			$nUserid=$GLOBALS['___login___']['user_id'];
+		}
+	
+		$oHometagindex=HometagindexModel::F('hometag_id=? AND user_id=?',$nHometagid,$nUserid)->getOne();
+
+		if(!empty($oHometagindex['user_id'])){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 }

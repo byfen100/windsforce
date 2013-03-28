@@ -78,4 +78,8 @@ class PublicController extends InitController{
 		Core_Extend::doControllerAction('Public@Myrbac','index');
 	}
 
+	public function role(){
+		Core_Extend::doControllerAction('Public@Role','index');
+	}
+
 }

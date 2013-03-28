@@ -746,7 +746,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		return true;
 	}
 
-	public function getAccessList($nAuthId){
+	public function getAccessList($nAuthId=null,$nRoleid=null){
 		$oDb=Db::RUN();
 
 		$arrTable=array(
@@ -756,14 +756,24 @@ class ModelBehaviorRbac extends ModelBehavior{
 			'node'=>NodeModel::F()->query()->getTablePrefix().$GLOBALS['_commonConfig_']['RBAC_NODE_TABLE']
 		);
 
+		$sUserroleTable=$sUserroleWhere=$sRoleidWhere='';
+		if($nAuthId!==null){
+			$sUserroleTable=$arrTable['userrole']." AS userrole,";
+			$sUserroleWhere=" AND userrole.user_id='{$nAuthId}' AND userrole.role_id=role.role_id";
+		}
+
+		if($nRoleid!==null){
+			$sRoleidWhere=" AND role.role_id='{$nRoleid}'";
+		}
+
 		$sSql="SELECT DISTINCT node.node_id,node.node_name FROM ".
 			$arrTable['role']." AS role,".
-			$arrTable['userrole']." AS userrole,".
+			$sUserroleTable.
 			$arrTable['access']." AS access ,".
 			$arrTable['node']." AS node ".
-			"WHERE userrole.user_id='{$nAuthId}' and userrole.role_id=role.role_id AND(access.role_id=role.role_id ".
-			"OR(access.role_id=role.role_parentid AND role.role_parentid!=0))AND role.role_status=1 AND ".
-			"access.node_id=node.node_id AND node.node_level=1 AND node.node_status=1";
+			"WHERE (access.role_id=role.role_id ".
+			"OR (access.role_id=role.role_parentid AND role.role_parentid!=0)) AND role.role_status=1 AND ".
+			"access.node_id=node.node_id AND node.node_level=1 AND node.node_status=1".$sUserroleWhere.$sRoleidWhere;
 
 		$arrApps=$oDb->getAllRows($sSql);
 		$arrAccess=array();// 项目权限列表
@@ -777,9 +787,9 @@ class ModelBehaviorRbac extends ModelBehavior{
 				$arrTable['userrole']." AS userrole,".
 				$arrTable['access']." AS access ,".
 				$arrTable['node']." AS node ".
-				"WHERE userrole.user_id='{$nAuthId}' and userrole.role_id=role.role_id AND(access.role_id=role.role_id ".
-				"OR(access.role_id=role.role_parentid AND role.role_parentid!=0))AND role.role_status=1 ".
-				"AND access.node_id=node.node_id AND node.node_level=2 AND node.node_parentid={$nAppId} AND node.node_status=1";
+				"WHERE (access.role_id=role.role_id ".
+				"OR (access.role_id=role.role_parentid AND role.role_parentid!=0)) AND role.role_status=1 ".
+				"AND access.node_id=node.node_id AND node.node_level=2 AND node.node_parentid={$nAppId} AND node.node_status=1".$sUserroleWhere.$sRoleidWhere;
 
 			$arrModules=$oDb->getAllRows($sSql);
 			$arrPublicAction=array();// 判断是否存在公共模块的权限
@@ -792,9 +802,9 @@ class ModelBehaviorRbac extends ModelBehavior{
 					$arrTable['userrole']." AS userrole,".
 					$arrTable['access']." AS access ,".
 					$arrTable['node']." AS node ".
-					"WHERE userrole.user_id='{$nAuthId}' AND userrole.role_id=role.role_id AND(access.role_id=role.role_id ".
-					" OR(access.role_id=role.role_parentid AND role.role_parentid!=0))AND role.role_status=1 ".
-					"AND access.node_id=node.node_id AND node.node_level=3 AND node.node_parentid={$nModuleId} AND node.node_status=1";
+					"WHERE (access.role_id=role.role_id ".
+					"OR (access.role_id=role.role_parentid AND role.role_parentid!=0)) AND role.role_status=1 ".
+					"AND access.node_id=node.node_id AND node.node_level=3 AND node.node_parentid={$nModuleId} AND node.node_status=1".$sUserroleWhere.$sRoleidWhere;
 
 					$arrRs=$oDb->getAllRows($sSql);
 					foreach($arrRs as $arrA){
@@ -813,9 +823,9 @@ class ModelBehaviorRbac extends ModelBehavior{
 					$arrTable['userrole']." AS userrole,".
 					$arrTable['access']." AS access ,".
 					$arrTable['node']." AS node ".
-					"WHERE userrole.user_id='{$nAuthId}' AND userrole.role_id=role.role_id AND(access.role_id=role.role_id ".
-					" OR(access.role_id=role.role_parentid AND role.role_parentid!=0))AND role.role_status=1 ".
-					" AND access.node_id=node.node_id AND node.node_level=3 and node.node_parentid={$nModuleId} AND node.node_status=1";
+					"WHERE (access.role_id=role.role_id ".
+					"OR (access.role_id=role.role_parentid AND role.role_parentid!=0))AND role.role_status=1 ".
+					" AND access.node_id=node.node_id AND node.node_level=3 and node.node_parentid={$nModuleId} AND node.node_status=1".$sUserroleWhere.$sRoleidWhere;
 
 				$arrRs=$oDb->getAllRows($sSql);
 				$arrAction=array();
@@ -858,8 +868,8 @@ class ModelBehaviorRbac extends ModelBehavior{
 			$arrTable['role']." AS role,".
 			$arrTable['userrole']." AS userrole,".
 			$arrTable['access']." AS access ".
-			"WHERE userrole.user_id='{$nAuthId}' AND userrole.role_id=role.role_id AND(access.role_id=role.role_id ".
-			" OR(access.role_id=role.role_parentid AND role.role_parentid!=0))AND role.role_status=1 ".
+			"WHERE userrole.user_id='{$nAuthId}' AND userrole.role_id=role.role_id AND (access.role_id=role.role_id ".
+			"OR (access.role_id=role.role_parentid AND role.role_parentid!=0)) AND role.role_status=1 ".
 			"AND  access.access_module='{$sModule}' AND access.access_status=1";
 
 		$arrNodes=$oDb->getAllRows($sSql);

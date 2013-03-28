@@ -9,6 +9,9 @@ class UserroleModel extends CommonModel{
 	static public function init__(){
 		return array(
 			'table_name'=>'userrole',
+			'props'=>array(
+				'role'=>array(Db::HAS_ONE=>'RoleModel','source_key'=>'role_id','target_key'=>'role_id'),
+			),
 		);
 	}
 
