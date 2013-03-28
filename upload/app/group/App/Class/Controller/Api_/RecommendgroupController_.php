@@ -14,7 +14,7 @@ class RecommendgroupController extends Controller{
 			$this->E('推荐小组调用数量不能为空');
 		}
 
-		$arrGroups=GroupModel::F('group_isrecommend=?',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
+		$arrGroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
 		$this->assign('arrGroups',$arrGroups);
 		$this->assign('nCutNum',$nCutNum);
 

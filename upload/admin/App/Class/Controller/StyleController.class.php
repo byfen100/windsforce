@@ -357,6 +357,15 @@ class StyleController extends InitController{
 	}
 
 	public function bEdit_(){
+		$sId=G::getGpc('id');
+
+		if(!empty($sId)){
+			$arrIds=explode(',',$sId);
+			if(in_array(1,$arrIds)){
+				$this->E(Dyhb::L('系统默认主题无法编辑','Controller/Style'));
+			}
+		}
+		
 		$arrThemes=ThemeModel::F()->getAll();
 		
 		$arrStylevars=StylevarModel::F('style_id=?',intval(G::getGpc('id','G')))->getAll();

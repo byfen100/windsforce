@@ -67,6 +67,7 @@ function reloadCategory(){
 			<div class="span12">
 				<ul id="myTab" class="nav nav-tabs">
 					<li class="active"><a href="javascript:void(0);"><!--{if isset($oGrouptopic)}-->编辑帖子<!--{d*else}-->发布帖子<!--{/if}--></a></li>
+					<li><a href="<!--{if empty($nGroupid)}--><!--{:Dyhb::U('group://public/index')}--><!--{d*else}--><!--{:Dyhb::U('group://gid@?id='.$nGroupid)}--><!--{/if}-->">返回小组</a></li>
 				</ul>
 			</div>
 			<form method='post' name="grouptopic_form" id="grouptopic_form" enctype="multipart/form-data">

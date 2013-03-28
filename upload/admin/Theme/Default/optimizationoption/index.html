@@ -63,6 +63,12 @@ function option(){
 						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->如果游客过多，建议关闭<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
+						<label for="online_indexshowip"><!--<lang package='Template/Default/Optimizationoption'>-->首页详细在线列表人数是否显示访问IP地址<!--</lang>--></label>
+						<input type="radio" id="online_indexshowip" name="options[online_indexshowip]" value="1" <!--{if $arrOptions['online_indexshowip']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[online_indexshowip]" value="0" <!--{if $arrOptions['online_indexshowip']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->如果开启后，你将看到用户的在线IP地址<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
 						<label for="online_detailon"><!--<lang package='Template/Default/Optimizationoption'>-->详细在线列表页面是否开启<!--</lang>--></label>
 						<input type="radio" id="online_detailon" name="options[online_detailon]" value="1" <!--{if $arrOptions['online_detailon']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
 						<input type="radio" id="" name="options[online_detailon]" value="0" <!--{if $arrOptions['online_detailon']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
@@ -72,6 +78,12 @@ function option(){
 						<label for="online_list_num"><!--<lang package='Template/Default/Optimizationoption'>-->网站详细在线列表每页数量<!--</lang>--></label>
 						<input type="text" name="options[online_list_num]" id="online_list_num" size="60" value="<!--{$arrOptions['online_list_num']}-->"/>
 						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->用户在线列表，这个可以设置大一点<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="online_listshowip"><!--<lang package='Template/Default/Optimizationoption'>-->详细在线列表人数是否显示访问IP地址<!--</lang>--></label>
+						<input type="radio" id="online_listshowip" name="options[online_listshowip]" value="1" <!--{if $arrOptions['online_listshowip']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[online_listshowip]" value="0" <!--{if $arrOptions['online_listshowip']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->如果开启后，你将看到用户的在线IP地址<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
 						<label for="online_stealtholtime"><!--<lang package='Template/Default/Optimizationoption'>-->隐身会员是否统计其在线时间<!--</lang>--></label>

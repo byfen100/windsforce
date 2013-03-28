@@ -11,7 +11,6 @@ class HomehelpcategoryModel extends CommonModel{
 			'table_name'=>'homehelpcategory',
 			'props'=>array(
 				'homehelpcategory_id'=>array('readonly'=>true),
-				'homehelp'=>array(Db::HAS_MANY=>'HomehelpModel','source_key'=>'homehelpcategory_id','target_key'=>'homehelp_id'),
 			),
 			'attr_protected'=>'homehelpcategory_id',
 			'check'=>array(

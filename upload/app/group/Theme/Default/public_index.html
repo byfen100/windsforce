@@ -202,11 +202,9 @@
 
 			<div class="span3">
 				<div class="commonbox">
-					<div class="commonboxtitle">申请小组</div>
-					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
-						</ul>
+					<div class="creategroup_box">
+						<p><a class="btn btn-large btn-success" href="<!--{:Dyhb::U('group://create/index')}-->">申请创建小组</a></p>
+						<p><a href="<!--{:Dyhb::U('home://homehelp/index?cid=4')}-->" target="_blank" >&gt;&gt;小组管理秘籍</a></p>
 					</div>
 				</div>
 				
@@ -214,7 +212,7 @@
 					<div class="commonboxtitle">小组长</div>
 					<div class="commonlist">
 						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+							<li><a href="">wait to do</a></li>
 						</ul>
 					</div>
 				</div>
@@ -223,7 +221,13 @@
 					<div class="commonboxtitle">推荐小组</div>
 					<div class="commonlist">
 						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+							<!--{if is_array($arrRecommendgroups)}-->
+							<!--<foreach for=arrRecommendgroups value=oRecommendgroup>-->
+							<li>
+								<a href="<!--{:Group_Extend::getGroupurl($oRecommendgroup)}-->"><!--{$oRecommendgroup['group_nikename']}-->&nbsp;(<!--{$oRecommendgroup['group_usernum']}-->)</a>
+							</li>
+							<!--</foreach>-->
+							<!--{/if}-->
 						</ul>
 					</div>
 				</div>
@@ -233,7 +237,13 @@
 					<div class="commonboxtitle">最新小组</div>
 					<div class="commonlist">
 						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+							<!--{if is_array($arrNewgroups)}-->
+							<!--<foreach for=arrNewgroups value=oNewgroup>-->
+							<li>
+								<a href="<!--{:Group_Extend::getGroupurl($oNewgroup)}-->"><!--{$oNewgroup['group_nikename']}-->&nbsp;(<!--{$oNewgroup['group_usernum']}-->)</a>
+							</li>
+							<!--</foreach>-->
+							<!--{/if}-->
 						</ul>
 					</div>
 				</div>

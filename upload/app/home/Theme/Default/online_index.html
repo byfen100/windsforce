@@ -22,6 +22,7 @@
 							<th><!--<lang package='Template/Online'>-->用户名<!--</lang>--></th>
 							<th><!--<lang package='Template/Online'>-->开始时间<!--</lang>--></th>
 							<th><!--<lang package='Template/Online'>-->最后活动时间<!--</lang>--></th>
+							<!--{if $GLOBALS['_option_']['online_indexshowip']==1}--><th><!--<lang package='Template/Online'>-->访问IP地址<!--</lang>--></th><!--{/if}-->
 							<th><!--<lang package='Template/Online'>-->访问页面<!--</lang>--></th>
 						</tr>
 					</thead>
@@ -29,7 +30,7 @@
 						<!--{if $arrOnlineLists}-->
 						<!--<foreach for=arrOnlineLists value=oOnlineList>-->
 						<tr>
-							<td><img src="<!--{$oOnlineList['user_id']|Core_Extend+getUsericon}-->" border="0" align="absmiddle" />&nbsp;
+							<td><!--{$oOnlineList['user_id']|Core_Extend+getUsericon}-->&nbsp;
 							<!--{if $oOnlineList['user_id']>0}-->
 							<a href='<!--{:Dyhb::U('home://space@?id='.$oOnlineList['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnlineList['online_username']}--></a>
 							<!--{d*else}-->
@@ -37,6 +38,7 @@
 							<!--{/if}--></td>
 							<td><!--{$oOnlineList['create_dateline']|Core_Extend+timeFormat}--></td>
 							<td><!--{$oOnlineList['online_activetime']|Core_Extend+timeFormat}--></td>
+							<!--{if $GLOBALS['_option_']['online_indexshowip']==1}--><td><!--{$oOnlineList['online_ip']}-->&nbsp;<!--{$oOnlineList['online_ip']|Misc_Extend+convertIp}--></td><!--{/if}-->
 							<td><!--{$oOnlineList['online_atpage']}--></td>
 						</tr>
 						<!--</foreach>-->

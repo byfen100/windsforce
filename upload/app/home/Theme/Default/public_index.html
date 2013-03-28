@@ -149,7 +149,7 @@ $(document).ready(function(){
 						</div>
 					</div>
 					<!--{d*else}-->
-					<h3><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Public'>-->返回个人中心<!--</lang>--></a>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->设置在线状态<!--</lang>-->"><img src="<!--{$GLOBALS['___login___']['user_id']|Core_Extend+getUseronlineicon}-->" /></a></h3>
+					<h3><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Public'>-->返回个人中心<!--</lang>--></a>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->设置在线状态<!--</lang>-->"><!--{$GLOBALS['___login___']['user_id']|Core_Extend+getUseronlineicon}--></a></h3>
 					<table class="table">
 						<tbody>
 							<tr>
@@ -209,7 +209,7 @@ $(document).ready(function(){
 										</div>
 									</td>
 									<td>
-										<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>--><!--{:Core_Extend::newData($oHomefresh['create_dateline'],true)}-->
+										<h4><!--{$oHomefresh['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>--><!--{:Core_Extend::newData($oHomefresh['create_dateline'],true)}-->
 										</h4>
 										<div class="homefresh-content">
 											<!--{$oHomefresh['homefresh_message']|strip_tags|G+subString=0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']|Core_Extend+ubb}-->
@@ -389,11 +389,11 @@ $(document).ready(function(){
 					<ul>
 						<!--<foreach for=arrOnlines value=oOnline>-->
 						<li>
-							<img src="<!--{$oOnline['user_id']|Core_Extend+getUsericon}-->" border="0" align="absmiddle" />&nbsp;
+							<!--{$oOnline['user_id']|Core_Extend+getUsericon}-->&nbsp;
 							<!--{if $oOnline['user_id']>0}-->
-							<a href='<!--{:Dyhb::U('home://space@?id='.$oOnline['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}-->'><!--{$oOnline['online_username']}--></a>
+							<a href='<!--{:Dyhb::U('home://space@?id='.$oOnline['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}--><!--{if $GLOBALS['_option_']['online_indexshowip']==1}--> | <!--<lang package='Template/Online'>-->访问IP地址<!--</lang>-->:<!--{$oOnline['online_ip']}-->&nbsp;<!--{$oOnline['online_ip']|Misc_Extend+convertIp}--><!--{/if}-->'><!--{$oOnline['online_username']}--></a>
 							<!--{d*else}-->
-							<span title="<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}-->"><!--<lang package='Template/Online'>-->游客<!--</lang>--></span>
+							<span title="<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}--> | <!--<lang package='Template/Online'>-->访问IP地址<!--</lang>-->:<!--{$oOnline['online_ip']}-->&nbsp;<!--{$oOnline['online_ip']|Misc_Extend+convertIp}-->"><!--<lang package='Template/Online'>-->游客<!--</lang>--></span>
 							<!--{/if}-->
 						</li>
 						<!--</foreach>-->

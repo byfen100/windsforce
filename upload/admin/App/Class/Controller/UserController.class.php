@@ -10,6 +10,12 @@ Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 /** 定义Home的语言包 */
 define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
 
+/** 导入杂项函数 */
+require(Core_Extend::includeFile('function/Misc_Extend'));
+
+/** 导入个人信息处理函数 */
+require_once(Core_Extend::includeFile('function/Profile_Extend'));
+
 class UserController extends InitController{
 
 	public function init__(){

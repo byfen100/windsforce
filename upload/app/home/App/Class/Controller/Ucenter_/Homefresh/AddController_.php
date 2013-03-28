@@ -118,6 +118,7 @@ class AddController extends Controller{
 			$arrHomefreshData['create_dateline']=Core_Extend::timeFormat($oHomefresh['create_dateline']);
 			$arrHomefreshData['homefresh_message']=Core_Extend::ubb(G::subString(strip_tags($oHomefresh['homefresh_message']),0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']));
 			$arrHomefreshData['url']=Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id']);
+			$arrHomefreshData['usericon']=Core_Extend::getUsericon($oHomefresh['user_id']);
 
 			$this->cache_site_();
 

@@ -543,7 +543,9 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('online_indexgueston', '1'),
 ('online_detailon', '1'),
 ('online_list_num', '30'),
-('online_stealtholtime', '1');
+('online_stealtholtime', '1'),
+('online_indexshowip', '1'),
+('online_listshowip', '1');
 
 -- --------------------------------------------------------
 

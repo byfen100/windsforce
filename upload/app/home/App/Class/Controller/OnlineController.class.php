@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入杂项函数 */
+require(Core_Extend::includeFile('function/Misc_Extend'));
+
 class OnlineController extends InitController{
 
 	public function index(){

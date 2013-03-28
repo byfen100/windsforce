@@ -87,7 +87,7 @@ $(function(){
 							<td><!--{$value:attachmentcomment_email}--></td>
 							<td><!--{$value:attachmentcomment_url}--></td>
 							<td><div class="attachmentcomment_content"><!--{$value:attachmentcomment_content|strip_tags|G+subString=0,80|Core_Extend+ubb=false}--></div></td>
-							<td><!--{$value:attachmentcomment_ip}--></td>
+							<td><!--{$value:attachmentcomment_ip}--><br/><!--{$value['attachmentcomment_ip']|Misc_Extend+convertIp}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:attachmentcomment_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
 							<td><!--{if $value:attachmentcomment_status==1}-->

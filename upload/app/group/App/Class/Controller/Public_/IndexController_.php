@@ -38,6 +38,14 @@ class IndexController extends Controller{
 		$arrGroupthumbtopics=Group_Extend::getGroupthumbtopic();
 		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 
+		// 推荐小组
+		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,10)->getAll();
+		$this->assign('arrRecommendgroups',$arrRecommendgroups);
+
+		// 最新小组
+		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,10)->getAll();
+		$this->assign('arrNewgroups',$arrNewgroups);
+
 		if($nNew==1){
 			$this->display('public+indexnew');
 		}else{

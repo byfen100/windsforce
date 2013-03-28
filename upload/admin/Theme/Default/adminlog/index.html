@@ -61,7 +61,7 @@
 								</div>
 							</td>
 							<td><a href="<!--{:__APP__}-->?<!--{$value['adminlog_info']}-->"><!--{$value['adminlog_info']}--></a></td>
-							<td><!--{$value['adminlog_ip']}--></td>
+							<td><!--{$value['adminlog_ip']}--><br/><!--{$value['adminlog_ip']|Misc_Extend+convertIp}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 						</tr>
 						<!--</foreach>-->

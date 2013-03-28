@@ -49,7 +49,9 @@ class ShowController extends Controller{
 		$arrWhere['group_id']=$oGroup->group_id;
 
 		$nTotalComment=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
+
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
+
 		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('arrGrouptopics',$arrGrouptopics);

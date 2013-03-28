@@ -59,10 +59,10 @@ function unstealthOnline(nUserid){
 				<form method="post" id="informationUpd" name="informationUpd">
 					<fieldset>
 						<div class="control-group">
-							<label class="control-label" for="user_name">
+							<label class="control-label">
 								<!--<lang package='Template/Spaceadmin'>-->用户名<!--</lang>-->&nbsp;&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}--></a>&nbsp;
 								<span id="set_online">
-									<img src="<!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}-->" />
+									<!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}-->&nbsp;
 									<!--{if $GLOBALS['___login___']['user_isstealth']==1}-->
 									<a href="javascript:void(0);" onclick="unstealthOnline('<!--{$oUserInfo['user_id']}-->');" ><!--<lang package='Template/Spaceadmin'>-->取消隐身<!--</lang>--></a>
 									<!--{d*else}-->

@@ -1308,7 +1308,7 @@ WINDSFORCE;
 
 		if($bReturnImg===true){
 			if($bIsNew===true){
-				return '<img class="new_data" src="'.__ROOT__.'/Public/images/common/new.gif" />';
+				return '<img class="new_data" src="'.__ROOT__.'/Public/images/common/new.gif" border=\"0\" align=\"absmiddle\" />';
 			}else{
 				return '';
 			}
@@ -1321,21 +1321,34 @@ WINDSFORCE;
 		return Core_Extend::ubb(nl2br(htmlspecialchars($sUsersign)),true,true);
 	}
 
-	static public function getUsericon($nUserid,$bReturnImage=true){
+	static public function getUsericon($nUserid,$bReturnImage=true,$bReturnImageHtml=true){
+		$sReturn=$sTitle='';
+
 		if($nUserid>0){
 			$arrAdmins=explode(',',$GLOBALS['_commonConfig_']['ADMIN_USERID']);
 			
 			if(in_array($nUserid,$arrAdmins)){
-				return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_admin.gif':3;
+				$sReturn=$bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_admin.gif':3;
+				$sTitle=Dyhb::L('管理员','__COMMON_LANG__@Function/Core_Extend');
 			}else{
-				return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_member.gif':2;
+				$sReturn=$bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_member.gif':2;
+				$sTitle=Dyhb::L('会员','__COMMON_LANG__@Function/Core_Extend');
 			}
 		}else{
-			return $bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':-1;
+			$sReturn=$bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':-1;
+			$sTitle=Dyhb::L('游客','__COMMON_LANG__@Function/Core_Extend');
+		}
+
+		if($bReturnImage===true && $bReturnImageHtml=true){
+			return "<img class=\"usericon_data\" src=\"{$sReturn}\" title=\"{$sTitle}\" border=\"0\" align=\"absmiddle\" />";
+		}else{
+			return $sReturn;
 		}
 	}
 	
-	static public function getUseronlineicon($nUserid,$bReturnImage=true,$bReally=false){
+	static public function getUseronlineicon($nUserid,$bReturnImage=true,$bReturnImageHtml=true,$bReally=false){
+		$sTitle=Dyhb::L('用户不在线','__COMMON_LANG__@Function/Core_Extend');
+		
 		$oOnline=OnlineModel::F('user_id=?',$nUserid)->getOne();
 
 		if(!empty($oOnline['user_id'])){
@@ -1343,12 +1356,19 @@ WINDSFORCE;
 				$bOnline=false;
 			}else{
 				$bOnline=true;
+				$sTitle=Dyhb::L('用户在线','__COMMON_LANG__@Function/Core_Extend');
 			}
 		}else{
 			$bOnline=false;
 		}
 
-		return $bReturnImage===true?__ROOT__.'/Public/images/common/onlineicon/'.($bOnline===true?'ol.gif':'not_ol.gif'):$bOnline;
+		$sReturn=$bReturnImage===true?__ROOT__.'/Public/images/common/onlineicon/'.($bOnline===true?'ol.gif':'not_ol.gif'):$bOnline;
+
+		if($bReturnImage===true && $bReturnImageHtml===true){
+			return "<img class=\"onlineicon_data\" src=\"{$sReturn}\" title=\"{$sTitle}\" border=\"0\" align=\"absmiddle\" />";
+		}else{
+			return $sReturn;
+		}
 	}
 
 }

@@ -26,7 +26,7 @@ $(function(){
 
 			<div class="span10">
 				<h3><!--{$oHomehelp['homehelp_title']}--></h3>
-				<div class="homehelp_title" style="margin:5px auto 10px auto;"><a href="<!--{:Dyhb::U('home://space@?id='.$oHomehelp['user_id'])}-->"><!--{$oHomehelp['homehelp_username']}--></a>&nbsp;<!--<lang package='Template/Homehelp'>-->发表于<!--</lang>-->&nbsp;<span class="label label-success"><!--{$oHomehelp['create_dateline']|Core_Extend+timeFormat}--></span>&nbsp;<!--<lang package='Template/Homehelp'>-->已被阅读<!--</lang>-->&nbsp;<span class="label label-success"><!--{$oHomehelp['homehelp_viewnum']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->次<!--</lang>--></div>
+				<div class="homehelp_title" style="margin:5px auto 10px auto;"><!--{$oHomehelp['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oHomehelp['user_id'])}-->"><!--{$oHomehelp['homehelp_username']}--></a>&nbsp;<!--<lang package='Template/Homehelp'>-->发表于<!--</lang>-->&nbsp;<span class="label label-success"><!--{$oHomehelp['create_dateline']|Core_Extend+timeFormat}--></span>&nbsp;<!--<lang package='Template/Homehelp'>-->已被阅读<!--</lang>-->&nbsp;<span class="label label-success"><!--{$oHomehelp['homehelp_viewnum']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->次<!--</lang>--></div>
 
 				<div class="homehelp-content"><!--{$sContent|Core_Extend+ubb}--></div>
 

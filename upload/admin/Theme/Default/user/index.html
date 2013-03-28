@@ -49,8 +49,11 @@
 							<th></th>
 							<th><a href="javascript:sortBy('user_name','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_name')}-->><!--<lang package='Template/Default/User'>-->用户名<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('user_nikename','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_nikename')}-->><!--<lang package='Template/Default/User'>-->昵称<!--</lang>--></a></th>
+							<th><!--<lang package='Template/Default/User'>-->性别<!--</lang>--></th>
 							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('user_registerip','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_registerip')}-->><!--<lang package='Template/Default/User'>-->注册IP<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('update_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('update_dateline')}-->><!--<lang package='Template/Default/User'>-->上次登录<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('user_lastloginip','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_lastloginip')}-->><!--<lang package='Template/Default/User'>-->登录IP<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('user_logincount','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_logincount')}-->><!--<lang package='Template/Default/User'>-->登录次数<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('user_status','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_status')}-->><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></a></th>
 							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
@@ -64,7 +67,7 @@
 							<td class="user-icon"><a href="javascript:edit('<!--{$value:user_id}-->')">
 								<img src="<!--{:Core_Extend::avatar( $value->user_id,'small' )}-->" width="48px" height="48px"/>
 							</a>
-							<td><!--{$value:user_name}-->&nbsp;<a href="<!--{:Dyhb::U('user/show?id='.$value['user_id'])}-->"><!--<lang package='Template/Default/User'>-->详情<!--</lang>--></a>
+							<td><!--{$value['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$value['user_id']}-->" target="_blank"><!--{$value:user_name}--></a><!--{$value['user_id']|Core_Extend+getUseronlineicon}-->&nbsp;<a href="<!--{:Dyhb::U('user/show?id='.$value['user_id'])}-->"><!--<lang package='Template/Default/User'>-->详情<!--</lang>--></a>
 								<div class="row-actions">
 									<span class='edit'><a href="javascript:edit('<!--{$value:user_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:user_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>|</span>
@@ -78,8 +81,11 @@
 								</div>
 							</td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="user_nikename_<!--{$value:user_id}-->" onClick="clickToInput('user_nikename','<!--{$value:user_id}-->')"><!--{$value:user_nikename}--></td>
+							<td><img src="<!--{:Profile_Extend::getUserprofilegender($value->userprofile->userprofile_gender)}-->" border="0" align="absmiddle" />&nbsp;<!--{:Profile_Extend::getGender($value->userprofile->userprofile_gender)}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
+							<td><!--{$value['user_registerip']}--><br/><!--{$value['user_registerip']|Misc_Extend+convertIp}--></td>
 							<td><!--{$value:user_lastlogintime|date='Y-m-d H:i:s',**}--></td>
+							<td><!--{$value['user_lastloginip']}--><br/><!--{$value['user_lastloginip']|Misc_Extend+convertIp}--></td>
 							<td><!--{$value:user_logincount}--></td>
 							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:user_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
 							<td><!--<if condition="$value:user_status eq 1" >-->

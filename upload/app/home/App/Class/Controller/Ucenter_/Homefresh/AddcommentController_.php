@@ -245,6 +245,7 @@ class AddcommentController extends GlobalchildController{
 			$arrCommentData['url']=Dyhb::U('home://space@?id='.$arrCommentData['user_id']);
 			$arrCommentData['num']=$oHomefresh->homefresh_commentnum;
 			$arrCommentData['viewurl']=Dyhb::U('home://fresh@?id='.$arrCommentData['homefresh_id'].'&isolation_commentid='.$arrCommentData['homefreshcomment_id']);
+			$arrCommentData['usericon']=Core_Extend::getUsericon($arrCommentData['user_id']);
 		}else{
 			$nPage=intval(G::getGpc('page'));
 

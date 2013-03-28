@@ -344,7 +344,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		// 登录当前登录IP
 		$sPn=$this->_arrSettings['update_login_ip_prop'];
 		if($sPn){
-			$sIp=isset($arrData['login_ip'])?$arrData['login_ip']:isset($_SERVER['REMOTE_ADDR'])?$_SERVER['REMOTE_ADDR']:G::getIp();
+			$sIp=isset($arrData['login_ip'])?$arrData['login_ip']:G::getIp();
 			if(substr($this->_oMeta->_arrProp[$sPn]['ptype'],0,3)=='int'){
 				$sIp=ip2long($sIp);
 			}
@@ -396,7 +396,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 			$sPn=$this->_arrSettings['register_ip_prop'];// 创建注册IP数据
 			if($sPn){
-				$sIp=isset($_SERVER['REMOTE_ADDR'])?$_SERVER['REMOTE_ADDR']:G::getIp();
+				$sIp=G::getIp();
 				if(substr($this->_oMeta->_arrProp[$sPn]['ptype'],0,3)=='int'){
 					$sIp=ip2long($sIp);
 				}

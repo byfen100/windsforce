@@ -242,9 +242,9 @@ class G{
 
 		if(is_string($FContents)){
 			if(function_exists('mb_convert_encoding')){
-				return mb_convert_encoding($FContents,$sFromChar,$sToChar);
+				return mb_convert_encoding($FContents,$sToChar,$sFromChar);
 			}elseif(function_exists('iconv')){
-				return iconv($FContents,$sFromChar,$sToChar);
+				return iconv($FContents,$sFromChar,$sToChar.'//IGNORE');
 			}else{
 				return $FContents;
 			}
