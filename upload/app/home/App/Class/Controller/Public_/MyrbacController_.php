@@ -71,7 +71,7 @@ class MyrbacController extends Controller{
 									$sNodename=G::subString($sNodename,0,strpos($sNodename,'|'));
 								}
 								
-								$arrAccessListall[$oApp['node_name']]['data'][]=array('name'=>$sNodename,'title'=>$oAction['node_title'],'access'=>Core_Extend::isAdmin()?true:(in_array($sNodename,$arrMyaccesslist)?true:false));
+								$arrAccessListall[$oApp['node_name']]['data'][]=array('name'=>$sNodename,'title'=>$oAction['node_title'],'access'=>Core_Extend::isAdmin() && !$nRId?true:(in_array($sNodename,$arrMyaccesslist)?true:false));
 							}
 						}
 					}
