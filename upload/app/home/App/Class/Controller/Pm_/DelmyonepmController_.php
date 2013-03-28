@@ -20,7 +20,7 @@ class DelmyonepmController extends Controller{
 			$nUserId=$GLOBALS['___login___']['user_id'];
 		}
 		
-		$oPmModel=PmModel::F("pm_id=? AND pm_msgfromid=? AND pm_type='user' AND pm_status=1",$nId,$nUserId)->query();
+		$oPmModel=PmModel::F("pm_id=? AND pm_msgfromid=? AND pm_type='user'",$nId,$nUserId)->query();
 		if(empty($oPmModel['pm_id'])){
 			$this->E(Dyhb::L('待删除的短消息不存在','Controller/Pm'));
 		}
