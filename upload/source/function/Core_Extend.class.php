@@ -1357,6 +1357,14 @@ WINDSFORCE;
 			}else{
 				$bOnline=true;
 				$sTitle=Dyhb::L('用户在线','__COMMON_LANG__@Function/Core_Extend');
+
+				if($GLOBALS['_option_']['online_commonshowip']==1){
+					if(!Dyhb::classExists('Misc_Extend')){
+						require_once(Core_Extend::includeFile('function/Misc_Extend'));
+					}
+
+					$sTitle.=' | '.$oOnline['online_ip'].' '.Misc_Extend::convertIp($oOnline['online_ip']);
+				}
 			}
 		}else{
 			$bOnline=false;

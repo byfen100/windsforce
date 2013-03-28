@@ -46,6 +46,12 @@ function option(){
 						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->超过该限制之后，访客暂时无法访问论坛，填写0为无限制<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
+						<label for="online_commonshowip"><!--<lang package='Template/Default/Optimizationoption'>-->系统全局是否显示访问IP地址<!--</lang>--></label>
+						<input type="radio" id="online_commonshowip" name="options[online_commonshowip]" value="1" <!--{if $arrOptions['online_commonshowip']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[online_commonshowip]" value="0" <!--{if $arrOptions['online_commonshowip']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Optimizationoption'>-->如果开启后，你将看到用户的在线IP地址<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
 						<label for="online_indexon"><!--<lang package='Template/Default/Optimizationoption'>-->是否开启首页在线信息<!--</lang>--></label>
 						<input type="radio" id="online_indexon" name="options[online_indexon]" value="1" <!--{if $arrOptions['online_indexon']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
 						<input type="radio" id="" name="options[online_indexon]" value="0" <!--{if $arrOptions['online_indexon']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
