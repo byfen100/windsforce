@@ -15,25 +15,26 @@
 
 					<!--<include file="public+myrbacrolemenu" />-->
 
-				<div class="row">
-					<div class="span9">
-						<!--{if is_array($arrRoles)}-->
-						<!--<foreach for=arrRoles value=oRole>-->
-						<a href="<!--{:Dyhb::U('home://public/myrbac?rid='.$oRole['role_id'])}-->" class="btn" title="<!--<lang package='Template/Public'>-->角色权限<!--</lang>-->"><!--{$oRole:role_name}--></a>&nbsp;&nbsp;
-						<!--</foreach>-->
-						<!--{d*else}-->
-						<p><!--<lang package='Template/Public'>-->暂时没有发现任何角色<!--</lang>--></p>
-						<!--{/if}-->
-					</div>
-
-					<div class="span3">
-						<h4><!--<lang package='Template/Public'>-->角色分组<!--</lang>--></h4>
-						<p><ul class="nav nav-tabs nav-stacked">
-							<li <!--{if empty($nGId)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://public/role')}-->"><!--<lang package='Template/Public'>-->全部<!--</lang>--></a></li>
-							<!--<foreach for=arrRolegroups value=oRolegroup>-->
-							<li <!--{if $nGId==$oRolegroup['rolegroup_id']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://public/role?gid='.$oRolegroup['rolegroup_id'])}-->"><!--{$oRolegroup['rolegroup_title']}-->&nbsp;(<!--{$oRolegroup['rolegroup_name']}-->)</a></li>
+					<div class="row">
+						<div class="span9">
+							<!--{if is_array($arrRoles)}-->
+							<!--<foreach for=arrRoles value=oRole>-->
+							<a href="<!--{:Dyhb::U('home://public/myrbac?rid='.$oRole['role_id'])}-->" class="btn" title="<!--<lang package='Template/Public'>-->角色权限<!--</lang>-->"><!--{$oRole:role_name}--></a>&nbsp;&nbsp;
 							<!--</foreach>-->
-						</ul></p>
+							<!--{d*else}-->
+							<p><!--<lang package='Template/Public'>-->暂时没有发现任何角色<!--</lang>--></p>
+							<!--{/if}-->
+						</div>
+
+						<div class="span3">
+							<h4><!--<lang package='Template/Public'>-->角色分组<!--</lang>--></h4>
+							<p><ul class="nav nav-tabs nav-stacked">
+								<li <!--{if empty($nGId)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://public/role')}-->"><!--<lang package='Template/Public'>-->全部<!--</lang>--></a></li>
+								<!--<foreach for=arrRolegroups value=oRolegroup>-->
+								<li <!--{if $nGId==$oRolegroup['rolegroup_id']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://public/role?gid='.$oRolegroup['rolegroup_id'])}-->"><!--{$oRolegroup['rolegroup_title']}-->&nbsp;(<!--{$oRolegroup['rolegroup_name']}-->)</a></li>
+								<!--</foreach>-->
+							</ul></p>
+						</div>
 					</div>
 				</p>
 
