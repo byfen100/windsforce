@@ -12,7 +12,7 @@ class HottopicController extends Controller{
 		$nDate=intval(G::getGpc('date','G'));
 
 		if($nNum<1){
-			$this->E('热门帖子调用数量不能为空');
+			$nNum=1;
 		}
 
 		if(empty($nCutNum)){

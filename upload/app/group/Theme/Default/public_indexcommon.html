@@ -1,0 +1,105 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function setHomepagestyle(nStyle){
+	Dyhb.AjaxSend(D.U('group://public/set_homepagestyle?style='+nStyle),'','',completeSet);
+}
+
+function completeSet(data,status){
+	if(status==1){
+		window.location.reload();
+	}
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a></li>		</ul>
+
+		<div class="row">
+			<div class="span12">
+				<ul class="nav nav-tabs">
+					<li  class="active"><a href="<!--{:Dyhb::U('group://public/index')}-->">首页</a></li>
+					<li><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">新帖</a></li>
+					<li><a href="<!--{:Dyhb::U('group://public/group')}-->">小组</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+					<div style="margin-bottom:10px;">
+						<span class="" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success">发帖</a></span>
+						<!--{if $GLOBALS['___login___']===false}-->
+						<p>你可以&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</p>
+						<!--{d*else}-->
+						<p>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
+						<span class="pipe">|</span>
+						<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'].'&type=topic')}-->" target="_blank">我的帖子</a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->">查看新帖</a></p>
+						<!--{/if}-->
+					</div>
+					<span class="clear"></span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+				
+				<div class="row">
+					<div class="span7"> 
+						<div id="myCarousel" class="carousel slide">
+							<div class="carousel-inner">
+								<!--{if is_array($arrGroupthumbtopics)}-->
+								<!--<foreach for=arrGroupthumbtopics value=oGroupthumbtopic>-->
+								<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="280px">
+									<img src="<!--{:Attachment_Extend::getAttachmentPreview($oGroupthumbtopic['grouptopic_thumb'])}-->" style="height:280px;" width="100%">
+									<div class="carousel-caption">
+										<h4><a href="<!--{:Dyhb::U('group://topic@?id='.$oGroupthumbtopic->grouptopic_id)}-->" title="<!--{$oGroupthumbtopic->grouptopic_title}-->"><!--{$oGroupthumbtopic->grouptopic_title|G+subString=0,30}--></a></h4>
+									</div>
+								</div>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<div class="item active" style="280px">
+									<img src="<!--{:__APPPUB__}-->/Images/slide/1.jpg" style="height:280px;" width="100%">
+									<div class="carousel-caption">
+										<h4><a href="<!--{:Dyhb::U('home://public/register')}-->" title="注册">注册</a></h4>
+									</div>
+								</div>
+								<div class="item" style="280px">
+									<img src="<!--{:__APPPUB__}-->/Images/slide/2.jpg" style="height:280px;" width="100%">
+									<div class="carousel-caption">
+										<h4><a href="<!--{:Dyhb::U('home://public/login')}-->" title="登录">登录</a></h4>
+									</div>
+								</div>
+								<!--{/if}-->
+							</div>
+							<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+							<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+						</div>
+					</div>
+					<div class="span5">
+						<div style="margin-left:-30px;" class="publicmodule_list publicmodule_list_sort publicmodule_list_line">
+							<ul>
+								<!--{if is_array($arrGrouphottopics)}-->
+								<!--<foreach for=arrGrouphottopics value=oGrouphottopic>-->
+								<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouphottopic->grouptopic_id)}-->" target="_blank" ><!--{$oGrouphottopic->grouptopic_title|G+subString=0,30}--></a></li>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
+								<!--{/if}-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+				<div class="tabb-menu">
+					<ul class="nav nav-pills">
+						<li <!--{if $nStyle==1}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setHomepagestyle(1);">传统BBS</a></li>
+						<li <!--{if $nStyle==2}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setHomepagestyle(2);">小组新风格</a></li>
+					</ul>
+				</div>
+			</div>

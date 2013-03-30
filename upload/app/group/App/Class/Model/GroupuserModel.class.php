@@ -9,6 +9,10 @@ class GroupuserModel extends CommonModel{
 	static public function init__(){
 		return array(
 			'table_name'=>'groupuser',
+			'props'=>array(
+				'user'=>array(Db::BELONGS_TO=>'UserModel','source_key'=>'user_id','target_key'=>'user_id'),
+				'group'=>array(Db::BELONGS_TO=>'GroupModel','source_key'=>'group_id','target_key'=>'group_id'),
+			),
 		);
 	}
 

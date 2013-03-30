@@ -68,14 +68,14 @@ function complete(data,status){
 			<form action="<!--<if condition="isset( $_GET['value'] )" >--><!--{:Admin_Extend::update(array('controller'=>'group'))}--><!--<else/>--><!--{:Admin_Extend::insert(array('controller'=>'group'))}--><!--</if>-->" method="post" id="groupAdd">
 				<div class="module_content">
 					<fieldset>
-						<label for="group_name"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->小组名字<!--</lang>--></label>
-						<input type="text" name="group_name" id="group_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:group_name}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->小组名字只能是由英文，数字和下划线组成，且最大长达为32个字符<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
 						<label for="group_nikename"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->小组别名<!--</lang>--></label>
 						<input type="text" name="group_nikename" id="group_nikename" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:group_nikename}--><!--</if>-->"/>
 						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组别名是相对于小组名的一种昵称，且最大长达为32个字符<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="group_name"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->小组名字<!--</lang>--></label>
+						<input type="text" name="group_name" id="group_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:group_name}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->小组名字只能是由英文，数字和下划线组成，且最大长达为32个字符<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
 						<label for="group_listdescription"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->小组列表简介<!--</lang>--></label>

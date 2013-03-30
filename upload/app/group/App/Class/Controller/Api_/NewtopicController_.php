@@ -10,7 +10,7 @@ class NewtopicController extends Controller{
 		$nNum=intval(G::getGpc('num','G'));
 
 		if($nNum<1){
-			$this->E('最新帖子调用数量不能为空');
+			$nNum=1;
 		}
 
 		$arrGrouptopics=GrouptopicModel::F()->order('create_dateline DESC')->limit(0,$nNum)->getAll();

@@ -10,6 +10,10 @@ class PublicController extends InitController{
 		Core_Extend::doControllerAction('Public@Index','index');
 	}
 
+	public function set_homepagestyle(){
+		Core_Extend::doControllerAction('Public@Sethomepagestyle','index');
+	}
+
 	public function newtopic(){
 		Core_Extend::doControllerAction('Public@Newtopic','index');
 	}

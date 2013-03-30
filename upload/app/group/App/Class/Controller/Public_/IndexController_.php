@@ -9,8 +9,12 @@ require_once(Core_Extend::includeFile('function/Attachment_Extend'));
 class IndexController extends Controller{
 
 	public function index(){
-		$nNew=intval(G::getGpc('new','G'));
 		$nCid=intval(G::getGpc('cid','G'));
+		$nStyle=intval(Dyhb::cookie('group_homepagestyle'));
+		
+		if(!in_array($nStyle,array(1,2))){
+			$nStyle=1;
+		}
 
 		// 取得小组分类
 		$arrWhere=array();
@@ -20,7 +24,7 @@ class IndexController extends Controller{
 				$this->U('group://public/index');
 			}
 
-			$this->assign('oGroupcategory',$oGroupcategory);
+			$this->assign('oParentGroupcategory',$oGroupcategory);
 			$arrWhere['groupcategory_parentid']=$nCid;
 		}else{
 			$arrWhere['groupcategory_parentid']=0;
@@ -46,11 +50,27 @@ class IndexController extends Controller{
 		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,10)->getAll();
 		$this->assign('arrNewgroups',$arrNewgroups);
 
-		if($nNew==1){
+		// 24小时热门小组
+		$arrHotgroups=GroupModel::F()->order('group_totaltodaynum DESC')->limit(0,10)->getAll();
+		$this->assign('arrHotgroups',$arrHotgroups);
+
+		// 小组长
+		$arrGroupleaders=GroupuserModel::F('groupuser_isadmin=?',2)->order('create_dateline DESC')->limit(0,6)->getAll();
+		$this->assign('arrGroupleaders',$arrGroupleaders);
+
+		$this->assign('nStyle',$nStyle);
+
+		if($nStyle==2){
 			$this->display('public+indexnew');
 		}else{
 			$this->display('public+index');
 		}
+	}
+
+	public function get_childGroupcategory($nParentid){
+		$arrGroupcategorys=GroupcategoryModel::F()->where(array('groupcategory_parentid'=>$nParentid))->getAll();
+		
+		return $arrGroupcategorys;
 	}
 
 }

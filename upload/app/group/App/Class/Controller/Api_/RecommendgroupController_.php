@@ -11,7 +11,7 @@ class RecommendgroupController extends Controller{
 		$nCutNum=intval(G::getGpc('cnum','G'));
 
 		if($nNum<1){
-			$this->E('推荐小组调用数量不能为空');
+			$nNum=1;
 		}
 
 		$arrGroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
