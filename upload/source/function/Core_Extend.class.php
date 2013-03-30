@@ -23,7 +23,7 @@ class Core_Extend{
 
 			// 读取用户统计信息
 			$GLOBALS['___login___']['usercount']=UsercountModel::F('user_id=?',$arrUserData['user_id'])->asArray()->getOne();
-			
+
 			// 如果用户使用社会化帐号直接登录
 			$GLOBALS['___login___']['socia_login']=false;
 

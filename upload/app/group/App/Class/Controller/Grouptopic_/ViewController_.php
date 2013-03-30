@@ -12,8 +12,16 @@ class ViewController extends Controller{
 	public function index(){
 		$nId=intval(G::getGpc('id','G'));
 		$nPage=intval(G::getGpc('page','G'));
-		$nNew=intval(G::getGpc('new','G'));
-		$nSide=intval(G::getGpc('side','G'));
+		$nSide=intval(Dyhb::cookie('group_grouptopicside'));
+		$nStyle=intval(Dyhb::cookie('group_grouptopicstyle'));
+		
+		if(!in_array($nStyle,array(1,2))){
+			$nStyle=1;
+		}
+		
+		if(!in_array($nSide,array(1,2))){
+			$nSide=1;
+		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nId)->getOne();
 		if(empty($oGrouptopic->user_id)){
@@ -47,9 +55,10 @@ class ViewController extends Controller{
 		$this->assign('nPage',$nPage);
 		$this->assign('oGrouptopic',$oGrouptopic);
 
-		if($nSide==1){
-			$this->display('grouptopic+viewside');
-		}elseif($nNew==1){
+		$this->assign('nStyle',$nStyle);
+		$this->assign('nSide',$nSide);
+
+		if($nStyle==2){
 			$this->display('grouptopic+viewnew');
 		}else{
 			$this->display('grouptopic+view');

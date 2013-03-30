@@ -1,0 +1,167 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function setGrouptopicstyle(nStyle){
+	Dyhb.AjaxSend(D.U('group://grouptopic/set_grouptopicstyle?style='+nStyle),'','',completeSet);
+}
+
+function setGrouptopicside(nside){
+	Dyhb.AjaxSend(D.U('group://grouptopic/set_grouptopicside?side='+nside),'','',completeSet);
+}
+
+function completeSet(data,status){
+	if(status==1){
+		window.location.reload();
+	}
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>查看帖子</li>
+		</ul>
+
+<script src="<!--{:__APPPUB__}-->/Js/moderator.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/avatartips/CJL.0.1.min.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/avatartips/RelativePosition.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/avatartips/FixedTips.js"></script>
+
+<!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	var oFixedTips=new FixedTips("grouptopicview_tip");
+	$$A.forEach($$("grouptopicview_list").getElementsByTagName("center"),function(o){
+		oFixedTips.add(o.getElementsByTagName("img")[0],{
+				relative: { customLeft: -12, customTop: -13},
+				onShow: function(){ oFixedTips.tip.innerHTML = o.innerHTML;}
+		});
+	});
+	
+	<!--{if $GLOBALS['___login___']!==false}-->
+	editor=loadEditorThin('grouptopiccomment_message');
+	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+	
+	$('.grouptopiccomment_quickmessage').autoResize({
+		onResize:function(){
+			$(this).css({opacity:0.8});
+		},
+		animateCallback:function(){
+			$(this).css({opacity:1});
+		},
+		animateDuration:300,
+		extraSpace:0,
+		min:'80px'
+	});
+	<!--{/if}-->
+	
+	$("#grouptopiccomment_quickmessage").focus(function(){
+		$("#grouptopiccomment_reply").css("display","block");
+	});
+
+	$('.grouptopiccontent_box').emotionsToHtml();
+});
+
+function login_handle(data,status){
+	if(status==1){
+		sUrl='<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->';
+		setTimeout("window.location=sUrl;",1000);
+	}
+}
+
+function closeQuickreplay(){
+	$("#grouptopiccomment_reply").css("display","none");
+}
+
+function addGrouptopiccommentquick(){
+	var sCommentMessage=$("#grouptopiccomment_quickmessage").val();
+	if(!sCommentMessage){
+		windsforceAlert('回复内容不能为空','',3);
+		return false;
+	}
+
+	var sParameter="ajax=1&grouptopiccomment_message="+encodeURIComponent(sCommentMessage)+"&tid="+<!--{$oGrouptopic->grouptopic_id}-->;
+
+	Dyhb.AjaxSend('<!--{:Dyhb::U('group://grouptopic/add_reply')}-->',sParameter,'',function(data,status){
+		if(status==1){
+			window.location.href=data.url;
+		}
+	});
+}
+
+function addGrouptopiccomment(){
+	sGrouptopiccommentmessage=$.trim(editor.html());
+	$('#grouptopiccomment_message').val(sGrouptopiccommentmessage);
+
+	if(!sGrouptopiccommentmessage){
+		windsforceAlert('回复内容不能为空','',3);
+		return false;
+	}
+	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/add_reply')}-->','',function(data,status){
+		if(status==1){
+			window.location.href=data.url;
+		}
+	});
+}
+
+function showMedia(){
+	$('#grouptopiccomment-media-box').toggle('fast');
+}
+
+function insertGrouptopicattachment(nAttachmentid){
+	insertAttachment(editor,nAttachmentid);
+}
+
+function insertGrouptopicvideo(sContent){
+	insertVideo(editor,sContent);
+}
+
+function insertGrouptopicmusic(sContent){
+	insertMusic(editor,sContent);
+}
+
+var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseInt('<!--{$oGrouptopic['grouptopic_id']}-->');
+<!--{/script}-->
+
+		<div class="row">
+			<div class="span12">
+				<div class="tabb-menu">
+					<ul class="nav nav-pills">
+						<li <!--{if $nStyle==1}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(1);">传统BBS</a></li>
+						<li <!--{if $nStyle==2}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(2);">小组新风格</a></li>
+						<!--{if $nSide==2}-->
+						<li><a href="javascript:void(0);" onclick="setGrouptopicside(1);">关闭侧边栏</a></li>
+						<!--{d*else}-->
+						<li><a href="javascript:void(0);" onclick="setGrouptopicside(2);">打开侧边栏</a></li>
+						<!--{/if}-->
+					</ul>
+				</div>
+			</div>
+			
+			<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
+			<div class="span12" style="margin-bottom:15px;">
+				<div>
+					<a href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑主题</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">删除主题</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">关闭</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">置顶</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">精华</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">隐藏</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">移动</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">分类</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicdelete();" href="javascript:void(0);">标签</a>
+				</div>
+			</div>
+			<!--{/if}-->

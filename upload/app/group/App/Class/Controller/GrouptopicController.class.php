@@ -42,4 +42,12 @@ class GrouptopicController extends InitController{
 		Core_Extend::doControllerAction('Grouptopic@Addreply','index');
 	}
 
+	public function set_grouptopicstyle(){
+		Core_Extend::doControllerAction('Grouptopic@Setgrouptopicstyle','index');
+	}
+
+	public function set_grouptopicside(){
+		Core_Extend::doControllerAction('Grouptopic@Setgrouptopicside','index');
+	}
+
 }

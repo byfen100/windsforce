@@ -51,6 +51,7 @@ class UserlistController extends Controller{
 				
 				$arrWhere['user_id']=array('in',$arrTempdata);
 			}else{
+				$this->assign('__JumpUrl__',Dyhb::U('home://stat/userlist'));
 				$this->E(Dyhb::L('没有发现任何用户','Controller/Stat'));
 			}
 		}else{

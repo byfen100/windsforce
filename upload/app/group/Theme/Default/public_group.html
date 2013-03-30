@@ -1,5 +1,25 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{style}-->
+.box{background-color:#fff;padding:10px;margin:0 0 20px 0;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0px 2px rgba(0,0,0,0.05);-moz-box-shadow:0 0px 2px rgba(0,0,0,0.1);box-shadow:0 0px 2px rgba(0,0,0,0.05)}.box h2.title{font-size:12px;margin:0 -10px;padding:0 10px;margin-bottom:8px;color:#999;line-height:100%;border-bottom:1px solid #ddd;padding-bottom:8px}.box_gray{background:#F5F5F5}
+
+#sections h2{font-size:12px;color:#999;line-height:100%;margin-bottom:10px;text-align:left;}
+#sections ul{list-style:none;margin-bottom:0;margin:0}
+#sections label{line-height:100%;padding-top:8px;}
+#sections label a{font-size:12px;color:#000;}
+
+#sections li{line-height:200%;font-size:14px;padding:8px 10px;margin:0 -10px;border-top:1px solid #DDD;position:relative;overflow:auto}
+
+#sections li label{font-size:12px;color:#999;display:inline-block;width:120px;margin-right:-130px;padding-right:10px;float:left;text-align:right}
+
+#sections li span.nodes{font-size:12px;color:#999;}
+#sections li span.nodes{float:left;margin-left:130px}
+
+#sections li a{margin-right:10px}
+#hot_locations h2{font-size:12px;color:#999;line-height:100%;text-align:center;border-bottom:1px solid #DDD;margin:0 -10px;padding:0 10px 10px 10px}
+#hot_locations ul{list-style:none;margin:0;padding:0;text-align:center}
+<!--{/style}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a></li>		</ul>
@@ -16,36 +36,113 @@
 
 		<div class="row">
 			<div class="span9">
-				小组分类<br/>
-				----------
-				<br/>
-				小组列表
+				<div id="sections" class="box box_gray">
+					<h2>小组分类&nbsp;
+					<!--{if isset($oParentGroupcategory)}-->
+					-&nbsp;<a href="<!--{:Dyhb::U('group://public/group?cid='.$oParentGroupcategory['groupcategory_id'])}-->"><!--{$oParentGroupcategory['groupcategory_name']}--></a>
+					&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->" title="返回全部小组分类"><i class="icon-share-alt"></i></a>
+					<!--{/if}-->
+					</h2>
+					<!--{if is_array($arrGroupcategorys)}-->
+					<ul>
+						<!--<foreach for=arrGroupcategorys value=oGroupcategory>-->
+						<!--{~$arrChildGroupcategorys=$TheController->get_childGroupcategory($oGroupcategory['groupcategory_id'])}-->
+						<li>
+							<label><b><a href="<!--{:Dyhb::U('group://public/group?cid='.$oGroupcategory['groupcategory_id'])}-->"><!--{$oGroupcategory['groupcategory_name']}--></a></b>
+							<span class="pipe">|</span>
+							</label>
+							<span class="nodes">
+								<!--{if is_array($arrChildGroupcategorys)}-->
+								<!--<foreach for=arrChildGroupcategorys value=oChildGroupcategory>-->
+								<a href="<!--{:Dyhb::U('group://public/group?cid='.$oChildGroupcategory['groupcategory_id'])}-->"><!--{$oChildGroupcategory['groupcategory_name']}--></a>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								暂时没有发现任何小组子分类
+								<!--{/if}-->
+							</span>
+						</li>
+						<!--</foreach>-->
+					</ul>
+					<!--{d*else}-->
+					<!--{if isset($oParentGroupcategory)}-->
+					<p>暂时没有发现任何小组子分类&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->">返回全部分类</a></p>
+					<!--{d*else}-->
+					<p>暂时没有发现任何小组分类</p>
+					<!--{/if}-->
+					<!--{/if}-->
+				</div>
+				
+				<div id="" class="box clearfix">
+					<h2 class="title">
+						<!--{if isset($oParentGroupcategory)}-->分类小组&nbsp;-&nbsp;<a href="<!--{:Dyhb::U('group://public/group?cid='.$oParentGroupcategory['groupcategory_id'])}-->"><!--{$oParentGroupcategory['groupcategory_name']}--></a>
+					&nbsp;<a href="<!--{:Dyhb::U('group://public/group')}-->" title="返回全部小组分类"><i class="icon-share-alt"></i></a>
+						<!--{d*else}-->
+						全部小组
+						<!--{/if}-->
+					</h2>
+					<ul class="groups" id="home_recommendgroup_box">
+						<!--{if is_array($arrGroups)}-->
+						<!--<foreach for=arrGroups value=oGroup>-->
+						<li>
+							<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic">
+								<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
+							</a>
+							<div class="grouplist_txt">
+								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
+								<span><!--{$oGroup['group_usernum']}-->人加入</span>
+								<p class="grouplist_description"><!--{$oGroup['group_listdescription']|G+subString=0,15}--></p>
+							</div>
+						</li>
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<li>暂时没有发现任何小组&nbsp;<a href="<!--{:Dyhb::U('group://create/index')}-->">申请创建小组</a></li>
+						<!--{/if}-->
+					</ul>
+				</div>
+
+				<!--{$sPageNavbar}-->
 			</div>
 
 			<div class="span3">
 				<div class="commonbox">
-					<div class="commonboxtitle">申请小组</div>
-					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
-						</ul>
+					<div class="creategroup_box">
+						<p><a class="btn btn-large btn-success" href="<!--{:Dyhb::U('group://create/index')}-->">申请创建小组</a></p>
+						<p><a href="<!--{:Dyhb::U('home://homehelp/index?cid=4')}-->" target="_blank" >&gt;&gt;小组管理秘籍</a></p>
 					</div>
 				</div>
 				
 				<div class="commonbox">
 					<div class="commonboxtitle">小组长</div>
-					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+					<p><ul class="thumbnails">
+							<!--{if is_array($arrGroupleaders)}-->
+							<!--<foreach for=arrGroupleaders value=oGroupleader>-->
+							<li class="span1">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupleader:user:user_name}-->"></a>
+									<a rel="tooltip" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></h5></a>
+								</div>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何小组长&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->">注册</a></li>
+							<!--{/if}-->
 						</ul>
-					</div>
+					</p>
 				</div>
 
 				<div class="commonbox">
 					<div class="commonboxtitle">推荐小组</div>
 					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+						<ul id="recommend_grouplist_box" class="grouplist_box">
+							<!--{if is_array($arrRecommendgroups)}-->
+							<!--<foreach for=arrRecommendgroups value=oRecommendgroup>-->
+							<li>
+								<a href="<!--{:Group_Extend::getGroupurl($oRecommendgroup)}-->"><!--{$oRecommendgroup['group_nikename']}-->&nbsp;(<!--{$oRecommendgroup['group_usernum']}-->)</a>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何推荐小组&nbsp;<a href="<!--{:Dyhb::U('group://create/index')}-->">申请创建小组</a></li>
+							<!--{/if}-->
 						</ul>
 					</div>
 				</div>
@@ -54,8 +151,16 @@
 				<div class="commonbox">
 					<div class="commonboxtitle">最新小组</div>
 					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+						<ul id="new_grouplist_box" class="grouplist_box">
+							<!--{if is_array($arrNewgroups)}-->
+							<!--<foreach for=arrNewgroups value=oNewgroup>-->
+							<li>
+								<a href="<!--{:Group_Extend::getGroupurl($oNewgroup)}-->"><!--{$oNewgroup['group_nikename']}-->&nbsp;(<!--{$oNewgroup['group_usernum']}-->)</a>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何推荐小组&nbsp;<a href="<!--{:Dyhb::U('group://create/index')}-->">申请创建小组</a></li>
+							<!--{/if}-->
 						</ul>
 					</div>
 				</div>
@@ -63,8 +168,16 @@
 				<div class="commonbox">
 					<div class="commonboxtitle">24小时最热</div>
 					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+						<ul id="hot_grouplist_box" class="grouplist_box">
+							<!--{if is_array($arrHotgroups)}-->
+							<!--<foreach for=arrHotgroups value=oHotgroup>-->
+							<li>
+								<a href="<!--{:Group_Extend::getGroupurl($oHotgroup)}-->"><!--{$oHotgroup['group_nikename']}-->&nbsp;(<!--{$oHotgroup['group_usernum']}-->)</a>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何推荐小组&nbsp;<a href="<!--{:Dyhb::U('group://create/index')}-->">申请创建小组</a></li>
+							<!--{/if}-->
 						</ul>
 					</div>
 				</div>

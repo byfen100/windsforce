@@ -7,6 +7,7 @@
 return array(
 	'public::newtopic'=>'userhome',
 	'public::index'=>'groups',
+	'public::group'=>'groups',
 	'group::show',
 	'grouptopic::view'=>'media',
 	'grouptopic::reply'=>'media',

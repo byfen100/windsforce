@@ -1,10 +1,10 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   设置首页浏览风格控制器($Liu.XiangMin)*/
+   设置帖子浏览风格控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
-class SethomepagestyleController extends Controller{
+class SetgrouptopicstyleController extends Controller{
 
 	public function index(){
 		$nStyle=intval(G::getGpc('style','G'));
@@ -13,9 +13,9 @@ class SethomepagestyleController extends Controller{
 			$nStyle=1;
 		}
 
-		Dyhb::cookie('group_homepagestyle',$nStyle);
+		Dyhb::cookie('group_grouptopicstyle',$nStyle);
 
-		$this->S('主页样式切换成功');
+		$this->S('帖子样式切换成功');
 	}
 
 }
