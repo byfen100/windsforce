@@ -100,6 +100,9 @@ function saveAccess(){
 					<div class="submit_link">
 						<input type="hidden" name="group_id" value="<!--{$nId}-->" >
 						<input type="hidden" name="ajax" value="1">
+						<!--<foreach for=arrUserList>-->
+						<input type="hidden" name="thispageuser[]" value="<!--{$key}-->">
+						<!--</foreach>-->
 						<input type="button" onclick="selectAll()" value="<!--<lang package='Template/Default/Common'>-->全选<!--</lang>-->" class="alt_btn">&nbsp;
 						<input type="button" onclick="inverSelect()" value="<!--<lang package='Template/Default/Common'>-->反选<!--</lang>-->" class="alt_btn">&nbsp;
 						<input type="button" onclick="unSelectAll()" value="<!--<lang package='Template/Default/Common'>-->全否<!--</lang>-->" class="alt_btn">&nbsp;

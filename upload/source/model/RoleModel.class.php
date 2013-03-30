@@ -212,10 +212,16 @@ class RoleModel extends CommonModel{
 				UserModel::F()->query()->getTablePrefix().'user AS b WHERE a.user_id=b.user_id AND a.role_id='.$nGroupId);
 	}
 
-	public function delGroupUser($nGroupId){
+	public function delGroupUser($nGroupId,$arrThispageuser=array()){
 		$oDb=$this->getDb();
 
-		$bResult=$oDb->query('DELETE FROM '.UserroleModel::F()->query()->getTablePrefix().'userrole WHERE role_id='.$nGroupId);
+		if(!empty($arrThispageuser)){
+			$sUserWhere=' AND user_id IN('.implode(',',$arrThispageuser).')';
+		}else{
+			$sUserWhere='';
+		}
+
+		$bResult=$oDb->query('DELETE FROM '.UserroleModel::F()->query()->getTablePrefix().'userrole WHERE role_id='.$nGroupId.$sUserWhere);
 		if($bResult===false){
 			return false;
 		}else{
@@ -226,7 +232,7 @@ class RoleModel extends CommonModel{
 	public function setGroupUsers($nGroupId,$arrUserIdList){
 		$oDb=$this->getDb();
 
-		if( empty($arrUserIdList)){
+		if(empty($arrUserIdList)){
 			return true;
 		}
 

@@ -410,11 +410,12 @@ class RoleController extends InitController{
 	}
 
 	public function set_user(){
-		$nId=G::getGpc('groupUserId','P');
+		$arrId=G::getGpc('groupUserId','P');
 		$nGroupId=G::getGpc('group_id','P');
+		$arrThispageuser=G::getGpc('thispageuser','P');
 
-		RoleModel::F()->query()->delGroupUser($nGroupId);
-		$bResult=RoleModel::F()->query()->setGroupUsers($nGroupId,$nId);
+		RoleModel::F()->query()->delGroupUser($nGroupId,$arrThispageuser);
+		$bResult=RoleModel::F()->query()->setGroupUsers($nGroupId,$arrId);
 		if($bResult===false){
 			$this->E(Dyhb::L('授权失败','Controller/Role'));
 		}else{
