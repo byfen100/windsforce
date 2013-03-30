@@ -173,7 +173,7 @@ var SlideDeckSkin = {};
          * If you would like to remove the visual "bug", we recommend you comment out the 
          * updateBug(); function and remove any references to the updateBug(); command.
          */
-        var BUG = {
+        /*var BUG = {
             id: "SlideDeck_Bug"+(Math.round(Math.random()*100000000)),
             styles: "position:absolute !important;height:"+13+"px !important;width:"+130+"px !important;display:block !important;margin:0 !important;overflow:hidden !important;visibility:visible !important;opacity:1 !important;padding:0 !important;z-index:20000 !important",
             width: 130,
@@ -223,7 +223,7 @@ var SlideDeckSkin = {};
                 top: BUG.top + "px",
                 left: BUG.left + "px"
             });
-        };
+        };*/
         
         
         var autoPlay = function(){
