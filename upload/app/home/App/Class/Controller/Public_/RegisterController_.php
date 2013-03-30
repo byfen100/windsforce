@@ -149,7 +149,7 @@ class RegisterController extends GlobalchildController{
 
 			// 将用户加入注册会员角色
 			$oUserrole=new UserroleModel();
-			$oUserrole->role_id=1;
+			$oUserrole->role_id=5;
 			$oUserrole->user_id=$oUser['user_id'];
 			$oUserrole->save(0);
 
