@@ -39,8 +39,8 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 -- 转存表中的数据 `windsforce_group`
 --
 
-INSERT INTO `#@__group` (`group_id`, `user_id`, `group_name`, `group_nikename`, `group_sort`, `group_description`, `group_listdescription`, `group_path`, `group_icon`, `group_topicnum`, `group_topictodaynum`, `group_usernum`, `group_topiccomment`, `group_joinway`, `group_roleleader`, `group_roleadmin`, `group_roleuser`, `create_dateline`, `group_isrecommend`, `group_isopen`, `group_isaudit`, `group_ispost`, `group_status`, `group_latestcomment`, `update_dateline`) VALUES
-(1, 1, 'default', '默认小组', 0, '这是系统一个默认的小组。', '测试小组，你可以修改', '', NULL, 1, 0, 1, 0, 0, '组长', '管理员', '成员', 1355499162, 1, 1, 1, 0, 1, 'a:5:{s:11:"commenttime";i:1355499282;s:9:"commentid";i:1;s:3:"tid";s:1:"1";s:13:"commentuserid";s:1:"1";s:12:"commenttitle";s:38:"Hello world! 欢迎使用WindsForce！";}', 1355499282);
+INSERT INTO `#@__group` (`group_id`, `user_id`, `group_name`, `group_nikename`, `group_sort`, `group_description`, `group_listdescription`, `group_path`, `group_icon`, `group_totaltodaynum`, `group_topicnum`, `group_topictodaynum`, `group_usernum`, `group_topiccomment`, `group_topiccommenttodaynum`, `group_joinway`, `group_roleleader`, `group_roleadmin`, `group_roleuser`, `create_dateline`, `group_isrecommend`, `group_isopen`, `group_isaudit`, `group_ispost`, `group_status`, `group_latestcomment`, `update_dateline`) VALUES
+(1, 1, 'default', '默认小组', 0, '这是系统一个默认的小组。', '测试小组，你可以修改', '', NULL, 0, 1, 0, 1, 0, 0, 0, '组长', '管理员', '成员', 1355499162, 1, 1, 1, 0, 1, 'a:5:{s:11:"commenttime";i:1355499282;s:9:"commentid";i:1;s:3:"tid";s:1:"1";s:13:"commentuserid";s:1:"1";s:12:"commenttitle";s:38:"Hello world! 欢迎使用WindsForce！";}', 1355499282);
 
 -- --------------------------------------------------------
 
