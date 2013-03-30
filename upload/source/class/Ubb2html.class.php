@@ -418,7 +418,7 @@ class Ubb2html{
 	public function xhtmlHighlightString($sStr){
 		$sTitle=Dyhb::L('代码','__COMMON_LANG__@Class/Ubb2html');
 
-		$sHlt=highlight_string($sStr,true);
+		$sHlt=@highlight_string($sStr,true);
 		if(PHP_VERSION>'5'){
 			return $this->template($sTitle,$sHlt,'ubb_code');
 		}
