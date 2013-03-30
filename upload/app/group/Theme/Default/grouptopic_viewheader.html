@@ -1,5 +1,13 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{style}-->
+.extend_tool{border-top:1px dashed #CDCDCD;padding:10px 0px 0px 5px;}
+.extend_tool em a{padding:5px 10px 5px 25px;}
+
+.fastre{background:url('<!--{:__APPPUB__}-->/Images/fastreply.gif') no-repeat 0 50%;}
+.editp{background:url('<!--{:__APPPUB__}-->/Images/edit.gif') no-repeat 4px 50%;}
+<!--{/style}-->
+
 <!--{script}-->
 function setGrouptopicstyle(nStyle){
 	Dyhb.AjaxSend(D.U('group://grouptopic/set_grouptopicstyle?style='+nStyle),'','',completeSet);
@@ -145,8 +153,6 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 			<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
 			<div class="span12" style="margin-bottom:15px;">
 				<div>
-					<a href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑主题</a>
-					<span class="pipe">|</span>
 					<a onclick="modTopicdelete();" href="javascript:void(0);">删除主题</a>
 					<span class="pipe">|</span>
 					<a onclick="modTopicdelete();" href="javascript:void(0);">关闭</a>

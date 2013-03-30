@@ -51,6 +51,17 @@
     width: 240px;
 	
 }
+.facebox{overflow: hidden;}
+.facebox .face{float:left;}
+.facebox .info{margin-left:60px;}
+.facebox .info h3{margin:0 0 5px 0;}
+.facebox .other{border-top:solid 1px #EEEEEE;margin-top:10px;}
+.facebox .other li{float:left;padding:10px 15px;}
+.facebox .fmore {border-top:solid 1px #EEEEEE;margin-top:10px;padding:0 10px;line-height:30px;}
+
+.bbox{border:solid 1px #DDDDDD;border-radius:5px 5px 5px 5px;margin-bottom:10px;overflow:hidden; background:#FFFFFF;}
+.bbox .btitle{font-weight:bold;font-size:14px;border-bottom:solid 1px #EEEEEE;margin-bottom: 10px;padding-bottom: 5px;position:relative;}
+.bbox .btitle .right{font-size:12px;position:absolute;right:0px;top:0px;font-weight:normal;}
 
 			<!--{/style}-->
 
@@ -152,13 +163,13 @@
 										<thead>
 											<tr style="border-bottom:1px solid #eeeeee;">
 												<th style="width:61px;">发帖人</th>
-												<th><a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a></th>
+												<th><a href="<!--{:Dyhb::U('group://gid@?id='.$oGroup->group_id.'&cid='.$nCid.'&did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a></th>
 												<th style="text-align:center;width:130px;">
-													<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid)}-->" style="<!--{if $sType=='create_dateline'}-->color:gray;<!--{/if}-->">最新</a>
+													<a href="<!--{:Dyhb::U('group://gid@?id='.$oGroup->group_id.'&cid='.$nCid)}-->" style="<!--{if $sType=='create_dateline'}-->color:gray;<!--{/if}-->">最新</a>
 													<span class="pipe">|</span>
-													<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&type=view')}-->" style="<!--{if $sType=='grouptopic_views'}-->color:gray;<!--{/if}-->">浏览</a>
+													<a href="<!--{:Dyhb::U('group://gid@?id='.$oGroup->group_id.'&cid='.$nCid.'&type=view')}-->" style="<!--{if $sType=='grouptopic_views'}-->color:gray;<!--{/if}-->">浏览</a>
 													<span class="pipe">|</span>
-													<a href="<!--{:Dyhb::U('group://group/show?id='.$oGroup->group_name.'&cid='.$nCid.'&type=com')}-->" style="<!--{if $sType=='grouptopic_comments'}-->color:gray;<!--{/if}-->">回复</a>
+													<a href="<!--{:Dyhb::U('group://gid@?id='.$oGroup->group_id.'&cid='.$nCid.'&type=com')}-->" style="<!--{if $sType=='grouptopic_comments'}-->color:gray;<!--{/if}-->">回复</a>
 												</th>
 											</tr>
 										</thead>
@@ -211,7 +222,7 @@
 								<tr>
 									<td width="200px">
 										<div>
-											<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->" class="btn btn-success" >发布帖子</a>
+											<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid=')}-->" class="btn btn-success" >发布帖子</a>
 										</div>
 									</td>
 									<td style="text-align:right;"><a href="" class="btn">返回</a></td>
@@ -222,8 +233,8 @@
 						<div class="floor">
 							<table width="100%" class="floor_table floor_footerpostcontenttable">
 								<tr>
-									<td class="floor_left" width="350px" style="background:#ccc;padding:5px 10px;">快捷发帖</td>
-									<td class="floor_right" style="background:#ccc;padding:5px 10px;"></td>
+									<td class="floor_left" width="350px" style="background:#378C32;padding:5px 10px;color:#fff;">快捷发帖</td>
+									<td class="floor_right" style="background:#378C32;padding:5px 10px;color:#fff;"></td>
 								</tr>
 								<tr>
 									<td class="floor_left floor_footerpostcontenttd1" width="350px">
@@ -255,13 +266,13 @@
 											<!--{/if}-->
 											<div class="form-actions">
 												<input type="hidden" name="ajax" value="1">
-												<input type="hidden" name="tid" value="<!--{$oGrouptopic->grouptopic_id}-->">
+												<input type="hidden" name="tid" value="">
 												<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
 												<!--{if $GLOBALS['___login___']!==false}-->
 												&nbsp;<a href="javascript:void(0);" onclick="showMedia();">媒体</a>
 												<!--{/if}-->
 												<span class="pipe">|</span>
-												<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" >进入高级模式&gt;&gt;</a>
+												<a href="<!--{:Dyhb::U('group://grouptopic/reply?id=')}-->" >进入高级模式&gt;&gt;</a>
 											</div>
 										</form>
 									</td>

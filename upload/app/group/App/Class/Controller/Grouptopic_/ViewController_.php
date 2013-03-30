@@ -55,6 +55,14 @@ class ViewController extends Controller{
 		$this->assign('nPage',$nPage);
 		$this->assign('oGrouptopic',$oGrouptopic);
 
+		// 热门帖子
+		$arrHotGrouptopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=?',CURRENT_TIMESTAMP-86400,1)->order('grouptopic_comments DESC')->top(10)->get();
+		$this->assign('arrHotGrouptopics',$arrHotGrouptopics);
+
+		// 最新帖子
+		$arrNewGrouptopics=GrouptopicModel::F('grouptopic_status=?',1)->order('create_dateline DESC')->limit(0,10)->getAll();
+		$this->assign('arrNewGrouptopics',$arrNewGrouptopics);
+
 		$this->assign('nStyle',$nStyle);
 		$this->assign('nSide',$nSide);
 

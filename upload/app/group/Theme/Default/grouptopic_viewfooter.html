@@ -1,8 +1,6 @@
 			<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
 			<div class="span12" style="margin-bottom:15px;">
 				<div>
-					<a href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑主题</a>
-					<span class="pipe">|</span>
 					<a onclick="modTopicdelete();" href="javascript:void(0);">删除主题</a>
 					<span class="pipe">|</span>
 					<a onclick="modTopicdelete();" href="javascript:void(0);">关闭</a>
@@ -25,8 +23,8 @@
 				<div class="floor">
 					<table width="100%" class="floor_table floor_footerpostcontenttable">
 						<tr>
-									<td class="floor_left" width="350px" style="background:#ccc;padding:5px 10px;">快捷回复</td>
-									<td class="floor_right" style="background:#ccc;padding:5px 10px;"></td>
+									<td class="floor_left" width="350px" style="background:#378C32;padding:5px 10px;color:#fff;">快捷回复</td>
+									<td class="floor_right" style="background:#378C32;padding:5px 10px;color:#fff;"></td>
 								</tr>
 						<tr>
 							<td class="floor_left floor_footerpostcontenttd1" width="350px">

@@ -1,13 +1,21 @@
 			<div class="span3">
 				<div class="commonbox">
-					<div class="common2"><a href="">返回小组</a></div>
+					<div class="backgroup_box">
+						<p><a class="btn btn-success" href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><i class="icon-share-alt icon-white"></i>&nbsp;返回小组</a></p>
+					</div>
 				</div>
 
 				<div class="commonbox">
 					<div class="commonboxtitle">最新帖子</div>
 					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+						<ul id="new_grouptopic_box" class="new_grouptopic_box">
+							<!--{if is_array($arrNewGrouptopics)}-->
+							<!--<foreach for=arrNewGrouptopics value=oNewGrouptopic>-->
+							<li><a href=""><!--{$oNewGrouptopic['grouptopic_title']|G+subString=0,30}--></a></li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->">我要发布</a></li>
+							<!--{/if}-->
 						</ul>
 					</div>
 				</div>
@@ -15,8 +23,14 @@
 				<div class="commonbox">
 					<div class="commonboxtitle">热门帖子</div>
 					<div class="commonlist">
-						<ul id="home_followus_box" class="home_followus_box">
-							<li><a href="">xxxxxxx</a></li>
+						<ul id="hot_grouptopic_box" class="hot_grouptopic_box">
+							<!--{if is_array($arrHotGrouptopics)}-->
+							<!--<foreach for=arrHotGrouptopics value=oHotGrouptopic>-->
+							<li><a href=""><!--{$oHotGrouptopic['grouptopic_title']|G+subString=0,30}--></a></li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->">我要发布</a></li>
+							<!--{/if}-->
 						</ul>
 					</div>
 				</div>

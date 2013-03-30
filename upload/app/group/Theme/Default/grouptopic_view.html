@@ -1,4 +1,6 @@
 <!--<include file="grouptopic+viewheader" />-->
+
+
 			
 			<div class="span<!--{if $nSide==2}-->9<!--{d*else}-->12<!--{/if}-->">
 				<div class="floor floor_headerpost">
@@ -192,6 +194,17 @@
 										<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
 										<!--{if $sUsersign}--><!--{$sUsersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
 									</div>
+
+									<div class="extend_tool">
+									<em class="left">
+											<a class="fastre" href="" onclick="">回复</a>
+											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
+											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑</a></em>
+<!--{/if}-->
+											<p class="right">
+											<a href="" onclick="">举报</a>
+											</p>
+											</div>
 								</td>
 							</tr>
 							<tr>
@@ -342,6 +355,17 @@
 										<!--{~$sUsersign=UserModel::getUsernameById($oComment['user_id'],'user_sign')}-->
 										<!--{if $sUsersign}--><!--{$sUsersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
 									</div>
+
+									<div class="extend_tool">
+									<em class="left">
+											<a class="fastre" href="" onclick="">回复</a>
+											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
+											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑</a></em>
+<!--{/if}-->
+											<p class="right">
+											<a href="" onclick="">举报</a>
+											</p>
+											</div>
 								</td>
 							</tr>
 							<tr>
