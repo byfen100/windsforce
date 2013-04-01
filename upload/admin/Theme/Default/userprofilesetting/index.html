@@ -47,6 +47,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:userprofilesetting_id}-->" <!--{if $TheController->is_system_userprofilesetting($value->userprofilesetting_id)}-->disabled="disabled"<!--{/if}-->></td>
@@ -71,6 +72,11 @@
 							</td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="6"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

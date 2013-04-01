@@ -55,6 +55,7 @@ function add(){
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:nav_id}-->" <!--{if !$value['nav_type']}-->disabled="disabled"<!--{/if}-->></td>
@@ -80,6 +81,11 @@ function add(){
 							</td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="9"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

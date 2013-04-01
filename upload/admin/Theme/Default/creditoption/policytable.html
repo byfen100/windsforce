@@ -39,6 +39,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($arrCreditrules)}-->
 						<!--<foreach for=arrCreditrules value=oCreditrule>-->
 						<tr>
 							<td><!--{$oCreditrule['creditrule_id']}--></td>
@@ -51,6 +52,11 @@
 							<td><a href="<!--{:Dyhb::U('creditoption/edit?id='.$oCreditrule['creditrule_id'])}-->"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a></td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="<!--{:count($arrAvailableExtendCredits)+5}-->"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

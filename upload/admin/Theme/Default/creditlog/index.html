@@ -53,6 +53,7 @@ function completeDelete(data,status){
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><a href="<!--{:Dyhb::U('creditlog/index?order_=create_dateline&uid='.$value['user_id'])}-->"><!--{$value:user:user_name}--></a></td>
@@ -69,6 +70,11 @@ function completeDelete(data,status){
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="5"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

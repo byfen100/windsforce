@@ -66,6 +66,7 @@ function completeDelete(data,status){
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:creditrulelog_id}-->"></td>
@@ -84,6 +85,11 @@ function completeDelete(data,status){
 							<td><!--{$value:update_dateline|date='Y-m-d H:i:s',**}--></td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="<!--{:count($arrAvailableExtendCredits)+7}-->"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

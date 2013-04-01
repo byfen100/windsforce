@@ -41,23 +41,24 @@
 				</ul>
 			</header>
 			<div class="module_content">
-				<table class="tablesorter" cellspacing="0" id="checkList"> 
-					<thead> 
-						<tr> 
-							<th><input type="checkbox" onclick="checkAll('checkList')"></th> 
-							<th><a href="<!--{:Admin_Extend::soryBy('group_id',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
-								<th></th>
-								<th><a href="<!--{:Admin_Extend::soryBy('group_nikename',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_nikename')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组别名<!--</lang>--></a></th>
-								<th><a href="<!--{:Admin_Extend::soryBy('group_name',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_name')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组名字<!--</lang>--></a></th>
-								<th><a href="<!--{:Admin_Extend::soryBy('group_topicnum',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_topicnum')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->帖子统计<!--</lang>--></a></th>
-								<th><a href="<!--{:Admin_Extend::soryBy('group_usernum',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_usernum')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->成员统计<!--</lang>--></a></th>
-								<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
-								<th><a href="<!--{:Admin_Extend::soryBy('group_sort',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_sort')}-->><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></a></th>
-								<th><a href="<!--{:Admin_Extend::soryBy('group_isrecommend',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_isrecommend')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->是否推荐<!--</lang>--></a></th>
-								<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
-						</tr> 
-					</thead> 
-					<tbody> 
+				<table class="tablesorter" cellspacing="0" id="checkList">
+					<thead>
+						<tr>
+							<th><input type="checkbox" onclick="checkAll('checkList')"></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('group_id',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th>
+							<th></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('group_nikename',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_nikename')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组别名<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('group_name',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_name')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组名字<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('group_topicnum',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_topicnum')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->帖子统计<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('group_usernum',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_usernum')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->成员统计<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('group_sort',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_sort')}-->><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('group_isrecommend',$sSortByUrl,array('controller'=>'group'))}-->" <!--{:Admin_Extend::sortField('group_isrecommend')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->是否推荐<!--</lang>--></a></th>
+							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:group_id}-->"></td>
@@ -85,7 +86,12 @@
 							</td>
 						</tr>
 						<!--</foreach>-->
-					</tbody> 
+						<!--{d*else}-->
+						<tr>
+							<td colspan="11"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
+					</tbody>
 				</table>
 			</div>
 		</article>

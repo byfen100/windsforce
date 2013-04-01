@@ -50,6 +50,7 @@ $(function(){
 					<li><a href="<!--{:Dyhb::U('attachmentcomment/index?uid='.$oUser['user_id'])}-->"><!--<lang package='Template/Default/Attachmentcomment'>-->用户<!--</lang>-->&nbsp;(<!--{$oUser['user_name']}-->)</a></li>
 					<!--{/if}-->
 					<li class="active"><a href="<!--{:Dyhb::U('attachment/index')}-->"><!--<lang package='Template/Default/Attachmentcomment'>-->多媒体列表<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('app/config?id=1&type=comment')}-->"><!--<lang package='Template/Default/Attachmentcomment'>-->评论防灌水限制<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<div class="module_content">
@@ -71,6 +72,7 @@ $(function(){
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td width="15px"><input type="checkbox" name="key" value="<!--{$value:attachmentcomment_id}-->"></td>
@@ -98,6 +100,11 @@ $(function(){
 							</td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="12"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

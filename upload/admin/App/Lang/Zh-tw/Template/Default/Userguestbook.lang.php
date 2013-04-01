@@ -21,6 +21,7 @@ return array(
 '5ce148976ddf38f32ca5251b67262f11'=>"用戶留言作者URL，最大字符為300",
 'b6b752e828a59d7885f0046bdbb8cbdf'=>"用戶留言內容",
 '1abe7e1323528f9570f5b4fa4ce2e8ca'=>"用戶留言內容信息",
+'cdbe4af7be6e940e3dbfa203a306c0a3'=>"留言防灌水限制",
 )
 
 ?>

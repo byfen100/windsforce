@@ -39,6 +39,7 @@
 					<li <!--{if $sType=='system'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('pm/index?type=system')}-->"><!--<lang package='Template/Default/Pm'>-->系统(System)<!--</lang>--></a></li>
 					<li <!--{if $sType=='user'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('pm/index?type=user')}-->"><!--<lang package='Template/Default/Pm'>-->用户(User)<!--</lang>--></a></li>
 					<li><a href="<!--{:Dyhb::U('pm/add')}-->"><!--<lang package='Template/Default/Pm'>-->发送短消息<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('pmoption/index')}-->"><!--<lang package='Template/Default/Pm'>-->短消息设置<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<div class="module_content">
@@ -58,6 +59,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:pm_id}-->"></td>
@@ -83,6 +85,11 @@
 							</td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="10"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

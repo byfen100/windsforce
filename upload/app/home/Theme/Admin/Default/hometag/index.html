@@ -41,17 +41,18 @@
 			</header>
 			<div class="module_content">
 				<table class="tablesorter" cellspacing="0" id="checkList"> 
-					<thead> 
-						<tr> 
-						<th><input type="checkbox" onclick="checkAll('checkList')"></th> 
-						<th><a href="<!--{:Admin_Extend::soryBy('hometag_id',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
-						<th><a href="<!--{:Admin_Extend::soryBy('hometag_name',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_name')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->标签名字<!--</lang>--></a></th>
-						<th><a href="<!--{:Admin_Extend::soryBy('hometag_count',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_count')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->用户数量<!--</lang>--></a></th>
-						<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
-						<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
-						</tr> 
-					</thead> 
-					<tbody> 
+					<thead>
+						<tr>
+							<th><input type="checkbox" onclick="checkAll('checkList')"></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('hometag_id',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('hometag_name',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_name')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->标签名字<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('hometag_count',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('hometag_count')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Hometag'>-->用户数量<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'hometag'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
+							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:hometag_id}-->"></td>
@@ -68,7 +69,12 @@
 							</td>
 						</tr>
 						<!--</foreach>-->
-					</tbody> 
+						<!--{d*else}-->
+						<tr>
+							<td colspan="6"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
+					</tbody>
 				</table>
 			</div>
 		</article>

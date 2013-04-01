@@ -61,6 +61,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if is_array($oList)}-->
 						<!--<foreach for=oList>-->
 						<tr>
 							<td><img height="40" align="left" width="40" style="margin: 0pt 5px 0pt 30px;" src="<!--{:Core_Extend::appLogo($value['app_identifier'])}-->"/>
@@ -116,6 +117,11 @@
 							</td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="7"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>

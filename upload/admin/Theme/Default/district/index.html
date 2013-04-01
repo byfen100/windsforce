@@ -62,6 +62,7 @@ function refreshDistrict(province,city,district){
 						</tr>
 					</thead>
 					<tbody>
+						<!--{if !empty($arrThevalues)}-->
 						<!--<foreach for=arrThevalues>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value[0]}-->" <!--{if $TheController->is_system_district($value[0])}-->disabled="disabled"<!--{/if}-->></td>
@@ -77,6 +78,11 @@ function refreshDistrict(province,city,district){
 							</td>
 						</tr>
 						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="5"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
 					</tbody>
 				</table>
 			</div>
