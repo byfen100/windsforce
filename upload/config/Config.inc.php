@@ -38,6 +38,8 @@
     'home@apps@*' => true,
     'home@misc@*' => true,
     'home@online@*' => true,
+    'home@getpassword@*' => true,
+    'home@userappeal@*' => true,
     'home@attachmentdownload@*' => true,
     'home@attachmentread@*' => true,
     'home@attachment@*' => true,
