@@ -254,7 +254,7 @@ DROP TABLE IF EXISTS `#@__groupuser`;
 CREATE TABLE `#@__groupuser` (
   `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',
   `group_id` int(10) NOT NULL DEFAULT '0' COMMENT '群组ID',
-  `groupuser_isadmin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否管理员',
+  `groupuser_isadmin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否管理员0会员 1管理员 2创始人',
   `create_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '加入时间',
   PRIMARY KEY (`user_id`,`group_id`),
   KEY `create_dateline` (`create_dateline`)

@@ -38,7 +38,16 @@ class GroupModel extends CommonModel{
 				),
 				'group_sort'=>array(
 					array('number',Dyhb::L('序号只能是数字','__APP_ADMIN_LANG__@Model/Group'),'condition'=>'notempty','extend'=>'regex'),
-				)
+				),
+				'group_roleleader'=>array(
+					array('require',Dyhb::L('自定义角色组长名字不能为空','__APP_ADMIN_LANG__@Model/Group')),
+				),
+				'group_roleadmin'=>array(
+					array('require',Dyhb::L('自定义角色管理员名字不能为空','__APP_ADMIN_LANG__@Model/Group')),
+				),				
+				'group_roleuser'=>array(
+					array('require',Dyhb::L('自定义角色成员名字不能为空','__APP_ADMIN_LANG__@Model/Group')),
+				),
 			),
 		);
 	}

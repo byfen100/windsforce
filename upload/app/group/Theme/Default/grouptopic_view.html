@@ -199,7 +199,7 @@
 									<em class="left">
 											<a class="fastre" href="" onclick="">回复</a>
 											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
-											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑</a></em>
+											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'])}-->">编辑</a></em>
 <!--{/if}-->
 											<p class="right">
 											<a href="" onclick="">举报</a>
@@ -215,7 +215,7 @@
 					</div>
 					<!--{/if}-->
 
-					<!--<foreach for=arrComment value=oComment>-->
+					<!--<foreach for=arrComments value=oComment>-->
 					<a name="grouptopiccomment-<!--{$oComment->grouptopiccomment_id}-->"></a>
 					<div class="floor clear" id="grouptopicview_<!--{$oComment->grouptopiccomment_id}-->">
 						<table width="100%" class="floor_table floor_grouptopiccommenttable">
@@ -372,7 +372,7 @@
 								<td class="floor_grouptopiccommentbottomtd1"></td>
 								<td class="floor_grouptopiccommentbottomtd2"></td>
 							</tr>
-							<!--{if count($arrComment)-1==$key}-->
+							<!--{if count($arrComments)-1==$key}-->
 							<tr>
 								<td colspan="2" class="floor_grouptopiccommentbottom"></td>
 							</tr>

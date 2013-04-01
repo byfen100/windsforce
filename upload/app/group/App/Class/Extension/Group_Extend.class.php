@@ -20,8 +20,8 @@ class Group_Extend{
 		return Upload_Extend::getIconName('group',$nId).'.'.G::getExtName($sFilename,2);
 	}
 
-	public static function getGroupurl($arrGroup){
-		return Dyhb::U('group://gid@?id='.(!empty($arrGroup['group_name'])?$arrGroup['group_name']:$arrGroup['group_id']));
+	public static function getGroupurl($arrGroup,$sMore=''){
+		return Dyhb::U('group://gid@?id='.(!empty($arrGroup['group_name'])?$arrGroup['group_name']:$arrGroup['group_id']).$sMore);
 	}
 	
 	public static function getGroupuser($nGroupid){

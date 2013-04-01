@@ -1,10 +1,12 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
 <!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
 
 <!--{script}-->
 $(function(){
 	editor=loadEditor('grouptopic_content');
+$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 });
 
 <!--{if isset($oGrouptopic)}-->
@@ -44,6 +46,14 @@ function insertGrouptopicattachment(nAttachmentid){
 	insertAttachment(editor,nAttachmentid);
 }
 
+function insertGrouptopicvideo(sContent){
+	insertVideo(editor,sContent);
+}
+
+javascript:void(0);function insertGrouptopicmusic(sContent){
+	insertMusic(editor,sContent);
+}
+
 function insertGrouptopicthumb(nAttachmentid){
 	insertAttachmentthumb('grouptopic_thumb',nAttachmentid);
 }
@@ -67,7 +77,13 @@ function reloadCategory(){
 			<div class="span12">
 				<ul id="myTab" class="nav nav-tabs">
 					<li class="active"><a href="javascript:void(0);"><!--{if isset($oGrouptopic)}-->编辑帖子<!--{d*else}-->发布帖子<!--{/if}--></a></li>
-					<li><a href="<!--{if empty($nGroupid)}--><!--{:Dyhb::U('group://public/index')}--><!--{d*else}--><!--{:Dyhb::U('group://gid@?id='.$nGroupid)}--><!--{/if}-->">返回小组</a></li>
+					<li>
+					<!--{if empty($nGroupid)}-->
+					<a href="<!--{:Dyhb::U('group://public/index')}-->">返回首页</a>
+					<!--{d*else}-->
+					<a href="<!--{:Dyhb::U('group://gid@?id='.$nGroupid)}-->">返回小组</a>
+					<!--{/if}-->
+					</li>
 				</ul>
 			</div>
 			<form method='post' name="grouptopic_form" id="grouptopic_form" enctype="multipart/form-data">
@@ -85,13 +101,15 @@ function reloadCategory(){
 					<input type="text" name="grouptopic_title" id="grouptopic_title" class="span8" placeholder="请输入标题" value="<!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->">
 					<span></span>
 					<label>帖子内容&nbsp;(<a href="javascript:void(0);" onclick="showMedia();">媒体</a>)</label>
-					<div id="homefresh-media-box" class="homefresh-media-box none">
+					<div id="homefresh-media-box" class="common-media-box none">
 						<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a>
 						<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
-						<a href="javascript:void(0);" onclick="addHomefreshvideo();" class="icon_add_video" >视频</a>
-						<a href="javascript:void(0);" onclick="addHomefreshmusic();" class="icon_add_music">音乐</a>
+						<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
+						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
 					</div>
+					<div id="emotion_parentcontainer">
 					<textarea name="grouptopic_content" id="grouptopic_content" style="height:350px;width:100%;padding:0;margin:0;"><!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_content}--><!--{/if}--></textarea>
+					</div>
 					<div class="grouptopic_tabs">
 						<ul id="grouptopic_tabcontent" class="nav nav-tabs">
 							<li class="active"><a href="#grouptopiccategory" data-toggle="tab">帖子分类</a></li>

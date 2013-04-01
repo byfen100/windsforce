@@ -22,4 +22,8 @@ class GroupController extends InitController{
 		Core_Extend::doControllerAction('Group@Getcategory','index');
 	}
 
+	public function user(){
+		Core_Extend::doControllerAction('Group@User','index');
+	}
+
 }

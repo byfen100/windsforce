@@ -13,13 +13,13 @@ class ShowController extends Controller{
 		$sType=G::getGpc('type','G');
 
 		if(empty($sType)){
-			$sType='create_dateline';
+			$sOrderType='create_dateline';
 		}elseif($sType=="view"){
-			$sType='grouptopic_views';
+			$sOrderType='grouptopic_views';
 		}elseif($sType=="com"){
-			$sType='grouptopic_comments';
+			$sOrderType='grouptopic_comments';
 		}else{
-			$sType='create_dateline';
+			$sOrderType='create_dateline';
 		}
 
 		$this->assign('sType',$sType);
@@ -52,7 +52,7 @@ class ShowController extends Controller{
 
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
 
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('arrGrouptopics',$arrGrouptopics);
 		$this->assign('nEverynum',$nEverynum);
@@ -70,6 +70,21 @@ class ShowController extends Controller{
 		// 取得用户是否加入了小组
 		$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id']);
 		$this->assign('nGroupuser',$nGroupuser);
+
+		// 读取小组创始人
+		$arrGroupleaders=GroupuserModel::F('group_id=? AND groupuser_isadmin=2',$oGroup['group_id'])->order('create_dateline DESC')->getAll();
+
+		$this->assign('arrGroupleaders',$arrGroupleaders);
+
+		// 读取小组管理员
+		$arrGroupadmins=GroupuserModel::F('group_id=? AND groupuser_isadmin=1',$oGroup['group_id'])->order('create_dateline DESC')->getAll();
+
+		$this->assign('arrGroupadmins',$arrGroupadmins);
+
+		// 读取最新成员
+		$arrGroupusers=GroupuserModel::F('group_id=? AND groupuser_isadmin=0',$oGroup['group_id'])->order('create_dateline DESC')->limit(0,6)->getAll();
+
+		$this->assign('arrGroupusers',$arrGroupusers);
 
 		$this->assign('oGroup',$oGroup);
 		$this->assign('arrCid',$arrCid);

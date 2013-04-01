@@ -47,11 +47,11 @@ class ViewController extends Controller{
 
 		$nTotalComment=GrouptopiccommentModel::F()->where($arrWhere)->all()->getCounts();
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
-		$arrComment=GrouptopiccommentModel::F()->where($arrWhere)->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrComments=GrouptopiccommentModel::F()->where($arrWhere)->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('nEverynum',$nEverynum);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
-		$this->assign('arrComment',$arrComment);
+		$this->assign('arrComments',$arrComments);
 		$this->assign('nPage',$nPage);
 		$this->assign('oGrouptopic',$oGrouptopic);
 
