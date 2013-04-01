@@ -121,7 +121,7 @@ class InitController extends Controller{
 		$arrLists=array();
 		eval('$arrLists='.ucfirst($sName).'Model::F()->where($arrMap)->all()->order($sOrder.\' \'.$sSortBy)->limit($oPage->returnPageStart(),$nEverynum)->query();');
 		$this->assign('sPageNavbar',$oPage->P());
-		$this->assign('oList',$arrLists);
+		$this->assign('arrLists',$arrLists);
 	}
 
 	public function input_change_ajax($sName=null){

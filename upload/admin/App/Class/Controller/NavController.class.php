@@ -17,7 +17,7 @@ class NavController extends InitController{
 		$arrMap['nav_location']=$nLocation;
 		$arrNavs=NavModel::F()->where($arrMap)->order('nav_sort DESC')->getAll();
 		
-		$this->assign('oList',$arrNavs);
+		$this->assign('arrLists',$arrNavs);
 		$this->assign('nLocation',$nLocation);
 
 		$this->display();

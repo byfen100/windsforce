@@ -50,8 +50,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!--{if is_array($oList)}-->
-						<!--<foreach for=oList>-->
+						<!--{if is_array($arrLists)}-->
+						<!--<foreach for=arrLists>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:rolegroup_id}-->" <!--{if $TheController->is_system_rolegroup($value->rolegroup_id)}-->disabled="disabled"<!--{/if}-->></td>
 							<td><!--{$value:rolegroup_id}--></td>

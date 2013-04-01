@@ -95,8 +95,8 @@ function changeRatinggroup(oObj,id){
 						</tr>
 					</thead>
 					<tbody>
-						<!--{if is_array($oList)}-->
-						<!--<foreach for=oList>-->
+						<!--{if is_array($arrLists)}-->
+						<!--<foreach for=arrLists>-->
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:rating_id}-->" <!--{if $TheController->is_system_rating($value->rating_id)}-->disabled="disabled"<!--{/if}-->></td>
 							<td><!--{$value:rating_id}--></td>
