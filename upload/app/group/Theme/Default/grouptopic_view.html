@@ -148,7 +148,11 @@
 												<li>回复&nbsp;<em><!--{$oGrouptopic->grouptopic_comments}--></em></li>
 											</ul>
 										</div>
-										<h1><!--{$oGrouptopic->grouptopic_title}--></h1>
+										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
+														[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]
+														<!--{d*else}-->
+														[默认分类]<!--{/if}-->&nbsp;<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
+					  <!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}--></h1>
 									</div>
 									<div class="floor_top_tips">
 										<span class="floor_copy" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{$GLOBALS['_option_']['site_url']}-->/index.php?app=group&c=grouptopic&a=view&id=<!--{$oGrouptopic->grouptopic_id}-->','楼层复制成功');">楼主<sup>#</sup></span>

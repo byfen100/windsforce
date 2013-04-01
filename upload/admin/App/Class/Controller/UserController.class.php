@@ -142,7 +142,6 @@ class UserController extends InitController{
 			if($oUsercountMeta->isError()){
 				$this->E($oUsercountMeta->getErrorMessage());
 			}
-
 			
 			// 用户角色数据
 			$oUserroleMeta=UserroleModel::M();

@@ -217,7 +217,7 @@ function reloadCategory(){
 						<!--{/if}-->
 						<input type="hidden" name="ajax" value="1">
 						<button type="button" name="submit_button" id="submit_button" class="btn btn-success" onClick="grouptopicSubmit();"><!--{if isset($oGrouptopic)}-->更新帖子<!--{d*else}-->发表帖子<!--{/if}--></button>&nbsp;
-						<a href="<!--{:Dyhb::U('group://public/index')}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+						<a href="<!--{if empty($nGroupid)}--><!--{:Dyhb::U('group://public/index')}--><!--{d*else}--><!--{:Dyhb::U('group://gid@?id='.$nGroupid)}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
 					</div>
 				</div>
 			</form>

@@ -4,12 +4,12 @@
 
 !defined('DYHB_PATH') && exit;
 
-class IndexController extends Controller{
+class DeletetopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
 		$arrGrouptopics=G::getGpc('dataids','G');
-		
+
 		if(empty($nGroupid)){
 			$this->E('没有待操作的小组');
 		}
@@ -20,13 +20,13 @@ class IndexController extends Controller{
 		}
 		
 		if(empty($arrGrouptopics)){
-			$this->E('没有待操作的帖子');
+			exit('没有待操作的帖子');
 		}
-
+		
 		$sGrouptopics=implode(',',$arrGrouptopics);
+		$this->assign('sGrouptopics',$sGrouptopics);
 
 		$this->assign('nGroupid',$nGroupid);
-		$this->assign('sGrouptopics',$sGrouptopics);
 		
 		$this->display('grouptopicadmin+deletetopicdialog');
 	}

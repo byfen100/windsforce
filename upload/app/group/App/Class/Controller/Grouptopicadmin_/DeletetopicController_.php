@@ -1,16 +1,30 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   删除单个帖子控制器($Liu.XiangMin)*/
+   删除帖子控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
 class DeletetopicController extends Controller{
 
 	public function index(){
-		$nGroupid=intval(G::getGpc('group_id','P'));
-		$sGrouptopics=G::getGpc('grouptopics','G');
+		$sGrouptopics=trim(G::getGpc('grouptopics'));
+		$nGroupid=intval(G::getGpc('group_id'));
+	
+		if(empty($nGroupid)){
+			$this->E('没有待操作的小组');
+		}
 
-		$arrGrouptopics=implode(',',$sGrouptopics);
+		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
+		if(empty($oGroup['group_id'])){
+			$this->E('没有找到指定的小组');
+		}
+
+		
+
+		
+		
+		$arrGrouptopics=explode(',',$sGrouptopics);
+
 		if(is_array($arrGrouptopics)){
 			foreach($arrGrouptopics as $nGrouptopic){
 				$oGrouptopicMeta=GrouptopicModel::M();
@@ -19,10 +33,20 @@ class DeletetopicController extends Controller{
 				if($oGrouptopicMeta->isError()){
 					$this->E($oGrouptopicMeta->getErrorMessage());
 				}
+
+				// 删除主题关联的回帖
+				$oGrouptopiccommentMeta=GrouptopiccommentModel::M();
+				$oGrouptopiccommentMeta->deleteWhere(array('grouptopic_id'=>$nGrouptopic));
+				
+				if($oGrouptopiccommentMeta->isError()){
+					$this->E($oGrouptopiccommentMeta->getErrorMessage());
+				}
 			}
 		}
 
-		$this->S('删除主题成功');
+	$sGroupurl=Group_Extend::getGroupurl($oGroup);
+
+		$this->A(array('group_id'=>$nGroupid,'group_url'=>$sGroupurl),'删除主题成功');
 	}
 
 }

@@ -92,4 +92,16 @@ class Group_Extend{
 		return $arrGrouphottopics;
 	}
 
+	static public function grouptopicClose($nClosestatus,$bReturnImg=false){
+		if($nClosestatus==1){
+			if($bReturnImg===true){
+				return ' <img class="grouptopicclose_date" src="'.__APPPUB__.'/Images/locked.gif" border="0" align="absmiddle" title="关闭主题"/> ';
+			}else{
+				return __APPPUB__.'/Images/locked.gif';
+			}
+		}
+
+		return '';
+	}
+
 }

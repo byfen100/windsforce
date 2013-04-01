@@ -1308,7 +1308,7 @@ WINDSFORCE;
 
 		if($bReturnImg===true){
 			if($bIsNew===true){
-				return '<img class="new_data" src="'.__ROOT__.'/Public/images/common/new.gif" border=\"0\" align=\"absmiddle\" />';
+				return '<img class="new_data" src="'.__ROOT__.'/Public/images/common/new.gif" border="0" align="absmiddle" />';
 			}else{
 				return '';
 			}

@@ -38,10 +38,13 @@ class HometagModel extends CommonModel{
 		}
 	}
 
-	public function addTag($nUserId,$sTags){
+	public function addTag($nUserId,$sTags,$sOldTags=''){
 		if($nUserId && $sTags){
 			$sTags=str_replace('，',',',$sTags);
 			$sTags=str_replace(' ',',',$sTags);
+
+			$sOldTags=str_replace('，',',',$sOldTags);
+			$sOldTags=str_replace(' ',',',$sOldTags);
 
 			$arrTags=Dyhb::normalize(explode(',',$sTags));
 			foreach($arrTags as $sTagName){
@@ -59,6 +62,7 @@ class HometagModel extends CommonModel{
 						
 						if($oTag->isError()){
 							$this->setErrorMessage($oTag->getErrorMessage());
+							return false;
 						}
 					}else{
 						$oTag=self::F('hometag_name=?',$sTagName)->getOne();
@@ -76,17 +80,55 @@ class HometagModel extends CommonModel{
 
 						if($oHometagindex->isError()){
 							$this->setErrorMessage($oHometagindex->getErrorMessage());
+							return false;
 						}
 					}
 
 					// 更新标签中用户数量
 					$nTagIdCount=HometagindexModel::F('hometag_id=?',$nTagId)->all()->getCounts();
 					$oTag->hometag_count=$nTagIdCount;
-					unset($_POST['hometag_name']);// 这里放置自动填充
+
+					if(isset($_POST['hometag_name'])){
+						unset($_POST['hometag_name']);// 这里防止自动填充
+					}
+
 					$oTag->save(0,'update');
 
 					if($oTag->isError()){
 						$this->setErrorMessage($oTag->getErrorMessage());
+						return false;
+					}
+				}
+				
+				if(!empty($arrOldTags)){
+					$arrHometags=HometagModel::F()->where(array('hometag_name'=>array('in',$arrOldTags)))->getAll();
+
+					if(is_array($arrHometags)){
+						foreach($arrHometags as $oHometag){
+							// 标签索引数据
+							$oHometagindexMeta=HometagindexModel::M();
+							$oHometagindexMeta->deleteWhere(array('hometag_id'=>$oHometag['hometag_id']));
+							
+							if($oHometagindexMeta->isError()){
+								$this->setErrorMessage($oHometagindexMeta->getErrorMessage());
+								return false;
+							}
+
+							// 更新标签数据
+							$nTagIdCount=self::F('hometag_id=?',$oHometag['hometag_id'])->all()->getCounts();
+							$oTag->hometag_count=$nTagIdCount;
+							
+							if(isset($_POST['hometag_name'])){
+								unset($_POST['hometag_name']);// 这里防止自动填充
+							}
+
+							$oTag->save(0,'update');
+
+							if($oTag->isError()){
+								$this->setErrorMessage($oTag->getErrorMessage());
+								return false;
+							}
+						}
 					}
 				}
 			}
