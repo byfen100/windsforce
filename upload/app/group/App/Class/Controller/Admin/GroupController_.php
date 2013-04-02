@@ -76,13 +76,25 @@ class GroupController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			// 小组有帖子不能删除
-			// wait to do
+			$nTotalgrouptopic=GrouptopicModel::F('group_id=?',$nId)->all()->getCounts();
+			if($nTotalgrouptopic>0){
+				$this->E(Dyhb::L('小组存在帖子，请先删除帖子','__APP_ADMIN_LANG__@Controller/Group'));
+			}
 
 			// 删除小组的帖子分类
 			$oGrouptopiccategoryMeta=GrouptopiccategoryModel::M();
 			$oGrouptopiccategoryMeta->deleteWhere(array('group_id'=>$nId));
+
 			if($oGrouptopiccategoryMeta->isError()){
 				$this->E($oGrouptopiccategoryMeta->getErrorMessage());
+			}
+
+			// 删除小组用户
+			$oGroupuserMeta=GroupuserModel::M();
+			$oGroupuserMeta->deleteWhere(array('group_id'=>$nId));
+
+			if($oGroupuserMeta->isError()){
+				$this->E($oGroupuserMeta->getErrorMessage());
 			}
 		}
 	}
@@ -382,7 +394,7 @@ class GroupController extends InitController{
 		
 		$oGroup=GroupModel::F('group_id=?',$nId)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E('小组不存在');
+			$this->E(Dyhb::L('小组不存在','__APP_ADMIN_LANG__@Controller/Group'));
 		}
 		
 		$this->assign('oGroup',$oGroup);
@@ -400,8 +412,6 @@ class GroupController extends InitController{
 		$this->assign('sGroupleader',implode(',',$arrTemp));
 		$this->assign('arrGroupleaders',$arrGroupleaders);
 
-
-
 		// 读取小组管理员
 		$arrGroupadmins=GroupuserModel::F('group_id=? AND groupuser_isadmin=1',$nId)->order('create_dateline DESC')->getAll();
 
@@ -414,7 +424,6 @@ class GroupController extends InitController{
 
 		$this->assign('sGroupadmin',implode(',',$arrTemp));
 		$this->assign('arrGroupadmins',$arrGroupadmins);
-		
 
 		// 读取成员列表
 		$nEverynum=$GLOBALS['_option_']['admin_list_num'];
@@ -437,7 +446,7 @@ class GroupController extends InitController{
 
 		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E('小组不存在');
+			$this->E(Dyhb::L('小组不存在','__APP_ADMIN_LANG__@Controller/Group'));
 		}
 		
 		// 保存小组组长
@@ -446,7 +455,7 @@ class GroupController extends InitController{
 		$arrLeaderUserid=explode(',',$sLeaderUid);
 		$arrLeaderUserid=Dyhb::normalize($arrLeaderUserid,',',false);
 
-		// 保存前清除旧的设置
+		// 保存前清除旧的用户
 		$oGroupuserMeta=GroupuserModel::M();
 		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'groupuser_isadmin'=>2));
 
@@ -480,7 +489,7 @@ class GroupController extends InitController{
 		$arrAdminUserid=explode(',',$sAdminUid);
 		$arrAdminUserid=Dyhb::normalize($arrAdminUserid,',',false);
 
-		// 保存前清除旧的设置
+		// 保存前清除旧的用户
 		$oGroupuserMeta=GroupuserModel::M();
 		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'groupuser_isadmin'=>1));
 
@@ -492,7 +501,7 @@ class GroupController extends InitController{
 			foreach($arrAdminUserid as $nAdminUserid){
 				$oUser=UserModel::F('user_id=? AND user_status=1',$nAdminUserid)->getOne();
 				if(empty($oUser['user_id'])){
-					$this->E('用户不存在或者被禁用');
+					$this->E(Dyhb::L('用户不存在或者被禁用','__APP_ADMIN_LANG__@Controller/Group'));
 				}
 				
 				$oGroupuser=new GroupuserModel();
@@ -519,7 +528,7 @@ class GroupController extends InitController{
 			foreach($arrUserUserid as $nUserUserid){
 				$oUser=UserModel::F('user_id=? AND user_status=1',$nUserUserid)->getOne();
 				if(empty($oUser['user_id'])){
-					$this->E('用户不存在或者被禁用');
+					$this->E(Dyhb::L('用户不存在或者被禁用','__APP_ADMIN_LANG__@Controller/Group'));
 				}
 
 				$oTryGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$nUserUserid,$nGroupid)->getOne();
@@ -532,7 +541,6 @@ class GroupController extends InitController{
 				$oGroupuser->user_id=$nUserUserid;
 				$oGroupuser->group_id=$nGroupid;
 				$oGroupuser->groupuser_isadmin='0';
-
 				$oGroupuser->save(0);
 
 				if($oGroupuser->isError()){
@@ -541,7 +549,7 @@ class GroupController extends InitController{
 			}
 		}
 
-		$this->S('用户设置成功');
+		$this->S(Dyhb::L('用户设置成功','__APP_ADMIN_LANG__@Controller/Group'));
 	}
 
 	public function delete_groupuser(){
@@ -550,12 +558,12 @@ class GroupController extends InitController{
 		
 		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E('小组不存在');
+			$this->E(Dyhb::L('小组不存在','__APP_ADMIN_LANG__@Controller/Group'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$nUserid)->getOne();
 		if(empty($oUser['user_id'])){
-			$this->E('用户不存在');
+			$this->E(Dyhb::L('用户不存在','__APP_ADMIN_LANG__@Controller/Group'));
 		}
 		
 		$oGroupuserMeta=GroupuserModel::M();
@@ -565,7 +573,7 @@ class GroupController extends InitController{
 			$this->E($oGroupuserMeta->getErrorMessage());
 		}
 		
-		$this->S('用户删除成功');
+		$this->S(Dyhb::L('用户删除成功','__APP_ADMIN_LANG__@Controller/Group'));
 	}
 
 }
