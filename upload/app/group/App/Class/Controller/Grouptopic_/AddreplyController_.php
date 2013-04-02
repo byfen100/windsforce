@@ -11,69 +11,76 @@ class AddreplyController extends Controller{
 		$nId=intval(G::getGpc('tid'));
 
 		if($GLOBALS['___login___']===false){
-			$this->E('你没有登录无法回帖');
+			$this->E(Dyhb::L('你没有登录无法回帖','Controller/Grouptopic'));
 		}
 
 		if(empty($nId)){
-			$this->E('无法找到该主题');
+			$this->E(Dyhb::L('你没有指定回复主题的ID','Controller/Grouptopic'));
 		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nId)->getOne();
-		if(empty($oGrouptopic->grouptopic_id)){
-			$this->E('你回复的主题不存在');
+		if(empty($oGrouptopic['grouptopic_id'])){
+			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopic'));
 		}
 
-		//回复30秒内禁止新的回复
-		$oGrouptopiccomment=GrouptopiccommentModel::F("user_id=?",$GLOBALS['___login___']['user_id'])->order('grouptopiccomment_id DESC')->getOne();
-		if((CURRENT_TIMESTAMP-$oGrouptopiccomment->create_dateline)<30){
-			//$this->E((30-(CURRENT_TIMESTAMP-$oGrouptopiccomment->create_dateline)).'秒后才能回复');
-		}
-	
-		//一天之内禁止重复回复
-		$nCurrentTimeStamp=CURRENT_TIMESTAMP;
-		$oGrouptopiccomment=GrouptopiccommentModel::F("user_id=? AND grouptopiccomment_content=? AND {$nCurrentTimeStamp}-create_dateline<86400",$GLOBALS['___login___']['user_id'],$sContent)->getOne();
-		if(!empty($oGrouptopiccomment->user_id)){
-				$this->E('你提交的评论已经存在,24小时之内不允许出现相同的评论');
+		$oGroup=GroupModel::F('group_id=?',$oGrouptopic->group_id)->getOne();
+		if(empty($oGroup['group_id'])){
+			$this->E(Dyhb::L('你回复的帖子所在小组不存在','Controller/Grouptopic'));
 		}
 
+		// 保存回复数据
 		$oGrouptopiccomment=new GrouptopiccommentModel();	
 		$oGrouptopiccomment->grouptopiccomment_content=$sContent;
 		$oGrouptopiccomment->grouptopic_id=$nId;
 		$oGrouptopiccomment->save(0);
+
 		if($oGrouptopiccomment->isError()){
 			$this->E($oGrouptopiccomment->getErrorMessage());
 		}
 
-		$arrLatestData=array('commenttime'=>$oGrouptopiccomment->create_dateline,'commentid'=>$oGrouptopiccomment->grouptopiccomment_id,'tid'=>$oGrouptopic->grouptopic_id,'commentuserid'=>$GLOBALS['___login___']['user_id']);
+		// 更新帖子的最后更新回复
+		$arrLatestData=array(
+			'commenttime'=>$oGrouptopiccomment->create_dateline,
+			'commentid'=>$oGrouptopiccomment->grouptopiccomment_id,
+			'tid'=>$oGrouptopic->grouptopic_id,
+			'commentuserid'=>$GLOBALS['___login___']['user_id']
+		);
+
 		$oGrouptopic->grouptopic_latestcomment=serialize($arrLatestData);
 		$oGrouptopic->setAutoFill(false);
 		$oGrouptopic->save(0,'update');
+
 		if($oGrouptopic->isError()){
 			$this->E($oGrouptopic->getErrorMessage());
 		}
 
+		// 更新小组的最后更新数据
 		$arrLatestData['commenttitle']=$oGrouptopic->grouptopic_title;
 		$nCommnum=GrouptopicModel::F('group_id=?',$oGrouptopic->group_id)->getSum('grouptopic_comments');
-		$oGroup=GroupModel::F('group_id=?',$oGrouptopic->group_id)->getOne();
+		
 		$oGroup->group_latestcomment=serialize($arrLatestData);
 		$oGroup->group_topiccomment=$nCommnum;
 		$oGroup->save(0,'update');
+
 		if($oGroup->isError()){
 			$this->E($oGroup->getErrorMessage());
 		}
 
+		// 更新保存帖子的评论数量
 		$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nId)->all()->getCounts();
 		$oGrouptopic->setAutofill(false);
 		$oGrouptopic->save(0,'update');
+
 		if($oGrouptopic->isError()){
 			$this->E($oGrouptopic->getErrorMessage());
 		}
 
 		$nTotalComment=GrouptopiccommentModel::F('grouptopic_id=?',$oGrouptopic->grouptopic_id)->getCounts();
-		$nPage=ceil($nTotalComment/5);
+		$nPage=ceil($nTotalComment/$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum']);
 		
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id.($nPage>1?'&page='.$nPage:'').'&extra=new'.$oGrouptopiccomment->grouptopiccomment_id).'#grouptopiccomment-'.($oGrouptopiccomment->grouptopiccomment_id);
 
-		$this->A(array('url'=>$sUrl),'回复成功',1);
+		$this->A(array('url'=>$sUrl),Dyhb::L('回复成功','Controller/Grouptopic'),1);
 	}
+
 }

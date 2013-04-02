@@ -13,7 +13,7 @@ function modTopicdelete(){
 		async: false
 	}).responseText;
 
-	oDeleteNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopicdeletetopic,'',400,100);
+	oDeleteNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdeletetopic,'',400,100);
 }
 
 function modTopicdeletetopic(){
@@ -36,7 +36,7 @@ function modTopicclose(nStatus){
 		async: false
 	}).responseText;
 
-	oCloseNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopicclosetopic,'',400,100);
+	oCloseNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicclosetopic,'',400,100);
 }
 
 function modTopicclosetopic(){
@@ -59,7 +59,7 @@ function modTopicstick(nStatus){
 		async: false
 	}).responseText;
 
-	oStickNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopicsticktopic,'',400,100);
+	oStickNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicsticktopic,'',400,100);
 }
 
 function modTopicsticktopic(){
@@ -82,7 +82,7 @@ function modTopicdigest(nStatus){
 		async: false
 	}).responseText;
 
-	oDigestNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopicdigesttopic,'',400,100);
+	oDigestNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdigesttopic,'',400,100);
 }
 
 function modTopicdigesttopic(){
@@ -105,7 +105,7 @@ function modTopicstatus(nStatus){
 		async: false
 	}).responseText;
 
-	oStatusNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopicstatustopic,'',400,100);
+	oStatusNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicstatustopic,'',400,100);
 }
 
 function modTopicstatustopic(){
@@ -128,7 +128,7 @@ function modTopiccategory(nCategoryid){
 		async: false
 	}).responseText;
 
-	oCategoryNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopiccategorytopic,'',400,100);
+	oCategoryNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopiccategorytopic,'',400,100);
 }
 
 function modTopiccategorytopic(){
@@ -151,7 +151,7 @@ function modTopictag(){
 		async: false
 	}).responseText;
 
-	oTagNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopictagtopic,'',400,100);
+	oTagNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopictagtopic,'',400,100);
 }
 
 function modTopictagtopic(){
@@ -174,7 +174,7 @@ function modTopiccolor(){
 		async: false
 	}).responseText;
 
-	oColorNewmodtopics=windsforceAlert(sHtml,'你选择了一篇帖子','',modTopiccolortopic,'',400,100);
+	oColorNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopiccolortopic,'',400,100);
 }
 
 function modTopiccolortopic(){

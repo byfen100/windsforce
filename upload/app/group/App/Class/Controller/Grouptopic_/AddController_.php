@@ -6,6 +6,8 @@
 
 class AddController extends Controller{
 
+	protected $_oGroup=null;
+	
 	public function index(){
 		$nGroupid=intval(G::getGpc('gid','G'));
 
@@ -15,20 +17,22 @@ class AddController extends Controller{
 			$arrGroups=$oGroup->groupbyUserid($GLOBALS['___login___']['user_id']);
 
 			if(!is_array($arrGroups)){
-				$this->E('用户尚未加入任何小组');
+				$this->E(Dyhb::L('用户尚未加入任何小组','Controller/Grouptopic'));
 			}
 			
 			$this->assign('arrGroups',$arrGroups);
 		}else{
 			// 访问权限
 			$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nGroupid)->getOne();
-			if(empty($oGroup->group_id)){
+			if(empty($oGroup['group_id'])){
 				$this->E(Dyhb::L('小组不存在或者还在审核中','Controller/Grouptopic'));
 			}
 
+			$this->_oGroup=$oGroup;
+
 			if($oGroup->group_isopen==0){
 				$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
-				if(empty($oGroupuser->user_id)){
+				if(empty($oGroupuser['user_id'])){
 					$this->E(Dyhb::L('只有该小组成员才能够访问小组','Controller/Grouptopic'));
 				}
 			}
@@ -36,7 +40,7 @@ class AddController extends Controller{
 			// 发贴权限
 			if($oGroup->group_ispost==0){
 				$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
-				if(empty($oGroupuser->user_id)){
+				if(empty($oGroupuser['user_id'])){
 					$this->E(Dyhb::L('只有该小组成员才能发帖','Controller/Grouptopic'));
 				}
 			}elseif($oGroup->group_ispost==1){
@@ -44,12 +48,14 @@ class AddController extends Controller{
 			}
 		}
 		
+		// 如果不是在某个小组发贴，读取一个小组
 		$nLabel=0;
-		if(empty($nGroupid)){
+		if(empty($nGroupid) && isset($arrGroups[0])){
 			$nGroupid=$arrGroups[0]->group_id;
 			$nLabel=1;
 		}
 
+		// 小组分类
 		$arrGrouptopiccategorys=array();
 		$oGrouptopiccategory=Dyhb::instance('GrouptopiccategoryModel');
 		$arrGrouptopiccategorys=$oGrouptopiccategory->grouptopiccategoryByGroupid($nGroupid);
@@ -62,6 +68,18 @@ class AddController extends Controller{
 		$this->assign('nGroupid',$nGroupid);
 
 		$this->display('grouptopic+add');
+	}
+
+	public function add_title_(){
+		return Dyhb::L('发布帖子','Controller/Grouptopic').($this->_oGroup?' - '.$this->_oGroup['group_nikename']:'');
+	}
+
+	public function add_keywords_(){
+		return $this->add_title_();
+	}
+
+	public function add_description_(){
+		return $this->add_title_();
 	}
 
 }

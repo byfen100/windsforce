@@ -10,7 +10,8 @@ class IndexController extends Controller{
 
 	public function index(){
 		$nCid=intval(G::getGpc('cid','G'));
-		$nStyle=intval(Dyhb::cookie('group_homepagestyle'));
+
+		$nStyle=Dyhb::cookie('group_homepagestyle')?intval(Dyhb::cookie('group_homepagestyle')):$GLOBALS['_cache_']['group_option']['group_homepagestyle'];
 		
 		if(!in_array($nStyle,array(1,2))){
 			$nStyle=1;
@@ -43,19 +44,19 @@ class IndexController extends Controller{
 		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 
 		// 推荐小组
-		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,10)->getAll();
+		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_recommendgroupnum'])->getAll();
 		$this->assign('arrRecommendgroups',$arrRecommendgroups);
 
 		// 最新小组
-		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,10)->getAll();
+		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_newgroupnum'])->getAll();
 		$this->assign('arrNewgroups',$arrNewgroups);
 
 		// 24小时热门小组
-		$arrHotgroups=GroupModel::F()->order('group_totaltodaynum DESC')->limit(0,10)->getAll();
+		$arrHotgroups=GroupModel::F()->order('group_totaltodaynum DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_hotgroupnum'])->getAll();
 		$this->assign('arrHotgroups',$arrHotgroups);
 
 		// 小组长
-		$arrGroupleaders=GroupuserModel::F('groupuser_isadmin=?',2)->order('create_dateline DESC')->limit(0,6)->getAll();
+		$arrGroupleaders=GroupuserModel::F('groupuser_isadmin=?',2)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_groupleadernum'])->getAll();
 		$this->assign('arrGroupleaders',$arrGroupleaders);
 
 		$this->assign('nStyle',$nStyle);
@@ -71,6 +72,20 @@ class IndexController extends Controller{
 		$arrGroupcategorys=GroupcategoryModel::F()->where(array('groupcategory_parentid'=>$nParentid))->getAll();
 		
 		return $arrGroupcategorys;
+	}
+	
+	public function index_title_(){
+		if($GLOBALS['_commonConfig_']['DEFAULT_APP']!='group'){
+			return Dyhb::L('小组','Controller/Public');
+		}
+	}
+
+	public function index_keywords_(){
+		return $this->index_title_();
+	}
+
+	public function index_description_(){
+		return $this->index_title_();
 	}
 
 }

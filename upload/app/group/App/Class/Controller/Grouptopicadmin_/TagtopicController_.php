@@ -32,7 +32,7 @@ class TagtopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),'主题标签更新成功');
+		$this->A(array('group_id'=>$nGroupid),Dyhb::L('主题标签更新成功','Controller/Grouptopicadmin'));
 	}
 
 }

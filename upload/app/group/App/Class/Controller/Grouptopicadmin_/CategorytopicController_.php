@@ -28,7 +28,7 @@ class CategorytopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),'设置主题分类成功');
+		$this->A(array('group_id'=>$nGroupid),Dyhb::L('设置主题分类成功','Controller/Grouptopicadmin'));
 	}
 
 }

@@ -28,7 +28,7 @@ class StatustopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),$nStatus==0?'隐藏主题成功':'显示主题成功');
+		$this->A(array('group_id'=>$nGroupid),$nStatus==0?Dyhb::L('隐藏主题成功','Controller/Grouptopicadmin'):Dyhb::L('显示主题成功','Controller/Grouptopicadmin'));
 	}
 
 }

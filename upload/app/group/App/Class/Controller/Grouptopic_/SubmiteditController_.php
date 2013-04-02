@@ -12,28 +12,29 @@ class SubmiteditController extends Controller{
 
 		$oGrouptopic=GrouptopicModel::F('group_id=? AND grouptopic_id=?',$nGid,$nTid)->getOne();
 		if(empty($oGrouptopic->group_id)){
-			$this->E('主题不存在');
+			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
 		}
 
 		$oGrouptopic->grouptopic_updateusername=$GLOBALS['___login___']['user_name'];
 		$oGrouptopic->save(0,'update');
+
 		if($oGrouptopic->isError()){
 			$this->E($oGrouptopic->getErrorMessage());
 		}
 
 		// 保存帖子标签
 		$sTags=trim(G::getGpc('tags','P'));
-		if($sTags){
-			$oGrouptopictag=Dyhb::instance('GrouptopictagModel');
-			$oGrouptopictag->addTag($oGrouptopic->grouptopic_id,$sTags);
+		$sOldTags=trim(G::getGpc('old_tags','P'));
 
-			if($oGrouptopictag->isError()){
-				$this->E($oGrouptopictag->getErrorMessage());
-			}
+		$oGrouptopictag=Dyhb::instance('GrouptopictagModel');
+		$oGrouptopictag->addTag($oGrouptopic->grouptopic_id,$sTags,$sOldTags);
+
+		if($oGrouptopictag->isError()){
+			$this->E($oGrouptopictag->getErrorMessage());
 		}
 
 		$sUrl=Dyhb::U('group://topic@?id='.$nTid);
-		$this->A(array('url'=>$sUrl),'主题编辑成功',1);
+		$this->A(array('url'=>$sUrl),Dyhb::L('主题编辑成功','Controller/Grouptopic'),1);
 	}
 
 }

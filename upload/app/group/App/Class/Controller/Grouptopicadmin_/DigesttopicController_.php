@@ -28,7 +28,7 @@ class DigesttopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),$nStatus==0?'取消主题精华成功':'主题设置精华成功');
+		$this->A(array('group_id'=>$nGroupid),$nStatus==0?Dyhb::L('取消主题精华成功','Controller/Grouptopicadmin'):Dyhb::L('主题设置精华成功','Controller/Grouptopicadmin'));
 	}
 
 }

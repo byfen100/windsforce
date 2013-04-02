@@ -10,6 +10,7 @@ class RecommendgroupController extends Controller{
 		// 获取参数
 		$nNum=intval(G::getGpc('num','G'));
 		$nCutNum=intval(G::getGpc('cnum','G'));
+		$sType=strtolower(trim(G::getGpc('type','G')));
 
 		// 基本处理
 		if($nNum<1){

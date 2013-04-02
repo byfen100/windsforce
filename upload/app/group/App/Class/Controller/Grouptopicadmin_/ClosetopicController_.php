@@ -28,7 +28,7 @@ class ClosetopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),$nStatus==0?'打开主题成功':'关闭主题成功');
+		$this->A(array('group_id'=>$nGroupid),$nStatus==0?Dyhb::L('打开主题成功','Controller/Grouptopicadmin'):Dyhb::L('关闭主题成功','Controller/Grouptopicadmin'));
 	}
 
 }

@@ -158,6 +158,9 @@ function reloadCategory(){
 									<tr>
 										<td class="grouptopictabs_title">标签&nbsp;</td>
 										<td><input type="text" size="60" id="tags" name="tags" value="<!--{if isset($oGrouptopic)}--><!--{$sTag}--><!--{/if}-->"/>
+										<!--{if isset($oGrouptopic)}-->
+										<input type="hidden" id="old_tags" name="old_tags" value="<!--{$sTag}-->"/>
+										<!--{/if}-->
 										</td>
 									</tr>
 									<tr>

@@ -11,17 +11,13 @@ class DeletetopicController extends Controller{
 		$nGroupid=intval(G::getGpc('group_id'));
 	
 		if(empty($nGroupid)){
-			$this->E('没有待操作的小组');
+			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
 		}
 
 		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E('没有找到指定的小组');
+			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
-
-		
-
-		
 		
 		$arrGrouptopics=explode(',',$sGrouptopics);
 
@@ -44,9 +40,9 @@ class DeletetopicController extends Controller{
 			}
 		}
 
-	$sGroupurl=Group_Extend::getGroupurl($oGroup);
+		$sGroupurl=Group_Extend::getGroupurl($oGroup);
 
-		$this->A(array('group_id'=>$nGroupid,'group_url'=>$sGroupurl),'删除主题成功');
+		$this->A(array('group_id'=>$nGroupid,'group_url'=>$sGroupurl),Dyhb::L('删除主题成功','Controller/Grouptopicadmin'));
 	}
 
 }

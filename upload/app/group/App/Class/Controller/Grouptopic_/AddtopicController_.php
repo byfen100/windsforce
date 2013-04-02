@@ -37,6 +37,7 @@ class AddtopicController extends Controller{
 			'topicuserid'=>$GLOBALS['___login___']['user_id'],
 			'topictitle'=>$oGrouptopic['grouptopic_title'],
 		);
+
 		$oGroup->group_latestcomment=serialize($arrLatestData);
 		$oGroup->save(0,'update');
 
@@ -46,7 +47,8 @@ class AddtopicController extends Controller{
 
 		// 跳转到帖子
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);
-		$this->A(array('url'=>$sUrl),'发布帖子成功',1);
+
+		$this->A(array('url'=>$sUrl),Dyhb::L('发布帖子成功','Controller/Grouptopic'),1);
 	}
 
 }

@@ -28,7 +28,7 @@ class SticktopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),$nStatus==0?'取消置顶主题成功':'置顶主题成功');
+		$this->A(array('group_id'=>$nGroupid),$nStatus==0?Dyhb::L('取消置顶主题成功','Controller/Grouptopicadmin'):Dyhb::L('置顶主题成功','Controller/Grouptopicadmin'));
 	}
 
 }

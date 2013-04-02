@@ -8,9 +8,10 @@ class GroupController extends Controller{
 
 	public function index(){
 		$nCid=intval(G::getGpc('cid','G'));
+		
 		$arrWhere=$arrGroupWhere=array();
 		
-		$nEverynum=24;
+		$nEverynum=$GLOBALS['_cache_']['group_option']['group_grouplistnum'];
 		$arrGroupWhere['group_status']=1;
 
 		// 取得小组分类
@@ -55,20 +56,21 @@ class GroupController extends Controller{
 		// 小组分类赋值，根据小组分类来取得小组
 		$arrGroupcategorys=GroupcategoryModel::F()->where($arrWhere)->getAll();
 		$this->assign('arrGroupcategorys',$arrGroupcategorys);
+
 		// 推荐小组
-		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,10)->getAll();
+		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_recommendgroupnum'])->getAll();
 		$this->assign('arrRecommendgroups',$arrRecommendgroups);
 
 		// 最新小组
-		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,10)->getAll();
+		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_newgroupnum'])->getAll();
 		$this->assign('arrNewgroups',$arrNewgroups);
 
 		// 24小时热门小组
-		$arrHotgroups=GroupModel::F()->order('group_totaltodaynum DESC')->limit(0,10)->getAll();
+		$arrHotgroups=GroupModel::F()->order('group_totaltodaynum DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_hotgroupnum'])->getAll();
 		$this->assign('arrHotgroups',$arrHotgroups);
 
 		// 小组长
-		$arrGroupleaders=GroupuserModel::F('groupuser_isadmin=?',2)->order('create_dateline DESC')->limit(0,6)->getAll();
+		$arrGroupleaders=GroupuserModel::F('groupuser_isadmin=?',2)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_groupleadernum'])->getAll();
 		$this->assign('arrGroupleaders',$arrGroupleaders);
 		
 		$this->display('public+group');
@@ -78,6 +80,18 @@ class GroupController extends Controller{
 		$arrGroupcategorys=GroupcategoryModel::F()->where(array('groupcategory_parentid'=>$nParentid))->getAll();
 		
 		return $arrGroupcategorys;
+	}	
+	
+	public function group_title_(){
+		return Dyhb::L('小组列表','Controller/Public');
+	}
+
+	public function group_keywords_(){
+		return $this->group_title_();
+	}
+
+	public function group_description_(){
+		return $this->group_title_();
 	}
 
 }

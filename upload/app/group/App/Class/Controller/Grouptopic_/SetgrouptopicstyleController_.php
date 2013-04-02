@@ -15,7 +15,7 @@ class SetgrouptopicstyleController extends Controller{
 
 		Dyhb::cookie('group_grouptopicstyle',$nStyle);
 
-		$this->S('帖子样式切换成功');
+		$this->S(Dyhb::L('帖子样式切换成功','Controller/Grouptopic'));
 	}
 
 }
