@@ -1379,4 +1379,30 @@ WINDSFORCE;
 		}
 	}
 
+	static public function api($arrDatas,$sType='',$bIsArray=false){
+		// 数据库读取的二维数组
+		if(is_array($arrDatas) && $bIsArray===false){
+			$arrTemp=array();
+			if(is_array($arrDatas)){
+				foreach($arrDatas as $oData){
+					$arrTemp[]=$oData->toArray();
+				}
+			}
+
+			$arrDatas=$arrTemp;
+		}elseif(is_object($arrDatas)){// 数据库读取的一维数组
+			$arrDatas=$arrDatas->toArray();
+		}
+
+		if($sType=='json'){
+			header("Content-Type:text/html; charset=utf-8");
+			exit(json_encode($arrGrouptopics));
+		}elseif($sType=='xml'){
+			header("Content-Type:text/xml; charset=utf-8");
+			exit(G::xmlEncode($arrResult));
+		}
+
+		return;
+	}
+
 }

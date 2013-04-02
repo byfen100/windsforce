@@ -7,10 +7,13 @@
 class HottopicController extends Controller{
 
 	public function index(){
+		// 获取参数
 		$nNum=intval(G::getGpc('num','G'));
 		$nCutNum=intval(G::getGpc('cnum','G'));
 		$nDate=intval(G::getGpc('date','G'));
+		$sType=strtolower(trim(G::getGpc('type','G')));
 
+		// 基本处理
 		if($nNum<1){
 			$nNum=1;
 		}
@@ -23,10 +26,15 @@ class HottopicController extends Controller{
 			$nData=3600;
 		}
 
+		// 获取帖子
 		$arrGrouptopics=GrouptopicModel::F('create_dateline>?',CURRENT_TIMESTAMP-$nDate)->order('grouptopic_comments DESC')->limit(0,$nNum)->getAll();
+		
+		Core_Extend::api($arrGrouptopics,$sType);
+
 		$this->assign('arrGrouptopics',$arrGrouptopics);
 		$this->assign('nCutNum',$nCutNum);
 
 		$this->display('api+hottopic');
 	}
+
 }

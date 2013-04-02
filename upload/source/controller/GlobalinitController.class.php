@@ -38,7 +38,7 @@ class GlobalinitController extends Controller{
 			}
 			
 			$this->assign('__JumpUrl__',Dyhb::U('home://public/login'));
-			$this->E(Dyhb::L('你没有登录','Controller/Common'));
+			$this->E(Dyhb::L('你没有登录','__COMMON_LANG__@Common'));
 		}
 	}
 
@@ -51,11 +51,11 @@ class GlobalinitController extends Controller{
 		$bResult=Core_Extend::checkSeccode($sSeccode);
 
 		if(!$bResult){
-			$this->E(Dyhb::L('你输入的验证码错误','Controller/Common'));
+			$this->E(Dyhb::L('你输入的验证码错误','__COMMON_LANG__@Common'));
 		}
 
 		if($bSubmit===false){
-			$this->S(Dyhb::L('验证码正确','Controller/Common'));
+			$this->S(Dyhb::L('验证码正确','__COMMON_LANG__@Common'));
 		}
 	}
 	

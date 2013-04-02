@@ -14,7 +14,9 @@ function joinGroup(gid){
 	var sUrl=D.U('group://group/joingroup');
 	Dyhb.AjaxSend(sUrl,'gid='+gid,'',function(data,status){
 		if(status==1){
-			$('#joingroup_'+gid).html('加入成功');
+			$('#joingroup_'+gid).html(D.L('加入成功','Js/Group_Js'));
+			
+			window.location.reload();
 		}
 	});
 }
@@ -23,7 +25,9 @@ function leaveGroup(gid){
 	var sUrl=D.U('group://group/leavegroup');
 	Dyhb.AjaxSend(sUrl,'gid='+gid,'',function(data,status){
 		if(status==1){
-			$('#leavegroup_'+gid).html('退出成功');
+			$('#leavegroup_'+gid).html(D.L('退出成功','Js/Group_Js'));
+
+			window.location.reload();
 		}
 	});
 }

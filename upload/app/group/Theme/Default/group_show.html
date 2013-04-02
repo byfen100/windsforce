@@ -146,14 +146,14 @@ function grouptopicSubmit(){
 							<div class="span7">
 								<ul class="nav nav-pills" id="navPills">
 									<li class="<!--{if empty($nCid)}-->active<!--{/if}-->"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">全部帖子</a></li>
-									<!--<foreach for=arrGrouptopiccategory value=oGrouptopiccategory>-->
+									<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
 									<!--{if $i<8}-->
 									<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
 										<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
 									</li>
-									<!--{~array_shift($arrCid)}-->
+									<!--{~array_shift($arrCids)}-->
 									<!--{elseif $i==8}-->
-									<li class="dropdown <!--{if in_array($nCid,$arrCid)}-->active<!--{/if}-->">
+									<li class="dropdown <!--{if in_array($nCid,$arrCids)}-->active<!--{/if}-->">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
 											更多类别<b class="caret"></b>
 										</a>

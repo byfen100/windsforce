@@ -459,17 +459,17 @@ class InitController extends Controller{
 		$sSeccode=G::getGpc('seccode');
 
 		if(empty($sSeccode)){
-			$this->E(Dyhb::L('你验证码不能为空','Controller/Common'));
+			$this->E(Dyhb::L('你验证码不能为空','__COMMON_LANG__@Common'));
 		}
 
 		$bResult=Core_Extend::checkSeccode($sSeccode);
 
 		if(!$bResult){
-			$this->E(Dyhb::L('你输入的验证码错误','Controller/Common'));
+			$this->E(Dyhb::L('你输入的验证码错误','__COMMON_LANG__@Common'));
 		}
 
 		if($bSubmit===false){
-			$this->S(Dyhb::L('验证码正确','Controller/Common'));
+			$this->S(Dyhb::L('验证码正确','__COMMON_LANG__@Common'));
 		}
 	}
 
