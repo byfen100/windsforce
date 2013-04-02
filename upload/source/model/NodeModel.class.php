@@ -17,7 +17,7 @@ class NodeModel extends CommonModel{
 			'check'=>array(
 				'node_name'=>array(
 					array('require',Dyhb::L('节点名不能为空','__COMMON_LANG__@Model/Node')),
-					array('max_length',50,Dyhb::L('节点名最大长度为50个字符','__COMMON_LANG__@Model/Node')),
+					array('max_length',150,Dyhb::L('节点名最大长度为150个字符','__COMMON_LANG__@Model/Node')),
 					array('nodeName',Dyhb::L('节点名已经存在','__COMMON_LANG__@Model/Node'),'condition'=>'must','extend'=>'callback'),
 				),
 				'node_title'=>array(

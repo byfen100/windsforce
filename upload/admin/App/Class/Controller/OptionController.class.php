@@ -46,7 +46,7 @@ class OptionController extends InitController{
 			$arrUserid[]=1;
 		}
 
-		$sUid=implode(',',$arrUserid);
+		$sUid=trim(implode(',',$arrUserid),',');
 		Core_Extend::changeAppconfig('ADMIN_USERID',$sUid);
 
 		$this->S(Dyhb::L('配置更新成功','Controller/Option'));

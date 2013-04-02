@@ -91,25 +91,6 @@ CREATE TABLE `#@__groupcategoryindex` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `windsforce_groupfeed`
---
-
-DROP TABLE IF EXISTS `#@__groupfeed`;
-CREATE TABLE IF NOT EXISTS `#@__groupfeed` (
-  `groupfeed_id` int(10) NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `groupfeed_username` varchar(50) NOT NULL COMMENT '用户名',
-  `groupfeed_template` text NOT NULL COMMENT '动态模板',
-  `groupfeed_data` text NOT NULL COMMENT '动态数据',
-  `create_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '添加时间',
-  PRIMARY KEY (`groupfeed_id`),
-  KEY `user_id` (`user_id`),
-  KEY `create_dateline` (`create_dateline`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- 表的结构 `windsforce_groupoption`
 --
 

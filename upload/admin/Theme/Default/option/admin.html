@@ -46,7 +46,7 @@ function option(){
 					<fieldset>
 						<div style="padding:10px 15px;">
 							<!--<foreach for=arrUsers value=oUser>-->
-							<div style="border:1px solid #ddd;padding:10px 5px;background:#fff;width:70px;text-align:center;margin-right:5px;" class="left"><img src="<!--{:Core_Extend::avatar( $oUser->user_id,'small' )}-->" width="48px" height="48px" />
+							<div class="left user_box"><img src="<!--{:Core_Extend::avatar( $oUser->user_id,'small' )}-->" width="48px" height="48px" />
 								<br/>
 								<a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oUser->user_id}-->" target="_blank"><!--{$oUser->user_name}--></a>&nbsp;(<!--{$oUser->user_id}-->)
 							</div>

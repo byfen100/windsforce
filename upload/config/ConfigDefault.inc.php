@@ -62,6 +62,16 @@ return array(
 		'home@space@*'=>true,
 		'home@homesite@*'=>true,
 		'home@homehelp@*'=>true,
+
+		/* group应用 */
+		'group@tag@*'=>true,
+		'group@group@joingroup'=>true,
+		'group@group@leavegroup'=>true,
+		'group@group@getcategory'=>true,
+		'group@grouptopic@set_grouptopicstyle'=>true,
+		'group@topic@set_grouptopicside'=>true,
+
+		/* 其它应用请到各自的配置文件设定 */
 	 ),
 	'RBAC_USER_ACCESS'=>array(
 		/* home应用 */
@@ -77,6 +87,11 @@ return array(
 		'home@ucenter@feed'=>true,
 		'home@ucenter@tag'=>true,
 		'home@ucenter@tags'=>true,
+
+		/* group应用 */
+
+
+		/* 其它应用请到各自的配置文件设定 */
 	 ),
 
 	// 时区

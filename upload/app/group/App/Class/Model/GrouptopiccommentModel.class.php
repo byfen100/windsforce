@@ -49,7 +49,7 @@ class GrouptopiccommentModel extends CommonModel{
 	protected function userName(){
 		$sUserName=$GLOBALS['___login___']['user_name'];
 
-		return $sUserName?$sUserName:Dyhb::L('佚名','Model/Grouptopic');
+		return $sUserName?$sUserName:'';
 	}
 
 }

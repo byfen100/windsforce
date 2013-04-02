@@ -20,7 +20,7 @@
   'USER_AUTH_ON' => true,
   'USER_AUTH_TYPE' => 1,
   'USER_AUTH_KEY' => 'auth_id',
-  'ADMIN_USERID' => ',1',
+  'ADMIN_USERID' => '1',
   'ADMIN_AUTH_KEY' => 'administrator',
   'USER_AUTH_MODEL' => 'user',
   'AUTH_PWD_ENCODER' => 'md5',
@@ -51,6 +51,12 @@
     'home@space@*' => true,
     'home@homesite@*' => true,
     'home@homehelp@*' => true,
+    'group@tag@*' => true,
+    'group@group@joingroup' => true,
+    'group@group@leavegroup' => true,
+    'group@group@getcategory' => true,
+    'group@grouptopic@set_grouptopicstyle' => true,
+    'group@topic@set_grouptopicside' => true,
   ),
   'RBAC_USER_ACCESS' => 
   array (

@@ -377,4 +377,195 @@ class GroupController extends InitController{
 		}
 	}
 
+	public function user(){
+		$nId=intval(G::getGpc('value'));
+		
+		$oGroup=GroupModel::F('group_id=?',$nId)->getOne();
+		if(empty($oGroup['group_id'])){
+			$this->E('小组不存在');
+		}
+		
+		$this->assign('oGroup',$oGroup);
+		
+		// 读取小组创始人
+		$arrGroupleaders=GroupuserModel::F('group_id=? AND groupuser_isadmin=2',$nId)->order('create_dateline DESC')->getAll();
+
+		$arrTemp=array();
+		if(is_array($arrGroupleaders)){
+			foreach($arrGroupleaders as $oGroupleader){
+				$arrTemp[]=$oGroupleader['user_id'];
+			}
+		}
+
+		$this->assign('sGroupleader',implode(',',$arrTemp));
+		$this->assign('arrGroupleaders',$arrGroupleaders);
+
+
+
+		// 读取小组管理员
+		$arrGroupadmins=GroupuserModel::F('group_id=? AND groupuser_isadmin=1',$nId)->order('create_dateline DESC')->getAll();
+
+		$arrTemp=array();
+		if(is_array($arrGroupadmins)){
+			foreach($arrGroupadmins as $oGroupadmin){
+				$arrTemp[]=$oGroupadmin['user_id'];
+			}
+		}
+
+		$this->assign('sGroupadmin',implode(',',$arrTemp));
+		$this->assign('arrGroupadmins',$arrGroupadmins);
+		
+
+		// 读取成员列表
+		$nEverynum=$GLOBALS['_option_']['admin_list_num'];
+		$arrWhere['group_id']=$nId;
+		$arrWhere['groupuser_isadmin']=0;
+
+		$nTotalRecord=GroupuserModel::F()->where($arrWhere)->all()->getCounts();
+		$oPage=Page::RUN($nTotalRecord,$nEverynum,G::getGpc('page','G'));
+		
+		$arrGroupusers=GroupuserModel::F()->where($arrWhere)->order("create_dateline DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+
+		$this->assign('arrGroupusers',$arrGroupusers);
+		$this->assign('sPageNavbar',$oPage->P());
+		
+		$this->display(Admin_Extend::template('group','group/user'));
+	}
+
+	public function user_add(){
+		$nGroupid=intval(G::getGpc('value'));
+
+		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
+		if(empty($oGroup['group_id'])){
+			$this->E('小组不存在');
+		}
+		
+		// 保存小组组长
+		$sLeaderUid=trim(G::getGpc('leader_userid','P'));
+
+		$arrLeaderUserid=explode(',',$sLeaderUid);
+		$arrLeaderUserid=Dyhb::normalize($arrLeaderUserid,',',false);
+
+		// 保存前清除旧的设置
+		$oGroupuserMeta=GroupuserModel::M();
+		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'groupuser_isadmin'=>2));
+
+		if($oGroupuserMeta->isError()){
+			$this->E($oGroupuserMeta->getErrorMessage());
+		}
+		
+		if(!empty($arrLeaderUserid)){
+			foreach($arrLeaderUserid as $nLeaderUserid){
+				$oUser=UserModel::F('user_id=? AND user_status=1',$nLeaderUserid)->getOne();
+				if(empty($oUser['user_id'])){
+					$this->E('用户不存在或者被禁用');
+				}
+				
+				$oGroupuser=new GroupuserModel();
+				$oGroupuser->user_id=$nLeaderUserid;
+				$oGroupuser->group_id=$nGroupid;
+				$oGroupuser->groupuser_isadmin=2;
+
+				$oGroupuser->save(0);
+
+				if($oGroupuser->isError()){
+					$this->E($oGroupuser->getErrorMessage());
+				}
+			}
+		}
+
+		// 保存管理员
+		$sAdminUid=trim(G::getGpc('admin_userid','P'));
+
+		$arrAdminUserid=explode(',',$sAdminUid);
+		$arrAdminUserid=Dyhb::normalize($arrAdminUserid,',',false);
+
+		// 保存前清除旧的设置
+		$oGroupuserMeta=GroupuserModel::M();
+		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'groupuser_isadmin'=>1));
+
+		if($oGroupuserMeta->isError()){
+			$this->E($oGroupuserMeta->getErrorMessage());
+		}
+		
+		if(!empty($arrAdminUserid)){
+			foreach($arrAdminUserid as $nAdminUserid){
+				$oUser=UserModel::F('user_id=? AND user_status=1',$nAdminUserid)->getOne();
+				if(empty($oUser['user_id'])){
+					$this->E('用户不存在或者被禁用');
+				}
+				
+				$oGroupuser=new GroupuserModel();
+				$oGroupuser->user_id=$nAdminUserid;
+				$oGroupuser->group_id=$nGroupid;
+				$oGroupuser->groupuser_isadmin=1;
+
+				$oGroupuser->save(0);
+
+				if($oGroupuser->isError()){
+					$this->E($oGroupuser->getErrorMessage());
+				}
+			}
+		}
+
+		// 保存管理员
+		$sUserUid=trim(G::getGpc('user_userid','P'));
+
+		$arrUserUserid=explode(',',$sUserUid);
+		$arrUserUserid=Dyhb::normalize($arrUserUserid,',',false);
+
+		// 保存成员
+		if(!empty($arrUserUserid)){
+			foreach($arrUserUserid as $nUserUserid){
+				$oUser=UserModel::F('user_id=? AND user_status=1',$nUserUserid)->getOne();
+				if(empty($oUser['user_id'])){
+					$this->E('用户不存在或者被禁用');
+				}
+
+				$oTryGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$nUserUserid,$nGroupid)->getOne();
+
+				if(!empty($oTryGroupuser['user_id'])){
+					continue;
+				}
+				
+				$oGroupuser=new GroupuserModel();
+				$oGroupuser->user_id=$nUserUserid;
+				$oGroupuser->group_id=$nGroupid;
+				$oGroupuser->groupuser_isadmin='0';
+
+				$oGroupuser->save(0);
+
+				if($oGroupuser->isError()){
+					$this->E($oGroupuser->getErrorMessage());
+				}
+			}
+		}
+
+		$this->S('用户设置成功');
+	}
+
+	public function delete_groupuser(){
+		$nGroupid=intval(G::getGpc('gid'));
+		$nUserid=intval(G::getGpc('uid'));
+		
+		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
+		if(empty($oGroup['group_id'])){
+			$this->E('小组不存在');
+		}
+
+		$oUser=UserModel::F('user_id=?',$nUserid)->getOne();
+		if(empty($oUser['user_id'])){
+			$this->E('用户不存在');
+		}
+		
+		$oGroupuserMeta=GroupuserModel::M();
+		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'user_id'=>$nUserid));
+
+		if($oGroupuserMeta->isError()){
+			$this->E($oGroupuserMeta->getErrorMessage());
+		}
+		
+		$this->S('用户删除成功');
+	}
+
 }

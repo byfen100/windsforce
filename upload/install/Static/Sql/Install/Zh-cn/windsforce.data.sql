@@ -327,7 +327,27 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 (56, 'admin@feed', '用户动态', 1, '', 4, 1, 2, 6, 1363516426, 1363519837, 1),
 (57, 'admin@creditlog', '积分收益', 1, '', 5, 1, 2, 6, 1363519822, 1363519837, 1),
 (58, 'admin@userguestbook', '用户留言', 1, '', 3, 1, 2, 7, 1363677448, 1363677466, 1),
-(59, 'admin@optimizationoption', '性能优化', 1, '', 13, 1, 2, 2, 1363926757, 1363926808, 1);
+(59, 'admin@optimizationoption', '性能优化', 1, '', 13, 1, 2, 2, 1363926757, 1363926808, 1),
+(60, 'group', '小组', 1, '', 0, 0, 1, 0, 1364878172, 0, 1),
+(61, 'group@grouptopic', '小组帖子', 1, '', 0, 60, 2, 0, 1364878244, 0, 1),
+(62, 'group@grouptopic@view', '帖子浏览', 1, '', 0, 61, 3, 0, 1364878297, 0, 1),
+(63, 'group@grouptopic@add|add_topic', '发布帖子', 1, '', 0, 61, 3, 0, 1364878372, 0, 1),
+(64, 'group@grouptopic@edit|submit_edit', '编辑帖子', 1, '', 0, 61, 3, 0, 1364878451, 0, 1),
+(65, 'group@grouptopic@reply|add_reply', '回复帖子', 1, '', 0, 61, 3, 0, 1364878505, 0, 1),
+(66, 'group@create', '创建小组', 1, '', 0, 60, 2, 0, 1364878703, 0, 1),
+(67, 'group@create@index|add', '创建小组', 1, '', 0, 66, 3, 0, 1364878774, 0, 1),
+(68, 'group@group', '小组相关', 1, '', 0, 60, 2, 0, 1364879097, 0, 1),
+(69, 'group@group@show', '浏览小组', 1, '', 0, 68, 3, 0, 1364879173, 0, 1),
+(70, 'group@group@user', '浏览小组成员', 1, '', 0, 68, 3, 0, 1364879238, 0, 1),
+(71, 'group@grouptopicadmin', '帖子管理', 1, '', 0, 60, 2, 0, 1364879359, 0, 1),
+(72, 'group@grouptopicadmin@deletetopic_dialog|deletetopic', '删除帖子', 1, '', 0, 71, 3, 0, 1364879573, 0, 1),
+(73, 'group@grouptopicadmin@closetopic_dialog|closetopic', '打开或者关闭主题', 1, '', 0, 71, 3, 0, 1364879635, 0, 1),
+(74, 'group@grouptopicadmin@sticktopic_dialog|sticktopic', '置顶帖子', 1, '', 0, 71, 3, 0, 1364879720, 0, 1),
+(75, '', '帖子精华', 1, '', 0, 71, 3, 0, 1364879779, 1364879786, 1),
+(76, 'group@grouptopicadmin@statustopic_dialog|statustopic', '隐藏或者显示帖子', 1, '', 0, 71, 3, 0, 1364879867, 0, 1),
+(77, 'group@grouptopicadmin@categorytopic_dialog|categorytopic', '帖子分类设置', 1, '', 0, 71, 3, 0, 1364879934, 0, 1),
+(78, 'group@grouptopicadmin@tagtopic_dialog|tagtopic', '帖子标签', 1, '', 0, 71, 3, 0, 1364879971, 0, 1),
+(79, 'group@grouptopicadmin@colortopic_dialog|colortopic', '帖子高亮', 1, '', 0, 71, 3, 0, 1364880013, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -679,8 +699,8 @@ INSERT INTO `#@__ratinggroup` (`ratinggroup_id`, `ratinggroup_name`, `ratinggrou
 
 INSERT INTO `#@__role` (`role_id`, `role_name`, `role_parentid`, `role_status`, `role_remark`, `role_nikename`, `create_dateline`, `update_dateline`, `rolegroup_id`, `role_issystem`) VALUES
 (1, '管理员', 0, 1, '', '管理员', 1295530584, 1338614986, 2, 1),
-(2, '超级组长', 0, 1, '', '超级组长', 1295530598, 1338615068, 2, 1),
-(3, '组长', 0, 1, '', '组长', 1338403516, 1338615084, 2, 1),
+(2, '组长', 0, 1, '', '组长', 1295530598, 1338615068, 2, 1),
+(3, '小组管理员', 0, 1, '', '小组管理员', 1338403516, 1338615084, 2, 1),
 (4, '游客', 0, 1, '', '游客', 1338403594, 1338615517, 3, 1),
 (5, '注册会员', 0, 1, '', '注册会员', 1338403666, 1338615675, 1, 1);
 

@@ -40,8 +40,7 @@ function completeDelete(data,status){
 			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组图标<!--</lang>--></h3>
 				<ul class="tabs">
 					<li class="active"><a href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'icon','value'=>$oGroup['group_id']))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组图标<!--</lang>--></a></li>
-					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'groupcategory','value'=>$oGroup['group_id']))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组分类<!--</lang>--></a></li>
-					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$oGroup['group_id']))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->帖子分类<!--</lang>--></a></li>
+					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'edit','value'=>$oGroup['group_id']))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->返回群组<!--</lang>--></a></li>
 					<li><a href="<!--{:Admin_Extend::index(array('controller'=>'group'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组列表<!--</lang>--></a></li>
 					<li><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
 				</ul>

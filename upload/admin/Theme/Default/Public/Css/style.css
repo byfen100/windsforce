@@ -257,3 +257,8 @@ a.big-button:hover{text-decoration:none;color:#000;}
 .icon_add_img{background-position: 0px -47px;}
 .icon_add_video{background-position: 0px -73px;}
 .icon_add_music{background-position: 0px -98px;}
+
+/**===============================
+           后台通用用户列表图标
+================================*/
+.user_box{border:1px solid #ddd;padding:10px 5px;background:#fff;width:70px;text-align:center;margin-right:5px;}

@@ -672,7 +672,7 @@ CREATE TABLE `#@__nav` (
 DROP TABLE IF EXISTS `#@__node`;
 CREATE TABLE `#@__node` (
   `node_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT '节点ID',
-  `node_name` varchar(50) NOT NULL COMMENT '名字',
+  `node_name` varchar(150) NOT NULL COMMENT '名字',
   `node_title` varchar(50) DEFAULT NULL COMMENT '别名',
   `node_status` tinyint(1) DEFAULT '0' COMMENT '状态',
   `node_remark` varchar(300) DEFAULT NULL COMMENT '备注',

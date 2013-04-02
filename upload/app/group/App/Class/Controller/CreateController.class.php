@@ -10,4 +10,8 @@ class CreateController extends InitController{
 		Core_Extend::doControllerAction('Create@Index','index');
 	}
 
+	public function add(){
+		Core_Extend::doControllerAction('Create@Add','index');
+	}
+
 }
