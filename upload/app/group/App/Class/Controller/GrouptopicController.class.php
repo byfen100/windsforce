@@ -9,7 +9,7 @@ class GrouptopicController extends InitController{
 	public function init__(){
 		parent::init__();
 
-		if(ACTION_NAME!=='view'){
+		if(!in_array(ACTION_NAME,array('view','set_grouptopicstyle','set_grouptopicside'))){
 			$this->is_login();
 		}
 	}

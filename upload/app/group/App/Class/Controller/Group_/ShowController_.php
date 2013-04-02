@@ -33,6 +33,10 @@ class ShowController extends Controller{
 		if(empty($oGroup['group_id'])){
 			$this->E('小组不存在或在审核中');
 		}
+
+// 需要登录跳转
+		Core_Extend::windsforceReferer();
+
 		
 		// 读取帖子列表
 		$arrWhere=array();

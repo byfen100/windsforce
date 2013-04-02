@@ -56,7 +56,7 @@
     'group@group@leavegroup' => true,
     'group@group@getcategory' => true,
     'group@grouptopic@set_grouptopicstyle' => true,
-    'group@topic@set_grouptopicside' => true,
+    'group@grouptopic@set_grouptopicside' => true,
   ),
   'RBAC_USER_ACCESS' => 
   array (

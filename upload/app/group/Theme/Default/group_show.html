@@ -69,8 +69,24 @@
 
 <!--{script}-->
 $(function(){
-	editor=loadEditor('grouptopic_content');
+	<!--{if $GLOBALS['___login___']!==false}-->
+	editor=loadEditorThin('grouptopic_content');
+	<!--{/if}-->
 });
+
+function grouptopicSubmit(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'add...' );
+	$("#grouptopic_content").val(editor.html());
+
+	Dyhb.AjaxSubmit('grouptopic_form','<!--{:Dyhb::U('group://grouptopic/add_topic')}-->','',function(data,status){
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '发布帖子' );
+		if(status==1){
+			window.location.href=data.url;
+		}
+	});
+}
 <!--{/script}-->
 
 			<div class="span12" style="margin-top:10px;">
@@ -230,18 +246,7 @@ $(function(){
 							</div>
 						</div>
 
-						<div class="floor floor_footerpost" style="margin-bottom:30px;">
-							<table width="100%" class="floor_footerposttable">
-								<tr>
-									<td width="200px">
-										<div>
-											<a rel="nofollow" href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" class="btn btn-success" >发布帖子</a>
-										</div>
-									</td>
-									<td style="text-align:right;"><a href="<!--{:Dyhb::U('group://public/index')}-->" class="btn">返回</a></td>
-								</tr>
-							</table>
-						</div>
+					
 						
 						<div class="floor">
 							<table width="100%" class="floor_table floor_footerpostcontenttable">
@@ -256,14 +261,16 @@ $(function(){
 										</div>
 									</td>
 									<td class="floor_right">
-										<input class="input-xlarge" type="text" style="width:60%;" />&nbsp;请输入帖子标题
 										
-										<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form" class="grouptopiccomment_form">
+										
+										<form method="post" name="grouptopic_form" id="grouptopic_form" class="grouptopi_form">
+											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:60%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;请输入帖子标题
 											<!--{if $GLOBALS['___login___']!==false}-->
+											
 											<div id="emotion_parentcontainer">
-												<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="8" style="width:100%;"></textarea>
+												<textarea class="input-xlarge" name="grouptopic_content" id="grouptopic_content" rows="8" style="width:100%;"></textarea>
 											</div>
-											<div id="grouptopiccomment-media-box" class="common-media-box none">
+											<div id="grouptopic-media-box" class="common-media-box none">
 												<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a>
 												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
 												<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
@@ -279,8 +286,8 @@ $(function(){
 											<!--{/if}-->
 											<div class="form-actions">
 												<input type="hidden" name="ajax" value="1">
-												<input type="hidden" name="tid" value="">
-												<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
+												<input type="hidden" name="group_id" id="group_id" value="<!--{$oGroup['group_id']}-->">
+												<input id="submit_button" onclick="grouptopicSubmit();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布帖子" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
 												<!--{if $GLOBALS['___login___']!==false}-->
 												&nbsp;<a href="javascript:void(0);" onclick="showMedia();">媒体</a>
 												<!--{/if}-->
