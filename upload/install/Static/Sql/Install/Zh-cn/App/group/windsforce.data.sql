@@ -31,7 +31,21 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_listtopicnum', '10'),
 ('group_hottopic_date', '604800'),
 ('group_hottopic_num', '10'),
-('group_thumbtopic_num', '5');
+('group_thumbtopic_num', '5'),
+('groupshow_newuser_num', '6'),
+('group_listusernum', '15'),
+('group_grouptopicside', '1'),
+('group_grouptopicstyle', '1'),
+('grouptopic_listcommentnum', '10'),
+('grouptopic_hotnum', '10'),
+('grouptopic_newnum', '10'),
+('group_homepagestyle', '1'),
+('index_recommendgroupnum', '10'),
+('index_newgroupnum', '10'),
+('index_hotgroupnum', '10'),
+('index_groupleadernum', '6'),
+('newtopic_hottagnum', '10'),
+('group_grouplistnum', '24');
 
 -- --------------------------------------------------------
 
