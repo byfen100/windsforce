@@ -30,7 +30,7 @@ class GlobalinitController extends Controller{
 	
 	public function is_login(){
 		if($GLOBALS['___login___']===false){
-			UserModel::M()->clearThisCookie();
+			//UserModel::M()->clearThisCookie();
 	
 			if(!G::isAjax()){
 				// 发送当前URL

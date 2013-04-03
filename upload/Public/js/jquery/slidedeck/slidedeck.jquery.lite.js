@@ -416,7 +416,7 @@ var SlideDeckSkin = {};
                 }
             }
             
-            updateBug();
+            //updateBug();
             
             if(self.options.hideSpines !== true){
                 // Setup Click Interaction
@@ -581,7 +581,7 @@ var SlideDeckSkin = {};
                 }
                 
             }
-            updateBug();
+            //updateBug();
         };
         
         

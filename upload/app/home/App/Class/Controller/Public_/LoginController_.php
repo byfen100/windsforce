@@ -11,6 +11,8 @@ class LoginController extends GlobalchildController{
 
 	public function index(){
 		$nInajax=intval(G::getGpc('inajax','G'));
+		$sReferer=trim(G::getGpc('referer'));
+		$nRbac=intval(G::getGpc('rbac','G'));
 		
 		if($GLOBALS['___login___']!==false){
 			$this->assign('__JumpUrl__',__APP__);
@@ -22,14 +24,8 @@ class LoginController extends GlobalchildController{
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_login_status']);
 		$this->assign('nRememberTime',$GLOBALS['_option_']['remember_time']);
 		$this->assign('arrBindeds',$GLOBALS['_cache_']['sociatype']);
-
-		$sRbacerrorreferer=trim(Dyhb::cookie('_rbacerror_referer_'));
-
-		if(empty($sRbacerrorreferer)){
-			Dyhb::cookie('_rbacerror_referer_',null,-1);
-		}
-
-		$this->assign('sRbacerrorreferer',$sRbacerrorreferer);
+		$this->assign('sReferer',$sReferer);
+		$this->assign('nRbac',$nRbac);
 
 		if($nInajax==1){
 			$this->display('public+ajaxlogin');
@@ -147,21 +143,19 @@ class LoginController extends GlobalchildController{
 		}
 
 		$oUserModel=Dyhb::instance('UserModel');
-		$oUserModel->checkLoginCommon($sUserName,$sPassword,$bEmail,'admin');
+		$oUserModel->checkLoginCommon($sUserName,$sPassword,$bEmail,'home');
 
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());
 		}else{
-			if(Dyhb::cookie('windsforce_referer')){
-				$sUrl=Dyhb::cookie('windsforce_referer');
-				Dyhb::cookie('windsforce_referer',null,-1);
-			}elseif(G::getGpc('windsforce_referer')){
+			if(G::getGpc('windsforce_referer')){
 				$sUrl=G::getGpc('windsforce_referer');
 			}else{
 				$sUrl=Dyhb::U('home://ucenter/index');
 			}
 
 			$oLoginUser=UserModel::F('user_name=?',$sUserName)->getOne();
+
 			Core_Extend::updateCreditByAction('daylogin',$oLoginUser['user_id']);
 
 			// 如果第三方网站已登录，则进行绑定
@@ -180,7 +174,7 @@ class LoginController extends GlobalchildController{
 	}
 
 	public function logout(){
-		$nRefer=intval(G::getGpc('refer','G'));
+		$nReferer=intval(G::getGpc('referer','G'));
 		
 		if(UserModel::M()->isLogin()){
 			$arrUserData=$GLOBALS['___login___'];
@@ -198,7 +192,7 @@ class LoginController extends GlobalchildController{
 			Dyhb::cookie('_socia_openid_',NULL,-1);
 			Dyhb::cookie('_socia_state_',NULL,-1);
 
-			if($nRefer==1 && !empty($_SERVER['HTTP_REFERER'])){
+			if($nReferer==1 && !empty($_SERVER['HTTP_REFERER'])){
 				$sJumpUrl=$_SERVER['HTTP_REFERER'];
 			}else{
 				$sJumpUrl=Dyhb::U('home://public/login');

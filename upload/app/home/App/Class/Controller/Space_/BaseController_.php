@@ -21,9 +21,6 @@ class BaseController extends Controller{
 			$this->assign('oUserInfo',$oUserInfo);
 		}
 
-		// 需要登录跳转
-		Core_Extend::windsforceReferer();
-		
 		$sDo=G::getGpc('do','G');
 		if(!in_array($sDo,array('','base','contact','edu','work','info'))){
 			$sDo='';

@@ -105,7 +105,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 			return $oMember;
 		}
 
-		$this->clearThisCookie();// 清除COOKIE
+		$this->clearThisCookie(true);// 清除COOKIE
 
 		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']),$oMember->id(),$this->_arrSettings['rbac_login_life']);
 
@@ -129,7 +129,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 	}
 
 	public function tryToDeleteOldSession($nUserId){
-		SessionModel::M()->deleteWhere("`user_id`=$nUserId OR (`user_id`=0)");
+		SessionModel::M()->deleteWhere("`user_id`={$nUserId}");
 	}
 
 	public function getAuthData($sUserModel=null){
@@ -137,7 +137,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 			$sUserModel=$GLOBALS['_commonConfig_']['USER_AUTH_MODEL'];
 		}
 
-		$sAuthKey=md5($GLOBALS['_commonConfig_']['DYHB_AUTH_KEY'].$_SERVER['HTTP_USER_AGENT']);
+		$sAuthKey=md5($GLOBALS['_commonConfig_']['DYHB_AUTH_KEY'].$_SERVER['HTTP_USER_AGENT'].G::getIp());
 
 		$sAuthData=Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth');
 		list($nUserId,$sPassword)=$sAuthData?explode("\t",G::authCode($sAuthData,true,NULL,$this->_arrSettings['rbac_login_life'])):array('','');
@@ -150,21 +150,15 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		if($sHash){
 			if($nUserId){
-				$oSessionDbExpression=new DbExpression('['.$GLOBALS['_commonConfig_']['DB_PREFIX'].$sUserModel.'.user_id]');
-				$arrUserInformation=UserModel::F()
-					->setColumns($this->_arrSettings['rbac_data_props'])
-					->joinLeft(array($GLOBALS['_commonConfig_']['DB_PREFIX'].'session'),'user_id,session_hash,session_auth_key',array('user_id'=>$oSessionDbExpression))
-					->where('['.$GLOBALS['_commonConfig_']['DB_PREFIX'].'session.session_hash]=? AND ['.
-						$GLOBALS['_commonConfig_']['DB_PREFIX'].$sUserModel.'.user_id]=? AND ['.
-						$GLOBALS['_commonConfig_']['DB_PREFIX'].$sUserModel.'.user_password]=? AND ['.
-						$GLOBALS['_commonConfig_']['DB_PREFIX'].'session.session_auth_key]=? AND user_status > 0',
-						array($sHash,$nUserId,$sPassword,$sAuthKey)
-					)
-					->asArray()
-					->query();
+				$arrSessionData=SessionModel::F('session_hash=? AND user_id=? AND session_auth_key=?',$sHash,$nUserId,$sAuthKey)->asArray()->query();
 
-				if($arrUserInformation['user_id'] && $arrUserInformation['session_hash']){
-					$bSessionExists=TRUE;
+				if(!empty($arrSessionData['user_id'])){
+					$arrUserInformation=UserModel::F('user_id=? AND user_password=?',$nUserId,$sPassword)->setColumns($this->_arrSettings['rbac_data_props'])->asArray()->query();
+					
+					if($arrUserInformation['user_id']){
+						$bSessionExists=TRUE;
+						$arrUserInformation=array_merge($arrUserInformation,$arrSessionData);
+					}
 				}
 			}else{
 				$arrUserInformation=array();
@@ -174,21 +168,15 @@ class ModelBehaviorRbac extends ModelBehavior{
 					$bSessionExists=true;
 					$this->updateSession($arrSessionData['session_hash'],$nUserId,$sAuthKey,true);
 				}else{
-					if(!G::isImplementedTo(($arrSessionData=SessionModel::F('session_hash=?',$sHash)->asArray()->query()),'IModel')){
-						$this->clearThisCookie();
-						$bSessionExists=TRUE;
-					}
+					$this->clearThisCookie();
 				}
 			}
 		}
 
 		if($bSessionExists===FALSE){
-			if($nUserId){
-				if(!($arrUserInformation=UserModel::F('user_id=? AND user_password=? AND user_status > 0',$nUserId,$sPassword)->asArray()->query())){
-					$this->clearThisCookie();
-				}
-			}
-			$arrUserInformation['session_hash']=G::randString(6);
+			$this->clearThisCookie();
+
+			$arrUserInformation['session_hash']=$sHash?$sHash:G::randString(6);
 			$this->updateSession($arrUserInformation['session_hash'],$nUserId,$sAuthKey);
 		}
 
@@ -217,16 +205,12 @@ class ModelBehaviorRbac extends ModelBehavior{
 				Dyhb::cookie('_rbacerror_referer_',__SELF__,$this->_arrSettings['rbac_login_life']);
 				
 				if(!Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY'])) && !G::isAjax()){// 检查认证识别号
-					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));// 跳转到认证网关
+					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY'],array('referer'=>__SELF__,'rbac'=>1),true));// 跳转到认证网关
 				}
 
 				if($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE'] && !G::isAjax()){// 没有权限 抛出错误
-					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE']));
+					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE'],array('referer'=>__SELF__,'rbac'=>1),true));
 				}else{
-					/* 修复不断提示你已经登录的bug
-					 if($GLOBALS['_commonConfig_']['GUEST_AUTH_ON'] && !G::isAjax()){
-						G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY']));
-					} */
 					$this->setErrorMessage(Dyhb::L('你没有访问权限','__DYHB__@RbacDyhb'));
 					return false;
 				}
@@ -258,15 +242,18 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 	}
 
-	public function clearThisCookie(){
+	public function clearThisCookie($bCheckLogin=false){
 		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']),null,-1);
 		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY']),null,-1);
-		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',null,-1);
 		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth',null,-1);
 		Dyhb::cookie(md5(APP_NAME.MODULE_NAME.ACTION_NAME),null,-1);
 		Dyhb::cookie('_access_list_',null,-1);
 		Dyhb::cookie('_rbacerror_referer_',null,-1);
-		Dyhb::cookie('_rbacerror_referer_',null,-1);
+		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'authcode_random',null,-1);
+
+		if($bCheckLogin===false){
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash');
+		}
 	}
 
 	public function checkUsername($sUsername){
@@ -308,6 +295,10 @@ class ModelBehaviorRbac extends ModelBehavior{
 	}
 
 	public function changePasswordDyn(Model $oMember,$sNewPassword,$sOldPassword,$bIgnoreOldPassword=false){
+		if(isset($_POST[$this->_arrSettings['password_prop']])){
+			unset($_POST[$this->_arrSettings['password_prop']]);
+		}
+		
 		if(!$bIgnoreOldPassword){
 			if(!$this->checkPasswordDyn($oMember, $sOldPassword)){
 				$this->setErrorMessage(Dyhb::L('用户输入的旧密码错误','__DYHB__@RbacDyhb'));
@@ -315,7 +306,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 			}
 		}
 
-		$oMember->changePropForce($this->_arrSettings['password_prop'],$sNewPassword);
+		$oMember->changePropForce($this->_arrSettings['password_prop'],$this->encodePassword_($sNewPassword,$oMember[$this->_arrSettings['authcode_random_prop']]));
 		$oMember->save(0,'update');
 
 		if($oMember->isError()){
@@ -325,6 +316,10 @@ class ModelBehaviorRbac extends ModelBehavior{
 	}
 
 	public function updateLoginDyn(Model $oMember,array $arrData=null){
+		if(isset($_POST[$this->_arrSettings['password_prop']])){
+			unset($_POST[$this->_arrSettings['password_prop']]);
+		}
+		
 		// 更新登录次数
 		$sPn=$this->_arrSettings['update_login_count_prop'];
 		if($sPn){
@@ -367,7 +362,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		// 验证用户是否唯一
 		if($this->_arrSettings['unique_username']){
 			$sPn=$this->_arrSettings['username_prop'];
-			if($this->_oMeta->find(array($sPn=> $oMember[$sPn]))->getCounts()>0){
+			if($this->_oMeta->find(array($sPn=>$oMember[$sPn]))->getCounts()>1){
 				$this->setErrorMessage(Dyhb::L('用户名%s只能够唯一','__DYHB__@RbacDyhb',null,$oMember[$sPn]));
 				return false;
 			}
@@ -406,23 +401,9 @@ class ModelBehaviorRbac extends ModelBehavior{
 	}
 
 	public function afterCheckOnUpdate_(Model $oMember){
-		$sPn=$this->_arrSettings['password_prop'];// 获取密码属性
-		if($oMember->changed($sPn)){
-			$sPasswordCleartext=$oMember[$sPn];
-			$oMember[$sPn]=$this->encodePassword_($sPasswordCleartext);
-			$this->_arrSavedState['password']=$sPasswordCleartext;
-
-			if(!$this->_arrSettings['auth_thin']){
-				$oMember->changePropForce($this->_arrSettings['authcode_random_prop'],$this->_arrSavedState['authcode_random']);
-			}
-		}
 	}
 
 	public function saveExceptionHandler_(Model $oMember){
-		if(isset($this->_arrSavedState['password'])){// 还原密码
-			$oMember->changePropForce($this->_arrSettings['password_prop'],$this->_arrSavedState['password']);
-			unset($this->_arrSavedState['password']);
-		}
 	}
 
 	private function checkPassword_($sCleartext,$sCryptograph,$sRanDom=''){
@@ -451,7 +432,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 	}
 
-	private function encodePassword_($sPassword){
+	private function encodePassword_($sPassword,$sRandom=''){
 		$et=$this->_arrSettings['encode_type'];
 		if(is_array($et)){
 			return call_user_func($et,$sPassword);
@@ -461,13 +442,30 @@ class ModelBehaviorRbac extends ModelBehavior{
 			return $sPassword;
 		}
 
-		if($et=='authcode'){
-			$sRandom=G::randString($this->_arrSettings['authcode_random']);
-			$this->_arrSavedState['authcode_random']=$sRandom;
-			return md5(md5(trim($sPassword)).trim($sRandom));
-		}
+		switch($et){
+			case 'authcode':
+				if(empty($sRandom)){
+					$sRandom=Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'authcode_random');
+					
+					if(!$sRandom){
+						$sRandom=G::randString($this->_arrSettings['authcode_random']);
+						Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'authcode_random',$sRandom,$this->_arrSettings['rbac_login_life']);
+					}
+				}
+				$this->_arrSavedState['authcode_random']=$sRandom;
 
-		return $et($sPassword);
+				return md5(md5(trim($sPassword)).trim($sRandom));
+			case 'md5':
+				return md5($sCleartext);
+			case 'crypt':
+				return crypt($sCleartext,$sCryptograph);
+			 case 'sha1':
+				return sha1($sCleartext);
+			 case 'sha2':
+				return hash('sha512',$sCleartext);
+			default:
+				return $et($sCleartext);
+		}
 	}
 
 	public function sendCookie($nUserId,$sPassword){
@@ -503,7 +501,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 			return false;
 		}
 
-		$oSession=SessionModel::M()->deleteWhere("`session_hash`='$sHash' OR($nUserId<>0 AND `user_id`=$nUserId OR(`user_id`=0))");// 删除SESSION
+		$oSession=SessionModel::M()->deleteWhere("`session_auth_key`='{$sAuthKey}' OR($nUserId<>0 AND `user_id`=$nUserId)");// 删除SESSION
 
 		if($bInsert){// 新插入Session数据
 			$oSession=new SessionModel();

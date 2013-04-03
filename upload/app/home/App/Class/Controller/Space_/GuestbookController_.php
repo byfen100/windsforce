@@ -34,9 +34,6 @@ class GuestbookController extends Controller{
 			exit();
 		}
 
-		// 需要登录跳转
-		Core_Extend::windsforceReferer();
-
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
 		// 取得个人主页

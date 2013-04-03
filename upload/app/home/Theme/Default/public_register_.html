@@ -1,7 +1,7 @@
-<script src="<!--{:__PUBLIC__}-->/js/jquery/validate/jquery.validate.min.js"></script>
 <!--<load file="<!--{:__PUBLIC__}-->/js/jquery/validate/images/validate.css" />-->
+<script src="<!--{:__PUBLIC__}-->/js/jquery/validate/jquery.validate.min.js"></script>
 <script src="<!--{:__APPPUB__}-->/Js/register.js"></script>
-				
+
 				<form class="form-horizontal" method='post' name="register_form" id="register_form">
 					<fieldset>
 						<div class="control-group">
@@ -54,10 +54,10 @@
 						</div>
 						<!--{/if}-->
 						<div class="form-actions">
-							<input type="hidden" name="refer" value="<!--{$sRefer}-->">
+							<input type="hidden" name="referer" value="<!--{$sReferer}-->">
 							<input type="hidden" name="ajax" value="1">
 							<button type="submit" class="btn btn-success" id="register_submit"><!--<lang package='__COMMON_LANG__@Template/Common'>-->注册<!--</lang>--></button>&nbsp;
-							<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+							<a href="<!--{if $sReferer}--><!--{$sReferer}--><!--{d*else}--><!--{:__APP__}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
 						</div>
 					</fieldset>
 				</form>

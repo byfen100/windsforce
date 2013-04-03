@@ -78,7 +78,9 @@ class Model implements IModel,IModelCallback,ArrayAccess{
 
 	public function save($nRecursion=99,$sSaveMethod='save'){
 		// 自动填充
-		$this->makePostData();
+		if($this->_bAutofill===true){
+			$this->makePostData();
+		}
 
 		// 指定继承类名称的字段名
 		$sInheritTypeField=self::$_arrMeta[$this->_sClassName]->_sInheritTypeField;

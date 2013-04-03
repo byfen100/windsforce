@@ -1293,10 +1293,27 @@ WINDSFORCE;
 		return $sFavicon;
 	}
 
-	static public function windsforceReferer(){
-		if($GLOBALS['___login___']===false){
-			Dyhb::cookie('windsforce_referer',__SELF__);
+	static public function windsforceReferer($bRegister=false){
+		return Dyhb::U('home://public/'.($bRegister===true?'register':'login').'?referer='.urlencode(__SELF__),array(),true);
+	}
+
+	static public function windsforceOuter($Params,$sEnter='index.php'){
+		$sUrl=$GLOBALS['_option_']['site_url'].'/'.$sEnter.'?';
+
+		
+		if(is_array($Params)){
+			$sStr='';
+			
+			foreach($Params as $sVar=>$sVal){
+				$sStr.=$sVar.'='.urlencode($sVal).'&';
+			}
+			
+			$sStr=rtrim($sStr,'&');
+		}else{
+			$sStr=trim($Params);
 		}
+
+		return $sUrl.$sStr;
 	}
 
 	static public function newData($nCreatedateline,$bReturnImg=false,$nDate=86400){

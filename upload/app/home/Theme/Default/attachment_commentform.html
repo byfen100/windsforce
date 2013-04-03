@@ -15,8 +15,8 @@
 							<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->内容<!--</lang>--><em class="red">*</em></label>
 							<div class="commoncommentform_needloginbox">
 								<div class="commoncommentform_needloginboxinner">
-									<a onclick="ajaxLogin();" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a> | 
-									<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->用户注册<!--</lang>--></a>
+									<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a> | 
+									<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->用户注册<!--</lang>--></a>
 								</div>
 							</div>
 							<!--{d*else}-->

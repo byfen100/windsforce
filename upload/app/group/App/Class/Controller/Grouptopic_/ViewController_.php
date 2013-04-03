@@ -31,9 +31,6 @@ class ViewController extends Controller{
 			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
 		}
 
-		// 需要登录跳转
-		Core_Extend::windsforceReferer();
-
 		$this->assign('oGrouptopic',$oGrouptopic);
 
 		$this->_oGrouptopic=$oGrouptopic;

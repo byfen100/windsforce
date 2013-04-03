@@ -28,9 +28,6 @@ class ShowController extends Controller{
 
 		$this->_oGroup=$oGroup;
 		
-		// 需要登录跳转
-		Core_Extend::windsforceReferer();
-		
 		if(empty($sType)){
 			$sOrderType='create_dateline';
 		}elseif($sType=="view"){

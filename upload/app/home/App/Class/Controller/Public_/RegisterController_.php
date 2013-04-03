@@ -11,7 +11,7 @@ class RegisterController extends GlobalchildController{
 
 	public function index(){
 		$nInajax=intval(G::getGpc('inajax','G'));
-		$sRefer=trim(G::getGpc('refer','G'));
+		$sReferer=trim(G::getGpc('referer','G'));
 		
 		if($GLOBALS['___login___']!==false){
 			$this->assign('__JumpUrl__',__APP__);
@@ -23,7 +23,7 @@ class RegisterController extends GlobalchildController{
 		}
 
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_register_status']);
-		$this->assign('sRefer',$sRefer);
+		$this->assign('sReferer',$sReferer);
 
 		if($nInajax==1){
 			$this->display('public+ajaxregister');
@@ -67,7 +67,7 @@ class RegisterController extends GlobalchildController{
 	}
 
 	public function register_user(){
-		$sRefer=trim(G::getGpc('refer','P'));
+		$sReferer=trim(G::getGpc('referer','P'));
 		
 		if($GLOBALS['___login___']!==false){
 			$this->E(Dyhb::L('你已经登录会员,不能重复注册','Controller/Public'));
@@ -197,14 +197,24 @@ class RegisterController extends GlobalchildController{
 				exit();
 			}
 			
-			if($sRefer==1 && !empty($_SERVER['HTTP_REFERER'])){
+			if($sReferer==1 && !empty($_SERVER['HTTP_REFERER'])){
 				$sJumpUrl=$_SERVER['HTTP_REFERER'];
-			}elseif($sRefer){
-				$sJumpUrl=$sRefer;
+			}elseif($sReferer){
+				$sJumpUrl=$sReferer;
 			}else{
-				$sJumpUrl=Dyhb::U('home://public/login');
+				$sJumpUrl=Dyhb::U('home://ucenter/index');
 			}
 
+			// 注册成功后登录
+			$oUserModelLogin=new UserModel();
+			$oUserModelLogin->checkLoginCommon($oUser['user_name'],$sPassword,false,'home');
+
+			if($oUserModelLogin->isError()){
+				$this->E($oUserModelLogin->getErrorMessage());
+			}
+
+			Core_Extend::updateCreditByAction('daylogin',$oUser['user_id']);
+			
 			$arrData=$oUser->toArray();
 			$arrData['jumpurl']=$sJumpUrl;
 

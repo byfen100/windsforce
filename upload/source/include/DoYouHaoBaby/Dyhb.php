@@ -514,7 +514,7 @@ class Dyhb{
 		}
 	}
 
-	static public function U($sUrl,$arrParams=array(),$bRedirect=false,$bSuffix=true){
+	static public function U($sUrl,$arrParams=array(),$bNormalurl=false,$bRedirect=false,$bSuffix=true){
 		$sUrl=ltrim($sUrl,'\\/');
 	
 		if(!strpos($sUrl,'://')){
@@ -554,7 +554,7 @@ class Dyhb{
 		}
 		
 		// 如果开启了URL解析，则URL模式为非普通模式
-		if($GLOBALS['_commonConfig_']['URL_MODEL']>0){
+		if($GLOBALS['_commonConfig_']['URL_MODEL']>0 && $bNormalurl===false){
 			$sDepr=$GLOBALS['_commonConfig_']['URL_PATHINFO_MODEL']==2?$GLOBALS['_commonConfig_']['URL_PATHINFO_DEPR']:'/';
 			
 			if(!empty($sRoute)){

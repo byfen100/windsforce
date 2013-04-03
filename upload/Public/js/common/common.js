@@ -393,22 +393,39 @@ function showSocialogin(){
 	$('#socailogin_more').toggle('fast');
 }
 
-function ajaxLogin(){
+function ajaxLogin(referer,sUrl){
+	if(!sUrl){
+		sUrl=D.U('home://public/login?'+(referer?'referer='+encodeURIComponent(referer):''));
+	}
+	
 	var sHtml = $.ajax({
-		url: D.U('home://public/login?inajax=1'),
+		url: sUrl,
+		data: 'inajax=1',
 		async: false
 	}).responseText;
 
 	windsforceAlert(sHtml,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 }
 
-function ajaxRegister(refer){
+function ajaxRegister(referer,sUrl){
+	if(!sUrl){
+		sUrl=D.U('home://public/register?'+(referer?'referer='+encodeURIComponent(referer):''));
+	}
+	
 	var sHtml = $.ajax({
-		url: D.U('home://public/register?inajax=1'+(refer?'&refer='+encodeURIComponent(refer):'')),
+		url: sUrl,
+		data: 'inajax=1',
 		async: false
 	}).responseText;
 
 	windsforceAlert(sHtml,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+}
+
+function login_handle(data,status){
+	if(status==1){
+		sUrl=data.url;
+		setTimeout("window.location=sUrl;",1000);
+	}
 }
 
 /** 播放器 */

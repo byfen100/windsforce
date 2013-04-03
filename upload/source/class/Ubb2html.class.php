@@ -22,8 +22,8 @@ class Ubb2html{
 			$this->_sContent=$arrData[0];
 		}
 
-		$this->_sLoginurl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=public&a=login';
-		$this->_sRegisterurl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=public&a=register';
+		$this->_sLoginurl=Core_Extend::windsforceOuter('app=home&c=public&a=login&referer='.urlencode(__SELF__));
+		$this->_sRegisterurl=Core_Extend::windsforceOuter('app=home&c=public&a=register&referer='.urlencode(__SELF__));
 
 		if(isset($arrData[1])){
 			$this->_bHomefreshmessage=$arrData[1];
@@ -209,27 +209,27 @@ class Ubb2html{
 
 	public function makeTag($sTag){
 		if($GLOBALS['___login___']!==FALSE){
-			$sUrl=__ROOT__.'/index.php?app=home&c=ucenter&a=index&key=';
+			$sUrl='home://ucenter/index';
 		}else{
-			$sUrl=__ROOT__.'/index.php?app=home&c=stat&a=explore&key=';
+			$sUrl='home://stat/explore';
 		}
 
-		return '<a href="'.$sUrl.urlencode($sTag).'">#'.$sTag.'#</a>';
+		return '<a href="'.Dyhb::U($sUrl,array('tag'=>$sTag),true).'">#'.$sTag.'#</a>';
 	}
 
 	public function makeMessage($sMessage){
 		if($this->_bHomefreshmessage===true){
 			if($GLOBALS['___login___']!==FALSE){
-				$sUrl=__ROOT__.'/index.php?app=home&c=ucenter&a=index&at=';
+				$sUrl='home://ucenter/index';
 			}else{
-				$sUrl=__ROOT__.'/index.php?app=home&c=stat&a=explore&at=';
+				$sUrl='home://stat/explore';
 			}
 
-			$sUrl.=urlencode($sMessage);
+			$sUrl=Dyhb::U($sUrl,array('at'=>$sMessage),true);
 		}else{
 			$oUser=UserModel::F('user_name=?',$sMessage)->getOne();
 			if(!empty($oUser['user_id'])){
-				$sUrl=__ROOT__.'/index.php?app=home&c=space&a=index&id='.$oUser['user_id'];
+				$sUrl=Dyhb::U('home://space/index?id='.$oUser['user_id'],array(),true);
 			}else{
 				$sUrl="javascript:void(0);";
 			}
@@ -601,7 +601,7 @@ class Ubb2html{
 	protected function needLogin(){
 		return $this->template(
 					Dyhb::L('隐藏内容','__COMMON_LANG__@Class/Ubb2html'),
-					Dyhb::L('这部分内容只能在登入之后看到。请先','__COMMON_LANG__@Class/Ubb2html').' <a href="'.$this->_sRegisterurl.'">'.Dyhb::L('注册','__COMMON_LANG__@Class/Ubb2html').'</a> '.Dyhb::L('或者','__COMMON_LANG__@Class/Ubb2html').' <a href="'.$this->_sLoginurl.'">'.Dyhb::L('登录','__COMMON_LANG__@Class/Ubb2html').'</a>',
+					Dyhb::L('这部分内容只能在登入之后看到。请先','__COMMON_LANG__@Class/Ubb2html').' <a onclick="ajaxLogin(\'\',\''.$this->_sRegisterurl.'\');" href="javascript:void(0);">'.Dyhb::L('注册','__COMMON_LANG__@Class/Ubb2html').'</a> '.Dyhb::L('或者','__COMMON_LANG__@Class/Ubb2html').' <a onclick="ajaxRegister(\'\',\''.$this->_sLoginurl.'\');" href="javascript:void(0);">'.Dyhb::L('登录','__COMMON_LANG__@Class/Ubb2html').'</a>',
 					'hidebox'
 				);
 	}
@@ -634,7 +634,7 @@ WINDSFORCE;
 	}
 
 	protected function getAttachmentouterurl($nId){
-		return __ROOT__.'/index.php?app=home&c=attachment&a=show&id='.$nId;
+		return Dyhb::U('home://attachment/show?id='.$nId,array(),true);
 	}
 
 }

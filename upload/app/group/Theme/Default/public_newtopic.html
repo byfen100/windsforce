@@ -119,8 +119,9 @@
 									<!--{/if}-->
 									<div class="space"></div>
 									<p><input type="hidden" name="ajax" value="1">
+										<input type="hidden" name="windsforce_referer" value="<!--{:__SELF__}-->">
 										<button type="button" class="btn btn-success" onClick="Dyhb.AjaxSubmit('login_form','<!--{:Dyhb::U('home://public/check_login')}-->','result',login_handle);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></button>&nbsp;
-										<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->新用户注册<!--</lang>--></a>
+										<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->新用户注册<!--</lang>--></a>
 										<!--{if count($arrBindeds)>=3}-->
 										<span class="pipe">|</span>
 										<a href="javascript:void(0);" onclick="showSocialogin();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->社交帐号<!--</lang>--></a>
