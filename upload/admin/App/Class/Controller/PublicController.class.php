@@ -26,12 +26,12 @@ class PublicController extends InitController{
 		// 系统统计信息
 		Core_Extend::loadCache('site');
 		$arrStaticInfo=array(
-			array(Dyhb::L('用户数量','Controller/Public'),$GLOBALS['_cache_']['site']['user'],__ROOT__.'/index.php?app=home&c=stat&a=userlist'),
-			array(Dyhb::L('新注册用户数量','Controller/Public'),$GLOBALS['_cache_']['site']['newuser'],__ROOT__.'/index.php?app=home&c=stat&a=newuser'),
-			array(Dyhb::L('应用数量','Controller/Public'),$GLOBALS['_cache_']['site']['app'],__ROOT__.'/index.php?app=home&c=apps&a=index'),
-			array(Dyhb::L('新鲜事数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefresh'],__ROOT__.'/index.php?app=home&c=stat&a=explore'),
-			array(Dyhb::L('评论数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefreshcomment'],__ROOT__.'/index.php?app=home&c=stat&a=explore'),
-			array(Dyhb::L('附件','Controller/Public'),$GLOBALS['_cache_']['site']['attachment'],__ROOT__.'/index.php?app=home&c=attachment&a=index'),
+			array(Dyhb::L('用户数量','Controller/Public'),$GLOBALS['_cache_']['site']['user'],Core_Extend::windsforceOuter('app=home&c=stat&a=userlist')),
+			array(Dyhb::L('新注册用户数量','Controller/Public'),$GLOBALS['_cache_']['site']['newuser'],Core_Extend::windsforceOuter('app=home&c=stat&a=newuser')),
+			array(Dyhb::L('应用数量','Controller/Public'),$GLOBALS['_cache_']['site']['app'],Core_Extend::windsforceOuter('app=home&c=apps&a=index')),
+			array(Dyhb::L('新鲜事数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefresh'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),
+			array(Dyhb::L('评论数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefreshcomment'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),
+			array(Dyhb::L('附件','Controller/Public'),$GLOBALS['_cache_']['site']['attachment'],Core_Extend::windsforceOuter('app=home&c=attachment&a=index')),
 		);
 		$this->assign('arrStaticInfo',$arrStaticInfo);
 

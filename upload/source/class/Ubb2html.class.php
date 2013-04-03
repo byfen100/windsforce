@@ -394,7 +394,7 @@ class Ubb2html{
 	
 	public function makeUrl($sUrl,$nAutolink=0,$sLinkText=''){
 		if($nAutolink==1){
-			$sGoToRealLink=$GLOBALS['_option_']['site_url'].'/urlredirect.php?go='.(substr(strtolower($sUrl),0,4)=='www.'?urlencode("http://{$sUrl}"):urlencode($sUrl));
+			$sGoToRealLink=Core_Extend::windsforceOuter('go='.(substr(strtolower($sUrl),0,4)=='www.'?urlencode("http://{$sUrl}"):urlencode($sUrl)),'urlredirect.php');
 		}else{
 			$sGoToRealLink=substr(strtolower($sUrl),0,4)=='www.'?"http://{$sUrl}":$sUrl;
 		}

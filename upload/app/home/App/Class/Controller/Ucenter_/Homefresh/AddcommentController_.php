@@ -204,7 +204,7 @@ class AddcommentController extends GlobalchildController{
 
 			// 邮件通知
 			try{
-				$sCommentLink=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=ucenter&a=view&id='.$oHomefreshcomment->homefresh_id.'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'];
+				$sCommentLink=Core_Extend::windsforceOuter('app=home&c=ucenter&a=view&id='.$oHomefreshcomment->homefresh_id.'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id']);
 
 				$bHaveParentcomment=false;
 				if($oHomefreshcomment->homefreshcomment_parentid==0){
@@ -220,7 +220,9 @@ class AddcommentController extends GlobalchildController{
 					$nCommentParentIsreplymail=$oHomefreshCommentParent->homefreshcomment_isreplymail;
 					$sCommentParentName=$oHomefreshCommentParent->homefreshcomment_name;
 					$sCommentParentContent=$oHomefreshCommentParent->homefreshcomment_content;
-					$sCommentParentLink=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=ucenter&a=view&id='.$oHomefreshCommentParent->homefresh_id.'&isolation_commentid='.$oHomefreshCommentParent['homefreshcomment_id'];
+
+					$sCommentParentLink=Core_Extend::windsforceOuter('app=home&c=ucenter&a=view&id='.$oHomefreshCommentParent->homefresh_id.'&isolation_commentid='.$oHomefreshCommentParent['homefreshcomment_id']);
+
 					$sCommentParentEmail=$oHomefreshCommentParent->homefreshcomment_email;
 					$sCommentParentUrl=$oHomefreshCommentParent->homefreshcomment_url;
 				}else{

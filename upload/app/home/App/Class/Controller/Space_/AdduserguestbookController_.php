@@ -201,7 +201,7 @@ class AdduserguestbookController extends GlobalchildController{
 
 			// 邮件通知
 			try{
-				$sCommentLink=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=space&a=index&id='.$oUserguestbook->userguestbook_id.'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id'];
+				$sCommentLink=Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oUserguestbook->userguestbook_id.'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id']);
 
 				$bHaveParentcomment=false;
 				if($oUserguestbook->userguestbook_parentid==0){
@@ -217,7 +217,9 @@ class AdduserguestbookController extends GlobalchildController{
 					$nCommentParentIsreplymail=$oUserguestbookParent->userguestbook_isreplymail;
 					$sCommentParentName=$oUserguestbookParent->userguestbook_name;
 					$sCommentParentContent=$oUserguestbookParent->userguestbook_content;
-					$sCommentParentLink=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=space&a=index&id='.$oUserguestbookParent->userguestbook_id.'&type=guestbook&isolation_commentid='.$oUserguestbookParent['userguestbook_id'];
+
+					$sCommentParentLink=Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oUserguestbookParent->userguestbook_id.'&type=guestbook&isolation_commentid='.$oUserguestbookParent['userguestbook_id']);
+
 					$sCommentParentEmail=$oUserguestbookParent->userguestbook_email;
 					$sCommentParentUrl=$oUserguestbookParent->userguestbook_url;
 				}else{

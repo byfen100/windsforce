@@ -32,7 +32,7 @@ class DoController extends Controller{
 
 		// 随机码
 		$sUserverifycode=md5(G::randString(32));
-		$sUserverifyUrl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=spaceadmin&a=checkrevifyemail&email='.urlencode($sEmail).'&hash='.urlencode(G::authcode($sUserverifycode,false,null,$GLOBALS['_option_']['verifyemail_expired']));
+		$sUserverifyUrl=Core_Extend::windsforceOuter('app=home&c=spaceadmin&a=checkrevifyemail&email='.urlencode($sEmail).'&hash='.urlencode(G::authcode($sUserverifycode,false,null,$GLOBALS['_option_']['verifyemail_expired'])));
 
 		$oMailModel=Dyhb::instance('MailModel');
 		$oMailConnect=$oMailModel->getMailConnect();

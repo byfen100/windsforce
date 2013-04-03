@@ -31,7 +31,7 @@ function completeSet(data,status){
 					<div style="margin-bottom:10px;">
 						<span class="" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success">发帖</a></span>
 						<!--{if $GLOBALS['___login___']===false}-->
-						<p>你可以&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin();" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</p>
+						<p>你可以&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</p>
 						<!--{d*else}-->
 						<p>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
 						<span class="pipe">|</span>
@@ -62,13 +62,13 @@ function completeSet(data,status){
 								<div class="item active" style="280px">
 									<img src="<!--{:__APPPUB__}-->/Images/slide/1.jpg" style="height:280px;" width="100%">
 									<div class="carousel-caption">
-										<h4><a href="<!--{:Dyhb::U('home://public/register')}-->" title="注册">注册</a></h4>
+										<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="注册">注册</a></h4>
 									</div>
 								</div>
 								<div class="item" style="280px">
 									<img src="<!--{:__APPPUB__}-->/Images/slide/2.jpg" style="height:280px;" width="100%">
 									<div class="carousel-caption">
-										<h4><a href="<!--{:Dyhb::U('home://public/login')}-->" title="登录">登录</a></h4>
+										<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="登录">登录</a></h4>
 									</div>
 								</div>
 								<!--{/if}-->

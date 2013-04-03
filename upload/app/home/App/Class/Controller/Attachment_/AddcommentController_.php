@@ -204,7 +204,7 @@ class AddcommentController extends GlobalchildController{
 
 			// 邮件通知
 			try{
-				$sCommentLink=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=attachment&a=show&id='.$oAttachmentcomment->attachment_id.'&isolation_commentid='.$oAttachmentcomment['attachmentcomment_id'];
+				$sCommentLink=Core_Extend::windsforceOuter('app=home&c=attachment&a=show&id='.$oAttachmentcomment->attachment_id.'&isolation_commentid='.$oAttachmentcomment['attachmentcomment_id']);
 
 				$bHaveParentcomment=false;
 				if($oAttachmentcomment->attachmentcomment_parentid==0){
@@ -220,7 +220,9 @@ class AddcommentController extends GlobalchildController{
 					$nCommentParentIsreplymail=$oAttachmentCommentParent->attachmentcomment_isreplymail;
 					$sCommentParentName=$oAttachmentCommentParent->attachmentcomment_name;
 					$sCommentParentContent=$oAttachmentCommentParent->attachmentcomment_content;
-					$sCommentParentLink=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=attachment&a=show&id='.$oAttachmentCommentParent->attachment_id.'&isolation_commentid='.$oAttachmentCommentParent['attachmentcomment_id'];
+
+					$sCommentParentLink=Core_Extend::windsforceOuter('app=home&c=attachment&a=show&id='.$oAttachmentCommentParent->attachment_id.'&isolation_commentid='.$oAttachmentCommentParent['attachmentcomment_id']);
+
 					$sCommentParentEmail=$oAttachmentCommentParent->attachmentcomment_email;
 					$sCommentParentUrl=$oAttachmentCommentParent->attachmentcomment_url;
 				}else{

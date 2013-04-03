@@ -155,7 +155,7 @@
 														<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}--></h1>
 									</div>
 									<div class="floor_top_tips">
-										<span class="floor_copy" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{$GLOBALS['_option_']['site_url']}-->/index.php?app=group&c=grouptopic&a=view&id=<!--{$oGrouptopic->grouptopic_id}-->','楼层复制成功');">楼主<sup>#</sup></span>
+										<span class="floor_copy" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','楼层复制成功');">楼主<sup>#</sup></span>
 										<span>发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 									</div>
 									<div id="grouptopicview_main">
@@ -347,7 +347,7 @@
 								</td>
 								<td class="floor_right floor_grouptopiccommenttd2">
 									<div class="floor_top_tips">
-										<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{$GLOBALS['_option_']['site_url']}-->/index.php?app=group&c=grouptopic&a=view&id=<!--{$oGrouptopic->grouptopic_id}-->&cid=<!--{$oComment->grouptopiccomment_id}-->','楼层复制成功');"><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
+										<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
 										<span>回复于&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
 									</div>
 									<div class="grouptopiccontent_box"><!--{$oComment->grouptopiccomment_content|Core_Extend+ubb}--></div>

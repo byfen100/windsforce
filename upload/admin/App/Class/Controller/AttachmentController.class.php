@@ -56,7 +56,7 @@ class AttachmentController extends InitController{
 	}
 
 	public function add(){
-		$this->E(Dyhb::L('后台无法上传附件','Controller/Attachment').'<br/><a href="'.__ROOT__.'/index.php?app=home&c=attachment&a=add" target="_blank">'.Dyhb::L('前往上传','Controller/Attachment').'</a>');
+		$this->E(Dyhb::L('后台无法上传附件','Controller/Attachment').'<br/><a href="'.Core_Extend::windsforceOuter('app=home&c=attachment&a=add').'" target="_blank">'.Dyhb::L('前往上传','Controller/Attachment').'</a>');
 	}
 
 	public function cover(){

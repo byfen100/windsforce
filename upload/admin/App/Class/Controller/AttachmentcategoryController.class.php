@@ -55,7 +55,7 @@ class AttachmentcategoryController extends InitController{
 	}
 
 	public function add(){
-		$this->E(Dyhb::L('后台无法创建专辑','Controller/Attachmentcategory').'<br/><a href="'.__ROOT__.'/index.php?app=home&c=attachment&a=my_attachmentcategory" target="_blank">'.Dyhb::L('前往创建','Controller/Attachmentcategory').'</a>');
+		$this->E(Dyhb::L('后台无法创建专辑','Controller/Attachmentcategory').'<br/><a href="'.Core_Extend::windsforceOuter('app=home&c=attachment&a=my_attachmentcategory').'" target="_blank">'.Dyhb::L('前往创建','Controller/Attachmentcategory').'</a>');
 	}
 
 	public function bForeverdelete_(){

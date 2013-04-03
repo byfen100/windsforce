@@ -179,8 +179,8 @@ class ShowController extends Controller{
 	}
 
 	public function get_attachmentcategory_playlist($oAttachment){
-		return $GLOBALS['_option_']['site_url'].'/index.php?app=home&c=attachment&a=mp3list&cid='.
-			$oAttachment['attachmentcategory_id'].'&uid='.$oAttachment['user_id'];
+		return Core_Extend::windsforceOuter('app=home&c=attachment&a=mp3list&cid='.
+			$oAttachment['attachmentcategory_id'].'&uid='.$oAttachment['user_id']);
 	}
 
 	public function show_title_(){

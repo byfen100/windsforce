@@ -41,7 +41,7 @@ class TomailController extends GlobalchildController{
 		$oMailModel=Dyhb::instance('MailModel');
 		$oMailConnect=$oMailModel->getMailConnect();
 
-		$sAppealscheduleUrl=$GLOBALS['_option_']['site_url'].'/index.php?app=home&c=userappeal&a=schedule';
+		$sAppealscheduleUrl=Core_Extend::windsforceOuter('app=home&c=userappeal&a=schedule');
 		$sNlbr=$oMailConnect->getIsHtml()===true?'<br/>':"\r\n";
 
 		$sEmailSubject=$GLOBALS['_option_']['site_name'].Dyhb::L('用户申诉回执单','Controller/Userappeal');

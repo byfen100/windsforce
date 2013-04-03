@@ -4,7 +4,7 @@
 function getNewpms(userid){
 	$.ajax({
 		type:"GET",
-		url:_ROOT_+"/index.php?app=home&c=misc&a=newpmnum&uid="+userid,
+		url:D.U('home://misc/newpmnum?uid='+userid),
 		success: function(data){
 			var dataJson=eval('('+data+')');
 
@@ -51,7 +51,7 @@ function getNewpms(userid){
 function getNewnotices(userid){
 	$.ajax({
 		type:"GET",
-		url:_ROOT_+"/index.php?app=home&c=misc&a=newnoticenum&uid="+userid,
+		url:D.U('home://misc/newnoticenum?uid='+userid),
 		success: function(data){
 			var dataJson=eval('('+data+')');
 
