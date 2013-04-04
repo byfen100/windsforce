@@ -9,11 +9,9 @@
 		<div class="row">
 			<div class="span8">
 				<div id="topic_list_box" class="topic_list_box">
-					<ul class="nav nav-tabs">
-						<li ><a href="<!--{:Dyhb::U('group://public/index')}-->">首页</a></li>
-						<li class="active"><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">新帖</a></li>
-						<li><a href="<!--{:Dyhb::U('group://public/group')}-->">小组</a></li>
-					</ul>
+
+					<!--<include file="public+indexgroupmenu" />-->
+
 					<table width="100%" class="table">
 						<thead>
 							<tr>
@@ -72,8 +70,10 @@
 						</tbody>
 					</table>
 				</div>
+
 				<!--{$sPageNavbar}-->
 			</div>
+
 			<div class="span4">
 				<div id="group_sidebar">
 					<div class="group_sidebar_item <!--{if $GLOBALS['___login___']===FALSE}-->group_sidebar_login<!--{d*else}-->group_sidebar_userinfo<!--{/if}-->">
@@ -189,6 +189,7 @@
 						</div>
 						<!--{/if}-->
 					</div>
+
 					<div class="group_sidebar_item">
 						<h2 class="box_title">热门帖子</h2>
 						<ul class="grouphottopic_titles">
@@ -206,10 +207,11 @@
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->">我要发布</a></li>
+							<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
 							<!--{/if}-->
 						</ul>
 					</div>
+
 					<div class="group_sidebar_item">
 						<h2 class="box_title">热门标签&nbsp;<a href="<!--{:Dyhb::U('group://tag/index')}-->" title="<!--<lang package='Template/Public'>-->更多标签<!--</lang>-->"><i class="icon-th-list"></i></a></h2>
 						<div class="tags_hot">

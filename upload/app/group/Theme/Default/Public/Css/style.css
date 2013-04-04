@@ -7,7 +7,7 @@ Description: Group应用模块CSS
 /**===============================
            查看帖子
 ================================*/
-[CURSCRIPT=group::grouptopic::view,group::grouptopic::reply,group::group::show]
+[CURSCRIPT=group::grouptopic::view,group::group::show]
 .floor{margin:0px;padding:0px;}
 .floor_footerpost{margin-top:10px;padding-bottom:10px;}
 .floor_headerpost{margin-top:-20px;padding:0;}
@@ -82,10 +82,25 @@ Description: Group应用模块CSS
 [/CURSCRIPT]
 
 /**===============================
-           查看帖子
+           添加和编辑帖子
 ================================*/
 [CURSCRIPT=group::grouptopic::add,group::grouptopic::edit]
 .grouptopic_tabs{margin-top:10px;}
+[/CURSCRIPT]
+
+/**===============================
+           首页和小组分类
+================================*/
+[CURSCRIPT=group::public::index,group::public::group]
+#groupcategory h2{font-size:12px;color:#999;line-height:100%;margin-bottom:10px;text-align:left;}
+#groupcategory ul{list-style:none;margin-bottom:0;margin:0}
+#groupcategory label{line-height:100%;padding-top:8px;}
+#groupcategory label a{font-size:12px;color:#000;}
+#groupcategory li{line-height:200%;font-size:14px;padding:8px 10px;margin:0 -10px;border-top:1px solid #DDD;position:relative;overflow:auto}
+#groupcategory li label{font-size:12px;color:#999;display:inline-block;width:200px;margin-right:-130px;padding-right:10px;float:left;text-align:right}
+#groupcategory li span.childgroupcategory{font-size:12px;color:#999;}
+#groupcategory li span.childgroupcategory{float:left;margin-left:130px}
+#groupcategory li a{margin-right:10px}
 [/CURSCRIPT]
 
 /**===============================
@@ -96,6 +111,8 @@ Description: Group应用模块CSS
 .publicmodule_list_sort ul{background:url({__ROOT__}/app/group/Theme/Default/Public/Images/sort.png) 0 7px no-repeat;}
 .publicmodule_list_sort ul li{padding-left:20px;}
 .publicmodule_list_line li{border-bottom:1px dotted #ccc;line-height:25px;height:25px;}
+/* 工具栏子分类 */
+.child_groupcategory a{font-weight:normal;font-size:12px;}
 [/CURSCRIPT]
 
 /**===============================

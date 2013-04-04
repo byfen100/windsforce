@@ -1,44 +1,19 @@
 <!--<include file="public+indexcommon" />-->
 
-<!--{style}-->
-.box{background-color:#fff;padding:10px;margin:0 0 20px 0;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0px 2px rgba(0,0,0,0.05);-moz-box-shadow:0 0px 2px rgba(0,0,0,0.1);box-shadow:0 0px 2px rgba(0,0,0,0.05)}.box h2.title{font-size:12px;margin:0 -10px;padding:0 10px;margin-bottom:8px;color:#999;line-height:100%;border-bottom:1px solid #ddd;padding-bottom:8px}.box_gray{background:#F5F5F5}
-
-#sections h2{font-size:12px;color:#999;line-height:100%;margin-bottom:10px;text-align:left;}
-#sections ul{list-style:none;margin-bottom:0;margin:0}
-#sections label{line-height:100%;padding-top:8px;}
-#sections label a{font-size:12px;color:#000;}
-
-#sections li{line-height:200%;font-size:14px;padding:8px 10px;margin:0 -10px;border-top:1px solid #DDD;position:relative;overflow:auto}
-
-#sections li label{font-size:12px;color:#999;display:inline-block;width:200px;margin-right:-130px;padding-right:10px;float:left;text-align:right}
-
-#sections li span.nodes{font-size:12px;color:#999;}
-#sections li span.nodes{float:left;margin-left:130px}
-
-#sections li a{margin-right:10px}
-#hot_locations h2{font-size:12px;color:#999;line-height:100%;text-align:center;border-bottom:1px solid #DDD;margin:0 -10px;padding:0 10px 10px 10px}
-#hot_locations ul{list-style:none;margin:0;padding:0;text-align:center}
-
-.child_groupcategory a{font-weight:normal;font-size:12px;}
-<!--{/style}-->
-			
 			<div class="span9">
 				<!--{if isset($oParentGroupcategory)}-->
-				<div id="sections" class="box box_gray">
-					<h2>小组分类&nbsp;
-					<!--{if isset($oParentGroupcategory)}-->
-					-&nbsp;<a href="<!--{:Dyhb::U('group://public/index?cid='.$oParentGroupcategory['groupcategory_id'])}-->"><!--{$oParentGroupcategory['groupcategory_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->" title="返回全部小组分类"><i class="icon-share-alt"></i></a>
-					<!--{/if}-->
+				<div id="groupcategory" class="commonbox_mini commonbox_mini_gray">
+					<h2>小组分类&nbsp;<!--{if isset($oParentGroupcategory)}-->
+					-&nbsp;<a href="<!--{:Dyhb::U('group://public/index?cid='.$oParentGroupcategory['groupcategory_id'])}-->"><!--{$oParentGroupcategory['groupcategory_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->" title="返回全部小组分类"><i class="icon-share-alt"></i></a><!--{/if}-->
 					</h2>
 					<!--{if is_array($arrGroupcategorys)}-->
 					<ul>
 						<!--<foreach for=arrGroupcategorys value=oGroupcategory>-->
 						<!--{~$arrChildGroupcategorys=$TheController->get_childGroupcategory($oGroupcategory['groupcategory_id'])}-->
 						<li>
-							<label><b><a href="<!--{:Dyhb::U('group://public/index?cid='.$oGroupcategory['groupcategory_id'])}-->"><!--{$oGroupcategory['groupcategory_name']}--></a></b>
-							<span class="pipe">|</span>
+							<label><b><a href="<!--{:Dyhb::U('group://public/index?cid='.$oGroupcategory['groupcategory_id'])}-->"><!--{$oGroupcategory['groupcategory_name']}--></a></b><span class="pipe">|</span>
 							</label>
-							<span class="nodes">
+							<span class="childgroupcategory">
 								<!--{if is_array($arrChildGroupcategorys)}-->
 								<!--<foreach for=arrChildGroupcategorys value=oChildGroupcategory>-->
 								<a href="<!--{:Dyhb::U('group://public/index?cid='.$oChildGroupcategory['groupcategory_id'])}-->"><!--{$oChildGroupcategory['groupcategory_name']}--></a>
@@ -72,17 +47,15 @@
 												</a>
 											</div>
 											<div style='display:inline;float:right;' class="child_groupcategory">
-											<!--{if is_array($arrChildGroupcategorys)}-->
-											子分类:&nbsp;
-								<!--<foreach for=arrChildGroupcategorys  value=oChildGroupcategory>-->
-								<a href="<!--{:Dyhb::U('group://public/index?cid='.$oChildGroupcategory['groupcategory_id'])}-->"><!--{$oChildGroupcategory['groupcategory_name']}--></a>
-								<!--{if $key!=count($arrChildGroupcategorys)-1}-->
-								<span class="pipe">|</span>
-								<!--{/if}-->
-								<!--</foreach>-->
-				
-								<!--{/if}-->
-
+												<!--{if is_array($arrChildGroupcategorys)}-->
+												子分类:&nbsp;
+												<!--<foreach for=arrChildGroupcategorys  value=oChildGroupcategory>-->
+												<a href="<!--{:Dyhb::U('group://public/index?cid='.$oChildGroupcategory['groupcategory_id'])}-->"><!--{$oChildGroupcategory['groupcategory_name']}--></a>
+												<!--{if $key!=count($arrChildGroupcategorys)-1}-->
+												<span class="pipe">|</span>
+												<!--{/if}-->
+												<!--</foreach>-->
+												<!--{/if}-->
 											</div>
 										</span>
 									</td>

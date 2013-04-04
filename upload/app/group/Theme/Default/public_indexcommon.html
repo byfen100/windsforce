@@ -14,37 +14,33 @@ function completeSet(data,status){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a></li>		</ul>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a></li>
+		</ul>
 
 		<div class="row">
 			<div class="span12">
-				<ul class="nav nav-tabs">
-					<li  class="active"><a href="<!--{:Dyhb::U('group://public/index')}-->">首页</a></li>
-					<li><a href="<!--{:Dyhb::U('group://public/newtopic')}-->">新帖</a></li>
-					<li><a href="<!--{:Dyhb::U('group://public/group')}-->">小组</a></li>
-				</ul>
+				<!--<include file="public+indexgroupmenu" />-->
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="span12">
-					<div style="margin-bottom:10px;">
-						<span class="" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success">发帖</a></span>
-						<!--{if $GLOBALS['___login___']===false}-->
-						<p>你可以&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</p>
-						<!--{d*else}-->
-						<p>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
-						<span class="pipe">|</span>
-						<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'].'&type=topic')}-->" target="_blank">我的帖子</a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->">查看新帖</a></p>
-						<!--{/if}-->
-					</div>
-					<span class="clear"></span>
+				<div style="margin-bottom:10px;">
+					<span class="" style="float:left;margin-right:10px;"><a href="<!--{:Dyhb::U('group://grouptopic/add')}-->" class="btn btn-success">发帖</a></span>
+					<!--{if $GLOBALS['___login___']===false}-->
+					<p>你可以&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</p>
+					<!--{d*else}-->
+					<p>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
+					<span class="pipe">|</span>
+					<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'].'&type=topic')}-->" target="_blank">我的帖子</a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->">查看新帖</a></p>
+					<!--{/if}-->
+				</div>
+				<span class="clear"></span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="span12">
-				
 				<div class="row">
 					<div class="span7"> 
 						<div id="myCarousel" class="carousel slide">
