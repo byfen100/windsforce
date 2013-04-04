@@ -13,4 +13,5 @@ return array(
 	'grouptopic::reply'=>'media',
 	'grouptopic::add'=>'media',
 	'grouptopic::edit'=>'media',
+	'grouptopicadmin',
 );

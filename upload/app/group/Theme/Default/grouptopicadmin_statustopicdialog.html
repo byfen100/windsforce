@@ -1,45 +1,12 @@
-<!--{style}-->
-a#moderate_reason{font-size:14px;line-heigth:14px;font-weight:bold;}
-a#moderate_reason:hover{text-decoration:none;}
-.moderatereason_title{margin-bottom:5px;}
-.moderatereason_title .btn-group{background:none;margin:0px;heigth:5px;}
-<!--{/style}-->
-
-<div id="grouptopicadmin">
-	<form name="moderateform" id="moderateform" method="post" autocomplete="off" action="<!--{:Dyhb::U('group://grouptopicadmin/sticktopic')}-->">
-		<div class="none" id="result"></div>
-		<p>你选择了一篇帖子</p>
+	<!--<include file="grouptopicadmin+header" />-->
 		
 		<p>
 			<label class="radio">
-				<input type="radio" name="status" value="1" <!--{if $nStatus==1}-->checked<!--{/if}-->>
-				显示主题
+				<input type="radio" name="status" value="1" <!--{if $nStatus==1}-->checked<!--{/if}-->>显示主题
 			</label>
 			<label class="radio">
-				<input type="radio" name="status" value="0" <!--{if $nStatus==0}-->checked<!--{/if}-->>
-				隐藏主题
+				<input type="radio" name="status" value="0" <!--{if $nStatus==0}-->checked<!--{/if}-->>隐藏主题
 			</label>
 		</p>
 
-		<h5 class="moderatereason_title">
-			<div class="btn-group right">
-				<a href="javascript:void(0);" id="moderate_reason" class="btn-mini dropdown-toggle" data-toggle="dropdown">^</a>
-				<ul class="dropdown-menu">
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','广告/SPAM');">广告/SPAM</a></li>
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','恶意灌水');">恶意灌水</a></li>
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','违规内容');">违规内容</a></li>
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','文不对题');">文不对题</a></li>
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','重复发帖');">重复发帖</a></li>
-					<li class="divider"></li>
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','我很赞同');">我很赞同</a></li>
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','精品文章');">精品文章</a></li>
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','原创内容');">原创内容</a></li>
-				</ul>
-			</div>
-			<span>操作原因:</span>
-		</h5>
-		<p><textarea id="reason" name="reason" class="input-xlarge" rows="3"></textarea></p>
-		<input type="hidden" name="grouptopics" value="<!--{$sGrouptopics}-->">
-		<input type="hidden" name="group_id" value="<!--{$nGroupid}-->">
-	</form>
-</div>
+	<!--<include file="grouptopicadmin+footer" />-->

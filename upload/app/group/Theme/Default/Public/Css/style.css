@@ -89,6 +89,16 @@ Description: Group应用模块CSS
 [/CURSCRIPT]
 
 /**===============================
+           帖子管理
+================================*/
+[CURSCRIPT=group::grouptopicadmin]
+a#moderate_reason{font-size:14px;line-heigth:14px;font-weight:bold;}
+a#moderate_reason:hover{text-decoration:none;}
+.moderatereason_title{margin-bottom:5px;}
+.moderatereason_title .btn-group{background:none;margin:0px;heigth:5px;}
+[/CURSCRIPT]
+
+/**===============================
            首页和小组分类
 ================================*/
 [CURSCRIPT=group::public::index,group::public::group]
