@@ -1,7 +1,21 @@
 <!--<include file="grouptopic+viewheader" />-->
 
+<script src="<!--{:__PUBLIC__}-->/js/avatartips/CJL.0.1.min.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/avatartips/RelativePosition.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/avatartips/FixedTips.js"></script>
 
-			
+<!--{script}-->
+$(function(){
+	var oFixedTips=new FixedTips("grouptopicview_tip");
+	$$A.forEach($$("grouptopicview_list").getElementsByTagName("center"),function(o){
+		oFixedTips.add(o.getElementsByTagName("img")[0],{
+				relative: { customLeft: -12, customTop: -13},
+				onShow: function(){ oFixedTips.tip.innerHTML = o.innerHTML;}
+		});
+	});
+});
+<!--{/script}-->
+
 			<div class="span<!--{if $nSide==2}-->9<!--{d*else}-->12<!--{/if}-->">
 				<div class="floor floor_headerpost">
 					<table width="100%" class="floor_table">
@@ -149,10 +163,11 @@
 											</ul>
 										</div>
 										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
-														[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]
-														<!--{d*else}-->
-														[默认分类]<!--{/if}-->&nbsp;<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
-														<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}--></h1>
+											[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]
+											<!--{d*else}-->
+											[默认分类]<!--{/if}-->&nbsp;<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
+											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
+										</h1>
 									</div>
 									<div class="floor_top_tips">
 										<span class="floor_copy" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','楼层复制成功');">楼主<sup>#</sup></span>
@@ -180,8 +195,8 @@
 										<!--{if $GLOBALS['___login___']!==false}-->
 										<textarea class="grouptopiccomment_quickmessage" name="grouptopiccomment_content" id="grouptopiccomment_quickmessage" placeholder="我也说两句" rows="2" cols="10"></textarea>
 										<!--{d*else}-->
-										<div style="background:#F5F5F5;padding:5px;width:70%;">
-											<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:25px 0;">
+										<div class="commoncommentform_needloginbox">
+											<div class="commoncommentform_needloginboxinner">
 												<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a> | 
 												<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">用户注册</a>
 											</div>
@@ -200,15 +215,16 @@
 									</div>
 
 									<div class="extend_tool">
-									<em class="left">
+										<em class="left">
 											<a class="fastre" href="" onclick="">回复</a>
 											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
-											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'])}-->">编辑</a></em>
+											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'])}-->">编辑</a>
 											<!--{/if}-->
-											<p class="right">
+										</em>
+										<p class="right">
 											<a href="" onclick="">举报</a>
-											</p>
-											</div>
+										</p>
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -361,15 +377,16 @@
 									</div>
 
 									<div class="extend_tool">
-									<em class="left">
+										<em class="left">
 											<a class="fastre" href="" onclick="">回复</a>
 											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
-											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑</a></em>
+											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑</a>
 											<!--{/if}-->
-											<p class="right">
+										</em>
+										<p class="right">
 											<a href="" onclick="">举报</a>
-											</p>
-											</div>
+										</p>
+									</div>
 								</td>
 							</tr>
 							<tr>

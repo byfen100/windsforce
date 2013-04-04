@@ -1,13 +1,5 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
-<!--{style}-->
-.extend_tool{border-top:1px dashed #CDCDCD;padding:10px 0px 0px 5px;}
-.extend_tool em a{padding:5px 10px 5px 25px;}
-
-.fastre{background:url('<!--{:__APPPUB__}-->/Images/fastreply.gif') no-repeat 0 50%;}
-.editp{background:url('<!--{:__APPPUB__}-->/Images/edit.gif') no-repeat 4px 50%;}
-<!--{/style}-->
-
 <!--{script}-->
 function setGrouptopicstyle(nStyle){
 	Dyhb.AjaxSend(D.U('group://grouptopic/set_grouptopicstyle?style='+nStyle),'','',completeSet);
@@ -33,23 +25,12 @@ function completeSet(data,status){
 
 <script src="<!--{:__APPPUB__}-->/Js/moderator.js"></script>
 <script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
-<script src="<!--{:__PUBLIC__}-->/js/avatartips/CJL.0.1.min.js"></script>
-<script src="<!--{:__PUBLIC__}-->/js/avatartips/RelativePosition.js"></script>
-<script src="<!--{:__PUBLIC__}-->/js/avatartips/FixedTips.js"></script>
 
 <!--{:Core_Extend::editorInclude()}-->
 <!--{:Core_Extend::emotion()}-->
 
 <!--{script}-->
 $(function(){
-	var oFixedTips=new FixedTips("grouptopicview_tip");
-	$$A.forEach($$("grouptopicview_list").getElementsByTagName("center"),function(o){
-		oFixedTips.add(o.getElementsByTagName("img")[0],{
-				relative: { customLeft: -12, customTop: -13},
-				onShow: function(){ oFixedTips.tip.innerHTML = o.innerHTML;}
-		});
-	});
-	
 	<!--{if $GLOBALS['___login___']!==false}-->
 	editor=loadEditorThin('grouptopiccomment_message');
 	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
@@ -73,13 +54,6 @@ $(function(){
 
 	$('.grouptopiccontent_box').emotionsToHtml();
 });
-
-function login_handle(data,status){
-	if(status==1){
-		sUrl='<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->';
-		setTimeout("window.location=sUrl;",1000);
-	}
-}
 
 function closeQuickreplay(){
 	$("#grouptopiccomment_reply").css("display","none");

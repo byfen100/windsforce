@@ -11,7 +11,7 @@
 						<ul id="new_grouptopic_box" class="new_grouptopic_box">
 							<!--{if is_array($arrNewGrouptopics)}-->
 							<!--<foreach for=arrNewGrouptopics value=oNewGrouptopic>-->
-							<li><a href=""><!--{$oNewGrouptopic['grouptopic_title']|G+subString=0,30}--></a></li>
+							<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oNewGrouptopic['grouptopic_id'])}-->"><!--{$oNewGrouptopic['grouptopic_title']|G+subString=0,30}--></a></li>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->">我要发布</a></li>
@@ -26,7 +26,7 @@
 						<ul id="hot_grouptopic_box" class="hot_grouptopic_box">
 							<!--{if is_array($arrHotGrouptopics)}-->
 							<!--<foreach for=arrHotGrouptopics value=oHotGrouptopic>-->
-							<li><a href=""><!--{$oHotGrouptopic['grouptopic_title']|G+subString=0,30}--></a></li>
+							<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oHotGrouptopic['grouptopic_id'])}-->"><!--{$oHotGrouptopic['grouptopic_title']|G+subString=0,30}--></a></li>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGrouptopic->group_id)}-->">我要发布</a></li>

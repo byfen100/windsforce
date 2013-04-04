@@ -3,29 +3,38 @@
 				<div>
 					<a onclick="modTopicdelete();" href="javascript:void(0);">删除主题</a>
 					<span class="pipe">|</span>
-					<a onclick="modTopicdelete();" href="javascript:void(0);">关闭</a>
+					<!--{if $oGrouptopic['grouptopic_isclose']==0}-->
+					<a onclick="modTopicclose(1);" href="javascript:void(0);">关闭</a>
+					<!--{d*else}-->
+					<a onclick="modTopicclose(0);" href="javascript:void(0);">打开</a>
+					<!--{/if}-->
 					<span class="pipe">|</span>
-					<a onclick="modTopicdelete();" href="javascript:void(0);">置顶</a>
+					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']==0}-->1<!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">置顶</a>
 					<span class="pipe">|</span>
-					<a onclick="modTopicdelete();" href="javascript:void(0);">精华</a>
+					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']==0}-->1<!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">精华</a>
 					<span class="pipe">|</span>
-					<a onclick="modTopicdelete();" href="javascript:void(0);">隐藏</a>
+					<!--{if $oGrouptopic['grouptopic_status']==0}-->
+					<a onclick="modTopicstatus(1);" href="javascript:void(0);">显示</a>
+					<!--{d*else}-->
+					<a onclick="modTopicstatus(0);" href="javascript:void(0);">隐藏</a>
+					<!--{/if}-->
 					<span class="pipe">|</span>
-					<a onclick="modTopicdelete();" href="javascript:void(0);">移动</a>
+					<a onclick="modTopiccategory(<!--{$oGrouptopic['grouptopiccategory_id']}-->);" href="javascript:void(0);">分类</a>
 					<span class="pipe">|</span>
-					<a onclick="modTopicdelete();" href="javascript:void(0);">分类</a>
+					<a onclick="modTopictag();" href="javascript:void(0);">标签</a>
 					<span class="pipe">|</span>
-					<a onclick="modTopicdelete();" href="javascript:void(0);">标签</a>
+					<a onclick="modTopiccolor();" href="javascript:void(0);">高亮</a>
 				</div>
 			</div>
 			<!--{/if}-->
+
 			<div class="span12">
 				<div class="floor">
 					<table width="100%" class="floor_table floor_footerpostcontenttable">
 						<tr>
-									<td class="floor_left" width="350px" style="background:#378C32;padding:5px 10px;color:#fff;">快捷回复</td>
-									<td class="floor_right" style="background:#378C32;padding:5px 10px;color:#fff;"></td>
-								</tr>
+							<td class="floor_left floor_footerposttitle" width="350px">快捷回复</td>
+							<td class="floor_right floor_footerposttitle"></td>
+						</tr>
 						<tr>
 							<td class="floor_left floor_footerpostcontenttd1" width="350px">
 								<div class="avatar">
@@ -45,8 +54,8 @@
 										<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
 									</div>
 									<!--{d*else}-->
-									<div style="background:#F5F5F5;padding:10px;">
-										<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:45px 0">
+									<div class="commoncommentform_needloginbox">
+										<div class="commoncommentform_needloginboxinner">
 											<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a> | 
 											<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">用户注册</a>
 										</div>

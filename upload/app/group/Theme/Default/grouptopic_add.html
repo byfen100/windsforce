@@ -86,12 +86,12 @@ function reloadCategory(){
 					</li>
 				</ul>
 			</div>
-			<form method='post' name="grouptopic_form" id="grouptopic_form" enctype="multipart/form-data">
+
+			<form method='post' name="grouptopic_form" id="grouptopic_form">
 				<div class="span10">
 					<!--{if empty($nGroupid)}-->
 					<label>我的小组</label>
 					<select name="group_id" id="group_id" onchange="reloadCategory();">
-						
 						<!--<foreach for=arrGroups value=oGroup>-->
 						<option value="<!--{$oGroup['group_id']}-->"><!--{$oGroup['group_nikename']}--></option>
 						<!--</foreach>-->
@@ -108,8 +108,9 @@ function reloadCategory(){
 						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
 					</div>
 					<div id="emotion_parentcontainer">
-					<textarea name="grouptopic_content" id="grouptopic_content" style="height:350px;width:100%;padding:0;margin:0;"><!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_content}--><!--{/if}--></textarea>
+						<textarea name="grouptopic_content" id="grouptopic_content" style="height:350px;width:100%;padding:0;margin:0;"><!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_content}--><!--{/if}--></textarea>
 					</div>
+
 					<div class="grouptopic_tabs">
 						<ul id="grouptopic_tabcontent" class="nav nav-tabs">
 							<li class="active"><a href="#grouptopiccategory" data-toggle="tab">帖子分类</a></li>
@@ -118,6 +119,7 @@ function reloadCategory(){
 							<li><a href="#tags" data-toggle="tab">帖子标签</a></li></li>
 						</ul>
 						<div id="grouptopic_tabcontent" class="tab-content">
+							
 							<div class="tab-pane fade in active alert alert-success" id="grouptopiccategory">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
@@ -133,6 +135,7 @@ function reloadCategory(){
 									</tr>
 								</table>
 							</div>
+							
 							<div class="tab-pane fade alert alert-success" id="thumb">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
@@ -143,6 +146,7 @@ function reloadCategory(){
 									</tr>
 								</table>
 							</div>
+							
 							<div class="tab-pane fade alert alert-success" id="price">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
@@ -153,6 +157,7 @@ function reloadCategory(){
 									</tr>
 								</table>
 							</div>
+							
 							<div class="tab-pane fade alert alert-success" id="tags">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
@@ -174,6 +179,7 @@ function reloadCategory(){
 						</div>
 					</div>
 				</div>
+
 				<div class="span2">
 					<div id="grouptopic_more" class="grouptopic_more">
 						<h3 class="grouptopicmore_title">附加选项</h3>
@@ -210,6 +216,7 @@ function reloadCategory(){
 						</label>
 					</div>
 				</div>
+
 				<div class="span12" style="margin-top:-20px;">
 					<div class="form-actions">
 						<!--{if !empty($nGroupid)}-->
