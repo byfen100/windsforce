@@ -9,6 +9,9 @@ class SessionModel extends CommonModel{
 	static public function init__(){
 		return array(
 			'table_name'=>'session',
+			'autofill'=>array(
+				array('session_ip','getIp','create','callback'),
+			),
 		);
 	}
 
@@ -19,6 +22,10 @@ class SessionModel extends CommonModel{
 
 	static function M(){
 		return ModelMeta::instance(__CLASS__);
+	}
+
+	protected function getIp(){
+		return G::getIp();
 	}
 
 }

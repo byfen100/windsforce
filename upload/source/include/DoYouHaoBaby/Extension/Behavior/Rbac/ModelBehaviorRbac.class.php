@@ -129,7 +129,8 @@ class ModelBehaviorRbac extends ModelBehavior{
 	}
 
 	public function tryToDeleteOldSession($nUserId){
-		SessionModel::M()->deleteWhere("`user_id`={$nUserId}");
+		$sIp=G::getIp();
+		SessionModel::M()->deleteWhere("`user_id`={$nUserId} OR (`user_id`=0 AND `session_ip`=>'{$sIp}')");
 	}
 
 	public function getAuthData($sUserModel=null){
@@ -501,7 +502,8 @@ class ModelBehaviorRbac extends ModelBehavior{
 			return false;
 		}
 
-		$oSession=SessionModel::M()->deleteWhere("`session_auth_key`='{$sAuthKey}' OR($nUserId<>0 AND `user_id`=$nUserId)");// 删除SESSION
+		$sIp=G::getIp();
+		$oSession=SessionModel::M()->deleteWhere("`session_hash`='{$sHash}' OR($nUserId<>0 AND `user_id`={$nUserId} OR(`user_id`=0 AND `session_ip`=>'{$sIp}'))");// 删除SESSION
 
 		if($bInsert){// 新插入Session数据
 			$oSession=new SessionModel();

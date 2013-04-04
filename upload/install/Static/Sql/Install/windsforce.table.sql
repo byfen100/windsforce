@@ -951,6 +951,7 @@ CREATE TABLE `#@__session` (
   `session_hash` varchar(6) NOT NULL COMMENT 'HASH',
   `session_auth_key` varchar(32) NOT NULL COMMENT 'AUTH_KEY',
   `user_id` int(10) NOT NULL COMMENT '用户ID',
+  `session_ip` varchar(40) NOT NULL COMMENT '登录IP地址',
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
