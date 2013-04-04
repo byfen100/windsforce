@@ -4,12 +4,17 @@
 var oEditNewattachmentcategory;
 
 function editAttachmentcategory(id){
-	var sHtml = $.ajax({
-		url: D.U('home://attachment/edit_attachmentcategory?id='+id),
-		async: false
+	var sHtml=$.ajax({
+		url:D.U('home://attachment/edit_attachmentcategory?id='+id),
+		async:false
 	}).responseText;
 
-	oEditNewattachmentcategory=windsforceAlert(sHtml,'<!--<lang package='Template/Attachment'>-->编辑专辑<!--</lang>-->','',saveAttachmentcategory,'',600,300);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oEditNewattachmentcategory=windsforceAlert(sHtml,'<!--<lang package='Template/Attachment'>-->编辑专辑<!--</lang>-->','',saveAttachmentcategory,'',600,300);
+	}
 }
 
 function saveAttachmentcategory(){
@@ -54,12 +59,17 @@ function deleteAttachmentcategory(id){
 var oEditCreateNewattachmentcategory;
 
 function createAttachmentcategory(){
-	var sHtml = $.ajax({
-		url: D.U('home://attachment/new_attachmentcategory'),
-		async: false
+	var sHtml=$.ajax({
+		url:D.U('home://attachment/new_attachmentcategory'),
+		async:false
 	}).responseText;
 
-	oEditCreateNewattachmentcategory=windsforceAlert(sHtml,'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oEditCreateNewattachmentcategory=windsforceAlert(sHtml,'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
+	}
 }
 
 function saveNewattachmentcategory(){

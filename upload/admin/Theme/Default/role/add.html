@@ -30,11 +30,18 @@ function complete(data,status){
 
 function ajaxSelect(){
 	$("#ajaxSelect").css('display','block');
-	var html = $.ajax({
-		url: "<!--{:Dyhb::U('role/select')}-->",
-		async: false
+
+	var sHtml=$.ajax({
+		url:"<!--{:Dyhb::U('role/select')}-->",
+		async:false
 	}).responseText;
-	$("#ajaxSelect").html(html);
+
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		$("#ajaxSelect").html(sHtml);
+	}
 }
 <!--{/script}-->
 

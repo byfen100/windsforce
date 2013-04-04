@@ -3,9 +3,9 @@
 
 <!--{script}-->
 $(function(){
-	var sHtml = $.ajax({
-		url: D.U('home://attachment/get_ajaximg&id=<!--{$oAttachment['attachment_id']}-->&cid=<!--{$oAttachment['attachmentcategory_id']}-->&uid=<!--{$oAttachment['user_id']}-->'),
-		async: false
+	var sHtml=$.ajax({
+		url:D.U('home://attachment/get_ajaximg&id=<!--{$oAttachment['attachment_id']}-->&cid=<!--{$oAttachment['attachmentcategory_id']}-->&uid=<!--{$oAttachment['user_id']}-->'),
+		async:false
 	}).responseText;
 
 	arrReturn=eval('('+sHtml+')');

@@ -398,7 +398,7 @@ function ajaxLogin(referer,sUrl){
 		sUrl=D.U('home://public/login?'+(referer?'referer='+encodeURIComponent(referer):''));
 	}
 	
-	var sHtml = $.ajax({
+	var sHtml=$.ajax({
 		url: sUrl,
 		data: 'inajax=1',
 		async: false
@@ -516,11 +516,16 @@ function playout(sUrl,id){
 		async: false
 	}).responseText;
 
-	oEditNewattachmentcategory=windsforceAlert(sHtml,D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oEditNewattachmentcategory=windsforceAlert(sHtml,D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 
-	objDiv=document.getElementById(id);
-	objDiv.innerHTML='';
-	objDiv.style.display='none';
+		objDiv=document.getElementById(id);
+		objDiv.innerHTML='';
+		objDiv.style.display='none';
+	}
 }
 
 function makemedia(strType,strURL,intWidth,intHeight,strID,sBgColor){

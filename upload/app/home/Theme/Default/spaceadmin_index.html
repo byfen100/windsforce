@@ -11,12 +11,17 @@ function update(){
 }
 
 function usersignPreview(){
-	var sHtml = $.ajax({
-		url: _ROOT_+'/index.php?app=home&c=spaceadmin&a=usersign&content='+$('#user_sign').val(),
-		async: false
+	var sHtml=$.ajax({
+		url:_ROOT_+'/index.php?app=home&c=spaceadmin&a=usersign&content='+$('#user_sign').val(),
+		async:false
 	}).responseText;
 
-	$('#usersign_preview').html(sHtml);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		$('#usersign_preview').html(sHtml);
+	}
 }
 
 function stealthOnline(nUserid){

@@ -16,34 +16,49 @@ function goodnum(id){
 function getnewtopic(num){
 	$('#home_topiclist_box').html("<img src='<!--{:__PUBLIC__}-->/images/common/ajax/loading.gif'/>");
 	
-	var sHtml = $.ajax({
-		url: D.U('group://api/new_topic?num='+num),
-		async: false
+	var sHtml=$.ajax({
+		url:D.U('group://api/new_topic?num='+num),
+		async:false
 	}).responseText;
 
-	$('#home_topiclist_box').html(sHtml);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		$('#home_topiclist_box').html(sHtml);
+	}
 }
 
 function gethottopic(num,cutnum,nDate){
 	$('#home_hottopiclist_box').html("<img src='<!--{:__PUBLIC__}-->/images/common/ajax/loading.gif'/>");
 	
-	var sHtml = $.ajax({
-		url: D.U('group://api/hot_topic?num='+num+'&cnum='+cutnum+'&date='+nDate),
-		async: false
+	var sHtml=$.ajax({
+		url:D.U('group://api/hot_topic?num='+num+'&cnum='+cutnum+'&date='+nDate),
+		async:false
 	}).responseText;
 
-	$('#home_hottopiclist_box').html(sHtml);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		$('#home_hottopiclist_box').html(sHtml);
+	}
 }
 
 function getrecommendgroup(num,cutnum){
 	$('#home_recommendgroup_box').html("<img src='<!--{:__PUBLIC__}-->/images/common/ajax/loading.gif'/>");
 	
-	var sHtml = $.ajax({
-		url: D.U('group://api/recommend_group?num='+num+'&cnum='+cutnum),
-		async: false
+	var sHtml=$.ajax({
+		url:D.U('group://api/recommend_group?num='+num+'&cnum='+cutnum),
+		async:false
 	}).responseText;
 
-	$('#home_recommendgroup_box').html(sHtml);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		$('#home_recommendgroup_box').html(sHtml);
+	}
 }
 
 $(document).ready(function(){

@@ -13,7 +13,12 @@ function modTopicdelete(){
 		async: false
 	}).responseText;
 
-	oDeleteNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdeletetopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oDeleteNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdeletetopic,'',400,100);
+	}
 }
 
 function modTopicdeletetopic(){
@@ -36,7 +41,12 @@ function modTopicclose(nStatus){
 		async: false
 	}).responseText;
 
-	oCloseNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicclosetopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oCloseNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicclosetopic,'',400,100);
+	}
 }
 
 function modTopicclosetopic(){
@@ -59,7 +69,12 @@ function modTopicstick(nStatus){
 		async: false
 	}).responseText;
 
-	oStickNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicsticktopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oStickNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicsticktopic,'',400,100);
+	}
 }
 
 function modTopicsticktopic(){
@@ -82,7 +97,12 @@ function modTopicdigest(nStatus){
 		async: false
 	}).responseText;
 
-	oDigestNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdigesttopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oDigestNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdigesttopic,'',400,100);
+	}
 }
 
 function modTopicdigesttopic(){
@@ -105,7 +125,12 @@ function modTopicstatus(nStatus){
 		async: false
 	}).responseText;
 
-	oStatusNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicstatustopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oStatusNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicstatustopic,'',400,100);
+	}
 }
 
 function modTopicstatustopic(){
@@ -128,7 +153,12 @@ function modTopiccategory(nCategoryid){
 		async: false
 	}).responseText;
 
-	oCategoryNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopiccategorytopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oCategoryNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopiccategorytopic,'',400,100);
+	}
 }
 
 function modTopiccategorytopic(){
@@ -151,7 +181,12 @@ function modTopictag(){
 		async: false
 	}).responseText;
 
-	oTagNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopictagtopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oTagNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopictagtopic,'',400,100);
+	}
 }
 
 function modTopictagtopic(){
@@ -174,7 +209,12 @@ function modTopiccolor(){
 		async: false
 	}).responseText;
 
-	oColorNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopiccolortopic,'',400,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oColorNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopiccolortopic,'',400,100);
+	}
 }
 
 function modTopiccolortopic(){

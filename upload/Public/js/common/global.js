@@ -330,12 +330,17 @@ function insertAttachmentthumb(sId,nAttachmentid){
 
 var oEditNewmusic='';
 function addMusic(sFunction){
-	var sHtml = $.ajax({
-		url: _ROOT_+'/index.php?app=home&c=misc&a=music&function='+sFunction,
-		async: false
+	var sHtml=$.ajax({
+		url:_ROOT_+'/index.php?app=home&c=misc&a=music&function='+sFunction,
+		async:false
 	}).responseText;
 
-	oEditNewmusic=windsforceAlert(sHtml,D.L('插入音乐','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oEditNewmusic=windsforceAlert(sHtml,D.L('插入音乐','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
+	}
 }
 
 function insertMusic(editor,sContent){
@@ -351,12 +356,17 @@ function insertMusic(editor,sContent){
 
 var oEditNewvideo='';
 function addVideo(sFunction){
-	var sHtml = $.ajax({
-		url: _ROOT_+'/index.php?app=home&c=misc&a=video&function='+sFunction,
-		async: false
+	var sHtml=$.ajax({
+		url:_ROOT_+'/index.php?app=home&c=misc&a=video&function='+sFunction,
+		async:false
 	}).responseText;
 
-	oEditNewvideo=windsforceAlert(sHtml,D.L('插入视频','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oEditNewvideo=windsforceAlert(sHtml,D.L('插入视频','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
+	}
 }
 
 function insertVideo(editor,sContent){
