@@ -47,7 +47,7 @@ function completeSet(data,status){
 							<div class="carousel-inner">
 								<!--{if is_array($arrGroupthumbtopics)}-->
 								<!--<foreach for=arrGroupthumbtopics value=oGroupthumbtopic>-->
-								<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="280px">
+								<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="height:280px;">
 									<img src="<!--{:Attachment_Extend::getAttachmentPreview($oGroupthumbtopic['grouptopic_thumb'])}-->" style="height:280px;" width="100%">
 									<div class="carousel-caption">
 										<h4><a href="<!--{:Dyhb::U('group://topic@?id='.$oGroupthumbtopic->grouptopic_id)}-->" title="<!--{$oGroupthumbtopic->grouptopic_title}-->"><!--{$oGroupthumbtopic->grouptopic_title|G+subString=0,30}--></a></h4>
@@ -55,13 +55,13 @@ function completeSet(data,status){
 								</div>
 								<!--</foreach>-->
 								<!--{d*else}-->
-								<div class="item active" style="280px">
+								<div class="item active" style="height:280px;">
 									<img src="<!--{:__APPPUB__}-->/Images/slide/1.jpg" style="height:280px;" width="100%">
 									<div class="carousel-caption">
 										<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="注册">注册</a></h4>
 									</div>
 								</div>
-								<div class="item" style="280px">
+								<div class="item" style="height:280px">
 									<img src="<!--{:__APPPUB__}-->/Images/slide/2.jpg" style="height:280px;" width="100%">
 									<div class="carousel-caption">
 										<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="登录">登录</a></h4>

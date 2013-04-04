@@ -21,6 +21,7 @@ return array(
 '1b39aeef0e153017caa4bdcaa6a2819f'=>"你回复的主題不存在",
 '2c80f9cf1069571d9657a6bc17c26da0'=>"你回复的帖子所在小組不存在",
 'ac9f457a57b121512c0cebc126b77b9e'=>"回復成功",
+'98b863dd96e33efeb4c6fc02cd30ca9b'=>"帖子回复",
 )
 
 ?>

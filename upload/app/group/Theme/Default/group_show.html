@@ -1,70 +1,5 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
-		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li>小组首页</li>
-		</ul>
-
-		<div class="row">
-			
-
-
-			<!--{style}-->
-#content_top {
-    background: url("/img/bg-v3.png") repeat scroll 0 0 #F2F2F2;
-    padding: 10px 0 0;
-    position: relative;
-}
-
-.group_title {
-    border-radius: 10px 10px 0 0;
-    height: 150px;
-    position: relative;
-}
-.group_title .gr_info {
-   background-color: rgba(0, 0, 0, 0.5);
-    left: 20px;
-    overflow: hidden;
-    padding: 7px 10px 8px;
-    position: absolute;
-    top: 14px;
-	color:#fff;
-}
-
-.group_title .gr_info a{
-	color:#fff;
-}
-
-.nav-groupmenu li a{color:#fff;}
-.nav-groupmenu li a:hover{color:green;}
-
-
-.pic_ps {
-    background-color: #FFFFFF;
-    border: 1px solid #EEEEEE;
-    height: 360px;
-    margin-top: -100px;
-    padding: 10px;
-    position: absolute;
-    width: 240px;
-	
-}
-.facebox{overflow: hidden;}
-.facebox .face{float:left;}
-.facebox .info{margin-left:60px;}
-.facebox .info h3{margin:0 0 5px 0;}
-.facebox .other{border-top:solid 1px #EEEEEE;margin-top:10px;}
-.facebox .other li{float:left;padding:10px 15px;}
-.facebox .fmore {border-top:solid 1px #EEEEEE;margin-top:10px;padding:0 10px;line-height:30px;}
-
-.bbox{border:solid 1px #DDDDDD;border-radius:5px 5px 5px 5px;margin-bottom:10px;overflow:hidden; background:#FFFFFF;}
-.bbox .btitle{font-weight:bold;font-size:14px;border-bottom:solid 1px #EEEEEE;margin-bottom: 10px;padding-bottom: 5px;position:relative;}
-.bbox .btitle .right{font-size:12px;position:absolute;right:0px;top:0px;font-weight:normal;}
-
-			<!--{/style}-->
-
 <!--{:Core_Extend::editorInclude()}-->
 
 <!--{script}-->
@@ -89,57 +24,24 @@ function grouptopicSubmit(){
 }
 <!--{/script}-->
 
-			<div class="span12" style="margin-top:10px;">
-				
-				<div class="content-top">
-				<div style="background:url('<!--{:__TMPLPUB__}-->/Images/cover_default_02.jpg_960x150.jpg') center repeat ;" im="" gid="12l4c" jw="0" class="group_title">
-				<div class="span12">
+			<ul class="breadcrumb">
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li>小组首页</li>
+			</ul>
 
-				<dl class="gr_info">
-					<dt class="left"><a href=""><img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" width="48" height="48" alt="" class="thumbnail"/></a>
-					</dt>
-					<dd style="padding-left:60px;">
-						<p class="name"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;
-							<!--{if $nGroupuser==0}-->
-							<span id="joingroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" style="color:#000;" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
-							<!--{elseif $nGroupuser==1}-->
-							<span id="leavegroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" style="color:#000;" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
-							<!--{/if}-->
-						</p>
-						<p>共有&nbsp;<span class="label label-success"><!--{$oGroup['group_usernum']}--></span>&nbsp;人关注了此小组
-					</dd>
-				</dl>
-				</div>
-				
-					<div class="" style="position: absolute;bottom:-19px;left:15px;" >
-						<div class="tabb-menu">
-							<ul class="nav nav-tabs nav-groupmenu">
-								<li class="active"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">小组首页</a></li>
-								<li><a href="<!--{:Dyhb::U('group://group/user?gid='.$oGroup['group_id'])}-->">成员</a></li>
-							</ul>
-						</div>
-						</div>
-				</div>
-				</div>
-			</div>
-
-			<div class="span12" style="margin-top:20px;">
+			<!--<include file="group+header" />-->
+			
+			<div class="span12">
 				<div class="row">
 					<div class="span9">
-						<div class="row">
-							<div class="span9">
-								<h4>小组介绍</h4>
-								<div class="" style=" background-color: #F8F8F8;
-    margin: 10px 0 15px;
-    padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
-								<div class="" style="margin-bottom:10px;">
-										<b>创建时间</b>:&nbsp;<span class="label label-success">2012-02-32</span>
-									</div>
-									<!--{$oGroup['group_description']}-->
-									
-									
-								</div>
+						<h4>小组介绍</h4>
+						<div class="group_description" style=" background-color: #F8F8F8;margin: 10px 0 15px;padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
+							<div class="group_createdateline" style="margin-bottom:10px;">
+								<b>创建时间</b>:&nbsp;<span class="label label-success">2012-02-32</span>
 							</div>
+							<!--{$oGroup['group_description']}-->
 						</div>
 
 						<div class="row">
@@ -147,12 +49,12 @@ function grouptopicSubmit(){
 								<ul class="nav nav-pills" id="navPills">
 									<li class="<!--{if empty($nCid)}-->active<!--{/if}-->"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">全部帖子</a></li>
 									<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
-									<!--{if $i<8}-->
+									<!--{if $nI<8}-->
 									<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
 										<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
 									</li>
 									<!--{~array_shift($arrCids)}-->
-									<!--{elseif $i==8}-->
+									<!--{elseif $nI==8}-->
 									<li class="dropdown <!--{if in_array($nCid,$arrCids)}-->active<!--{/if}-->">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
 											更多类别<b class="caret"></b>
@@ -161,7 +63,7 @@ function grouptopicSubmit(){
 											<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
 												<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
 											</li>
-											<!--{elseif $i>8}-->
+											<!--{elseif $nI>8}-->
 											<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
 												<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
 											</li>
@@ -172,6 +74,7 @@ function grouptopicSubmit(){
 									<!--</foreach>-->
 								</ul>
 							</div>
+
 							<div class="span2" style="text-align:right;">
 								<p><a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" class="btn btn-success">发帖</a>&nbsp;
 								<a href="<!--{:Dyhb::U('group://public/index')}-->" class="btn">返回</a>
@@ -246,13 +149,11 @@ function grouptopicSubmit(){
 							</div>
 						</div>
 
-					
-						
 						<div class="floor">
 							<table width="100%" class="floor_table floor_footerpostcontenttable">
 								<tr>
-									<td class="floor_left" width="350px" style="background:#378C32;padding:5px 10px;color:#fff;">快捷发帖</td>
-									<td class="floor_right" style="background:#378C32;padding:5px 10px;color:#fff;"></td>
+									<td class="floor_left floor_footerposttitle" width="350px" >快捷发帖</td>
+									<td class="floor_right floor_footerposttitle"></td>
 								</tr>
 								<tr>
 									<td class="floor_left floor_footerpostcontenttd1" width="350px">
@@ -261,12 +162,9 @@ function grouptopicSubmit(){
 										</div>
 									</td>
 									<td class="floor_right">
-										
-										
 										<form method="post" name="grouptopic_form" id="grouptopic_form" class="grouptopi_form">
 											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:60%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;请输入帖子标题
 											<!--{if $GLOBALS['___login___']!==false}-->
-											
 											<div id="emotion_parentcontainer">
 												<textarea class="input-xlarge" name="grouptopic_content" id="grouptopic_content" rows="8" style="width:100%;"></textarea>
 											</div>
@@ -299,76 +197,107 @@ function grouptopicSubmit(){
 								</tr>
 							</table>
 						</div>
+
 						<div class="space"></div>
 					</div>
+
 					<div class="span3">
 						<div class="commonbox">
-							
-							<div class="pic_ps""><img src="<!--{:__TMPLPUB__}-->/Images/n5qh5_kqyxa4slm5begws7gfjeg5sckzsew_400x422.jpg_240x340.jpg">
+							<div class="groupshow_thumbtopic">
+								<div id="myCarousel" class="carousel slide">
+									<div class="carousel-inner">
+										<!--{if isset($arrGroupthumbtopics)}-->
+										<!--<foreach for=arrGroupthumbtopics value=oGroupthumbtopic>-->
+										<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="height:340px;">
+											<img src="<!--{:Attachment_Extend::getAttachmentPreview($oGroupthumbtopic['grouptopic_thumb'])}-->" style="height:340px;" width="100%">
+											<div class="carousel-caption">
+												<h4><a href="<!--{:Dyhb::U('group://topic@?id='.$oGroupthumbtopic->grouptopic_id)}-->" title="<!--{$oGroupthumbtopic->grouptopic_title}-->"><!--{$oGroupthumbtopic->grouptopic_title|G+subString=0,30}--></a></h4>
+											</div>
+										</div>
+										<!--</foreach>-->
+										<!--{d*else}-->
+										<div class="item active" style="height:340px;">
+											<img src="<!--{:__APPPUB__}-->/Images/groupshow/1.jpg" style="height:340px;" width="100%">
+											<div class="carousel-caption">
+												<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="注册">注册</a></h4>
+											</div>
+										</div>
+										<div class="item" style="height:340px;">
+											<img src="<!--{:__APPPUB__}-->/Images/groupshow/2.jpg" style="height:340px;" width="100%">
+											<div class="carousel-caption">
+												<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="登录">登录</a></h4>
+											</div>
+										</div>
+										<!--{/if}-->
+									</div>
+									<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+									<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+								</div>
 							</div>
 						</div>
 
-
-						<div class="commonbox"style="margin-top:300px;">
+						<div class="commonbox" style="margin-top:300px;">
 							<div class="commonboxtitle">小组<!--{$oGroup['group_roleleader']}--></div>
-							<p><ul class="thumbnails">
-							<!--{if is_array($arrGroupleaders)}-->
-							<!--<foreach for=arrGroupleaders value=oGroupleader>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupleader:user:user_name}-->"></a>
-									<a rel="tooltip" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li>暂时没有发现任何小组长</li>
-							<!--{/if}-->
-						</ul>
-					</p>
+							<p>
+								<ul class="thumbnails">
+									<!--{if is_array($arrGroupleaders)}-->
+									<!--<foreach for=arrGroupleaders value=oGroupleader>-->
+									<li class="span1">
+										<div class="thumbnail">
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupleader:user:user_name}-->"></a>
+											<a rel="tooltip" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></h5></a>
+										</div>
+									</li>
+									<!--</foreach>-->
+									<!--{d*else}-->
+									<li>暂时没有发现任何小组长</li>
+									<!--{/if}-->
+								</ul>
+							</p>
 						</div>
 
 						<div class="commonbox">
 							<div class="commonboxtitle">小组<!--{$oGroup['group_roleadmin']}--></div>
-							<p><ul class="thumbnails">
-							<!--{if is_array($arrGroupadmins)}-->
-							<!--<foreach for=arrGroupadmins value=oGroupadmin>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupadmin['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupadmin:user:user_name}-->"></a>
-									<a rel="tooltip" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li>暂时没有发现任何管理员</li>
-							<!--{/if}-->
-						</ul>
-					</p>
+							<p>
+								<ul class="thumbnails">
+									<!--{if is_array($arrGroupadmins)}-->
+									<!--<foreach for=arrGroupadmins value=oGroupadmin>-->
+									<li class="span1">
+										<div class="thumbnail">
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupadmin['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupadmin:user:user_name}-->"></a>
+											<a rel="tooltip" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></h5></a>
+										</div>
+									</li>
+									<!--</foreach>-->
+									<!--{d*else}-->
+									<li>暂时没有发现任何管理员</li>
+									<!--{/if}-->
+								</ul>
+							</p>
 						</div>
 
 						<div class="commonbox">
 							<div class="commonboxtitle">最新<!--{$oGroup['group_roleuser']}-->&nbsp;<a href="<!--{:Dyhb::U('home://homehelp/index')}-->" title="更多成员"><i class="icon-th-list"></i></a></div>
-							<p><ul class="thumbnails">
-							<!--{if is_array($arrGroupusers)}-->
-							<!--<foreach for=arrGroupusers value=oGroupuser>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupuser['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupuser:user:user_name}-->"></a>
-									<a rel="tooltip" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li>暂时没有发现任何成员</li>
-							<!--{/if}-->
-						</ul>
-					</p>
+							<p>
+								<ul class="thumbnails">
+									<!--{if is_array($arrGroupusers)}-->
+									<!--<foreach for=arrGroupusers value=oGroupuser>-->
+									<li class="span1">
+										<div class="thumbnail">
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupuser['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupuser:user:user_name}-->"></a>
+											<a rel="tooltip" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></h5></a>
+										</div>
+									</li>
+									<!--</foreach>-->
+									<!--{d*else}-->
+									<li>暂时没有发现任何成员</li>
+									<!--{/if}-->
+								</ul>
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 <!--<include file="Core_Extend::template('footer')" />-->

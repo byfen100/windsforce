@@ -1,192 +1,81 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
-		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li>小组首页</li>
-		</ul>
-
-		<div class="row">
+			<ul class="breadcrumb">
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="小组">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li>小组成员</li>
+			</ul>
 			
-
-
-			<!--{style}-->
-#content_top {
-    background: url("/img/bg-v3.png") repeat scroll 0 0 #F2F2F2;
-    padding: 10px 0 0;
-    position: relative;
-}
-
-.group_title {
-    border-radius: 10px 10px 0 0;
-    height: 150px;
-    position: relative;
-}
-.group_title .gr_info {
-   background-color: rgba(0, 0, 0, 0.5);
-    left: 20px;
-    overflow: hidden;
-    padding: 7px 10px 8px;
-    position: absolute;
-    top: 14px;
-	color:#fff;
-}
-
-.group_title .gr_info a{
-	color:#fff;
-}
-
-.nav-groupmenu li a{color:#fff;}
-.nav-groupmenu li a:hover{color:green;}
-
-
-.pic_ps {
-    background-color: #FFFFFF;
-    border: 1px solid #EEEEEE;
-    height: 360px;
-    margin-top: -100px;
-    padding: 10px;
-    position: absolute;
-    width: 240px;
-	
-}
-.facebox{overflow: hidden;}
-.facebox .face{float:left;}
-.facebox .info{margin-left:60px;}
-.facebox .info h3{margin:0 0 5px 0;}
-.facebox .other{border-top:solid 1px #EEEEEE;margin-top:10px;}
-.facebox .other li{float:left;padding:10px 15px;}
-.facebox .fmore {border-top:solid 1px #EEEEEE;margin-top:10px;padding:0 10px;line-height:30px;}
-
-.bbox{border:solid 1px #DDDDDD;border-radius:5px 5px 5px 5px;margin-bottom:10px;overflow:hidden; background:#FFFFFF;}
-.bbox .btitle{font-weight:bold;font-size:14px;border-bottom:solid 1px #EEEEEE;margin-bottom: 10px;padding-bottom: 5px;position:relative;}
-.bbox .btitle .right{font-size:12px;position:absolute;right:0px;top:0px;font-weight:normal;}
-
-			<!--{/style}-->
-
-
-<!--{style}-->
-.box{background-color:#fff;padding:10px;margin:0 0 20px 0;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0px 2px rgba(0,0,0,0.05);-moz-box-shadow:0 0px 2px rgba(0,0,0,0.1);box-shadow:0 0px 2px rgba(0,0,0,0.05)}.box h2.title{font-size:12px;margin:0 -10px;padding:0 10px;margin-bottom:8px;color:#999;line-height:100%;border-bottom:1px solid #ddd;padding-bottom:8px}.box_gray{background:#F5F5F5}
-
-#sections h2{font-size:12px;color:#999;line-height:100%;margin-bottom:10px;text-align:left;}
-#sections ul{list-style:none;margin-bottom:0;margin:0}
-#sections label{line-height:100%;padding-top:8px;}
-#sections label a{font-size:12px;color:#000;}
-
-#sections li{line-height:200%;font-size:14px;padding:8px 10px;margin:0 -10px;border-top:1px solid #DDD;position:relative;overflow:auto}
-
-#sections li label{font-size:12px;color:#999;display:inline-block;width:120px;margin-right:-130px;padding-right:10px;float:left;text-align:right}
-
-#sections li span.nodes{font-size:12px;color:#999;}
-#sections li span.nodes{float:left;margin-left:130px}
-
-#sections li a{margin-right:10px}
-#hot_locations h2{font-size:12px;color:#999;line-height:100%;text-align:center;border-bottom:1px solid #DDD;margin:0 -10px;padding:0 10px 10px 10px}
-#hot_locations ul{list-style:none;margin:0;padding:0;text-align:center}
-
-.child_groupcategory a{font-weight:normal;font-size:12px;}
-<!--{/style}-->
-			<div class="span12" style="margin-top:10px;">
-				
-				<div class="content-top">
-				<div style="background:url('<!--{:__TMPLPUB__}-->/Images/cover_default_02.jpg_960x150.jpg') center repeat ;" im="" gid="12l4c" jw="0" class="group_title">
-				<div class="span12">
-
-				<dl class="gr_info">
-					<dt class="left"><a href=""><img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" width="48" height="48" alt="" class="thumbnail"/></a>
-					</dt>
-					<dd style="padding-left:60px;">
-						<p class="name"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;
-							<!--{if $nGroupuser==0}-->
-							<span id="joingroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" style="color:#000;" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
-							<!--{elseif $nGroupuser==1}-->
-							<span id="leavegroup_<!--{$oGroup['group_id']}-->" style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" style="color:#000;" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
-							<!--{/if}-->
-						</p>
-						<p>共有&nbsp;<span class="label label-success"><!--{$oGroup['group_usernum']}--></span>&nbsp;人关注了此小组
-					</dd>
-				</dl>
-				</div>
-				
-					<div class="" style="position: absolute;bottom:-19px;left:15px;" >
-						<div class="tabb-menu">
-							<ul class="nav nav-tabs nav-groupmenu">
-								<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">小组首页</a></li>
-								<li class="active"><a href="<!--{:Dyhb::U('group://group/user?gid='.$oGroup['group_id'])}-->">成员</a></li>
-							</ul>
-						</div>
-						</div>
-				</div>
-				</div>
-			</div>
-
+			<!--<include file="group+header" />-->
+			
 			<div class="span12" style="margin-top:20px;">
 				<div class="row">
 					<div class="span12">
-
-						<div id="" class="box clearfix">
+						<div id="groupuser_leaders" class="commonbox_mini clearfix">
 							<h2 class="title">小组<!--{$oGroup['group_roleleader']}--></h2>
-							<p><ul class="thumbnails">
-							<!--{if is_array($arrGroupleaders)}-->
-							<!--<foreach for=arrGroupleaders value=oGroupleader>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupleader:user:user_name}-->"></a>
-									<a rel="tooltip" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li>暂时没有发现任何小组长</li>
-							<!--{/if}-->
-						</ul>
-					</p>
+							<p>
+								<ul class="thumbnails">
+									<!--{if is_array($arrGroupleaders)}-->
+									<!--<foreach for=arrGroupleaders value=oGroupleader>-->
+									<li class="span1">
+										<div class="thumbnail">
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupleader:user:user_name}-->"></a>
+											<a rel="tooltip" title="组长 <!--{$oGroupleader:user:user_name}--> - <!--{$oGroupleader:group:group_nikename}--> | 创建时间 <!--{$oGroupleader['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupleader['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></h5></a>
+										</div>
+									</li>
+									<!--</foreach>-->
+									<!--{d*else}-->
+									<li>暂时没有发现任何小组长</li>
+									<!--{/if}-->
+								</ul>
+							</p>
 						</div>
 
-						<div id="" class="box clearfix">
+						<div id="groupuser_admins" class="commonbox_mini clearfix">
 							<h2 class="title">小组<!--{$oGroup['group_roleadmin']}--></h2>
-							<p><ul class="thumbnails">
-							<!--{if is_array($arrGroupadmins)}-->
-							<!--<foreach for=arrGroupadmins value=oGroupadmin>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupadmin['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupadmin:user:user_name}-->"></a>
-									<a rel="tooltip" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li>暂时没有发现任何管理员</li>
-							<!--{/if}-->
-						</ul>
-					</p>
+							<p>
+								<ul class="thumbnails">
+									<!--{if is_array($arrGroupadmins)}-->
+									<!--<foreach for=arrGroupadmins value=oGroupadmin>-->
+									<li class="span1">
+										<div class="thumbnail">
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupadmin['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupadmin:user:user_name}-->"></a>
+											<a rel="tooltip" title="组长 <!--{$oGroupadmin:user:user_name}--> - <!--{$oGroupadmin:group:group_nikename}--> | 创建时间 <!--{$oGroupadmin['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupadmin['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></h5></a>
+										</div>
+									</li>
+									<!--</foreach>-->
+									<!--{d*else}-->
+									<li>暂时没有发现任何管理员</li>
+									<!--{/if}-->
+								</ul>
+							</p>
 						</div>
 						
-						<div id="" class="box clearfix">
+						<div id="groupuser_users" class="commonbox_mini clearfix">
 							<h2 class="title">小组<!--{$oGroup['group_roleuser']}--></h2>
-							<p><ul class="thumbnails">
-							<!--{if is_array($arrGroupusers)}-->
-							<!--<foreach for=arrGroupusers value=oGroupuser>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupuser['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupuser:user:user_name}-->"></a>
-									<a rel="tooltip" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li>暂时没有发现任何成员</li>
-							<!--{/if}-->
-						</ul>
-					</p>
+							<p>
+								<ul class="thumbnails">
+									<!--{if is_array($arrGroupusers)}-->
+									<!--<foreach for=arrGroupusers value=oGroupuser>-->
+									<li class="span1">
+										<div class="thumbnail">
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oGroupuser['user_id'],'small' )}-->" width="100%" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" alt="组长 <!--{$oGroupuser:user:user_name}-->"></a>
+											<a rel="tooltip" title="组长 <!--{$oGroupuser:user:user_name}--> - <!--{$oGroupuser:group:group_nikename}--> | 创建时间 <!--{$oGroupuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('group://space@?id='.$oGroupuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></h5></a>
+										</div>
+									</li>
+									<!--</foreach>-->
+									<!--{d*else}-->
+									<li>暂时没有发现任何成员</li>
+									<!--{/if}-->
+								</ul>
+							</p>
 
-					<!--{$sPageNavbar}-->
+							<!--{$sPageNavbar}-->
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 <!--<include file="Core_Extend::template('footer')" />-->

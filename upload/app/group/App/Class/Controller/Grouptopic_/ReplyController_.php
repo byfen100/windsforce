@@ -19,8 +19,30 @@ class ReplyController extends Controller{
 		}
 
 		$this->assign('oGrouptopic',$oGrouptopic);
+		$this->assign('oGroup',$oGrouptopic->group);
+
+		// 取得用户是否加入了小组
+		$this->get_groupuser($oGrouptopic->group->group_id);
 
 		$this->display('grouptopic+reply');
+	}
+
+	protected function get_groupuser($nGroupid){
+		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+
+		$this->assign('nGroupuser',$nGroupuser);
+	}
+
+	public function reply_title_(){
+		return Dyhb::L('帖子回复','Controller/Grouptopic');
+	}
+
+	public function reply_keywords_(){
+		return $this->reply_title_();
+	}
+
+	public function reply_description_(){
+		return $this->reply_title_();
 	}
 
 }

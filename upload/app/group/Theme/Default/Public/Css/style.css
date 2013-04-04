@@ -133,6 +133,28 @@ Description: Group应用模块CSS
 [/CURSCRIPT]
 
 /**===============================
+           小组公用头部
+================================*/
+[CURSCRIPT=group::group::show,group::group::user,group::grouptopic::view,group::grouptopic::reply,group::grouptopic::add,group::grouptopic::edit]
+#groupcontent_commontop{padding: 10px 0 0;position: relative;}
+.group_commontitle{border-radius: 10px 10px 0 0;height: 150px;position: relative;}
+.group_commontitle .group_info{background-color: rgba(0, 0, 0, 0.5);left: 20px;overflow: hidden;padding: 7px 10px 8px;position: absolute;top: 14px;color:#fff;}
+.group_commontitle .group_info a{color:#fff;}
+.group_joinleave{color:#000;background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;}
+.group_commonmenu{position: absolute;bottom:-18px;left:15px;}
+.group_commonmenu .nav-groupmenu li a{color:#fff;}
+.group_commonmenu .nav-groupmenu li a:hover{color:green;}
+.group_commonmenu .nav-groupmenu .active a{color:#999;font-weight:bold;}
+[/CURSCRIPT]
+
+/**===============================
+           小组查看
+================================*/
+[CURSCRIPT=group::group::show]
+.groupshow_thumbtopic{background-color: #FFFFFF;border: 1px solid #EEEEEE;height: 345px;margin-top: -100px;padding: 10px;position: absolute;width: 240px;}
+[/CURSCRIPT]
+
+/**===============================
            添加和编辑帖子
 ================================*/
 [CURSCRIPT=group::grouptopic::add,group::grouptopic::edit]

@@ -404,7 +404,12 @@ function ajaxLogin(referer,sUrl){
 		async: false
 	}).responseText;
 
-	windsforceAlert(sHtml,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		windsforceAlert(sHtml,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	}
 }
 
 function ajaxRegister(referer,sUrl){
@@ -418,7 +423,12 @@ function ajaxRegister(referer,sUrl){
 		async: false
 	}).responseText;
 
-	windsforceAlert(sHtml,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		windsforceAlert(sHtml,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	}
 }
 
 function login_handle(data,status){

@@ -30,10 +30,14 @@ class ViewController extends Controller{
 		if(empty($oGrouptopic['grouptopic_id'])){
 			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
 		}
+		
+		$this->_oGrouptopic=$oGrouptopic;
 
 		$this->assign('oGrouptopic',$oGrouptopic);
+		$this->assign('oGroup',$oGrouptopic->group);
 
-		$this->_oGrouptopic=$oGrouptopic;
+		// 取得用户是否加入了小组
+		$this->get_groupuser($oGrouptopic->group->group_id);
 
 		// 更新点击量
 		$oGrouptopic->grouptopic_views=$oGrouptopic->grouptopic_views+1;
@@ -109,6 +113,12 @@ class ViewController extends Controller{
 		}
 	}
 
+	protected function get_groupuser($nGroupid){
+		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+
+		$this->assign('nGroupuser',$nGroupuser);
+	}
+	
 	public function view_title_(){
 		return $this->_oGrouptopic['grouptopic_title'].' - '.$this->_oGrouptopic->group->group_nikename;
 	}

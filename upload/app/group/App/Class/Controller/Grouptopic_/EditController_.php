@@ -53,10 +53,21 @@ class EditController extends Controller{
 		
 		$this->assign('sTag',$sTag);
 
+		$this->assign('oGroup',$oGrouptopic->group);
+
+		// 取得用户是否加入了小组
+		$this->get_groupuser($oGrouptopic['group_id']);
+
 		$this->assign('oGrouptopic',$oGrouptopic);
 		$this->assign('nGroupid',$oGrouptopic['group_id']);
 
 		$this->display('grouptopic+add');
+	}
+
+	protected function get_groupuser($nGroupid){
+		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+
+		$this->assign('nGroupuser',$nGroupuser);
 	}
 
 	public function edit_title_(){

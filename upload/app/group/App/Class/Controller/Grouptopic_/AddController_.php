@@ -29,6 +29,11 @@ class AddController extends Controller{
 			}
 
 			$this->_oGroup=$oGroup;
+			
+			$this->assign('oGroup',$oGroup);
+
+			// 取得用户是否加入了小组
+			$this->get_groupuser($oGroup['group_id']);
 
 			if($oGroup->group_isopen==0){
 				$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
@@ -68,6 +73,12 @@ class AddController extends Controller{
 		$this->assign('nGroupid',$nGroupid);
 
 		$this->display('grouptopic+add');
+	}
+
+	protected function get_groupuser($nGroupid){
+		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+
+		$this->assign('nGroupuser',$nGroupuser);
 	}
 
 	public function add_title_(){

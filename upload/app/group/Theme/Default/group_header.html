@@ -1,0 +1,34 @@
+		<div class="row">
+			<div class="span12" style="margin-top:10px;margin-bottom:15px;">
+				<div class="groupcontent_commontop">
+					<div style="background:url('<!--{:__APPPUB__}-->/Images/groupbg/5.jpg') center repeat;" class="group_commontitle">
+						<div class="span12">
+							<dl class="group_info">
+								<dt class="left">
+									<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" width="48" height="48" alt="<!--{$oGroup:group_nikename}-->" class="thumbnail"/></a>
+								</dt>
+								<dd style="padding-left:60px;">
+									<p class="name">
+										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;
+										<!--{if $nGroupuser==0}-->
+										<span id="joingroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+										<!--{elseif $nGroupuser==1}-->
+										<span id="leavegroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+										<!--{/if}-->
+									</p>
+									<p>共有&nbsp;<span class="label label-success"><!--{$oGroup['group_usernum']}--></span>&nbsp;人关注了此小组
+								</dd>
+							</dl>
+						</div>
+				
+						<div class="group_commonmenu">
+							<div class="tabb-menu">
+								<ul class="nav nav-tabs nav-groupmenu">
+									<li <!--{if ACTION_NAME==='show'}-->class="active"<!--{/if}-->><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">小组首页</a></li>
+									<li <!--{if ACTION_NAME==='user'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://group/user?gid='.$oGroup['group_id'])}-->">成员</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

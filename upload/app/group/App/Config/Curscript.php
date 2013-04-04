@@ -9,6 +9,7 @@ return array(
 	'public::index'=>'groups',
 	'public::group'=>'groups',
 	'group::show',
+	'group::user',
 	'grouptopic::view'=>'media,comment',
 	'grouptopic::reply'=>'media',
 	'grouptopic::add'=>'media',
