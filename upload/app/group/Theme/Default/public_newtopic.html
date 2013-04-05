@@ -218,7 +218,7 @@
 							<ul>
 								<!--{if is_array($arrHottags)}-->
 								<!--<foreach for=arrHottags value=oHottag>-->
-								<li><a href="<!--{:__ROOT__}-->/index.php?app=group&c=tag&a=show&tag=<!--{$oHottag['grouptopictag_name']|urlencode}-->"><!--{$oHottag['grouptopictag_name']}--></a></li>
+								<li><a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oHottag['grouptopictag_name']),array(),true)}-->"><!--{$oHottag['grouptopictag_name']}--></a></li>
 								<!--</foreach>-->
 								<!--{d*else}-->
 								<li>暂时没有发现任何标签</li>

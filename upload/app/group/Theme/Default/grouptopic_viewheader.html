@@ -31,7 +31,7 @@ function completeSet(data,status){
 
 <!--{script}-->
 $(function(){
-	<!--{if $GLOBALS['___login___']!==false}-->
+	<!--{if $GLOBALS['___login___']!==false && $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']==0}-->
 	editor=loadEditorThin('grouptopiccomment_message');
 	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 	

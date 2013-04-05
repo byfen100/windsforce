@@ -9,8 +9,8 @@ $(function(){
 	var oFixedTips=new FixedTips("grouptopicview_tip");
 	$$A.forEach($$("grouptopicview_list").getElementsByTagName("center"),function(o){
 		oFixedTips.add(o.getElementsByTagName("img")[0],{
-				relative: { customLeft: -12, customTop: -13},
-				onShow: function(){ oFixedTips.tip.innerHTML = o.innerHTML;}
+			relative: { customLeft: -12, customTop: -13},
+			onShow: function(){ oFixedTips.tip.innerHTML = o.innerHTML;}
 		});
 	});
 });
@@ -41,9 +41,14 @@ $(function(){
 									<div class="floor_info">
 										<div class="floor_userinfoname">
 											<div class="floor_userinfonameinner">
+												<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+												匿名
+												<!--{d*else}-->
 												<a target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+												<!--{/if}-->
 											</div>
 										</div>
+										<!--{if $oGrouptopic['grouptopic_isanonymous']==0}-->
 										<div>
 											<center>
 												<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank">
@@ -152,6 +157,7 @@ $(function(){
 											<!--{/if}-->&nbsp;
 											<a rel="nofollow" href="javascript:void(0);" onclick="addMessage('<!--{$oGrouptopic->user_id}-->');"><img src="<!--{:__PUBLIC__}-->/images/common/pmto.gif"/>写私信</a>
 										</div>
+										<!--{/if}-->
 									</div>
 								</td>
 								<td class="floor_right"> 
@@ -167,6 +173,9 @@ $(function(){
 											<!--{d*else}-->
 											[默认分类]<!--{/if}-->&nbsp;<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
 											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
+											<!--{:Group_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
+											<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
+											<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 										</h1>
 									</div>
 									<div class="floor_top_tips">
@@ -177,6 +186,15 @@ $(function(){
 										<div class="grouptopiccontent_box">
 											<!--{$oGrouptopic->grouptopic_content|Core_Extend+ubb}-->
 										</div>
+										
+										<!--{if is_array($arrGrouptopictags)}-->
+										<div class="grouptopictag">
+											<!--<foreach for=arrGrouptopictags value=oGrouptopictag>-->
+											<a title="<!--{$oGrouptopictag['grouptopictag_name']}-->" href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" target="_blank"><!--{$oGrouptopictag['grouptopictag_name']}--></a><!--{if count($arrGrouptopictags)-1!=$key}-->,&nbsp;<!--{/if}-->
+											<!--</foreach>-->
+										</div>
+										<!--{/if}-->
+										
 										<!--{if $oGrouptopic->update_dateline}-->
 										<div class="space"></div>
 										<div class="edit_log">
@@ -190,6 +208,7 @@ $(function(){
 							</tr>
 							<tr>
 								<td class="floor_bottom floor_grouptopictd2" valign="bottom">
+									<!--{if $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']==0}-->
 									<div class="floor_quickreply">
 										<h4 style="font-size:13px;">快速回复</h4>
 										<!--{if $GLOBALS['___login___']!==false}-->
@@ -208,11 +227,15 @@ $(function(){
 										<a href="javascript:void(0);" onclick="closeQuickreplay();"><i class="icon-remove"></i>&nbsp;关闭</a>&nbsp;
 										<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" >进入高级模式&gt;&gt;</a>
 									</div>
+									<!--{/if}-->
+
+									<!--{if $oGrouptopic['grouptopic_usesign']==1 && $oGrouptopic['grouptopic_isanonymous']==1}-->
 									<div class="space"></div>
 									<div class="signature">
 										<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
 										<!--{if $sUsersign}--><!--{$sUsersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
 									</div>
+									<!--{/if}-->
 
 									<div class="extend_tool">
 										<em class="left">
@@ -366,15 +389,25 @@ $(function(){
 										<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
 										<span>回复于&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
 									</div>
-									<div class="grouptopiccontent_box"><!--{$oComment->grouptopiccomment_content|Core_Extend+ubb}--></div>
+									<div class="grouptopiccontent_box">
+										<!--{if $oGrouptopic['grouptopic_hiddenreplies']==1}-->
+										<div class="locked">此回帖仅作者可见</div>
+										<!--{/if}-->
+										
+										<!--{if $oGrouptopic['grouptopic_hiddenreplies']==0 || ($oGrouptopic['grouptopic_hiddenreplies']==1 && $GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id'])}-->
+										<!--{$oComment->grouptopiccomment_content|Core_Extend+ubb}-->
+										<!--{/if}-->
+									</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="floor_bottom" valign="bottom">
+									<!--{if $oGrouptopic['grouptopic_usesign']==1}-->
 									<div class="signature">
 										<!--{~$sUsersign=UserModel::getUsernameById($oComment['user_id'],'user_sign')}-->
 										<!--{if $sUsersign}--><!--{$sUsersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
 									</div>
+									<!--{/if}-->
 
 									<div class="extend_tool">
 										<em class="left">

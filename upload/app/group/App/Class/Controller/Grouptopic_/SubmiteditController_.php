@@ -15,6 +15,19 @@ class SubmiteditController extends Controller{
 			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
 		}
 
+		// 处理checkbox
+		$arrCheckbox=array(
+			'grouptopic_usesign','grouptopic_isanonymous','grouptopic_hiddenreplies',
+			'grouptopic_ordertype','grouptopic_allownoticeauthor','grouptopic_iscomment',
+			'grouptopic_sticktopic','grouptopic_addtodigest','grouptopic_isrecommend',
+		);
+
+		foreach($arrCheckbox as $sCheckbox){
+			if(!isset($_POST[$sCheckbox])){
+				$_POST[$sCheckbox]=0;
+			}
+		}
+		
 		$oGrouptopic->grouptopic_updateusername=$GLOBALS['___login___']['user_name'];
 		$oGrouptopic->save(0,'update');
 

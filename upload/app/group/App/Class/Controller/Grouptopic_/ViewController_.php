@@ -52,6 +52,24 @@ class ViewController extends Controller{
 		$oUserprofile=UserprofileModel::F('user_id=?',$oGrouptopic->user_id)->getOne();
 		
 		$this->assign('oUserprofile',$oUserprofile);
+
+		// 读取帖子标签
+		$arrGrouptopictags='';
+		
+		$arrGrouptopictagindexs=GrouptopictagindexModel::F('grouptopic_id=?',$oGrouptopic['grouptopic_id'])->getAll();
+
+		if(is_array($arrGrouptopictagindexs)){
+			$arrTagindex=array();
+			foreach($arrGrouptopictagindexs as $oGrouptopictagindex){
+				$arrTagindex[]=$oGrouptopictagindex['grouptopictag_id'];
+			}
+			
+			if(!empty($arrTagindex)){
+				$arrGrouptopictags=GrouptopictagModel::F()->where(array('grouptopictag_id'=>array('in',$arrTagindex)))->order('create_dateline DESC')->getAll();
+			}
+		}
+		
+		$this->assign('arrGrouptopictags',$arrGrouptopictags);
 		
 		// 回复列表
 		$arrWhere=array();
@@ -64,7 +82,7 @@ class ViewController extends Controller{
 
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
 
-		$arrComments=GrouptopiccommentModel::F()->where($arrWhere)->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrComments=GrouptopiccommentModel::F()->where($arrWhere)->order('create_dateline '.($oGrouptopic['grouptopic_ordertype']==1?'DESC':'ASC'))->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('nEverynum',$nEverynum);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
@@ -72,12 +90,12 @@ class ViewController extends Controller{
 		$this->assign('nPage',$nPage);
 
 		// 热门帖子
-		$arrHotGrouptopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=?',CURRENT_TIMESTAMP-86400,1)->order('grouptopic_comments DESC')->top($GLOBALS['_cache_']['group_option']['grouptopic_hotnum'])->get();
+		$arrHotGrouptopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=? AND group_id=?',CURRENT_TIMESTAMP-86400,1,$oGrouptopic['group_id'])->order('grouptopic_comments DESC')->top($GLOBALS['_cache_']['group_option']['grouptopic_hotnum'])->get();
 		
 		$this->assign('arrHotGrouptopics',$arrHotGrouptopics);
 
 		// 最新帖子
-		$arrNewGrouptopics=GrouptopicModel::F('grouptopic_status=?',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['grouptopic_newnum'])->getAll();
+		$arrNewGrouptopics=GrouptopicModel::F('grouptopic_status=? AND group_id=?',1,$oGrouptopic['group_id'])->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['grouptopic_newnum'])->getAll();
 		
 		$this->assign('arrNewGrouptopics',$arrNewGrouptopics);
 

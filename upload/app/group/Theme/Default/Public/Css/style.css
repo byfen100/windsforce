@@ -130,6 +130,16 @@ Description: Group应用模块CSS
 .grouptopicsnew .grouptopic .grouptopic-content ul p,.grouptopicsnew .grouptopic .grouptopic-content ol p,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ul p,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ol p{margin:0;}
 .grouptopicsnew .grouptopic .grouptopic-content ul li,.grouptopicsnew .grouptopic .grouptopic-content ol li,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ul li,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content ol li{line-height:160%;color:#333;font-size:13px;}
 .grouptopicsnew .grouptopic .grouptopic-content img,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content img{vertical-align:top;}
+
+/* 回帖仅自己可见 */
+.locked{overflow:hidden;margin:10px 0;padding:8px 8px 8px 24px;border:1px dashed #FF9A9A;background:#FFF url('{__ROOT__}/app/group/Static/Images/locked.gif') no-repeat 6px 50%;font-size:12px;zoom:1;}
+.locked:hover background-color:#F7F7F7;}
+.locked strong{color:#F26C4F;}
+.locked a{color:#369;}
+
+/* 帖子标签 */
+.grouptopictag{padding-left:20px;background:url('{__ROOT__}/app/group/Static/Images/tag.gif') no-repeat 0 2px;}
+.grouptopictag a{color:#369;}
 [/CURSCRIPT]
 
 /**===============================

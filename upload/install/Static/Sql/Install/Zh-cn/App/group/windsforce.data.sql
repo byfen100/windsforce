@@ -80,8 +80,8 @@ INSERT INTO `#@__groupcategoryindex` (`group_id`, `groupcategory_id`) VALUES
 -- 转存表中的数据 `windsforce_grouptopic`
 --
 
-INSERT INTO `#@__grouptopic` (`grouptopic_id`, `grouptopiccategory_id`, `group_id`, `user_id`, `grouptopic_username`, `grouptopic_title`, `grouptopic_content`, `grouptopic_comments`, `grouptopic_views`, `grouptopic_loves`, `grouptopic_sticktopic`, `grouptopic_status`, `grouptopic_isclose`, `grouptopic_color`, `grouptopic_iscomment`, `grouptopic_addtodigest`, `grouptopic_isaudit`, `grouptopic_allownoticeauthor`, `grouptopic_ordertype`, `grouptopic_isanonymous`, `grouptopic_usesig`, `grouptopic_smileoff`, `grouptopic_parseurloff`, `grouptopic_hiddenreplies`, `grouptopic_readperm`, `grouptopic_price`, `grouptopic_latestcomment`, `grouptopic_updateusername`, `create_dateline`, `update_dateline`) VALUES
-(1, 0, 1, 1, 'admin', 'Hello world! 欢迎使用WindsForce！', '欢迎大家使用我们的产品，祝你愉快！', 1, 1, 0, 0, 1, 0, '', 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 'a:4:{s:11:"commenttime";i:1355499282;s:9:"commentid";i:1;s:3:"tid";s:1:"1";s:13:"commentuserid";s:1:"1";}', '', 1355499238, 0);
+INSERT INTO `windsforce_grouptopic` (`grouptopic_id`, `grouptopiccategory_id`, `group_id`, `user_id`, `grouptopic_username`, `grouptopic_title`, `grouptopic_content`, `grouptopic_comments`, `grouptopic_views`, `grouptopic_loves`, `grouptopic_sticktopic`, `grouptopic_status`, `grouptopic_isclose`, `grouptopic_color`, `grouptopic_iscomment`, `grouptopic_addtodigest`, `grouptopic_isaudit`, `grouptopic_allownoticeauthor`, `grouptopic_ordertype`, `grouptopic_isanonymous`, `grouptopic_usesign`, `grouptopic_hiddenreplies`, `grouptopic_latestcomment`, `grouptopic_updateusername`, `create_dateline`, `update_dateline`, `grouptopic_thumb`, `grouptopic_isrecommend`) VALUES
+(1, 0, 1, 1, 'admin', 'Hello world! 欢迎使用WindsForce！', '欢迎大家使用我们的产品，祝你愉快！', 1, 1, 0, 0, 1, 0, '', 1, 0, 1, 1, 0, 0, 1, 0, 'a:4:{s:11:"commenttime";i:1355499282;s:9:"commentid";i:1;s:3:"tid";s:1:"1";s:13:"commentuserid";s:1:"1";}', '', 1355499238, 1365070162, 0, 0);
 
 -- --------------------------------------------------------
 

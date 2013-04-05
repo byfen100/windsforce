@@ -185,6 +185,9 @@ function grouptopicSubmit(){
 											<div class="form-actions">
 												<input type="hidden" name="ajax" value="1">
 												<input type="hidden" name="group_id" id="group_id" value="<!--{$oGroup['group_id']}-->">
+												<input type="hidden" name="grouptopic_usesign" value="1">
+												<input type="hidden" name="grouptopic_allownoticeauthor" value="1">
+												<input type="hidden" name="grouptopic_iscomment" value="1">
 												<input id="submit_button" onclick="grouptopicSubmit();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布帖子" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
 												<!--{if $GLOBALS['___login___']!==false}-->
 												&nbsp;<a href="javascript:void(0);" onclick="showMedia();">媒体</a>

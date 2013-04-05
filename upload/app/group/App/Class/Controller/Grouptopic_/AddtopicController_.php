@@ -7,6 +7,27 @@
 class AddtopicController extends Controller{
 
 	public function index(){
+		// 处理checkbox
+		$arrCheckbox=array(
+			'grouptopic_usesign','grouptopic_isanonymous','grouptopic_hiddenreplies',
+			'grouptopic_ordertype','grouptopic_allownoticeauthor','grouptopic_iscomment',
+			'grouptopic_sticktopic','grouptopic_addtodigest','grouptopic_isrecommend',
+		);
+
+		foreach($arrCheckbox as $sCheckbox){
+			if(!isset($_POST[$sCheckbox])){
+				$_POST[$sCheckbox]=0;
+			}
+		}
+		
+		if(!isset($_POST[''])){
+			$_POST['grouptopic_ordertype']=0;
+		}
+
+		if(!isset($_POST[''])){
+			$_POST['grouptopic_allownoticeauthor']=0;
+		}
+	
 		// 保存帖子
 		$oGrouptopic=new GrouptopicModel();
 		$oGrouptopic->save(0);

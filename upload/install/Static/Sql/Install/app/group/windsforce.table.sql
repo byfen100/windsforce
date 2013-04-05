@@ -123,31 +123,30 @@ CREATE TABLE IF NOT EXISTS `#@__grouptopic` (
   `grouptopic_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '帖子是否显示',
   `grouptopic_isclose` int(1) NOT NULL DEFAULT '0' COMMENT '帖子是否关闭帖子',
   `grouptopic_color` char(7) NOT NULL DEFAULT '' COMMENT '帖子高亮颜色',
-  `grouptopic_iscomment` tinyint(1) NOT NULL DEFAULT '0' COMMENT '帖子是否允许评论',
+  `grouptopic_iscomment` tinyint(1) NOT NULL DEFAULT '1' COMMENT '帖子是否允许评论',
   `grouptopic_addtodigest` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否精华帖子',
   `grouptopic_isaudit` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0待审核1审核通过',
-  `grouptopic_allownoticeauthor` tinyint(1) NOT NULL DEFAULT '0' COMMENT '接收回复通知',
+  `grouptopic_allownoticeauthor` tinyint(1) NOT NULL DEFAULT '1' COMMENT '接收回复通知',
   `grouptopic_ordertype` tinyint(1) NOT NULL DEFAULT '0' COMMENT '回帖倒序排列',
   `grouptopic_isanonymous` tinyint(1) NOT NULL DEFAULT '0' COMMENT '使用匿名发帖',
-  `grouptopic_usesig` tinyint(1) NOT NULL DEFAULT '0' COMMENT '使用签名',
-  `grouptopic_smileoff` tinyint(1) NOT NULL DEFAULT '0' COMMENT '禁用表情',
-  `grouptopic_parseurloff` tinyint(1) NOT NULL DEFAULT '0' COMMENT '禁用链接识别',
-  `grouptopic_hiddenreplies` tinyint(1) NOT NULL DEFAULT '0' COMMENT '使用匿名发帖',
-  `grouptopic_readperm` tinyint(3) NOT NULL COMMENT '阅读权限',
-  `grouptopic_price` tinyint(4) NOT NULL DEFAULT '0' COMMENT '帖子售价',
+  `grouptopic_usesign` tinyint(1) NOT NULL DEFAULT '1' COMMENT '使用签名',
+  `grouptopic_hiddenreplies` tinyint(1) NOT NULL DEFAULT '0' COMMENT '回复仅作者可见',
   `grouptopic_latestcomment` varchar(120) NOT NULL COMMENT '最后回复',
   `grouptopic_updateusername` varchar(50) NOT NULL COMMENT '最后更新用户',
   `create_dateline` int(10) DEFAULT '0' COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
   `grouptopic_thumb` int(10) NOT NULL DEFAULT '0' COMMENT '缩略图',
+  `grouptopic_isrecommend` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为推荐主题',
   PRIMARY KEY (`grouptopic_id`),
-  KEY `grounptopiccategory_id` (`grouptopiccategory_id`),
+  KEY `grouptopiccategory_id` (`grouptopiccategory_id`),
   KEY `group_id` (`group_id`),
   KEY `user_id` (`user_id`),
   KEY `grouptopic_status` (`grouptopic_status`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `grouptopic_isposts` (`grouptopic_addtodigest`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  KEY `grouptopic_addtodigest` (`grouptopic_addtodigest`),
+  KEY `grouptopic_isrecommend` (`grouptopic_isrecommend`),
+  KEY `grouptopic_sticktopic` (`grouptopic_sticktopic`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

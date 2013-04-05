@@ -69,7 +69,7 @@ function reloadCategory(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->">群组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->">小组</a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--{if isset($oGrouptopic)}-->编辑帖子<!--{d*else}-->发布帖子<!--{/if}--></li>
 		</ul>
 
@@ -82,12 +82,17 @@ function reloadCategory(){
 			<div class="span12">
 				<ul id="myTab" class="nav nav-tabs">
 					<li class="active"><a href="javascript:void(0);"><!--{if isset($oGrouptopic)}-->编辑帖子<!--{d*else}-->发布帖子<!--{/if}--></a></li>
+					<!--{if isset($oGrouptopic)}-->
 					<li>
-					<!--{if empty($nGroupid)}-->
-					<a href="<!--{:Dyhb::U('group://public/index')}-->">返回首页</a>
-					<!--{d*else}-->
-					<a href="<!--{:Dyhb::U('group://gid@?id='.$nGroupid)}-->">返回小组</a>
+						<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->">返回帖子</a>
+					</li>
 					<!--{/if}-->
+					<li>
+						<!--{if empty($nGroupid) && !isset($oGrouptopic)}-->
+						<a href="<!--{:Dyhb::U('group://public/index')}-->">返回首页</a>
+						<!--{d*else}-->
+						<a href="<!--{:Dyhb::U('group://gid@?id='.$nGroupid)}-->">返回小组</a>
+						<!--{/if}-->
 					</li>
 				</ul>
 			</div>
@@ -120,7 +125,6 @@ function reloadCategory(){
 						<ul id="grouptopic_tabcontent" class="nav nav-tabs">
 							<li class="active"><a href="#grouptopiccategory" data-toggle="tab">帖子分类</a></li>
 							<li><a href="#thumb" data-toggle="tab">缩略图</a></li>
-							<li><a href="#price" data-toggle="tab">售价</a></li>
 							<li><a href="#tags" data-toggle="tab">帖子标签</a></li></li>
 						</ul>
 						<div id="grouptopic_tabcontent" class="tab-content">
@@ -152,17 +156,6 @@ function reloadCategory(){
 								</table>
 							</div>
 							
-							<div class="tab-pane fade alert alert-success" id="price">
-								<table cellspacing="0" cellpadding="0">
-									<tr>
-										<td class="grouptopictabs_title">售价&nbsp;</td>
-										<td><input type="text" id="grouptopic_price" name="grouptopic_price" value="<!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_price}--><!--{/if}-->"/>&nbsp;金钱
-											<span class="grouptopictabs_description">(最高 30 )</span>
-										</td>
-									</tr>
-								</table>
-							</div>
-							
 							<div class="tab-pane fade alert alert-success" id="tags">
 								<table cellspacing="0" cellpadding="0">
 									<tr>
@@ -189,13 +182,7 @@ function reloadCategory(){
 					<div id="grouptopic_more" class="grouptopic_more">
 						<h3 class="grouptopicmore_title">附加选项</h3>
 						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_parseurloff" id="grouptopic_parseurloff" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_parseurloff']==1}-->checked="checked"<!--{/if}-->>禁用链接识别
-						</label>
-						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_smileoff" id="grouptopic_smileoff" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_smileoff']==1}-->checked="checked"<!--{/if}-->>禁用表情
-						</label>
-						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_usesig" id="grouptopic_usesig" value="1" <!--{if !isset($oGrouptopic) || $oGrouptopic['grouptopic_usesig']==1}-->checked="checked"<!--{/if}-->>使用个人签名
+							<input type="checkbox" name="grouptopic_usesign" id="grouptopic_usesign" value="1" <!--{if !isset($oGrouptopic) || $oGrouptopic['grouptopic_usesign']==1}-->checked="checked"<!--{/if}-->>使用个人签名
 						</label>
 						<label class="checkbox">
 							<input type="checkbox" name="grouptopic_isanonymous" id="grouptopic_isanonymous" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_isanonymous']==1}-->checked="checked"<!--{/if}-->>使用匿名发帖
@@ -219,6 +206,9 @@ function reloadCategory(){
 						<label class="checkbox">
 							<input type="checkbox" name="grouptopic_addtodigest" id="grouptopic_addtodigest" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']==1}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>精华帖子
 						</label>
+						<label class="checkbox">
+							<input type="checkbox" name="grouptopic_isrecommend" id="grouptopic_isrecommend" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_isrecommend']==1}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>推荐帖子
+						</label>
 					</div>
 				</div>
 
@@ -232,7 +222,7 @@ function reloadCategory(){
 						<!--{/if}-->
 						<input type="hidden" name="ajax" value="1">
 						<button type="button" name="submit_button" id="submit_button" class="btn btn-success" onClick="grouptopicSubmit();"><!--{if isset($oGrouptopic)}-->更新帖子<!--{d*else}-->发表帖子<!--{/if}--></button>&nbsp;
-						<a href="<!--{if empty($nGroupid)}--><!--{:Dyhb::U('group://public/index')}--><!--{d*else}--><!--{:Dyhb::U('group://gid@?id='.$nGroupid)}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+						<a href="<!--{if isset($oGrouptopic)}--><!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}--><!--{elseif empty($nGroupid)}--><!--{:Dyhb::U('group://public/index')}--><!--{d*else}--><!--{:Dyhb::U('group://gid@?id='.$nGroupid)}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
 					</div>
 				</div>
 			</form>

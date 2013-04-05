@@ -103,5 +103,41 @@ class Group_Extend{
 
 		return '';
 	}
+	
+	static public function grouptopicStick($nStickstatus,$bReturnImg=false){
+		if($nStickstatus>0){
+			if($bReturnImg===true){
+				return ' <img class="grouptopicstick_date" src="'.__APPPUB__.'/Images/grouptopic/sticktopic_'.$nStickstatus.'.gif" border="0" align="absmiddle" title="置顶主题'.$nStickstatus.'"/> ';
+			}else{
+				return __APPPUB__.'/Images/locked.gif';
+			}
+		}
+
+		return '';
+	}
+
+	static public function grouptopicDigest($nDigeststatus,$bReturnImg=false){
+		if($nDigeststatus>0){
+			if($bReturnImg===true){
+				return ' <img class="grouptopicdigest_date" src="'.__APPPUB__.'/Images/grouptopic/digest_'.$nDigeststatus.'.gif" border="0" align="absmiddle" title="精华主题'.$nDigeststatus.'"/> ';
+			}else{
+				return __APPPUB__.'/Images/locked.gif';
+			}
+		}
+
+		return '';
+	}
+
+	static public function grouptopicRecommend($nRecommendstatus,$bReturnImg=false){
+		if($nRecommendstatus>0){
+			if($bReturnImg===true){
+				return ' <img class="grouptopicrecommend_date" src="'.__APPPUB__.'/Images/grouptopic/recommend.gif" border="0" align="absmiddle" title="推荐主题"/> ';
+			}else{
+				return __APPPUB__.'/Images/locked.gif';
+			}
+		}
+
+		return '';
+	}
 
 }
