@@ -45,7 +45,7 @@
 									<a title="<!--{$oHomefreshtag['homefreshtag_username']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshtag['user_id'])}-->"><!--{$oHomefreshtag['homefreshtag_username']}--></a>
 								</td>
 								<td>
-									<p><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&key=<!--{$oHomefreshtag['homefreshtag_name']|urlencode}-->">#<!--{$oHomefreshtag['homefreshtag_name']}-->#</a></p>
+									<p><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=ucenter&a=index&key='.urlencode($oHomefreshtag['homefreshtag_name']))}-->">#<!--{$oHomefreshtag['homefreshtag_name']}-->#</a></p>
 									<p>
 										<i class="icon-adjust"></i>&nbsp;<b><!--{$oHomefreshtag['homefreshtag_totalcount']}--></b>&nbsp;=&nbsp;
 										<i class="icon-user"></i>&nbsp;<b><!--{$oHomefreshtag['homefreshtag_usercount']}--></b>&nbsp;+&nbsp;

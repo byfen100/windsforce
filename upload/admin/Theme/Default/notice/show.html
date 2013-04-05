@@ -31,10 +31,10 @@
 								<!--{if $oValue['notice_type']=='system'}-->
 								<img src="<!--{:__PUBLIC__}-->/images/common/systempm.png" width="48px" height="48px" title="<!--<lang package='Template/Default/Notice'>-->系统提醒<!--</lang>-->" alt="<!--<lang package='Template/Default/Notice'>-->系统提醒<!--</lang>-->" style="margin:auto;"/>
 								<!--{d*else}-->
-								<a title="<!--{$arrNoticedata['notice_username']}-->" href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$arrNoticedata['user_id']}-->" target="_blank">
+								<a title="<!--{$arrNoticedata['notice_username']}-->" href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$arrNoticedata['user_id'])}-->" target="_blank">
 									<img src="<!--{:Core_Extend::avatar( $arrNoticedata['user_id'],'small' )}-->" width="48px" height="48px" title="<!--{$arrNoticedata['notice_username']}-->" alt="<!--{$arrNoticedata['notice_username']}-->" style="margin:auto;"/>
 								</a><br/>
-								<a title="<!--{$arrNoticedata['notice_username']}-->" href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$arrNoticedata['user_id']}-->" target="_blank"><!--{$arrNoticedata['notice_username']}--></a>
+								<a title="<!--{$arrNoticedata['notice_username']}-->" href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$arrNoticedata['user_id'])}-->" target="_blank"><!--{$arrNoticedata['notice_username']}--></a>
 								<!--{/if}-->
 							</td>
 						</tr>

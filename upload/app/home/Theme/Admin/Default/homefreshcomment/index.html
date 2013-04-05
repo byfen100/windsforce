@@ -83,7 +83,7 @@ $(function(){
 							<td><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment','fid'=>$value['homefresh_id']))}-->"><!--{$value:homefresh_id}--></a></td>
 							<td><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment','uid'=>$value['user_id']))}-->"><!--{:UserModel::getUsernameById($value['user_id'])}--></a>
 								<div class="row-actions">
-									<span class='view'><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=view&id=<!--{$value['homefresh_id']}-->&isolation_commentid=<!--{$value['homefreshcomment_id']}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
+									<span class='view'><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=ucenter&a=view&id='.$value['homefresh_id'].'&isolation_commentid='.$value['homefreshcomment_id'])}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
 									<span class='edit'><a href="<!--{:Admin_Extend::edit(array('controller'=>'homefreshcomment','value'=>$value['homefreshcomment_id']))}-->"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','homefreshcomment','<!--{$value:homefreshcomment_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 									</span>

@@ -48,7 +48,7 @@ function option(){
 							<!--<foreach for=arrUsers value=oUser>-->
 							<div class="left user_box"><img src="<!--{:Core_Extend::avatar( $oUser->user_id,'small' )}-->" width="48px" height="48px" />
 								<br/>
-								<a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oUser->user_id}-->" target="_blank"><!--{$oUser->user_name}--></a>&nbsp;(<!--{$oUser->user_id}-->)
+								<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oUser->user_id)}-->" target="_blank"><!--{$oUser->user_name}--></a>&nbsp;(<!--{$oUser->user_id}-->)
 							</div>
 							<!--</foreach>-->
 						</div>

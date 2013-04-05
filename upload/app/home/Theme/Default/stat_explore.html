@@ -30,13 +30,13 @@ $(document).ready(function(){
 				<div class="commonbox">
 					<!--{if isset($oHomefreshtag)}-->
 					<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>
-						<!--<lang package='Template/Homefresh'>-->话题<!--</lang>-->&nbsp;(<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshtag['user_id'])}-->" title="<!--<lang package='Template/Homefresh'>-->话题发起人<!--</lang>-->&nbsp;<!--{$oHomefreshtag['homefreshtag_username']}--> | <!--<lang package='Template/Homefresh'>-->时间<!--</lang>-->&nbsp;<!--{$oHomefreshtag['create_dateline']|Core_Extend+timeFormat}-->"><!--{$oHomefreshtag['homefreshtag_username']}--></a>)&nbsp;<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=explore&key=<!--{$oHomefreshtag['homefreshtag_name']|urlencode}-->">#<!--{$oHomefreshtag['homefreshtag_name']}-->#</a>&nbsp;,<!--<lang package='Template/Homefresh'>-->大约<!--</lang>-->&nbsp;<span class="badge "><!--{$oHomefreshtag['homefreshtag_usercount']}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->用户参与该话题<!--</lang>-->,<!--<lang package='Template/Homefresh'>-->大约<!--</lang>-->&nbsp;<span class="badge "><!--{$oHomefreshtag['homefreshtag_homefreshcount']}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->条<!--</lang>--><!--<lang package='Template/Homefresh'>-->相关新鲜事<!--</lang>-->
+						<!--<lang package='Template/Homefresh'>-->话题<!--</lang>-->&nbsp;(<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshtag['user_id'])}-->" title="<!--<lang package='Template/Homefresh'>-->话题发起人<!--</lang>-->&nbsp;<!--{$oHomefreshtag['homefreshtag_username']}--> | <!--<lang package='Template/Homefresh'>-->时间<!--</lang>-->&nbsp;<!--{$oHomefreshtag['create_dateline']|Core_Extend+timeFormat}-->"><!--{$oHomefreshtag['homefreshtag_username']}--></a>)&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=explore&key='.urlencode($oHomefreshtag['homefreshtag_name']))}-->">#<!--{$oHomefreshtag['homefreshtag_name']}-->#</a>&nbsp;,<!--<lang package='Template/Homefresh'>-->大约<!--</lang>-->&nbsp;<span class="badge "><!--{$oHomefreshtag['homefreshtag_usercount']}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->用户参与该话题<!--</lang>-->,<!--<lang package='Template/Homefresh'>-->大约<!--</lang>-->&nbsp;<span class="badge "><!--{$oHomefreshtag['homefreshtag_homefreshcount']}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->条<!--</lang>--><!--<lang package='Template/Homefresh'>-->相关新鲜事<!--</lang>-->
 					</div>
 					<!--{/if}-->
 
 					<!--{if isset($oAtuser)}-->
 					<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>
-						@<a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=explore&at=<!--{$oAtuser['user_name']|urlencode}-->" title="@<!--{$oAtuser['user_name']}-->"><!--{$oAtuser['user_name']}--></a>&nbsp;(<a href="<!--{:Dyhb::U('home://space@?id='.$oAtuser['user_id'])}-->" title="@<!--{$oAtuser['user_name']}-->"><!--<lang package='Template/Homefresh'>-->个人空间<!--</lang>--></a>)&nbsp;<!--<lang package='Template/Homefresh'>-->共<!--</lang>-->&nbsp;<span class="badge "><!--{$nTotalRecord}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->条<!--</lang>--><!--<lang package='Template/Homefresh'>-->相关新鲜事<!--</lang>-->
+						@<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=explore&at='.urlencode($oAtuser['user_name']))}-->" title="@<!--{$oAtuser['user_name']}-->"><!--{$oAtuser['user_name']}--></a>&nbsp;(<a href="<!--{:Dyhb::U('home://space@?id='.$oAtuser['user_id'])}-->" title="@<!--{$oAtuser['user_name']}-->"><!--<lang package='Template/Homefresh'>-->个人空间<!--</lang>--></a>)&nbsp;<!--<lang package='Template/Homefresh'>-->共<!--</lang>-->&nbsp;<span class="badge "><!--{$nTotalRecord}--></span>&nbsp;<!--<lang package='Template/Homefresh'>-->条<!--</lang>--><!--<lang package='Template/Homefresh'>-->相关新鲜事<!--</lang>-->
 					</div>
 					<!--{/if}-->
 					
@@ -89,7 +89,7 @@ $(document).ready(function(){
 						<ul id="stat_hotfreshtaglist_box" class="stat_hotfreshtaglist_box">
 							<!--{if is_array($arrHothomefreshtags)}-->
 							<!--<foreach for=arrHothomefreshtags value=oHothomefreshtag>-->
-							<li><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&key=<!--{$oHothomefreshtag['homefreshtag_name']|urlencode}-->">#<!--{$oHothomefreshtag['homefreshtag_name']|G+subString=0,20}-->#</a>&nbsp;(<!--{$oHothomefreshtag['homefreshtag_totalcount']}-->)</li>
+							<li><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=explore&key='.urlencode($oHothomefreshtag['homefreshtag_name']))}-->">#<!--{$oHothomefreshtag['homefreshtag_name']|G+subString=0,20}-->#</a>&nbsp;(<!--{$oHothomefreshtag['homefreshtag_totalcount']}-->)</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<li><!--<lang package='Template/Homefresh'>-->你没有发现任何话题<!--</lang>--></li>

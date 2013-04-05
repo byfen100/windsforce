@@ -68,7 +68,7 @@
 							<td class="user-icon"><a href="javascript:edit('<!--{$value:user_id}-->')">
 								<img src="<!--{:Core_Extend::avatar( $value->user_id,'small' )}-->" width="48px" height="48px"/>
 							</a>
-							<td><!--{$value['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$value['user_id']}-->" target="_blank"><!--{$value:user_name}--></a><!--{$value['user_id']|Core_Extend+getUseronlineicon}-->&nbsp;<a href="<!--{:Dyhb::U('user/show?id='.$value['user_id'])}-->"><!--<lang package='Template/Default/User'>-->详情<!--</lang>--></a>
+							<td><!--{$value['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$value['user_id'])}-->" target="_blank"><!--{$value:user_name}--></a><!--{$value['user_id']|Core_Extend+getUseronlineicon}-->&nbsp;<a href="<!--{:Dyhb::U('user/show?id='.$value['user_id'])}-->"><!--<lang package='Template/Default/User'>-->详情<!--</lang>--></a>
 								<div class="row-actions">
 									<span class='edit'><a href="javascript:edit('<!--{$value:user_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:user_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>|</span>

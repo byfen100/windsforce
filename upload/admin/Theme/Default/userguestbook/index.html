@@ -81,7 +81,7 @@ $(function(){
 							<td width="50px"><a href="<!--{:Dyhb::U('userguestbook/index?tuid='.$value['userguestbook_userid'])}-->"><!--{$value:userguestbook_userid}--></a></td>
 							<td><a href="<!--{:Dyhb::U('userguestbook/index?uid='.$value['user_id'])}-->"><!--{$value:userguestbook_name}--></a>
 								<div class="row-actions">
-									<span class='view'><a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$value:userguestbook_userid}-->&isolation_commentid=<!--{$value:userguestbook_id}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
+									<span class='view'><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$value['userguestbook_userid'].'&isolation_commentid='.$value['userguestbook_id'])}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
 									<span class='edit'><a href="javascript:edit('<!--{$value:userguestbook_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:userguestbook_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 								</div>

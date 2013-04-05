@@ -27,7 +27,7 @@
 					<thead>
 						<tr>
 							<th><!--<lang package='Template/Default/User'>-->当前用户<!--</lang>--></th>
-							<th><a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oValue['user_id']}-->" target="_blank"><!--{$oValue['user_name']}--></a></th>
+							<th><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oValue['user_id'])}-->" target="_blank"><!--{$oValue['user_name']}--></a></th>
 						</tr>
 					</thead>
 					<tbody>

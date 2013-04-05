@@ -48,14 +48,14 @@
 					<!--{if $oValue['pm_type']=='system'}-->
 					<thead>
 						<tr>
-							<th colspan="2"><!--<lang package='Template/Default/Pm'>-->系统短消息发布者<!--</lang>--> <a href="<!--{:__ROOT__}-->/index.php?app=home&c=my&a=user&id=<!--{$oValue['pm_msgfromid']}-->" target="_blank"><!--{:UserModel::getUsernameById($oValue['pm_msgfromid'])}--></a></th>
+							<th colspan="2"><!--<lang package='Template/Default/Pm'>-->系统短消息发布者<!--</lang>--> <a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oValue['pm_msgfromid'])}-->" target="_blank"><!--{:UserModel::getUsernameById($oValue['pm_msgfromid'])}--></a></th>
 						</tr>
 					</thead>
 					<!--{d*else}-->
 					<thead>
 						<tr>
-							<th><!--<lang package='Template/Default/Pm'>-->短消息来源<!--</lang>--> <a href="<!--{:__ROOT__}-->/index.php?app=home&c=my&a=user&id=<!--{$oValue['pm_msgfromid']}-->" target="_blank"><!--{$oValue['pm_msgfrom']}--></a></th>
-							<th><!--<lang package='Template/Default/Pm'>-->短消息接收者<!--</lang>--> <a href="<!--{:__ROOT__}-->/index.php?app=home&c=my&a=user&id=<!--{$oValue['pm_msgtoid']}-->" target="_blank"><!--{:UserModel::getUsernameById($oValue['pm_msgtoid'])}--></a></th>
+							<th><!--<lang package='Template/Default/Pm'>-->短消息来源<!--</lang>--> <a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.<!--{$oValue['pm_msgfromid'])}-->" target="_blank"><!--{$oValue['pm_msgfrom']}--></a></th>
+							<th><!--<lang package='Template/Default/Pm'>-->短消息接收者<!--</lang>--> <a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.<!--{$oValue['pm_msgtoid'])}-->" target="_blank"><!--{:UserModel::getUsernameById($oValue['pm_msgtoid'])}--></a></th>
 						</tr>
 					</thead>
 					<!--{/if}-->

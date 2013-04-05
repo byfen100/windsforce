@@ -61,13 +61,13 @@
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:homefreshtag_id}-->"></td>
 							<td><!--{$value:homefreshtag_id}--></td>
-							<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=ucenter&a=index&key=<!--{$value['homefreshtag_name']|urlencode}-->" target="_blank">#<!--{$value:homefreshtag_name}-->#</a>
+							<td><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=ucenter&a=index&key='.urlencode($value['homefreshtag_name']))}-->" target="_blank">#<!--{$value:homefreshtag_name}-->#</a>
 								<div class="row-actions">
 									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','homefreshtag','<!--{$value:homefreshtag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 									</span>
 								</div>
 							</td>
-							<td><a href="<!--{:__ROOT__}-->/index.php?a=home&c=space&a=index&id=<!--{$value:user_id}-->" target="_blank"><!--{$value:homefreshtag_username}--></a></td>
+							<td><a href="<!--{:Core_Extend::windsforceOuter('a=home&c=space&a=index&id='.$value['user_id'])}-->" target="_blank"><!--{$value:homefreshtag_username}--></a></td>
 							<td><!--{$value:homefreshtag_totalcount}--></td>
 							<td><!--{$value:homefreshtag_usercount}--></td>
 							<td><!--{$value:homefreshtag_homefreshcount}--></td>

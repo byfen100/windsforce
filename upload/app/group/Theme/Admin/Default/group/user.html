@@ -53,7 +53,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrGroupleaders value=oGroupleader>-->
 							<div class="left user_box"><img src="<!--{:Core_Extend::avatar( $oGroupleader['user_id'],'small' )}-->" width="48px" height="48px" title="<!--{$oGroupleader:user:user_name}-->"/>
 								<br/>
-								<a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oGroupleader['user_id']}-->" target="_blank" title="<!--{$oGroupleader:user:user_name}-->"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></a>&nbsp;(<!--{$oGroupleader['user_id']}-->)<br/>
+								<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oGroupleader['user_id'])}-->" target="_blank" title="<!--{$oGroupleader:user:user_name}-->"><!--{$oGroupleader:user:user_name|G+subString=0,3}--></a>&nbsp;(<!--{$oGroupleader['user_id']}-->)<br/>
 								<a href="javascript:void(0);" onclick="deleteGroupuser('<!--{$oGroupleader['group_id']}-->','<!--{$oGroupleader['user_id']}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
 							</div>
 							<!--</foreach>-->
@@ -73,7 +73,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrGroupadmins value=oGroupadmin>-->
 							<div class="left user_box"><img src="<!--{:Core_Extend::avatar( $oGroupadmin['user_id'],'small' )}-->" width="48px" height="48px" title="<!--{$oGroupadmin:user:user_name}-->"/>
 								<br/>
-								<a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oGroupadmin['user_id']}-->" target="_blank" title="<!--{$oGroupadmin:user:user_name}-->"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></a>&nbsp;(<!--{$oGroupadmin['user_id']}-->)<br/>
+								<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oGroupadmin['user_id'])}-->" target="_blank" title="<!--{$oGroupadmin:user:user_name}-->"><!--{$oGroupadmin:user:user_name|G+subString=0,3}--></a>&nbsp;(<!--{$oGroupadmin['user_id']}-->)<br/>
 								<a href="javascript:void(0);" onclick="deleteGroupuser('<!--{$oGroupadmin['group_id']}-->','<!--{$oGroupadmin['user_id']}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
 							</div>
 							<!--</foreach>-->
@@ -93,7 +93,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrGroupusers value=oGroupuser>-->
 							<div class="left user_box"><img src="<!--{:Core_Extend::avatar( $oGroupuser['user_id'],'small' )}-->" width="48px" height="48px" title="<!--{$oGroupuser:user:user_name}-->"/>
 								<br/>
-								<a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oGroupuser['user_id']}-->" target="_blank" title="<!--{$oGroupuser:user:user_name}-->"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></a>&nbsp;(<!--{$oGroupuser['user_id']}-->)<br/>
+								<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oGroupuser['user_id'])}-->" target="_blank" title="<!--{$oGroupuser:user:user_name}-->"><!--{$oGroupuser:user:user_name|G+subString=0,3}--></a>&nbsp;(<!--{$oGroupuser['user_id']}-->)<br/>
 								<a href="javascript:void(0);" onclick="deleteGroupuser('<!--{$oGroupuser['group_id']}-->','<!--{$oGroupuser['user_id']}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
 							</div>
 							<!--</foreach>-->

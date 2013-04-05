@@ -36,10 +36,10 @@ $(function(){
 						<tr>
 							<td><!--<lang package='Template/Default/Feed'>-->用户动态来源<!--</lang>--></td>
 							<td>
-								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$arrFeeddata['user_id']}-->" target="_blank">
+								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$arrFeeddata['user_id'])}-->" target="_blank">
 									<img src="<!--{:Core_Extend::avatar( $arrFeeddata['user_id'],'small' )}-->" width="48px" height="48px" title="<!--{$arrFeeddata['feed_username']}-->" alt="<!--{$arrFeeddata['feed_username']}-->" style="margin:auto;"/>
 								</a><br/>
-								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$arrFeeddata['user_id']}-->" target="_blank"><!--{$arrFeeddata['feed_username']}--></a>
+								<a title="<!--{$arrFeeddata['feed_username']}-->" href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$arrFeeddata['user_id'])}-->" target="_blank"><!--{$arrFeeddata['feed_username']}--></a>
 
 							</td>
 						</tr>

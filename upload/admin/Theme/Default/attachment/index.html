@@ -98,7 +98,7 @@ a.preview img{margin:10px 5px;}
 									<span class='view'><a href="<!--{:Dyhb::U('attachment/cover?id='.$value['attachment_id'])}-->"><!--<lang package='Template/Default/Attachment'>-->封面<!--</lang>--></a>|</span>
 									<!--{/if}-->
 									<!--{/if}-->
-									<span class='view'><a href="<!--{:__ROOT__}-->/index.php?app=home&c=attachment&a=show&id=<!--{$value:attachment_id}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
+									<span class='view'><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=attachment&a=show&id='.$value['attachment_id'])}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
 									<span class='edit'><a href="javascript:edit('<!--{$value:attachment_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:attachment_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 								</div>

@@ -132,7 +132,7 @@ function closeUpdateinfo(){
 					<tbody>
 					<!--<foreach for=arrUsers value=oUser>-->
 					<tr>
-						<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=space&a=index&id=<!--{$oUser['user_id']}-->" target="_blank"><!--{$oUser['user_name']}--></a></td>
+						<td><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oUser['user_id'])}-->" target="_blank"><!--{$oUser['user_name']}--></a></td>
 						<td><!--{$oUser['user_lastloginip']}--></td>
 						<td><!--{$oUser['user_lastlogintime']|date='Y-m-d H:i:s',**}--></td>
 					</tr>

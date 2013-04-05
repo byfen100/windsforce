@@ -57,13 +57,13 @@
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:hometag_id}-->"></td>
 							<td><!--{$value:hometag_id}--></td>
-							<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$value['hometag_name']|urlencode}-->" target="_blank"><!--{$value:hometag_name}--></a>
+							<td><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($value['hometag_name']))}-->" target="_blank"><!--{$value:hometag_name}--></a>
 								<div class="row-actions">
 									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 									</span>
 								</div>
 							</td>
-							<td><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$value['hometag_name']|urlencode}-->" target="_blank"><!--{$value:hometag_count}--></a></td>
+							<td><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($value['hometag_name']))}-->" target="_blank"><!--{$value:hometag_count}--></a></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','hometag','<!--{$value:hometag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
 							</td>

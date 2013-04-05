@@ -56,7 +56,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrHometags value=oHometag>-->
 							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
 								<td width="*">
-									<b><a href="<!--{:__ROOT__}-->/index.php?app=home&c=stat&a=userlist&tag=<!--{$oHometag['hometag_name']|urlencode}-->"><!--{$oHometag['hometag_name']}--></a></b>
+									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></b>
 									<!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
 									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oHometag['create_dateline'],true)}--></p>
 								</td>

@@ -81,7 +81,7 @@ $(function(){
 							<td width="50px"><a href="<!--{:Dyhb::U('attachmentcomment/index?aid='.$value['attachment_id'])}-->"><!--{$value:attachment_id}--></a></td>
 							<td><a href="<!--{:Dyhb::U('attachmentcomment/index?uid='.$value['user_id'])}-->"><!--{$value:attachmentcomment_name}--></a>
 								<div class="row-actions">
-									<span class='view'><a href="<!--{:__ROOT__}-->/index.php?app=home&c=attachment&a=show&id=<!--{$value:attachment_id}-->&isolation_commentid=<!--{$value:attachmentcomment_id}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
+									<span class='view'><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=attachment&a=show&id='.$value['attachment_id'].'&isolation_commentid='.$value['attachmentcomment_id'])}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
 									<span class='edit'><a href="javascript:edit('<!--{$value:attachmentcomment_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdel('<!--{$value:attachmentcomment_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
 								</div>
