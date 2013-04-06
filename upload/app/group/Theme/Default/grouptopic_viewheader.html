@@ -136,9 +136,11 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 					<a onclick="modTopicclose(0);" href="javascript:void(0);">打开</a>
 					<!--{/if}-->
 					<span class="pipe">|</span>
-					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']==0}-->1<!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">置顶</a>
+					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">置顶</a>
 					<span class="pipe">|</span>
-					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']==0}-->1<!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">精华</a>
+					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">精华</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicrecommend(<!--{if $oGrouptopic['grouptopic_isrecommend']>0}--><!--{$oGrouptopic['grouptopic_isrecommend']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">推荐</a>
 					<span class="pipe">|</span>
 					<!--{if $oGrouptopic['grouptopic_status']==0}-->
 					<a onclick="modTopicstatus(1);" href="javascript:void(0);">显示</a>

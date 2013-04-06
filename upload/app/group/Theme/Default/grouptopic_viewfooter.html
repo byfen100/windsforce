@@ -9,9 +9,11 @@
 					<a onclick="modTopicclose(0);" href="javascript:void(0);">打开</a>
 					<!--{/if}-->
 					<span class="pipe">|</span>
-					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']==0}-->1<!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">置顶</a>
+					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">置顶</a>
 					<span class="pipe">|</span>
-					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']==0}-->1<!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">精华</a>
+					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">精华</a>
+					<span class="pipe">|</span>
+					<a onclick="modTopicrecommend(<!--{if $oGrouptopic['grouptopic_isrecommend']>0}--><!--{$oGrouptopic['grouptopic_isrecommend']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">推荐</a>
 					<span class="pipe">|</span>
 					<!--{if $oGrouptopic['grouptopic_status']==0}-->
 					<a onclick="modTopicstatus(1);" href="javascript:void(0);">显示</a>
@@ -39,7 +41,10 @@
 						<tr>
 							<td class="floor_left floor_footerpostcontenttd1" width="350px">
 								<div class="avatar">
-									<img src="<!--{:Core_Extend::avatar($GLOBALS['___login___']['user_id'],'middle')}-->" width="120px" class="group_avatar">
+									<img src="<!--{:Core_Extend::avatar($GLOBALS['___login___']!==false?$GLOBALS['___login___']['user_id']:0,'middle')}-->" width="120px" class="group_avatar">
+									<!--{if $GLOBALS['___login___']!==false}-->
+									<hr/><a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>
+									<!--{/if}-->
 								</div>
 							</td>
 							<td class="floor_right">

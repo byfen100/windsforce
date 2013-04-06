@@ -1,12 +1,12 @@
 	<!--<include file="grouptopicadmin+header" />-->
 		
 		<p>
-			<label class="radio">
-				<input type="radio" name="status" value="0" <!--{if $nStatus==0}-->checked<!--{/if}-->>取消置顶
-			</label>
-			<label class="radio">
-				<input type="radio" name="status" value="1" <!--{if $nStatus==1}-->checked<!--{/if}-->>置顶主题
-			</label>
+			<select name="status">
+				<option value="0">取消置顶</option>
+				<!--<for start='1' end='3' var='nMyvalue'>-->
+				<option value="<!--{$nMyvalue}-->" <!--{if $nStatus==$nMyvalue}-->selected<!--{/if}-->>置顶主题&nbsp;<!--{$nMyvalue}--></option>
+				<!--</for>-->
+			</select>
 		</p>
 
 	<!--<include file="grouptopicadmin+footer" />-->

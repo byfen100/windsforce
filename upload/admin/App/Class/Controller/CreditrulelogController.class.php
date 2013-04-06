@@ -46,7 +46,6 @@ class CreditrulelogController extends InitController{
 		if(empty($oUser['user_id'])){
 			$this->E(Dyhb::L('待清空系统奖励数据的用户不存在','Controller/Creditrulelog'));
 		}
-
 		
 		// 执行删除
 		$oCreditrulelogMeta=CreditrulelogModel::M();

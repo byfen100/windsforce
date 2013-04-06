@@ -199,12 +199,15 @@ function reloadCategory(){
 						<label class="checkbox">
 							<input type="checkbox" name="grouptopic_iscomment" id="grouptopic_iscomment" value="1" <!--{if !isset($oGrouptopic) || $oGrouptopic['grouptopic_iscomment']==1}-->checked="checked"<!--{/if}-->>允许回复
 						</label>
+						<label class="checkbox">
+							<input type="checkbox" name="grouptopic_onlycommentview" id="grouptopic_onlycommentview" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_onlycommentview']>0}-->checked="checked"<!--{/if}-->>回复后才能够浏览
+						</label>
 						<hr/>
 						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_sticktopic" id="grouptopic_sticktopic" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_sticktopic']==1}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>主题置顶
+							<input type="checkbox" name="grouptopic_sticktopic" id="grouptopic_sticktopic" value="<!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->1<!--{/if}-->" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_sticktopic']>0}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>主题置顶
 						</label>
 						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_addtodigest" id="grouptopic_addtodigest" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']==1}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>精华帖子
+							<input type="checkbox" name="grouptopic_addtodigest" id="grouptopic_addtodigest" value="<!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->1<!--{/if}-->" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']>0}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>精华帖子
 						</label>
 						<label class="checkbox">
 							<input type="checkbox" name="grouptopic_isrecommend" id="grouptopic_isrecommend" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_isrecommend']==1}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>推荐帖子

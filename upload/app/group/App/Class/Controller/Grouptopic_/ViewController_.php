@@ -70,6 +70,25 @@ class ViewController extends Controller{
 		}
 		
 		$this->assign('arrGrouptopictags',$arrGrouptopictags);
+
+		// 判断用户是否回复过帖子
+		if($oGrouptopic['grouptopic_onlycommentview']==1){
+			$bHavecomment=false;
+
+			if($GLOBALS['___login___']!==false){
+				if($oGrouptopic['user_id']==$GLOBALS['___login___']['user_id']){
+					$bHavecomment=true;
+				}else{
+					$oTrygrouptopiccomment=GrouptopiccommentModel::F('user_id=? AND grouptopic_id=?',$GLOBALS['___login___']['user_id'],$oGrouptopic['grouptopic_id'])->getOne();
+
+					if(!empty($oTrygrouptopiccomment['grouptopiccomment_id'])){
+						$bHavecomment=true;
+					}
+				}
+			}
+
+			$this->assign('bHavecomment',$bHavecomment);
+		}
 		
 		// 回复列表
 		$arrWhere=array();

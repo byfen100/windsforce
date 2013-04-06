@@ -38,6 +38,14 @@ class GrouptopicadminController extends InitController{
 		Core_Extend::doControllerAction('Grouptopicadmin@Digesttopic','index');
 	}
 
+	public function recommendtopic_dialog(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Recommendtopicdialog','index');
+	}
+
+	public function recommendtopic(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Recommendtopic','index');
+	}
+
 	public function statustopic_dialog(){
 		Core_Extend::doControllerAction('Grouptopicadmin@Statustopicdialog','index');
 	}

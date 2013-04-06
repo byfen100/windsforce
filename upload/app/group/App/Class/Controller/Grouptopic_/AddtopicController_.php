@@ -12,6 +12,7 @@ class AddtopicController extends Controller{
 			'grouptopic_usesign','grouptopic_isanonymous','grouptopic_hiddenreplies',
 			'grouptopic_ordertype','grouptopic_allownoticeauthor','grouptopic_iscomment',
 			'grouptopic_sticktopic','grouptopic_addtodigest','grouptopic_isrecommend',
+			'grouptopic_onlycommentview',
 		);
 
 		foreach($arrCheckbox as $sCheckbox){

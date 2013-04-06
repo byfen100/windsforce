@@ -119,7 +119,7 @@ class Group_Extend{
 	static public function grouptopicDigest($nDigeststatus,$bReturnImg=false){
 		if($nDigeststatus>0){
 			if($bReturnImg===true){
-				return ' <img class="grouptopicdigest_date" src="'.__APPPUB__.'/Images/grouptopic/digest_'.$nDigeststatus.'.gif" border="0" align="absmiddle" title="精华主题'.$nDigeststatus.'"/> ';
+				return ' <img class="grouptopicdigest_date" src="'.__APPPUB__.'/Images/grouptopic/digest_'.$nDigeststatus.'.gif" border="0" align="absmiddle" title="精华主题 '.$nDigeststatus.'"/> ';
 			}else{
 				return __APPPUB__.'/Images/locked.gif';
 			}

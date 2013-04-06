@@ -118,6 +118,34 @@ function digesttopicComplete(data,status){
 	return false;
 }
 
+/** 推荐或者取消推荐主题 */
+function modTopicrecommend(nStatus){
+	var sHtml=$.ajax({
+		url: D.U('group://grouptopicadmin/recommendtopic_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+'&status='+nStatus),
+		async: false
+	}).responseText;
+
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oRecommendNewmodtopics=windsforceAlert(sHtml,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicrecommendtopic,'',400,100);
+	}
+}
+
+function modTopicrecommendtopic(){
+	Dyhb.AjaxSubmit('moderateform',D.U('group://grouptopicadmin/recommendtopic'),'result',recommendtopicComplete);
+	return false;
+}
+
+function recommendtopicComplete(data,status){
+	if(status==1){
+		window.location.reload();
+	}
+
+	return false;
+}
+
 /** 隐藏或者显示主题 */
 function modTopicstatus(nStatus){
 	var sHtml=$.ajax({
