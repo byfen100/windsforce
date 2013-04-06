@@ -236,20 +236,20 @@ a#moderate_reason:hover{text-decoration:none;}
            标签列表
 ================================*/
 [CURSCRIPT=group::public::newtopic]
-.tags_hot{padding:15px 0;}
-.tags_hot h2{font-size:14px;margin-bottom:15px;}
-.tags_hot li{float:left;margin:0 5px 5px 0;}
+.tags_hot{padding:5px 0;}
+.tags_hot ul{margin-left:0px;}
+.tags_hot li{float:left;margin:0 5px 5px 0px;}
 .tags_hot li a{float:left;line-height:24px;height:24px;display:block;background:#f6f6f6;padding:0 8px;color:#333333;text-decoration:none;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;white-space:nowrap;}
 .tags_hot li a:hover{background:{LINK_COLOR};color:#fff;}
 .tags_hot li {list-style: none outside none;}
 [/CURSCRIPT]
 
 /**===============================
-           热门帖子列表
+           最新帖子列表
 ================================*/
 [CURSCRIPT=group::public::newtopic]
 .grouphottopic_titles {word-wrap: break-word;}
-.grouphottopic_titles li {border-bottom: 1px dashed #CCCCCC;color: #999999;overflow: hidden;padding: 6px 0;}
+.grouphottopic_titles li {margin-left:-15px;border-bottom: 1px dashed #CCCCCC;color: #999999;overflow: hidden;padding: 6px 0;}
 .grouphottopic_titles h3 {color: #666666;float: left;font-size:12px;margin:0;font-weight:normal;}
 .grouphottopic_commentnum {color: #999999;float: right;}
 .grouphottopic_userinfo {color: #999999;overflow: hidden;width: 100%;margin:0;}

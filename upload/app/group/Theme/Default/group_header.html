@@ -11,9 +11,9 @@
 									<p class="name">
 										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;
 										<!--{if $nGroupuser==0}-->
-										<span id="joingroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+										<span id="commongroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="joinGroup(<!--{$oGroup['group_id']}-->,'commongroup_<!--{$oGroup['group_id']}-->');">+加入</a></span>
 										<!--{elseif $nGroupuser==1}-->
-										<span id="leavegroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+										<span id="commongroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="leaveGroup(<!--{$oGroup['group_id']}-->,'commongroup_<!--{$oGroup['group_id']}-->');">退出</a></span>
 										<!--{/if}-->
 									</p>
 									<p>共有&nbsp;<span class="label label-success"><!--{$oGroup['group_usernum']}--></span>&nbsp;人关注了此小组

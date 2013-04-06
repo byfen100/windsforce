@@ -88,9 +88,9 @@
 													<span class='grouplist_todaynum'>&nbsp;(今日<!--{$oGroup['group_topictodaynum']}-->)</span>
 													<!--{/if}-->
 													<!--{if $nGroupuser==0}-->
-													&nbsp;<span id="joingroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+													&nbsp;<span id="listgroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->,'listgroup_<!--{$oGroup['group_id']}-->');">+加入</a></span>
 													<!--{elseif $nGroupuser==1}-->
-													&nbsp;<span id="leavegroup_<!--{$oGroup['group_id']}-->"style="background:#F0F0F0;text-align:center;padding:3px 5px;font-size:12px;"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+													&nbsp;<span id="listgroup_<!--{$oGroup['group_id']}-->"class="commonjoinleave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->,'listgroup_<!--{$oGroup['group_id']}-->');">退出</a></span>
 													<!--{/if}-->
 												</td>
 											</tr>
@@ -161,8 +161,8 @@
 					</div>
 				</div>
 				
-				<div class="commonbox">
-					<div class="commonboxtitle">小组长</div>
+				<div class="commonbox_mini commonbox_mini_gray">
+					<h2 class="title">小组长</h2>
 					<p><ul class="thumbnails">
 							<!--{if is_array($arrGroupleaders)}-->
 							<!--<foreach for=arrGroupleaders value=oGroupleader>-->
@@ -180,14 +180,20 @@
 					</p>
 				</div>
 
-				<div class="commonbox">
-					<div class="commonboxtitle">推荐小组</div>
+				<div class="commonbox_mini commonbox_mini_gray">
+					<h2 class="title">推荐小组</h2>
 					<div class="commonlist">
 						<ul id="recommend_grouplist_box" class="grouplist_box">
 							<!--{if is_array($arrRecommendgroups)}-->
 							<!--<foreach for=arrRecommendgroups value=oRecommendgroup>-->
+							<!--{~$nGroupuser=Group_Extend::getGroupuser($oRecommendgroup['group_id'])}-->
 							<li>
 								<a href="<!--{:Group_Extend::getGroupurl($oRecommendgroup)}-->"><!--{$oRecommendgroup['group_nikename']}-->&nbsp;(<!--{$oRecommendgroup['group_usernum']}-->)</a>
+								<!--{if $nGroupuser==0}-->
+								&nbsp;<span id="recommendgroup_<!--{$oRecommendgroup['group_id']}-->" class="right"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oRecommendgroup['group_id']}-->,'recommendgroup_<!--{$oRecommendgroup['group_id']}-->');"><i class="icon-plus" title="加入小组"></i></a></span>
+								<!--{elseif $nGroupuser==1}-->
+								&nbsp;<span id="recommendgroup_<!--{$oRecommendgroup['group_id']}-->" class="right"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oRecommendgroup['group_id']}-->,'recommendgroup_<!--{$oRecommendgroup['group_id']}-->');"><i class="icon-off" title="退出小组"></i></a></span>
+								<!--{/if}-->
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
@@ -198,14 +204,20 @@
 				</div>
 				
 				
-				<div class="commonbox">
-					<div class="commonboxtitle">最新小组</div>
+				<div class="commonbox_mini commonbox_mini_gray">
+					<h2 class="title">最新小组</h2>
 					<div class="commonlist">
 						<ul id="new_grouplist_box" class="grouplist_box">
 							<!--{if is_array($arrNewgroups)}-->
 							<!--<foreach for=arrNewgroups value=oNewgroup>-->
+							<!--{~$nGroupuser=Group_Extend::getGroupuser($oNewgroup['group_id'])}-->
 							<li>
 								<a href="<!--{:Group_Extend::getGroupurl($oNewgroup)}-->"><!--{$oNewgroup['group_nikename']}-->&nbsp;(<!--{$oNewgroup['group_usernum']}-->)</a>
+								<!--{if $nGroupuser==0}-->
+								&nbsp;<span id="newgroup_<!--{$oNewgroup['group_id']}-->" class="right"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oNewgroup['group_id']}-->,'newgroup_<!--{$oNewgroup['group_id']}-->');"><i class="icon-plus" title="加入小组"></i></a></span>
+								<!--{elseif $nGroupuser==1}-->
+								&nbsp;<span id="newgroup_<!--{$oNewgroup['group_id']}-->" class="right"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oNewgroup['group_id']}-->,'newgroup_<!--{$oNewgroup['group_id']}-->');"><i class="icon-off" title="退出小组"></i></a></span>
+								<!--{/if}-->
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
@@ -215,14 +227,20 @@
 					</div>
 				</div>
 
-				<div class="commonbox">
-					<div class="commonboxtitle">24小时最热</div>
+				<div class="commonbox_mini commonbox_mini_gray">
+					<h2 class="title">24小时最热</h2>
 					<div class="commonlist">
 						<ul id="hot_grouplist_box" class="grouplist_box">
 							<!--{if is_array($arrHotgroups)}-->
 							<!--<foreach for=arrHotgroups value=oHotgroup>-->
+							<!--{~$nGroupuser=Group_Extend::getGroupuser($oHotgroup['group_id'])}-->
 							<li>
 								<a href="<!--{:Group_Extend::getGroupurl($oHotgroup)}-->"><!--{$oHotgroup['group_nikename']}-->&nbsp;(<!--{$oHotgroup['group_usernum']}-->)</a>
+								<!--{if $nGroupuser==0}-->
+								&nbsp;<span id="hotgroup_<!--{$oHotgroup['group_id']}-->" class="right"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oHotgroup['group_id']}-->,'hotgroup_<!--{$oHotgroup['group_id']}-->');"><i class="icon-plus" title="加入小组"></i></a></span>
+								<!--{elseif $nGroupuser==1}-->
+								&nbsp;<span id="hotgroup_<!--{$oHotgroup['group_id']}-->" class="right"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oHotgroup['group_id']}-->,'hotgroup_<!--{$oHotgroup['group_id']}-->');"><i class="icon-off" title="退出小组"></i></a></span>
+								<!--{/if}-->
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->

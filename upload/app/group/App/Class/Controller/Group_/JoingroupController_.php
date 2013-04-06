@@ -11,7 +11,7 @@ class JoingroupController extends Controller{
 		$nGid=G::getGpc('gid','G');
 
 		if($GLOBALS['___login___']===false){
-			$this->E(Dyhb::L('退出小组需登录后才能进行','Controller/Group'));
+			$this->E(Dyhb::L('加入小组需登录后才能进行','Controller/Group'));
 		}
 
 		$oGroup=GroupModel::F('group_id=?',$nGid)->getOne();

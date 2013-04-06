@@ -42,6 +42,7 @@
 					<ul class="groups" id="home_recommendgroup_box">
 						<!--{if is_array($arrGroups)}-->
 						<!--<foreach for=arrGroups value=oGroup>-->
+						<!--{~$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id'])}-->
 						<li>
 							<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic">
 								<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
@@ -49,6 +50,11 @@
 							<div class="grouplist_txt">
 								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
 								<span><!--{$oGroup['group_usernum']}-->人加入</span>
+								<!--{if $nGroupuser==0}-->
+								&nbsp;<span id="joingroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+								<!--{elseif $nGroupuser==1}-->
+								&nbsp;<span id="leavegroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+								<!--{/if}-->
 								<p class="grouplist_description"><!--{$oGroup['group_listdescription']|G+subString=0,15}--></p>
 							</div>
 						</li>
@@ -65,6 +71,7 @@
 					<ul class="groups" id="home_recommendgroup_box">
 						<!--{if is_array($arrRecommendgroups)}-->
 						<!--<foreach for=arrRecommendgroups value=oGroup>-->
+						<!--{~$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id'])}-->
 						<li>
 							<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic">
 								<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
@@ -72,6 +79,11 @@
 							<div class="grouplist_txt">
 								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
 								<span><!--{$oGroup['group_usernum']}-->人加入</span>
+								<!--{if $nGroupuser==0}-->
+								&nbsp;<span id="joingroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+								<!--{elseif $nGroupuser==1}-->
+								&nbsp;<span id="leavegroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+								<!--{/if}-->
 								<p class="grouplist_description"><!--{$oGroup['group_listdescription']|G+subString=0,15}--></p>
 							</div>
 						</li>
@@ -87,6 +99,7 @@
 					<ul class="groups" id="home_recommendgroup_box">
 						<!--{if is_array($arrNewgroups)}-->
 						<!--<foreach for=arrNewgroups value=oGroup>-->
+						<!--{~$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id'])}-->
 						<li>
 							<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic">
 								<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
@@ -94,6 +107,11 @@
 							<div class="grouplist_txt">
 								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
 								<span><!--{$oGroup['group_usernum']}-->人加入</span>
+								<!--{if $nGroupuser==0}-->
+								&nbsp;<span id="joingroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+								<!--{elseif $nGroupuser==1}-->
+								&nbsp;<span id="leavegroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+								<!--{/if}-->
 								<p class="grouplist_description"><!--{$oGroup['group_listdescription']|G+subString=0,15}--></p>
 							</div>
 						</li>
@@ -109,6 +127,7 @@
 					<ul class="groups" id="home_recommendgroup_box">
 						<!--{if is_array($arrHotgroups)}-->
 						<!--<foreach for=arrHotgroups value=oGroup>-->
+						<!--{~$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id'])}-->
 						<li>
 							<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic">
 								<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
@@ -116,6 +135,11 @@
 							<div class="grouplist_txt">
 								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
 								<span><!--{$oGroup['group_usernum']}-->人加入</span>
+								<!--{if $nGroupuser==0}-->
+								&nbsp;<span id="joingroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->);">+加入</a></span>
+								<!--{elseif $nGroupuser==1}-->
+								&nbsp;<span id="leavegroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->);">退出</a></span>
+								<!--{/if}-->
 								<p class="grouplist_description"><!--{$oGroup['group_listdescription']|G+subString=0,15}--></p>
 							</div>
 						</li>
@@ -135,8 +159,8 @@
 					</div>
 				</div>
 				
-				<div class="commonbox">
-					<div class="commonboxtitle">小组长</div>
+				<div class="commonbox_mini commonbox_mini_gray">
+					<h2 class="title">小组长</h2>
 					<p><ul class="thumbnails">
 							<!--{if is_array($arrGroupleaders)}-->
 							<!--<foreach for=arrGroupleaders value=oGroupleader>-->

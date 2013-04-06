@@ -170,7 +170,7 @@ table thead th .order_asc { padding-right: 8px; background: url({IMG_DIR}/order_
 .commonlist ul li{list-style:none;margin-left:-25px;padding:5px;border-bottom:dashed 1px #DDDDDD;}
 
 /* 第二种简洁风格容器 */
-.commonbox_mini{background-color:#fff;padding:10px;margin:0 0 20px 0;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0px 2px rgba(0,0,0,0.05);-moz-box-shadow:0 0px 2px rgba(0,0,0,0.1);box-shadow:0 0px 2px rgba(0,0,0,0.05);}
+.commonbox_mini{background-color:#fff;padding:10px 10px 0px 10px;margin:0 0 10px 0;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0px 2px rgba(0,0,0,0.05);-moz-box-shadow:0 0px 2px rgba(0,0,0,0.1);box-shadow:0 0px 2px rgba(0,0,0,0.05);}
 .commonbox_mini h2.title{font-size:12px;margin:0 -10px;padding:0 10px;margin-bottom:8px;color:#999;line-height:100%;border-bottom:1px solid #ddd;padding-bottom:8px;}
 .commonbox_mini_gray{background:#F5F5F5;}
 
