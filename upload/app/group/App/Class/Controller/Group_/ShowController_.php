@@ -77,6 +77,7 @@ class ShowController extends Controller{
 
 		$this->assign('oGroup',$oGroup);
 		$this->assign('nCid',$nCid);
+		$this->assign('nDid',$nDid);
 
 		$this->display('group+show');
 	}

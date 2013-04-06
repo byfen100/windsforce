@@ -214,7 +214,7 @@ class Ubb2html{
 			$sUrl='home://stat/explore';
 		}
 
-		return '<a href="'.Dyhb::U($sUrl,array('tag'=>$sTag),true).'">#'.$sTag.'#</a>';
+		return '<a href="'.Dyhb::U($sUrl,array('key'=>$sTag),true).'">#'.$sTag.'#</a>';
 	}
 
 	public function makeMessage($sMessage){

@@ -22,6 +22,7 @@ return array(
 'b1dae9bc5cabbc13e4bee21af11cdb8d'=>"管理员",
 'e1f0d2f549e5bbd8419be226b5022225'=>"用户不在线",
 '268ab38cd66db450e4ae0ba970cc3e15'=>"用户在线",
+'015772986169b055bb8008b10803b753'=>"新发表的",
 )
 
 ?>

@@ -9,7 +9,12 @@ class ColortopicController extends Controller{
 	public function index(){
 		$sGrouptopics=trim(G::getGpc('grouptopics'));
 		$nGroupid=intval(G::getGpc('group_id'));
-		$sColor=trim(G::getGpc('color'));
+		$sHighlightcolor=trim(G::getGpc('highlight_color'));
+		$arrHighlightstyle=G::getGpc('highlight_style');
+		$sHighlightbgcolor=trim(G::getGpc('highlight_bgcolor'));
+
+		// 处理样式数据
+		$arrColor=array($sHighlightcolor,$arrHighlightstyle,$sHighlightbgcolor);
 
 		$arrGrouptopics=explode(',',$sGrouptopics);
 
@@ -18,7 +23,7 @@ class ColortopicController extends Controller{
 				$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopic)->getOne();
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
-					$oGrouptopic->grouptopic_color=$sColor;
+					$oGrouptopic->grouptopic_color=serialize($arrColor);
 					$oGrouptopic->save(0,'update');
 					
 					if($oGrouptopic->isError()){

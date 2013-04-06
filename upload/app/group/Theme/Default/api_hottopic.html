@@ -1,6 +1,6 @@
 <!--{if is_array($arrGrouptopics)}-->
 <!--<foreach for=arrGrouptopics value=oGrouptopic>-->
-<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->"><!--{$oGrouptopic['grouptopic_title']|G+subString=0,$nCutNum}--></a>&nbsp;(<!--{$oGrouptopic['grouptopic_comments']}-->)</li>
+<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->"><!--{$oGrouptopic['grouptopic_title']|G+subString=0,$nCutNum}--></a>&nbsp;(<!--{$oGrouptopic['grouptopic_comments']}-->)<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}--></li>
 <!--</foreach>-->
 <!--{d*else}-->
 <li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>

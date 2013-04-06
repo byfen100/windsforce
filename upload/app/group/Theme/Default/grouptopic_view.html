@@ -171,7 +171,7 @@ $(function(){
 										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 											[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]
 											<!--{d*else}-->
-											[默认分类]<!--{/if}-->&nbsp;<span <!--{if $oGrouptopic['grouptopic_color']}-->style="color:<!--{$oGrouptopic['grouptopic_color']}-->;"<!--{/if}-->><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
+											[默认分类]<!--{/if}-->&nbsp;<span style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->"><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
 											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
 											<!--{:Group_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
 											<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->

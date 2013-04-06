@@ -11,27 +11,43 @@
 		<!--<foreach for=arrGrouptopics value=oGrouptopic>-->
 		<tr>
 			<td class="author">
+				<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+				匿名
+				<!--{d*else}-->
 				<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->">
 					<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
 				</a>
+				<!--{/if}-->
 			</td>
 			<td class="subject">
 				<p class="title">
+					<!--{:Group_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 					<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
-					<a href="<!--{:Dyhb::U('group://group/show?id='.$oGrouptopic->group->group_name.'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
+					<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 					<!--{d*else}-->
 					<a href="javascript:void(0);">[默认分类]</a>
 					<!--{/if}-->
-					<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,26}--></a>
+					<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
+					<!--{if $oGrouptopic->grouptopic_comments>0}-->
+					<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
+					<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
+					&nbsp;<a href="" title="查看新回复">New</a>&nbsp;
+					<!--{/if}-->
+					<!--{/if}-->
+					<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
+					<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 					<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
 				</p>
 				<p class="info">
-					楼主&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic['user_id']}-->" ><!--{$oGrouptopic->grouptopic_username}--></a>&nbsp;
+					楼主&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+					匿名
+					<!--{d*else}--><a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+					<!--{/if}-->&nbsp;
 					<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 					<span class="pipe">|</span>
-					<!--{if $oGrouptopic->grouptopic_comments}-->
-					<!--{~$arrLatestComment=unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-					最后回复&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+					<!--{if $oGrouptopic->grouptopic_comments>0}-->
+					<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
+					最后回复&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
 					<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
 					<!--{d*else}-->
 					<span>暂无回复</span>
@@ -39,8 +55,8 @@
 				</p>
 			</td>
 			<td class="num" style="text-align:center;">
-				<span>回复<em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
 				<span>浏览<em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+				<span>回复<em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
 			</td>
 		</tr>
 		<!--</foreach>-->

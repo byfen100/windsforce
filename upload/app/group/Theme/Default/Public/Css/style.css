@@ -174,11 +174,17 @@ Description: Group应用模块CSS
 /**===============================
            帖子管理
 ================================*/
-[CURSCRIPT=group::grouptopicadmin]
+[CURSCRIPT=group::grouptopic::view]
 a#moderate_reason{font-size:14px;line-heigth:14px;font-weight:bold;}
 a#moderate_reason:hover{text-decoration:none;}
 .moderatereason_title{margin-bottom:5px;}
-.moderatereason_title .btn-group{background:none;margin:0px;heigth:5px;}
+.moderatereason_title .btn-group{background:none;margin:0px;height:5px;}
+
+.highlight_color{background-color: #666666;background-image: url('{__ROOT__}/app/group/Static/Images/color_down.png') !important;background-position: 0 0;background-repeat: no-repeat;margin-left: 3px;width: 23px !important;}
+.highlight_item{background: url('{__ROOT__}/app/group/Static/Images/color.png') repeat-x scroll 0 0 #E5E5E5;border: 1px solid #999999;box-shadow: 0 1px 0 #E5E5E5;cursor: pointer;height: 23px;margin-right: 3px;overflow: hidden;padding: 0;vertical-align: middle;}
+.highlightoperating .currenthighlightstyle{background-color: #FFFFFF;border: 1px solid #999999;}
+.highlightoperating a{float: left;height: 21px;line-height: 21px;margin-right: 3px;text-align: center;width: 21px !important;}
+.highlightoperating_b,.highlightoperating_i,.highlightoperating_l{border: 1px solid #F1F5FA;outline: medium none;}
 [/CURSCRIPT]
 
 /**===============================

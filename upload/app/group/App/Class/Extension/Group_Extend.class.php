@@ -140,4 +140,61 @@ class Group_Extend{
 		return '';
 	}
 
+	static public function grouptopiclistIcon($oGrouptopic,$bReturnImg=false){
+		$sGroupurl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);
+
+		$sTitle='新窗口打开';
+		$sIcon=__APPPUB__.'/Images/folder_common.gif';
+		
+		if($oGrouptopic->grouptopic_comments>0){
+			$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment);
+			
+			if(CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400){
+				$sIcon=__APPPUB__.'/Images/folder_new.gif';
+				$sTitle='有新回复 - '.$sTitle;
+			}
+		}
+		
+		if($oGrouptopic['grouptopic_sticktopic']>0){
+			$sIcon=__APPPUB__.'/Images/grouptopic/sticktopic_'.$oGrouptopic['grouptopic_sticktopic'].'.gif';
+			$sTitle='置顶主题 '.$oGrouptopic['grouptopic_sticktopic'].' - '.$sTitle;
+		}
+
+		if($oGrouptopic['grouptopic_isclose']==1){
+			$sIcon=__APPPUB__.'/Images/locked.gif';
+			$sTitle='关闭的主题 - '.$sTitle;
+		}
+
+		return '<a href="'.$sGroupurl.'" title="'.$sTitle.'" target="_blank"><img src="'.$sIcon.'" /></a>';
+	}
+
+	static public function grouptopicColor($sColor){
+		$arrColor=@unserialize($sColor);
+		if($arrColor){
+			$sReturn='';
+
+			if(!empty($arrColor[0])){
+				$sReturn.='color:'.$arrColor[0].';';
+			}
+
+			if(!empty($arrColor[1][1])){
+				$sReturn.="font-weight: bold;";
+			}
+
+			if(!empty($arrColor[1][2])){
+				$sReturn.="font-style: italic;";
+			}
+
+			if(!empty($arrColor[1][3])){
+				$sReturn.="text-decoration: underline;";
+			}
+
+			if(!empty($arrColor[2])){
+				$sReturn.='background-color:'.$arrColor[2].';';
+			}
+
+			return $sReturn;
+		}
+	}
+
 }

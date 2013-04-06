@@ -22,6 +22,7 @@ return array(
 'b1dae9bc5cabbc13e4bee21af11cdb8d'=>"管理員",
 'e1f0d2f549e5bbd8419be226b5022225'=>"用戶不在線",
 '268ab38cd66db450e4ae0ba970cc3e15'=>"用戶在線",
+'015772986169b055bb8008b10803b753'=>"新發表的",
 )
 
 ?>

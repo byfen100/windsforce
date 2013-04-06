@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `#@__grouptopic` (
   `grouptopic_sticktopic` tinyint(1) NOT NULL DEFAULT '0' COMMENT '帖子是否置顶',
   `grouptopic_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '帖子是否显示',
   `grouptopic_isclose` int(1) NOT NULL DEFAULT '0' COMMENT '帖子是否关闭帖子',
-  `grouptopic_color` char(7) NOT NULL DEFAULT '' COMMENT '帖子高亮颜色',
+  `grouptopic_color` varchar(120) NOT NULL DEFAULT '' COMMENT '帖子高亮颜色',
   `grouptopic_iscomment` tinyint(1) NOT NULL DEFAULT '1' COMMENT '帖子是否允许评论',
   `grouptopic_addtodigest` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否精华帖子',
   `grouptopic_isaudit` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0待审核1审核通过',

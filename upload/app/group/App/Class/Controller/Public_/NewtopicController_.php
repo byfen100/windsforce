@@ -13,30 +13,37 @@ class NewtopicController extends Controller{
 		Core_Extend::loadCache('sociatype');
 
 		// 新帖列表
-		$sType=G::getGpc('type','G');
+		$sType=G::getGpc('type','G'); // 排序类型
+		$nDid=intval(G::getGpc('did','G')); // 是否为精华
+
 		if(empty($sType)){
-			$sType='create_dateline';
+			$sOrderType='create_dateline';
 		}elseif($sType=="view"){
-			$sType='grouptopic_views';
+			$sOrderType='grouptopic_views';
 		}elseif($sType=="com"){
-			$sType='grouptopic_comments';
+			$sOrderType='grouptopic_comments';
 		}else{
-			$sType='create_dateline';
+			$sOrderType='create_dateline';
 		}
 
 		$this->assign('sType',$sType);
 
 		// 读取帖子列表
 		$arrWhere=array();
+
 		$nEverynum=$GLOBALS['_cache_']['group_option']['group_indextopicnum'];
 		$arrWhere['grouptopic_status']=1;
 		$arrWhere['grouptopic_isaudit']=1;
+
+		if($nDid==1){
+			$arrWhere['grouptopic_addtodigest']=$nDid;
+		}
 
 		$nTotalRecord=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
 		
 		$oPage=Page::RUN($nTotalRecord,$nEverynum,G::getGpc('page','G'));
 		
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('arrGrouptopics',$arrGrouptopics);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
@@ -61,6 +68,7 @@ class NewtopicController extends Controller{
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_login_status']);
 		$this->assign('nRememberTime',$GLOBALS['_option_']['remember_time']);
 		$this->assign('arrBindeds',$GLOBALS['_cache_']['sociatype']);
+		$this->assign('nDid',$nDid);
 
 		$this->display('public+newtopic');
 	}
