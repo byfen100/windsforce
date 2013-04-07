@@ -93,7 +93,7 @@ $(function(){
 										<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" >进入高级模式&gt;&gt;</a>
 									</div>
 
-									<div class="extend_tool">
+									<div class="extend_tool" style="margin-top:10px;">
 										<em class="left">
 											<a class="fastre" href="" onclick="">回复</a>
 											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
@@ -104,6 +104,8 @@ $(function(){
 											<a href="" onclick="">举报</a>
 										</p>
 									</div>
+
+									<span class="clear">&nbsp;</span>
 								</div>
 							</div>
 						</div>
