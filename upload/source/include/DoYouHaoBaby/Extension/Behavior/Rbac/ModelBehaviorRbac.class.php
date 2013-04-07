@@ -176,9 +176,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		if($bSessionExists===FALSE){
 			$this->clearThisCookie();
-
 			$arrUserInformation['session_hash']=$sHash?$sHash:G::randString(6);
-			$this->updateSession($arrUserInformation['session_hash'],$nUserId,$sAuthKey);
 		}
 
 		$sHash=isset($arrUserInformation['session_hash'])?$arrUserInformation['session_hash']:$sHash;// hash
@@ -503,7 +501,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 
 		$sIp=G::getIp();
-		$oSession=SessionModel::M()->deleteWhere("`session_hash`='{$sHash}' OR($nUserId<>0 AND `user_id`={$nUserId} OR(`user_id`=0 AND `session_ip`='{$sIp}'))");// 删除SESSION
+		$oSession=SessionModel::M()->deleteWhere("`session_hash`='{$sHash}' OR($nUserId<>0 AND `user_id`={$nUserId})");// 删除SESSION
 
 		if($bInsert){// 新插入Session数据
 			$oSession=new SessionModel();
