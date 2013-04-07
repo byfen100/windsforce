@@ -89,8 +89,8 @@ INSERT INTO `#@__grouptopic` (`grouptopic_id`, `grouptopiccategory_id`, `group_i
 -- 转存表中的数据 `windsforce_grouptopiccomment`
 --
 
-INSERT INTO `#@__grouptopiccomment` (`grouptopiccomment_id`, `grouptopic_id`, `user_id`, `grouptopiccomment_status`, `grouptopiccomment_name`, `grouptopiccomment_content`, `grouptopiccomment_email`, `grouptopiccomment_url`, `grouptopiccoment_ip`, `create_dateline`, `update_dateline`) VALUES
-(1, 1, 1, 1, '', '我希望一切都是一个美好的开始！', '', '', '', 1355499282, 0);
+INSERT INTO `#@__grouptopiccomment` (`grouptopiccomment_id`, `grouptopic_id`, `user_id`, `grouptopiccomment_status`, `grouptopiccomment_title`, `grouptopiccomment_name`, `grouptopiccomment_content`, `grouptopiccomment_email`, `grouptopiccomment_url`, `grouptopiccoment_ip`, `create_dateline`, `update_dateline`, `grouptopiccomment_parentid`) VALUES
+(1, 1, 1, 1, '', '', '我希望一切都是一个美好的开始！', '', '', '', 1355499282, 0, 0);
 
 -- --------------------------------------------------------
 

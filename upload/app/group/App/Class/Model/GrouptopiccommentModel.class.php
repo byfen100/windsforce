@@ -15,12 +15,16 @@ class GrouptopiccommentModel extends CommonModel{
 				'user'=>array(Db::BELONGS_TO =>'UserModel','source_key'=>'user_id','target_key'=>'user_id'),
 				'userprofile'=>array(Db::BELONGS_TO=>'UserprofileModel','source_key'=>'user_id','target_key'=>'user_id'),
 				'usercount'=>array(Db::BELONGS_TO=>'UsercountModel','source_key'=>'user_id','target_key'=>'user_id'),
+				'parent'=>array(Db::BELONGS_TO =>'GrouptopiccommentModel','source_key'=>'grouptopiccomment_parentid','target_key'=>'grouptopiccomment_id'),
 			),
 			'attr_protected'=>'grouptopiccomment_id',
 			'autofill'=>array(
 				array('user_id','userId','create','callback'),
 			),
 			'check'=>array(
+				'grouptopiccomment_title'=>array(
+					array('max_length',300,Dyhb::L('回帖标题不能超过300个字符','__APP_ADMIN_LANG__@Model/Grouptopiccomment')),
+				),
 				'grouptopiccomment_content'=>array(
 					array('require',Dyhb::L('帖子评论内容不能为空','__APP_ADMIN_LANG__@Model/Grouptopiccomment')),
 				),

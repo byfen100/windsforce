@@ -169,6 +169,10 @@ class Group_Extend{
 	}
 
 	static public function grouptopicColor($sColor){
+		if(!$sColor){
+			return '';
+		}
+
 		$arrColor=@unserialize($sColor);
 		if($arrColor){
 			$sReturn='';

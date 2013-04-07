@@ -79,6 +79,8 @@
   'FRONT_TPL_DIR' => 'Default',
   'ADMIN_TPL_DIR' => 'Default',
   'CACHE_LIFE_TIME' => 8640000,
+  'BOOTSTRAP_ON' => true,
+  'BOOTSTRAP_VERSION' => '2.0.3',
   'NOT_ALLOWED_EMPTYCONTROL_VIEW' => true,
   'COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME' => false,
   'FRONT_LANGUAGE_DIR' => 'Zh-cn',

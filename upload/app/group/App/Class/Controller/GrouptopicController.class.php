@@ -48,6 +48,10 @@ class GrouptopicController extends InitController{
 
 	public function set_grouptopicside(){
 		Core_Extend::doControllerAction('Grouptopic@Setgrouptopicside','index');
+	}	
+	
+	public function commenttopic_dialog(){
+		Core_Extend::doControllerAction('Grouptopic@Commenttopicdialog','index');
 	}
 
 }

@@ -31,9 +31,12 @@ class ColortopicdialogController extends Controller{
 			$this->E(Dyhb::L('帖子不存在','Controller/Grouptopicadmin'));
 		}
 
-		$arrColor=@unserialize($oGrouptopic->grouptopic_color);
-		if(!$arrColor){
-			$arrColor=array('',array('0','0','0'),'',);
+		$arrColor=array('',array(1=>'0',2=>'0',3=>'0'),'',);
+		if($oGrouptopic->grouptopic_color){
+			$arrColorTemp=@unserialize($oGrouptopic->grouptopic_color);
+			if($arrColorTemp){
+				$arrColor=$arrColorTemp;
+			}
 		}
 
 		$this->assign('arrColor',$arrColor);

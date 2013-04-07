@@ -180,7 +180,13 @@ $(function(){
 									</div>
 									<div class="floor_top_tips">
 										<span class="floor_copy" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','楼层复制成功');">楼主<sup>#</sup></span>
-										<span>发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+										<span>
+										<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+										<!--{:Core_Extend::getUsericon(0)}-->&nbsp;匿名
+										<!--{d*else}-->
+										<img src="<!--{:__APPPUB__}-->/Images/ico_author.png" title="楼主"/>&nbsp;楼主
+										<!--{/if}-->
+										&nbsp;发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 									</div>
 									<div id="grouptopicview_main">
 										<div class="grouptopiccontent_box">
@@ -219,6 +225,9 @@ $(function(){
 										<h4 style="font-size:13px;">快速回复</h4>
 										<!--{if $GLOBALS['___login___']!==false}-->
 										<textarea class="grouptopiccomment_quickmessage" name="grouptopiccomment_content" id="grouptopiccomment_quickmessage" placeholder="我也说两句" rows="2" cols="10"></textarea>
+										<input type="hidden" name="grouptopiccomment_name" id="grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
+										<input type="hidden" name="grouptopiccomment_email" id="grouptopiccomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
+										<input type="hidden" name="grouptopiccomment_url" id="grouptopiccomment_url" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
 										<!--{d*else}-->
 										<div class="commoncommentform_needloginbox">
 											<div class="commoncommentform_needloginboxinner">
@@ -245,7 +254,7 @@ $(function(){
 
 									<div class="extend_tool">
 										<em class="left">
-											<a class="fastre" href="" onclick="">回复</a>
+											<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->');">回复</a>
 											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
 											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'])}-->">编辑</a>
 											<!--{/if}-->
@@ -255,6 +264,69 @@ $(function(){
 										</p>
 									</div>
 								</td>
+							</tr>
+							<tr>
+								<td class="floor_grouptopicbottomtd1"></td>
+								<td class="floor_grouptopicbottomtd2"></td>
+							</tr>
+						</table>
+					</div>
+					<!--{d*else}-->
+					<div class="floor clear" id="grouptopicview_0">
+						<table width="100%" class="floor_table floor_grouptopictable">
+							<tr>
+								<td rowspan="2" class="floor_left floor_grouptopictd1" width="350px">
+									<div class="floor_info">
+										<div class="floor_userinfoname">
+											<div class="floor_userinfonameinner">
+												<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+												匿名
+												<!--{d*else}-->
+												<a target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+												<!--{/if}-->
+											</div>
+										</div>
+										<!--{if $oGrouptopic['grouptopic_isanonymous']==0}-->
+										<div style="margin-left:16px;">
+											<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank">
+												<img src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" target="_blank" width="35px" height="35px" alt="<!--{$oGrouptopic->grouptopic_username}-->" class="thumbnail">
+											</a>
+										</div>
+										<!--{/if}-->
+									</div>
+								</td>
+								<td class="floor_right"> 
+									<div class="floor_title">
+										<div class="post_num">
+											<ul class="clear">
+												<li>阅读&nbsp;<em><!--{$oGrouptopic->grouptopic_views}--></em></li>
+												<li>回复&nbsp;<em><!--{$oGrouptopic->grouptopic_comments}--></em></li>
+											</ul>
+										</div>
+										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
+											[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]
+											<!--{d*else}-->
+											[默认分类]<!--{/if}-->&nbsp;<span style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->"><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
+											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
+											<!--{:Group_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
+											<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
+											<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
+										</h1>
+									</div>
+									<div class="floor_top_tips">
+										<span class="floor_copy" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','楼层复制成功');">楼主<sup>#</sup></span>
+										<span>
+										<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+										<!--{:Core_Extend::getUsericon(0)}-->&nbsp;匿名
+										<!--{d*else}-->
+										<img src="<!--{:__APPPUB__}-->/Images/ico_author.png" title="楼主"/>&nbsp;楼主
+										<!--{/if}-->
+										&nbsp;发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="floor_bottom floor_grouptopictd2" valign="bottom"></td>
 							</tr>
 							<tr>
 								<td class="floor_grouptopicbottomtd1"></td>
@@ -393,14 +465,41 @@ $(function(){
 								<td class="floor_right floor_grouptopiccommenttd2">
 									<div class="floor_top_tips">
 										<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
-										<span>回复于&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
+										<span>
+										<!--{if $oComment['user_id']==$oGrouptopic['user_id']}-->
+										<img src="<!--{:__APPPUB__}-->/Images/ico_author.png" title="楼主"/>&nbsp;楼主
+										<!--{d*else}-->
+										<!--{$oComment['user_id']|Core_Extend+getUsericon}-->
+										<!--{/if}-->
+										&nbsp回复于&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
 									</div>
+
+									<!--{if $oComment->grouptopiccomment_title}-->
+									<div class="grouptopiccomment_title">
+										<h1><!--{$oComment->grouptopiccomment_title}--></h1>
+									</div>
+									<!--{/if}-->
+
 									<div class="grouptopiccontent_box">
 										<!--{if $oGrouptopic['grouptopic_hiddenreplies']==1}-->
 										<div class="locked">此回帖仅作者可见</div>
 										<!--{/if}-->
 										
 										<!--{if $oGrouptopic['grouptopic_hiddenreplies']==0 || ($oGrouptopic['grouptopic_hiddenreplies']==1 && $GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id'])}-->
+										<!--{if $oComment['grouptopiccomment_parentid']}-->
+										<div class="grouptopiccomment_parent">
+											<div class="commonbox_mini commonbox_mini_gray">
+												<h2 class="title">
+													你参与了&nbsp;<a class="bind_hover_card" href="<!--{:Dyhb::U('group://space@?id='.$oComment->parent->user_id)}-->" bm_user_id="<!--{$oComment:parent:user_id}-->"><img alt="<!--{$oComment:parent:grouptopiccomment_name}-->" src="<!--{:Core_Extend::avatar($oComment->parent->user_id,'small')}-->" width="32px" height="32px"></a>
+													&nbsp;他的回帖&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oComment->parent->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oComment:parent:user_id}-->"><!--{$oComment:parent:grouptopiccomment_name}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oComment->parent->grouptopiccomment_id)}-->" title="查看该回帖"><i class="icon-eye-open"></i></a>
+												</h2>
+												<div class="grouptopiccomment_parentcontent">
+													<p><!--{$oComment:parent:grouptopiccomment_content|strip_tags|G+subString=0,100|Core_Extend+ubb}--></p>
+												</div>
+											</div>
+										</div>
+										<!--{/if}-->
+
 										<!--{$oComment->grouptopiccomment_content|Core_Extend+ubb}-->
 										<!--{/if}-->
 									</div>
@@ -417,7 +516,7 @@ $(function(){
 
 									<div class="extend_tool">
 										<em class="left">
-											<a class="fastre" href="" onclick="">回复</a>
+											<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->','<!--{$oComment['grouptopiccomment_id']}-->');">回复</a>
 											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
 											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑</a>
 											<!--{/if}-->

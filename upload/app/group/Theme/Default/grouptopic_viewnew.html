@@ -37,7 +37,7 @@ $(function(){
 								<div class="info">
 									<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->" class="grouptopiccategory"><!--{$oGrouptopic:group:group_nikename}--></a>
 									<span class="pipe">|</span>
-									<span><a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->"><!--{$oGrouptopic:grouptopic_username}--></a>&nbsp;发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+									<span><a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->"  class="bind_hover_card" bm_user_id="<!--{$oGrouptopic['user_id']}-->"><!--{$oGrouptopic:grouptopic_username}--></a>&nbsp;发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 									<span class="pipe">|</span>
 									<!--{$oGrouptopic->grouptopic_views}-->次阅读
 									<span class="pipe">|</span>
@@ -76,6 +76,9 @@ $(function(){
 								<h4 style="font-size:13px;">快速回复</h4>
 									<!--{if $GLOBALS['___login___']!==false}-->
 									<textarea class="grouptopiccomment_quickmessage" name="grouptopiccomment_content" id="grouptopiccomment_quickmessage" placeholder="我也说两句" rows="2" cols="10"></textarea>
+									<input type="hidden" name="grouptopiccomment_name" id="grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
+									<input type="hidden" name="grouptopiccomment_email" id="grouptopiccomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
+									<input type="hidden" name="grouptopiccomment_url" id="grouptopiccomment_url" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
 									<!--{d*else}-->
 									<div class="commoncommentform_needloginbox">
 										<div class="commoncommentform_needloginboxinner">

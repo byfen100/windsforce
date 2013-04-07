@@ -258,8 +258,7 @@ class Ubb2html{
 
 		$sId=G::randString(6);
 		
-		$sContent="<a href=\"javascript:playmedia('player_{$sId}','mp3','".$sSrc."','240','20','');\">".basename($sSrc)."</a>
-					<div id=\"player_{$sId}\" style=\"display: none;\"></div>";
+		$sContent="<a href=\"javascript:playmedia('player_{$sId}','mp3','".$sSrc."','240','20','');\">".basename($sSrc)."</a><div id=\"player_{$sId}\" style=\"display: none;\"></div>";
 
 		return $this->template($sTitle,$sContent);
 	}
@@ -270,8 +269,7 @@ class Ubb2html{
 
 		$sId=G::randString(6);
 		
-		$sContent="<a href=\"javascript:playmedia('player_{$sId}','wmp','".$sSrc."','600','405','');\">".basename($sSrc)."</a>
-					<div id=\"player_{$sId}\" style=\"display: none;\"></div>";
+		$sContent="<a href=\"javascript:playmedia('player_{$sId}','wmp','".$sSrc."','600','405','');\">".basename($sSrc)."</a><div id=\"player_{$sId}\" style=\"display: none;\"></div>";
 
 		return $this->template($sTitle,$sContent);
 	}
@@ -304,8 +302,7 @@ class Ubb2html{
 
 		$sId=G::randString(6);
 		
-		$sContent="<a href=\"javascript:playmedia('player_{$sId}','swf','".$sSrc."','600','405','');\">".basename($sSrc)."</a>
-					<div id=\"player_{$sId}\" style=\"display: none;\"></div>";
+		$sContent="<a href=\"javascript:playmedia('player_{$sId}','swf','".$sSrc."','600','405','');\">".basename($sSrc)."</a><div id=\"player_{$sId}\" style=\"display: none;\"></div>";
 
 		return $this->template($sTitle,$sContent);
 	}
@@ -316,8 +313,7 @@ class Ubb2html{
 
 		$sId=G::randString(6);
 		
-		$sContent="<a href=\"javascript:playmedia('player_{$sId}','wmp','".$sSrc."','600','405','');\">".basename($sSrc)."</a>
-					<div id=\"player_{$sId}\" style=\"display: none;\"></div>";
+		$sContent="<a href=\"javascript:playmedia('player_{$sId}','wmp','".$sSrc."','600','405','');\">".basename($sSrc)."</a><div id=\"player_{$sId}\" style=\"display: none;\"></div>";
 
 		return $this->template($sTitle,$sContent);
 	}
@@ -328,8 +324,7 @@ class Ubb2html{
 
 		$sId=G::randString(6);
 		
-		$sContent="<a href=\"javascript:playmedia('player_{$sId}','qvod','".$sSrc."','600','405','');\">".basename($sSrc)."</a>
-					<div id=\"player_{$sId}\" style=\"display: none;\"></div>";
+		$sContent="<a href=\"javascript:playmedia('player_{$sId}','qvod','".$sSrc."','600','405','');\">".basename($sSrc)."</a><div id=\"player_{$sId}\" style=\"display: none;\"></div>";
 
 		return $this->template($sTitle,$sContent);
 	}
@@ -340,8 +335,7 @@ class Ubb2html{
 
 		$sId=G::randString(6);
 		
-		$sContent="<a href=\"javascript:playmedia('player_{$sId}','flv','".$sSrc."','600','405','');\">".basename($sSrc)."</a>
-					<div id=\"player_{$sId}\" style=\"display: none;\"></div>";
+		$sContent="<a href=\"javascript:playmedia('player_{$sId}','flv','".$sSrc."','600','405','');\">".basename($sSrc)."</a><div id=\"player_{$sId}\" style=\"display: none;\"></div>";
 
 		return $this->template($sTitle,$sContent);
 	}
@@ -471,13 +465,11 @@ class Ubb2html{
 			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
 			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','swf','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a>
-						<div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','swf','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
 			
 			return $this->template($sTitle,$sContent);
 		}else{
 			
-
 			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
 		}
 	}
@@ -489,8 +481,7 @@ class Ubb2html{
 			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
 			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','wmp','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a>
-						<div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','wmp','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
 			
 			return $this->template($sTitle,$sContent);
 		}else{
@@ -505,8 +496,7 @@ class Ubb2html{
 			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
 			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','mp3','".Attachment_Extend::getAttachmenturl($oAttachment)."','240','20','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a>
-						<div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','mp3','".Attachment_Extend::getAttachmenturl($oAttachment)."','240','20','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
 			
 			return $this->template($sTitle,$sContent);
 		}else{
@@ -521,8 +511,7 @@ class Ubb2html{
 			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
 			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','qvod','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a>
-						<div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','qvod','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
 			
 			return $this->template($sTitle,$sContent);
 		}else{
@@ -537,8 +526,7 @@ class Ubb2html{
 			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
 			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','flv','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a>
-						<div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','flv','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
 			
 			return $this->template($sTitle,$sContent);
 		}else{

@@ -52,6 +52,7 @@ class ViewController extends Controller{
 		$oUserprofile=UserprofileModel::F('user_id=?',$oGrouptopic->user_id)->getOne();
 		
 		$this->assign('oUserprofile',$oUserprofile);
+		$this->assign('sUsersite',$oUserprofile['userprofile_site']);
 
 		// 读取帖子标签
 		$arrGrouptopictags='';

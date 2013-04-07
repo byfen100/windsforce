@@ -1,0 +1,120 @@
+<!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
+
+<!--{script}-->
+$(function(){
+	editor=loadEditorThin('grouptopiccomment_message');
+	$(".grouptopiccomment-face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#grouptopiccomment_emotion_parentcontainer'),top:25,left:-27});
+});
+
+function addGrouptopiccomment(){
+	$("#grouptopiccomment_message").val(editor.html());
+
+	if($("#grouptopiccomment_message").val()==""){
+		windsforceAlert('回复内容不能为空','',3);
+		return false;
+	}
+
+	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/add_reply')}-->','',function(data,status){
+		if(status==1){
+			window.location.href=data.url;
+		}
+	});
+}
+
+  function getObjectClassName(obj) {
+     if (obj && obj.constructor && obj.constructor.toString) {
+          var arr = obj.constructor.toString().match(/function\s*(\w+)/);
+          if (arr && arr.length == 2) {
+              return arr[1];
+          }
+     }
+ 
+    return undefined;
+}
+
+function bugEmotion(){
+	$(".grouptopiccomment-face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#grouptopiccomment_emotion_parentcontainer'),top:25,left:-27});
+}
+
+function showMedia(){
+	$('#grouptopicreply-media-box').toggle('fast');
+}
+
+function insertGrouptopicattachment(nAttachmentid){
+	insertAttachment(editor,nAttachmentid);
+}
+
+function insertGrouptopicvideo(sContent){
+	insertVideo(editor,sContent);
+}
+
+function insertGrouptopicmusic(sContent){
+	insertMusic(editor,sContent);
+}
+<!--{/script}-->
+			
+			<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form">
+				<div class="span<!--{if isset($nDialog) && $nDialog==1}-->8<!--{d*else}-->12<!--{/if}-->">
+					<label>帖子标题</label>
+					<span id="grouptopiccommenttitle_show"><input type="text" class="span<!--{if isset($nDialog) && $nDialog==1}-->4<!--{d*else}-->8<!--{/if}-->" value="Reply:<!--{$oGrouptopic->grouptopic_title}-->" readonly>&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_hide');showDiv('grouptopiccommenttitle_show');$('#grouptopiccomment_title').val('Reply:<!--{$oGrouptopic->grouptopic_title}-->');">修改</a>]</span>
+					<span style="display:none" id="grouptopiccommenttitle_hide"><input type="text" class="span<!--{if isset($nDialog) && $nDialog==1}-->4<!--{d*else}-->8<!--{/if}-->" name="grouptopiccomment_title" id="grouptopiccomment_title" value="">
+					&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_show');showDiv('grouptopiccommenttitle_hide');$('#grouptopiccomment_title').val('');">放弃</a>]</span>
+					
+					<!--{if isset($oGrouptopiccomment)}-->
+					<label>回复的帖子</label>
+					<div class="grouptopiccomment_parent">
+						<div class="commonbox_mini commonbox_mini_gray">
+							<h2 class="title">
+								你正在参与&nbsp;<a class="bind_hover_card" href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopiccomment->user_id)}-->" bm_user_id="<!--{$oGrouptopiccomment:user_id}-->"><img alt="<!--{$oGrouptopiccomment:grouptopiccomment_name}-->" src="<!--{:Core_Extend::avatar($oGrouptopiccomment->user_id,'small')}-->" width="32px" height="32px"></a>
+								&nbsp;他的回帖&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopiccomment->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopiccomment:user_id}-->"><!--{$oGrouptopiccomment:grouptopiccomment_name}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment->grouptopiccomment_id)}-->" title="查看该回帖"><i class="icon-eye-open"></i></a>
+							</h2>
+							<div class="grouptopiccomment_parentcontent">
+								<p><!--{$oGrouptopiccomment:grouptopiccomment_content|strip_tags|G+subString=0,100|Core_Extend+ubb}--></p>
+							</div>
+						</div>
+					</div>
+					<!--{/if}-->
+					
+					<label>回帖内容<!--{if $GLOBALS['___login___']!==false}-->&nbsp;(<a href="javascript:void(0);" onclick="showMedia();">媒体</a>)<!--{/if}--></label>
+
+					<!--{if $GLOBALS['___login___']!==false}-->
+					<div id="grouptopicreply-media-box" class="common-media-box none">
+						<!--{if !isset($nDialog)}-->
+						<a href="javascript:void(0);" class="grouptopiccomment-face-icon icon_add_face" onclick="bugEmotion();">表情</a>
+						<!--{/if}-->
+						<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
+						<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
+						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
+					</div>
+					<div id="grouptopiccomment_emotion_parentcontainer">
+						<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if isset($nDialog) && $nDialog==1}-->10<!--{d*else}-->16<!--{/if}-->" style="width:100%;"></textarea>
+					</div>
+					
+					<input type="hidden" name="grouptopiccomment_name" id="grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
+					<input type="hidden" name="grouptopiccomment_email" id="grouptopiccomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
+					<input type="hidden" name="grouptopiccomment_url" id="grouptopiccomment_url" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
+
+					<!--{d*else}-->
+					<div class="commoncommentform_needloginbox">
+						<div class="commoncommentform_needloginboxinner">
+							<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a> |
+							<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">用户注册</a>
+						</div>
+					</div>
+					<!--{/if}-->
+
+					<input type="hidden" name="ajax" value="1">
+					<input type="hidden" name="tid" value="<!--{$oGrouptopic->grouptopic_id}-->">
+					<!--{if isset($oGrouptopiccomment)}-->
+					<input type="hidden" name="grouptopiccomment_parentid" value="<!--{$oGrouptopiccomment->grouptopiccomment_id}-->">
+					<!--{/if}-->
+					
+					<!--{if !isset($nDialog)}-->
+					<div class="form-actions">
+						<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>&nbsp;
+						<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->" class="btn">返回帖子</a>
+					</div>
+					<!--{/if}-->
+				</div>
+			</form>

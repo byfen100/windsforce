@@ -28,6 +28,9 @@ Description: Group应用模块CSS
 .floor_grouptopiccommentbottomtd2{background: none repeat scroll 0 0 #E5EDF2;height: 4px;padding: 0;margin:0;}
 .floor_grouptopiccommentbottom{border-bottom: 1px solid #CDCDCD;padding: 0;margin:0;}
 
+.grouptopiccomment_parentcontent{-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background-color: #FAFAFA;border-color: #E6E6E6 #E6E6E6 #D6D6D6;border-image: none;border-style: solid;border-width: 1px;box-shadow: 0 1px 0 white inset, 0 1px 5px #EEEEEE;min-height: 38px;padding: 10px;color: #666666;line-height: 1.6;margin: 15px 0 2px;
+}
+
 .floor_footerposttable{table-layout:fixed;margin-top:-15px;margin-bottom:-20px;}
 .grouptopiccomment_form{margin-bottom:-15px;}
 .floor_footerpostcontenttable{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #DDDDDD;}
@@ -36,6 +39,7 @@ Description: Group应用模块CSS
 .floor_footerposttitle{background:#378C32;padding:5px 10px;color:#fff;}
 
 .grouptopiccontent_box{min-height:100px;}
+.grouptopiccomment_title h1{font-size:14px;}
 
 .post_num{float:right;overflow:hidden;margin-top:2px;*width:150px;}
 .post_num ul{margin-left:-1px;float:right;}

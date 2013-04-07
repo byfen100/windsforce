@@ -116,14 +116,14 @@ INSERT INTO `#@__access` (`role_id`, `node_id`, `access_level`, `access_parentid
 (2, 67, 3, 66, 1),
 (2, 69, 3, 68, 1),
 (2, 70, 3, 68, 1),
-(2, 72, 3, 71, 1),
-(2, 73, 3, 71, 1),
-(2, 74, 3, 71, 1),
-(2, 75, 3, 71, 1),
-(2, 76, 3, 71, 1),
-(2, 77, 3, 71, 1),
-(2, 78, 3, 71, 1),
 (2, 79, 3, 71, 1),
+(2, 78, 3, 71, 1),
+(2, 77, 3, 71, 1),
+(2, 76, 3, 71, 1),
+(2, 75, 3, 71, 1),
+(2, 74, 3, 71, 1),
+(2, 73, 3, 71, 1),
+(2, 72, 3, 71, 1),
 (3, 60, 1, 0, 1),
 (3, 61, 2, 60, 1),
 (3, 66, 2, 60, 1),
@@ -140,7 +140,8 @@ INSERT INTO `#@__access` (`role_id`, `node_id`, `access_level`, `access_parentid
 (3, 74, 3, 71, 1),
 (3, 75, 3, 71, 1),
 (3, 77, 3, 71, 1),
-(3, 79, 3, 71, 1);
+(3, 79, 3, 71, 1),
+(2, 80, 3, 71, 1);
 
 -- --------------------------------------------------------
 
@@ -411,23 +412,8 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 (76, 'group@grouptopicadmin@statustopic_dialog|statustopic', '隐藏或者显示帖子', 1, '', 0, 71, 3, 0, 1364879867, 0, 1),
 (77, 'group@grouptopicadmin@categorytopic_dialog|categorytopic', '帖子分类设置', 1, '', 0, 71, 3, 0, 1364879934, 0, 1),
 (78, 'group@grouptopicadmin@tagtopic_dialog|tagtopic', '帖子标签', 1, '', 0, 71, 3, 0, 1364879971, 0, 1),
-(79, 'group@grouptopicadmin@colortopic_dialog|colortopic', '帖子高亮', 1, '', 0, 71, 3, 0, 1364880013, 0, 1);
-
--- --------------------------------------------------------
-
---
--- 转存表中的数据 `windsforce_nodegroup`
---
-
-INSERT INTO `#@__nodegroup` (`nodegroup_id`, `nodegroup_name`, `nodegroup_title`, `create_dateline`, `update_dateline`, `nodegroup_status`, `nodegroup_sort`, `nodegroup_issystem`) VALUES
-(1, 'rbac', '权限', 1296454621, 1343878985, 1, 5, 1),
-(2, 'option', '设置', 1334071384, 1343878985, 1, 1, 1),
-(3, 'admin', '站长', 1334394747, 1343878985, 1, 8, 1),
-(4, 'app', '应用', 1334471579, 1343878985, 1, 4, 1),
-(5, 'ui', '界面', 1338271539, 1343878985, 1, 2, 1),
-(6, 'announce', '运营', 1340356739, 1343878985, 1, 6, 1),
-(7, 'moderate', '内容', 1340648268, 1343878985, 1, 3, 1),
-(8, 'tool', '工具', 1343878970, 1343878985, 1, 7, 1);
+(79, 'group@grouptopicadmin@colortopic_dialog|colortopic', '帖子高亮', 1, '', 0, 71, 3, 0, 1364880013, 0, 1),
+(80, 'group@grouptopicadmin@recommendtopic_dialog|recommendtopic', '帖子推荐', 1, '', 0, 71, 3, 0, 1365342839, 0, 0);
 
 -- --------------------------------------------------------
 

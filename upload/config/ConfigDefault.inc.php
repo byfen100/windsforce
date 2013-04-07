@@ -107,6 +107,8 @@ return array(
 	'FRONT_TPL_DIR'=>'Default',
 	'ADMIN_TPL_DIR'=>'Default',
 	'CACHE_LIFE_TIME'=>8640000,
+	'BOOTSTRAP_ON'=>true,// 是否启用BOOTSTRAP界面库，如果你的应用不需要它，请在应用配置重写此值
+	'BOOTSTRAP_VERSION'=>'2.0.3',// 界面库版本
 
 	// 禁止空模块直接加载视图
 	'NOT_ALLOWED_EMPTYCONTROL_VIEW'=>TRUE,

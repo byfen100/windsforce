@@ -1,7 +1,9 @@
-<script src="<!--{:__PUBLIC__}-->/extension/bootstrap/js/bootstrap.min.js"></script>
+<!--{if $GLOBALS['_commonConfig_']['BOOTSTRAP_ON']}-->
+<script src="<!--{:__PUBLIC__}-->/extension/bootstrap/<!--{$GLOBALS['_commonConfig_']['BOOTSTRAP_VERSION']}-->/js/bootstrap.min.js"></script>
 <!--[if lte IE 6]>
 <script type="text/javascript" src="<!--{:__PUBLIC__}-->/extension/bootstrap/ie6/bootstrap-ie.js"></script>
 <![endif]-->
+<!--{/if}-->
 <script src="<!--{:__PUBLIC__}-->/js/common/global.js"></script>
 <script src="<!--{:__PUBLIC__}-->/js/common/common.js"></script>
 <script src="<!--{:__PUBLIC__}-->/js/common/top.js"></script>

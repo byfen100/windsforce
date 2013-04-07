@@ -14,6 +14,34 @@ function completeSet(data,status){
 		window.location.reload();
 	}
 }
+
+function grouptopicComment(nTid,nCid){
+	var sHtml=$.ajax({
+		url: D.U('group://grouptopic/commenttopic_dialog?tid='+nTid+(nCid?'&cid='+nCid:'')),
+		async: false
+	}).responseText;
+
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oCommentNewmodtopics=windsforceAlert(sHtml,'参与/回复帖子','',completeCommenttopic,'',400,100);
+
+		
+	}
+}
+
+function completeCommenttopic(data,status){
+	if(addGrouptopiccomment()==false){
+		return false;
+	}
+
+	if(status==1){
+		window.location.reload();
+	}
+
+	return true;
+}
 <!--{/script}-->
 
 		<ul class="breadcrumb">
@@ -34,7 +62,7 @@ $(function(){
 	<!--{if $GLOBALS['___login___']!==false && $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']==0}-->
 	editor=loadEditorThin('grouptopiccomment_message');
 	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
-	
+
 	$('.grouptopiccomment_quickmessage').autoResize({
 		onResize:function(){
 			$(this).css({opacity:0.8});
@@ -61,12 +89,16 @@ function closeQuickreplay(){
 
 function addGrouptopiccommentquick(){
 	var sCommentMessage=$("#grouptopiccomment_quickmessage").val();
+	var sCommentName=$("#grouptopiccomment_name").val();
+	var sCommentEmail=$("#grouptopiccomment_email").val();
+	var sCommentUrl=$("#grouptopiccomment_url").val();
+
 	if(!sCommentMessage){
 		windsforceAlert('回复内容不能为空','',3);
 		return false;
 	}
 
-	var sParameter="ajax=1&grouptopiccomment_message="+encodeURIComponent(sCommentMessage)+"&tid="+<!--{$oGrouptopic->grouptopic_id}-->;
+	var sParameter="ajax=1&grouptopiccomment_message="+encodeURIComponent(sCommentMessage)+"&tid="+<!--{$oGrouptopic->grouptopic_id}-->+'&grouptopiccomment_name='+encodeURIComponent(sCommentName)+'&grouptopiccomment_email='+encodeURIComponent(sCommentEmail)+'&grouptopiccomment_url='+encodeURIComponent(sCommentUrl);
 
 	Dyhb.AjaxSend('<!--{:Dyhb::U('group://grouptopic/add_reply')}-->',sParameter,'',function(data,status){
 		if(status==1){
