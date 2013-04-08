@@ -202,7 +202,7 @@ $(function(){
 										<!--{if is_array($arrGrouptopictags)}-->
 										<div class="grouptopictag">
 											<!--<foreach for=arrGrouptopictags value=oGrouptopictag>-->
-											<a title="<!--{$oGrouptopictag['grouptopictag_name']}-->" href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" target="_blank"><!--{$oGrouptopictag['grouptopictag_name']}--></a><!--{if count($arrGrouptopictags)-1!=$key}-->,&nbsp;<!--{/if}-->
+											<a title="<!--{$oGrouptopictag['grouptopictag_name']}-->" href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" target="_blank" class="common_tag"><!--{$oGrouptopictag['grouptopictag_name']}--></a><!--{if count($arrGrouptopictags)-1!=$key}-->,&nbsp;<!--{/if}-->
 											<!--</foreach>-->
 										</div>
 										<!--{/if}-->

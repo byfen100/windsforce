@@ -37,7 +37,7 @@ function findUser(){
 
 				<!--{if isset($oHometag)}-->
 				<div class="alert alert-success">
-					<!--<lang package='Template/Stat'>-->你搜索的用户标签为<!--</lang>-->&nbsp;<strong><span class="label label-success"><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></span></strong>，<!--<lang package='Template/Stat'>-->你可以查看<!--</lang>--><!--{if $GLOBALS['___login___']!==false}-->&nbsp;<b><a href="<!--{:Dyhb::U('home://spaceadmin/tag')}-->"><!--<lang package='Template/Stat'>-->我的标签<!--</lang>--></a></b><!--{/if}-->&nbsp;<b><a href="<!--{:Dyhb::U('home://stat/hometag')}-->"><!--<lang package='Template/Stat'>-->用户标签<!--</lang>--></a></b>&nbsp;<b><a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Stat'>-->会员列表<!--</lang>--></a></b>
+					<!--<lang package='Template/Stat'>-->你搜索的用户标签为<!--</lang>-->&nbsp;<strong><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a></strong>，<!--<lang package='Template/Stat'>-->你可以查看<!--</lang>--><!--{if $GLOBALS['___login___']!==false}-->&nbsp;<b><a href="<!--{:Dyhb::U('home://spaceadmin/tag')}-->"><!--<lang package='Template/Stat'>-->我的标签<!--</lang>--></a></b><!--{/if}-->&nbsp;<b><a href="<!--{:Dyhb::U('home://stat/hometag')}-->"><!--<lang package='Template/Stat'>-->用户标签<!--</lang>--></a></b>&nbsp;<b><a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Stat'>-->会员列表<!--</lang>--></a></b>
 				</div>
 				<!--{/if}-->
 

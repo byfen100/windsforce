@@ -224,7 +224,11 @@
 									<span class="left">来自：<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>&nbsp;<!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}-->
 									<!--</span>
 								</p>-->
-								<span style="width:100%;" class="grouphottopic_commentnum">来自：<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" style="color:#999999;" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>&nbsp;<!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}-->
+								<span style="width:100%;" class="grouphottopic_frominfo">
+									来自&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGrouphottopic->group)}-->" style="color:#999999;"><!--{$oGrouphottopic:group:group_nikename}--></a>
+									<span class="pipe">|</span>
+									楼主&nbsp;
+									<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" style="color:#999999;" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>&nbsp;<!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}-->
 								</span>
 							</li>
 							<!--</foreach>-->

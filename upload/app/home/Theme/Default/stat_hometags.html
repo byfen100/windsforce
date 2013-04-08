@@ -56,7 +56,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrHourHothometags value=oHometag>-->
 							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
 								<td width="*">
-									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
+									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
 									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oHometag['create_dateline'],true)}--></p>
 								</td>
 								<td width="100px">
@@ -87,7 +87,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrTodayHothometags value=oHometag>-->
 							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
 								<td width="*">
-									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
+									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
 									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oHometag['create_dateline'],true)}--></p>
 								</td>
 								<td width="100px">
@@ -118,7 +118,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrWeekHothometags value=oHometag>-->
 							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
 								<td width="*">
-									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
+									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
 									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oHometag['create_dateline'],true)}--></p>
 								</td>
 								<td width="100px">
@@ -149,7 +149,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrMonthHothometags value=oHometag>-->
 							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
 								<td width="*">
-									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
+									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
 									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oHometag['create_dateline'],true)}--></p>
 								</td>
 								<td width="100px">
@@ -180,7 +180,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrYearHothometags value=oHometag>-->
 							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
 								<td width="*">
-									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
+									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
 									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oHometag['create_dateline'],true)}--></p>
 								</td>
 								<td width="100px">
@@ -211,7 +211,7 @@ function completeDelete(data,status){
 							<!--<foreach for=arrTotalHothometags value=oHometag>-->
 							<tr id="hometaglist_item_<!--{$oHometag['hometag_id']}-->">
 								<td width="*">
-									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
+									<b><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a></b><!--{if $GLOBALS['___login___']!==FALSE}--><span class="pipe">|</span><!--{if Misc_Extend+hometag($oHometag['hometag_id'])===false}--><a href="javascript:void(0);" onclick="addHometag('<!--{$oHometag['hometag_name']}-->');"><!--<lang package='Template/Stat'>-->添加标签<!--</lang>--></a><!--{d*else}--><a href="javascript:void(0);" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><!--<lang package='Template/Stat'>-->删除标签<!--</lang>--></a><!--{/if}--><!--{/if}-->
 									<p><!--{$oHometag['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oHometag['create_dateline'],true)}--></p>
 								</td>
 								<td width="100px">
