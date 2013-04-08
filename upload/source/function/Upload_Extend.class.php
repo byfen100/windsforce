@@ -34,8 +34,8 @@ class Upload_Extend{
 
 		$arrDefaultoption=array(
 			'uploadfile_maxsize'=>$GLOBALS['_cache_'][$sType.'_option'][$sType.'_icon_uploadfile_maxsize'],
-			'width'=>48,
-			'height'=>48,
+			'width'=>120,
+			'height'=>120,
 			'upload_path'=>WINDSFORCE_PATH.'/data/upload/app/'.strtolower($sType).'/icon',
 		);
 

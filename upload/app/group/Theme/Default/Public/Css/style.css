@@ -89,7 +89,7 @@ Description: Group应用模块CSS
 /* 帖子工具条 */
 .extend_tool{border-top:1px dashed #CDCDCD;padding:10px 0px 0px 5px;}
 .extend_tool em a{padding:5px 10px 5px 25px;}
-.extend_tool .fastre{background:url('{__ROOT__}/app/group/Static/Images/fastreply.gif') no-repeat 0 50%;}
+.extend_tool .fastre{background:url('{__ROOT__}/app/group/Static/Images/fastreply.gif') no-repeat 4px 50%;}
 .extend_tool .editp{background:url('{__ROOT__}/app/group/Static/Images/edit.gif') no-repeat 4px 50%;}
 
 /* 小组新风格 */

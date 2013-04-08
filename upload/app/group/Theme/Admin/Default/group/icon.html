@@ -50,7 +50,7 @@ function completeDelete(data,status){
 					<fieldset>
 						<label for="icon"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->群组图标<!--</lang>-->(<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->当前最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSize)}-->) <!--{if !empty($oGroup['group_icon'])}-->[<a href="javascript:void(0);" onclick="deleteGroupIcon('<!--{$oGroup['group_id']}-->')"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>]<!--{/if}--></label>
 						<input type="file" name="icon[]" id="icon" size="40" />
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->自动缩略成 48 X 48 像素大小的图片<!--</lang>--><br/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->自动缩略成 120 X 120 像素大小的图片<!--</lang>--><br/>
 						<img src="<!--{$sGroupIcon}-->" />
 						</div>
 					</fieldset>
