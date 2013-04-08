@@ -37,6 +37,8 @@ class HomesiteController extends InitController{
 	public function update($sModel=null,$nId=null){
 		$nId=G::getGpc('value');
 		
+		$_POST['homesite_content']=trim($_POST['homesite_content'],'<br />');
+		
 		parent::update('homesite',$nId);
 	}
 
@@ -46,6 +48,8 @@ class HomesiteController extends InitController{
 	
 	public function insert($sModel=null,$nId=null){
 		$nId=G::getGpc('value');
+		
+		$_POST['homesite_content']=trim($_POST['homesite_content'],'<br />');
 		
 		parent::insert('homesite',$nId);
 	}

@@ -20,14 +20,8 @@ class AddtopicController extends Controller{
 				$_POST[$sCheckbox]=0;
 			}
 		}
-		
-		if(!isset($_POST[''])){
-			$_POST['grouptopic_ordertype']=0;
-		}
 
-		if(!isset($_POST[''])){
-			$_POST['grouptopic_allownoticeauthor']=0;
-		}
+		$_POST['grouptopic_content']=trim($_POST['grouptopic_content'],'<br />');
 	
 		// 保存帖子
 		$oGrouptopic=new GrouptopicModel();

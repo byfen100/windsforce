@@ -73,12 +73,6 @@ $(function(){
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="upload_create_thumb"><!--<lang package='Template/Default/Uploadoption'>-->附件上传方式<!--</lang>--></label>
-						<input type="radio" id="upload_create_thumb" name="options[upload_create_thumb]" value="1" <!--{if $arrOptions['upload_create_thumb']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-						<input type="radio" id="" name="options[upload_create_thumb]" value="0" <!--{if $arrOptions['upload_create_thumb']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
-						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->生成缩略图可以减少图片加载速度，当然也占用了服务器空间<!--</lang>--></div>
-					</fieldset>
-					<fieldset>
 						<label for="upload_isauto"><!--<lang package='Template/Default/Uploadoption'>-->附件是否自动上传<!--</lang>--></label>
 						<input type="radio" id="upload_isauto" name="options[upload_isauto]" value="1" <!--{if $arrOptions['upload_isauto']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
 						<input type="radio" id="" name="options[upload_isauto]" value="0" <!--{if $arrOptions['upload_isauto']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
@@ -89,6 +83,12 @@ $(function(){
 						<input type="text" name="options[upload_flash_limit]" id="upload_flash_limit" size="60" value="<!--{$arrOptions['upload_flash_limit']}-->"/>
 						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->FLASH上传每次最大上传输量<!--</lang>-->
 						</div>
+					</fieldset>
+					<fieldset>
+						<label for="upload_create_thumb"><!--<lang package='Template/Default/Uploadoption'>-->附件是否开启缩略图<!--</lang>--></label>
+						<input type="radio" id="upload_create_thumb" name="options[upload_create_thumb]" value="1" <!--{if $arrOptions['upload_create_thumb']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[upload_create_thumb]" value="0" <!--{if $arrOptions['upload_create_thumb']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Uploadoption'>-->生成缩略图可以减少图片加载速度，当然也占用了服务器空间<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
 						<label for="upload_thumb_size"><!--<lang package='Template/Default/Uploadoption'>-->附件缩略图大小<!--</lang>--></label>

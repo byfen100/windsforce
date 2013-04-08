@@ -58,6 +58,8 @@ class HomehelpController extends InitController{
 	public function update($sModel=null,$nId=null){
 		$nId=G::getGpc('value');
 		
+		$_POST['homehelp_content']=trim($_POST['homehelp_content'],'<br />');
+		
 		parent::update('homehelp',$nId);
 	}
 
@@ -71,6 +73,8 @@ class HomehelpController extends InitController{
 	
 	public function insert($sModel=null,$nId=null){
 		$nId=G::getGpc('value');
+		
+		$_POST['homehelp_content']=trim($_POST['homehelp_content'],'<br />');
 		
 		parent::insert('homehelp',$nId);
 	}

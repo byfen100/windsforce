@@ -418,6 +418,22 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 -- --------------------------------------------------------
 
 --
+-- 转存表中的数据 `windsforce_nodegroup`
+--
+
+INSERT INTO `#@__nodegroup` (`nodegroup_id`, `nodegroup_name`, `nodegroup_title`, `create_dateline`, `update_dateline`, `nodegroup_status`, `nodegroup_sort`, `nodegroup_issystem`) VALUES
+(1, 'rbac', '权限', 1296454621, 1343878985, 1, 5, 1),
+(2, 'option', '设置', 1334071384, 1343878985, 1, 1, 1),
+(3, 'admin', '站长', 1334394747, 1343878985, 1, 8, 1),
+(4, 'app', '应用', 1334471579, 1343878985, 1, 4, 1),
+(5, 'ui', '界面', 1338271539, 1343878985, 1, 2, 1),
+(6, 'announce', '运营', 1340356739, 1343878985, 1, 6, 1),
+(7, 'moderate', '内容', 1340648268, 1343878985, 1, 3, 1),
+(8, 'tool', '工具', 1343878970, 1343878985, 1, 7, 1);
+
+-- --------------------------------------------------------
+
+--
 -- 转存表中的数据 `windsforce_option`
 --
 

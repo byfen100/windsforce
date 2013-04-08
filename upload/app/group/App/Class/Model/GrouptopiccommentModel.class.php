@@ -15,7 +15,6 @@ class GrouptopiccommentModel extends CommonModel{
 				'user'=>array(Db::BELONGS_TO =>'UserModel','source_key'=>'user_id','target_key'=>'user_id'),
 				'userprofile'=>array(Db::BELONGS_TO=>'UserprofileModel','source_key'=>'user_id','target_key'=>'user_id'),
 				'usercount'=>array(Db::BELONGS_TO=>'UsercountModel','source_key'=>'user_id','target_key'=>'user_id'),
-				'parent'=>array(Db::BELONGS_TO =>'GrouptopiccommentModel','source_key'=>'grouptopiccomment_parentid','target_key'=>'grouptopiccomment_id'),
 			),
 			'attr_protected'=>'grouptopiccomment_id',
 			'autofill'=>array(
@@ -54,6 +53,20 @@ class GrouptopiccommentModel extends CommonModel{
 		$sUserName=$GLOBALS['___login___']['user_name'];
 
 		return $sUserName?$sUserName:'';
+	}
+
+	static public function getGrouptopiccommentById($nCommentId,$sField='grouptopiccomment_name',$bAll=false){
+		$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nCommentId)->query();
+
+		if(empty($oGrouptopiccomment['grouptopiccomment_id'])){
+			return '';
+		}
+
+		if($bAll===true){
+			return $oGrouptopiccomment;
+		}
+		
+		return $oGrouptopiccomment[$sField];
 	}
 
 }

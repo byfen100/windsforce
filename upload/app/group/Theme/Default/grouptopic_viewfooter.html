@@ -30,7 +30,7 @@
 			</div>
 			<!--{/if}-->
 
-			<!--{if $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']==0}-->
+			<!--{if $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']=='0'}-->
 			<div class="span12">
 				<div class="floor">
 					<table width="100%" class="floor_table floor_footerpostcontenttable">
@@ -51,18 +51,18 @@
 								<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form" class="grouptopiccomment_form">
 									<!--{if $GLOBALS['___login___']!==false}-->
 									<div id="emotion_parentcontainer">
-										<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="8" style="width:100%;"></textarea>
+										<textarea class="input-xlarge" name="simple_grouptopiccomment_message" id="simple_grouptopiccomment_message" rows="8" style="width:100%;"></textarea>
 									</div>
-									<div id="grouptopiccomment-media-box" class="common-media-box none">
+									<div id="simple-grouptopiccomment-media-box" class="common-media-box none">
 										<a href="javascript:void(0);" class="face-icon icon_add_face" >表情</a>
-										<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
-										<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" >视频</a>
-										<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
+										<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachmentSimple');" class="icon_add_img">媒体</a>
+										<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideoSimple');" class="icon_add_video" >视频</a>
+										<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusicSimple');" class="icon_add_music">音乐</a>
 									</div>
 									
-									<input type="hidden" name="grouptopiccomment_name" id="grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
-									<input type="hidden" name="grouptopiccomment_email" id="grouptopiccomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
-									<input type="hidden" name="grouptopiccomment_url" id="grouptopiccomment_url" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
+									<input type="hidden" name="simple_grouptopiccomment_name" id="simple_grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
+									<input type="hidden" name="simple_grouptopiccomment_email" id="simple_grouptopiccomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
+									<input type="hidden" name="simple_grouptopiccomment_url" id="simple_grouptopiccomment_url" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
 									<!--{d*else}-->
 									<div class="commoncommentform_needloginbox">
 										<div class="commoncommentform_needloginboxinner">
@@ -73,10 +73,11 @@
 									<!--{/if}-->
 									<div class="form-actions">
 										<input type="hidden" name="ajax" value="1">
+										<input type="hidden" name="simple_comment" id="simple_comment" value="0">
 										<input type="hidden" name="tid" value="<!--{$oGrouptopic->grouptopic_id}-->">
-										<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
+										<input id="submit_button" onclick="addGrouptopiccommentSimple();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
 										<!--{if $GLOBALS['___login___']!==false}-->
-										&nbsp;<a href="javascript:void(0);" onclick="showMedia();">媒体</a>
+										&nbsp;<a href="javascript:void(0);" onclick="showMediaSimple();">媒体</a>
 										<!--{/if}-->
 										<span class="pipe">|</span>
 										<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" >进入高级模式&gt;&gt;</a>

@@ -26,8 +26,6 @@ function grouptopicComment(nTid,nCid){
 		Dyhb.Message(arrReturn.info,0,2);
 	}catch(ex){
 		oCommentNewmodtopics=windsforceAlert(sHtml,'参与/回复帖子','',completeCommenttopic,'',400,100);
-
-		
 	}
 }
 
@@ -59,9 +57,9 @@ function completeCommenttopic(data,status){
 
 <!--{script}-->
 $(function(){
-	<!--{if $GLOBALS['___login___']!==false && $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']==0}-->
-	editor=loadEditorThin('grouptopiccomment_message');
-	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+	<!--{if $GLOBALS['___login___']!==false && $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']=='0'}-->
+	editorSimple=loadEditorThin('simple_grouptopiccomment_message');
+	$(".face-icon").jqfaceedit({txtAreaObj:editorSimple,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 
 	$('.grouptopiccomment_quickmessage').autoResize({
 		onResize:function(){
@@ -89,9 +87,9 @@ function closeQuickreplay(){
 
 function addGrouptopiccommentquick(){
 	var sCommentMessage=$("#grouptopiccomment_quickmessage").val();
-	var sCommentName=$("#grouptopiccomment_name").val();
-	var sCommentEmail=$("#grouptopiccomment_email").val();
-	var sCommentUrl=$("#grouptopiccomment_url").val();
+	var sCommentName=$("#grouptopiccomment_quickname").val();
+	var sCommentEmail=$("#grouptopiccomment_quickemail").val();
+	var sCommentUrl=$("#grouptopiccomment_quickurl").val();
 
 	if(!sCommentMessage){
 		windsforceAlert('回复内容不能为空','',3);
@@ -107,35 +105,40 @@ function addGrouptopiccommentquick(){
 	});
 }
 
-function addGrouptopiccomment(){
-	sGrouptopiccommentmessage=$.trim(editor.html());
-	$('#grouptopiccomment_message').val(sGrouptopiccommentmessage);
+function addGrouptopiccommentSimple(){
+	sGrouptopiccommentmessage=$.trim(editorSimple.html());
+	$('#simple_grouptopiccomment_message').val(sGrouptopiccommentmessage);
 
 	if(!sGrouptopiccommentmessage){
 		windsforceAlert('回复内容不能为空','',3);
 		return false;
 	}
+
+	$('#simple_comment').val('1');
+
 	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/add_reply')}-->','',function(data,status){
+		$('#simple_comment').val('0');
+
 		if(status==1){
 			window.location.href=data.url;
 		}
 	});
 }
 
-function showMedia(){
-	$('#grouptopiccomment-media-box').toggle('fast');
+function showMediaSimple(){
+	$('#simple-grouptopiccomment-media-box').toggle('fast');
 }
 
-function insertGrouptopicattachment(nAttachmentid){
-	insertAttachment(editor,nAttachmentid);
+function insertGrouptopicattachmentSimple(nAttachmentid){
+	insertAttachment(editorSimple,nAttachmentid);
 }
 
-function insertGrouptopicvideo(sContent){
-	insertVideo(editor,sContent);
+function insertGrouptopicvideoSimple(sContent){
+	insertVideo(editorSimple,sContent);
 }
 
-function insertGrouptopicmusic(sContent){
-	insertMusic(editor,sContent);
+function insertGrouptopicmusicSimple(sContent){
+	insertMusic(editorSimple,sContent);
 }
 
 var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseInt('<!--{$oGrouptopic['grouptopic_id']}-->');
@@ -162,7 +165,7 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 				<div>
 					<a onclick="modTopicdelete();" href="javascript:void(0);">删除主题</a>
 					<span class="pipe">|</span>
-					<!--{if $oGrouptopic['grouptopic_isclose']==0}-->
+					<!--{if $oGrouptopic['grouptopic_isclose']=='0'}-->
 					<a onclick="modTopicclose(1);" href="javascript:void(0);">关闭</a>
 					<!--{d*else}-->
 					<a onclick="modTopicclose(0);" href="javascript:void(0);">打开</a>
@@ -174,7 +177,7 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 					<span class="pipe">|</span>
 					<a onclick="modTopicrecommend(<!--{if $oGrouptopic['grouptopic_isrecommend']>0}--><!--{$oGrouptopic['grouptopic_isrecommend']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">推荐</a>
 					<span class="pipe">|</span>
-					<!--{if $oGrouptopic['grouptopic_status']==0}-->
+					<!--{if $oGrouptopic['grouptopic_status']=='0'}-->
 					<a onclick="modTopicstatus(1);" href="javascript:void(0);">显示</a>
 					<!--{d*else}-->
 					<a onclick="modTopicstatus(0);" href="javascript:void(0);">隐藏</a>

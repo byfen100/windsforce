@@ -7,8 +7,8 @@
 class AddreplyController extends Controller{
 
 	public function index(){
-		$sContent=trim(G::getGpc('grouptopiccomment_message'));
 		$nId=intval(G::getGpc('tid'));
+		$nSimple=intval(G::getGpc('simple_comment'));
 
 		if($GLOBALS['___login___']===false){
 			$this->E(Dyhb::L('你没有登录无法回帖','Controller/Grouptopic'));
@@ -27,6 +27,24 @@ class AddreplyController extends Controller{
 		if(empty($oGroup['group_id'])){
 			$this->E(Dyhb::L('你回复的帖子所在小组不存在','Controller/Grouptopic'));
 		}
+
+		// 快捷回复兼容性
+		if($nSimple==1){
+			foreach(array('message','name','email','url') as $sTemp){
+				if(isset($_POST['simple_grouptopiccomment_'.$sTemp])){
+					$_POST['grouptopiccomment_'.$sTemp]=$_POST['simple_grouptopiccomment_'.$sTemp];
+					unset($_POST['simple_grouptopiccomment_'.$sTemp]);
+				}
+			}
+		}
+
+		if(isset($_POST['grouptopiccomment_message'])){
+			$sContent=trim($_POST['grouptopiccomment_message']);
+		}else{
+			$sContent=trim($_GET['grouptopiccomment_message']);
+		}
+
+		$sContent=trim($sContent,'<br />');
 
 		// 保存回复数据
 		$oGrouptopiccomment=new GrouptopiccommentModel();	
