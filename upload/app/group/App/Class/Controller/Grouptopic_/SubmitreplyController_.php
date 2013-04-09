@@ -8,7 +8,7 @@ class SubmitreplyController extends Controller{
 
 	public function index(){
 		$nId=intval(G::getGpc('editcid'));
-Dyhb::L('你没有登录无法编辑回帖','Controller/Grouptopic');Dyhb::L('你没有指定编辑回帖的ID','Controller/Grouptopic');Dyhb::L('你编辑的回帖不存在','Controller/Grouptopic');
+
 		if($GLOBALS['___login___']===false){
 			$this->E(Dyhb::L('你没有登录无法编辑回帖','Controller/Grouptopic'));
 		}
@@ -28,7 +28,7 @@ Dyhb::L('你没有登录无法编辑回帖','Controller/Grouptopic');Dyhb::L('�
 		}
 
 		$sContent=trim($_POST['grouptopiccomment_message']);
-		$sContent=trim($sContent,'<br />');
+		$sContent=rtrim($sContent,'<br />');
 
 		// 保存回复数据
 		$oGrouptopiccomment->grouptopiccomment_content=$sContent;

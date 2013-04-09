@@ -525,6 +525,10 @@ $(function(){
 										</em>
 										<p class="right">
 											<a href="" onclick="">举报</a>
+											<label for="manage<!--{$oComment['grouptopiccomment_id']}-->">
+												<input id="manage<!--{$oComment['grouptopiccomment_id']}-->" type="checkbox" autocomplete="off" value="<!--{$oComment['grouptopiccomment_id']}-->" onclick="pidchecked(this);modclick(this,<!--{$oComment['grouptopiccomment_id']}-->)">
+												管理
+											</label>
 										</p>
 									</div>
 								</td>

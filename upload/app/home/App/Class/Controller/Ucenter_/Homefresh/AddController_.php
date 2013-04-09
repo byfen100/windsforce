@@ -24,7 +24,7 @@ class AddController extends Controller{
 			$this->check_seccode(true);
 		}
 
-		$_POST['homefresh_message']=trim($_POST['homefresh_message'],'<br />');
+		$_POST['homefresh_message']=rtrim($_POST['homefresh_message'],'<br />');
 
 		$sMessage=trim(G::cleanJs(G::getGpc('homefresh_message','P')));
 		if(empty($sMessage)){

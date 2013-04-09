@@ -55,7 +55,7 @@ class HomefreshController extends InitController{
 	public function update($sModel=null,$nId=null){
 		$nId=G::getGpc('value');
 		
-		$_POST['homefresh_message']=trim($_POST['homefresh_message'],'<br />');
+		$_POST['homefresh_message']=rtrim($_POST['homefresh_message'],'<br />');
 
 		parent::update('homefresh',$nId);
 	}

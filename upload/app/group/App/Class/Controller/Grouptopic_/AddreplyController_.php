@@ -44,7 +44,7 @@ class AddreplyController extends Controller{
 			$sContent=trim($_GET['grouptopiccomment_message']);
 		}
 
-		$sContent=trim($sContent,'<br />');
+		$sContent=rtrim($sContent,'<br />');
 
 		// 保存回复数据
 		$oGrouptopiccomment=new GrouptopiccommentModel();

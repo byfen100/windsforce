@@ -30,6 +30,18 @@ class ViewController extends Controller{
 		if(empty($oGrouptopic['grouptopic_id'])){
 			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
 		}
+
+		// 判断邮件等外部地址过来的查找评论地址
+		$nIsolationCommentid=intval(G::getGpc('isolation_commentid','G'));
+		if($nIsolationCommentid){
+			$result=GrouptopiccommentModel::getCommenturlByid($nIsolationCommentid);
+			if($result===false){
+				$this->E(Dyhb::L('该条评论已被删除、屏蔽或者尚未通过审核','Controller/Grouptopic'));
+			}
+
+			G::urlGoTo($result);
+			exit();
+		}
 		
 		$this->_oGrouptopic=$oGrouptopic;
 
@@ -144,10 +156,23 @@ class ViewController extends Controller{
 	public function get_commentfloor($nIndex,$nEverynum){
 		$nPage=intval(G::getGpc('page','G'));
 
-		if($nPage<2){
-			return $nIndex;
-		}else{
-			return ($nPage-1)*$nEverynum+$nIndex;
+		if($nPage>=2){
+			$nIndex=($nPage-1)*$nEverynum+$nIndex;
+		}
+
+		switch($nIndex){
+			case 1:
+				return Dyhb::L('沙发','Controller/Grouptopic');
+				break;
+			case 2:
+				return Dyhb::L('板凳','Controller/Grouptopic');
+				break;
+			case 3:
+				return Dyhb::L('地板','Controller/Grouptopic');
+				break;
+			default:
+				return $nIndex;
+				break;
 		}
 	}
 

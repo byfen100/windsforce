@@ -48,10 +48,10 @@ function insertGrouptopicmusic(sContent){
 <!--{/script}-->
 			
 			<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form">
-				<div class="span<!--{if isset($nDialog) && $nDialog==1}-->8<!--{d*else}-->12<!--{/if}-->">
+				<div class="span<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->8<!--{d*else}-->12<!--{/if}-->">
 					<label>帖子标题</label>
-					<span id="grouptopiccommenttitle_show"><input type="text" class="span<!--{if isset($nDialog) && $nDialog==1}-->4<!--{d*else}-->8<!--{/if}-->" value="<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->" readonly>&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_hide');showDiv('grouptopiccommenttitle_show');$('#grouptopiccomment_title').val('<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->');">修改</a>]</span>
-					<span style="display:none" id="grouptopiccommenttitle_hide"><input type="text" class="span<!--{if isset($nDialog) && $nDialog==1}-->4<!--{d*else}-->8<!--{/if}-->" name="grouptopiccomment_title" id="grouptopiccomment_title" value="">
+					<span id="grouptopiccommenttitle_show"><input type="text" class="span<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->4<!--{d*else}-->8<!--{/if}-->" value="<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->" readonly>&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_hide');showDiv('grouptopiccommenttitle_show');$('#grouptopiccomment_title').val('<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->');">修改</a>]</span>
+					<span style="display:none" id="grouptopiccommenttitle_hide"><input type="text" class="span<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->4<!--{d*else}-->8<!--{/if}-->" name="grouptopiccomment_title" id="grouptopiccomment_title" value="">
 					&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_show');showDiv('grouptopiccommenttitle_hide');$('#grouptopiccomment_title').val('<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{/if}-->');">放弃</a>]</span>
 					
 					<!--{if isset($oGrouptopiccomment)}-->
@@ -81,7 +81,7 @@ function insertGrouptopicmusic(sContent){
 						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
 					</div>
 					<div id="grouptopiccomment_emotion_parentcontainer">
-						<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if isset($nDialog) && $nDialog==1}-->10<!--{d*else}-->16<!--{/if}-->" style="width:100%;"><!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_content']}--><!--{/if}--></textarea>
+						<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->10<!--{d*else}-->16<!--{/if}-->" style="width:100%;"><!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_content']}--><!--{/if}--></textarea>
 					</div>
 					
 					<!--{if !isset($oEditGrouptopiccomment)}-->
