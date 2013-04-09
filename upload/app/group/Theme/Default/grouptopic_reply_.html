@@ -15,9 +15,13 @@ function addGrouptopiccomment(){
 		return false;
 	}
 
-	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/add_reply')}-->','',function(data,status){
+	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/'.(!isset($oEditGrouptopiccomment)?'add_reply':'submit_reply'))}-->','',function(data,status){
 		if(status==1){
+			<!--{if isset($oEditGrouptopiccomment)}-->
+			window.location.reload();
+			<!--{d*else}-->
 			window.location.href=data.url;
+			<!--{/if}-->
 		}
 	});
 }
@@ -46,9 +50,9 @@ function insertGrouptopicmusic(sContent){
 			<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form">
 				<div class="span<!--{if isset($nDialog) && $nDialog==1}-->8<!--{d*else}-->12<!--{/if}-->">
 					<label>帖子标题</label>
-					<span id="grouptopiccommenttitle_show"><input type="text" class="span<!--{if isset($nDialog) && $nDialog==1}-->4<!--{d*else}-->8<!--{/if}-->" value="Reply:<!--{$oGrouptopic->grouptopic_title}-->" readonly>&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_hide');showDiv('grouptopiccommenttitle_show');$('#grouptopiccomment_title').val('Reply:<!--{$oGrouptopic->grouptopic_title}-->');">修改</a>]</span>
+					<span id="grouptopiccommenttitle_show"><input type="text" class="span<!--{if isset($nDialog) && $nDialog==1}-->4<!--{d*else}-->8<!--{/if}-->" value="<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->" readonly>&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_hide');showDiv('grouptopiccommenttitle_show');$('#grouptopiccomment_title').val('<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->');">修改</a>]</span>
 					<span style="display:none" id="grouptopiccommenttitle_hide"><input type="text" class="span<!--{if isset($nDialog) && $nDialog==1}-->4<!--{d*else}-->8<!--{/if}-->" name="grouptopiccomment_title" id="grouptopiccomment_title" value="">
-					&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_show');showDiv('grouptopiccommenttitle_hide');$('#grouptopiccomment_title').val('');">放弃</a>]</span>
+					&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_show');showDiv('grouptopiccommenttitle_hide');$('#grouptopiccomment_title').val('<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{/if}-->');">放弃</a>]</span>
 					
 					<!--{if isset($oGrouptopiccomment)}-->
 					<label>回复的帖子</label>
@@ -69,7 +73,7 @@ function insertGrouptopicmusic(sContent){
 
 					<!--{if $GLOBALS['___login___']!==false}-->
 					<div id="grouptopicreply-media-box" class="common-media-box none">
-						<!--{if !isset($nDialog)}-->
+						<!--{if !isset($nDialog) && !isset($oEditGrouptopiccomment)}-->
 						<a href="javascript:void(0);" class="grouptopiccomment-face-icon icon_add_face" onclick="bugEmotion();">表情</a>
 						<!--{/if}-->
 						<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img">媒体</a>
@@ -77,12 +81,14 @@ function insertGrouptopicmusic(sContent){
 						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music">音乐</a>
 					</div>
 					<div id="grouptopiccomment_emotion_parentcontainer">
-						<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if isset($nDialog) && $nDialog==1}-->10<!--{d*else}-->16<!--{/if}-->" style="width:100%;"></textarea>
+						<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if isset($nDialog) && $nDialog==1}-->10<!--{d*else}-->16<!--{/if}-->" style="width:100%;"><!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_content']}--><!--{/if}--></textarea>
 					</div>
 					
+					<!--{if !isset($oEditGrouptopiccomment)}-->
 					<input type="hidden" name="grouptopiccomment_name" id="grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
 					<input type="hidden" name="grouptopiccomment_email" id="grouptopiccomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
 					<input type="hidden" name="grouptopiccomment_url" id="grouptopiccomment_url" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
+					<!--{/if}-->
 
 					<!--{d*else}-->
 					<div class="commoncommentform_needloginbox">
@@ -98,8 +104,11 @@ function insertGrouptopicmusic(sContent){
 					<!--{if isset($oGrouptopiccomment)}-->
 					<input type="hidden" name="grouptopiccomment_parentid" value="<!--{$oGrouptopiccomment->grouptopiccomment_id}-->">
 					<!--{/if}-->
+					<!--{if isset($oEditGrouptopiccomment)}-->
+					<input type="hidden" name="editcid" value="<!--{$oEditGrouptopiccomment->grouptopiccomment_id}-->">
+					<!--{/if}-->
 					
-					<!--{if !isset($nDialog)}-->
+					<!--{if !isset($nDialog) && !isset($oEditGrouptopiccomment)}-->
 					<div class="form-actions">
 						<input id="submit_button" onclick="addGrouptopiccomment();" type="button" class="btn btn-middle btn-success" value="发布" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>&nbsp;
 						<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->" class="btn">返回帖子</a>

@@ -47,7 +47,7 @@ class AddreplyController extends Controller{
 		$sContent=trim($sContent,'<br />');
 
 		// 保存回复数据
-		$oGrouptopiccomment=new GrouptopiccommentModel();	
+		$oGrouptopiccomment=new GrouptopiccommentModel();
 		$oGrouptopiccomment->grouptopiccomment_content=$sContent;
 		$oGrouptopiccomment->grouptopic_id=$nId;
 		$oGrouptopiccomment->save(0);

@@ -11,7 +11,7 @@ class CommenttopicdialogController extends Controller{
 		$nGrouptopiccommentid=intval(G::getGpc('cid','G'));
 
 		if(!$nGrouptopicid){
-			Dyhb::L('你没有指定回复的帖子的ID','Controller/Grouptopic');
+			$this->E(Dyhb::L('你没有指定回复的帖子的ID','Controller/Grouptopic'));
 		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopicid)->getOne();

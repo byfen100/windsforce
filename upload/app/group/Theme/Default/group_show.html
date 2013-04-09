@@ -49,12 +49,12 @@ function grouptopicSubmit(){
 								<ul class="nav nav-pills" id="navPills">
 									<li class="<!--{if empty($nCid)}-->active<!--{/if}-->"><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">全部帖子</a></li>
 									<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
-									<!--{if $nI<8}-->
+									<!--{if $i<8}-->
 									<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
 										<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
 									</li>
 									<!--{~array_shift($arrCids)}-->
-									<!--{elseif $nI==8}-->
+									<!--{elseif $i==8}-->
 									<li class="dropdown <!--{if in_array($nCid,$arrCids)}-->active<!--{/if}-->">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
 											更多类别<b class="caret"></b>
@@ -63,7 +63,7 @@ function grouptopicSubmit(){
 											<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
 												<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
 											</li>
-											<!--{elseif $nI>8}-->
+											<!--{elseif $i>8}-->
 											<li class="<!--{if $nCid==$oGrouptopiccategory->grouptopiccategory_id}-->active<!--{/if}-->">
 												<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopiccategory->grouptopiccategory_id)}-->"><!--{$oGrouptopiccategory->grouptopiccategory_name}--></a>
 											</li>
@@ -118,7 +118,7 @@ function grouptopicSubmit(){
 														<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 														<!--{d*else}-->
-														<a href="javascript:void(0);">[默认分类]</a>
+														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[默认分类]</a>
 														<!--{/if}-->
 														<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 														<!--{if $oGrouptopic->grouptopic_comments>0}-->
@@ -180,7 +180,15 @@ function grouptopicSubmit(){
 									</td>
 									<td class="floor_right">
 										<form method="post" name="grouptopic_form" id="grouptopic_form" class="grouptopi_form">
-											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:60%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;请输入帖子标题
+											<!--{if is_array($arrGrouptopiccategorys)}-->
+											<select style="width:120px;" name="grouptopiccategory_id">
+												<option value="0">默认分类</option>
+												<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
+												<option value="<!--{$oGrouptopiccategory['grouptopiccategory_id']}-->" <!--{if isset($nCid) && $nCid==$oGrouptopiccategory['grouptopiccategory_id']}-->selected<!--{/if}-->><!--{$oGrouptopiccategory['grouptopiccategory_name']}--></option>
+												<!--</foreach>-->
+											</select>&nbsp;
+											<!--{/if}-->
+											<input class="input-xlarge" name="grouptopic_title" id="grouptopic_title" type="text" style="width:55%;" <!--{if $GLOBALS['___login___']===false}-->disabled<!--{/if}-->/>&nbsp;请输入帖子标题
 											<!--{if $GLOBALS['___login___']!==false}-->
 											<div id="emotion_parentcontainer">
 												<textarea class="input-xlarge" name="grouptopic_content" id="grouptopic_content" rows="8" style="width:100%;"></textarea>

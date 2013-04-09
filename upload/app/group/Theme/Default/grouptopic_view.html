@@ -169,9 +169,8 @@ $(function(){
 											</ul>
 										</div>
 										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
-											[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]
-											<!--{d*else}-->
-											[默认分类]<!--{/if}-->&nbsp;<span style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->"><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
+											<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
+											<!--{d*else}--><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[默认分类]</a><!--{/if}-->&nbsp;<span style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->"><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
 											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
 											<!--{:Group_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
 											<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
@@ -244,7 +243,7 @@ $(function(){
 									</div>
 									<!--{/if}-->
 
-									<!--{if $oGrouptopic['grouptopic_usesign']==1 && $oGrouptopic['grouptopic_isanonymous']==1}-->
+									<!--{if $oGrouptopic['grouptopic_usesign']==1 && $oGrouptopic['grouptopic_isanonymous']=='0'}-->
 									<div class="space"></div>
 									<div class="signature">
 										<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
@@ -510,7 +509,7 @@ $(function(){
 							</tr>
 							<tr>
 								<td class="floor_bottom" valign="bottom">
-									<!--{if $oGrouptopic['grouptopic_usesign']==1}-->
+									<!--{if $oGrouptopic['grouptopic_usesign']==1 && $oGrouptopic['grouptopic_isanonymous']=='0'}-->
 									<div class="signature">
 										<!--{~$sUsersign=UserModel::getUsernameById($oComment['user_id'],'user_sign')}-->
 										<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
@@ -521,7 +520,7 @@ $(function(){
 										<em class="left">
 											<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->','<!--{$oComment['grouptopiccomment_id']}-->');">回复</a>
 											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
-											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'].'&uid='.$oGrouptopic['user_id'].'&gid='.$oGrouptopic['group_id'])}-->">编辑</a>
+											<a class="editp" href="javascript:void(0);" onclick="grouptopiceditComment('<!--{$oComment['grouptopiccomment_id']}-->');">编辑</a>
 											<!--{/if}-->
 										</em>
 										<p class="right">

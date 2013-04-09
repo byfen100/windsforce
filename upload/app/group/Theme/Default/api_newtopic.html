@@ -23,9 +23,9 @@
 				<p class="title">
 					<!--{:Group_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 					<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
-					<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
+					<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 					<!--{d*else}-->
-					<a href="javascript:void(0);">[默认分类]</a>
+					<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[默认分类]</a>
 					<!--{/if}-->
 					<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 					<!--{if $oGrouptopic->grouptopic_comments>0}-->

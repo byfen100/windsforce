@@ -25,11 +25,37 @@ function grouptopicComment(nTid,nCid){
 		arrReturn=eval('('+sHtml+')');
 		Dyhb.Message(arrReturn.info,0,2);
 	}catch(ex){
-		oCommentNewmodtopics=windsforceAlert(sHtml,'参与/回复帖子','',completeCommenttopic,'',400,100);
+		oCommentNewtopics=windsforceAlert(sHtml,'参与/回复帖子','',completeCommenttopic,'',400,100);
 	}
 }
 
 function completeCommenttopic(data,status){
+	if(addGrouptopiccomment()==false){
+		return false;
+	}
+
+	if(status==1){
+		window.location.reload();
+	}
+
+	return true;
+}
+
+function grouptopiceditComment(nCid){
+	var sHtml=$.ajax({
+		url: D.U('group://grouptopic/editcommenttopic_dialog?cid='+nCid),
+		async: false
+	}).responseText;
+
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+	}catch(ex){
+		oEditcommentNewtopics=windsforceAlert(sHtml,'编辑帖子','',completeEditcommenttopic,'',400,100);
+	}
+}
+
+function completeEditcommenttopic(data,status){
 	if(addGrouptopiccomment()==false){
 		return false;
 	}

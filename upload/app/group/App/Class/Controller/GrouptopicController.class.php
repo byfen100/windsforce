@@ -53,5 +53,13 @@ class GrouptopicController extends InitController{
 	public function commenttopic_dialog(){
 		Core_Extend::doControllerAction('Grouptopic@Commenttopicdialog','index');
 	}
+	
+	public function editcommenttopic_dialog(){
+		Core_Extend::doControllerAction('Grouptopic@Editcommenttopicdialog','index');
+	}
+
+	public function submit_reply(){
+		Core_Extend::doControllerAction('Grouptopic@Submitreply','index');
+	}
 
 }

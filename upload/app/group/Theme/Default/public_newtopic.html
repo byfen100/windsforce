@@ -47,9 +47,9 @@
 									<p class="title">
 										<!--{:Group_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 										<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
-										<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
+										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 										<!--{d*else}-->
-										<a href="javascript:void(0);">[默认分类]</a>
+										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[默认分类]</a>
 										<!--{/if}-->
 										<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
@@ -218,18 +218,21 @@
 							<!--{if is_array($arrGrouphottopics)}-->
 							<!--<foreach for=arrGrouphottopics value=oGrouphottopic>-->
 							<li>
-								<h3><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouphottopic->grouptopic_id)}-->" target="_blank" ><!--{$oGrouphottopic->grouptopic_title|G+subString=0,20}--></a></h3>
+								<h3>
+									<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouphottopic->grouptopic_id)}-->" target="_blank" ><!--{$oGrouphottopic->grouptopic_title|G+subString=0,20}--></a></h3>
 								<span class="grouphottopic_commentnum"><!--{$oGrouphottopic->grouptopic_comments}--></span>
-								<!--<p class="grouphottopic_userinfo">
-									<span class="left">来自：<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>&nbsp;<!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}-->
-									<!--</span>
-								</p>-->
-								<span style="width:100%;" class="grouphottopic_frominfo">
-									来自&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGrouphottopic->group)}-->" style="color:#999999;"><!--{$oGrouphottopic:group:group_nikename}--></a>
+								<div class="clear grouphottopic_frominfo">
+									来自&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGrouphottopic->group)}-->" ><!--{$oGrouphottopic:group:group_nikename}--></a>
+									<span class="pipe">|</span>
+									<!--{if $oGrouphottopic->grouptopiccategory_id>0}-->
+									<a href="<!--{:Group_Extend::getGroupurl($oGrouphottopic->group,'&cid='.$oGrouphottopic->grouptopiccategory_id)}-->"><!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}--></a>
+									<!--{d*else}-->
+									<a href="<!--{:Group_Extend::getGroupurl($oGrouphottopic->group,'&cid=-1')}-->">默认分类</a>
+									<!--{/if}-->
 									<span class="pipe">|</span>
 									楼主&nbsp;
-									<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" style="color:#999999;" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>&nbsp;<!--{$oGrouphottopic->grouptopiccategory->grouptopiccategory_name}-->
-								</span>
+									<a title="<!--{$oGrouphottopic->grouptopic_username}-->" target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouphottopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouphottopic['user_id']}-->"><!--{$oGrouphottopic->grouptopic_username}--></a>
+								</div>
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->

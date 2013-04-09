@@ -7,6 +7,7 @@
 class ShowController extends Controller{
 
 	protected $_oGroup=null;
+	protected $_sGroupcategory='';
 	
 	public function index(){
 		// 获取参数
@@ -45,7 +46,18 @@ class ShowController extends Controller{
 		$nEverynum=$GLOBALS['_cache_']['group_option']['group_listtopicnum'];
 		
 		if($nCid>0){
-			$arrWhere['grouptopiccategory_id']=$nCid;
+			$oCurrentcategory=GrouptopiccategoryModel::F('grouptopiccategory_id=?',$nCid)->getOne();
+			
+			if(!empty($oCurrentcategory['grouptopiccategory_id'])){
+				$arrWhere['grouptopiccategory_id']=$nCid;
+				$this->_sGroupcategory=$oCurrentcategory['grouptopiccategory_name'];
+				$this->assign('oCurrentcategory',$oCurrentcategory);
+			}
+		}
+
+		if($nCid==-1){
+			$this->_sGroupcategory=Dyhb::L('默认分类','Controller/Group');
+			$arrWhere['grouptopiccategory_id']='0';
 		}
 
 		if($nDid==1){
@@ -120,7 +132,7 @@ class ShowController extends Controller{
 	}
 
 	public function show_title_(){
-		return $this->_oGroup['group_nikename'].' - '.Dyhb::L('小组','Controller/Group');
+		return ($this->_sGroupcategory?$this->_sGroupcategory.' - ':'').$this->_oGroup['group_nikename'].' - '.Dyhb::L('小组','Controller/Group');
 	}
 
 	public function show_keywords_(){

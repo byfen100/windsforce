@@ -254,8 +254,9 @@ a#moderate_reason:hover{text-decoration:none;}
 .grouphottopic_titles {word-wrap: break-word;}
 .grouphottopic_titles li {margin-left:-15px;border-bottom: 1px dashed #CCCCCC;color: #999999;overflow: hidden;padding: 6px 0;}
 .grouphottopic_titles h3 {color: #666666;float: left;font-size:12px;margin:0;font-weight:normal;}
-.grouphottopic_frominfo {color: #999999;float: right;}
-.grouphottopic_frominfo a{color: #999999;}
+.grouphottopic_commentnum {color: #999999;float: right;}
+.grouphottopic_frominfo {color: #999999;width:100%;}
+.grouphottopic_frominfo a {color: #999999;}
 [/CURSCRIPT]
 
 /**===============================

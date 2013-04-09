@@ -1,0 +1,35 @@
+<?php
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
+   编辑回复对话框控制器($Liu.XiangMin)*/
+
+!defined('DYHB_PATH') && exit;
+
+class EditcommenttopicdialogController extends Controller{
+
+	public function index(){
+		$nGrouptopiccommentid=intval(G::getGpc('cid','G'));
+
+		if(!$nGrouptopiccommentid){
+			$this->E(Dyhb::L('你没有指定编辑的回帖的ID','Controller/Grouptopic'));
+		}
+
+		$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccommentid)->getOne();
+		if(empty($oGrouptopiccomment['grouptopiccomment_id'])){
+			$this->E(Dyhb::L('你要编辑的回帖不存在','Controller/Grouptopic'));
+		}
+
+		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$oGrouptopiccomment['grouptopic_id'])->getOne();
+		if(empty($oGrouptopic['grouptopic_id'])){
+			$this->E(Dyhb::L('你要编辑的回帖的主题不存在','Controller/Grouptopic'));
+		}
+
+		// 取得个人主页
+		$oUserprofile=UserprofileModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
+
+		$this->assign('oEditGrouptopiccomment',$oGrouptopiccomment);
+		$this->assign('oGrouptopic',$oGrouptopic);
+
+		$this->display('grouptopic+editcommenttopicdialog');
+	}
+
+}
