@@ -64,19 +64,25 @@ if(empty($sUrl)){
 	errorMessage('无法获取程序安装地址');
 }
 
+echo<<<INFO
+function $WF(id){
+	return document.getElementById(id);
+}
+INFO;
+
 /** 比较版本取得更新信息 */
 if($nServerRelease>$nRelease){
 	echo<<<INFO
-		parent.menu.document.getElementById("update_num").innerHTML="<span class=\"update_num\">3</span>";
+		parent.menu.$WF("update_num").innerHTML="<span class=\"update_num\">3</span>";
 INFO;
 
 	if(empty($nInfolist)){
 		echo<<<INFO
-		document.getElementById("welcome_info").style.display="none";
-		document.getElementById("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
-		document.getElementById("news_box").style.display="";
-		document.getElementById("news_title").innerHTML="更新提示";
-		document.getElementById("news_content").innerHTML="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
+		$WF("welcome_info").style.display="none";
+		$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		$WF("news_box").style.display="";
+		$WF("news_title").innerHTML="更新提示";
+		$WF("news_content").innerHTML="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
 INFO;
 	}else{
 		$arrUpdateContent=array(
@@ -94,8 +100,8 @@ INFO;
 		}
 		$sContent=trimNl($sContent);
 
-		echo "document.getElementById(\"update_num\").innerHTML=\"<span class=\\\"update_num\\\">3</span>\";\n";
-		echo "document.getElementById(\"update_list\").innerHTML=\"{$sContent}\";";
+		echo "$WF(\"update_num\").innerHTML=\"<span class=\\\"update_num\\\">3</span>\";\n";
+		echo "$WF(\"update_list\").innerHTML=\"{$sContent}\";";
 	}
 }else{
 	if($nInfolist==1){
@@ -105,10 +111,10 @@ INFO;
 			</tr>";
 		$sContent=trimNl($sContent);
 
-		echo "document.getElementById(\"update_list\").innerHTML=\"{$sContent}\";";
+		echo "$WF(\"update_list\").innerHTML=\"{$sContent}\";";
 	}else{
 		echo<<<INFO
-		document.getElementById("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
 INFO;
 	}
 }
