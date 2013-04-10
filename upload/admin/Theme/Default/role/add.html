@@ -31,17 +31,9 @@ function complete(data,status){
 function ajaxSelect(){
 	$("#ajaxSelect").css('display','block');
 
-	var sHtml=$.ajax({
-		url:"<!--{:Dyhb::U('role/select')}-->",
-		async:false
-	}).responseText;
+	sHtml=windsforceAjaxhtml("<!--{:Dyhb::U('role/select')}-->");
 
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		$("#ajaxSelect").html(sHtml);
-	}
+	$("#ajaxSelect").html(sHtml);
 }
 <!--{/script}-->
 

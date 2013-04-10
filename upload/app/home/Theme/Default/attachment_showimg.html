@@ -3,10 +3,7 @@
 
 <!--{script}-->
 $(function(){
-	var sHtml=$.ajax({
-		url:D.U('home://attachment/get_ajaximg&id=<!--{$oAttachment['attachment_id']}-->&cid=<!--{$oAttachment['attachmentcategory_id']}-->&uid=<!--{$oAttachment['user_id']}-->'),
-		async:false
-	}).responseText;
+	sHtml=windsforceAjaxhtml(D.U('home://attachment/get_ajaximg&id=<!--{$oAttachment['attachment_id']}-->&cid=<!--{$oAttachment['attachmentcategory_id']}-->&uid=<!--{$oAttachment['user_id']}-->'),-1);
 
 	arrReturn=eval('('+sHtml+')');
 

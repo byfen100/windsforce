@@ -32,31 +32,15 @@ function mailCheck(){
 };
 
 function resetTestmailsubject(){
-	var sHtml=$.ajax({
-		url:D.U('mailoption/reset_test?type=subject'),
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		$('#test_mail_subject').val(sHtml);
-	}
+	sHtml=windsforceAjaxhtml(D.U('mailoption/reset_test?type=subject'));
+	
+	$('#test_mail_subject').val(sHtml);
 };
 
 function resetTestmailmessage(){
-	var sHtml=$.ajax({
-		url:D.U('mailoption/reset_test?type=message'),
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		replaceEditorContent(editor,sHtml);
-	}
+	sHtml=windsforceAjaxhtml(D.U('mailoption/reset_test?type=message'));
+	
+	replaceEditorContent(editor,sHtml);
 };
 <!--{/script}-->
 

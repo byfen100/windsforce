@@ -90,6 +90,61 @@ function stripscript(s){
 	return s.replace(/<script.*?>.*?<\/script>/ig,'');
 }
 
+function getCurrentStyle(obj,cssproperty,csspropertyNS){
+	if(obj.style[cssproperty]){
+		return obj.style[cssproperty];
+	}
+
+	if(obj.currentStyle){
+		return obj.currentStyle[cssproperty];
+	}else if (document.defaultView.getComputedStyle(obj,null)){
+		var currentStyle=document.defaultView.getComputedStyle(obj,null);
+		var value=currentStyle.getPropertyValue(csspropertyNS);
+		
+		if(!value){
+			value=currentStyle[cssproperty];
+		}
+
+		return value;
+	}else if(window.getComputedStyle){
+		var currentStyle = window.getComputedStyle(obj,"");
+		return currentStyle.getPropertyValue(csspropertyNS);
+	}
+}
+
+function fetchOffset(obj,mode){
+	var left_offset=0,top_offset=0,mode=!mode?0:mode;
+
+	if(obj.getBoundingClientRect && !mode){
+		var rect=obj.getBoundingClientRect();
+		var scrollTop=Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+		var scrollLeft=Math.max(document.documentElement.scrollLeft,document.body.scrollLeft);
+		
+		if(document.documentElement.dir=='rtl'){
+			scrollLeft=scrollLeft+document.documentElement.clientWidth-document.documentElement.scrollWidth;
+		}
+
+		left_offset=rect.left+scrollLeft-document.documentElement.clientLeft;
+		top_offset=rect.top+scrollTop-document.documentElement.clientTop;
+	}
+
+	if(left_offset<=0 || top_offset<=0){
+		left_offset=obj.offsetLeft;
+		top_offset=obj.offsetTop;
+		while((obj=obj.offsetParent)!= null){
+			position=getCurrentStyle(obj,'position','position');
+			if(position=='relative'){
+				continue;
+			}
+
+			left_offset+=obj.offsetLeft;
+			top_offset+=obj.offsetTop;
+		}
+	}
+
+	return {'left':left_offset,'top':top_offset};
+}
+
 function showDiv(id){
 	try{
 		var oDiv=document.getElementById(id);
@@ -281,29 +336,43 @@ function windsforceConfirm(sContent,ok,cancel,sTitle,nTime,width,height,lock){
 }
 
 /** 通用ajax对话框 */
-function windsforceAjax(sUrl,sTitle,nTime,ok,cancel,width,height,sExtend,lock){
+function windsforceAjaxhtml(sUrl,nCheck,sExtend){
+	if(nCheck!=-1){
+		nCheck=1;
+	}
+	
 	var sHtml=$.ajax({
 		url:sUrl,
 		data:sExtend?sExtend:'',
 		async:false
 	}).responseText;
 
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
+	if(nCheck==1){
+		try{
+			arrReturn=eval('('+sHtml+')');
+			Dyhb.Message(arrReturn.info,0,2);
 
-		return false;
-	}catch(ex){
-		if(!width){
-			width="400";
+			return false;
+		}catch(ex){
+			return sHtml;
 		}
-
-		if(!height){
-			height="100";
-		}
-		
-		return windsforceAlert(sHtml,sTitle,nTime,ok,cancel,width,height,lock);
+	}else{
+		return sHtml;
 	}
+}
+
+function windsforceAjax(sUrl,sTitle,nTime,ok,cancel,width,height,sExtend,lock){
+	sHtml=windsforceAjaxhtml(sUrl,1,sExtend);
+
+	if(!width){
+		width="400";
+	}
+
+	if(!height){
+		height="100";
+	}
+
+	return windsforceAlert(sHtml,sTitle,nTime,ok,cancel,width,height,lock);
 }
 
 /** 媒体对话框 */

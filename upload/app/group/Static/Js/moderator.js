@@ -101,53 +101,6 @@ function pidchecked(oObj){
 	}
 }
 
-function getCurrentStyle(obj, cssproperty, csspropertyNS) {
-	if(obj.style[cssproperty]){
-		return obj.style[cssproperty];
-	}
-	if (obj.currentStyle) {
-		return obj.currentStyle[cssproperty];
-	} else if (document.defaultView.getComputedStyle(obj, null)) {
-		var currentStyle = document.defaultView.getComputedStyle(obj, null);
-		var value = currentStyle.getPropertyValue(csspropertyNS);
-		if(!value){
-			value = currentStyle[cssproperty];
-		}
-		return value;
-	} else if (window.getComputedStyle) {
-		var currentStyle = window.getComputedStyle(obj, "");
-		return currentStyle.getPropertyValue(csspropertyNS);
-	}
-}
-
-function fetchOffset(obj, mode) {
-	var left_offset = 0, top_offset = 0, mode = !mode ? 0 : mode;
-
-	if(obj.getBoundingClientRect && !mode) {
-		var rect = obj.getBoundingClientRect();
-		var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
-		var scrollLeft = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
-		if(document.documentElement.dir == 'rtl') {
-			scrollLeft = scrollLeft + document.documentElement.clientWidth - document.documentElement.scrollWidth;
-		}
-		left_offset = rect.left + scrollLeft - document.documentElement.clientLeft;
-		top_offset = rect.top + scrollTop - document.documentElement.clientTop;
-	}
-	if(left_offset <= 0 || top_offset <= 0) {
-		left_offset = obj.offsetLeft;
-		top_offset = obj.offsetTop;
-		while((obj = obj.offsetParent) != null) {
-			position = getCurrentStyle(obj, 'position', 'position');
-			if(position == 'relative') {
-				continue;
-			}
-			left_offset += obj.offsetLeft;
-			top_offset += obj.offsetTop;
-		}
-	}
-	return {'left' : left_offset, 'top' : top_offset};
-}
-
 var modclickcount = 0;
 function modclick(obj, pid) {
 	if(obj.checked) {

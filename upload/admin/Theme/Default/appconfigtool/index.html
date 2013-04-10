@@ -31,17 +31,9 @@ function cancelGlobalconfig(){
 function viewGlobaldefaultconfig(){
 	$("#ajaxGlobaldefaultconfig").css('display','block');
 
-	var sHtml=$.ajax({
-		url:"<!--{:Dyhb::U('appconfigtool/default_config')}-->",
-		async: false
-	}).responseText;
+	sHtml=windsforceAjaxhtml("<!--{:Dyhb::U('appconfigtool/default_config')}-->");
 
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		$("#ajaxGlobaldefaultconfig").html(sHtml);
-	}
+	$("#ajaxGlobaldefaultconfig").html(sHtml);
 }
 
 function closeGlobaldefaultconfig(){
