@@ -4,17 +4,7 @@
 var oEditNewattachment;
 
 function editAttachment(id){
-	var sHtml=$.ajax({
-		url:D.U('home://attachment/edit_attachment?id='+id),
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditNewattachment=windsforceAlert(sHtml,'<!--<lang package='Template/Attachment'>-->编辑附件<!--</lang>-->','',saveAttachment,'',600,300);
-	}
+	oEditNewattachment=windsforceAjax(D.U('home://attachment/edit_attachment?id='+id),'<!--<lang package='Template/Attachment'>-->编辑附件<!--</lang>-->','',saveAttachment,'',600,300);
 }
 
 function saveAttachment(){

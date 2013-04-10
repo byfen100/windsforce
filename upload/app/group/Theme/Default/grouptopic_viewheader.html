@@ -16,17 +16,7 @@ function completeSet(data,status){
 }
 
 function grouptopicComment(nTid,nCid){
-	var sHtml=$.ajax({
-		url: D.U('group://grouptopic/commenttopic_dialog?tid='+nTid+(nCid?'&cid='+nCid:'')),
-		async: false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oCommentNewtopics=windsforceAlert(sHtml,'参与/回复帖子','',completeCommenttopic,'',400,100);
-	}
+	oCommentNewtopics=windsforceAjax(D.U('group://grouptopic/commenttopic_dialog?tid='+nTid+(nCid?'&cid='+nCid:'')),'参与/回复帖子','',completeCommenttopic,'',400,100);
 }
 
 function completeCommenttopic(data,status){
@@ -42,17 +32,7 @@ function completeCommenttopic(data,status){
 }
 
 function grouptopiceditComment(nCid){
-	var sHtml=$.ajax({
-		url: D.U('group://grouptopic/editcommenttopic_dialog?cid='+nCid),
-		async: false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditcommentNewtopics=windsforceAlert(sHtml,'编辑帖子','',completeEditcommenttopic,'',400,100);
-	}
+	oEditcommentNewtopics=windsforceAjax(D.U('group://grouptopic/editcommenttopic_dialog?cid='+nCid),'编辑帖子','',completeEditcommenttopic,'',400,100);
 }
 
 function completeEditcommenttopic(data,status){

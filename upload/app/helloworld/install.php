@@ -22,7 +22,7 @@ EOF;
 $this->runQuery($sSql);
 */
 
-// 第二种方法（注意本方法需要helloworld一样保证SQL文件位置）
+// 第二种方法（注意本方法需要和helloworld应用一样保证SQL文件位置）
 Admin_Extend::installApp('helloworld');
 
 $bFinish=TRUE;

@@ -81,17 +81,7 @@ function insertHomefreshvideo(sContent){
 
 var oEditNewhomefreshtopic='';
 function addHomefreshtopic(){
-	var sHtml=$.ajax({
-		url:D.U('home://ucenter/homefreshtopic'),
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditNewhomefreshtopic=windsforceAlert(sHtml,'<!--<lang package='Template/Homefresh'>-->插入话题<!--</lang>-->','','','',500,100);
-	}
+	oEditNewhomefreshtopic=windsforceAjax(D.U('home://ucenter/homefreshtopic'),'<!--<lang package='Template/Homefresh'>-->插入话题<!--</lang>-->','','','',500,100);
 }
 
 function insertHomefreshtopic(sContent){

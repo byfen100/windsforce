@@ -43,17 +43,7 @@ var oEditNewattachmentcategory;
 
 function createAttachmentcategory(nSelectedIndex,sId){
 	if(nSelectedIndex=='new_category'){
-		var sHtml=$.ajax({
-			url:D.U('home://attachment/new_attachmentcategory'),
-			async:false
-		}).responseText;
-
-		try{
-			arrReturn=eval('('+sHtml+')');
-			Dyhb.Message(arrReturn.info,0,2);
-		}catch(ex){
-			oEditNewattachmentcategory=windsforceAlert(sHtml,'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
-		}
+		oEditNewattachmentcategory=windsforceAjax(D.U('home://attachment/new_attachmentcategory'),'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
 	}else{
 		uploadobject.addPostParam( 'attachmentcategory_id', nSelectedIndex);
 	}
@@ -84,6 +74,7 @@ function cancelNewattachmentcategory(){
 			oEditNewattachmentcategory.close();
 			return true;
 		});
+
 		return false;
 	}
 }

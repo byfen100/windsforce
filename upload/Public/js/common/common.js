@@ -397,38 +397,16 @@ function ajaxLogin(referer,sUrl){
 	if(!sUrl){
 		sUrl=D.U('home://public/login?'+(referer?'referer='+encodeURIComponent(referer):''));
 	}
-	
-	var sHtml=$.ajax({
-		url: sUrl,
-		data: 'inajax=1',
-		async: false
-	}).responseText;
 
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		windsforceAlert(sHtml,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
-	}
+	windsforceAjax(sUrl,D.L('用户登录','__COMMON_LANG__@Js/Common_Js'),'','','',600,200,'inajax=1');
 }
 
 function ajaxRegister(referer,sUrl){
 	if(!sUrl){
 		sUrl=D.U('home://public/register?'+(referer?'referer='+encodeURIComponent(referer):''));
 	}
-	
-	var sHtml = $.ajax({
-		url: sUrl,
-		data: 'inajax=1',
-		async: false
-	}).responseText;
 
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		windsforceAlert(sHtml,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
-	}
+	windsforceAjax(sUrl,D.L('用户注册','__COMMON_LANG__@Js/Common_Js'),'','','',600,200,'inajax=1');
 }
 
 function login_handle(data,status){
@@ -445,7 +423,7 @@ function playmedia(strID,strType,strURL,intWidth,intHeight,sBgColor){
 	if(objDiv.style.display!='none'){
 		objDiv.innerHTML='';
 		objDiv.style.display='none';
-	} else {
+	}else{
 		objDiv.innerHTML=makemedia(strType,strURL,intWidth,intHeight,strID,sBgColor);
 		objDiv.style.display='block';
 	}
@@ -493,7 +471,7 @@ function flashResizeDown(obj,width,height,reload,url,idbox){
 	}else{
 		if(newheight>0){
 			document.getElementById(obj).height=newheight+'px';
-		}	
+		}
 		if(newwidth>0){
 			document.getElementById(obj).width=newwidth+'px';
 		}
@@ -511,21 +489,11 @@ function fullplayFrame(sUrl,id){
 }
 
 function playout(sUrl,id){
-	var sHtml = $.ajax({
-		url: D.U('home://attachment/playout?url='+encodeURIComponent(sUrl)),
-		async: false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditNewattachmentcategory=windsforceAlert(sHtml,D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
-
-		objDiv=document.getElementById(id);
-		objDiv.innerHTML='';
-		objDiv.style.display='none';
-	}
+	oEditNewattachmentcategory=windsforceAjax(D.U('home://attachment/playout?url='+encodeURIComponent(sUrl)),D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
+	
+	objDiv=document.getElementById(id);
+	objDiv.innerHTML='';
+	objDiv.style.display='none';
 }
 
 function makemedia(strType,strURL,intWidth,intHeight,strID,sBgColor){
@@ -594,17 +562,7 @@ function changeGlobalbg(){
 
 /** 发送短消息 */
 function addMessage(nUid){
-	var sHtml = $.ajax({
-		url: D.U('home://pm/dialog_add?uid='+nUid),
-		async: false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditNewmessage=windsforceAlert(sHtml,D.L('发送短消息','__COMMON_LANG__@Js/Common_Js'),'',addMessageok,'',500,100);
-	};
+	oEditNewmessage=windsforceAjax(D.U('home://pm/dialog_add?uid='+nUid),D.L('发送短消息','__COMMON_LANG__@Js/Common_Js'),'',addMessageok,'',500,100);
 }
 
 function addMessageok(){

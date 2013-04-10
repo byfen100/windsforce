@@ -281,9 +281,10 @@ function windsforceConfirm(sContent,ok,cancel,sTitle,nTime,width,height,lock){
 }
 
 /** 通用ajax对话框 */
-function windsforceAjax(sUrl,sTitle,nTime,ok,cancel,width,height){
+function windsforceAjax(sUrl,sTitle,nTime,ok,cancel,width,height,sExtend,lock){
 	var sHtml=$.ajax({
 		url:sUrl,
+		data:sExtend?sExtend:'',
 		async:false
 	}).responseText;
 
@@ -301,7 +302,7 @@ function windsforceAjax(sUrl,sTitle,nTime,ok,cancel,width,height){
 			height="100";
 		}
 		
-		return windsforceAlert(sHtml,sTitle,nTime,ok,cancel,width,height);
+		return windsforceAlert(sHtml,sTitle,nTime,ok,cancel,width,height,lock);
 	}
 }
 
@@ -355,17 +356,7 @@ function insertAttachmentthumb(sId,nAttachmentid){
 
 var oEditNewmusic='';
 function addMusic(sFunction){
-	var sHtml=$.ajax({
-		url:_ROOT_+'/index.php?app=home&c=misc&a=music&function='+sFunction,
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditNewmusic=windsforceAlert(sHtml,D.L('插入音乐','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
-	}
+	oEditNewmusic=windsforceAjax(_ROOT_+'/index.php?app=home&c=misc&a=music&function='+sFunction,D.L('插入音乐','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
 }
 
 function insertMusic(editor,sContent){
@@ -381,17 +372,7 @@ function insertMusic(editor,sContent){
 
 var oEditNewvideo='';
 function addVideo(sFunction){
-	var sHtml=$.ajax({
-		url:_ROOT_+'/index.php?app=home&c=misc&a=video&function='+sFunction,
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditNewvideo=windsforceAlert(sHtml,D.L('插入视频','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
-	}
+	oEditNewvideo=windsforceAjax(_ROOT_+'/index.php?app=home&c=misc&a=video&function='+sFunction,D.L('插入视频','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
 }
 
 function insertVideo(editor,sContent){

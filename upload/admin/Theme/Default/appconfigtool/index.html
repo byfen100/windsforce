@@ -4,17 +4,7 @@
 var oEditAppconfig='';
 
 function editGlobalconfig(){
-	var sHtml=$.ajax({
-		url:D.U('appconfigtool/edit_globalconfig'),
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditGlobalconfig=windsforceAlert(sHtml,'<!--<lang package='Template/Default/Appconfigtool'>-->编辑全局配置<!--</lang>-->','',saveGlobalconfig,cancelGlobalconfig);
-	}
+	oEditGlobalconfig=windsforceAjax(D.U('appconfigtool/edit_globalconfig'),'<!--<lang package='Template/Default/Appconfigtool'>-->编辑全局配置<!--</lang>-->','',saveGlobalconfig,cancelGlobalconfig);
 }
 
 function saveGlobalconfig(){
@@ -40,6 +30,7 @@ function cancelGlobalconfig(){
 
 function viewGlobaldefaultconfig(){
 	$("#ajaxGlobaldefaultconfig").css('display','block');
+
 	var sHtml=$.ajax({
 		url:"<!--{:Dyhb::U('appconfigtool/default_config')}-->",
 		async: false
@@ -58,17 +49,7 @@ function closeGlobaldefaultconfig(){
 }
 
 function viewAppconfig(sApp,type){
-	var sHtml=$.ajax({
-		url:D.U('appconfigtool/app_config?app='+sApp+(type==1?'&type=file':'')),
-		async: false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		windsforceAlert(sHtml,sApp+'  '+(type==1?'<!--<lang package='Template/Default/Appconfigtool'>-->配置文件<!--</lang>-->':'<!--<lang package='Template/Default/Appconfigtool'>-->缓存文件<!--</lang>-->'));
-	}
+	windsforceAjax(D.U('appconfigtool/app_config?app='+sApp+(type==1?'&type=file':'')),sApp+' '+(type==1?'<!--<lang package='Template/Default/Appconfigtool'>-->配置文件<!--</lang>-->':'<!--<lang package='Template/Default/Appconfigtool'>-->缓存文件<!--</lang>-->'));
 }
 
 function deleteAppconfig(sApp){
@@ -82,17 +63,7 @@ function deleteAppconfigs(){
 var oEditAppconfig='';
 
 function editAppconfig(sApp){
-	var sHtml=$.ajax({
-		url:D.U('appconfigtool/edit_appconfig?app='+sApp),
-		async:false
-	}).responseText;
-
-	try{
-		arrReturn=eval('('+sHtml+')');
-		Dyhb.Message(arrReturn.info,0,2);
-	}catch(ex){
-		oEditAppconfig=windsforceAlert(sHtml,'<!--<lang package='Template/Default/Appconfigtool'>-->编辑应用配置<!--</lang>-->'+'  '+sApp,'',saveAppconfig,cancelAppconfig);
-	}
+	oEditAppconfig=windsforceAjax(D.U('appconfigtool/edit_appconfig?app='+sApp),'<!--<lang package='Template/Default/Appconfigtool'>-->编辑应用配置<!--</lang>-->'+'  '+sApp,'',saveAppconfig,cancelAppconfig);
 }
 
 function saveAppconfig(){
