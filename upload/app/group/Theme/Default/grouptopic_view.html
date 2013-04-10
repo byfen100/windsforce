@@ -189,6 +189,10 @@ $(function(){
 									</div>
 									<div id="grouptopicview_main">
 										<div class="grouptopiccontent_box">
+											<!--{if $oGrouptopic['grouptopic_ishide']==1}-->
+											<div class="locked">本帖已经隐藏，仅具有管理权限的人才能够浏览</div>
+											<!--{/if}-->
+											
 											<!--{if $oGrouptopic['grouptopic_onlycommentview']==1}-->
 											<div class="locked">本帖需要回复后才能够浏览</div>
 											<!--{/if}-->

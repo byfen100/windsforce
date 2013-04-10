@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class StatustopicController extends Controller{
+class HidetopicController extends Controller{
 
 	public function index(){
 		$sGrouptopics=trim(G::getGpc('grouptopics'));
@@ -18,7 +18,7 @@ class StatustopicController extends Controller{
 				$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopic)->getOne();
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
-					$oGrouptopic->grouptopic_status=$nStatus;
+					$oGrouptopic->grouptopic_ishide=$nStatus;
 					$oGrouptopic->save(0,'update');
 					
 					if($oGrouptopic->isError()){
@@ -28,7 +28,7 @@ class StatustopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),$nStatus==0?Dyhb::L('隐藏主题成功','Controller/Grouptopicadmin'):Dyhb::L('显示主题成功','Controller/Grouptopicadmin'));
+		$this->A(array('group_id'=>$nGroupid),$nStatus==1?Dyhb::L('隐藏主题成功','Controller/Grouptopicadmin'):Dyhb::L('显示主题成功','Controller/Grouptopicadmin'));
 	}
 
 }

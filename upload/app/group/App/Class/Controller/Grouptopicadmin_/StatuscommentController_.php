@@ -20,31 +20,26 @@ class StatuscommentController extends Controller{
 		if(empty($oGroup['group_id'])){
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
-Dyhb::L('你回复的主题不存在','Controller/Grouptopicadmin');
+
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopics)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
 			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopicadmin'));
 		}
-
 		
 		$arrGrouptopiccomments=explode(',',$sGrouptopiccomments);
 
 		if(is_array($arrGrouptopiccomments)){
 			foreach($arrGrouptopiccomments as $nGrouptopiccomment){
-				
-				
-					$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccomment)->getOne();
+				$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccomment)->getOne();
 
-					if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
-
-						
-						$oGrouptopiccomment->grouptopiccomment_status=$nStatus;
-						$oGrouptopiccomment->save(0,'update');
-						
-						if($oGrouptopiccomment->isError()){
-							$this->E($oGrouptopiccomment->getErrorMessage());
-						}
+				if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
+					$oGrouptopiccomment->grouptopiccomment_status=$nStatus;
+					$oGrouptopiccomment->save(0,'update');
+					
+					if($oGrouptopiccomment->isError()){
+						$this->E($oGrouptopiccomment->getErrorMessage());
 					}
+				}
 			}
 			
 		}

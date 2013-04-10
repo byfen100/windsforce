@@ -25,13 +25,11 @@ class StatuscommentdialogController extends Controller{
 		}
 
 		$arrGrouptopiccomments=Dyhb::normalize($sGrouptopiccomments);
-Dyhb::L('没有待操作的回帖','Controller/Grouptopicadmin');
+
 		if(empty($arrGrouptopiccomments)){
 			$this->E(Dyhb::L('没有待操作的回帖','Controller/Grouptopicadmin'));
 		}
 
-
-		
 		$sGrouptopics=implode(',',$arrGrouptopics);
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);

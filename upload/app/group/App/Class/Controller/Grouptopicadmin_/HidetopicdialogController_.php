@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class StatustopicdialogController extends Controller{
+class HidetopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
@@ -29,7 +29,7 @@ class StatustopicdialogController extends Controller{
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('nStatus',$nStatus);
 		
-		$this->display('grouptopicadmin+statustopicdialog');
+		$this->display('grouptopicadmin+hidetopicdialog');
 	}
 
 }

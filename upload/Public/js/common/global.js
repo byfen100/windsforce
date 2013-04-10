@@ -223,7 +223,7 @@ function windsforceAlert(sContent,sTitle,nTime,ok,cancel,width,height,lock){
 	});
 
 	if(width && height){
-		oDialog.size(width, height);
+		oDialog.size(width,height);
 	}
 
 	if(lock!=1){
@@ -266,7 +266,7 @@ function windsforceConfirm(sContent,ok,cancel,sTitle,nTime,width,height,lock){
 	});
 
 	if(width && height){
-		oDialog.size(width, height);
+		oDialog.size(width,height);
 	}
 
 	if(lock!=1){
@@ -278,6 +278,31 @@ function windsforceConfirm(sContent,ok,cancel,sTitle,nTime,width,height,lock){
 	}
 
 	return oDialog;
+}
+
+/** 通用ajax对话框 */
+function windsforceAjax(sUrl,sTitle,nTime,ok,cancel,width,height){
+	var sHtml=$.ajax({
+		url:sUrl,
+		async:false
+	}).responseText;
+
+	try{
+		arrReturn=eval('('+sHtml+')');
+		Dyhb.Message(arrReturn.info,0,2);
+
+		return false;
+	}catch(ex){
+		if(!width){
+			width="400";
+		}
+
+		if(!height){
+			height="100";
+		}
+		
+		return windsforceAlert(sHtml,sTitle,nTime,ok,cancel,width,height);
+	}
 }
 
 /** 媒体对话框 */
