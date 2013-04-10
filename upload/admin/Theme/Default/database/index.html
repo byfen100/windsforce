@@ -40,8 +40,8 @@ function backup(){
 				<div class="module_content">
 					<fieldset>
 						<label for="type"><!--<lang package='Template/Default/Database'>-->备份类型<!--</lang>--></label>
-						<input type="radio" name="type" value="full" checked="checked" onclick="document.getElementById('checkList').style.display='none'"><!--<lang package='Template/Default/Database'>-->全部备份<!--</lang>-->
-						<input type="radio" name="type" value="custom" onclick="document.getElementById('checkList').style.display='block'"><!--<lang package='Template/Default/Database'>-->自定义备份<!--</lang>-->
+						<input type="radio" name="type" value="full" checked="checked" onclick="$WF('checkList').style.display='none'"><!--<lang package='Template/Default/Database'>-->全部备份<!--</lang>-->
+						<input type="radio" name="type" value="custom" onclick="$WF('checkList').style.display='block'"><!--<lang package='Template/Default/Database'>-->自定义备份<!--</lang>-->
 						<div class="description"><!--<lang package='Template/Default/Database'>-->请选择备份类型，可以全部备份，也可以备份一部分<!--</lang>--></div>
 					</fieldset>
 					<fieldset id="checkList" class="none">

@@ -67,12 +67,12 @@ function checkHttp(sUrl){
 }
 
 function getImgByid(id){
-	var oId=document.getElementById(id);
+	var oId=$WF(id);
 	return oId.value?(checkHttp(oId.value)?oId.value:'<!--{:__ROOT__}-->/ucontent/'+sStyleimgdir+'/'+oId.value):'<!--{:__PUBLIC__}-->/images/common/none.gif';
 }
 
 function imgUpdate(id,imgid){
-	var oId=document.getElementById(id);
+	var oId=$WF(id);
 	sUrl=getImgByid(imgid);
 	oId.style.backgroundImage='url('+sUrl+')';
 
@@ -165,7 +165,7 @@ function imgUpdate(id,imgid){
 					</fieldset>
 					<fieldset>
 							<label for="logo"><!--<lang package='Template/Default/Style'>-->网站Logo<!--</lang>-->{LOGO}</label>
-							<input type="text" name="stylevar[logo]" id="logo" size="40" value="<!--{$arrSystemStylevar['logo']}-->" onblur="document.getElementById('sp_logo').src=getImgByid('logo');"/>
+							<input type="text" name="stylevar[logo]" id="logo" size="40" value="<!--{$arrSystemStylevar['logo']}-->" onblur="$WF('sp_logo').src=getImgByid('logo');"/>
 							<div class="description"><!--<lang package='Template/Default/Style'>-->如使用 Flash 动画，请用逗号隔开 URL、宽度和高度，如“logo.swf,80,40”<!--</lang>--></div>
 					</fieldset>
 					<table width="100%" class="tablesorter" cellpadding="0" cellspacing="0">
@@ -181,9 +181,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="header_bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[header_bg_img]" id="header_bg_img" size="8" value="<!--{$arrSystemStylevar['header_bg_img']}-->" onblur="document.getElementById('sp_header_bg').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();" /></p>
+										<p><input type="text" name="stylevar[header_bg_img]" id="header_bg_img" size="8" value="<!--{$arrSystemStylevar['header_bg_img']}-->" onblur="$WF('sp_header_bg').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();" /></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[header_bg_extra]" id="header_bg_extra" size="8" value="<!--{$arrSystemStylevar['header_bg_extra']}-->" onblur="document.getElementById('sp_header_bg').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();" />
+										<p><input type="text" name="stylevar[header_bg_extra]" id="header_bg_extra" size="8" value="<!--{$arrSystemStylevar['header_bg_extra']}-->" onblur="$WF('sp_header_bg').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();" />
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_header_bg" onclick="imgUpdate('sp_header_bg','header_bg_img')" style="background:<!--{$arrSystemStylevar['header_bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['header_bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['header_bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>
@@ -198,9 +198,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[bg_img]" id="bg_img" size="8" value="<!--{$arrSystemStylevar['bg_img']}-->" onblur="document.getElementById('sp_bg').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();" /></p>
+										<p><input type="text" name="stylevar[bg_img]" id="bg_img" size="8" value="<!--{$arrSystemStylevar['bg_img']}-->" onblur="$WF('sp_bg').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();" /></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[bg_extra]" id="bg_extra" size="8" value="<!--{$arrSystemStylevar['bg_extra']}-->" onblur="document.getElementById('sp_bg').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();" />
+										<p><input type="text" name="stylevar[bg_extra]" id="bg_extra" size="8" value="<!--{$arrSystemStylevar['bg_extra']}-->" onblur="$WF('sp_bg').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();" />
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_bg" onclick="imgUpdate('sp_bg','bg_img')" style="background:<!--{$arrSystemStylevar['bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>
@@ -215,9 +215,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="side_bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[side_bg_img]" id="side_bg_img" size="8" value="<!--{$arrSystemStylevar['side_bg_img']}-->" onblur="document.getElementById('sp_side_bg').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/></p>
+										<p><input type="text" name="stylevar[side_bg_img]" id="side_bg_img" size="8" value="<!--{$arrSystemStylevar['side_bg_img']}-->" onblur="$WF('sp_side_bg').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[side_bg_extra]" id="side_bg_extra" size="8" value="<!--{$arrSystemStylevar['side_bg_extra']}-->" onblur="document.getElementById('sp_side_bg').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/>
+										<p><input type="text" name="stylevar[side_bg_extra]" id="side_bg_extra" size="8" value="<!--{$arrSystemStylevar['side_bg_extra']}-->" onblur="$WF('sp_side_bg').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_side_bg" onclick="imgUpdate('sp_side_bg','side_bg_img')" style="background:<!--{$arrSystemStylevar['side_bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['side_bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['side_bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>
@@ -232,9 +232,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="footer_bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[footer_bg_img]" id="footer_bg_img" size="8" value="<!--{$arrSystemStylevar['footer_bg_img']}-->" onblur="document.getElementById('sp_footer_bg').style.background=$('#footer_bg_color').val()+' url('+getImgByid('footer_bg_img')+') '+$('#footer_bg_extra').val();"/></p>
+										<p><input type="text" name="stylevar[footer_bg_img]" id="footer_bg_img" size="8" value="<!--{$arrSystemStylevar['footer_bg_img']}-->" onblur="$WF('sp_footer_bg').style.background=$('#footer_bg_color').val()+' url('+getImgByid('footer_bg_img')+') '+$('#footer_bg_extra').val();"/></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[footer_bg_extra]" id="footer_bg_extra" size="8" value="<!--{$arrSystemStylevar['footer_bg_extra']}-->" onblur="document.getElementById('sp_footer_bg').style.background=$('#footer_bg_color').val()+' url('+getImgByid('footer_bg_img')+') '+$('#footer_bg_extra').val();"/>
+										<p><input type="text" name="stylevar[footer_bg_extra]" id="footer_bg_extra" size="8" value="<!--{$arrSystemStylevar['footer_bg_extra']}-->" onblur="$WF('sp_footer_bg').style.background=$('#footer_bg_color').val()+' url('+getImgByid('footer_bg_img')+') '+$('#footer_bg_extra').val();"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_footer_bg" onclick="imgUpdate('sp_footer_bg','footer_bg_img')" style="background:<!--{$arrSystemStylevar['footer_bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['footer_bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['footer_bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>
@@ -525,9 +525,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="menu_bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[menu_bg_img]" id="menu_bg_img" size="8" value="<!--{$arrSystemStylevar['menu_bg_img']}-->" onblur="document.getElementById('sp_menu_bg').style.background=$('#menu_bg_color').val()+' url('+getImgByid('menu_bg_img')+') '+$('#menu_bg_extra').val();"/></p>
+										<p><input type="text" name="stylevar[menu_bg_img]" id="menu_bg_img" size="8" value="<!--{$arrSystemStylevar['menu_bg_img']}-->" onblur="$WF('sp_menu_bg').style.background=$('#menu_bg_color').val()+' url('+getImgByid('menu_bg_img')+') '+$('#menu_bg_extra').val();"/></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[menu_bg_extra]" id="menu_bg_extra" size="8" value="<!--{$arrSystemStylevar['menu_bg_extra']}-->" onblur="document.getElementById('sp_menu_bg').style.background=$('#menu_bg_color').val()+' url('+getImgByid('menu_bg_img')+') '+$('#menu_bg_extra').val();"/>
+										<p><input type="text" name="stylevar[menu_bg_extra]" id="menu_bg_extra" size="8" value="<!--{$arrSystemStylevar['menu_bg_extra']}-->" onblur="$WF('sp_menu_bg').style.background=$('#menu_bg_color').val()+' url('+getImgByid('menu_bg_img')+') '+$('#menu_bg_extra').val();"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_menu_bg" onclick="imgUpdate('sp_menu_bg','menu_bg_img')" style="background:<!--{$arrSystemStylevar['menu_bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['menu_bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['menu_bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>
@@ -593,9 +593,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="drop_menu_bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[drop_menu_bg_img]" id="drop_menu_bg_img" size="8" value="<!--{$arrSystemStylevar['drop_menu_bg_img']}-->" onblur="document.getElementById('sp_drop_menu_bg').style.background=$('#drop_menu_bg_color').val()+' url('+getImgByid('drop_menu_bg_img')+') '+$('#drop_menu_bg_extra').val();"/></p>
+										<p><input type="text" name="stylevar[drop_menu_bg_img]" id="drop_menu_bg_img" size="8" value="<!--{$arrSystemStylevar['drop_menu_bg_img']}-->" onblur="$WF('sp_drop_menu_bg').style.background=$('#drop_menu_bg_color').val()+' url('+getImgByid('drop_menu_bg_img')+') '+$('#drop_menu_bg_extra').val();"/></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[drop_menu_bg_extra]" id="drop_menu_bg_extra" size="8" value="<!--{$arrSystemStylevar['drop_menu_bg_extra']}-->" onblur="document.getElementById('sp_drop_menu_bg').style.background=$('#float_drop_menu_color').val()+' url('+getImgByid('float_drop_menu_img')+') '+$('#float_drop_menu_extra').val();"/>
+										<p><input type="text" name="stylevar[drop_menu_bg_extra]" id="drop_menu_bg_extra" size="8" value="<!--{$arrSystemStylevar['drop_menu_bg_extra']}-->" onblur="$WF('sp_drop_menu_bg').style.background=$('#float_drop_menu_color').val()+' url('+getImgByid('float_drop_menu_img')+') '+$('#float_drop_menu_extra').val();"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_drop_menu_bg" onclick="imgUpdate('sp_drop_menu_bg','drop_menu_bg_img')" style="background:<!--{$arrSystemStylevar['drop_menu_bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['drop_menu_bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['drop_menu_bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>
@@ -617,9 +617,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="float_bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[float_bg_img]" id="float_bg_img" size="8" value="<!--{$arrSystemStylevar['float_bg_img']}-->" onblur="document.getElementById('sp_float_bg').style.background=$('#float_bg_color').val()+' url('+getImgByid('float_bg_img')+') '+$('#float_bg_extra').val();" /></p>
+										<p><input type="text" name="stylevar[float_bg_img]" id="float_bg_img" size="8" value="<!--{$arrSystemStylevar['float_bg_img']}-->" onblur="$WF('sp_float_bg').style.background=$('#float_bg_color').val()+' url('+getImgByid('float_bg_img')+') '+$('#float_bg_extra').val();" /></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[float_bg_extra]" id="float_bg_extra" size="8" value="<!--{$arrSystemStylevar['float_bg_extra']}-->" onblur="document.getElementById('sp_float_bg').style.background=$('#float_bg_color').val()+' url('+getImgByid('float_bg_img')+') '+$('#float_bg_extra').val();"/>
+										<p><input type="text" name="stylevar[float_bg_extra]" id="float_bg_extra" size="8" value="<!--{$arrSystemStylevar['float_bg_extra']}-->" onblur="$WF('sp_float_bg').style.background=$('#float_bg_color').val()+' url('+getImgByid('float_bg_img')+') '+$('#float_bg_extra').val();"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_float_bg" onclick="imgUpdate('sp_float_bg','float_bg_img')" style="background:<!--{$arrSystemStylevar['float_bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['float_bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['float_bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>
@@ -634,9 +634,9 @@ function imgUpdate(id,imgid){
 											<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="float_mask_bg_color"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入 16 进制颜色 #RRGGBB<!--</lang>--></div>
-										<p><input type="text" name="stylevar[float_mask_bg_img]" id="float_mask_bg_img" size="8" value="<!--{$arrSystemStylevar['float_mask_bg_img']}-->" onblur="document.getElementById('sp_float_mask_bg').style.background=$('#float_mask_bg_color').val()+' url('+getImgByid('float_mask_bg_img')+') '+$('#float_mask_bg_extra').val();"/></p>
+										<p><input type="text" name="stylevar[float_mask_bg_img]" id="float_mask_bg_img" size="8" value="<!--{$arrSystemStylevar['float_mask_bg_img']}-->" onblur="$WF('sp_float_mask_bg').style.background=$('#float_mask_bg_color').val()+' url('+getImgByid('float_mask_bg_img')+') '+$('#float_mask_bg_extra').val();"/></p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入背景图片地址<!--</lang>--></div>
-										<p><input type="text" name="stylevar[float_mask_bg_extra]" id="float_mask_bg_extra" size="8" value="<!--{$arrSystemStylevar['float_mask_bg_extra']}-->" onblur="document.getElementById('sp_float_mask_bg').style.background=$('#float_mask_bg_color').val()+' url('+getImgByid('float_mask_bg_img')+') '+$('#float_mask_bg_extra').val();"/>
+										<p><input type="text" name="stylevar[float_mask_bg_extra]" id="float_mask_bg_extra" size="8" value="<!--{$arrSystemStylevar['float_mask_bg_extra']}-->" onblur="$WF('sp_float_mask_bg').style.background=$('#float_mask_bg_color').val()+' url('+getImgByid('float_mask_bg_img')+') '+$('#float_mask_bg_extra').val();"/>
 										</p>
 										<div class="description"><!--<lang package='Template/Default/Style'>-->输入附加属性<!--</lang>--></div>
 										<div id="sp_float_mask_bg" onclick="imgUpdate('sp_float_mask_bg','float_mask_bg_img')" style="background:<!--{$arrSystemStylevar['float_mask_bg_color']}--> url(<!--{$TheController->get_img($arrSystemStylevar['float_mask_bg_img'],$sStyleimgdir)}-->) <!--{$arrSystemStylevar['float_mask_bg_extra']}-->;cursor:pointer;margin:10px;width:400px;height:50px;overflow:hidden;border: 1px solid #ccc"></div>

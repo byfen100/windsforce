@@ -21,21 +21,21 @@ function completeDelete(data,status){
 
 function deletePms(){
 	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
-		document.getElementById('pmform').submit();
+		$WF('pmform').submit();
 	});
 
 	return false;
 }
 
 function readPms(){
-	document.getElementById('pmform').submit();
+	$WF('pmform').submit();
 
 	return false;
 }
 
 function deleteMyPms(){
 	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
-		document.getElementById('pmform').submit();
+		$WF('pmform').submit();
 	});
 
 	return false;

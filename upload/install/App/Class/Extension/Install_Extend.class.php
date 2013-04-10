@@ -47,8 +47,14 @@ class Install_Extend extends Controller{
 			}
 		}
 	}
+
+	public static function javascritpNl2br($sMessage){
+		return str_replace("\n",'<br>',str_replace("\r",'<br>',str_replace("\r\n",'<br>',$sMessage)));
+	}
 	
 	public static function showJavascriptMessage($sMessage){
+		$sMessage=self::javascritpNl2br($sMessage);
+		
 		echo '<script type="text/javascript">showMessage(\''.addslashes($sMessage).' \');</script>'."\r\n";
 		flush();
 		ob_flush();

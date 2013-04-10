@@ -18,13 +18,13 @@ function changeDiv(buddyid){
 
 function editComment(buddyid){
 	changeDiv(buddyid);
-	document.getElementById('comment_'+buddyid).focus();
+	$WF('comment_'+buddyid).focus();
 }
 
 function updateComment(buddyid,fan){
 	changeDiv(buddyid);
-	var comment=Dyhb.Browser.Ie && document.charset=='utf-8'?encodeURIComponent(document.getElementById('comment_'+buddyid).value):document.getElementById('comment_'+ buddyid).value;
-	document.getElementById('commenthide_'+buddyid).innerHTML=preg_replace(['&','<','>','"'],['&amp;','&lt;','&gt;','&quot;'], comment);
+	var comment=Dyhb.Browser.Ie && document.charset=='utf-8'?encodeURIComponent($WF('comment_'+buddyid).value):$WF('comment_'+ buddyid).value;
+	$WF('commenthide_'+buddyid).innerHTML=preg_replace(['&','<','>','"'],['&amp;','&lt;','&gt;','&quot;'], comment);
 	Dyhb.AjaxSend('<!--{:Dyhb::U('home://friend/edit')}-->','ajax=1&friendid='+buddyid+'&comment='+comment+(fan=='1'?'&fan=1':''),'');
 }
 

@@ -4,7 +4,7 @@
 function add(){
 	$("#submit_button").attr("disabled", "disabled");
 	$("#submit_button").val( 'add...' );
-	document.getElementById( 'styleImport').submit();
+	$WF( 'styleImport').submit();
 }
 <!--{/script}-->
 
@@ -35,8 +35,8 @@ function add(){
 				<div class="module_content">
 					<fieldset>
 						<label for="importtype"><!--<lang package='Template/Default/Style'>-->请选择导入方式<!--</lang>--></label>
-						<input type="radio" name="importtype" id="importtype" value="file" checked onclick="document.getElementById('importfile').style.display = '';document.getElementById('importtxt').style.display = 'none';">&nbsp;<!--<lang package='Template/Default/Style'>-->上传文件<!--</lang>-->
-						<input type="radio" name="importtype" value="txt" onclick="document.getElementById('importfile').style.display = 'none';document.getElementById('importtxt').style.display = '';">&nbsp;<!--<lang package='Template/Default/Style'>-->粘贴文本<!--</lang>-->
+						<input type="radio" name="importtype" id="importtype" value="file" checked onclick="$WF('importfile').style.display = '';$WF('importtxt').style.display = 'none';">&nbsp;<!--<lang package='Template/Default/Style'>-->上传文件<!--</lang>-->
+						<input type="radio" name="importtype" value="txt" onclick="$WF('importfile').style.display = 'none';$WF('importtxt').style.display = '';">&nbsp;<!--<lang package='Template/Default/Style'>-->粘贴文本<!--</lang>-->
 						<div class="description"><!--<lang package='Template/Default/Style'>-->两种方式均可以实现功能<!--</lang>-->
 						</div>
 					</fieldset>

@@ -15,21 +15,21 @@ function getNewpms(userid){
 					sMessage+='<div id="pmsound" style="position:absolute;top:-100000px">&nbsp;</div>';
 				}
 				$('#new-message-box').html(sMessage);
-				document.getElementById('pmsound').innerHTML=AC_FL_RunContent('id','pmsoundplayer','name','pmsoundplayer','width','0','height','0','src',_ROOT_+'/Public/images/common/sound/player.swf','FlashVars','sFile='+sound_outurl,'menu','false','allowScriptAccess','sameDomain','swLiveConnect','true');
+				$WF('pmsound').innerHTML=AC_FL_RunContent('id','pmsoundplayer','name','pmsoundplayer','width','0','height','0','src',_ROOT_+'/Public/images/common/sound/player.swf','FlashVars','sFile='+sound_outurl,'menu','false','allowScriptAccess','sameDomain','swLiveConnect','true');
 
 				// 赋值
-				if(document.getElementById('usernew-pm-num')){
+				if($WF('usernew-pm-num')){
 					if(dataJson.user){
-						document.getElementById('usernew-pm-num').innerHTML='<span class="badge badge-important">'+dataJson.user+'</span>';
+						$WF('usernew-pm-num').innerHTML='<span class="badge badge-important">'+dataJson.user+'</span>';
 					}else{
-						document.getElementById('usernew-pm-num').innerHTML='<span class="badge">'+dataJson.user+'</span>';
+						$WF('usernew-pm-num').innerHTML='<span class="badge">'+dataJson.user+'</span>';
 					}
 				}
-				if(document.getElementById('systemnew-pm-num')){
+				if($WF('systemnew-pm-num')){
 					if(dataJson.system){
-						document.getElementById('systemnew-pm-num').innerHTML='<span class="badge badge-important">'+dataJson.system+'</span>';
+						$WF('systemnew-pm-num').innerHTML='<span class="badge badge-important">'+dataJson.system+'</span>';
 					}else{
-						document.getElementById('systemnew-pm-num').innerHTML='<span class="badge>'+dataJson.system+'</span>';
+						$WF('systemnew-pm-num').innerHTML='<span class="badge>'+dataJson.system+'</span>';
 					}
 				}
 				
@@ -62,11 +62,11 @@ function getNewnotices(userid){
 				$('#new-notice-box').html(sMessage);
 
 				// 赋值
-				if(document.getElementById('usernew-notice-num')){
+				if($WF('usernew-notice-num')){
 					if(dataJson.num){
-						document.getElementById('usernew-notice-num').innerHTML='<span class="badge badge-important">'+dataJson.num+'</span>';
+						$WF('usernew-notice-num').innerHTML='<span class="badge badge-important">'+dataJson.num+'</span>';
 					}else{
-						document.getElementById('usernew-notice-num').innerHTML='<span class="badge">'+dataJson.num+'</span>';
+						$WF('usernew-notice-num').innerHTML='<span class="badge">'+dataJson.num+'</span>';
 					}
 				}
 			}

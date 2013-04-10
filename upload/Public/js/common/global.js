@@ -25,6 +25,10 @@ function strlen(str){
 	return(Dyhb.Browser.Ie && str.indexOf('\n')!=-1)?str.replace(/\r?\n/g,'_').length:str.length;
 }
 
+function $WF(id){
+	return document.getElementById(id);
+}
+
 function mb_strlen(str){
 	var len=0;
 
@@ -147,7 +151,7 @@ function fetchOffset(obj,mode){
 
 function showDiv(id){
 	try{
-		var oDiv=document.getElementById(id);
+		var oDiv=$WF(id);
 		if(oDiv){
 			if(oDiv.style.display=='none'){
 				oDiv.style.display='block';
@@ -159,30 +163,30 @@ function showDiv(id){
 }
 
 function resizeUp(obj){
-	var newheight=parseInt(document.getElementById(obj).style.height,10)+50;
-	document.getElementById(obj).style.height=newheight+'px';
+	var newheight=parseInt($WF(obj).style.height,10)+50;
+	$WF(obj).style.height=newheight+'px';
 }
 
 function resizeDown(obj){
-	var newheight=parseInt(document.getElementById(obj).style.height,10)-50;
+	var newheight=parseInt($WF(obj).style.height,10)-50;
 	if(newheight>0){
-		document.getElementById(obj).style.height=newheight+'px';
+		$WF(obj).style.height=newheight+'px';
 	}
 }
 
 function updateSeccode(){
-	if(document.getElementById("seccodeImage").innerHTML==''){
-		document.getElementById('seccodeImage').style.display='block';
-		document.getElementById("seccodeImage").innerHTML=D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js');
+	if($WF("seccodeImage").innerHTML==''){
+		$WF('seccodeImage').style.display='block';
+		$WF("seccodeImage").innerHTML=D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js');
 	}
 
 	var timenow=new Date().getTime();
-	document.getElementById("seccodeImage").innerHTML='<img id="seccode" onclick="updateSeccode()" src="'+D.U('seccode?update='+timenow)+'" style="cursor:pointer" title="'+D.L('单击图片换个验证码','__COMMON_LANG__@Js/Global_Js')+'" alt="'+D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js')+'" />';
+	$WF("seccodeImage").innerHTML='<img id="seccode" onclick="updateSeccode()" src="'+D.U('seccode?update='+timenow)+'" style="cursor:pointer" title="'+D.L('单击图片换个验证码','__COMMON_LANG__@Js/Global_Js')+'" alt="'+D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js')+'" />';
 }
 
 function checkAll(str){
 	var i;
-	var inputs=document.getElementById(str).getElementsByTagName("input");
+	var inputs=$WF(str).getElementsByTagName("input");
 
 	for(i=1;i<inputs.length;i++){
 		inputs[i].checked=inputs[0].checked;
@@ -195,10 +199,10 @@ function showDistrict(sContainer,oElems,nTotallevel,nChangelevel,sContainertype,
 		return op['did'] || op.getAttribute('did') || '0';
 	};
 
-	var nPid=nChangelevel>=1 && oElems[0] && document.getElementById(oElems[0])?getdid(document.getElementById(oElems[0])):0;
-	var nCid=nChangelevel>=2 && oElems[1] && document.getElementById(oElems[1])?getdid(document.getElementById(oElems[1])):0;
-	var nDid=nChangelevel>=3 && oElems[2] && document.getElementById(oElems[2])?getdid(document.getElementById(oElems[2])):0;
-	var nCoid=nChangelevel>=4 && oElems[3] && document.getElementById(oElems[3])?getdid(document.getElementById(oElems[3])):0;
+	var nPid=nChangelevel>=1 && oElems[0] && $WF(oElems[0])?getdid($WF(oElems[0])):0;
+	var nCid=nChangelevel>=2 && oElems[1] && $WF(oElems[1])?getdid($WF(oElems[1])):0;
+	var nDid=nChangelevel>=3 && oElems[2] && $WF(oElems[2])?getdid($WF(oElems[2])):0;
+	var nCoid=nChangelevel>=4 && oElems[3] && $WF(oElems[3])?getdid($WF(oElems[3])):0;
 
 	var sUrl=Dyhb.U('home://misc/district?container='+sContainer+'&containertype='+sContainertype+'&districtprefix='+sDistrictPrefix+
 			'&province='+oElems[0]+'&city='+oElems[1]+'&district='+oElems[2]+'&community='+oElems[3]+
@@ -208,7 +212,7 @@ function showDistrict(sContainer,oElems,nTotallevel,nChangelevel,sContainertype,
 		'',
 		function(xhr,responseText){
 			var sStr=xhr.responseText;
-			var oContainer=document.getElementById(sContainer);
+			var oContainer=$WF(sContainer);
 			oContainer.innerHTML=sStr;
 		}
 	);

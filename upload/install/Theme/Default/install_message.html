@@ -2,8 +2,8 @@
 
 {script}
 function showMessage(sMessage){
-	document.getElementById('message-list').innerHTML+=sMessage+'<br />';
-	document.getElementById('message-list').scrollTop=100000000;
+	$WF('message-list').innerHTML+=sMessage+'<br />';
+	$WF('message-list').scrollTop=100000000;
 }
 
 function initInput(){

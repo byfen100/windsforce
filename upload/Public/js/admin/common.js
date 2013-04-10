@@ -95,7 +95,7 @@ function foreverdelApp(appId,controller,id,sMore){
 
 function completeDelete(data,status){
 	if(status==1){
-		var Table=document.getElementById('checkList');
+		var Table=$WF('checkList');
 		var len=selectRowIndex.length;
 		if(len==0){
 			window.location.reload();

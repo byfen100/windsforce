@@ -4,13 +4,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><!--{$GLOBALS['_option_']['windsforce_program_name']}-->! <!--<lang package='Template/Default/Common'>-->管理平台<!--</lang>--></title>
 	<!--<load file="<!--{:__TMPLPUB__}-->/Css/style.css" />-->
+	<script src="<!--{:__PUBLIC__}-->/js/common/global.js" type="text/javascript"></script>
 	<!--{script}-->
 	var pic = new Image();
 	pic.src="<!--{:__TMPLPUB__}-->/Images/arrow_right.gif";
 
 	function toggleMenu(){
-		frmBody = parent.document.getElementById('body');
-		imgArrow = document.getElementById('img');
+		frmBody = parent.$WF('body');
+		imgArrow = $WF('img');
 
 		if (frmBody.cols == "0, 5, *"){
 			frmBody.cols="120, 5, *";
@@ -26,14 +27,14 @@
 		var evt = Utils.fixEvent(e);
 		orgX = evt.clientX;
 		if (Browser.isIE){
-			document.getElementById('tbl').setCapture();
+			$WF('tbl').setCapture();
 		}
 	};
 
 	document.onmouseup = function(e){
 		var evt = Utils.fixEvent(e);
 
-		frmBody = parent.document.getElementById('body');
+		frmBody = parent.$WF('body');
 		frmWidth = frmBody.cols.substr(0, frmBody.cols.indexOf(','));
 		frmWidth = (parseInt(frmWidth) + (evt.clientX - orgX));
 		frmBody.cols = frmWidth + ", 5, *";

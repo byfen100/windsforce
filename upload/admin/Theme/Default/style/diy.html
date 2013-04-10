@@ -123,7 +123,7 @@ function checkHttp(sUrl){
 }
 
 function getImgByid(id){
-	var oId=document.getElementById(id);
+	var oId=$WF(id);
 	return oId.value?(checkHttp(oId.value)?oId.value:'<!--{:__ROOT__}-->/ucontent/'+sStyleimgdir+'/'+oId.value):'<!--{:__PUBLIC__}-->/images/common/none.gif';
 }
 <!--{/script}-->
@@ -258,14 +258,14 @@ function getImgByid(id){
 																							</tr>
 																							<tr>
 																								<td width="100"><!--<lang package='Template/Default/Style'>-->正常字体，字号<!--</lang>--></td>
-																								<td><p><input type="text" id="normal_font" name="stylevar[normal_font]" value="<!--{$arrSystemStylevar['normal_font']}-->" size="15" onblur="document.getElementById('sp_tabletext').style.fontFamily=this.value"></p><br/>
-																									<p><input type="text" id="normal_fontsize" name="stylevar[normal_fontsize]" value="<!--{$arrSystemStylevar['normal_fontsize']}-->" size="5" onblur="document.getElementById('sp_tabletext').style.fontSize=this.value"></p>
+																								<td><p><input type="text" id="normal_font" name="stylevar[normal_font]" value="<!--{$arrSystemStylevar['normal_font']}-->" size="15" onblur="$WF('sp_tabletext').style.fontFamily=this.value"></p><br/>
+																									<p><input type="text" id="normal_fontsize" name="stylevar[normal_fontsize]" value="<!--{$arrSystemStylevar['normal_fontsize']}-->" size="5" onblur="$WF('sp_tabletext').style.fontSize=this.value"></p>
 																								</td>
 																							</tr>
 																							<tr>
 																								<td width="100"><!--<lang package='Template/Default/Style'>-->小号字体，字号<!--</lang>--></td>
-																								<td><p><input type="text" id="small_font" name="stylevar[small_font]" value="<!--{$arrSystemStylevar['small_font']}-->" size="15" onblur="document.getElementById('sp_smalltext').style.fontFamily=this.value"></p><br/>
-																									<p><input type="text" id="small_fontsize" name="stylevar[small_fontsize]" value="<!--{$arrSystemStylevar['small_fontsize']}-->" size="5" onblur="document.getElementById('sp_smalltext').style.fontSize = this.value"></p>
+																								<td><p><input type="text" id="small_font" name="stylevar[small_font]" value="<!--{$arrSystemStylevar['small_font']}-->" size="15" onblur="$WF('sp_smalltext').style.fontFamily=this.value"></p><br/>
+																									<p><input type="text" id="small_fontsize" name="stylevar[small_fontsize]" value="<!--{$arrSystemStylevar['small_fontsize']}-->" size="5" onblur="$WF('sp_smalltext').style.fontSize = this.value"></p>
 																								</td>
 																							</tr>
 																							<tr>
@@ -331,15 +331,15 @@ function getImgByid(id){
 									<div style="height: 500px; width: 100%; overflow:auto;">
 										<fieldset>
 											<label for="logo"><!--<lang package='Template/Default/Style'>-->网站Logo<!--</lang>--></label>
-											<input type="text" name="stylevar[logo]" id="logo" size="40" value="<!--{$arrSystemStylevar['logo']}-->" onblur="document.getElementById('sp_logo').src=getImgByid('logo');"/>
+											<input type="text" name="stylevar[logo]" id="logo" size="40" value="<!--{$arrSystemStylevar['logo']}-->" onblur="$WF('sp_logo').src=getImgByid('logo');"/>
 										</fieldset>
 										<fieldset>
 											<label for="header_bg_color"><!--<lang package='Template/Default/Style'>-->页头背景<!--</lang>--></label>
 											<p><input class="left" type="text" name="stylevar[header_bg_color]" id="header_bg_color" size="8" value="<!--{$arrSystemStylevar['header_bg_color']}-->" style="color:<!--{$arrSystemStylevar['header_bg_color']}-->"/>
 												<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="header_bg_color"/>
 											</p>
-											<p><input class="left" type="text" name="stylevar[header_bg_img]" id="header_bg_img" size="8" value="<!--{$arrSystemStylevar['header_bg_img']}-->" style="width:100px" onblur="document.getElementById('sp_header').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();" />
-												<input type="text" name="stylevar[header_bg_extra]" id="header_bg_extra" size="8" value="<!--{$arrSystemStylevar['header_bg_extra']}-->" style="width:100px" onblur="document.getElementById('sp_header').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();"/>
+											<p><input class="left" type="text" name="stylevar[header_bg_img]" id="header_bg_img" size="8" value="<!--{$arrSystemStylevar['header_bg_img']}-->" style="width:100px" onblur="$WF('sp_header').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();" />
+												<input type="text" name="stylevar[header_bg_extra]" id="header_bg_extra" size="8" value="<!--{$arrSystemStylevar['header_bg_extra']}-->" style="width:100px" onblur="$WF('sp_header').style.background=$('#header_bg_color').val()+' url('+getImgByid('header_bg_img')+') '+$('#header_bg_extra').val();"/>
 											</p>
 										</fieldset>
 										<fieldset>
@@ -347,7 +347,7 @@ function getImgByid(id){
 											<p><input class="left" type="text" name="stylevar[header_border_color]" id="header_border_color" size="40" value="<!--{$arrSystemStylevar['header_border_color']}-->" style="color:<!--{$arrSystemStylevar['header_border_color']}-->"/>
 												<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="header_border_color"/>
 											</p>
-											<p><input type="text" name="stylevar[header_border_width]" id="header_border_width" size="8" value="<!--{$arrSystemStylevar['header_border_width']}-->" onblur="document.getElementById('sp_header').style.borderBottom=this.value+' solid '+document.getElementById('header_border_color').value"/>
+											<p><input type="text" name="stylevar[header_border_width]" id="header_border_width" size="8" value="<!--{$arrSystemStylevar['header_border_width']}-->" onblur="$WF('sp_header').style.borderBottom=this.value+' solid '+$WF('header_border_color').value"/>
 											</p>
 										</fieldset>
 										<fieldset>
@@ -394,8 +394,8 @@ function getImgByid(id){
 											<p><input class="left" type="text" name="stylevar[bg_color]" id="bg_color" size="8" value="<!--{$arrSystemStylevar['bg_color']}-->" style="color:<!--{$arrSystemStylevar['bg_color']}-->"/>
 												<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="bg_color"/>
 											</p>
-											<p><input class="left" type="text" name="stylevar[bg_img]" id="bg_img" size="8" value="<!--{$arrSystemStylevar['bg_img']}-->" style="width:100px" onblur="document.getElementById('style_preview').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();"/>
-												<input type="text" name="stylevar[bg_extra]" id="bg_extra" size="8" value="<!--{$arrSystemStylevar['bg_extra']}-->" style="width:100px" onblur="document.getElementById('style_preview').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();"/>
+											<p><input class="left" type="text" name="stylevar[bg_img]" id="bg_img" size="8" value="<!--{$arrSystemStylevar['bg_img']}-->" style="width:100px" onblur="$WF('style_preview').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();"/>
+												<input type="text" name="stylevar[bg_extra]" id="bg_extra" size="8" value="<!--{$arrSystemStylevar['bg_extra']}-->" style="width:100px" onblur="$WF('style_preview').style.background=$('#bg_color').val()+' url('+getImgByid('bg_img')+') '+$('#bg_extra').val();"/>
 											</p>
 										</fieldset>
 										<fieldset>
@@ -403,8 +403,8 @@ function getImgByid(id){
 											<p><input class="left" type="text" name="stylevar[side_bg_color]" id="side_bg_color" size="8" value="<!--{$arrSystemStylevar['side_bg_color']}-->" style="color:<!--{$arrSystemStylevar['side_bg_color']}-->"/>
 												<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="side_bg_color"/>
 											</p>
-											<p><input class="left" type="text" name="stylevar[side_bg_img]" id="side_bg_img" size="8" value="<!--{$arrSystemStylevar['side_bg_img']}-->" style="width:100px" onblur="document.getElementById('sp_sidebar').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/>
-												<input type="text" name="stylevar[side_bg_extra]" id="side_bg_extra" size="8" value="<!--{$arrSystemStylevar['side_bg_extra']}-->" style="width:100px" onblur="document.getElementById('sp_sidebar').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/>
+											<p><input class="left" type="text" name="stylevar[side_bg_img]" id="side_bg_img" size="8" value="<!--{$arrSystemStylevar['side_bg_img']}-->" style="width:100px" onblur="$WF('sp_sidebar').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/>
+												<input type="text" name="stylevar[side_bg_extra]" id="side_bg_extra" size="8" value="<!--{$arrSystemStylevar['side_bg_extra']}-->" style="width:100px" onblur="$WF('sp_sidebar').style.background=$('#side_bg_color').val()+' url('+getImgByid('side_bg_img')+') '+$('#side_bg_extra').val();"/>
 											</p>
 										</fieldset>
 										<fieldset>
@@ -422,7 +422,7 @@ function getImgByid(id){
 											<p><input class="left" type="text" name="stylevar[wrap_border_color]" id="wrap_border_color" size="40" value="<!--{$arrSystemStylevar['wrap_border_color']}-->" style="color:<!--{$arrSystemStylevar['wrap_border_color']}-->"/>
 												<img src='<!--{:__PUBLIC__}-->/images/common/ico_color.gif' align='absmiddle' border='0' f="color-img" data-target="wrap_border_color"/>
 											</p>
-											<p><input type="text" name="stylevar[wrap_border_width]" id="wrap_border_width" size="8" value="<!--{$arrSystemStylevar['wrap_border_width']}-->" onblur="document.getElementById('sp_wrap').style.border=this.value+' solid '+document.getElementById('wrap_border_color').value"/>
+											<p><input type="text" name="stylevar[wrap_border_width]" id="wrap_border_width" size="8" value="<!--{$arrSystemStylevar['wrap_border_width']}-->" onblur="$WF('sp_wrap').style.border=this.value+' solid '+$WF('wrap_border_color').value"/>
 											</p>
 										</fieldset>
 										<fieldset>

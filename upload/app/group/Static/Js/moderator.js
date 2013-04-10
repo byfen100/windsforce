@@ -182,7 +182,7 @@ var topiclist=new Array();
 		Dyhb.Message('请选择需要操作的帖子',0,2);
 	}
 
-	oStatusNewmodcomments=windsforceAjax(D.U('group://grouptopicadmin/statuscomment_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+'&commentids='+topiclist),D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdeletecomment,'',400,100);
+	oStatusNewmodcomments=windsforceAjax(D.U('group://grouptopicadmin/statuscomment_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+'&commentids='+topiclist),D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicstatuscomment,'',400,100);
 }
 
 function modTopicstatuscomment(){
@@ -192,7 +192,7 @@ function modTopicstatuscomment(){
 
 function statuscommentComplete(data,status){
 	if(status==1){
-		window.location.href=data.grouptopic_url;
+		window.location.reload();
 	}
 
 	return false;

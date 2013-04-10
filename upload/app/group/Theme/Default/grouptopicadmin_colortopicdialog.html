@@ -18,15 +18,15 @@ $(function(){
 	});
 
 	<!--{if $arrColor[1][1]==0}-->
-	switchHighlightstyle(document.getElementById('highlight_operating_1'),1);
+	switchHighlightstyle($WF('highlight_operating_1'),1);
 	<!--{/if}-->
 
 	<!--{if $arrColor[1][2]==0}-->
-	switchHighlightstyle(document.getElementById('highlight_operating_2'),2);
+	switchHighlightstyle($WF('highlight_operating_2'),2);
 	<!--{/if}-->
 
 	<!--{if $arrColor[1][3]==0}-->
-	switchHighlightstyle(document.getElementById('highlight_operating_3'),3);
+	switchHighlightstyle($WF('highlight_operating_3'),3);
 	<!--{/if}-->
 });
 

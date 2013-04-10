@@ -3,13 +3,13 @@
 <!--{script}-->
 function importFileConfrim(){
 	if(confirm('<!--<lang package='Template/Default/Database'>-->你确定要导入选中数据吗？<!--</lang>-->')){
-		document.getElementById( 'upload_sql').submit();
+		$WF( 'upload_sql').submit();
 	}
 }
 
 function deleteFileConfrim(){
 	if(confirm('<!--<lang package='Template/Default/Database'>-->你确定要删除选中数据吗？<!--</lang>-->')){
-		document.getElementById( 'sqlList').submit();
+		$WF( 'sqlList').submit();
 	}
 }
 

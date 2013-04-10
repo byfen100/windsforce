@@ -2,29 +2,29 @@
 
 {script}
 function testDb(){
-	var dbhost=document.getElementById('dbhost').value;
-	var dbuser=document.getElementById('dbuser').value;
-	var dbpwd=document.getElementById('dbpwd').value;
+	var dbhost=$WF('dbhost').value;
+	var dbuser=$WF('dbuser').value;
+	var dbpwd=$WF('dbpwd').value;
 
-	document.getElementById('dbpwdsta').innerHTML="<img src='{:__PUBLIC__}/images/common/ajax/loading.gif'>";
+	$WF('dbpwdsta').innerHTML="<img src='{:__PUBLIC__}/images/common/ajax/loading.gif'>";
 
 	Dyhb.AjaxSend('{:Dyhb::U('index/check_database')}','ajax=1&dbhost='+dbhost+'&dbuser='+dbuser+'&dbpwd='+dbpwd,'',function(data,status,info){ 
-		document.getElementById('dbpwdsta').innerHTML=info; 
+		$WF('dbpwdsta').innerHTML=info; 
 	});
 
 	haveDb();
 };
 
 function haveDb(){
-	var dbhost=document.getElementById('dbhost').value;
-	var dbname=document.getElementById('dbname').value;
-	var dbuser=document.getElementById('dbuser').value;
-	var dbpwd=document.getElementById('dbpwd').value;
+	var dbhost=$WF('dbhost').value;
+	var dbname=$WF('dbname').value;
+	var dbuser=$WF('dbuser').value;
+	var dbpwd=$WF('dbpwd').value;
 
-	document.getElementById('havedbsta').innerHTML="<img src='{:__PUBLIC__}/images/common/ajax/loading.gif'>";
+	$WF('havedbsta').innerHTML="<img src='{:__PUBLIC__}/images/common/ajax/loading.gif'>";
 
 	Dyhb.AjaxSend('{:Dyhb::U('index/check_database')}','ajax=1&dbhost='+dbhost+'&dbuser='+dbuser+'&dbpwd='+dbpwd+'&dbname='+dbname,'',function(data,status,info){ 
-		document.getElementById('havedbsta').innerHTML=info; 
+		$WF('havedbsta').innerHTML=info; 
 	});
 };
 

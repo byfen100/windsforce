@@ -36,11 +36,12 @@
 	Dyhb.Ajax.Dyhb.Image=['{:__PUBLIC__}/images/common/ajax/loading.gif','{:__PUBLIC__}/images/common/ajax/ok.gif','{:__PUBLIC__}/images/common/ajax/update.gif'];
 	{:App::U()}
 	{/script}
+	<script src="{:__PUBLIC__}/js/common/global.js"></script>
 </head>
 <body>
 {script}
 function showMessage(sMessage){
-	document.getElementById('message-list').innerHTML+=sMessage+'<br />';
+	$WF('message-list').innerHTML+=sMessage+'<br />';
 }
 {/script}
 

@@ -123,7 +123,7 @@ class UpdateController extends Controller{
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
-					document.getElementById("laststep").disabled=false;
+					$WF("laststep").disabled=false;
 					window.location=D.U('update/second');
 				},3000);
 			}
@@ -167,7 +167,7 @@ WINDSFORCE;
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
-					document.getElementById("laststep").disabled=false;
+					$WF("laststep").disabled=false;
 					window.location=D.U('update/three');
 				},3000);
 			}
@@ -213,7 +213,7 @@ WINDSFORCE;
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
-					document.getElementById("laststep").disabled=false;
+					$WF("laststep").disabled=false;
 					window.location=D.U('update/success');
 				},1000);
 			}

@@ -250,8 +250,8 @@ function hideMenu(attr,mtype){
 }
 
 function copyText(id,title){
-	if(document.getElementById(id)){
-		var tocopy=document.getElementById(id).innerHTML;
+	if($WF(id)){
+		var tocopy=$WF(id).innerHTML;
 		tocopy=tocopy.replace(/&amp;/g,"&");
 
 		copy(tocopy,title);
@@ -330,7 +330,7 @@ function copyToClipboard(meintext,title){
 }
 
 function showYearmonthday(day,month,year){
-	var oEl=document.getElementById(day);
+	var oEl=$WF(day);
 	var sBirthday=oEl.value;
 
 	oEl.length=0;
@@ -339,10 +339,10 @@ function showYearmonthday(day,month,year){
 		oEl.options.add(new Option(nI+1,nI+1));
 	}
 
-	if(document.getElementById(month).value!="2"){
+	if($WF(month).value!="2"){
 		oEl.options.add(new Option(29,29));
 		oEl.options.add(new Option(30,30));
-		switch(document.getElementById(month).value){
+		switch($WF(month).value){
 			case "1":
 			case "3":
 			case "5":
@@ -353,8 +353,8 @@ function showYearmonthday(day,month,year){
 				oEl.options.add(new Option(31,31));
 			}
 		}
-	}else if(document.getElementById(year).value!=""){
-		var nBirthyear=document.getElementById(year).value;
+	}else if($WF(year).value!=""){
+		var nBirthyear=$WF(year).value;
 		if(nBirthyear%400==0 || (nBirthyear%4==0 && nBirthyear%100!=0)){
 			oEl.options.add(new Option(29,29));
 		}
@@ -374,7 +374,7 @@ function setStyle(nStyle){
 function setExtendstyle(sExtendstyle,sCss){
 	Dyhb.AjaxSend(D.U('home://misc/extendstyle?id='+sExtendstyle),'ajax=1','',function(data,status){
 		if(status==1){
-			document.getElementById('extend_style').href=sCss?sCss:_ROOT_+'/Public/images/common/none.css';
+			$WF('extend_style').href=sCss?sCss:_ROOT_+'/Public/images/common/none.css';
 		}
 	});
 }
@@ -386,7 +386,7 @@ function rememberme(close){
 		sStyle='none';
 	}
 
-	document.getElementById('remember_time').style.display=sStyle;
+	$WF('remember_time').style.display=sStyle;
 }
 
 function showSocialogin(){
@@ -418,7 +418,7 @@ function login_handle(data,status){
 
 /** 播放器 */
 function playmedia(strID,strType,strURL,intWidth,intHeight,sBgColor){
-	var objDiv=document.getElementById(strID);
+	var objDiv=$WF(strID);
 	if(!objDiv)return false;
 	if(objDiv.style.display!='none'){
 		objDiv.innerHTML='';
@@ -431,37 +431,37 @@ function playmedia(strID,strType,strURL,intWidth,intHeight,sBgColor){
 
 function flashResize(id,width,height,reload,url,idbox){
 	if(reload==1){
-		var objDiv=document.getElementById(idbox);
+		var objDiv=$WF(idbox);
 		objDiv.innerHTML='';
 		objDiv.style.display='none';
 
 		playmedia(idbox,'flv',url,width,height);
 	}else{
-		document.getElementById(id).height=height;
-		document.getElementById(id).width=width;
+		$WF(id).height=height;
+		$WF(id).width=width;
 	}
 }
 
 function flashResizeUp(obj,width,height,reload,url,idbox){
-	var newheight=parseInt(document.getElementById(obj).height,10)+height;
-	var newwidth=parseInt(document.getElementById(obj).width,10)+width;
+	var newheight=parseInt($WF(obj).height,10)+height;
+	var newwidth=parseInt($WF(obj).width,10)+width;
 	if(reload==1){
-		var objDiv=document.getElementById(idbox);
+		var objDiv=$WF(idbox);
 		objDiv.innerHTML='';
 		objDiv.style.display='none';
 
 		playmedia(idbox,'flv',url,newwidth,newheight);
 	}else{
-		document.getElementById(obj).height=newheight+'px';
-		document.getElementById(obj).width=newwidth+'px';
+		$WF(obj).height=newheight+'px';
+		$WF(obj).width=newwidth+'px';
 	}
 }
 
 function flashResizeDown(obj,width,height,reload,url,idbox){
-	var newheight=parseInt(document.getElementById(obj).height,10)-height;
-	var newwidth=parseInt(document.getElementById(obj).width,10)-width;
+	var newheight=parseInt($WF(obj).height,10)-height;
+	var newwidth=parseInt($WF(obj).width,10)-width;
 	if(reload==1){
-		var objDiv=document.getElementById(idbox);
+		var objDiv=$WF(idbox);
 		objDiv.innerHTML='';
 		objDiv.style.display='none';
 
@@ -470,10 +470,10 @@ function flashResizeDown(obj,width,height,reload,url,idbox){
 		}
 	}else{
 		if(newheight>0){
-			document.getElementById(obj).height=newheight+'px';
+			$WF(obj).height=newheight+'px';
 		}
 		if(newwidth>0){
-			document.getElementById(obj).width=newwidth+'px';
+			$WF(obj).width=newwidth+'px';
 		}
 	}
 }
@@ -483,7 +483,7 @@ function fullplayFrame(sUrl,id){
 	window.opener =null;
 	window.close();
 
-	objDiv=document.getElementById(id);
+	objDiv=$WF(id);
 	objDiv.innerHTML='';
 	objDiv.style.display='none';
 }
@@ -491,7 +491,7 @@ function fullplayFrame(sUrl,id){
 function playout(sUrl,id){
 	oEditNewattachmentcategory=windsforceAjax(D.U('home://attachment/playout?url='+encodeURIComponent(sUrl)),D.L('Flash播放','__COMMON_LANG__@Js/Common_Js'),'','','',600,200);
 	
-	objDiv=document.getElementById(id);
+	objDiv=$WF(id);
 	objDiv.innerHTML='';
 	objDiv.style.display='none';
 }
@@ -514,7 +514,7 @@ function makemedia(strType,strURL,intWidth,intHeight,strID,sBgColor){
 			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34,1,\''+strURL+'\',\''+strID+'\');">'+D.L('缩小','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34,1,\''+strURL+'\',\''+strID+'\');">'+D.L('放大','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405,1,\''+strURL+'\',\''+strID+'\');">'+D.L('原始','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540,1,\''+strURL+'\',\''+strID+'\');">'+D.L('小屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621,1,\''+strURL+'\',\''+strID+'\');">'+D.L('大屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="fullplayFrame(\''+sFlvurl+'\',\''+strID+'\');">'+D.L('全屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="playout(\''+sFlvurl+'\',\''+strID+'\');">'+D.L('弹出','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="'+strURL+'">'+D.L('下载','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 		case 'qvod':
-			strHtml='<iframe id="iframe_down" name="iframe_down" scrolling="no" frameborder="0" style="margin: 0;width: 635px; height: 500px; display: none;" src=""></iframe><object classid="clsid:F3D0D36F-23F8-4682-A195-74C92B03D4AF" width="'+intWidth+'" height="'+intHeight+'" id="QvodPlayer" name="QvodPlayer" onerror="document.getElementById(\'QvodPlayer\').style.display=\'none\';document.getElementById(\'iframe_down\').style.display=\'\';document.getElementById(\'iframe_down\').src=\'http://error2.qvod.com/error2.htm\';"><param name="url" value="'+strURL+'"><param name="Autoplay" value="1"><embed url="'+strURL+'" type="application/qvod-plugin" width="'+intWidth+'" height="'+intHeight+'" id="size_'+strID+'"></embed></object>';
+			strHtml='<iframe id="iframe_down" name="iframe_down" scrolling="no" frameborder="0" style="margin: 0;width: 635px; height: 500px; display: none;" src=""></iframe><object classid="clsid:F3D0D36F-23F8-4682-A195-74C92B03D4AF" width="'+intWidth+'" height="'+intHeight+'" id="QvodPlayer" name="QvodPlayer" onerror="$WF(\'QvodPlayer\').style.display=\'none\';$WF(\'iframe_down\').style.display=\'\';$WF(\'iframe_down\').src=\'http://error2.qvod.com/error2.htm\';"><param name="url" value="'+strURL+'"><param name="Autoplay" value="1"><embed url="'+strURL+'" type="application/qvod-plugin" width="'+intWidth+'" height="'+intHeight+'" id="size_'+strID+'"></embed></object>';
 			strHtml+='<div><a href="javascript:void(0);" onclick="javascript:flashResizeDown(\'size_'+strID+'\',50,34);">'+D.L('缩小','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResizeUp(\'size_'+strID+'\',50,34);">'+D.L('放大','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',600,405);">'+D.L('原始','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',800,540);">'+D.L('小屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="javascript:flashResize(\'size_'+strID+'\',920,621);">'+D.L('大屏','__COMMON_LANG__@Js/Common_Js')+'</a><span class="pipe">|</span><a href="'+strURL+'">'+D.L('下载','__COMMON_LANG__@Js/Common_Js')+'</a></div>';
 			break;
 		case 'mp3':

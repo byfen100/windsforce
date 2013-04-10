@@ -6,22 +6,22 @@ var idSetInterval;
 function retrieve(id){
 	Dyhb.AjaxSend(D.U('userappeal/retrieve?id='+id),'ajax=1');
 
-	document.getElementById("obtain").disabled=true;
-	document.getElementById("second").style.marginRight='3px';
-	document.getElementById("second").innerHTML=60;
+	$WF("obtain").disabled=true;
+	$WF("second").style.marginRight='3px';
+	$WF("second").innerHTML=60;
 	idSetInterval=setInterval("remaidertime()",1000);
 }
 
 function remaidertime(){
-	var second=--document.getElementById("second").innerHTML;
+	var second=--$WF("second").innerHTML;
 
 	if(second==0){
 		clearInterval(idSetInterval);
 
-		document.getElementById("second").style.marginRight='0';
-		document.getElementById("second").innerHTML="";
-		var id=document.getElementById("obtain").name;
-		document.getElementById("obtain").disabled=false;
+		$WF("second").style.marginRight='0';
+		$WF("second").innerHTML="";
+		var id=$WF("obtain").name;
+		$WF("obtain").disabled=false;
 	}
 }
 <!--{/script}-->

@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function validate(){
-	if(document.getElementById('sql').value==''){
+	if($WF('sql').value==''){
 		alert('<!--<lang package='Template/Default/Database'>-->SQL语句不能为空<!--</lang>-->');
 		return false;
 	}

@@ -304,7 +304,7 @@ class IndexController extends Controller{
 		<script type="text/javascript">
 			function setLaststep(){
 				setTimeout(function(){
-					document.getElementById("laststep").disabled=false;
+					$WF("laststep").disabled=false;
 					window.location=D.U('index/success');
 				},1000);
 			}
