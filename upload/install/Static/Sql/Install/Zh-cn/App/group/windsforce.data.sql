@@ -45,7 +45,9 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('index_hotgroupnum', '10'),
 ('index_groupleadernum', '6'),
 ('newtopic_hottagnum', '10'),
-('group_grouplistnum', '24');
+('group_grouplistnum', '24'),
+('grouptopiccomment_edit limittime', '86400'),
+('grouptopic_edit limittime', '86400');
 
 -- --------------------------------------------------------
 
@@ -89,8 +91,8 @@ INSERT INTO `#@__grouptopic` (`grouptopic_id`, `grouptopiccategory_id`, `group_i
 -- 转存表中的数据 `windsforce_grouptopiccomment`
 --
 
-INSERT INTO `#@__grouptopiccomment` (`grouptopiccomment_id`, `grouptopic_id`, `user_id`, `grouptopiccomment_status`, `grouptopiccomment_title`, `grouptopiccomment_name`, `grouptopiccomment_content`, `grouptopiccomment_email`, `grouptopiccomment_url`, `grouptopiccoment_ip`, `create_dateline`, `update_dateline`, `grouptopiccomment_parentid`, `grouptopiccomment_ishide`, `grouptopiccomment_auditpass`) VALUES
-(1, 1, 1, 1, '', '', '我希望一切都是一个美好的开始！', '', '', '', 1355499282, 0, 0, 0, 1);
+INSERT INTO `#@__grouptopiccomment` (`grouptopiccomment_id`, `grouptopic_id`, `user_id`, `grouptopiccomment_status`, `grouptopiccomment_title`, `grouptopiccomment_name`, `grouptopiccomment_content`, `grouptopiccomment_email`, `grouptopiccomment_url`, `grouptopiccoment_ip`, `create_dateline`, `update_dateline`, `grouptopiccomment_parentid`, `grouptopiccomment_ishide`, `grouptopiccomment_auditpass`, `grouptopiccomment_stickreply`) VALUES
+(1, 1, 1, 1, '', '', '我希望一切都是一个美好的开始！', '', '', '', 1355499282, 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 

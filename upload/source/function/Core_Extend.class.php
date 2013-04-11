@@ -67,6 +67,10 @@ class Core_Extend{
 	}
 
 	static public function title($oController){
+		if($oController->_bIsError===true){
+			return $GLOBALS['_option_']['site_name'];
+		}
+
 		$page=intval(G::getGpc('page','G'));
 		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 		
@@ -79,6 +83,10 @@ class Core_Extend{
 	}
 
 	static public function keywords($oController){
+		if($oController->_bIsError===true){
+			return $GLOBALS['_option_']['site_name'];
+		}
+		
 		$page=intval(G::getGpc('page','G'));
 		$page=$page>1?",".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 
@@ -91,6 +99,10 @@ class Core_Extend{
 	}
 
 	static public function description($oController){
+		if($oController->_bIsError===true){
+			return $GLOBALS['_option_']['site_name'];
+		}
+		
 		$page=intval(G::getGpc('page','G'));
 		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
 
@@ -1420,6 +1432,69 @@ WINDSFORCE;
 		}
 
 		return;
+	}
+
+	static public function checkRbac($Node,$bAnd=false){
+		static $arrMyaccesslist=array();
+		
+		if(empty($Node)){
+			return false;
+		}
+		
+		if(Core_Extend::isAdmin()){
+			return true;
+		}
+
+		if(empty($arrMyaccesslist)){
+			if($GLOBALS['___login___']!==false){
+				$nAuthid=$GLOBALS['___login___']['user_id'];
+			}else{
+				$nAuthid=-1;
+			}
+
+			$arrAccesslist=UserModel::M()->getAccessList($nAuthid);
+			if(is_array($arrAccesslist)){
+				foreach($arrAccesslist as $arrTemp){
+					if(is_array($arrTemp)){
+						foreach($arrTemp as $arrTempTwo){
+							if(is_array($arrTempTwo)){
+								foreach($arrTempTwo as $sKey=>$nTemp){
+									$arrMyaccesslist[]=$sKey;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if(is_string($Node)){
+			$Node=array($Node);
+		}else{
+			$Node=(array)$Node;
+		}
+
+		if($bAnd===false){
+			$bCheck=false;
+			foreach($Node as $sValue){
+				if(in_array($sValue,$arrMyaccesslist)){
+					$bCheck=true;
+					break;
+				}
+			}
+		}
+
+		if($bAnd===true){
+			$bCheck=true;
+			foreach($Node as $sValue){
+				if(!in_array($sValue,$arrMyaccesslist)){
+					$bCheck=false;
+					break;
+				}
+			}
+		}
+
+		return $bCheck;
 	}
 
 }

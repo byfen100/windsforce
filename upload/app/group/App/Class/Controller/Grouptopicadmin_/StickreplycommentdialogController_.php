@@ -1,15 +1,15 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   隐藏或者显示帖子对话框控制器($Liu.XiangMin)*/
+   置顶或者取消置顶多个回帖对话框控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
-class HidetopicdialogController extends Controller{
+class StickreplycommentdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
-		$nStatus=intval(G::getGpc('status','G'));
 		$arrGrouptopics=G::getGpc('dataids','G');
+		$sGrouptopiccomments=G::getGpc('commentids','G');
 
 		if(empty($nGroupid)){
 			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
@@ -23,14 +23,21 @@ class HidetopicdialogController extends Controller{
 		if(empty($arrGrouptopics)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
-		
+
+		$arrGrouptopiccomments=Dyhb::normalize($sGrouptopiccomments);
+
+		if(empty($arrGrouptopiccomments)){
+			$this->E(Dyhb::L('没有待操作的回帖','Controller/Grouptopicadmin'));
+		}
+
 		$sGrouptopics=implode(',',$arrGrouptopics);
+
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
-		$this->assign('nStatus',$nStatus);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
+		$this->assign('sGrouptopiccomments',implode(',',$arrGrouptopiccomments));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopiccomments)));
 		
-		$this->display('grouptopicadmin+hidetopicdialog');
+		$this->display('grouptopicadmin+stickreplycommentdialog');
 	}
 
 }

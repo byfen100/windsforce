@@ -42,6 +42,7 @@ class ColortopicdialogController extends Controller{
 		$this->assign('arrColor',$arrColor);
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('sGrouptopics',$sGrouptopics);
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
 		
 		$this->display('grouptopicadmin+colortopicdialog');
 	}

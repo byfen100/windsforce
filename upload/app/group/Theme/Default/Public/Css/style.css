@@ -178,6 +178,7 @@ Description: Group应用模块CSS
            帖子管理
 ================================*/
 [CURSCRIPT=group::grouptopic::view]
+/* 帖子管理相关 */
 a#moderate_reason{font-size:14px;line-heigth:14px;font-weight:bold;}
 a#moderate_reason:hover{text-decoration:none;}
 .moderatereason_title{margin-bottom:5px;}
@@ -188,6 +189,10 @@ a#moderate_reason:hover{text-decoration:none;}
 .highlightoperating .currenthighlightstyle{background-color: #FFFFFF;border: 1px solid #999999;}
 .highlightoperating a{float: left;height: 21px;line-height: 21px;margin-right: 3px;text-align: center;width: 21px !important;}
 .highlightoperating_b,.highlightoperating_i,.highlightoperating_l{border: 1px solid #F1F5FA;outline: medium none;}
+
+/* 多选公用停留框 */
+#modActionSelect{position:absolute;right:0;margin-top:-16px;padding:10px 25px;width:250px;height:100px;;line-height:32px;overflow:hidden;border:1px solid #999;}
+#modActionSelect a{color:#06C;}
 [/CURSCRIPT]
 
 /**===============================

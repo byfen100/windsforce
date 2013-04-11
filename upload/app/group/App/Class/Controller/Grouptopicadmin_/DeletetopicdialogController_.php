@@ -26,6 +26,7 @@ class DeletetopicdialogController extends Controller{
 		$sGrouptopics=implode(',',$arrGrouptopics);
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
 		
 		$this->display('grouptopicadmin+deletetopicdialog');
 	}

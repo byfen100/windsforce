@@ -25,18 +25,17 @@ class DeletecommentdialogController extends Controller{
 		}
 
 		$arrGrouptopiccomments=Dyhb::normalize($sGrouptopiccomments);
-Dyhb::L('没有待操作的回帖','Controller/Grouptopicadmin');
+
 		if(empty($arrGrouptopiccomments)){
 			$this->E(Dyhb::L('没有待操作的回帖','Controller/Grouptopicadmin'));
 		}
 
-
-		
 		$sGrouptopics=implode(',',$arrGrouptopics);
+
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('sGrouptopiccomments',implode(',',$arrGrouptopiccomments));
-		$this->assign('nGrouptopiccommentNum',count($arrGrouptopiccomments));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopiccomments)));
 		
 		$this->display('grouptopicadmin+deletecommentdialog');
 	}

@@ -467,7 +467,7 @@ $(function(){
 								</td>
 								<td class="floor_right floor_grouptopiccommenttd2">
 									<div class="floor_top_tips">
-										<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
+										<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:__APPPUB__}-->/Images/settop.png" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
 										<span>
 										<!--{if $oComment['user_id']==$oGrouptopic['user_id']}-->
 										<img src="<!--{:__APPPUB__}-->/Images/ico_author.png" title="楼主"/>&nbsp;楼主
@@ -487,7 +487,12 @@ $(function(){
 										<!--{if $oGrouptopic['grouptopic_hiddenreplies']==1}-->
 										<div class="locked">此回帖仅作者可见</div>
 										<!--{/if}-->
+
+										<!--{if $oComment['grouptopiccomment_ishide']==1}-->
+										<div class="locked">此回帖已被屏蔽，仅具有管理权限的人才能够浏览</div>
+										<!--{/if}-->
 										
+										<!--{if $oComment['grouptopiccomment_ishide']=='0' || ($oComment['grouptopiccomment_ishide']=='1' && Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment')))}-->
 										<!--{if $oGrouptopic['grouptopic_hiddenreplies']=='0' || ($oGrouptopic['grouptopic_hiddenreplies']==1 && $GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id'])}-->
 										<!--{if $oComment['grouptopiccomment_parentid']}-->
 										<!--{~$oParentcomment=GrouptopiccommentModel::getGrouptopiccommentById($oComment['grouptopiccomment_parentid'],'',true)}-->
@@ -508,6 +513,7 @@ $(function(){
 
 										<!--{$oComment->grouptopiccomment_content|Core_Extend+ubb}-->
 										<!--{/if}-->
+										<!--{/if}-->
 									</div>
 								</td>
 							</tr>
@@ -523,16 +529,18 @@ $(function(){
 									<div class="extend_tool">
 										<em class="left">
 											<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->','<!--{$oComment['grouptopiccomment_id']}-->');">回复</a>
-											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
+											<!--{if Group_Extend+checkCommentRbac($oGrouptopic->group,$oComment)}-->
 											<a class="editp" href="javascript:void(0);" onclick="grouptopiceditComment('<!--{$oComment['grouptopiccomment_id']}-->');">编辑</a>
 											<!--{/if}-->
 										</em>
 										<p class="right">
 											<a href="" onclick="">举报</a>
-											<label for="manage<!--{$oComment['grouptopiccomment_id']}-->">
-												<input id="manage<!--{$oComment['grouptopiccomment_id']}-->" type="checkbox" autocomplete="off" value="<!--{$oComment['grouptopiccomment_id']}-->" onclick="pidchecked(this);modclick(this,<!--{$oComment['grouptopiccomment_id']}-->)">
-												管理
+											<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
+											<span class="pipe">|</span>
+											<label for="manage<!--{$oComment['grouptopiccomment_id']}-->" class="checkbox right">
+												<input type="checkbox" autocomplete="off" value="<!--{$oComment['grouptopiccomment_id']}-->" onclick="dataidChecked(this);modClick(this,<!--{$oComment['grouptopiccomment_id']}-->)">管理
 											</label>
+											<!--{/if}-->
 										</p>
 									</div>
 								</td>

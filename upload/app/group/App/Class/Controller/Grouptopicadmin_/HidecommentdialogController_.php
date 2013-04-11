@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class StatuscommentdialogController extends Controller{
+class HidecommentdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
@@ -31,12 +31,13 @@ class StatuscommentdialogController extends Controller{
 		}
 
 		$sGrouptopics=implode(',',$arrGrouptopics);
+
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('sGrouptopiccomments',implode(',',$arrGrouptopiccomments));
-		$this->assign('nGrouptopiccommentNum',count($arrGrouptopiccomments));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopiccomments)));
 		
-		$this->display('grouptopicadmin+statuscommentdialog');
+		$this->display('grouptopicadmin+hidecommentdialog');
 	}
 
 }

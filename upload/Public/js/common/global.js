@@ -368,6 +368,10 @@ function windsforceAjaxhtml(sUrl,nCheck,sExtend){
 function windsforceAjax(sUrl,sTitle,nTime,ok,cancel,width,height,sExtend,lock){
 	sHtml=windsforceAjaxhtml(sUrl,1,sExtend);
 
+	if(sHtml===false){
+		return;
+	}
+
 	if(!width){
 		width="400";
 	}

@@ -1,7 +1,7 @@
 <?php
 /** DoYouHaoBaby Framework Lang File, Do not to modify it! */
 return array(
-'fd763614a07d48faa597d0a452aafcf6'=>"你選擇了一篇帖子",
+'42f45f4614388473a5b221b716ac6654'=>"你選擇了 %d 篇帖子",
 )
 
 ?>

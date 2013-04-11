@@ -32,6 +32,7 @@ class CategorytopicdialogController extends Controller{
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('arrGrouptopiccategorys',$arrGrouptopiccategorys);
 		$this->assign('nCategoryid',$nCategoryid);
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
 
 		$this->display('grouptopicadmin+categorytopicdialog');
 	}

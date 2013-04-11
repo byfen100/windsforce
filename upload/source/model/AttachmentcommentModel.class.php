@@ -78,7 +78,7 @@ class AttachmentcommentModel extends CommonModel{
 		// 查找当前评论的记录
 		$nTheSearchKey='';
 
-		$arrAttachmentcommentLists=self::F()->where($arrWhere)->all()->order('`attachmentcomment_id` DESC')->query();
+		$arrAttachmentcommentLists=self::F()->where($arrWhere)->all()->order('attachmentcomment_id DESC')->query();
 		foreach($arrAttachmentcommentLists as $nKey=>$oAttachmentcommentList){
 			if($oAttachmentcommentList['attachmentcomment_id']==$nFinecommentid){
 				$nTheSearchKey=$nKey+1;

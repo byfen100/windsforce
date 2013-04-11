@@ -27,6 +27,10 @@ class SubmitreplyController extends Controller{
 			$this->E(Dyhb::L('你要编辑的回帖的主题不存在','Controller/Grouptopic'));
 		}
 
+		if(!Group_Extend::checkCommentRbac($oGrouptopic->group,$oGrouptopiccomment)){
+			$this->E(Dyhb::L('你没有权限编辑回帖','Controller/Grouptopic'));
+		}
+
 		$sContent=trim($_POST['grouptopiccomment_message']);
 		$sContent=rtrim($sContent,'<br />');
 

@@ -150,47 +150,24 @@ function insertGrouptopicmusicSimple(sContent){
 var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseInt('<!--{$oGrouptopic['grouptopic_id']}-->');
 <!--{/script}-->
 
-<form method="post" autocomplete="off" name="modactions" id="modactions">
-	<input type="hidden" name="formhash" value="fc412048" />
-	<input type="hidden" name="optgroup" />
-	<input type="hidden" name="operation" />
-	<input type="hidden" name="listextra" value="" />
-	<input type="hidden" name="page" value="1" />
+<form method="post" autocomplete="off" name="modActionsBox" id="modActionsBox">
 </form>
 
-<!--{style}-->
-#mdly{position:absolute;right:0;margin-top:-16px;padding:10px 25px;width:250px;height:100px;background:url(../../static/image/common/mdly.png) no-repeat 0 0;line-height:32px;overflow:hidden;}
-#mdly a{color:#06C;}
-#mdly .cp{position:absolute;top:10px;right:10px;width:35px;height:32px;line-height:100px;overflow:hidden;}#mdly label{position:absolute;top:10px;_top:16px;right:50px;}#mdly h6{line-height:32px;}#mdly h6 strong{margin:0 3px;color:#F26C4F;}
-#mdly.cpd{margin-top:4px;margin-right:-3px;padding:0;width:35px;height:32px;border:none;background-position:0 -128px;}#mdly.cpd h6{padding-top:40px;}
-#mdly.cpd .cp{display:none;}#mdly.cpd #mdct{display:block;position:absolute;margin:0;left:3px;top:0;z-index:999;width:32px;height:32px;color:#F26C4F;text-align:center;cursor:pointer;}
-.pg_viewthread #mdly{margin:20px 0 0 10px;padding:0;width:200px;height:auto;background:none;}.cmen{overflow:hidden;width:63px;}.cmen a{overflow:hidden;float:left;width:20px;height:20px;}.tpmh{height:200px;}.tpmh .thby{margin:5px 0 15px;}.tpmh .tah_body select{width:217px;}.tplw{margin-bottom:1em;}.tplw table{width:100%;}.tplw td{padding:0 5px;}.tplw .txt{width:100px;}.tplw .wide .txt{width:50px;}.llst li{padding:4px 0;border-bottom:1px solid #CDCDCD;height:28px;}.llst .copt{height:auto;}.tm_c{background:##F2F2F2;}.tm_c .o{background:#EEE;}.tpclg{padding:8px 0 4px;}.tpclg h4{font-weight:400;width:222px;}.tpclg h4 span{float:left;}.tpclg h4 .dpbtn{border-width:1px;}.tpclg .pt{margin:5px 0;width:212px;overflow:hidden;}.tpcl{margin:10px 0;border-top:1px solid #DDD;}.tpcl li{*overflow:hidden;*margin-bottom:-2px;height:28px;line-height:18px;border-top:1px solid #FFF;border-bottom:1px solid #DDD;zoom:1;}.tpcl .copt{height:auto;}.dopt{visibility:hidden;overflow:hidden;white-space:nowrap;}.copt .dopt{visibility:visible;}.dopt p .px,.hasd .px{width:100px;float:left;}.dopt span .crl{width:21px;height:21px;border-style:solid;border-color:#707070 #CECECE #CECECE #ABABAB;border-width:1px 0 1px 1px;}.tpcl table{width:100%;}.tpcl td{vertical-align:top;padding:5px;}.tpcl .labeltxt{display:block;cursor:pointer;width:100%;background:url(../../static/image/common/arrwd.gif) no-repeat 100% 8px;}.copt .labeltxt{float:left;cursor:default;width:45px;background:none;color:#09C;}.tpcl .pc{margin:3px;}.ie7 .tpcl .pc{margin-top:-2px;}.tpcl img{vertical-align:middle;}.tahfx{overflow:hidden;white-space:nowrap;width:217px;*border-right:1px solid #CCC;}.tahfx select{width:160px;*width:expression(this.offsetWidth > 180 ? 'auto':'180');}#toolbarroot{top:0;left:0;width:96%;z-index:9000;position:fixed;height:30px;}#toolbardiv{min-width:980px;height:27px;line-height:27px;padding:1px;border-bottom:1px solid #CCC;background:#EEE;}#togglediv{width:22px;height:22px;border:1px solid #09f;position:absolute;right:5px;top:3px;z-index:9998;cursor:pointer;text-align:center;}.pg_modcp .tl{min-height:150px;overflow:visible;}.ie6 .pg_modcp .tl{height:150px;}
-<!--{/style}-->
-
-<div id="mdly" class="fwinmask" style="display:none;z-index:350;background:red;">
-<table cellspacing="0" cellpadding="0" class="table">
-<tr>
-<td class="t_l"></td>
-<td class="t_c"></td>
-<td class="t_r"></td>
-</tr>
-<tr>
-<td class="m_l">&nbsp;&nbsp;</td>
-<td class="m_c">
-<div class="f_c">
-<div class="c">
-<h3>选中&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;篇: </h3>
-<span class="pipe">|</span><a href="javascript:void(0);" onclick="modCommentstatus();">屏蔽</a><span class="pipe">|</span><a href="javascript:void(0);" onclick="modCommentdelete();">删除</a><span class="pipe">|</span><a href="javascript:;" onclick="modaction('stickreply')">置顶</a><span class="pipe">|</span></div>
-</div>
-</td>
-<td class="m_r"></td>
-</tr>
-<tr>
-<td class="b_l"></td>
-<td class="b_c"></td>
-<td class="b_r"></td>
-</tr>
-</table>
+<div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display:none;z-index:350;">
+	<h2 class="title">选中&nbsp;<strong id="modActionSelectnum"></strong>&nbsp;篇</h2>
+	<div class="modActionSelectcontent">
+		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment'))}-->
+		<a href="javascript:void(0);" onclick="modCommenthide();">屏蔽</a>
+		<span class="pipe">|</span>
+		<!--{/if}-->
+		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletecomment'))}-->
+		<a href="javascript:void(0);" onclick="modCommentdelete();">删除</a>
+		<span class="pipe">|</span>
+		<!--{/if}-->
+		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@stickreplycomment'))}-->
+		<a href="javascript:void(0);" onclick="modCommentstickreply();">置顶</a>
+		<!--{/if}-->
+	</div>
 </div>
 
 		<!--<include file="group+header" />-->
@@ -209,34 +186,56 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 				</div>
 			</div>
 			
-			<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
+			<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
 			<div class="span12" style="margin-bottom:15px;">
 				<div>
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletetopic'))}-->
 					<a onclick="modTopicdelete();" href="javascript:void(0);">删除主题</a>
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@closetopic'))}-->
 					<!--{if $oGrouptopic['grouptopic_isclose']=='0'}-->
 					<a onclick="modTopicclose(1);" href="javascript:void(0);">关闭</a>
 					<!--{d*else}-->
 					<a onclick="modTopicclose(0);" href="javascript:void(0);">打开</a>
 					<!--{/if}-->
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@sticktopic'))}-->
 					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">置顶</a>
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@digesttopic'))}-->
 					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">精华</a>
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@recommendtopic'))}-->
 					<a onclick="modTopicrecommend(<!--{if $oGrouptopic['grouptopic_isrecommend']>0}--><!--{$oGrouptopic['grouptopic_isrecommend']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">推荐</a>
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic'))}-->
 					<!--{if $oGrouptopic['grouptopic_ishide']=='1'}-->
 					<a onclick="modTopicstatus(0);" href="javascript:void(0);">显示</a>
 					<!--{d*else}-->
 					<a onclick="modTopicstatus(1);" href="javascript:void(0);">隐藏</a>
 					<!--{/if}-->
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@categorytopic'))}-->
 					<a onclick="modTopiccategory(<!--{$oGrouptopic['grouptopiccategory_id']}-->);" href="javascript:void(0);">分类</a>
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@tagtopic'))}-->
 					<a onclick="modTopictag();" href="javascript:void(0);">标签</a>
 					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@colortopic'))}-->
 					<a onclick="modTopiccolor();" href="javascript:void(0);">高亮</a>
+					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Core_Extend+isAdmin()}-->
+					<a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0','admin.php')}-->" target="_blank" <!--{if $nTotalRecyclebinComment>0}-->style="color:red;font-weight:bold;"<!--{/if}-->><img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;回帖回收站&nbsp;(<!--{$nTotalRecyclebinComment}-->)</a>
+					<!--{/if}-->
 				</div>
 			</div>
 			<!--{/if}-->

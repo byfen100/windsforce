@@ -191,11 +191,7 @@ class GroupModel extends CommonModel{
 		if(empty($oTrygroupuser['user_id'])){
 			return 0;
 		}else{
-			if($oTrygroupuser['groupuser_isadmin']==1){
-				return 2;
-			}else{
-				return 1;
-			}
+			return 1;
 		}
 	}
 

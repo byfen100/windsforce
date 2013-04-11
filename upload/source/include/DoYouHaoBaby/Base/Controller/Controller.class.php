@@ -7,6 +7,7 @@
 class Controller{
 
 	protected $_oView=null;
+	public $_bIsError=false;
 
 	public function __construct(){
 		$this->_oView=new View($this);
@@ -83,6 +84,12 @@ class Controller{
 	}
 
 	private function J($sMessage,$nStatus=1,$nDisplay=1,$bAjax=FALSE){
+		if($nStatus==1){
+			$this->_bIsError=false;
+		}else{
+			$this->_bIsError=true;
+		}
+		
 		// 判断是否为AJAX返回
 		if($bAjax || G::isAjax()){
 			$this->A('',$sMessage,$nStatus,$nDisplay);

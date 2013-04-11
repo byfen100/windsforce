@@ -191,6 +191,7 @@ CREATE TABLE `#@__grouptopiccomment` (
   `grouptopiccomment_parentid` int(10) NOT NULL DEFAULT '0' COMMENT '帖子评论父级ID',
   `grouptopiccomment_ishide` tinyint(1) NOT NULL DEFAULT '0' COMMENT '帖子是否屏蔽',
   `grouptopiccomment_auditpass` tinyint(1) NOT NULL DEFAULT '1' COMMENT '回帖是否审核通过',
+  `grouptopiccomment_stickreply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '帖子是否置顶',
   PRIMARY KEY (`grouptopiccomment_id`),
   KEY `user_id` (`user_id`),
   KEY `grouptopic_id` (`grouptopic_id`),

@@ -1,19 +1,74 @@
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    Group应用帖子操作($Liu.XiangMin)*/
 
-/** 操作原因 */
+/** 公用代码 */
 function replaceIdcontent(id,content){
 	$('#'+id).val(content);
 }
 
-/** 通用操作 */
-var sCurrentAction='';
+function dataidChecked(oObj){
+	if(oObj.checked){
+		try{
+			var oInput=document.createElement('<input name="topiclist[]" />');
+		}catch(e){
+			try{
+				var oInput=document.createElement('input');
+				oInput.name='topiclist[]';
+			}catch(e){
+				return;
+			}
+		}
 
+		oInput.id='topiclist_'+oObj.value;
+		oInput.value=oObj.value;
+		oInput.type='hidden';
+		$WF('modActionsBox').appendChild(oInput);
+	}else{
+		$WF('modActionsBox').removeChild($WF('topiclist_'+oObj.value));
+	}
+}
+
+var nModclickcount=0;
+function modClick(oObj,nDataid){
+	if(oObj.checked){
+		nModclickcount++;
+	}else{
+		nModclickcount--;
+	}
+
+	$WF('modActionSelectnum').innerHTML=nModclickcount;
+
+	if(nModclickcount>0){
+		var arrOffset=fetchOffset(oObj);
+		$WF('modActionSelect').style.top=arrOffset['top']-65+'px';
+		$WF('modActionSelect').style.left=arrOffset['left']-330+'px';
+		$WF('modActionSelect').style.display='';
+	}else{
+		$WF('modActionSelect').style.display='none';
+	}
+}
+
+function getTopiclist(){
+	var arrTopiclist=new Array();
+	var nCount=0;
+
+	for(var i=0;i<$WF('modActionsBox').elements.length;i++){
+		if($WF('modActionsBox').elements[i].name.match('topiclist')) {
+			arrTopiclist[nCount]=$WF('modActionsBox').elements[i].value;
+			nCount++;
+		}
+	}
+
+	return arrTopiclist;
+}
+
+/** 帖子管理通用操作 */
+var sCurrentAction='';
 function modTopiccommon(sAction,sExtra){
 	var sUrl=D.U('group://grouptopicadmin/'+sAction+'_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+(!sExtra?'':'&'+sExtra));
 	sCurrentAction=sAction;
 
-	oCommonNewmodtopics=windsforceAjax(sUrl,D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopiccommontopic,'',400,100);
+	oCommonNewmodtopics=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Js/Moderator_Js',null,1),'',modTopiccommontopic,'',400,100);
 }
 
 function modTopiccommontopic(){
@@ -78,122 +133,33 @@ function modTopiccolor(){
 	modTopiccommon('colortopic');
 }
 
-/** 主题回帖管理 */
-function pidchecked(oObj){
-	if(oObj.checked){
-		try{
-			var inp=document.createElement('<input name="topiclist[]" />');
-		}catch(e){
-			try{
-				var inp=document.createElement('input');
-				inp.name='topiclist[]';
-			}catch(e){
-				return;
-			}
-		}
+/** 主题回帖通用代码管理 */
+var sCurrentActionComment='';
+function modCommentcommon(sAction,sExtra){
+	var arrTopiclist=getTopiclist();
+	var sUrl=D.U('group://grouptopicadmin/'+sAction+'_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+'&commentids='+arrTopiclist+(!sExtra?'':'&'+sExtra));
 
-		inp.id='topiclist_'+oObj.value;
-		inp.value=oObj.value;
-		inp.type='hidden';
-		document.getElementById('modactions').appendChild(inp);
-	}else{
-		document.getElementById('modactions').removeChild(document.getElementById('topiclist_'+oObj.value));
-	}
+	sCurrentActionComment=sAction;
+
+	oCommonNewmodcomments=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Js/Moderator_Js',null,nModclickcount),'',modCommentcommontopic,'',400,100);
 }
 
-var modclickcount = 0;
-function modclick(obj, pid) {
-	if(obj.checked) {
-		modclickcount++;
-	} else {
-		modclickcount--;
-	}
-	document.getElementById('mdct').innerHTML = modclickcount;
-	if(modclickcount > 0) {
-		var offset = fetchOffset(obj);
-		document.getElementById('mdly').style.top = offset['top'] - 65 + 'px';
-		document.getElementById('mdly').style.left = offset['left'] - 350 + 'px';
-		document.getElementById('mdly').style.display = '';
-	} else {
-		document.getElementById('mdly').style.display = 'none';
-	}
+function modCommentcommontopic(){
+	Dyhb.AjaxSubmit('moderateform',D.U('group://grouptopicadmin/'+sCurrentActionComment),'result',commonComplete);
+	return false;
 }
 
 /** 删除回帖 */
 function modCommentdelete(){
-	/**/
-
-/*var topiclist = $('input[name=topiclist]').val();  */
-var topiclist=new Array();
-
-		var count=0;
-		var checked=0;
-		for(var i = 0; i < document.getElementById('modactions').elements.length; i++) {
-			if(document.getElementById('modactions').elements[i].name.match('topiclist')) {
-				topiclist[count]=document.getElementById('modactions').elements[i].value;
-					count++;
-					if(checked==0){
-						checked=1;
-					}
-			}
-		}
-	
-	if(!checked) {
-		Dyhb.Message('请选择需要操作的帖子',0,2);
-	} 
-
-	oDeleteNewmodcomments=windsforceAjax(D.U('group://grouptopicadmin/deletecomment_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+'&commentids='+topiclist),D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicdeletecomment,'',400,100);
+	modCommentcommon('deletecomment');
 }
-
-function modTopicdeletecomment(){
-	Dyhb.AjaxSubmit('moderateform',D.U('group://grouptopicadmin/deletecomment'),'result',deletecommentComplete);
-	return false;
-}
-
-function deletecommentComplete(data,status){
-	if(status==1){
-		window.location.href=data.grouptopic_url;
-	}
-
-	return false;
-}
-
 
 /** 屏蔽或者显示回帖 */
-function modCommentstatus(){
-	/**/
-
-/*var topiclist = $('input[name=topiclist]').val();  */
-var topiclist=new Array();
-
-		var count=0;
-		var checked=0;
-		for(var i = 0; i < document.getElementById('modactions').elements.length; i++) {
-			if(document.getElementById('modactions').elements[i].name.match('topiclist')) {
-				topiclist[count]=document.getElementById('modactions').elements[i].value;
-					count++;
-					if(checked==0){
-						checked=1;
-					}
-			}
-		}
-	
-	if(!checked) {
-		Dyhb.Message('请选择需要操作的帖子',0,2);
-	}
-
-	oStatusNewmodcomments=windsforceAjax(D.U('group://grouptopicadmin/statuscomment_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+'&commentids='+topiclist),D.L('你选择了一篇帖子','Js/Moderator_Js'),'',modTopicstatuscomment,'',400,100);
+function modCommenthide(){
+	modCommentcommon('hidecomment');
 }
 
-function modTopicstatuscomment(){
-	Dyhb.AjaxSubmit('moderateform',D.U('group://grouptopicadmin/statuscomment'),'result',statuscommentComplete);
-	return false;
-}
-
-function statuscommentComplete(data,status){
-	if(status==1){
-		window.location.reload();
-	}
-
-	return false;
+/** 置顶或者取消置顶回帖 */
+function modCommentstickreply(){
+	modCommentcommon('stickreplycomment');
 }

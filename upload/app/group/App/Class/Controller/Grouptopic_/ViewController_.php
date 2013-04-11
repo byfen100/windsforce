@@ -48,7 +48,7 @@ class ViewController extends Controller{
 		$this->assign('oGrouptopic',$oGrouptopic);
 		$this->assign('oGroup',$oGrouptopic->group);
 
-		// 取得用户是否加入了小组
+		// 取得用户是否加入了小组 && 用户在小组中的角色
 		$this->get_groupuser($oGrouptopic->group->group_id);
 
 		// 更新点击量
@@ -114,12 +114,16 @@ class ViewController extends Controller{
 
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
 
-		$arrComments=GrouptopiccommentModel::F()->where($arrWhere)->order('create_dateline '.($oGrouptopic['grouptopic_ordertype']==1?'DESC':'ASC'))->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrComments=GrouptopiccommentModel::F()->where($arrWhere)->order('grouptopiccomment_stickreply DESC,create_dateline '.($oGrouptopic['grouptopic_ordertype']==1?'DESC':'ASC'))->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('nEverynum',$nEverynum);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 		$this->assign('arrComments',$arrComments);
 		$this->assign('nPage',$nPage);
+
+		// 读取回帖回收站数量
+		$nTotalRecyclebinComment=GrouptopiccommentModel::F()->where(array('grouptopic_id'=>$oGrouptopic->grouptopic_id,'grouptopiccomment_status'=>'0'))->all()->getCounts();
+		$this->assign('nTotalRecyclebinComment',$nTotalRecyclebinComment);
 
 		// 热门帖子
 		$arrHotGrouptopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=? AND group_id=?',CURRENT_TIMESTAMP-86400,1,$oGrouptopic['group_id'])->order('grouptopic_comments DESC')->top($GLOBALS['_cache_']['group_option']['grouptopic_hotnum'])->get();

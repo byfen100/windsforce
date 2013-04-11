@@ -50,6 +50,7 @@ class TagtopicdialogController extends Controller{
 
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('sTag',$sTag);
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
 		
 		$this->display('grouptopicadmin+tagtopicdialog');
 	}
