@@ -50,6 +50,12 @@ class AddreplyController extends Controller{
 		$oGrouptopiccomment=new GrouptopiccommentModel();
 		$oGrouptopiccomment->grouptopiccomment_content=$sContent;
 		$oGrouptopiccomment->grouptopic_id=$nId;
+		
+		// 发贴审核
+		if($oGroup['group_auditcomment']==1){
+			$oGrouptopiccomment->grouptopiccomment_auditpass='0';
+		}
+
 		$oGrouptopiccomment->save(0);
 
 		if($oGrouptopiccomment->isError()){

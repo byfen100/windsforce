@@ -46,6 +46,8 @@ CREATE TABLE `#@__group` (
   `group_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否显示,状态',
   `group_latestcomment` varchar(230) NOT NULL COMMENT '最近更新帖子',
   `update_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '最后更新时间',
+  `group_audittopic` tinyint(1) NOT NULL DEFAULT '0' COMMENT '发贴是否审核',
+  `group_auditcomment` tinyint(1) NOT NULL DEFAULT '0' COMMENT '回帖是否审核',
   PRIMARY KEY (`group_id`),
   KEY `user_id` (`user_id`),
   KEY `group_name` (`group_name`),

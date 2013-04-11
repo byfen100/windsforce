@@ -141,6 +141,8 @@ Description: Group应用模块CSS
 .locked strong{color:#F26C4F;}
 .locked a{color:#369;}
 
+.locked_highlight{background:yellow;}
+
 /* 帖子标签 */
 .grouptopictag{padding-left:20px;background:url('{__ROOT__}/app/group/Static/Images/tag.gif') no-repeat 0 2px;}
 [/CURSCRIPT]

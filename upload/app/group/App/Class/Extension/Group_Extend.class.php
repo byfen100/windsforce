@@ -241,7 +241,7 @@ class Group_Extend{
 		return $bAllowedEditcomment;
 	}
 
-	static public function checkCommentadminRbac($oGroup,$arrType=array('group@grouptopicadmin@deletecomment','group@grouptopicadmin@hidecomment','group@grouptopicadmin@stickreplycomment')){
+	static public function checkCommentadminRbac($oGroup,$arrType=array('group@grouptopicadmin@deletecomment','group@grouptopicadmin@hidecomment','group@grouptopicadmin@stickreplycomment','group@grouptopicadmin@auditcomment')){
 		if(!Core_Extend::checkRbac($arrType)){
 			return false;
 		}

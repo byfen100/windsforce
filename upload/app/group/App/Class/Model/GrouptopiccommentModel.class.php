@@ -69,15 +69,19 @@ class GrouptopiccommentModel extends CommonModel{
 		return $oGrouptopiccomment[$sField];
 	}
 
-	static public function getParentCommentsPage($nFinecommentid,$nGrouptopiccommentParentid=0,$nEveryCommentnum=1,$nGrouptopicid=0,$sOrdertype='ASC'){
+	static public function getParentCommentsPage($nFinecommentid,$nGrouptopiccommentParentid=0,$nEveryCommentnum=1,$nGrouptopicid=0,$sOrdertype='ASC',$nAutopass=0){
 		$arrWhere['grouptopiccomment_status']=1;
 		$arrWhere['grouptopiccomment_parentid']=$nGrouptopiccommentParentid;
 		$arrWhere['grouptopic_id']=$nGrouptopicid;
+
+		if($nAutopass==1){
+			$arrWhere['grouptopiccomment_auditpass']=1;
+		}
 		
 		// 查找当前评论的记录
 		$nTheSearchKey='';
 
-		$arrGrouptopiccommentLists=self::F()->where($arrWhere)->all()->order('grouptopiccomment_stickreply DESC,grouptopiccomment_id '.$sOrdertype)->query();
+		$arrGrouptopiccommentLists=self::F()->where($arrWhere)->all()->order('grouptopiccomment_stickreply DESC,grouptopiccomment_auditpass ASC,grouptopiccomment_id '.$sOrdertype)->query();
 		foreach($arrGrouptopiccommentLists as $nKey=>$oGrouptopiccommentList){
 			if($oGrouptopiccommentList['grouptopiccomment_id']==$nFinecommentid){
 				$nTheSearchKey=$nKey+1;
@@ -101,8 +105,14 @@ class GrouptopiccommentModel extends CommonModel{
 
 		$sOrdertype=$oTryGrouptopiccomment->grouptopic->grouptopic_ordertype?'DESC':'ASC';
 
+		if(!Group_Extend::checkCommentadminRbac($oTryGrouptopiccomment->grouptopic->group,array('group@grouptopicadmin@auditcomment'))){
+			$nAutopass=1;
+		}else{
+			$nAutopass=0;
+		}
+
 		// 分析出父级评论所在的分页值
-		$nPage=self::getParentCommentsPage($nCommentnumId,0,$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum'],$oTryGrouptopiccomment['grouptopic_id'],$sOrdertype);
+		$nPage=self::getParentCommentsPage($nCommentnumId,0,$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum'],$oTryGrouptopiccomment['grouptopic_id'],$sOrdertype,$nAutopass);
 
 		return Dyhb::U('group://topic@?id='.$oTryGrouptopiccomment['grouptopic_id'].($nPage>1?'&page='.$nPage:'')).'#grouptopiccomment-'.$nCommentnumId;
 	}

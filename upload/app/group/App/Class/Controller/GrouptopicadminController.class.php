@@ -102,4 +102,12 @@ class GrouptopicadminController extends InitController{
 		Core_Extend::doControllerAction('Grouptopicadmin@Stickreplycomment','index');
 	}
 
+	public function auditcomment_dialog(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Auditcommentdialog','index');
+	}
+
+	public function auditcomment(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Auditcomment','index');
+	}
+
 }

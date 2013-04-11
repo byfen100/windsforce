@@ -163,3 +163,8 @@ function modCommenthide(){
 function modCommentstickreply(){
 	modCommentcommon('stickreplycomment');
 }
+
+/** 审核回帖 */
+function modCommentaudit(){
+	modCommentcommon('auditcomment');
+}

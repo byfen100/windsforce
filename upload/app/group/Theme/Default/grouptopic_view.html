@@ -484,12 +484,12 @@ $(function(){
 									<!--{/if}-->
 
 									<div class="grouptopiccontent_box">
-										<!--{if $oGrouptopic['grouptopic_hiddenreplies']==1}-->
-										<div class="locked">此回帖仅作者可见</div>
-										<!--{/if}-->
-
-										<!--{if $oComment['grouptopiccomment_ishide']==1}-->
+										<!--{if $oComment['grouptopiccomment_auditpass']=='0'}-->
+										<div class="locked locked_highlight">此回尚未通过审核，仅具有管理权限的人才能够浏览</div>
+										<!--{elseif $oComment['grouptopiccomment_ishide']==1}-->
 										<div class="locked">此回帖已被屏蔽，仅具有管理权限的人才能够浏览</div>
+										<!--{elseif $oGrouptopic['grouptopic_hiddenreplies']==1}-->
+										<div class="locked">此回帖仅作者可见</div>
 										<!--{/if}-->
 										
 										<!--{if $oComment['grouptopiccomment_ishide']=='0' || ($oComment['grouptopiccomment_ishide']=='1' && Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment')))}-->

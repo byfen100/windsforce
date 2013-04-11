@@ -156,6 +156,10 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 <div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display:none;z-index:350;">
 	<h2 class="title">选中&nbsp;<strong id="modActionSelectnum"></strong>&nbsp;篇</h2>
 	<div class="modActionSelectcontent">
+		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))}-->
+		<a href="javascript:void(0);" onclick="modCommentaudit();">审核</a>
+		<span class="pipe">|</span>
+		<!--{/if}-->
 		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment'))}-->
 		<a href="javascript:void(0);" onclick="modCommenthide();">屏蔽</a>
 		<span class="pipe">|</span>

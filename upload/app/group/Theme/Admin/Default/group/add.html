@@ -122,6 +122,18 @@ function complete(data,status){
 						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->开启浏览权限后，只有组员才能够访问<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
+						<label for="group_audittopic"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->发布帖子是否审核<!--</lang>--></label>
+						<input <!--{if $oValue['group_audittopic']==1}-->checked="select"<!--{/if}--> name="group_audittopic" type="radio" value="1" /><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input <!--{if $oValue['group_audittopic']==0}-->checked="select"<!--{/if}--> name="group_audittopic" type="radio" value="0" /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->发贴审核的话，只有通过管理人员审核后才能够看到帖子<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="group_auditcomment"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->发布回帖是否审核<!--</lang>--></label>
+						<input <!--{if $oValue['group_auditcomment']==1}-->checked="select"<!--{/if}--> name="group_auditcomment" type="radio" value="1" /><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input <!--{if $oValue['group_auditcomment']==0}-->checked="select"<!--{/if}--> name="group_auditcomment" type="radio" value="0" /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->回帖审核的话，只有通过管理人员审核后才能够看到回帖<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
 						<label for="group_roleleader"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->组长<!--</lang>--></label>
 						<input type="text" name="group_roleleader" id="group_roleleader" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:group_roleleader}--><!--</if>-->"/>
 						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Group'>-->自定义角色组长名字<!--</lang>--></div>
