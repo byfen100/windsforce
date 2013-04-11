@@ -234,7 +234,8 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Core_Extend+isAdmin()}-->
-					<a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0','admin.php')}-->" target="_blank" <!--{if $nTotalRecyclebinComment>0}-->style="color:red;font-weight:bold;"<!--{/if}-->><img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;回帖回收站&nbsp;(<!--{$nTotalRecyclebinComment}-->)</a>
+					<img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;
+					<a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0','admin.php')}-->" target="_blank">回帖回收站</a>&nbsp;<span><a href="<!--{:Core_Extend::windsforceOuter('c=app&a=config&id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0','admin.php')}-->" target="_blank" <!--{if $nTotalRecyclebinComment>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinComment}-->)</a></span>
 					<!--{/if}-->
 				</div>
 			</div>
