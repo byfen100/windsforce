@@ -36,6 +36,7 @@ class SubmitreplyController extends Controller{
 
 		// 保存回复数据
 		$oGrouptopiccomment->grouptopiccomment_content=$sContent;
+		$oGrouptopiccomment->setAutofill(false);
 		$oGrouptopiccomment->save(0,'update');
 
 		if($oGrouptopiccomment->isError()){

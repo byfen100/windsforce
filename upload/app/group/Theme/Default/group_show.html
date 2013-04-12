@@ -101,7 +101,12 @@ function grouptopicSubmit(){
 										</thead>
 										<tbody>
 											<!--{if is_array($arrGrouptopics)}-->
+											<!--{~$bFindnormaltopic=false}-->
 											<!--<foreach for=arrGrouptopics value=oGrouptopic>-->
+											<!--{if $bFindnormaltopic===false && $oGrouptopic['grouptopic_sticktopic']=='0'}-->
+											<!--{~$bFindnormaltopic=true}-->
+											<tr><td colspan="3" class="ordinary">普通主题</td></tr>
+											<!--{/if}-->
 											<tr>
 												<td class="author">
 													<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
@@ -124,7 +129,7 @@ function grouptopicSubmit(){
 														<!--{if $oGrouptopic->grouptopic_comments>0}-->
 														<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 														<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-														&nbsp;<a href="" title="查看新回复">New</a>&nbsp;
+														&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="查看新回复">New</a>&nbsp;
 														<!--{/if}-->
 														<!--{/if}-->
 														<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->

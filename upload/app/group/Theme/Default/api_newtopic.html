@@ -31,7 +31,7 @@
 					<!--{if $oGrouptopic->grouptopic_comments>0}-->
 					<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 					<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-					&nbsp;<a href="" title="查看新回复">New</a>&nbsp;
+					&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="查看新回复">New</a>&nbsp;
 					<!--{/if}-->
 					<!--{/if}-->
 					<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->

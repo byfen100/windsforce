@@ -38,6 +38,7 @@ class StickreplycommentController extends Controller{
 
 				if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
 					$oGrouptopiccomment->grouptopiccomment_stickreply=$nStatus;
+					$oGrouptopiccomment->setAutofill(false);
 					$oGrouptopiccomment->save(0,'update');
 					
 					if($oGrouptopiccomment->isError()){

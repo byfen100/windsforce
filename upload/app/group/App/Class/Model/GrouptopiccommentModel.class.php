@@ -81,7 +81,7 @@ class GrouptopiccommentModel extends CommonModel{
 		// 查找当前评论的记录
 		$nTheSearchKey='';
 
-		$arrGrouptopiccommentLists=self::F()->where($arrWhere)->all()->order('grouptopiccomment_stickreply DESC,grouptopiccomment_auditpass ASC,grouptopiccomment_id '.$sOrdertype)->query();
+		$arrGrouptopiccommentLists=self::F()->where($arrWhere)->all()->order('grouptopiccomment_auditpass ASC,grouptopiccomment_stickreply DESC,grouptopiccomment_id '.$sOrdertype)->query();
 		foreach($arrGrouptopiccommentLists as $nKey=>$oGrouptopiccommentList){
 			if($oGrouptopiccommentList['grouptopiccomment_id']==$nFinecommentid){
 				$nTheSearchKey=$nKey+1;

@@ -32,6 +32,7 @@ class SticktopicController extends Controller{
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
 					$oGrouptopic->grouptopic_sticktopic=$nStatus;
+					$oGrouptopic->setAutofill(false);
 					$oGrouptopic->save(0,'update');
 					
 					if($oGrouptopic->isError()){

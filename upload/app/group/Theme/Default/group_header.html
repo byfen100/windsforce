@@ -24,7 +24,8 @@
 						<div class="group_commonmenu">
 							<div class="tabb-menu">
 								<ul class="nav nav-tabs nav-groupmenu">
-									<li <!--{if ACTION_NAME==='show'}-->class="active"<!--{/if}-->><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">小组首页</a></li>
+									<li <!--{if ACTION_NAME==='show' && isset($nRecommend) && empty($nRecommend)}-->class="active"<!--{/if}-->><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">小组首页</a></li>
+									<li <!--{if ACTION_NAME==='show' && isset($nRecommend) && $nRecommend==1}-->class="active"<!--{/if}-->><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&recommend=1')}-->">推荐主题</a></li>
 									<li <!--{if ACTION_NAME==='user'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://group/user?gid='.$oGroup['group_id'])}-->">成员</a></li>
 								</ul>
 							</div>

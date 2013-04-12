@@ -34,16 +34,33 @@ class NewtopicController extends Controller{
 		$nEverynum=$GLOBALS['_cache_']['group_option']['group_indextopicnum'];
 		$arrWhere['grouptopic_status']=1;
 		$arrWhere['grouptopic_isaudit']=1;
+		$arrWhere['grouptopic_sticktopic']='0';
 
 		if($nDid==1){
-			$arrWhere['grouptopic_addtodigest']=$nDid;
+			$arrWhere['grouptopic_addtodigest']=array('gt',0);
 		}
 
 		$nTotalRecord=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
 		
 		$oPage=Page::RUN($nTotalRecord,$nEverynum,G::getGpc('page','G'));
 		
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order(($sType=='lastreply'?'update_dateline DESC,':'')."{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+
+		// 全局置顶帖子
+		if(isset($arrWhere['grouptopic_addtodigest'])){
+			unset($arrWhere['grouptopic_addtodigest']);
+		}
+		$arrWhere['grouptopic_sticktopic']='3';
+
+		$arrGlobalSticktopics=GrouptopicModel::F()->where($arrWhere)->order(($sType=='lastreply'?'update_dateline DESC,':'')."{$sOrderType} DESC")->getAll();
+
+		if(is_array($arrGrouptopics)){
+			if(is_array($arrGlobalSticktopics)){
+				foreach($arrGlobalSticktopics as $oGlobalSticktopic){
+					array_unshift($arrGrouptopics,$oGlobalSticktopic);
+				}
+			}
+		}
 
 		$this->assign('arrGrouptopics',$arrGrouptopics);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));

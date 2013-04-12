@@ -33,29 +33,22 @@ class DeletecommentController extends Controller{
 
 		if(is_array($arrGrouptopiccomments)){
 			foreach($arrGrouptopiccomments as $nGrouptopiccomment){
-				
-				
-					$oGrouptopiccommentMeta=GrouptopiccommentModel::M();
-					$oGrouptopiccommentMeta->deleteWhere(array('grouptopiccomment_id'=>$nGrouptopiccomment));
+				$oGrouptopiccommentMeta=GrouptopiccommentModel::M();
+				$oGrouptopiccommentMeta->deleteWhere(array('grouptopiccomment_id'=>$nGrouptopiccomment));
 					
-					if($oGrouptopiccommentMeta->isError()){
-						$this->E($oGrouptopiccommentMeta->getErrorMessage());
-					}
-
-				
+				if($oGrouptopiccommentMeta->isError()){
+					$this->E($oGrouptopiccommentMeta->getErrorMessage());
+				}
 			}
 
-				// 更新帖子评论数量
-					//if(!empty($oGrouptopic['grouptopic_id'])){
-						$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nGrouptopics)->all()->getCounts();
-						$oGrouptopic->setAutofill(false);
-						$oGrouptopic->save(0,'update');
+			// 更新帖子评论数量
+			$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nGrouptopics)->all()->getCounts();
+			$oGrouptopic->setAutofill(false);
+			$oGrouptopic->save(0,'update');
 
-						if($oGrouptopic->isError()){
-							$this->E($oGrouptopic->getErrorMessage());
-						}
-					//}
-			
+			if($oGrouptopic->isError()){
+				$this->E($oGrouptopic->getErrorMessage());
+			}
 		}
 
 		$sGrouptopicurl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);

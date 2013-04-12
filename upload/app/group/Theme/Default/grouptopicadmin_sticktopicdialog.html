@@ -4,7 +4,9 @@
 			<select name="status">
 				<option value="0">取消置顶</option>
 				<!--<for start='1' end='3' var='nMyvalue'>-->
-				<option value="<!--{$nMyvalue}-->" <!--{if $nStatus==$nMyvalue}-->selected<!--{/if}-->>置顶主题&nbsp;<!--{$nMyvalue}--></option>
+				<!--{if $nMyvalue<3 || ($nMyvalue==3 && Core_Extend+isAdmin())}-->
+				<option value="<!--{$nMyvalue}-->" <!--{if $nStatus==$nMyvalue}-->selected<!--{/if}-->><!--{if $nMyvalue==3}-->全局置顶主题<!--{d*else}-->小组置顶主题&nbsp;<!--{$nMyvalue}--><!--{/if}--></option>
+				<!--{/if}-->
 				<!--</for>-->
 			</select>
 		</p>

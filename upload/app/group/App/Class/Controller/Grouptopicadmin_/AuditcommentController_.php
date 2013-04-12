@@ -37,6 +37,7 @@ class AuditcommentController extends Controller{
 
 				if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
 					$oGrouptopiccomment->grouptopiccomment_auditpass=1;
+					$oGrouptopic->setAutofill(false);
 					$oGrouptopiccomment->save(0,'update');
 					
 					if($oGrouptopiccomment->isError()){

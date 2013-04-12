@@ -71,7 +71,6 @@ class AddreplyController extends Controller{
 		);
 
 		$oGrouptopic->grouptopic_latestcomment=serialize($arrLatestData);
-		$oGrouptopic->setAutoFill(false);
 		$oGrouptopic->save(0,'update');
 
 		if($oGrouptopic->isError()){
@@ -92,7 +91,6 @@ class AddreplyController extends Controller{
 
 		// 更新保存帖子的评论数量
 		$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nId)->all()->getCounts();
-		$oGrouptopic->setAutofill(false);
 		$oGrouptopic->save(0,'update');
 
 		if($oGrouptopic->isError()){

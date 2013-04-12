@@ -32,6 +32,7 @@ class RecommendtopicController extends Controller{
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
 					$oGrouptopic->grouptopic_isrecommend=$nStatus;
+					$oGrouptopic->setAutofill(false);
 					$oGrouptopic->save(0,'update');
 					
 					if($oGrouptopic->isError()){

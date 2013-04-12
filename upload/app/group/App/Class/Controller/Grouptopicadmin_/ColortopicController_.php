@@ -37,6 +37,7 @@ class ColortopicController extends Controller{
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
 					$oGrouptopic->grouptopic_color=serialize($arrColor);
+					$oGrouptopic->setAutofill(false);
 					$oGrouptopic->save(0,'update');
 					
 					if($oGrouptopic->isError()){

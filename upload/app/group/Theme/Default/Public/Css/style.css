@@ -240,6 +240,7 @@ a#moderate_reason:hover{text-decoration:none;}
 .topic_list_box .subject em {font-size: 14px;margin-right: 5px;}
 .topic_list_box .author {width: 55px;}
 .topic_list_box .author a {display: block;}
+.topic_list_box .ordinary{background:#f7f7f7;padding:5px 8px;color:#666;}
 [/CURSCRIPT]
 
 /**===============================

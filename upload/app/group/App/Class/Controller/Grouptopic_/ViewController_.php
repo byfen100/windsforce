@@ -118,7 +118,7 @@ class ViewController extends Controller{
 
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
 
-		$arrComments=GrouptopiccommentModel::F()->where($arrWhere)->order('grouptopiccomment_stickreply DESC,grouptopiccomment_auditpass ASC,create_dateline '.($oGrouptopic['grouptopic_ordertype']==1?'DESC':'ASC'))->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrComments=GrouptopiccommentModel::F()->where($arrWhere)->order('grouptopiccomment_auditpass ASC,grouptopiccomment_stickreply DESC,create_dateline '.($oGrouptopic['grouptopic_ordertype']==1?'DESC':'ASC'))->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('nEverynum',$nEverynum);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));

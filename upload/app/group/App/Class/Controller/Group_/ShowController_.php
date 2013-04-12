@@ -14,6 +14,7 @@ class ShowController extends Controller{
 		$sId=trim(G::getGpc('id','G')); // 小组ID
 		$nCid=intval(G::getGpc('cid','G')); // 帖子分类ID
 		$nDid=intval(G::getGpc('did','G')); // 是否为精华
+		$nRecommend=intval(G::getGpc('recommend','G')); // 是否推荐
 		$sType=G::getGpc('type','G'); // 排序类型
 
 		// 判断小组是否存在
@@ -61,18 +62,48 @@ class ShowController extends Controller{
 		}
 
 		if($nDid==1){
-			$arrWhere['grouptopic_addtodigest']=$nDid;
+			$arrWhere['grouptopic_addtodigest']=array('gt',0);
+		}
+
+		if($nRecommend==1){
+			$arrWhere['grouptopic_isrecommend']=array('gt',0);
 		}
 
 		$arrWhere['grouptopic_status']=1;
-		$arrWhere['grouptopic_isaudit']=1;	
+		$arrWhere['grouptopic_isaudit']=1;
 		$arrWhere['group_id']=$oGroup->group_id;
+		$arrWhere['grouptopic_sticktopic']=array('lt',3);
 
 		$nTotalComment=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
 
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
 
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("grouptopic_sticktopic DESC,update_dateline DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		
+		// 全局置顶帖子
+		if(isset($arrWhere['grouptopic_addtodigest'])){
+			unset($arrWhere['grouptopic_addtodigest']);
+		}
+
+		if(isset($arrWhere['grouptopiccategory_id'])){
+			unset($arrWhere['grouptopiccategory_id']);
+		}
+
+		if(isset($arrWhere['group_id'])){
+			unset($arrWhere['group_id']);
+		}
+
+		$arrWhere['grouptopic_sticktopic']='3';
+
+		$arrGlobalSticktopics=GrouptopicModel::F()->where($arrWhere)->order(($sType=='lastreply'?'update_dateline DESC,':'')."{$sOrderType} DESC")->getAll();
+
+		if(is_array($arrGrouptopics)){
+			if(is_array($arrGlobalSticktopics)){
+				foreach($arrGlobalSticktopics as $oGlobalSticktopic){
+					array_unshift($arrGrouptopics,$oGlobalSticktopic);
+				}
+			}
+		}
 
 		$this->assign('arrGrouptopics',$arrGrouptopics);
 		$this->assign('nEverynum',$nEverynum);
@@ -90,6 +121,7 @@ class ShowController extends Controller{
 		$this->assign('oGroup',$oGroup);
 		$this->assign('nCid',$nCid);
 		$this->assign('nDid',$nDid);
+		$this->assign('nRecommend',$nRecommend);
 
 		$this->display('group+show');
 	}

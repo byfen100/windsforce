@@ -32,6 +32,7 @@ class CategorytopicController extends Controller{
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
 					$oGrouptopic->grouptopiccategory_id=$nCategoryid;
+					$oGrouptopic->setAutofill(false);
 					$oGrouptopic->save(0,'update');
 					
 					if($oGrouptopic->isError()){

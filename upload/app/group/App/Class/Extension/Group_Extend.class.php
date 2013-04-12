@@ -107,7 +107,7 @@ class Group_Extend{
 	static public function grouptopicStick($nStickstatus,$bReturnImg=false){
 		if($nStickstatus>0){
 			if($bReturnImg===true){
-				return ' <img class="grouptopicstick_date" src="'.__APPPUB__.'/Images/grouptopic/sticktopic_'.$nStickstatus.'.gif" border="0" align="absmiddle" title="置顶主题'.$nStickstatus.'"/> ';
+				return ' <img class="grouptopicstick_date" src="'.__APPPUB__.'/Images/grouptopic/sticktopic_'.$nStickstatus.'.gif" border="0" align="absmiddle" title="'.($nStickstatus==3?'全局置顶主题':'小组置顶主题 '.$nStickstatus).'"/> ';
 			}else{
 				return __APPPUB__.'/Images/locked.gif';
 			}
@@ -131,7 +131,7 @@ class Group_Extend{
 	static public function grouptopicRecommend($nRecommendstatus,$bReturnImg=false){
 		if($nRecommendstatus>0){
 			if($bReturnImg===true){
-				return ' <img class="grouptopicrecommend_date" src="'.__APPPUB__.'/Images/grouptopic/recommend.gif" border="0" align="absmiddle" title="推荐主题"/> ';
+				return ' <img class="grouptopicrecommend_date" src="'.__APPPUB__.'/Images/grouptopic/recommend_'.$nRecommendstatus.'.gif" border="0" align="absmiddle" title="'.($nRecommendstatus==2?'系统推荐主题':'组长推荐主题').'"/> ';
 			}else{
 				return __APPPUB__.'/Images/locked.gif';
 			}
@@ -157,7 +157,7 @@ class Group_Extend{
 		
 		if($oGrouptopic['grouptopic_sticktopic']>0){
 			$sIcon=__APPPUB__.'/Images/grouptopic/sticktopic_'.$oGrouptopic['grouptopic_sticktopic'].'.gif';
-			$sTitle='置顶主题 '.$oGrouptopic['grouptopic_sticktopic'].' - '.$sTitle;
+			$sTitle=($oGrouptopic['grouptopic_sticktopic']==3?'全局置顶主题':'小组置顶主题 '.$oGrouptopic['grouptopic_sticktopic']).' - '.$sTitle;
 		}
 
 		if($oGrouptopic['grouptopic_isclose']==1){

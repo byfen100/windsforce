@@ -32,6 +32,7 @@ class ClosetopicController extends Controller{
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
 					$oGrouptopic->grouptopic_isclose=$nStatus;
+					$oGrouptopic->setAutofill(false);
 					$oGrouptopic->save(0,'update');
 					
 					if($oGrouptopic->isError()){

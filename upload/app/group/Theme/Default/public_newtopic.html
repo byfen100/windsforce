@@ -20,7 +20,10 @@
 						<thead>
 							<tr style="border-bottom:1px solid #eeeeee;">
 								<th style="width:61px;">发帖人</th>
-								<th><a href="<!--{:Dyhb::U('group://public/newtopic?did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a></th>
+								<th><a href="<!--{:Dyhb::U('group://public/newtopic?did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->">精华</a>
+									<span class="pipe">|</span>
+									<a href="<!--{:Dyhb::U('group://public/newtopic?type=lastreply')}-->" style="<!--{if $sType=='lastreply'}-->color:gray;<!--{/if}-->">最后回复</a>
+								</th>
 								<th style="text-align:center;width:130px;">
 									<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" style="<!--{if $sType==''}-->color:gray;<!--{/if}-->">最新</a>
 									<span class="pipe">|</span>
@@ -55,7 +58,7 @@
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
 										<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 										<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-										&nbsp;<a href="" title="查看新回复">New</a>&nbsp;
+										&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="查看新回复">New</a>&nbsp;
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
