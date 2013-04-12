@@ -33,32 +33,45 @@ class IndexController extends Controller{
 		
 		// 小组分类赋值，根据小组分类来取得小组
 		$arrGroupcategorys=GroupcategoryModel::F()->where($arrWhere)->getAll();
+		
 		$this->assign('arrGroupcategorys',$arrGroupcategorys);
 
 		// 热门帖子
 		$arrGrouphottopics=Group_Extend::getGrouphottopic();
+		
 		$this->assign('arrGrouphottopics',$arrGrouphottopics);
 
 		// 首页幻灯片帖子
 		$arrGroupthumbtopics=Group_Extend::getGroupthumbtopic();
+		
 		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 
 		// 推荐小组
 		$arrRecommendgroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_recommendgroupnum'])->getAll();
+
 		$this->assign('arrRecommendgroups',$arrRecommendgroups);
 
 		// 最新小组
 		$arrNewgroups=GroupModel::F()->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_newgroupnum'])->getAll();
+		
 		$this->assign('arrNewgroups',$arrNewgroups);
 
 		// 24小时热门小组
 		$arrHotgroups=GroupModel::F()->order('group_totaltodaynum DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_hotgroupnum'])->getAll();
+		
 		$this->assign('arrHotgroups',$arrHotgroups);
 
 		// 小组长
 		$arrGroupleaders=GroupuserModel::F('groupuser_isadmin=?',2)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_groupleadernum'])->getAll();
+		
 		$this->assign('arrGroupleaders',$arrGroupleaders);
 
+		// 组长推荐帖子 && 系统推荐
+		$arrGroupadminRecommendtopics=GrouptopicModel::F('grouptopic_status=1 AND grouptopic_isaudit=? AND grouptopic_isrecommend=1',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_groupadminretopic_num'])->getAll();
+		$arrSystemRecommendtopics=GrouptopicModel::F('grouptopic_status=1 AND grouptopic_isaudit=? AND grouptopic_isrecommend=2',1)->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['index_systemrecommendtopic_num'])->getAll();
+		
+		$this->assign('arrGroupadminRecommendtopics',$arrGroupadminRecommendtopics);
+		$this->assign('arrSystemRecommendtopics',$arrSystemRecommendtopics);
 		$this->assign('nStyle',$nStyle);
 
 		if($nStyle==2){

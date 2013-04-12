@@ -1,11 +1,16 @@
 	<!--<include file="grouptopicadmin+header" />-->
 
 		<p>
+			<!--{if Core_Extend+isAdmin()}-->
 			<label class="radio">
-				<input type="radio" name="status" value="1" <!--{if $nStatus==0}-->checked<!--{/if}-->>推荐主题
+				<input type="radio" name="status" value="2" <!--{if $nStatus==0}-->checked<!--{/if}-->>系统推荐主题&nbsp;<img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_2.gif" />
+			</label>
+			<!--{/if}-->
+			<label class="radio">
+				<input type="radio" name="status" value="1" <!--{if $nStatus==0}-->checked<!--{/if}-->>组长推荐主题&nbsp;<img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_1.gif" />
 			</label>
 			<label class="radio">
-				<input type="radio" name="status" value="0" <!--{if $nStatus==1}-->checked<!--{/if}-->>取消推荐主题
+				<input type="radio" name="status" value="0" <!--{if $nStatus>0}-->checked<!--{/if}-->>取消推荐主题
 			</label>
 		</p>
 

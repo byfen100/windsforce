@@ -115,8 +115,13 @@ function addGrouptopiccommentSimple(){
 	sGrouptopiccommentmessage=$.trim(editorSimple.html());
 	$('#simple_grouptopiccomment_message').val(sGrouptopiccommentmessage);
 
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'add...' );
+
 	if(!sGrouptopiccommentmessage){
 		windsforceAlert('回复内容不能为空','',3);
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '发布' );
 		return false;
 	}
 
@@ -125,6 +130,9 @@ function addGrouptopiccommentSimple(){
 	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/add_reply')}-->','',function(data,status){
 		$('#simple_comment').val('0');
 
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '发布' );
+		
 		if(status==1){
 			window.location.href=data.url;
 		}

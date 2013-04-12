@@ -24,6 +24,10 @@ class SticktopicController extends Controller{
 			$this->E(Dyhb::L('你没有置顶或者取消置顶帖子的权限','Controller/Grouptopicadmin'));
 		}
 
+		if($nStatus==3 && !Core_Extend::isAdmin()){
+			$this->E(Dyhb::L('帖子已经全局置顶，你没有权限修改','Controller/Grouptopicadmin'));
+		}
+
 		$arrGrouptopics=explode(',',$sGrouptopics);
 
 		if(is_array($arrGrouptopics)){

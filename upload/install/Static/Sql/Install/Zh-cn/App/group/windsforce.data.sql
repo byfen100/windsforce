@@ -46,8 +46,10 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('index_groupleadernum', '6'),
 ('newtopic_hottagnum', '10'),
 ('group_grouplistnum', '24'),
-('grouptopiccomment_edit limittime', '86400'),
-('grouptopic_edit limittime', '86400');
+('grouptopiccomment_edit_limittime', '86400'),
+('grouptopic_edit_limittime', '86400'),
+('index_groupadminretopic_num', '10'),
+('index_systemrecommendtopic_num', '10');
 
 -- --------------------------------------------------------
 

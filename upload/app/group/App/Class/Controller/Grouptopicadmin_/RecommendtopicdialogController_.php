@@ -23,6 +23,10 @@ class RecommendtopicdialogController extends Controller{
 		if(empty($arrGrouptopics)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
+
+		if($nStatus==2 && !Core_Extend::isAdmin()){
+			$this->E(Dyhb::L('帖子已经由系统推荐，你没有权限修改','Controller/Grouptopicadmin'));
+		}
 		
 		$sGrouptopics=implode(',',$arrGrouptopics);
 		$this->assign('sGrouptopics',$sGrouptopics);

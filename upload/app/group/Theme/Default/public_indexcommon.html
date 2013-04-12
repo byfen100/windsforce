@@ -42,7 +42,7 @@ function completeSet(data,status){
 		<div class="row">
 			<div class="span12">
 				<div class="row">
-					<div class="span7"> 
+					<div class="span4"> 
 						<div id="myCarousel" class="carousel slide">
 							<div class="carousel-inner">
 								<!--{if is_array($arrGroupthumbtopics)}-->
@@ -73,7 +73,7 @@ function completeSet(data,status){
 							<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 						</div>
 					</div>
-					<div class="span5">
+					<div class="span4">
 						<div style="margin-left:-30px;" class="publicmodule_list publicmodule_list_sort publicmodule_list_line">
 							<ul>
 								<!--{if is_array($arrGrouphottopics)}-->
@@ -84,6 +84,52 @@ function completeSet(data,status){
 								<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
 								<!--{/if}-->
 							</ul>
+						</div>
+					</div>
+					<div class="span4">
+						<div class="grouptopicrecommend_list">
+							<ul id="myTab" class="nav nav-tabs">
+								<li class="active"><a href="#system_recommendtopic" data-toggle="tab"><img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_2.gif" />&nbsp;系统推荐</a></li>
+								<li><a href="#groupadmin_recommendtopic" data-toggle="tab"><img src="<!--{:__APPPUB__}-->/Images/grouptopic/recommend_1.gif" />&nbsp;组长推荐</a></li>
+							</ul>
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade in active" id="system_recommendtopic">
+									<div class="commonbox_mini commonbox_mini_gray">
+										<div class="commonlist">
+											<ul id="recommend_grouptopiclist_box" class="grouptopiclist_box">
+												<!--{if is_array($arrSystemRecommendtopics)}-->
+												<!--<foreach for=arrSystemRecommendtopics value=oSystemRecommendtopic>-->
+												<li>
+													<a href="<!--{:Dyhb::U('group://topic@?id='.
+													$oSystemRecommendtopic['grouptopic_id'])}-->"><!--{$oSystemRecommendtopic['grouptopic_title']|G+subString=0,30}--></a>
+												</li>
+												<!--</foreach>-->
+												<!--{d*else}-->
+												<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
+												<!--{/if}-->
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="groupadmin_recommendtopic">
+									<div class="commonbox_mini commonbox_mini_gray">
+										<div class="commonlist">
+											<ul id="recommend_grouptopiclist_box" class="grouptopiclist_box">
+												<!--{if is_array($arrGroupadminRecommendtopics)}-->
+												<!--<foreach for=arrGroupadminRecommendtopics value=oGroupadminRecommendtopic>-->
+												<li>
+													<a href="<!--{:Dyhb::U('group://topic@?id='.
+													$oGroupadminRecommendtopic['grouptopic_id'])}-->"><!--{$oGroupadminRecommendtopic['grouptopic_title']|G+subString=0,30}--></a>
+												</li>
+												<!--</foreach>-->
+												<!--{d*else}-->
+												<li>暂时没有发现任何帖子&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->">我要发布</a></li>
+												<!--{/if}-->
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

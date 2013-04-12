@@ -30,6 +30,10 @@ class GroupmainController extends InitController{
 			$oOptionModel=GroupoptionModel::F('groupoption_name=?',$sKey)->getOne();
 			$oOptionModel->groupoption_value=G::html($val);
 			$oOptionModel->save(0,'update');
+
+			if($oOptionModel->isError()){
+				$this->E($oOptionModel->getErrorMessage());
+			}
 		}
 
 		if(!Dyhb::classExists('Cache_Extend')){

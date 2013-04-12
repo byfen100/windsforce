@@ -51,7 +51,7 @@ class Group_Extend{
 			}
 		}
 		
-		$arrGrouphottopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=?',CURRENT_TIMESTAMP-$nDate,1)->order('grouptopic_comments DESC')->top($nNum)->get();
+		$arrGrouphottopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=? AND grouptopic_isaudit=1',CURRENT_TIMESTAMP-$nDate,1)->order('grouptopic_comments DESC')->top($nNum)->get();
 
 		return $arrGrouphottopics;
 	}
@@ -65,7 +65,7 @@ class Group_Extend{
 			}
 		}
 
-		$arrGroupthumbtopics=GrouptopicModel::F('grouptopic_status=? AND grouptopic_thumb>0',1)->order('create_dateline DESC')->top($nNum)->get();
+		$arrGroupthumbtopics=GrouptopicModel::F('grouptopic_status=? AND grouptopic_thumb>0 AND grouptopic_isaudit=1',1)->order('create_dateline DESC')->top($nNum)->get();
 
 		return $arrGroupthumbtopics;
 	}
@@ -138,6 +138,23 @@ class Group_Extend{
 		}
 
 		return '';
+	}
+
+	static public function grouptopicHighlight($sColor,$bReturnImg=false){
+		if(!$sColor){
+			return '';
+		}
+
+		$arrColor=@unserialize($sColor);
+		if($arrColor){
+			if($bReturnImg===true){
+				return ' <img class="grouptopichighlight_date" src="'.__APPPUB__.'/Images/highlight.gif" border="0" align="absmiddle" title="高亮主题"/> ';
+			}else{
+				return __APPPUB__.'/Images/highlight.gif';
+			}
+		}else{
+			return '';
+		}
 	}
 
 	static public function grouptopiclistIcon($oGrouptopic,$bReturnImg=false){
@@ -233,7 +250,7 @@ class Group_Extend{
 		}
 
 		if(($nGroupuserrole==0 && $oGroup->group_ispost!=1) || ($nGroupuserrole==-2 && $oGroup->group_ispost==2)){
-			if($oComment['user_id']==$GLOBALS['___login___']['user_id'] && CURRENT_TIMESTAMP-$oComment['create_dateline']<=$GLOBALS['_cache_']['group_option']['grouptopiccomment_edit limittime']){
+			if($oComment['user_id']==$GLOBALS['___login___']['user_id'] && CURRENT_TIMESTAMP-$oComment['create_dateline']<=$GLOBALS['_cache_']['group_option']['grouptopiccomment_edit_limittime']){
 				$bAllowedEditcomment=true;
 			}
 		}
@@ -269,6 +286,37 @@ class Group_Extend{
 		}
 
 		return $bAllowedEditcomment;
+	}
+
+	static public function getTopicpages($oGrouptopic){
+		// 读取帖子的评论数量
+		$arrWhere=array();
+		$nEverynum=$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum'];
+
+		$arrWhere['grouptopiccomment_status']=1;
+		$arrWhere['grouptopic_id']=$oGrouptopic->grouptopic_id;
+
+		if(!Group_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))){
+			$arrWhere['grouptopiccomment_auditpass']=1;
+		}
+
+		$nTotalComment=GrouptopiccommentModel::F()->where($arrWhere)->all()->getCounts();
+		
+		$sPagelinks='';
+		if($nTotalComment>$nEverynum){
+			$nPages=ceil($nTotalComment/$nEverynum);
+			for($nI=2;$nI<=6 && $nI<=$nPages;$nI++){
+				$sPagelinks.="<a href=\"".Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&page='.$nI)."\">{$nI}</a>";
+			}
+
+			if($nPages>6){
+				$sPagelinks.="<span class=\"disabled\">..</span><a href=\"".Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&page='.$nPages)."\">{$nPages}</a>";
+			}
+
+			$sPagelinks='&nbsp;<span class="disabled">...</span>'.$sPagelinks;
+		}
+
+		return $sPagelinks;
 	}
 
 }

@@ -135,6 +135,10 @@ function grouptopicSubmit(){
 														<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
 														<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 														<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
+														<!--{~$sPagelinks=Group_Extend::getTopicpages($oGrouptopic)}-->
+														<!--{if $sPagelinks}-->
+														<span class="pagenav"><!--{$sPagelinks}--></span>
+														<!--{/if}-->
 													</p>
 													<p class="info">
 														楼主&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->

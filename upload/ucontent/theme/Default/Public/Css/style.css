@@ -139,7 +139,7 @@ Tags: admin, light
 .home_topiclist_box .num em {display: block;font-weight: 700;}
 .home_topiclist_box .info,.info a {color: #999999;}
 .home_topiclist_box .info span {margin-right: 10px;}
-.home_topiclist_box .title {padding-bottom: 5px;}
+.home_topiclist_box .title {padding-bottom: 5px;line-height:25px;}
 .home_topiclist_box .title a{}
 .subject {padding: 10px 0 !important;}
 .home_topiclist_box .subject em {font-size: 14px;margin-right: 5px;}

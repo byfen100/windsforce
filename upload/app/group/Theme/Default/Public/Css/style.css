@@ -234,7 +234,7 @@ a#moderate_reason:hover{text-decoration:none;}
 .topic_list_box .num em {display: block;font-weight: 700;}
 .topic_list_box .info,.info a {color: #999999;}
 .topic_list_box .info span {margin-right: 10px;}
-.topic_list_box .title {padding-bottom: 5px;}
+.topic_list_box .title {padding-bottom: 5px;line-height:25px;}
 .topic_list_box .title a{}
 .subject {padding: 10px 0 !important;}
 .topic_list_box .subject em {font-size: 14px;margin-right: 5px;}

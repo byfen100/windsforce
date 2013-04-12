@@ -170,11 +170,12 @@ $(function(){
 										</div>
 										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 											<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
-											<!--{d*else}--><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[默认分类]</a><!--{/if}-->&nbsp;<span style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->"><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
+											<!--{d*else}--><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[默认分类]</a><!--{/if}-->&nbsp;<span><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
 											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
 											<!--{:Group_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
 											<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
 											<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
+											<!--{:Group_Extend::grouptopicHighlight($oGrouptopic->grouptopic_color,true)}-->
 										</h1>
 									</div>
 									<div class="floor_top_tips">

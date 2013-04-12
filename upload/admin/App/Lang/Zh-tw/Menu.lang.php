@@ -44,6 +44,10 @@ return array(
 'e97a25df3c65098df94d39f432241b9a'=>"積分收益",
 'fddbd88286e57c9d623e1406cf43fadf'=>"用戶留言",
 'c2f42bd2a149bbeb4627b1e1b5fabedb'=>"性能優化",
+'94cdbd4def6797dbe5e388b3f510fc38'=>"郵件管理",
+'6aa4ba7e676ffeda11262cd5b7c18218'=>"計劃任務",
+'13da5210d0c57aefedba0b6750f1c125'=>"文件權限檢查",
+'8cdc23c4ed658805190725475d8d99c3'=>"文件校驗",
 )
 
 ?>

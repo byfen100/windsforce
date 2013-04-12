@@ -10,12 +10,20 @@ $(function(){
 function addGrouptopiccomment(){
 	$("#grouptopiccomment_message").val(editor.html());
 
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'add...' );
+
 	if($("#grouptopiccomment_message").val()==""){
 		windsforceAlert('回复内容不能为空','',3);
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '发布' );
 		return false;
 	}
 
 	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/'.(!isset($oEditGrouptopiccomment)?'add_reply':'submit_reply'))}-->','',function(data,status){
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '发布' );
+		
 		if(status==1){
 			<!--{if isset($oEditGrouptopiccomment)}-->
 			window.location.reload();
