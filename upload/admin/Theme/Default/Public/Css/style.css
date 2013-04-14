@@ -148,6 +148,14 @@ section#main {width: 100%;min-height: 500px;float: left;margin-top: 25px;}
 .tablebackground{border:1px solid #e0e0e0;background:#efefef;padding:5px;}
 .warning{ padding: 8px 35px 8px 14px;margin-bottom: 18px;color: #c09853; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); background-color: #fcf8e3;border: 1px solid #fbeed5; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;}
 
+/* 文件等 */
+.cfolder,.ofolder{ display:block; padding-left:50px; line-height:30px; background:url(../Images/bg_icon.gif) no-repeat -260px -50px; font-weight:700;font-weight:bold; }
+.ofolder{ background:url(../Images/bg_icon.gif) no-repeat -260px -100px; }
+.files{ padding:1px 0 1px 50px; background:url(../Images/bg_icon.gif) no-repeat -260px -150px;}
+.del{ padding-bottom: 1px; padding-left:18px; background:url(../Images/bg_icon.gif) no-repeat 0 -285px; *background:url(../Images/bg_icon.gif) no-repeat 0 -286px; color:#E8594D; }
+.edited, .unfixed { padding-bottom: 1px; padding-left:18px; background:url(../Images/bg_icon.gif) no-repeat -100px -385px; *background:url(../Images/bg_icon.gif) no-repeat -100px -386px; color:#E8594D; }
+.unknown{padding-bottom: 1px; padding-left:18px; background:url(../Images/bg_icon.gif) no-repeat -50px -435px; *background:url(../Images/bg_icon.gif) no-repeat -50px -436px; color:#6189B8; }
+
  /* 操作条 */
 .row-actions a,.row-actions span{color:#f5fafe;margin-right:5px;text-decoration:underline;}
 .row-actions-display .row-actions .edit a{ color:#77BACE; }

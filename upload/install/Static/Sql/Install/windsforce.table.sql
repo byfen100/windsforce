@@ -242,6 +242,21 @@ CREATE TABLE `#@__badword` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_cache`
+--
+
+DROP TABLE IF EXISTS `#@__cache`;
+CREATE TABLE `#@__cache` (
+  `cache_key` varchar(255) NOT NULL DEFAULT '' COMMENT '缓存key',
+  `cache_value` mediumblob NOT NULL COMMENT '缓存值',
+  `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '最后更新时间',
+  PRIMARY KEY (`cache_key`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_creditlog`
 --
 
