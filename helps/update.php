@@ -65,7 +65,7 @@ if(empty($sUrl)){
 }
 
 echo<<<INFO
-function $WF(id){
+function \$WF(id){
 	return document.getElementById(id);
 }
 INFO;
@@ -73,16 +73,16 @@ INFO;
 /** 比较版本取得更新信息 */
 if($nServerRelease>$nRelease){
 	echo<<<INFO
-		parent.menu.$WF("update_num").innerHTML="<span class=\"update_num\">3</span>";
+		parent.menu.\$WF("update_num").innerHTML="<span class=\"update_num\">3</span>";
 INFO;
 
 	if(empty($nInfolist)){
 		echo<<<INFO
-		$WF("welcome_info").style.display="none";
-		$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
-		$WF("news_box").style.display="";
-		$WF("news_title").innerHTML="更新提示";
-		$WF("news_content").innerHTML="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
+		\$WF("welcome_info").style.display="none";
+		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		\$WF("news_box").style.display="";
+		\$WF("news_title").innerHTML="更新提示";
+		\$WF("news_content").innerHTML="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
 INFO;
 	}else{
 		$arrUpdateContent=array(
@@ -100,8 +100,8 @@ INFO;
 		}
 		$sContent=trimNl($sContent);
 
-		echo "$WF(\"update_num\").innerHTML=\"<span class=\\\"update_num\\\">3</span>\";\n";
-		echo "$WF(\"update_list\").innerHTML=\"{$sContent}\";";
+		echo "\$WF(\"update_num\").innerHTML=\"<span class=\\\"update_num\\\">3</span>\";\n";
+		echo "\$WF(\"update_list\").innerHTML=\"{$sContent}\";";
 	}
 }else{
 	if($nInfolist==1){
@@ -111,10 +111,10 @@ INFO;
 			</tr>";
 		$sContent=trimNl($sContent);
 
-		echo "$WF(\"update_list\").innerHTML=\"{$sContent}\";";
+		echo "\$WF(\"update_list\").innerHTML=\"{$sContent}\";";
 	}else{
 		echo<<<INFO
-		$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
 INFO;
 	}
 }
