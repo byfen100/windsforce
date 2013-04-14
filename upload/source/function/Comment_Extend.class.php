@@ -324,6 +324,7 @@ class Comment_Extend{
 	static public function sendAEmail($oMailConnect,$sEmailTo,$sEmailSubject,$sEmailMessage){
 		$oMail=Dyhb::instance('MailModel');
 		$oMail->sendAEmail($oMailConnect,$sEmailTo,$sEmailSubject,$sEmailMessage,'home');
+		
 		if($oMail->isError()){
 			Dyhb::E($oMail->getErrorMessage());
 		}
