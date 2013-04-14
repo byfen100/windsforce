@@ -55,7 +55,10 @@ function completeEditcommenttopic(data,status){
 			<li>查看帖子</li>
 		</ul>
 
+<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group) || Group_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
 <script src="<!--{:__APPPUB__}-->/Js/moderator.js"></script>
+<!--{/if}-->
+
 <script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
 
 <!--{:Core_Extend::editorInclude()}-->
@@ -158,6 +161,7 @@ function insertGrouptopicmusicSimple(sContent){
 var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseInt('<!--{$oGrouptopic['grouptopic_id']}-->');
 <!--{/script}-->
 
+<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
 <form method="post" autocomplete="off" name="modActionsBox" id="modActionsBox">
 </form>
 
@@ -181,6 +185,7 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 		<!--{/if}-->
 	</div>
 </div>
+<!--{/if}-->
 
 		<!--<include file="group+header" />-->
 

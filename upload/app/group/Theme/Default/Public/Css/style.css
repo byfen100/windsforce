@@ -179,7 +179,7 @@ Description: Group应用模块CSS
 /**===============================
            帖子管理
 ================================*/
-[CURSCRIPT=group::grouptopic::view]
+[CURSCRIPT=group::grouptopic::view,group::group::show]
 /* 帖子管理相关 */
 a#moderate_reason{font-size:14px;line-heigth:14px;font-weight:bold;}
 a#moderate_reason:hover{text-decoration:none;}
@@ -195,6 +195,11 @@ a#moderate_reason:hover{text-decoration:none;}
 /* 多选公用停留框 */
 #modActionSelect{position:absolute;right:0;margin-top:-16px;padding:10px 25px;width:250px;height:100px;;line-height:32px;overflow:hidden;border:1px solid #999;}
 #modActionSelect a{color:#06C;}
+.smallmodaction{position:absolute;top:7px;right:10px;width:50px;height:14px;line-height:100px;overflow:hidden;background:url({__ROOT__}/app/group/Theme/Default/Public/Images/small.gif) no-repeat center center;}
+.checkbox_checkall{position:absolute;top:7px;right:50px;}
+#modActionSelect.smallmodaction_done{margin-top:4px;margin-right:-3px;padding:0;width:35px;height:32px;border:none;background-position:0 -128px;}
+#modActionSelect.smallmodaction_done .smallmodaction{display:none;}
+#modActionSelect.smallmodaction_done #modActionSelectnum {-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0px 2px rgba(0,0,0,0.05);-moz-box-shadow:0 0px 2px rgba(0,0,0,0.1);box-shadow:0 0px 2px rgba(0,0,0,0.05);background:#F5F5F5;border:1px solid #999;color: #F26C4F;cursor: pointer;display: block;height: 30px;left: 3px; margin: 0;position: absolute;text-align: center;top: 0;right:2px;width: 32px;z-index: 999;}
 [/CURSCRIPT]
 
 /**===============================

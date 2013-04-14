@@ -48,6 +48,28 @@ function modClick(oObj,nDataid){
 	}
 }
 
+function tmodClick(oObj){
+	if(oObj.checked){
+		nModclickcount++;
+	}else{
+		nModclickcount--;
+	}
+
+	$WF('modActionSelectnum').innerHTML=nModclickcount;
+
+	if(nModclickcount>0){
+		var nTopoffset=oObj.offsetTop;
+		while((oObj=oObj.offsetParent).id!='topic_list_box') {
+			nTopoffset+=oObj.offsetTop;
+		}
+
+		$WF('modActionSelect').style.top=nTopoffset-7+'px';
+		$WF('modActionSelect').style.display='';
+	}else{
+		$WF('modActionSelect').style.display='none';
+	}
+}
+
 function getTopiclist(){
 	var arrTopiclist=new Array();
 	var nCount=0;
