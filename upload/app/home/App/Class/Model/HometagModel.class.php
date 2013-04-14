@@ -46,7 +46,7 @@ class HometagModel extends CommonModel{
 			$sOldTags=str_replace('，',',',$sOldTags);
 			$sOldTags=str_replace(' ',',',$sOldTags);
 
-			$arrTags=Dyhb::normalize(explode(',',$sTags));
+			$arrTags=array_slice(Dyhb::normalize(explode(',',$sTags)),0,5);
 			foreach($arrTags as $sTagName){
 				$sTagName=G::text($sTagName);
 

@@ -7,8 +7,8 @@
 class LinkController extends InitController{
 
 	public function init__(){
-		parent::init__();Dyhb::L('系统链接无法删除','Controller/Link');
-Dyhb::L('系统链接无法编辑','Controller/Link');
+		parent::init__();
+
 		if($GLOBALS['___login___']['user_id']!=1){
 			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
 		}

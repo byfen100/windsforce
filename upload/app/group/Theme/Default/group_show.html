@@ -314,7 +314,7 @@ function grouptopicSubmit(){
 						</div>
 
 						<div class="commonbox">
-							<div class="commonboxtitle">最新<!--{$oGroup['group_roleuser']}-->&nbsp;<a href="<!--{:Dyhb::U('home://homehelp/index')}-->" title="更多成员"><i class="icon-th-list"></i></a></div>
+							<div class="commonboxtitle">最新<!--{$oGroup['group_roleuser']}-->&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&recommend=1')}-->" title="更多成员"><i class="icon-th-list"></i></a></div>
 							<p>
 								<ul class="thumbnails">
 									<!--{if is_array($arrGroupusers)}-->

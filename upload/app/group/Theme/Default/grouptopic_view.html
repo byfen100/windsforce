@@ -252,7 +252,7 @@ $(function(){
 									<div class="space"></div>
 									<div class="signature">
 										<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
-										<!--{if $sUsersign}--><!--{$sUsersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
+										<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}-->该用户暂时没有设置签名<!--{/if}-->
 									</div>
 									<!--{/if}-->
 

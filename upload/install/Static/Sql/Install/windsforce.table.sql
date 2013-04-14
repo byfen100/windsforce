@@ -336,6 +336,29 @@ CREATE TABLE `#@__creditrulelog` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_cron`
+--
+
+DROP TABLE IF EXISTS `#@__cron`;
+CREATE TABLE `#@__cron` (
+  `cron_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT '任务计划ID',
+  `cron_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否启用任务计划',
+  `cron_type` enum('user','system','plugin','app') NOT NULL DEFAULT 'user' COMMENT '任务计划类型',
+  `cron_name` char(50) NOT NULL DEFAULT '' COMMENT '计划任务名字',
+  `cron_filename` char(50) NOT NULL DEFAULT '' COMMENT '计划任务脚本',
+  `cron_lastrun` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后一次执行时间',
+  `cron_nextrun` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '下次执行时间',
+  `cron_weekday` tinyint(1) NOT NULL DEFAULT '0' COMMENT '每周',
+  `cron_day` tinyint(2) NOT NULL DEFAULT '0' COMMENT '每月',
+  `cron_hour` tinyint(2) NOT NULL DEFAULT '0' COMMENT '小时',
+  `cron_minute` char(36) NOT NULL DEFAULT '' COMMENT '分钟',
+  PRIMARY KEY (`cron_id`),
+  KEY `cron_nextrun` (`cron_status`,`cron_nextrun`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_feed`
 --
 
@@ -826,6 +849,21 @@ CREATE TABLE `#@__pmsystemread` (
   `pm_id` int(10) NOT NULL COMMENT '系统短消息阅读状态',
   PRIMARY KEY (`user_id`,`pm_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_process`
+--
+
+DROP TABLE IF EXISTS `#@__process`;
+CREATE TABLE `#@__process` (
+  `process_id` char(32) NOT NULL,
+  `process_expiry` int(10) DEFAULT NULL,
+  `process_extra` int(10) DEFAULT NULL,
+  PRIMARY KEY (`process_id`),
+  KEY `process_expiry` (`process_expiry`)
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

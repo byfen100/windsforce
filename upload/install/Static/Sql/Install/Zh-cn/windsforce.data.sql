@@ -195,6 +195,18 @@ INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_ac
 -- --------------------------------------------------------
 
 --
+-- 转存表中的数据 `windsforce_cron`
+--
+
+INSERT INTO `#@__cron` (`cron_id`, `cron_status`, `cron_type`, `cron_name`, `cron_filename`, `cron_lastrun`, `cron_nextrun`, `cron_weekday`, `cron_day`, `cron_hour`, `cron_minute`) VALUES
+(1, 1, 'system', '每日数据清理', 'Cleanup_Daily_.php', 1365909949, 1365955200, -1, -1, 0, '0'),
+(2, 1, 'system', '每日公告清理', 'Announcement_Daily_.php', 1365868816, 1365955200, -1, -1, 0, '0'),
+(3, 1, 'system', '网站访问推广清理', 'Promotion_.php', 1365910323, 1365955200, -1, -1, 0, '0'),
+(4, 0, 'system', '清理过期动态', 'Cleanfeed_.php', 1365868835, 1365955200, -1, -1, 0, '0');
+
+-- --------------------------------------------------------
+
+--
 -- 转存表中的数据 `windsforce_homehelp`
 --
 

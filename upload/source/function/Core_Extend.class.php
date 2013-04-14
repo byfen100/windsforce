@@ -214,7 +214,7 @@ class Core_Extend{
 		return $sFilepath;
 	}
 
-	static public function loadCache($CacheNames,$bForce=false){
+	static public function loadCache($CacheNames,$bForce=false,$sForcetype=null){
 		static $arrLoadedCache=array();
 
 		$CacheNames=is_array($CacheNames)?$CacheNames:array($CacheNames);
@@ -227,7 +227,7 @@ class Core_Extend{
 		}
 
 		if(!empty($arrCaches)){
-			$arrCacheDatas=self::cacheData($arrCaches);
+			$arrCacheDatas=self::cacheData($arrCaches,$sForcetype);
 			foreach($arrCacheDatas as $sCacheName=>$data){
 				if($sCacheName=='option'){
 					$GLOBALS['_option_']=$data;
@@ -240,13 +240,26 @@ class Core_Extend{
 		return true;
 	}
 
-	static public function cacheData($CacheNames){
+	static public function cacheData($CacheNames,$sForcetype=null){
 		static $bIsFilecache=null,$bAllowMem=null;
 
-		if(!isset($bIsFilecache)){
-			$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND']=='FileCache';
-			$bAllowMem=self::memory('check');
-		};
+		if($sForcetype===null && empty($sForcetype)){
+			if(!isset($bIsFilecache)){
+				$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND']=='FileCache';
+				$bAllowMem=self::memory('check');
+			};
+		}else{
+			if($sForcetype=='FileCache'){
+				$bIsFilecache=true;
+				$bAllowMem=false;
+			}elseif($sForcetype=='db'){
+				$bIsFilecache=false;
+				$bAllowMem=false;
+			}else{
+				$bIsFilecache=false;
+				$bAllowMem=true;
+			}
+		}
 
 		$arrData=array();
 		$CacheNames=is_array($CacheNames)?$CacheNames:array($CacheNames);
@@ -297,7 +310,7 @@ class Core_Extend{
 		}
 
 		foreach($CacheNames as $sCacheName){
-			if($arrData[$sCacheName]===null){
+			if(!isset($arrData[$sCacheName]) || $arrData[$sCacheName]===null){
 				$arrData[$sCacheName]=null;
 				$bAllowMem && (self::memory('set',$sCacheName,array()));
 			}
@@ -868,6 +881,19 @@ WINDSFORCE;
 		Core_Extend::loadCache('app');
 		if(!in_array(APP_NAME,$GLOBALS['_cache_']['app'])){
 			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
+		}
+
+		// 计划任务
+		if($GLOBALS['_commonConfig_']['CRON_ON']===true){
+			Core_Extend::loadCache('cronnextrun',false,'db');
+
+			if($GLOBALS['_cache_']['cronnextrun']<=CURRENT_TIMESTAMP){
+				if(!Dyhb::classExists('Windsforce_Cron')){
+					require_once(Core_Extend::includeFile('class/windsforce/Windsforce_Cron'));
+				}
+				
+				Windsforce_Cron::RUN();
+			}
 		}
 
 		// 访问推广

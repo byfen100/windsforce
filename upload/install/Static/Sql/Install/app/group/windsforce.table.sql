@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `#@__grouptopic` (
   KEY `user_id` (`user_id`),
   KEY `grouptopic_status` (`grouptopic_status`),
   KEY `create_dateline` (`create_dateline`),
-  KEY `grouptopic_isposts` (`grouptopic_addtodigest`)
+  KEY `grouptopic_addtodigest` (`grouptopic_addtodigest`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

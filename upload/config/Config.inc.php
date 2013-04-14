@@ -91,5 +91,6 @@
   'URL_DOMAIN' => '',
   'DB_HOST' => 'localhost',
   'DB_USER' => 'root',
+  'CRON_ON' => true,
 )
 ?>
