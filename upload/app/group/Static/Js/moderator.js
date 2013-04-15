@@ -74,9 +74,9 @@ function getTopiclist(){
 	var arrTopiclist=new Array();
 	var nCount=0;
 
-	for(var i=0;i<$WF('modActionsBox').elements.length;i++){
-		if($WF('modActionsBox').elements[i].name.match('topiclist')) {
-			arrTopiclist[nCount]=$WF('modActionsBox').elements[i].value;
+	for(var nI=0;nI<$WF('modActionsBox').elements.length;nI++){
+		if($WF('modActionsBox').elements[nI].name.match('topiclist')){
+			arrTopiclist[nCount]=$WF('modActionsBox').elements[nI].value;
 			nCount++;
 		}
 	}
@@ -84,13 +84,36 @@ function getTopiclist(){
 	return arrTopiclist;
 }
 
+/** 主题批量管理 */
+function tmodTopics(sOperation){
+	var arrTopiclist=new Array();
+	var nCount=0;
+	var sOperation=!sOperation?'':sOperation;
+
+	for(var nI=0;nI<$WF('modActionsBox').elements.length;nI++){
+		if($WF('modActionsBox').elements[nI].name.match('moderate') && $WF('modActionsBox').elements[nI].checked){
+			arrTopiclist[nCount]=$WF('modActionsBox').elements[nI].value;
+			nCount++;
+		}
+	}
+	
+	nGrouptopicid=arrTopiclist;
+
+	modTopiccommon(sOperation);
+}
+
 /** 帖子管理通用操作 */
 var sCurrentAction='';
 function modTopiccommon(sAction,sExtra){
-	var sUrl=D.U('group://grouptopicadmin/'+sAction+'_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+(!sExtra?'':'&'+sExtra));
+	var sUrl=D.U('group://grouptopicadmin/'+sAction+'_dialog?groupid='+nGroupid+'&grouptopicid='+nGrouptopicid+(!sExtra?'':'&'+sExtra));
 	sCurrentAction=sAction;
 
-	oCommonNewmodtopics=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Js/Moderator_Js',null,1),'',modTopiccommontopic,'',400,100);
+	var nTempnum=1;
+	if(isArray(nGrouptopicid)){
+		nTempnum=nGrouptopicid.length;
+	}
+
+	oCommonNewmodtopics=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Js/Moderator_Js',null,nTempnum),'',modTopiccommontopic,'',400,100);
 }
 
 function modTopiccommontopic(){
@@ -159,7 +182,7 @@ function modTopiccolor(){
 var sCurrentActionComment='';
 function modCommentcommon(sAction,sExtra){
 	var arrTopiclist=getTopiclist();
-	var sUrl=D.U('group://grouptopicadmin/'+sAction+'_dialog?groupid='+nGroupid+'&dataids[]='+nGrouptopicid+'&commentids='+arrTopiclist+(!sExtra?'':'&'+sExtra));
+	var sUrl=D.U('group://grouptopicadmin/'+sAction+'_dialog?groupid='+nGroupid+'&grouptopicid='+nGrouptopicid+'&commentids='+arrTopiclist+(!sExtra?'':'&'+sExtra));
 
 	sCurrentActionComment=sAction;
 

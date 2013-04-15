@@ -8,8 +8,8 @@ class SticktopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
+		$sGrouptopicid=trim(G::getGpc('grouptopicid','G'));
 		$nStatus=intval(G::getGpc('status','G'));
-		$arrGrouptopics=G::getGpc('dataids','G');
 
 		if(empty($nGroupid)){
 			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
@@ -20,19 +20,26 @@ class SticktopicdialogController extends Controller{
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
 		
-		if(empty($arrGrouptopics)){
+		$arrGrouptopicid=Dyhb::normalize($sGrouptopicid);
+		$sGrouptopics=implode(',',$arrGrouptopicid);
+		
+		if(empty($sGrouptopicid)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
 
-		if($nStatus==3 && !Core_Extend::isAdmin()){
-			$this->E(Dyhb::L('帖子已经全局置顶，你没有权限修改','Controller/Grouptopicadmin'));
+		if(isset($_GET['status'])){
+			if($nStatus==3 && !Core_Extend::isAdmin()){
+				$this->E(Dyhb::L('帖子已经全局置顶，你没有权限修改','Controller/Grouptopicadmin'));
+			}
 		}
-		
-		$sGrouptopics=implode(',',$arrGrouptopics);
+
+		if(isset($_GET['status'])){
+			$this->assign('nStatus',$nStatus);
+		}
+
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
-		$this->assign('nStatus',$nStatus);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopicid)));
 		
 		$this->display('grouptopicadmin+sticktopicdialog');
 	}

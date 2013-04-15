@@ -8,7 +8,7 @@ class ColortopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
-		$arrGrouptopics=G::getGpc('dataids','G');
+		$sGrouptopicid=trim(G::getGpc('grouptopicid','G'));
 
 		if(empty($nGroupid)){
 			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
@@ -19,30 +19,34 @@ class ColortopicdialogController extends Controller{
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
 		
-		if(empty($arrGrouptopics)){
+		$arrGrouptopicid=Dyhb::normalize($sGrouptopicid);
+		$sGrouptopics=implode(',',$arrGrouptopicid);
+		
+		if(empty($sGrouptopics)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
-		
-		$sGrouptopics=implode(',',$arrGrouptopics);
-
-		// 读取帖子颜色
-		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$arrGrouptopics[0])->getOne();
-		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('帖子不存在','Controller/Grouptopicadmin'));
-		}
-
-		$arrColor=array('',array(1=>'0',2=>'0',3=>'0'),'',);
-		if($oGrouptopic->grouptopic_color){
-			$arrColorTemp=@unserialize($oGrouptopic->grouptopic_color);
-			if($arrColorTemp){
-				$arrColor=$arrColorTemp;
+	
+		if(count($arrGrouptopicid)==1){
+			// 读取帖子颜色
+			$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$arrGrouptopicid[0])->getOne();
+			if(empty($oGrouptopic['grouptopic_id'])){
+				$this->E(Dyhb::L('帖子不存在','Controller/Grouptopicadmin'));
 			}
-		}
 
-		$this->assign('arrColor',$arrColor);
+			$arrColor=array('',array(1=>'0',2=>'0',3=>'0'),'',);
+			if($oGrouptopic->grouptopic_color){
+				$arrColorTemp=@unserialize($oGrouptopic->grouptopic_color);
+				if($arrColorTemp){
+					$arrColor=$arrColorTemp;
+				}
+			}
+
+			$this->assign('arrColor',$arrColor);
+		}
+		
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('sGrouptopics',$sGrouptopics);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopicid)));
 		
 		$this->display('grouptopicadmin+colortopicdialog');
 	}

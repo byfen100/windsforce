@@ -22,6 +22,9 @@ function grouptopicSubmit(){
 		}
 	});
 }
+
+var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
+<!--{/script}-->
 <!--{/script}-->
 <div id="forumnew" style="display:none"></div>
 
@@ -90,7 +93,7 @@ function grouptopicSubmit(){
 						<div class="row">
 							<div class="span9">
 								<div id="topic_list_box" class="topic_list_box" style="position: relative;">
-									<form method="post" autocomplete="off" name="moderate" id="moderate">
+									<form method="post" autocomplete="off" name="modActionsBox" id="modActionsBox">
 										<table width="100%" class="table">
 											<thead>
 												<tr style="border-bottom:1px solid #eeeeee;">
@@ -113,7 +116,7 @@ function grouptopicSubmit(){
 												<!--{~$bFindnormaltopic=true}-->
 												<tr><td colspan="3" class="ordinary">普通主题</td></tr>
 												<!--{/if}-->
-												<tr>
+												<tr <!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->class="highlight"<!--{/if}-->>
 													<td class="author">
 														<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
 														匿名
@@ -125,7 +128,9 @@ function grouptopicSubmit(){
 													</td>
 													<td class="subject">
 														<p class="title">
-															<!--{if Group_Extend+checkTopicadminRbac($oGroup)}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
+															<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
+															<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="待审核主题"/>&nbsp;<!--{/if}-->
+															<!--{if Group_Extend+checkTopicadminRbac($oGroup) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
 															<!--{/if}-->
 															<!--{:Group_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 															<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
@@ -178,6 +183,7 @@ function grouptopicSubmit(){
 											</tbody>
 										</table>
 
+										<!--{if Group_Extend+checkTopicadminRbac($oGroup)}-->
 										<div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display: none;">
 											<label class="checkbox right checkbox_checkall">
 												<input type="checkbox" name="chkall" onclick="if(!($('mdct').innerHTML = modclickcount = checkall(this.form, 'moderate'))) {$('mdly').style.display = 'none';}" />全选
@@ -186,22 +192,40 @@ function grouptopicSubmit(){
 											<h2 class="title">选中&nbsp;<strong id="modActionSelectnum" onclick="$WF('modActionSelect').className='commonbox_mini commonbox_mini_gray';" onmouseover="this.title='最大化'"></strong>&nbsp;篇</h2>
 											<div class="modActionSelectcontent">
 												<p>
-													<strong><a href="javascript:;" onclick="tmodthreads(3, 'delete');return false;">删除</a></strong>
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@deletetopic'))}-->
+													<strong><a href="javascript:void(0);" onclick="tmodTopics('deletetopic');return false;">删除</a></strong>
 													<span class="pipe">|</span>
-													<strong><a href="javascript:;" onclick="tmodthreads(2, 'move');return false;">移动</a></strong>
+													<!--{/if}-->
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@categorytopic'))}-->
+													<strong><a href="javascript:void(0);" onclick="tmodTopics('categorytopic');return false;">分类</a></strong>
 													<span class="pipe">|</span>
-													<strong><a href="javascript:;" onclick="tmodthreads(2, 'type');return false;">分类</a></strong>
+													<!--{/if}-->
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))}-->
+													<strong><a href="javascript:void(0);" onclick="tmodTopics('hidetopic');return false;">隐藏显示</a></strong>
+													<!--{/if}-->
 												</p>
 												<p>
-													<a href="javascript:;" onclick="tmodthreads(1, 'stick');return false;">置顶</a>&nbsp;
-													<a href="javascript:;" onclick="tmodthreads(1, 'digest');return false;">精华</a>&nbsp;
-													<a href="javascript:;" onclick="tmodthreads(1, 'highlight');return false;">高亮</a>
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@sticktopic'))}-->
+													<a href="javascript:void(0);" onclick="tmodTopics('sticktopic');return false;">置顶</a>&nbsp;
+													<!--{/if}-->
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@digesttopic'))}-->
+													<a href="javascript:void(0);" onclick="tmodTopics('digesttopic');return false;">精华</a>&nbsp;
+													<!--{/if}-->
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@colortopic'))}-->
+													<a href="javascript:void(0);" onclick="tmodTopics('colortopic');return false;">高亮</a>
 													<span class="pipe">|</span>
-													<a href="javascript:;" onclick="tmodthreads(3, 'bump');return false;">提升下沉</a>&nbsp;
-													<a href="javascript:;" onclick="tmodthreads(4);return false;">关闭打开</a>
+													<!--{/if}-->
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))}-->
+													<a href="javascript:void(0);" onclick="tmodTopics('closetopic');return false;">关闭打开</a>
+													<span class="pipe">|</span>
+													<!--{/if}-->
+													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@recommendtopic'))}-->
+													<a href="javascript:void(0);" onclick="tmodTopics('recommendtopic');return false;">推荐</a>
+													<!--{/if}-->
 												</p>
 											</div>
 										</div>
+										<!--{/if}-->
 									</form>
 								</div>
 

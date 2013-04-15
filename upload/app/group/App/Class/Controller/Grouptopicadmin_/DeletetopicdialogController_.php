@@ -1,6 +1,6 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   删除单个帖子对话框控制器($Liu.XiangMin)*/
+   删除帖子对话框控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
@@ -8,7 +8,7 @@ class DeletetopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
-		$arrGrouptopics=G::getGpc('dataids','G');
+		$sGrouptopicid=trim(G::getGpc('grouptopicid','G'));
 
 		if(empty($nGroupid)){
 			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
@@ -18,15 +18,17 @@ class DeletetopicdialogController extends Controller{
 		if(empty($oGroup['group_id'])){
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
-		
-		if(empty($arrGrouptopics)){
+
+		$arrGrouptopicid=Dyhb::normalize($sGrouptopicid);
+		$sGrouptopics=implode(',',$arrGrouptopicid);
+
+		if(empty($sGrouptopicid)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
-		
-		$sGrouptopics=implode(',',$arrGrouptopics);
+
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopicid)));
 		
 		$this->display('grouptopicadmin+deletetopicdialog');
 	}

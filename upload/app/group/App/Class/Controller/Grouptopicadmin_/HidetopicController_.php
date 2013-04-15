@@ -31,7 +31,7 @@ class HidetopicController extends Controller{
 				$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopic)->getOne();
 
 				if(!empty($oGrouptopic['grouptopic_id'])){
-					$oGrouptopic->grouptopic_ishide=$nStatus;
+					$oGrouptopic->grouptopic_isaudit=$nStatus;
 					$oGrouptopic->setAutofill(false);
 					$oGrouptopic->save(0,'update');
 					
@@ -42,7 +42,7 @@ class HidetopicController extends Controller{
 			}
 		}
 
-		$this->A(array('group_id'=>$nGroupid),$nStatus==1?Dyhb::L('隐藏主题成功','Controller/Grouptopicadmin'):Dyhb::L('显示主题成功','Controller/Grouptopicadmin'));
+		$this->A(array('group_id'=>$nGroupid),$nStatus==0?Dyhb::L('隐藏主题成功','Controller/Grouptopicadmin'):Dyhb::L('显示主题成功','Controller/Grouptopicadmin'));
 	}
 
 }

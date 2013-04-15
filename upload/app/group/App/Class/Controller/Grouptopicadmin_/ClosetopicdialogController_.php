@@ -8,8 +8,8 @@ class ClosetopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
+		$sGrouptopicid=trim(G::getGpc('grouptopicid','G'));
 		$nStatus=intval(G::getGpc('status','G'));
-		$arrGrouptopics=G::getGpc('dataids','G');
 
 		if(empty($nGroupid)){
 			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
@@ -19,16 +19,21 @@ class ClosetopicdialogController extends Controller{
 		if(empty($oGroup['group_id'])){
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
+
+		$arrGrouptopicid=Dyhb::normalize($sGrouptopicid);
+		$sGrouptopics=implode(',',$arrGrouptopicid);
 		
-		if(empty($arrGrouptopics)){
+		if(empty($sGrouptopics)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
+
+		if(isset($_GET['status'])){
+			$this->assign('nStatus',$nStatus);
+		}
 		
-		$sGrouptopics=implode(',',$arrGrouptopics);
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
-		$this->assign('nStatus',$nStatus);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopicid)));
 		
 		$this->display('grouptopicadmin+closetopicdialog');
 	}

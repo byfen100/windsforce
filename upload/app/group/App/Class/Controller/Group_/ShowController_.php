@@ -70,15 +70,21 @@ class ShowController extends Controller{
 		}
 
 		$arrWhere['grouptopic_status']=1;
-		$arrWhere['grouptopic_isaudit']=1;
 		$arrWhere['group_id']=$oGroup->group_id;
 		$arrWhere['grouptopic_sticktopic']=array('lt',3);
+
+		if(Group_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))){
+			$sOrderextends='grouptopic_isaudit ASC,';
+		}else{
+			$sOrderextends='';
+			$arrWhere['grouptopic_isaudit']=1;
+		}
 
 		$nTotalComment=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
 
 		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
 
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("grouptopic_sticktopic DESC,update_dateline DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order($sOrderextends."grouptopic_sticktopic DESC,update_dateline DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 		
 		// 全局置顶帖子
 		if(isset($arrWhere['grouptopic_addtodigest'])){

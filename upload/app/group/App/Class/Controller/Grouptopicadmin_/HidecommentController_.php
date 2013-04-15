@@ -7,7 +7,7 @@
 class HidecommentController extends Controller{
 
 	public function index(){
-		$nGrouptopics=intval(G::getGpc('grouptopics'));// 删除回帖，只有一个主题
+		$nGrouptopics=intval(G::getGpc('grouptopics'));
 		$sGrouptopiccomments=trim(G::getGpc('grouptopiccomments'));
 		$nGroupid=intval(G::getGpc('group_id'));
 		$nStatus=intval(G::getGpc('status'));

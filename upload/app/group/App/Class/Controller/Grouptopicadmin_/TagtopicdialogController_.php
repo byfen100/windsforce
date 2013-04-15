@@ -8,7 +8,7 @@ class TagtopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
-		$arrGrouptopics=G::getGpc('dataids','G');
+		$nGrouptopicid=intval(G::getGpc('grouptopicid','G'));
 
 		if(empty($nGroupid)){
 			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
@@ -19,17 +19,14 @@ class TagtopicdialogController extends Controller{
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
 		
-		if(empty($arrGrouptopics)){
+		if(empty($nGrouptopicid)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
-		
-		$sGrouptopics=implode(',',$arrGrouptopics);
-		$this->assign('sGrouptopics',$sGrouptopics);
 
 		// 获取帖子标签
 		$sTag='';
 
-		$arrTags=GrouptopictagindexModel::F('grouptopic_id=?',$arrGrouptopics[0])->getAll();
+		$arrTags=GrouptopictagindexModel::F('grouptopic_id=?',$nGrouptopicid)->getAll();
 		if(is_array($arrTags)){
 			$arrTemptag=array();
 			foreach($arrTags as $oTag){
@@ -49,6 +46,7 @@ class TagtopicdialogController extends Controller{
 		}
 
 		$this->assign('nGroupid',$nGroupid);
+		$this->assign('sGrouptopics',$nGrouptopicid);
 		$this->assign('sTag',$sTag);
 		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
 		

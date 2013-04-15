@@ -2,9 +2,9 @@
 		
 		<p>
 			<select name="category_id">
-				<option value="0" <!--{if $nCategoryid==0}-->selected<!--{/if}-->>未分类</option>
+				<option value="0">未分类</option>
 				<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
-				<option value="<!--{$oGrouptopiccategory['grouptopiccategory_id']}-->" <!--{if $nCategoryid==$oGrouptopiccategory['grouptopiccategory_id']}-->selected<!--{/if}-->><!--{$oGrouptopiccategory['grouptopiccategory_name']}--></option>
+				<option value="<!--{$oGrouptopiccategory['grouptopiccategory_id']}-->" <!--{if isset($nCategoryid) && $nCategoryid==$oGrouptopiccategory['grouptopiccategory_id']}-->selected<!--{/if}-->><!--{$oGrouptopiccategory['grouptopiccategory_name']}--></option>
 				<!--</foreach>-->
 			</select>
 		</p>

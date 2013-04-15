@@ -8,7 +8,7 @@ class CategorytopicdialogController extends Controller{
 
 	public function index(){
 		$nGroupid=intval(G::getGpc('groupid','G'));
-		$arrGrouptopics=G::getGpc('dataids','G');
+		$sGrouptopicid=trim(G::getGpc('grouptopicid','G'));
 		$nCategoryid=intval(G::getGpc('category_id','G'));
 		
 		if(empty($nGroupid)){
@@ -20,19 +20,24 @@ class CategorytopicdialogController extends Controller{
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
 		
-		if(empty($arrGrouptopics)){
+		$arrGrouptopicid=Dyhb::normalize($sGrouptopicid);
+		$sGrouptopics=implode(',',$arrGrouptopicid);
+		
+		if(empty($sGrouptopicid)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
 		}
 		
 		// 取得小组的分类
 		$arrGrouptopiccategorys=GrouptopiccategoryModel::F('group_id=?',$nGroupid)->order('grouptopiccategory_sort ASC,create_dateline DESC')->getAll();
 		
-		$sGrouptopics=implode(',',$arrGrouptopics);
+		if(isset($_GET['category_id'])){
+			$this->assign('nCategoryid',$nCategoryid);
+		}
+
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('arrGrouptopiccategorys',$arrGrouptopiccategorys);
-		$this->assign('nCategoryid',$nCategoryid);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopicid)));
 
 		$this->display('grouptopicadmin+categorytopicdialog');
 	}

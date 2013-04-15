@@ -4,7 +4,7 @@
 			<select name="status">
 				<option value="0">取消精华</option>
 				<!--<for start='1' end='4' var='nMyvalue'>-->
-				<option value="<!--{$nMyvalue}-->" <!--{if $nStatus==$nMyvalue}-->selected<!--{/if}-->>精华&nbsp;<!--{$nMyvalue}--></option>
+				<option value="<!--{$nMyvalue}-->" <!--{if isset($nStatus) && $nStatus==$nMyvalue}-->selected<!--{/if}-->>精华&nbsp;<!--{$nMyvalue}--></option>
 				<!--</for>-->
 			</select>
 		</p>

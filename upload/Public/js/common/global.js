@@ -5,6 +5,10 @@ function isUndefined(variable){
 	return typeof variable=='undefined'?true:false;
 }
 
+function isArray(oObj){
+	return oObj && !(oObj.propertyIsEnumerable('length')) && typeof oObj==='object' && typeof oObj.length==='number';
+}
+
 function in_array(needle,haystack){
 	if(typeof needle=='string' || typeof needle=='number'){
 		for(var i in haystack){

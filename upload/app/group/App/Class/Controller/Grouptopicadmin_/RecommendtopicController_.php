@@ -24,10 +24,6 @@ class RecommendtopicController extends Controller{
 			$this->E(Dyhb::L('你没有推荐或者取消推荐帖子的权限','Controller/Grouptopicadmin'));
 		}
 
-		if($nStatus==2 && !Core_Extend::isAdmin()){
-			$this->E(Dyhb::L('帖子已经由系统推荐，你没有权限修改','Controller/Grouptopicadmin'));
-		}
-
 		$arrGrouptopics=explode(',',$sGrouptopics);
 
 		if(is_array($arrGrouptopics)){

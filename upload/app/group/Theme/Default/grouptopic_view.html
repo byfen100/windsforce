@@ -190,7 +190,7 @@ $(function(){
 									</div>
 									<div id="grouptopicview_main">
 										<div class="grouptopiccontent_box">
-											<!--{if $oGrouptopic['grouptopic_ishide']==1}-->
+											<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
 											<div class="locked">本帖已经隐藏，仅具有管理权限的人才能够浏览</div>
 											<!--{/if}-->
 											
@@ -198,7 +198,7 @@ $(function(){
 											<div class="locked">本帖需要回复后才能够浏览</div>
 											<!--{/if}-->
 											
-											<!--{if $oGrouptopic['grouptopic_onlycommentview']=='0' || $bHavecomment===true}-->
+											<!--{if ($oGrouptopic['grouptopic_onlycommentview']=='0' || $bHavecomment===true) || ($oGrouptopic['grouptopic_isaudit']=='0' && Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}-->
 											<!--{$oGrouptopic->grouptopic_content|Core_Extend+ubb}-->
 											<!--{/if}-->
 										</div>
