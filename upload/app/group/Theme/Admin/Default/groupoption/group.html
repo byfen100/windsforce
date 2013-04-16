@@ -1,0 +1,99 @@
+<!--<include file="public+header" />-->
+
+<!--{script}-->
+$(document).ready(function(){
+	$("#groupoption_tab ul").idTabs();
+});
+
+function option(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	$("#submit_button").attr("disabled", false);
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->小组功能设置<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->小组功能设置<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->小组功能设置<!--</lang>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('app/index')}-->"><!--<lang package='Template/Default/App'>-->应用列表<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
+				<div class="module_content">
+					<!--<include file="Admin_Extend::template('group','groupoption/menu')" />-->
+					
+					<div id="groupoption_tab" class="windsforce_tab">
+						<div class="windsforce_tabtitlebox">
+							<ul class="windsforce_tabtitle">
+								<li><a href="#tab1"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->基本功能<!--</lang>--></a></li>
+								<li><a href="#tab2"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->发布功能<!--</lang>--></a></li>
+							</ul>
+						</div>
+						<div id="tab1" class="windsforce_tabcontent">
+							<fieldset>
+								<label for="close_site"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->审核新群组<!--</lang>--></label>
+								<input type="radio" id="group_isaudit" name="options[group_isaudit]" value="1" <!--{if $arrOptions['group_isaudit']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+								<input type="radio" id="" name="options[group_isaudit]" value="0" <!--{if $arrOptions['group_isaudit']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->管理员建立群组时不需要审核<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="group_icon_uploadfile_maxsize"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->群组图标最大上传限制(B)<!--</lang>--> (<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->当前最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSize)}-->)</label>
+								<input type="text" name="options[group_icon_uploadfile_maxsize]" id="group_icon_uploadfile_maxsize" size="60" value="<!--{$arrOptions['group_icon_uploadfile_maxsize']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->系统最大附件上传大小，单位为B，-1表示不限制<!--</lang>--> <br/>
+									<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->服务器最大上传值<!--</lang>--> <!--{$nUploadMaxFilesize}--> (<!--{$nUploadMaxFilesize*1048576}-->B) <!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->请注意最好不要超过这个值，否则不会有任何效果<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_headbg_uploadfile_maxsize"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->群组头部背景最大上传限制(B)<!--</lang>--> (<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->当前最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSizeTwo)}-->)</label>
+								<input type="text" name="options[group_headbg_uploadfile_maxsize]" id="group_headbg_uploadfile_maxsize" size="60" value="<!--{$arrOptions['group_headbg_uploadfile_maxsize']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->系统最大附件上传大小，单位为B，-1表示不限制<!--</lang>--> <br/>
+									<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->服务器最大上传值<!--</lang>--> <!--{$nUploadMaxFilesize}--> (<!--{$nUploadMaxFilesize*1048576}-->B) <!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->请注意最好不要超过这个值，否则不会有任何效果<!--</lang>-->
+								</div>
+							</fieldset>
+						</div>
+						<div id="tab2" class="windsforce_tabcontent">
+							<fieldset>
+								<label for="grouptopic_edit_limittime"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->帖子发布后用户多长时间可以编辑帖子<!--</lang>--></label>
+								<select name="options[grouptopic_edit_limittime]" id="grouptopic_edit_limittime">
+									<option value="3600" <!--{if $arrOptions['grouptopic_edit_limittime']==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
+									<option value="86400" <!--{if $arrOptions['grouptopic_edit_limittime']==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>
+									<option value="604800" <!--{if $arrOptions['grouptopic_edit_limittime']==604800}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一星期<!--</lang>--></option>
+									<option value="2592000" <!--{if $arrOptions['grouptopic_edit_limittime']==2592000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一月<!--</lang>--></option>
+									<option value="31536000" <!--{if $arrOptions['grouptopic_edit_limittime']==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->用户发布帖子后一般一天之内可以编辑帖子<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="grouptopiccomment_edit_limittime"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->帖子回复发布后用户多长时间可以编辑回帖<!--</lang>--></label>
+								<select name="options[grouptopiccomment_edit_limittime]" id="grouptopiccomment_edit_limittime">
+									<option value="3600" <!--{if $arrOptions['grouptopiccomment_edit_limittime']==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
+									<option value="86400" <!--{if $arrOptions['grouptopiccomment_edit_limittime']==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>
+									<option value="604800" <!--{if $arrOptions['grouptopiccomment_edit_limittime']==604800}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一星期<!--</lang>--></option>
+									<option value="2592000" <!--{if $arrOptions['grouptopiccomment_edit_limittime']==2592000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一月<!--</lang>--></option>
+									<option value="31536000" <!--{if $arrOptions['grouptopiccomment_edit_limittime']==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->用户发布回帖后一般一天之内可以编辑回帖<!--</lang>-->
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

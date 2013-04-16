@@ -68,7 +68,7 @@
 								<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
 							</a>
 							<div class="grouplist_txt">
-								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" ><!--{$oGroup['group_nikename']}--></a></h3>
+								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;<!--{/if}-->"><!--{$oGroup['group_nikename']}--></a></h3>
 								<span><!--{$oGroup['group_usernum']}-->人加入</span>
 								<!--{if $nGroupuser==0}-->
 								&nbsp;<span id="listgroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->,'listgroup_<!--{$oGroup['group_id']}-->');">+加入</a></span>

@@ -12,8 +12,6 @@ class HomemainController extends InitController{
 	public function index($sModel=null,$bDisplay=true){
 		$sType=trim(G::getGpc('type','G'));
 
-		Core_Extend::loadCache('home_option');
-
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
 
 		$this->assign('nId',intval(G::getGpc('id','G')));

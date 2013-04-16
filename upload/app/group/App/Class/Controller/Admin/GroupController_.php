@@ -161,8 +161,7 @@ class GroupController extends InitController{
 			// 取得ICON
 			$sGroupIcon=Group_Extend::getGroupIcon($oGroup['group_icon']);
 			$this->assign('sGroupIcon',$sGroupIcon);
-			
-			Core_Extend::loadCache('group_option');
+
 			$arrOptionData=$GLOBALS['_cache_']['group_option'];
 			$this->assign('nUploadSize',Core_Extend::getUploadSize($arrOptionData['group_icon_uploadfile_maxsize']));
 			
@@ -227,6 +226,103 @@ class GroupController extends InitController{
 				$this->S(Dyhb::L('图标删除成功','__APP_ADMIN_LANG__@Controller/Group'));
 			}else{
 				$this->E(Dyhb::L('图标不存在','__APP_ADMIN_LANG__@Controller/Group'));
+			}
+		}else{
+			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+		}
+	}
+
+	public function headerbg(){
+		$nId=intval(G::getGpc('value','G'));
+		
+		$oGroup=GroupModel::F('group_id=?',$nId)->query();
+		if(!empty($oGroup['group_id'])){
+			$this->assign('oGroup',$oGroup);
+			
+			// 读取系统背景
+			$arrSystembgs=G::listDir(WINDSFORCE_PATH.'/app/group/Static/Images/groupbg',false,true);
+
+			// 取得当前背景
+			$sGroupHeaderbg=Group_Extend::getGroupHeaderbg($oGroup['group_headerbg']);
+			$this->assign('sGroupHeaderbg',$sGroupHeaderbg);
+			
+			$arrOptionData=$GLOBALS['_cache_']['group_option'];
+			$this->assign('nUploadSize',Core_Extend::getUploadSize($arrOptionData['group_headbg_uploadfile_maxsize']));
+			
+			$this->display(Admin_Extend::template('group','group/headerbg'));
+		}else{
+			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+		}
+	}
+
+	public function headerbg_add(){
+		$nId=intval(G::getGpc('value','P'));
+		
+		$oGroup=GroupModel::F('group_id=?',$nId)->query();
+		if(!empty($oGroup['group_id'])){
+			if($_FILES['headerbg']['error'][0]=='4'){
+				if(isset($_POST['group_headerbg'])){
+					$oGroup->group_headerbg=intval($_POST['group_headerbg']);
+					$oGroup->save(0,'update');
+
+					if($oGroup->isError()){
+						$this->E($oGroup->getErrorMessage());
+					}
+				}
+			}else{
+				require_once(Core_Extend::includeFile('function/Upload_Extend'));
+				try{
+					// 上传前删除早前的icon
+					if(!empty($oGroup['group_headerbg']) && !Core_Extend::isPostInt($oGroup['group_headerbg'])){
+						require_once(Core_Extend::includeFile('function/Upload_Extend'));
+						Upload_Extend::deleteIcon('group',$oGroup['group_headerbg']);
+				
+						$oGroup->group_headerbg='';
+						$oGroup->save(0,'update');
+						if($oGroup->isError()){
+							$this->E($oGroup->getErrorMessage());
+						}
+					}
+
+					// 执行上传
+					$sPhotoDir=Upload_Extend::uploadIcon('group',array('width'=>1170,'height'=>150,'uploadfile_maxsize'=>$GLOBALS['_cache_']['group_option']['group_headbg_uploadfile_maxsize']));
+				
+					$oGroup->group_headerbg=$sPhotoDir;
+					$oGroup->save(0,'update');
+					if($oGroup->isError()){
+						$this->E($oGroup->getErrorMessage());
+					}
+				}catch(Exception $e){
+					$this->E($e->getMessage());
+				}
+			}
+			
+			$this->S(Dyhb::L('群组背景设置成功','__APP_ADMIN_LANG__@Controller/Group'));
+		}else{
+			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+		}
+	}
+
+	public function delete_headerbg(){
+		$nId=intval(G::getGpc('value','G'));
+
+		$oGroup=GroupModel::F('group_id=?',$nId)->query();
+		if(!empty($oGroup['group_id'])){
+			if(!empty($oGroup['group_headerbg'])){
+				if(!Core_Extend::isPostInt($oGroup['group_headerbg'])){
+					require_once(Core_Extend::includeFile('function/Upload_Extend'));
+					Upload_Extend::deleteIcon('group',$oGroup['group_headerbg']);
+				}
+			
+				$oGroup->group_headerbg='';
+				$oGroup->save(0,'update');
+				if($oGroup->isError()){
+					$this->E($oGroup->getErrorMessage());
+				}
+				
+				$this->S(Dyhb::L('小组背景删除成功','__APP_ADMIN_LANG__@Controller/Group'));
+			}else{
+				$this->E(Dyhb::L('小组背景不存在','__APP_ADMIN_LANG__@Controller/Group'));
 			}
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));

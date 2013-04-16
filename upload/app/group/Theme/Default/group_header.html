@@ -1,7 +1,7 @@
 		<div class="row">
 			<div class="span12" style="margin-top:10px;margin-bottom:15px;">
 				<div class="groupcontent_commontop">
-					<div style="background:url('<!--{:__APPPUB__}-->/Images/groupbg/5.jpg') center repeat;" class="group_commontitle">
+					<div style="background:url('<!--{:Group_Extend::getGroupHeaderbg($oGroup['group_headerbg'])}-->') center repeat;" class="group_commontitle">
 						<div class="span12">
 							<dl class="group_info">
 								<dt class="left">
@@ -9,7 +9,7 @@
 								</dt>
 								<dd style="padding-left:60px;">
 									<p class="name">
-										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName"><!--{$oGroup['group_nikename']}--></a>&nbsp;
+										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" id="groupName" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;font-weight:bold;<!--{/if}-->"><!--{$oGroup['group_nikename']}--></a>&nbsp;
 										<!--{if $nGroupuser==0}-->
 										<span id="commongroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="joinGroup(<!--{$oGroup['group_id']}-->,'commongroup_<!--{$oGroup['group_id']}-->');">+加入</a></span>
 										<!--{elseif $nGroupuser==1}-->

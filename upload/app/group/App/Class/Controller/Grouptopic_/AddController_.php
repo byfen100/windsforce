@@ -46,7 +46,7 @@ class AddController extends Controller{
 			if($oGroup->group_ispost==0){
 				$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
 				if(empty($oGroupuser['user_id'])){
-					$this->E(Dyhb::L('只有该小组成员才能发帖','Controller/Grouptopic'));
+					$this->E(Dyhb::L('只有该小组成员才能发帖','Controller/Grouptopic').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','Controller/Group').'</a></span>');
 				}
 			}elseif($oGroup->group_ispost==1){
 				$this->E(Dyhb::L('该小组目前拒绝任何人发帖','Controller/Grouptopic'));

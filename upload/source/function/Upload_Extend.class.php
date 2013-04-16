@@ -30,7 +30,9 @@ class Upload_Extend{
 			Dyhb::E(Dyhb::L('你没有选择任何文件','__COMMON_LANG__@Function/Upload_Extend'));
 		}
 
-		Core_Extend::loadCache($sType.'_option');
+		if(empty($GLOBALS['_cache_'][$sType.'_option'])){
+			Core_Extend::loadCache($sType.'_option');
+		}
 
 		$arrDefaultoption=array(
 			'uploadfile_maxsize'=>$GLOBALS['_cache_'][$sType.'_option'][$sType.'_icon_uploadfile_maxsize'],
@@ -48,8 +50,8 @@ class Upload_Extend{
 		// 缩略图设置
 		$oUploadfile->_sThumbPrefix='';
 		$oUploadfile->_bThumb=true;
-		$oUploadfile->_nThumbMaxHeight=$arrUploadoption['width'];
-		$oUploadfile->_nThumbMaxWidth=$arrUploadoption['height'];
+		$oUploadfile->_nThumbMaxHeight=$arrUploadoption['height'];
+		$oUploadfile->_nThumbMaxWidth=$arrUploadoption['width'];
 		$oUploadfile->_sThumbPath=$arrUploadoption['upload_path'].$sUploadDir;
 		$oUploadfile->_bThumbRemoveOrigin=FALSE;
 		$oUploadfile->_bThumbFixed=true;

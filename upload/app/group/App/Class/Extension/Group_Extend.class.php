@@ -8,10 +8,21 @@ class Group_Extend{
 
 	public static function getGroupIcon($sImgname){
 		if(!empty($sImgname)){
-			$sImgname=__ROOT__.'/data/upload/app/group/icon/'.$sImgname;
-			return $sImgname;
+			return __ROOT__.'/data/upload/app/group/icon/'.$sImgname;
 		}else{
 			return __ROOT__.'/app/group/Static/Images/group_icon.gif';
+		}
+	}
+
+	public static function getGroupHeaderbg($sImgname){
+		if(!empty($sImgname)){
+			if(Core_Extend::isPostInt($sImgname)){
+				return __ROOT__.'/app/group/Static/Images/groupbg/'.$sImgname.'.jpg';
+			}else{
+				return __ROOT__.'/data/upload/app/group/icon/'.$sImgname;
+			}
+		}else{
+			return __ROOT__.'/app/group/Static/Images/groupbg/1.jpg';
 		}
 	}
 

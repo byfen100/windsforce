@@ -48,6 +48,8 @@ CREATE TABLE `#@__group` (
   `update_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '最后更新时间',
   `group_audittopic` tinyint(1) NOT NULL DEFAULT '0' COMMENT '发贴是否审核',
   `group_auditcomment` tinyint(1) NOT NULL DEFAULT '0' COMMENT '回帖是否审核',
+  `group_color` char(7) NOT NULL COMMENT '小组标题颜色',
+  `group_headerbg` char(30) NOT NULL COMMENT '群组背景',
   PRIMARY KEY (`group_id`),
   KEY `user_id` (`user_id`),
   KEY `group_name` (`group_name`),

@@ -10,16 +10,17 @@ Dyhb::import(WINDSFORCE_PATH.'/app/group/App/Class/Model');
 class GroupmainController extends InitController{
 
 	public function index($sModel=null,$bDisplay=true){
-		Core_Extend::loadCache('group_option');
-
+		$sType=trim(G::getGpc('type','G'));
+		
 		$arrOptionData=$GLOBALS['_cache_']['group_option'];
 
 		$this->assign('nUploadMaxFilesize',ini_get('upload_max_filesize'));
 		$this->assign('nUploadSize',Core_Extend::getUploadSize($arrOptionData['group_icon_uploadfile_maxsize']));
+		$this->assign('nUploadSizeTwo',Core_Extend::getUploadSize($arrOptionData['group_headbg_uploadfile_maxsize']));
 		$this->assign('nId',intval(G::getGpc('id','G')));
 		$this->assign('arrOptions',$arrOptionData);
 
-		$this->display(Admin_Extend::template('group','groupoption/index'));
+		$this->display(Admin_Extend::template('group','groupoption/'.($sType?$sType:'index')));
 	}
 
 	public function update_option(){

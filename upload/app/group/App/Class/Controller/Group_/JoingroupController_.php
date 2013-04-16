@@ -26,6 +26,11 @@ class JoingroupController extends Controller{
 			$this->E(Dyhb::L('你已是该小组成员','Controller/Group'));
 		}
 
+		// 判断小组是否关闭了加入会员
+		if($oGroup['group_joinway']==1){
+			$this->E(Dyhb::L('该小组目前禁止任何人加入','Controller/Group'));
+		}
+
 		// 保存数据
 		$oGroupuser=new GroupuserModel();
 		$oGroupuser->user_id=$GLOBALS['___login___']['user_id'];

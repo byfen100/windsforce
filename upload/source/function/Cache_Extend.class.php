@@ -79,6 +79,9 @@ class Cache_Extend{
 						require_once(Core_Extend::includeFile('cache/'.$sCacheclass,$sApp,'_.php'));
 					}
 
+					// 导入应用模型
+					Dyhb::import(WINDSFORCE_PATH.'/app/'.$sApp.'/App/Class/model');
+
 					$Callback=array($sCacheclass,'cache');
 					if(is_callable($Callback)){
 						call_user_func($Callback);

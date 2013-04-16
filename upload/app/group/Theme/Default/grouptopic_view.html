@@ -502,7 +502,7 @@ $(function(){
 											<div class="commonbox_mini commonbox_mini_gray">
 												<h2 class="title">
 													你参与了&nbsp;<a class="bind_hover_card" href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" bm_user_id="<!--{$oParentcomment['user_id']}-->"><img alt="<!--{$oParentcomment['grouptopiccomment_name']}-->" src="<!--{:Core_Extend::avatar($oParentcomment['user_id'],'small')}-->" width="32px" height="32px"></a>
-													&nbsp;他的回帖&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oParentcomment['user_id']}-->"><!--{$oParentcomment['grouptopiccomment_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oParentcomment['user_id'].'&isolation_commentid='.$oParentcomment['grouptopiccomment_id'])}-->" title="查看该回帖"><i class="icon-eye-open"></i></a>
+													&nbsp;他的回帖&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oParentcomment['user_id']}-->"><!--{$oParentcomment['grouptopiccomment_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oParentcomment['grouptopic_id'].'&isolation_commentid='.$oParentcomment['grouptopiccomment_id'])}-->" title="查看该回帖"><i class="icon-eye-open"></i></a>
 												</h2>
 												<div class="grouptopiccomment_parentcontent">
 													<p><!--{$oParentcomment['grouptopiccomment_content']|strip_tags|G+subString=0,100|Core_Extend+ubb}--></p>
