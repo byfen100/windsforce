@@ -70,7 +70,7 @@
 								<!--{~$arrGroups=$oGroupcategory->group}-->
 								<!--{if is_array($arrGroups)}-->
 								<!--<foreach for=arrGroups value=oGroup>-->
-								<!--{~$nGroupuser=Group_Extend::getGroupuser($oGroup['group_id'])}-->
+								<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oGroup['group_id'])}-->
 								<tr align="center" valign="middle" class="grouptopicone">
 									<td width="80" class="grouplist_borderbottom">
 										<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">
@@ -186,7 +186,7 @@
 						<ul id="recommend_grouplist_box" class="grouplist_box">
 							<!--{if is_array($arrRecommendgroups)}-->
 							<!--<foreach for=arrRecommendgroups value=oRecommendgroup>-->
-							<!--{~$nGroupuser=Group_Extend::getGroupuser($oRecommendgroup['group_id'])}-->
+							<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oRecommendgroup['group_id'])}-->
 							<li>
 								<a href="<!--{:Group_Extend::getGroupurl($oRecommendgroup)}-->"><!--{$oRecommendgroup['group_nikename']}-->&nbsp;(<!--{$oRecommendgroup['group_usernum']}-->)</a>
 								<!--{if $nGroupuser==0}-->
@@ -209,7 +209,7 @@
 						<ul id="new_grouplist_box" class="grouplist_box">
 							<!--{if is_array($arrNewgroups)}-->
 							<!--<foreach for=arrNewgroups value=oNewgroup>-->
-							<!--{~$nGroupuser=Group_Extend::getGroupuser($oNewgroup['group_id'])}-->
+							<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oNewgroup['group_id'])}-->
 							<li>
 								<a href="<!--{:Group_Extend::getGroupurl($oNewgroup)}-->"><!--{$oNewgroup['group_nikename']}-->&nbsp;(<!--{$oNewgroup['group_usernum']}-->)</a>
 								<!--{if $nGroupuser==0}-->
@@ -232,7 +232,7 @@
 						<ul id="hot_grouplist_box" class="grouplist_box">
 							<!--{if is_array($arrHotgroups)}-->
 							<!--<foreach for=arrHotgroups value=oHotgroup>-->
-							<!--{~$nGroupuser=Group_Extend::getGroupuser($oHotgroup['group_id'])}-->
+							<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oHotgroup['group_id'])}-->
 							<li>
 								<a href="<!--{:Group_Extend::getGroupurl($oHotgroup)}-->"><!--{$oHotgroup['group_nikename']}-->&nbsp;(<!--{$oHotgroup['group_usernum']}-->)</a>
 								<!--{if $nGroupuser==0}-->

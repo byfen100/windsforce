@@ -20,7 +20,7 @@ class ClosetopicController extends Controller{
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
 
-		if(!Group_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))){
 			$this->E(Dyhb::L('你没有关闭或者打开帖子的权限','Controller/Grouptopicadmin'));
 		}
 

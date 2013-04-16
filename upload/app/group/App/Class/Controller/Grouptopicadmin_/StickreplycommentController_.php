@@ -26,7 +26,7 @@ class StickreplycommentController extends Controller{
 			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopicadmin'));
 		}
 
-		if(!Group_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@stickreplycomment'))){
+		if(!Groupadmin_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@stickreplycomment'))){
 			$this->E(Dyhb::L('你没有权限置顶或者取消置顶回帖','Controller/Grouptopicadmin'));
 		}
 		

@@ -37,12 +37,12 @@ class IndexController extends Controller{
 		$this->assign('arrGroupcategorys',$arrGroupcategorys);
 
 		// 热门帖子
-		$arrGrouphottopics=Group_Extend::getGrouphottopic();
+		$arrGrouphottopics=Groupdata_Extend::getGrouphottopic();
 		
 		$this->assign('arrGrouphottopics',$arrGrouphottopics);
 
 		// 首页幻灯片帖子
-		$arrGroupthumbtopics=Group_Extend::getGroupthumbtopic();
+		$arrGroupthumbtopics=Groupdata_Extend::getGroupthumbtopic();
 		
 		$this->assign('arrGroupthumbtopics',$arrGroupthumbtopics);
 

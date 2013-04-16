@@ -21,7 +21,7 @@ class TagtopicController extends Controller{
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
 		
-		if(!Group_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@tagtopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@tagtopic'))){
 			$this->E(Dyhb::L('你没有设置帖子标签的权限','Controller/Grouptopicadmin'));
 		}
 

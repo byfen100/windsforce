@@ -132,23 +132,23 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 															<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="待审核主题"/>&nbsp;<!--{/if}-->
 															<!--{if Group_Extend+checkTopicadminRbac($oGroup) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
 															<!--{/if}-->
-															<!--{:Group_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
+															<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 															<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 															<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 															<!--{d*else}-->
 															<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[默认分类]</a>
 															<!--{/if}-->
-															<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
+															<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 															<!--{if $oGrouptopic->grouptopic_comments>0}-->
 															<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 															<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
 															&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="查看新回复">New</a>&nbsp;
 															<!--{/if}-->
 															<!--{/if}-->
-															<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
-															<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
+															<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
+															<!--{:Grouptopic_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 															<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
-															<!--{~$sPagelinks=Group_Extend::getTopicpages($oGrouptopic)}-->
+															<!--{~$sPagelinks=Grouptopic_Extend::getTopicpages($oGrouptopic)}-->
 															<!--{if $sPagelinks}-->
 															<span class="pagenav"><!--{$sPagelinks}--></span>
 															<!--{/if}-->

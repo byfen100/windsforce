@@ -25,7 +25,7 @@ class DeletecommentController extends Controller{
 			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopicadmin'));
 		}
 
-		if(!Group_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletecomment'))){
+		if(!Groupadmin_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletecomment'))){
 			$this->E(Dyhb::L('你没有权限删除回帖','Controller/Grouptopicadmin'));
 		}
 

@@ -49,7 +49,7 @@ class UserController extends Controller{
 	}
 
 	protected function get_groupuser($nGroupid){
-		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+		$nGroupuser=Groupadmin_Extend::getGroupuser($nGroupid);
 
 		$this->assign('nGroupuser',$nGroupuser);
 	}

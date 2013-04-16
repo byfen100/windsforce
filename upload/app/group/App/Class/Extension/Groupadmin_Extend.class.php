@@ -40,7 +40,7 @@ class Groupadmin_Extend{
 			return false;
 		}
 
-		$nGroupuserrole=Group_Extend::getGroupUserrole($oGroup->group_id);
+		$nGroupuserrole=Groupadmin_Extend::getGroupUserrole($oGroup->group_id);
 		
 		$bAllowedEditcomment=false;
 		if(in_array($nGroupuserrole,array(1,2,4))){
@@ -61,7 +61,7 @@ class Groupadmin_Extend{
 			return false;
 		}
 
-		$nGroupuserrole=Group_Extend::getGroupUserrole($oGroup->group_id);
+		$nGroupuserrole=Groupadmin_Extend::getGroupUserrole($oGroup->group_id);
 		
 		$bAllowedEditcomment=false;
 		if(in_array($nGroupuserrole,array(1,2,4))){
@@ -76,7 +76,7 @@ class Groupadmin_Extend{
 			return false;
 		}
 
-		$nGroupuserrole=Group_Extend::getGroupUserrole($oGroup->group_id);
+		$nGroupuserrole=Groupadmin_Extend::getGroupUserrole($oGroup->group_id);
 		
 		$bAllowedEditcomment=false;
 		if(in_array($nGroupuserrole,array(1,2,4))){

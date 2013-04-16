@@ -26,7 +26,7 @@ class HidecommentController extends Controller{
 			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopicadmin'));
 		}
 
-		if(!Group_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment'))){
+		if(!Groupadmin_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment'))){
 			$this->E(Dyhb::L('你没有权限屏蔽或者显示回帖','Controller/Grouptopicadmin'));
 		}
 		

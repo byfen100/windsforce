@@ -105,7 +105,7 @@ class GrouptopiccommentModel extends CommonModel{
 
 		$sOrdertype=$oTryGrouptopiccomment->grouptopic->grouptopic_ordertype?'DESC':'ASC';
 
-		if(!Group_Extend::checkCommentadminRbac($oTryGrouptopiccomment->grouptopic->group,array('group@grouptopicadmin@auditcomment'))){
+		if(!Groupadmin_Extend::checkCommentadminRbac($oTryGrouptopiccomment->grouptopic->group,array('group@grouptopicadmin@auditcomment'))){
 			$nAutopass=1;
 		}else{
 			$nAutopass=0;

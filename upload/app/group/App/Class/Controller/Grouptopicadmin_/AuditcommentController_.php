@@ -25,7 +25,7 @@ class AuditcommentController extends Controller{
 			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopicadmin'));
 		}
 
-		if(!Group_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))){
+		if(!Groupadmin_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))){
 			$this->E(Dyhb::L('你没有权限审核回帖','Controller/Grouptopicadmin'));
 		}
 		

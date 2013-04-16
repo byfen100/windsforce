@@ -80,7 +80,7 @@ class ShowController extends Controller{
 		$arrWhere['group_id']=$oGroup->group_id;
 		$arrWhere['grouptopic_sticktopic']=array('lt',3);
 
-		if(Group_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))){
+		if(Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))){
 			$sOrderextends='grouptopic_isaudit ASC,';
 		}else{
 			$sOrderextends='';
@@ -154,7 +154,7 @@ class ShowController extends Controller{
 	}
 
 	protected function get_groupuser($nGroupid){
-		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+		$nGroupuser=Groupadmin_Extend::getGroupuser($nGroupid);
 
 		$this->assign('nGroupuser',$nGroupuser);
 	}

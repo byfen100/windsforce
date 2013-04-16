@@ -31,7 +31,7 @@ $(function(){
 								</div>
 								<h1 class="grouptopic-title">
 									<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
-									<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
+									<!--{:Grouptopic_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
 									<span class="floor_copy" style="color:gray;font-size:13px;font-weight:normal;" title="复制此楼地址" onclick="copy('<!--{$oGrouptopic->grouptopic_title}--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id)}-->','楼层复制成功');">[复制链接]</span>
 								</h1>
 								<div class="info">

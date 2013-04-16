@@ -20,7 +20,7 @@ class SticktopicController extends Controller{
 			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
 		}
 
-		if(!Group_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@sticktopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@sticktopic'))){
 			$this->E(Dyhb::L('你没有置顶或者取消置顶帖子的权限','Controller/Grouptopicadmin'));
 		}
 

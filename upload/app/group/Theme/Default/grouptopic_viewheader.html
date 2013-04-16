@@ -55,7 +55,7 @@ function completeEditcommenttopic(data,status){
 			<li>查看帖子</li>
 		</ul>
 
-<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group) || Group_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
+<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group) || Group_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
 <script src="<!--{:__APPPUB__}-->/Js/moderator.js"></script>
 <!--{/if}-->
 
@@ -161,26 +161,26 @@ function insertGrouptopicmusicSimple(sContent){
 var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseInt('<!--{$oGrouptopic['grouptopic_id']}-->');
 <!--{/script}-->
 
-<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
+<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
 <form method="post" autocomplete="off" name="modActionsBox" id="modActionsBox">
 </form>
 
 <div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display:none;z-index:350;">
 	<h2 class="title">选中&nbsp;<strong id="modActionSelectnum"></strong>&nbsp;篇</h2>
 	<div class="modActionSelectcontent">
-		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))}-->
+		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))}-->
 		<a href="javascript:void(0);" onclick="modCommentaudit();">审核</a>
 		<span class="pipe">|</span>
 		<!--{/if}-->
-		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment'))}-->
+		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment'))}-->
 		<a href="javascript:void(0);" onclick="modCommenthide();">屏蔽</a>
 		<span class="pipe">|</span>
 		<!--{/if}-->
-		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletecomment'))}-->
+		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletecomment'))}-->
 		<a href="javascript:void(0);" onclick="modCommentdelete();">删除</a>
 		<span class="pipe">|</span>
 		<!--{/if}-->
-		<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@stickreplycomment'))}-->
+		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@stickreplycomment'))}-->
 		<a href="javascript:void(0);" onclick="modCommentstickreply();">置顶</a>
 		<!--{/if}-->
 	</div>

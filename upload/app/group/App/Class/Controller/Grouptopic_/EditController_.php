@@ -39,7 +39,7 @@ class EditController extends Controller{
 			$this->E(Dyhb::L('该小组目前拒绝任何人发帖','Controller/Grouptopic'));
 		}
 
-		if(!Group_Extend::checkCommentRbac($oGrouptopic->group,$oGrouptopiccomment)){
+		if(!Groupadmin_Extend::checkCommentRbac($oGrouptopic->group,$oGrouptopiccomment)){
 			$this->E(Dyhb::L('你没有权限编辑回帖','Controller/Grouptopic'));
 		}
 
@@ -92,7 +92,7 @@ class EditController extends Controller{
 	}
 
 	protected function get_groupuser($nGroupid){
-		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+		$nGroupuser=Groupadmin_Extend::getGroupuser($nGroupid);
 
 		$this->assign('nGroupuser',$nGroupuser);
 	}

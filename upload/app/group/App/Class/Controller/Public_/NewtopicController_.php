@@ -75,7 +75,7 @@ class NewtopicController extends Controller{
 		}
 
 		// 热门帖子
-		$arrGrouphottopics=Group_Extend::getGrouphottopic();
+		$arrGrouphottopics=Groupdata_Extend::getGrouphottopic();
 		$this->assign('arrGrouphottopics',$arrGrouphottopics);
 
 		// 热门标签

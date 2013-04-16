@@ -171,11 +171,11 @@ $(function(){
 										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 											<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 											<!--{d*else}--><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&cid=-1')}-->">[默认分类]</a><!--{/if}-->&nbsp;<span><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
-											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
-											<!--{:Group_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
-											<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
-											<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
-											<!--{:Group_Extend::grouptopicHighlight($oGrouptopic->grouptopic_color,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicHighlight($oGrouptopic->grouptopic_color,true)}-->
 										</h1>
 									</div>
 									<div class="floor_top_tips">
@@ -310,11 +310,11 @@ $(function(){
 										<h1><!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 											[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]
 											<!--{d*else}-->
-											[默认分类]<!--{/if}-->&nbsp;<span style="<!--{$oGrouptopic['grouptopic_color']|Group_Extend+grouptopicColor}-->"><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
-											<!--{:Group_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
-											<!--{:Group_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
-											<!--{:Group_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
-											<!--{:Group_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
+											[默认分类]<!--{/if}-->&nbsp;<span style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->"><!--{$oGrouptopic->grouptopic_title}--></span>&nbsp;
+											<!--{:Grouptopic_Extend::grouptopicClose($oGrouptopic->grouptopic_isclose,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicStick($oGrouptopic->grouptopic_sticktopic,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
 										</h1>
 									</div>
 									<div class="floor_top_tips">
@@ -493,7 +493,7 @@ $(function(){
 										<div class="locked">此回帖仅作者可见</div>
 										<!--{/if}-->
 										
-										<!--{if $oComment['grouptopiccomment_ishide']=='0' || ($oComment['grouptopiccomment_ishide']=='1' && Group_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment')))}-->
+										<!--{if $oComment['grouptopiccomment_ishide']=='0' || ($oComment['grouptopiccomment_ishide']=='1' && Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment')))}-->
 										<!--{if $oGrouptopic['grouptopic_hiddenreplies']=='0' || ($oGrouptopic['grouptopic_hiddenreplies']==1 && $GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id'])}-->
 										<!--{if $oComment['grouptopiccomment_parentid']}-->
 										<!--{~$oParentcomment=GrouptopiccommentModel::getGrouptopiccommentById($oComment['grouptopiccomment_parentid'],'',true)}-->
@@ -530,13 +530,13 @@ $(function(){
 									<div class="extend_tool">
 										<em class="left">
 											<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->','<!--{$oComment['grouptopiccomment_id']}-->');">回复</a>
-											<!--{if Group_Extend+checkCommentRbac($oGrouptopic->group,$oComment)}-->
+											<!--{if Groupadmin_Extend+checkCommentRbac($oGrouptopic->group,$oComment)}-->
 											<a class="editp" href="javascript:void(0);" onclick="grouptopiceditComment('<!--{$oComment['grouptopiccomment_id']}-->');">编辑</a>
 											<!--{/if}-->
 										</em>
 										<p class="right">
 											<a href="" onclick="">举报</a>
-											<!--{if Group_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
+											<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
 											<span class="pipe">|</span>
 											<label for="manage<!--{$oComment['grouptopiccomment_id']}-->" class="checkbox right">
 												<input type="checkbox" autocomplete="off" value="<!--{$oComment['grouptopiccomment_id']}-->" onclick="dataidChecked(this);modClick(this,<!--{$oComment['grouptopiccomment_id']}-->)">管理

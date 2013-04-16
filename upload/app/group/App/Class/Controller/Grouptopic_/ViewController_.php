@@ -124,7 +124,7 @@ class ViewController extends Controller{
 		$arrWhere['grouptopiccomment_status']=1;
 		$arrWhere['grouptopic_id']=$oGrouptopic->grouptopic_id;
 
-		if(!Group_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))){
+		if(!Groupadmin_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))){
 			$arrWhere['grouptopiccomment_auditpass']=1;
 		}
 
@@ -199,7 +199,7 @@ class ViewController extends Controller{
 	}
 
 	protected function get_groupuser($nGroupid){
-		$nGroupuser=Group_Extend::getGroupuser($nGroupid);
+		$nGroupuser=Groupadmin_Extend::getGroupuser($nGroupid);
 
 		$this->assign('nGroupuser',$nGroupuser);
 	}
