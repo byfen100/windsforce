@@ -28,7 +28,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 <!--{/script}-->
 <div id="forumnew" style="display:none"></div>
 
-<!--{if Group_Extend+checkTopicadminRbac($oGroup)}-->
+<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup)}-->
 <script src="<!--{:__APPPUB__}-->/Js/moderator.js"></script>
 <!--{/if}-->
 
@@ -130,7 +130,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 														<p class="title">
 															<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
 															<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="待审核主题"/>&nbsp;<!--{/if}-->
-															<!--{if Group_Extend+checkTopicadminRbac($oGroup) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
+															<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
 															<!--{/if}-->
 															<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 															<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
@@ -183,7 +183,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 											</tbody>
 										</table>
 
-										<!--{if Group_Extend+checkTopicadminRbac($oGroup)}-->
+										<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup)}-->
 										<div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display: none;">
 											<label class="checkbox right checkbox_checkall">
 												<input type="checkbox" name="chkall" onclick="if(!($('mdct').innerHTML = modclickcount = checkall(this.form, 'moderate'))) {$('mdly').style.display = 'none';}" />全选
@@ -192,34 +192,34 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 											<h2 class="title">选中&nbsp;<strong id="modActionSelectnum" onclick="$WF('modActionSelect').className='commonbox_mini commonbox_mini_gray';" onmouseover="this.title='最大化'"></strong>&nbsp;篇</h2>
 											<div class="modActionSelectcontent">
 												<p>
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@deletetopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@deletetopic'))}-->
 													<strong><a href="javascript:void(0);" onclick="tmodTopics('deletetopic');return false;">删除</a></strong>
 													<span class="pipe">|</span>
 													<!--{/if}-->
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@categorytopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@categorytopic'))}-->
 													<strong><a href="javascript:void(0);" onclick="tmodTopics('categorytopic');return false;">分类</a></strong>
 													<span class="pipe">|</span>
 													<!--{/if}-->
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))}-->
 													<strong><a href="javascript:void(0);" onclick="tmodTopics('hidetopic');return false;">隐藏显示</a></strong>
 													<!--{/if}-->
 												</p>
 												<p>
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@sticktopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@sticktopic'))}-->
 													<a href="javascript:void(0);" onclick="tmodTopics('sticktopic');return false;">置顶</a>&nbsp;
 													<!--{/if}-->
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@digesttopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@digesttopic'))}-->
 													<a href="javascript:void(0);" onclick="tmodTopics('digesttopic');return false;">精华</a>&nbsp;
 													<!--{/if}-->
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@colortopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@colortopic'))}-->
 													<a href="javascript:void(0);" onclick="tmodTopics('colortopic');return false;">高亮</a>
 													<span class="pipe">|</span>
 													<!--{/if}-->
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))}-->
 													<a href="javascript:void(0);" onclick="tmodTopics('closetopic');return false;">关闭打开</a>
 													<span class="pipe">|</span>
 													<!--{/if}-->
-													<!--{if Group_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@recommendtopic'))}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@recommendtopic'))}-->
 													<a href="javascript:void(0);" onclick="tmodTopics('recommendtopic');return false;">推荐</a>
 													<!--{/if}-->
 												</p>

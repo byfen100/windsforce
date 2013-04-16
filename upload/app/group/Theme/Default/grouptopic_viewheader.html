@@ -55,7 +55,7 @@ function completeEditcommenttopic(data,status){
 			<li>查看帖子</li>
 		</ul>
 
-<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group) || Group_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
+<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group) || Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
 <script src="<!--{:__APPPUB__}-->/Js/moderator.js"></script>
 <!--{/if}-->
 
@@ -203,14 +203,14 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 				</div>
 			</div>
 			
-			<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
+			<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
 			<div class="span12" style="margin-bottom:15px;">
 				<div>
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletetopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletetopic'))}-->
 					<a onclick="modTopicdelete();" href="javascript:void(0);">删除主题</a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@closetopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@closetopic'))}-->
 					<!--{if $oGrouptopic['grouptopic_isclose']=='0'}-->
 					<a onclick="modTopicclose(1);" href="javascript:void(0);">关闭</a>
 					<!--{d*else}-->
@@ -218,19 +218,19 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 					<!--{/if}-->
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@sticktopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@sticktopic'))}-->
 					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">置顶</a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@digesttopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@digesttopic'))}-->
 					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">精华</a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@recommendtopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@recommendtopic'))}-->
 					<a onclick="modTopicrecommend(<!--{if $oGrouptopic['grouptopic_isrecommend']>0}--><!--{$oGrouptopic['grouptopic_isrecommend']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);">推荐</a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic'))}-->
 					<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
 					<a onclick="modTopicstatus(1);" href="javascript:void(0);">显示</a>
 					<!--{d*else}-->
@@ -238,15 +238,15 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 					<!--{/if}-->
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@categorytopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@categorytopic'))}-->
 					<a onclick="modTopiccategory(<!--{$oGrouptopic['grouptopiccategory_id']}-->);" href="javascript:void(0);">分类</a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@tagtopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@tagtopic'))}-->
 					<a onclick="modTopictag();" href="javascript:void(0);">标签</a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if Group_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@colortopic'))}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@colortopic'))}-->
 					<a onclick="modTopiccolor();" href="javascript:void(0);">高亮</a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
