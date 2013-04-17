@@ -21,8 +21,8 @@ class SpaceController extends InitController{
 		}
 	}
 
-	public function rating(){
-		Core_Extend::doControllerAction('Space@Rating','index');
+	public function comment(){
+		Core_Extend::doControllerAction('Space@Comment','index');
 	}
 
 }
