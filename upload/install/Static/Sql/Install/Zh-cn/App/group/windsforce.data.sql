@@ -61,7 +61,17 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('grouptopic_edit_limittime', '86400'),
 ('index_groupadminretopic_num', '10'),
 ('index_systemrecommendtopic_num', '10'),
-('group_headbg_uploadfile_maxsize', '409600');
+('group_headbg_uploadfile_maxsize', '409600'),
+('group_space_listtopicnum', '20'),
+('group_space_listcommentnum', '15'),
+('group_homepagestyle_on', '1'),
+('group_grouptopicstyle_on', '1'),
+('group_grouptopicside_on', '1'),
+('group_hottag_num', '10'),
+('group_hottag_date', '86400'),
+('group_tag_listtopicnum', '15'),
+('group_tag_listnum', '50'),
+('group_tag_hotnum', '15');
 
 -- --------------------------------------------------------
 

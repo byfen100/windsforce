@@ -42,6 +42,8 @@ function option(){
 								<li><a href="#tab3"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->小组<!--</lang>--></a></li>
 								<li><a href="#tab4"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->界面<!--</lang>--></a></li>
 								<li><a href="#tab5"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->具体小组<!--</lang>--></a></li>
+								<li><a href="#tab6"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->个人空间<!--</lang>--></a></li>
+								<li><a href="#tab7"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->标签<!--</lang>--></a></li>
 							</ul>
 						</div>
 						<div id="tab1" class="windsforce_tabcontent">
@@ -129,6 +131,15 @@ function option(){
 						</div>
 						<div id="tab4" class="windsforce_tabcontent">
 							<fieldset>
+								<label for="group_homepagestyle_on"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->首页浏览界面切换浏览风格菜单是否显示<!--</lang>--></label>
+								<select name="options[group_homepagestyle_on]" id="group_homepagestyle_on">
+									<option value="0" <!--{if $arrOptions['group_homepagestyle_on']==0}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->否<!--</lang>--></option>
+									<option value="1" <!--{if $arrOptions['group_homepagestyle_on']==1}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->是<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->关闭后，用户将无法设置首页的浏览风格<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
 								<label for="group_homepagestyle"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->首页界面展示风格<!--</lang>--></label>
 								<select name="options[group_homepagestyle]" id="group_homepagestyle">
 									<option value="1" <!--{if $arrOptions['group_homepagestyle']==1}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->传统BBS<!--</lang>--></option>
@@ -138,12 +149,30 @@ function option(){
 								</div>
 							</fieldset>
 							<fieldset>
+								<label for="group_grouptopicstyle_on"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->帖子浏览界面切换浏览风格菜单是否显示<!--</lang>--></label>
+								<select name="options[group_grouptopicstyle_on]" id="group_grouptopicside_on">
+									<option value="0" <!--{if $arrOptions['group_grouptopicstyle_on']==0}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->否<!--</lang>--></option>
+									<option value="1" <!--{if $arrOptions['group_grouptopicstyle_on']==1}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->是<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->关闭后，用户将无法设置帖子的浏览风格<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
 								<label for="group_grouptopicstyle"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->帖子浏览界面展示风格<!--</lang>--></label>
 								<select name="options[group_grouptopicstyle]" id="group_grouptopicstyle">
 									<option value="1" <!--{if $arrOptions['group_grouptopicstyle']==1}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->传统BBS<!--</lang>--></option>
 									<option value="2" <!--{if $arrOptions['group_grouptopicstyle']==2}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->小组新风格<!--</lang>--></option>
 								</select>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个根据用户习惯来选择<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_grouptopicside_on"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->帖子浏览界面切换边栏菜单是否显示<!--</lang>--></label>
+								<select name="options[group_grouptopicside_on]" id="group_grouptopicside_on">
+									<option value="0" <!--{if $arrOptions['group_grouptopicside_on']==0}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->否<!--</lang>--></option>
+									<option value="1" <!--{if $arrOptions['group_grouptopicside_on']==1}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->是<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->关闭后，用户将无法设置帖子是否包含侧边栏<!--</lang>-->
 								</div>
 							</fieldset>
 							<fieldset>
@@ -191,6 +220,57 @@ function option(){
 								<label for="grouptopic_listcommentnum"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->浏览帖子页面回帖分页数量<!--</lang>--></label>
 								<input type="text" name="options[grouptopic_listcommentnum]" id="grouptopic_listcommentnum" size="60" value="<!--{$arrOptions['grouptopic_listcommentnum']}-->"/>
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个不要设置过大或者过小<!--</lang>-->
+								</div>
+							</fieldset>
+						</div>
+						<div id="tab6" class="windsforce_tabcontent">
+							<fieldset>
+								<label for="group_space_listtopicnum"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->个人空间帖子分页数量<!--</lang>--></label>
+								<input type="text" name="options[group_space_listtopicnum]" id="group_space_listtopicnum" size="60" value="<!--{$arrOptions['group_space_listtopicnum']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个不要设置过大或者过小<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_space_listcommentnum"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->个人空间回帖分页数量<!--</lang>--></label>
+								<input type="text" name="options[group_space_listcommentnum]" id="group_space_listcommentnum" size="60" value="<!--{$arrOptions['group_space_listcommentnum']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个不要设置过大或者过小<!--</lang>-->
+								</div>
+							</fieldset>
+						</div>
+						<div id="tab7" class="windsforce_tabcontent">
+							<fieldset>
+								<label for="group_hottag_num"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->通用热门标签数量<!--</lang>--></label>
+								<input type="text" name="options[group_hottag_num]" id="group_hottag_num" size="60" value="<!--{$arrOptions['group_hottag_num']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个可以稍微设置多一点，可以展示更多<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_hottag_date"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->热门标签调用时间<!--</lang>--></label>
+								<select name="options[group_hottag_date]" id="group_hottag_date">
+									<option value="3600" <!--{if $arrOptions['group_hottag_date']==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
+									<option value="86400" <!--{if $arrOptions['group_hottag_date']==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>
+									<option value="604800" <!--{if $arrOptions['group_hottag_date']==604800}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一星期<!--</lang>--></option>
+									<option value="2592000" <!--{if $arrOptions['group_hottag_date']==2592000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一月<!--</lang>--></option>
+									<option value="31536000" <!--{if $arrOptions['group_hottag_date']==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这里的时间为热门标签调用时间，如果为一星期，那么热门帖子只会从当前一个星期中取出<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="group_tag_listnum"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->标签列表分页数量<!--</lang>--></label>
+								<input type="text" name="options[group_tag_listnum]" id="group_tag_listnum" size="60" value="<!--{$arrOptions['group_tag_listnum']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个可以稍微设置多一点，可以展示更多<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_tag_hotnum"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->标签排行榜每项数量<!--</lang>--></label>
+								<input type="text" name="options[group_tag_hotnum]" id="group_tag_hotnum" size="60" value="<!--{$arrOptions['group_tag_hotnum']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个不用设置过多<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_tag_listtopicnum"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->标签查找到的帖子分页数量<!--</lang>--></label>
+								<input type="text" name="options[group_tag_listtopicnum]" id="group_tag_listtopicnum" size="60" value="<!--{$arrOptions['group_tag_listtopicnum']}-->"/>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->这个不用设置过多<!--</lang>-->
 								</div>
 							</fieldset>
 						</div>

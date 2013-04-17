@@ -192,12 +192,18 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 			<div class="span12">
 				<div class="tabb-menu">
 					<ul class="nav nav-pills">
+						<!--{if $GLOBALS['_cache_']['group_option']['group_grouptopicstyle_on']==1 || $GLOBALS['_cache_']['group_option']['group_grouptopicside_on']==1}-->
+						<!--{if $GLOBALS['_cache_']['group_option']['group_grouptopicstyle_on']==1}-->
 						<li <!--{if $nStyle==1}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(1);">传统BBS</a></li>
 						<li <!--{if $nStyle==2}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(2);">小组新风格</a></li>
+						<!--{/if}-->
+						<!--{if $GLOBALS['_cache_']['group_option']['group_grouptopicside_on']==1}-->
 						<!--{if $nSide==2}-->
 						<li><a href="javascript:void(0);" onclick="setGrouptopicside(1);">关闭侧边栏</a></li>
 						<!--{d*else}-->
 						<li><a href="javascript:void(0);" onclick="setGrouptopicside(2);">打开侧边栏</a></li>
+						<!--{/if}-->
+						<!--{/if}-->
 						<!--{/if}-->
 					</ul>
 				</div>

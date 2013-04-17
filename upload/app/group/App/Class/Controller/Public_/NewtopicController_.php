@@ -79,7 +79,7 @@ class NewtopicController extends Controller{
 		$this->assign('arrGrouphottopics',$arrGrouphottopics);
 
 		// 热门标签
-		$arrHottags=GrouptopictagModel::F()->order('grouptopictag_count DESC,create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['newtopic_hottagnum'])->getAll();
+		$arrHottags=Groupdata_Extend::getGrouphotag($GLOBALS['_cache_']['group_option']['newtopic_hottagnum']);
 		$this->assign('arrHottags',$arrHottags);
 
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_login_status']);

@@ -24,7 +24,7 @@ class CommentController extends Controller{
 
 		// 读取回帖列表
 		$arrWhere=array();
-		$nEverynum=$GLOBALS['_cache_']['group_option']['group_listtopicnum'];
+		$nEverynum=$GLOBALS['_cache_']['group_option']['group_space_listcommentnum'];
 
 		$arrWhere['user_id']=$nId;
 

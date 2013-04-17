@@ -1,0 +1,97 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>标签排行榜</li>
+		</ul>
+
+		<!--<include file="tag+menu" />-->
+
+		<div class="row">
+			<div class="span12">
+				<div class="alert alert-success">
+					<button class="close" data-dismiss="alert">&times;</button>
+					这里为系统标签排行榜
+				</div>
+
+				<div class="commonbox_mini">
+					<h2 class="title">一小时排行</h2>
+					<div id="tag_list_box_hour" class="tag_list_box">
+						<!--{if is_array($arrHourHotgrouptopictags)}-->
+						<!--<foreach for=arrHourHotgrouptopictags value=oGrouptopictag>-->
+						<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<p>暂时没有发现任何标签</p>
+						<!--{/if}-->
+					</div>
+				</div>
+
+				<div class="commonbox_mini">
+					<h2 class="title">今日排行</h2>
+					<div id="tag_list_box_today" class="tag_list_box">
+						<!--{if is_array($arrTodayHotgrouptopictags)}-->
+						<!--<foreach for=arrTodayHotgrouptopictags value=oGrouptopictag>-->
+						<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<p>暂时没有发现任何标签</p>
+						<!--{/if}-->
+					</div>
+				</div>
+
+				<div class="commonbox_mini">
+					<h2 class="title">本周排行</h2>
+					<div id="tag_list_box_week" class="tag_list_box">
+						<!--{if is_array($arrWeekHotgrouptopictags)}-->
+						<!--<foreach for=arrWeekHotgrouptopictags value=oGrouptopictag>-->
+						<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<p>暂时没有发现任何标签</p>
+						<!--{/if}-->
+					</div>
+				</div>
+
+				<div class="commonbox_mini">
+					<h2 class="title">当月排行</h2>
+					<div id="tag_list_box_month" class="tag_list_box">
+						<!--{if is_array($arrMonthHotgrouptopictags)}-->
+						<!--<foreach for=arrMonthHotgrouptopictags value=oGrouptopictag>-->
+						<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<p>暂时没有发现任何标签</p>
+						<!--{/if}-->
+					</div>
+				</div>
+
+				<div class="commonbox_mini">
+					<h2 class="title">年度排行</h2>
+					<div id="tag_list_box_year" class="tag_list_box">
+						<!--{if is_array($arrYearHotgrouptopictags)}-->
+						<!--<foreach for=arrYearHotgrouptopictags value=oGrouptopictag>-->
+						<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<p>暂时没有发现任何标签</p>
+						<!--{/if}-->
+					</div>
+				</div>
+
+				<div class="commonbox_mini">
+					<h2 class="title">总排行</h2>
+					<div id="tag_list_box_total" class="tag_list_box">
+						<!--{if is_array($arrTotalHotgrouptopictags)}-->
+						<!--<foreach for=arrTotalHotgrouptopictags value=oGrouptopictag>-->
+						<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<p>暂时没有发现任何标签</p>
+						<!--{/if}-->
+					</div>
+				</div>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

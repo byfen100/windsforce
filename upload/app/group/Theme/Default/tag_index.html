@@ -1,0 +1,31 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>标签列表</li>
+		</ul>
+
+		<!--<include file="tag+menu" />-->
+
+		<div class="row">
+			<div class="span12">
+				<div class="alert alert-success">
+					<button class="close" data-dismiss="alert">&times;</button>
+					这里为系统所有标签列表
+				</div>
+
+				<div id="tag_list_box" class="tag_list_box">
+					<!--{if is_array($arrGrouptopictags)}-->
+					<!--<foreach for=arrGrouptopictags value=oGrouptopictag>-->
+					<a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->" class="common_tag" title="帖子数量 <!--{$oGrouptopictag['grouptopictag_count']}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a>&nbsp;&nbsp;
+					<!--</foreach>-->
+					<!--{d*else}-->
+					<p>暂时没有发现任何标签</p>
+					<!--{/if}-->
+				</div>
+				
+				<!--{$sPageNavbar}-->
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

@@ -50,7 +50,7 @@ class BaseController extends Controller{
 
 		// 读取帖子列表
 		$arrWhere=array();
-		$nEverynum=$GLOBALS['_cache_']['group_option']['group_listtopicnum'];
+		$nEverynum=$GLOBALS['_cache_']['group_option']['group_space_listtopicnum'];
 
 		if($nDid==1){
 			$arrWhere['grouptopic_addtodigest']=array('gt',0);

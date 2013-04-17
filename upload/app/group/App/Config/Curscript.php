@@ -11,6 +11,7 @@ return array(
 	'group::show',
 	'group::user',
 	'space::index',
+	'tag::show',
 	'grouptopic::view'=>'media,comment',
 	'grouptopic::reply'=>'media',
 	'grouptopic::add'=>'media',

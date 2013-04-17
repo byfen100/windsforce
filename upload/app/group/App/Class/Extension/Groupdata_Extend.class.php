@@ -61,7 +61,7 @@ class Groupdata_Extend{
 		
 		$arrGrouphottags=GrouptopictagModel::F('create_dateline>?',CURRENT_TIMESTAMP-$nDate)->order('grouptopictag_count DESC')->top($nNum)->get();
 
-		return $arrGrouphottopics;
+		return $arrGrouphottags;
 	}
 
 }
