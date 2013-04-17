@@ -87,9 +87,9 @@ class ShowController extends Controller{
 			$arrWhere['grouptopic_isaudit']=1;
 		}
 
-		$nTotalComment=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
+		$nTotalGrouptopicnum=GrouptopicModel::F()->where($arrWhere)->all()->getCounts();
 
-		$oPage=Page::RUN($nTotalComment,$nEverynum,G::getGpc('page','G'));
+		$oPage=Page::RUN($nTotalGrouptopicnum,$nEverynum,G::getGpc('page','G'));
 
 		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order($sOrderextends."grouptopic_sticktopic DESC,update_dateline DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 		

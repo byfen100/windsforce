@@ -163,16 +163,12 @@ class ViewController extends Controller{
 		}
 	}
 
-	public function totalTopic($nUserid,$bAddtodigest=false){
-		if($bAddtodigest===false){
-			return GrouptopicModel::F('user_id=?',$nUserid)->getCounts();
-		}else{
-			return GrouptopicModel::F('user_id=? AND grouptopic_addtodigest=1',$nUserid)->getCounts();
-		}
+	public function totalTopic($nUserid,$bDigesttopic=false){
+		return Groupprofile_Extend::totalTopic($nUserid,$bDigesttopic);
 	}
 
 	public function totalComment($nUserid){
-		return $nGrouptopic=GrouptopiccommentModel::F('user_id=?',$nUserid)->getCounts();
+		return Groupprofile_Extend::totalComment($nUserid);
 	}
 
 	public function get_commentfloor($nIndex,$nEverynum){

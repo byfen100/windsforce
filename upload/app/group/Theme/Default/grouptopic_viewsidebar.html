@@ -1,4 +1,14 @@
 			<div class="span3">
+				<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oGroup['group_id'])}-->
+				<!--{if $nGroupuser==0}-->
+				<div class="commonbox">
+					<div class="well">
+						<p><span id="joingroup_<!--{$oGroup['group_id']}-->"><a class="btn btn-large btn-success" href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->,'joingroup_<!--{$oGroup['group_id']}-->');"><i class="icon-heart icon-white"></i>&nbsp;立刻加入小组</a></span></p>
+						<p>已经有了&nbsp;<span class="label label-success"><!--{$oGroup['group_usernum']}--></span>&nbsp;人关注了此小组</p>
+					</div>
+				</div>
+				<!--{/if}-->
+				
 				<div class="commonbox">
 					<div class="backgroup_box">
 						<p><a class="btn btn-success" href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><i class="icon-share-alt icon-white"></i>&nbsp;返回小组</a></p>

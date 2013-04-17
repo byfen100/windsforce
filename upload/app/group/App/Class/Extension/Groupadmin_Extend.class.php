@@ -6,11 +6,15 @@
 
 class Groupadmin_Extend{
 	
-	public static function getGroupuser($nGroupid){
-		if($GLOBALS['___login___']===false){
-			$nGroupuser=0;
+	public static function getGroupuser($nGroupid,$nUserid=0){
+		if($nUserid>0){
+			$nGroupuser=GroupModel::isGroupuser($nGroupid,$nUserid);
 		}else{
-			$nGroupuser=GroupModel::isGroupuser($nGroupid,$GLOBALS['___login___']['user_id']);
+			if($GLOBALS['___login___']===false){
+				$nGroupuser=0;
+			}else{
+				$nGroupuser=GroupModel::isGroupuser($nGroupid,$GLOBALS['___login___']['user_id']);
+			}
 		}
 
 		return $nGroupuser;
@@ -33,6 +37,25 @@ class Groupadmin_Extend{
 		}else{
 			return $oTrygroupuser['groupuser_isadmin'];
 		}
+	}
+
+	static public function checkTopicedit($oGrouptopic){
+		if(!Core_Extend::checkRbac('group@grouptopic@edit')){
+			return false;
+		}
+
+		$nGroupuserrole=Groupadmin_Extend::getGroupUserrole($oGrouptopic->group->group_id);
+		
+		$bAllowedEdittopic=false;
+		if(in_array($nGroupuserrole,array(1,2,4))){
+			$bAllowedEdittopic=true;
+		}
+
+		if($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']){
+			$bAllowedEdittopic=true;
+		}
+
+		return $bAllowedEdittopic;
 	}
 
 	static public function checkCommentRbac($oGroup,$oComment){

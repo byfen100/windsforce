@@ -27,7 +27,7 @@ $(function(){
 						<div class="grouptopic">
 							<div class="infos">
 								<div class="pull-right avatar_large">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->"><img alt="2" class="uface" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" style="width:48px;height:48px;" style="padding:20px;" /></a>
+									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->"><img alt="2" class="uface" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" style="width:48px;height:48px;" style="padding:20px;" /></a>
 								</div>
 								<h1 class="grouptopic-title">
 									<!--{$oGrouptopic->grouptopic_title}-->&nbsp;
@@ -37,13 +37,13 @@ $(function(){
 								<div class="info">
 									<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->" class="grouptopiccategory"><!--{$oGrouptopic:group:group_nikename}--></a>
 									<span class="pipe">|</span>
-									<span><a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id)}-->"  class="bind_hover_card" bm_user_id="<!--{$oGrouptopic['user_id']}-->"><!--{$oGrouptopic:grouptopic_username}--></a>&nbsp;发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+									<span><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->"  class="bind_hover_card" bm_user_id="<!--{$oGrouptopic['user_id']}-->"><!--{$oGrouptopic:grouptopic_username}--></a>&nbsp;发布于&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 									<span class="pipe">|</span>
 									<!--{$oGrouptopic->grouptopic_views}-->次阅读
 									<span class="pipe">|</span>
 									<!--{if $oGrouptopic->grouptopic_comments}-->
 									<!--{~$arrLatestComment=unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-									最后由 <a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;于&nbsp;<!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;回复
+									最后由 <a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;于&nbsp;<!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;回复
 									<!--{d*else}-->
 									<span>暂无回复</span>
 									<!--{/if}-->
@@ -118,11 +118,11 @@ $(function(){
 								<a name="grouptopiccomment-<!--{$oComment->grouptopiccomment_id}-->"></a>
 								<div class="grouptopiccommentnew_reply" id="grouptopiccommentreply-<!--{$oComment->grouptopiccomment_id}-->">
 									<div class="pull-left face">
-										<a href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->"><img alt="21" class="uface " src="<!--{:Core_Extend::avatar($oComment['user_id'],'middle')}-->" style="width:48px;height:48px;" /></a>
+										<a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><img alt="21" class="uface " src="<!--{:Core_Extend::avatar($oComment['user_id'],'middle')}-->" style="width:48px;height:48px;" /></a>
 									</div>
 									<div class="infos">
 										<div class="info">
-											<span class="name"><a href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a>回复于&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
+											<span class="name"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a>回复于&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
 											<span class="floorcopy_box">
 												<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
 											</span>

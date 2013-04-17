@@ -118,9 +118,9 @@
 												<!--{if !empty($oGroup->group_latestcomment)}-->
 												<!--{~$arrLatestComment=unserialize($oGroup->group_latestcomment)}-->
 												<!--{if isset($arrLatestComment['commenttitle'])}-->
-												<a title="Re:<!--{$arrLatestComment['commenttitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['tid'])}-->">Re:<!--{$arrLatestComment['commenttitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;最后回复:<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['commentuserid'])}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>
+												<a title="Re:<!--{$arrLatestComment['commenttitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['tid'])}-->">Re:<!--{$arrLatestComment['commenttitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;最后回复:<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>
 												<!--{d*else}-->
-												<a title="<!--{$arrLatestComment['topictitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['topicid'])}-->"><!--{$arrLatestComment['topictitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['topictime']|Core_Extend+timeFormat}-->&nbsp;楼主:<a href="<!--{:Dyhb::U('home://space@?id='.$arrLatestComment['topicuserid'])}-->"><!--{$arrLatestComment['topicuserid']|UserModel+getUsernameById}--></a>
+												<a title="<!--{$arrLatestComment['topictitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['topicid'])}-->"><!--{$arrLatestComment['topictitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['topictime']|Core_Extend+timeFormat}-->&nbsp;楼主:<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['topicuserid'])}-->"><!--{$arrLatestComment['topicuserid']|UserModel+getUsernameById}--></a>
 												<!--{/if}-->
 												<!--{/if}-->
 												</td>

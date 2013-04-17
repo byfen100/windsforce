@@ -42,21 +42,22 @@ $(function(){
 										<div class="floor_userinfoname">
 											<div class="floor_userinfonameinner">
 												<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-												匿名
+												<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic'))}-->
+												<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->">匿名<!--{d*else}-->匿名<!--{/if}-->
 												<!--{d*else}-->
-												<a target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+												<a target="_blank" href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
 												<!--{/if}-->
 											</div>
 										</div>
 										<!--{if $oGrouptopic['grouptopic_isanonymous']=='0'}-->
 										<div>
 											<center>
-												<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank">
+												<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank">
 													<img src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'middle')}-->" target="_blank" width="120px" alt="<!--{$oGrouptopic->grouptopic_username}-->" class="group_avatar">
 												</a>
 												<div class="grouptopicview_info"> 
 													<div>
-														<strong><a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$oGrouptopic->grouptopic_username}--></a></strong>&nbsp;
+														<strong><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$oGrouptopic->grouptopic_username}--></a></strong>&nbsp;
 														<em><img src="<!--{:Profile_Extend::getUserprofilegender($oGrouptopic->userprofile->userprofile_gender)}-->"/></em>
 													</div>
 													<div class="grouptopicview_tablebox">
@@ -74,15 +75,15 @@ $(function(){
 															</tr>
 															<tr>
 																<td>主题</td>
-																<td><a href="<!--{:Dyhb::U('group://space/topic?uid='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$TheController->totalTopic($oGrouptopic->user_id)}--></a></td>
+																<td><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$TheController->totalTopic($oGrouptopic->user_id)}--></a></td>
 																<td>积分</td>
-																<td><a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id.'&type=friend&fan=1')}-->" target="_blank"><!--{$oGrouptopic->usercount->usercount_extendcredit1}--></a></td>
+																<td><a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic->user_id.'&type=rating')}-->" target="_blank"><!--{$oGrouptopic->usercount->usercount_extendcredit1}--></a></td>
 															</tr>
 															<tr>
 																<td>精华</td>
-																<td><a href="<!--{:Dyhb::U('group://space/topic?uid='.$oGrouptopic['user_id'].'&addtodigest=1')}-->" target="_blank"><!--{$TheController->totalTopic($oGrouptopic->user_id,true)}--></a></td>
+																<td><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'].'&did=1')}-->" target="_blank"><!--{$TheController->totalTopic($oGrouptopic->user_id,true)}--></a></td>
 																<td>帖子</td>
-																<td><a href="<!--{:Dyhb::U('group://space/topiccomment?uid='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$TheController->totalTopic($oGrouptopic->user_id)}--></a></td>
+																<td><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'].'&type=comment')}-->" target="_blank"><!--{$TheController->totalComment($oGrouptopic->user_id)}--></a></td>
 															</tr>
 														</table>
 													</div>
@@ -93,7 +94,7 @@ $(function(){
 														<!--{if $oGrouptopic->userprofile->userprofile_site}-->
 														<a href="<!--{$oGrouptopic->userprofile->userprofile_site}-->" target="_blank" title="查看个人网站"><img src="<!--{:__PUBLIC__}-->/images/common/grouplink.gif" alt="查看个人网站"></a>
 														<!--{/if}-->&nbsp;
-														<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank" title="查看详细资料"><img src="<!--{:__PUBLIC__}-->/images/common/userinfo.gif" alt="查看详细资料"></a>
+														<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank" title="查看详细资料"><img src="<!--{:__PUBLIC__}-->/images/common/userinfo.gif" alt="查看详细资料"></a>
 													</div>
 												</div>
 											</center>
@@ -103,7 +104,7 @@ $(function(){
 												<tbody>
 													<tr>
 														<th><p>
-																<a href="<!--{:Dyhb::U('group://space/topic?uid='.$oGrouptopic['user_id'])}-->"><!--{$TheController->totalTopic($oGrouptopic->user_id)}--></a>
+																<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$TheController->totalTopic($oGrouptopic->user_id)}--></a>
 															</p>主题
 														</th>
 														<th><p>
@@ -136,7 +137,7 @@ $(function(){
 												</tr>
 												<tr>
 													<td>帖子</td>
-													<td><a href="<!--{:Dyhb::U('group://space/topiccomment?uid='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$TheController->totalComment($oGrouptopic->user_id)}--></a></td>
+													<td><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'].'&type=comment')}-->" target="_blank"><!--{$TheController->totalComment($oGrouptopic->user_id)}--></a></td>
 												</tr>
 												<tr>
 													<td>金币</td>
@@ -157,6 +158,9 @@ $(function(){
 											<!--{/if}-->&nbsp;
 											<a rel="nofollow" href="javascript:void(0);" onclick="addMessage('<!--{$oGrouptopic->user_id}-->');"><img src="<!--{:__PUBLIC__}-->/images/common/pmto.gif"/>写私信</a>
 										</div>
+										<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oGrouptopic->user_id)==0}-->
+										<p style="margin-top:10px;"><a href="javascript:void(0);" class="btn btn-warning" title="我要邀请他加入"><i class="icon-plus icon-white"></i>&nbsp;非小组成员</a></p>
+										<!--{/if}-->
 										<!--{/if}-->
 									</div>
 								</td>
@@ -259,7 +263,7 @@ $(function(){
 									<div class="extend_tool">
 										<em class="left">
 											<a class="fastre" href="javascript:void(0);" onclick="grouptopicComment('<!--{$oGrouptopic['grouptopic_id']}-->');">回复</a>
-											<!--{if ($GLOBALS['___login___']!==false && $GLOBALS['___login___']['user_id']==$oGrouptopic['user_id']) || Core_Extend+isAdmin()===true}-->
+											<!--{if Groupadmin_Extend+checkTopicedit($oGrouptopic)}-->
 											<a class="editp" href="<!--{:Dyhb::U('group://grouptopic/edit?tid='.$oGrouptopic['grouptopic_id'])}-->">编辑</a>
 											<!--{/if}-->
 										</em>
@@ -286,13 +290,13 @@ $(function(){
 												<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
 												匿名
 												<!--{d*else}-->
-												<a target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+												<a target="_blank" href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
 												<!--{/if}-->
 											</div>
 										</div>
 										<!--{if $oGrouptopic['grouptopic_isanonymous']=='0'}-->
 										<div style="margin-left:16px;">
-											<a href="<!--{:Dyhb::U('home://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank">
+											<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank">
 												<img src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" target="_blank" width="35px" height="35px" alt="<!--{$oGrouptopic->grouptopic_username}-->" class="thumbnail">
 											</a>
 										</div>
@@ -349,17 +353,17 @@ $(function(){
 									<div class="floor_info">
 										<div class="floor_userinfoname">
 											<div class="floor_userinfonameinner">
-												<a target="_blank" href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a>
+												<a target="_blank" href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a>
 											</div>
 										</div>
 										<div>
 											<center>
-												<a href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->" target="_blank">
+												<a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" target="_blank">
 													<img src="<!--{:Core_Extend::avatar($oComment['user_id'],'middle')}-->" width="120px" alt="<!--{$oComment->user->user_name}-->" class="group_avatar">
 												</a>
 												<div class="grouptopicview_info"> 
 													<div>
-														<strong><a href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->" target="_blank"><!--{$oComment->user->user_name}--></a></strong>&nbsp;
+														<strong><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" target="_blank"><!--{$oComment->user->user_name}--></a></strong>&nbsp;
 														<em><img src="<!--{:Profile_Extend::getUserprofilegender($oComment->userprofile->userprofile_gender)}-->"/></em>
 													</div>
 													<div class="grouptopicview_tablebox">
@@ -377,15 +381,15 @@ $(function(){
 															</tr>
 															<tr>
 																<td>主题</td>
-																<td><a href="<!--{:Dyhb::U('group://space/topic?uid='.$oComment['user_id'])}-->" target="_blank"><!--{$TheController->totalTopic($oComment->user_id)}--></a></td>
+																<td><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" target="_blank"><!--{$TheController->totalTopic($oComment->user_id)}--></a></td>
 																<td>积分</td>
-																<td><a href="<!--{:Dyhb::U('home://space@?id='.$oComment->user_id.'&type=friend&fan=1')}-->" target="_blank"><!--{$oComment->usercount->usercount_extendcredit1}--></a></td>
+																<td><a href="<!--{:Dyhb::U('home://space@?id='.$oComment->user_id.'&type=rating')}-->" target="_blank"><!--{$oComment->usercount->usercount_extendcredit1}--></a></td>
 															</tr>
 															<tr>
 																<td>精华</td>
-																<td><a href="<!--{:Dyhb::U('group://space/topic?uid='.$oComment['user_id'].'&addtodigest=1')}-->" target="_blank"><!--{$TheController->totalTopic($oComment->user_id,true)}--></a></td>
+																<td><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'].'&did=1')}-->" target="_blank"><!--{$TheController->totalTopic($oComment->user_id,true)}--></a></td>
 																<td>帖子</td>
-																<td><a href="<!--{:Dyhb::U('group://space/topiccomment?uid='.$oComment['user_id'])}-->" target="_blank"><!--{$TheController->totalTopic($oComment->user_id)}--></a></td>
+																<td><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'].'&type=comment')}-->" target="_blank"><!--{$TheController->totalComment($oComment->user_id)}--></a></td>
 															</tr>
 														</table>
 													</div>
@@ -396,7 +400,7 @@ $(function(){
 														<!--{if $oComment->userprofile->userprofile_site}-->
 														<a href="<!--{$oComment->userprofile->userprofile_site}-->" target="_blank" title="查看个人网站"><img src="<!--{:__PUBLIC__}-->/images/common/grouplink.gif" alt="查看个人网站"></a>&nbsp;
 														<!--{/if}-->
-														<a href="<!--{:Dyhb::U('home://space@?id='.$oComment['user_id'])}-->" target="_blank" title="查看详细资料"><img src="<!--{:__PUBLIC__}-->/images/common/userinfo.gif" alt="查看详细资料"></a>
+														<a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" target="_blank" title="查看详细资料"><img src="<!--{:__PUBLIC__}-->/images/common/userinfo.gif" alt="查看详细资料"></a>
 													</div>
 												</div>
 											</center>
@@ -407,7 +411,7 @@ $(function(){
 													<tr>
 														<th>
 															<p>
-																<a href="<!--{:Dyhb::U('group://space/topic?uid='.$oComment['user_id'])}-->"><!--{$TheController->totalTopic($oComment->user_id)}--></a>
+																<a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><!--{$TheController->totalTopic($oComment->user_id)}--></a>
 															</p>主题
 														</th>
 														<th>
@@ -443,7 +447,7 @@ $(function(){
 												</tr>
 												<tr>
 													<td>帖子</td>
-													<td><a href="<!--{:Dyhb::U('group://space/topiccomment?uid='.$oComment['user_id'])}-->" target="_blank"><!--{$TheController->totalComment($oComment->user_id)}--></a></td>
+													<td><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'].'&type=comment')}-->" target="_blank"><!--{$TheController->totalComment($oComment->user_id)}--></a></td>
 												</tr>
 												<tr>
 													<td>金币</td>
@@ -464,6 +468,9 @@ $(function(){
 											<!--{/if}-->&nbsp;
 											<a rel="nofollow" href="javascript:void(0);" onclick="addMessage('<!--{$oComment->user_id}-->');"><img src="<!--{:__PUBLIC__}-->/images/common/pmto.gif"/>写私信</a>
 										</div>
+										<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oComment->user_id)==0}-->
+										<p style="margin-top:10px;"><a href="javascript:void(0);" class="btn btn-warning" title="我要邀请他加入"><i class="icon-plus icon-white"></i>&nbsp;非小组成员</a></p>
+										<!--{/if}-->
 									</div>
 								</td>
 								<td class="floor_right floor_grouptopiccommenttd2">

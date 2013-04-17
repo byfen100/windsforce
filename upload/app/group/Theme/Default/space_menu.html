@@ -1,0 +1,9 @@
+		<div class="row">
+			<div class="span12">
+				<ul class="nav nav-tabs">
+					<li <!--{if $sType==''}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://space@?id='.$nId)}-->"><!--<lang package='Template/Space'>-->首页<!--</lang>--></a></li>
+					<li <!--{if $sType=='comment'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://space@?id='.$nId.'&type=comment')}-->"><!--<lang package='Template/Space'>-->我的回帖<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><i class='icon-home'></i>&nbsp;<!--<lang package='Template/Space'>-->返回个人空间<!--</lang>--></a></li>
+				</ul>
+			</div>
+		</div>

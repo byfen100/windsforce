@@ -36,7 +36,7 @@ return array(
 	'USER_AUTH_MODEL'=>'user',
 	'AUTH_PWD_ENCODER'=>'md5',
 	'USER_AUTH_GATEWAY'=>'home://public/login',
-	'NOT_AUTH_MODULE'=>'public,api',
+	'NOT_AUTH_MODULE'=>'public,api,space,misc',
 	'REQUIRE_AUTH_MODULE'=>'',
 	'NOT_AUTH_ACTION'=>'',
 	'REQUIRE_AUTH_ACTION'=>'',
@@ -47,7 +47,6 @@ return array(
 		/* home应用 */
 		'home@stat@*'=>true,
 		'home@apps@*'=>true,
-		'home@misc@*'=>true,
 		'home@online@*'=>true,
 		'home@getpassword@*'=>true,
 		'home@userappeal@*'=>true,
@@ -59,7 +58,6 @@ return array(
 		'home@attachment@normal_upload'=>false,
 		'home@attachment@flash_upload'=>false,
 		'home@attachment@add_attachmentcomment'=>false,
-		'home@space@*'=>true,
 		'home@homesite@*'=>true,
 		'home@homehelp@*'=>true,
 

@@ -31,7 +31,7 @@ class EditController extends Controller{
 
 		// 发贴权限
 		if($oGroup->group_ispost==0){
-			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
+			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$oGroup['group_id'])->getOne();
 			if(empty($oGroupuser['user_id'])){
 				$this->E(Dyhb::L('只有该小组成员才能发帖','Controller/Grouptopic').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','Controller/Group').'</a></span>');
 			}
@@ -39,8 +39,8 @@ class EditController extends Controller{
 			$this->E(Dyhb::L('该小组目前拒绝任何人发帖','Controller/Grouptopic'));
 		}
 
-		if(!Groupadmin_Extend::checkCommentRbac($oGrouptopic->group,$oGrouptopiccomment)){
-			$this->E(Dyhb::L('你没有权限编辑回帖','Controller/Grouptopic'));
+		if(!Groupadmin_Extend::checkTopicedit($oGrouptopic)){
+			$this->E(Dyhb::L('你没有权限编辑帖子','Controller/Grouptopic'));
 		}
 
 		// 编辑权限检测

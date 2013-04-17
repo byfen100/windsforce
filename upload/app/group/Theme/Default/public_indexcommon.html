@@ -32,7 +32,7 @@ function completeSet(data,status){
 					<!--{d*else}-->
 					<p>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
 					<span class="pipe">|</span>
-					<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'].'&type=topic')}-->" target="_blank">我的帖子</a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->">查看新帖</a></p>
+					<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank">我的帖子</a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->">查看新帖</a></p>
 					<!--{/if}-->
 				</div>
 				<span class="clear"></span>
