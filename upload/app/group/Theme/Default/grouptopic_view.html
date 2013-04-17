@@ -46,6 +46,7 @@ $(function(){
 												<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->">匿名<!--{d*else}-->匿名<!--{/if}-->
 												<!--{d*else}-->
 												<a target="_blank" href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+												<!--{$oGrouptopic['user_id']|Core_Extend+getUseronlineicon}-->
 												<!--{/if}-->
 											</div>
 										</div>
@@ -57,8 +58,8 @@ $(function(){
 												</a>
 												<div class="grouptopicview_info"> 
 													<div>
-														<strong><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$oGrouptopic->grouptopic_username}--></a></strong>&nbsp;
-														<em><img src="<!--{:Profile_Extend::getUserprofilegender($oGrouptopic->userprofile->userprofile_gender)}-->"/></em>
+														<em><img src="<!--{:Profile_Extend::getUserprofilegender($oGrouptopic->userprofile->userprofile_gender)}-->"/></em>&nbsp;<strong><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}-->" target="_blank"><!--{$oGrouptopic->grouptopic_username}--></a></strong>
+														<em><!--{$oGrouptopic['user_id']|Core_Extend+getUseronlineicon}--></em>
 													</div>
 													<div class="grouptopicview_tablebox">
 														<table style="text-align:left;" cellspacing="0" cellpadding="0" width="100%">
@@ -354,6 +355,7 @@ $(function(){
 										<div class="floor_userinfoname">
 											<div class="floor_userinfonameinner">
 												<a target="_blank" href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a>
+												<!--{$oComment['user_id']|Core_Extend+getUseronlineicon}-->
 											</div>
 										</div>
 										<div>
@@ -363,8 +365,9 @@ $(function(){
 												</a>
 												<div class="grouptopicview_info"> 
 													<div>
-														<strong><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" target="_blank"><!--{$oComment->user->user_name}--></a></strong>&nbsp;
-														<em><img src="<!--{:Profile_Extend::getUserprofilegender($oComment->userprofile->userprofile_gender)}-->"/></em>
+														<em><img src="<!--{:Profile_Extend::getUserprofilegender($oComment->userprofile->userprofile_gender)}-->"/></em>&nbsp;
+														<strong><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->" target="_blank"><!--{$oComment->user->user_name}--></a></strong>
+														<em><!--{$oComment['user_id']|Core_Extend+getUseronlineicon}--></em>
 													</div>
 													<div class="grouptopicview_tablebox">
 														<table style="text-align:left;" cellspacing="0" cellpadding="0" width="100%">
