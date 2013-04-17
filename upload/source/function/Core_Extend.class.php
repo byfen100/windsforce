@@ -927,6 +927,12 @@ WINDSFORCE;
 			}
 		}
 
+		if(defined('CURSCRIPT')){
+			$sScriptCss.='<link rel="stylesheet" type="text/css" href="'.$sStyleCacheurl.'/scriptstyle_'.APP_NAME.'_'.str_replace('::','_',CURSCRIPT).'.css?'.$GLOBALS['_style_']['verhash']."\" />";
+		}
+		
+		$sScriptCss.='<link rel="stylesheet" type="text/css" href="'.$sStyleCacheurl.'/windsforce.css?'.$GLOBALS['_style_']['verhash']."\" />";
+		
 		if(!empty($sCurrentT) && is_file($sStyleCachepath.'/t_'.$sCurrentT.'.css')){
 			$sScriptCss.='<link rel="stylesheet" id="extend_style" type="text/css" href="'.$sStyleCacheurl.'/t_'.$sCurrentT.'.css?'.$GLOBALS['_style_']['verhash']."\" />";
 			$GLOBALS['_extend_style_']=$sCurrentT;
@@ -967,12 +973,6 @@ WINDSFORCE;
 				$sScriptCss.="</script>";
 			}
 		}
-		
-		if(!defined('CURSCRIPT')){
-			return $sScriptCss;
-		}
-		
-		$sScriptCss.='<link rel="stylesheet" type="text/css" href="'.$sStyleCacheurl.'/scriptstyle_'.APP_NAME.'_'.str_replace('::','_',CURSCRIPT).'.css?'.$GLOBALS['_style_']['verhash']."\" />";
 		
 		return $sScriptCss;
 	}

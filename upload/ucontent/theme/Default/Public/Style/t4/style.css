@@ -55,3 +55,11 @@ input:focus,textarea:focus {border-color: #9934B7;}
 #footer{background: none;color:#333333;}
 #footer a{color:#333333;}
 #footer a:hover{color:#000;}
+
+/**===============================
+           重写系统主题元素CSS
+================================*/
+.WindsforceSystem-link_color,.WindsforceSystem-14{color:#6C1992;}/* 14 */
+.WindsforceSystem-interval_line_color-border,.WindsforceSystem-35{}/* 35 */
+.WindsforceSystem-common_background_color,.WindsforceSystem-37{background-color:#f8eff8;}/* 37 */
+.WindsforceSystem-special_bg,.WindsforceSystem-39{background-color:#9934B7;}/* 39 */

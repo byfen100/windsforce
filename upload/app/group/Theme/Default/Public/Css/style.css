@@ -15,28 +15,28 @@ Description: Group应用模块CSS
 .floor_right{vertical-align:top;padding:10px 20px;border-bottom:0 none;}
 .floor_bottom{border-top:0 none;vertical-align:bottom;padding:0 20px;}
 .floor_table{table-layout:fixed;}
-.floor_grouptopictable{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #DDDDDD;border-bottom:none;}
-.floor_grouptopictd1{background:none repeat scroll 0 0 #E5EDF2;border-right: 1px solid #C2D5E3;border-bottom: 1px solid #C2D5E3;text-align:center;}
-.floor_grouptopictd2{border-bottom: 1px solid #E5EDF2;}
-.floor_grouptopicbottomtd1{background: none repeat scroll 0 0 #C2D5E3;height: 4px;padding: 0;margin:0;border-right:1px solid #CDCDCD;}
-.floor_grouptopicbottomtd2{background: none repeat scroll 0 0 #E5EDF2;height: 4px;padding: 0;margin:0;}
+.floor_grouptopictable{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid;border-bottom:none;}
+.floor_grouptopictd1{text-align:center;border:1px solid;border-bottom:none;}
+.floor_grouptopictd2{border-bottom:none;}
+.floor_grouptopicbottomtd1{height: 4px;padding: 0;margin:0;border:1px solid;border-top:none;}
+.floor_grouptopicbottomtd2{height: 4px;padding: 0;margin:0;border-top:none;}
 
-.floor_grouptopiccommenttable{background: none repeat scroll 0 0 #FFFFFF;border-left: 1px solid #DDDDDD;border-right: 1px solid #DDDDDD;border-top:none;}
-.floor_grouptopiccommenttd1{padding-bottom:80px;padding-top:10px;background:none repeat scroll 0 0 #E5EDF2;border-right: 1px solid #C2D5E3;border-top: 1px solid #C2D5E3; text-align:center;}
-.floor_grouptopiccommenttd2{border-top: 1px solid #E5EDF2;}
-.floor_grouptopiccommentbottomtd1{background: none repeat scroll 0 0 #C2D5E3;height: 4px;padding: 0;margin:0;border-right:1px solid #CDCDCD;}
-.floor_grouptopiccommentbottomtd2{background: none repeat scroll 0 0 #E5EDF2;height: 4px;padding: 0;margin:0;}
-.floor_grouptopiccommentbottom{border-bottom: 1px solid #CDCDCD;padding: 0;margin:0;}
+.floor_grouptopiccommenttable{border-top:none;border:1px solid;border-top:none; border-bottom:none;}
+.floor_grouptopiccommenttd1{padding-bottom:80px;padding-top:10px;border: 1px solid;border-top:none;border-bottom:none;text-align:center;}
+.floor_grouptopiccommenttd2{border-top:none;}
+.floor_grouptopiccommentbottomtd1{height: 4px;padding: 0;margin:0;border-right:1px solid;border-top:none;}
+.floor_grouptopiccommentbottomtd2{height: 4px;padding: 0;margin:0;border-top:none;}
+.floor_grouptopiccommentbottom{border-bottom:none;padding: 0;margin:0;}
 
 .grouptopiccomment_parentcontent{-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background-color: #FAFAFA;border-color: #E6E6E6 #E6E6E6 #D6D6D6;border-image: none;border-style: solid;border-width: 1px;box-shadow: 0 1px 0 white inset, 0 1px 5px #EEEEEE;min-height: 38px;padding: 10px;color: #666666;line-height: 1.6;margin: 15px 0 2px;
 }
 
 .floor_footerposttable{table-layout:fixed;margin-top:-15px;margin-bottom:-20px;}
 .grouptopiccomment_form{margin-bottom:-15px;}
-.floor_footerpostcontenttable{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #DDDDDD;}
-.floor_footerpostcontenttd1{padding-bottom:80px;padding-top:10px;background:none repeat scroll 0 0 #E5EDF2;border-bottom:1px solid #DDDDDD;border-right: 1px solid #C2D5E3; text-align:center;}
+.floor_footerpostcontenttable{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid;}
+.floor_footerpostcontenttd1{padding-bottom:80px;padding-top:10px;text-align:center;border:1px solid;border-top:none;}
 
-.floor_footerposttitle{background:#378C32;padding:5px 10px;color:#fff;}
+.floor_footerposttitle{padding:5px 10px;color:#fff;}
 
 .grouptopiccontent_box{min-height:100px;}
 .grouptopiccomment_title h1{font-size:14px;}
@@ -157,10 +157,11 @@ Description: Group应用模块CSS
 .group_commontitle .group_info{background-color: rgba(0, 0, 0, 0.5);left: 20px;overflow: hidden;padding: 7px 10px 8px;position: absolute;top: 14px;color:#fff;}
 .group_commontitle .group_info a{color:#fff;}
 .group_joinleave{color:#000;background:#F0F0F0;text-align:center;padding:2px 5px;font-size:12px;}
-.group_commonmenu{position: absolute;bottom:-18px;left:15px;}
-.group_commonmenu .nav-groupmenu li a{color:#fff;}
-.group_commonmenu .nav-groupmenu li a:hover{color:green;}
-.group_commonmenu .nav-groupmenu .active a{color:#999;font-weight:bold;}
+.group_commonmenu{position: absolute;bottom:-19px;left:15px;}
+.group_commonmenu .nav-groupmenu li a{}
+.group_commonmenu .nav-groupmenu li a:hover{}
+.group_commonmenu .nav-groupmenu .active a{font-weight:bold;}
+.group_commonmenu .nav-groupmenu li{border-bottom:1px solid #ffffff;}
 [/CURSCRIPT]
 
 /**===============================

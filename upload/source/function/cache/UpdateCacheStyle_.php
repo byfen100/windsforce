@@ -167,6 +167,7 @@ class UpdateCacheStyle{
 		$arrCssfiles=array(
 			'style'=>array('style','style_append'),
 			'common'=>array('common','common_append'),
+			'windsforce'=>array('windsforce','windsforce_append'),
 		);
 
 		$arrStyleExtendValue=explode('|',$arrData['style_extend']);

@@ -35,9 +35,9 @@ $(function(){
 				<div id="grouptopicview_list" class="grouptopicview_list">
 					<!--{if $nPage<2}-->
 					<div class="floor clear" id="grouptopicview_0">
-						<table width="100%" class="floor_table floor_grouptopictable">
+						<table width="100%" class="floor_table floor_grouptopictable WindsforceSystem-interval_line_color-border">
 							<tr>
-								<td rowspan="2" class="floor_left floor_grouptopictd1" width="350px">
+								<td rowspan="2" class="floor_left floor_grouptopictd1 WindsforceSystem-common_background_color WindsforceSystem-interval_line_color-border" width="350px">
 									<div class="floor_info">
 										<div class="floor_userinfoname">
 											<div class="floor_userinfonameinner">
@@ -228,7 +228,7 @@ $(function(){
 								</td>
 							</tr>
 							<tr>
-								<td class="floor_bottom floor_grouptopictd2" valign="bottom">
+								<td class="floor_bottom floor_grouptopictd2 WindsforceSystem-interval_line_color-border" valign="bottom">
 									<!--{if $oGrouptopic['grouptopic_iscomment']==1 && $oGrouptopic['grouptopic_isclose']=='0'}-->
 									<div class="floor_quickreply">
 										<h4 style="font-size:13px;">快速回复</h4>
@@ -275,16 +275,16 @@ $(function(){
 								</td>
 							</tr>
 							<tr>
-								<td class="floor_grouptopicbottomtd1"></td>
-								<td class="floor_grouptopicbottomtd2"></td>
+								<td class="floor_grouptopicbottomtd1 WindsforceSystem-special_bg WindsforceSystem-interval_line_color-border"></td>
+								<td class="floor_grouptopicbottomtd2 WindsforceSystem-common_background_color WindsforceSystem-interval_line_color-border"></td>
 							</tr>
 						</table>
 					</div>
 					<!--{d*else}-->
 					<div class="floor clear" id="grouptopicview_0">
-						<table width="100%" class="floor_table floor_grouptopictable">
+						<table width="100%" class="floor_table floor_grouptopictable WindsforceSystem-interval_line_color-border">
 							<tr>
-								<td rowspan="2" class="floor_left floor_grouptopictd1" width="350px">
+								<td rowspan="2" class="floor_left floor_grouptopictd1 WindsforceSystem-common_background_color WindsforceSystem-interval_line_color-border" width="350px">
 									<div class="floor_info">
 										<div class="floor_userinfoname">
 											<div class="floor_userinfonameinner">
@@ -335,11 +335,11 @@ $(function(){
 								</td>
 							</tr>
 							<tr>
-								<td class="floor_bottom floor_grouptopictd2" valign="bottom"></td>
+								<td class="floor_bottom floor_grouptopictd2 WindsforceSystem-interval_line_color-border" valign="bottom"></td>
 							</tr>
 							<tr>
-								<td class="floor_grouptopicbottomtd1"></td>
-								<td class="floor_grouptopicbottomtd2"></td>
+								<td class="floor_grouptopicbottomtd1 WindsforceSystem-special_bg WindsforceSystem-interval_line_color-border"></td>
+								<td class="floor_grouptopicbottomtd2 WindsforceSystem-common_background_color WindsforceSystem-interval_line_color-border"></td>
 							</tr>
 						</table>
 					</div>
@@ -348,9 +348,9 @@ $(function(){
 					<!--<foreach for=arrComments value=oComment>-->
 					<a name="grouptopiccomment-<!--{$oComment->grouptopiccomment_id}-->"></a>
 					<div class="floor clear" id="grouptopicview_<!--{$oComment->grouptopiccomment_id}-->">
-						<table width="100%" class="floor_table floor_grouptopiccommenttable">
+						<table width="100%" class="floor_table floor_grouptopiccommenttable WindsforceSystem-interval_line_color-border">
 							<tr>
-								<td rowspan="2" class="floor_left floor_grouptopiccommenttd1" width="350px">
+								<td rowspan="2" class="floor_left floor_grouptopiccommenttd1 WindsforceSystem-common_background_color WindsforceSystem-interval_line_color-border" width="350px">
 									<div class="floor_info">
 										<div class="floor_userinfoname">
 											<div class="floor_userinfonameinner">
@@ -476,7 +476,7 @@ $(function(){
 										<!--{/if}-->
 									</div>
 								</td>
-								<td class="floor_right floor_grouptopiccommenttd2">
+								<td class="floor_right floor_grouptopiccommenttd2 WindsforceSystem-interval_line_color-border">
 									<div class="floor_top_tips">
 										<span class="floor_copy" title="复制此楼地址" onclick="copy('楼层 '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','楼层复制成功');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:__APPPUB__}-->/Images/settop.png" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}-->楼<sup>#</sup></span>
 										<span>
@@ -557,12 +557,12 @@ $(function(){
 								</td>
 							</tr>
 							<tr>
-								<td class="floor_grouptopiccommentbottomtd1"></td>
-								<td class="floor_grouptopiccommentbottomtd2"></td>
+								<td class="floor_grouptopiccommentbottomtd1 WindsforceSystem-special_bg WindsforceSystem-interval_line_color-border"></td>
+								<td class="floor_grouptopiccommentbottomtd2 WindsforceSystem-common_background_color WindsforceSystem-interval_line_color-border"></td>
 							</tr>
 							<!--{if count($arrComments)-1==$key}-->
 							<tr>
-								<td colspan="2" class="floor_grouptopiccommentbottom"></td>
+								<td colspan="2" class="floor_grouptopiccommentbottom WindsforceSystem-interval_line_color-border"></td>
 							</tr>
 							<!--{/if}-->
 						</table>
