@@ -1180,6 +1180,10 @@ WINDSFORCE;
 	}
 
 	static public function checkSpam($arrData=array(),$bLogincheck=true){
+		if(Core_Extend::isAdmin()){
+			return true;
+		}
+		
 		// 是否登录检查
 		if($bLogincheck===TRUE && $GLOBALS['___login___']===FALSE){
 			Dyhb::E(Dyhb::L('你没有登录，无法发布信息','__COMMON_LANG__@Function/Core_Extend').'<br/><a href="'.Dyhb::U('home://public/login').'">'.Dyhb::L('前往登录','__COMMON_LANG__@Function/Core_Extend').'</a>');

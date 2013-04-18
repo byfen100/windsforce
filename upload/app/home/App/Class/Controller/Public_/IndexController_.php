@@ -114,6 +114,32 @@ class IndexController extends Controller{
 		}
 	}
 
+	public function get_attachmentspan($nI){
+		$nSpan=$nHeight=0;
+		
+		switch($nI){
+			case 1:
+				$nSpan=8;
+				$nHeight=180;
+				break;
+			case 2:
+				$nSpan=4;
+				$nHeight=270;
+				break;
+			case 3:
+			case 4:
+				$nSpan=2;
+				$nHeight=120;
+				break;
+			case 0:
+				$nSpan=4;
+				$nHeight=120;
+				break;
+		}
+		
+		return array($nSpan,$nHeight);
+	}
+
 	public function index_title_(){
 		if($GLOBALS['_commonConfig_']['DEFAULT_APP']!='home'){
 			return Dyhb::L('个人空间','Controller/Public');

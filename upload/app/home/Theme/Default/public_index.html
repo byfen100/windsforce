@@ -227,43 +227,44 @@ $(document).ready(function(){
 				<div class="commonbox">
 					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新照片<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->" title="<!--<lang package='Template/Public'>-->更多照片<!--</lang>-->"><i class="icon-th-list"></i></a><!--{if $GLOBALS['___login___']!==false}-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/add')}-->" title="<!--<lang package='Template/Public'>-->我要上传<!--</lang>-->"><i class="icon-upload"></i></a><!--{/if}--></div>
 					<div id="home_attachmentlist_box" class="home_attachmentlist_box">
-						<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/slidedeck.skin.css" media="screen" />
-						
-						<!--[if lte IE 8]>
-						<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/slidedeck.skin.ie.css" media="screen,handheld" />
-						<![endif]-->
-						
-						<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/slidedeck.jquery.lite.js"></script>
-
-						<div id="slidedeck_frame" class="skin-slidedeck">
-							<dl class="slidedeck">
-								<!--{if is_array($arrNewattachments)}-->
-								<!--<foreach for=arrNewattachments value=oAttachment>-->
-								<dt><!--{$oAttachment['attachment_name']|G+subString=0,25}--></dt>
-								<dd><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><img src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" alt="<!--{$oAttachment['attachment_name']}-->" height="296" width="100%"/></a><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|G+subString=0,60}--><!--{d*else}--><!--<lang package='Template/Public'>-->暂时没有任何描述<!--</lang>--><!--{/if}--></dd>
-								<!--</foreach>-->
-								<!--{d*else}-->
-								<dt><!--<lang package='Template/Public'>-->只<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->花<!--</lang>--></dd>
-								<dt><!--<lang package='Template/Public'>-->为<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
-								<dt><!--<lang package='Template/Public'>-->你<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->人<!--</lang>--></dd>
-								<dt><!--<lang package='Template/Public'>-->精<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->更<!--</lang>--></dd>
-								<dt><!--<lang package='Template/Public'>-->彩<!--</lang>--></dt>
-								<dd><img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg" height="296" width="100%"/><!--<lang package='Template/Public'>-->美<!--</lang>--></dd>
-								<!--{/if}-->
-							</dl>
-						</div>
-
-						<!--{script}-->
-						$('.slidedeck').slidedeck({
-							autoPlay: true,
-							cycle: true, 
-							autoPlayInterval: 3000 
-						});
-						<!--{/script}-->
+						<ul class="thumbnails">
+							<!--{if is_array($arrNewattachments)}-->
+							<!--<foreach for=arrNewattachments value=oAttachment>-->
+							<!--{~$arrSpandata=$TheController->get_attachmentspan($i%5)}-->
+							<li class="span<!--{$arrSpandata[0]}-->">
+								<a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->" class="thumbnail">
+									<img src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" width="100%" height="<!--{$arrSpandata[1]}-->" alt="<!--{$oAttachment['attachment_name']}--> - " title="<!--{$oAttachment['attachment_name']}-->">
+								</a>
+							</li>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<li class="span8">
+								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg" class="thumbnail">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg" width="100%" height="150" alt="" title="<!--<lang package='Template/Public'>-->只<!--</lang>--> - <!--<lang package='Template/Public'>-->花<!--</lang>-->">
+								</a>
+							</li>
+							<li class="span4">
+								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg" class="thumbnail">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg" width="100%" height="270" alt="" title="<!--<lang package='Template/Public'>-->为<!--</lang>--> - <!--<lang package='Template/Public'>-->美<!--</lang>-->">
+								</a>
+							</li>
+							<li class="span2">
+								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg" class="thumbnail">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template/Public'>-->你<!--</lang>--> - <!--<lang package='Template/Public'>-->人<!--</lang>-->">
+								</a>
+							</li>
+							<li class="span2">
+								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg" class="thumbnail">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template/Public'>-->精<!--</lang>--> - <!--<lang package='Template/Public'>-->更<!--</lang>-->">
+								</a>
+							</li>
+							<li class="span4">
+								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg" class="thumbnail">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template/Public'>-->彩<!--</lang>--> - <!--<lang package='Template/Public'>-->美<!--</lang>-->">
+								</a>
+							</li>
+							<!--{/if}-->
+						</ul>
 					</div>
 				</div>
 
