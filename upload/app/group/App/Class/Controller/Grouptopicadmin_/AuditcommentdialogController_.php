@@ -10,15 +10,6 @@ class AuditcommentdialogController extends Controller{
 		$nGroupid=intval(G::getGpc('groupid','G'));
 		$nGrouptopicid=intval(G::getGpc('grouptopicid','G'));
 		$sGrouptopiccomments=G::getGpc('commentids','G');
-
-		if(empty($nGroupid)){
-			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
-		}
-
-		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
-		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
-		}
 		
 		if(empty($nGrouptopicid)){
 			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));

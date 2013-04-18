@@ -8,17 +8,8 @@ class ClosetopicController extends Controller{
 
 	public function index(){
 		$sGrouptopics=trim(G::getGpc('grouptopics'));
-		$nGroupid=intval(G::getGpc('group_id'));
+		$nGroupid=intval(G::getGpc('groupid'));
 		$nStatus=intval(G::getGpc('status'));
-
-		if(empty($nGroupid)){
-			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
-		}
-
-		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
-		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
-		}
 
 		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))){
 			$this->E(Dyhb::L('你没有关闭或者打开帖子的权限','Controller/Grouptopicadmin'));

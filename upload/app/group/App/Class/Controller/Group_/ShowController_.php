@@ -28,11 +28,11 @@ class ShowController extends Controller{
 			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
 		}
 
-		if($oGroup->group_isopen==0){
-			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$oGroup['group_id'])->getOne();
-			if(empty($oGroupuser['user_id'])){
-				$this->E(Dyhb::L('只有该小组成员才能够访问小组','Controller/Group').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','Controller/Group').'</a></span>');
-			}
+		try{
+			// 验证小组权限
+			Groupadmin_Extend::checkGroup($oGroup);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
 		}
 
 		$this->_oGroup=$oGroup;

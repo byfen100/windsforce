@@ -19,6 +19,13 @@ class CommenttopicdialogController extends Controller{
 			$this->E(Dyhb::L('你要回复的帖子不存在','Controller/Grouptopic'));
 		}
 
+		try{
+			// 验证小组权限
+			Groupadmin_Extend::checkGroup($oGrouptopic['group_id'],true);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
 		if($nGrouptopiccommentid){
 			$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccommentid)->getOne();
 			if(empty($oGrouptopiccomment['grouptopiccomment_id'])){

@@ -204,13 +204,13 @@ function reloadCategory(){
 						</label>
 						<hr/>
 						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_sticktopic" id="grouptopic_sticktopic" value="<!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->1<!--{/if}-->" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_sticktopic']>0}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>主题置顶
+							<input type="checkbox" name="grouptopic_sticktopic" id="grouptopic_sticktopic" value="<!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->1<!--{/if}-->" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_sticktopic']>0}-->checked="checked"<!--{/if}--> <!--{if (!isset($oGroup) && !Core_Extend+isAdmin()) || (isset($oGroup) && !Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@sticktopic')))}-->disabled="disabled"<!--{/if}-->>主题置顶
 						</label>
 						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_addtodigest" id="grouptopic_addtodigest" value="<!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->1<!--{/if}-->" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']>0}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>精华帖子
+							<input type="checkbox" name="grouptopic_addtodigest" id="grouptopic_addtodigest" value="<!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->1<!--{/if}-->" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_addtodigest']>0}-->checked="checked"<!--{/if}--> <!--{if (!isset($oGroup) && !Core_Extend+isAdmin()) || (isset($oGroup) && !Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@digesttopic')))}-->disabled="disabled"<!--{/if}-->>精华帖子
 						</label>
 						<label class="checkbox">
-							<input type="checkbox" name="grouptopic_isrecommend" id="grouptopic_isrecommend" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_isrecommend']==1}-->checked="checked"<!--{/if}--> <!--{if Core_Extend+isAdmin()===false}-->readonly="readonly"<!--{/if}-->>推荐帖子
+							<input type="checkbox" name="grouptopic_isrecommend" id="grouptopic_isrecommend" value="1" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopic_isrecommend']==1}-->checked="checked"<!--{/if}--> <!--{if (!isset($oGroup) && !Core_Extend+isAdmin()) || (isset($oGroup) && !Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@recommendtopic')))}-->disabled="disabled"<!--{/if}-->>推荐帖子
 						</label>
 					</div>
 				</div>

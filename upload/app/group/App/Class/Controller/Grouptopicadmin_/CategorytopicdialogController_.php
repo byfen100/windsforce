@@ -11,15 +11,6 @@ class CategorytopicdialogController extends Controller{
 		$sGrouptopicid=trim(G::getGpc('grouptopicid','G'));
 		$nCategoryid=intval(G::getGpc('category_id','G'));
 		
-		if(empty($nGroupid)){
-			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
-		}
-
-		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
-		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
-		}
-		
 		$arrGrouptopicid=Dyhb::normalize($sGrouptopicid);
 		$sGrouptopics=implode(',',$arrGrouptopicid);
 		

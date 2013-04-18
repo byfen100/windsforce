@@ -6,6 +6,12 @@
 
 class CreateController extends InitController{
 
+	public function init__(){
+		parent::init__();
+
+		$this->is_login();
+	}
+	
 	public function index(){
 		Core_Extend::doControllerAction('Create@Index','index');
 	}

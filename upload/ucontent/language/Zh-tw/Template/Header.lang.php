@@ -28,6 +28,7 @@ return array(
 '1fd02a90c38333badc226309fea6fecb'=>"用戶",
 '4b027f3979224227ba69dafa09f4be38'=>"提醒",
 '7eb05a33a55259025ed1afac4252a96f'=>"遊客權限",
+'29f5a3f2a2f695904a2925bbbb5febef'=>"我的權限",
 )
 
 ?>

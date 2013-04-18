@@ -6,6 +6,21 @@
 
 class GrouptopicadminController extends InitController{
 
+	public function init__(){
+		parent::init__();
+
+		$this->is_login();
+
+		$nGroupid=intval(G::getGpc('groupid','G'));
+
+		try{
+			// 验证小组权限
+			Groupadmin_Extend::checkGroup($nGroupid);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+	}
+	
 	public function deletetopic_dialog(){
 		Core_Extend::doControllerAction('Grouptopicadmin@Deletetopicdialog','index');
 	}

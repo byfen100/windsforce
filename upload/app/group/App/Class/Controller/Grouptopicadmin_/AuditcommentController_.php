@@ -7,18 +7,9 @@
 class AuditcommentController extends Controller{
 
 	public function index(){
-		$nGrouptopics=intval(G::getGpc('grouptopics'));// 删除回帖，只有一个主题
+		$nGrouptopics=intval(G::getGpc('grouptopics'));
 		$sGrouptopiccomments=trim(G::getGpc('grouptopiccomments'));
-		$nGroupid=intval(G::getGpc('group_id'));
-	
-		if(empty($nGroupid)){
-			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
-		}
-
-		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
-		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
-		}
+		$nGroupid=intval(G::getGpc('groupid'));
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopics)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){

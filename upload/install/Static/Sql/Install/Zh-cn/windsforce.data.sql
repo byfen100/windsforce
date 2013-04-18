@@ -140,19 +140,20 @@ INSERT INTO `#@__access` (`role_id`, `node_id`, `access_level`, `access_parentid
 (3, 83, 3, 71, 1),
 (3, 79, 3, 71, 1),
 (3, 77, 3, 71, 1),
-(3, 75, 3, 71, 1),
+(3, 76, 3, 71, 1),
 (2, 75, 3, 71, 1),
 (5, 81, 3, 61, 1),
+(3, 75, 3, 71, 1),
 (3, 74, 3, 71, 1),
-(3, 73, 3, 71, 1),
 (2, 74, 3, 71, 1),
 (2, 73, 3, 71, 1),
 (2, 72, 3, 71, 1),
 (2, 81, 3, 61, 1),
 (3, 81, 3, 61, 1),
 (1, 81, 3, 61, 1),
-(3, 85, 3, 71, 1),
-(2, 85, 3, 71, 1);
+(3, 73, 3, 71, 1),
+(2, 85, 3, 71, 1),
+(3, 85, 3, 71, 1);
 
 -- --------------------------------------------------------
 
@@ -432,7 +433,7 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 (73, 'group@grouptopicadmin@closetopic_dialog|closetopic', '打开或者关闭主题', 1, '', 0, 71, 3, 0, 1364879635, 0, 1),
 (74, 'group@grouptopicadmin@sticktopic_dialog|sticktopic', '置顶帖子', 1, '', 0, 71, 3, 0, 1364879720, 0, 1),
 (75, 'group@grouptopicadmin@digesttopic_dialog|digesttopic', '帖子精华', 1, '', 0, 71, 3, 0, 1364879779, 1364879786, 1),
-(76, 'group@grouptopicadmin@statustopic_dialog|statustopic', '隐藏或者显示帖子', 1, '', 0, 71, 3, 0, 1364879867, 0, 1),
+(76, 'group@grouptopicadmin@hidetopic_dialog|hidetopic', '隐藏或者显示帖子', 1, '', 0, 71, 3, 0, 1364879867, 0, 1),
 (77, 'group@grouptopicadmin@categorytopic_dialog|categorytopic', '帖子分类设置', 1, '', 0, 71, 3, 0, 1364879934, 0, 1),
 (78, 'group@grouptopicadmin@tagtopic_dialog|tagtopic', '帖子标签', 1, '', 0, 71, 3, 0, 1364879971, 0, 1),
 (79, 'group@grouptopicadmin@colortopic_dialog|colortopic', '帖子高亮', 1, '', 0, 71, 3, 0, 1364880013, 0, 1),

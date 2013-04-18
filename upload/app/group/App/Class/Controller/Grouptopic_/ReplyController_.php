@@ -19,10 +19,18 @@ class ReplyController extends Controller{
 		}
 
 		$this->assign('oGrouptopic',$oGrouptopic);
+
+		try{
+			// 验证小组权限
+			Groupadmin_Extend::checkGroup($oGrouptopic['group_id'],true);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
 		$this->assign('oGroup',$oGrouptopic->group);
 
 		// 取得用户是否加入了小组
-		$this->get_groupuser($oGrouptopic->group->group_id);
+		$this->get_groupuser($oGrouptopic->group_id);
 
 		// 取得个人主页
 		$oUserprofile=UserprofileModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();

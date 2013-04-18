@@ -2,8 +2,6 @@
 /** DoYouHaoBaby Framework Lang File, Do not to modify it! */
 return array(
 'e96119b85815dec24266872bbf7bf252'=>"主題標題顏色設置成功",
-'347600e42ae5e103654701851c519c39'=>"沒有待操作的小組",
-'f667ae3f063780ecf0d418851c898be3'=>"沒有找到指定的小組",
 '2ddcdf9a230529d79ef0d8b85ad4ffea'=>"沒有待操作的帖子",
 'e0e0e583df2ec307b8c23ec96e58b873'=>"帖子不存在",
 '607ad5052492f765445260bca907f244'=>"刪除主題成功",

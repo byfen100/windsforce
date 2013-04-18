@@ -32,21 +32,11 @@ class AddtopicController extends Controller{
 			$this->E(Dyhb::L('小组不存在或者还在审核中','Controller/Grouptopic'));
 		}
 
-		if($oGroup->group_isopen==0){
-			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
-			if(empty($oGroupuser['user_id'])){
-				$this->E(Dyhb::L('只有该小组成员才能够访问小组','Controller/Grouptopic'));
-			}
-		}
-
-		// 发贴权限
-		if($oGroup->group_ispost==0){
-			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
-			if(empty($oGroupuser['user_id'])){
-				$this->E(Dyhb::L('只有该小组成员才能发帖','Controller/Grouptopic'));
-			}
-		}elseif($oGroup->group_ispost==1){
-			$this->E(Dyhb::L('该小组目前拒绝任何人发帖','Controller/Grouptopic'));
+		try{
+			// 验证小组权限
+			Groupadmin_Extend::checkGroup($oGroup,true);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
 		}
 	
 		// 保存帖子
@@ -75,7 +65,6 @@ class AddtopicController extends Controller{
 
 		// 更新小组帖子数量和最后更新
 		$nTopicnum=GrouptopicModel::F('group_id=?',$oGrouptopic->group_id)->getCounts();
-		$oGroup=GroupModel::F('group_id=?',$oGrouptopic->group_id)->getOne();
 		$oGroup->group_topicnum=$nTopicnum;
 
 		$arrLatestData=array(

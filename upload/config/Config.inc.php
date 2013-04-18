@@ -11,8 +11,8 @@
   'SHOW_RUN_TIME' => true,
   'SHOW_DB_TIMES' => true,
   'SHOW_GZIP_STATUS' => true,
-  'RBAC_DATA_PREFIX' => 'windsforce_rbac_be155b_',
-  'COOKIE_PREFIX' => 'windsforce_0ae548_',
+  'RBAC_DATA_PREFIX' => 'windsforce_rbac_C7e45B_',
+  'COOKIE_PREFIX' => 'windsforce_1c08EC_',
   'RBAC_ROLE_TABLE' => 'role',
   'RBAC_USERROLE_TABLE' => 'userrole',
   'RBAC_ACCESS_TABLE' => 'access',
@@ -87,8 +87,8 @@
   'DEFAULT_APP' => 'home',
   'URL_MODEL' => 1,
   'URL_DOMAIN' => '',
+  'CRON_ON' => true,
   'DB_HOST' => 'localhost',
   'DB_USER' => 'root',
-  'CRON_ON' => true,
 )
 ?>

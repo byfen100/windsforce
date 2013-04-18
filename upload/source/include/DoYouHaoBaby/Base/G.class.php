@@ -186,15 +186,20 @@ class G{
 				header("Location:".$sUrl);
 			}else{
 				header("refresh:{$nTime};url={$sUrl}");
-				echo($sMsg);
+				
+				include(DYHB_PATH.'/Resource_/Template/Urlgoto.template.php');// 包含跳转页面模板
 			}
+
 			exit();
 		}else{
-			$sStr="<meta http-equiv='Refresh' content='{$nTime};URL={$sUrl}'>";
-			if($nTime!=0){
-				$sStr.=$sMsg;
+			$sHeader="<meta http-equiv='Refresh' content='{$nTime};URL={$sUrl}'>";
+			if($nTime==0){
+				$sHeader='';
 			}
-			exit($sStr);
+			
+			include(DYHB_PATH.'/Resource_/Template/Urlgoto.template.php');// 包含跳转页面模板
+
+			exit();
 		}
 	}
 

@@ -10,10 +10,6 @@ class AddreplyController extends Controller{
 		$nId=intval(G::getGpc('tid'));
 		$nSimple=intval(G::getGpc('simple_comment'));
 
-		if($GLOBALS['___login___']===false){
-			$this->E(Dyhb::L('你没有登录无法回帖','Controller/Grouptopic'));
-		}
-
 		if(empty($nId)){
 			$this->E(Dyhb::L('你没有指定回复主题的ID','Controller/Grouptopic'));
 		}
@@ -28,21 +24,11 @@ class AddreplyController extends Controller{
 			$this->E(Dyhb::L('你回复的帖子所在小组不存在','Controller/Grouptopic'));
 		}
 
-		if($oGroup->group_isopen==0){
-			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$oGroup['group_id'])->getOne();
-			if(empty($oGroupuser['user_id'])){
-				$this->E(Dyhb::L('只有该小组成员才能够访问小组','Controller/Group').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','Controller/Group').'</a></span>');
-			}
-		}
-
-		// 发贴权限
-		if($oGroup->group_ispost==0){
-			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$oGroup['group_id'])->getOne();
-			if(empty($oGroupuser['user_id'])){
-				$this->E(Dyhb::L('只有该小组成员才能发帖','Controller/Grouptopic').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','Controller/Group').'</a></span>');
-			}
-		}elseif($oGroup->group_ispost==1){
-			$this->E(Dyhb::L('该小组目前拒绝任何人发帖','Controller/Grouptopic'));
+		try{
+			// 验证小组权限
+			Groupadmin_Extend::checkGroup($oGroup,true);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
 		}
 
 		// 快捷回复兼容性

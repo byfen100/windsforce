@@ -29,27 +29,16 @@ class AddController extends Controller{
 			}
 
 			$this->_oGroup=$oGroup;
-			
 			$this->assign('oGroup',$oGroup);
 
 			// 取得用户是否加入了小组
 			$this->get_groupuser($oGroup['group_id']);
 
-			if($oGroup->group_isopen==0){
-				$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
-				if(empty($oGroupuser['user_id'])){
-					$this->E(Dyhb::L('只有该小组成员才能够访问小组','Controller/Grouptopic'));
-				}
-			}
-
-			// 发贴权限
-			if($oGroup->group_ispost==0){
-				$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$nGroupid)->getOne();
-				if(empty($oGroupuser['user_id'])){
-					$this->E(Dyhb::L('只有该小组成员才能发帖','Controller/Grouptopic').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','Controller/Group').'</a></span>');
-				}
-			}elseif($oGroup->group_ispost==1){
-				$this->E(Dyhb::L('该小组目前拒绝任何人发帖','Controller/Grouptopic'));
+			try{
+				// 验证小组权限
+				Groupadmin_Extend::checkGroup($oGroup,true);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
 			}
 		}
 		

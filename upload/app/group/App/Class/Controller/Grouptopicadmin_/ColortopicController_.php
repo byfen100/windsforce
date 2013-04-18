@@ -8,22 +8,13 @@ class ColortopicController extends Controller{
 
 	public function index(){
 		$sGrouptopics=trim(G::getGpc('grouptopics'));
-		$nGroupid=intval(G::getGpc('group_id'));
+		$nGroupid=intval(G::getGpc('groupid'));
 		$sHighlightcolor=trim(G::getGpc('highlight_color'));
 		$arrHighlightstyle=G::getGpc('highlight_style');
 		$sHighlightbgcolor=trim(G::getGpc('highlight_bgcolor'));
 
 		// 处理样式数据
 		$arrColor=array($sHighlightcolor,$arrHighlightstyle,$sHighlightbgcolor);
-
-		if(empty($nGroupid)){
-			$this->E(Dyhb::L('没有待操作的小组','Controller/Grouptopicadmin'));
-		}
-
-		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
-		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('没有找到指定的小组','Controller/Grouptopicadmin'));
-		}
 
 		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@colortopic'))){
 			$this->E(Dyhb::L('你没有帖子高亮设置的权限','Controller/Grouptopicadmin'));
