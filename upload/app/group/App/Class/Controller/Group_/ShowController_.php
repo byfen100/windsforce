@@ -16,6 +16,8 @@ class ShowController extends Controller{
 		$nDid=intval(G::getGpc('did','G')); // 是否为精华
 		$nRecommend=intval(G::getGpc('recommend','G')); // 是否推荐
 		$sType=G::getGpc('type','G'); // 排序类型
+		$nNew=intval(G::getGpc('new','G')); // 是否读取新帖，针对登录用户
+		$nMytopic=intval(G::getGpc('mytopic','G')); // 是否读取我在这个小组发布的新帖，针对登录用户
 
 		// 判断小组是否存在
 		if(Core_Extend::isPostInt($sId)){
@@ -79,6 +81,17 @@ class ShowController extends Controller{
 		$arrWhere['grouptopic_status']=1;
 		$arrWhere['group_id']=$oGroup->group_id;
 		$arrWhere['grouptopic_sticktopic']=array('lt',3);
+
+		// 登录用户相关处理
+		if($GLOBALS['___login___']!==false){
+			if($nNew==1){
+				$arrWhere['create_dateline']=array('gt',CURRENT_TIMESTAMP-86400);
+			}
+
+			if($nMytopic==1){
+				$arrWhere['user_id']=$GLOBALS['___login___']['user_id'];
+			}
+		}
 
 		if(Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))){
 			$sOrderextends='grouptopic_isaudit ASC,';

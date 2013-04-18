@@ -7,7 +7,7 @@
 class StickreplycommentController extends Controller{
 
 	public function index(){
-		$nGrouptopics=intval(G::getGpc('grouptopicid','G'));
+		$nGrouptopics=intval(G::getGpc('grouptopics'));
 		$sGrouptopiccomments=trim(G::getGpc('grouptopiccomments'));
 		$nGroupid=intval(G::getGpc('groupid'));
 		$nStatus=intval(G::getGpc('status'));

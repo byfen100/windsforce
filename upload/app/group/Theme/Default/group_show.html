@@ -45,11 +45,21 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 				<div class="row">
 					<div class="span9">
 						<h4>小组介绍</h4>
-						<div class="group_description" style=" background-color: #F8F8F8;margin: 10px 0 15px;padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
+						<div class="group_description" style="background-color: #F8F8F8;margin: 10px 0 15px;padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
 							<div class="group_createdateline" style="margin-bottom:10px;">
 								<b>创建时间</b>:&nbsp;<span class="label label-success"><!--{$oGroup['create_dateline']|date='Y-m-d',**}--></span>
 							</div>
 							<!--{$oGroup['group_description']}-->
+						</div>
+
+						<div class="alert alert-success">
+							<!--{if $GLOBALS['___login___']===false}-->
+							<span>你可以&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->">注册</a>&nbsp;一个帐号，并以此&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);">登录</a>&nbsp;，以浏览更多精彩内容，并随时发布观点，与大家交流。</span>
+							<!--{d*else}-->
+							<span>欢迎回来&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, 你上次访问时间是在&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
+							<span class="pipe">|</span>
+							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->">我的小组帖子</a>, <a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->">查看小组新帖</a></span>
+							<!--{/if}-->
 						</div>
 
 						<div class="row">
