@@ -32,6 +32,10 @@ class Group_Extend{
 	}
 
 	public static function getGroupurl($arrGroup,$sMore=''){
+		if(is_int($arrGroup)){
+			$arrGroup=GroupModel::F('group_id=?',$arrGroup)->getOne();
+		}
+		
 		return Dyhb::U('group://gid@?id='.(!empty($arrGroup['group_name'])?$arrGroup['group_name']:$arrGroup['group_id']).$sMore);
 	}
 

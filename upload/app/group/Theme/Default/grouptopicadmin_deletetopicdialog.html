@@ -2,4 +2,11 @@
 		
 		<p style="font-weight:bold;color:red;">您确认要删除选择的主题么?</p>
 
+		<p><!--{if $GLOBALS['_cache_']['group_option']['group_deletetopic_recyclebin']==1}-->
+			<div class="alert alert-success">系统启用了主题回收站功能，删除的帖子将会被放置到回收站</div>
+			<!--{d*else}-->
+			<div class="alert">系统尚未启用主题回收站功能，主题将会被直接删除</div>
+			<!--{/if}-->
+		</p>
+
 	<!--<include file="grouptopicadmin+footer" />-->

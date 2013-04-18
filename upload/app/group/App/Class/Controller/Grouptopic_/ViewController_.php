@@ -140,8 +140,11 @@ class ViewController extends Controller{
 		$this->assign('nPage',$nPage);
 
 		// 读取回帖回收站数量
-		$nTotalRecyclebinComment=GrouptopiccommentModel::F()->where(array('grouptopic_id'=>$oGrouptopic->grouptopic_id,'grouptopiccomment_status'=>'0'))->all()->getCounts();
-		$this->assign('nTotalRecyclebinComment',$nTotalRecyclebinComment);
+		if(Core_Extend::isAdmin()){
+			$nTotalRecyclebinComment=GrouptopiccommentModel::F()->where(array('grouptopic_id'=>$oGrouptopic->grouptopic_id,'grouptopiccomment_status'=>'0'))->all()->getCounts();
+			
+			$this->assign('nTotalRecyclebinComment',$nTotalRecyclebinComment);
+		}
 
 		// 热门帖子
 		$arrHotGrouptopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=? AND group_id=?',CURRENT_TIMESTAMP-86400,1,$oGrouptopic['group_id'])->order('grouptopic_comments DESC')->top($GLOBALS['_cache_']['group_option']['grouptopic_hotnum'])->get();

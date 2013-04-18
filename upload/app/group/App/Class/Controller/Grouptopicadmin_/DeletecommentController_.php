@@ -24,21 +24,37 @@ class DeletecommentController extends Controller{
 
 		if(is_array($arrGrouptopiccomments)){
 			foreach($arrGrouptopiccomments as $nGrouptopiccomment){
-				$oGrouptopiccommentMeta=GrouptopiccommentModel::M();
-				$oGrouptopiccommentMeta->deleteWhere(array('grouptopiccomment_id'=>$nGrouptopiccomment));
-					
-				if($oGrouptopiccommentMeta->isError()){
-					$this->E($oGrouptopiccommentMeta->getErrorMessage());
+				// 回帖回收站功能开启
+				if($GLOBALS['_cache_']['group_option']['group_deletecomment_recyclebin']==1){
+					$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccomment)->getOne();
+
+					if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
+						$oGrouptopiccomment->grouptopiccomment_status='0';
+						$oGrouptopiccomment->save(0,'update');
+
+						if($oGrouptopiccomment->isError()){
+							$this->E($oGrouptopiccomment->getErrorMessage());
+						}
+					}
+				}else{
+					$oGrouptopiccommentMeta=GrouptopiccommentModel::M();
+					$oGrouptopiccommentMeta->deleteWhere(array('grouptopiccomment_id'=>$nGrouptopiccomment));
+						
+					if($oGrouptopiccommentMeta->isError()){
+						$this->E($oGrouptopiccommentMeta->getErrorMessage());
+					}
 				}
 			}
 
-			// 更新帖子评论数量
-			$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nGrouptopics)->all()->getCounts();
-			$oGrouptopic->setAutofill(false);
-			$oGrouptopic->save(0,'update');
+			if($GLOBALS['_cache_']['group_option']['group_deletecomment_recyclebin']=='0'){
+				// 更新帖子评论数量
+				$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nGrouptopics)->all()->getCounts();
+				$oGrouptopic->setAutofill(false);
+				$oGrouptopic->save(0,'update');
 
-			if($oGrouptopic->isError()){
-				$this->E($oGrouptopic->getErrorMessage());
+				if($oGrouptopic->isError()){
+					$this->E($oGrouptopic->getErrorMessage());
+				}
 			}
 		}
 

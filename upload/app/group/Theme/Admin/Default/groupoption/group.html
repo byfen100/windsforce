@@ -39,7 +39,7 @@ function option(){
 						</div>
 						<div id="tab1" class="windsforce_tabcontent">
 							<fieldset>
-								<label for="close_site"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->审核新群组<!--</lang>--></label>
+								<label for="group_isaudit"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->审核新群组<!--</lang>--></label>
 								<input type="radio" id="group_isaudit" name="options[group_isaudit]" value="1" <!--{if $arrOptions['group_isaudit']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
 								<input type="radio" id="" name="options[group_isaudit]" value="0" <!--{if $arrOptions['group_isaudit']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->管理员建立群组时不需要审核<!--</lang>--></div>
@@ -57,6 +57,18 @@ function option(){
 								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->系统最大附件上传大小，单位为B，-1表示不限制<!--</lang>--> <br/>
 									<!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->服务器最大上传值<!--</lang>--> <!--{$nUploadMaxFilesize}--> (<!--{$nUploadMaxFilesize*1048576}-->B) <!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->请注意最好不要超过这个值，否则不会有任何效果<!--</lang>-->
 								</div>
+							</fieldset>
+							<fieldset>
+								<label for="group_deletetopic_recyclebin"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->删除的主题是否放置到回收站<!--</lang>--></label>
+								<input type="radio" id="group_deletetopic_recyclebin" name="options[group_deletetopic_recyclebin]" value="1" <!--{if $arrOptions['group_deletetopic_recyclebin']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+								<input type="radio" id="" name="options[group_deletetopic_recyclebin]" value="0" <!--{if $arrOptions['group_deletetopic_recyclebin']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->启用回收站功能可以防止误删，便于系统恢复数据<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="group_deletecomment_recyclebin"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->删除的回帖是否放置到回收站<!--</lang>--></label>
+								<input type="radio" id="group_deletecomment_recyclebin" name="options[group_deletecomment_recyclebin]" value="1" <!--{if $arrOptions['group_deletecomment_recyclebin']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+								<input type="radio" id="" name="options[group_deletecomment_recyclebin]" value="0" <!--{if $arrOptions['group_deletecomment_recyclebin']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->启用回收站功能可以防止误删，便于系统恢复数据<!--</lang>--></div>
 							</fieldset>
 						</div>
 						<div id="tab2" class="windsforce_tabcontent">

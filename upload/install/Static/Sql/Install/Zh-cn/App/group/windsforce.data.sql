@@ -71,7 +71,9 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_hottag_date', '86400'),
 ('group_tag_listtopicnum', '15'),
 ('group_tag_listnum', '50'),
-('group_tag_hotnum', '15');
+('group_tag_hotnum', '15'),
+('group_deletetopic_recyclebin', '1'),
+('group_deletecomment_recyclebin', '1');
 
 -- --------------------------------------------------------
 
