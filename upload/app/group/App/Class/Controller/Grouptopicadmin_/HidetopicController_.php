@@ -11,7 +11,7 @@ class HidetopicController extends Controller{
 		$nGroupid=intval(G::getGpc('groupid'));
 		$nStatus=intval(G::getGpc('status'));
 
-		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@hidetopic'))){
 			$this->E(Dyhb::L('你没有隐藏或者显示帖子的权限','Controller/Grouptopicadmin'));
 		}
 		

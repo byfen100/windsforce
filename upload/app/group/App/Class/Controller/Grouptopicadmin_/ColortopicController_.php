@@ -16,7 +16,7 @@ class ColortopicController extends Controller{
 		// 处理样式数据
 		$arrColor=array($sHighlightcolor,$arrHighlightstyle,$sHighlightbgcolor);
 
-		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@colortopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@colortopic'))){
 			$this->E(Dyhb::L('你没有帖子高亮设置的权限','Controller/Grouptopicadmin'));
 		}
 

@@ -12,7 +12,7 @@ class TagtopicController extends Controller{
 		$sTags=G::getGpc('tags');
 		$sOldTags=G::getGpc('old_tags');
 		
-		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@tagtopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@tagtopic'))){
 			$this->E(Dyhb::L('你没有设置帖子标签的权限','Controller/Grouptopicadmin'));
 		}
 

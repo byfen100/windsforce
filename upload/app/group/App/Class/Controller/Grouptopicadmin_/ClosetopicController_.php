@@ -11,7 +11,7 @@ class ClosetopicController extends Controller{
 		$nGroupid=intval(G::getGpc('groupid'));
 		$nStatus=intval(G::getGpc('status'));
 
-		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@closetopic'))){
 			$this->E(Dyhb::L('你没有关闭或者打开帖子的权限','Controller/Grouptopicadmin'));
 		}
 

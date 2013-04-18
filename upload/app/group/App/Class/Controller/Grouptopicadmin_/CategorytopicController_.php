@@ -11,7 +11,7 @@ class CategorytopicController extends Controller{
 		$nGroupid=intval(G::getGpc('groupid'));
 		$nCategoryid=intval(G::getGpc('category_id'));
 
-		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@categorytopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@categorytopic'))){
 			$this->E(Dyhb::L('你没有帖子分类设置的权限','Controller/Grouptopicadmin'));
 		}
 

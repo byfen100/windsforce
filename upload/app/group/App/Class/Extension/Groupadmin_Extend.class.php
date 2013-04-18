@@ -94,12 +94,16 @@ class Groupadmin_Extend{
 		return $bAllowedEditcomment;
 	}
 
-	static public function checkTopicadminRbac($oGroup,$arrType=array('group@grouptopicadmin@deletetopic','group@grouptopicadmin@closetopic','group@grouptopicadmin@sticktopic','group@grouptopicadmin@digesttopic','group@grouptopicadmin@recommendtopic','group@grouptopicadmin@hidetopic','group@grouptopicadmin@categorytopic','group@grouptopicadmin@tagtopic','group@grouptopicadmin@colortopic')){
+	static public function checkTopicadminRbac($nGroupid,$arrType=array('group@grouptopicadmin@deletetopic','group@grouptopicadmin@closetopic','group@grouptopicadmin@sticktopic','group@grouptopicadmin@digesttopic','group@grouptopicadmin@recommendtopic','group@grouptopicadmin@hidetopic','group@grouptopicadmin@categorytopic','group@grouptopicadmin@tagtopic','group@grouptopicadmin@colortopic')){
+		if(is_object($nGroupid)){
+			$nGroupid=$nGroupid->group_id;
+		}
+		
 		if(!Core_Extend::checkRbac($arrType)){
 			return false;
 		}
 
-		$nGroupuserrole=Groupadmin_Extend::getGroupUserrole($oGroup->group_id);
+		$nGroupuserrole=Groupadmin_Extend::getGroupUserrole($nGroupid);
 		
 		$bAllowedEditcomment=false;
 		if(in_array($nGroupuserrole,array(1,2,4))){

@@ -10,7 +10,7 @@ class DeletetopicController extends Controller{
 		$sGrouptopics=trim(G::getGpc('grouptopics'));
 		$nGroupid=intval(G::getGpc('groupid'));
 
-		if(!Groupadmin_Extend::checkTopicadminRbac($oGroup,array('group@grouptopicadmin@deletetopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@deletetopic'))){
 			$this->E(Dyhb::L('你没有删除帖子的权限','Controller/Grouptopicadmin'));
 		}
 		
