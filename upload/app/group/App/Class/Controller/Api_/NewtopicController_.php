@@ -18,7 +18,7 @@ class NewtopicController extends Controller{
 		}
 
 		// 获取帖子
-		$arrGrouptopics=GrouptopicModel::F()->order('create_dateline DESC')->limit(0,$nNum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F('grouptopic_status=? AND grouptopic_isaudit=1',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
 
 		Core_Extend::api($arrGrouptopics,$sType);
 

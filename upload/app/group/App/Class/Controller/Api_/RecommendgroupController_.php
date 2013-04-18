@@ -18,7 +18,7 @@ class RecommendgroupController extends Controller{
 		}
 
 		// 获取小组
-		$arrGroups=GroupModel::F('group_isrecommend=? AND group_status=1',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
+		$arrGroups=GroupModel::F('group_isrecommend=? AND group_status=1 AND group_isaudit=1',1)->order('create_dateline DESC')->limit(0,$nNum)->getAll();
 		
 		Core_Extend::api($arrGroups,$sType);
 		

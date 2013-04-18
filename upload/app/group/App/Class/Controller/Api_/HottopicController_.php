@@ -27,7 +27,7 @@ class HottopicController extends Controller{
 		}
 
 		// 获取帖子
-		$arrGrouptopics=GrouptopicModel::F('create_dateline>?',CURRENT_TIMESTAMP-$nDate)->order('grouptopic_comments DESC')->limit(0,$nNum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F('create_dateline>? AND grouptopic_status=1 AND grouptopic_isaudit=1',CURRENT_TIMESTAMP-$nDate)->order('grouptopic_comments DESC')->limit(0,$nNum)->getAll();
 		
 		Core_Extend::api($arrGrouptopics,$sType);
 
