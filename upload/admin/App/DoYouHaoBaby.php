@@ -15,3 +15,6 @@ Dyhb::import(WINDSFORCE_PATH.'/source/model');
 
 /** 导入公用控制器 */
 Dyhb::import(WINDSFORCE_PATH.'/source/controller');
+
+/** 导入WindsForce后台模板函数 */
+require(WINDSFORCE_PATH.'/source/function/Admintheme_Extend.class.php');

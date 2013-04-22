@@ -142,7 +142,7 @@ function cancelAppconfig(){
 					</tbody>
 				</table>
 				<p class="none" id="ajaxGlobaldefaultconfig">
-					<img src="<!--{:__TMPLPUB__}-->/Images/ajaxloading.gif"></img>
+					<img src="<!--{:At::path('ajaxloading.gif')}-->"></img>
 					<span><!--<lang package='Template/Default/Appconfigtool'>-->全局惯性配置数据加载中<!--</lang>-->...</span>
 				</p>
 			</div>
@@ -183,10 +183,10 @@ function cancelAppconfig(){
 								<td><input type="checkbox" name="key[]" value="<!--{$oList['app_identifier']}-->" <!--{if $oList['config_cache_file_exist']===false}-->disabled="true"<!--{/if}-->></td>
 								<td><img src="<!--{$oList['logo']}-->" /></td>
 								<td><!--{$oList['app_name']}--><br/><!--{$oList['app_identifier']}--></td>
-								<td><p><!--<lang package='Template/Default/Appconfigtool'>-->配置文件<!--</lang>--> <!--{$oList['config_file']}--><!--{if $oList['config_file_exist']===false}--><img src="<!--{:__TMPLPUB__}-->/Images/no.gif"/><!--{/if}--><br/>
+								<td><p><!--<lang package='Template/Default/Appconfigtool'>-->配置文件<!--</lang>--> <!--{$oList['config_file']}--><!--{if $oList['config_file_exist']===false}--><img src="<!--{:At::path('no.gif')}"/><!--{/if}--><br/>
 								<a href="javascript:void(0);" onclick="editAppconfig('<!--{$oList['app_identifier']}-->')" title="<!--<lang package='Template/Default/Appconfigtool'>-->编辑应用配置文件<!--</lang>-->"><!--<lang package='Template/Default/Appconfigtool'>-->编辑配置<!--</lang>--></a>
 								</p>
-									<p><!--<lang package='Template/Default/Appconfigtool'>-->缓存文件<!--</lang>--> <!--{$oList['config_cache_file']}--><!--{if $oList['config_cache_file_exist']===false}--><img src="<!--{:__TMPLPUB__}-->/Images/no.gif"/><!--{/if}--></p>
+									<p><!--<lang package='Template/Default/Appconfigtool'>-->缓存文件<!--</lang>--> <!--{$oList['config_cache_file']}--><!--{if $oList['config_cache_file_exist']===false}--><img src="<!--{:At::path('no.gif')}"/><!--{/if}--></p>
 								</td>
 								<td><a href="javascript:void(0);" onclick="viewAppconfig('<!--{$oList['app_identifier']}-->','1')"><!--<lang package='Template/Default/Appconfigtool'>-->查看文件<!--</lang>--></a> | <a href="javascript:void(0);" onclick="viewAppconfig('<!--{$oList['app_identifier']}-->')"><!--<lang package='Template/Default/Appconfigtool'>-->查看结果<!--</lang>--></a></td>
 								<td><!--{if $oList['config_cache_file_exist']}-->

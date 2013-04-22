@@ -100,11 +100,11 @@ function changeNodegroup(oObj,id){
 							<td><a href="javascript:edit('<!--{$value:node_id}-->')"><!--{$value:node_title}--></a></td>
 							<td><!--<if condition="!empty( $value:nodegroup:nodegroup_name )">--><a href="<!--{:Dyhb::U('node/index?nodegroup_id='.$value->nodegroup_id)}-->"><!--{$value:nodegroup:nodegroup_title}-->-<!--{$value:nodegroup:nodegroup_name}--></a><!--<else/>--><!--<lang package='Template/Default/Node'>-->未分组<!--</lang>--><!--</if>--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="node_sort_<!--{$value:node_id}-->" onClick="clickToInput('node_sort','<!--{$value:node_id}-->')"><!--{$value:node_sort}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:node_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->node_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:node_status==1}-->
-								<a href="javascript:forbid('<!--{$value:node_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
-								<!--{d*else}--><a href="javascript:resume('<!--{$value:node_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
-								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:node_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:node_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<!--{d*else}--><a href="javascript:resume('<!--{$value:node_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:node_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

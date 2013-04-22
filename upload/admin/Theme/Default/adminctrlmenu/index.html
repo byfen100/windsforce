@@ -75,14 +75,14 @@
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td><!--{$value:adminctrlmenu_clicknum}--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="adminctrlmenu_sort_<!--{$value:adminctrlmenu_id}-->" onClick="clickToInput('adminctrlmenu_sort','<!--{$value:adminctrlmenu_id}-->')"><!--{$value:adminctrlmenu_sort}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:adminctrlmenu_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->adminctrlmenu_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{$value:adminctrlmenu_admin}--></td>
 							<td><!--{if $value:adminctrlmenu_status==1}-->
-								<a href="javascript:forbid('<!--{$value:adminctrlmenu_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:adminctrlmenu_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
 								<!--{d*else}-->
-								<a href="javascript:resume('<!--{$value:adminctrlmenu_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<a href="javascript:resume('<!--{$value:adminctrlmenu_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
 								<!--{/if}-->
-								&nbsp;<a href="javascript:edit('<!--{$value:adminctrlmenu_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								&nbsp;<a href="javascript:edit('<!--{$value:adminctrlmenu_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

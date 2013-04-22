@@ -75,12 +75,12 @@
 							<td><!--{$value:pm_fromapp}--></td>
 							<td><a href="<!--{:Dyhb::U('pm/index?type='.$value->pm_type)}-->"><!--{$value:pm_type}--></a></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:pm_isread eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:pm_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->pm_isread==1?'yes.gif':'no.gif')}-->"/></td>
+							<td><img src="<!--{:At::path($value->pm_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:pm_status==1}-->
-								<a href="javascript:forbid('<!--{$value:pm_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:pm_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
 								<!--{d*else}-->
-								<a href="javascript:resume('<!--{$value:pm_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<a href="javascript:resume('<!--{$value:pm_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
 								<!--{/if}-->
 							</td>
 						</tr>

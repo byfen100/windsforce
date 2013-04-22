@@ -20,9 +20,9 @@ function rowClick(obj){
 	var img='';
 
 	if(obj.src.substr(obj.src.lastIndexOf('/')+1)=="menu_minus.gif"){
-		obj.src="<!--{:__TMPLPUB__}-->/Images/menu_plus.gif";
+		obj.src="<!--{:At::path('menu_plus.gif')}-->";
 	}else{
-		obj.src="<!--{:__TMPLPUB__}-->/Images/menu_minus.gif";
+		obj.src="<!--{:At::path('menu_minus.gif')}-->";
 	}
 
 	for(i=0;i< tbl.rows.length;i++){
@@ -110,9 +110,9 @@ function rowClick(obj){
 							<tr <!--{if $value['mark']==2}-->style="display:none;"<!--{/if}-->>
 								<td><input type="checkbox" name="file[]" value="<!--{$value['name']}-->" /></td>
 								<td><!--{if $value['mark']==1}-->
-									<img onClick="rowClick(this)" src="<!--{:__TMPLPUB__}-->/Images/menu_plus.gif" >
+									<img onClick="rowClick(this)" src="<!--{:At::path('menu_plus.gif')}-->" >
 									<!--{elseif $value['mark'] == 2}-->
-									<img src="<!--{:__TMPLPUB__}-->/Images/menu_arrow.gif">
+									<img src="<!--{:At::path('menu_arrow.gif')}-->">
 									<!--{/if}-->
 									<a href="<!--{:__ROOT__}-->/data/backup/<!--{$value['name']}-->"><!--{$value['name']}--></a>
 								</td>

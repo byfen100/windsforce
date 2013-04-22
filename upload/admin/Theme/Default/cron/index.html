@@ -77,13 +77,13 @@
 							</td>
 							<td><!--{if $value['cron_lastrun']}--><!--{$value['cron_lastrun']|date='Y-m-d H:i:s',**}--><!--{d*else}--><b>N/A</b><!--{/if}--></td>
 							<td><!--{if $value['cron_nextrun']}--><!--{$value['cron_nextrun']|date='Y-m-d H:i:s',**}--><!--{d*else}--><b>N/A</b><!--{/if}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:cron_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->cron_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:cron_status==1}-->
-								<a href="javascript:forbid('<!--{$value:cron_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:cron_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
 								<!--{d*else}-->
-								<a href="javascript:resume('<!--{$value:cron_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<a href="javascript:resume('<!--{$value:cron_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
 								<!--{/if}-->
-								&nbsp;<a href="javascript:edit('<!--{$value:cron_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>&nbsp;
+								&nbsp;<a href="javascript:edit('<!--{$value:cron_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>&nbsp;
 								<a href="<!--{:Dyhb::U('cron/run?id='.$value['cron_id'])}-->"><!--<lang package='Template/Default/Cron'>-->执行<!--</lang>--></a>
 							</td>
 						</tr>

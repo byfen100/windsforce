@@ -75,7 +75,7 @@
   'TEMPLATE_TAG_NOTE' => true,
   'APP_DEVELOP' => 0,
   'FRONT_TPL_DIR' => 'Colors',
-  'ADMIN_TPL_DIR' => 'Default',
+  'ADMIN_TPL_DIR' => 'Simple',
   'CACHE_LIFE_TIME' => 8640000,
   'BOOTSTRAP_ON' => true,
   'BOOTSTRAP_VERSION' => '2.0.3',

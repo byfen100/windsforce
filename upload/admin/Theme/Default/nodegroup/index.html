@@ -71,11 +71,11 @@
 							<td><!--{$value:nodegroup_title}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="nodegroup_sort_<!--{$value:nodegroup_id}-->" onClick="clickToInput('nodegroup_sort','<!--{$value:nodegroup_id}-->')"><!--{$value:nodegroup_sort}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:nodegroup_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->nodegroup_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--<if condition="$value:nodegroup_status eq 1" >-->
-								<a href="javascript:forbid('<!--{$value:nodegroup_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
-								<!--<else/>--><a href="javascript:resume('<!--{$value:nodegroup_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->&nbsp;
-								<a href="javascript:edit('<!--{$value:nodegroup_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a></td>
+								<a href="javascript:forbid('<!--{$value:nodegroup_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<!--<else/>--><a href="javascript:resume('<!--{$value:nodegroup_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->&nbsp;
+								<a href="javascript:edit('<!--{$value:nodegroup_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a></td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->

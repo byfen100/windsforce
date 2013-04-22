@@ -79,11 +79,11 @@
 							<td><a href="<!--{:Dyhb::U('attachment/index?cid='.$value['attachmentcategory_id'])}-->"><!--{$value:attachmentcategory_attachmentnum}--></a></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="attachmentcategory_sort_<!--{$value:attachmentcategory_id}-->" onClick="clickToInput('attachmentcategory_sort','<!--{$value:attachmentcategory_id}-->')"><!--{$value:attachmentcategory_sort}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:attachmentcategory_recommend eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->attachmentcategory_recommend==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:attachmentcategory_recommend==1}-->
-								<a href="javascript:forbid('<!--{$value:attachmentcategory_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Attachmentcategory'>-->取消推荐<!--</lang>-->"></a>
-								<!--{d*else}--><a href="javascript:resume('<!--{$value:attachmentcategory_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Attachmentcategory'>-->推荐<!--</lang>-->"></a>
-								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:attachmentcategory_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:attachmentcategory_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Attachmentcategory'>-->取消推荐<!--</lang>-->"></a>
+								<!--{d*else}--><a href="javascript:resume('<!--{$value:attachmentcategory_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Attachmentcategory'>-->推荐<!--</lang>-->"></a>
+								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:attachmentcategory_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

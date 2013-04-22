@@ -111,7 +111,7 @@ function changeRatinggroup(oObj,id){
 							<td><!--<if condition="!empty( $value:ratinggroup:ratinggroup_name )">--><a href="<!--{:Dyhb::U('rating/index?ratinggroup_id='.$value->ratinggroup_id.'&sort_=asc')}-->"><!--{$value:ratinggroup:ratinggroup_title}-->-<!--{$value:ratinggroup:ratinggroup_name}--></a><!--<else/>--><!--<lang package='Template/Default/Rating'>-->未分组<!--</lang>--><!--</if>--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="rating_creditstart_<!--{$value:rating_id}-->" onClick="clickToInput('rating_creditstart','<!--{$value:rating_id}-->')"><!--{$value:rating_creditstart}--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="rating_creditend_<!--{$value:rating_id}-->" onClick="clickToInput('rating_creditend','<!--{$value:rating_id}-->')"><!--{$value:rating_creditend}--></td>
-							<td><a href="javascript:edit('<!--{$value:rating_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a></td>
+							<td><a href="javascript:edit('<!--{$value:rating_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a></td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->

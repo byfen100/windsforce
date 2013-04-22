@@ -102,7 +102,7 @@
 									<!--<lang package='Template/Default/App'>-->该应用不需要设置菜单<!--</lang>-->
 								<!--{/if}-->
 							</td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:app_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->app_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value['app_status']}-->
 								<a href="<!--{:Dyhb::U('app/disable?id='.$value['app_id'])}-->"><!--<lang package='Template/Default/App'>-->关闭<!--</lang>--></a>
 								<!--{d*else}-->

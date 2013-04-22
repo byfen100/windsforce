@@ -74,13 +74,13 @@
 							<td><!--{if $value['link_logo']}--><img src="<!--{$value['link_logo']|Core_Extend+getEvalValue}-->"/><!--{/if}--></td>
 							<td><!--{$value:link_description}--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="link_sort_<!--{$value:link_id}-->" onClick="clickToInput('link_sort','<!--{$value:link_id}-->')"><!--{$value:link_sort}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:link_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->link_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:link_status==1}-->
-								<a href="javascript:forbid('<!--{$value:link_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:link_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
 								<!--{d*else}-->
-								<a href="javascript:resume('<!--{$value:link_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<a href="javascript:resume('<!--{$value:link_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
 								<!--{/if}-->
-								&nbsp;<a href="javascript:edit('<!--{$value:link_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								&nbsp;<a href="javascript:edit('<!--{$value:link_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

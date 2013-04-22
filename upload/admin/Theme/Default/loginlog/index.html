@@ -64,7 +64,7 @@
 							</td>
 							<td><!--{$value['loginlog_ip']}--><br/><!--{$value['loginlog_ip']|Misc_Extend+convertIp}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:loginlog_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->loginlog_status==1?'yes.gif':'no.gif')}-->"/></td>
 							</td>
 							<td><!--{$value['login_application']}--></td>
 						</tr>

@@ -63,12 +63,12 @@
 								</div>
 							</td>
 							<td><!--{$value:userprofilesetting_sort}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:userprofilesetting_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->userprofilesetting_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:userprofilesetting_status==1}-->
-								<a href="javascript:forbid('<!--{$value:userprofilesetting_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
-								<!--{d*else}--><a href="javascript:resume('<!--{$value:userprofilesetting_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:userprofilesetting_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<!--{d*else}--><a href="javascript:resume('<!--{$value:userprofilesetting_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
 								<!--{/if}-->
-								&nbsp;<a href="javascript:edit('<!--{$value:userprofilesetting_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								&nbsp;<a href="javascript:edit('<!--{$value:userprofilesetting_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

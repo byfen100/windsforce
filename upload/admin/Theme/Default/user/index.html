@@ -88,13 +88,13 @@
 							<td><!--{$value:user_lastlogintime|date='Y-m-d H:i:s',**}--></td>
 							<td><!--{$value['user_lastloginip']}--><br/><!--{$value['user_lastloginip']|Misc_Extend+convertIp}--></td>
 							<td><!--{$value:user_logincount}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:user_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->user_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--<if condition="$value:user_status eq 1" >-->
-								<a href="javascript:forbid('<!--{$value:user_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:user_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
 								<!--<else/>-->
-								<a href="javascript:resume('<!--{$value:user_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<a href="javascript:resume('<!--{$value:user_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
 								<!--</if>-->
-								&nbsp;<a href="javascript:edit('<!--{$value:user_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								&nbsp;<a href="javascript:edit('<!--{$value:user_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

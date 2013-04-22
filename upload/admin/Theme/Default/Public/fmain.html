@@ -1,6 +1,6 @@
 <!--<include file="public+header">-->
 
-<!--<load file="<!--{:__TMPLPUB__}-->/Css/controlpanel.css" />-->
+<link rel="stylesheet" type="text/css" href="<!--{:At::path('controlpanel.css','Css')}-->"/>
 
 <!--<if condition="$GLOBALS['_option_']['programeupdate_on'] eq 1">-->
 <!--{script}-->
@@ -49,46 +49,46 @@ function closeUpdateinfo(){
 			<div class="module_content">
 				<ul class="controlpanel-buttons-set">
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('languageoption/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=1' );parent.menu.location=D.U( 'public/fmenu?tag=2&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->设置<!--</lang>-->')+'&notrefershmain=1&currentid=9' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/l18n_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/l18n_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->国际化<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('style/index')}-->" href="<!--{:Dyhb::U('languageoption/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=2' );parent.menu.location=D.U( 'public/fmenu?tag=5&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->界面<!--</lang>-->')+'&notrefershmain=1&currentid=2' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/theme_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/theme_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->主题<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('app/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=4' );parent.menu.location=D.U( 'public/fmenu?tag=4&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->应用<!--</lang>-->')+'&notrefershmain=1&currentid=0' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/app_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/app_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->应用APP<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('option/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=1' );parent.menu.location=D.U( 'public/fmenu?tag=2&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->设置<!--</lang>-->')+'&notrefershmain=1&currentid=0' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/option_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/option_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->设置<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('role/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=5' );parent.menu.location=D.U( 'public/fmenu?tag=1&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->权限<!--</lang>-->')+'&notrefershmain=1&currentid=2' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/rbac_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/rbac_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->权限<!--</lang>--></span></a>
 					</li>
 				</ul>
 				<div class="clear"></div>
 				<ul class="controlpanel-buttons-set">
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('user/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=5' );parent.menu.location=D.U( 'public/fmenu?tag=1&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->权限<!--</lang>-->')+'&notrefershmain=1&currentid=6' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/user_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/user_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->用户<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('loginlog/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=8' );parent.menu.location=D.U( 'public/fmenu?tag=3&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->站长<!--</lang>-->')+'&notrefershmain=1&currentid=1' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/safe_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/safe_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->安全<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('appconfigtool/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=7' );parent.menu.location=D.U( 'public/fmenu?tag=8&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->工具<!--</lang>-->')+'&notrefershmain=1&currentid=0' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/tool_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/tool_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->工具<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('pm/index')}-->" onclick="parent.header.location=D.U( 'public/fheader?currentid=6' );parent.menu.location=D.U( 'public/fmenu?tag=6&title='+encodeURIComponent('<!--<lang package='MenuHeader'>-->运营<!--</lang>-->')+'&notrefershmain=1&currentid=1' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/operators_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/operators_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->运营<!--</lang>--></span></a>
 					</li>
 					<li><a class="controlpanel-button" href="<!--{:Dyhb::U('public/profile')}-->" onclick="parent.menu.location=D.U( 'public/fmenu?title='+encodeURIComponent('<!--<lang package='Template/Default/Common'>-->首页<!--</lang>-->')+'&notrefershmain=1&currentid=2' );"><span> 
-						<img src="<!--{:__TMPLPUB__}-->/Images/controlpanel/profile_48.png" alt="icon" border="0"/><br />
+						<img src="<!--{:At::path('controlpanel/profile_48.png')}-->" alt="icon" border="0"/><br />
 						<!--<lang package='MenuHeader'>-->个人中心<!--</lang>--></span></a>
 					</li>
 				</ul>

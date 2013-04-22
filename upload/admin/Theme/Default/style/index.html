@@ -1,6 +1,6 @@
 <!--<include file="public+header" />-->
 
-<!--<load file="<!--{:__TMPLPUB__}-->/Css/theme.css" />-->
+<link rel="stylesheet" type="text/css" href="<!--{:At::path('theme.css','Css')}-->"/>
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
@@ -149,11 +149,11 @@
 							</td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="style_name_<!--{$value:style_id}-->" onClick="clickToInput('style_name','<!--{$value:style_id}-->')"><!--{$value:style_name}--></td>
 							<td><!--{:ThemeModel::getThemenameById($value['theme_id'])}-->@<!--{$value['theme_id']}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:style_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->style_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:style_status==1}-->
-								<a href="javascript:forbid('<!--{$value:style_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
-								<!--{d*else}--><a href="javascript:resume('<!--{$value:style_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
-								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:style_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Style'>-->主题DIY<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:style_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
+								<!--{d*else}--><a href="javascript:resume('<!--{$value:style_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
+								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:style_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Style'>-->主题DIY<!--</lang>-->"></a>
 								&nbsp;<a href="<!--{:Dyhb::U('style/export?id='.$value['style_id'])}-->"><!--<lang package='Template/Default/Style'>-->导出<!--</lang>--></a>
 								&nbsp;<a href="<!--{:Dyhb::U('style/copy_style?id='.$value['style_id'])}-->"><!--<lang package='Template/Default/Style'>-->复制<!--</lang>--></a>
 								&nbsp;<a href="<!--{:Dyhb::U('style/reset_style?id='.$value['style_id'])}-->"><!--<lang package='Template/Default/Common'>-->重置<!--</lang>--></a>

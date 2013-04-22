@@ -74,12 +74,12 @@ function ajaxSelect(){
 					<fieldset>
 						<label for="role_parentid"><!--<lang package='Template/Default/Role'>-->上级组<!--</lang>--></label>
 						<p><input type="text" name="parentRoleName" id="parentRoleName" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$TheController:get_parent_role($oValue:role_parentid)}--><!--</if>-->" class="left"/>
-						<a href="javascript:void(0);" onClick="ajaxSelect();" title="<!--<lang package='Template/Default/Role'>-->上级组<!--</lang>-->"><img src="<!--{:__TMPLPUB__}-->/Images/top.gif"></img></a></p>
+						<a href="javascript:void(0);" onClick="ajaxSelect();" title="<!--<lang package='Template/Default/Role'>-->上级组<!--</lang>-->"><img src="<!--{:At::path('top.gif')}-->"></img></a></p>
 						<div class="description"><!--<lang package='Template/Default/Role'>-->父级角色，采用ajax加载选择<!--</lang>--></div>
 					</fieldset>
 					<fieldset class="none" id="ajaxSelect">
 						<label for="group_status"><!--<lang package='Template/Default/Role'>-->数据加载中<!--</lang>--></label>
-						<img src="<!--{:__TMPLPUB__}-->/Images/ajaxloading.gif"></img><!--<lang package='Template/Default/Role'>-->数据加载中<!--</lang>-->...
+						<img src="<!--{:At::path('ajaxloading.gif')}-->"></img><!--<lang package='Template/Default/Role'>-->数据加载中<!--</lang>-->...
 					</fieldset>
 					<fieldset>
 						<label for="rolegroup_id"><!--<lang package='Template/Default/Role'>-->分组<!--</lang>--></label>

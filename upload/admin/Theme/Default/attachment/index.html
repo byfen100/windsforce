@@ -110,11 +110,11 @@ a.preview img{margin:10px 5px;}
 							<td><!--{$value:attachment_download}--></td>
 							<td><!--{$value:attachment_commentnum}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:attachment_recommend eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->attachment_recommend==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:attachment_recommend==1}-->
-								<a href="javascript:forbid('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Attachment'>-->取消推荐<!--</lang>-->"></a>
-								<!--{d*else}--><a href="javascript:resume('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Attachment'>-->推荐<!--</lang>-->"></a>
-								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Attachment'>-->取消推荐<!--</lang>-->"></a>
+								<!--{d*else}--><a href="javascript:resume('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Attachment'>-->推荐<!--</lang>-->"></a>
+								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

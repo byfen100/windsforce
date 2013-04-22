@@ -81,7 +81,7 @@ function complete(data,status){
 						<div class="description"><!--<lang package='Template/Default/Node'>-->请选择授权应用和模块<!--</lang>--></div>
 					</fieldset>
 					<fieldset class="none" id="ajaxSelect">
-						<label><img src="<!--{:__TMPLPUB__}-->/Images/ajaxloading.gif"></img><!--<lang package='Template/Default/Node'>-->数据加载中<!--</lang>-->...</label>
+						<label><img src="<!--{:At::path('ajaxloading.gif')}-->"></img><!--<lang package='Template/Default/Node'>-->数据加载中<!--</lang>-->...</label>
 						<!--<if condition="empty( $nId )">--><input type="hidden" name="node_level" value="1"><!--</if>-->
 						<input type="hidden" name="node_parentid" value="<!--<if condition="isset( $oValue ) && $oValue:node_parentid">--><!--{$oValue:node_parentid}--><!--<else/>-->0<!--</if>-->">
 					</fieldset>

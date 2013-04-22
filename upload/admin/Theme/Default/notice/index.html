@@ -59,7 +59,7 @@
 							<td><!--{$value['notice_fromid']}--></td>
 							<td><!--{$value['notice_fromnum']}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:notice_isread eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->notice_isread==1?'yes.gif':'no.gif')}-->"/></td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->

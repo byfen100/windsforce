@@ -1,12 +1,12 @@
 <!--<include file="public+header" />-->
 
-<!--<load file="<!--{:__TMPLPUB__}-->/Css/theme.css" />-->
+<link rel="stylesheet" type="text/css" href="<!--{:At::path('theme.css','Css')}-->"/>
 
 <!--{script}-->
 function setAdminStyle(sStyle){
 	Dyhb.AjaxSend(D.U('style/set_admin_style?style='+sStyle),'ajax=1','',function(data,status){ 
 		if(status==1){
-			window.setTimeout(function (){refreshFrame();},20000);
+			window.setTimeout(function (){refreshFrame();},1000);
 		}
 	});
 
