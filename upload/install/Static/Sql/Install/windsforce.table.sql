@@ -873,9 +873,9 @@ CREATE TABLE `#@__pmsystemread` (
 
 DROP TABLE IF EXISTS `#@__process`;
 CREATE TABLE `#@__process` (
-  `process_id` char(32) NOT NULL,
-  `process_expiry` int(10) DEFAULT NULL,
-  `process_extra` int(10) DEFAULT NULL,
+  `process_id` char(32) NOT NULL COMMENT '进程ID',
+  `process_expiry` int(10) DEFAULT NULL COMMENT '进程过期时间',
+  `process_extra` int(10) DEFAULT NULL COMMENT '进程扩展',
   PRIMARY KEY (`process_id`),
   KEY `process_expiry` (`process_expiry`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;

@@ -80,7 +80,7 @@ class Cache_Extend{
 					}
 
 					// 导入应用模型
-					Dyhb::import(WINDSFORCE_PATH.'/app/'.$sApp.'/App/Class/model');
+					Dyhb::import(WINDSFORCE_PATH.'/app/'.$sApp.'/App/Class/Model');
 
 					$Callback=array($sCacheclass,'cache');
 					if(is_callable($Callback)){
