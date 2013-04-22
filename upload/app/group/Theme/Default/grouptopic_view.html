@@ -258,7 +258,7 @@ $(function(){
 
 									<!--{if $oGrouptopic['grouptopic_usesign']==1 && $oGrouptopic['grouptopic_isanonymous']=='0'}-->
 									<div class="space"></div>
-									<div class="signature">
+									<div class="common_usersign">
 										<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
 										<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 									</div>
@@ -534,7 +534,7 @@ $(function(){
 							<tr>
 								<td class="floor_bottom" valign="bottom">
 									<!--{if $oGrouptopic['grouptopic_usesign']==1 && $oGrouptopic['grouptopic_isanonymous']=='0'}-->
-									<div class="signature">
+									<div class="common_usersign">
 										<!--{~$sUsersign=UserModel::getUsernameById($oComment['user_id'],'user_sign')}-->
 										<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 									</div>

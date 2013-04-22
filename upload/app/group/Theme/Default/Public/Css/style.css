@@ -16,13 +16,15 @@ Description: Group应用模块CSS
 .floor_bottom{border-top:0 none;vertical-align:bottom;padding:0 20px;}
 .floor_table{table-layout:fixed;}
 .floor_grouptopictable{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid;border-bottom:none;}
-.floor_grouptopictd1{text-align:center;border:1px solid;border-bottom:none;}
+.floor_grouptopictd1{text-align:center;border:1px solid;border-bottom:none;{SIDE_BG_CODE};color:{MEDIUM_TEXTCOLOR};}
+.floor_grouptopictd1 a{color:{MEDIUM_TEXTCOLOR};}
 .floor_grouptopictd2{border-bottom:none;}
 .floor_grouptopicbottomtd1{height: 4px;padding: 0;margin:0;border:1px solid;border-top:none;}
 .floor_grouptopicbottomtd2{height: 4px;padding: 0;margin:0;border-top:none;}
 
 .floor_grouptopiccommenttable{border-top:none;border:1px solid;border-top:none; border-bottom:none;}
-.floor_grouptopiccommenttd1{padding-bottom:80px;padding-top:10px;border: 1px solid;border-top:none;border-bottom:none;text-align:center;}
+.floor_grouptopiccommenttd1{padding-bottom:80px;padding-top:10px;border: 1px solid;border-top:none;border-bottom:none;text-align:center;{SIDE_BG_CODE};color:{MEDIUM_TEXTCOLOR};}
+.floor_grouptopiccommenttd1 a{color:{MEDIUM_TEXTCOLOR};}
 .floor_grouptopiccommenttd2{border-top:none;}
 .floor_grouptopiccommentbottomtd1{height: 4px;padding: 0;margin:0;border-right:1px solid;border-top:none;}
 .floor_grouptopiccommentbottomtd2{height: 4px;padding: 0;margin:0;border-top:none;}
@@ -60,13 +62,12 @@ Description: Group应用模块CSS
 .grouptopiccomment_quickmessage{margin-bottom:0px;width:70%;height:50px;}
 .grouptopiccomment_reply{display:none;line-height:32px;}
 .grouptopiccomment_btn{margin:8px;padding-top:1px;padding-bottom:1px;}
-.signature{background:url("{__ROOT__}/Public/images/common/signature.png") 0 0 no-repeat;padding:25px 0 20px;max-height:200px;}
 .edit_log{color:#cccccc;margin-top:8px;}
 
 .clear:after,.clearfix:after{content:".";display:none;height:0;clear:both;visibility:hidden;}
 .clear,.clearfix{display:inline;}
 
-.floor_groupuserfollow {padding: 10px 0;color: #666666;margin:auto;width:80%;text-align:left;}
+.floor_groupuserfollow {padding: 10px 0;color: {MEDIUM_TEXTCOLOR};margin:auto;width:80%;text-align:left;}
 .floor_groupuserfollow th {border-right: 1px solid #CCCCCC;font-weight:normal;}
 .floor_groupuserfollow th, .floor_groupuserfollow td {font-size: 12px;text-align: center;}
 
@@ -310,4 +311,7 @@ a#moderate_reason:hover{text-decoration:none;}
 .grouplist_namelink a:hover {font-weight:bold;text-decoration:underline;color:#000;}
 .grouplist_todaynum{color:{NOTICETEXT_COLOR};}
 .grouplist_description{color:#444444;}
+.grouplist_indexsummaryalgin{}
+.grouplist_styleothernum{margin-top:10px;}
+.grouplist_numstyle{font-weight:bold;color:#999;}
 [/CURSCRIPT]

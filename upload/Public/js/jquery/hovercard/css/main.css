@@ -12,7 +12,6 @@
 	border:0 none;
 }
 .bm_hover_card a{
-	/*color:#0777CB;*/
 	text-decoration:none;
 }
 .bm_hover_card a:hover{
@@ -94,7 +93,7 @@
 	width:200px;
 	color:#999;
 }
-.bm_hover_card_from span+span{
+.bm_hover_card_from span{
 	margin-left:8px;
 }
 .bm_hover_card_signaure{
@@ -108,18 +107,8 @@
 	color:#999;
 }
 .bm_hover_card_info{
-	margin-top:5px;
-}
-.bm_hover_card_info p{
-	overflow:hidden;
-	font-size:12px;
-}
-.bm_hover_card_info p a,.bm_hover_card_info p span{
-	float:left;
-	width:50px;
-	text-align:center;
-	line-height:16px;
-	height:16px;
+	margin-top:15px;
+	padding:0 10px;
 }
 .bm_hover_card_bar{
 	height:36px;

@@ -34,7 +34,7 @@ class StyleController extends Controller{
 		// 发送主题COOKIE
 		Dyhb::cookie('style_id',$nStyleId);
 		Dyhb::cookie('template',ucfirst(strtolower($oTheme['theme_dirname'])));
-		Dyhb::cookie('extend_style_id',$GLOBALS['_style_']['_current_style_']);
+		Dyhb::cookie('extend_style_id',isset($GLOBALS['_style_']['_current_style_'])?$GLOBALS['_style_']['_current_style_']:'');
 
 		$this->S(Dyhb::L('主题切换成功','Controller/Misc'));
 	}

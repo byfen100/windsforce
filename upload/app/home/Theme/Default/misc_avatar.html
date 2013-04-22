@@ -18,18 +18,22 @@
 		<!--{/if}-->
 	</div>
 	<div class="bm_hover_card_signaure"><!--{if $oUser['user_sign']}--><!--{$oUser['user_sign']|G+subString=0,16}--><!--{d*else}--><!--<lang package='Template/Misc'>-->该用户还没有设置签名<!--</lang>--><!--{/if}--></div>
-	<span class="clear"></span>
+	<span class="clearfix"></span>
 	<div class="bm_hover_card_info">
-		<p><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=friend')}-->" target="_blank"><!--<lang package='Template/Misc'>-->关注<!--</lang>--></a>
-			<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=friend&fan=1')}-->" target="_blank"><!--<lang package='Template/Misc'>-->粉丝<!--</lang>--></a>
-			<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=rating')}-->" target="_blank"><!--<lang package='Template/Misc'>-->积分<!--</lang>--></a>
-			<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=rating')}-->" target="_blank"><!--<lang package='Template/Misc'>-->金币<!--</lang>--></a>
-		</p>
-		<p><span><!--{$oUser->usercount->usercount_friends}--></span>
-			<span><!--{$oUser->usercount->usercount_fans}--></span>
-			<span><!--{$oUser->usercount->usercount_extendcredit1}--></span>
-			<span><!--{$oUser->usercount->usercount_extendcredit2}--></span>
-		</p>
+		<table cellpadding="4" cellspacing="1" width="100%" border="0">
+			<tr>
+				<td><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=friend')}-->" target="_blank"><!--<lang package='Template/Misc'>-->关注<!--</lang>--></a></td>
+				<td><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=friend&fan=1')}-->" target="_blank"><!--<lang package='Template/Misc'>-->粉丝<!--</lang>--></a></td>
+				<td><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=rating')}-->" target="_blank"><!--<lang package='Template/Misc'>-->积分<!--</lang>--></a></td>
+				<td><a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'].'&type=rating')}-->" target="_blank"><!--<lang package='Template/Misc'>-->金币<!--</lang>--></a></td>
+			</tr>
+			<tr>
+				<td><b><!--{$oUser->usercount->usercount_friends}--></b></td>
+				<td><b><!--{$oUser->usercount->usercount_fans}--></b></td>
+				<td><b><!--{$oUser->usercount->usercount_extendcredit1}--></b></td>
+				<td><b><!--{$oUser->usercount->usercount_extendcredit2}--></b></td>
+			</tr>
+		</table>
 	</div>
 </div>
 <div class="bm_hover_card_bar">

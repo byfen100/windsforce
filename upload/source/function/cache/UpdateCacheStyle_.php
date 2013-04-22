@@ -58,7 +58,7 @@ class UpdateCacheStyle{
 				}
 
 				$sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/'.$arrStyle['doyouhaobaby_template_base'].'/Public/Style';
-				!is_dir($sStyleExtendDir) && $sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style';
+
 				if(is_dir($sStyleExtendDir)){
 					$arrStyleDirs=G::listDir($sStyleExtendDir);
 
@@ -77,18 +77,21 @@ class UpdateCacheStyle{
 							}
 						}
 					}
-				}
 
-				$arrStyleExtendValue=explode('|',$arrStyle['style_extend']);
-				$arrStyle['_current_style_']=$arrStyleExtendValue[1];
+					$arrStyleExtendValue=explode('|',$arrStyle['style_extend']);
+					$arrStyle['_current_style_']=isset($arrStyleExtendValue[1])?$arrStyleExtendValue[1]:'';
 
-				$arrStyle['_style_extend_icons_']=array();
-				$arrStyleExtendValue=explode("\t",$arrStyleExtendValue[0]);
-				$arrStyleExtendValue[]=0;
-				foreach($arrStyleExtendValue as $sStyleExtendValue){
-					if(array_key_exists($sStyleExtendValue,$arrExtendstyleData)){
-						$arrStyle['_style_extend_icons_'][$sStyleExtendValue]=$arrExtendstyleData[$sStyleExtendValue];
+					$arrStyle['_style_extend_icons_']=array();
+					$arrStyleExtendValue=explode("\t",$arrStyleExtendValue[0]);
+					$arrStyleExtendValue[]=0;
+					foreach($arrStyleExtendValue as $sStyleExtendValue){
+						if(array_key_exists($sStyleExtendValue,$arrExtendstyleData)){
+							$arrStyle['_style_extend_icons_'][$sStyleExtendValue]=$arrExtendstyleData[$sStyleExtendValue];
+						}
 					}
+				}else{
+					$arrStyle['_current_style_']='';
+					$arrStyle['_style_extend_icons_']=array();
 				}
 
 				$nContentWidthInt=intval($arrStyle['content_width']);

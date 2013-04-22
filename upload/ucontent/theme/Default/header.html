@@ -1,5 +1,11 @@
 <!--<include file="Core_Extend::template('cheader')" />-->
 
+<!--{if $GLOBALS['_commonConfig_']['BOOTSTRAP_ON']}-->
+<!--<include file="Core_Extend::template('bootstrap')" />-->
+<!--{/if}-->
+
+<!--{:Core_Extend::loadCss()}-->
+
 <div id="wrapper">
 	<div id="top_header">
 		<div class="container">
@@ -26,7 +32,7 @@
 							<a href="<!--{:Dyhb::U('home://public/sitemap')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->网站地图<!--</lang>--></a>
 						</div>
 						<div class="right">
-							<!--{if $GLOBALS['_option_']['extendstyle_switch_on']==1}-->
+							<!--{if $GLOBALS['_option_']['extendstyle_switch_on']==1 && !empty($GLOBALS['_style_']['_style_extend_icons_'])}-->
 							<div id="extendstyle_select_box" class="left">
 								<div class="btn-group">
 									<a href="javascript:void(0);" id="extendstyle_select" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -76,7 +82,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="navbar-inner">
+
+		<div class="navbar-inner header-menu">
 			<div class="navbar">
 				<div class="container-fluid">
 					<ul class="nav">
@@ -191,8 +198,8 @@
 						<input type="text" name="user_name" id="user_name" class="search-query span2" placeholder="<!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>--><!--<lang package='__COMMON_LANG__@Template/Header'>-->用户<!--</lang>-->" x-webkit-speech speech>
 					</form>
 				</div><!--/container-fluid-->
-			</div><!--/navbar-inner-->
-		</div><!--/navbar-->
+			</div><!--/navbar-->
+		</div><!--/navbar-inner-->
 	</div>
 	<div id="content">
 		<div class="container">

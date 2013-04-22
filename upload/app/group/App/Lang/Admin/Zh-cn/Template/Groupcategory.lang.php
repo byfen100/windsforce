@@ -25,6 +25,9 @@ return array(
 '5e5aa97dea3c15c8ee977a994b6d5f1e'=>"首页最大小组数",
 '31ae404c7d5c26acd15030dd6bec9615'=>"我要设置",
 'b53ff6ca88917605d6a15052fcbdcc50'=>"小组总数",
+'fcf52318cf7b3d7a167ff8c8fc3c8ff5'=>"首页小组横排数量",
+'0fbf3d80a9eed0d05e70a59b975dac9d'=>"首页群组分类小组横排数量",
+'8780d28ae16efc9c5daa1859c48b92fe'=>"使用横排可以节约空间，设置为0表示不启用横排",
 )
 
 ?>

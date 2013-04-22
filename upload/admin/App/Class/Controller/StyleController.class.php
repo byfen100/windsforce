@@ -405,9 +405,6 @@ class StyleController extends InitController{
 			$oTheme=ThemeModel::F('theme_id=?',$oModel['theme_id'])->getOne();
 			if(!empty($oTheme['theme_id'])){
 				$sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/Public/Style';
-				if(!is_dir($sStyleExtendDir)){
-					$sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style';
-				}
 
 				if(is_dir($sStyleExtendDir)){
 					$arrStyleDirs=G::listDir($sStyleExtendDir);
@@ -428,6 +425,9 @@ class StyleController extends InitController{
 							}
 						}
 					}
+				}else{
+					$arrExtendstyle=array();
+					$arrDefaultextendstyle=array();
 				}
 			}
 
@@ -896,7 +896,7 @@ class StyleController extends InitController{
 		$arrStyles=$this->get_styles($sStylePath);
 
 		$bCurrentStyleIn=true;
-		if(!in_array($sStylePath.'/'.$this->_sCurrentStyle,$arrStyles)){
+		if($this->_sCurrentStyle && !in_array($sStylePath.'/'.$this->_sCurrentStyle,$arrStyles)){
 			$arrStyles[]=$sStylePath.'/'.$this->_sCurrentStyle;
 			$bCurrentStyleIn=false;
 		}
@@ -914,7 +914,9 @@ class StyleController extends InitController{
 		if($bCurrentStyleIn===false){
 			unset($arrOkStyles[$this->_sCurrentStyle]);
 		}else{
-			$this->assign('arrCurrentStyle',$arrOkStyles[$this->_sCurrentStyle]);
+			if(isset($arrOkStyles[$this->_sCurrentStyle])){
+				$this->assign('arrCurrentStyle',$arrOkStyles[$this->_sCurrentStyle]);
+			}
 		}
 
 		$this->assign('arrOkStyles',$arrOkStyles);

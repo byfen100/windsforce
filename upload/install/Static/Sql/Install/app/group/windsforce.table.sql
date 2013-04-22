@@ -75,6 +75,7 @@ CREATE TABLE `#@__groupcategory` (
   `create_dateline` int(10) NOT NULL COMMENT '群组创建时间',
   `groupcategory_groupmaxnum` tinyint(3) NOT NULL DEFAULT '0' COMMENT '首页小组最大数量',
   `groupcategory_groupsorttype` tinyint(1) NOT NULL DEFAULT '0' COMMENT '首页小组排序：0创建时间 1：最后活动时间 2：今日发帖数 3：小组用户数',
+  `groupcategory_columns` tinyint(2) NOT NULL DEFAULT '0' COMMENT '首页小组横排数量',
   PRIMARY KEY (`groupcategory_id`),
   KEY `create_dateline` (`create_dateline`),
   KEY `groupcategory_parentid` (`groupcategory_parentid`),

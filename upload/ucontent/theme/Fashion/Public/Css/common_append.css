@@ -1,0 +1,42 @@
+/*
+File Name: common_append.css
+File Type: 非必需
+Description: common append
+*/
+
+/**===============================
+           重写头部
+================================*/
+#top_header{height:35px;background:transparent; border-bottom:1px solid #5f111f;}
+.header-menu .container-fluid{margin-left:-20px;margin-right:-20px;background:#3A000F url(/windsforce/upload/ucontent/theme/Fashion/Public/Images/nav.jpg) no-repeat 0 100%;}
+
+/**===============================
+           重新定义一些颜色
+================================*/
+.label-success{background-color: #550626;}
+.label-success[href]{background-color: #7a0743;}
+.alert-success{color: #690a34;background-color: #fae1f0;border-color: #fbeed5;}
+.label a,.badge a{color:#fff;}
+.badge-success{background:#550626;}
+/* color */
+.nav-list > .active > a,.nav-list > .active > a:hover {background-color:#550626;}
+input:focus,textarea:focus {border-color: #550626;}
+.nav-pills > .active > a,.nav-pills > .active > a:hover {background-color: #550626;}
+.dropdown-menu a:hover{background-color: #550626;}
+.dropdown-menu li > a:hover,.dropdown-menu .active > a,.dropdown-menu .active > a:hover {background-color: #550626;}
+/* 按钮 */
+.btn-success{background-color: #faa732;*background-color: #5f082d;background-image: -ms-linear-gradient(top, #e49bc9, #5f082d);background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e49bc9), to(#5f082d));background-image: -webkit-linear-gradient(top, #e49bc9, #5f082d);background-image: -o-linear-gradient(top, #e49bc9, #5f082d);background-image: -moz-linear-gradient(top, #e49bc9, #5f082d);background-image: linear-gradient(top, #e49bc9, #5f082d);background-repeat: repeat-x;border-color: #5f082d #5f082d #ad6704;border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);filter: progid:dximagetransform.microsoft.gradient(startColorstr='#e49bc9', endColorstr='#5f082d', GradientType=0);filter: progid:dximagetransform.microsoft.gradient(enabled=false);}
+.btn-success:hover,.btn-success:active,.btn-success.active,.btn-success.disabled,.btn-success[disabled]{background-color: #5f082d;*background-color: #c5649f;}
+.btn-success:active,.btn-success.active{background-color: #84074b \9;}
+
+/**===============================
+           重写底部
+================================*/
+#footer { padding-top: 15px; }
+#footer { background: #120406 url({STYLE_IMG_DIR}/footer.gif) repeat-y 0 0; }
+
+/**===============================
+           重写通用标签
+================================*/
+a.common_tag{background:#dd90c1;color:#fff;}
+a.common_tag:hover{background:#550626;}

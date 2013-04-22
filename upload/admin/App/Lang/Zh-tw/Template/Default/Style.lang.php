@@ -195,6 +195,7 @@ return array(
 '071e0509763f027f3746f362b0d9da22'=>"模板路徑",
 '333d88b17cf5119a80b85add5617e3ac'=>"特殊邊框顏色",
 '7f1ca3ff9be28da91035c374b5195e87'=>"注意，DIY中的界面基礎圖片目錄和擴展圖片目錄均相對於{WINDSFORCE_PATH}/ucontent而言",
+'5ef73a10b6e307ebd23e68cbcd478193'=>"該主題不支持擴展配色",
 )
 
 ?>

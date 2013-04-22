@@ -25,6 +25,9 @@ return array(
 '5e5aa97dea3c15c8ee977a994b6d5f1e'=>"首頁最大小組數",
 '31ae404c7d5c26acd15030dd6bec9615'=>"我要設置",
 'b53ff6ca88917605d6a15052fcbdcc50'=>"小組總數",
+'fcf52318cf7b3d7a167ff8c8fc3c8ff5'=>"首頁小組橫排數量",
+'0fbf3d80a9eed0d05e70a59b975dac9d'=>"首頁群組分類小組橫排數量",
+'8780d28ae16efc9c5daa1859c48b92fe'=>"使用橫排可以節約空間，設置為0表示不啟用橫排",
 )
 
 ?>

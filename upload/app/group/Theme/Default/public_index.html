@@ -65,6 +65,7 @@
 										</span>
 									</td>
 								</tr>
+								<!--{if 0}-->
 								<tr class="grouplist_index">
 									<td width="*" colspan="2"><span><!--<lang package='Template/Public'>-->小组名称<!--</lang>--></span></td>
 									<td width="40"><span><!--<lang package='Template/Public'>-->主题<!--</lang>--></span></td>
@@ -72,8 +73,10 @@
 									<td width="40"><span><!--<lang package='Template/Public'>-->用户<!--</lang>--></span></td>
 									<td width="200"><span><!--<lang package='Template/Public'>-->最后更新<!--</lang>--></span></td>
 								</tr>
+								<!--{/if}-->
 								<!--{~$arrGroups=Groupdata_Extend::getGroup($oGroupcategory)}-->
 								<!--{if is_array($arrGroups)}-->
+								<!--{if $oGroupcategory['groupcategory_columns']<1}-->
 								<!--<foreach for=arrGroups value=oGroup>-->
 								<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oGroup['group_id'])}-->
 								<tr align="center" valign="middle" class="grouptopicone">
@@ -110,33 +113,78 @@
 										</table>
 									</td>
 									<td width="40" valign="middle" align="center" class="grouplist_borderbottom">
-										<span class="cau"><!--{$oGroup:group_topicnum}--></span>
+										<span class="grouplist_numstyle"><!--{$oGroup:group_topicnum}--></span>
 									</td>
 									<td width="40" valign="middle" align="center" class="grouplist_borderbottom">
-										<span class="cau"><!--{$oGroup:group_topiccomment}--></span>
+										<span class="grouplist_numstyle"><!--{$oGroup:group_topiccomment}--></span>
 									</td>
 									<td width="40" valign="middle" align="center" class="grouplist_borderbottom">
-										<span class="cau"><!--{$oGroup:group_usernum}--></span>
+										<span class="grouplist_numstyle"><!--{$oGroup:group_usernum}--></span>
 									</td>
 									<td width="168" align="right" class="grouplist_borderbottom">
 										<table width="100%" align="right">
 											<tr>
 												<td width="2%" align="right">&nbsp;</td>
-												<td class="indexsummaryalgin">
-												<!--{if !empty($oGroup->group_latestcomment)}-->
-												<!--{~$arrLatestComment=unserialize($oGroup->group_latestcomment)}-->
-												<!--{if isset($arrLatestComment['commenttitle'])}-->
-												<a title="Re:<!--{$arrLatestComment['commenttitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['tid'])}-->">Re:<!--{$arrLatestComment['commenttitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Public'>-->最后回复<!--</lang>-->:<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>
-												<!--{d*else}-->
-												<a title="<!--{$arrLatestComment['topictitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['topicid'])}-->"><!--{$arrLatestComment['topictitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['topictime']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Public'>-->楼主<!--</lang>-->:<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['topicuserid'])}-->"><!--{$arrLatestComment['topicuserid']|UserModel+getUsernameById}--></a>
-												<!--{/if}-->
-												<!--{/if}-->
+												<td class="grouplist_indexsummaryalgin">
+													<!--{if !empty($oGroup->group_latestcomment)}-->
+													<!--{~$arrLatestComment=unserialize($oGroup->group_latestcomment)}-->
+													<!--{if isset($arrLatestComment['commenttitle'])}-->
+													<a title="Re:<!--{$arrLatestComment['commenttitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['tid'])}-->">Re:<!--{$arrLatestComment['commenttitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Public'>-->最后回复<!--</lang>-->:<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>
+													<!--{d*else}-->
+													<a title="<!--{$arrLatestComment['topictitle']}-->" href="<!--{:Dyhb::U('group://topic@?id='.$arrLatestComment['topicid'])}-->"><!--{$arrLatestComment['topictitle']|G+subString=0,25}--></a><br /><!--{$arrLatestComment['topictime']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Public'>-->楼主<!--</lang>-->:<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['topicuserid'])}-->"><!--{$arrLatestComment['topicuserid']|UserModel+getUsernameById}--></a>
+													<!--{/if}-->
+													<!--{/if}-->
 												</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<!--</foreach>-->
+								<!--{d*else}-->
+								<tr align="center" valign="middle" class="grouptopicone">
+									<!--<volist name="arrGroups" id="oGroup" mod="oGroupcategory['groupcategory_columns']">-->
+									<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oGroup['group_id'])}-->
+									<!--<eq name="mod" value="1">-->
+									</tr>
+									<tr align="center" valign="middle" class="grouptopicone">
+									<!--</eq>-->
+									<td style="table-layout: fixed;word-wrap: break-word;" width="<!--{:round(100/$oGroupcategory['groupcategory_columns'])}-->%" class="grouplist_borderbottom"
+									align="left">
+										<table width="100%" cellpadding="0" title="<!--{$oGroup:group_listdescription}-->">
+											<tr>
+												<td width="80">
+													<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->">
+														<img src='<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->' border="0" alt="" width="70" height="70"/>
+													</a>
+												</td>
+												<td width="*">&nbsp;&nbsp;&nbsp;</td>
+												<td width="100%" style="padding-left:2px;">
+													<span class='grouplist_namelink'><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;<!--{/if}-->"><!--{$oGroup:group_nikename}--></a></span>
+													<!--{if $oGroup['group_topictodaynum']>0}-->
+													<span class='grouplist_todaynum'>&nbsp;(<!--<lang package='Template/Grouplist'>-->今日<!--</lang>--><!--{$oGroup['group_topictodaynum']}-->)</span>
+													<!--{/if}-->
+													<!--{if $nGroupuser==0}-->
+													&nbsp;<span id="listgroup_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->,'listgroup_<!--{$oGroup['group_id']}-->');">+<!--<lang package='Template/Grouplist'>-->加入<!--</lang>--></a></span>
+													<!--{elseif $nGroupuser==1}-->
+													&nbsp;<span id="listgroup_<!--{$oGroup['group_id']}-->"class="commonjoinleave_group"><a href="javascript:void(0);" onclick="leaveGroup(<!--{$oGroup['group_id']}-->,'listgroup_<!--{$oGroup['group_id']}-->');"><!--<lang package='Template/Grouplist'>-->退出<!--</lang>--></a></span>
+													<!--{/if}-->
+													<!--{if $oGroup['group_isrecommend']}-->
+													<span>&nbsp;<i class="icon-thumbs-up" title="<!--<lang package='Template/Grouplist'>-->系统推荐小组<!--</lang>-->"></i></span>
+													<!--{/if}-->
+													<div class="grouplist_styleothernum">
+														<!--<lang package='Template/Public'>-->主题<!--</lang>-->&nbsp;<span class="grouplist_numstyle"><!--{$oGroup:group_topicnum}--></span>
+														<span class="pipe">/</span>
+														<!--<lang package='Template/Public'>-->回复<!--</lang>-->&nbsp;<span class="grouplist_numstyle"><!--{$oGroup:group_topiccomment}--></span>
+														<span class="pipe">/</span>
+														<!--<lang package='Template/Public'>-->用户<!--</lang>-->&nbsp;<span class="grouplist_numstyle"><!--{$oGroup:group_usernum}--></span>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<!--</volist>-->
+								</tr>
+								<!--{/if}-->
 								<!--{d*else}-->
 								<tr>
 									<td valign="middle" align="center" class="grouplist_borderbottom" colspan="6">

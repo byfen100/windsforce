@@ -918,59 +918,67 @@ WINDSFORCE;
 			$sScriptCss.='<link rel="stylesheet" type="text/css" href="'.$sStyleCacheurl.'/'.APP_NAME.'_common.css?'.$GLOBALS['_style_']['verhash']."\" />";
 		}
 
-		$sCurrentT=Dyhb::cookie('extend_style_id');
-		if($sCurrentT==''){
-			if($GLOBALS['___login___']!==false){
-				$sCurrentT=$GLOBALS['___login___']['user_extendstyle'];
-			}else{
-				$sCurrentT=$GLOBALS['_style_']['_current_style_'];
-			}
-		}
-
 		if(defined('CURSCRIPT')){
 			$sScriptCss.='<link rel="stylesheet" type="text/css" href="'.$sStyleCacheurl.'/scriptstyle_'.APP_NAME.'_'.str_replace('::','_',CURSCRIPT).'.css?'.$GLOBALS['_style_']['verhash']."\" />";
 		}
 		
 		$sScriptCss.='<link rel="stylesheet" type="text/css" href="'.$sStyleCacheurl.'/windsforce.css?'.$GLOBALS['_style_']['verhash']."\" />";
 		
-		if(!empty($sCurrentT) && is_file($sStyleCachepath.'/t_'.$sCurrentT.'.css')){
-			$sScriptCss.='<link rel="stylesheet" id="extend_style" type="text/css" href="'.$sStyleCacheurl.'/t_'.$sCurrentT.'.css?'.$GLOBALS['_style_']['verhash']."\" />";
-			$GLOBALS['_extend_style_']=$sCurrentT;
+		// 如果启用了样式切换
+		if(!empty($GLOBALS['_style_']['_style_extend_icons_'])){
+			if($GLOBALS['_option_']['extendstyle_switch_on']==1){
+				$sCurrentT=Dyhb::cookie('extend_style_id');
 
-			// 取得扩展背景图片
-			if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend')){
-				$arrBgimgPath=array();
-				$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend',false,true);
-				if(is_array($arrFiles)){
-					foreach($arrFiles as &$sFile){
-						$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgextend/'.$sFile.'"';
+				if($sCurrentT==''){
+					if($GLOBALS['___login___']!==false){
+						$sCurrentT=$GLOBALS['___login___']['user_extendstyle'];
+					}else{
+						$sCurrentT=$GLOBALS['_style_']['_current_style_'];
 					}
 				}
-				$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/Default/Public/Style/'.$sCurrentT.'/bgimg.jpg'.'"';
-
-				$sScriptCss.="<script type=\"text/javascript\">";
-				$sScriptCss.=
-				"var globalImgbgs=[".implode(',',$arrBgimgPath)."];";
-				$sScriptCss.="</script>";
+			}else{
+				$sCurrentT=$GLOBALS['_style_']['_current_style_'];
 			}
-		}else{
-			$GLOBALS['_extend_style_']='0';
-			$sScriptCss.='<link rel="stylesheet" id="extend_style" type="text/css" href="'.__PUBLIC__.'/images/common/none.css?'.$GLOBALS['_style_']['verhash']."\" />";
+			
+			if(!empty($sCurrentT) && is_file($sStyleCachepath.'/t_'.$sCurrentT.'.css')){
+				$sScriptCss.='<link rel="stylesheet" id="extend_style" type="text/css" href="'.$sStyleCacheurl.'/t_'.$sCurrentT.'.css?'.$GLOBALS['_style_']['verhash']."\" />";
+				$GLOBALS['_extend_style_']=$sCurrentT;
 
-			// 取得背景图片
-			if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Images/bgextend')){
-				$arrBgimgPath='';
-				$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Images/bgextend',false,true);
-				if(is_array($arrFiles)){
-					foreach($arrFiles as &$sFile){
-						$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/Default/Public/Images/bgextend/'.$sFile.'"';
+				// 取得扩展背景图片
+				if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgextend')){
+					$arrBgimgPath=array();
+					$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgextend',false,true);
+					if(is_array($arrFiles)){
+						foreach($arrFiles as &$sFile){
+							$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgextend/'.$sFile.'"';
+						}
 					}
-				}
+					$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgimg.jpg'.'"';
 
-				$sScriptCss.="<script type=\"text/javascript\">";
-				$sScriptCss.=
-				"var globalImgbgs=[".implode(',',$arrBgimgPath)."];";
-				$sScriptCss.="</script>";
+					$sScriptCss.="<script type=\"text/javascript\">";
+					$sScriptCss.=
+					"var globalImgbgs=[".implode(',',$arrBgimgPath)."];";
+					$sScriptCss.="</script>";
+				}
+			}else{
+				$GLOBALS['_extend_style_']='0';
+				$sScriptCss.='<link rel="stylesheet" id="extend_style" type="text/css" href="'.__PUBLIC__.'/images/common/none.css?'.$GLOBALS['_style_']['verhash']."\" />";
+
+				// 取得背景图片
+				if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Images/bgextend')){
+					$arrBgimgPath='';
+					$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Images/bgextend',false,true);
+					if(is_array($arrFiles)){
+						foreach($arrFiles as &$sFile){
+							$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Images/bgextend/'.$sFile.'"';
+						}
+					}
+
+					$sScriptCss.="<script type=\"text/javascript\">";
+					$sScriptCss.=
+					"var globalImgbgs=[".implode(',',$arrBgimgPath)."];";
+					$sScriptCss.="</script>";
+				}
 			}
 		}
 		

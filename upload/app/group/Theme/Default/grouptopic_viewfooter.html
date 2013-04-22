@@ -66,8 +66,10 @@
 								<div class="avatar">
 									<img src="<!--{:Core_Extend::avatar($GLOBALS['___login___']!==false?$GLOBALS['___login___']['user_id']:0,'middle')}-->" width="120px" class="group_avatar">
 									<!--{if $GLOBALS['___login___']!==false}-->
-									<hr/><a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>
+									<p><hr/>
+									<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>
 									<!--{/if}-->
+									</p>
 								</div>
 							</td>
 							<td class="floor_right">

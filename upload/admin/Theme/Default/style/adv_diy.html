@@ -132,19 +132,27 @@ function imgUpdate(id,imgid){
 					<fieldset>
 						<label for="style_extend_new"><!--<lang package='Template/Default/Style'>-->扩展配色<!--</lang>--></label>
 						<p style="padding:5px;">
+							<!--{if $arrExtendstyle}-->
 							<!--<foreach for=arrExtendstyle value=arrValue>-->
 							<input type="checkbox" id="style_extend_new" name="style_extend_new[]" value="<!--{$arrValue[0]}-->" <!--{if in_array($arrValue[0],$arrStyleExtendcolors)}-->checked<!--{/if}-->>&nbsp;<!--{$arrValue[1]}-->
 							<!--</foreach>-->
+							<!--{d*else}-->
+							<!--<lang package='Template/Default/Style'>-->该主题不支持扩展配色<!--</lang>-->
+							<!--{/if}-->
 						</p>
 						<div class="description"><!--<lang package='Template/Default/Style'>-->扩展配色可以让同一个主题展现绚丽多姿的一面<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
 						<label for="name_new"><!--<lang package='Template/Default/Style'>-->默认配色<!--</lang>--></label>
+						<!--{if $arrExtendstyle}-->
 						<select name="default_extend_style_new" id="default_extend_style_new">
 							<!--<foreach for=arrDefaultextendstyle value=arrValue>-->
 							<option value="<!--{$arrValue[0]}-->" <!--{if $arrValue[0]==$sStyleExtendcolor}-->selected="selected"<!--{/if}-->><!--{$arrValue[1]}--></option>
 							<!--</foreach>-->
 						</select>
+						<!--{d*else}-->
+						<p style="padding:5px;"><!--<lang package='Template/Default/Style'>-->该主题不支持扩展配色<!--</lang>--></p>
+						<!--{/if}-->
 						<div class="description"><!--<lang package='Template/Default/Style'>-->请根据你的站点来选择适合你自己的配色<!--</lang>--></div>
 					</fieldset>
 					<fieldset>

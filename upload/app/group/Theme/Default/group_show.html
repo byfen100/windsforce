@@ -262,6 +262,11 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<div class="avatar">
 											<img src="<!--{:Core_Extend::avatar($GLOBALS['___login___']['user_id'],'middle')}-->" width="120px" class="group_avatar">
 										</div>
+										<!--{if $GLOBALS['___login___']!==false}-->
+										<p><hr/>
+										<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>
+										<!--{/if}-->
+										</p>
 									</td>
 									<td class="floor_right">
 										<form method="post" name="grouptopic_form" id="grouptopic_form" class="grouptopi_form">
@@ -349,8 +354,8 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 							</div>
 						</div>
 
-						<div class="commonbox" style="margin-top:300px;">
-							<div class="commonboxtitle"><!--<lang package='Template/Group'>-->小组统计<!--</lang>--></div>
+						<div class="commonbox_mini commonbox_mini_gray" style="margin-top:300px;">
+							<h2 class="title"><!--<lang package='Template/Group'>-->小组统计<!--</lang>--></h2>
 							<div class="commonlist">
 								<ul id="group_info_box" class="group_info_box">
 									<li><!--<lang package='Template/Group'>-->主题数<!--</lang>-->&nbsp;<span class="right"><b><!--{$oGroup['group_topicnum']}--></b></span></li>
