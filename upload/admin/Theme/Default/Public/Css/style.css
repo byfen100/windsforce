@@ -80,12 +80,11 @@ header#header {height: 65px;width: 100%;background: #222222 url({header_bg.png})
            侧边栏菜单
 ================================*/
 .fmenu-body{background:#E0E0E32;}
-aside#sidebar {width:100%;min-height: 500px;margin-top: -4px;}
+aside#sidebar {width:100%;min-height: 500px;margin-top:-4px;}
 
 /* 主菜单标题 */
-section.sidemenu_div {height: 38px;width: 100%;background: #F1F1F4 url({secondary_bar.png}) repeat-x;position: fixed;}
-.sidemenu_title {float:left;width:100%;height: 38px;}
-.sidemenu_title p {margin: 0;padding: 0;color: #666666;font-weight: bold;display: block;float: left;width: 100%;height: 35px;line-height: 35px;text-indent: 25px;background: url({icn_sidemenu_title.png}) no-repeat center left;margin-left: 6%;}
+.sidemenu_title {float:left;width:100%;height: 37px;}
+.sidemenu_title p {margin: 0;padding: 0;color: #666666;font-weight: bold;display: block;float: left;width: 100%;height: 38px;line-height: 38px;text-indent: 25px;background: url({icn_sidemenu_title.png}) no-repeat center left;margin-left: 6%;}
 .sidemenu_title a {text-decoration: none;color: #666666}
 .sidemenu_title a:hover {color: #77BACE;}
 
@@ -94,13 +93,8 @@ section.sidemenu_div {height: 38px;width: 100%;background: #F1F1F4 url({secondar
 #sidemenu li{position:relative;list-style:none;list-style: none; padding: 0;width:auto;}
 #sidemenu li a{padding:5px;width:110px;border-bottom:1px solid #FFF;text-decoration:none;height:25px;display:block;text-align:center;line-height:25px;color: #666666;}
 #sidemenu li a:hover,#sidemenu li.active a{background:#E0E0E3;text-decoration: none;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
-#sidemenu ul{position:absolute;top:36px;left:0px;clear: both;margin: 0; padding: 0;margin-top:9px;}
+#sidemenu ul{background:;position:absolute;top:36px;left:0px;clear: both;margin: 0; padding: 0;margin-top:9px;}
 #sidemenu table{position:absolute;top:0;left:0;}
-
-/**===============================
-           拖动条
-================================*/
-.fdrag-body{margin: 0;padding: 0;width:100%;cursor: E-resize;}
 
 /**===============================
            主内容
@@ -138,7 +132,7 @@ section#main {width: 100%;min-height: 500px;float: left;margin-top: 25px;}
 .tablesorter thead th .order_desc { padding-right: 8px; background: url({order.gif}) no-repeat 100% 50%; }
 .tablesorter thead th .order_asc { padding-right: 8px; background: url({order_asc.gif}) no-repeat 100% 50%; }
 .tablesorter td{margin: 0;padding: 0;border-bottom: 1px dotted #ccc;}
-.tablesorter thead tr {height: 34px;background: url({table_sorter_header.png}) repeat-x;text-align: left;text-indent: 10px;cursor: pointer;}
+.tablesorter thead tr {height: 34px;background: url({table_sorter_header.png}) repeat-x;text-align: left;text-indent: 10px;}
 .tablesorter td {padding: 15px 10px;}
 .tablesorter input[type=image] {margin-right: 10px;}
 .tablesorter tbody tr .data_odd {background-color:#fff;}

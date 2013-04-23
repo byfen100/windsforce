@@ -174,10 +174,6 @@ class PublicController extends InitController{
 		G::urlGoto(__APP__);
 	}
 
-	public function fdrag(){
-		$this->display();
-	}
-
 	public function check_login(){
 		$this->check_seccode(true);
 		$sUserName=G::getGpc('user_name','P');

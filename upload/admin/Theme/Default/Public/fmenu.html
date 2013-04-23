@@ -21,13 +21,16 @@
 	<link rel="shortcut icon" href="<!--{:__PUBLIC__}-->/images/common/favicon.png">
 	<base target="main" />
 </head>
-<body class="fmenu-body">
-	<section class="sidemenu_div">
-		<div class="sidemenu_title">
-			<p><!--<if condition="G+getGpc('title')">--><!--{$D.get.title}--><!--<else/>--><!--<lang package='Template/Default/Common'>-->首页<!--</lang>--><!--</if>--></p>
+<body class="fmenu-body" style="margin-top:4px;">
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<div class="sidemenu_title">
+				<p><!--<if condition="G+getGpc('title')">--><!--{$D.get.title}--><!--<else/>--><!--<lang package='Template/Default/Common'>-->首页<!--</lang>--><!--</if>--></p>
+			</div>
 		</div>
-		<span class="clear"></span>
 	</section>
+	
+	<span class="clear"></span>
 
 	<!--{script}-->
 	function menuClicknum(nMenuId){

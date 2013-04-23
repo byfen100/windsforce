@@ -30,15 +30,13 @@ $(document).ready(function(){
 </head>
 
 <!-- 框架整体开始 -->
-<frameset frameborder=0 framespacing=0 border=0 rows="76, *" >
+<frameset frameborder=0 framespacing=0 border=0 rows="73, *" >
 	<!-- 框架头部-->
 	<frame src="<!--{:Dyhb::U('public/fheader')}-->" name="header" frameborder=0 noresize scrolling='no' marginwidth='0' marginheight='0'>
 	<!-- 框架身体开始 -->
-	<frameset frameborder=0 framespacing=0 border=0 cols="120,5, *" id="body">
+	<frameset frameborder=0 framespacing=0 border=0 cols="120,*" id="body">
 		<!-- 框架菜单 -->
 		<frame src="<!--{:Dyhb::U('public/fmenu')}-->" frameborder=0 id="menu" name="menu">
-		<!-- 框架拖动条 -->
-		<frame src="<!--{:Dyhb::U('public/fdrag')}-->" id="drag" name="drag" frameborder="no" scrolling="no">
 		<!-- 框架主内容 -->
 		<frame src="<!--{:Dyhb::U('public/fmain')}-->" frameborder=0 id="main" name="main" >
 	</frameset>

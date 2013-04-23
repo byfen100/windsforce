@@ -58,10 +58,9 @@ header#header {height: 65px;width: 100%;background: transparent;}
 /**===============================
            重写侧边栏菜单
 ================================*/
-section.sidemenu_div {background:#ebebeb;height: 38px;width: 100%;position: fixed;}
 #sidebar{background:#ebebeb;width: 100%;}
-.sidemenu_title,section.secondary_bar {background:  #F1F1F4;height: 38px;position: fixed;width: 100%;}
-.sidemenu_title{height:42px;}
+.sidemenu_title,section.secondary_bar {background:#d9d8d8;height: 38px;position: fixed;width: 100%;}
+.sidemenu_title{height:38px;}
 article.breadcrumbs {border: none;box-shadow:none;float: left;height: 23px;margin: 4px 1%;padding: 0 10px;}
 
 #sidemenu li a {border-bottom: 1px solid #d9d8d8;color: #30a4b1;padding-top:12px;padding-bottom:12px;font-size:13px;}
@@ -86,7 +85,7 @@ article.breadcrumbs {border: none;box-shadow:none;float: left;height: 23px;margi
 /* 数据列表管理 */
 .tablesorter {border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9}
 .tablesorter tr td {border-bottom: 1px solid #bab9b9;}
-.tablesorter thead tr {height: 34px;background:#d9d8d8;cursor:normal;}
+.tablesorter thead tr {height: 34px;background:#d9d8d8;cursor:default;}
 .tablesorter td {padding: 15px 10px;}
 .tablesorter tbody .data_odd {background-color:#fff;}
 .tablesorter tbody .data_even {background-color:#f7f7f7;}
