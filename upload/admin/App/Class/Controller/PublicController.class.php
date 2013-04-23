@@ -137,6 +137,9 @@ class PublicController extends InitController{
 	}
 
 	public function login(){
+		$sReferer=trim(G::getGpc('referer'));
+		$nRbac=intval(G::getGpc('rbac','G'));
+		
 		$arrUserData=$GLOBALS['___login___'];
 
 		if($arrUserData!==false){
@@ -145,8 +148,12 @@ class PublicController extends InitController{
 
 			$GLOBALS['___login___']=false;
 		}
-		UserModel::M()->clearThisCookie();
 
+		UserModel::M()->clearThisCookie();
+		
+		$this->assign('sReferer',$sReferer);
+		$this->assign('nRbac',$nRbac);
+		
 		$this->display();
 	}
 

@@ -3,15 +3,15 @@
 <head>
 	<title>$<!--{$GLOBALS['_option_']['windsforce_program_name']}--> | <!--<lang package='Template/Default/Public'>-->登录<!--</lang>--></title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="<!--{:At::path('style.css','Css')}-->"/>
-	<link rel="stylesheet" type="text/css" href="<!--{:At::path('login.css','Css')}-->"/>
+	<link rel="stylesheet" type="text/css" href="<!--{:Dyhb::U('misc/index?type=css&file=style',array(),true)}-->"/>
+	<link rel="stylesheet" type="text/css" href="<!--{:Dyhb::U('misc/index?type=css&file=login',array(),true)}-->"/>
 	<!--{script}-->
 	var __DYHB_JS_ENTER__='<!--{:__APP__}-->';
 	<!--{/script}-->
 	<!--<import file="Js.Vendor.Jquery" />-->
 	<!--<import file="Js.Dyhb#package" />-->
 	<script src="<!--{:__PUBLIC__}-->/js/common/global.js" type="text/javascript"></script>
-	<link rel="shortcut icon" href="<!--{:__PUBLIC__}-->/images/common/admin_favicon.png">
+	<link rel="shortcut icon" href="<!--{:At::path('favicon.png')}-->">
 </head>
 <body onLoad="document.login.user_name.focus()" class="login-body">
 
@@ -47,8 +47,13 @@ function login_handle(data,status){
 				<form method='post' name="login" id="login-form">
 					<header><h3><!--<lang package='Template/Default/Public'>-->用户登录<!--</lang>--></h3></header>
 					<div class="module_content">
-						<span><img src="<!--{:__PUBLIC__}-->/images/common/admin_logo.gif"/></span>
+						<span><img src="<!--{:At::path('logo.gif')}-->"/></span>
 						<span><div id="result" class="none"></div></span>
+						<!--{if $sReferer && $nRbac==1}-->
+						<fieldset>
+							<label><!--<lang package='Template/Default/Public'>-->你没有权限访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template/Default/Public'>-->重试<!--</lang>--></a></label>
+						</fieldset>
+						<!--{/if}-->
 						<fieldset>
 							<label><!--<lang package='Template/Default/Public'>-->用户名/E-mail<!--</lang>--></label>
 							<input type="text" name="user_name" id="user_name" size="40"/>

@@ -29,6 +29,8 @@ class App{
 		}
 		if($GLOBALS['_commonConfig_']['START_GZIP'] && function_exists('gz_handler')){
 			ob_start('gz_handler');
+		}else{
+			ob_start();
 		}
 
 		// 解析系统URL

@@ -177,13 +177,14 @@ class StyleController extends InitController{
 		if(empty($this->_sCurrentStyle)){
 			$this->_sCurrentStyle='Default';
 		}
+
 		$this->show_Styles(WINDSFORCE_PATH.'/admin/Theme');
 		
-		if(!is_dir(WINDSFORCE_PATH.'/ucontent/theme/'.$this->_sCurrentStyle)){
+		if(!is_dir(WINDSFORCE_PATH.'/admin/Theme/'.$this->_sCurrentStyle)){
 			$this->assign('sCurrentStyle',false);
 		}else{
 			$arrStyles=array();
-			$arrStyles[]=WINDSFORCE_PATH.'/ucontent/theme/'.$this->_sCurrentStyle;
+			$arrStyles[]=WINDSFORCE_PATH.'/admin/Theme/'.$this->_sCurrentStyle;
 
 			require_once(Core_Extend::includeFile('class/Style'));
 
