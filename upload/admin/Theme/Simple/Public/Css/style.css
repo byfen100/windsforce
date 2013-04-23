@@ -61,7 +61,9 @@ header#header {height: 65px;width: 100%;background: transparent;}
 #sidebar{background:#ebebeb;width: 100%;}
 .sidemenu_title,section.secondary_bar {background:#d9d8d8;height: 38px;position: fixed;width: 100%;}
 .sidemenu_title{height:38px;}
-article.breadcrumbs {border: none;box-shadow:none;float: left;height: 23px;margin: 4px 1%;padding: 0 10px;}
+article.breadcrumbs {text-shadow:none;border: none;box-shadow:none;float: left;height: 23px;margin: 4px 1%;padding: 0 10px;}
+.breadcrumbs a.current, .breadcrumbs a.current:hover {text-shadow:none;}
+.breadcrumbs a:link, .breadcrumbs a:visited {text-shadow:none;}
 
 #sidemenu li a {border-bottom: 1px solid #d9d8d8;color: #30a4b1;padding-top:12px;padding-bottom:12px;font-size:13px;}
 #sidemenu li.active a {background: none repeat scroll 0 0 #f7941d;color:#fff;border-radius:0;text-decoration: none;}
@@ -76,11 +78,12 @@ article.breadcrumbs {border: none;box-shadow:none;float: left;height: 23px;margi
 .module {background: #FFFFFF;border:none;border-radius: 0;padding:0px 0px;}
 .module header{background: #464646;border-top-left-radius: 0;border-top-right-radius:0;}
 #main h3{color: #fff;text-shadow: none;}
-.module footer {background: #F1F1F4;border-top: 1px solid #9CA1B0;height: 66px;width: 100%;}
+.module fieldset p{padding-left:0px;}
 
 .module_content ul{padding:15px 30px;}
 .module_content .operate,.module_content p,.module_content .systemmessage-box,.content-tab-box{padding:10px 20px;}
 .module_content #pagenav{padding:15px 0px;}
+.module_content fieldset p{padding-left:0;}
 
 /* 数据列表管理 */
 .tablesorter {border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9}
@@ -104,7 +107,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {background: none;border-
 /**===============================
            重写底部
 ================================*/
-#footer .module{background:none;}
+.module footer{background:none;height:50px;}
 #footer{color:#aaaaaa;margin-top:-5px;font-size:15px;font-weight:bold;}
 #footer a{ color:#f7941d; text-decoration:none;}
 #footer a:hover{ text-decoration:underline; }
@@ -121,7 +124,7 @@ input[type=button],input[type=submit],input[type=reset] {margin:0; padding:5px 2
 input.alt_btn[type="submit"]:hover, input.alt_btn[type="button"]:hover {background-color: #30a4b1;color: #FFFFFF;}
 
 fieldset input[type="text"], fieldset input[type="password"], fieldset input[type="file"],fieldset textarea {border-radius: 0;box-shadow: 0;display: block;border:1px solid #bab9b9; padding:10px; color:#707070; font-size:14px; }
-fieldset select {border: 1px solid #BBBBBB;height: 20px;margin: 0 10px;padding:20px; color:#707070; font-size:14px; }
+fieldset select {border: 1px solid #BBBBBB;height: 40px;margin: 0 10px;padding:10px; color:#707070; font-size:14px; }
 
 /**===============================
            重写搜索

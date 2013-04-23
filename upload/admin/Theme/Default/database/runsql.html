@@ -56,19 +56,21 @@ function validate(){
 			<!--<if condition="$nType==-1">-->
 			<header><h3><!--<lang package='Template/Default/Database'>-->执行错误<!--</lang>--></h3></header>
 			<div class="module_content">
-				<!--{if $sError}-->
+				<p><!--{if $sError}-->
 					<!--{$sError}-->
 				<!--{d*else}-->
 					<!--<lang package='Template/Default/Database'>-->你的SQL语句执行遇到错误<!--</lang>-->
-				<!--{/if}-->
+				<!--{/if}--></p>
 			</div>
 			<!--<elseif condition="$nType==1 ">-->
 			<header><h3><!--<lang package='Template/Default/Database'>-->执行结果<!--</lang>--></h3></header>
 			<div class="module_content">
-				<!--<lang package='Template/Default/Database'>-->SQL语句运行成功<!--</lang>-->
+				<p><!--<lang package='Template/Default/Database'>-->SQL语句运行成功<!--</lang>--></p>
 			</div>
 			<!--<elseif condition="$nType==2">-->
-				<div class="module_content"><!--{$sResult}--></div>
+			<div class="module_content">
+				<p><!--{$sResult}--></p>
+			</div>
 			<!--</if>-->
 		</article>
 		<!--</if>-->

@@ -78,7 +78,7 @@ function insertHomesitecontentvideo(sContent){
 				<div class="module_content">
 					<fieldset>
 						<label for="homesite_name"><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息名字<!--</lang>--></label>
-						<input type="text" name="homesite_name" id="homesite_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:homesite_name}--><!--</if>-->" <!--{if isset($oValue) && $oValue['homesite_id']<=4}-->readonly="true"<!--{/if}-->/>
+						<input type="text" name="homesite_name" id="homesite_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:homesite_name}--><!--</if>-->" <!--{if isset($oValue) && $TheController:is_system_homesite($oValue['homesite_id'])}-->readonly="true"<!--{/if}-->/>
 						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息名字具有唯一性，最大字符为32<!--</lang>--></div>
 					</fieldset>
 					<fieldset>

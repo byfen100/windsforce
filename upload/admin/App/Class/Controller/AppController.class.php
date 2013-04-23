@@ -70,6 +70,12 @@ class AppController extends InitController{
 			if(is_dir($sExtensionDir)){
 				Dyhb::import($sExtensionDir);
 			}
+
+			// 导入应用模型
+			$sModelDir=WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Class/Model';
+			if(is_dir($sModelDir)){
+				Dyhb::import($sModelDir);
+			}
 			
 			$this->assign('nId',$nId);
 			

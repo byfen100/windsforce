@@ -4,9 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 导入群组模型 */
-Dyhb::import(WINDSFORCE_PATH.'/app/group/App/Class/Model');
-
 class GroupmainController extends InitController{
 
 	public function index($sModel=null,$bDisplay=true){

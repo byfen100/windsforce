@@ -4,9 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 导入群组模型 */
-Dyhb::import(WINDSFORCE_PATH.'/app/group/App/Class/Model');
-
 class GroupController extends InitController{
 
 	public function filter_(&$arrMap){
@@ -84,22 +81,6 @@ class GroupController extends InitController{
 			if($nTotalgrouptopic>0){
 				$this->E(Dyhb::L('小组存在帖子，请先删除帖子','__APP_ADMIN_LANG__@Controller/Group'));
 			}
-
-			// 删除小组的帖子分类
-			$oGrouptopiccategoryMeta=GrouptopiccategoryModel::M();
-			$oGrouptopiccategoryMeta->deleteWhere(array('group_id'=>$nId));
-
-			if($oGrouptopiccategoryMeta->isError()){
-				$this->E($oGrouptopiccategoryMeta->getErrorMessage());
-			}
-
-			// 删除小组用户
-			$oGroupuserMeta=GroupuserModel::M();
-			$oGroupuserMeta->deleteWhere(array('group_id'=>$nId));
-
-			if($oGroupuserMeta->isError()){
-				$this->E($oGroupuserMeta->getErrorMessage());
-			}
 		}
 	}
 	
@@ -109,6 +90,33 @@ class GroupController extends InitController{
 		$this->bForeverdelete_();
 		
 		parent::foreverdelete('group',$sId);
+	}
+
+	protected function aForeverdelete($sId){
+		$sId=G::getGpc('value','G');
+
+		$arrIds=explode(',',$sId);
+		
+		// 删除小组相关数据
+		if(is_array($arrIds)){
+			foreach($arrIds as $nId){
+				// 删除小组的帖子分类
+				$oGrouptopiccategoryMeta=GrouptopiccategoryModel::M();
+				$oGrouptopiccategoryMeta->deleteWhere(array('group_id'=>$nId));
+
+				if($oGrouptopiccategoryMeta->isError()){
+					$this->E($oGrouptopiccategoryMeta->getErrorMessage());
+				}
+
+				// 删除小组用户
+				$oGroupuserMeta=GroupuserModel::M();
+				$oGroupuserMeta->deleteWhere(array('group_id'=>$nId));
+
+				if($oGroupuserMeta->isError()){
+					$this->E($oGroupuserMeta->getErrorMessage());
+				}
+			}
+		}
 	}
 	
 	public function input_change_ajax($sName=null){

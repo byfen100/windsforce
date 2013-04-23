@@ -4,9 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 导入主页模型 */
-Dyhb::import(WINDSFORCE_PATH.'/app/wap/App/Class/Model');
-
 class WapmainController extends InitController{
 
 	public function index($sModel=null,$bDisplay=true){

@@ -87,7 +87,7 @@
 			<div class="navbar">
 				<div class="container-fluid">
 					<ul class="nav">
-						<li class="dropdown <!--{if APP_NAME===$GLOBALS['_option_']['default_app'] && MODULE_NAME==='public' && ACTION_NAME=='index'}-->active<!--{/if}-->">
+						<li class="dropdown <!--{if $GLOBALS['_option_']['default_app']=='home' && APP_NAME===$GLOBALS['_option_']['default_app'] && MODULE_NAME==='public' && ACTION_NAME=='index'}-->active<!--{/if}-->">
 							<a href="javascript:void(0);" class="dropdown-toggle brand" data-toggle="dropdown" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->首页<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->首页<!--</lang>-->&nbsp;<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<!--{:__APP__}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->首页<!--</lang>--></a></li>

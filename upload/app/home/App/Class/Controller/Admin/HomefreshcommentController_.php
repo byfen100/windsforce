@@ -4,9 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 导入主页模型 */
-Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
-
 /** 导入杂项函数 */
 require(Core_Extend::includeFile('function/Misc_Extend'));
 

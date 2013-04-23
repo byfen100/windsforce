@@ -4,9 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 导入主页模型 */
-Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
-
 class HomemainController extends InitController{
 
 	public function index($sModel=null,$bDisplay=true){
