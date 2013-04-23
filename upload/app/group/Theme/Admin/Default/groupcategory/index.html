@@ -75,7 +75,7 @@
 							<td><!--{$value:groupcategory_count}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="groupcategory_sort_<!--{$value:groupcategory_id}-->" onClick="clickToInputApp('groupcategory_sort','<!--{$value:groupcategory_id}-->','<!--{$_GET['id']}-->','groupcategory')"><!--{$value:groupcategory_sort}--></td>
-							<td><a href="javascript:editApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a></td>
+							<td><a href="javascript:editApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a></td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->

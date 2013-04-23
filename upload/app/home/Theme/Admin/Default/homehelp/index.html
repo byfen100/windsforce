@@ -87,11 +87,11 @@ function changeHomehelpcategory(oObj,id){
 							</td>
 							<td><!--<if condition="!empty( $value:homehelpcategory:homehelpcategory_name )">--><a href="<!--{:Admin_Extend::base(array('controller'=>'homehelp','homehelpcategory_id'=>$value->homehelpcategory_id))}-->"><!--{$value:homehelpcategory:homehelpcategory_name}--></a><!--<else/>--><!--<lang package='__APP_ADMIN_LANG__@Template/Homehelp'>-->未分类<!--</lang>--><!--</if>--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:homehelp_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
+							<td><img src="<!--{:At::path($value->homehelp_status==1?'yes.gif':'no.gif')}-->"/></td>
 							<td>
-								<!--<if condition="$value:homehelp_status eq 1" >--><a href="javascript:forbidApp('<!--{$_GET['id']}-->','homehelp','<!--{$value:homehelp_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a><!--<else/>-->
-								<a href="javascript:resumeApp('<!--{$_GET['id']}-->','homehelp','<!--{$value:homehelp_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->
-								<a href="<!--{:Admin_Extend::edit(array('controller'=>'homehelp','value'=>$value['homehelp_id']))}-->"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								<!--<if condition="$value:homehelp_status eq 1" >--><a href="javascript:forbidApp('<!--{$_GET['id']}-->','homehelp','<!--{$value:homehelp_id}-->');"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a><!--<else/>-->
+								<a href="javascript:resumeApp('<!--{$_GET['id']}-->','homehelp','<!--{$value:homehelp_id}-->');"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->
+								<a href="<!--{:Admin_Extend::edit(array('controller'=>'homehelp','value'=>$value['homehelp_id']))}-->"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

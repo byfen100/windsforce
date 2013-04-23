@@ -70,7 +70,7 @@
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="homehelpcategory_sort_<!--{$value:homehelpcategory_id}-->" onClick="clickToInputApp('homehelpcategory_sort','<!--{$value:homehelpcategory_id}-->','<!--{$_GET['id']}-->','homehelpcategory')"><!--{$value:homehelpcategory_sort}--></td>
 							<td>
-								<a href="<!--{:Admin_Extend::edit(array('controller'=>'homehelpcategory','value'=>$value['homehelpcategory_id']))}-->"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								<a href="<!--{:Admin_Extend::edit(array('controller'=>'homehelpcategory','value'=>$value['homehelpcategory_id']))}-->"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

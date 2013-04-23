@@ -88,10 +88,10 @@ $(function(){
 							<td><!--{$value:homefresh_goodnum}--></td>
 							<td><!--{$value:homefresh_viewnum}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:homefresh_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
-							<td><!--<if condition="$value:homefresh_status eq 1" >--><a href="javascript:forbidApp('<!--{$_GET['id']}-->','homefresh','<!--{$value:homefresh_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a><!--<else/>-->
-								<a href="javascript:resumeApp('<!--{$_GET['id']}-->','homefresh','<!--{$value:homefresh_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->&nbsp;
-								<a href="<!--{:Admin_Extend::edit(array('controller'=>'homefresh','value'=>$value['homefresh_id']))}-->"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_edit.png" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+							<td><img src="<!--{:At::path($value->homefresh_status==1?'yes.gif':'no.gif')}-->"/></td>
+							<td><!--<if condition="$value:homefresh_status eq 1" >--><a href="javascript:forbidApp('<!--{$_GET['id']}-->','homefresh','<!--{$value:homefresh_id}-->');"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a><!--<else/>-->
+								<a href="javascript:resumeApp('<!--{$_GET['id']}-->','homefresh','<!--{$value:homefresh_id}-->');"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->&nbsp;
+								<a href="<!--{:Admin_Extend::edit(array('controller'=>'homefresh','value'=>$value['homefresh_id']))}-->"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

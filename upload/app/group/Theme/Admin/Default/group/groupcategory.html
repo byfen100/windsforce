@@ -56,7 +56,7 @@ function updateGroupcategory(category_id){
 				<!--{~$arrCategorys=$oGroup->groupcategory}-->
 				<p><!--{if is_array($arrCategorys)}-->
 					<!--<foreach for=arrCategorys>-->
-					<a href="javascript:void(0);" title="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="deleteGroupcategory('<!--{$oGroup['group_id']}-->','<!--{$value['groupcategory_id']}-->');"><img src="<!--{:__TMPLPUB__}-->/Images/no.gif"/></a>
+					<a href="javascript:void(0);" title="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="deleteGroupcategory('<!--{$oGroup['group_id']}-->','<!--{$value['groupcategory_id']}-->');"><img src="<!--{:At::path('no.gif')}-->"/></a>
 					<a href="javascript:void(0);" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick=" updateGroupcategory('<!--{$value['groupcategory_id']}-->');" class="tags"><!--{$value['groupcategory_name']}--></a>
 					<!--</foreach>-->
 					<!--{d*else}-->

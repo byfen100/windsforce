@@ -72,9 +72,9 @@
 							<td><!--{$value:homefreshtag_usercount}--></td>
 							<td><!--{$value:homefreshtag_homefreshcount}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td><img src="<!--{:__TMPLPUB__}-->/Images/<!--<if condition="$value:homefreshtag_status eq 1" >-->yes<!--<else/>-->no<!--</if>-->.gif"/></td>
-							<td><!--<if condition="$value:homefreshtag_status eq 1" >--><a href="javascript:forbidApp('<!--{$_GET['id']}-->','homefreshtag','<!--{$value:homefreshtag_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_trash.png" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a><!--<else/>-->
-								<a href="javascript:resumeApp('<!--{$_GET['id']}-->','homefreshtag','<!--{$value:homefreshtag_id}-->');"><input type="image" src="<!--{:__TMPLPUB__}-->/Images/icn_jump_back.png" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->&nbsp;<a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','homefreshtag','<!--{$value:homefreshtag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
+							<td><img src="<!--{:At::path($value->homefreshtag_status==1?'yes.gif':'no.gif')}-->"/></td>
+							<td><!--<if condition="$value:homefreshtag_status eq 1" >--><a href="javascript:forbidApp('<!--{$_GET['id']}-->','homefreshtag','<!--{$value:homefreshtag_id}-->');"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a><!--<else/>-->
+								<a href="javascript:resumeApp('<!--{$_GET['id']}-->','homefreshtag','<!--{$value:homefreshtag_id}-->');"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a><!--</if>-->&nbsp;<a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','homefreshtag','<!--{$value:homefreshtag_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>
 							</td>
 						</tr>
 						<!--</foreach>-->

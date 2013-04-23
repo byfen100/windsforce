@@ -20,6 +20,7 @@ if(!$sApp && !$sApi){
 
 /** 
  * (一):应用API将直接跳转
+ * 只能访问不需要IN_API的接口
  * http://youdomain.com/api.php?app=group&c=api&a=recommend_group&num=5&cnum=20&type=xml
  */
 if($sApp){
