@@ -204,7 +204,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup)}-->
 										<div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display: none;">
 											<label class="checkbox right checkbox_checkall">
-												<input type="checkbox" name="chkall" onclick="if(!($('mdct').innerHTML = modclickcount = checkall(this.form, 'moderate'))) {$('mdly').style.display = 'none';}" /><!--<lang package='Template/Groupadmin'>-->全选<!--</lang>-->
+												<input type="checkbox" name="chkall" onclick="if(!($WF('modActionSelectnum').innerHTML=nModclickcount=checkAll('topic_list_box',this.checked))) {$WF('modActionSelect').style.display = 'none';}" /><!--<lang package='Template/Groupadmin'>-->全选<!--</lang>-->
 											</label>
 											<a class="smallmodaction" href="javascript:;" title="<!--<lang package='Template/Groupadmin'>-->最小化<!--</lang>-->" onclick="$WF('modActionSelect').className='smallmodaction_done'"><!--<lang package='Template/Groupadmin'>-->最小化<!--</lang>--></a>
 											<h2 class="title"><!--<lang package='Template/Groupadmin'>-->选中<!--</lang>-->&nbsp;<strong id="modActionSelectnum" onclick="$WF('modActionSelect').className='commonbox_mini commonbox_mini_gray';" onmouseover="this.title='<!--<lang package='Template/Groupadmin'>-->最大化<!--</lang>-->'"></strong>&nbsp;<!--<lang package='Template/Groupadmin'>-->篇<!--</lang>--></h2>

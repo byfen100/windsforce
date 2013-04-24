@@ -188,13 +188,38 @@ function updateSeccode(){
 	$WF("seccodeImage").innerHTML='<img id="seccode" onclick="updateSeccode()" src="'+D.U('seccode?update='+timenow)+'" style="cursor:pointer" title="'+D.L('单击图片换个验证码','__COMMON_LANG__@Js/Global_Js')+'" alt="'+D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js')+'" />';
 }
 
-function checkAll(str){
+function checkAll(str,bThis){
 	var i;
+	var nLength;
 	var inputs=$WF(str).getElementsByTagName("input");
+	var nSelect=0;
 
-	for(i=1;i<inputs.length;i++){
-		inputs[i].checked=inputs[0].checked;
+	if(isUndefined(nThis)){
+		var nThis=inputs[0].checked;
+		i=1;
+		nLength=inputs.length;
+	}else{
+		i=0;
+		nLength=inputs.length;
 	}
+
+	for(i=0;i<nLength;i++){
+		inputs[i].checked=bThis;
+
+		if(bThis==true){
+			nSelect++;
+		}else{
+			if(nSelect>0){
+				nSelect--;
+			}
+		}
+	}
+
+	if(nSelect>0){
+		nSelect--;
+	}
+
+	return nSelect;
 }
 
 function showDistrict(sContainer,oElems,nTotallevel,nChangelevel,sContainertype,sDistrictPrefix){
