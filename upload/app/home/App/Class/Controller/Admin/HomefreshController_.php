@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入杂项函数 */
+require(Core_Extend::includeFile('function/Misc_Extend'));
+
 class HomefreshController extends InitController{
 
 	public function filter_(&$arrMap){

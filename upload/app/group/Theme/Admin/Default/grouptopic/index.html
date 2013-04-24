@@ -77,7 +77,7 @@
 								<!--{d*else}-->
 								<a href="<!--{:Admin_Extend::base(array('controller'=>'grouptopic','gid'=>$value['group_id'],'cid'=>-1))}-->">[<!--<lang package='__APP_ADMIN_LANG__@Template/Grouptopic'>-->默认分类<!--</lang>-->]</a>
 								<!--{/if}-->
-								<a href="javascript:editApp('<!--{$_GET['id']}-->','grouptopic','<!--{$value:grouptopic_id}-->')"><!--{$value:grouptopic_title}--></a>
+								<a href="<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$value['grouptopic_id'])}-->" target="_blank"><!--{$value:grouptopic_title}--></a>
 								<div class="row-actions">
 									<span class='edit'><a href="javascript:editApp('<!--{$_GET['id']}-->','grouptopic','<!--{$value:grouptopic_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','grouptopic','<!--{$value:grouptopic_id}-->')"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>

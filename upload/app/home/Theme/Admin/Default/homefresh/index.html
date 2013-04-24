@@ -83,7 +83,7 @@ $(function(){
 								</div>
 							</td>
 							<td><div class="homefresh_content"><!--{$value:homefresh_message|strip_tags|G+subString=0,80|Core_Extend+ubb}--></div></td>
-							<td><!--{$value:homefresh_ip}--></td>
+							<td><!--{$value:homefresh_ip}--><br/><!--{$value['homefresh_ip']|Misc_Extend+convertIp}--></td>
 							<td><a href="<!--{:Admin_Extend::base(array('controller'=>'homefreshcomment','fid'=>$value['homefresh_id']))}-->"><!--{$value:homefresh_commentnum}--></a></td>
 							<td><!--{$value:homefresh_goodnum}--></td>
 							<td><!--{$value:homefresh_viewnum}--></td>

@@ -44,7 +44,27 @@ class GrouptopiccategoryController extends InitController{
 	}
 	
 	public function aForeverdelete($sId){
+		$sId=G::getGpc('value','G');
+
+		$arrIds=explode(',',$sId);
+		
 		// 将帖子的分类设置为0
+		if(is_array($arrIds)){
+			foreach($arrIds as $nId){
+				// 读取当前分类的所有帖子
+				$arrGrouptopics=GrouptopicModel::F('grouptopiccategory_id=?',$nId)->getAll();
+				if(is_array($arrGrouptopics)){
+					foreach($arrGrouptopics as $oGrouptopic){
+						$oGrouptopic->grouptopiccategory_id='0';
+						$oGrouptopic->save(0,'update');
+					
+						if($oGrouptopic->isError()){
+							$this->E($oGrouptopic->getErrorMessage());
+						}
+					}
+				}
+			}
+		}
 	}
 
 	public function input_change_ajax($sName=null){

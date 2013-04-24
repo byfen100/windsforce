@@ -6,6 +6,8 @@
 
 class GrouptopicController extends InitController{
 
+	protected $_arrGroups=array();
+	
 	public function filter_(&$arrMap){
 		$arrMap['grouptopic_title']=array('like','%'.G::getGpc('grouptopic_title').'%');
 
@@ -71,8 +73,29 @@ class GrouptopicController extends InitController{
 		$oModel->safeInput();
 	}
 
+	public function bForeverdelete_(){
+		$sId=G::getGpc('value','G');
+
+		$arrGroups=array();
+		
+		$arrIds=explode(',',$sId);
+		foreach($arrIds as $nId){
+			// 读取所有待删除的帖子，提取相关小组
+			$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nId)->getOne();
+			if(!empty($oGrouptopic['grouptopic_id'])){
+				$arrGroups[]=$oGrouptopic['group_id'];
+			}
+		}
+
+		$arrGroups=array_unique($arrGroups);
+
+		$this->_arrGroups=$arrGroups;
+	}
+
 	public function foreverdelete($sModel=null,$sId=null){
 		$sId=G::getGpc('value');
+
+		$this->bForeverdelete_();
 
 		parent::foreverdelete('grouptopic',$sId);
 	}
@@ -92,8 +115,26 @@ class GrouptopicController extends InitController{
 				if($oGrouptopiccommentMeta->isError()){
 					$this->E($oGrouptopiccommentMeta->getErrorMessage());
 				}
+			}
+		}
+		
+		// 重新统计相关小组的帖子数量
+		$arrGroups=$this->_arrGroups;
 
-				// 这里无法更新小组帖子数量，只有通过系统工具来修改小组主题总数
+		if(is_array($arrGroups)){
+			foreach($arrGroups as $nGid){
+				$oGroup=GroupModel::F('group_id=?',$nGid)->getOne();
+				
+				if(!empty($oGroup['group_id'])){
+					// 更新小组帖子数量
+					$nTopicnum=GrouptopicModel::F('group_id=?',$nGid)->getCounts();
+					$oGroup->group_topicnum=$nTopicnum;
+					$oGroup->save(0,'update');
+
+					if($oGroup->isError()){
+						$this->E($oGroup->getErrorMessage());
+					}
+				}
 			}
 		}
 	}

@@ -191,7 +191,7 @@ CREATE TABLE `#@__grouptopiccomment` (
   `grouptopiccomment_content` text NOT NULL COMMENT '回复内容',
   `grouptopiccomment_email` varchar(300) NOT NULL COMMENT '邮件',
   `grouptopiccomment_url` varchar(300) NOT NULL COMMENT '主页',
-  `grouptopiccoment_ip` varchar(16) NOT NULL COMMENT '评论IP',
+  `grouptopiccomment_ip` varchar(16) NOT NULL COMMENT '评论IP',
   `create_dateline` int(10) DEFAULT '0' COMMENT '回复时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `grouptopiccomment_parentid` int(10) NOT NULL DEFAULT '0' COMMENT '帖子评论父级ID',

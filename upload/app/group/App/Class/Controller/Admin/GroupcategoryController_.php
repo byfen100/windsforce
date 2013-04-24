@@ -78,12 +78,34 @@ class GroupcategoryController extends InitController{
 
 	public function bForeverdelete_(){
 		$sId=G::getGpc('value','G');
+
 		$arrIds=explode(',',$sId);
-		foreach($arrIds as $nId){
-			$nGroupcategorys=GroupcategoryModel::F('groupcategory_parentid=?',$nId)->all()->getCounts();
-			$oGroupcategory=GroupcategoryModel::F('groupcategory_id=?',$nId)->query();
-			if($nGroupcategorys>0){
-				$this->E(Dyhb::L('群组分类%s存在子分类，你无法删除','__APP_ADMIN_LANG__@Controller/Groupcategory',null,$oGroupcategory->groupcategory_name));
+		if(is_array($arrIds)){
+			foreach($arrIds as $nId){
+				$nGroupcategorys=GroupcategoryModel::F('groupcategory_parentid=?',$nId)->all()->getCounts();
+				$oGroupcategory=GroupcategoryModel::F('groupcategory_id=?',$nId)->query();
+				if($nGroupcategorys>0){
+					$this->E(Dyhb::L('群组分类%s存在子分类，你无法删除','__APP_ADMIN_LANG__@Controller/Groupcategory',null,$oGroupcategory->groupcategory_name));
+				}
+			}
+		}
+	}
+
+	protected function aForeverdelete($sId){
+		$sId=G::getGpc('value','G');
+
+		$arrIds=explode(',',$sId);
+		
+		// 解除关联小组数组
+		if(is_array($arrIds)){
+			foreach($arrIds as $nId){
+				// 删除小组关联
+				$oGroupcategoryindexMeta=$oGroupcategoryindexModel::M();
+				$oGroupcategoryindexMeta->deleteWhere(array('groupcategory_id'=>$nId));
+
+				if($oGroupcategoryindexMeta->isError()){
+					$this->E($oGroupcategoryindexMeta->getErrorMessage());
+				}
 			}
 		}
 	}

@@ -19,6 +19,7 @@ class GrouptopiccommentModel extends CommonModel{
 			'attr_protected'=>'grouptopiccomment_id',
 			'autofill'=>array(
 				array('user_id','userId','create','callback'),
+				array('grouptopiccomment_ip','getIp','create','callback'),
 			),
 			'check'=>array(
 				'grouptopiccomment_title'=>array(
@@ -47,12 +48,10 @@ class GrouptopiccommentModel extends CommonModel{
 		$nUserId=$GLOBALS['___login___']['user_id'];
 
 		return $nUserId>0?$nUserId:0;
-	}	
-	
-	protected function userName(){
-		$sUserName=$GLOBALS['___login___']['user_name'];
+	}
 
-		return $sUserName?$sUserName:'';
+	protected function getIp(){
+		return G::getIp();
 	}
 
 	static public function getGrouptopiccommentById($nCommentId,$sField='grouptopiccomment_name',$bAll=false){
