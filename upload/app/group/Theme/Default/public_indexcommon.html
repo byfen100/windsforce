@@ -37,8 +37,8 @@ function completeSet(data,status){
 					<p><!--<lang package='Template/Public'>-->你可以<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a>&nbsp;<!--<lang package='Template/Public'>-->一个帐号，并以此<!--</lang>-->&nbsp;<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='Template/Public'>-->登录<!--</lang>--></a>&nbsp;，<!--<lang package='Template/Public'>-->以浏览更多精彩内容，并随时发布观点，与大家交流。<!--</lang>--></p>
 					<!--{d*else}-->
 					<p><!--<lang package='Template/Public'>-->欢迎回来<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, <!--<lang package='Template/Public'>-->你上次访问时间是在<!--</lang>-->&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
-					<span class="pipe">|</span>
-					<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--<lang package='Template/Public'>-->我的帖子<!--</lang>--></a>, <a href="<!--{:Dyhb::U('group://public/newtopic')}-->"><!--<lang package='Template/Public'>-->查看新帖<!--</lang>--></a></p>
+					<span class="pipe">|</span><a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'].'&type=group')}-->"><!--<lang package='Template/Public'>-->我的小组<!--</lang>--></a>,&nbsp;
+					<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--<lang package='Template/Public'>-->我的帖子<!--</lang>--></a>,&nbsp;<a href="<!--{:Dyhb::U('group://public/newtopic')}-->"><!--<lang package='Template/Public'>-->查看新帖<!--</lang>--></a></p>
 					<!--{/if}-->
 				</div>
 				<span class="clear"></span>

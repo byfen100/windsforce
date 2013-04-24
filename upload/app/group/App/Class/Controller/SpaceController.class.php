@@ -25,4 +25,8 @@ class SpaceController extends InitController{
 		Core_Extend::doControllerAction('Space@Comment','index');
 	}
 
+	public function group(){
+		Core_Extend::doControllerAction('Space@Group','index');
+	}
+
 }

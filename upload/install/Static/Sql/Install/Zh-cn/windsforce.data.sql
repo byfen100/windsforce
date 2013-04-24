@@ -354,7 +354,8 @@ INSERT INTO `#@__nav` (`nav_id`, `nav_parentid`, `nav_name`, `nav_identifier`, `
 
 -- --------------------------------------------------------
 
--- 转存表中的数据 `windsforce_node`
+--
+-- 转存表中的数据 `windsforce_node`(此表中以admin开头的均不需要进行语言包翻译)
 --
 
 INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `node_remark`, `node_sort`, `node_parentid`, `node_level`, `nodegroup_id`, `create_dateline`, `update_dateline`, `node_issystem`) VALUES

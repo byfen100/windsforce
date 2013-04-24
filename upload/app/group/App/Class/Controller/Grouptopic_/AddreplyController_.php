@@ -84,7 +84,7 @@ class AddreplyController extends Controller{
 			Core_Extend::updateCreditByAction('group_topicreply',$oGrouptopiccomment['user_id']);
 		}
 
-		// 更新帖子的最后更新回复
+		// 更新帖子的最后更新回复和帖子评论数量
 		$arrLatestData=array(
 			'commenttime'=>$oGrouptopiccomment->create_dateline,
 			'commentid'=>$oGrouptopiccomment->grouptopiccomment_id,
@@ -93,6 +93,8 @@ class AddreplyController extends Controller{
 		);
 
 		$oGrouptopic->grouptopic_latestcomment=serialize($arrLatestData);
+		$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nId)->all()->getCounts();
+		$oGrouptopic->setAutofill(false);
 		$oGrouptopic->save(0,'update');
 
 		if($oGrouptopic->isError()){
@@ -112,14 +114,6 @@ class AddreplyController extends Controller{
 
 		if($oGroup->isError()){
 			$this->E($oGroup->getErrorMessage());
-		}
-
-		// 更新保存帖子的评论数量
-		$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nId)->all()->getCounts();
-		$oGrouptopic->save(0,'update');
-
-		if($oGrouptopic->isError()){
-			$this->E($oGrouptopic->getErrorMessage());
 		}
 
 		// 保存小组今日数据

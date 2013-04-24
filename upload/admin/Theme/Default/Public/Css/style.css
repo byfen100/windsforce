@@ -182,9 +182,11 @@ html ul.tabs li:last-child, html ul.tabs li:last-child a  {-webkit-border-top-ri
 ================================*/
 
 /* 基本表单 */
-input[type=submit],input[type=reset] {background: #D0D1D4 url({btn_submit.png}) repeat-x;border: 1px solid #A8A9A8;-webkit-box-shadow: 0 1px 0 #fff;-moz-box-shadow: 0 1px 0 #fff;box-shadow: 0 1px 0 #fff;font-weight: bold;height: 22px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 0 10px;color: #666;text-shadow: 0 1px 0 #fff;cursor: pointer;}
-input[type=submit]:hover {color: #333333;}
-input[type=submit].alt_btn,input[type=button].alt_btn {background: #D0D1D4 url({btn_submit_2.png}) repeat-x;border: 1px solid#30B0C8;-webkit-box-shadow: 0 1px 0 #fff;-moz-box-shadow: 0 1px 0 #fff;box-shadow: 0 1px 0 #fff;font-weight: bold;height: 22px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 0 10px;color: #003E49;text-shadow: 0 1px 0 #6CDCF9;cursor: pointer;}
+input[type=text],input[type=password]{padding:3px 2px;margin:2px;}
+input[type=submit],input[type=reset],input[type=button]{background: #D0D1D4 url({btn_submit.png}) repeat-x;border: 1px solid #A8A9A8;-webkit-box-shadow: 0 1px 0 #fff;-moz-box-shadow: 0 1px 0 #fff;box-shadow: 0 1px 0 #fff;font-weight: bold;height: 22px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 0 10px;color: #666;text-shadow: 0 1px 0 #fff;cursor: pointer;}
+input[type=submit],input[type=reset],input[type=button]{background: #D0D1D4 url({btn_submit.png}) repeat-x;border: 1px solid #A8A9A8;-webkit-box-shadow: 0 1px 0 #fff;-moz-box-shadow: 0 1px 0 #fff;box-shadow: 0 1px 0 #fff;font-weight: bold;height: 22px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 0 10px;color: #666;text-shadow: 0 1px 0 #fff;cursor: pointer;}
+input[type=submit]:hover,input[type=button]:hover{color: #333333;}
+input[type=submit].alt_btn,input[type=button].alt_btn ,input[type=button].d-state-highlight,input[type=button].btn-success{background: #D0D1D4 url({btn_submit_2.png}) repeat-x;border: 1px solid#30B0C8;-webkit-box-shadow: 0 1px 0 #fff;-moz-box-shadow: 0 1px 0 #fff;box-shadow: 0 1px 0 #fff;font-weight: bold;height: 22px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 0 10px;color: #003E49;text-shadow: 0 1px 0 #6CDCF9;cursor: pointer;}
 input[type=submit].alt_btn:hover,input[type=button].alt_btn:hover{color: #001217;}
 
 /* 表单主体 */

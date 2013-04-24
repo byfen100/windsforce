@@ -10,7 +10,7 @@ return array(
 	'public::group'=>'groups',
 	'group::show',
 	'group::user',
-	'space::index',
+	'space::index'=>'groups',
 	'tag::show',
 	'grouptopic::view'=>'media,comment',
 	'grouptopic::reply'=>'media',

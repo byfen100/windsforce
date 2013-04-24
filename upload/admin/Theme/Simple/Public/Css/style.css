@@ -118,13 +118,17 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {background: none;border-
 fieldset{background: none;border: none;border-radius:0;}
 
 /* 基本表单 */
-input.alt_btn[type="submit"], input.alt_btn[type="button"] ,input[type=button],input[type=submit], input[type=reset] {background: #D0D1D4;border: none;border-radius: 0;box-shadow: 0;cursor: pointer;font-weight: bold;height:30px;padding: 0 10px;text-shadow:none;}
+input[type=text],input[type=password]{padding:6px 2px;margin:1px;}
+input[type=button],input[type=submit], input[type=reset],input.alt_btn[type="submit"], input.alt_btn[type="button"],input[type=button].d-state-highlight,input[type=button].btn-success{background: #D0D1D4;border: none;border-radius: 0;box-shadow: 0;cursor: pointer;font-weight: bold;height:30px;padding: 0 10px;text-shadow:none;}
 input.alt_btn[type="submit"], input.alt_btn[type="button"] {background-color:#f7941d;color:#fff; }
 input[type=button],input[type=submit],input[type=reset] {margin:0; padding:5px 20px; border:0px;  font-size:14px;color: #666666;}
 input.alt_btn[type="submit"]:hover, input.alt_btn[type="button"]:hover {background-color: #30a4b1;color: #FFFFFF;}
 
 fieldset input[type="text"], fieldset input[type="password"], fieldset input[type="file"],fieldset textarea {border-radius: 0;box-shadow: 0;display: block;border:1px solid #bab9b9; padding:10px; color:#707070; font-size:14px; }
 fieldset select {border: 1px solid #BBBBBB;height: 40px;margin: 0 10px;padding:10px; color:#707070; font-size:14px; }
+
+/* 对话框按钮分开 */
+input.d-button{margin-right:10px;}
 
 /**===============================
            重写搜索

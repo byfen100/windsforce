@@ -17,6 +17,7 @@ return array(
 'f8ff5260b3e63de044c52c4551fbf150'=>"瀏覽數",
 'dee0206d099276da61e40b03f5cbfa28'=>"回收站帖子",
 'd0771a42bbc49a6941f59913fcda35e3'=>"分類",
+'d73ebcd892e1b50ca5ba1a4c71820b32'=>"查看帖子",
 )
 
 ?>

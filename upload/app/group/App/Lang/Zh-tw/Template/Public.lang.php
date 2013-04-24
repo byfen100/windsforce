@@ -63,6 +63,7 @@ return array(
 '2e51abf4b110b467232fd24f20d9d58a'=>"用戶數量",
 '24ad8d8490fce41a9725e794160ffbbc'=>"今日發貼",
 '8ac482a5add86cddb48f0b1c91e87af1'=>"回帖",
+'319bb0353ff40cd6724a252d63eb9e09'=>"我的小組",
 )
 
 ?>

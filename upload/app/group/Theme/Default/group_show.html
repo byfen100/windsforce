@@ -58,7 +58,8 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 							<!--{d*else}-->
 							<span><!--<lang package='Template/Public'>-->欢迎回来<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'])}-->" target="_blank"><!--{$GLOBALS['___login___']['user_name']}--></a>, <!--<lang package='Template/Public'>-->你上次访问时间是在<!--</lang>-->&nbsp;<span title="<!--{$GLOBALS['___login___']['user_lastlogintime']|date='Y-m-d H:i:s',**}-->" class="label label-success"><!--{$GLOBALS['___login___']['user_lastlogintime']|Core_Extend+timeFormat}--></span>
 							<span class="pipe">|</span>
-							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->"><!--<lang package='Template/Group'>-->我的小组帖子<!--</lang>--></a>, <a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->"><!--<lang package='Template/Group'>-->查看小组新帖<!--</lang>--></a>
+							<a href="<!--{:Dyhb::U('group://space@?id='.$GLOBALS['___login___']['user_id'].'&type=group')}-->"><!--<lang package='Template/Group'>-->我加入的其他小组<!--</lang>--></a>,&nbsp;
+							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->"><!--<lang package='Template/Group'>-->我的小组帖子<!--</lang>--></a>,&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->"><!--<lang package='Template/Group'>-->查看小组新帖<!--</lang>--></a>
 							<!--{if Core_Extend+isAdmin()}-->
 							<span class="pipe">|</span>
 							<img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;
