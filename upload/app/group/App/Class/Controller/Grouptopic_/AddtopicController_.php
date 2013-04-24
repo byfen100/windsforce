@@ -27,7 +27,8 @@ class AddtopicController extends Controller{
 			}
 		}
 
-		$_POST['grouptopic_content']=trim($_POST['grouptopic_content'],'<br />');
+		$arrParsemessage=Core_Extend::contentParsetag(trim($_POST['grouptopic_content'],'<br />'));
+		$_POST['grouptopic_content']=$arrParsemessage['content'];
 
 		// 小组相关检查
 		$nGroupid=intval(G::getGpc('group_id','P'));
@@ -107,6 +108,44 @@ class AddtopicController extends Controller{
 		// 保存小组今日数据
 		GroupoptionModel::uploadOption('group_topictodaynum',$GLOBALS['_cache_']['group_option']['group_topictodaynum']+1);
 		GroupoptionModel::uploadOption('group_totaltodaynum',$GLOBALS['_cache_']['group_option']['group_totaltodaynum']+1);
+
+		// 发送feed
+		$sFeedtemplate='<div class="feed_addgrouptopic"><span class="feed_title">'.Dyhb::L('发布了一篇帖子','Controller/Grouptopic').'&nbsp;<a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></span><div class="feed_content">{grouptopic_message}</div><div class="feed_action"><a href="{@grouptopic_link}#comments">'.Dyhb::L('回复','Controller/Grouptopic').'</a></div></div>';
+
+		$arrFeeddata=array(
+			'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
+			'grouptopic_message'=>G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100),
+		);
+
+		try{
+			Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
+		// 发送提醒
+		if($arrParsemessage['atuserids']){
+			foreach($arrParsemessage['atuserids'] as $nAtuserid){
+				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
+					$sGrouptopicmessage=G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100);
+					
+					$sNoticetemplate='<div class="notice_atgrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题中提到了你','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+
+					$arrNoticedata=array(
+						'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
+						'user_name'=>$GLOBALS['___login___']['user_name'],
+						'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
+						'content_message'=>$sGrouptopicmessage,
+					);
+
+					try{
+						Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$nAtuserid,'atgrouptopic',$oGrouptopic['grouptopic_id']);
+					}catch(Exception $e){
+						$this->E($e->getMessage());
+					}
+				}
+			}
+		}
 
 		// 跳转到帖子
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);

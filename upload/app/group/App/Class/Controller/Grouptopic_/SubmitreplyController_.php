@@ -51,6 +51,26 @@ class SubmitreplyController extends Controller{
 			$this->E($oGrouptopiccomment->getErrorMessage());
 		}
 
+		// 发送提醒
+		if($GLOBALS['___login___']['user_id']!=$oGrouptopiccomment['user_id']){
+			$sGrouptopiccommentmessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
+			
+			$sNoticetemplate='<div class="notice_editgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('编辑了你的回帖','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div>&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller/Grouptopic').'</div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+
+			$arrNoticedata=array(
+				'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
+				'user_name'=>$GLOBALS['___login___']['user_name'],
+				'@grouptopiccomment_link'=>'group://grouptopic/view?id='.$oGrouptopiccomment['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'],
+				'content_message'=>$sGrouptopiccommentmessage,
+			);
+
+			try{
+				Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$oGrouptopiccomment['user_id'],'editgrouptopiccomment',$oGrouptopiccomment['grouptopiccomment_id']);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+		}
+
 		$nTotalComment=GrouptopiccommentModel::F('grouptopic_id=?',$oGrouptopic->grouptopic_id)->getCounts();
 		$nPage=ceil($nTotalComment/$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum']);
 		

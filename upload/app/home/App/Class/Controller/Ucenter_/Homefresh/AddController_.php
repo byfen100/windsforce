@@ -112,7 +112,6 @@ class AddController extends Controller{
 				}
 			}
 
-
 			$arrHomefreshData=$oHomefresh->toArray();
 			$arrHomefreshData['space']=Dyhb::U('home://space@?id='.$oHomefresh['user_id']);
 			$arrHomefreshData['avatar']=Core_Extend::avatar($oHomefresh['user_id'],'small');

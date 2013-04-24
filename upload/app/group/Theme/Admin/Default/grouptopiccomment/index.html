@@ -85,7 +85,7 @@ $(function(){
 								</div>
 							</td>
 							<td><a href="<!--{:Admin_Extend::base(array('controller'=>'grouptopiccomment','tid'=>$value['grouptopic_id']))}-->">Reply:<!--{$value:grouptopic:grouptopic_title}--></a></td>
-							<td><div class="grouptopiccomment_content"><!--{$value:grouptopiccomment_content|strip_tags|G+subString=0,80|Core_Extend+ubb}--></div></td>
+							<td><div class="grouptopiccomment_content"><!--{$value:grouptopiccomment_content|strip_tags|G+subString=0,80|Core_Extend+ubb=false}--></div></td>
 							<td><!--{$value:grouptopiccomment_ip}--><br/><!--{$value['grouptopiccomment_ip']|Misc_Extend+convertIp}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td><img src="<!--{:At::path($value->grouptopiccomment_status==1?'yes.gif':'no.gif')}-->"/></td>

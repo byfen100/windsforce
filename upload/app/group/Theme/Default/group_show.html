@@ -366,6 +366,8 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 									<li><!--<lang package='Template/Group'>-->是否允许加入<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $oGroup['group_joinway']=='0'}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
 									<li><!--<lang package='Template/Group'>-->发贴不审核<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $oGroup['group_audittopic']=='0'}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
 									<li><!--<lang package='Template/Group'>-->回帖不审核<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $oGroup['group_auditcomment']=='0'}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
+									<li><!--<lang package='Template/Group'>-->主题回收站<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $GLOBALS['_cache_']['group_option']['group_deletetopic_recyclebin']==1}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
+									<li><!--<lang package='Template/Group'>-->回帖回收站<!--</lang>-->&nbsp;<span class="right"><img src="<!--{:__PUBLIC__}-->/images/common/<!--{if $GLOBALS['_cache_']['group_option']['group_deletecomment_recyclebin']==1}-->data_valid.gif<!--{d*else}-->data_invalid.gif<!--{/if}-->"/></span></li>
 								</ul>
 							</div>
 						</div>

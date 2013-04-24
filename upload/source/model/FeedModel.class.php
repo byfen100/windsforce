@@ -37,6 +37,7 @@ class FeedModel extends CommonModel{
 					'feed_username'=>$nUsername,
 					'feed_template'=>$sTemplate,
 					'feed_data'=>$sData,
+					'feed_application'=>APP_NAME,
 				)
 			);
 

@@ -385,6 +385,7 @@ CREATE TABLE `#@__feed` (
   `feed_template` text NOT NULL COMMENT '动态模板',
   `feed_data` text NOT NULL COMMENT '动态数据',
   `create_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '添加时间',
+  `feed_application` varchar(32) NOT NULL DEFAULT 'home' COMMENT '动态来源应用',
   PRIMARY KEY (`feed_id`),
   KEY `user_id` (`user_id`),
   KEY `create_dateline` (`create_dateline`)
@@ -640,7 +641,7 @@ CREATE TABLE `#@__loginlog` (
   `loginlog_username` varchar(50) NOT NULL COMMENT '登录用户',
   `loginlog_ip` varchar(40) NOT NULL COMMENT '登录IP',
   `loginlog_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '登录状态',
-  `login_application` varchar(20) NOT NULL COMMENT '登录应用',
+  `login_application` varchar(32) NOT NULL COMMENT '登录应用',
   PRIMARY KEY (`loginlog_id`),
   KEY `user_id` (`user_id`),
   KEY `create_dateline` (`create_dateline`),
@@ -668,7 +669,7 @@ CREATE TABLE `#@__mail` (
   `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_dateline` int(10) NOT NULL COMMENT '更新时间',
   `mail_status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态，是否成功',
-  `mail_application` varchar(20) NOT NULL COMMENT '来源应用',
+  `mail_application` varchar(32) NOT NULL COMMENT '来源应用',
   PRIMARY KEY (`mail_id`),
   KEY `create_dateline` (`create_dateline`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -774,6 +775,7 @@ CREATE TABLE `#@__notice` (
   `update_dateline` int(10) NOT NULL COMMENT '通知最后更新时间',
   `notice_fromid` int(10) NOT NULL COMMENT '通知来源ID',
   `notice_fromnum` int(10) NOT NULL DEFAULT '0' COMMENT '通知数量',
+  `notice_application` varchar(32) NOT NULL DEFAULT 'home' COMMENT '提醒来源应用',
   PRIMARY KEY (`notice_id`),
   KEY `user_id` (`user_id`),
   KEY `notice_isread` (`notice_isread`),
@@ -830,7 +832,7 @@ CREATE TABLE `#@__pm` (
   `pm_message` text NOT NULL COMMENT '内容',
   `pm_status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '删除状态',
   `pm_mystatus` tinyint(1) NOT NULL DEFAULT '1' COMMENT '我的发件箱短消息状态',
-  `pm_fromapp` varchar(30) NOT NULL COMMENT '来源应用',
+  `pm_fromapp` varchar(32) NOT NULL COMMENT '来源应用',
   `pm_type` enum('system','user') NOT NULL DEFAULT 'user' COMMENT '类型',
   PRIMARY KEY (`pm_id`),
   KEY `pm_msgfromid` (`pm_msgfromid`),

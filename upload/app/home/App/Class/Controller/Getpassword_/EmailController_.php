@@ -35,6 +35,7 @@ class EmailController extends GlobalchildController{
 		$oUser->user_temppassword=$sTemppassword;
 		$oUser->setAutofill(false);
 		$oUser->save(0,'update');
+
 		if($oUser->isError()){
 			$this->E($oUser->getErrorMessage());
 		}
@@ -58,6 +59,7 @@ class EmailController extends GlobalchildController{
 		$oMailConnect->setEmailSubject($sEmailSubject);
 		$oMailConnect->setEmailMessage($sEmailContent);
 		$oMailConnect->send();
+
 		if($oMailConnect->isError()){
 			$this->E($oMailConnect->getErrorMessage());
 		}

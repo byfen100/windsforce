@@ -171,7 +171,7 @@ class AddcommentController extends GlobalchildController{
 					$sCommentMessage=strip_tags($oHomefreshcomment['homefreshcomment_content']);
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
+						Comment_Extend::addNotice(Dyhb::L('评论了你的新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}
@@ -184,7 +184,7 @@ class AddcommentController extends GlobalchildController{
 					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 						$sHomefreshcommentmessage=G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100);
 						
-						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事评论中提到了你','Controller/Homefresh').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefreshcomment_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
+						$sNoticetemplate='<div class="notice_athomefreshcomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事评论中提到了你','Controller/Homefresh').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefreshcomment_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
 
 						$arrNoticedata=array(
 							'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],

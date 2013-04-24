@@ -66,6 +66,7 @@ class NoticeModel extends CommonModel{
 						'notice_data'=>$sData,
 						'notice_fromnum'=>1,
 						'notice_fromid'=>$nFromid,
+						'notice_application'=>APP_NAME,
 					)
 				);
 

@@ -10,10 +10,11 @@ class DeletecommentController extends Controller{
 		$nGrouptopics=intval(G::getGpc('grouptopics'));
 		$sGrouptopiccomments=trim(G::getGpc('grouptopiccomments'));
 		$nGroupid=intval(G::getGpc('groupid'));
+		$sReason=trim(G::getGpc('reason'));
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopics)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopicadmin'));
+			$this->E(Dyhb::L('你操作回帖的主题不存在','Controller/Grouptopicadmin'));
 		}
 
 		if(!Groupadmin_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletecomment'))){
@@ -23,6 +24,10 @@ class DeletecommentController extends Controller{
 		$arrGrouptopiccomments=explode(',',$sGrouptopiccomments);
 
 		$bAdmincredit=false;
+
+		if(!$sReason){
+			$sReason=Dyhb::L('该管理人员没有填写操作原因','Controller/Grouptopicadmin');
+		}
 		
 		if(is_array($arrGrouptopiccomments)){
 			foreach($arrGrouptopiccomments as $nGrouptopiccomment){
@@ -30,6 +35,9 @@ class DeletecommentController extends Controller{
 
 				if(!empty($oGrouptopiccomment['grouptopiccomment_id'])){
 					$nUserid=$oGrouptopiccomment['user_id'];
+					$nGrouptopiccommentid=$oGrouptopiccomment['grouptopiccomment_id'];
+					$nGrouptopicid=$oGrouptopiccomment['grouptopic_id'];
+					$sGrouptopictitle=$oGrouptopiccomment->grouptopic->grouptopic_title;
 
 					// 回帖回收站功能开启
 					if($GLOBALS['_cache_']['group_option']['group_deletecomment_recyclebin']==1){
@@ -45,6 +53,25 @@ class DeletecommentController extends Controller{
 							
 						if($oGrouptopiccommentMeta->isError()){
 							$this->E($oGrouptopiccommentMeta->getErrorMessage());
+						}
+					}
+					
+					// 发送提醒
+					if($GLOBALS['___login___']['user_id']!=$nUserid){
+						$sNoticetemplate='<div class="notice_deletecomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('对你的回帖执行了删除','Controller/Grouptopicadmin').'&nbsp;Reply:<a href="{@grouptopic_link}">'.$sGrouptopictitle.'</a>'.'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{admin_reason}</span></div>&nbsp;'.($GLOBALS['_cache_']['group_option']['group_deletecomment_recyclebin']==1?Dyhb::L('注意，系统开启了回帖回收站功能，该回帖仍可以被恢复','Controller/Grouptopicadmin'):Dyhb::L('注意，系统未开启回帖回收站功能，该回帖已被永久删除','Controller/Grouptopicadmin')).'&nbsp;&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller/Grouptopicadmin').'</div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller/Grouptopicadmin').'</a></div></div>';
+
+						$arrNoticedata=array(
+							'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
+							'user_name'=>$GLOBALS['___login___']['user_name'],
+							'@grouptopic_link'=>'group://grouptopic/view?id='.$nGrouptopicid,
+							'@grouptopiccomment_link'=>'group://grouptopic/view?id='.$nGrouptopicid.'&isolation_commentid='.$nGrouptopiccommentid,
+							'admin_reason'=>$sReason,
+						);
+
+						try{
+							Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$nUserid,'notice_deletecomment',$nGrouptopiccommentid);
+						}catch(Exception $e){
+							$this->E($e->getMessage());
 						}
 					}
 

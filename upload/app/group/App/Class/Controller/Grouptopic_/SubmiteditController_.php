@@ -75,6 +75,26 @@ class SubmiteditController extends Controller{
 			$this->E($oGrouptopictag->getErrorMessage());
 		}
 
+		// 发送提醒
+		if($GLOBALS['___login___']['user_id']!=$oGrouptopic['user_id']){
+			$sGrouptopicmessage=G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100);
+			
+			$sNoticetemplate='<div class="notice_editgrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('编辑了你的主题','Controller/Grouptopic').'&nbsp;<a href="{@grouptopic_link}">'.$oGrouptopic['grouptopic_title'].'</a></span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div>&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller/Grouptopic').'</div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+
+			$arrNoticedata=array(
+				'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
+				'user_name'=>$GLOBALS['___login___']['user_name'],
+				'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
+				'content_message'=>$sGrouptopicmessage,
+			);
+
+			try{
+				Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$oGrouptopic['user_id'],'editgrouptopic',$oGrouptopic['grouptopic_id']);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+		}
+
 		$sUrl=Dyhb::U('group://topic@?id='.$nTid);
 		$this->A(array('url'=>$sUrl),Dyhb::L('主题编辑成功','Controller/Grouptopic'),1);
 	}

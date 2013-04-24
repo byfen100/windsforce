@@ -86,7 +86,7 @@ $(function(){
 									<!--{/if}-->
 									
 									<!--{if ($oGrouptopic['grouptopic_isaudit']=='1' || ($oGrouptopic['grouptopic_isaudit']=='0' ) && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')) && in_array(Groupadmin_Extend+getGroupUserrole($oGrouptopic['group_id']),array(1,2,4))) && ($oGrouptopic['grouptopic_onlycommentview']=='0' || $bHavecomment===true)}-->
-									<!--{$oGrouptopic->grouptopic_content|Core_Extend+ubb}-->
+									<!--{$oGrouptopic->grouptopic_content|Core_Extend+ubb=false}-->
 									<!--{/if}-->
 								</div>
 
@@ -217,14 +217,14 @@ $(function(){
 														&nbsp;<!--<lang package='Template/Grouptopic'>-->他的回帖<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$oParentcomment['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oParentcomment['user_id']}-->"><!--{$oParentcomment['grouptopiccomment_name']}--></a>&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oParentcomment['grouptopic_id'].'&isolation_commentid='.$oParentcomment['grouptopiccomment_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->查看该回帖<!--</lang>-->"><i class="icon-eye-open"></i></a>
 													</h2>
 													<div class="grouptopiccomment_parentcontent">
-														<p><!--{$oParentcomment['grouptopiccomment_content']|strip_tags|G+subString=0,100|Core_Extend+ubb}--></p>
+														<p><!--{$oParentcomment['grouptopiccomment_content']|strip_tags|G+subString=0,100|Core_Extend+ubb=false}--></p>
 													</div>
 												</div>
 											</div>
 											<!--{/if}-->
 											<!--{/if}-->
 
-											<!--{$oComment->grouptopiccomment_content|Core_Extend+ubb}-->
+											<!--{$oComment->grouptopiccomment_content|Core_Extend+ubb=false}-->
 											<!--{/if}-->
 											<!--{/if}-->
 										</div>

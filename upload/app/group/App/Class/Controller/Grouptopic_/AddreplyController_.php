@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入通用评论检测相关函数 */
+require_once(Core_Extend::includeFile('function/Comment_Extend'));
+
 class AddreplyController extends Controller{
 
 	public function index(){
@@ -54,6 +57,9 @@ class AddreplyController extends Controller{
 		}
 
 		$sContent=rtrim($sContent,'<br />');
+
+		$arrParsecontent=Core_Extend::contentParsetag($sContent);
+		$sContent=$arrParsecontent['content'];
 
 		// 保存回复数据
 		$oGrouptopiccomment=new GrouptopiccommentModel();
@@ -119,6 +125,54 @@ class AddreplyController extends Controller{
 		// 保存小组今日数据
 		GroupoptionModel::uploadOption('group_topiccommenttodaynum',$GLOBALS['_cache_']['group_option']['group_topiccommenttodaynum']+1);
 		GroupoptionModel::uploadOption('group_totaltodaynum',$GLOBALS['_cache_']['group_option']['group_totaltodaynum']+1);
+
+		// 发送feed
+		$sCommentLink='group://grouptopic/view?id='.$oGrouptopiccomment['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'];
+		$sCommentTitle=$oGrouptopic['grouptopic_title'];
+		$sCommentMessage=strip_tags($oGrouptopiccomment['grouptopiccomment_content']);
+
+		try{
+			Comment_Extend::addFeed(Dyhb::L('评论了帖子','Controller/Grouptopic'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
+		// 发送提醒
+		if($oGrouptopic['user_id']!=$GLOBALS['___login___']['user_id']){
+			$sCommentLink='group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'];
+			$sCommentTitle=$oGrouptopic['grouptopic_title'];
+			$sCommentMessage=strip_tags($oGrouptopiccomment['grouptopiccomment_content']);
+
+			try{
+				Comment_Extend::addNotice(Dyhb::L('评论了你的帖子','Controller/Grouptopic'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopic['user_id'],'grouptopiccomment',$oGrouptopic['grouptopic_id']);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+		}
+
+		// 发送评论提醒
+		if($arrParsecontent['atuserids']){
+			foreach($arrParsecontent['atuserids'] as $nAtuserid){
+				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
+					$sGrouptopiccommentmessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
+					
+					$sNoticetemplate='<div class="notice_atgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题回帖中提到了你','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+
+					$arrNoticedata=array(
+						'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
+						'user_name'=>$GLOBALS['___login___']['user_name'],
+						'@grouptopiccomment_link'=>'group://grouptopic/view?id='.$oGrouptopiccomment['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'],
+						'content_message'=>$sGrouptopiccommentmessage,
+					);
+
+					try{
+						Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$nAtuserid,'atgrouptopiccomment',$oGrouptopiccomment['grouptopiccomment_id']);
+					}catch(Exception $e){
+						$this->E($e->getMessage());
+					}
+				}
+			}
+		}
 
 		$nTotalComment=GrouptopiccommentModel::F('grouptopic_id=?',$oGrouptopic->grouptopic_id)->getCounts();
 		$nPage=ceil($nTotalComment/$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum']);
