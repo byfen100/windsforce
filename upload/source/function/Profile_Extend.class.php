@@ -184,7 +184,7 @@ class Profile_Extend{
 		$arrContacts=array('userprofile_telephone','userprofile_mobile','userprofile_icq',
 			'userprofile_qq','userprofile_yahoo','userprofile_msn','userprofile_taobao',
 			'userprofile_google','userprofile_baidu','userprofile_renren','userprofile_douban',
-			'userprofile_dianniu','userprofile_weibocom','userprofile_tqqcom',
+			'userprofile_windsforce','userprofile_weibocom','userprofile_tqqcom',
 			'userprofile_diandian','userprofile_facebook','userprofile_twriter','userprofile_skype');
 
 		$arrEdus=array('userprofile_nowschool','userprofile_kindergarten','userprofile_primary',

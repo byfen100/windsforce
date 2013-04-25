@@ -105,7 +105,7 @@ class PublicController extends InitController{
 		$this->assign('sTipsTxt',$tipsTxt);
 		
 		// 升级服务端信息
-		$sUpdateUrl='http://dianniu.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
+		$sUpdateUrl='http://doyouhaobaby.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
 			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']);
 		$this->assign('sUpdateUrl',$sUpdateUrl);
@@ -296,7 +296,7 @@ class PublicController extends InitController{
 	}
 
 	public function program_update(){
-		$sUpdateUrl='http://dianniu.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
+		$sUpdateUrl='http://doyouhaobaby.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
 			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']).'&infolist=1';
 		$this->assign('sUpdateUrl',$sUpdateUrl);
