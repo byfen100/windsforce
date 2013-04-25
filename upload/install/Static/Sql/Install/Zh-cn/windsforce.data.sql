@@ -452,7 +452,7 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 -- --------------------------------------------------------
 
 --
--- 转存表中的数据 `windsforce_nodegroup`
+-- 转存表中的数据 `windsforce_nodegroup`(此表均不需要进行语言包翻译)
 --
 
 INSERT INTO `#@__nodegroup` (`nodegroup_id`, `nodegroup_name`, `nodegroup_title`, `create_dateline`, `update_dateline`, `nodegroup_status`, `nodegroup_sort`, `nodegroup_issystem`) VALUES
