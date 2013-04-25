@@ -254,7 +254,7 @@ class Ubb2html{
 
 	public function musicMp3($sSrc,$sExtName){
 		$sTitle='<img src="'.__PUBLIC__.'/images/common/media/mp3.gif"/> ';
-		$sTitle.=Dyhb::L('Mp3文件','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle.=Dyhb::L('Mp3文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -265,7 +265,7 @@ class Ubb2html{
 
 	public function musicWmp($sSrc,$sExtName){
 		$sTitle='<img src="'.__PUBLIC__.'/images/common/media/wmp.gif"/> ';
-		$sTitle.=Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle.=Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -280,7 +280,7 @@ class Ubb2html{
 		if(!in_array($sExtName,array('swf','asf','wmv','avi','rm','rmvb','flv','mp4'))){
 			return $sSrc;
 		}
-
+		
 		if(in_array($sExtName,array('asf','wmv','avi'))){
 			$sExtName='wmp';
 		}
@@ -298,7 +298,7 @@ class Ubb2html{
 
 	public function videoSwf($sSrc,$sExtName){
 		$sTitle='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-		$sTitle.=Dyhb::L('Flash Player文件','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle.=Dyhb::L('Flash Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -309,7 +309,7 @@ class Ubb2html{
 
 	public function videoWmp($sSrc,$sExtName){
 		$sTitle='<img src="'.__PUBLIC__.'/images/common/media/wmp.gif"/> ';
-		$sTitle.=Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle.=Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -320,7 +320,7 @@ class Ubb2html{
 
 	public function videoQvod($sSrc,$sExtName){
 		$sTitle='<img src="'.__PUBLIC__.'/images/common/media/qvod.gif"/> ';
-		$sTitle.=Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle.=Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -331,7 +331,7 @@ class Ubb2html{
 
 	public function videoFlv($sSrc,$sExtName){
 		$sTitle='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-		$sTitle.=Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle.=Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -424,14 +424,21 @@ class Ubb2html{
 	}
 
 	public function makeAttachment($nId){
-		$oAttachment=$this->getAttachment($nId);
-		if($oAttachment===false){
-			return '';
+		if(!preg_match('/^http:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/',$nId)){
+			$oAttachment=$this->getAttachment($nId);
+			if($oAttachment===false){
+				return '';
+			}
+		
+			$sType=Attachment_Extend::getAttachmenttype($oAttachment);
+		
+			return call_user_func(array($this,'attachment'.ucfirst($sType)),$oAttachment,$this->_nOuter);
+		}else{
+			$sType=Attachment_Extend::getAttachmenttype($nId);
+			$sExtension=G::getExtName($nId,2);
+
+			return call_user_func(array($this,'attachment'.ucfirst($sType).'_'),$nId,$sExtension);
 		}
-		
-		$sType=Attachment_Extend::getAttachmenttype($oAttachment);
-		
-		return call_user_func(array($this,'attachment'.ucfirst($sType)),$oAttachment,$this->_nOuter);
 	}
 	
 	public function attachmentImg($oAttachment,$nOuter=0){
@@ -441,7 +448,7 @@ class Ubb2html{
 			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
 				return $this->needLogin();
 			}else{
-				$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_name'].'</a>';
+				$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_name'].'</a> ('.$oAttachment['attachment_extension'].')';
 				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 
@@ -449,127 +456,199 @@ class Ubb2html{
 				$sTitlemore.=' | '.Dyhb::L('已下载','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_download'].')'.Dyhb::L('次','__COMMON_LANG__@Class/Ubb2html');
 				$sTitlemore.=' | '.G::changeFileSize($oAttachment['attachment_size']);
 				$sTitlemore.=" | Upload Time:".date('Y-m-d H:i',$oAttachment['create_dateline']);
-				$sContent="<a onclick=\"updateDownload('".$oAttachment['attachment_id']."');\" href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"{$oAttachment['attachment_alt']}\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."{$sTitlemore}\" \" border=\"0\"></a>";
+				$sContent="<a onclick=\"updateDownload('".$oAttachment['attachment_id']."');\" href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"{$oAttachment['attachment_alt']}\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."{$sTitlemore}\" border=\"0\"></a>";
 				
 				return $this->template($sTitle,$sContent);
 			}
 		}else{
-			return "<a href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"/></a>";
+			return "<a href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"/>{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentImg_($sUrl,$sExtension){
+		$sTitle='<a href="'.$sUrl.'" target="_blank">'.$sUrl.'</a> ('.$sExtension.')';
+		
+		$sContent="<a href=\"{$sUrl}\" target=\"_blank\"><img src=\"{$sUrl}\" class=\"content-insert-image\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"></a>";
+		
+		return $this->template($sTitle,$sContent);
 	}
 	
 	public function attachmentSwf($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			$sTitle='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-			$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Player文件','__COMMON_LANG__@Class/Ubb2html').'</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
-			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','swf','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
-			
-			return $this->template($sTitle,$sContent);
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
+				return $this->needLogin();
+			}else{
+				$sTitle='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
+				$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Player文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
+				
+				$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','swf','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+				
+				return $this->template($sTitle,$sContent);
+			}
 		}else{
 			
-			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentSwf_($sUrl,$sExtension){
+		return self::videoSwf($sUrl,$sExtension);
 	}
 
 	public function attachmentWmp($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			$sTitle='<img src="'.__PUBLIC__.'/images/common/media/wmp.gif"/> ';
-			$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html').'</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
-			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','wmp','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
-			
-			return $this->template($sTitle,$sContent);
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
+				return $this->needLogin();
+			}else{
+				$sTitle='<img src="'.__PUBLIC__.'/images/common/media/wmp.gif"/> ';
+				$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
+				
+				$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','wmp','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+				
+				return $this->template($sTitle,$sContent);
+			}
 		}else{
-			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentWmp_($sUrl,$sExtension){
+		return self::musicWmp($sUrl,$sExtension);
 	}
 
 	public function attachmentMp3($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			$sTitle='<img src="'.__PUBLIC__.'/images/common/media/mp3.gif"/> ';
-			$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Mp3文件','__COMMON_LANG__@Class/Ubb2html').'</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
-			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','mp3','".Attachment_Extend::getAttachmenturl($oAttachment)."','240','20','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
-			
-			return $this->template($sTitle,$sContent);
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
+				return $this->needLogin();
+			}else{
+				$sTitle='<img src="'.__PUBLIC__.'/images/common/media/mp3.gif"/> ';
+				$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Mp3文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
+				
+				$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','mp3','".Attachment_Extend::getAttachmenturl($oAttachment)."','240','20','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+				
+				return $this->template($sTitle,$sContent);
+			}
 		}else{
-			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentMp3_($sUrl,$sExtension){
+		return self::musicMp3($sUrl,$sExtension);
 	}
 
 	public function attachmentQvod($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			$sTitle='<img src="'.__PUBLIC__.'/images/common/media/qvod.gif"/> ';
-			$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Class/Ubb2html').'</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
-			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','qvod','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
-			
-			return $this->template($sTitle,$sContent);
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
+				return $this->needLogin();
+			}else{
+				$sTitle='<img src="'.__PUBLIC__.'/images/common/media/qvod.gif"/> ';
+				$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
+				
+				$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','qvod','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+				
+				return $this->template($sTitle,$sContent);
+			}
 		}else{
-			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentQvod_($sUrl,$sExtension){
+		return self::videoQvod($sUrl,$sExtension);
 	}
 
 	public function attachmentFlv($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			$sTitle='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-			$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Class/Ubb2html').'</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
-			
-			$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','flv','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
-			
-			return $this->template($sTitle,$sContent);
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
+				return $this->needLogin();
+			}else{
+				$sTitle='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
+				$sTitle.='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
+				
+				$sContent="<a href=\"javascript:playmedia('player_{$oAttachment['attachment_id']}','flv','".Attachment_Extend::getAttachmenturl($oAttachment)."','600','405','');updateDownload('".$oAttachment['attachment_id']."');\">{$oAttachment['attachment_name']}</a><div id=\"player_{$oAttachment['attachment_id']}\" style=\"display: none;\"></div>";
+				
+				return $this->template($sTitle,$sContent);
+			}
 		}else{
-			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentFlv_($sUrl,$sExtension){
+		return self::videoFlv($sUrl,$sExtension);
 	}
 
 	public function attachmentUrl($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('文件','__COMMON_LANG__@Class/Ubb2html').'</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
-			
-			$sTitlemore='';
-			$sTitlemore.=Dyhb::L('已下载','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_download'].')'.Dyhb::L('次','__COMMON_LANG__@Class/Ubb2html');
-			$sTitlemore.=' | '.G::changeFileSize($oAttachment['attachment_size']);
-			$sTitlemore.=" | Upload Time:".date('Y-m-d H:i',$oAttachment['create_dateline']);
-			
-			$sContent="<a href=\"".Attachment_Extend::getAttachmenturl($oAttachment)."\" title=\"{$sTitlemore}\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
-			
-			return $this->template($sTitle,$sContent);
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
+				return $this->needLogin();
+			}else{
+				$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
+				
+				$sTitlemore='';
+				$sTitlemore.=Dyhb::L('已下载','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_download'].')'.Dyhb::L('次','__COMMON_LANG__@Class/Ubb2html');
+				$sTitlemore.=' | '.G::changeFileSize($oAttachment['attachment_size']);
+				$sTitlemore.=" | Upload Time:".date('Y-m-d H:i',$oAttachment['create_dateline']);
+				
+				$sContent="<a href=\"".Attachment_Extend::getAttachmenturl($oAttachment)."\" title=\"{$sTitlemore}\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+				
+				return $this->template($sTitle,$sContent);
+			}
 		}else{
-			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentUrl_($sUrl,$sExtension){
+		$sTitle='<a href="'.$sUrl.'" target="_blank">'.$sExtension.Dyhb::L('文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$sExtension.')';
+		
+		$sContent="<a href=\"".$sUrl."\" target=\"_blank\">{$sUrl}</a>";
+		
+		return $this->template($sTitle,$sContent);
 	}
 
 	public function attachmentDownload($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('下载文件','__COMMON_LANG__@Class/Ubb2html').'</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
-			$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
-			
-			$sTitlemore='';
-			$sTitlemore.=Dyhb::L('已下载','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_download'].')'.Dyhb::L('次','__COMMON_LANG__@Class/Ubb2html');
-			$sTitlemore.=' | '.G::changeFileSize($oAttachment['attachment_size']);
-			$sTitlemore.=" | Upload Time:".date('Y-m-d H:i',$oAttachment['create_dateline']);
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
+				return $this->needLogin();
+			}else{
+				$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('下载文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
+				
+				$sTitlemore='';
+				$sTitlemore.=Dyhb::L('已下载','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_download'].')'.Dyhb::L('次','__COMMON_LANG__@Class/Ubb2html');
+				$sTitlemore.=' | '.G::changeFileSize($oAttachment['attachment_size']);
+				$sTitlemore.=" | Upload Time:".date('Y-m-d H:i',$oAttachment['create_dateline']);
 
-			$sContent="<a onclick=\"updateDownload('".$oAttachment['attachment_id']."');\" href=\"".Attachment_Extend::getAttachmenturl($oAttachment)."\" title=\"{$sTitlemore}\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
-			
-			return $this->template($sTitle,$sContent);
+				$sContent="<a onclick=\"updateDownload('".$oAttachment['attachment_id']."');\" href=\"".Attachment_Extend::getAttachmenturl($oAttachment)."\" title=\"{$sTitlemore}\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+				
+				return $this->template($sTitle,$sContent);
+			}
 		}else{
-			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']}</a>";
+			return "<a href=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" target=\"_blank\">{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
+	}
+
+	public function attachmentDownload_($sUrl,$sExtension){
+		$sTitle='<a href="'.$sUrl.'" target="_blank">'.$sExtension.Dyhb::L('下载文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$sExtension.')';
+
+		$sContent="<a href=\"".$sUrl."\" target=\"_blank\">{$sUrl}</a>";
+		
+		return $this->template($sTitle,$sContent);
 	}
 	
 	public function getAttachment($nId){

@@ -51,7 +51,11 @@ class Attachment_Extend{
 			'download'=>array(),
 		);
 		
-		$sAttachmentExtension=$oAttachment['attachment_extension'];
+		if(is_object($oAttachment)){
+			$sAttachmentExtension=$oAttachment['attachment_extension'];
+		}else{
+			$sAttachmentExtension=G::getExtName($oAttachment,2);
+		}
 
 		foreach($arrAttachmentTypes as $sKey=>$arrAttachmentType){
 			if(in_array($sAttachmentExtension,$arrAttachmentType)){
