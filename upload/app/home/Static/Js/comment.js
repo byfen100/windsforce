@@ -207,17 +207,17 @@ function homefreshcommentSubmit(){
 					'<div class="homefreshcomment_avatar">'+
 						'<img src="'+data.avatar+'" class="thumbnail"/>'+
 					'</div>'+
-					'<div class="homefreshcomment_content">'+
-						data.usericon+'&nbsp;<a href="'+data.url+'">'+data.comment_name+'</a>:'+data.homefreshcomment_content+'<br/>'+
-						'<em class="homefreshcomment_date">'+data.create_dateline+'</em><img class="new_data" src="'+_ROOT_+'/Public/images/common/new.gif" />'+
+					'<div class="homefreshcomment_content"><p>'+
+						data.usericon+'&nbsp;<a href="'+data.url+'">'+data.comment_name+'</a>:'+data.homefreshcomment_content+'</p><p>'+
+						'<em class="homefreshcomment_date">'+data.create_dateline+'</em>&nbsp;<img class="new_data" src="'+_ROOT_+'/Public/images/common/new.gif" />'+
 						'<span class="pipe">|</span>';
 
-			sCommentReply+='<a href="'+data.viewurl+'">'+D.L('查看','Js/Comment_Js')+'</a>&nbsp;';
+			sCommentReply+='<a href="'+data.viewurl+'">'+D.L('查看','Js/Comment_Js')+'</a></p>&nbsp;';
 			
 			if(comment_parentid>0){
 				sCommentReply+='<a href="javascript:void(0);" onclick="childcommentForm(\''+data.homefresh_id+'\',\''+comment_parentid+'\',\'1\',\''+data.comment_name+'\');">'+D.L('回复','Js/Comment_Js')+'</a>';
 			}else{
-				sCommentReply+='<a href="javascript:void(0);" onclick="childcommentForm(\''+data.homefresh_id+'\',\''+data.homefreshcomment_id+'\');">'+D.L('回复','Js/Comment_Js')+'</a>'+
+				sCommentReply+='<a href="javascript:void(0);" onclick="childcommentForm(\''+data.homefresh_id+'\',\''+data.homefreshcomment_id+'\');">'+D.L('回复','Js/Comment_Js')+'</a></p>'+
 					'<div id="homefreshchildcommentlist_'+data.homefreshcomment_id+'" class="homefreshchildcommentlist_box">'+
 					'</div>'+
 					'<div id="homefreshchildcommentform_'+data.homefreshcomment_id+'" class="homefreshcomment_form">'+

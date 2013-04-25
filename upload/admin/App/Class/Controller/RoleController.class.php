@@ -87,6 +87,59 @@ class RoleController extends InitController{
 		}
 	}
 
+	public function quickuserrole(){
+		$nRoleid=intval(G::getGpc('rid'));
+
+		// 取得系统所有角色信息
+		$arrRoles=RoleModel::F()->order('create_dateline DESC')->getAll();
+
+		$this->assign('arrRoles',$arrRoles);
+		$this->assign('nRoleid',$nRoleid);
+		
+		$this->display();
+	}
+
+	public function do_quickuserrole(){
+		$nRoleid=intval(G::getGpc('role_id'));
+		$sUser=trim(G::getGpc('users'));
+
+		$arrUsers=Dyhb::normalize($sUser);
+		if(empty($arrUsers)){
+			$this->E(Dyhb::L('你没有填写待授权的用户','Controller/Role'));
+		}
+
+		// 取得待设置权限的用户
+		$arrUserdata=array();
+		if(is_array($arrUsers)){
+			foreach($arrUsers as $value){
+				if(Core_Extend::isPostInt($value)){
+					$oUser=UserModel::F('user_id=?',$value)->getOne();
+				}else{
+					$oUser=UserModel::F('user_name=?',$value)->getOne();
+				}
+
+				if(!empty($oUser['user_id'])){
+					$arrUserdata[]=$oUser['user_id'];
+				}
+			}
+		}
+
+		$arrUserdata=array_unique($arrUserdata);
+
+		// 开始授权
+		if(is_array($arrUserdata)){
+			foreach($arrUserdata as $nUserid){
+				// 判断用户是否存在授权
+				$oUserrole=UserroleModel::F('user_id=? AND role_id=?',$nUserid,$nRoleid)->getOne();
+				if(empty($oUserrole['user_id'])){
+					Dyhb::instance('RoleModel')->setGroupUsers($nRoleid,array($nUserid));
+				}
+			}
+		}
+
+		$this->S(Dyhb::L('用户授权成功','Controller/Role'));
+	}
+
 	public function select(){
 		$arrMap=array();
 		$nParentid=G::getGpc('role_parentid');

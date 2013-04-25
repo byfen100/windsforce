@@ -9,6 +9,10 @@ function user(id){
 	window.location.href=D.U('user?id='+id);
 }
 
+function quickUserrole(){
+	window.location.href=D.U('quickuserrole');
+}
+
 function changeRolegroup(oObj,id){
 	var keyValue;
 	var rolegroup_id=oObj.value;
@@ -49,7 +53,8 @@ function changeRolegroup(oObj,id){
 				<div class="left operate" >
 					<input type="button" name="add" value="<!--<lang package='Template/Default/Common'>-->新增<!--</lang>-->" onclick="add()" class="alt_btn">&nbsp;
 					<input type="button" name="edit" value="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="edit()" class="alt_btn">&nbsp;
-					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
+					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">&nbsp;
+					<input type="button" name="quick_userrole" value="<!--<lang package='Template/Default/Role'>-->快捷用户角色授权<!--</lang>-->" onclick="quickUserrole()" class="alt_btn">
 				</div>
 				<form method='get' action="<!--{:Dyhb::U( 'role/index' )}-->" class="quick_search">
 					<input type="hidden" name="c" value="<!--{:MODULE_NAME}-->"/>
@@ -107,6 +112,7 @@ function changeRolegroup(oObj,id){
 								&nbsp;<a href="javascript:app('<!--{$value:role_id}-->')"><!--<lang package='Template/Default/Role'>-->授权<!--</lang>--></a>
 								<!--{if $value['role_id']!=4}-->
 								&nbsp;<a href="javascript:user('<!--{$value:role_id}-->')"><!--<lang package='Template/Default/Role'>-->用户<!--</lang>--></a>
+								&nbsp;<a href="<!--{:Dyhb::U('role/quickuserrole?rid='.$value['role_id'])}-->"><!--<lang package='Template/Default/Role'>-->快捷用户<!--</lang>--></a>
 								<!--{/if}-->
 							</td>
 						</tr>

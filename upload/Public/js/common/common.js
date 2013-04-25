@@ -389,6 +389,15 @@ function rememberme(close){
 	$WF('remember_time').style.display=sStyle;
 }
 
+function seccodeon(close){
+	var sStyle='block';
+	if(close==1){
+		sStyle='none';
+	}
+
+	$WF('seccode_box').style.display=sStyle;
+}
+
 function showSocialogin(){
 	$('#socailogin_more').toggle('fast');
 }

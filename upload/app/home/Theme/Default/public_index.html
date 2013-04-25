@@ -63,8 +63,8 @@ $(document).ready(function(){
 				<div id="myCarousel" class="carousel slide">
 					<div class="carousel-inner">
 						<!--<foreach for=arrSlides value=arrSlide>-->
-						<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="height:300px;">
-							<img src="<!--{$arrSlide['slide_img']}-->" style="height:300px;" width="100%">
+						<div class="item <!--{if $key==0}-->active<!--{/if}-->" style="height:305px;">
+							<img src="<!--{$arrSlide['slide_img']}-->" style="height:305px;" width="100%">
 							<div class="carousel-caption">
 								<h4><a href="<!--{$arrSlide['slide_url']}-->" title="<!--{$arrSlide['slide_title']}-->"><!--{$arrSlide['slide_title']}--></a></h4>
 							</div>
@@ -76,7 +76,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<div class="span4">
-				<div class="well" style="height:260px;">
+				<div class="well" style="height:auto">
 					<!--{if $GLOBALS['___login___']===false}-->
 					<h3><!--<lang package='Template/Public'>-->用户登录<!--</lang>--></h3>
 					<form class="form-horizontal" method='post' name="login_form" id="login_form">
@@ -93,10 +93,14 @@ $(document).ready(function(){
 								<a href="<!--{:Dyhb::U('home://getpassword/index')}-->" class="resetpassword-link"><!--<lang package='__COMMON_LANG__@Template/Common'>-->忘记密码?<!--</lang>--></a>
 								<span class="pipe">|</span>
 								<a href="<!--{:Dyhb::U('home://public/clear')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->清除痕迹<!--</lang>--></a>
+								<!--{if $nDisplaySeccode==1}-->
+								<span class="pipe">|</span>
+								<a href="javascript:void(0);" onclick="seccodeon();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></a>
+								<!--{/if}-->
 							</label>
 						</p>
 						<div id="remember_time" class="none">
-							<label for="remember_time"><!--<lang package='__COMMON_LANG__@Template/Common'>-->COOKIE有效期<!--</lang>--> <span class="pipe">|</span> <a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
+							<label for="remember_time"><!--<lang package='__COMMON_LANG__@Template/Common'>-->COOKIE有效期<!--</lang>--><span class="pipe">|</span><a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
 							<select name="remember_time">
 								<option value="0" <!--{if $nRememberTime==0}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->及时<!--</lang>--></option>
 								<option value="3600" <!--{if $nRememberTime==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
@@ -110,11 +114,15 @@ $(document).ready(function(){
 							</p>
 						</div>
 						<!--{if $nDisplaySeccode==1}-->
-						<label for="user_name"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+						<div  id="seccode_box" class="none">
+							<p style="margin:10px 0px 5px 0;">
+							<label for="user_name"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--><span class="pipe">|</span><a href="javascript:void(0);" onclick="seccodeon(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
+							</p>
 							<input class="input-small" name="seccode" id="seccode" type="text" value="">
 							<p class="help-block">
 								<span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span>
 							</p>
+						</div>
 						<!--{/if}-->
 						<div class="space"></div>
 						<p><input type="hidden" name="ajax" value="1">
