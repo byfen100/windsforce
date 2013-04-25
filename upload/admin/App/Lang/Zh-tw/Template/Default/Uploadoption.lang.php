@@ -79,7 +79,7 @@ return array(
 '6c9167514e659dc873a5cd904df07cd7'=>"附件是否直接讀取",
 'e09025fb1b81dce1800aaa93d124d5b3'=>"Content-Disposition參數，attachment（作為附件下載），inline（在線打開），具體使用如header(\"Content-Disposition: inline; filename=文件名.txt\")。",
 '69444b851bf8f086450f3819aca99f21'=>"內容是否添加鏈接",
-'b10d2dd0789abf59c1478b5b5ce12a69'=>"內容自動添加鏈接有助於提高反垃圾外鏈接的能力"​​,
+'b10d2dd0789abf59c1478b5b5ce12a69'=>"內容自動添加鏈接有助於提高反垃圾外鏈接的能力",
 '6f99bf4d54f46b1f81894385bc041d2a'=>"鏈接URL是否截短",
 'a964f00b4382eb29d64b637f6cb64a03'=>"將過長的URL進行截取變短，讓內容看起來簡潔",
 '507ccf7fb99c3c4df8787f488cdf604b'=>"內容URL最大長度",
@@ -116,6 +116,7 @@ return array(
 'eb727942c5311ec93820c635bf52bb1c'=>"首頁附件每頁列表數量",
 'd2f2664390e​​f2af9b2b795f9c782d7b4'=>"這里為相冊中首頁附件的每頁分頁數量",
 'd168bbe2269b0235b8b7f49dfefaf54a'=>"附件是否開啟縮略圖",
+'746fa6531859123f1bc43ec205ece16d'=>"是否隐藏附件真实路径",
 )
 
 ?>

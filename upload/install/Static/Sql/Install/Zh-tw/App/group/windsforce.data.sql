@@ -158,7 +158,7 @@ INSERT INTO `#@__grouptopic` (`grouptopic_id`, `grouptopiccategory_id`, `group_i
 -- 轉存表中的數據 `windsforce_grouptopiccomment`
 --
 
-INSERT INTO `#@__grouptopiccomment` (`grouptopiccomment_id`, `grouptopic_id`, `user_id`, `grouptopiccomment_status`, `grouptopiccomment_title`, `grouptopiccomment_name`, `grouptopiccomment_content`, `grouptopiccomment_email`, `grouptopiccomment_url`, `grouptopiccoment_ip`, `create_dateline`, `update_dateline`, `grouptopiccomment_parentid`, `grouptopiccomment_ishide`, `grouptopiccomment_auditpass`, `grouptopiccomment_stickreply`) VALUES
+INSERT INTO `#@__grouptopiccomment` (`grouptopiccomment_id`, `grouptopic_id`, `user_id`, `grouptopiccomment_status`, `grouptopiccomment_title`, `grouptopiccomment_name`, `grouptopiccomment_content`, `grouptopiccomment_email`, `grouptopiccomment_url`, `grouptopiccomment_ip`, `create_dateline`, `update_dateline`, `grouptopiccomment_parentid`, `grouptopiccomment_ishide`, `grouptopiccomment_auditpass`, `grouptopiccomment_stickreply`) VALUES
 (1, 1, 1, 1, '', '', '我希望一切都是一個美好的開始！', 'admin', '', '', 1355499282, 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------

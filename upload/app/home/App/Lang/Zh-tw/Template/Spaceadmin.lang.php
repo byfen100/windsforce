@@ -99,7 +99,7 @@ return array(
 'acaf665ffd5ef2fe03b0daaa12d79aab'=>"轉賬",
 'ae72bd8506eee6ec286392aa3cebdb0e'=>"我要轉賬",
 'd9bd2b5d316ead2356a99661950a8c72'=>"暫時沒有發現任何系統獎勵",
-'2b6bc0f293f5ca01b006206c2535ccbc'​​=>"操作",
+'2b6bc0f293f5ca01b006206c2535ccbc'=>"操作",
 '9a6c72b8cbd9d52b8c27aad64a4649ac'=>"積分變更",
 'f26225bde6a250894a04db4c53ea03d0'=>"詳情",
 '3ce33fa0009eaabed145459e341f5c74'=>"變更時間",
