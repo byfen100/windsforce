@@ -187,6 +187,13 @@ class IndexController extends Controller{
 
 		Install_Extend::queryString("SET NAMES 'UTF8',character_set_client=binary,sql_mode='';");
 
+		// 系统初始化文件
+		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/windsforce.data.sql';
+		if(!is_file($sWindsForceDatapath)){
+			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/windsforce.data.sql';
+			$sLangcurrent='zh-cn';
+		}
+
 		// 写入配置文件
 		$arrConfig=(array)(include WINDSFORCE_PATH.'/config/ConfigDefault.inc.php');
 		$arrConfig['DB_HOST']=$sDbhost;
@@ -196,6 +203,11 @@ class IndexController extends Controller{
 		$arrConfig['DB_PREFIX']=$sDbprefix;
 		$arrConfig['RBAC_DATA_PREFIX']=$sRbacprefix;
 		$arrConfig['COOKIE_PREFIX']=$sCookieprefix;
+
+		if($sLangcurrent!='zh-cn'){
+			$arrConfig['FRONT_LANGUAGE_DIR']=ucfirst($sLangcurrent);
+			$arrConfig['ADMIN_LANGUAGE_DIR']=ucfirst($sLangcurrent);
+		}
 		
 		if(!file_put_contents(WINDSFORCE_PATH.'/config/Config.inc.php',
 			"<?php\n /* DoYouHaoBaby Framework Config File,Do not to modify this file! */ \n return ".
@@ -224,11 +236,6 @@ class IndexController extends Controller{
 		$sWindsForceDatadir=APP_PATH.'/Static/Sql/Install';
 
 		// 执行系统初始化数据
-		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/windsforce.data.sql';
-		if(!is_file($sWindsForceDatapath)){
-			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/windsforce.data.sql';
-			$sLangcurrent='zh-cn';
-		}
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('初始化系统数据库数据','Controller/Install').'</h3>');
 		Install_Extend::runQuery($sWindsForceDatapath);
 		Install_Extend::showJavascriptMessage(' ');
@@ -307,7 +314,7 @@ class IndexController extends Controller{
 		}
 
 		// 初始化系统和跳转
-		$sInitsystemUrl=trim(G::getGpc('baseurl')).'/index.php?app=home&c=misc&a=init_system';
+		$sInitsystemUrl=trim(G::getGpc('baseurl')).'/index.php?app=home&c=misc&a=init_system&?l='.$sLangcurrent;
 		
 		echo<<<WINDSFORCE
 		<script type="text/javascript">
