@@ -40,6 +40,9 @@ class SubmiteditController extends GlobalchildController{
 			}
 		}
 
+		$arrParsemessage=Core_Extend::contentParsetag(trim($_POST['grouptopic_content'],'<br />'));
+		$_POST['grouptopic_content']=$arrParsemessage['content'];
+
 		if($GLOBALS['_option_']['seccode_publish_status']==1){
 			$this->_oParentcontroller->check_seccode(true);
 		}
@@ -96,6 +99,30 @@ class SubmiteditController extends GlobalchildController{
 				Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$oGrouptopic['user_id'],'editgrouptopic',$oGrouptopic['grouptopic_id']);
 			}catch(Exception $e){
 				$this->E($e->getMessage());
+			}
+		}
+
+		// 发送提醒
+		if($arrParsemessage['atuserids']){
+			foreach($arrParsemessage['atuserids'] as $nAtuserid){
+				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
+					$sGrouptopicmessage=G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100);
+					
+					$sNoticetemplate='<div class="notice_atgrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题中提到了你','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+
+					$arrNoticedata=array(
+						'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
+						'user_name'=>$GLOBALS['___login___']['user_name'],
+						'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
+						'content_message'=>$sGrouptopicmessage,
+					);
+
+					try{
+						Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$nAtuserid,'atgrouptopic',$oGrouptopic['grouptopic_id']);
+					}catch(Exception $e){
+						$this->E($e->getMessage());
+					}
+				}
 			}
 		}
 
