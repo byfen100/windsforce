@@ -32,10 +32,14 @@ class CronController extends InitController{
 			$oCron=CronModel::F('cron_id=?',$nId)->getOne();
 
 			if(!empty($oCron['cron_id'])){
-				$arrFile=explode(':',trim($oCron['cron_filename']));
+				$arrFile=explode('@',trim($oCron['cron_filename']));
 
 				$sAppid=$sPluginid='';
 				if(count($arrFile)>1){
+					if(!isset($GLOBALS['_cache_']['app'])){
+						Core_Extend::loadCache('app');
+					}
+					
 					if($oCron['cron_type']=='app' && in_array($arrFile[0],$GLOBALS['_cache_']['app'])){
 						$sAppid=$arrFile[0];
 						$sCronfilename=$arrFile[1];
@@ -113,7 +117,9 @@ class CronController extends InitController{
 
 		$sAppid=$sPluginid='';
 		if(count($arrFile)>1){
-			Core_Extend::loadCache('app');
+			if(!isset($GLOBALS['_cache_']['app'])){
+				Core_Extend::loadCache('app');
+			}
 			
 			if($oModel['cron_type']=='app' && in_array($arrFile[0],$GLOBALS['_cache_']['app'])){
 				$sAppid=$arrFile[0];

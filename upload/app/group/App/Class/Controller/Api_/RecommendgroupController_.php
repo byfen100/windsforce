@@ -3,6 +3,7 @@
    推荐小组Api控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
+!defined('IN_API') && !defined('IN_APISELF') && exit;
 
 class RecommendgroupController extends Controller{
 

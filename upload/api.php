@@ -2,7 +2,16 @@
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce API入口($Liu.XiangMin)*/
 
+//error_reporting(E_ERROR|E_PARSE|E_STRICT);
+error_reporting(E_ALL);
+define('DOYOUHAOBABY_DEBUG',TRUE);
+
+/** 定义Api环境 */
 define('IN_API',true);
+
+/** Defined the version of WindsForce */
+define('WINDSFORCE_SERVER_VERSION','1.0');
+define('WINDSFORCE_SERVER_RELEASE','20120104');
 
 /** 系统应用路径定义 */
 define('WINDSFORCE_PATH',getcwd());
@@ -46,8 +55,8 @@ if($sApp){
 /** 
  * (二):Api目录
  * http://youdomain.com/api.php?api=zend&module=zendcheck
+ * http://youdomain.com/api.php?api=user&module=new&num=10&type=xml
  */
-
 	if(empty($sModule)){
 		$sApifile=WINDSFORCE_PATH.'/api/'.$sApi.'.php';
 	}else{
@@ -58,5 +67,5 @@ if($sApp){
 		exit('Error File!');
 	}
 
-	require_once ($sApifile);
+	require_once($sApifile);
 }

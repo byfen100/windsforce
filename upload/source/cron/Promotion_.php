@@ -3,3 +3,5 @@
    定时清理网站访问推广数据（默认每日0时0分）($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
+
+Dyhb::instance('PromotionModel')->deleteAll();

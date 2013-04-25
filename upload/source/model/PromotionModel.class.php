@@ -28,4 +28,9 @@ class PromotionModel extends CommonModel{
 		return G::getIp();
 	}
 
+	public function deleteAll(){
+		$oDb=Db::RUN();
+		return $oDb->query("DELETE FROM ".$this->getTablePrefix().'promotion');
+	}
+
 }

@@ -195,4 +195,9 @@ class GroupModel extends CommonModel{
 		}
 	}
 
+	public function clearToday(){
+		$oDb=Db::RUN();
+		return $oDb->query("UPDATE ".$this->getTablePrefix()."group SET group_topiccommenttodaynum='0',group_topictodaynum='0',group_totaltodaynum='0'");
+	}
+
 }

@@ -10,7 +10,6 @@ class NewtopicController extends Controller{
 		// 获取参数
 		$nNum=intval(G::getGpc('num','G'));
 		$sType=strtolower(trim(G::getGpc('type','G')));
-		$sType=strtolower(trim(G::getGpc('type','G')));
 
 		// 基本处理
 		if($nNum<1){

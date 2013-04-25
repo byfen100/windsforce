@@ -11,6 +11,9 @@ if(!file_exists('data/Install.lock.php')){
 error_reporting(E_ALL);
 define('DOYOUHAOBABY_DEBUG',TRUE);
 
+/** 定义Api环境 */
+define('IN_APISELF',true);
+
 /** Defined the version of WindsForce */
 define('WINDSFORCE_SERVER_VERSION','1.0');
 define('WINDSFORCE_SERVER_RELEASE','20120104');

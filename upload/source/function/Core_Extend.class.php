@@ -152,22 +152,24 @@ class Core_Extend{
 		return G::checkSeccode($sSeccode);
 	}
 	
-	static public function avatar($nUid,$sType='middle'){
-		if($GLOBALS['___login___']['socia_login']===true && $GLOBALS['___login___']['user_id']==$nUid){
-			if($sType=='big' || $sType=='origin'){
-				return $GLOBALS['___login___']['socia']['sociauser_img2'];
-			}elseif($sType=='small'){
-				return $GLOBALS['___login___']['socia']['sociauser_img'];
-			}else{
-				return $GLOBALS['___login___']['socia']['sociauser_img1'];
+	static public function avatar($nUid,$sType='middle',$bOuter=false){
+		if($bOuter===false){
+			if($GLOBALS['___login___']['socia_login']===true && $GLOBALS['___login___']['user_id']==$nUid){
+				if($sType=='big' || $sType=='origin'){
+					return $GLOBALS['___login___']['socia']['sociauser_img2'];
+				}elseif($sType=='small'){
+					return $GLOBALS['___login___']['socia']['sociauser_img'];
+				}else{
+					return $GLOBALS['___login___']['socia']['sociauser_img1'];
+				}
 			}
 		}
 		
 		$sPath=G::getAvatar($nUid,$sType);
 
 		return is_file(WINDSFORCE_PATH.'/data/avatar/'.$sPath)?
-			__ROOT__.'/data/avatar/'.$sPath:
-			__PUBLIC__.'/images/avatar/noavatar_'.($sType=='origin'?'big':$sType).'.gif';
+			($bOuter===false?__ROOT__:$GLOBALS['_option_']['site_url']).'/data/avatar/'.$sPath:
+			($bOuter===false?__PUBLIC__:$GLOBALS['_option_']['site_url'].'Public/').'/images/avatar/noavatar_'.($sType=='origin'?'big':$sType).'.gif';
 	}
 
 	static public function avatars($nUserId=null){
