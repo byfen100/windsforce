@@ -246,6 +246,7 @@ class RoleModel extends CommonModel{
 					'userrole(role_id,user_id)SELECT a.role_id,b.user_id FROM '.
 					RoleModel::F()->query()->getTablePrefix().'role a,'.
 					UserModel::F()->query()->getTablePrefix().'user b WHERE '.'a.role_id='.$nGroupId.' AND b.user_id in('.$arrUserIdList.')');
+		
 		if($bResult===false){
 			return false;
 		}else{

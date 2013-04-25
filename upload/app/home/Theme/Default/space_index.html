@@ -253,7 +253,7 @@ function insertUserguestbookmusic(sContent){
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="2"><!--{$nId|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></a><!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}--></td>
+							<td colspan="2"><!--{$nId|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></a><!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}--><!--{$oUserInfo|Core_Extend+fansmany=true}--></td>
 						</tr>
 						<tr>
 							<td colspan="2"><img src="<!--{:Profile_Extend::getUserprofilegender($oUserInfo->userprofile->userprofile_gender)}-->" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Space'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>

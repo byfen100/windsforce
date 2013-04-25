@@ -1390,6 +1390,32 @@ WINDSFORCE;
 		}
 	}
 
+	static public function fansmany($oUser,$bReturnImg=false){
+		$bFansmany=false;
+
+		if(is_int($oUser)){
+			$oUser=UserModel::F('user_status=?',$oUser)->getOne();
+		}
+
+		if(empty($oUser['user_id'])){
+			return '';
+		}
+
+		if($oUser->usercount->usercount_fans>=$GLOBALS['_option_']['fansmany_minnum_fan']){
+			$bFansmany=true;
+		}
+
+		if($bReturnImg===true){
+			if($bFansmany===true){
+				return ' <img class="fansmany_data" src="'.__ROOT__.'/Public/images/common/tag_fansmany.png" border="0" align="absmiddle" title="'.Dyhb::L('社区达人','__COMMON_LANG__@Function/Core_Extend').'"/>';
+			}else{
+				return '';
+			}
+		}else{
+			return $bFansmany;
+		}
+	}
+
 	static public function usersign($sUsersign){
 		return Core_Extend::ubb(nl2br(htmlspecialchars($sUsersign)),true,true);
 	}

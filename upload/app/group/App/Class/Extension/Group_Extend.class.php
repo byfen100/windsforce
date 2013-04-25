@@ -39,4 +39,18 @@ class Group_Extend{
 		return Dyhb::U('group://gid@?id='.(!empty($arrGroup['group_name'])?$arrGroup['group_name']:$arrGroup['group_id']).$sMore);
 	}
 
+	public static function chearGroupuserrole($nUserid){
+		// 清理小组长
+		$arrGroupusers=GroupuserModel::F('groupuser_isadmin=2 AND user_id=?',$nUserid)->getAll();
+		if(!is_array($arrGroupusers)){
+			Dyhb::instance('RoleModel')->delGroupUser(2,array($nUserid));
+		}
+
+		// 清理小组管理员
+		$arrGroupusers=GroupuserModel::F('groupuser_isadmin=1 AND user_id=?',$nUserid)->getAll();
+		if(!is_array($arrGroupusers)){
+			Dyhb::instance('RoleModel')->delGroupUser(3,array($nUserid));
+		}
+	}
+
 }

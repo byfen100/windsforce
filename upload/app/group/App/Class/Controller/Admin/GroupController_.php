@@ -556,6 +556,9 @@ class GroupController extends InitController{
 		if(empty($oGroup['group_id'])){
 			$this->E(Dyhb::L('小组不存在','__APP_ADMIN_LANG__@Controller/Group'));
 		}
+
+		// 设置完毕后系统统一进行清理
+		$arrMaychangeuserid=array();
 		
 		// 保存小组组长
 		$sLeaderUid=trim(G::getGpc('leader_userid','P'));
@@ -563,7 +566,14 @@ class GroupController extends InitController{
 		$arrLeaderUserid=explode(',',$sLeaderUid);
 		$arrLeaderUserid=Dyhb::normalize($arrLeaderUserid,',',false);
 
-		// 保存前清除旧的用户
+		// 保存前清除旧的用户 && 清除前取得可能变更权限的用户id
+		$arrGroupusers=GroupuserModel::F()->where(array('group_id'=>$nGroupid,'groupuser_isadmin'=>2))->getAll();
+		if(is_array($arrGroupusers)){
+			foreach($arrGroupusers as $oGroupuser){
+				$arrMaychangeuserid[]=$oGroupuser['user_id'];
+			}
+		}
+
 		$oGroupuserMeta=GroupuserModel::M();
 		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'groupuser_isadmin'=>2));
 
@@ -577,16 +587,23 @@ class GroupController extends InitController{
 				if(empty($oUser['user_id'])){
 					$this->E('用户不存在或者被禁用');
 				}
+
+				$arrMaychangeuserid[]=$nLeaderUserid;
 				
 				$oGroupuser=new GroupuserModel();
 				$oGroupuser->user_id=$nLeaderUserid;
 				$oGroupuser->group_id=$nGroupid;
 				$oGroupuser->groupuser_isadmin=2;
-
 				$oGroupuser->save(0);
 
 				if($oGroupuser->isError()){
 					$this->E($oGroupuser->getErrorMessage());
+				}
+
+				// 用户被设置为小组长后，判断是否拥有小组长角色
+				$oUserrole=UserroleModel::F('user_id=? AND role_id=2',$nLeaderUserid)->getOne();
+				if(empty($oUserrole['user_id'])){
+					Dyhb::instance('RoleModel')->setGroupUsers(2,array($nLeaderUserid));
 				}
 			}
 		}
@@ -597,7 +614,14 @@ class GroupController extends InitController{
 		$arrAdminUserid=explode(',',$sAdminUid);
 		$arrAdminUserid=Dyhb::normalize($arrAdminUserid,',',false);
 
-		// 保存前清除旧的用户
+		// 保存前清除旧的用户 && 清除前取得可能变更权限的用户id
+		$arrGroupusers=GroupuserModel::F()->where(array('group_id'=>$nGroupid,'groupuser_isadmin'=>3))->getAll();
+		if(is_array($arrGroupusers)){
+			foreach($arrGroupusers as $oGroupuser){
+				$arrMaychangeuserid[]=$oGroupuser['user_id'];
+			}
+		}
+
 		$oGroupuserMeta=GroupuserModel::M();
 		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'groupuser_isadmin'=>1));
 
@@ -611,27 +635,33 @@ class GroupController extends InitController{
 				if(empty($oUser['user_id'])){
 					$this->E(Dyhb::L('用户不存在或者被禁用','__APP_ADMIN_LANG__@Controller/Group'));
 				}
+
+				$arrMaychangeuserid[]=$nAdminUserid;
 				
 				$oGroupuser=new GroupuserModel();
 				$oGroupuser->user_id=$nAdminUserid;
 				$oGroupuser->group_id=$nGroupid;
 				$oGroupuser->groupuser_isadmin=1;
-
 				$oGroupuser->save(0);
 
 				if($oGroupuser->isError()){
 					$this->E($oGroupuser->getErrorMessage());
 				}
+
+				// 用户被设置为小组管理员后，判断是否拥有管理员角色
+				$oUserrole=UserroleModel::F('user_id=? AND role_id=3',$nLeaderUserid)->getOne();
+				if(empty($oUserrole['user_id'])){
+					Dyhb::instance('RoleModel')->setGroupUsers(3,array($nAdminUserid));
+				}
 			}
 		}
 
-		// 保存管理员
+		// // 保存成员
 		$sUserUid=trim(G::getGpc('user_userid','P'));
 
 		$arrUserUserid=explode(',',$sUserUid);
 		$arrUserUserid=Dyhb::normalize($arrUserUserid,',',false);
 
-		// 保存成员
 		if(!empty($arrUserUserid)){
 			foreach($arrUserUserid as $nUserUserid){
 				$oUser=UserModel::F('user_id=? AND user_status=1',$nUserUserid)->getOne();
@@ -654,6 +684,13 @@ class GroupController extends InitController{
 				if($oGroupuser->isError()){
 					$this->E($oGroupuser->getErrorMessage());
 				}
+			}
+		}
+
+		// 设置成功最后一步进行数据清理
+		if($arrMaychangeuserid){
+			foreach($arrMaychangeuserid as $nMaychangeuserid){
+				Group_Extend::chearGroupuserrole($nMaychangeuserid);
 			}
 		}
 
@@ -680,6 +717,8 @@ class GroupController extends InitController{
 		if($oGroupuserMeta->isError()){
 			$this->E($oGroupuserMeta->getErrorMessage());
 		}
+
+		Group_Extend::chearGroupuserrole($nUserid);
 		
 		$this->S(Dyhb::L('用户删除成功','__APP_ADMIN_LANG__@Controller/Group'));
 	}
