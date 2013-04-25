@@ -2,16 +2,21 @@
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce API入口($Liu.XiangMin)*/
 
-//error_reporting(E_ERROR|E_PARSE|E_STRICT);
-error_reporting(E_ALL);
-define('DOYOUHAOBABY_DEBUG',TRUE);
+/** 是否需要安装 */
+if(!is_file('data/Install.lock.php')){
+	header("location:install/index.php");
+}
+
+error_reporting(E_ERROR|E_PARSE|E_STRICT);
+//error_reporting(E_ALL);
+//define('DOYOUHAOBABY_DEBUG',TRUE);
 
 /** 定义Api环境 */
 define('IN_API',true);
 
 /** Defined the version of WindsForce */
 define('WINDSFORCE_SERVER_VERSION','1.0');
-define('WINDSFORCE_SERVER_RELEASE','20120104');
+define('WINDSFORCE_SERVER_RELEASE','20130426');
 
 /** 系统应用路径定义 */
 define('WINDSFORCE_PATH',getcwd());

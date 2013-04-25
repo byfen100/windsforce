@@ -220,12 +220,14 @@ class IndexController extends Controller{
 		Install_Extend::showJavascriptMessage(' ');
 
 		$sLangCookieName=$GLOBALS['_commonConfig_']['COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME']===true?APP_NAME.'_language':'language';
+		$sLangcurrent=strtolower(Dyhb::cookie($sLangCookieName));
 		$sWindsForceDatadir=APP_PATH.'/Static/Sql/Install';
 
 		// 执行系统初始化数据
 		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/windsforce.data.sql';
 		if(!is_file($sWindsForceDatapath)){
 			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/windsforce.data.sql';
+			$sLangcurrent='zh-cn';
 		}
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('初始化系统数据库数据','Controller/Install').'</h3>');
 		Install_Extend::runQuery($sWindsForceDatapath);
@@ -274,6 +276,13 @@ class IndexController extends Controller{
 		Install_Extend::queryString("Update `{$sDbprefix}option` set option_value='".trim(G::getGpc('adminmail'))."' where option_name='admin_email';");
 		Install_Extend::showJavascriptMessage(Dyhb::L('写入管理员邮件','Controller/Install').' '.trim(G::getGpc('adminmail')).' ... '.Dyhb::L('成功','Controller/Common'));
 		Install_Extend::showJavascriptMessage(' ');
+
+		// 语言包
+		if($sLangcurrent!='zh-cn'){
+			Install_Extend::showJavascriptMessage('<h3>Init language...</h3>');
+			Install_Extend::queryString("Update `{$sDbprefix}option` set option_value='".$sLangcurrent."' where option_name='admin_language_name';");
+			Install_Extend::queryString("Update `{$sDbprefix}option` set option_value='".$sLangcurrent."' where option_name='front_language_name';");
+		}
 
 		// 初始化管理员信息
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('初始化管理员信息','Controller/Install').'</h3>');

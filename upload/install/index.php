@@ -2,12 +2,13 @@
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
    WindsForce 安装程序入口文件($Liu.XiangMin)*/
 
-//error_reporting(E_ERROR|E_PARSE|E_STRICT);
-error_reporting(E_ALL);
+error_reporting(E_ERROR|E_PARSE|E_STRICT);
+//error_reporting(E_ALL);
+//define('DOYOUHAOBABY_DEBUG',TRUE);
 
 /** Defined the version of windsforce */
 define('WINDSFORCE_SERVER_VERSION','1.0');
-define('WINDSFORCE_SERVER_RELEASE','20120104');
+define('WINDSFORCE_SERVER_RELEASE','20130426');
 
 /** 系统应用路径定义 */
 define('WINDSFORCE_PATH',dirname(getcwd()));
