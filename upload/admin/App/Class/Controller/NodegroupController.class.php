@@ -35,6 +35,8 @@ class NodegroupController extends InitController{
 	}
 
 	public function bForeverdelete_(){
+		$this->check_appdevelop();
+		
 		$sId=G::getGpc('id','G');
 
 		$arrIds=explode(',',$sId);
@@ -46,6 +48,8 @@ class NodegroupController extends InitController{
 	}
 
 	public function bEdit_(){
+		$this->check_appdevelop();
+		
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_nodegroup($nId)){
@@ -66,6 +70,8 @@ class NodegroupController extends InitController{
 	}
 
 	public function sort(){
+		$this->check_appdevelop();
+		
 		$nSortId=G::getGpc('sort_id','G');
 
 		if(!empty($nSortId)){

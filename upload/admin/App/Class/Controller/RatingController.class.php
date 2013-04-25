@@ -45,6 +45,8 @@ class RatingController extends InitController{
 	}
 	
 	public function bEdit_(){
+		$this->check_appdevelop();
+		
 		$this->getRatinggroup();
 	}
 	
@@ -64,6 +66,8 @@ class RatingController extends InitController{
 	}
 
 	public function bForeverdelete_(){
+		$this->check_appdevelop();
+		
 		$sId=G::getGpc('id','G');
 
 		$arrIds=explode(',',$sId);
@@ -77,6 +81,8 @@ class RatingController extends InitController{
 	}
 
 	public function change_ratinggroup(){
+		$this->check_appdevelop();
+		
 		$sId=trim(G::getGpc('id','G'));
 		$nRatinggroupId=intval(G::getGpc('ratinggroup_id','G'));
 		
@@ -108,6 +114,10 @@ class RatingController extends InitController{
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
 		}
+	}
+
+	public function bInput_change_ajax_(){
+		$this->check_appdevelop();
 	}
 
 	public function is_system_rating($nId){

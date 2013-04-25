@@ -484,6 +484,12 @@ class InitController extends Controller{
 		}
 
 		return $nPage;
+	}
+
+	public function check_appdevelop(){
+		if(!Dyhb::C('APP_DEVELOP')){
+			$this->E(Dyhb::L('应用开发尚未开启，请打开配置文件设置 APP_DEVELOP 的值为1','Controller/Common'));
+		}
 	}
 
 }

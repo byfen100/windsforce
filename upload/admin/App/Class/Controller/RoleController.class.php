@@ -34,6 +34,8 @@ class RoleController extends InitController{
 	}
 	
 	public function bEdit_(){
+		$this->check_appdevelop();
+		
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_role($nId)){
@@ -44,6 +46,8 @@ class RoleController extends InitController{
 	}
 
 	public function bAdd_(){
+		$this->check_appdevelop();
+		
 		$this->getRolegroup();
 	}
 
@@ -71,6 +75,8 @@ class RoleController extends InitController{
 	}
 
 	public function bForeverdelete_(){
+		$this->check_appdevelop();
+		
 		$sId=G::getGpc('id','G');
 
 		$arrIds=explode(',',$sId);
@@ -88,6 +94,8 @@ class RoleController extends InitController{
 	}
 
 	public function quickuserrole(){
+		$this->check_appdevelop();
+		
 		$nRoleid=intval(G::getGpc('rid'));
 
 		// 取得系统所有角色信息
@@ -100,6 +108,8 @@ class RoleController extends InitController{
 	}
 
 	public function do_quickuserrole(){
+		$this->check_appdevelop();
+		
 		$nRoleid=intval(G::getGpc('role_id'));
 		$sUser=trim(G::getGpc('users'));
 
@@ -162,6 +172,8 @@ class RoleController extends InitController{
 	}
 
 	public function set_app(){
+		$this->check_appdevelop();
+		
 		$nId=G::getGpc('groupAppId');
 
 		$nGroupId=G::getGpc('group_id');
@@ -289,6 +301,8 @@ class RoleController extends InitController{
 	}
 
 	public function set_module(){
+		$this->check_appdevelop();
+		
 		$nId=G::getGpc('groupModuleId');
 		$nGroupId=G::getGpc('group_id');
 		$nAppId=G::getGpc('appId');
@@ -391,6 +405,8 @@ class RoleController extends InitController{
 	}
 
 	public function set_action(){
+		$this->check_appdevelop();
+		
 		$nId=G::getGpc('groupActionId','P');
 		$nModuleId=G::getGpc('moduleId','P');
 		$nGroupId=G::getGpc('group_id','P');
@@ -463,6 +479,8 @@ class RoleController extends InitController{
 	}
 
 	public function set_user(){
+		$this->check_appdevelop();
+		
 		$arrId=G::getGpc('groupUserId','P');
 		$nGroupId=G::getGpc('group_id','P');
 		$arrThispageuser=G::getGpc('thispageuser','P');
@@ -483,6 +501,8 @@ class RoleController extends InitController{
 	}
 	
 	public function change_rolegroup(){
+		$this->check_appdevelop();
+		
 		$sId=trim(G::getGpc('id','G'));
 		$nRolegroupId=intval(G::getGpc('rolegroup_id','G'));
 		

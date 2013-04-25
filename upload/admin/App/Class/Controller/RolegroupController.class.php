@@ -27,6 +27,8 @@ class RolegroupController extends InitController{
 	}
 
 	public function bEdit_(){
+		$this->check_appdevelop();
+		
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_rolegroup($nId)){
@@ -35,6 +37,8 @@ class RolegroupController extends InitController{
 	}
 
 	public function bForbid_(){
+		$this->check_appdevelop();
+		
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_rolegroup($nId)){
@@ -43,6 +47,8 @@ class RolegroupController extends InitController{
 	}
 
 	public function bForeverdelete_(){
+		$this->check_appdevelop();
+		
 		$sId=G::getGpc('id','G');
 
 		$arrIds=explode(',',$sId);

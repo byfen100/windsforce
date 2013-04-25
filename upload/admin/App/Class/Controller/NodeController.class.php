@@ -62,6 +62,8 @@ class NodeController extends InitController{
 	}
 
 	public function bForeverdelete_(){
+		$this->check_appdevelop();
+		
 		$sId=G::getGpc('id','G');
 
 		$arrIds=explode(',',$sId);
@@ -108,10 +110,14 @@ class NodeController extends InitController{
 	}
 
 	public function bAdd_(){
+		$this->check_appdevelop();
+		
 		$this->getNodegroup();
 	}
 
 	public function bEdit_(){
+		$this->check_appdevelop();
+		
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_node($nId)){
@@ -122,6 +128,8 @@ class NodeController extends InitController{
 	}
 
 	public function bForbid_(){
+		$this->check_appdevelop();
+		
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_node($nId)){
@@ -150,6 +158,8 @@ class NodeController extends InitController{
 	}
 
 	public function sort(){
+		$this->check_appdevelop();
+
 		$nSortId=G::getGpc('sort_id');
 
 		if(!empty($nSortId)){
@@ -184,6 +194,8 @@ class NodeController extends InitController{
 	}
 
 	public function change_nodegroup(){
+		$this->check_appdevelop();
+		
 		$sId=trim(G::getGpc('id','G'));
 		$nNodegroupId=intval(G::getGpc('nodegroup_id','G'));
 		
