@@ -20,7 +20,7 @@ function addGrouptopiccomment(){
 		return false;
 	}
 
-	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/'.(!isset($oEditGrouptopiccomment)?'add_reply':'submit_reply'))}-->','',function(data,status){
+	Dyhb.AjaxSubmit("grouptopiccomment_form",'<!--{:Dyhb::U('group://grouptopic/'.(!isset($oEditGrouptopiccomment)?'add_reply':'submit_reply'))}-->','<!--{if ACTION_NAME!=='reply'}-->result<!--{/if}-->',function(data,status){
 		$("#submit_button").attr("disabled", false);
 		$("#submit_button").val( '<!--<lang package='Template/Grouptopic'>-->发布<!--</lang>-->' );
 		
@@ -30,8 +30,14 @@ function addGrouptopiccomment(){
 			<!--{d*else}-->
 			setTimeout(function(){window.location.href=data.url;},1000);
 			<!--{/if}-->
+
+			return true;
 		}
+
+		return false;
 	});
+
+	return false;
 }
 
 function bugEmotion(){
@@ -57,6 +63,9 @@ function insertGrouptopicmusic(sContent){
 			
 			<form method="post" name="grouptopiccomment_form" id="grouptopiccomment_form">
 				<div class="span<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->8<!--{d*else}-->12<!--{/if}-->">
+					<!--{if ACTION_NAME!=='reply'}-->
+					<div id="result" class="none"></div>
+					<!--{/if}-->
 					<label><!--<lang package='Template/Grouptopic'>-->帖子标题<!--</lang>--></label>
 					<span id="grouptopiccommenttitle_show"><input type="text" class="span<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->4<!--{d*else}-->8<!--{/if}-->" value="<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->" readonly>&nbsp;[<a href="javascript:void(0);" onclick="showDiv('grouptopiccommenttitle_hide');showDiv('grouptopiccommenttitle_show');$('#grouptopiccomment_title').val('<!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_title']}--><!--{d*else}-->Reply:<!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->');"><!--<lang package='Template/Grouptopic'>-->修改<!--</lang>--></a>]</span>
 					<span style="display:none" id="grouptopiccommenttitle_hide"><input type="text" class="span<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->4<!--{d*else}-->8<!--{/if}-->" name="grouptopiccomment_title" id="grouptopiccomment_title" value="">

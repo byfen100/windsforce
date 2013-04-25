@@ -92,7 +92,7 @@ table hr{width:100%;height:1px;border:none;border-top:1px dashed {INTERVAL_LINE_
            消息样式
 ================================*/
 /* AJAX消息 && 内页结果效果 */
-#result,.DyhbAjaxResult{border:2px ridge #000; background-color:#eee;line-height:20px;max-width:250px;width: expression(this.width>250?"250":true);overflow: auto; background-color: #ffffff;-webkit-border-radius: 6px;-moz-border-radius: 6px;  border-radius: 6px;-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);-webkit-background-clip: padding-box; -moz-background-clip: padding-box;background-clip: padding-box;}
+#result,.DyhbAjaxResult{border:2px ridge #000; background-color:#eee;line-height:20px;max-width:250px;width: expression(this.width>250?"250":true);overflow: auto; background-color: #ffffff;-webkit-border-radius: 6px;-moz-border-radius: 6px;  border-radius: 6px;-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);-webkit-background-clip: padding-box; -moz-background-clip: padding-box;background-clip: padding-box;margin-bottom:10px;}
 .DyhbAjaxResult{position:fixed;top:50%;margin-top:-100px;left:50%;margin-left:-100px; z-index: 1050;padding:15px 50px;border: 5px solid #999; border: 5px solid rgba(0, 0, 0, 0.2);*border: 5px solid #999;}
 #result{padding:5px 20px;border: 1px solid #999; border: 1px solid rgba(0, 0, 0, 0.2);*border: 1px solid #999;}
 * html div.DyhbAjaxResult{position:absolute; right:16px;}

@@ -112,8 +112,8 @@ class SubmitreplyController extends GlobalchildController{
 			$oHomefreshcomment->homefreshcomment_status=0;
 		}
 		
-		$arrParsemessage=Core_Extend::contentParsetag($sCommentContent);
-		$sCommentContent=$arrParsemessage['content'];
+		$arrParsecontent=Core_Extend::contentParsetag($sCommentContent);
+		$sCommentContent=$arrParsecontent['content'];
 
 		// 保存回复数据
 		$oGrouptopiccomment->grouptopiccomment_content=$sCommentContent;
