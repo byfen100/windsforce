@@ -237,6 +237,19 @@ $(function(){
 										<h4 style="font-size:13px;"><!--<lang package='Template/Grouptopic'>-->快速回复<!--</lang>--></h4>
 										<!--{if $GLOBALS['___login___']!==false}-->
 										<textarea class="grouptopiccomment_quickmessage" name="grouptopiccomment_quickcontent" id="grouptopiccomment_quickmessage" placeholder="<!--<lang package='Template/Grouptopic'>-->我也说两句<!--</lang>-->" rows="2" cols="10"></textarea>
+
+										<!--{if $nDisplaySeccode==1}-->
+										<div  id="seccode_box" class="none">
+											<p style="margin:10px 0px 5px 0;">
+											<label for="user_name"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--><span class="pipe">|</span><a href="javascript:void(0);" onclick="seccodeon(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
+											</p>
+											<input class="input-small" name="grouptopiccomment_seccode" id="grouptopiccomment_seccode" type="text" value="">
+											<p class="help-block">
+												<span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span>
+											</p>
+										</div>
+										<!--{/if}-->
+
 										<input type="hidden" name="grouptopiccomment_quickname" id="grouptopiccomment_quickname" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
 										<input type="hidden" name="grouptopiccomment_quickemail" id="grouptopiccomment_quickemail" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="grouptopiccomment_email">
 										<input type="hidden" name="grouptopiccomment_quickurl" id="grouptopiccomment_quickurl" value="<!--{$sUsersite}-->" class="grouptopiccommentform_url">
@@ -251,7 +264,12 @@ $(function(){
 									</div>
 									<div class="grouptopiccomment_reply none" id="grouptopiccomment_reply">
 										<button onclick="addGrouptopiccommentquick();" class="btn btn-success grouptopiccomment_btn"><!--<lang package='Template/Grouptopic'>-->回复<!--</lang>--></button>
-										<a href="javascript:void(0);" onclick="closeQuickreplay();"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->关闭<!--</lang>--></a>&nbsp;
+										<a href="javascript:void(0);" onclick="closeQuickreplay();"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->关闭<!--</lang>--></a>
+										<!--{if $nDisplaySeccode==1}-->
+										<span class="pipe">|</span>
+										<a href="javascript:void(0);" onclick="seccodeon();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></a>
+										<!--{/if}-->
+										<span class="pipe">|</span>
 										<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" ><!--<lang package='Template/Grouptopic'>-->进入高级模式<!--</lang>-->&gt;&gt;</a>
 									</div>
 									<!--{/if}-->

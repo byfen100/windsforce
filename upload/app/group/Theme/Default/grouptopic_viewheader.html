@@ -99,13 +99,14 @@ function addGrouptopiccommentquick(){
 	var sCommentName=$("#grouptopiccomment_quickname").val();
 	var sCommentEmail=$("#grouptopiccomment_quickemail").val();
 	var sCommentUrl=$("#grouptopiccomment_quickurl").val();
+	var sCommentSeccode=$("#grouptopiccomment_seccode").val();
 
 	if(!sCommentMessage){
 		windsforceAlert('<!--<lang package='Template/Grouptopic'>-->回复内容不能为空<!--</lang>-->','',3);
 		return false;
 	}
 
-	var sParameter="ajax=1&grouptopiccomment_message="+encodeURIComponent(sCommentMessage)+"&tid="+<!--{$oGrouptopic->grouptopic_id}-->+'&grouptopiccomment_name='+encodeURIComponent(sCommentName)+'&grouptopiccomment_email='+encodeURIComponent(sCommentEmail)+'&grouptopiccomment_url='+encodeURIComponent(sCommentUrl);
+	var sParameter="ajax=1&grouptopiccomment_message="+encodeURIComponent(sCommentMessage)+"&tid="+<!--{$oGrouptopic->grouptopic_id}-->+'&grouptopiccomment_name='+encodeURIComponent(sCommentName)+'&grouptopiccomment_email='+encodeURIComponent(sCommentEmail)+'&grouptopiccomment_url='+encodeURIComponent(sCommentUrl)+'&seccode='+encodeURIComponent(sCommentSeccode);
 
 	Dyhb.AjaxSend('<!--{:Dyhb::U('group://grouptopic/add_reply')}-->',sParameter,'',function(data,status){
 		if(status==1){

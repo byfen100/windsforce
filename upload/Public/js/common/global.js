@@ -185,7 +185,7 @@ function updateSeccode(){
 	}
 
 	var timenow=new Date().getTime();
-	$WF("seccodeImage").innerHTML='<img id="seccode" onclick="updateSeccode()" src="'+D.U('seccode?update='+timenow)+'" style="cursor:pointer" title="'+D.L('单击图片换个验证码','__COMMON_LANG__@Js/Global_Js')+'" alt="'+D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js')+'" />';
+	$WF("seccodeImage").innerHTML='<img id="seccode" onclick="updateSeccode()" src="'+D.U('public/seccode?update='+timenow)+'" style="cursor:pointer" title="'+D.L('单击图片换个验证码','__COMMON_LANG__@Js/Global_Js')+'" alt="'+D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js')+'" />';
 }
 
 function checkAll(str,bThis){
