@@ -39,7 +39,7 @@ function errorMessage($sContent){
 
 /** 服务端版本 */
 $sServerVersion='1.0';
-$nServerRelease='20120104';
+$nServerRelease='20130426';
 	
 /** 获取客户端信息 & 验证 */
 $sVersion=isset($_GET['version'])?trim($_GET['version']):'';
