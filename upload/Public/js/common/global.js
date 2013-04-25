@@ -194,8 +194,8 @@ function checkAll(str,bThis){
 	var inputs=$WF(str).getElementsByTagName("input");
 	var nSelect=0;
 
-	if(isUndefined(nThis)){
-		var nThis=inputs[0].checked;
+	if(isUndefined(bThis)){
+		var bThis=inputs[0].checked;
 		i=1;
 		nLength=inputs.length;
 	}else{
@@ -206,7 +206,7 @@ function checkAll(str,bThis){
 	for(i=0;i<nLength;i++){
 		inputs[i].checked=bThis;
 
-		if(bThis==true){
+		if(bThis===true){
 			nSelect++;
 		}else{
 			if(nSelect>0){
