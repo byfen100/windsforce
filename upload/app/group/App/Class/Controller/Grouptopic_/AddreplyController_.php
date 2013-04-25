@@ -7,7 +7,7 @@
 /** 导入通用评论检测相关函数 */
 require_once(Core_Extend::includeFile('function/Comment_Extend'));
 
-class AddreplyController extends Controller{
+class AddreplyController extends GlobalchildController{
 
 	public function index(){
 		try{
@@ -44,26 +44,122 @@ class AddreplyController extends Controller{
 		if($nSimple==1){
 			foreach(array('message','name','email','url') as $sTemp){
 				if(isset($_POST['simple_grouptopiccomment_'.$sTemp])){
-					$_POST['grouptopiccomment_'.$sTemp]=$_POST['simple_grouptopiccomment_'.$sTemp];
+					$_REQUEST['grouptopiccomment_'.$sTemp]=$_POST['grouptopiccomment_'.$sTemp]=$_POST['simple_grouptopiccomment_'.$sTemp];
 					unset($_POST['simple_grouptopiccomment_'.$sTemp]);
 				}
 			}
 		}
 
-		if(isset($_POST['grouptopiccomment_message'])){
-			$sContent=trim($_POST['grouptopiccomment_message']);
-		}else{
-			$sContent=trim($_GET['grouptopiccomment_message']);
+		$sCommentContent=trim($_REQUEST['grouptopiccomment_message']);
+		$sCommentContent=rtrim($sCommentContent,'<br />');
+
+		$arrOptions=$GLOBALS['_cache_']['home_option'];
+
+		if($arrOptions['close_comment_feature']==1){
+			$this->E(Dyhb::L('系统关闭了评论功能','__COMMON_LANG__@Function/Comment_Extend'));
 		}
 
-		$sContent=rtrim($sContent,'<br />');
+		if($arrOptions['seccode_comment_status']==1){
+			$this->_oParentcontroller->check_seccode(true);
+		}
 
-		$arrParsecontent=Core_Extend::contentParsetag($sContent);
-		$sContent=$arrParsecontent['content'];
+		// IP禁止功能
+		$sOnlineip=G::getIp();
+		if(!Comment_Extend::banIp($sOnlineip)){
+			$this->E(Dyhb::L('您的IP %s 已经被系统禁止发表评论','__COMMON_LANG__@Function/Comment_Extend',null,$sOnlineip));
+		}
+
+		// 评论名字检测
+		$sCommentName=trim($_REQUEST['grouptopiccomment_name']);
+		if(empty($sCommentName)){
+			$this->E(Dyhb::L('评论名字不能为空','__COMMON_LANG__@Function/Comment_Extend'));
+		}
+
+		if(!Comment_Extend::commentName($sCommentName)){
+			$this->E(Dyhb::L('此评论名字包含不可接受字符或被管理员屏蔽,请选择其它名字','__COMMON_LANG__@Function/Comment_Extend'));
+		}
+
+		// 评论内容长度检测
+		$nCommentMinLen=intval($arrOptions['comment_min_len']);
+		if(!Comment_Extend::commentMinLen($sCommentContent)){
+			$this->E(Dyhb::L('评论内容最少的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMinLen));
+		}
+
+		// 回帖小组自己设置最大长度限制
+		$nCommentMaxLen=intval($GLOBALS['_cache_']['group_option']['comment_max_len']);
+		if(!Comment_Extend::commentMaxLen($sCommentContent)){
+			$this->E(Dyhb::L('评论内容最大的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMaxLen));
+		}
 
 		// 保存回复数据
 		$oGrouptopiccomment=new GrouptopiccommentModel();
-		$oGrouptopiccomment->grouptopiccomment_content=$sContent;
+		
+		// SPAM 垃圾信息阻止: URL数量限制
+		$result=Comment_Extend::commentSpamUrl($sCommentContent);
+		if($result===false){
+			$nCommentSpamUrlNum=intval($arrOptions['comment_spam_url_num']);
+			$this->E(Dyhb::L('评论内容中出现的链接数量超过了系统的限制 %d 条','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamUrlNum));
+		}
+		if($result===0){
+			$oGrouptopiccomment->grouptopiccomment_auditpass='0';
+		}
+
+		// SPAM 垃圾信息阻止: 屏蔽字符检测
+		$result=Comment_Extend::commentSpamWords($sCommentContent);
+		if($result===false){
+			if(is_array($result)){
+				$this->E(Dyhb::L("你的评论内容包含系统屏蔽的词语%s",'__COMMON_LANG__@Function/Comment_Extend',null,$result[1]));
+			}
+		}
+		if($result===0){
+			$oGrouptopiccomment->grouptopiccomment_auditpass='0';
+		}
+
+		// SPAM 垃圾信息阻止: 评论内容长度限制
+		$result=Comment_Extend::commentSpamContentsize($sCommentContent);
+		if($result===false){
+			$nCommentSpamContentSize=intval($GLOBALS['_cache_']['group_option']['comment_spam_content_size']);
+			$this->E(Dyhb::L('评论内容最大的字节数为%d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamContentSize));
+		}
+		if($result===0){
+			$oGrouptopiccomment->grouptopiccomment_auditpass='0';
+		}
+
+		// 发表评论间隔时间
+		$nCommentPostSpace=intval($arrOptions['comment_post_space']);
+		if($nCommentPostSpace){
+			$oUserLastgrouptopiccomment=GrouptopiccommentModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->order('grouptopiccomment_id DESC')->getOne();
+
+			if(!empty($oUserLastgrouptopiccomment['grouptopiccomment_id'])){
+				$nLastPostTime=$oUserLastgrouptopiccomment['create_dateline'];
+				if(!Comment_Extend::commentSpamPostSpace($nLastPostTime)){
+					$this->E(Dyhb::L('为防止灌水,发表评论时间间隔为 %d 秒','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentPostSpace));
+				}
+			}
+		}
+
+		// 评论重复检测
+		if($arrOptions['comment_repeat_check']){
+			$nCurrentTimeStamp=CURRENT_TIMESTAMP;
+			$oTryComment=GrouptopiccommentModel::F("grouptopiccomment_name=? AND grouptopiccomment_content=? AND {$nCurrentTimeStamp}-create_dateline<86400 AND grouptopiccomment_ip=?",$sCommentName,$sCommentContent,$sOnlineip)->order('grouptopiccomment_id DESC')->query();
+			if(!empty($oTryComment['grouptopiccomment_id'])){
+				$this->E(Dyhb::L('你提交的评论已经存在,24小时之内不允许出现相同的评论','__COMMON_LANG__@Function/Comment_Extend'));
+			}
+		}
+
+		// 纯英文评论阻止
+		$result=Comment_Extend::commentDisallowedallenglishword($sCommentContent);
+		if($result===false){
+			$this->E('You should type some Chinese word(like 你好)in your comment to pass the spam-check, thanks for your patience! '.Dyhb::L('您的评论中必须包含汉字','__COMMON_LANG__@Function/Comment_Extend'));
+		}
+		if($result===0){
+			$oHomefreshcomment->homefreshcomment_status=0;
+		}
+
+		$arrParsecontent=Core_Extend::contentParsetag($sCommentContent);
+		$sCommentContent=$arrParsecontent['content'];
+		
+		$oGrouptopiccomment->grouptopiccomment_content=$sCommentContent;
 		$oGrouptopiccomment->grouptopic_id=$nId;
 		
 		// 发贴审核

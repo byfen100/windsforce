@@ -66,6 +66,7 @@ class AddController extends Controller{
 
 		$this->assign('arrGrouptopiccategorys',$arrGrouptopiccategorys);
 		$this->assign('nGroupid',$nGroupid);
+		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_publish_status']);
 
 		$this->display('grouptopic+add');
 	}

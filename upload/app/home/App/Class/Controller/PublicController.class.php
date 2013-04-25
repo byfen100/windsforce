@@ -35,7 +35,7 @@ class PublicController extends InitController{
 	}
 
 	public function check_login(){
-		Core_Extend::doControllerAction('Public@Login','check_login');
+		Core_Extend::doControllerAction('Public@Login','check_login',$this);
 	}
 
 	public function logout(){
@@ -59,7 +59,7 @@ class PublicController extends InitController{
 	}
 	
 	public function register_user(){
-		Core_Extend::doControllerAction('Public@Register','register_user');
+		Core_Extend::doControllerAction('Public@Register','register_user',$this);
 	}
 
 	public function mobile(){

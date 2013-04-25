@@ -19,7 +19,7 @@ class UcenterController extends InitController{
 	}
 
 	public function add_homefresh(){
-		Core_Extend::doControllerAction('Ucenter@Homefresh/Add','index');
+		Core_Extend::doControllerAction('Ucenter@Homefresh/Add','index',$this);
 	}
 
 	public function view(){
@@ -31,7 +31,7 @@ class UcenterController extends InitController{
 	}
 
 	public function add_homefreshcomment(){
-		Core_Extend::doControllerAction('Ucenter@Homefresh/Addcomment','index');
+		Core_Extend::doControllerAction('Ucenter@Homefresh/Addcomment','index',$this);
 	}
 
 	public function update_homefreshgoodnum(){

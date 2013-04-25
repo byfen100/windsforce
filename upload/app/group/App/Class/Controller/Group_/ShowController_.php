@@ -163,6 +163,7 @@ class ShowController extends Controller{
 		$this->assign('nCid',$nCid);
 		$this->assign('nDid',$nDid);
 		$this->assign('nRecommend',$nRecommend);
+		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_publish_status']);
 
 		$this->display('group+show');
 	}

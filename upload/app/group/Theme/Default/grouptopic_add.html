@@ -121,6 +121,12 @@ function reloadCategory(){
 						<textarea name="grouptopic_content" id="grouptopic_content" style="height:350px;width:100%;padding:0;margin:0;"><!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_content}--><!--{/if}--></textarea>
 					</div>
 
+					<!--{if $nDisplaySeccode==1}-->
+					<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+					<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
+					<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://ucenter/seccode')}-->" /></span></p>
+					<!--{/if}-->
+
 					<div class="grouptopic_tabs">
 						<ul id="grouptopic_tabcontent" class="nav nav-tabs">
 							<li class="active"><a href="#grouptopiccategory" data-toggle="tab"><!--<lang package='Template/Grouptopic'>-->帖子分类<!--</lang>--></a></li>
@@ -128,7 +134,6 @@ function reloadCategory(){
 							<li><a href="#tags" data-toggle="tab"><!--<lang package='Template/Grouptopic'>-->帖子标签<!--</lang>--></a></li></li>
 						</ul>
 						<div id="grouptopic_tabcontent" class="tab-content">
-							
 							<div class="tab-pane fade in active alert alert-success" id="grouptopiccategory">
 								<table cellspacing="0" cellpadding="0">
 									<tr>

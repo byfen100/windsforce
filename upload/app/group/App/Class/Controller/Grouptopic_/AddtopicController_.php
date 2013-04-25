@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class AddtopicController extends Controller{
+class AddtopicController extends GlobalchildController{
 
 	public function index(){
 		try{
@@ -44,6 +44,10 @@ class AddtopicController extends Controller{
 			Groupadmin_Extend::checkGroup($oGroup,true);
 		}catch(Exception $e){
 			$this->E($e->getMessage());
+		}
+
+		if($GLOBALS['_option_']['seccode_publish_status']==1){
+			$this->_oParentcontroller->check_seccode(true);
 		}
 	
 		// 保存帖子

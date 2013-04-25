@@ -107,6 +107,21 @@ function option(){
 						</div>
 						<div id="tab2" class="windsforce_tabcontent">
 							<fieldset>
+								<label><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->注意，这里受系统系统通用评论限制<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('app/config?id=1&type=comment')}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->评论防灌水限制<!--</lang>--></a>
+								</label>
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->注意，由于回帖一般在字数上比较大，所以这里最大的评论字数由这里独立设置<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="comment_max_len"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->评论内容允许最大字数<!--</lang>--></label>
+								<input name="options[comment_max_len]" value="<!--{$arrOptions['comment_max_len']}-->" type="text">
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->可以有效控制游客输入内容的数据量<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="comment_spam_content_size"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->评论内容字节数<!--</lang>--></label>
+								<input name="options[comment_spam_content_size]" value="<!--{$arrOptions['comment_spam_content_size']}-->" type="text">
+								<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->和上面的评论内容允许最大字数不同,超过这里设置的字节数则怀疑是垃圾信息,需要人工审核,如果设置为0或大于上面的最大字数则不启用此设置<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
 								<label for="grouptopic_edit_limittime"><!--<lang package='__APP_ADMIN_LANG__@Template/Groupoption'>-->帖子发布后用户多长时间可以编辑帖子<!--</lang>--></label>
 								<select name="options[grouptopic_edit_limittime]" id="grouptopic_edit_limittime">
 									<option value="3600" <!--{if $arrOptions['grouptopic_edit_limittime']==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>

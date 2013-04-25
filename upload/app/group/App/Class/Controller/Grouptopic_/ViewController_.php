@@ -7,6 +7,16 @@
 /** 导入个人信息函数库 */
 require(Core_Extend::includeFile('function/Profile_Extend'));
 
+/** 导入home应用配置值 */
+if(!Dyhb::classExists('HomeoptionModel')){
+	require_once(WINDSFORCE_PATH.'/app/home/App/Class/Model/HomeoptionModel.class.php');
+}
+
+/** 载入home应用配置信息 */
+if(!isset($GLOBALS['_cache_']['home_option'])){
+	Core_Extend::loadCache('home_option');
+}
+
 class ViewController extends Controller{
 
 	protected $_oGrouptopic=null;
@@ -162,6 +172,7 @@ class ViewController extends Controller{
 
 		$this->assign('nStyle',$nStyle);
 		$this->assign('nSide',$nSide);
+		$this->assign('nDisplaySeccode',$GLOBALS['_cache_']['home_option']['seccode_comment_status']);
 
 		if($nStyle==2){
 			$this->display('grouptopic+viewnew');

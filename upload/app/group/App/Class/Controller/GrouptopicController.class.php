@@ -19,7 +19,7 @@ class GrouptopicController extends InitController{
 	}	
 	
 	public function add_topic(){
-		Core_Extend::doControllerAction('Grouptopic@Addtopic','index');
+		Core_Extend::doControllerAction('Grouptopic@Addtopic','index',$this);
 	}
 
 	public function view(){
@@ -31,7 +31,7 @@ class GrouptopicController extends InitController{
 	}
 
 	public function submit_edit(){
-		Core_Extend::doControllerAction('Grouptopic@Submitedit','index');
+		Core_Extend::doControllerAction('Grouptopic@Submitedit','index',$this);
 	}
 
 	public function reply(){
@@ -39,7 +39,7 @@ class GrouptopicController extends InitController{
 	}
 	
 	public function add_reply(){
-		Core_Extend::doControllerAction('Grouptopic@Addreply','index');
+		Core_Extend::doControllerAction('Grouptopic@Addreply','index',$this);
 	}
 
 	public function set_grouptopicstyle(){
@@ -59,7 +59,7 @@ class GrouptopicController extends InitController{
 	}
 
 	public function submit_reply(){
-		Core_Extend::doControllerAction('Grouptopic@Submitreply','index');
+		Core_Extend::doControllerAction('Grouptopic@Submitreply','index',$this);
 	}
 
 }

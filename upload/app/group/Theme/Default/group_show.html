@@ -284,6 +284,13 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 											<div id="emotion_parentcontainer">
 												<textarea class="input-xlarge" name="grouptopic_content" id="grouptopic_content" rows="8" style="width:100%;"></textarea>
 											</div>
+
+											<!--{if $nDisplaySeccode==1}-->
+											<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+											<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
+											<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://ucenter/seccode')}-->" /></span></p>
+											<!--{/if}-->
+
 											<div id="grouptopic-media-box" class="common-media-box none">
 												<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
 												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
@@ -291,8 +298,8 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 												<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
 											</div>
 											<!--{d*else}-->
-											<div style="background:#F5F5F5;padding:10px;">
-												<div style="border:solid 1px #DDDDDD;background:#fff; text-align:center;padding:45px 0">
+											<div class="commoncommentform_needloginbox">
+												<div class="commoncommentform_needloginboxinner">
 													<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a> | 
 													<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->用户注册<!--</lang>--></a>
 												</div>

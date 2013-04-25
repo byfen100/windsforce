@@ -70,6 +70,7 @@ class EditController extends Controller{
 
 		$this->assign('oGrouptopic',$oGrouptopic);
 		$this->assign('nGroupid',$oGrouptopic['group_id']);
+		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_publish_status']);
 
 		$this->display('grouptopic+add');
 	}

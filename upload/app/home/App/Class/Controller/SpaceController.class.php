@@ -14,7 +14,7 @@ class SpaceController extends InitController{
 			$sId=trim(G::getGpc('id','G'));
 
 			if(!in_array($sId,array('ratings'))){
-				Core_Extend::doControllerAction('Space@Base','index');
+				Core_Extend::doControllerAction('Space@Base','index',$this);
 			}else{
 				$this->{$sId}();
 			}
@@ -48,11 +48,11 @@ class SpaceController extends InitController{
 	}
 
 	public function guestbook(){
-		Core_Extend::doControllerAction('Space@Guestbook','index');
+		Core_Extend::doControllerAction('Space@Guestbook','index',$this);
 	}
 
 	public function add_userguestbook(){
-		Core_Extend::doControllerAction('Space@Adduserguestbook','index');
+		Core_Extend::doControllerAction('Space@Adduserguestbook','index',$this);
 	}
 
 	public function audit_userguestbook(){

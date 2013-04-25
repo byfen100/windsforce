@@ -15,7 +15,7 @@ class AddcommentController extends GlobalchildController{
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}
-		
+
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 
 		if($arrOptions['close_comment_feature']==1){

@@ -7,7 +7,7 @@
 /** 导入个人信息处理函数 */
 require_once(Core_Extend::includeFile('function/Profile_Extend'));
 
-class GuestbookController extends Controller{
+class GuestbookController extends GlobalchildController{
 
 	public $_oUserInfo=null;
 

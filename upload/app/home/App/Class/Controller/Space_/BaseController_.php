@@ -7,7 +7,7 @@
 /** 导入个人信息处理函数 */
 require_once(Core_Extend::includeFile('function/Profile_Extend'));
 
-class BaseController extends Controller{
+class BaseController extends GlobalchildController{
 	
 	public $_oUserInfo=null;
 	

@@ -169,7 +169,7 @@ class AttachmentController extends InitController{
 	}
 
 	public function add_attachmentcomment(){
-		Core_Extend::doControllerAction('Attachment@Addcomment','index');
+		Core_Extend::doControllerAction('Attachment@Addcomment','index',$this);
 	}
 
 	public function audit_attachmentcomment(){

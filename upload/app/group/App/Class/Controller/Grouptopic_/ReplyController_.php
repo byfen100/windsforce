@@ -4,6 +4,16 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入home应用配置值 */
+if(!Dyhb::classExists('HomeoptionModel')){
+	require_once(WINDSFORCE_PATH.'/app/home/App/Class/Model/HomeoptionModel.class.php');
+}
+
+/** 载入home应用配置信息 */
+if(!isset($GLOBALS['_cache_']['home_option'])){
+	Core_Extend::loadCache('home_option');
+}
+
 class ReplyController extends Controller{
 
 	public function index(){
@@ -42,6 +52,7 @@ class ReplyController extends Controller{
 		$oUserprofile=UserprofileModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->getOne();
 		
 		$this->assign('sUsersite',$oUserprofile['userprofile_site']);
+		$this->assign('nDisplaySeccode',$GLOBALS['_cache_']['home_option']['seccode_comment_status']);
 
 		$this->display('grouptopic+reply');
 	}

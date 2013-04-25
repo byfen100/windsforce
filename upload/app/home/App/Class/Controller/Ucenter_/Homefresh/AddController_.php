@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class AddController extends Controller{
+class AddController extends GlobalchildController{
 
 	public function index(){
 		try{
@@ -21,7 +21,7 @@ class AddController extends Controller{
 		}
 		
 		if($GLOBALS['_option_']['seccode_publish_status']==1){
-			$this->check_seccode(true);
+			$this->_oParentcontroller->check_seccode(true);
 		}
 
 		$_POST['homefresh_message']=rtrim($_POST['homefresh_message'],'<br />');

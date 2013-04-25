@@ -4,7 +4,7 @@
 
 !defined('DYHB_PATH') && exit;
 
-class SubmiteditController extends Controller{
+class SubmiteditController extends GlobalchildController{
 
 	public function index(){
 		$nGid=intval(G::getGpc('group_id'));
@@ -38,6 +38,10 @@ class SubmiteditController extends Controller{
 			if(!isset($_POST[$sCheckbox])){
 				$_POST[$sCheckbox]=0;
 			}
+		}
+
+		if($GLOBALS['_option_']['seccode_publish_status']==1){
+			$this->_oParentcontroller->check_seccode(true);
 		}
 
 		$nIsrecommend=$oGrouptopic->grouptopic_isrecommend;

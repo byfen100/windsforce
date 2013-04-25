@@ -4,7 +4,10 @@
 
 !defined('DYHB_PATH') && exit;
 
-class SubmitreplyController extends Controller{
+/** 导入通用评论检测相关函数 */
+require_once(Core_Extend::includeFile('function/Comment_Extend'));
+
+class SubmitreplyController extends GlobalchildController{
 
 	public function index(){
 		$nId=intval(G::getGpc('editcid'));
@@ -36,6 +39,12 @@ class SubmitreplyController extends Controller{
 
 		if(!Groupadmin_Extend::checkCommentRbac($oGrouptopic->group,$oGrouptopiccomment)){
 			$this->E(Dyhb::L('你没有权限编辑回帖','Controller/Grouptopic'));
+		}
+
+		$arrOptions=$GLOBALS['_cache_']['home_option'];
+
+		if($arrOptions['seccode_comment_status']==1){
+			$this->_oParentcontroller->check_seccode(true);
 		}
 
 		$sContent=trim($_POST['grouptopiccomment_message']);
