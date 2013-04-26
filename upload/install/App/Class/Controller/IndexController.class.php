@@ -4,6 +4,8 @@
 
 !defined('DYHB_PATH') && exit;
 
+@set_time_limit(300);
+
 /** 配置WindsForce默认数据库名字 */
 define('WINDSFORCE_DATABASE','windsforce_v'.WINDSFORCE_SERVER_RELEASE);
 
@@ -188,6 +190,10 @@ class IndexController extends Controller{
 		Install_Extend::queryString("SET NAMES 'UTF8',character_set_client=binary,sql_mode='';");
 
 		// 系统初始化文件
+		$sLangCookieName=$GLOBALS['_commonConfig_']['COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME']===true?APP_NAME.'_language':'language';
+		$sLangcurrent=strtolower(Dyhb::cookie($sLangCookieName));
+		$sWindsForceDatadir=APP_PATH.'/Static/Sql/Install';
+
 		$sWindsForceDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/windsforce.data.sql';
 		if(!is_file($sWindsForceDatapath)){
 			$sWindsForceDatapath=$sWindsForceDatadir.'/Zh-cn/windsforce.data.sql';
@@ -230,10 +236,6 @@ class IndexController extends Controller{
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('创建系统数据库表','Controller/Install').'</h3>');
 		Install_Extend::importTable(APP_PATH.'/Static/Sql/Install/windsforce.table.sql');
 		Install_Extend::showJavascriptMessage(' ');
-
-		$sLangCookieName=$GLOBALS['_commonConfig_']['COOKIE_LANG_TEMPLATE_INCLUDE_APPNAME']===true?APP_NAME.'_language':'language';
-		$sLangcurrent=strtolower(Dyhb::cookie($sLangCookieName));
-		$sWindsForceDatadir=APP_PATH.'/Static/Sql/Install';
 
 		// 执行系统初始化数据
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('初始化系统数据库数据','Controller/Install').'</h3>');

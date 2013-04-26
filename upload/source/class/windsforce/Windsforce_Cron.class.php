@@ -42,14 +42,16 @@ class Windsforce_Cron{
 			}
 
 			if($sCronfile){
-				$oCron['cron_minute']=explode("\t",$oCron['cron_minute']);
-				self::setNextime($oCron);
+				if($oCron['cron_type']!='app' || ($oCron['cron_type']=='app' && APP_NAME===$arrFile[0])){
+					$oCron['cron_minute']=explode("\t",$oCron['cron_minute']);
+					self::setNextime($oCron);
 
-				@set_time_limit(1000);
-				@ignore_user_abort(TRUE);
+					@set_time_limit(1000);
+					@ignore_user_abort(TRUE);
 
-				if(!@include $sCronfile){
-					return false;
+					if(!@include $sCronfile){
+						return false;
+					}
 				}
 			}
 		}

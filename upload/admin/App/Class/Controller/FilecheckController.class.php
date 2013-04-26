@@ -37,7 +37,7 @@ class FilecheckController extends InitController{
 		}
 		
 		$this->checkFiles('./','',0,'install');
-		$this->checkFiles('admin/','',1,'WindsforceFiles.md5');
+		$this->checkFiles('admin/','',1,'WindsforceFiles.md5,FilecheckController.class.php');
 		$this->checkFiles('api/','');
 		$this->checkFiles('app/','',0);
 		$this->checkFiles('app/group/','',1);
@@ -61,7 +61,7 @@ class FilecheckController extends InitController{
 		$this->checkFiles('ucontent/theme/Default/','',1);
 		$this->checkFiles('URLRewrite/','');
 
-		/** WindsForce 官方写入数据 && 用户请不要删除注释 
+		/** WindsForce 官方写入数据 && 用户请不要删除注释
 		$sWindsforcefilesdata='';
 		foreach($this->_arrMd5data as $sTempkey=>$sTempvalue){
 			$sWindsforcefilesdata.=$sTempvalue.' *'.$sTempkey."\r\n";

@@ -122,6 +122,12 @@ class StyleController extends InitController{
 			
 			Dyhb::cookie('admin_template',null,-1);
 
+			// 操作后清空缓存
+			$sDir=WINDSFORCE_PATH.'/data/~runtime/app/admin/Cache/';
+			if(is_dir($sDir)){
+				Core_Extend::removeDir($sDir);
+			}
+
 			$this->S(Dyhb::L('启用主题成功','Controller/Style'));
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));

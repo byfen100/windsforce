@@ -7,6 +7,7 @@ function setAdminStyle(sStyle){
 	Dyhb.AjaxSend(D.U('style/set_admin_style?style='+sStyle),'ajax=1','',function(data,status){ 
 		if(status==1){
 			window.setTimeout(function (){refreshFrame();},1000);
+			window.setTimeout(function (){parent.location=D.U( 'index/index' );},3000);
 		}
 	});
 
@@ -16,7 +17,6 @@ function setAdminStyle(sStyle){
 function refreshFrame(){
 	parent.header.location=D.U( 'public/fheader?currentid=2' );
 	parent.menu.location=D.U( 'public/fmenu?tag=5&title='+encodeURIComponent('<!--<lang package='Template/Default/Style'>-->界面<!--</lang>-->')+'&currentid=2&notrefershmain=1' );
-	window.location.reload();
 }
 <!--{/script}-->
 
