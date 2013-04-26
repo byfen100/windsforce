@@ -885,6 +885,10 @@ WINDSFORCE;
 			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
 		}
 
+		if($GLOBALS['_option_']['close_site']){
+			Dyhb::E('<h1 style="color:red;">The site is closed!</h1><br/>'.($GLOBALS['_option_']['close_site_reason']?$GLOBALS['_option_']['close_site_reason']:'No reason'));
+		}
+
 		// 计划任务
 		if($GLOBALS['_commonConfig_']['CRON_ON']===true){
 			Core_Extend::loadCache('cronnextrun',false,'db');
