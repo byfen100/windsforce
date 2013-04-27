@@ -10,7 +10,9 @@ class GlobalinitController extends Controller{
 		parent::init__();
 
 		// 应用配置
-		Core_Extend::loadCache(APP_NAME.'_option');
+		if(Dyhb::classExists(ucfirst(APP_NAME).'optionModel')){
+			Core_Extend::loadCache(APP_NAME.'_option');
+		}
 
 		//前端初始化
 		Core_Extend::initFront();
