@@ -8,7 +8,7 @@ return array(
 	'public::newtopic'=>'userhome',
 	'public::index'=>'groups',
 	'public::group'=>'groups',
-	'group::show',
+	'group::show'=>'comment',
 	'group::user',
 	'space::index'=>'groups',
 	'tag::show',

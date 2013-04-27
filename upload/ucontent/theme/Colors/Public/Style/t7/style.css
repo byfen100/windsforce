@@ -42,7 +42,7 @@ input:focus,textarea:focus {border-color: #602464;}
 #header .navbar-inner .nav .dropdown-menu a{color:#444;}
 #header .navbar-inner .nav .dropdown-menu a:hover{color:#FFF;text-decoration:none;background-color:#602464;}
 #header .dropdown-menu li > a:hover,#header .dropdown-menu .active > a,#header .dropdown-menu .active > a:hover{color:#FFF;text-decoration:none;background-color:#602464;}
-#header .navbar-search .search-query{color:#444;background-color:#FFF;border:1px solid #602464;}
+#header .navbar-search .search-query{color:#444;background-color:#FFF;}
 #header .navbar-search .search-query:-moz-placeholder{color:#444;}
 #header .navbar-search .search-query::-webkit-input-placeholder{color:#444;}
 #header .navbar-search .search-query:focus,#header .navbar-search .search-query.focused{color:#444;text-shadow:0 1px 0 #FFF;background-color:#FFF;}

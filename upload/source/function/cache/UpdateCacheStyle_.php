@@ -60,13 +60,14 @@ class UpdateCacheStyle{
 				$sStyleExtendDir=WINDSFORCE_PATH.'/ucontent/theme/'.$arrStyle['doyouhaobaby_template_base'].'/Public/Style';
 
 				if(is_dir($sStyleExtendDir)){
+					$arrExtendstyleData=array();
+
 					$arrStyleDirs=G::listDir($sStyleExtendDir);
 
 					$arrExtendstyleData[]=array('',Dyhb::L('默认','__COMMON_LANG__@Function/Cache_Extend'),$arrStyle['menu_hover_bg_color']);
-					
+
 					foreach($arrStyleDirs as $sStyleDir){
 						$sExtendStylefile=$sStyleExtendDir.'/'.$sStyleDir.'/style.css';
-
 						if(is_file($sExtendStylefile)){
 							$sContent=file_get_contents($sExtendStylefile);
 
@@ -93,7 +94,7 @@ class UpdateCacheStyle{
 					$arrStyle['_current_style_']='';
 					$arrStyle['_style_extend_icons_']=array();
 				}
-
+	
 				$nContentWidthInt=intval($arrStyle['content_width']);
 				$nContentWidthInt=$nContentWidthInt?$nContentWidthInt:600;
 				$nImageMaxWidth=$GLOBALS['_option_']['image_max_width'];

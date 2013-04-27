@@ -76,7 +76,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<div class="span4">
-				<div class="well" style="height:auto">
+				<div class="well" style="<!--{if $GLOBALS['___login___']===false}-->height:auto;<!--{d*else}-->height:266px;<!--{/if}-->">
 					<!--{if $GLOBALS['___login___']===false}-->
 					<h3><!--<lang package='Template/Public'>-->用户登录<!--</lang>--></h3>
 					<form class="form-horizontal" method='post' name="login_form" id="login_form">
