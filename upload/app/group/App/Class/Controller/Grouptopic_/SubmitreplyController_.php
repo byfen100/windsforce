@@ -58,7 +58,6 @@ class SubmitreplyController extends GlobalchildController{
 		}
 
 		$sCommentContent=trim($_POST['grouptopiccomment_message']);
-		$sCommentContent=rtrim($sCommentContent,'<br />');
 
 		// 评论内容长度检测
 		$nCommentMinLen=intval($arrOptions['comment_min_len']);

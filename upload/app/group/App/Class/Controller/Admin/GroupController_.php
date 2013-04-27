@@ -48,9 +48,7 @@ class GroupController extends InitController{
 	
 	public function update($sModel=null,$nId=null){
 		$nId=G::getGpc('value');
-		
-		$_POST['group_description']=rtrim($_POST['group_description'],'<br />');
-		
+	
 		parent::update('group',$nId);
 	}
 
@@ -60,9 +58,7 @@ class GroupController extends InitController{
 	
 	public function insert($sModel=null,$nId=null){
 		$nId=G::getGpc('value');
-		
-		$_POST['group_description']=rtrim($_POST['group_description'],'<br />');
-		
+
 		parent::insert('group',$nId);
 	}
 

@@ -15,8 +15,6 @@ class MailController extends InitController{
 		if(!isset($_POST['mail_htmlon'])){
 			$_POST['mail_htmlon']=1;
 		}
-
-		$_POST['mail_message']=trim($_POST['mail_message'],'<br />');
 	}
 
 	public function bUpdate_(){

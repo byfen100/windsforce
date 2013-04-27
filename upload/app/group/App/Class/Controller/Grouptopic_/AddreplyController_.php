@@ -51,7 +51,6 @@ class AddreplyController extends GlobalchildController{
 		}
 
 		$sCommentContent=trim($_REQUEST['grouptopiccomment_message']);
-		$sCommentContent=rtrim($sCommentContent,'<br />');
 
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 

@@ -24,8 +24,6 @@ class AddController extends GlobalchildController{
 			$this->_oParentcontroller->check_seccode(true);
 		}
 
-		$_POST['homefresh_message']=rtrim($_POST['homefresh_message'],'<br />');
-
 		$sMessage=trim(G::cleanJs(G::getGpc('homefresh_message','P')));
 		if(empty($sMessage)){
 			$this->E(Dyhb::L('新鲜事内容不能为空','Controller/Homefresh'));

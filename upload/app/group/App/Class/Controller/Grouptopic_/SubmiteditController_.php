@@ -40,7 +40,7 @@ class SubmiteditController extends GlobalchildController{
 			}
 		}
 
-		$arrParsemessage=Core_Extend::contentParsetag(trim($_POST['grouptopic_content'],'<br />'));
+		$arrParsemessage=Core_Extend::contentParsetag(trim($_POST['grouptopic_content']));
 		$_POST['grouptopic_content']=$arrParsemessage['content'];
 
 		if($GLOBALS['_option_']['seccode_publish_status']==1){

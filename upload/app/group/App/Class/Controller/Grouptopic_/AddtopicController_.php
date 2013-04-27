@@ -27,7 +27,7 @@ class AddtopicController extends GlobalchildController{
 			}
 		}
 
-		$arrParsemessage=Core_Extend::contentParsetag(trim($_POST['grouptopic_content'],'<br />'));
+		$arrParsemessage=Core_Extend::contentParsetag(trim($_POST['grouptopic_content']));
 		$_POST['grouptopic_content']=$arrParsemessage['content'];
 
 		// 小组相关检查
