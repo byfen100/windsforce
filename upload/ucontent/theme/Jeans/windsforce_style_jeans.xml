@@ -45,7 +45,7 @@
 		<input_border_dark_color><![CDATA[#BCBAAA]]></input_border_dark_color>
 		<input_bg><![CDATA[#FFF]]></input_bg>
 		<drop_menu_border><![CDATA[#BCBAAA]]></drop_menu_border>
-		<interval_line_color><![CDATA[#AFAD94]]></interval_line_color>
+		<interval_line_color><![CDATA[#E6E7E1]]></interval_line_color>
 		<common_background_color><![CDATA[#DAD6C5]]></common_background_color>
 		<special_border><![CDATA[#DEDEDE]]></special_border>
 		<special_bg><![CDATA[#AFAD94]]></special_bg>
