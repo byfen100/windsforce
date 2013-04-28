@@ -100,7 +100,7 @@ class GroupcategoryController extends InitController{
 		if(is_array($arrIds)){
 			foreach($arrIds as $nId){
 				// 删除小组关联
-				$oGroupcategoryindexMeta=$oGroupcategoryindexModel::M();
+				$oGroupcategoryindexMeta=GroupcategoryindexModel::M();
 				$oGroupcategoryindexMeta->deleteWhere(array('groupcategory_id'=>$nId));
 
 				if($oGroupcategoryindexMeta->isError()){
