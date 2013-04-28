@@ -173,6 +173,7 @@ Description: Group应用模块CSS
 .group_commonmenu .nav-groupmenu li a:hover{}
 .group_commonmenu .nav-groupmenu .active a{font-weight:bold;}
 .group_commonmenu .nav-groupmenu li{border-bottom:1px solid #ffffff;}
+.group_commonmenu .nav-tabs > .active > a,.group_commonmenu .nav-tabs > .active > a:hover {height:18px;}
 [/CURSCRIPT]
 
 /**===============================
