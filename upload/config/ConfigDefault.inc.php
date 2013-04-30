@@ -29,7 +29,7 @@ return array(
 	'RBAC_ACCESS_TABLE'=>'access',
 	'RBAC_NODE_TABLE'=>'node',
 	'USER_AUTH_ON'=>TRUE,
-	'USER_AUTH_TYPE'=>1,
+	'USER_AUTH_TYPE'=>2,
 	'USER_AUTH_KEY'=>'auth_id',
 	'ADMIN_USERID'=>'1',
 	'ADMIN_AUTH_KEY'=>'administrator',
