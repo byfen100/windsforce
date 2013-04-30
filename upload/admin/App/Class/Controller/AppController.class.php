@@ -63,7 +63,7 @@ class AppController extends InitController{
 			}
 
 			// 定义应用的语言包
-			define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Lang/Admin');
+			define('__APP'.strtoupper($arrAppModel['app_identifier']).'_COMMON_LANG__',WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Lang/Admin');
 
 			// 导入应用扩展函数
 			$sExtensionDir=WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Class/Extension';

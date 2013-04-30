@@ -17,11 +17,11 @@ class HomefreshtagController extends InitController{
 	}
 
 	public function edit($sMode=null,$nId=null,$bDidplay=true){
-		$this->E(Dyhb::L('新鲜事话题不允许被编辑','__APP_ADMIN_LANG__@Controller/Homefreshtag'));
+		$this->E(Dyhb::L('新鲜事话题不允许被编辑','__APPHOME_COMMON_LANG__@Controller/Homefreshtag'));
 	}
 	
 	public function add(){
-		$this->E(Dyhb::L('不允许添加新鲜事话题','__APP_ADMIN_LANG__@Controller/Homefreshtag'));
+		$this->E(Dyhb::L('不允许添加新鲜事话题','__APPHOME_COMMON_LANG__@Controller/Homefreshtag'));
 	}
 
 	public function foreverdelete($sModel=null,$sId=null){

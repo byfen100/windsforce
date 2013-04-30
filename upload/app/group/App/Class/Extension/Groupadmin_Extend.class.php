@@ -125,18 +125,18 @@ class Groupadmin_Extend{
 		if(!is_object($oGroup)){
 			$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$oGroup)->getOne();
 			if(empty($oGroup['group_id'])){
-				Dyhb::E(Dyhb::L('小组不存在或者还在审核中','__APP_ADMIN_LANG__@Function/Groupadmin_Extend'));
+				Dyhb::E(Dyhb::L('小组不存在或者还在审核中','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend'));
 			}
 		}
 
 		if($oGroup->group_isopen==0){
 			if($GLOBALS['___login___']===false){
-				G::urlGoTo(Core_Extend::windsforceReferer(),3,Dyhb::L('只有该小组成员才能够访问小组','__APP_ADMIN_LANG__@Function/Groupadmin_Extend').'&nbsp;&nbsp;'.Dyhb::L('首先你需要的登录后才能够继续操作','__APP_ADMIN_LANG__@Function/Groupadmin_Extend'));
+				G::urlGoTo(Core_Extend::windsforceReferer(),3,Dyhb::L('只有该小组成员才能够访问小组','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend').'&nbsp;&nbsp;'.Dyhb::L('首先你需要的登录后才能够继续操作','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend'));
 			}
 			
 			$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$nUserid,$oGroup['group_id'])->getOne();
 			if(empty($oGroupuser['user_id'])){
-				Dyhb::E(Dyhb::L('只有该小组成员才能够访问小组','__APP_ADMIN_LANG__@Function/Groupadmin_Extend').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','__APP_ADMIN_LANG__@Function/Groupadmin_Extend').'</a></span>');
+				Dyhb::E(Dyhb::L('只有该小组成员才能够访问小组','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend').'</a></span>');
 			}
 		}
 
@@ -144,10 +144,10 @@ class Groupadmin_Extend{
 			if($oGroup->group_ispost==0){
 				$oGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$GLOBALS['___login___']['user_id'],$oGroup['group_id'])->getOne();
 				if(empty($oGroupuser['user_id'])){
-					Dyhb::E(Dyhb::L('只有该小组成员才能发帖','__APP_ADMIN_LANG__@Function/Groupadmin_Extend').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','__APP_ADMIN_LANG__@Function/Groupadmin_Extend').'</a></span>');
+					Dyhb::E(Dyhb::L('只有该小组成员才能发帖','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend').'</a></span>');
 				}
 			}elseif($oGroup->group_ispost==1){
-				$this->E(Dyhb::L('该小组目前拒绝任何人发帖','__APP_ADMIN_LANG__@Function/Groupadmin_Extend'));
+				$this->E(Dyhb::L('该小组目前拒绝任何人发帖','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend'));
 			}
 		}
 

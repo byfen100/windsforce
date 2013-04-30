@@ -2,7 +2,7 @@
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homesite'>-->站点信息<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPHOME_COMMON_LANG__@Template/Homesite'>-->站点信息<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
@@ -11,7 +11,7 @@
 			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->在这里可以对前台相关信息进行编辑<!--</lang>--></li>
+					<li><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homesite'>-->在这里可以对前台相关信息进行编辑<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
@@ -27,14 +27,14 @@
 					<input type="hidden" name="a" value="<!--{:ACTION_NAME}-->"/>
 					<input type="hidden" name="id" value="<!--{$_GET['id']}-->"/>
 					<input type="hidden" name="controller" value="homesite"/>
-					<input type="text" name="homesite_name" title="<!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->信息键名<!--</lang>-->">
+					<input type="text" name="homesite_name" title="<!--<lang package='__APPHOME_COMMON_LANG__@Template/Homesite'>-->信息键名<!--</lang>-->">
 					&nbsp;<input type="submit" id="" value="<!--<lang package='Template/Default/Common'>-->查询<!--</lang>-->" onclick="" class="alt_btn">
 				</form>
 			</div>
 		</article>
 		
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->站点信息<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homesite'>-->站点信息<!--</lang>--></h3>
 				<ul class="tabs">
 					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
 				</ul>
@@ -45,8 +45,8 @@
 						<tr>
 							<th width="10%"><input type="checkbox" onclick="checkAll('checkList')"></th> 
 							<th width="20%"><a href="<!--{:Admin_Extend::soryBy('homesite_id',$sSortByUrl,array('controller'=>'homesite'))}-->" <!--{:Admin_Extend::sortField('homesite_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
-							<th width="25%"><a href="<!--{:Admin_Extend::soryBy('homesite_name',$sSortByUrl,array('controller'=>'homesite'))}-->" <!--{:Admin_Extend::sortField('homesite_name')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->信息键名<!--</lang>--></a></th>
-							<th width="25%"><a href="<!--{:Admin_Extend::soryBy('homesite_nikename',$sSortByUrl,array('controller'=>'homesite'))}-->" <!--{:Admin_Extend::sortField('homesite_nikename')}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Homesite'>-->信息别名<!--</lang>--></a></th>
+							<th width="25%"><a href="<!--{:Admin_Extend::soryBy('homesite_name',$sSortByUrl,array('controller'=>'homesite'))}-->" <!--{:Admin_Extend::sortField('homesite_name')}-->><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homesite'>-->信息键名<!--</lang>--></a></th>
+							<th width="25%"><a href="<!--{:Admin_Extend::soryBy('homesite_nikename',$sSortByUrl,array('controller'=>'homesite'))}-->" <!--{:Admin_Extend::sortField('homesite_nikename')}-->><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homesite'>-->信息别名<!--</lang>--></a></th>
 							<th width="20%"><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
 						</tr>
 					</thead>

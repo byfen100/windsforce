@@ -22,8 +22,8 @@ class HomehelpModel extends CommonModel{
 			),
 			'check'=>array(
 				'homehelp_title'=>array(
-					array('require',Dyhb::L('帮助标题不能为空','__APP_ADMIN_LANG__@Model/Homehelp')),
-					array('max_length',250,Dyhb::L('帮助标题不能超过250个字符','__APP_ADMIN_LANG__@Model/Homehelp')),
+					array('require',Dyhb::L('帮助标题不能为空','__APPHOME_COMMON_LANG__@Model/Homehelp')),
+					array('max_length',250,Dyhb::L('帮助标题不能超过250个字符','__APPHOME_COMMON_LANG__@Model/Homehelp')),
 				),
 			),
 		);

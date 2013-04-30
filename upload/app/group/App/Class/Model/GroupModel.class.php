@@ -21,32 +21,32 @@ class GroupModel extends CommonModel{
 			'check'=>array(
 				'group_name'=>array(
 					array('empty'),
-					array('max_length',30,Dyhb::L('群组不能超过30个字符','__APP_ADMIN_LANG__@Model/Group')),
-					array('number_underline_english',Dyhb::L('群组名只能是由数字，下划线，字母组成','__APP_ADMIN_LANG__@Model/Group')),
-					array('groupName',Dyhb::L('群组名已经存在','__APP_ADMIN_LANG__@Model/Group'),'condition'=>'must','extend'=>'callback'),
+					array('max_length',30,Dyhb::L('群组不能超过30个字符','__APPGROUP_COMMON_LANG__@Model/Group')),
+					array('number_underline_english',Dyhb::L('群组名只能是由数字，下划线，字母组成','__APPGROUP_COMMON_LANG__@Model/Group')),
+					array('groupName',Dyhb::L('群组名已经存在','__APPGROUP_COMMON_LANG__@Model/Group'),'condition'=>'must','extend'=>'callback'),
 				),
 				'group_nikename'=>array(
-					array('require',Dyhb::L('群组别名不能为空','__APP_ADMIN_LANG__@Model/Group')),
-					array('max_length',30,Dyhb::L('群组别名不能超过30个字符','__APP_ADMIN_LANG__@Model/Group'))
+					array('require',Dyhb::L('群组别名不能为空','__APPGROUP_COMMON_LANG__@Model/Group')),
+					array('max_length',30,Dyhb::L('群组别名不能超过30个字符','__APPGROUP_COMMON_LANG__@Model/Group'))
 				),
 				'group_listdescription'=>array(
-					array('require',Dyhb::L('群组列表简介不能为空','__APP_ADMIN_LANG__@Model/Group')),
-					array('max_length',300,Dyhb::L('群组列表简介不能超过300个字符','__APP_ADMIN_LANG__@Model/Group'))
+					array('require',Dyhb::L('群组列表简介不能为空','__APPGROUP_COMMON_LANG__@Model/Group')),
+					array('max_length',300,Dyhb::L('群组列表简介不能超过300个字符','__APPGROUP_COMMON_LANG__@Model/Group'))
 				),
 				'group_description'=>array(
-					array('require',Dyhb::L('群组简介不能为空','__APP_ADMIN_LANG__@Model/Group')),
+					array('require',Dyhb::L('群组简介不能为空','__APPGROUP_COMMON_LANG__@Model/Group')),
 				),
 				'group_sort'=>array(
-					array('number',Dyhb::L('序号只能是数字','__APP_ADMIN_LANG__@Model/Group'),'condition'=>'notempty','extend'=>'regex'),
+					array('number',Dyhb::L('序号只能是数字','__APPGROUP_COMMON_LANG__@Model/Group'),'condition'=>'notempty','extend'=>'regex'),
 				),
 				'group_roleleader'=>array(
-					array('require',Dyhb::L('自定义角色组长名字不能为空','__APP_ADMIN_LANG__@Model/Group')),
+					array('require',Dyhb::L('自定义角色组长名字不能为空','__APPGROUP_COMMON_LANG__@Model/Group')),
 				),
 				'group_roleadmin'=>array(
-					array('require',Dyhb::L('自定义角色管理员名字不能为空','__APP_ADMIN_LANG__@Model/Group')),
+					array('require',Dyhb::L('自定义角色管理员名字不能为空','__APPGROUP_COMMON_LANG__@Model/Group')),
 				),				
 				'group_roleuser'=>array(
-					array('require',Dyhb::L('自定义角色成员名字不能为空','__APP_ADMIN_LANG__@Model/Group')),
+					array('require',Dyhb::L('自定义角色成员名字不能为空','__APPGROUP_COMMON_LANG__@Model/Group')),
 				),
 			),
 		);
@@ -148,7 +148,7 @@ class GroupModel extends CommonModel{
 			$oModelMeta->updateDbWhere(array('group_isrecommend'=>$nStatus),array('group_id'=>$nId));
 			return true;
 		}else{
-			$this->setErrorMessage(Dyhb::L('操作项不存在','__APP_ADMIN_LANG__@Model/Group'));
+			$this->setErrorMessage(Dyhb::L('操作项不存在','__APPGROUP_COMMON_LANG__@Model/Group'));
 		}
 	}
 

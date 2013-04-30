@@ -8,7 +8,7 @@
 Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 
 /** 定义Home的语言包 */
-define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
+define('__APPHOME_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
 
 class InstallappController extends InitController{
 

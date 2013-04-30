@@ -54,13 +54,13 @@ class HomehelpcategoryController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_homehelpcategory($nId)){
-				$this->E(Dyhb::L('系统站点帮助分类无法删除','__APP_ADMIN_LANG__@Controller/Homehelpcategory'));
+				$this->E(Dyhb::L('系统站点帮助分类无法删除','__APPHOME_COMMON_LANG__@Controller/Homehelpcategory'));
 			}
 
 			$nHomehelps=HomehelpModel::F('homehelpcategory_id=?',$nId)->all()->getCounts();
 			$oHomehelpcategory=HomehelpcategoryModel::F('homehelpcategory_id=?',$nId)->query();
 			if($nHomehelps>0){
-				$this->E(Dyhb::L('站点帮助分类%s存在帮助内容，你无法删除','__APP_ADMIN_LANG__@Controller/Homehelpcategory',null,$oHomehelpcategory->homehelpcategory_name));
+				$this->E(Dyhb::L('站点帮助分类%s存在帮助内容，你无法删除','__APPHOME_COMMON_LANG__@Controller/Homehelpcategory',null,$oHomehelpcategory->homehelpcategory_name));
 			}
 		}
 	}

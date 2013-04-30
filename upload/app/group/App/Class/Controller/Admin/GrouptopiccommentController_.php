@@ -39,7 +39,7 @@ class GrouptopiccommentController extends InitController{
 	}
 	
 	public function add(){
-		$this->E(Dyhb::L('后台无法发布回帖','__APP_ADMIN_LANG__@Controller/Grouptopiccomment'));
+		$this->E(Dyhb::L('后台无法发布回帖','__APPGROUP_COMMON_LANG__@Controller/Grouptopiccomment'));
 	}
 	
 	public function edit($sMode=null,$nId=null,$bDidplay=true){

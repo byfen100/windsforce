@@ -15,12 +15,12 @@ class HomehelpcategoryModel extends CommonModel{
 			'attr_protected'=>'homehelpcategory_id',
 			'check'=>array(
 				'homehelpcategory_name'=>array(
-					array('require',Dyhb::L('帮助分类不能为空','__APP_ADMIN_LANG__@Model/Homehelpcategory')),
-					array('max_length',32,Dyhb::L('帮助分类不能超过32个字符','__APP_ADMIN_LANG__@Model/Homehelpcategory')),
-					array('homehelpcategoryName',Dyhb::L('帮助分类名字已经存在','__APP_ADMIN_LANG__@Model/Homehelpcategory'),'condition'=>'must','extend'=>'callback'),
+					array('require',Dyhb::L('帮助分类不能为空','__APPHOME_COMMON_LANG__@Model/Homehelpcategory')),
+					array('max_length',32,Dyhb::L('帮助分类不能超过32个字符','__APPHOME_COMMON_LANG__@Model/Homehelpcategory')),
+					array('homehelpcategoryName',Dyhb::L('帮助分类名字已经存在','__APPHOME_COMMON_LANG__@Model/Homehelpcategory'),'condition'=>'must','extend'=>'callback'),
 				),
 				'homehelpcategory_sort'=>array(
-					array('number',Dyhb::L('序号只能是数字','__APP_ADMIN_LANG__@Model/Homehelpcategory'),'condition'=>'notempty','extend'=>'regex'),
+					array('number',Dyhb::L('序号只能是数字','__APPHOME_COMMON_LANG__@Model/Homehelpcategory'),'condition'=>'notempty','extend'=>'regex'),
 				)
 			),
 		);

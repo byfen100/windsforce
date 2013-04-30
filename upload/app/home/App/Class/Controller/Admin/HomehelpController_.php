@@ -115,7 +115,7 @@ class HomehelpController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_homehelp($nId)){
-				$this->E(Dyhb::L('系统站点帮助无法删除','__APP_ADMIN_LANG__@Controller/Homehelp'));
+				$this->E(Dyhb::L('系统站点帮助无法删除','__APPHOME_COMMON_LANG__@Controller/Homehelp'));
 			}
 		}
 	}
@@ -123,13 +123,13 @@ class HomehelpController extends InitController{
 	public function change_homehelpcategory(){
 		$sId=trim(G::getGpc('value','G'));
 		$nHomehelpcategoryId=intval(G::getGpc('homehelpcategory_id','G'));
-		Dyhb::L('你要移动的站点帮助分类不存在','__APP_ADMIN_LANG__@Controller/Homehelp');Dyhb::L('移动站点帮助分类成功','__APP_ADMIN_LANG__@Controller/Homehelp');
+		Dyhb::L('你要移动的站点帮助分类不存在','__APPHOME_COMMON_LANG__@Controller/Homehelp');Dyhb::L('移动站点帮助分类成功','__APPHOME_COMMON_LANG__@Controller/Homehelp');
 		if(!empty($sId)){
 			if($nHomehelpcategoryId){
 				// 判断帮组分类是否存在
 				$oHomehelpcategory=HomehelpcategoryModel::F('homehelpcategory_id=?',$nHomehelpcategoryId)->getOne();
 				if(empty($oHomehelpcategory['homehelpcategory_id'])){
-					$this->E(Dyhb::L('你要移动的站点帮助分类不存在','__APP_ADMIN_LANG__@Controller/Homehelp'));
+					$this->E(Dyhb::L('你要移动的站点帮助分类不存在','__APPHOME_COMMON_LANG__@Controller/Homehelp'));
 				}
 			}
 			
@@ -146,7 +146,7 @@ class HomehelpController extends InitController{
 				$this->homehelpcategory_count($nId,$nHomehelpcategoryId);
 			}
 
-			$this->S(Dyhb::L('移动站点帮助分类成功','__APP_ADMIN_LANG__@Controller/Homehelp'));
+			$this->S(Dyhb::L('移动站点帮助分类成功','__APPHOME_COMMON_LANG__@Controller/Homehelp'));
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
 		}

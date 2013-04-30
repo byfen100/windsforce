@@ -15,14 +15,14 @@ class HomesiteModel extends CommonModel{
 			'attr_protected'=>'homesite_id',
 			'check'=>array(
 				'homesite_name'=>array(
-					array('require',Dyhb::L('信息名字不能为空','__APP_ADMIN_LANG__@Model/Homesite')),
-					array('number_underline_english',Dyhb::L('信息名字只能是由数字，下划线，字母组成','__APP_ADMIN_LANG__@Model/Homesite')),
-					array('max_length',32,Dyhb::L('信息名字不能超过32个字符','__APP_ADMIN_LANG__@Model/Homesite')),
-					array('homesiteName',Dyhb::L('信息名字已经存在','__APP_ADMIN_LANG__@Model/Homesite'),'condition'=>'must','extend'=>'callback'),
+					array('require',Dyhb::L('信息名字不能为空','__APPHOME_COMMON_LANG__@Model/Homesite')),
+					array('number_underline_english',Dyhb::L('信息名字只能是由数字，下划线，字母组成','__APPHOME_COMMON_LANG__@Model/Homesite')),
+					array('max_length',32,Dyhb::L('信息名字不能超过32个字符','__APPHOME_COMMON_LANG__@Model/Homesite')),
+					array('homesiteName',Dyhb::L('信息名字已经存在','__APPHOME_COMMON_LANG__@Model/Homesite'),'condition'=>'must','extend'=>'callback'),
 				),
 				'homesite_nikename'=>array(
-					array('require',Dyhb::L('信息别名不能为空','__APP_ADMIN_LANG__@Model/Homesite')),
-					array('max_length',32,Dyhb::L('信息别名不能超过32个字符','__APP_ADMIN_LANG__@Model/Homesite')),
+					array('require',Dyhb::L('信息别名不能为空','__APPHOME_COMMON_LANG__@Model/Homesite')),
+					array('max_length',32,Dyhb::L('信息别名不能超过32个字符','__APPHOME_COMMON_LANG__@Model/Homesite')),
 				),
 			),
 		);

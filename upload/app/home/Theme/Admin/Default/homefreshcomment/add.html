@@ -13,7 +13,7 @@ function update(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->编辑新鲜事评论<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->编辑新鲜事评论<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->编辑新鲜事评论<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->编辑新鲜事评论<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
@@ -22,40 +22,40 @@ function update(){
 			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
 				<div class="module_content">
 					<ul>
-						<li><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->这里可以对新鲜事评论进行编辑<!--</lang>--></li>
+						<li><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->这里可以对新鲜事评论进行编辑<!--</lang>--></li>
 					</ul>
 				</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->编辑新鲜事评论<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->编辑新鲜事评论<!--</lang>--></h3>
 				<ul class="tabs">
-					<li><a href="<!--{:Admin_Extend::edit(array('controller'=>'homefresh','value'=>$oValue['homefresh_id']))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事<!--</lang>--></li>
-					<li class="active"><a href="<!--{:Admin_Extend::index(array('controller'=>'homefreshcomment'))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论列表<!--</lang>--></a></li>
+					<li><a href="<!--{:Admin_Extend::edit(array('controller'=>'homefresh','value'=>$oValue['homefresh_id']))}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事<!--</lang>--></li>
+					<li class="active"><a href="<!--{:Admin_Extend::index(array('controller'=>'homefreshcomment'))}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事评论列表<!--</lang>--></a></li>
 					<li><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--{:Admin_Extend::update(array('controller'=>'homefreshcomment'))}-->" method="post" id="homefreshcommentAdd">
 				<div class="module_content">
 					<fieldset>
-						<label for="homefreshcomment_name"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论名字<!--</lang>--></label>
+						<label for="homefreshcomment_name"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事评论名字<!--</lang>--></label>
 						<input type="text" name="homefreshcomment_name" id="homefreshcomment_name" size="40" value="<!--{$oValue:homefreshcomment_name}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论名字，最大字符为50<!--</lang>--></div>
+						<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事评论名字，最大字符为50<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="homefreshcomment_email"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->邮件地址<!--</lang>--></label>
+						<label for="homefreshcomment_email"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->邮件地址<!--</lang>--></label>
 						<input type="text" name="homefreshcomment_email" id="homefreshcomment_email" size="40" value="<!--{$oValue:homefreshcomment_email}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论邮件地址，最大字符为300<!--</lang>--></div>
+						<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事评论邮件地址，最大字符为300<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="homefreshcomment_url"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->作者URL<!--</lang>--></label>
+						<label for="homefreshcomment_url"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->作者URL<!--</lang>--></label>
 						<input type="text" name="homefreshcomment_url" id="homefreshcomment_url" size="40" value="<!--{$oValue:homefreshcomment_url}-->"/>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论作者URL，最大字符为300<!--</lang>--></div>
+						<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事评论作者URL，最大字符为300<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="homefreshcomment_content"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论内容<!--</lang>--></label>
+						<label for="homefreshcomment_content"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事评论内容<!--</lang>--></label>
 						<p style="padding-left:10px;"><textarea name="homefreshcomment_content" id="homefreshcomment_content" style="width:700px;height:200px;"><!--{$oValue:homefreshcomment_content}--></textarea></p>
-						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Homefreshcomment'>-->新鲜事评论内容信息<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
+						<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefreshcomment'>-->新鲜事评论内容信息<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
 					</fieldset>
 				</div>
 				<footer>

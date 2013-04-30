@@ -16,8 +16,8 @@ class HometagModel extends CommonModel{
 			'attr_protected'=>'hometag_id',
 			'check'=>array(
 				'hometag_name'=>array(
-					array('require',Dyhb::L('用户标签不能为空','__APP_ADMIN_LANG__@Model/Hometag')),
-					array('max_length',32,Dyhb::L('用户标签不能超过32个字符','__APP_ADMIN_LANG__@Model/Hometag')),
+					array('require',Dyhb::L('用户标签不能为空','__APPHOME_COMMON_LANG__@Model/Hometag')),
+					array('max_length',32,Dyhb::L('用户标签不能超过32个字符','__APPHOME_COMMON_LANG__@Model/Hometag')),
 				),
 			),
 		);

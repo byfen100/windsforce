@@ -75,7 +75,7 @@ class GroupController extends InitController{
 			// 小组有帖子不能删除
 			$nTotalgrouptopic=GrouptopicModel::F('group_id=?',$nId)->all()->getCounts();
 			if($nTotalgrouptopic>0){
-				$this->E(Dyhb::L('小组存在帖子，请先删除帖子','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->E(Dyhb::L('小组存在帖子，请先删除帖子','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}
 		}
 	}
@@ -127,7 +127,7 @@ class GroupController extends InitController{
 		if($oGroup->isError()){
 			$this->E($oGroup->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('推荐成功','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->S(Dyhb::L('推荐成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}
 	}
 
@@ -139,7 +139,7 @@ class GroupController extends InitController{
 		if($oGroup->isError()){
 			$this->E($oGroup->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('取消推荐成功','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->S(Dyhb::L('取消推荐成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}
 	}
 
@@ -149,7 +149,7 @@ class GroupController extends InitController{
 		if(!empty($nId)){
 			$oGroup=Dyhb::instance('GroupuserModel');
 			$oGroup->userToGroup($nId);
-			$this->S(Dyhb::L('用户推送成功','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->S(Dyhb::L('用户推送成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
 		}
@@ -203,7 +203,7 @@ class GroupController extends InitController{
 					$this->E($oGroup->getErrorMessage());
 				}
 			
-				$this->S(Dyhb::L('图标设置成功','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->S(Dyhb::L('图标设置成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}catch(Exception $e){
 				$this->E($e->getMessage());
 			}
@@ -227,9 +227,9 @@ class GroupController extends InitController{
 					$this->E($oGroup->getErrorMessage());
 				}
 				
-				$this->S(Dyhb::L('图标删除成功','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->S(Dyhb::L('图标删除成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}else{
-				$this->E(Dyhb::L('图标不存在','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->E(Dyhb::L('图标不存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
@@ -301,7 +301,7 @@ class GroupController extends InitController{
 				}
 			}
 			
-			$this->S(Dyhb::L('群组背景设置成功','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->S(Dyhb::L('群组背景设置成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
 		}
@@ -324,9 +324,9 @@ class GroupController extends InitController{
 					$this->E($oGroup->getErrorMessage());
 				}
 				
-				$this->S(Dyhb::L('小组背景删除成功','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->S(Dyhb::L('小组背景删除成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}else{
-				$this->E(Dyhb::L('小组背景不存在','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->E(Dyhb::L('小组背景不存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
@@ -355,7 +355,7 @@ class GroupController extends InitController{
 			$oGroup=Dyhb::instance('GroupModel');
 			$oGroup->afterDelete($nId,$nCategoryId);
 			
-			$this->S(Dyhb::L('删除群组分类成功','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->S(Dyhb::L('删除群组分类成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
 		}
@@ -395,13 +395,13 @@ class GroupController extends InitController{
 		if(!empty($oGroupcategory['groupcategory_id']) || $nCategoryId){
 			$oExistGroupcategoryindex=GroupcategoryindexModel::F('group_id=? AND groupcategory_id=?',$nId,$nCategoryId)->query();
 			if(!empty($oExistGroupcategoryindex['group_id'])){
-				$this->E(Dyhb::L('群组分类已经存在','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->E(Dyhb::L('群组分类已经存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}
 			
 			$oGroup=Dyhb::instance('GroupModel');
 			$oGroup->afterInsert($nId,$nCategoryId);
 				
-			$this->S(Dyhb::L('添加群组分类成功','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->S(Dyhb::L('添加群组分类成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
 		}
@@ -434,7 +434,7 @@ class GroupController extends InitController{
 			if($oGrouptopiccategory->isError()){
 				$this->E($oGrouptopiccategory->getErrorMessage());
 			}else{
-				$this->S(Dyhb::L('添加帖子分类成功','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->S(Dyhb::L('添加帖子分类成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
@@ -454,7 +454,7 @@ class GroupController extends InitController{
 				$this->E($oGrouptopiccategoryMeta->getErrorMessage());
 			}
 			
-			$this->S(Dyhb::L('删除帖子分类成功','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->S(Dyhb::L('删除帖子分类成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
 		}
@@ -486,7 +486,7 @@ class GroupController extends InitController{
 			if($oGroupcategory->isError()){
 				$this->E($oGroupcategory->getErrorMessage());
 			}else{
-				$this->S(Dyhb::L('更新帖子分类成功','__APP_ADMIN_LANG__@Controller/Group'));
+				$this->S(Dyhb::L('更新帖子分类成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 			}
 		}else{
 			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
@@ -498,7 +498,7 @@ class GroupController extends InitController{
 		
 		$oGroup=GroupModel::F('group_id=?',$nId)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->E(Dyhb::L('小组不存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}
 		
 		$this->assign('oGroup',$oGroup);
@@ -550,7 +550,7 @@ class GroupController extends InitController{
 
 		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->E(Dyhb::L('小组不存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}
 
 		// 设置完毕后系统统一进行清理
@@ -629,7 +629,7 @@ class GroupController extends InitController{
 			foreach($arrAdminUserid as $nAdminUserid){
 				$oUser=UserModel::F('user_id=? AND user_status=1',$nAdminUserid)->getOne();
 				if(empty($oUser['user_id'])){
-					$this->E(Dyhb::L('用户不存在或者被禁用','__APP_ADMIN_LANG__@Controller/Group'));
+					$this->E(Dyhb::L('用户不存在或者被禁用','__APPGROUP_COMMON_LANG__@Controller/Group'));
 				}
 
 				$arrMaychangeuserid[]=$nAdminUserid;
@@ -662,7 +662,7 @@ class GroupController extends InitController{
 			foreach($arrUserUserid as $nUserUserid){
 				$oUser=UserModel::F('user_id=? AND user_status=1',$nUserUserid)->getOne();
 				if(empty($oUser['user_id'])){
-					$this->E(Dyhb::L('用户不存在或者被禁用','__APP_ADMIN_LANG__@Controller/Group'));
+					$this->E(Dyhb::L('用户不存在或者被禁用','__APPGROUP_COMMON_LANG__@Controller/Group'));
 				}
 
 				$oTryGroupuser=GroupuserModel::F('user_id=? AND group_id=?',$nUserUserid,$nGroupid)->getOne();
@@ -690,7 +690,7 @@ class GroupController extends InitController{
 			}
 		}
 
-		$this->S(Dyhb::L('用户设置成功','__APP_ADMIN_LANG__@Controller/Group'));
+		$this->S(Dyhb::L('用户设置成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 	}
 
 	public function delete_groupuser(){
@@ -699,12 +699,12 @@ class GroupController extends InitController{
 		
 		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->E(Dyhb::L('小组不存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$nUserid)->getOne();
 		if(empty($oUser['user_id'])){
-			$this->E(Dyhb::L('用户不存在','__APP_ADMIN_LANG__@Controller/Group'));
+			$this->E(Dyhb::L('用户不存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}
 		
 		$oGroupuserMeta=GroupuserModel::M();
@@ -716,7 +716,7 @@ class GroupController extends InitController{
 
 		Group_Extend::chearGroupuserrole($nUserid);
 		
-		$this->S(Dyhb::L('用户删除成功','__APP_ADMIN_LANG__@Controller/Group'));
+		$this->S(Dyhb::L('用户删除成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 	}
 
 }

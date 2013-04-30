@@ -14,7 +14,7 @@ Dyhb::import(WINDSFORCE_PATH.'/source/model');
 Dyhb::import(WINDSFORCE_PATH.'/source/controller');
 
 /** 定义应用的语言包 */
-define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Lang/Admin');
+define('__APP'.strtoupper(APP_NAME).'_COMMON_LANG__',WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Lang/Admin');
 
 /** 定义应用的公用主题目录 */
 define('__UTHEME__',__ROOT__.'/ucontent/theme/'.TEMPLATE_NAME);

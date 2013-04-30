@@ -8,7 +8,7 @@
 Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 
 /** 定义Home的语言包 */
-define('__APP_ADMIN_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
+define('__APPHOME_COMMON_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
 
 /** 导入缓存组件 */
 require_once(Core_Extend::includeFile('function/Cache_Extend'));
