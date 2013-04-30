@@ -4,6 +4,12 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入小组模型 */
+if(APP_NAME!=='group'){
+	Dyhb::import(WINDSFORCE_PATH.'/app/group/App/Class/Model');
+	define('__APPGROUP_COMMON_LANG__',WINDSFORCE_PATH.'/app/group/App/Lang/Admin');// 定义语言包
+}
+
 /** 清空小组 */
 Dyhb::instance('GroupModel')->clearToday();
 
