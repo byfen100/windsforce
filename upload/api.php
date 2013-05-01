@@ -22,7 +22,7 @@ define('WINDSFORCE_SERVER_RELEASE','20130426');
 define('WINDSFORCE_PATH',getcwd());
 
 /** API分为两种：(指向应用的API+Api目录) */
-$sApp=!empty($_GET['app'])?strtolower(trim($_GET['app'])):'';// 第一种:应用API+优化
+$sApp=!empty($_GET['app'])?strtolower(trim($_GET['app'])):'';// 第一种:应用API
 $sModule=!empty($_GET['c'])?strtolower(trim($_GET['c'])):'api';
 $sAction=!empty($_GET['a'])?strtolower(trim($_GET['a'])):'index';
 $sApi=!empty($_GET['api'])?strtolower(trim($_GET['api'])):'';// 第二种:Api目录
