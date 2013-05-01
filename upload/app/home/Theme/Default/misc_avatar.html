@@ -39,9 +39,9 @@
 <div class="bm_hover_card_bar">
 	<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($oUser['user_id'])}-->
 	<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
-	<a rel="nofollow" class="btn btn-mini" href="javascript:void(0);" onclick="deleteFriend(<!--{$oUser->user_id}-->);"><i class="icon-remove"></i><!--<lang package='Template/Misc'>-->取消关注<!--</lang>--></a>
+	<a rel="nofollow" class="btn btn-mini" href="javascript:void(0);" onclick="deleteFriend(<!--{$oUser->user_id}-->);"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Misc'>-->取消关注<!--</lang>--></a>
 	<!--{d*else}-->
 	<a rel="nofollow" class="btn btn-mini btn-success" href="javascript:void(0);" onclick="addFriend(<!--{$oUser->user_id}-->);"><i class="icon-plus icon-white"></i><!--<lang package='Template/Misc'>-->加关注<!--</lang>--></a>
 	<!--{/if}-->&nbsp;
-	<a rel="nofollow" class="btn btn-mini btn-success" href="javascript:void(0);" onclick="addMessage('<!--{$oUser->user_id}-->');"><i class="icon-envelope icon-white"></i><!--<lang package='Template/Misc'>-->写私信<!--</lang>--></a>
+	<a rel="nofollow" class="btn btn-mini btn-success" href="javascript:void(0);" onclick="addMessage('<!--{$oUser->user_id}-->');"><i class="icon-envelope icon-white"></i>&nbsp;<!--<lang package='Template/Misc'>-->写私信<!--</lang>--></a>
 </div>
