@@ -8,10 +8,12 @@ class Grouptopic_Extend{
 
 	static public function grouptopicClose($nClosestatus,$bReturnImg=false){
 		if($nClosestatus==1){
+			$sImgurl=Appt::path('locked.gif','group');
+			
 			if($bReturnImg===true){
-				return ' <img class="grouptopicclose_date" src="'.__APPPUB__.'/Images/locked.gif" border="0" align="absmiddle" title="'.Dyhb::L('关闭主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').'"/> ';
+				return ' <img class="grouptopicclose_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('关闭主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').'"/> ';
 			}else{
-				return __APPPUB__.'/Images/locked.gif';
+				return $sImgurl;
 			}
 		}
 
