@@ -42,20 +42,20 @@
 						<td class="grouplist_td">
 							<table cellpadding="4" cellspacing="1" width="100%" border="0">
 								<tr>
-									<td colspan="7" class="grouplist_header">
+									<td colspan="7" class="grouplist_header WindsforceSystem-special_bg WindsforceSystem-interval_line_color-border">
 										<span class="grouplist_groupname">
 											<div style='display:inline;float:left;'>
 												<a href="<!--{:Dyhb::U('group://public/index?cid='.$oGroupcategory['groupcategory_id'])}-->">
 													<!--{$oGroupcategory['groupcategory_name']}-->
 												</a>
-												&nbsp;<a href="<!--{:Dyhb::U('group://public/group?cid='.$oGroupcategory['groupcategory_id'])}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-th-list"></i></a>
+												&nbsp;<a href="<!--{:Dyhb::U('group://public/group?cid='.$oGroupcategory['groupcategory_id'])}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-th-list icon-white"></i></a>
 											</div>
 											<div style='display:inline;float:right;' class="child_groupcategory">
 												<!--{if is_array($arrChildGroupcategorys)}-->
 												<!--<lang package='Template/Public'>-->子分类<!--</lang>-->:&nbsp;
 												<!--<foreach for=arrChildGroupcategorys  value=oChildGroupcategory>-->
 												<a href="<!--{:Dyhb::U('group://public/index?cid='.$oChildGroupcategory['groupcategory_id'])}-->"><!--{$oChildGroupcategory['groupcategory_name']}--></a>
-												&nbsp;<a href="<!--{:Dyhb::U('group://public/group?cid='.$oChildGroupcategory['groupcategory_id'])}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-star"></i></a>
+												&nbsp;<a href="<!--{:Dyhb::U('group://public/group?cid='.$oChildGroupcategory['groupcategory_id'])}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-star icon-white"></i></a>
 												<!--{if $key!=count($arrChildGroupcategorys)-1}-->
 												<span class="pipe">|</span>
 												<!--{/if}-->

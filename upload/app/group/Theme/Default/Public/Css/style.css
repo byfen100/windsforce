@@ -300,10 +300,10 @@ a#moderate_reason:hover{text-decoration:none;}
            小组列表
 ================================*/
 [CURSCRIPT=group::public::index]
-.grouplist_header{ color:#555555;font-weight:bold;margin: 0 0 18px;background:url('{grouplist_header.png}') repeat-x scroll 0 0 #EAF1F7;border-bottom: 1px solid #dddddd;border-top: 1px solid #dddddd;border-right: 1px solid #dddddd;border-left: 1px solid #dddddd;color: #1B72AF;overflow: hidden;padding: 5px 10px;-webkit-border-radius: 3px 3px 0px 0px;-moz-border-radius: 3px 3px 0px 0px;border-radius: 3px 3px 0px 0px;}
-.grouplist_groupname{color: #555555;}
-.grouplist_groupname a {text-decoration:none;color:#000;}
-.grouplist_groupname a:hover {text-decoration:underline;color:#000000;}
+.grouplist_header{color:#fff;font-weight:bold;margin: 0 0 18px;color: #1B72AF;overflow: hidden;padding: 5px 10px;-webkit-border-radius: 3px 3px 0px 0px;-moz-border-radius: 3px 3px 0px 0px;border-radius: 3px 3px 0px 0px;}
+.grouplist_groupname{color: #fff;}
+.grouplist_groupname a {text-decoration:none;color:#fff;}
+.grouplist_groupname a:hover {text-decoration:underline;color:#fff;}
 .grouplist_td{/* for ie6 */padding:0px;}
 .grouplist_index{text-align : left;border-bottom: #dddddd 1px dashed;height: 18px;color:#555555;}
 .grouptopicone:hover{background-color: none;}
