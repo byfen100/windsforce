@@ -16,6 +16,9 @@ Dyhb::import(WINDSFORCE_PATH.'/source/controller');
 /** 定义应用的语言包 */
 define('__APP'.strtoupper(APP_NAME).'_COMMON_LANG__',WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Lang/Admin');
 
+/** 导入WindsForce应用模板函数 */
+require(WINDSFORCE_PATH.'/source/function/Apptheme_Extend.class.php');
+
 /** 定义应用的公用主题目录 */
 define('__UTHEME__',__ROOT__.'/ucontent/theme/'.TEMPLATE_NAME);
 define('__UTHEMEPUB__',__ROOT__.'/ucontent/theme/'.TEMPLATE_NAME.'/Public');

@@ -6,11 +6,15 @@
 
 class Group_Extend{
 
-	public static function getGroupIcon($sImgname){
+	public static function getGroupIcon($sImgname,$bAdmin=false){
 		if(!empty($sImgname)){
 			return __ROOT__.'/data/upload/app/group/icon/'.$sImgname;
 		}else{
-			return __ROOT__.'/app/group/Static/Images/group_icon.gif';
+			if($bAdmin===false){
+				return Appt::path('group_icon.gif','group');
+			}else{
+				return __ROOT__.'/app/group/Theme/Default/Public/Images/group_icon.gif';
+			}
 		}
 	}
 

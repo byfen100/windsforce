@@ -192,7 +192,7 @@ $(function(){
 										<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
 										<!--{:Core_Extend::getUsericon(0)}-->&nbsp;<!--<lang package='Template/Grouptopic'>-->匿名<!--</lang>-->
 										<!--{d*else}-->
-										<img src="<!--{:__APPPUB__}-->/Images/ico_author.png" title="<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->
+										<img src="<!--{:Appt::path('ico_author.png')}-->" title="<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->
 										<!--{/if}-->
 										&nbsp;<!--<lang package='Template/Grouptopic'>-->发布于<!--</lang>-->&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 									</div>
@@ -349,7 +349,7 @@ $(function(){
 										<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
 										<!--{:Core_Extend::getUsericon(0)}-->&nbsp;<!--<lang package='Template/Grouptopic'>-->匿名<!--</lang>-->
 										<!--{d*else}-->
-										<img src="<!--{:__APPPUB__}-->/Images/ico_author.png" title="<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->
+										<img src="<!--{:Appt::path('ico_author.png')}-->" title="<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->
 										<!--{/if}-->
 										&nbsp;<!--<lang package='Template/Grouptopic'>-->发布于<!--</lang>-->&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 									</div>
@@ -499,10 +499,10 @@ $(function(){
 								</td>
 								<td class="floor_right floor_grouptopiccommenttd2 WindsforceSystem-interval_line_color-border">
 									<div class="floor_top_tips">
-										<span class="floor_copy" title="<!--<lang package='Template/Grouptopic'>-->复制此楼地址<!--</lang>-->" onclick="copy('<!--<lang package='Template/Grouptopic'>-->楼层<!--</lang>--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','<!--<lang package='Template/Grouptopic'>-->楼层复制成功<!--</lang>-->');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:__APPPUB__}-->/Images/settop.png" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}--><!--<lang package='Template/Grouptopic'>-->楼<!--</lang>--><sup>#</sup></span>
+										<span class="floor_copy" title="<!--<lang package='Template/Grouptopic'>-->复制此楼地址<!--</lang>-->" onclick="copy('<!--<lang package='Template/Grouptopic'>-->楼层<!--</lang>--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','<!--<lang package='Template/Grouptopic'>-->楼层复制成功<!--</lang>-->');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:Appt::path('settop.png')}-->" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}--><!--<lang package='Template/Grouptopic'>-->楼<!--</lang>--><sup>#</sup></span>
 										<span>
 										<!--{if $oComment['user_id']==$oGrouptopic['user_id']}-->
-										<img src="<!--{:__APPPUB__}-->/Images/ico_author.png" title="<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->
+										<img src="<!--{:Appt::path('ico_author.png')}-->" title="<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->
 										<!--{d*else}-->
 										<!--{$oComment['user_id']|Core_Extend+getUsericon}-->
 										<!--{/if}-->

@@ -64,7 +64,7 @@
 						<tr>
 							<td><input type="checkbox" name="key" value="<!--{$value:group_id}-->"></td>
 							<td><!--{$value:group_id}--></td>
-							<td><img src="<!--{:Group_Extend::getGroupIcon($value['group_icon'])}-->" width="48" height="48" /></td>
+							<td><img src="<!--{:Group_Extend::getGroupIcon($value['group_icon'],true)}-->" width="48" height="48" /></td>
 							<td><a href="<!--{:Admin_Extend::edit(array('controller'=>'group','value'=>$value['group_id']))}-->"><!--{$value:group_nikename}--></a>
 								<div class="row-actions">
 									<span class='edit'><a href="<!--{:Admin_Extend::edit(array('controller'=>'group','value'=>$value['group_id']))}-->"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>

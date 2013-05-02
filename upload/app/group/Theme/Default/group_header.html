@@ -18,7 +18,7 @@
 										<span id="commongroup_<!--{$oGroup['group_id']}-->" class="group_joinleave"><a href="javascript:void(0);" style="color:#000;" onclick="leaveGroup(<!--{$oGroup['group_id']}-->,'commongroup_<!--{$oGroup['group_id']}-->');"><!--<lang package='Template/Grouplist'>-->退出<!--</lang>--></a></span>
 										<!--{/if}-->
 										<!--{if $oGroup['group_isrecommend']==1}-->
-										<span>&nbsp;&nbsp;<img src="<!--{:__APPPUB__}-->/Images/group_recommend.gif" /></span>
+										<span>&nbsp;&nbsp;<img src="<!--{:Appt::path('group_recommend.gif','group')}-->" /></span>
 										<!--{/if}-->
 									</p>
 									<p><!--<lang package='Template/Grouplist'>-->共有<!--</lang>-->&nbsp;<span class="label label-success"><!--{$oGroup['group_usernum']}--></span>&nbsp;<!--<lang package='Template/Grouplist'>-->人关注了此小组<!--</lang>--></p>

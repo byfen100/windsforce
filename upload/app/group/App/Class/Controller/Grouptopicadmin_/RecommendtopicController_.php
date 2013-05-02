@@ -12,7 +12,7 @@ class RecommendtopicController extends Controller{
 		$nStatus=intval(G::getGpc('status'));
 		$sReason=trim(G::getGpc('reason'));
 		
-		if(!Group_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@recommendtopic'))){
+		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@recommendtopic'))){
 			$this->E(Dyhb::L('你没有推荐或者取消推荐帖子的权限','Controller/Grouptopicadmin'));
 		}
 

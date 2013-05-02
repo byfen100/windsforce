@@ -31,9 +31,9 @@ $(function(){
 					<!--<lang package='Template/Space'>-->关于这些回帖，如有疑问可以向相关管理员发送站内短消息提出。<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('home://pm/pmnew')}-->"><!--<lang package='Template/Space'>-->发送短消息<!--</lang>--></a></b>
 				</div>
 				<p class="well">
-					<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="<!--<lang package='Template/Space'>-->回收站帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->回收站帖子<!--</lang>-->&nbsp;<span class="pipe">|</span>
-					<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Space'>-->待审核帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->待审核帖子<!--</lang>-->&nbsp;<span class="pipe">|</span>
-					<img src="<!--{:__APPPUB__}-->/Images/sign_remove.png" title="<!--<lang package='Template/Space'>-->屏蔽帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->屏蔽帖子<!--</lang>-->
+					<img src="<!--{:Appt::path('sign_deny.png')}-->" title="<!--<lang package='Template/Space'>-->回收站帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->回收站帖子<!--</lang>-->&nbsp;<span class="pipe">|</span>
+					<img src="<!--{:Appt::path('sign_warning.png')}-->" title="<!--<lang package='Template/Space'>-->待审核帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->待审核帖子<!--</lang>-->&nbsp;<span class="pipe">|</span>
+					<img src="<!--{:Appt::path('sign_remove.png')}-->" title="<!--<lang package='Template/Space'>-->屏蔽帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->屏蔽帖子<!--</lang>-->
 				</p>
 				<!--{/if}-->
 				
@@ -62,13 +62,13 @@ $(function(){
 								<td class="subject">
 									<p class="title">
 										<!--{if $oGrouptopiccomment['grouptopiccomment_status']=='0'}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="<!--<lang package='Template/Topiclist'>-->回收站帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;
+										<img src="<!--{:Appt::path('sign_deny.png')}-->" title="<!--<lang package='Template/Topiclist'>-->回收站帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;
 										<!--{/if}-->
 										<!--{if $oGrouptopiccomment['grouptopiccomment_auditpass']=='0'}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Topiclist'>-->待审核帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;
+										<img src="<!--{:Appt::path('sign_warning.png')}-->" title="<!--<lang package='Template/Topiclist'>-->待审核帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;
 										<!--{/if}-->
 										<!--{if $oGrouptopiccomment['grouptopiccomment_ishide']=='1'}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_remove.png" title="<!--<lang package='Template/Topiclist'>-->屏蔽帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;
+										<img src="<!--{:Appt::path('sign_remove.png')}-->" title="<!--<lang package='Template/Topiclist'>-->屏蔽帖子，这里仅你自己可见<!--</lang>-->"/>&nbsp;
 										<!--{/if}-->
 										
 										<!--<lang package='Template/Topiclist'>-->回复主题<!--</lang>-->：

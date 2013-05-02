@@ -204,7 +204,7 @@ $(function(){
 										<div class="info">
 											<span class="name"><a href="<!--{:Dyhb::U('group://space@?id='.$oComment['user_id'])}-->"><!--{$oComment->user->user_name}--></a><!--<lang package='Template/Grouptopic'>-->回复于<!--</lang>-->&nbsp;<!--{$oComment->create_dateline|Core_Extend+timeFormat}--></span>
 											<span class="floorcopy_box">
-												<span class="floor_copy" title="<!--<lang package='Template/Grouptopic'>-->复制此楼地址<!--</lang>-->" onclick="copy('<!--<lang package='Template/Grouptopic'>-->楼层<!--</lang>--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','<!--<lang package='Template/Grouptopic'>-->楼层复制成功<!--</lang>-->');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:__APPPUB__}-->/Images/settop.png" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}--><!--<lang package='Template/Grouptopic'>-->楼<!--</lang>--><sup>#</sup></span>
+												<span class="floor_copy" title="<!--<lang package='Template/Grouptopic'>-->复制此楼地址<!--</lang>-->" onclick="copy('<!--<lang package='Template/Grouptopic'>-->楼层<!--</lang>--> '+'\n'+'<!--{:Core_Extend::windsforceOuter('app=group&c=grouptopic&a=view&id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oComment->grouptopiccomment_id)}-->','<!--<lang package='Template/Grouptopic'>-->楼层复制成功<!--</lang>-->');"><!--{if $oComment['grouptopiccomment_stickreply']==1}--><img src="<!--{:Appt::path('settop.png')}-->" />&nbsp;<!--{/if}--><!--{$TheController->get_commentfloor($i,$nEverynum)}--><!--<lang package='Template/Grouptopic'>-->楼<!--</lang>--><sup>#</sup></span>
 											</span>
 										</div>
 										

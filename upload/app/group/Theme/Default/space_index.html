@@ -23,9 +23,9 @@
 					<!--<lang package='Template/Space'>-->关于待审核主题和回收站主题，如有疑问可以向相关管理员发送站内短消息提出。<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('home://pm/pmnew')}-->"><!--<lang package='Template/Space'>-->发送短消息<!--</lang>--></a></b>
 				</div>
 				<p class="well">
-					<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="<!--<lang package='Template/Space'>-->回收站主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->回收站主题<!--</lang>-->&nbsp;<span class="pipe">|</span>
-					<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Space'>-->待审核主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->待审核主题<!--</lang>-->&nbsp;<span class="pipe">|</span>
-					<img src="<!--{:__APPPUB__}-->/Images/sign_question.png" title="<!--<lang package='Template/Space'>-->匿名发布主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->匿名发布主题<!--</lang>-->
+					<img src="<!--{:Appt::path('sign_deny.png')}-->" title="<!--<lang package='Template/Space'>-->回收站主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->回收站主题<!--</lang>-->&nbsp;<span class="pipe">|</span>
+					<img src="<!--{:Appt::path('sign_warning.png')}-->" title="<!--<lang package='Template/Space'>-->待审核主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->待审核主题<!--</lang>-->&nbsp;<span class="pipe">|</span>
+					<img src="<!--{:Appt::path('sign_question.png')}-->" title="<!--<lang package='Template/Space'>-->匿名发布主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Space'>-->匿名发布主题<!--</lang>-->
 				</p>
 				<!--{/if}-->
 				
@@ -61,11 +61,11 @@
 								<td class="subject">
 									<p class="title">
 										<!--{if $oGrouptopic['grouptopic_status']=='0'}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_deny.png" title="<!--<lang package='Template/Topiclist'>-->回收站主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--{/if}-->
+										<img src="<!--{:Appt::path('sign_deny.png')}-->" title="<!--<lang package='Template/Topiclist'>-->回收站主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--{/if}-->
 										<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Topiclist'>-->待审核主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--{/if}-->
+										<img src="<!--{:Appt::path('sign_warning.png')}-->" title="<!--<lang package='Template/Topiclist'>-->待审核主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;<!--{/if}-->
 										<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-										<img src="<!--{:__APPPUB__}-->/Images/sign_question.png" title="<!--<lang package='Template/Topiclist'>-->匿名发布主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;
+										<img src="<!--{:Appt::path('sign_question.png')}-->" title="<!--<lang package='Template/Topiclist'>-->匿名发布主题，这里仅你自己可见<!--</lang>-->"/>&nbsp;
 										<!--{/if}-->
 										<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 										<!--{if $oGrouptopic->grouptopiccategory_id>0}-->

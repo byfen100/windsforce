@@ -62,7 +62,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 							<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&mytopic=1')}-->"><!--<lang package='Template/Group'>-->我的小组帖子<!--</lang>--></a>,&nbsp;<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&new=1')}-->"><!--<lang package='Template/Group'>-->查看小组新帖<!--</lang>--></a>
 							<!--{if Core_Extend+isAdmin()}-->
 							<span class="pipe">|</span>
-							<img src="<!--{:__APPPUB__}-->/Images/recyclebin.gif" />&nbsp;
+							<img src="<!--{:Appt::path('recyclebin.gif')}-->" />&nbsp;
 							<a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank"><!--<lang package='Template/Group'>-->主题回收站<!--</lang>--></a>&nbsp;<span><a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopic&gid='.$oGroup['group_id'].'&status=0')}-->" target="_blank" <!--{if $nTotalRecyclebinGrouptopic>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinGrouptopic}-->)</a></span>
 							<!--{/if}-->
 							</span>
@@ -146,7 +146,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 													<td class="subject">
 														<p class="title">
 															<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
-															<img src="<!--{:__APPPUB__}-->/Images/sign_warning.png" title="<!--<lang package='Template/Topiclist'>-->待审核主题<!--</lang>-->"/>&nbsp;<!--{/if}-->
+															<img src="<!--{:Appt::path('sign_warning.png')}-->" title="<!--<lang package='Template/Topiclist'>-->待审核主题<!--</lang>-->"/>&nbsp;<!--{/if}-->
 															<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
 															<!--{/if}-->
 															<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
