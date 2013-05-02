@@ -10,6 +10,9 @@ Dyhb::import(WINDSFORCE_PATH.'/app/home/App/Class/Model');
 /** 定义Home的语言包 */
 define('__APPHOME_COMMON_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
 
+/** 导入杂项函数 */
+require(Core_Extend::includeFile('function/Misc_Extend'));
+
 class PublicController extends InitController{
 
 	public function is_login(){

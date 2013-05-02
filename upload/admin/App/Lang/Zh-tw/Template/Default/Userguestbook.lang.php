@@ -22,6 +22,7 @@ return array(
 'b6b752e828a59d7885f0046bdbb8cbdf'=>"用戶留言內容",
 '1abe7e1323528f9570f5b4fa4ce2e8ca'=>"用戶留言內容信息",
 'cdbe4af7be6e940e3dbfa203a306c0a3'=>"留言防灌水限制",
+'55626a7b753ba9b31a18126d6bc20a1a'=>"发布IP",
 )
 
 ?>
