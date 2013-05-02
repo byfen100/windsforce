@@ -6,19 +6,25 @@
 
 class Apptheme_Extend{
 	
-	static public function path($sFile,$sApp='home',$sType='images'){
+	static public function path($sFile,$sApp='home',$bAdmin=false){
 		static $sApptemplate='';
 
 		if($sApptemplate==''){
 			$sApptemplate=Dyhb::cookie('template');
 		}
 
-		$sType=ucfirst(strtolower($sType));
-		
-		if(is_file(WINDSFORCE_PATH.'/app/'.$sApp.'/Theme/'.$sApptemplate.'/Public/'.$sType.'/'.$sFile)){
-			return __TMPLPUB__.'/'.$sType.'/'.$sFile;
+		if(is_file(WINDSFORCE_PATH.'/app/'.$sApp.'/Theme/'.$sApptemplate.'/Public/Images/'.$sFile)){
+			if($bAdmin===false){
+				return __TMPLPUB__.'/Images/'.$sFile;
+			}else{
+				return __ROOT__.'/app/'.$sApp.'/Theme/'.$sApptemplate.'/Public/Images/'.$sFile;
+			}
 		}else{
-			return __TMPLPUB__DEFAULT__.'/'.$sType.'/'.$sFile;
+			if($bAdmin===false){
+				return __TMPLPUB__DEFAULT__.'/Images/'.$sFile;
+			}else{
+				return __ROOT__.'/app/'.$sApp.'/Theme/Default/Public/Images/'.$sFile;
+			}
 		}
 	}
 	

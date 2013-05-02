@@ -185,13 +185,16 @@ class UpdateCacheStyle{
 				$sCssData='';
 
 				foreach($arrCssData as $sCss){
+					$bAppcss=false;
+					
 					if($sType=='@'){
 						$sCssfile=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Css/'.$sCss.'.css';
 						!is_file($sCssfile) && $sCssfile=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Css/'.$sCss.'.css';
 					}elseif(strpos($sExtra,'t_')===0){
 						$sCssfile=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Style/'.$sCss.'/style.css';
-						!is_file($sCssfile) && $sCssfile=WINDSFORCE_PATH.'/ucontent/theme/Default/Public/Style/'.$sCss.'/style.css';
 					}else{
+						$bAppcss=true;
+						
 						$sCssfile=WINDSFORCE_PATH.'/app/'.$sType.'/Theme/'.ucfirst($arrData['doyouhaobaby_template_base']).'/Public/Css/'.$sCss.'.css';
 						!is_file($sCssfile) && $sCssfile=WINDSFORCE_PATH.'/app/'.$sType.'/Theme/Default/Public/Css/'.$sCss.'.css';
 					}
@@ -205,7 +208,14 @@ class UpdateCacheStyle{
 					continue;
 				}
 
+				// 主题变量替换
 				$sCssData=@preg_replace("/\{([A-Z0-9_]+)\}/e",'\$arrData[strtolower(\'\1\')]',stripslashes($sCssData));
+				
+				// {test.jpg}类似的变量替换
+				if($bAppcss===true){
+					$sCssData=@preg_replace("/\{([0-9a-zA-Z\_\-\.\/]+)\}/e",'UpdateCacheStyle::imagePath(\'\1\',\''.$sType.'\')',stripslashes($sCssData));
+				}
+				
 				$sCssData=preg_replace("/<\?.+?\?>\s*/",'',$sCssData);
 				$sCssData=preg_replace(array('/\s*([,;:\{\}])\s*/','/[\t\n\r]/','/\/\*.+?\*\//'),array('\\1','',''),$sCssData);
 
@@ -218,6 +228,18 @@ class UpdateCacheStyle{
 					}
 				}
 			}
+		}
+	}
+
+	private static function imagePath($sFile,$sApp){
+		if(strpos($sFile,'/')){
+			return __ROOT__.'/'.$sFile;
+		}else{
+			if(!Dyhb::classExists('Apptheme_Extend')){
+				require(Core_Extend::includeFile('function/Apptheme_Extend'));
+			}
+			
+			return Appt::path($sFile,$sApp,true);
 		}
 	}
 

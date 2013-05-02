@@ -430,7 +430,7 @@ class Core_Extend{
 
 		if(!isset($GLOBALS['_cache_']['badword'])){
 			if(!Dyhb::classExists('Cache_Extend')){
-				require(WINDSFORCE_PATH.'/source/function/Cache_Extend.class.php');
+				require(Core_Extend::includeFile('function/Cache_Extend'));
 			}
 			self::loadCache('badword');
 		}

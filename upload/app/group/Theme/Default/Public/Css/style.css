@@ -94,8 +94,8 @@ Description: Group应用模块CSS
 .extend_tool{border-top:1px dashed #CDCDCD;padding:10px 0px 0px 5px;}
 .extend_tool a{color:#cacbca;}
 .extend_tool em a{padding:5px 6px 5px 22px;}
-.extend_tool .fastre{background:url('{__ROOT__}/app/group/Static/Images/fastreply.gif') no-repeat 8px 50%;}
-.extend_tool .editp{background:url('{__ROOT__}/app/group/Static/Images/edit.gif') no-repeat 8px 50%;}
+.extend_tool .fastre{background:url('{fastreply.gif}') no-repeat 8px 50%;}
+.extend_tool .editp{background:url('{edit.gif}') no-repeat 8px 50%;}
 
 /* 小组新风格 */
 #grouptopicnew_show h1{font-size:22px;color:#333;text-align:left;line-height:100%;margin-bottom:8px}
@@ -147,7 +147,7 @@ Description: Group应用模块CSS
 .grouptopicsnew .grouptopic .grouptopic-content img,#grouptopiccomments .grouptopiccommentnew_reply .grouptopiccomment-content img{vertical-align:top;}
 
 /* 回帖仅自己可见 */
-.locked{overflow:hidden;margin:10px 0;padding:8px 8px 8px 24px;border:1px dashed #FF9A9A;background:#FFF url('{__ROOT__}/app/group/Static/Images/locked.gif') no-repeat 6px 50%;font-size:12px;zoom:1;}
+.locked{overflow:hidden;margin:10px 0;padding:8px 8px 8px 24px;border:1px dashed #FF9A9A;background:#FFF url('{locked.gif}') no-repeat 6px 50%;font-size:12px;zoom:1;}
 .locked:hover background-color:#F7F7F7;}
 .locked strong{color:#F26C4F;}
 .locked a{color:#369;}
@@ -155,7 +155,7 @@ Description: Group应用模块CSS
 .locked_highlight{background-color:#feebc5;}
 
 /* 帖子标签 */
-.grouptopictag{padding-left:20px;background:url('{__ROOT__}/app/group/Static/Images/tag.gif') no-repeat 0 2px;}
+.grouptopictag{padding-left:20px;background:url('{tag.gif}') no-repeat 0 2px;}
 [/CURSCRIPT]
 
 /**===============================
@@ -202,8 +202,8 @@ a#moderate_reason:hover{text-decoration:none;}
 .moderatereason_title{margin-bottom:5px;}
 .moderatereason_title .btn-group{background:none;margin:0px;height:5px;}
 
-.highlight_color{background-color: #666666;background-image: url('{__ROOT__}/app/group/Static/Images/color_down.png') !important;background-position: 0 0;background-repeat: no-repeat;margin-left: 3px;width: 23px !important;}
-.highlight_item{background: url('{__ROOT__}/app/group/Static/Images/color.png') repeat-x scroll 0 0 #E5E5E5;border: 1px solid #999999;box-shadow: 0 1px 0 #E5E5E5;cursor: pointer;height: 23px;margin-right: 3px;overflow: hidden;padding: 0;vertical-align: middle;}
+.highlight_color{background-color: #666666;background-image: url('{color_down.png}') !important;background-position: 0 0;background-repeat: no-repeat;margin-left: 3px;width: 23px !important;}
+.highlight_item{background: url('{color.png}') repeat-x scroll 0 0 #E5E5E5;border: 1px solid #999999;box-shadow: 0 1px 0 #E5E5E5;cursor: pointer;height: 23px;margin-right: 3px;overflow: hidden;padding: 0;vertical-align: middle;}
 .highlightoperating .currenthighlightstyle{background-color: #FFFFFF;border: 1px solid #999999;}
 .highlightoperating a{float: left;height: 21px;line-height: 21px;margin-right: 3px;text-align: center;width: 21px !important;}
 .highlightoperating_b,.highlightoperating_i,.highlightoperating_l{border: 1px solid #F1F5FA;outline: medium none;}
@@ -211,7 +211,7 @@ a#moderate_reason:hover{text-decoration:none;}
 /* 多选公用停留框 */
 #modActionSelect{position:absolute;right:0;margin-top:-16px;padding:10px 25px;width:250px;height:100px;;line-height:32px;overflow:hidden;border:1px solid #999;}
 #modActionSelect a{color:#06C;}
-.smallmodaction{position:absolute;top:7px;right:10px;width:50px;height:14px;line-height:100px;overflow:hidden;background:url({__ROOT__}/app/group/Theme/Default/Public/Images/arrow_go.png) no-repeat center center;}
+.smallmodaction{position:absolute;top:7px;right:10px;width:50px;height:14px;line-height:100px;overflow:hidden;background:url({arrow_go.png}) no-repeat center center;}
 .checkbox_checkall{position:absolute;top:7px;right:50px;}
 #modActionSelect.smallmodaction_done{margin-top:4px;margin-right:-3px;padding:0;width:35px;height:32px;border:none;background-position:0 -128px;}
 #modActionSelect.smallmodaction_done .smallmodaction{display:none;}
@@ -238,7 +238,7 @@ a#moderate_reason:hover{text-decoration:none;}
 ================================*/
 [CURSCRIPT=group::public::index]
 .publicmodule_list li{line-height:26px;height:26px;overflow:hidden;}
-.publicmodule_list_sort ul{background:url({__ROOT__}/app/group/Theme/Default/Public/Images/sort.png) 0 7px no-repeat;}
+.publicmodule_list_sort ul{background:url({sort.png}) 0 7px no-repeat;}
 .publicmodule_list_sort ul li{padding-left:20px;}
 .publicmodule_list_line li{border-bottom:1px dotted #ccc;line-height:25px;height:25px;}
 /* 工具栏子分类 */
@@ -300,7 +300,7 @@ a#moderate_reason:hover{text-decoration:none;}
            小组列表
 ================================*/
 [CURSCRIPT=group::public::index]
-.grouplist_header{ color:#555555;font-weight:bold;margin: 0 0 18px;background:url('{__ROOT__}/app/group/Theme/Default/Public/Images/grouplist_header.png') repeat-x scroll 0 0 #EAF1F7;border-bottom: 1px solid #dddddd;border-top: 1px solid #dddddd;border-right: 1px solid #dddddd;border-left: 1px solid #dddddd;color: #1B72AF;overflow: hidden;padding: 5px 10px;-webkit-border-radius: 3px 3px 0px 0px;-moz-border-radius: 3px 3px 0px 0px;border-radius: 3px 3px 0px 0px;}
+.grouplist_header{ color:#555555;font-weight:bold;margin: 0 0 18px;background:url('{grouplist_header.png}') repeat-x scroll 0 0 #EAF1F7;border-bottom: 1px solid #dddddd;border-top: 1px solid #dddddd;border-right: 1px solid #dddddd;border-left: 1px solid #dddddd;color: #1B72AF;overflow: hidden;padding: 5px 10px;-webkit-border-radius: 3px 3px 0px 0px;-moz-border-radius: 3px 3px 0px 0px;border-radius: 3px 3px 0px 0px;}
 .grouplist_groupname{color: #555555;}
 .grouplist_groupname a {text-decoration:none;color:#000;}
 .grouplist_groupname a:hover {text-decoration:underline;color:#000000;}
