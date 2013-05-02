@@ -163,7 +163,7 @@ class GroupController extends InitController{
 			$this->assign('oGroup',$oGroup);
 			
 			// 取得ICON
-			$sGroupIcon=Group_Extend::getGroupIcon($oGroup['group_icon'],true);
+			$sGroupIcon=Group_Extend::getGroupIcon($oGroup,true);
 			$this->assign('sGroupIcon',$sGroupIcon);
 
 			$arrOptionData=$GLOBALS['_cache_']['group_option'];

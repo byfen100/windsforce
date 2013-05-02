@@ -24,7 +24,7 @@
 						<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oGroup['group_id'])}-->
 						<li>
 							<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic">
-								<img src="<!--{:Group_Extend::getGroupIcon($oGroup['group_icon'])}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
+								<img src="<!--{:Group_Extend::getGroupIcon($oGroup)}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
 							</a>
 							<div class="grouplist_txt">
 								<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;<!--{/if}-->"><!--{$oGroup['group_nikename']}--></a><!--{if $oGroup['group_totaltodaynum']}-->&nbsp;<span class="grouplist_todaynum" title="<!--<lang package='Template/Grouplist'>-->今日发帖量<!--</lang>-->">(<!--{$oGroup['group_totaltodaynum']}-->)</span><!--{/if}--></h3>

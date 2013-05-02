@@ -6,12 +6,36 @@
 
 class Group_Extend{
 
-	public static function getGroupIcon($sImgname,$bAdmin=false){
-		if(!empty($sImgname)){
-			return __ROOT__.'/data/upload/app/group/icon/'.$sImgname;
+	public static function getGroupIcon($oGroup,$bAdmin=false){
+		if(!is_object($oGroup)){
+			if(Core_Extend::isPostInt($oGroup)){
+				$oGroup=GroupModel::F('group_id=?',$oGroup)->getOne();
+			}elseif(is_string($oGroup)){
+				$oGroup=GroupModel::F('group_name=?',$oGroup)->getOne();
+			}
+		}
+
+		if(empty($oGroup['group_id'])){
+			return '';
+		}
+		
+		if(!empty($oGroup['group_icon'])){
+			return __ROOT__.'/data/upload/app/group/icon/'.$oGroup['group_icon'];
 		}else{
 			if($bAdmin===false){
-				return Appt::path('group_icon.gif','group');
+				if($oGroup->group_totaltodaynum>0){
+					if($oGroup->group_isopen=='1'){
+						return Appt::path('group_icon.gif','group');
+					}else{
+						return Appt::path('group_icon_lock.gif','group');
+					}
+				}else{
+					if($oGroup->group_isopen=='1'){
+						return Appt::path('group_icon_old.gif','group');
+					}else{
+						return Appt::path('group_icon_oldlock.gif','group');
+					}
+				}
 			}else{
 				return __ROOT__.'/app/group/Theme/Default/Public/Images/group_icon.gif';
 			}
