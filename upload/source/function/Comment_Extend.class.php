@@ -64,10 +64,12 @@ class Comment_Extend{
 		return true;
 	}
 
-	static public function commentMaxLen($sCommentContent){
-		$arrOptions=$GLOBALS['_cache_']['home_option'];
+	static public function commentMaxLen($sCommentContent,$nCommentMaxLen=0){
+		if($nCommentMaxLen==0){
+			$arrOptions=$GLOBALS['_cache_']['home_option'];
+			$nCommentMaxLen=intval($arrOptions['comment_max_len']);
+		}
 		
-		$nCommentMaxLen=intval($arrOptions['comment_max_len']);
 		if($nCommentMaxLen && strlen($sCommentContent)>$nCommentMaxLen){
 			return false;
 		}
@@ -125,12 +127,16 @@ class Comment_Extend{
 		return true;
 	}
 
-	static public function commentSpamContentsize($sCommentContent){
+	static public function commentSpamContentsize($sCommentContent,$nCommentSpamContentSize=0){
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
+
+		if($nCommentSpamContentSize==0){
+			$nCommentSpamContentSize=intval($arrOptions['comment_spam_content_size']);
+		}
+
 		$bDisallowedSpamWordToDatabase=$arrOptions['disallowed_spam_word_to_database']?true:false;
 		
 		if($arrOptions['comment_spam_enable']){
-			$nCommentSpamContentSize=intval($arrOptions['comment_spam_content_size']);
 			if($nCommentSpamContentSize){
 				if(strlen($sCommentContent)>=$nCommentSpamContentSize){
 					if($bDisallowedSpamWordToDatabase){

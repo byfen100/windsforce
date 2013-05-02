@@ -115,9 +115,9 @@ class AddreplyController extends GlobalchildController{
 		}
 
 		// SPAM 垃圾信息阻止: 评论内容长度限制
-		$result=Comment_Extend::commentSpamContentsize($sCommentContent);
+		$nCommentSpamContentSize=intval($GLOBALS['_cache_']['group_option']['comment_spam_content_size']);
+		$result=Comment_Extend::commentSpamContentsize($sCommentContent,$nCommentSpamContentSize);
 		if($result===false){
-			$nCommentSpamContentSize=intval($GLOBALS['_cache_']['group_option']['comment_spam_content_size']);
 			$this->E(Dyhb::L('评论内容最大的字节数为%d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamContentSize));
 		}
 		if($result===0){
