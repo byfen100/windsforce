@@ -19,6 +19,14 @@ class AdduserguestbookController extends GlobalchildController{
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}
+
+		// 读取用户数据
+		$nUserguestbookuserid=intval(G::getGpc('userguestbook_userid'));
+		$oUser=UserModel::F('user_id=?',$nUserguestbookuserid)->getOne();
+
+		if(empty($oUser['user_id'])){
+			$this->E(Dyhb::L('用户不存在','Controller/Space'));
+		}
 		
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 
@@ -144,31 +152,41 @@ class AdduserguestbookController extends GlobalchildController{
 			// 发送COOKIE
 			Comment_Extend::sendCookie($oUserguestbook->userguestbook_name,$oUserguestbook->userguestbook_url,$oUserguestbook->userguestbook_email);
 
+			// 发送feed
+			$sCommentLink='home://space@?id='.$oUser['user_id'].'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id'];
+			$sCommentTitle=G::subString($oUser['user_name'],0,30);
+			$sCommentMessage=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,100);
 
-			// 读取用户数据
-			$nUserguestbookuserid=intval(G::getGpc('userguestbook_userid'));
-			$oUser=UserModel::F('user_id=?',$nUserguestbookuserid)->getOne();
+			try{
+				Comment_Extend::addFeed(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
 
-			if(!empty($oUser['user_id'])){
-				// 发送feed
+			// 发送提醒
+			if($oUser['user_id']!=$GLOBALS['___login___']['user_id']){
 				$sCommentLink='home://space@?id='.$oUser['user_id'].'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id'];
-				$sCommentTitle=$oUser['user_name'];
-				$sCommentMessage=strip_tags($oUserguestbook['userguestbook_content']);
+				$sCommentTitle=G::subString($oUser['user_name'],0,100);
+				$sCommentMessage=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,100);
 
 				try{
-					Comment_Extend::addFeed(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage);
+					Comment_Extend::addNotice(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUser['user_id'],'adduserguestbook',$oUser['user_id']);
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
+			}
 
-				// 发送提醒
-				if($oUser['user_id']!=$GLOBALS['___login___']['user_id']){
+			// 发送评论被回复提醒
+			if($oUserguestbook['userguestbook_parentid']>0){
+				$oUserguestbookParent=UserguestbookModel::F('userguestbook_id=?',$oUserguestbook['userguestbook_parentid'])->getOne();
+
+				if(!empty($oUserguestbookParent['userguestbook_id']) && $oUserguestbookParent['user_id']!=$GLOBALS['___login___']['user_id']){
 					$sCommentLink='home://space@?id='.$oUser['user_id'].'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id'];
-					$sCommentTitle=$oUser['user_name'];
-					$sCommentMessage=strip_tags($oUserguestbook['userguestbook_content']);
+					$sCommentTitle=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,30);
+					$sCommentMessage=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,100);
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUser['user_id'],'adduserguestbook',$oUser['user_id']);
+						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller/Space'),'replyuserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUserguestbookParent['user_id'],'replyuserguestbook',$oUserguestbookParent['userguestbook_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}

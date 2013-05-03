@@ -65,11 +65,11 @@ class PublicController extends InitController{
 		// 程序信息
 		$arrVersionInfo=array(
 			'WindsForce '.Dyhb::L('程序版本','Controller/Public')=>"WindsForce " .WINDSFORCE_SERVER_VERSION. "  Release ".
-			WINDSFORCE_SERVER_RELEASE." <a href=\"http://windsforce.com\" target=\"_blank\">".
-			Dyhb::L('查看最新版本','Controller/Public')."</a>&nbsp;"."<a href=\"http://windsforce.com\" target=\"_blank\">".
+			WINDSFORCE_SERVER_RELEASE." [ <a href=\"http://windsforce.com\" target=\"_blank\">".
+			Dyhb::L('查看最新版本','Controller/Public')."</a>  <span id=\"newest_version\">".Dyhb::L('读取中','Controller/Public')."...</span> ]&nbsp;"."<a href=\"http://windsforce.com\" target=\"_blank\">".
 			Dyhb::L('专业支持与服务','Controller/Public')."</a>",
 			'DoYouHaoBaby'.Dyhb::L('版本','Controller/Public')=>DYHB_VERSION.
-			' [ <a href="http://bbs.doyouhaobaby.net" target="_blank">'.Dyhb::L('查看最新版本','Controller/Public').'</a> <span id="newest_version">'.Dyhb::L('读取中','Controller/Public').'...</span>] &nbsp;'.
+			' [ <a href="http://bbs.doyouhaobaby.net" target="_blank">'.Dyhb::L('查看最新版本','Controller/Public').'</a> <span id="newest_frameworkversion">'.Dyhb::L('读取中','Controller/Public').'...</span> ] &nbsp;'.
 			Dyhb::L('DoYouHaoBaby 是一款性能卓越的PHP 开发框架','Controller/Public').' <img src="'.__FRAMEWORK__.'/dyhb-powered.png" />',
 		);
 		$this->assign('arrVersionInfo',$arrVersionInfo);

@@ -16,6 +16,13 @@ class AddcommentController extends GlobalchildController{
 			$this->E($e->getMessage());
 		}
 
+		// 读取新鲜事数据
+		$oHomefresh=HomefreshModel::F('homefresh_id=?',intval(G::getGpc('homefresh_id')))->getOne();
+
+		if(empty($oHomefresh['homefresh_id'])){
+			$this->E(Dyhb::L('新鲜事不存在','Controller/Homefresh'));
+		}
+
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 
 		if($arrOptions['close_comment_feature']==1){
@@ -149,29 +156,43 @@ class AddcommentController extends GlobalchildController{
 			}
 			unset($oHomefreshTemp);
 
-			// 读取新鲜事数据
-			$oHomefresh=HomefreshModel::F('homefresh_id=?',intval(G::getGpc('homefresh_id')))->getOne();
+			// 发送feed
+			$sCommentLink='home://fresh@?id='.$oHomefresh['homefresh_id'].'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'];
+			$sCommentTitle=$oHomefresh['homefresh_title']?$oHomefresh['homefresh_title']:strip_tags($oHomefresh['homefresh_message']);
+			$sCommentTitle=G::subString($sCommentTitle,0,30);
+			$sCommentMessage=G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100);
 
-			if(!empty($oHomefresh['homefresh_id'])){
-				// 发送feed
+			try{
+				Comment_Extend::addFeed(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+
+			// 发送提醒
+			if($oHomefresh['user_id']!=$GLOBALS['___login___']['user_id']){
 				$sCommentLink='home://fresh@?id='.$oHomefresh['homefresh_id'].'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'];
 				$sCommentTitle=$oHomefresh['homefresh_title']?$oHomefresh['homefresh_title']:strip_tags($oHomefresh['homefresh_message']);
-				$sCommentMessage=strip_tags($oHomefreshcomment['homefreshcomment_content']);
+				$sCommentTitle=G::subString($sCommentTitle,0,30);
+				$sCommentMessage=G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100);
 
 				try{
-					Comment_Extend::addFeed(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
+					Comment_Extend::addNotice(Dyhb::L('评论了你的新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
+			}
 
-				// 发送提醒
-				if($oHomefresh['user_id']!=$GLOBALS['___login___']['user_id']){
+			// 发送评论被回复提醒
+			if($oHomefreshcomment['homefreshcomment_parentid']>0){
+				$oHomefreshcommentParent=HomefreshcommentModel::F('homefreshcomment_id=?',$oHomefreshcomment['homefreshcomment_parentid'])->getOne();
+
+				if(!empty($oHomefreshcommentParent['homefreshcomment_id']) && $oHomefreshcommentParent['user_id']!=$GLOBALS['___login___']['user_id']){
 					$sCommentLink='home://fresh@?id='.$oHomefresh['homefresh_id'].'&isolation_commentid='.$oHomefreshcomment['homefreshcomment_id'];
-					$sCommentTitle=$oHomefresh['homefresh_title']?$oHomefresh['homefresh_title']:strip_tags($oHomefresh['homefresh_message']);
-					$sCommentMessage=strip_tags($oHomefreshcomment['homefreshcomment_content']);
+					$sCommentTitle=G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,30);
+					$sCommentMessage=G::subString(strip_tags($oHomefreshcomment['homefreshcomment_content']),0,100);
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('评论了你的新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
+						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller/Homefresh'),'replyhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefreshcommentParent['user_id'],'replyhomefreshcomment',$oHomefreshcommentParent['homefreshcomment_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}

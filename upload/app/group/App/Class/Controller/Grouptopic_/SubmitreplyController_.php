@@ -134,7 +134,7 @@ class SubmitreplyController extends GlobalchildController{
 				'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
 				'user_name'=>$GLOBALS['___login___']['user_name'],
 				'@grouptopiccomment_link'=>'group://grouptopic/view?id='.$oGrouptopiccomment['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'],
-				'content_message'=>$sGrouptopiccommentmessage,
+				'content_message'=>G::subString(strip_tags($sGrouptopiccommentmessage),0,100),
 			);
 
 			try{

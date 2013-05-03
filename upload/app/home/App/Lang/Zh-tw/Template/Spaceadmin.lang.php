@@ -131,6 +131,7 @@ return array(
 'cefdd033c6ad28d34d889cdbd9e224bc'=>"注意，隱身狀態系統不會記錄你的在線時間",
 'e38b72de42e0ee8f87e08dcd8f217245'=>"取消隱身",
 '71f9ecfcccef1a5209b3b2756dbf7a1c'=>"隱身",
+'5a0afc9dbd6c2e98769d4620d4fb5b13'=>"其它",
 )
 
 ?>

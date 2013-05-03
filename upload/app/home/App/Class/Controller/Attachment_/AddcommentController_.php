@@ -15,6 +15,13 @@ class AddcommentController extends GlobalchildController{
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}
+
+		// 读取附件数据
+		$oAttachment=AttachmentModel::F('attachment_id=?',intval(G::getGpc('attachment_id')))->getOne();
+
+		if(empty($oAttachment['attachment_id'])){
+			$this->E(Dyhb::L('附件不存在','Controller/Attachment'));
+		}
 		
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 
@@ -149,29 +156,41 @@ class AddcommentController extends GlobalchildController{
 			}
 			unset($oAttachmentTemp);
 
-			// 读取新鲜事数据
-			$oAttachment=AttachmentModel::F('attachment_id=?',intval(G::getGpc('attachment_id')))->getOne();
+			// 发送feed
+			$sCommentLink='home://file@?id='.$oAttachment['attachment_id'].'&isolation_commentid='.$oAttachmentcomment['attachmentcomment_id'];
+			$sCommentTitle=G::subString($oAttachment['attachment_name'],0,30);
+			$sCommentMessage=G::subString(strip_tags($oAttachmentcomment['attachmentcomment_content']),0,100);
 
-			if(!empty($oAttachment['attachment_id'])){
-				// 发送feed
+			try{
+				Comment_Extend::addFeed(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+
+			// 发送提醒
+			if($oAttachment['user_id']!=$GLOBALS['___login___']['user_id']){
 				$sCommentLink='home://file@?id='.$oAttachment['attachment_id'].'&isolation_commentid='.$oAttachmentcomment['attachmentcomment_id'];
-				$sCommentTitle=$oAttachment['attachment_name'];
-				$sCommentMessage=strip_tags($oAttachmentcomment['attachmentcomment_content']);
+				$sCommentTitle=G::subString($oAttachment['attachment_name'],0,30);
+				$sCommentMessage=G::subString(strip_tags($oAttachmentcomment['attachmentcomment_content']),0,100);
 
 				try{
-					Comment_Extend::addFeed(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
+					Comment_Extend::addNotice(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachment['user_id'],'addattachmentcomment',$oAttachment['attachment_id'],'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
+			}
 
-				// 发送提醒
-				if($oAttachment['user_id']!=$GLOBALS['___login___']['user_id']){
+			// 发送评论被回复提醒
+			if($oAttachmentcomment['attachmentcomment_parentid']>0){
+				$oAttachmentcommentParent=AttachmentcommentModel::F('attachmentcomment_id=?',$oAttachmentcomment['attachmentcomment_parentid'])->getOne();
+
+				if(!empty($oAttachmentcommentParent['attachmentcomment_id']) && $oAttachmentcommentParent['user_id']!=$GLOBALS['___login___']['user_id']){
 					$sCommentLink='home://file@?id='.$oAttachment['attachment_id'].'&isolation_commentid='.$oAttachmentcomment['attachmentcomment_id'];
-					$sCommentTitle=$oAttachment['attachment_name'];
-					$sCommentMessage=strip_tags($oAttachmentcomment['attachmentcomment_content']);
+					$sCommentTitle=G::subString(strip_tags($oAttachmentcomment['attachmentcomment_content']),0,30);
+					$sCommentMessage=G::subString(strip_tags($oAttachmentcomment['attachmentcomment_content']),0,100);
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachment['user_id'],'addattachmentcomment',$oAttachment['attachment_id'],'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
+						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller/Attachment'),'replyattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachmentcommentParent['user_id'],'replyattachmentcomment',$oAttachmentcommentParent['attachmentcomment_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}

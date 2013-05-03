@@ -217,8 +217,8 @@ class AddreplyController extends GlobalchildController{
 
 		// 发送feed
 		$sCommentLink='group://grouptopic/view?id='.$oGrouptopiccomment['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'];
-		$sCommentTitle=$oGrouptopic['grouptopic_title'];
-		$sCommentMessage=strip_tags($oGrouptopiccomment['grouptopiccomment_content']);
+		$sCommentTitle=G::subString($oGrouptopic['grouptopic_title'],0,30);
+		$sCommentMessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
 
 		try{
 			Comment_Extend::addFeed(Dyhb::L('评论了帖子','Controller/Grouptopic'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
@@ -229,8 +229,8 @@ class AddreplyController extends GlobalchildController{
 		// 发送提醒
 		if($oGrouptopic['user_id']!=$GLOBALS['___login___']['user_id']){
 			$sCommentLink='group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'];
-			$sCommentTitle=$oGrouptopic['grouptopic_title'];
-			$sCommentMessage=strip_tags($oGrouptopiccomment['grouptopiccomment_content']);
+			$sCommentTitle=G::subString($oGrouptopic['grouptopic_title'],0,30);
+			$sCommentMessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
 
 			try{
 				Comment_Extend::addNotice(Dyhb::L('评论了你的帖子','Controller/Grouptopic'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopic['user_id'],'grouptopiccomment',$oGrouptopic['grouptopic_id']);
@@ -245,8 +245,8 @@ class AddreplyController extends GlobalchildController{
 
 			if(!empty($oGrouptopiccommentParent['grouptopiccomment_id']) && $oGrouptopiccommentParent['user_id']!=$GLOBALS['___login___']['user_id']){
 				$sCommentLink='group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'];
-				$sCommentTitle=G::subString(strip_tags($oGrouptopiccommentParent['grouptopiccomment_content']),0,20);
-				$sCommentMessage=strip_tags($oGrouptopiccomment['grouptopiccomment_content']);
+				$sCommentTitle=G::subString(strip_tags($oGrouptopiccommentParent['grouptopiccomment_content']),0,30);
+				$sCommentMessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
 
 				try{
 					Comment_Extend::addNotice(Dyhb::L('评论了你的回帖','Controller/Grouptopic'),'replygrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopiccomment['user_id'],'replygrouptopiccomment',$oGrouptopiccommentParent['grouptopic_id']);
