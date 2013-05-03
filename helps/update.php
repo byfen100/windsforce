@@ -40,6 +40,8 @@ function errorMessage($sContent){
 /** 服务端版本 */
 $sServerVersion='1.0';
 $nServerRelease='20130426';
+$sFrameworkServerVersion='2.5';
+$nFrameworkServerRelease='20130426';
 	
 /** 获取客户端信息 & 验证 */
 $sVersion=isset($_GET['version'])?trim($_GET['version']):'';
@@ -80,6 +82,7 @@ INFO;
 		echo<<<INFO
 		\$WF("welcome_info").style.display="none";
 		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		\$WF("newest_frameworkversion").innerHTML="{$sFrameworkServerVersion} Build {$nFrameworkServerRelease}";
 		\$WF("news_box").style.display="";
 		\$WF("news_title").innerHTML="更新提示";
 		\$WF("news_content").innerHTML="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
@@ -115,6 +118,7 @@ INFO;
 	}else{
 		echo<<<INFO
 		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		\$WF("newest_frameworkversion").innerHTML="{$sFrameworkServerVersion} Build {$nFrameworkServerRelease}";
 INFO;
 	}
 }
