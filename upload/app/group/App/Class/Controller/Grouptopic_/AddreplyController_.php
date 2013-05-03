@@ -249,7 +249,7 @@ class AddreplyController extends GlobalchildController{
 				$sCommentMessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
 
 				try{
-					Comment_Extend::addNotice(Dyhb::L('评论了你的回帖','Controller/Grouptopic'),'replygrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopiccomment['user_id'],'replygrouptopiccomment',$oGrouptopiccommentParent['grouptopic_id']);
+					Comment_Extend::addNotice(Dyhb::L('评论了你的回帖','Controller/Grouptopic'),'replygrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopiccommentParent['user_id'],'replygrouptopiccomment',$oGrouptopiccommentParent['grouptopic_id']);
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
