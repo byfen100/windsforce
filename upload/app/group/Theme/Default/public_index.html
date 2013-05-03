@@ -92,7 +92,7 @@
 												<td width="1" rowspan="2"></td>
 												<td width="100%" height="10">
 													<span class='grouplist_namelink'><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;<!--{/if}-->"><!--{$oGroup:group_nikename}--></a></span>
-													<!--{if $oGroup['group_topictodaynum']>0}-->
+													<!--{if $oGroup['group_totaltodaynum']>0}-->
 													<span class='grouplist_todaynum'>&nbsp;(<!--<lang package='Template/Grouplist'>-->今日<!--</lang>--><!--{$oGroup['group_totaltodaynum']}-->)</span>
 													<!--{/if}-->
 													<!--{if $nGroupuser==0}-->
@@ -160,7 +160,7 @@
 												<td width="*">&nbsp;&nbsp;&nbsp;</td>
 												<td width="100%" style="padding-left:2px;">
 													<span class='grouplist_namelink'><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;<!--{/if}-->"><!--{$oGroup:group_nikename}--></a></span>
-													<!--{if $oGroup['group_topictodaynum']>0}-->
+													<!--{if $oGroup['group_totaltodaynum']>0}-->
 													<span class='grouplist_todaynum'>&nbsp;(<!--<lang package='Template/Grouplist'>-->今日<!--</lang>--><!--{$oGroup['group_totaltodaynum']}-->)</span>
 													<!--{/if}-->
 													<!--{if $nGroupuser==0}-->
