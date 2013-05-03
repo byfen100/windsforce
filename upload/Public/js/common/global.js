@@ -421,14 +421,14 @@ function globalAddattachment(sFunction,nType){
 	}
 
 	var sUrl=_ROOT_+'/index.php?app=home&c=attachment&a=dialog_add&function='+sFunction+'&filetype='+nType;
-	var sHtml='<iframe id="iframe_dialog" name="iframe_dialog" frameborder="0" style="margin: 0;width: 500px; height: 200px;overflow-x:hidden;margin:0;padding:0;" src="'+sUrl+'"></iframe>';
+	var sHtml='<iframe id="iframe_dialog" name="iframe_dialog" frameborder="0" style="margin: 0;width: 700px; height: 450px;overflow-x:hidden;margin:0;padding:0;" src="'+sUrl+'"></iframe>';
 
-	oEditNewattachmentcategory=windsforceAlert(sHtml,D.L('媒体管理器','__COMMON_LANG__@Js/Global_Js'),'',globalCancelattachment,'',500,200,1);
+	oEditNewattachment=windsforceAlert(sHtml,D.L('媒体管理器','__COMMON_LANG__@Js/Global_Js'),'',globalCancelattachment,'',700,450,1);
 }
 
 function globalCancelattachment(){
 	windsforceConfirm(D.L('你确定关闭媒体管理器?','__COMMON_LANG__@Js/Global_Js'),function(){
-		oEditNewattachmentcategory.close();
+		oEditNewattachment.close();
 		return true;
 	},function(){
 		return true;
