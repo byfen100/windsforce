@@ -86,7 +86,7 @@ class AddreplyController extends GlobalchildController{
 
 		// 回帖小组自己设置最大长度限制
 		$nCommentMaxLen=intval($GLOBALS['_cache_']['group_option']['comment_max_len']);
-		if(!Comment_Extend::commentMaxLen($sCommentContent)){
+		if(!Comment_Extend::commentMaxLen($sCommentContent,$nCommentMaxLen)){
 			$this->E(Dyhb::L('评论内容最大的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMaxLen));
 		}
 
