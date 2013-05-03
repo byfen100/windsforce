@@ -383,25 +383,31 @@ function homefreshcommentAudit(nCommentid,nStatus){
 $oGlobalBody=(window.opera)?(document.compatMode=="CSS1Compat"?$('html'):$('body')):$('html,body');
 
 function homefreshcommentAjaxpage(nHomefreshcomentId){
-	$('#pagination_'+nHomefreshcomentId+' a').live('click',function(e){
-		e.preventDefault();
-		$.ajax({
-			type: "GET",
-			url: $(this).attr('href'),
-			beforeSend: function(){
-				$('#pagination_'+nHomefreshcomentId).remove();
-				$('#homefreshchildcommentlist_'+nHomefreshcomentId).remove();
-				$('#loadinghomefreshchildcomments_'+nHomefreshcomentId).slideDown();
-				$oGlobalBody.animate({scrollTop: $('#homefreshchildcommentlistheader_'+nHomefreshcomentId).offset().top-65},800);
-			},
-			dataType: "html",
-			success: function(out){
-				oResult=$(out).find('#homefreshchildcommentlist_'+nHomefreshcomentId);
-				sNextlink = $(out).find('#pagination_'+nHomefreshcomentId);
-				$('#loadinghomefreshchildcomments_'+nHomefreshcomentId).slideUp('fast');
-				$('#loadinghomefreshchildcomments_'+nHomefreshcomentId).after(oResult.fadeIn(500));
-				$('#pagination_'+nHomefreshcomentId).html(sNextlink);
-			}
+	$(function(){
+		$('#pagination_'+nHomefreshcomentId+' a').live('click',function(e){
+			e.preventDefault();
+
+			$.ajax({
+				type: "GET",
+				url: $(this).attr('href'),
+				beforeSend: function(){
+					$('#pagination_'+nHomefreshcomentId).empty();
+					$('#homefreshchildcommentlist_'+nHomefreshcomentId).empty();
+					$('#loadinghomefreshchildcomments_'+nHomefreshcomentId).slideDown();
+					$oGlobalBody.animate({scrollTop: $('#homefreshchildcommentlistheader_'+nHomefreshcomentId).offset().top-65},800);
+				},
+				dataType: "html",
+				success: function(out){
+					oResult=$(out).find('#homefreshchildcommentlist_'+nHomefreshcomentId);
+					sNextlink=$(out).find('#pagination_'+nHomefreshcomentId);
+					$('#loadinghomefreshchildcomments_'+nHomefreshcomentId).slideUp('fast');
+
+					if($.trim($('#homefreshchildcommentlist_'+nHomefreshcomentId).html())==''){
+						$('#homefreshchildcommentlist_'+nHomefreshcomentId).append(oResult);
+						$('#pagination_'+nHomefreshcomentId).html(sNextlink);
+					}
+				}
+			});
 		});
-	});	
+	});
 }
