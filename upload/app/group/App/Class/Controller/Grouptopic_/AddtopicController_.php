@@ -114,7 +114,7 @@ class AddtopicController extends GlobalchildController{
 		GroupoptionModel::uploadOption('group_totaltodaynum',$GLOBALS['_cache_']['group_option']['group_totaltodaynum']+1);
 
 		// 发送feed
-		$sFeedtemplate='<div class="feed_addgrouptopic"><span class="feed_title">'.Dyhb::L('发布了一篇帖子','Controller/Grouptopic').'&nbsp;<a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></span><div class="feed_content">{grouptopic_message}</div><div class="feed_action"><a href="{@grouptopic_link}#comments">'.Dyhb::L('回复','Controller/Grouptopic').'</a></div></div>';
+		$sFeedtemplate='<div class="feed_addgrouptopic"><span class="feed_title">'.Dyhb::L('发布了一篇帖子','Controller/Grouptopic').'&nbsp;<a href="{@grouptopic_link}">'.$oGrouptopic['grouptopic_title'].'</a></span><div class="feed_content">{grouptopic_message}</div><div class="feed_action"><a href="{@grouptopic_link}#comments">'.Dyhb::L('回复','Controller/Grouptopic').'</a></div></div>';
 
 		$arrFeeddata=array(
 			'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
@@ -127,7 +127,7 @@ class AddtopicController extends GlobalchildController{
 			$this->E($e->getMessage());
 		}
 
-		// 发送提醒
+		// 发送@提醒
 		if($arrParsemessage['atuserids']){
 			foreach($arrParsemessage['atuserids'] as $nAtuserid){
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){

@@ -239,7 +239,24 @@ class AddreplyController extends GlobalchildController{
 			}
 		}
 
-		// 发送评论提醒
+		// 发送回帖被回复提醒
+		if($oGrouptopiccomment['grouptopiccomment_parentid']>0){
+			$oGrouptopiccommentParent=GrouptopiccommentModel::F('grouptopiccomment_id=?',$oGrouptopiccomment['grouptopiccomment_parentid'])->getOne();
+
+			if(!empty($oGrouptopiccommentParent['grouptopiccomment_id']) && $oGrouptopiccommentParent['user_id']!=$GLOBALS['___login___']['user_id']){
+				$sCommentLink='group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'];
+				$sCommentTitle=G::subString(strip_tags($oGrouptopiccommentParent['grouptopiccomment_content']),0,20);
+				$sCommentMessage=strip_tags($oGrouptopiccomment['grouptopiccomment_content']);
+
+				try{
+					Comment_Extend::addNotice(Dyhb::L('评论了你的回帖','Controller/Grouptopic'),'replygrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopiccomment['user_id'],'replygrouptopiccomment',$oGrouptopiccommentParent['grouptopic_id']);
+				}catch(Exception $e){
+					$this->E($e->getMessage());
+				}
+			}
+		}
+
+		// 发送评论@提醒
 		if($arrParsecontent['atuserids']){
 			foreach($arrParsecontent['atuserids'] as $nAtuserid){
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){

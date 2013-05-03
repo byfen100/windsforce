@@ -82,6 +82,20 @@ class SubmiteditController extends GlobalchildController{
 			$this->E($oGrouptopictag->getErrorMessage());
 		}
 
+		// 发送feed
+		$sFeedtemplate='<div class="feed_addgrouptopic"><span class="feed_title">'.Dyhb::L('编辑了帖子','Controller/Grouptopic').'&nbsp;<a href="{@grouptopic_link}">'.$oGrouptopic['grouptopic_title'].'</a></span><div class="feed_content">{grouptopic_message}</div><div class="feed_action"><a href="{@grouptopic_link}#comments">'.Dyhb::L('回复','Controller/Grouptopic').'</a></div></div>';
+
+		$arrFeeddata=array(
+			'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
+			'grouptopic_message'=>G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100),
+		);
+
+		try{
+			Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
 		// 发送提醒
 		if($GLOBALS['___login___']['user_id']!=$oGrouptopic['user_id']){
 			$sGrouptopicmessage=G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100);
@@ -102,7 +116,7 @@ class SubmiteditController extends GlobalchildController{
 			}
 		}
 
-		// 发送提醒
+		// 发送@提醒
 		if($arrParsemessage['atuserids']){
 			foreach($arrParsemessage['atuserids'] as $nAtuserid){
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){

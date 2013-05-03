@@ -144,7 +144,7 @@ class SubmitreplyController extends GlobalchildController{
 			}
 		}
 
-		// 发送评论提醒
+		// 发送评论@提醒
 		if($arrParsecontent['atuserids']){
 			foreach($arrParsecontent['atuserids'] as $nAtuserid){
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
