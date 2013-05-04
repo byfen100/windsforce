@@ -25,7 +25,11 @@ class NormaluploadController extends Controller{
 			Core_Extend::updateCreditByAction('postattachment',$GLOBALS['___login___']['user_id']);
 			
 			if(G::getGpc('dialog','P')==1){
-				G::urlGoTo(Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P').(G::getGpc('filetype','P')==1?'&filetype=1':'')));
+				/*	这部分对于对话框来说过于麻烦，根据网友建议取消信息修改
+					G::urlGoTo(Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P').(G::getGpc('filetype','P')==1?'&filetype=1':'')));
+				*/
+
+				G::urlGoTo(Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.'&dialog=1&function='.G::getGpc('function','P').(G::getGpc('filetype','P')==1?'&filetype=1':'')));
 			}else{
 				$this->assign('__JumpUrl__',Dyhb::U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid));
 				$this->S(Dyhb::L('附件上传成功','Controller/Attachment'));

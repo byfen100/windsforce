@@ -60,7 +60,7 @@ function saveNewattachmentcategory(){
 		function(data,status){
 			if(status==1){
 				oEditCreateNewattachmentcategory.close();
-				window.location.reload();
+				setTimeout("window.location.reload();",1000);
 				return true;
 			}
 		}

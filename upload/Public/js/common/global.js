@@ -427,7 +427,7 @@ function globalAddattachment(sFunction,nType){
 }
 
 function globalCancelattachment(){
-	windsforceConfirm(D.L('你确定关闭媒体管理器?','__COMMON_LANG__@Js/Global_Js'),function(){
+	windsforceConfirm(D.L('注意，这个不是上传按钮，请拖动垂直滚动条查看上传按钮','__COMMON_LANG__@Js/Global_Js')+'<br/>'+D.L('你确定关闭媒体管理器?','__COMMON_LANG__@Js/Global_Js'),function(){
 		oEditNewattachment.close();
 		return true;
 	},function(){

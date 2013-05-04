@@ -244,7 +244,15 @@ var uploadPlugin = function (name) {
 			$("#insertattach_" + file.index).attr("title", D.L('插入附件','__COMMON_LANG__@Js/Upload_Js'));
 		}
 
-		$('#flash_upload_box').css({'display':'block'});
+		if(swfu.getStats().files_queued==0){
+			if(nDialog==0){
+				$("#flash-upload").attr("disabled",false);
+			}else{
+				setTimeout(function(){
+					window.location.href=D.U('home://attachment/my_attachment?cid='+nAttachmentcategoryId+'&dialog=1&function='+sFunction+'&filetype='+nFiletype);
+				},1000);
+			}
+		}
 
 		/*
 		$("#tag_" + file.index + " .status img").attr("src", getStatusImg(2));
