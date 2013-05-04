@@ -7,7 +7,7 @@ var uploadPlugin = function (name) {
 	this.sysParameter = {
 		"upload_url": D.U('home://attachment/flash_upload'),
 		"file_post_name": "Filedata",
-		"post_params": {"hash":sHash,"auth":sAuth,"user_id":nUserid,"user_name":sUsername,'attachmentcategory_id':nAttachmentcategoryId},
+		"post_params": {"__hash__":sHash,"__auth__":sAuth,"user_id":nUserid,"user_name":sUsername,'attachmentcategory_id':nAttachmentcategoryId,'__PHPSESSID__':sPHPSESSID},
 		"http_success": [201, 201, 203],
 		"use_query_string": false,
 		"assume_success_timeout": 0,

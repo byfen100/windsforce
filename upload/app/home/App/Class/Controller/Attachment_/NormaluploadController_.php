@@ -4,11 +4,12 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入附件上传函数 */
+require(Core_Extend::includeFile('function/Upload_Extend'));
+
 class NormaluploadController extends Controller{
 
 	public function index(){
-		require(Core_Extend::includeFile('function/Upload_Extend'));
-
 		try{
 			$nAttachmentcategoryid=intval(G::getGpc('attachmentcategory_id'));
 

@@ -9,17 +9,12 @@ require_once(Core_Extend::includeFile('function/Attachment_Extend'));
 class AttachmentController extends InitController{
 		
 	public function init__(){
-		// 读取发送过来的COOKIE
-		$sHash=trim(G::getGpc('hash'));
-		$sAuth=trim(G::getGpc('auth'));
-		if(!empty($sHash) && !empty($sAuth)){
-			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',$sHash);
-			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth',$sAuth);
-		}
+		// 初始化flash上传数据
+		Core_Extend::flashuploadInit();
 
 		parent::init__();
 
-		if(!in_array(ACTION_NAME,array('index','attachment','attachmentcategory','show','mp3list','get_ajaximg','fullplay_frame','playout'))){
+		if(!in_array(ACTION_NAME,array('index','attachment','attachmentcategory','show','mp3list','get_ajaximg','fullplay_frame','playout','flash_upload'))){
 			$this->is_login();
 		}else{
 			if(!Home_Extend::getVisiteallowed('attachment')){

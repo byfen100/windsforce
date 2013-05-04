@@ -1623,4 +1623,52 @@ WINDSFORCE;
 		}
 	}
 
+	/**
+	 * Flash批量上传相关
+	 */
+	static public function flashuploadInit(){
+		// 读取发送过来的COOKIE
+		$sHash=trim(G::getGpc('__hash__'));
+		$sAuth=trim(G::getGpc('__auth__'));
+		$sPHPSESSID=trim(G::getGpc('__PHPSESSID__'));
+
+		if(!empty($sHash) && !empty($sAuth)){
+			session_id($sPHPSESSID);
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',$sHash);
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth',$sAuth);
+		}
+	}
+
+	static public function flashuploadAuth(){
+		// 解析auth数据，判断是否存在
+		$sHash=trim(G::getGpc('__hash__'));
+		$sAuth=trim(G::getGpc('__auth__'));
+
+		$bSessionExists=false;
+		list($nUserId,$sPassword)=$sAuth?explode("\t",G::authCode($sAuth,true,NULL,86400)):array('','');
+		
+		if($sHash){
+			if($nUserId){
+				$arrSessionData=SessionModel::F('session_hash=? AND user_id=?',$sHash,$nUserId)->asArray()->query();
+
+				if(!empty($arrSessionData['user_id'])){
+					$arrUserInformation=UserModel::F('user_id=? AND user_password=?',$nUserId,$sPassword)->getOne();
+					
+					if($arrUserInformation['user_id']){
+						$bSessionExists=true;
+					}
+				}
+			}else{
+				$arrUserInformation=array();
+
+				$arrSessionData=SessionModel::F('session_hash=?',$sHash)->getOne();
+				if(!empty($arrSessionData['user_id'])){
+					$bSessionExists=true;
+				}
+			}
+		}
+
+		return $bSessionExists;
+	}
+
 }
