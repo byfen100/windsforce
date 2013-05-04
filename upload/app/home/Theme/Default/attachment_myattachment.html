@@ -13,12 +13,13 @@ function saveAttachment(){
 		'ajax=1&attachment_name='+encodeURIComponent($('#attachment_name').val())+
 		'&attachment_alt='+encodeURIComponent( $('#attachment_alt').val())+
 		'&attachment_description='+encodeURIComponent( $('#attachment_description').val())+
-		'&attachment_id='+ $('#attachment_id').val(),'result',
+		'&attachment_id='+ $('#attachment_id').val()+'&attachmentcategory_id='+$('#attachmentcategory_id').val(),'result',
 		function(data,status){
 			if(status==1){
 				$('#attachment_name_'+id).text(subStr(data.attachment_name,15));
 				$('#attachment_description_'+id).text(data.attachment_description?subStr(data.attachment_description,32):'<!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>-->');
 				oEditNewattachment.close();
+				setTimeout("window.location.reload();",1000);
 				return true;
 			}
 		}

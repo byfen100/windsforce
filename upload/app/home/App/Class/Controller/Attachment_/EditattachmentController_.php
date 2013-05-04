@@ -22,7 +22,11 @@ class EditattachmentController extends Controller{
 			$this->E(Dyhb::L('你不能编辑别人的附件','Controller/Attachment'));
 		}
 
+		// 读取我的专辑
+		$arrAttachmentcategorys=AttachmentcategoryModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->order('attachmentcategory_sort DESC,create_dateline DESC')->getAll();
+
 		$this->assign('oAttachment',$oAttachment);
+		$this->assign('arrAttachmentcategorys',$arrAttachmentcategorys);
 
 		$this->display('attachment+editattachment');
 	}
@@ -32,11 +36,13 @@ class EditattachmentController extends Controller{
 		$sAttachmentname=trim(G::getGpc('attachment_name','G'));
 		$sAttachmentalt=trim(G::getGpc('attachment_alt','G'));
 		$sAttachmentdescription=trim(G::getGpc('attachment_description','G'));
+		$nAttachmentcategoryid=intval(G::getGpc('attachmentcategory_id','G'));
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentid)->getOne();
 		$oAttachment->attachment_name=$sAttachmentname;
 		$oAttachment->attachment_alt=$sAttachmentalt;
 		$oAttachment->attachment_description=$sAttachmentdescription;
+		$oAttachment->attachmentcategory_id=$nAttachmentcategoryid;
 		$oAttachment->save(0,'update');
 
 		if($oAttachment->isError()){

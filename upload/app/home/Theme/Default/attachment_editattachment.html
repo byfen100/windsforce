@@ -22,6 +22,17 @@
 								<td><input class="span5" id="attachment_name" name="attachment_name" value="<!--{$oAttachment['attachment_name']}-->" type="text"></td>
 							</tr>
 							<tr>
+								<td><!--<lang package='Template/Attachment'>-->附件专辑<!--</lang>--></td>
+								<td>
+									<select name="attachmentcategory_id" id="attachmentcategory_id">
+										<option value="0"><!--<lang package='Template/Attachment'>-->请选择专辑<!--</lang>--></option>
+										<!--<foreach for=arrAttachmentcategorys value=oAttachmentcategory>-->
+										<option value="<!--{$oAttachmentcategory['attachmentcategory_id']}-->" <!--{if $oAttachment['attachmentcategory_id']==$oAttachmentcategory['attachmentcategory_id']}-->selected<!--{/if}-->><!--{$oAttachmentcategory['attachmentcategory_name']}--></option>
+										<!--</foreach>-->
+									</select>
+								</td>
+							</tr>
+							<tr>
 								<td><!--<lang package='Template/Attachment'>-->替代文本<!--</lang>--></td>
 								<td><input class="span5" id="attachment_alt" name="attachment_alt" value="<!--{$oAttachment['attachment_alt']}-->" type="text"></td>
 							</tr>
