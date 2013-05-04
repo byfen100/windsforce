@@ -15,6 +15,10 @@ class AttachmentinfoController extends Controller{
 		$sFunction=trim(G::getGpc('function'));
 		$nFiletype=intval(G::getGpc('filetype'));
 
+		if(!$nFiletype){
+			$nFiletype=0;
+		}
+
 		if(empty($sCookieHashcode)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));
 			$this->E(Dyhb::L('附件信息编辑页面已过期','Controller/Attachment'));

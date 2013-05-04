@@ -19,7 +19,7 @@ class FlashinfoController extends Controller{
 		$sUploadids=implode(',',$arrUploadids);
 
 		if($nDialog==1){
-			$this->U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&functon='.$sFunction.($nFiletype==1?'&filetype='.$nFiletype:''));
+			$this->U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction.($nFiletype==1?'&filetype='.$nFiletype:''));
 		}else{
 			$this->U('home://attachment/attachmentinfo?id='.$sUploadids.'&hash='.$sHashcode.'&cid='.$nAttachmentcategoryid);
 		}

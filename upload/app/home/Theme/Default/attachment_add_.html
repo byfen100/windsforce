@@ -46,7 +46,7 @@ function createAttachmentcategory(nSelectedIndex,sId){
 	if(nSelectedIndex=='new_category'){
 		oEditNewattachmentcategory=windsforceAjax(D.U('home://attachment/new_attachmentcategory'),'<!--<lang package='Template/Attachment'>-->新建专辑<!--</lang>-->','',saveNewattachmentcategory,cancelNewattachmentcategory,600,200);
 	}else{
-		uploadobject.addPostParam( 'attachmentcategory_id', nSelectedIndex);
+		uploadobject.addPostParam('attachmentcategory_id',nSelectedIndex);
 	}
 }
 
@@ -61,7 +61,7 @@ function saveNewattachmentcategory(){
 				$("#attachmentcategory_id").find("option:selected").text( data.attachmentcategory_name );
 				$("#attachmentcategory_id_flash").find("option:selected").val( data.attachmentcategory_id );
 				$("#attachmentcategory_id_flash").find("option:selected").text( data.attachmentcategory_name );
-				uploadobject.addPostParam ( 'attachmentcategory_id', data.attachmentcategory_id);
+				uploadobject.addPostParam('attachmentcategory_id',data.attachmentcategory_id);
 				oEditNewattachmentcategory.close();
 				return true;
 			}
