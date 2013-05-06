@@ -35,7 +35,7 @@ class UsertopController extends Controller{
 	}
 
 	protected function get_activeuser($nTopusernum){
-		$arrActiveusers=UserModel::F('user_status=?',1)->order('update_dateline DESC')->limit(0,$nTopusernum)->getAll();
+		$arrActiveusers=UserModel::F('user_status=?',1)->order('user_lastlogintime DESC')->limit(0,$nTopusernum)->getAll();
 		$this->assign('arrActiveusers',$arrActiveusers);
 	}
 

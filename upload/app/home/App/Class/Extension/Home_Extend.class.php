@@ -26,7 +26,7 @@ class Home_Extend{
 			$nHomeactiveusernum=1;
 		}
 		
-		$arrActiveusers=UserModel::F()->where('user_status=?',1)->order('update_dateline DESC')->limit(0,$nHomeactiveusernum)->getAll();
+		$arrActiveusers=UserModel::F()->where('user_status=?',1)->order('user_lastlogintime DESC')->limit(0,$nHomeactiveusernum)->getAll();
 		return $arrActiveusers;
 	}
 
