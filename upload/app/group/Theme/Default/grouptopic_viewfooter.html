@@ -1,4 +1,4 @@
-			<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group)}-->
+			<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group) || Groupadmin_Extend+checkTopicmove()}-->
 			<div class="span12" style="margin-bottom:15px;">
 				<div>
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletetopic'))}-->
@@ -43,6 +43,10 @@
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@colortopic'))}-->
 					<a onclick="modTopiccolor();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->高亮<!--</lang>--></a>
+					<span class="pipe">|</span>
+					<!--{/if}-->
+					<!--{if Groupadmin_Extend+checkTopicmove()}-->
+					<a onclick="modTopicmove();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->帖子移动<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Core_Extend+isAdmin()}-->

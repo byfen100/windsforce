@@ -11,7 +11,7 @@ class GrouptopicadminController extends InitController{
 
 		$this->is_login();
 
-		$nGroupid=intval(G::getGpc('groupid','G'));
+		$nGroupid=intval(G::getGpc('groupid'));
 
 		try{
 			// 验证小组权限
@@ -67,6 +67,14 @@ class GrouptopicadminController extends InitController{
 
 	public function hidetopic(){
 		Core_Extend::doControllerAction('Grouptopicadmin@Hidetopic','index');
+	}
+
+	public function movetopic_dialog(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Movetopicdialog','index');
+	}
+
+	public function movetopic(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Movetopic','index');
 	}
 
 	public function categorytopic_dialog(){

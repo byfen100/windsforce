@@ -58,6 +58,24 @@ class Groupadmin_Extend{
 		return $bAllowedEdittopic;
 	}
 
+	static public function checkTopicmove(){
+		if(Core_Extend::isAdmin()){
+			return true;
+		}
+		
+		if(!Core_Extend::checkRbac('group@grouptopicadmin@movetopic')){
+			return false;
+		}
+
+		// 再次限制，仅管理员（前提是已经授权）和后台超级管理员可以执行
+		$oUserrole=UserroleModel::F('user_id=? AND role_id=1',$GLOBALS['___login___']['user_id'])->getOne();
+		if(!empty($oUserrole['user_id'])){
+			return true;
+		}
+
+		return false;
+	}
+
 	static public function checkCommentRbac($oGroup,$oComment){
 		if(!Core_Extend::checkRbac('group@grouptopic@editcommenttopic_dialog')){
 			return false;
@@ -124,6 +142,7 @@ class Groupadmin_Extend{
 
 		if(!is_object($oGroup)){
 			$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$oGroup)->getOne();
+			
 			if(empty($oGroup['group_id'])){
 				Dyhb::E(Dyhb::L('小组不存在或者还在审核中','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend'));
 			}
@@ -147,7 +166,7 @@ class Groupadmin_Extend{
 					Dyhb::E(Dyhb::L('只有该小组成员才能发帖','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend').'&nbsp;<span id="listgroup_'.$oGroup['group_id'].'" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup('.$oGroup['group_id'].',\'listgroup_'.$oGroup['group_id'].'\');">'.Dyhb::L('我要加入','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend').'</a></span>');
 				}
 			}elseif($oGroup->group_ispost==1){
-				$this->E(Dyhb::L('该小组目前拒绝任何人发帖','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend'));
+				Dyhb::E(Dyhb::L('该小组目前拒绝任何人发帖','__APPGROUP_COMMON_LANG__@Function/Groupadmin_Extend'));
 			}
 		}
 

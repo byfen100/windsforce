@@ -21,8 +21,8 @@ DROP TABLE IF EXISTS `#@__group`;
 CREATE TABLE `#@__group` (
   `group_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '小组ID',
   `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `group_name` char(32) NOT NULL DEFAULT '' COMMENT '群组名字',
-  `group_nikename` char(32) NOT NULL DEFAULT '' COMMENT '小组英文名称',
+  `group_name` char(32) NOT NULL DEFAULT '' COMMENT '小组英文名称',
+  `group_nikename` char(32) NOT NULL DEFAULT '' COMMENT '群组别名',
   `group_sort` smallint(6) NOT NULL DEFAULT '0' COMMENT '群组排序',
   `group_description` text NOT NULL COMMENT '小组介绍',
   `group_listdescription` varchar(300) NOT NULL COMMENT '列表小组介绍',

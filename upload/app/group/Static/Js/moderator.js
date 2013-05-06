@@ -178,6 +178,12 @@ function modTopiccolor(){
 	modTopiccommon('colortopic');
 }
 
+/** 移动主题 */
+function modTopicmove(){
+	modTopiccommon('movetopic');
+}
+
+
 /** 主题回帖通用代码管理 */
 var sCurrentActionComment='';
 function modCommentcommon(sAction,sExtra){

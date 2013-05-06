@@ -28,7 +28,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 <!--{/script}-->
 <div id="forumnew" style="display:none"></div>
 
-<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup)}-->
+<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup) || Groupadmin_Extend+checkTopicmove()}-->
 <script src="<!--{:__APPPUB__}-->/Js/moderator.js"></script>
 <!--{/if}-->
 
@@ -147,7 +147,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 														<p class="title">
 															<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
 															<img src="<!--{:Appt::path('sign_warning.png')}-->" title="<!--<lang package='Template/Topiclist'>-->待审核主题<!--</lang>-->"/>&nbsp;<!--{/if}-->
-															<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
+															<!--{if (Groupadmin_Extend+checkTopicadminRbac($oGroup) || Groupadmin_Extend+checkTopicmove()) && $oGrouptopic['group_id']==$oGroup['group_id']}--><input type="checkbox" value="<!--{$oGrouptopic['grouptopic_id']}-->" name="moderate[]" onclick="tmodClick(this)">&nbsp;
 															<!--{/if}-->
 															<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
 															<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
@@ -202,7 +202,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 											</tbody>
 										</table>
 
-										<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup)}-->
+										<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup) || Groupadmin_Extend+checkTopicmove()}-->
 										<div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display: none;">
 											<label class="checkbox right checkbox_checkall">
 												<input type="checkbox" name="chkall" onclick="if(!($WF('modActionSelectnum').innerHTML=nModclickcount=checkAll('topic_list_box',this.checked))) {$WF('modActionSelect').style.display = 'none';}" /><!--<lang package='Template/Groupadmin'>-->全选<!--</lang>-->
@@ -221,6 +221,10 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@hidetopic'))}-->
 													<strong><a href="javascript:void(0);" onclick="tmodTopics('hidetopic');return false;"><!--<lang package='Template/Groupadmin'>-->隐藏显示<!--</lang>--></a></strong>
+													<!--{/if}-->
+													<!--{if Groupadmin_Extend+checkTopicmove()}-->
+													<span class="pipe">|</span>
+													<strong><a href="javascript:void(0);" onclick="tmodTopics('movetopic');return false;"><!--<lang package='Template/Groupadmin'>-->帖子移动<!--</lang>--></a></strong>
 													<!--{/if}-->
 												</p>
 												<p>
