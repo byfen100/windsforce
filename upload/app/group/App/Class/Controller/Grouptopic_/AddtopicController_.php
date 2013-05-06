@@ -113,6 +113,8 @@ class AddtopicController extends GlobalchildController{
 		GroupoptionModel::uploadOption('group_topictodaynum',$GLOBALS['_cache_']['group_option']['group_topictodaynum']+1);
 		GroupoptionModel::uploadOption('group_totaltodaynum',$GLOBALS['_cache_']['group_option']['group_totaltodaynum']+1);
 
+		$this->cache_site_();
+
 		// 发送feed
 		$sFeedtemplate='<div class="feed_addgrouptopic"><span class="feed_title">'.Dyhb::L('发布了一篇帖子','Controller/Grouptopic').'&nbsp;<a href="{@grouptopic_link}">'.$oGrouptopic['grouptopic_title'].'</a></span><div class="feed_content">{grouptopic_message}</div><div class="feed_action"><a href="{@grouptopic_link}#comments">'.Dyhb::L('回复','Controller/Grouptopic').'</a></div></div>';
 
@@ -155,6 +157,13 @@ class AddtopicController extends GlobalchildController{
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);
 
 		$this->A(array('url'=>$sUrl),Dyhb::L('发布帖子成功','Controller/Grouptopic'),1);
+	}
+
+	protected function cache_site_(){
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache("group_site");
 	}
 
 }

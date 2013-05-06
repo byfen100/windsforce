@@ -120,6 +120,9 @@ class UserController extends InitController{
 			$oUserrole->getErrorMessage();
 		}
 
+		// 保存home今日数据
+		OptionModel::uploadOption('todayusernum',$GLOBALS['_option_']['todayusernum']+1);
+
 		$this->cache_site_();
 	}
 

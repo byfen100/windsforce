@@ -19,6 +19,10 @@ class NormaluploadController extends Controller{
 			$arrUploadids=Upload_Extend::uploadNormal();
 			$sUploadids=implode(',',$arrUploadids);
 
+			// 保存home今日数据
+			OptionModel::uploadOption('todayattachmentnum',$GLOBALS['_option_']['todayattachmentnum']+count($arrUploadids));
+			OptionModel::uploadOption('todaytotalnum',$GLOBALS['_option_']['todaytotalnum']+count($arrUploadids));
+
 			$this->cache_site_();
 
 			// 更新积分

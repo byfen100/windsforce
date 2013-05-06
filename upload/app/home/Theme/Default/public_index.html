@@ -48,15 +48,33 @@ $(document).ready(function(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>--></li>
-			<li style='width:auto;text-align:right;float:right;overflow:hidden;'>
-				<!--<lang package='Template/Public'>-->会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><b><!--{$arrSite['user']}--></b></a><span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->新注册会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/newuser')}-->" <!--{if $arrSite['newuser']>0}-->class="public_todaynum"<!--{/if}-->><b><!--{$arrSite['newuser']}--></b></a><span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->应用<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://apps/index')}-->"><b><!--{$arrSite['app']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefresh']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefreshcomment']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
-				<!--<lang package='Template/Public'>-->附件<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->"><b><!--{$arrSite['attachment']}--></b></a>
-			</li>
 		</ul>
+
+		<div class="row">
+			<div class="span12">
+				<div class="alert alert-success">
+					<div class="row">
+						<div class="span6">
+							<!--<lang package='Template/Public'>-->今日发布<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todaytotalnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todaytotalnum']}--></b>&nbsp;<span class='divider'>=</span>&nbsp;
+							<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayhomefreshnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayhomefreshnum']}--></b>&nbsp;<span class='divider'>+</span>&nbsp;
+							<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayhomefreshcommentnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayhomefreshcommentnum']}--></b>&nbsp;<span class='divider'>+</span>&nbsp;
+							<!--<lang package='Template/Public'>-->附件<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayattachmentnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayattachmentnum']}--></b>&nbsp;
+							&nbsp;<span class='divider'>|</span>&nbsp;
+							<!--<lang package='Template/Public'>-->新注册会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/newuser')}-->" <!--{if $GLOBALS['_option_']['todayusernum']>0}-->class="public_todaynum"<!--{/if}-->><b><!--{$GLOBALS['_option_']['todayusernum']}--></b></a>
+						</div>
+						<div class="span5" style="text-align:right;float:right;">
+							<!--<lang package='Template/Public'>-->应用<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://apps/index')}-->"><b><!--{$arrSite['app']}--></b></a>
+							&nbsp;<span class='divider'>|</span>&nbsp;
+							<!--<lang package='Template/Public'>-->会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><b><!--{$arrSite['user']}--></b></a>&nbsp;<span class='divider'>|</span>&nbsp;
+							<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefresh']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
+							<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefreshcomment']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
+							<!--<lang package='Template/Public'>-->附件<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->"><b><!--{$arrSite['attachment']}--></b></a>
+						</div>
+						<span class="clearfix">&nbsp;</span>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="span8">

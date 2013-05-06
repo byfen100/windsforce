@@ -4,4 +4,5 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 清理网站访问推广数据 */
 Dyhb::instance('PromotionModel')->deleteAll();

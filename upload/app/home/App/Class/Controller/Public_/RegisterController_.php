@@ -157,6 +157,9 @@ class RegisterController extends GlobalchildController{
 				$oUserrole->getErrorMessage();
 			}
 
+			// 保存home今日数据
+			OptionModel::uploadOption('todayusernum',$GLOBALS['_option_']['todayusernum']+1);
+
 			$this->cache_site_();
 
 			// 注册推广

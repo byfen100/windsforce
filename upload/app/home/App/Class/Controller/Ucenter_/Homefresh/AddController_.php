@@ -119,6 +119,10 @@ class AddController extends GlobalchildController{
 			$arrHomefreshData['url']=Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id']);
 			$arrHomefreshData['usericon']=Core_Extend::getUsericon($oHomefresh['user_id']);
 
+			// 保存home今日数据
+			OptionModel::uploadOption('todayhomefreshnum',$GLOBALS['_option_']['todayhomefreshnum']+1);
+			OptionModel::uploadOption('todaytotalnum',$GLOBALS['_option_']['todaytotalnum']+1);
+
 			$this->cache_site_();
 
 			// 更新积分

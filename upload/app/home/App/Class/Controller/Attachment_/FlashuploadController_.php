@@ -26,6 +26,10 @@ class FlashuploadController extends Controller{
 			$arrUploadids=Upload_Extend::uploadFlash();
 			echo ($arrUploadids[0]);
 
+			// 保存home今日数据
+			OptionModel::uploadOption('todayattachmentnum',$GLOBALS['_option_']['todayattachmentnum']+1);
+			OptionModel::uploadOption('todaytotalnum',$GLOBALS['_option_']['todaytotalnum']+1);
+
 			$this->cache_site_();
 
 			// 更新积分

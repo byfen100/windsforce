@@ -30,7 +30,7 @@ class PublicController extends InitController{
 		Core_Extend::loadCache('site');
 		$arrStaticInfo=array(
 			array(Dyhb::L('用户数量','Controller/Public'),$GLOBALS['_cache_']['site']['user'],Core_Extend::windsforceOuter('app=home&c=stat&a=userlist')),
-			array(Dyhb::L('新注册用户数量','Controller/Public'),$GLOBALS['_cache_']['site']['newuser'],Core_Extend::windsforceOuter('app=home&c=stat&a=newuser')),
+			array(Dyhb::L('新注册用户数量','Controller/Public'),$GLOBALS['_option_']['todayusernum'],Core_Extend::windsforceOuter('app=home&c=stat&a=newuser')),
 			array(Dyhb::L('应用数量','Controller/Public'),$GLOBALS['_cache_']['site']['app'],Core_Extend::windsforceOuter('app=home&c=apps&a=index')),
 			array(Dyhb::L('新鲜事数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefresh'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),
 			array(Dyhb::L('评论数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefreshcomment'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),

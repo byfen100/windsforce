@@ -276,6 +276,10 @@ class AddcommentController extends GlobalchildController{
 				'#comment-'.$oHomefreshcomment['homefreshcomment_id'];
 		}
 
+		// 保存home今日数据
+		OptionModel::uploadOption('todayhomefreshcommentnum',$GLOBALS['_option_']['todayhomefreshcommentnum']+1);
+		OptionModel::uploadOption('todaytotalnum',$GLOBALS['_option_']['todaytotalnum']+1);
+
 		$this->cache_site_();
 
 		// 更新积分

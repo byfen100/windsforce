@@ -10,7 +10,11 @@ require_once(Core_Extend::includeFile('function/Attachment_Extend'));
 class IndexController extends Controller{
 
 	public function index(){
+		/** 小组分类ID */
 		$nCid=intval(G::getGpc('cid','G'));
+
+		// 站点统计数据
+		Core_Extend::loadCache('group_site');
 
 		$nStyle=Dyhb::cookie('group_homepagestyle')?intval(Dyhb::cookie('group_homepagestyle')):$GLOBALS['_cache_']['group_option']['group_homepagestyle'];
 		

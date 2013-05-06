@@ -16,9 +16,6 @@ class UpdateCacheSite{
 		$arrData['user']=UserModel::F()->all()->getCounts();
 		$arrData['adminuser']=UserModel::F()->where(array('user_id'=>array('IN',Dyhb::C('ADMIN_USERID'))))->all()->getCounts();
 
-		$nCurrentTimeStamp=CURRENT_TIMESTAMP;
-		$arrData['newuser']=UserModel::F("{$nCurrentTimeStamp}-create_dateline<86400")->all()->getCounts();
-
 		Core_Extend::saveSyscache('site',$arrData);
 	}
 

@@ -98,6 +98,7 @@ return array(
 '2c09b34b87bb3fd9ea39449b90721195'=>"角色分组",
 'a8b0c20416853bda54120bf19477ad11'=>"全部",
 '5bcc10f83521125e2b2bdacf2dfd344d'=>"全部角色",
+'0d9be02fe32c6e86fdd2e148c6b47dd8'=>"今日发布",
 )
 
 ?>

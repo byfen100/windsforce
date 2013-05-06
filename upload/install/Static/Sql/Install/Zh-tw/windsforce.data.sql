@@ -670,7 +670,12 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('online_listshowip', '1'),
 ('online_commonshowip', '1'),
 ('site_favicon', ''),
-('fansmany_minnum_fan', '100');
+('fansmany_minnum_fan', '100'),
+('todayusernum', '0'),
+('todaytotalnum', '0'),
+('todayhomefreshnum', '0'),
+('todayhomefreshcommentnum', '0'),
+('todayattachmentnum', '0');
 
 -- --------------------------------------------------------
 
