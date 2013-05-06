@@ -243,8 +243,6 @@ class Core_Extend{
 	}
 
 	static public function cacheData($CacheNames,$sForcetype=null){
-		static $bIsFilecache=null,$bAllowMem=null;
-
 		if($sForcetype===null && empty($sForcetype)){
 			if(!isset($bIsFilecache)){
 				$bIsFilecache=$GLOBALS['_commonConfig_']['RUNTIME_CACHE_BACKEND']=='FileCache';

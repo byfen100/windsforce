@@ -10,66 +10,26 @@ class UsertopController extends Controller{
 		if(!Home_Extend::getVisiteallowed('siteusertop')){
 			$this->E(Dyhb::L('你没有权限访问会员排行','Controller/Stat'));
 		}
-		
-		$nTopusernum=$GLOBALS['_cache_']['home_option']['topuser_num'];
-		if($nTopusernum<1){
-			$nTopusernum=1;
-		}
+
+		// 读取统计缓存
+		Core_Extend::loadCache('usertop');
 
 		// 活跃用户
-		$this->get_activeuser($nTopusernum);
-
-		// 最新加入会员
-		$this->get_newuser($nTopusernum);
-
-		// 会员积分排行
-		$this->get_credituser($nTopusernum);
-
-		// 会员粉丝排行
-		$this->get_fanuser($nTopusernum);
-
-		// 会员在线时间
-		$this->get_oltimeuser($nTopusernum);
+		$this->assign('arrActiveusers',$GLOBALS['_cache_']['usertop']['active']);
 		
+		// 最新加入会员
+		$this->assign('arrNewusers',$GLOBALS['_cache_']['usertop']['new']);
+		
+		// 会员积分排行
+		$this->assign('arrCreditusers',$GLOBALS['_cache_']['usertop']['credit']);
+		
+		// 会员粉丝排行
+		$this->assign('arrFanusers',$GLOBALS['_cache_']['usertop']['fan']);
+		
+		// 会员在线时间
+		$this->assign('arrOltimeusers',$GLOBALS['_cache_']['usertop']['oltime']);
+
 		$this->display('stat+usertop');
-	}
-
-	protected function get_activeuser($nTopusernum){
-		$arrActiveusers=UserModel::F('user_status=?',1)->order('user_lastlogintime DESC')->limit(0,$nTopusernum)->getAll();
-		$this->assign('arrActiveusers',$arrActiveusers);
-	}
-
-	protected function get_newuser($nTopusernum){
-		$arrNewusers=UserModel::F('user_status=?',1)->order('create_dateline DESC')->limit(0,$nTopusernum)->getAll();
-		$this->assign('arrNewusers',$arrNewusers);
-	}
-
-	protected function get_credituser($nTopusernum){
-		$arrCreditusers=$this->get_userorder_('usercount_extendcredit1',$nTopusernum);
-		$this->assign('arrCreditusers',$arrCreditusers);
-	}
-
-	protected function get_fanuser($nTopusernum){
-		$arrFanusers=$this->get_userorder_('usercount_fans',$nTopusernum);
-		$this->assign('arrFanusers',$arrFanusers);
-	}
-
-	protected function get_oltimeuser($nTopusernum){
-		$arrOltimeusers=$this->get_userorder_('usercount_oltime',$nTopusernum);
-		$this->assign('arrOltimeusers',$arrOltimeusers);
-	}
-
-	protected function get_userorder_($sType,$nTopusernum){
-		$arrUsers=array();
-
-		$arrUsercounts=UsercountModel::F()->order($sType.' DESC')->limit(0,$nTopusernum)->getAll();
-		if(is_array($arrUsercounts)){
-			foreach($arrUsercounts as $oUsercount){
-				$arrUsers[]=UserModel::F('user_id=?',$oUsercount['user_id'])->getOne();
-			}
-		}
-
-		return $arrUsers;
 	}
 
 	public function usertop_title_(){

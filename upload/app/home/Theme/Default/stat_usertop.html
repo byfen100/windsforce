@@ -20,12 +20,12 @@
 				<hr/>
 				<p>
 					<ul class="thumbnails">
-						<!--<foreach for=arrActiveusers value=oUser>-->
+						<!--<foreach for=arrActiveusers value=arrUser>-->
 						<li class="span1">
 							<div class="thumbnail">
-								<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$oUser['update_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}-->"></a>
-								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$oUser['update_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($oUser['user_name'],0,3)}--></h5></a>
-								<center class="badge" style="text-align:center;"><!--{$oUser['user_id']}--></center>
+								<a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $arrUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$arrUser['user_lastlogintime']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}-->"></a>
+								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$arrUser['user_lastlogintime']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($arrUser['user_name'],0,3)}--></h5></a>
+								<center class="badge" style="text-align:center;"><!--{$arrUser['user_id']}--></center>
 							</div>
 						</li>
 						<!--</foreach>-->
@@ -36,12 +36,12 @@
 				<hr/>
 				<p>
 					<ul class="thumbnails">
-						<!--<foreach for=arrNewusers value=oUser>-->
+						<!--<foreach for=arrNewusers value=arrUser>-->
 						<li class="span1">
 							<div class="thumbnail">
-								<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$oUser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}-->"></a>
-								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$oUser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($oUser['user_name'],0,3)}--></h5></a>
-								<center class="badge" style="text-align:center;"><!--{$oUser['user_id']}--></center>
+								<a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $arrUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$arrUser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}-->"></a>
+								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->时间<!--</lang>--> <!--{$arrUser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($arrUser['user_name'],0,3)}--></h5></a>
+								<center class="badge" style="text-align:center;"><!--{$arrUser['user_id']}--></center>
 							</div>
 						</li>
 						<!--</foreach>-->
@@ -52,12 +52,12 @@
 				<hr/>
 				<p>
 					<ul class="thumbnails">
-						<!--<foreach for=arrCreditusers value=oUser>-->
+						<!--<foreach for=arrCreditusers value=arrUser>-->
 						<li class="span1">
 							<div class="thumbnail">
-								<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->积分<!--</lang>--> <!--{$oUser:usercount:usercount_extendcredit1}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}-->"></a>
-								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->积分<!--</lang>--> <!--{$oUser:usercount:usercount_extendcredit1}-->" href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($oUser['user_name'],0,3)}--></h5></a>
-								<center class="badge" style="text-align:center;"><!--{$oUser['user_id']}--></center>
+								<a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $arrUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->积分<!--</lang>--> <!--{$arrUser['data']}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}-->"></a>
+								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->积分<!--</lang>--> <!--{$arrUser['data']}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($arrUser['user_name'],0,3)}--></h5></a>
+								<center class="badge" style="text-align:center;"><!--{$arrUser['user_id']}--></center>
 							</div>
 						</li>
 						<!--</foreach>-->
@@ -68,12 +68,12 @@
 				<hr/>
 				<p>
 					<ul class="thumbnails">
-						<!--<foreach for=arrFanusers value=oUser>-->
+						<!--<foreach for=arrFanusers value=arrUser>-->
 						<li class="span1">
 							<div class="thumbnail">
-								<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->粉丝<!--</lang>--> <!--{$oUser:usercount:usercount_fans}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}-->"></a>
-								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->粉丝<!--</lang>--> <!--{$oUser:usercount:usercount_fans}-->" href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($oUser['user_name'],0,3)}--></h5></a>
-								<center class="badge" style="text-align:center;"><!--{$oUser['user_id']}--></center>
+								<a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $arrUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->粉丝<!--</lang>--> <!--{$arrUser['data']}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}-->"></a>
+								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->粉丝<!--</lang>--> <!--{$arrUser['data']}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($arrUser['user_name'],0,3)}--></h5></a>
+								<center class="badge" style="text-align:center;"><!--{$arrUser['user_id']}--></center>
 							</div>
 						</li>
 						<!--</foreach>-->
@@ -84,12 +84,12 @@
 				<hr/>
 				<p>
 					<ul class="thumbnails">
-						<!--<foreach for=arrOltimeusers value=oUser>-->
+						<!--<foreach for=arrOltimeusers value=arrUser>-->
 						<li class="span1">
 							<div class="thumbnail">
-								<a href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->在线时间<!--</lang>--> <!--{$oUser:usercount:usercount_oltime}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}-->"></a>
-								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$oUser['user_name']}--> | <!--<lang package='Template/Stat'>-->在线时间<!--</lang>--> <!--{$oUser:usercount:usercount_oltime}-->" href="<!--{:Dyhb::U('home://space@?id='.$oUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($oUser['user_name'],0,3)}--></h5></a>
-								<center class="badge" style="text-align:center;"><!--{$oUser['user_id']}--></center>
+								<a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $arrUser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->在线时间<!--</lang>--> <!--{$arrUser['data']}-->" alt="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}-->"></a>
+								<a rel="tooltip" title="<!--<lang package='Template/Stat'>-->用户<!--</lang>--> <!--{$arrUser['user_name']}--> | <!--<lang package='Template/Stat'>-->在线时间<!--</lang>--> <!--{$arrUser['data']}-->" href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString($arrUser['user_name'],0,3)}--></h5></a>
+								<center class="badge" style="text-align:center;"><!--{$arrUser['user_id']}--></center>
 							</div>
 						</li>
 						<!--</foreach>-->

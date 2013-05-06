@@ -105,8 +105,8 @@ $(document).ready(function(){
 							<!--<foreach for=arrActiveusers value=oActiveuser>-->
 							<li class="span1">
 								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oActiveuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['update_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}-->"></a>
-									<a rel="tooltip" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['update_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oActiveuser['user_name']|G+subString=0,3}--></h5></a>
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oActiveuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['user_lastlogintime']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['user_lastlogintime']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oActiveuser['user_name']|G+subString=0,3}--></h5></a>
 								</div>
 							</li>
 							<!--</foreach>-->
