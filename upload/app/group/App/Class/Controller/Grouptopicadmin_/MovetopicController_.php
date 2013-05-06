@@ -9,7 +9,7 @@ class MovetopicController extends Controller{
 	public function index(){
 		$sGrouptopics=trim(G::getGpc('grouptopics'));
 		$nGroupid=intval(G::getGpc('groupid'));
-		$sMovegroupid=intval(G::getGpc('move_groupid'));
+		$sMovegroupid=trim(G::getGpc('move_groupid'));
 		$sReason=trim(G::getGpc('reason'));
 
 		if(!Groupadmin_Extend::checkTopicmove()){
