@@ -42,7 +42,7 @@ class SociauserlocalController extends InitController{
 		if(!empty($oUser['user_id'])){
 			$oUserModel=Dyhb::instance('UserModel');
 			UserModel::M()->changeSettings('encode_type','cleartext');
-			$oUserModel->checkLogin($oUser['user_name'],$oUser['user_password'],false,'home');
+			$oUserModel->checkLoginCommon($oUser['user_name'],$oUser['user_password'],false,'home');
 			UserModel::M()->changeSettings('encode_type','authcode');
 		
 			if($oUserModel->isError()){
