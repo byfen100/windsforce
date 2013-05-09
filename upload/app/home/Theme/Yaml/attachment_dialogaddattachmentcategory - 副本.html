@@ -1,0 +1,43 @@
+<!--<include file="Core_Extend::template('cheader')" />-->
+
+		<!--<include file="attachment+dialogmenu" />-->
+
+		<div class="row">
+			<div class="span12">
+				<form class="form-inline" method="post" id="attachmentcategoryAdd" name="attachmentcategoryAdd" action="<!--{:Dyhb::U('home://attachment/dialog_attachmentcategorysave')}-->">
+					<div style="width:100%;">
+						<table width='100%' class="table" align="left">
+							<thead>
+								<th><!--<lang package='Template/Attachment'>-->专辑项<!--</lang>--></th>
+								<th><!--<lang package='Template/Attachment'>-->专辑值<!--</lang>--></th>
+							</thead>
+							<tbody>
+								<tr>
+									<td valign="top"><!--<lang package='Template/Attachment'>-->专辑排序<!--</lang>--></td>
+									<td><input type="text" name="attachmentcategory_compositor" id="attachmentcategory_compositor" class="span4" size="20" value="0" /></td>
+								</tr>
+								<tr>
+									<td valign="top"><!--<lang package='Template/Attachment'>-->专辑名字<!--</lang>--><em class="red">*</em></td>
+									<td><input type="text" name="attachmentcategory_name" id="attachmentcategory_name" size="20" value="" class="span4"/></td>
+								</tr>
+								<tr>
+									<td valign="top"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></td>
+									<td><textarea name="attachmentcategory_description" id="attachmentcategory_description" class="span4" size="20" rows="5"></textarea></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>
+										<input type="hidden" name="dialog" value="1">
+										<input type="hidden" name="function" value="<!--{$sFunction}-->">
+										<input type="hidden" name="filetype" value="<!--{$nFiletype}-->">
+										<button type="submit" class="btn btn-success"><!--<lang package='Template/Attachment'>-->保存专辑<!--</lang>--></button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('cfooter')" />-->

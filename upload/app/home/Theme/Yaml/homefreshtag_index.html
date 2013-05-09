@@ -1,0 +1,71 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template/Homefreshtag'>-->新鲜事话题<!--</lang>--></li>
+		</ul>
+
+		<div class="row">
+
+			<div class="span3">
+				<!--<include file="ucenter+sidebar" />-->
+			</div>
+
+			<div class="span9">
+				<div class="hero-unit">
+					<h4><!--<lang package='Template/Homefreshtag'>-->新鲜事话题<!--</lang>--></h4>
+				</div>
+				
+				<!--<include file="ucenter+homefreshfeedmenu" />-->
+				
+				<div class="tabb-menu">
+					<ul class="nav nav-tabs">
+						<li <!--{if !$sType}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag')}-->"><!--<lang package='Template/Homefreshtag'>-->我的话题<!--</lang>--></a></li>
+						<li <!--{if $sType=='all'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag?type=all')}-->"><!--<lang package='Template/Homefreshtag'>-->全部话题<!--</lang>--></a></li>
+						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tags')}-->"><!--<lang package='Template/Homefreshtag'>-->话题榜<!--</lang>--></a></li>
+					</ul>
+				</div>
+
+				<div class="homefreshtaglist-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th colspan="2"><!--<lang package='Template/Homefreshtag'>-->新鲜事话题<!--</lang>--></th>
+							</tr>
+						</thead>
+						<tbody id="homefreshtaglist_box">
+							<!--{if is_array($arrHomefreshtags)}-->
+							<!--<foreach for=arrHomefreshtags value=oHomefreshtag>-->
+							<tr id="homefreshtaglist_item_<!--{$oHomefreshtag['homefreshtag_id']}-->">
+								<td width="70px" style="text-align:center;">
+									<a title="<!--{$oHomefreshtag['homefreshtag_username']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshtag['user_id'])}-->">
+										<img src="<!--{:Core_Extend::avatar( $oHomefreshtag['user_id'],'small' )}-->" width="48px" height="48px" class="thumbnail" title="<!--{$oHomefreshtag['homefreshtag_username']}-->" alt="<!--{$oHomefreshtag['homefreshtag_username']}-->" style="margin:auto;"/>
+									</a>
+									<a title="<!--{$oHomefreshtag['homefreshtag_username']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oHomefreshtag['user_id'])}-->"><!--{$oHomefreshtag['homefreshtag_username']}--></a>
+								</td>
+								<td>
+									<p><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=ucenter&a=index&key='.urlencode($oHomefreshtag['homefreshtag_name']))}-->">#<!--{$oHomefreshtag['homefreshtag_name']}-->#</a></p>
+									<p>
+										<i class="icon-adjust"></i>&nbsp;<b><!--{$oHomefreshtag['homefreshtag_totalcount']}--></b>&nbsp;=&nbsp;
+										<i class="icon-user"></i>&nbsp;<b><!--{$oHomefreshtag['homefreshtag_usercount']}--></b>&nbsp;+&nbsp;
+										<i class="icon-envelope"></i>&nbsp;<b><!--{$oHomefreshtag['homefreshtag_homefreshcount']}--></b>
+									</p>
+									<p><b><!--{$oHomefreshtag['create_dateline']|Core_Extend+timeFormat}--></span></b><!--{:Core_Extend::newData($oHomefreshtag['create_dateline'],true)}-->
+								</td>
+							</tr>
+							<!--</foreach>-->
+							<!--{d*else}-->
+							<tr id="homefreshtag_no">
+								<td><p><!--<lang package='Template/Homefreshtag'>-->暂无任何新鲜事话题<!--</lang>--></p></td>
+							</tr>
+							<!--{/if}-->
+						</tbody>
+					</table>
+
+					<!--{$sPageNavbar}-->
+				</div>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

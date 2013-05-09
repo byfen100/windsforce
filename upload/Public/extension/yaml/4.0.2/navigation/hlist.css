@@ -20,11 +20,12 @@
 		/* (en) containing floats in IE */
 		/* (de) Einfassen der Floats im IE */
 		width:100%;
-		overflow:hidden;
+		/*overflow:hidden;*/
 		/* (en|de) Bugfix:IE - collapsing horizontal margins */
 		position:relative;
 		line-height:1em;
 		background: #222;
+		z-index:999;
 	}
 
 	.ym-hlist ul {
@@ -45,9 +46,17 @@
 		margin: 0 .25em 0 0;
 		padding:0;
 	}
+	
+	.dropmenu ul li {
+		/* (en|de) Bugfix:IE - Doubled Float Margin Bug */
+		/*display:inline;*/
+		list-style-type:none;
+		margin: 0 .25em 0 0;
+		padding:0;
+	}
 
 	.ym-hlist ul li a,
-	.ym-hlist ul li strong {
+	.ym-hlist ul li strong{
 		background:transparent;
 		color:#aaa;
 		display:block;
@@ -59,11 +68,19 @@
 		text-shadow: 0 1px 1px rgba(0,0,0,.5);
 		width:auto;
 	}
+	
+	.dropmenu ul li a,
+	.dropmenu ul li strong{
+		display:inline;
+		padding: 0 0.5em;
+		font-weight:normal;
+		text-decoration:none;
+	}
 
 	.ym-hlist ul li a:focus,
 	.ym-hlist ul li a:hover,
-	.ym-hlist ul li a:active  {
-		color: #ccc;
+	.ym-hlist ul li a:active{
+		color: #fff;
 		background:#666;
 		background: rgba(255,255,255,.25);
 		-webkit-border-radius: 0.2em;
@@ -72,25 +89,70 @@
 		text-decoration:none;
 		outline: 0 none;
 	}
+	
+	.dropmenu ul li a:focus,
+	.dropmenu ul li a:hover,
+	.dropmenu ul li a:active{
+		-webkit-border-radius: 0.2em;
+		-moz-border-radius: 0.2em;
+		border-radius: 0.2em;
+		text-decoration:none;
+		outline: 0 none;
+	}
 
-	.ym-hlist ul li.active {
+	.ym-hlist ul li.active,.dropmenu ul li.active {
 		background:#666;
 		background: rgba(255,255,255,.3);
 		-webkit-border-radius: 0.2em;
 		-moz-border-radius: 0.2em;
 		border-radius: 0.2em;
-		color: #fff;
+		color: #000;
 	}
 
-	.ym-hlist ul li.active strong,
-	.ym-hlist ul li.active a:focus,
-	.ym-hlist ul li.active a:hover,
-	.ym-hlist ul li.active a:active {
+	.ym-hlist li ul li strong,
+	.ym-hlist li ul li a:focus,
+	.ym-hlist li ul li a:hover,
+	.ym-hlist li ul li a:active,
+	.dropmenu li ul li strong,
+	.dropmenu li ul li a:focus,
+	.dropmenu li ul li a:hover,
+	.dropmenu li ul li a:active{
 		background:transparent;
 		color:#fff;
+		background:#666;
 		text-decoration:none;
 	}
 
+	.ym-hlist li ul,.dropmenu li ul{
+		position: absolute;
+		display: none;
+		width: 140px;
+		padding: 0px;
+		margin: 0px;
+		border-bottom: 1px solid #ccc;
+	}
+	.ym-hlist li ul li,.dropmenu li ul li{
+		padding:0;
+		margin:0;
+		border: 0;
+		float: none;
+	}
+	.ym-hlist li ul li a,.dropmenu li ul li a{
+		font-size:1em;
+	line-height: 2em;
+	  border: 1px solid #ccc;
+	  border-bottom: 0;
+	  white-space: nowrap;
+	  display:block;
+	  color: #000;
+	  text-transform: none;
+	  background: #ddd;
+	}
+
+	.ym-hlist ul li:hover ul,.dropmenu ul li:hover ul{
+		display: block;
+		background: #ddd;
+	}
 
 	/* search form -------------------------------------- */
 	.ym-searchform {
@@ -131,4 +193,5 @@
 		background: #5f5f5f;
 		background: rgba(255,255,255,.2);
 	}
+
 }

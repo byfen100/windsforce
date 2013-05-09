@@ -1,0 +1,10 @@
+		<div class="jquery_tabs">
+			<ul class="clearfix tabs-list">
+				<li class="first <!--{if in_array(ACTION_NAME,array('index','adminuser','newuser'))}-->current<!--{/if}-->"><a href="<!--{:Dyhb::U('home://stat/index')}-->"><!--<lang package='Template/Stat'>-->基本概况<!--</lang>--></a></li>
+				<li <!--{if in_array(ACTION_NAME,array('userlist','hometag','hometags'))}-->class="current"<!--{/if}-->><a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Stat'>-->会员列表<!--</lang>--></a></li>
+				<li <!--{if ACTION_NAME==='feed'}-->class="current"<!--{/if}-->><a href="<!--{:Dyhb::U('home://stat/feed')}-->"><!--<lang package='Template/Stat'>-->用户动态<!--</lang>--></a></li>
+				<li <!--{if ACTION_NAME==='explore'}-->class="current"<!--{/if}-->><a href="<!--{:Dyhb::U('home://stat/explore')}-->"><!--<lang package='Template/Stat'>-->随便看看<!--</lang>--></a></li>
+				<li class="last <!--{if ACTION_NAME==='usertop'}-->current<!--{/if}-->"><a href="<!--{:Dyhb::U('home://stat/usertop')}-->"><!--<lang package='Template/Stat'>-->用户排行<!--</lang>--></a></li>
+			</ul>
+			<div class="content"></div>
+		</div>

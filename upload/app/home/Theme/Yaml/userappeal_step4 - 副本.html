@@ -1,0 +1,37 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function appealTocomputer(id){
+	window.location.href=D.U('home://userappeal/tocomputer?id='+id+'&user_id=<!--{$sUserid|urlencode}-->');
+}
+
+function appealTomail(id){
+	window.location.href=D.U('home://userappeal/tomail?id='+id+'&user_id=<!--{$sUserid|urlencode}-->');
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Userappeal'>-->获取申诉回执编号<!--</lang>--></li>
+		</ul>
+
+		<!--<include file="userappeal+menu" />-->
+		
+		<div class="row">
+			<div class="span12">
+				<div class="well">
+					<h3><!--<lang package='__COMMON_LANG__@Template/Userappeal'>-->申诉表已提交<!--</lang>--></h3>
+					<p><!--<lang package='Template/Userappeal'>-->本次申诉回执编号<!--</lang>-->:<em class="red"><!--{$oAppeal['appeal_receiptnumber']}--></em></p>
+					<hr/>
+					<h3><!--<lang package='__COMMON_LANG__@Template/Userappeal'>-->保存回执编码<!--</lang>--></h3>
+					<p><input class="btn btn-success" id="appeal_tocomputer" name="appeal_tocomputer" type="button" value="<!--<lang package='__COMMON_LANG__@Template/Userappeal'>-->保存回执到电脑<!--</lang>-->"  onclick="appealTocomputer('<!--{$oAppeal->appeal_id}-->');">
+						<span class="pipe">|</span>
+						<input class="btn btn-success" id="appeal_tomail" name="appeal_tomail" type="button" value="<!--<lang package='__COMMON_LANG__@Template/Userappeal'>-->发送回执到邮箱<!--</lang>-->"  onclick="appealTomail('<!--{$oAppeal->appeal_id}-->');">
+					</p>
+					<p><!--<lang package='Template/Userappeal'>-->回执编号很重要，请牢记<!--</lang>--></p>
+				</div>
+				<p><a href="<!--{:Dyhb::U('home://public/index')}-->" class="btn"><i class="icon-share-alt"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->返回首页<!--</lang>--></a></p>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

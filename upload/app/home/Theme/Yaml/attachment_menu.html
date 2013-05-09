@@ -1,0 +1,17 @@
+		<div class="row">
+			<div class="span12">
+				<ul class="nav nav-pills">
+					<li <!--{if ACTION_NAME==='index'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template/Attachment'>-->首页聚焦<!--</lang>--></a></li>
+					<li <!--{if ACTION_NAME==='attachment' && G+getGpc('recommend','G')==1 && G+getGpc('photo','G')==1}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/attachment?recommend=1&photo=1')}-->"><!--<lang package='Template/Attachment'>-->推荐照片<!--</lang>--></a></li>
+					<li <!--{if ACTION_NAME==='attachment' && G+getGpc('recommend','G')==1 && G+getGpc('photo','G')==0}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/attachment?recommend=1&photo=0')}-->"><!--<lang package='Template/Attachment'>-->推荐附件<!--</lang>--></a></li>
+					<li <!--{if in_array(ACTION_NAME,array('attachment','show')) && !isset($_GET['recommend'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/attachment')}-->"><!--<lang package='Template/Attachment'>-->最新附件<!--</lang>--></a></li>
+					<li <!--{if ACTION_NAME==='attachmentcategory' && isset($_GET['recommend'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/attachmentcategory?recommend=1')}-->"><!--<lang package='Template/Attachment'>-->推荐专辑<!--</lang>--></a></li>
+					<li <!--{if in_array(ACTION_NAME,array('attachmentcategory')) && !isset($_GET['recommend'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/attachmentcategory')}-->"><!--<lang package='Template/Attachment'>-->最新专辑<!--</lang>--></a></li>
+					<!--{if $GLOBALS['___login___']!==false}-->
+					<li <!--{if in_array(ACTION_NAME,array('my_attachmentcategory'))}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/my_attachmentcategory')}-->"><!--<lang package='Template/Attachment'>-->我的专辑<!--</lang>--></a></li>
+					<li <!--{if in_array(ACTION_NAME,array('my_attachment'))}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/my_attachment')}-->"><!--<lang package='Template/Attachment'>-->我的附件<!--</lang>--></a></li>
+					<li <!--{if in_array(ACTION_NAME,array('add','attachmentinfo'))}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://attachment/add')}-->"><!--<lang package='Template/Attachment'>-->上传附件<!--</lang>--></a></li>
+					<!--{/if}-->
+				</ul>
+			</div>
+		</div>

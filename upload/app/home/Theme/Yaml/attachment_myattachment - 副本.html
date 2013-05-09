@@ -1,0 +1,208 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+var oEditNewattachment;
+
+function editAttachment(id){
+	oEditNewattachment=windsforceAjax(D.U('home://attachment/edit_attachment?id='+id),'<!--<lang package='Template/Attachment'>-->编辑附件<!--</lang>-->','',saveAttachment,'',600,300);
+}
+
+function saveAttachment(){
+	var id=$('#attachment_id').val();
+	Dyhb.AjaxSend(D.U('home://attachment/edit_attachmentsave'),
+		'ajax=1&attachment_name='+encodeURIComponent($('#attachment_name').val())+
+		'&attachment_alt='+encodeURIComponent( $('#attachment_alt').val())+
+		'&attachment_description='+encodeURIComponent( $('#attachment_description').val())+
+		'&attachment_id='+ $('#attachment_id').val()+'&attachmentcategory_id='+$('#attachmentcategory_id').val(),'result',
+		function(data,status){
+			if(status==1){
+				$('#attachment_name_'+id).text(subStr(data.attachment_name,15));
+				$('#attachment_description_'+id).text(data.attachment_description?subStr(data.attachment_description,32):'<!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>-->');
+				oEditNewattachment.close();
+				setTimeout("window.location.reload();",1000);
+				return true;
+			}
+		}
+	);
+
+	return false;
+}
+
+function deleteAttachment(id){
+	windsforceConfirm('<!--<lang package='Template/Attachment'>-->你确定要删除附件吗?<!--</lang>-->',function(){
+		Dyhb.AjaxSend(D.U('home://attachment/delete_attachment?id='+id),
+			'ajax=1','',
+			function(data,status){
+				if(status==1){
+					$('#attachment_item_'+id).remove();
+					return true;
+				}
+			}
+		);
+		return true;
+	});
+
+	return false;
+}
+
+function recommendAttachment(id){
+	Dyhb.AjaxSend(D.U('home://attachment/recommend_attachment?id='+id),'ajax=1','',function(data,status){
+		if(status==1){
+			$('#recommend_item_'+id).html('<!--<lang package='Template/Attachment'>-->推荐成功<!--</lang>-->');
+		}
+	});
+}
+
+function unrecommendAttachment(id){
+	Dyhb.AjaxSend(D.U('home://attachment/unrecommend_attachment?id='+id),'ajax=1','',function(data,status){
+		if(status==1){
+			$('#unrecommend_item_'+id).html('<!--<lang package='Template/Attachment'>-->取消推荐成功<!--</lang>-->');
+		}
+	});
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template/Attachment'>-->我的相册<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template/Attachment'>-->我的附件<!--</lang>--></li>
+		</ul>
+
+		<!--<include file="attachment+menu" />-->
+
+		<div class="row">
+			<div class="span12" style="margin-bottom:20px;">
+				<div id="result" class="none"></div>
+			</div>
+			
+			<div class="span12">
+				<ul class="nav nav-pills">
+					<li class="<!--{if $nAttachmentcategoryid===null && !G+getGpc('type','G') && !isset($_GET['photo'])}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment')}-->"><!--<lang package='Template/Attachment'>-->附件列表<!--</lang>--></a></li>
+					<li class="dropdown <!--{if $nAttachmentcategoryid!==null && $arrAttachmetncategoryinfo!==false}-->active<!--{/if}-->">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+							<!--<lang package='Template/Attachment'>-->所有专辑<!--</lang>-->
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu"> 
+							<!--<foreach for=arrAttachmentcategorys value=oAttachmentcategory>-->
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachmentcategory['attachmentcategory_id'])}-->"><!--{$oAttachmentcategory['attachmentcategory_name']}--></a></li>
+							<!--</foreach>-->
+							<!--{if is_array($arrAttachmentcategorys)}-->
+							<li class="divider"></li>
+							<!--{/if}-->
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid=0')}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></li>
+						</ul>
+					</li>
+					<li class="dropdown <!--{if G+getGpc('type','G') || isset($_GET['photo'])}-->active<!--{/if}-->">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+							<!--<lang package='Template/Attachment'>-->所有类型<!--</lang>-->
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu"> 
+							<!--<foreach for=arrAllowedTypes value=sAllowedType>-->
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType)}-->"><!--{$sAllowedType}--></a></li>
+							<!--</foreach>-->
+							<li class="divider"></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?photo=1')}-->"><!--<lang package='Template/Attachment'>-->图片<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?photo=0')}-->"><!--<lang package='Template/Attachment'>-->附件<!--</lang>--></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="span12">
+				<!--{if is_array($arrAttachments)}-->
+				<ul class="thumbnails">
+					<!--<foreach for=arrAttachments value=oAttachment>-->
+					<!--{~$arrAttachmentSize=Attachment_Extend::getImagesize($oAttachment)}-->
+					<li class="span3" id="attachment_item_<!--{$oAttachment['attachment_id']}-->">
+						<div class="thumbnail">
+							<div class="img attachment_thumb">
+								<a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->">
+									<img src="<!--{:Attachment_Extend::getAttachmentPreview($oAttachment)}-->" alt="<!--{$oAttachment['attachment_alt']}-->" <!--{if $arrAttachmentSize && $arrAttachmentSize[1]>=150}-->height="150px"<!--{/if}-->>
+								</a>
+							</div>
+							<div class="caption">
+								<h5><a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><span id="attachment_name_<!--{$oAttachment['attachment_id']}-->"><!--{$oAttachment['attachment_name']|G+subString=0,15}--></a></span></h5>
+								<p id="attachment_description_<!--{$oAttachment['attachment_id']}-->"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|G+subString=0,30}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>--><!--{/if}--></p>
+								<p><!--<lang package='Template/Attachment'>-->上传时间<!--</lang>-->:&nbsp;<!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--><!--{:Core_Extend::newData($oAttachment['create_dateline'],true)}--></p>
+								<p><!--<lang package='Template/Attachment'>-->所属专辑<!--</lang>-->:&nbsp;<a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachment['attachmentcategory_id'])}-->"><!--{if $oAttachment['attachmentcategory_id']>0}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--><!--{/if}--></a></p>
+								<p><!--<lang package='Template/Attachment'>-->下载次数<!--</lang>-->:&nbsp;<a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><!--{$oAttachment:attachment_download}--></a></p>
+								<p><!--<lang package='Template/Attachment'>-->评论次数<!--</lang>-->:&nbsp;<a href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->#comments"><!--{$oAttachment:attachment_commentnum}--></a></p>
+								<p><!--<lang package='Template/Attachment'>-->附件大小<!--</lang>-->:&nbsp;<!--{$oAttachment:attachment_size|G+changeFileSize}--></p>
+								<p><!--<lang package='Template/Attachment'>-->附件类型<!--</lang>-->:&nbsp;<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$oAttachment['attachment_extension'])}-->"><!--{$oAttachment:attachment_extension}--></a></p>
+								<p><a href="javascript:void(0);" onclick="editAttachment(<!--{$oAttachment['attachment_id']}-->);" class="btn btn-success"><i class="icon-pencil icon-white"></i>&nbsp;<!--<lang package='Template/Attachment'>-->编辑<!--</lang>--></a>&nbsp;<a href="javascript:void(0);" onclick="deleteAttachment(<!--{$oAttachment['attachment_id']}-->);" class="btn"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Attachment'>-->删除<!--</lang>--></a>
+									<!--{if in_array($oAttachment['attachment_extension'],array('png','jpg','jpeg','gif','bmp')) && $oAttachment['attachmentcategory_id']>0}-->&nbsp;
+									<!--{if $oAttachment['attachment_id']==$oAttachment:attachmentcategory:attachmentcategory_cover}-->
+									<a href="<!--{:Dyhb::U('home://attachment/uncover?id='.$oAttachment['attachmentcategory_id'])}-->" class="btn"><!--<lang package='Template/Attachment'>-->删除封面<!--</lang>--></a>
+									<!--{d*else}-->
+									<a href="<!--{:Dyhb::U('home://attachment/cover?id='.$oAttachment['attachment_id'])}-->" class="btn"><!--<lang package='Template/Attachment'>-->封面<!--</lang>--></a>
+									<!--{/if}-->
+									<!--{/if}-->
+								</p>
+								<!--{if Core_Extend+isAdmin()}-->
+								<p class="alert alert-success"><!--{if $oAttachment['attachment_recommend']==1}-->
+									<span id="unrecommend_item_<!--{$oAttachment['attachment_id']}-->"><a href="javascript:void(0);" onclick="unrecommendAttachment('<!--{$oAttachment['attachment_id']}-->');" ><!--<lang package='Template/Attachment'>-->取消推荐<!--</lang>--></a></span>
+									<!--{d*else}-->
+									<span id="recommend_item_<!--{$oAttachment['attachment_id']}-->"><a href="javascript:void(0);" onclick="recommendAttachment('<!--{$oAttachment['attachment_id']}-->');"><!--<lang package='Template/Attachment'>-->推荐<!--</lang>--></a></span>
+									<!--{/if}-->
+								</p>
+								<!--{/if}-->
+							</div>
+						</div>
+					</li>
+					<!--</foreach>-->
+				</ul>
+				<!--{d*else}-->
+				<p><!--<lang package='Template/Attachment'>-->暂时没有发现任何附件<!--</lang>--></p>
+				<!--{/if}-->
+			</div>
+			<div class="span12">
+				<!--{$sPageNavbar}-->
+			</div>
+			<!--{if $nAttachmentcategoryid!==null && $arrAttachmetncategoryinfo!==false}-->
+			<div class="span12">
+				<h3><!--<lang package='Template/Attachment'>-->专辑信息<!--</lang>--></h3>
+				<hr/>
+				<p><table class="table table-striped">
+						<!--{if $nAttachmentcategoryid>0}-->
+						<thead>
+							<tr>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></th>
+								<th><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid)}-->"><!--{$arrAttachmetncategoryinfo['attachmentcategory_name']}--></a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><!--<lang package='Template/Attachment'>-->创建时间<!--</lang>--></td>
+								<td><!--{$arrAttachmetncategoryinfo['create_dateline']|Core_Extend+timeFormat}--></td>
+							</tr>
+							<!--{if $arrAttachmetncategoryinfo['update_dateline']}-->
+							<tr>
+								<td><!--<lang package='Template/Attachment'>-->更新时间<!--</lang>--></td>
+								<td><!--{$arrAttachmetncategoryinfo['update_dateline']|Core_Extend+timeFormat}--></td>
+							</tr>
+							<!--{/if}-->
+							<tr>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->附件数量<!--</lang>--></th>
+								<th><!--{$arrAttachmetncategoryinfo['attachmentcategory_attachmentnum']}--></th>
+							</tr>
+						</tbody>
+						<!--{d*else}-->
+						<thead>
+							<tr>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></th>
+								<th><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid)}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></th>
+							</tr>
+							<tr>
+								<th width="150px"><!--<lang package='Template/Attachment'>-->附件数量<!--</lang>--></th>
+								<th><!--{$arrAttachmetncategoryinfo['totalnum']}--></th>
+							</tr>
+						</thead>
+						<!--{/if}-->
+					</table>
+				</p>
+			</div>
+			<!--{/if}-->
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

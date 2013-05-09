@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><!--{:Core_Extend::title($TheController)}--></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="keywords" content="<!--{:Core_Extend::keywords($TheController)}-->">
+	<meta name="description" content="<!--{:Core_Extend::description($TheController)}-->">
+	<!--[if lt IE 9]>
+	<script src="<!--{:__PUBLIC__}-->/js/common/html5.js"></script>
+	<![endif]-->
+	<link rel="shortcut icon" href="<!--{:Core_Extend::getFavicon()}-->">
+	<!--{script}-->
+	var __DYHB_JS_ENTER__='<!--{:__APP__}-->';
+	<!--{/script}-->
+	<script src="<!--{:__PUBLIC__}-->/js/jquery/jquery.js"></script>
+	<!--<import file="Js.Dyhb#package" />-->
+	<!--{script}-->
+	Dyhb.Lang.SetCurrentLang('<!--{:LANG_NAME}-->');
+	Dyhb.Ajax.Dyhb.Image=['<!--{:__PUBLIC__}-->/images/common/ajax/loading.gif','<!--{:__PUBLIC__}-->/images/common/ajax/ok.gif','<!--{:__PUBLIC__}-->/images/common/ajax/update.gif'];
+	var sBgextendRepeat='<!--{$GLOBALS['_option_']['bgextend_repeat']}-->';
+	<!--{:App::U()}-->
+	$(document).ready(function(){
+		$('#runtime_result').html($('#dyhb_run_time').html());
+		$('#dyhb_run_time').html(' ');
+		<!--{if $GLOBALS['_option_']['bgextend_on']==1}-->
+		setInterval("changeGlobalbg();",<!--{$GLOBALS['_option_']['bgextend_time']*1000}-->);
+		<!--{/if}-->
+	});
+	<!--{/script}-->
+	<script src="<!--{:__PUBLIC__}-->/js/common/global.js"></script>
+	<script src="<!--{:__PUBLIC__}-->/js/common/common.js"></script>
+	<!--{~$sAppjsPath=APP_PATH.'/Static/Js/'.APP_NAME.'.js'}-->
+	<!--{if is_file($sAppjsPath)}-->
+	<script src="<!--{:__APPPUB__}-->/Js/<!--{:APP_NAME}-->.js"></script>
+	<!--{/if}-->
+	<!--<load file="<!--{:__PUBLIC__}-->/js/artdialog/skins/<!--{$GLOBALS['_option_']['front_dialog_style']}-->.css" />-->
+	<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/artdialog/jquery.artDialog.min.js"></script>
+	<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/artdialog/artDialog.plugins.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/jquery/hovercard/css/main.css"/>
+	<script src="<!--{:__PUBLIC__}-->/js/jquery/hovercard/js/hoverCard.js"></script>
+	<!--{script}-->
+	$(document).ready(function(){
+		$(".bind_hover_card").hoverCard({
+			url:D.U('home://misc/avatar'),
+			borederRadius:true,
+			errorText:"get avatar error"
+		});
+	});
+	<!--{/script}-->
+	<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/sh.js"></script>
+	<link rel="stylesheet" href="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/sh.css">
+	<!--{if $GLOBALS['_option_']['js_lazyload_on']==1}-->
+	<script src="<!--{:__PUBLIC__}-->/js/jquery/lazyload/jquery.lazyload.pack.js?v=1.5.0"></script>
+	<!--{script}-->
+	$(document).ready(function(){
+		$("img").lazyload({
+			effect: "fadeIn"
+		});
+	});
+	<!--{/script}-->
+	<!--{/if}-->
+	<!--{if $GLOBALS['_option_']['js_slimbox_on']==1}-->
+	<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/slimbox/slimbox.css?v=2.0.3"/>
+	<script src="<!--{:__PUBLIC__}-->/js/slimbox/slimbox.js?v=2.0.3"></script>
+	<!--{script}-->
+	$(document).ready(function(){
+		$("a[href$=jpg],a[href$=gif],a[href$=png],a[href$=jpeg],a[href$=bmp]").slimbox({});
+	});
+	<!--{/script}-->
+	<!--{/if}-->
+</head>
+
+<body>
+<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/jquery/dropmenu.js"></script>
+
+<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700|Droid+Sans:700" rel="stylesheet" type="text/css"/>
+<link href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/core/base.css" rel="stylesheet" type="text/css"/>
+<link href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/navigation/hlist.css" rel="stylesheet" type="text/css"/>
+<link href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/forms/gray-theme.css" rel="stylesheet" type="text/css"/>
+<link href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/screen/typography.css" rel="stylesheet" type="text/css"/>
+<link href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/screen/screen-FULLPAGE-layout.css" rel="stylesheet" type="text/css"/>
+<link href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/print/print.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/add-ons/accessible-tabs/tabs.css" type="text/css"/>
+
+<!--[if lte IE 7]>
+<link href="<!--{:__PUBLIC__}-->/extension/yaml/4.0.2/core/iehacks.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+<!--{:Core_Extend::loadCss()}-->
+
+<div id="DyhbAjaxResult" class="none DyhbAjaxResult">&nbsp;</div>

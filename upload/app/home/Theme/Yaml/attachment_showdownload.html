@@ -1,0 +1,14 @@
+			<div class="show_download">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th><img src="<!--{$sAttachmentIcon}-->">&nbsp;<!--{$oAttachment['attachment_extension']}--><!--<lang package='Template/Attachment'>-->下载文件<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a href="<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->" onclick="updateDownload('<!--{$oAttachment['attachment_id']}-->');updateDownload('<!--{$oAttachment['attachment_id']}-->');"><!--{$oAttachment['attachment_name']}--></a>&nbsp;(<!--{$oAttachment:attachment_size|G+changeFileSize}-->)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>

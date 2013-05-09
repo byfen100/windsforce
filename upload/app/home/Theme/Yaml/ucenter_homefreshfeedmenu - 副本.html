@@ -1,0 +1,7 @@
+				<div class="tabb-menu">
+					<ul class="nav nav-pills">
+						<li <!--{if ACTION_NAME==='index'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Ucenter'>-->新鲜事<!--</lang>--></a></li>
+						<li <!--{if in_array(ACTION_NAME,array('tag','tags'))}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag')}-->"><!--<lang package='Template/Ucenter'>-->新鲜事话题<!--</lang>--></a></li>
+						<li <!--{if ACTION_NAME==='feed'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed')}-->"><!--<lang package='Template/Ucenter'>-->用户动态<!--</lang>--></a></li>
+					</ul>
+				</div>
