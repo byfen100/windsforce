@@ -15,14 +15,14 @@ $(document).ready(function(){
 	<li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>
 </ul>
 
-<div id="top_header">
-	
-		<div class="ym-wbox">
-	<div class="ym-grid">
+
+	<div class="ym-wrapper">
+		<div class="ym-wbox" ><div id="top_header">
+	<div class="ym-grid" >
   <div class="ym-g50 ym-gl">
-    <div class="ym-gbox">
+    <div class="ym-gbox" >
       <!--{if $GLOBALS['_option_']['language_switch_on']==1 && count($GLOBALS['_cache_']['lang'])>1}-->
-						<span id="lang_select_box" style="float:left;width: 76px;display: inline;margin-top:-3px;" class="dropmenu">
+						<span id="lang_select_box" style="float:left;margin-right:-7px;" class="dropmenu">
 							<ul id="langselect_ul">
 								<li>
 									<a href="javascript:void(0);" id="lang_select">Language</a>
@@ -43,9 +43,9 @@ $(document).ready(function(){
     </div>
   </div>
   <div class="ym-g50 ym-gr">
-    <div class="ym-gbox">
+    <div class="ym-gbox right" >
      <!--{if $GLOBALS['_option_']['extendstyle_switch_on']==1 && !empty($GLOBALS['_style_']['_style_extend_icons_'])}-->
-						<span id="extendstyle_select_box"  style="float:left;display: inline;width: 50px;margin-top:-3px;" class="dropmenu">
+						<span id="extendstyle_select_box"  style="float:left;margin-right:-7px;" class="dropmenu">
 							<ul id="extendstyleselect_ul">
 								<li> 
 									<a href="javascript:void(0);" id="extendstyle_select"><img src="<!--{:__ROOT__}-->/Public/images/common/style.gif" /></a> 
@@ -69,6 +69,7 @@ $(document).ready(function(){
 						<!--</foreach>-->
     </div>
   </div>
+</div>
 </div>
 </div>
 </div>

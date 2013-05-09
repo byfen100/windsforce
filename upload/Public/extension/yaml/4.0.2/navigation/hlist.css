@@ -28,6 +28,10 @@
 		z-index:999;
 	}
 
+	.dropmenu{
+		z-index:999;
+	}
+
 	.ym-hlist ul {
 		margin:0;
 		padding: 0.5em 1.5em;
