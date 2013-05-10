@@ -66,6 +66,7 @@ return array(
 '3b150c147ad9457b08474bc9ccdb28fa'=>"子分類",
 'e0d59f19cfe52139a120f8e025e4bf0a'=>"主題總數",
 '48c3eeaebf250027df45674d16b47883'=>"回帖總數",
+'b53ff6ca88917605d6a15052fcbdcc50'=>"小組總數",
 )
 
 ?>

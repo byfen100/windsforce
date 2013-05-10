@@ -9,6 +9,7 @@ class AppUpdateCacheSite{
 	public static function cache(){
 		$arrData=array();
 
+		$arrData['group']=GroupModel::F()->all()->getCounts();
 		$arrData['grouptopic']=GrouptopicModel::F()->all()->getCounts();
 		$arrData['grouptopiccomment']=GrouptopiccommentModel::F()->all()->getCounts();
 
