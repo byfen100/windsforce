@@ -37,7 +37,7 @@ class SociauserlocalController extends InitController{
 	}
 
 	public function localLogin($nUserid){
-		$oUser=UserModel::F('user_id=?',$nUserid)->getOne();
+		$oUser=UserModel::F('user_id=? AND user_status=1',$nUserid)->getOne();
 
 		if(!empty($oUser['user_id'])){
 			$oUserModel=Dyhb::instance('UserModel');
@@ -49,7 +49,15 @@ class SociauserlocalController extends InitController{
 				$this->E($oUserModel->getErrorMessage());
 			}
 
-			$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
+			if(G::getGpc('windsforce_referer')){
+				$sUrl=G::getGpc('windsforce_referer');
+			}else{
+				$sUrl=Dyhb::U('home://ucenter/index');
+			}
+
+			Core_Extend::updateCreditByAction('daylogin',$oUser['user_id']);
+
+			$this->assign('__JumpUrl__',$sUrl);
 			$this->S(Dyhb::L('Hello %s,你成功登录','Controller/Public',null,$oUser['user_name']));
 		}else{
 			return false;
