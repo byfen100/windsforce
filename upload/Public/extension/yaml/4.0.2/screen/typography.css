@@ -383,7 +383,7 @@
 	* @section content-tables
 	*/
 
-	table {
+	table.table{
 		width:100%;
 		border-collapse:collapse;
 		margin: 1.3571em 0 0 0;
@@ -406,18 +406,18 @@
 		border:1px #ccc solid;
 	}
 
-	table caption {
+	table.table caption {
 		font-variant:small-caps;
 	}
 
-	th, td {
+	table.table th, table.table td {
 		line-height: 1.5em;
 		vertical-align: top;
 		padding: 0.7143em 0.5em;
 	}
 
-	th *:first-child,
-	td *:first-child {
+	table.table th *:first-child,
+	table.table td *:first-child {
 		margin-top: 0;
 	}
 
@@ -426,7 +426,7 @@
 		white-space: nowrap;
 	}
 
-	thead th {
+	table.table thead th {
 		text-align: left;
 		color:#000;
 		border-bottom:2px #000 solid;
@@ -442,7 +442,7 @@
 		background:#f0f0f0;
 	}
 
-	tbody th {
+	table.table tbody th {
 		text-align: left;
 		border-top:1px solid #ccc;
 		text-align:left;
@@ -452,7 +452,7 @@
 		border-right:1px solid #ccc;
 	}
 
-	tbody td {
+	table.table tbody td {
 		text-align: left;
 		border-top:1px solid #ccc;
 	}
@@ -462,8 +462,8 @@
 	}
 
 	/* highlight row on mouse over */
-	tbody tr:hover th,
-	tbody tr:hover td {
+	table.table tbody tr:hover th,
+	table.table tbody tr:hover td {
 		background:#f8f8f8;
 	}
 }
