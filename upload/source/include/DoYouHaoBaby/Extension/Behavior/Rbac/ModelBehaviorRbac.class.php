@@ -251,7 +251,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'authcode_random',null,-1);
 
 		if($bCheckLogin===false){
-			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash');
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',null,-1);
 		}
 	}
 

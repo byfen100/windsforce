@@ -30,11 +30,12 @@ class Socia{
 	}
 
 	static public function setUser($arrUser){
-		Dyhb::cookie('SOCIAUSER',$arrUser);
+		Core_Extend::saveSyscache('sociauser',$arrUser);
 	}
 
 	static public function getUser(){
-		$arrUser=Dyhb::cookie('SOCIAUSER');
+		Core_Extend::loadCache('sociauser',false,'db');
+		$arrUser=$GLOBALS['_cache_']['sociauser'];
 		return !empty($arrUser)?$arrUser:FALSE;
 	}
 
@@ -91,7 +92,7 @@ class Socia{
 	}
 
 	static public function clearCookie(){
-		Dyhb::cookie('SOCIAUSER',null,-1);
+		Core_Extend::saveSyscache('sociauser','');
 		Dyhb::cookie('SOCIAKEYS',null,-1);
 	}
 
