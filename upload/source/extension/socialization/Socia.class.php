@@ -34,8 +34,11 @@ class Socia{
 	}
 
 	static public function getUser(){
-		Core_Extend::loadCache('sociauser',false,'db');
+		if(!isset($GLOBALS['_cache_']['sociauser'])){
+			Core_Extend::loadCache('sociauser',false,'db');
+		}
 		$arrUser=$GLOBALS['_cache_']['sociauser'];
+
 		return !empty($arrUser)?$arrUser:FALSE;
 	}
 
@@ -85,6 +88,7 @@ class Socia{
 
 	public function bind(){
 		if(!self::getUser()){
+			$this->setErrorMessage('Can not find user info.');
 			return false;
 		}
 
