@@ -23,10 +23,6 @@ class OauthQq extends Oauth{
 		$sState=trim(G::getGpc('state','G'));
 		$sCode=trim(G::getGpc('code','G'));
 
-		if(Socia::getUser()){
-			return true;
-		}
-		
 		if(!empty($sCookieState) && $sState==$sCookieState){
 			$sTokenurl="https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&".
 				"client_id=".$sAppid."&redirect_uri=".urlencode($sCallback).

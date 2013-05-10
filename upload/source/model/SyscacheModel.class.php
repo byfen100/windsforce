@@ -21,4 +21,8 @@ class SyscacheModel extends CommonModel{
 		return ModelMeta::instance(__CLASS__);
 	}
 
+	static public function delCache($sKey){
+		self::M()->deleteWhere(array('syscache_name'=>$sKey)); 
+	}
+
 }
