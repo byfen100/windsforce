@@ -92,7 +92,6 @@ class Socia{
 	}
 
 	static public function clearCookie(){
-		Core_Extend::saveSyscache('sociauser','');
 		Dyhb::cookie('SOCIAKEYS',null,-1);
 	}
 
