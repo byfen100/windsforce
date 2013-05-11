@@ -34,14 +34,12 @@ class BaseController extends Controller{
 		$this->assign('arrRatinginfo',$arrRatinginfo);
 		$this->assign('nUserscore',$nUserscore);
 
-		if(empty($sType)){
-			$sOrderType='create_dateline';
-		}elseif($sType=="view"){
+		if($sType=="view"){
 			$sOrderType='grouptopic_views';
 		}elseif($sType=="com"){
 			$sOrderType='grouptopic_comments';
 		}elseif($sType=="lastreply"){
-			$sOrderType='update_dateline';
+			$sOrderType='grouptopic_update';
 		}else{
 			$sOrderType='create_dateline';
 		}
@@ -78,7 +76,7 @@ class BaseController extends Controller{
 
 		$oPage=Page::RUN($nTotalGrouptopicnum,$nEverynum,G::getGpc('page','G'));
 
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order($sOrderextends."grouptopic_sticktopic DESC,update_dateline DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order($sOrderextends."grouptopic_sticktopic DESC,grouptopic_update DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('arrGrouptopics',$arrGrouptopics);
 		$this->assign('nEverynum',$nEverynum);
