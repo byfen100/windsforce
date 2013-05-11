@@ -283,10 +283,7 @@ class AddreplyController extends GlobalchildController{
 			}
 		}
 
-		$nTotalComment=GrouptopiccommentModel::F('grouptopic_id=?',$oGrouptopic->grouptopic_id)->getCounts();
-		$nPage=ceil($nTotalComment/$GLOBALS['_cache_']['group_option']['grouptopic_listcommentnum']);
-		
-		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id.($nPage>1?'&page='.$nPage:'').'&extra=new'.$oGrouptopiccomment->grouptopiccomment_id).'#grouptopiccomment-'.($oGrouptopiccomment->grouptopiccomment_id);
+		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oGrouptopiccomment->grouptopiccomment_id).'#grouptopiccomment-'.$oGrouptopiccomment->grouptopiccomment_id;
 
 		$this->A(array('url'=>$sUrl),Dyhb::L('回复成功','Controller/Grouptopic'),1);
 	}
