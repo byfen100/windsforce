@@ -1115,6 +1115,15 @@ WINDSFORCE;
 WINDSFORCE;
 	}
 
+	static public function calendar(){
+		$sLangname=LANG_NAME?LANG_NAME:'Zh-cn';
+		$sLangname=strtolower($sLangname);
+
+		$sCalendarLang=is_file(WINDSFORCE_PATH.'/js/calendar/datepicker/lang/'.$sLangname.'.js')?$sLangname:'zh-cn';
+
+		return $sCalendarLang;
+	}
+
 	static public function removeDir($sDirName){
 		if(!is_dir($sDirName)){
 			@unlink($sDirName);

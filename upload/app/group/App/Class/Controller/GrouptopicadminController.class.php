@@ -101,6 +101,14 @@ class GrouptopicadminController extends InitController{
 		Core_Extend::doControllerAction('Grouptopicadmin@Colortopic','index');
 	}
 
+	public function uptopic_dialog(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Uptopicdialog','index');
+	}
+
+	public function uptopic(){
+		Core_Extend::doControllerAction('Grouptopicadmin@Uptopic','index');
+	}
+
 	public function deletecomment_dialog(){
 		Core_Extend::doControllerAction('Grouptopicadmin@Deletecommentdialog','index');
 	}

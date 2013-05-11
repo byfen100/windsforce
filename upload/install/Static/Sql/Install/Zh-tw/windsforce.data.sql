@@ -155,7 +155,9 @@ INSERT INTO `#@__access` (`role_id`, `node_id`, `access_level`, `access_parentid
 (2, 85, 3, 71, 1),
 (3, 85, 3, 71, 1),
 (1, 71, 2, 60, 1),
-(1, 90, 3, 71, 1);
+(1, 90, 3, 71, 1),
+(2, 91, 3, 71, 1),
+(3, 91, 3, 71, 1);
 
 -- --------------------------------------------------------
 
@@ -285,7 +287,12 @@ INSERT INTO `#@__homeoption` (`homeoption_name`, `homeoption_value`) VALUES
 ('homefreshtag_list_num', '15'),
 ('homefreshtag_hot_num', '10'),
 ('hometag_list_num', '15'),
-('hometag_hot_num', '10');
+('hometag_hot_num', '10'),
+('todayusernum', '0'),
+('todaytotalnum', '0'),
+('todayhomefreshnum', '0'),
+('todayhomefreshcommentnum', '0'),
+('todayattachmentnum', '0');
 
 -- --------------------------------------------------------
 
@@ -450,7 +457,8 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 (87, 'admin@fileperms', '文件权限检查', 1, '', 4, 1, 2, 8, 1365789490, 1365789693, 1),
 (88, 'admin@filecheck', '文件校验', 1, '', 5, 1, 2, 8, 1365789540, 1365789693, 1),
 (89, 'admin@mail', '邮件管理', 1, '', 5, 1, 2, 6, 1365789647, 1365789713, 1),
-(90, 'group@grouptopicadmin@movetopic_dialog|movetopic', '帖子移動', 1, '', 0, 71, 3, 0, 1367833115, 0, 1);
+(90, 'group@grouptopicadmin@movetopic_dialog|movetopic', '帖子移動', 1, '', 0, 71, 3, 0, 1367833115, 0, 1),
+(91, 'group@grouptopicadmin@uptopic_dialog|uptopic', '提升下沉主題', 1, '', 0, 71, 3, 0, 1368282389, 0, 1);
 
 -- --------------------------------------------------------
 

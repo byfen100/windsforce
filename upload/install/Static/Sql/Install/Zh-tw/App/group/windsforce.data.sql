@@ -41,7 +41,8 @@ INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_ac
 (23, '管理回帖', 'group_commentadmin', 4, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
 (24, '主題被刪除', 'group_topicdelete', 4, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0),
 (25, '回帖被刪除', 'group_commentdelete', 4, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0),
-(26, '回帖被置頂', 'group_stickreply', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0);
+(26, '回帖被置頂', 'group_stickreply', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0),
+(27, '帖子被提升', 'group_uptopic', 4, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -149,8 +150,8 @@ INSERT INTO `#@__groupcategoryindex` (`group_id`, `groupcategory_id`) VALUES
 -- 轉存表中的數據 `windsforce_grouptopic`
 --
 
-INSERT INTO `#@__grouptopic` (`grouptopic_id`, `grouptopiccategory_id`, `group_id`, `user_id`, `grouptopic_username`, `grouptopic_title`, `grouptopic_content`, `grouptopic_comments`, `grouptopic_views`, `grouptopic_loves`, `grouptopic_sticktopic`, `grouptopic_status`, `grouptopic_isclose`, `grouptopic_color`, `grouptopic_iscomment`, `grouptopic_addtodigest`, `grouptopic_isaudit`, `grouptopic_allownoticeauthor`, `grouptopic_ordertype`, `grouptopic_isanonymous`, `grouptopic_usesign`, `grouptopic_hiddenreplies`, `grouptopic_latestcomment`, `grouptopic_updateusername`, `create_dateline`, `update_dateline`, `grouptopic_thumb`, `grouptopic_isrecommend`, `grouptopic_onlycommentview`) VALUES
-(1, 0, 1, 1, 'admin', 'Hello world! 歡迎使用WindsForce！', '歡迎大家使用我們的產品，祝你愉快！', 1, 1, 0, 0, 1, 0, '', 1, 0, 1, 1, 0, 0, 1, 0, 'a:4:{s:11:"commenttime";i:1355499282;s:9:"commentid";i:1;s:3:"tid";s:1:"1";s:13:"commentuserid";s:1:"1";}', '', 1355499238, 1365070162, 0, 0, 0);
+INSERT INTO `#@__grouptopic` (`grouptopic_id`, `grouptopiccategory_id`, `group_id`, `user_id`, `grouptopic_username`, `grouptopic_title`, `grouptopic_content`, `grouptopic_comments`, `grouptopic_views`, `grouptopic_loves`, `grouptopic_sticktopic`, `grouptopic_status`, `grouptopic_isclose`, `grouptopic_color`, `grouptopic_iscomment`, `grouptopic_addtodigest`, `grouptopic_isaudit`, `grouptopic_allownoticeauthor`, `grouptopic_ordertype`, `grouptopic_isanonymous`, `grouptopic_usesign`, `grouptopic_hiddenreplies`, `grouptopic_latestcomment`, `grouptopic_updateusername`, `create_dateline`, `update_dateline`, `grouptopic_thumb`, `grouptopic_isrecommend`, `grouptopic_onlycommentview`, `grouptopic_update`) VALUES
+(1, 0, 1, 1, 'admin', 'Hello world! 歡迎使用WindsForce！', '歡迎大家使用我們的產品，祝你愉快！', 1, 1, 0, 0, 1, 0, '', 1, 0, 1, 1, 0, 0, 1, 0, 'a:4:{s:11:"commenttime";i:1355499282;s:9:"commentid";i:1;s:3:"tid";s:1:"1";s:13:"commentuserid";s:1:"1";}', '', 1355499238, 1365070162, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 

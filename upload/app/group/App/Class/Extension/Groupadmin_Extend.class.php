@@ -112,7 +112,7 @@ class Groupadmin_Extend{
 		return $bAllowedEditcomment;
 	}
 
-	static public function checkTopicadminRbac($nGroupid,$arrType=array('group@grouptopicadmin@deletetopic','group@grouptopicadmin@closetopic','group@grouptopicadmin@sticktopic','group@grouptopicadmin@digesttopic','group@grouptopicadmin@recommendtopic','group@grouptopicadmin@hidetopic','group@grouptopicadmin@categorytopic','group@grouptopicadmin@tagtopic','group@grouptopicadmin@colortopic')){
+	static public function checkTopicadminRbac($nGroupid,$arrType=array('group@grouptopicadmin@deletetopic','group@grouptopicadmin@closetopic','group@grouptopicadmin@sticktopic','group@grouptopicadmin@digesttopic','group@grouptopicadmin@recommendtopic','group@grouptopicadmin@hidetopic','group@grouptopicadmin@categorytopic','group@grouptopicadmin@tagtopic','group@grouptopicadmin@colortopic','group@grouptopicadmin@uptopic')){
 		if(is_object($nGroupid)){
 			$nGroupid=$nGroupid->group_id;
 		}

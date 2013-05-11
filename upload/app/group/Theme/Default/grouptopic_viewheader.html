@@ -257,6 +257,10 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 					<a onclick="modTopiccolor();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->高亮<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
+					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@uptopic'))}-->
+					<a onclick="modTopicup();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->提升下沉<!--</lang>--></a>
+					<span class="pipe">|</span>
+					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicmove()}-->
 					<a onclick="modTopicmove();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->帖子移动<!--</lang>--></a>
 					<span class="pipe">|</span>

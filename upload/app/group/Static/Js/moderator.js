@@ -178,11 +178,15 @@ function modTopiccolor(){
 	modTopiccommon('colortopic');
 }
 
+/** 提升或者下沉主题 */
+function modTopicup(){
+	modTopiccommon('uptopic');
+}
+
 /** 移动主题 */
 function modTopicmove(){
 	modTopiccommon('movetopic');
 }
-
 
 /** 主题回帖通用代码管理 */
 var sCurrentActionComment='';

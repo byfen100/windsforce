@@ -41,7 +41,8 @@ INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_ac
 (23, '管理回帖', 'group_commentadmin', 4, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0),
 (24, '主题被删除', 'group_topicdelete', 4, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0),
 (25, '回帖被删除', 'group_commentdelete', 4, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0),
-(26, '回帖被置顶', 'group_stickreply', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0);
+(26, '回帖被置顶', 'group_stickreply', 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0),
+(27, '帖子被提升', 'group_uptopic', 4, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 

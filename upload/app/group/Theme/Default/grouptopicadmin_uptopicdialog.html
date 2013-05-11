@@ -1,0 +1,17 @@
+	<!--<include file="grouptopicadmin+header" />-->
+
+<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/calendar/datepicker/WdatePicker.js"></script>
+<!--{~$sCalendarLang=Core_Extend::calendar()}-->
+
+		<p>
+			<label class="radio">
+				<input type="radio" name="up" value="1" checked><!--<lang package='Template/Groupadmin'>-->提升主题<!--</lang>-->
+			</label>
+			<p><!--<lang package='Template/Groupadmin'>-->有效期<!--</lang>--></p>
+			<input type="text" class="span3" name="time" id="time" value="<!--{:date('Y-m-d H:i:s',CURRENT_TIMESTAMP)}-->" onclick="WdatePicker({el:'time',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+			<label class="radio">
+				<input type="radio" name="up" value="0" <!--{if isset($nStatus) && $nStatus==0}-->checked<!--{/if}-->><!--<lang package='Template/Groupadmin'>-->下沉主题<!--</lang>-->
+			</label>
+		</p>
+
+	<!--<include file="grouptopicadmin+footer" />-->
