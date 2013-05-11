@@ -60,7 +60,7 @@ class GuestbookController extends GlobalchildController{
 
 		$nTotalRecord=UserguestbookModel::F()->where($arrWhere)->all()->getCounts();
 		$oPage=Page::RUN($nTotalRecord,$arrOptionData['homefreshcomment_list_num'],G::getGpc('page','G'));
-		$arrUserguestbookLists=UserguestbookModel::F()->where($arrWhere)->all()->order('`create_dateline` DESC')->limit($oPage->returnPageStart(),$arrOptionData['homefreshcomment_list_num'])->getAll();
+		$arrUserguestbookLists=UserguestbookModel::F()->where($arrWhere)->all()->order('`create_dateline` ASC')->limit($oPage->returnPageStart(),$arrOptionData['homefreshcomment_list_num'])->getAll();
 
 		$this->assign('sUsersite',$oUserprofile['userprofile_site']);
 		$this->assign('nId',$nId);

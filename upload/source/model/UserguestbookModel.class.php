@@ -78,7 +78,7 @@ class UserguestbookModel extends CommonModel{
 		// 查找当前评论的记录
 		$nTheSearchKey='';
 
-		$arrUserguestbookLists=self::F()->where($arrWhere)->all()->order('userguestbook_id DESC')->query();
+		$arrUserguestbookLists=self::F()->where($arrWhere)->all()->order('create_dateline ASC')->query();
 		foreach($arrUserguestbookLists as $nKey=>$oUserguestbookList){
 			if($oUserguestbookList['userguestbook_id']==$nFinecommentid){
 				$nTheSearchKey=$nKey+1;

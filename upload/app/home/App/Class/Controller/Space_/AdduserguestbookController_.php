@@ -253,8 +253,7 @@ class AdduserguestbookController extends GlobalchildController{
 
 		$arrCommentData=$oUserguestbook->toArray();
 
-		$nPage=intval(G::getGpc('page'));
-		$arrCommentData['jumpurl']=Dyhb::U('home://space@?id='.$nUserguestbookuserid.($nPage>=2?'&page='.$nPage:'').'&type=guestbook&extra=new'.$oUserguestbook['userguestbook_id']).
+		$arrCommentData['jumpurl']=Dyhb::U('home://space@?id='.$nUserguestbookuserid.'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id']).
 				'#comment-'.$oUserguestbook['userguestbook_id'];
 
 		// 更新积分

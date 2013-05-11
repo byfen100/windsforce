@@ -270,9 +270,7 @@ class AddcommentController extends GlobalchildController{
 			$arrCommentData['viewurl']=Dyhb::U('home://fresh@?id='.$arrCommentData['homefresh_id'].'&isolation_commentid='.$arrCommentData['homefreshcomment_id']);
 			$arrCommentData['usericon']=Core_Extend::getUsericon($arrCommentData['user_id']);
 		}else{
-			$nPage=intval(G::getGpc('page'));
-
-			$arrCommentData['jumpurl']=Dyhb::U('home://fresh@?id='.$oHomefreshcomment->homefresh_id.($nPage>=2?'&page='.$nPage:'').'&extra=new'.$oHomefreshcomment['homefreshcomment_id']).
+			$arrCommentData['jumpurl']=Dyhb::U('home://fresh@?id='.$arrCommentData['homefresh_id'].'&isolation_commentid='.$arrCommentData['homefreshcomment_id']).
 				'#comment-'.$oHomefreshcomment['homefreshcomment_id'];
 		}
 

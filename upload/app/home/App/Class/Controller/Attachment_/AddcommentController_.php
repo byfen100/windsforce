@@ -257,8 +257,7 @@ class AddcommentController extends GlobalchildController{
 
 		$arrCommentData=$oAttachmentcomment->toArray();
 
-		$nPage=intval(G::getGpc('page'));
-		$arrCommentData['jumpurl']=Dyhb::U('home://file@?id='.$oAttachmentcomment->attachment_id.($nPage>=2?'&page='.$nPage:'').'&extra=new'.$oAttachmentcomment['attachmentcomment_id']).
+		$arrCommentData['jumpurl']=Dyhb::U('home://file@?id='.$oAttachmentcomment->attachment_id.'&isolation_commentid='.$oAttachmentcomment['attachmentcomment_id']).
 				'#comment-'.$oAttachmentcomment['attachmentcomment_id'];
 
 		// 更新积分

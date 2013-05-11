@@ -54,7 +54,7 @@ class ShowController extends Controller{
 
 		$nTotalRecord=AttachmentcommentModel::F()->where($arrWhere)->all()->getCounts();
 		$oPage=Page::RUN($nTotalRecord,$arrOptionData['homefreshcomment_list_num'],G::getGpc('page','G'));
-		$arrAttachmentcommentLists=AttachmentcommentModel::F()->where($arrWhere)->all()->order('`create_dateline` DESC')->limit($oPage->returnPageStart(),$arrOptionData['homefreshcomment_list_num'])->getAll();
+		$arrAttachmentcommentLists=AttachmentcommentModel::F()->where($arrWhere)->all()->order('create_dateline ASC')->limit($oPage->returnPageStart(),$arrOptionData['homefreshcomment_list_num'])->getAll();
 
 		$this->assign('oAttachment',$oAttachment);
 		$this->assign('sUsersite',$oUserprofile['userprofile_site']);

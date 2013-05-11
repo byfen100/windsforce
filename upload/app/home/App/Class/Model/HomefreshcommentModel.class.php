@@ -78,7 +78,7 @@ class HomefreshcommentModel extends CommonModel{
 		// 查找当前评论的记录
 		$nTheSearchKey='';
 
-		$arrHomefreshcommentLists=self::F()->where($arrWhere)->all()->order('homefreshcomment_id DESC')->query();
+		$arrHomefreshcommentLists=self::F()->where($arrWhere)->all()->order('create_dateline ASC')->query();
 		foreach($arrHomefreshcommentLists as $nKey=>$oHomefreshcommentList){
 			if($oHomefreshcommentList['homefreshcomment_id']==$nFinecommentid){
 				$nTheSearchKey=$nKey+1;
