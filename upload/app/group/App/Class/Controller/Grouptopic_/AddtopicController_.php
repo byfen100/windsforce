@@ -52,7 +52,7 @@ class AddtopicController extends GlobalchildController{
 	
 		// 保存帖子
 		$oGrouptopic=new GrouptopicModel();
-
+		$oGrouptopic->grouptopic_update=CURRENT_TIMESTAMP;
 		if($oGroup->group_audittopic==1){
 			$oGrouptopic->grouptopic_isaudit='0';
 		}

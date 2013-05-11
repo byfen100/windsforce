@@ -42,9 +42,7 @@ class ShowController extends Controller{
 
 		$this->_oGroup=$oGroup;
 		
-		if(empty($sType)){
-			$sOrderType='create_dateline';
-		}elseif($sType=="view"){
+		if($sType=="view"){
 			$sOrderType='grouptopic_views';
 		}elseif($sType=="com"){
 			$sOrderType='grouptopic_comments';
@@ -107,7 +105,7 @@ class ShowController extends Controller{
 
 		$oPage=Page::RUN($nTotalGrouptopicnum,$nEverynum,G::getGpc('page','G'));
 
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order($sOrderextends."grouptopic_sticktopic DESC,update_dateline DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order($sOrderextends."grouptopic_sticktopic DESC,grouptopic_update DESC,{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 		
 		// 全局置顶帖子
 		if(isset($arrWhere['grouptopic_addtodigest'])){

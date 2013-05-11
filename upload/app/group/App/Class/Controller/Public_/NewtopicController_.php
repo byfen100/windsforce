@@ -16,9 +16,7 @@ class NewtopicController extends Controller{
 		$sType=G::getGpc('type','G'); // 排序类型
 		$nDid=intval(G::getGpc('did','G')); // 是否为精华
 
-		if(empty($sType)){
-			$sOrderType='create_dateline';
-		}elseif($sType=="view"){
+		if($sType=="view"){
 			$sOrderType='grouptopic_views';
 		}elseif($sType=="com"){
 			$sOrderType='grouptopic_comments';
@@ -44,7 +42,7 @@ class NewtopicController extends Controller{
 		
 		$oPage=Page::RUN($nTotalRecord,$nEverynum,G::getGpc('page','G'));
 		
-		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order(($sType=='lastreply'?'update_dateline DESC,':'')."{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order(($sType=='lastreply'?'grouptopic_update DESC,':'')."{$sOrderType} DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		// 全局置顶帖子
 		if(isset($arrWhere['grouptopic_addtodigest'])){
@@ -52,7 +50,7 @@ class NewtopicController extends Controller{
 		}
 		$arrWhere['grouptopic_sticktopic']='3';
 
-		$arrGlobalSticktopics=GrouptopicModel::F()->where($arrWhere)->order(($sType=='lastreply'?'update_dateline DESC,':'')."{$sOrderType} DESC")->getAll();
+		$arrGlobalSticktopics=GrouptopicModel::F()->where($arrWhere)->order(($sType=='lastreply'?'grouptopic_update DESC,':'')."{$sOrderType} DESC")->getAll();
 
 		if(is_array($arrGrouptopics)){
 			if(is_array($arrGlobalSticktopics)){

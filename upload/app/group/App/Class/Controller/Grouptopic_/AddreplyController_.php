@@ -189,6 +189,7 @@ class AddreplyController extends GlobalchildController{
 
 		$oGrouptopic->grouptopic_latestcomment=serialize($arrLatestData);
 		$oGrouptopic->grouptopic_comments=GrouptopiccommentModel::F('grouptopic_id=?',$nId)->all()->getCounts();
+		$oGrouptopic->grouptopic_update=CURRENT_TIMESTAMP;
 		$oGrouptopic->setAutofill(false);
 		$oGrouptopic->save(0,'update');
 
