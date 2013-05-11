@@ -1,11 +1,13 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
 <!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
 
 <!--{script}-->
 $(function(){
 	<!--{if $GLOBALS['___login___']!==false}-->
 	editor=loadEditorThin('grouptopic_content');
+	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 	<!--{/if}-->
 });
 
@@ -21,6 +23,22 @@ function grouptopicSubmit(){
 			setTimeout(function(){window.location.href=data.url;},1000);
 		}
 	});
+}
+
+function showMedia(){
+	$('#grouptopic-media-box').toggle('fast');
+}
+
+function insertGrouptopicattachment(nAttachmentid){
+	insertAttachment(editor,nAttachmentid);
+}
+
+function insertGrouptopicvideo(sContent){
+	insertVideo(editor,sContent);
+}
+
+function insertGrouptopicmusic(sContent){
+	insertMusic(editor,sContent);
 }
 
 var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
@@ -236,6 +254,10 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@colortopic'))}-->
 													<a href="javascript:void(0);" onclick="tmodTopics('colortopic');return false;"><!--<lang package='Template/Groupadmin'>-->高亮<!--</lang>--></a>
+													<span class="pipe">|</span>
+													<!--{/if}-->
+													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@uptopic'))}-->
+													<a href="javascript:void(0);" onclick="tmodTopics('uptopic');return false;"><!--<lang package='Template/Groupadmin'>-->提升下沉<!--</lang>--></a>
 													<span class="pipe">|</span>
 													<!--{/if}-->
 													<!--{if Groupadmin_Extend+checkTopicadminRbac($oGroup,array('group@grouptopicadmin@closetopic'))}-->

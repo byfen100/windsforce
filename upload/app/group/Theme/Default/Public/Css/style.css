@@ -209,7 +209,7 @@ a#moderate_reason:hover{text-decoration:none;}
 .highlightoperating_b,.highlightoperating_i,.highlightoperating_l{border: 1px solid #F1F5FA;outline: medium none;}
 
 /* 多选公用停留框 */
-#modActionSelect{position:absolute;right:0;margin-top:-16px;padding:10px 25px;width:250px;height:100px;;line-height:32px;overflow:hidden;border:1px solid #999;}
+#modActionSelect{position:absolute;right:0;margin-top:-16px;padding:10px 25px;width:280px;height:100px;;line-height:32px;overflow:hidden;border:1px solid #999;}
 #modActionSelect a{color:#06C;}
 .smallmodaction{position:absolute;top:7px;right:10px;width:50px;height:14px;line-height:100px;overflow:hidden;background:url({arrow_go.png}) no-repeat center center;}
 .checkbox_checkall{position:absolute;top:7px;right:50px;}
