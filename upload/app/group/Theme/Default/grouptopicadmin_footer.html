@@ -4,12 +4,12 @@
 				<ul class="dropdown-menu">
 					<!--{~$arrReasonopposition=explode("\n",str_replace(array("\r","\n\n"),array("\r","\n"),$GLOBALS['_cache_']['group_option']['group_reason_opposition']))}-->
 					<!--<foreach for=arrReasonopposition value=sReasonopposition>-->
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','<!--{$sReasonopposition}-->');"><!--{$sReasonopposition}--></a></li>
+					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','<!--{$sReasonopposition|trim}-->');"><!--{$sReasonopposition}--></a></li>
 					<!--</foreach>-->
 					<li class="divider"></li>
 					<!--{~$arrReasonsupport=explode("\n",str_replace(array("\r","\n\n"),array("\r","\n"),$GLOBALS['_cache_']['group_option']['group_reason_support']))}-->
 					<!--<foreach for=arrReasonsupport value=sReasonsupport>-->
-					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','<!--{$sReasonsupport}-->');"><!--{$sReasonsupport}--></a></li>
+					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','<!--{$sReasonsupport|trim}-->');"><!--{$sReasonsupport}--></a></li>
 					<!--</foreach>-->
 				</ul>
 			</div>
