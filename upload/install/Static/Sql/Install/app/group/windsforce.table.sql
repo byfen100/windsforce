@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `#@__grouptopic` (
   `grouptopic_thumb` int(10) NOT NULL DEFAULT '0' COMMENT '缩略图',
   `grouptopic_isrecommend` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为推荐主题',
   `grouptopic_onlycommentview` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否进回帖后才能够看到',
+  `grouptopic_update` int(10) NOT NULL DEFAULT '0' COMMENT '帖子排序更新时间',
   PRIMARY KEY (`grouptopic_id`),
   KEY `grounptopiccategory_id` (`grouptopiccategory_id`),
   KEY `group_id` (`group_id`),
