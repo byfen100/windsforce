@@ -197,4 +197,17 @@ class Install_Extend extends Controller{
 		}
 	}
 
+	public static function columnExists($sTable,$sColumn){
+		global $hConn,$sSql4Tmp,$sDbprefix,$nMysqlVersion;
+
+		$result=mysql_query('DESCRIBE '.$sDbprefix.$sTable.' '.$sColumn);
+		$result=mysql_fetch_array($result);
+
+		if($result===false){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 }

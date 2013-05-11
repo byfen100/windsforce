@@ -38,8 +38,8 @@ function errorMessage($sContent){
 }
 
 /** 服务端版本 */
-$sServerVersion='1.0';
-$nServerRelease='20130426';
+$sServerVersion='1.0.1';
+$nServerRelease='20130512';
 $sFrameworkServerVersion='2.5';
 $nFrameworkServerRelease='20130426';
 	

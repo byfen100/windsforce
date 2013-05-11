@@ -90,6 +90,18 @@ class UpdateController extends Controller{
 		$nMysqlVersion=$arrMysqlVersions[0].".".$arrMysqlVersions[1];
 		Install_Extend::queryString("SET NAMES 'UTF8',character_set_client=binary,sql_mode='';");
 
+		// 保存配置数据
+		$arrConfigDefault=(array)(include WINDSFORCE_PATH.'/config/ConfigDefault.inc.php');
+		$arrConfigDefault=array_merge($arrConfigDefault,$arrConfig);
+
+		if(!file_put_contents(WINDSFORCE_PATH.'/config/Config.inc.php',
+			"<?php\n /* DoYouHaoBaby Framework Config File,Do not to modify this file! */ \n return ".
+			var_export($arrConfig,true).
+			"\n?>")
+		){
+			$this->E(Dyhb::L('写入配置失败，请检查 %s目录是否可写入','Controller/Install',null,WINDSFORCE_PATH.'/Config'));
+		}
+
 		// 前缀
 		$sDbprefix=$arrConfig['DB_PREFIX'];
 	
@@ -113,7 +125,16 @@ class UpdateController extends Controller{
 
 		// 开始执行数据库结构升级
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('数据库结构添加与更新','Controller/Update').'</h3>');
-		Install_Extend::runQuery(APP_PATH.'/Static/Sql/Update/windsforce.table.sql');
+
+		if(Install_Extend::columnExists('user','user_lastlogintime')){
+			Install_Extend::queryString("ALTER TABLE  `{$sDbprefix}user`
+			CHANGE  `user_lastlogintime`  `user_lastlogintime` INT( 10 ) NULL DEFAULT  '0' COMMENT  '用户最后登录时间';");
+		}
+		
+		if(!Install_Extend::columnExists('grouptopic','grouptopic_update')){
+			Install_Extend::queryString("ALTER TABLE  `{$sDbprefix}grouptopic`
+			ADD  `grouptopic_update` INT( 10 ) NOT NULL DEFAULT  '0' COMMENT  '帖子排序更新时间' AFTER  `grouptopic_onlycommentview`;");
+		}
 
 		// 执行结束
 		Install_Extend::showJavascriptMessage('');
@@ -193,7 +214,6 @@ WINDSFORCE;
 
 		// 开始清理数据库数据
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('多余数据库结构删除','Controller/Update').'</h3>');
-		Install_Extend::runQuery(APP_PATH.'/Static/Sql/Update/windsforce.delete.sql');
 
 		// 写入锁定文件
 		if(!file_put_contents($this->_sUpdatefile,'ok')){
