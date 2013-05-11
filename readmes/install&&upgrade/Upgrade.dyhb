@@ -15,6 +15,40 @@ WindsForce 升级教程
 
 ---- 程序当前版本1.0，升级到1.0.1版本的方法如下。
 
+在线浏览 http://doyouhaobaby.net/app/group/topic/180.html
+
+WindsForce-1.0~1.0.1升级程序支持断点升级和反复升级，反复升级可以防止升级过程由于未知原因引起错误，可以再次运行
+继续进行升级，断点升级在升级大数据时，服务器性能不佳的时候，分成多次运行来完成。
+
+1：进入FTP，新建一个old文件，将除了data和config中的所有文件都移动到这个文件夹。
+图1：
+图2：
+
+2：上传新的安装包（1.0.1的upload的文件）
+不少空间都支持在线解压，强烈建议先打包成一个压缩文件上传，最后在线解压。
+图3：
+
+3：将upload中除了data和config的所有的文件都移动到上层目录。
+例外，还需要将upload中config/ConfigDefault.inc.php覆盖上层的config/ConfigDefault.inc.php
+图4：
+
+4：删除data/Update.lock.php文件，访问http://youdomain.com/index.php 即首页进入升级页面。
+图5：
+图6：
+图7：
+图8：
+图9：
+图10：
+图11：
+图12：
+图13：
+图14：
+图15：
+图16：
+图17：
+图18：
+
+5：升级结束，祝你使用愉快！
 
                                                                                                                                     WindsForce Team, 2013-05-12 04:56
                                                                                                                                     http://www.windsforce.com

@@ -5,6 +5,11 @@ Readmes Dir - You Must Read It Before Use This Program.
 
 ---------------------------------
 
+产品发布页
+http://doyouhaobaby.net/app/group/topic/182.html
+
+---------------------------------
+
 特别感谢 
 
 A5网站源码 http://down.admin5.com/
