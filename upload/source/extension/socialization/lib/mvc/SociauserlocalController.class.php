@@ -20,6 +20,7 @@ class SociauserlocalController extends InitController{
 		// 本地用户已绑定
 		if($nUserbinded){
 			if($nUserlocal){
+				Socia::clearCookie();
 				$this->U('home://ucenter/index');
 			}else{
 				$this->localLogin($nUserbinded);
@@ -28,6 +29,7 @@ class SociauserlocalController extends InitController{
 			if($nUserlocal){
 				// 本地用户已登录，进行绑定处理
 				$oSociauser->processBind($nUserlocal);
+				Socia::clearCookie();
 				$this->U('home://ucenter/index');
 			}else{
 				// 前往绑定页面，注册新用户或者使用已有帐号登录完成后再次转向绑定页面
@@ -56,6 +58,8 @@ class SociauserlocalController extends InitController{
 			}
 
 			Core_Extend::updateCreditByAction('daylogin',$oUser['user_id']);
+
+			Socia::clearCookie();
 
 			$this->assign('__JumpUrl__',$sUrl);
 			$this->S(Dyhb::L('Hello %s,你成功登录','Controller/Public',null,$oUser['user_name']));

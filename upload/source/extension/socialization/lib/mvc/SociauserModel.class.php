@@ -63,8 +63,6 @@ class SociauserModel extends CommonModel{
 			$this->setErrorMessage($oSociauser->getErrorMessage());
 			return false;
 		}
-
-		Socia::clearCookie();
 	}
 
 	public function safeInput(){

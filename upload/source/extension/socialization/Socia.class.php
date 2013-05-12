@@ -16,6 +16,12 @@ class Socia{
 		
 		$this->setVendor($sVendor);
 		$this->setLocal();
+
+		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
+		if(!$sRand){
+			$sRand=G::randString(12);
+			Dyhb::cookie('SOCIAUSERTEMP',$sRand);
+		}
 	}
 
 	public function setVendor($sVendor=''){
@@ -30,14 +36,18 @@ class Socia{
 	}
 
 	static public function setUser($arrUser){
-		Core_Extend::saveSyscache('sociauser',$arrUser);
+		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
+
+		Core_Extend::saveSyscache('sociauser'.$sRand,$arrUser);
 	}
 
 	static public function getUser(){
-		if(!isset($GLOBALS['_cache_']['sociauser'])){
-			Core_Extend::loadCache('sociauser',false,'db');
+		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
+		
+		if(!isset($GLOBALS['_cache_']['sociauser'.$sRand])){
+			Core_Extend::loadCache('sociauser'.$sRand,false,'db');
 		}
-		$arrUser=$GLOBALS['_cache_']['sociauser'];
+		$arrUser=$GLOBALS['_cache_']['sociauser'.$sRand];
 
 		return !empty($arrUser)?$arrUser:FALSE;
 	}
@@ -77,7 +87,7 @@ class Socia{
 	}
 
 	public function gotoLoginPage(){
-		self::clearCookie();
+		self::clearCookie(true);
 		$this->_oVendor->gotoLoginPage();
 
 		if($this->_oVendor->isError()){
@@ -88,14 +98,28 @@ class Socia{
 
 	public function bind(){
 		if(!self::getUser()){
-			$this->setErrorMessage('Can not find user info.');
+			if(!$this->isError()){
+				$this->setErrorMessage('Can not find userinfo!');
+			}
 			return false;
 		}
 
 		$this->_oLocal->bind();
 	}
 
-	static public function clearCookie(){
+	static public function clearCookie($bSelf=false){
+		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
+		$oSyscache=Dyhb::instance('SyscacheModel');
+
+		$oSyscache->delCache('sociauser'.$sRand);
+		$oSyscache->delCache('sociastate'.$sRand);
+		$oSyscache->delCache('sociaaccesstoken'.$sRand);
+		$oSyscache->delCache('sociaopenid'.$sRand);
+
+		if($bSelf===false){
+			Dyhb::cookie('SOCIAUSERTEMP',null,-1);
+		}
+
 		Dyhb::cookie('SOCIAKEYS',null,-1);
 	}
 
