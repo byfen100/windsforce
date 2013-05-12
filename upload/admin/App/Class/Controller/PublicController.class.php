@@ -65,7 +65,7 @@ class PublicController extends InitController{
 		// 程序信息
 		$arrVersionInfo=array(
 			'WindsForce '.Dyhb::L('程序版本','Controller/Public')=>"WindsForce " .WINDSFORCE_SERVER_VERSION. "  Release ".
-			WINDSFORCE_SERVER_RELEASE." [ <a href=\"http://windsforce.com\" target=\"_blank\">".
+			WINDSFORCE_SERVER_RELEASE.(WINDSFORCE_SERVER_BUG?' Bug-'.WINDSFORCE_SERVER_BUG:'')." [ <a href=\"http://windsforce.com\" target=\"_blank\">".
 			Dyhb::L('查看最新版本','Controller/Public')."</a>  <span id=\"newest_version\">".Dyhb::L('读取中','Controller/Public')."...</span> ]&nbsp;"."<a href=\"http://windsforce.com\" target=\"_blank\">".
 			Dyhb::L('专业支持与服务','Controller/Public')."</a>",
 			'DoYouHaoBaby'.Dyhb::L('版本','Controller/Public')=>DYHB_VERSION.
@@ -109,7 +109,7 @@ class PublicController extends InitController{
 		
 		// 升级服务端信息
 		$sUpdateUrl='http://doyouhaobaby.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
-			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
+			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&bug='.urlencode(WINDSFORCE_SERVER_BUG).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']);
 		$this->assign('sUpdateUrl',$sUpdateUrl);
 
@@ -300,7 +300,7 @@ class PublicController extends InitController{
 
 	public function program_update(){
 		$sUpdateUrl='http://doyouhaobaby.net/Public/update.php?version='.urlencode(WINDSFORCE_SERVER_VERSION).
-			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&hostname='.
+			'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&bug='.urlencode(WINDSFORCE_SERVER_BUG).'&hostname='.
 			urlencode($_SERVER['HTTP_HOST']).'&url='.urlencode($GLOBALS['_option_']['site_name']).'&infolist=1';
 		$this->assign('sUpdateUrl',$sUpdateUrl);
 

@@ -17,6 +17,7 @@ define('IN_API',true);
 /** Defined the version of WindsForce */
 define('WINDSFORCE_SERVER_VERSION','1.0.1');
 define('WINDSFORCE_SERVER_RELEASE','20130512');
+define('WINDSFORCE_SERVER_BUG','1.0');
 
 /** 系统应用路径定义 */
 define('WINDSFORCE_PATH',getcwd());
