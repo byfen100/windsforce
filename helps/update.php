@@ -75,22 +75,28 @@ INFO;
 /** 比较版本取得更新信息 */
 if($nServerRelease>$nRelease){
 	echo<<<INFO
-		parent.menu.\$WF("update_num").innerHTML="<span class=\"update_num\">3</span>";
+		parent.menu.document.getElementById("update_num").innerHTML="<span class=\"update_num\">3</span>";
 INFO;
 
 	if(empty($nInfolist)){
 		echo<<<INFO
 		\$WF("welcome_info").style.display="none";
 		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
-		\$WF("newest_frameworkversion").innerHTML="{$sFrameworkServerVersion} Build {$nFrameworkServerRelease}";
 		\$WF("news_box").style.display="";
 		\$WF("news_title").innerHTML="更新提示";
 		\$WF("news_content").innerHTML="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
 INFO;
+
+		if($sVersion>'1.0'){
+			echo<<<INFO
+		\$WF("newest_frameworkversion").innerHTML="{$sFrameworkServerVersion} Build {$nFrameworkServerRelease}";
+INFO;
+		}
 	}else{
 		$arrUpdateContent=array(
-			'title1'=>'content1',
-			'title2'=>'content2',
+			'BUG修正'=>'这是一个补丁版本，主要修正了1.0版本的大量BUG',
+			'新功能'=>'本次增加了移动帖子，帖子提升下沉，今日发布数据等等。',
+			'可能需要再次补丁'=>'1.0.1发布的版本，目测QQ和新浪微博有BUG，目前官方论坛已经修复了此BUG。例外，有网友反映，360极速浏览器存在记住登录状态时间比较短的问题。该问题已经在查找了。还有就是kindeditor 浏览器在Google浏览器下面复制存在一些多余的字符。这三个问题修复后会发布一个针对1.0.1的补丁文件。',
 		);
 
 		$sContent='';
