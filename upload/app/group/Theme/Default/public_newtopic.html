@@ -72,6 +72,9 @@
 										<!--{/if}-->
 									</p>
 									<p class="info">
+										<!--<lang package='Template/Topiclist'>-->小组<!--</lang>-->&nbsp;
+										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>
+										<span class="pipe">|</span>
 										<!--<lang package='Template/Topiclist'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
 										<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
 										<!--{d*else}--><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
