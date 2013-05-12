@@ -9,6 +9,8 @@ $(function(){
 	editor=loadEditorThin('grouptopic_content');
 	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 	<!--{/if}-->
+
+	$('.group_description').emotionsToHtml();
 });
 
 function grouptopicSubmit(){
@@ -63,11 +65,11 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 				<div class="row">
 					<div class="span9">
 						<h4><!--<lang package='Template/Group'>-->小组介绍<!--</lang>--><span class="groupshow_todayinfo">(&nbsp;<!--<lang package='Template/Group'>-->今日<!--</lang>-->&nbsp;<b class="groupshow_todaynum"><!--{$oGroup['group_totaltodaynum']}--></b><span class="pipe">=</span><!--<lang package='Template/Group'>-->主题<!--</lang>-->&nbsp;<b class="groupshow_todaynum"><!--{$oGroup['group_topictodaynum']}--></b><span class="pipe">+</span><!--<lang package='Template/Group'>-->回帖<!--</lang>-->&nbsp;<b class="groupshow_todaynum"><!--{$oGroup['group_topiccommenttodaynum']}--></b>&nbsp;)</span></h4>
-						<div class="group_description" style="background-color: #F8F8F8;margin: 10px 0 15px;padding: 10px 15px; border-radius: 10px 10px 10px 10px;">
+						<div class="group_description">
 							<div class="group_createdateline" style="margin-bottom:10px;">
 								<b><!--<lang package='Template/Group'>-->创建时间<!--</lang>--></b>:&nbsp;<span class="label label-success"><!--{$oGroup['create_dateline']|date='Y-m-d',**}--></span>
 							</div>
-							<!--{$oGroup['group_description']}-->
+							<!--{$oGroup['group_description']|Core_Extend+ubb=false}-->
 						</div>
 
 						<div class="alert alert-success">
@@ -317,7 +319,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 											<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
 											<!--{/if}-->
 
-											<div id="grouptopic-media-box" class="common-media-box none">
+											<div id="grouptopic-media-box" class="common-media-box">
 												<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
 												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
 												<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>

@@ -1,6 +1,7 @@
 <!--<include file="public+header">-->
 
 <!--{:Core_Extend::editorInclude()}-->
+<!--{:Core_Extend::emotion()}-->
 
 <script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/bigcolorpicker/js/jquery.bigcolorpicker.min.js"></script>
 <!--<load file="<!--{:__PUBLIC__}-->/js/bigcolorpicker/css/jquery.bigcolorpicker.css" />-->
@@ -8,6 +9,8 @@
 <!--{script}-->
 $(function(){
 	editor=loadEditor('group_description');
+
+	$(".face-icon").jqfaceedit({txtAreaObj:editor,containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
 
 	$("img[f='color-img']").bigColorpicker(function(el,color){
 		var id=$(el).attr("data-target");
@@ -43,6 +46,18 @@ function complete(data,status){
 	if(status==1){
 		setTimeout(function(){window.location.href=D.U('app/config?controller=group&action=edit&id=<!--{$_GET['id']}-->&value='+data.group_id);},1000);
 	}
+}
+
+function insertGroupdescriptionattachment(nAttachmentid){
+	insertAttachment(editor,nAttachmentid);
+}
+
+function insertGroupdescriptionmusic(sContent){
+	insertMusic(editor,sContent);
+}
+
+function insertGroupdescriptionvideo(sContent){
+	insertVideo(editor,sContent);
 }
 <!--{/script}-->
 
@@ -116,8 +131,16 @@ function complete(data,status){
 					<!--{/if}-->
 					<fieldset>
 						<label for="group_description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->小组简介<!--</lang>--></label>
-						<p style="padding-left:10px;"><textarea name="group_description" id="group_description" style="width:700px;height:300px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:group_description}--><!--</if>--></textarea></p>
-						<div class="description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->详细的小组简介可以让人更好地了解小组的功能<!--</lang>--></div>
+						<div id="grouptopiccommentcontent-media-box" class="common-media-box">
+							<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='Template/Default/Mediabox'>-->表情<!--</lang>--></a> 
+							<a href="javascript:void(0);" onclick="globalAddattachment('insertGroupdescriptionattachment');" class="icon_add_img"><!--<lang package='Template/Default/Mediabox'>-->媒体<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addVideo('insertGroupdescriptionvideo');" class="icon_add_video" ><!--<lang package='Template/Default/Mediabox'>-->视频<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addMusic('insertGroupdescriptionmusic');" class="icon_add_music"><!--<lang package='Template/Default/Mediabox'>-->音乐<!--</lang>--></a>
+						</div>
+						<p style="padding-left:10px;" id="emotion_parentcontainer">
+							<textarea name="group_description" id="group_description" style="width:700px;height:300px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:group_description}--><!--</if>--></textarea>
+						</p>
+						<div class="description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->详细的小组简介可以让人更好地了解小组的功能<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
 					</fieldset>
 					<!--{if isset( $oValue )}-->
 					<fieldset>

@@ -183,6 +183,7 @@ Description: Group应用模块CSS
 .groupshow_thumbtopic{background-color: #FFFFFF;border: 1px solid #EEEEEE;height: 345px;margin-top: -100px;padding: 10px;position: absolute;width: 240px;}
 .groupshow_todayinfo{margin-left:20px;font-size:13px;color:#999;font-weight:normal;}
 .groupshow_todaynum{color:{NOTICETEXT_COLOR};}
+.group_description{background-color: #F8F8F8;margin: 10px 0 15px;padding: 10px 15px; border-radius: 10px 10px 10px 10px;}
 [/CURSCRIPT]
 
 /**===============================

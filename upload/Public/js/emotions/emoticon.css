@@ -1,4 +1,4 @@
-* {
+.facebox{
     margin: 0;
     padding: 0;
 }
@@ -16,7 +16,7 @@
     visibility: hidden;
 }
 
-li {
+.facebox li {
     list-style: none;
 }
 .facebox ul {
