@@ -30,7 +30,7 @@ if(isset($_GET['app'])){
 	if(is_file(WINDSFORCE_PATH.'/config/Config.inc.php')){
 		$arrConfigs=(array)(include(WINDSFORCE_PATH.'/config/Config.inc.php'));
 		$sDefaultAppname=isset($arrConfigs['DEFAULT_APP'])?$arrConfigs['DEFAULT_APP']:'home';
-		$sUrlpathinfodepr=$arrConfigs['URL_PATHINFO_DEPR'];
+		$sUrlpathinfodepr=$arrConfigs['URL_PATHINFO_DEPR']?$arrConfigs['URL_PATHINFO_DEPR']:'/';
 		unset($arrConfigs);
 	}else{
 		$sUrlpathinfodepr='/';
