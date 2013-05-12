@@ -133,13 +133,13 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 											<thead>
 												<tr style="border-bottom:1px solid #eeeeee;">
 													<th style="width:61px;"><!--<lang package='Template/Topiclist'>-->发帖人<!--</lang>--></th>
-													<th><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&did=1'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a></th>
+													<th><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&did=1'.($nCid?'&cid='.$nCid:''))}-->" <!--{if G+getGpc('did')=='1'}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a></th>
 													<th style="text-align:center;width:130px;">
-														<a href="<!--{:Group_Extend::getGroupurl($oGroup,($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType==''}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
+														<a href="<!--{:Group_Extend::getGroupurl($oGroup,($nCid?'&cid='.$nCid:''))}-->" <!--{if $sType==''}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
 														<span class="pipe">|</span>
-														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=com'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType=='com'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
+														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=com'.($nCid?'&cid='.$nCid:''))}-->" <!--{if $sType=='com'}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
 														<span class="pipe">|</span>
-														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=view'.($nCid?'&cid='.$nCid:''))}-->" style="<!--{if $sType=='view'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
+														<a href="<!--{:Group_Extend::getGroupurl($oGroup,'&type=view'.($nCid?'&cid='.$nCid:''))}-->" <!--{if $sType=='view'}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
 													</th>
 												</tr>
 											</thead>

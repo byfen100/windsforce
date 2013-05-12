@@ -22,16 +22,16 @@
 						<thead>
 							<tr style="border-bottom:1px solid #eeeeee;">
 								<th style="width:61px;"><!--<lang package='Template/Topiclist'>-->发帖人<!--</lang>--></th>
-								<th><a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a>
+								<th><a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?did=1')}-->" <!--{if G+getGpc('did')=='1'}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=lastreply')}-->" style="<!--{if $sType=='lastreply'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=lastreply')}-->" <!--{if $sType=='lastreply'}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>--></a>
 								</th>
 								<th style="text-align:center;width:130px;">
-									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic)}-->" style="<!--{if $sType==''}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic)}-->" <!--{if $sType==''}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=com')}-->" style="<!--{if $sType=='com'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=com')}-->" <!--{if $sType=='com'}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=view')}-->" style="<!--{if $sType=='view'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=view')}-->" <!--{if $sType=='view'}-->class="current-menu"<!--{/if}-->><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
 								</th>
 							</tr>
 						</thead>
