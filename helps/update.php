@@ -40,12 +40,14 @@ function errorMessage($sContent){
 /** 服务端版本 */
 $sServerVersion='1.0.1';
 $nServerRelease='20130512';
+$nServerBug='1.0';
 $sFrameworkServerVersion='2.5';
 $nFrameworkServerRelease='20130426';
 	
 /** 获取客户端信息 & 验证 */
 $sVersion=isset($_GET['version'])?trim($_GET['version']):'';
 $nRelease=isset($_GET['release'])?intval($_GET['release']):'';
+$sBug=isset($_GET['bug'])?trim($_GET['bug']):'';
 $sHostname=isset($_GET['hostname'])?trim($_GET['hostname']):'';
 $sUrl=isset($_GET['url'])?trim($_GET['url']):'';
 $nInfolist=isset($_GET['infolist']) && $_GET['infolist']==1?intval($_GET['infolist']):'';
@@ -72,19 +74,32 @@ function \$WF(id){
 }
 INFO;
 
+$sBuginfo=$nServerBug?' Bug-'.$nServerBug:'';
+
 /** 比较版本取得更新信息 */
-if($nServerRelease>$nRelease){
+if($nServerRelease>$nRelease || $nServerBug>$sBug){
 	echo<<<INFO
 		parent.menu.document.getElementById("update_num").innerHTML="<span class=\"update_num\">3</span>";
 INFO;
 
+	$sNewcontent='';
+	if($nServerRelease>$nRelease){
+		$sNewcontent.="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
+	}
+
+	if($nServerBug>$sBug){
+		$sNewcontent.=($nServerRelease>$nRelease?'<br/>':'')."<span>注意，本次还包含一个补丁文件{$sServerVersion} Build {$nServerRelease} Bug {$nServerBug} 已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
+	}
+
+	$sNewcontent=trimNl($sNewcontent);
+
 	if(empty($nInfolist)){
 		echo<<<INFO
 		\$WF("welcome_info").style.display="none";
-		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}{$sBuginfo}";
 		\$WF("news_box").style.display="";
 		\$WF("news_title").innerHTML="更新提示";
-		\$WF("news_content").innerHTML="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
+		\$WF("news_content").innerHTML="{$sNewcontent}";
 INFO;
 
 		if($sVersion>'1.0'){
@@ -123,7 +138,7 @@ INFO;
 		echo "\$WF(\"update_list\").innerHTML=\"{$sContent}\";";
 	}else{
 		echo<<<INFO
-		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}";
+		\$WF("newest_version").innerHTML="{$sServerVersion} Build {$nServerRelease}{$sBuginfo}";
 		\$WF("newest_frameworkversion").innerHTML="{$sFrameworkServerVersion} Build {$nFrameworkServerRelease}";
 INFO;
 	}
