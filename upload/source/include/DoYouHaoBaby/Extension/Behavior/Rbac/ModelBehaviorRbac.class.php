@@ -61,10 +61,20 @@ class ModelBehaviorRbac extends ModelBehavior{
 		// 响应事件，用于更新认证相关数据
 		$this->addEventHandler_(self::AFTER_CHECK_ON_CREATE,array($this,'afterCheckOnCreate_'));
 		$this->addEventHandler_(self::AFTER_CHECK_ON_UPDATE,array($this,'afterCheckOnUpdate_'));
+
+		// 初始化rbac登陆时间
+		$nTime=Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'rbacloginlife');
+		if($nTime>0){
+			$this->_arrSettings['rbac_login_life']=$nTime;
+		}
 	}
 
 	public function initRbacloginlife($nTime=86400){
 		$this->_arrSettings['rbac_login_life']=$nTime;
+
+		if($nTime>0){
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'rbacloginlife',$nTime,$nTime);
+		}
 	}
 
 	public function checkLogin($sUsername,$sPassword,$bEmail=false,$bUpdateLogin=true,$bThin=false){
@@ -252,6 +262,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		if($bCheckLogin===false){
 			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',null,-1);
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'rbacloginlife',null,-1);
 		}
 	}
 
