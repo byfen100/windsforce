@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><root>
 <title><![CDATA[WindsForce! Style]]></title>
-<version><![CDATA[1.0]]></version>
-<time><![CDATA[20120104]]></time>
+<version><![CDATA[1.0.1]]></version>
+<time><![CDATA[20130512]]></time>
 <url><![CDATA[http://www.windsforce.net]]></url>
 <copyright><![CDATA[(C)2012-2013 风之力（成都）]]></copyright>
 <data>
@@ -81,6 +81,6 @@
 		<special_bg><![CDATA[#2e7bf6]]></special_bg>
 		<interleave_color><![CDATA[#DEDEDE]]></interleave_color>
 	</data>
-	<version><![CDATA[For WindsForce-1.0]]></version>
+	<version><![CDATA[For WindsForce-1.0.1]]></version>
 </data>
 </root>
