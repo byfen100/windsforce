@@ -150,6 +150,15 @@ function option(){
 						</div>
 						<div id="tab4" class="windsforce_tabcontent">
 							<fieldset>
+								<label for="newtopic_default"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->新帖是否为默认首页<!--</lang>--></label>
+								<select name="options[newtopic_default]" id="newtopic_default">
+									<option value="1" <!--{if $arrOptions['newtopic_default']==1}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->是<!--</lang>--></option>
+									<option value="0" <!--{if $arrOptions['newtopic_default']==0}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->否<!--</lang>--></option>
+								</select>
+								<div class="description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->这个根据用户习惯来选择<!--</lang>-->
+								</div>
+							</fieldset>
+							<fieldset>
 								<label for="group_homepagestyle_on"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->首页浏览界面切换浏览风格菜单是否显示<!--</lang>--></label>
 								<select name="options[group_homepagestyle_on]" id="group_homepagestyle_on">
 									<option value="0" <!--{if $arrOptions['group_homepagestyle_on']==0}-->selected<!--{/if}-->><!--<lang package='Template/Default/Common'>-->否<!--</lang>--></option>

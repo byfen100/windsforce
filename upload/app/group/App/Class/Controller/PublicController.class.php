@@ -7,7 +7,11 @@
 class PublicController extends InitController{
 
 	public function index(){
-		Core_Extend::doControllerAction('Public@Index','index');
+		if($GLOBALS['_cache_']['group_option']['newtopic_default']==1){
+			Core_Extend::doControllerAction('Public@Newtopic','index');
+		}else{
+			Core_Extend::doControllerAction('Public@Index','index');
+		}
 	}
 
 	public function set_homepagestyle(){
@@ -15,7 +19,12 @@ class PublicController extends InitController{
 	}
 
 	public function newtopic(){
-		Core_Extend::doControllerAction('Public@Newtopic','index');
+		if($GLOBALS['_cache_']['group_option']['newtopic_default']==1){
+			Core_Extend::doControllerAction('Public@Index','index');
+		}else{
+			
+			Core_Extend::doControllerAction('Public@Newtopic','index');
+		}
 	}
 	
 	public function group(){

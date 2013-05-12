@@ -68,3 +68,14 @@ DELETE FROM `#@__creditrule` WHERE `creditrule_id` = 27;
 
 INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_action`, `creditrule_cycletype`, `creditrule_cycletime`, `creditrule_rewardnum`, `creditrule_extendcredit1`, `creditrule_extendcredit2`, `creditrule_extendcredit3`, `creditrule_extendcredit4`, `creditrule_extendcredit5`, `creditrule_extendcredit6`, `creditrule_extendcredit7`, `creditrule_extendcredit8`) VALUES
 (27, '帖子被提升', 'group_uptopic', 4, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- 添加表中的数据 `windsforce_groupoption`
+--
+
+DELETE FROM `#@__groupoption` WHERE `groupoption` = 'newtopic_default';
+
+INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
+('newtopic_default', '1');

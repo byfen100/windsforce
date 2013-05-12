@@ -221,7 +221,7 @@ a#moderate_reason:hover{text-decoration:none;}
 /**===============================
            首页和小组分类
 ================================*/
-[CURSCRIPT=group::public::index,group::public::group]
+[CURSCRIPT=group::public::index,group::public::group,group::public::newtopic]
 #groupcategory h2{font-size:12px;color:#999;line-height:100%;margin-bottom:10px;text-align:left;}
 #groupcategory ul{list-style:none;margin-bottom:0;margin:0}
 #groupcategory label{line-height:100%;padding-top:8px;}
@@ -236,7 +236,7 @@ a#moderate_reason:hover{text-decoration:none;}
 /**===============================
            首页模块列表
 ================================*/
-[CURSCRIPT=group::public::index]
+[CURSCRIPT=group::public::index,group::public::newtopic]
 .publicmodule_list li{line-height:26px;height:26px;overflow:hidden;}
 .publicmodule_list_sort ul{background:url({sort.png}) 0 7px no-repeat;}
 .publicmodule_list_sort ul li{padding-left:20px;}
@@ -250,7 +250,7 @@ a#moderate_reason:hover{text-decoration:none;}
 /**===============================
            帖子列表
 ================================*/
-[CURSCRIPT=group::public::newtopic,group::group::show,group::space::index,group::tag::show]
+[CURSCRIPT=group::public::newtopic,group::group::show,group::space::index,group::tag::show,group::public::index]
 .newtopic_currentmenu{color:#999999;}
 .topic_list_box .num {color: #999999;line-height: 18px;text-align: center;width: 140px;text-align:center;}
 .topic_list_box .num span {background: none repeat scroll 0 0 #f3f1f1;-webkit-border-radius:3px 3px 3px 3px;-moz-border-radius:3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;display: block;float: right;height: 36px;margin: 0 0 0 10px;overflow: hidden;padding: 4px 0;width: 54px;}
@@ -270,7 +270,7 @@ a#moderate_reason:hover{text-decoration:none;}
 /**===============================
            标签列表
 ================================*/
-[CURSCRIPT=group::public::newtopic,group::tag::show]
+[CURSCRIPT=group::public::newtopic,group::tag::show,group::public::index]
 .tags_hot{padding:5px 0;}
 .tags_hot ul{margin-left:0px;}
 .tags_hot li{float:left;margin:0 5px 5px 0px;}
@@ -280,7 +280,7 @@ a#moderate_reason:hover{text-decoration:none;}
 /**===============================
            最新帖子列表
 ================================*/
-[CURSCRIPT=group::public::newtopic]
+[CURSCRIPT=group::public::newtopic,group::public::index]
 .grouphottopic_titles {word-wrap: break-word;}
 .grouphottopic_titles li {margin-left:-15px;border-bottom: 1px dashed #CCCCCC;color: #999999;overflow: hidden;padding: 6px 0;}
 .grouphottopic_titles h3 {color: #666666;float: left;font-size:12px;margin:0;font-weight:normal;}
@@ -292,14 +292,14 @@ a#moderate_reason:hover{text-decoration:none;}
 /**===============================
            新贴右边用户栏
 ================================*/
-[CURSCRIPT=group::public::newtopic]
+[CURSCRIPT=group::public::newtopic,group::public::index]
 .group_sidebar_userinfo{padding:15px 0 0;}
 [/CURSCRIPT]
 
 /**===============================
            小组列表
 ================================*/
-[CURSCRIPT=group::public::index]
+[CURSCRIPT=group::public::index,group::public::newtopic]
 .grouplist_header{color:#fff;font-weight:bold;margin: 0 0 18px;color: #1B72AF;overflow: hidden;padding: 5px 10px;-webkit-border-radius: 3px 3px 0px 0px;-moz-border-radius: 3px 3px 0px 0px;border-radius: 3px 3px 0px 0px;}
 .grouplist_groupname{color: #fff;}
 .grouplist_groupname a {text-decoration:none;color:#fff;}

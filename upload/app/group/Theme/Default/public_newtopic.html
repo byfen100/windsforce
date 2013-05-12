@@ -1,5 +1,7 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{~$sNewtopic=$GLOBALS['_cache_']['group_option']['newtopic_default']==1?'index':'newtopic'}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
@@ -12,7 +14,7 @@
 
 				<div class="alert alert-success">
 					<button class="close" data-dismiss="alert">&times;</button>
-					<!--<lang package='Template/Public'>-->这里为系统所有新帖子<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('group://public/newtopic')}-->"><!--<lang package='Template/Public'>-->查看全部<!--</lang>--></a></b>
+					<!--<lang package='Template/Public'>-->这里为系统所有新帖子<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('group://public/'.$sNewtopic)}-->"><!--<lang package='Template/Public'>-->查看全部<!--</lang>--></a></b>
 				</div>
 				
 				<div id="topic_list_box" class="topic_list_box">
@@ -20,16 +22,16 @@
 						<thead>
 							<tr style="border-bottom:1px solid #eeeeee;">
 								<th style="width:61px;"><!--<lang package='Template/Topiclist'>-->发帖人<!--</lang>--></th>
-								<th><a href="<!--{:Dyhb::U('group://public/newtopic?did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a>
+								<th><a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?did=1')}-->" style="<!--{if G+getGpc('did')=='1'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->精华<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/newtopic?type=lastreply')}-->" style="<!--{if $sType=='lastreply'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=lastreply')}-->" style="<!--{if $sType=='lastreply'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>--></a>
 								</th>
 								<th style="text-align:center;width:130px;">
-									<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" style="<!--{if $sType==''}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic)}-->" style="<!--{if $sType==''}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->最新<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/newtopic?type=com')}-->" style="<!--{if $sType=='com'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=com')}-->" style="<!--{if $sType=='com'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://public/newtopic?type=view')}-->" style="<!--{if $sType=='view'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('group://public/'.$sNewtopic.'?type=view')}-->" style="<!--{if $sType=='view'}-->color:gray;<!--{/if}-->"><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--></a>
 								</th>
 							</tr>
 						</thead>

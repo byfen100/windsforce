@@ -4,9 +4,12 @@
 
 !defined('DYHB_PATH') && exit;
 
+/**
+ * 新帖和首页可以互换，所以样式都满足
+ */
 return array(
-	'public::newtopic'=>'userhome',
-	'public::index'=>'groups',
+	'public::newtopic'=>'userhome,groups',
+	'public::index'=>'groups,userhome',
 	'public::group'=>'groups',
 	'group::show'=>'comment,media',
 	'group::user',

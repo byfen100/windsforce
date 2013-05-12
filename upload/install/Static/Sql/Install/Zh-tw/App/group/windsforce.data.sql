@@ -115,7 +115,8 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('group_topiccommenttodaynum', '0'),
 ('group_totaltodaynum', '0'),
 ('comment_max_len', '20000'),
-('comment_spam_content_size', '10000');
+('comment_spam_content_size', '10000'),
+('newtopic_default', '1');
 
 -- --------------------------------------------------------
 
