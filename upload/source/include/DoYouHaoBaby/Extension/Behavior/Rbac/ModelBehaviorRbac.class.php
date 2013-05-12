@@ -115,7 +115,8 @@ class ModelBehaviorRbac extends ModelBehavior{
 			return $oMember;
 		}
 
-		$this->clearThisCookie(true);// 清除COOKIE
+		//$this->clearThisCookie(true);
+		// 清除COOKIE && 造成了502 bad getway ngix
 
 		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']),$oMember->id(),$this->_arrSettings['rbac_login_life']);
 
