@@ -86,9 +86,7 @@ function changeRolegroup(oObj,id){
 							<th><a href="javascript:sortBy('role_parentid','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('role_parentid')}-->><!--<lang package='Template/Default/Role'>-->上级角色<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('rolegroup_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('rolegroup_id')}-->><!--<lang package='Template/Default/Role'>-->角色分组<!--</lang>--></a></th>
 							<th><a href="javascript:sortBy('role_status','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('role_status')}-->><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></a></th>
-							<!--{if Dyhb+C('APP_DEVELOP')}-->
 							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
-							<!--{/if}-->
 						</tr>
 					</thead>
 					<tbody>
@@ -110,19 +108,19 @@ function changeRolegroup(oObj,id){
 							<td><!--{$TheController:get_parent_role( $value:role_parentid )}--></td>
 							<td><!--<if condition="!empty( $value:rolegroup:rolegroup_name )">--><a href="<!--{:Dyhb::U('role/index?rolegroup_id='.$value->rolegroup_id.'&sort_=asc')}-->"><!--{$value:rolegroup:rolegroup_title}-->-<!--{$value:rolegroup:rolegroup_name}--></a><!--<else/>--><!--<lang package='Template/Default/Role'>-->未分组<!--</lang>--><!--</if>--></td>
 							<td><img src="<!--{:At::path($value->role_status==1?'yes.gif':'no.gif')}-->"/></td>
-							<!--{if Dyhb+C('APP_DEVELOP')}-->
-							<td><!--<if condition="$value:role_status eq 1" >-->
+							<td><!--{if Dyhb+C('APP_DEVELOP')}-->
+								<!--<if condition="$value:role_status eq 1" >-->
 								<a href="javascript:forbid('<!--{$value:role_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Common'>-->禁用<!--</lang>-->"></a>
 								<!--<else/>-->
 								<a href="javascript:resume('<!--{$value:role_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Common'>-->恢复<!--</lang>-->"></a>
 								<!--</if>-->
+								<!--{/if}-->
 								&nbsp;<a href="javascript:app('<!--{$value:role_id}-->')"><!--<lang package='Template/Default/Role'>-->授权<!--</lang>--></a>
 								<!--{if $value['role_id']!=4}-->
 								&nbsp;<a href="javascript:user('<!--{$value:role_id}-->')"><!--<lang package='Template/Default/Role'>-->用户<!--</lang>--></a>
 								&nbsp;<a href="<!--{:Dyhb::U('role/quickuserrole?rid='.$value['role_id'])}-->"><!--<lang package='Template/Default/Role'>-->快捷用户<!--</lang>--></a>
 								<!--{/if}-->
 							</td>
-							<!--{/if}-->
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->
