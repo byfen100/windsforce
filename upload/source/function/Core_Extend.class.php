@@ -1678,4 +1678,18 @@ WINDSFORCE;
 		return $bSessionExists;
 	}
 
+	static public function path($sFile){
+		static $sApptemplate='';
+
+		if($sApptemplate==''){
+			$sApptemplate=Dyhb::cookie('template');
+		}
+
+		if(is_file(WINDSFORCE_PATH.'/ucontent/theme/'.$sApptemplate.'/Public/Images/'.$sFile)){
+			return __ROOT__.'/ucontent/theme/'.$sApptemplate.'/Public/Images/'.$sFile;
+		}else{
+			return __ROOT__.'/ucontent/theme/Default/Public/Images/'.$sFile;
+		}
+	}
+
 }
