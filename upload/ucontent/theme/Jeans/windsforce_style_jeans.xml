@@ -10,7 +10,7 @@
 	<theme_name><![CDATA[Jeans]]></theme_name>
 	<theme_dirname><![CDATA[jeans]]></theme_dirname>
 	<status><![CDATA[1]]></status>
-	<style_extend><![CDATA[t3	t4|t4]]></style_extend>
+	<style_extend><![CDATA[]]></style_extend>
 	<doyouhaobaby_template_base><![CDATA[jeans]]></doyouhaobaby_template_base>
 	<directory><![CDATA[theme/Jeans]]></directory>
 	<copyright><![CDATA[风之力（成都）]]></copyright>
