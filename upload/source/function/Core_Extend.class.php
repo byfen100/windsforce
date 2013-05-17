@@ -825,6 +825,10 @@ WINDSFORCE;
 			}
 		}
 
+		if(!is_file($sStyleCachepath.'/style.php')){
+			Dyhb::cookie('style_id',null,-1);
+		}
+
 		$GLOBALS['_style_']=(array)(include $sStyleCachepath.'/style.php');
 		define('DOYOUHAOBABY_TEMPLATE_BASE',$GLOBALS['_style_']['doyouhaobaby_template_base']);
 
