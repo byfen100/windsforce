@@ -10,7 +10,7 @@
 							<!--{if $GLOBALS['_option_']['language_switch_on']==1 && count($GLOBALS['_cache_']['lang'])>1}-->
 							<div id="lang_select_box" class="left">
 								<div class="btn-group">
-									<a href="javascript:void(0);" id="lang_select" data-toggle="dropdown">Language</a>
+									<a href="javascript:void(0);" id="lang_select" data-toggle="dropdown" class="topheader_normalmenu">Language</a>
 									<ul class="dropdown-menu">
 									<!--<foreach for="GLOBALS['_cache_']['lang']" value=sLang>-->
 										<li><a href="?l=<!--{$sLang}-->" <!--{if strtolower(Dyhb+cookie('language'))==$sLang}-->style="font-weight:bold;"<!--{/if}-->><!--{$sLang}--></a></li>
@@ -21,15 +21,15 @@
 							<span class="pipe">|</span>
 							<!--{/if}-->
 							<i class="icon-signal"></i>
-							<a href="<!--{:Dyhb::U('home://public/mobile')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->手机版<!--</lang>--></a>
+							<a href="<!--{:Dyhb::U('home://public/mobile')}-->"class="topheader_normalmenu"><!--<lang package='__COMMON_LANG__@Template/Header'>-->手机版<!--</lang>--></a>
 							<span class="pipe">|</span>
-							<a href="<!--{:Dyhb::U('home://public/sitemap')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->网站地图<!--</lang>--></a>
+							<a href="<!--{:Dyhb::U('home://public/sitemap')}-->"class="topheader_normalmenu"><!--<lang package='__COMMON_LANG__@Template/Header'>-->网站地图<!--</lang>--></a>
 						</div>
 						<div class="right">
 							<!--{if $GLOBALS['_option_']['extendstyle_switch_on']==1 && !empty($GLOBALS['_style_']['_style_extend_icons_'])}-->
 							<div id="extendstyle_select_box" class="left">
 								<div class="btn-group">
-									<a href="javascript:void(0);" id="extendstyle_select" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+									<a href="javascript:void(0);" id="extendstyle_select" data-toggle="dropdown" class="topheader_normalmenu">&nbsp;&nbsp;&nbsp;&nbsp;</a>
 									<ul class="dropdown-menu">
 									<!--<foreach for="GLOBALS['_style_']['_style_extend_icons_']" key=sStyleextendicon value=arrStyleextendicon>-->
 										<!--{if $sStyleextendicon=='0' && count($GLOBALS['_style_']['_style_extend_icons_'])!=1}-->
@@ -44,7 +44,7 @@
 							<!--{/if}-->
 							<!--{~$arrHeaderNavs=$GLOBALS['_cache_']['nav']['header']}-->
 							<!--<foreach for=arrHeaderNavs value=arrHeaderNav>-->
-							<a <!--{$arrHeaderNav['style']}--> title="<!--{$arrHeaderNav['description']}-->" href="<!--{$arrHeaderNav['link']}-->" <!--{$arrHeaderNav['target']}--> <!--{if $arrHeaderNav['app']===APP_NAME}-->class="headernav_active"<!--{/if}-->>
+							<a <!--{$arrHeaderNav['style']}--> title="<!--{$arrHeaderNav['description']}-->" href="<!--{$arrHeaderNav['link']}-->" <!--{$arrHeaderNav['target']}--> class="topheader_normalmenu <!--{if $arrHeaderNav['app']===APP_NAME}-->headernav_active<!--{/if}-->">
 								<!--{$arrHeaderNav['title']}-->
 							</a>&nbsp;
 							<!--</foreach>-->
