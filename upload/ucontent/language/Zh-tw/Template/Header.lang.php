@@ -29,6 +29,7 @@ return array(
 '4b027f3979224227ba69dafa09f4be38'=>"提醒",
 '7eb05a33a55259025ed1afac4252a96f'=>"遊客權限",
 '29f5a3f2a2f695904a2925bbbb5febef'=>"我的權限",
+'d1430a8eae80f2def6721ee6a623a940'=>"您的瀏覽器不安全，請使用Chrome、Firefox或IE 9以上的瀏覽器！！！即將跳轉到wap版本，點擊確定",
 )
 
 ?>

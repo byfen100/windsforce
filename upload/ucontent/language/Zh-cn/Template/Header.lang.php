@@ -29,6 +29,7 @@ return array(
 '4b027f3979224227ba69dafa09f4be38'=>"提醒",
 '7eb05a33a55259025ed1afac4252a96f'=>"游客权限",
 '29f5a3f2a2f695904a2925bbbb5febef'=>"我的权限",
+'d1430a8eae80f2def6721ee6a623a940'=>"您的浏览器不安全，请使用Chrome、Firefox或IE 9以上的浏览器！！！即将跳转到wap版本，点击确定",
 )
 
 ?>
