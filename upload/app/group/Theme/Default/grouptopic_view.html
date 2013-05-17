@@ -569,7 +569,7 @@ $(function(){
 											<a href="" onclick=""><!--<lang package='Template/Grouptopic'>-->举报<!--</lang>--></a>
 											<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group)}-->
 											<span class="pipe">|</span>
-											<label for="manage<!--{$oComment['grouptopiccomment_id']}-->" class="checkbox right">
+											<label for="manage<!--{$oComment['grouptopiccomment_id']}-->" class="checkbox right" style="width:30px;">
 												<input type="checkbox" autocomplete="off" value="<!--{$oComment['grouptopiccomment_id']}-->" onclick="dataidChecked(this);modClick(this,<!--{$oComment['grouptopiccomment_id']}-->)"><!--<lang package='Template/Groupadmin'>-->管理<!--</lang>-->
 											</label>
 											<!--{/if}-->

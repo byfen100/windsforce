@@ -99,7 +99,7 @@ Description: Group应用模块CSS
 
 /* 小组新风格 */
 #grouptopicnew_show h1{font-size:22px;color:#333;text-align:left;line-height:100%;margin-bottom:8px}
-#grouptopicnew_show .infos{position:relative;margin-bottom:10px;margin-right:56px;border-bottom:1px dashed #ddd;margin:5px -10px;padding:0 10px 15px 10px}
+#grouptopicnew_show .infos{position:relative;margin-bottom:10px;margin-right:56px;margin:5px -10px;padding:0 10px 15px 10px}
 
 #grouptopicnew_show .avatar_large{width:48px;}
 .grouptopicsnew .grouptopic a:link,.grouptopicsnew .grouptopic a:visited{}
@@ -116,7 +116,7 @@ Description: Group应用模块CSS
 
 #grouptopiccomments .total{padding:0 10px 6px 10px;border-bottom:1px solid #DDD;color:#999;margin:0 -10px;margin-bottom:10px;}
 #grouptopiccomments .grouptopiccomment_items{padding:5px 10px;}
-#grouptopiccomments .grouptopiccommentnew_reply{background:#fff;padding:8px 10px;margin:0 -10px;-webkit-border-radius: 5px;-moz-border-radius:5px;border-radius:5px;}
+#grouptopiccomments .grouptopiccommentnew_reply{background:#fff;padding:8px 10px;margin:0 -10px;-webkit-border-radius: 5px;-moz-border-radius:5px;border-radius:5px;margin-bottom:10px;}
 #grouptopiccomments .info a,#grouptopiccomments .grouptopiccomment-content a{color:#778087;}
 #grouptopiccomments .grouptopiccommentnew_reply .face{padding-right:8px;width:48px;margin-left:0;}
 #grouptopiccomments .grouptopiccommentnew_reply .infos{padding-left:70px;}
