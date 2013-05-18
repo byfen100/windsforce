@@ -42,7 +42,7 @@ class LoginController extends GlobalchildController{
 		$oUserModel->checkLoginCommon($sUserName,$sPassword,$bEmail,'wap');
 
 		if($oUserModel->isError()){
-			$this->E($oUserModel->getErrorMessage());
+			$this->_oParentcontroller->wap_mes($oUserModel->getErrorMessage(),Dyhb::U('wap://public/login'),0);
 		}else{
 			if(G::getGpc('windsforce_referer')){
 				$sUrl=G::getGpc('windsforce_referer');
