@@ -99,8 +99,10 @@ class AppController extends InitController{
 			$sControllerPath=WINDSFORCE_PATH.'/app/'.$arrAppModel['app_identifier'].'/App/Class/Controller/Admin/'.$sController.'_.php';
 			if(is_file($sControllerPath)){
 				// 加载缓存
-				Core_Extend::loadCache($arrAppModel['app_identifier'].'_option');
-				
+				if(Dyhb::classExists(ucfirst($arrAppModel['app_identifier']).'optionModel')){
+					Core_Extend::loadCache($arrAppModel['app_identifier'].'_option');
+				}
+
 				require_once($sControllerPath);
 				$oController=null;
 				eval('$oController=Dyhb::instance(\''.$sController.'\');');
