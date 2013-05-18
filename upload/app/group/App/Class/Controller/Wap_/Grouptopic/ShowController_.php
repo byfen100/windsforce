@@ -4,11 +4,15 @@
 
 !defined('DYHB_PATH') && exit;
 
-class ShowController extends Controller{
+class ShowController extends GlobalchildController{
 
 	protected $_oGrouptopic=null;
 	
 	public function index(){
+		if(!Core_Extend::checkRbac('group@grouptopic@view')){
+			$this->_oParentcontroller->wap_mes(Dyhb::L('你没有权限查看帖子','Controller/Grouptopic'),'',0);
+		}
+		
 		// 获取参数
 		$nId=intval(G::getGpc('id','G')); // 帖子ID
 
