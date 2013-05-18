@@ -25,7 +25,7 @@
   'USER_AUTH_MODEL' => 'user',
   'AUTH_PWD_ENCODER' => 'md5',
   'USER_AUTH_GATEWAY' => 'home://public/login',
-  'NOT_AUTH_MODULE' => 'public,api,space,misc',
+  'NOT_AUTH_MODULE' => 'public,api,space,misc,wap,apps',
   'REQUIRE_AUTH_MODULE' => '',
   'NOT_AUTH_ACTION' => '',
   'REQUIRE_AUTH_ACTION' => '',
@@ -35,7 +35,6 @@
   'RBAC_GUEST_ACCESS' => 
   array (
     'home@stat@*' => true,
-    'home@apps@*' => true,
     'home@online@*' => true,
     'home@getpassword@*' => true,
     'home@userappeal@*' => true,
@@ -89,5 +88,6 @@
   'CRON_ON' => true,
   'DB_HOST' => 'localhost',
   'DB_USER' => 'root',
+  'START_ROUTER' => true,
 )
 ?>

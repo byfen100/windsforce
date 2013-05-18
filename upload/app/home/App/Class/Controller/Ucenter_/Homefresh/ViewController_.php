@@ -36,6 +36,7 @@ class ViewController extends Controller{
 		}
 
 		$oHomefresh->homefresh_viewnum=$oHomefresh->homefresh_viewnum+1;
+		$oHomefresh->setAutofill(false);
 		$oHomefresh->save(0,'update');
 
 		if($oHomefresh->isError()){
@@ -104,7 +105,7 @@ class ViewController extends Controller{
 		if(G::getGpc('page','G')>1){
 			return $this->view_title_();
 		}else{
-			return $this->_oHomefresh['homefresh_message'];
+			return G::subString(strip_tags($this->_oHomefresh['homefresh_message']),0,30);
 		}
 	}
 

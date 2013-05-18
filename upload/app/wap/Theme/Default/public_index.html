@@ -1,7 +1,30 @@
 <!--<include file="header">-->
 
-	<div id="m">
-		<p>Hello wap!</p>
+<style type="text/css" id="internalStyle">
+.site_description{}
+.homefresh_box{border-top: 1px solid #E3E6EB;padding: 8px 0 8px 4px;word-wrap: break-word;}
+.homefresh_extend{padding:5px 5px 5px 0;}
+</style>
+
+	<div id="content">
+		<div class="site_description light_box"><!--{$GLOBALS['_option_']['site_description']}--></div>
+		
+		<!--{if is_array($arrHomefreshs)}-->
+		<!--<foreach for=arrHomefreshs value=oHomefresh>-->
+		<div class="homefresh_box">
+			<div class="homefresh_content">
+				<!--{$oHomefresh['homefresh_message']|strip_tags|G+subString=0,100|Core_Extend+ubb=false}-->...
+			</div>
+			<div class="homefresh_extend gray_color font_small">
+				<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}--> by <a href="<!--{:Dyhb::U('wap://space@?id='.$oHomefresh['user_id'])}-->"><!--{$oHomefresh:user:user_name}--></a> <span class="pipe">|</span> <a href="<!--{:Dyhb::U('wap://fresh@?id='.$oHomefresh['homefresh_id'])}-->"><!--<lang package='Template/Homefresh'>-->查看<!--</lang>--></a>
+			</div>
+		</div>
+		<!--</foreach>-->
+		<!--{d*else}-->
+		<div class="light_box"><!--<lang package='Template/Homefresh'>-->暂时没有发现任何新鲜事<!--</lang>--></div>
+		<!--{/if}-->
 	</div>
+
+	<!--{$sPageNavbar}-->
 
 <!--<include file="footer">-->

@@ -15,6 +15,16 @@ $arrMyappConfigs=array(
 // 读取全局配置
 $arrGlobalConfig=(array)require(WINDSFORCE_PATH.'/config/Config.inc.php');
 
+// RBAC重置
+$arrGlobalConfig['USER_AUTH_GATEWAY']='wap://public/login';
+$arrGlobalConfig['RBAC_ERROR_PAGE']='';
+
+// RBAC游客权限
+$arrGlobalConfig['RBAC_GUEST_ACCESS']=array(
+	/* wap应用 */
+	'wap@ucenter@*'=>true,
+);
+
 // 关闭调试
 $arrGlobalConfig['SHOW_RUN_TIME']=FALSE;
 $arrGlobalConfig['SHOW_DB_TIMES']=FALSE;

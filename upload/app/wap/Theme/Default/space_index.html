@@ -1,0 +1,17 @@
+<!--<include file="header">-->
+
+<style type="text/css" id="internalStyle">
+.space_box{}
+</style>
+
+	<div id="content">
+		<div class="space_box light_box">
+			<p style="padding-bottom:5px;"><!--<lang package='Template/Space'>-->用户名<!--</lang>-->&nbsp;<!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></p>
+			<p style="padding-bottom:5px;"><!--<lang package='Template/Space'>-->性别<!--</lang>-->&nbsp;<!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></p>
+			<p style="padding-bottom:5px;"><!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Space'>-->注册<!--</lang>--></p>
+		</div>
+
+		<div class="link"><a href="<!--{:Dyhb::U('wap://public/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Wap'>-->返回首页<!--</lang>--></a></div>
+	</div>
+
+<!--<include file="footer">-->

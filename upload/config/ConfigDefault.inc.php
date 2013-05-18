@@ -36,7 +36,7 @@ return array(
 	'USER_AUTH_MODEL'=>'user',
 	'AUTH_PWD_ENCODER'=>'md5',
 	'USER_AUTH_GATEWAY'=>'home://public/login',
-	'NOT_AUTH_MODULE'=>'public,api,space,misc',
+	'NOT_AUTH_MODULE'=>'public,api,space,misc,wap,apps',
 	'REQUIRE_AUTH_MODULE'=>'',
 	'NOT_AUTH_ACTION'=>'',
 	'REQUIRE_AUTH_ACTION'=>'',
@@ -46,7 +46,6 @@ return array(
 	'RBAC_GUEST_ACCESS'=>array(
 		/* home应用 */
 		'home@stat@*'=>true,
-		'home@apps@*'=>true,
 		'home@online@*'=>true,
 		'home@getpassword@*'=>true,
 		'home@userappeal@*'=>true,
@@ -125,6 +124,9 @@ return array(
 
 	// 网址加上域名
 	'URL_DOMAIN'=>'',
+
+	// 开启路由
+	'START_ROUTER'=>true,
 
 	// 计划任务 && 计划任务跟系统功能紧密相关，如没有必要请不要关闭
 	'CRON_ON'=>true,

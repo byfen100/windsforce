@@ -7,11 +7,19 @@
 class PublicController extends InitController{
 
 	public function index(){
-		$this->display('public+index');
+		Core_Extend::doControllerAction('Public@Index','index');
 	}
 
 	public function login(){
-		$this->display('public+login');
+		Core_Extend::doControllerAction('Public@Login','index',$this);
+	}
+	
+	public function check_login(){
+		Core_Extend::doControllerAction('Public@Login','check',$this);
+	}
+	
+	public function logout(){
+		Core_Extend::doControllerAction('Public@Login','out',$this);
 	}
 
 }

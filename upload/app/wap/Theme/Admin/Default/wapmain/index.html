@@ -1,5 +1,13 @@
 <!--<include file="public+header" />-->
 
+<!--{script}-->
+function option(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	$("#submit_button").attr("disabled", false);
+}
+<!--{/script}-->
+
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPWAP_COMMON_LANG__@Template/Wapmain'>-->Wap入口<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPWAP_COMMON_LANG__@Template/Wapmain'>-->Wap入口<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
@@ -14,8 +22,43 @@
 					<li><a href="<!--{:Dyhb::U('app/index')}-->"><!--<lang package='Template/Default/App'>-->应用列表<!--</lang>--></a></li>
 				</ul>
 			</header>
-			<div class="module_content">
-				<p>Hello wap!</p>
+			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
+				<div class="module_content">
+					<fieldset>
+						<label for="wap_on"><!--<lang package='Template/Default/Option'>-->WAP服务是否开启<!--</lang>--></label>
+						<input type="radio" id="wap_on" name="options[wap_on]" value="1" <!--{if $arrOptions['wap_on']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[wap_on]" value="0" <!--{if $arrOptions['wap_on']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Option'>-->可暂时关闭WAP服务，不影响用户访问WEB网站<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="wap_close_reason"><!--<lang package='Template/Default/Option'>-->关闭原因<!--</lang>--></label>
+						<textarea name="options[wap_close_reason]" rows="5"><!--{$arrOptions['wap_close_reason']}--></textarea>
+						<div class="description"><!--<lang package='Template/Default/Option'>-->可暂时将站点关闭，这里为WAP站点关闭原因<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="wap_mobile_only"><!--<lang package='Template/Default/Option'>-->WAP服务是否只能使用手机访问<!--</lang>--></label>
+						<input type="radio" id="wap_mobile_only" name="options[wap_mobile_only]" value="1" <!--{if $arrOptions['wap_mobile_only']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[wap_mobile_only]" value="0" <!--{if $arrOptions['wap_mobile_only']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Option'>-->如果选择了只能通过手机访问，那么通过计算机无法直接访问，注意这会造成IE6-IE8用户无法使用网站服务<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="wap_computer_on"><!--<lang package='Template/Default/Option'>-->计算机直接访问是否跳转到WEB页面<!--</lang>--></label>
+						<input type="radio" id="wap_computer_on" name="options[wap_computer_on]" value="1" <!--{if $arrOptions['wap_computer_on']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[wap_computer_on]" value="0" <!--{if $arrOptions['wap_computer_on']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Option'>-->如果选择了是，那么计算机直接访问WAP页面将自动跳转到WEB页面，注意这会造成IE6-IE8的用户页面不断重定向<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="wap_baselist_num"><!--<lang package='Template/Default/Option'>-->WAP网页每页基本分页数量<!--</lang>--></label>
+						<input type="text" name="options[wap_baselist_num]" id="wap_baselist_num" size="40" value="<!--{$arrOptions['wap_baselist_num']}-->"/>
+						<div class="description"><!--<lang package='Template/Default/Option'>-->WAP网站每页基本列表数量<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+					</div>
+				</footer>
 			</div>
 		</article>
 

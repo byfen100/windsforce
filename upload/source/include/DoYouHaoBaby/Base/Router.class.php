@@ -12,6 +12,10 @@ class Router{
 	protected $_oUrlParseObj=null;
 
 	public function __construct($oUrlParseObj=null){
+		if(!$GLOBALS['_commonConfig_']['START_ROUTER']){
+			return;
+		}
+		
 		if(is_null($oUrlParseObj)){
 			$this->_oUrlParseObj=new Url();
 		}else{

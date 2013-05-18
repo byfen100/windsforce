@@ -14,7 +14,13 @@ Dyhb::import(WINDSFORCE_PATH.'/source/model');
 Dyhb::import(WINDSFORCE_PATH.'/source/controller');
 
 /** 定义应用的语言包 */
-define('__APP'.strtoupper(APP_NAME).'_COMMON_LANG__',WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Lang/Admin');
+if(APP_NAME!=='wap'){
+	define('__APP'.strtoupper(APP_NAME).'_COMMON_LANG__',WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Lang/Admin');
+}else{
+	define('__APPHOME_COMMON_LANG__',WINDSFORCE_PATH.'/app/home/App/Lang/Admin');
+}
+define('__APP'.strtoupper(APP_NAME).'_APP_LANG__',WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Lang');
+
 
 /** 导入WindsForce应用模板函数 */
 require(WINDSFORCE_PATH.'/source/function/Apptheme_Extend.class.php');

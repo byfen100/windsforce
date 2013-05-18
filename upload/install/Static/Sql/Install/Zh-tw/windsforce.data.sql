@@ -686,7 +686,12 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('todaytotalnum', '0'),
 ('todayhomefreshnum', '0'),
 ('todayhomefreshcommentnum', '0'),
-('todayattachmentnum', '0');
+('todayattachmentnum', '0'),
+('wap_on', '1'),
+('wap_close_reason', 'update...'),
+('wap_baselist_num', '10'),
+('wap_mobile_only', '0'),
+('wap_computer_on', '0');
 
 -- --------------------------------------------------------
 

@@ -1360,19 +1360,6 @@ CREATE TABLE `#@__userrole` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `windsforce_wapoption`
---
-
-DROP TABLE IF EXISTS `#@__wapoption`;
-CREATE TABLE `#@__wapoption` (
-  `wapoption_name` varchar(32) NOT NULL DEFAULT '' COMMENT '名字',
-  `wapoption_value` text NOT NULL COMMENT '值',
-  PRIMARY KEY (`wapoption_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- 表的结构 `windsforce_district`
 --
 
