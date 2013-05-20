@@ -53,6 +53,7 @@
     'group@group@getcategory' => true,
     'group@grouptopic@set_grouptopicstyle' => true,
     'group@grouptopic@set_grouptopicside' => true,
+    'group@create@*' => true,
   ),
   'RBAC_USER_ACCESS' => 
   array (

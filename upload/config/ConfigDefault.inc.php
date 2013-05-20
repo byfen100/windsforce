@@ -66,6 +66,7 @@ return array(
 		'group@group@getcategory'=>true,
 		'group@grouptopic@set_grouptopicstyle'=>true,
 		'group@grouptopic@set_grouptopicside'=>true,
+		'group@create@*'=>true,
 
 		/* 其它应用请到各自的配置文件设定 */
 	 ),

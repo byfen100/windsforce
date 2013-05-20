@@ -581,7 +581,7 @@ class GroupController extends InitController{
 			foreach($arrLeaderUserid as $nLeaderUserid){
 				$oUser=UserModel::F('user_id=? AND user_status=1',$nLeaderUserid)->getOne();
 				if(empty($oUser['user_id'])){
-					$this->E('用户不存在或者被禁用');
+					$this->E(Dyhb::L('用户不存在或者被禁用','__APPGROUP_COMMON_LANG__@Controller/Group'));
 				}
 
 				$arrMaychangeuserid[]=$nLeaderUserid;

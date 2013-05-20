@@ -40,6 +40,12 @@ function option(){
 						</div>
 						<div id="tab1" class="windsforce_tabcontent">
 							<fieldset>
+								<label for="allowed_creategroup"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->是否允许创建新小组<!--</lang>--></label>
+								<input type="radio" id="allowed_creategroup" name="options[allowed_creategroup]" value="1" <!--{if $arrOptions['allowed_creategroup']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+								<input type="radio" id="" name="options[allowed_creategroup]" value="0" <!--{if $arrOptions['allowed_creategroup']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<div class="description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->我们建议网站建设初期尽量关闭此功能，不然网站的人气很容易被分散。<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
 								<label for="group_isaudit"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->审核新群组<!--</lang>--></label>
 								<input type="radio" id="group_isaudit" name="options[group_isaudit]" value="1" <!--{if $arrOptions['group_isaudit']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
 								<input type="radio" id="" name="options[group_isaudit]" value="0" <!--{if $arrOptions['group_isaudit']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->

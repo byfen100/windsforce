@@ -21,4 +21,5 @@ return array(
 	'grouptopic::edit'=>'media',
 	'search::result',
 	'search::groupresult'=>'groups',
+	'create::index'=>'media',
 );

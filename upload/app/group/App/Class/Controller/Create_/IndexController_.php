@@ -7,6 +7,12 @@
 class IndexController extends Controller{
 
 	public function index(){
+		// 小组分类
+		$oGroupcategory=Dyhb::instance('GroupcategoryModel');
+		$oGroupcategoryTree=$oGroupcategory->getGroupcategoryTree();
+
+		$this->assign('oGroupcategoryTree',$oGroupcategoryTree);
+		
 		$this->display('create+index');
 	}
 	
