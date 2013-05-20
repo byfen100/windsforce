@@ -686,7 +686,8 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('wap_close_reason', 'update...'),
 ('wap_baselist_num', '10'),
 ('wap_mobile_only', '0'),
-('wap_computer_on', '0');
+('wap_computer_on', '0'),
+('search_fulltext', '0');
 
 -- --------------------------------------------------------
 

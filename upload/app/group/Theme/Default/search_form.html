@@ -6,10 +6,12 @@
 				<!--<include file="Core_Extend::template('search_menu','home')" />-->
 
 				<input class="span5 search-input" name="key" id="key" placeholder="<!--<lang package='__COMMON_LANG__@Template/Header'>-->请输入搜索内容<!--</lang>-->" x-webkit-speech value="<!--{$sKey}-->" />&nbsp;
+				<!--{if $GLOBALS['_option_']['search_fulltext']==1}-->
 				<select name='search_type' id="search-type" style="width:80px;height: 45px;padding: 10px 10px;font-size: 14px;">
 					<option value="title"><!--<lang package='Template/Search'>-->标题<!--</lang>--></option>
 					<option value="fulltext"><!--<lang package='Template/Search'>-->全文<!--</lang>--></option>
 				</select>&nbsp;
+				<!--{/if}-->
 				<button class="btn btn-success btn-large" type="submit"><!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>--></button>&nbsp;
 				<span onclick="showDiv('search_option')" style="cursor:pointer;" ><i class="icon-wrench" title="<!--<lang package='Template/Search'>-->高级选项<!--</lang>-->"></i></span>
 

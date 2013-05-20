@@ -38,6 +38,12 @@ function option(){
 						<div class="description"><!--<lang package='Template/Default/Searchoption'>-->这是通用的搜索开关，它不约束用户搜索<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
+						<label for="search_fulltext"><!--<lang package='Template/Default/Searchoption'>-->是否允许全文检索<!--</lang>--></label>
+						<input type="radio" id="search_fulltext" name="options[search_fulltext]" value="1" <!--{if $arrOptions['search_fulltext']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[search_fulltext]" value="0" <!--{if $arrOptions['search_fulltext']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Searchoption'>-->启用全文检索将会占有大量服务器资源，建议关闭<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
 						<label for="search_list_num"><!--<lang package='Template/Default/Searchoption'>-->搜索结果每页数量<!--</lang>--></label>
 						<input type="text" name="options[search_list_num]" id="search_list_num" size="40" value="<!--{$arrOptions['search_list_num']}-->"/>
 						<div class="description"><!--<lang package='Template/Default/Searchoption'>-->搜索结果每页分页数量，可以稍微设置大一些<!--</lang>--></div>
