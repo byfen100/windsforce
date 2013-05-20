@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function findUser(){
-	if(!$('#key').val()){
+	if(!$('#keywords').val()){
 		windsforceAlert(D.L('用户关键字不能为空','AppJs'),'',3);
 		return false;
 	}else{
@@ -65,7 +65,7 @@ function deleteFriend(friendid,fan){
 				</ul>
 				<form class="well form-search" action="<!--{:Dyhb::U('home://friend/index')}-->" method="get" onsubmit="return findUser();">
 					<!--{if $sType=='fan'}--><input type="hidden" name="type" value="fan"><!--{/if}-->
-					<input type="text" class="input-medium search-query" name="key" id="key">&nbsp;
+					<input type="text" class="input-medium search-query" name="key" id="keywords" value="">&nbsp;
 					<button type="submit" class="btn"><i class="icon-search"></i>&nbsp;<!--{if $sType=='fan'}--><!--<lang package='Template/Friend'>-->查找粉丝<!--</lang>--><!--{d*else}--><!--<lang package='Template/Friend'>-->查找好友<!--</lang>--><!--{/if}--></button>
 				</form>
 				<!--{if $sKey}-->
