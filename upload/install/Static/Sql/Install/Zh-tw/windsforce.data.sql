@@ -516,7 +516,7 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('seccode_curve', '1'),
 ('seccode_type', '1'),
 ('windsforce_program_name', 'WindsForce'),
-('windsforce_program_version', '1.0'),
+('windsforce_program_version', '1.1'),
 ('windsforce_company_name', 'WindsForce Team.'),
 ('windsforce_company_url', 'http://www.windsforce.com'),
 ('windsforce_program_url', 'http://www.windsforce.net'),

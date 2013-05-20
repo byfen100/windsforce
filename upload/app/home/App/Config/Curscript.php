@@ -22,4 +22,5 @@ return array(
 	'apps::index',
 	'space::index',
 	'online::index',
+	'search::result',
 );

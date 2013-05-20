@@ -251,7 +251,7 @@ a#moderate_reason:hover{text-decoration:none;}
 /**===============================
            帖子列表
 ================================*/
-[CURSCRIPT=group::public::newtopic,group::group::show,group::space::index,group::tag::show,group::public::index]
+[CURSCRIPT=group::public::newtopic,group::group::show,group::space::index,group::tag::show,group::public::index,group::search::result]
 .newtopic_currentmenu{color:#999999;}
 .topic_list_box .num {color: #999999;line-height: 18px;text-align: center;width: 140px;text-align:center;}
 .topic_list_box .num span {background: none repeat scroll 0 0 #f3f1f1;-webkit-border-radius:3px 3px 3px 3px;-moz-border-radius:3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;display: block;float: right;height: 36px;margin: 0 0 0 10px;overflow: hidden;padding: 4px 0;width: 54px;}

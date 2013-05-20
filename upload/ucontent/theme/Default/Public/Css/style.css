@@ -49,7 +49,7 @@ Tags: green, light ,morecolor
 /**===============================
            新鲜事
 ================================*/
-[CURSCRIPT=home::ucenter,home::public::index,home::stat::explore]
+[CURSCRIPT=home::ucenter,home::public::index,home::stat::explore,home::search::result]
 /* 主容器 */
 .homefresh-box{table-layout:fixed; word-break: break-all; overflow:hidden;}
 .homefresh-box .max-limit-doing{ margin:5px 70px 0px 0px; }

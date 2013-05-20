@@ -31,7 +31,7 @@
 							<!--<foreach for=arrUsers value=arrUser>-->
 							<tr>
 								<td><a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $arrUser['user_id'],'small' )}-->" width="48px" height="48px" class="thumbnail" /></a></td>
-								<td><p style="margin-bottom:10px;"><!--{$arrUser['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrUser['user_id']}-->" ><!--{$arrUser['user_name']}--></a>&nbsp;<!--{if $arrUser['user_nikename']}-->(<!--{$arrUser['user_nikename']}-->)<!--{/if}--><!--{$arrUser['user_id']|Core_Extend+getUseronlineicon}--></p>
+								<td><p style="margin-bottom:10px;"><!--{$arrUser['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$arrUser['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrUser['user_id']}-->" ><!--{$arrUser['user_name']|Core_Extend+highlight=$sKey}--></a>&nbsp;<!--{if $arrUser['user_nikename']}-->(<!--{$arrUser['user_nikename']}-->)<!--{/if}--><!--{$arrUser['user_id']|Core_Extend+getUseronlineicon}--></p>
 									<!--{if $GLOBALS['___login___']!==false}-->
 									<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($arrUser['user_id'])}-->
 									<!--{if $nAlreadyFriendId==1}--><span class="label label-warning"><a href="javascript:void(0);" onclick="deleteFriend('<!--{$arrUser['user_id']}-->','0');return false;"><!--<lang package='Template/Stat'>-->取消关注<!--</lang>--></a></span>

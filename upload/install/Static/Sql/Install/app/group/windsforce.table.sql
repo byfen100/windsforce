@@ -111,6 +111,28 @@ CREATE TABLE `#@__groupoption` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_groupsearchindex`
+--
+
+DROP TABLE IF EXISTS `#@__groupsearchindex`;
+CREATE TABLE `#@__groupsearchindex` (
+  `groupsearchindex_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '搜索索引ID',
+  `groupsearchindex_keywords` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
+  `create_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
+  `groupsearchindex_expiration` int(10) NOT NULL COMMENT '过期时间',
+  `groupsearchindex_searchstring` text NOT NULL COMMENT '配置字符串',
+  `groupsearchindex_totals` smallint(6) NOT NULL DEFAULT '0' COMMENT '总结果数',
+  `groupsearchindex_ids` text NOT NULL COMMENT '数据索引ID值',
+  `groupsearchindex_ip` varchar(16) NOT NULL DEFAULT '' COMMENT 'IP',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户',
+  PRIMARY KEY (`groupsearchindex_id`),
+  KEY `dateline` (`create_dateline`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_grouptopic`
 --
 

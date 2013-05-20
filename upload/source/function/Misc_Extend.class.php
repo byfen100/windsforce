@@ -240,6 +240,28 @@ class Misc_Extend{
 		}else{
 			return false;
 		}
+	}
+	
+	static public function search(){
+		$arrSearchConfigs=$arrTemps=array();
+
+		$arrApps=AppModel::F('app_status=?',1)->order('app_id DESC')->getAll();
+		if(is_array($arrApps)){
+			foreach($arrApps as $oApp){
+				$sConfigfile=WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/App/Config/Search.php';
+				if(is_file($sConfigfile)){
+					$arrTemps=array_merge($arrTemps,(array)require($sConfigfile));
+				}
+			}
+		}
+
+		if(is_array($arrTemps)){
+			foreach($arrTemps as $sKey=>$arrTemp){
+				$arrSearchConfigs[]=array(explode('@',$sKey),$arrTemp[0],explode('|',$arrTemp[1]));
+			}
+		}
+
+		return $arrSearchConfigs;
 	}
 
 }

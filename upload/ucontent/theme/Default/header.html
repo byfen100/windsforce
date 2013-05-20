@@ -172,6 +172,9 @@
 								<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->精彩美图<!--</lang>--></a></li>
 							</ul>
 						</li>
+						<li <!--{if MODULE_NAME==='search'}-->class="active"<!--{/if}-->>
+							<a title="<!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>-->" href="<!--{:Dyhb::U('home://search/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>--></a>
+						</li>
 						<li <!--{if MODULE_NAME==='apps'}-->class="active"<!--{/if}-->>
 							<a title="<!--<lang package='__COMMON_LANG__@Template/Header'>-->应用<!--</lang>-->" href="<!--{:Dyhb::U('home://apps/index')}-->"><img src="<!--{:__ROOT__}-->/app/logo_small.png" width="17" height="17" />&nbsp;<!--<lang package='__COMMON_LANG__@Template/Header'>-->应用<!--</lang>--></a>
 						</li>
@@ -187,9 +190,10 @@
 					</ul>
 					<form class="navbar-search pull-left" action="<!--{:__ROOT__}-->/index.php" method="get">
 						<input type="hidden" name="app" value="home" />
-						<input type="hidden" name="c" value="friend" />
-						<input type="hidden" name="a" value="searchresult" />
-						<input type="text" name="user_name" id="user_name" class="search-query span2" placeholder="<!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>--><!--<lang package='__COMMON_LANG__@Template/Header'>-->用户<!--</lang>-->" x-webkit-speech speech>
+						<input type="hidden" name="c" value="search" />
+						<input type="hidden" name="a" value="index" />
+						<input type="text" name="key" id="key" class="search-query span2" placeholder="<!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>--><!--<lang package='__COMMON_LANG__@Template/Header'>-->用户<!--</lang>-->、<!--<lang package='__COMMON_LANG__@Template/Header'>-->新鲜事<!--</lang>-->、<!--<lang package='__COMMON_LANG__@Template/Header'>-->帖子<!--</lang>-->">
+						<i class="icon icon-search" style="position: absolute;right: 10px; top: 6px;" onclick="$(this).closest('form').submit()"></i>
 					</form>
 				</div><!--/container-fluid-->
 			</div><!--/navbar-->

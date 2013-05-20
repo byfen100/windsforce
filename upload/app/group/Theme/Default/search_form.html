@@ -1,0 +1,68 @@
+			<form method="get" action="<!--{:Dyhb::U('group://search/index')}-->" class="search-form">
+				<input type="hidden" name="app" value="group" />
+				<input type="hidden" name="c" value="search" />
+				<input type="hidden" name="a" value="parse" />
+				
+				<!--<include file="Core_Extend::template('search_menu','home')" />-->
+
+				<input class="span5 search-input" name="key" id="key" placeholder="<!--<lang package='__COMMON_LANG__@Template/Header'>-->请输入搜索内容<!--</lang>-->" x-webkit-speech value="<!--{$sKey}-->" />&nbsp;
+				<select name='search_type' id="search-type" style="width:80px;height: 45px;padding: 10px 10px;font-size: 14px;">
+					<option value="title"><!--<lang package='Template/Search'>-->标题<!--</lang>--></option>
+					<option value="fulltext"><!--<lang package='Template/Search'>-->全文<!--</lang>--></option>
+				</select>&nbsp;
+				<button class="btn btn-success btn-large" type="submit"><!--<lang package='__COMMON_LANG__@Template/Header'>-->搜索<!--</lang>--></button>&nbsp;
+				<span onclick="showDiv('search_option')" style="cursor:pointer;" ><i class="icon-wrench" title="<!--<lang package='Template/Search'>-->高级选项<!--</lang>-->"></i></span>
+
+				<div class="alert alert-success" style="text-align:left;margin-top:15px;">
+					<!--<lang package='Template/Search'>-->关键字中可使用通配符 “*”<!--</lang>--><br/>
+					<!--<lang package='Template/Search'>-->匹配多个关键字全部, 可用空格或 “AND” 连接. 如 bbs AND php<!--</lang>--><br/>
+					<!--<lang package='Template/Search'>-->匹配多个关键字其中部分, 可用 “|” 或 “OR” 连接. 如 bbs OR php<!--</lang>--><br/>
+				</div>
+
+				<div id="search_option" style="display: none;text-align:left;">
+					<h4><!--<lang package='Template/Search'>-->搜索选项<!--</lang>--></h4>
+					<table cellspacing="0" cellpadding="0" class="table" style="margin-top:15px;">
+						<tr>
+							<td><!--<lang package='Template/Search'>-->作者<!--</lang>--></td>
+							<td><input type="text" id="search-name" name="search_name" size="45" maxlength="40" value="" />
+								<span class="help-block"><!--<lang package='Template/Search'>-->作者可以为注册用户名或者注册用户ID。<!--</lang>--></span>
+							</td>
+						</tr>
+						<tr>
+							<td><!--<lang package='Template/Search'>-->帖子范围<!--</lang>--></td>
+							<td><label class="radio"><input type="radio" name="search_filter" value="all" checked="checked"/><!--<lang package='Template/Search'>-->全部帖子<!--</lang>--></label>
+								<label class="radio"><input type="radio" name="search_filter" value="digest" /><!--<lang package='Template/Search'>-->精华帖子<!--</lang>--></label>
+								<label class="radio"><input type="radio" name="search_filter" value="top" /><!--<lang package='Template/Search'>-->置顶帖子<!--</lang>--></label>
+							</td>
+						</tr>
+						<tr>
+							<th><label for="search_date"><!--<lang package='Template/Search'>-->搜索时间<!--</lang>--></label></th>
+							<td><select id="search_date" name="search_date" >
+									<option value="0"><!--<lang package='Template/Search'>-->全部时间<!--</lang>--></option>
+									<option value="86400">1 <!--<lang package='Template/Search'>-->天<!--</lang>--></option>
+									<option value="172800">2 <!--<lang package='Template/Search'>-->天<!--</lang>--></option>
+									<option value="604800">1 <!--<lang package='Template/Search'>-->周<!--</lang>--></option>
+									<option value="2592000">1 <!--<lang package='Template/Search'>-->个月<!--</lang>--></option>
+									<option value="7776000">3 <!--<lang package='Template/Search'>-->个月<!--</lang>--></option>
+									<option value="15552000">6 <!--<lang package='Template/Search'>-->个月<!--</lang>--></option>
+									<option value="31536000">1 <!--<lang package='Template/Search'>-->年<!--</lang>--></option>
+								</select>
+								<label class="radio"><input type="radio" name="search_date_before" value="0" checked="checked" /><!--<lang package='Template/Search'>-->以内<!--</lang>--></label>
+								<label class="radio"><input type="radio" name="search_date_before" value="1" /><!--<lang package='Template/Search'>-->以前<!--</lang>--></label>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="search_orderby"><!--<lang package='Template/Search'>-->排序类型<!--</lang>--></label></td>
+							<td><select id="search_orderby1" name="search_orderby1" >
+									<option value="create_dateline" selected="selected"><!--<lang package='Template/Search'>-->发布时间<!--</lang>--></option>
+									<option value="update_dateline"><!--<lang package='Template/Search'>-->更新时间<!--</lang>--></option>
+									<option value="commentnum"><!--<lang package='Template/Search'>-->评论数量<!--</lang>--></option>
+									<option value="viewnum"><!--<lang package='Template/Search'>-->浏览次数<!--</lang>--></option>
+								</select>
+								<label class="radio"><input type="radio" name="search_orderby_ascdesc" value="asc" /><!--<lang package='Template/Search'>-->按升序排列<!--</lang>--></label>
+								<label class="radio"><input type="radio" name="search_orderby_ascdesc" value="desc" checked="checked" /><!--<lang package='Template/Search'>-->按降序排列<!--</lang>--></label>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form>

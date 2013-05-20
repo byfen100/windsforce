@@ -19,4 +19,6 @@ return array(
 	'grouptopic::reply'=>'media',
 	'grouptopic::add'=>'media',
 	'grouptopic::edit'=>'media',
+	'search::result',
+	'search::groupresult'=>'groups',
 );

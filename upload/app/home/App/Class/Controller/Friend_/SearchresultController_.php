@@ -99,6 +99,7 @@ class SearchresultController extends Controller{
 		}
 
 		$this->assign('arrUsers',$arrUsers);
+		$this->assign('sKey',trim(G::getGpc('user_name')));
 
 		$this->display('friend+searchresult');
 	}

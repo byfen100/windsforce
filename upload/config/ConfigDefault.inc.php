@@ -36,7 +36,7 @@ return array(
 	'USER_AUTH_MODEL'=>'user',
 	'AUTH_PWD_ENCODER'=>'md5',
 	'USER_AUTH_GATEWAY'=>'home://public/login',
-	'NOT_AUTH_MODULE'=>'public,api,space,misc,wap,apps',
+	'NOT_AUTH_MODULE'=>'public,api,space,misc,wap,apps,search',
 	'REQUIRE_AUTH_MODULE'=>'',
 	'NOT_AUTH_ACTION'=>'',
 	'REQUIRE_AUTH_ACTION'=>'',
