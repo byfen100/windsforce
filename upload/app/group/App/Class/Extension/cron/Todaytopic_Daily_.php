@@ -17,3 +17,6 @@ Dyhb::instance('GroupModel')->clearToday();
 GroupoptionModel::uploadOption('group_topictodaynum',0);
 GroupoptionModel::uploadOption('group_topiccommenttodaynum',0);
 GroupoptionModel::uploadOption('group_totaltodaynum',0);
+
+/** 清空帖子搜索记录 */
+Dyhb::instance('GroupsearchindexModel')->deleteAll();
