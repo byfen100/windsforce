@@ -1697,7 +1697,11 @@ WINDSFORCE;
 	}
 
 	static public function highlight($sContent,$sKey){
-		return preg_replace("/({$sKey})/i","<b style=\"color:red\">\\1</b>",$sContent);
+		if($sKey){
+			return preg_replace("/({$sKey})/i","<b style=\"color:red\">\\1</b>",$sContent);
+		}else{
+			return $sContent;
+		}
 	}
 
 }
