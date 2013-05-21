@@ -72,4 +72,29 @@
 				</div>
 			</div><!--/row-->
 
-<!--<include file="Core_Extend::template('footer')" />-->
+		</div><!--/container-->
+	</div><!--/content-->
+
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="span5">
+					<p>Copyright &copy; <!--{$GLOBALS['_option_']['site_year']}--> &nbsp;<!--{$GLOBALS['_option_']['site_name']}-->.</p>
+				</div>
+				<div class="span7" style="text-align:right;">
+					<p>Powered by <strong><a href="<!--{$GLOBALS['_option_']['windsforce_program_url']}-->" title="<!--{$GLOBALS['_option_']['windsforce_program_year']}-->"><!--{$GLOBALS['_option_']['windsforce_program_name']}--></a></strong>
+						<em><!--{$GLOBALS['_option_']['windsforce_program_version']}--></em>.&nbsp;
+						<!--{if !empty($GLOBALS['_option_']['icp'])}-->
+						<span class="pipe">|</span>
+						<a href="http://www.miitbeian.gov.cn/"><!--{$GLOBALS['_option_']['icp']}--></a>&nbsp;
+						<!--{/if}-->
+						<!--{$GLOBALS['_option_']['stat_code']}-->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!--/wrapper-->
+
+<!--<include file="Core_Extend::template('cfooter')" />-->
