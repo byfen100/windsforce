@@ -91,6 +91,8 @@ table hr{width:100%;height:1px;border:none;border-top:1px dashed {INTERVAL_LINE_
 #header .navbar-search .search-query:focus,
 #header .navbar-search .search-query.focused {color: {NORMAL_COLOR};text-shadow: 0 1px 0 {INPUT_BG};background-color: {INPUT_BG};}
 
+.headerloginview{margin:20px 0;}
+
 /**===============================
            消息样式
 ================================*/

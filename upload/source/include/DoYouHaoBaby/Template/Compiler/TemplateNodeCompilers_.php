@@ -1904,7 +1904,7 @@ class TemplateNodeCompiler_tpl_print extends TemplateNodeCompilerBase{
 			$arrResult=array();
 
 			if(!preg_match('/^([\w_\$::]+)(\((.*)\))?$/',$sDecoratorSource,$arrResult)){
-				G::E(Dyhb::L('遇到无法编译的节点修饰器属性: %s','__DYHB__@Dyhb',null,$sDecoratorAttribute));
+				Dyhb::E(Dyhb::L('遇到无法编译的节点修饰器属性: %s','__DYHB__@Dyhb',null,$sDecoratorAttribute));
 			}
 
 			$sArgList=trim($arrResult[3]);// 参数

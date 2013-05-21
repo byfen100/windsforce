@@ -30,7 +30,11 @@ class LoginController extends GlobalchildController{
 		if($nInajax==1){
 			$this->display('public+ajaxlogin');
 		}else{
-			$this->display('public+login');
+			if($GLOBALS['_option_']['only_login_viewsite']==1){
+				$this->display('public+loginview');
+			}else{
+				$this->display('public+login');
+			}
 		}
 	}
 

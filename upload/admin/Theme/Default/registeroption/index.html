@@ -43,6 +43,12 @@ function option(){
 						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->用户在其用户信息中无法使用这些关键字。每个关键字一行，可使用通配符 "*" 如 "*组长*"<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
+						<label for="only_login_viewsite"><!--<lang package='Template/Default/Registeroption'>-->只有登陆后才能够访问网站<!--</lang>--></label>
+						<input type="radio" id="only_login_viewsite" name="options[only_login_viewsite]" value="1" <!--{if $arrOptions['only_login_viewsite']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+						<input type="radio" id="" name="options[only_login_viewsite]" value="0" <!--{if $arrOptions['only_login_viewsite']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->开启本功能后，如果用户没有登录，那么他将无法访问网站的任何地方，对于建立内部系统而言，非常实用<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
 						<label for="allowed_register_email"><!--<lang package='Template/Default/Registeroption'>-->允许的 EMAIL 地址<!--</lang>--></label>
 						<textarea name="options[allowed_register_email]" rows="5"><!--{$arrOptions['allowed_register_email']}--></textarea>
 						<div class="description"><!--<lang package='Template/Default/Registeroption'>-->只允许使用这些域名结尾的 Email 地址注册<!--</lang>--></div>

@@ -1,0 +1,57 @@
+<!--<include file="Core_Extend::template('cheader')" />-->
+
+<div id="wrapper">
+
+	<div id="header" class="headerloginview">
+		<div class="container">
+			<div class="row">
+				<div class="span7">
+					<a class="brand" href="<!--{:__APP__}-->" title="<!--{$GLOBALS['_option_']['site_name']}-->"><img src="<!--{:Core_Extend::getLogo()}-->" alt="<!--{$GLOBALS['_option_']['site_name']}-->"/></a>
+				</div>
+				<div class="span5">
+					<div class="right">
+						<h5><!--<lang package='Template/Public'>-->已有帐号？请直接登录<!--</lang>--></h5>
+						<p><a href="<!--{:Dyhb::U('home://public/login')}-->" class="btn btn-success btn-mini"><!--<lang package='Template/Public'>-->用户登录<!--</lang>--></a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+				<!--[if lt IE 8]>
+				<div class="alert">
+					<strong><!--<lang package='__COMMON_LANG__@Template/Header'>-->本站已停止支持 IE8 以下版本, 请升级你的浏览器!<!--</lang>-->&nbsp;
+						<a href="http://www.getfirefox.com" target="_blank">Firefox</a> &nbsp; 
+						<a href="http://opera.com" target="_blank">Opera</a> &nbsp; 
+						<a href="http://apple.com/safari" target="_blank">Safari</a> &nbsp; 
+						<a href="http://chrome.google.com" target="_blank">Google Chrome</a> &nbsp;
+						<a href="http://windows.microsoft.com/zh-CN/internet-explorer/products/ie/home" target="_blank">IE8+</a>
+					</strong>
+				</div>
+				<![endif]-->
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span12">
+					<div class="alert alert-success site_introduction">
+						<h1><!--{$GLOBALS['_option_']['home_title']}--></h1>
+						<p><!--{:Core_Extend::replaceSiteVar($GLOBALS['_option_']['home_description'])}--></p>
+						<blockquote>
+							<small><!--{$GLOBALS['_option_']['site_description']}--></small>
+						</blockquote>
+					</div>
+				</div>
+			</div>
+		
+		<div class="row">
+			<div class="span12">
+				<!--<include file="public+register_" />-->
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

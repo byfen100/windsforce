@@ -28,7 +28,11 @@ class RegisterController extends GlobalchildController{
 		if($nInajax==1){
 			$this->display('public+ajaxregister');
 		}else{
-			$this->display('public+register');
+			if($GLOBALS['_option_']['only_login_viewsite']==1){
+				$this->display('public+registerview');
+			}else{
+				$this->display('public+register');
+			}
 		}
 	}
 

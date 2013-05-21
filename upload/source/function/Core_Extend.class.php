@@ -887,8 +887,16 @@ WINDSFORCE;
 			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
 		}
 
+		// 站点关闭
 		if($GLOBALS['_option_']['close_site']){
 			Dyhb::E('<h1 style="color:red;">The site is closed!</h1><br/>'.($GLOBALS['_option_']['close_site_reason']?$GLOBALS['_option_']['close_site_reason']:'No reason'));
+		}
+
+		// 必须要登陆才能够访问内容
+		if($GLOBALS['_option_']['only_login_viewsite']==1 && $GLOBALS['___login___']===false){
+			if(!((APP_NAME==='home' && MODULE_NAME==='public' && !in_array(ACTION_NAME,array('index','mobile','sitemap','myrbac','role'))) || (APP_NAME==='home' && in_array(MODULE_NAME,array('getpassword','userappeal'))))){
+				G::urlGoTo(Dyhb::U('home://public/login'));
+			}
 		}
 
 		// 计划任务
