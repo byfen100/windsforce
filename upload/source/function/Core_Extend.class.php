@@ -962,19 +962,15 @@ WINDSFORCE;
 
 				// 取得扩展背景图片
 				if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgextend')){
-					$arrBgimgPath=array();
-					$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgextend',false,true);
-					if(is_array($arrFiles)){
-						foreach($arrFiles as &$sFile){
-							$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgextend/'.$sFile.'"';
-						}
-					}
+					$arrBgimgPath=self::getJsbg('ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgextend');
 					$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Style/'.$sCurrentT.'/bgimg.jpg'.'"';
 
-					$sScriptCss.="<script type=\"text/javascript\">";
-					$sScriptCss.=
+					if($arrBgimgPath){
+						$sScriptCss.="<script type=\"text/javascript\">";
+						$sScriptCss.=
 					"var globalImgbgs=[".implode(',',$arrBgimgPath)."];";
-					$sScriptCss.="</script>";
+						$sScriptCss.="</script>";
+					}
 				}
 			}else{
 				$GLOBALS['_extend_style_']='0';
@@ -982,23 +978,36 @@ WINDSFORCE;
 
 				// 取得背景图片
 				if(is_dir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Images/bgextend')){
-					$arrBgimgPath='';
-					$arrFiles=G::listDir(WINDSFORCE_PATH.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Images/bgextend',false,true);
-					if(is_array($arrFiles)){
-						foreach($arrFiles as &$sFile){
-							$arrBgimgPath[]='"'.__ROOT__.'/ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Images/bgextend/'.$sFile.'"';
-						}
-					}
+					$arrBgimgPath=self::getJsbg('ucontent/theme/'.$GLOBALS['_style_']['doyouhaobaby_template_base'].'/Public/Images/bgextend');
 
-					$sScriptCss.="<script type=\"text/javascript\">";
-					$sScriptCss.=
+					if($arrBgimgPath){
+						$sScriptCss.="<script type=\"text/javascript\">";
+						$sScriptCss.=
 					"var globalImgbgs=[".implode(',',$arrBgimgPath)."];";
-					$sScriptCss.="</script>";
+						$sScriptCss.="</script>";
+					}
 				}
 			}
 		}
 		
 		return $sScriptCss;
+	}
+
+	static public function getJsbg($sPathdir){
+		$arrBgimgPath=array();
+		
+		// 取得背景图片
+		if(is_dir(WINDSFORCE_PATH.'/'.$sPathdir)){
+			$arrBgimgPath='';
+			$arrFiles=G::listDir(WINDSFORCE_PATH.'/'.$sPathdir,false,true);
+			if(is_array($arrFiles)){
+				foreach($arrFiles as &$sFile){
+					$arrBgimgPath[]='"'.__ROOT__.'/'.$sPathdir.'/'.$sFile.'"';
+				}
+			}
+		}
+
+		return $arrBgimgPath;
 	}
 	
 	static public function cssVarTags($sCurScript,$sContent){
@@ -1690,17 +1699,19 @@ WINDSFORCE;
 		return $bSessionExists;
 	}
 
-	static public function path($sFile){
+	static public function path($sFile,$sType='images'){
 		static $sApptemplate='';
 
 		if($sApptemplate==''){
 			$sApptemplate=Dyhb::cookie('template');
 		}
 
-		if(is_file(WINDSFORCE_PATH.'/ucontent/theme/'.$sApptemplate.'/Public/Images/'.$sFile)){
-			return __ROOT__.'/ucontent/theme/'.$sApptemplate.'/Public/Images/'.$sFile;
+		$sType=ucfirst(strtolower($sType));
+
+		if(is_file(WINDSFORCE_PATH.'/ucontent/theme/'.$sApptemplate.'/Public/'.$sType.'/'.$sFile)){
+			return __ROOT__.'/ucontent/theme/'.$sApptemplate.'/Public/'.$sType.'/'.$sFile;
 		}else{
-			return __ROOT__.'/ucontent/theme/Default/Public/Images/'.$sFile;
+			return __ROOT__.'/ucontent/theme/Default/Public/'.$sType.'/'.$sFile;
 		}
 	}
 

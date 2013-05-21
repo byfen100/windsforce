@@ -1,0 +1,21 @@
+/*
+File Name: login.css
+File Type: 必需
+Description: 注册&登陆
+*/
+
+/**===============================
+           整体
+================================*/
+html{background:#f1d4a8 url('../../../../../Public/images/common/pagebg/login/10.jpg');}
+body{background:transparent;}
+.alert,.form-actions{background:none;border:none;}
+.alert{text-shadow:none;}
+
+/**===============================
+           细节修复
+================================*/
+.loginviewbox{color:#FFF;}
+.headerloginview{margin:20px 0;}
+.footerviewlogin{margin-top:20px;color:#FFF;}
+.footerviewlogin a{color:#FFF;}

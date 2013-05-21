@@ -7,13 +7,13 @@ Description: 本主题基本css元素
 /**===============================
            基础
 ================================*/
-html{-webkit-text-size-adjust:none;}
-body{padding-top: 60px;padding-bottom: 40px;margin: 0px;padding: 0px;{BG_CODE};color:{NORMAL_COLOR};}
+html{-webkit-text-size-adjust:none;{BG_CODE};background-position: top center;}
+body{padding-top: 60px;padding-bottom: 40px;margin: 0px;padding: 0px;color:{NORMAL_COLOR};}
 body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,fieldset,div,strong,label,em{border:0 none;}
 /*ul,ol,li{list-style:none;}*/
 .shadow{box-shadow: rgba(200,200,20);-webkit-box-shadow: rgba(200,200,20);-khtml-box-shadow: rgba(200,200,200,1) 0 2px 18px;}
 .transition{transition: color .1s linear .1s;-moz-transition-property: color;-moz-transition-timing-function: ease-in;-moz-transition-duration: 1s;-moz-transition-delay: 0;-webkit-transition-property: color;-webkit-transition-timing-function: ease-in;-webkit-transition-duration: 1s;-webkit-transition-delay: 0;}
-body{background-position: top center;}
+body{background:transparent;}
 a{color: {LINK_COLOR};}
 a:hover {color: {HIGHLIGHTLINK_COLOR};}
 hr{margin: 3px 0 3px 0px;width:100%;color:{INTERVAL_LINE_COLOR};}
@@ -90,8 +90,6 @@ table hr{width:100%;height:1px;border:none;border-top:1px dashed {INTERVAL_LINE_
 #header .navbar-search .search-query::-webkit-input-placeholder {color: {NORMAL_COLOR};}
 #header .navbar-search .search-query:focus,
 #header .navbar-search .search-query.focused {color: {NORMAL_COLOR};text-shadow: 0 1px 0 {INPUT_BG};background-color: {INPUT_BG};}
-
-.headerloginview{margin:20px 0;}
 
 /**===============================
            消息样式

@@ -1,33 +1,21 @@
 <!--<include file="Core_Extend::template('cheader')" />-->
 
+<link rel="stylesheet" type="text/css" href="<!--{:Core_Extend::path('search.css','css')}-->"/>
+
+<!--<php>-->
+if(!Dyhb::classExists('Misc_Extend')){
+	require_once(Core_Extend::includeFile('function/Misc_Extend'));
+}
+
+echo Misc_Extend::getBgjs('Public/images/common/pagebg/search');
+<!--</php>-->
+
 <!--{script}-->
-$(function(){
+$(document).ready(function(){
+	setInterval("changeGlobalbg();",10000);
 	$('#key').focus();
 });
 <!--{/script}-->
-
-<!--{style}-->
-.search_box{position: relative;padding: 80px 0;color: #000;text-align: center;}
-.searchresult_box{position: relative;padding: 50px 0;color: #000;}
-.search_box h1 {font-size: 50px;font-weight: bold;letter-spacing: -1px;line-height: 1;}
-.search_box h1 sup{font-size: 35px;}
-.search_box .container,.searchresult_box .container{position: relative;z-index: 2;}
-.search_box:after,.searchresult_box:after{content: '';display: block;position: absolute;top: 0;right: 0;bottom: 0;left: 0;opacity: .4;}
-
-.search_header{padding: 160px 0 80px;margin-bottom: 0;color: #000;}
-.search_header h1{font-size: 80px;line-height: 1;letter-spacing: -2px;}
-.search_header .search-form{margin-top:30px;}
-.search_header .search-input,.searchresult_box .search-input{padding: 13px 24px;font-size: 15px;}
-.search_header .btn,.searchresult_box .btn{padding: 22px 24px;font-size: 15px;font-weight: 200;color: #fff;border: 0;}
-
-.search-menu{text-align:center;font-size:15px;margin-bottom:10px;}
-.search-menu a.search-active{font-weight:bold;color:#000;}
-.search-menu a:hover{text-decoration:none;}
-
-.searchresult_box .search-menu{text-align:left;font-size:15px;}
-
-.search_footer{padding: 15px 0;border-top: 2px dashed #ddd;}
-<!--{/style}-->
 
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">

@@ -262,6 +262,20 @@ class Misc_Extend{
 		}
 
 		return $arrSearchConfigs;
-	}
-
+	}
+
+	static public function getBgjs($sPath){
+		$sScriptCss='';
+		
+		$arrBgimgPath=Core_Extend::getJsbg($sPath);
+		if($arrBgimgPath){
+			$sScriptCss.="<script type=\"text/javascript\">";
+			$sScriptCss.=
+		"var globalImgbgs=[".implode(',',$arrBgimgPath)."];";
+			$sScriptCss.="</script>";
+		}
+
+		return $sScriptCss;
+	}
+	
 }

@@ -1,5 +1,13 @@
 <!--<include file="Core_Extend::template('cheader')" />-->
 
+<!--{if $GLOBALS['_option_']['bgextend_on']==1}-->
+<!--{script}-->
+$(document).ready(function(){
+	setInterval("changeGlobalbg();",<!--{$GLOBALS['_option_']['bgextend_time']*1000}-->);
+});
+<!--{/script}-->
+<!--{/if}-->
+
 <div id="wrapper">
 	<div id="top_header">
 		<div class="container">

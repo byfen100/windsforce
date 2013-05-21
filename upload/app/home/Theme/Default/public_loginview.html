@@ -1,8 +1,24 @@
 <!--<include file="Core_Extend::template('cheader')" />-->
 
-<div id="wrapper">
+<link rel="stylesheet" type="text/css" href="<!--{:Core_Extend::path('login.css','css')}-->"/>
 
-	<div id="header" class="headerloginview">
+<!--<php>-->
+if(!Dyhb::classExists('Misc_Extend')){
+	require_once(Core_Extend::includeFile('function/Misc_Extend'));
+}
+
+echo Misc_Extend::getBgjs('Public/images/common/pagebg/login');
+<!--</php>-->
+
+<!--{script}-->
+$(document).ready(function(){
+	setInterval("changeGlobalbg();",10000);
+});
+<!--{/script}-->
+
+<div id="wrapper" class="loginviewbox">
+
+	<div id="headerloginview" class="headerloginview">
 		<div class="container">
 			<div class="row">
 				<div class="span7">
@@ -18,7 +34,7 @@
 		</div>
 	</div>
 
-	<div id="content">
+	<div id="loginview-content">
 		<div class="container">
 			<div class="row">
 				<div class="span12">
@@ -75,7 +91,7 @@
 		</div><!--/container-->
 	</div><!--/content-->
 
-	<footer id="footer">
+	<footer id="footerviewlogin" class="footerviewlogin">
 		<div class="container">
 			<div class="row">
 				<div class="span5">

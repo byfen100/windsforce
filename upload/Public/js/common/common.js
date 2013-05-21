@@ -562,8 +562,8 @@ function changeGlobalbg(){
 	if(nCurrentBgindex>=globalImgbgs.length){
 		nCurrentBgindex=0;
 	}
-
-	var oObj=document.getElementsByTagName("BODY")[0];
+	
+	var oObj=document.getElementsByTagName("HTML")[0];
 	oObj.style.backgroundImage="url("+globalImgbgs[nCurrentBgindex]+")";
 	oObj.style.backgroundRepeat=sBgextendRepeat; 
 	nCurrentBgindex+=1;
