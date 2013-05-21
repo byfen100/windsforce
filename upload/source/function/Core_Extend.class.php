@@ -895,7 +895,7 @@ WINDSFORCE;
 		// 必须要登陆才能够访问内容
 		if($GLOBALS['_option_']['only_login_viewsite']==1 && $GLOBALS['___login___']===false){
 			if(!((APP_NAME==='home' && MODULE_NAME==='public' && !in_array(ACTION_NAME,array('index','mobile','sitemap','myrbac','role'))) || (APP_NAME==='home' && in_array(MODULE_NAME,array('getpassword','userappeal'))))){
-				G::urlGoTo(Dyhb::U('home://public/login'));
+				G::urlGoTo(Dyhb::U('home://public/login',array('referer'=>__SELF__,'loginview'=>1),true));
 			}
 		}
 

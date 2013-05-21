@@ -6,6 +6,12 @@
 			<!--<lang package='Template/Public'>-->你没有权限访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template/Public'>-->重试<!--</lang>--></a>
 		</div>
 		<!--{/if}-->
+
+		<!--{if $sReferer && $nLoginview==1}-->
+		<div class="light_box">
+			<!--<lang package='Template/Public'>-->你需要登陆后才能够访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template/Public'>-->重试<!--</lang>--></a>
+		</div>
+		<!--{/if}-->
 				
 		<form method="post" action="<!--{:Dyhb::U('wap://public/check_login')}-->">
 			<p style="padding-bottom:5px;"><!--<lang package='Template/Public'>-->用户名<!--</lang>--></p>

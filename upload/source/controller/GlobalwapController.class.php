@@ -46,6 +46,13 @@ class GlobalwapController extends Controller{
 		if($GLOBALS['_option_']['wap_on']==0){
 			$this->assign('__JumpUrl__',Dyhb::U('wap://public/index'));
 			$this->wap_mes($GLOBALS['_option_']['wap_close_reason'],'',0);
+		}
+		
+		// 必须要登陆才能够访问内容
+		if($GLOBALS['_option_']['only_login_viewsite']==1 && $GLOBALS['___login___']===false){
+			if(!(APP_NAME==='wap' && MODULE_NAME==='public' && !in_array(ACTION_NAME,array('index')))){
+				G::urlGoTo(Dyhb::U('wap://public/login',array('referer'=>__SELF__,'loginview'=>1),true));
+			}
 		}
 	}
 

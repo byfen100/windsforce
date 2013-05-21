@@ -13,6 +13,7 @@ class LoginController extends GlobalchildController{
 		$nInajax=intval(G::getGpc('inajax','G'));
 		$sReferer=trim(G::getGpc('referer'));
 		$nRbac=intval(G::getGpc('rbac','G'));
+		$nLoginview=intval(G::getGpc('loginview','G'));
 		
 		if($GLOBALS['___login___']!==false){
 			$this->assign('__JumpUrl__',__APP__);
@@ -26,6 +27,7 @@ class LoginController extends GlobalchildController{
 		$this->assign('arrBindeds',$GLOBALS['_cache_']['sociatype']);
 		$this->assign('sReferer',$sReferer);
 		$this->assign('nRbac',$nRbac);
+		$this->assign('nLoginview',$nLoginview);
 
 		if($nInajax==1){
 			$this->display('public+ajaxlogin');

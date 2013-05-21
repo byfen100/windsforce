@@ -9,6 +9,7 @@ class LoginController extends GlobalchildController{
 	public function index(){
 		$sReferer=trim(G::getGpc('referer'));
 		$nRbac=intval(G::getGpc('rbac','G'));
+		$nLoginview=intval(G::getGpc('loginview','G'));
 		
 		if($GLOBALS['___login___']!==false){
 			$this->_oParentcontroller->wap_mes(Dyhb::L('你已经登录','Controller/Public'),Dyhb::U('wap://public/index'),0);
@@ -16,6 +17,7 @@ class LoginController extends GlobalchildController{
 
 		$this->assign('sReferer',$sReferer);
 		$this->assign('nRbac',$nRbac);
+		$this->assign('nLoginview',$nLoginview);
 
 		$this->display('public+login');
 	}
