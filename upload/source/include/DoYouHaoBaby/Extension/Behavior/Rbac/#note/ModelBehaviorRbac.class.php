@@ -409,10 +409,11 @@ class ModelBehaviorRbac extends ModelBehavior{
 	 * 获得加密后的密码
 	 *
 	 * @access public
-	 * @param string $sPassword 要加密的密码明文
+	 * @param string $sCleartext 要加密的密码明文
+	 * @param string $sRandom 加密随机字符串
 	 * @return string 加密后的密码
 	 */
-	private function encodePassword_($sPassword){}
+	private function encodePassword_($sCleartext,$sRandom=''){}
 
 	/**
 	 * 发送登录信息COOKIE

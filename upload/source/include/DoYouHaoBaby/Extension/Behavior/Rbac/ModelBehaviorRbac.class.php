@@ -443,14 +443,14 @@ class ModelBehaviorRbac extends ModelBehavior{
 		}
 	}
 
-	private function encodePassword_($sPassword,$sRandom=''){
+	private function encodePassword_($sCleartext,$sRandom=''){
 		$et=$this->_arrSettings['encode_type'];
 		if(is_array($et)){
-			return call_user_func($et,$sPassword);
+			return call_user_func($et,$sCleartext);
 		}
 
 		if($et=='cleartext'){
-			return $sPassword;
+			return $sCleartext;
 		}
 
 		switch($et){
@@ -465,7 +465,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 				}
 				$this->_arrSavedState['authcode_random']=$sRandom;
 
-				return md5(md5(trim($sPassword)).trim($sRandom));
+				return md5(md5(trim($sCleartext)).trim($sRandom));
 			case 'md5':
 				return md5($sCleartext);
 			case 'crypt':
