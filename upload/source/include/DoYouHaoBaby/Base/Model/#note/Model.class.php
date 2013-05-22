@@ -1,4 +1,7 @@
 <?dyhb
+/**
+ * 核心思想来自于QeePHP
+ */
 class Model implements IModel,IModelCallback,ArrayAccess{
 
 	/**

@@ -22,6 +22,7 @@
  *   } >
  *
  * <!-- 知识补充 -->
+ * < Modify From QeePHP >
  * < php几个接口ArrayAccess,Iterator,Countable >
  * < Countable:实现对类的count。 >
  * < ArrayAccess 实现对类的赋值取值等。>
