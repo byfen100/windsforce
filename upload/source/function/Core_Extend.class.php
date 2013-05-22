@@ -999,7 +999,9 @@ WINDSFORCE;
 		// 取得背景图片
 		if(is_dir(WINDSFORCE_PATH.'/'.$sPathdir)){
 			$arrBgimgPath='';
+
 			$arrFiles=G::listDir(WINDSFORCE_PATH.'/'.$sPathdir,false,true);
+			sort($arrFiles);
 			if(is_array($arrFiles)){
 				foreach($arrFiles as &$sFile){
 					$arrBgimgPath[]='"'.__ROOT__.'/'.$sPathdir.'/'.$sFile.'"';
