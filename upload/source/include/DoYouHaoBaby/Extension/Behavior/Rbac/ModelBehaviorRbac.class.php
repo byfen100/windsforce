@@ -73,7 +73,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$this->_arrSettings['rbac_login_life']=$nTime;
 
 		if($nTime>0){
-			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'rbacloginlife',$nTime,$nTime);
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'rbacloginlife',$nTime,31536000);
 		}
 	}
 

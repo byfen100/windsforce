@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+// 导入社会化登录组件
+Dyhb::import(WINDSFORCE_PATH.'/source/extension/socialization');
+
 class LoginController extends GlobalchildController{
 
 	public function index(){
@@ -73,11 +76,8 @@ class LoginController extends GlobalchildController{
 
 			$GLOBALS['___login___']=false;
 
-			Dyhb::cookie('SOCIA_LOGIN',NULL,-1);
-			Dyhb::cookie('SOCIA_LOGIN_TYPE',NULL,-1);
-			Dyhb::cookie("_socia_access_token_",NULL,-1);
-			Dyhb::cookie('_socia_openid_',NULL,-1);
-			Dyhb::cookie('_socia_state_',NULL,-1);
+			Core_Extend::clearCookie();
+			Socia::clearCookie(true);
 
 			if($nReferer==1 && !empty($_SERVER['HTTP_REFERER'])){
 				$sJumpUrl=$_SERVER['HTTP_REFERER'];

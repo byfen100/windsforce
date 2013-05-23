@@ -81,4 +81,10 @@ class Group_Extend{
 		}
 	}
 
+	static public function clearCookie(){
+		Dyhb::cookie('group_grouptopicside',null,-1);
+		Dyhb::cookie('group_grouptopicstyle',null,-1);
+		Dyhb::cookie('group_homepagestyle',null,-1);
+	}
+
 }

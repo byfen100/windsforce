@@ -1725,4 +1725,20 @@ WINDSFORCE;
 		}
 	}
 
+	static public function clearCookie(){
+		Dyhb::cookie('admin_template',null,-1);
+		Dyhb::cookie('admin_language',null,-1);
+		Dyhb::cookie('current_node_id',null,-1);
+		Dyhb::cookie('_upload_hashcode_',null,-1);
+		Dyhb::cookie('_upload_hashcode_',null,-1);
+		Dyhb::cookie('extend_style_id',null,-1);
+		Dyhb::cookie('style_id',null,-1);
+		Dyhb::cookie('homefresh_goodnum',null,-1);
+		Dyhb::cookie('_promotion_',null,-1);
+		Dyhb::cookie('attachment_read',null,-1);
+		Dyhb::cookie('the_comment_name',null,-1);
+		Dyhb::cookie('the_comment_url',null,-1);
+		Dyhb::cookie('the_comment_email',null,-1);
+	}
+
 }

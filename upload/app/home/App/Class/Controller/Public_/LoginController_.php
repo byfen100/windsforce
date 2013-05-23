@@ -192,7 +192,8 @@ class LoginController extends GlobalchildController{
 
 			$GLOBALS['___login___']=false;
 
-			Socia::clearCookie();
+			Core_Extend::clearCookie();
+			Socia::clearCookie(true);
 
 			if($nReferer==1 && !empty($_SERVER['HTTP_REFERER'])){
 				$sJumpUrl=$_SERVER['HTTP_REFERER'];
@@ -209,6 +210,8 @@ class LoginController extends GlobalchildController{
 
 	public function clear(){
 		UserModel::M()->clearThisCookie();
+		Core_Extend::clearCookie();
+
 		$this->S(Dyhb::L('清理登录痕迹成功','Controller/Public'));
 	}
 

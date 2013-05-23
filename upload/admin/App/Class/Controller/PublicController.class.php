@@ -267,7 +267,8 @@ class PublicController extends InitController{
 			UserModel::M()->replaceSession($arrUserData['session_hash'],$arrUserData['user_id'],$arrUserData['session_auth_key']);
 			UserModel::M()->logout();
 
-			Socia::clearCookie();
+			Core_Extend::clearCookie();
+			Socia::clearCookie(true);
 
 			$this->assign("__JumpUrl__",Dyhb::U('public/login'));
 			$this->S(Dyhb::L('登出成功','Controller/Public'));
