@@ -4,6 +4,11 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 导入附件扩展函数 */
+if(!Dyhb::classExists('Attachment_Extend')){
+	require_once(Core_Extend::includeFile('function/Attachment_Extend'));
+}
+
 /** 导入杂项函数 */
 require(Core_Extend::includeFile('function/Misc_Extend'));
 

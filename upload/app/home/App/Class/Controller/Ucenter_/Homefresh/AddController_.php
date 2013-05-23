@@ -110,12 +110,17 @@ class AddController extends GlobalchildController{
 				}
 			}
 
+			$nCutnum=intval(G::getGpc('cutnum'));
+			if(!$nCutnum){
+				$nCutnum=$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num'];
+			}
+
 			$arrHomefreshData=$oHomefresh->toArray();
 			$arrHomefreshData['space']=Dyhb::U('home://space@?id='.$oHomefresh['user_id']);
 			$arrHomefreshData['avatar']=Core_Extend::avatar($oHomefresh['user_id'],'small');
 			$arrHomefreshData['user_name']=$oHomefresh->user->user_name;
 			$arrHomefreshData['create_dateline']=Core_Extend::timeFormat($oHomefresh['create_dateline']);
-			$arrHomefreshData['homefresh_message']=Core_Extend::ubb(G::subString(strip_tags($oHomefresh['homefresh_message']),0,$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num']));
+			$arrHomefreshData['homefresh_message']=Core_Extend::ubb(G::subString(strip_tags($oHomefresh['homefresh_message']),0,$nCutnum));
 			$arrHomefreshData['url']=Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id']);
 			$arrHomefreshData['usericon']=Core_Extend::getUsericon($oHomefresh['user_id']);
 
