@@ -214,6 +214,11 @@ class IndexController extends Controller{
 			$arrConfig['FRONT_LANGUAGE_DIR']=ucfirst($sLangcurrent);
 			$arrConfig['ADMIN_LANGUAGE_DIR']=ucfirst($sLangcurrent);
 		}
+
+		// 安全配置
+		$arrConfig['USER_AUTH_KEY']='authid'.G::randString(6);
+		$arrConfig['ADMIN_AUTH_KEY']='admin'.G::randString(6);
+		$arrConfig['DYHB_AUTH_KEY']='dyhbauthkey'.G::randString(6);
 		
 		if(!file_put_contents(WINDSFORCE_PATH.'/config/Config.inc.php',
 			"<?php\n /* DoYouHaoBaby Framework Config File,Do not to modify this file! */ \n return ".

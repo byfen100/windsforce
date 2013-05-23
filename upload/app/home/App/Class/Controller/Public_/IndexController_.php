@@ -50,7 +50,7 @@ class IndexController extends Controller{
 		if($GLOBALS['_option_']['online_on']==1 && $GLOBALS['_option_']['online_indexon']==1){
 			$this->get_online_();
 		}
-
+G::dump($_COOKIE);
 		$this->display('public+index');
 	}
 

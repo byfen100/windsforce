@@ -115,9 +115,6 @@ class ModelBehaviorRbac extends ModelBehavior{
 			return $oMember;
 		}
 
-		//$this->clearThisCookie(true);
-		// 清除COOKIE && 造成了502 bad getway ngix
-
 		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']),$oMember->id(),$this->_arrSettings['rbac_login_life']);
 
 		$arrAdmins=$GLOBALS['_commonConfig_']['ADMIN_USERID']?explode(',',$GLOBALS['_commonConfig_']['ADMIN_USERID']):array(1);
@@ -133,8 +130,6 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		$sHash=Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash');
 		$this->updateSession($sHash,$oMember->id(),$GLOBALS['_authkey_']);// 更新数据库中的登陆会话
-
-		$this->saveAccessList($oMember->id());// 最后缓存rbac权限
 
 		return $oMember;
 	}
@@ -212,7 +207,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 
 		if($GLOBALS['_commonConfig_']['USER_AUTH_ON'] && !in_array(MODULE_NAME,Dyhb::normalize($GLOBALS['_commonConfig_']['NOT_AUTH_MODULE']))){// 用户权限检查
 			if(!$this->accessDecision()){
-				Dyhb::cookie('_rbacerror_referer_',__SELF__,$this->_arrSettings['rbac_login_life']);
+				Dyhb::cookie('_rbacerror_referer_',__SELF__);
 				
 				if(!Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY'])) && !G::isAjax()){// 检查认证识别号
 					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['USER_AUTH_GATEWAY'],array('referer'=>__SELF__,'rbac'=>1),true));// 跳转到认证网关
@@ -256,8 +251,6 @@ class ModelBehaviorRbac extends ModelBehavior{
 		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']),null,-1);
 		Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY']),null,-1);
 		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'auth',null,-1);
-		Dyhb::cookie(md5(APP_NAME.MODULE_NAME.ACTION_NAME),null,-1);
-		Dyhb::cookie('_access_list_',null,-1);
 		Dyhb::cookie('_rbacerror_referer_',null,-1);
 		Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'authcode_random',null,-1);
 
@@ -460,7 +453,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 					
 					if(!$sRandom){
 						$sRandom=G::randString($this->_arrSettings['authcode_random']);
-						Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'authcode_random',$sRandom,$this->_arrSettings['rbac_login_life']);
+						Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'authcode_random',$sRandom);
 					}
 				}
 				$this->_arrSavedState['authcode_random']=$sRandom;
@@ -557,27 +550,16 @@ class ModelBehaviorRbac extends ModelBehavior{
 			->asArray()
 			->query();
 
-		$arrAccessList=Dyhb::cookie('_access_list_');
-		foreach($arrMenuList as $sKey=>$arrModule){
-			if(Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY'])) OR (is_array($arrAccessList) && isset($arrAccessList[strtolower(APP_NAME)][strtolower($arrModule['node_name'])]))){
-				$arrModule['node_access']=1;
-				$arrMenuList[$sKey]=$arrModule;
+		if(is_array($arrMenuList)){
+			foreach($arrMenuList as $sKey=>$arrModule){
+				if(Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY'])) OR (is_array($arrAccessList) && isset($arrAccessList[strtolower(APP_NAME)][strtolower($arrModule['node_name'])]))){
+					$arrModule['node_access']=1;
+					$arrMenuList[$sKey]=$arrModule;
+				}
 			}
 		}
 
 		return $arrMenuList;
-	}
-
-	public function saveAccessList($nAuthId=null){
-		if(null===$nAuthId){
-			$nAuthId=Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']));
-		}
-
-		if($GLOBALS['_commonConfig_']['USER_AUTH_TYPE']!=2 and !Dyhb::cookie(md5($GLOBALS['_commonConfig_']['ADMIN_AUTH_KEY']))){
-			Dyhb::cookie('_access_list_',$this->getAccessList($nAuthId),$this->_arrSettings['rbac_login_life']);
-		}
-
-		return;
 	}
 
 	static function getRecordAcessList($nAuthId=null,$sModule=''){
@@ -713,7 +695,6 @@ class ModelBehaviorRbac extends ModelBehavior{
 				}
 
 				if($bTrueRbacUserAccessLevel>0 && $bTrueRbacUserAccess===true && $bTrueRbacUserAccessLevel>$bFalseRbacUserAccessLevel){
-					Dyhb::cookie($sAccessGuid,true,$this->_arrSettings['rbac_login_life']);
 					return true;
 				}
 				
@@ -721,31 +702,17 @@ class ModelBehaviorRbac extends ModelBehavior{
 				$nAuthid=Dyhb::cookie(md5($GLOBALS['_commonConfig_']['USER_AUTH_KEY']));
 				if(!$nAuthid && $GLOBALS['_commonConfig_']['GUEST_AUTH_ON']){
 					$nAuthid=$GLOBALS['_commonConfig_']['GUEST_AUTH_ID'];
-					$arrAccessList=Dyhb::cookie('_access_list_');
-					if($arrAccessList===false || $arrAccessList==''){
-						$this->saveAccessList($GLOBALS['_commonConfig_']['GUEST_AUTH_ID']);// 保存游客权限
-					}
 				}
 
-				if($GLOBALS['_commonConfig_']['USER_AUTH_TYPE']==2){
-					$arrAccessList=$this->getAccessList($nAuthid);
-				}else{
-					if(Dyhb::cookie($sAccessGuid)){
-						return true;
-					}
-
-					$arrAccessList=Dyhb::cookie('_access_list_');
-				}
+				$arrAccessList=$this->getAccessList($nAuthid);
 
 				// 权限认证
 				$sLowerAppName=strtolower($sAppName);
 				$sLowerModule=MODULE_NAME;
 				$sLowerAction=ACTION_NAME;
 				if(empty($arrAccessList) || !isset($arrAccessList[$sLowerAppName][$sLowerAppName.'@'.$sLowerModule][$sLowerAppName.'@'.$sLowerModule.'@'.$sLowerAction])){
-					Dyhb::cookie($sAccessGuid,false,$this->_arrSettings['rbac_login_life']);
 					return false;
 				}else{
-					Dyhb::cookie($sAccessGuid,true,$this->_arrSettings['rbac_login_life']);
 					return true;
 				}
 			}else{

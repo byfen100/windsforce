@@ -29,12 +29,7 @@ class GlobalinitController extends Controller{
 	public function is_login(){
 		if($GLOBALS['___login___']===false){
 			UserModel::M()->clearThisCookie();
-	
-			if(!G::isAjax()){
-				// 发送当前URL
-				Dyhb::cookie('windsforce_referer',__SELF__);
-			}
-			
+	
 			$this->assign('__JumpUrl__',Dyhb::U('home://public/login'));
 			$this->E(Dyhb::L('你没有登录','__COMMON_LANG__@Common'));
 		}

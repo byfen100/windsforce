@@ -137,9 +137,7 @@ class NodeController extends InitController{
 		}
 	}
 
-	public function clear_menu_cache(){
-		Dyhb::cookie('_access_list_','',-1);
-	}
+	public function clear_menu_cache(){}
 
 	public function aInsert($nId=null){
 		$this->clear_menu_cache();

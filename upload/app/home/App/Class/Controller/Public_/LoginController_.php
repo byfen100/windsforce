@@ -192,11 +192,7 @@ class LoginController extends GlobalchildController{
 
 			$GLOBALS['___login___']=false;
 
-			Dyhb::cookie('SOCIA_LOGIN',NULL,-1);
-			Dyhb::cookie('SOCIA_LOGIN_TYPE',NULL,-1);
-			Dyhb::cookie("_socia_access_token_",NULL,-1);
-			Dyhb::cookie('_socia_openid_',NULL,-1);
-			Dyhb::cookie('_socia_state_',NULL,-1);
+			Socia::clearCookie();
 
 			if($nReferer==1 && !empty($_SERVER['HTTP_REFERER'])){
 				$sJumpUrl=$_SERVER['HTTP_REFERER'];

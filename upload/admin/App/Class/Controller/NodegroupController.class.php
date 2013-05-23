@@ -65,9 +65,7 @@ class NodegroupController extends InitController{
 		$this->clear_menu_cache();
 	}
 
-	public function clear_menu_cache(){
-		Dyhb::cookie('_access_list_','',-1);
-	}
+	public function clear_menu_cache(){}
 
 	public function sort(){
 		$this->check_appdevelop();

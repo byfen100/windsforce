@@ -107,7 +107,7 @@ class Socia{
 		$this->_oLocal->bind();
 	}
 
-	static public function clearCookie($bSelf=false){
+	static public function clearCookie($bSelf=false,$bDeep=false){
 		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
 		$oSyscache=Dyhb::instance('SyscacheModel');
 
@@ -118,6 +118,14 @@ class Socia{
 
 		if($bSelf===false){
 			Dyhb::cookie('SOCIAUSERTEMP',null,-1);
+		}
+
+		if($bDeep===true){
+			Dyhb::cookie('SOCIA_LOGIN',NULL,-1);
+			Dyhb::cookie('SOCIA_LOGIN_TYPE',NULL,-1);
+			Dyhb::cookie("_socia_access_token_",NULL,-1);
+			Dyhb::cookie('_socia_openid_',NULL,-1);
+			Dyhb::cookie('_socia_state_',NULL,-1);
 		}
 
 		Dyhb::cookie('SOCIAKEYS',null,-1);

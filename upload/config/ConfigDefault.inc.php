@@ -20,8 +20,11 @@ return array(
 	'SHOW_GZIP_STATUS'=>TRUE,
 
 	// 重要前缀
-	'RBAC_DATA_PREFIX'=>'rbac_data_prefix_windsforce_',
-	'COOKIE_PREFIX'=>'windsforce_',
+	'RBAC_DATA_PREFIX'=>'rbac_',
+	'COOKIE_PREFIX'=>'wf_',
+
+	// 加密安全Key
+	'DYHB_AUTH_KEY'=>'authkey',
 
 	// RBAC
 	'RBAC_ROLE_TABLE'=>'role',
@@ -29,7 +32,6 @@ return array(
 	'RBAC_ACCESS_TABLE'=>'access',
 	'RBAC_NODE_TABLE'=>'node',
 	'USER_AUTH_ON'=>TRUE,
-	'USER_AUTH_TYPE'=>2,
 	'USER_AUTH_KEY'=>'auth_id',
 	'ADMIN_USERID'=>'1',
 	'ADMIN_AUTH_KEY'=>'administrator',

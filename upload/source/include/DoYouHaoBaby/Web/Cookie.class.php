@@ -16,7 +16,6 @@ class Cookie{
 				unset($_COOKIE[$sName]);
 			}
 		}else{
-			$sValue=base64_encode(serialize($sValue));
 			$_COOKIE[$sName]=$sValue;
 			if($nLife!==NULL && $nLife==0){
 				$nLife=$GLOBALS['_commonConfig_']['COOKIE_EXPIRE'];
@@ -37,7 +36,7 @@ class Cookie{
 	public static function getCookie($sName,$bPrefix=true){
 		$sName=($bPrefix?$GLOBALS['_commonConfig_']['COOKIE_PREFIX']:'').$sName;
 
-		return isset($_COOKIE[$sName])?unserialize(base64_decode($_COOKIE[$sName])):'';
+		return isset($_COOKIE[$sName])?$_COOKIE[$sName]:'';
 	}
 
 	public static function deleteCookie($sName,$bPrefix=true){

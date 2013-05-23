@@ -94,6 +94,13 @@ class UpdateController extends Controller{
 		$arrConfigDefault=(array)(include WINDSFORCE_PATH.'/config/ConfigDefault.inc.php');
 		$arrConfigDefault=array_merge($arrConfigDefault,$arrConfig);
 
+		// 安全配置
+		$arrConfig['USER_AUTH_KEY']='authid'.G::randString(6);
+		$arrConfig['ADMIN_AUTH_KEY']='admin'.G::randString(6);
+		$arrConfig['DYHB_AUTH_KEY']='dyhbauthkey'.G::randString(6);
+		$arrConfig['RBAC_DATA_PREFIX']='rbac_';
+		$arrConfig['COOKIE_PREFIX']='wf'.G::randString(6);
+
 		if(!file_put_contents(WINDSFORCE_PATH.'/config/Config.inc.php',
 			"<?php\n /* DoYouHaoBaby Framework Config File,Do not to modify this file! */ \n return ".
 			var_export($arrConfig,true).
