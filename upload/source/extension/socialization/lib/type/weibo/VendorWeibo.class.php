@@ -10,16 +10,15 @@ class VendorWeibo extends Vendor{
 	protected $_oOauth=null;
 
 	public function __construct(){
-		parent::__construct(self::NAME);
+		parent::__construct(self::NAME);
+		
 		new OauthWeibo();
 		$this->_oOauth=new SaeTOAuthV2($this->_arrConfig['sociatype_appid'],$this->_arrConfig['sociatype_appkey']);
 	}
 
 	public function login($sAppid,$sScope,$sCallback){
 		$sState=md5(uniqid(rand(),TRUE));
-		
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-		Core_Extend::saveSyscache('sociastate'.$sRand,$sState);
+		Dyhb::cookie('_socia_state_',$sState);
 
 		try{
 			$sUrl=$this->_oOauth->getAuthorizeURL($this->_arrConfig['sociatype_callback'],'code',$sState);
@@ -52,10 +51,10 @@ class VendorWeibo extends Vendor{
 			}catch(OAuthException $e){
 				$this->setErrorMessage($e->getMessage());
 				return false;
-			}
+			}
+		
 			if($arrToken){
-				$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-				Core_Extend::saveSyscache('sociaaccesstoken'.$sRand,$arrToken);
+				Dyhb::cookie("_socia_access_token_",$arrToken['access_token']);
 			}
 		}else{
 			$this->setErrorMessage("The state does not match. You may be a victim of CSRF.");
@@ -69,14 +68,9 @@ class VendorWeibo extends Vendor{
 		}
 		
 		try{
-			$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-			
-			if(!isset($GLOBALS['_cache_']['sociaaccesstoken'.$sRand])){
-				Core_Extend::loadCache('sociaaccesstoken'.$sRand,false,'db');
-			}
-			$arrToken=$GLOBALS['_cache_']['sociaaccesstoken'.$sRand];
+			$sAccesstoken=Dyhb::cookie("_socia_access_token_");
 
-			$oClient=new SaeTClientV2($this->_arrConfig['sociatype_appid'],$this->_arrConfig['sociatype_appkey'],$arrToken['access_token']);
+			$oClient=new SaeTClientV2($this->_arrConfig['sociatype_appid'],$this->_arrConfig['sociatype_appkey'],$sAccesstoken);
 			$ms=$oClient->home_timeline();
 			$arrUidget=$oClient->get_uid();
 
@@ -103,12 +97,7 @@ class VendorWeibo extends Vendor{
 	}
 
 	public function getAccessToken(){
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-		
-		if(!isset($GLOBALS['_cache_']['sociastate'.$sRand])){
-			Core_Extend::loadCache('sociastate'.$sRand,false,'db');
-		}
-		$sCookieState=$GLOBALS['_cache_']['sociastate'.$sRand];
+		$sCookieState=Dyhb::cookie('_socia_state_');
 		
 		return $this->callback($this->_sAppid,$this->_sSecid,$this->_sCallback,$sCookieState);
 	}
@@ -116,9 +105,7 @@ class VendorWeibo extends Vendor{
 	public function showUser($keys=array()){
 		$arrWeibouser=$this->getUserInfo($this->_sAppid);
 
-		if($arrWeibouser && $arrWeibouser['id']){
-			$arrKeys=Socia::getKeys();
-
+		if($arrWeibouser && $arrWeibouser['id']){
 			$arrSaveData=array();
 			$arrSaveData['sociauser_appid']=$this->_sAppid;
 			$arrSaveData['sociauser_openid']=$arrWeibouser['id'];

@@ -51,8 +51,7 @@ class OauthQq extends Oauth{
 				return false;
 			}
 
-			$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-			Core_Extend::saveSyscache('sociaaccesstoken'.$sRand,$arrParams['access_token']);
+			Dyhb::cookie("_socia_access_token_",$arrParams['access_token']);
 		}else{
 			$this->setErrorMessage("The state does not match. You may be a victim of CSRF.");
 			return false;
@@ -60,12 +59,7 @@ class OauthQq extends Oauth{
 	}
 
 	public function getOpenid(){
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-			
-		if(!isset($GLOBALS['_cache_']['sociaaccesstoken'.$sRand])){
-			Core_Extend::loadCache('sociaaccesstoken'.$sRand,false,'db');
-		}
-		$sAccesstoken=$GLOBALS['_cache_']['sociaaccesstoken'.$sRand];
+		$sAccesstoken=Dyhb::cookie("_socia_access_token_");
 
 		$sGraphurl="https://graph.qq.com/oauth2.0/me?access_token=".$sAccesstoken;
 
@@ -91,21 +85,12 @@ class OauthQq extends Oauth{
 		}
 
 		// set openid to cookie
-		Core_Extend::saveSyscache('sociaopenid'.$sRand,$oUser->openid);
+		Dyhb::cookie('_socia_openid_',$oUser->openid);
 	}
 
 	public function getUserInfo($sAppid){
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-			
-		if(!isset($GLOBALS['_cache_']['sociaaccesstoken'.$sRand])){
-			Core_Extend::loadCache('sociaaccesstoken'.$sRand,false,'db');
-		}
-		$sAccesstoken=$GLOBALS['_cache_']['sociaaccesstoken'.$sRand];
-		
-		if(!isset($GLOBALS['_cache_']['sociaopenid'.$sRand])){
-			Core_Extend::loadCache('sociaopenid'.$sRand,false,'db');
-		}
-		$sOpenid=$GLOBALS['_cache_']['sociaopenid'.$sRand];
+		$sAccesstoken=Dyhb::cookie('_socia_access_token_');
+		$sOpenid=Dyhb::cookie('_socia_openid_');
 
 		$sGetuserinfo="https://graph.qq.com/user/get_user_info?".
 			"access_token=".$sAccesstoken.

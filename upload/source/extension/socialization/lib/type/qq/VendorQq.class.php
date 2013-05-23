@@ -16,9 +16,7 @@ class VendorQq extends Vendor{
 
 	public function login($sAppid,$sScope,$sCallback){
 		$sState=md5(uniqid(rand(),TRUE));
-
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-		Core_Extend::saveSyscache('sociastate'.$sRand,$sState);
+		Dyhb::cookie('_socia_state_',$sState);
 
 		$this->_oOauth->login($sAppid,$sScope,$sCallback,$sState);
 
@@ -29,12 +27,7 @@ class VendorQq extends Vendor{
 	}
 
 	public function callback($sAppid,$sAppkey,$sCallback){
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-		
-		if(!isset($GLOBALS['_cache_']['sociastate'.$sRand])){
-			Core_Extend::loadCache('sociastate'.$sRand,false,'db');
-		}
-		$sCookieState=$GLOBALS['_cache_']['sociastate'.$sRand];
+		$sCookieState=Dyhb::cookie('_socia_state_');
 
 		$this->_oOauth->callback($sAppid,$sAppkey,$sCallback,$sCookieState);
 		$this->getOpenid();
@@ -81,17 +74,9 @@ class VendorQq extends Vendor{
 		$arrQquser=$this->getUserInfo($this->_sAppid);
 
 		if($arrQquser && $arrQquser['ret']==0){
-			$arrKeys=Socia::getKeys();
-
-			$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-			if(!isset($GLOBALS['_cache_']['sociaopenid'.$sRand])){
-				Core_Extend::loadCache('ssociaopenid'.$sRand,false,'db');
-			}
-			$sOpenid=$GLOBALS['_cache_']['sociaopenid'.$sRand];
-			
 			$arrSaveData=array();
 			$arrSaveData['sociauser_appid']=$this->_sAppid;
-			$arrSaveData['sociauser_openid']=$sOpenid;
+			$arrSaveData['sociauser_openid']=Dyhb::cookie('_socia_openid_');
 			$arrSaveData['sociauser_vendor']=$this->_sVendor;
 			$arrSaveData['sociauser_keys']=$this->_sSecid;
 			$arrSaveData['sociauser_gender']=$arrQquser['gender'];

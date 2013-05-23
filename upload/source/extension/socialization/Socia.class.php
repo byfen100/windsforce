@@ -16,12 +16,6 @@ class Socia{
 		
 		$this->setVendor($sVendor);
 		$this->setLocal();
-
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-		if(!$sRand){
-			$sRand=G::randString(12);
-			Dyhb::cookie('SOCIAUSERTEMP',$sRand);
-		}
 	}
 
 	public function setVendor($sVendor=''){
@@ -35,48 +29,25 @@ class Socia{
 		$this->_oLocal=new $sLocal();
 	}
 
-	static public function setUser($arrUser){
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-
-		Core_Extend::saveSyscache('sociauser'.$sRand,$arrUser);
-	}
-
 	static public function getUser(){
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-		
-		if(!isset($GLOBALS['_cache_']['sociauser'.$sRand])){
-			Core_Extend::loadCache('sociauser'.$sRand,false,'db');
-		}
-		$arrUser=$GLOBALS['_cache_']['sociauser'.$sRand];
+		$sVendor=Dyhb::cookie('SOCIA_LOGIN_TYPE');
+
+		$oSocia=Dyhb::instance('Socia',$sVendor);
+		$arrUser=$this->_oVendor->getUser();
 
 		return !empty($arrUser)?$arrUser:FALSE;
 	}
 
-	static public function setKeys($arrKeys){
-		Dyhb::cookie('SOCIAKEYS',$arrKeys);
-	}
-
-	static public function getKeys(){
-		$arrKeys=Dyhb::cookie('SOCIAKEYS');
-		return !empty($arrKeys)?$arrKeys:FALSE;
-	}
-	
 	public function login(){
 		return $this->gotoLoginPage();
 	}
 
 	public function callback(){
-		$arrKeys=self::getKeys();
-		
 		$arrUser=$this->_oVendor->getUser();
 	
 		if($this->_oVendor->isError()){
 			$this->setErrorMessage($this->_oVendor->getErrorMessage());
 			return false;
-		}
-
-		if($arrUser){
-			self::setUser($arrUser);
 		}
 
 		// 标识社会化登录
@@ -87,7 +58,6 @@ class Socia{
 	}
 
 	public function gotoLoginPage(){
-		self::clearCookie(true);
 		$this->_oVendor->gotoLoginPage();
 
 		if($this->_oVendor->isError()){
@@ -107,28 +77,15 @@ class Socia{
 		$this->_oLocal->bind();
 	}
 
-	static public function clearCookie($bSelf=false,$bDeep=false){
-		$sRand=Dyhb::cookie('SOCIAUSERTEMP');
-		$oSyscache=Dyhb::instance('SyscacheModel');
-
-		$oSyscache->delCache('sociauser'.$sRand);
-		$oSyscache->delCache('sociastate'.$sRand);
-		$oSyscache->delCache('sociaaccesstoken'.$sRand);
-		$oSyscache->delCache('sociaopenid'.$sRand);
-
-		if($bSelf===false){
-			Dyhb::cookie('SOCIAUSERTEMP',null,-1);
-		}
+	static public function clearCookie($bDeep=false){
+		Dyhb::cookie('_socia_state_',NULL,-1);
 
 		if($bDeep===true){
 			Dyhb::cookie('SOCIA_LOGIN',NULL,-1);
 			Dyhb::cookie('SOCIA_LOGIN_TYPE',NULL,-1);
 			Dyhb::cookie("_socia_access_token_",NULL,-1);
 			Dyhb::cookie('_socia_openid_',NULL,-1);
-			Dyhb::cookie('_socia_state_',NULL,-1);
 		}
-
-		Dyhb::cookie('SOCIAKEYS',null,-1);
 	}
 
 	protected function setIsError($bIsError=false){
