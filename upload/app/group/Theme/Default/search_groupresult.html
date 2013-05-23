@@ -12,11 +12,11 @@
 				<!--<foreach for=arrGroups value=oGroup>-->
 				<!--{~$nGroupuser=Groupadmin_Extend::getGroupuser($oGroup['group_id'])}-->
 				<li>
-					<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic">
+					<a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="grouplist_pic" target="_blank">
 						<img src="<!--{:Group_Extend::getGroupIcon($oGroup)}-->" alt="<!--{$oGroup['group_nikename']}-->" width="48" height="48" class="thumbnail"/>
 					</a>
 					<div class="grouplist_txt">
-						<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;<!--{/if}-->"><!--{$oGroup['group_nikename']|Core_Extend+highlight=$sKey}--></a><!--{if $oGroup['group_totaltodaynum']}-->&nbsp;<span class="grouplist_todaynum" title="<!--<lang package='Template/Grouplist'>-->今日发帖量<!--</lang>-->">(<!--{$oGroup['group_totaltodaynum']}-->)</span><!--{/if}--></h3>
+						<h3><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" style="<!--{if $oGroup['group_color']}-->color:<!--{$oGroup['group_color']}-->;<!--{/if}-->" target="_blank"><!--{$oGroup['group_nikename']|Core_Extend+highlight=$sKey}--></a><!--{if $oGroup['group_totaltodaynum']}-->&nbsp;<span class="grouplist_todaynum" title="<!--<lang package='Template/Grouplist'>-->今日发帖量<!--</lang>-->">(<!--{$oGroup['group_totaltodaynum']}-->)</span><!--{/if}--></h3>
 						<span>&nbsp;<!--{$oGroup['group_usernum']}--><!--<lang package='Template/Grouplist'>-->人加入<!--</lang>--></span>
 						<!--{if $nGroupuser==0}-->
 						&nbsp;<span id="recommendgroupid_<!--{$oGroup['group_id']}-->" class="commonjoinleave_group"><a href="javascript:void(0);" onclick="joinGroup(<!--{$oGroup['group_id']}-->,'recommendgroupid_<!--{$oGroup['group_id']}-->');">+<!--<lang package='Template/Grouplist'>-->加入<!--</lang>--></a></span>
