@@ -17,7 +17,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- 表的结构 
 --
 
-DROP TABLE IF EXISTS {WINDSFORCE}helloworldoption;
+--
+-- DROP TABLE IF EXISTS {WINDSFORCE}serviceoption;
+-- DROP TABLE IF EXISTS {WINDSFORCE}serviceinstall;
+--
 
 -- --------------------------------------------------------
 

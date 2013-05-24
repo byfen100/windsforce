@@ -322,7 +322,13 @@ class IndexController extends Controller{
 
 		// 初始化系统和跳转
 		$sInitsystemUrl=trim(G::getGpc('baseurl')).'/index.php?app=home&c=misc&a=init_system&?l='.$sLangcurrent;
-		
+
+		// 将安装数据传回官方服务器以便于统计用户
+		$sIp=G::getIp();
+		$sDomain=$_SERVER['HTTP_HOST'];
+
+		$sServUrl='http://doyouhaobaby.net/index.php?app=service&c=install&a=index&ip='.urlencode($sIp).'&domain='.urlencode($sDomain).'&version='.urlencode(WINDSFORCE_SERVER_VERSION).'&release='.urlencode(WINDSFORCE_SERVER_RELEASE).'&bug='.urlencode(WINDSFORCE_SERVER_BUG).'&update=0';
+
 		echo<<<WINDSFORCE
 		<script type="text/javascript">
 			function setLaststep(){
@@ -332,7 +338,8 @@ class IndexController extends Controller{
 				},1000);
 			}
 		</script>
-		<script type="text/javascript">setTimeout(function(){window.location=window.location=D.U('index/success');},30000);
+		<script type="text/javascript" src="{$sServUrl}"></script>
+		<script type="text/javascript">setTimeout(function(){window.location=window.location=D.U('index/success');},20000);
 		</script>
 		<iframe src="{$sInitsystemUrl}" style="display:none;" onload="setLaststep()"></iframe>
 WINDSFORCE;

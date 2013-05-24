@@ -1,1 +1,1 @@
-a:3:{s:14:"InitController";s:35:"Controller/InitController.class.php";s:16:"PublicController";s:37:"Controller/PublicController.class.php";s:21:"HelloworldoptionModel";s:37:"Model/HelloworldoptionModel.class.php";}
+a:4:{s:14:"InitController";s:35:"Controller/InitController.class.php";s:17:"InstallController";s:38:"Controller/InstallController.class.php";s:16:"PublicController";s:37:"Controller/PublicController.class.php";s:19:"ServiceinstallModel";s:35:"Model/ServiceinstallModel.class.php";}

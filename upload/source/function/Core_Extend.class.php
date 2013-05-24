@@ -883,7 +883,7 @@ WINDSFORCE;
 
 		// 判断应用是否启用
 		Core_Extend::loadCache('app');
-		if(!in_array(APP_NAME,$GLOBALS['_cache_']['app'])){
+		if(!in_array(APP_NAME,$GLOBALS['_cache_']['app']) && APP_NAME!=='home'){
 			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
 		}
 
