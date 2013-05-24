@@ -45,11 +45,11 @@ $sFrameworkServerVersion='2.5';
 $nFrameworkServerRelease='20130426';
 	
 /** 获取客户端信息 & 验证 */
-$sVersion=isset($_GET['version'])?trim($_GET['version']):'';
+$sVersion=isset($_GET['version'])?htmlspecialchars(trim($_GET['version'])):'';
 $nRelease=isset($_GET['release'])?intval($_GET['release']):'';
-$sBug=isset($_GET['bug'])?trim($_GET['bug']):'';
-$sHostname=isset($_GET['hostname'])?trim($_GET['hostname']):'';
-$sUrl=isset($_GET['url'])?trim($_GET['url']):'';
+$sBug=isset($_GET['bug'])?htmlspecialchars(trim($_GET['bug'])):'';
+$sHostname=isset($_GET['hostname'])?htmlspecialchars(trim($_GET['hostname'])):'';
+$sUrl=isset($_GET['url'])?htmlspecialchars(trim($_GET['url'])):'';
 $nInfolist=isset($_GET['infolist']) && $_GET['infolist']==1?intval($_GET['infolist']):'';
 
 if(empty($sVersion)){
