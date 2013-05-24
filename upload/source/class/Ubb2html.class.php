@@ -448,6 +448,12 @@ class Ubb2html{
 			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
 				return $this->needLogin();
 			}else{
+				if(APP_NAME==='wap'){
+					$sImg=Core_Extend::wapImage($oAttachment['attachment_id']);
+
+					return " <img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"{$oAttachment['attachment_alt']}\" title=\"".$oAttachment['attachment_name']."\" border=\"0\"> ";
+				}
+				
 				$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_name'].'</a> ('.$oAttachment['attachment_extension'].')';
 				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';

@@ -1109,6 +1109,20 @@ WINDSFORCE;
 		Image::thumbGd($sFilepath,$nWidth,$nHeight);
 	}
 
+	static public function wapImage($nId,$nThumb=1,$nWidth=0,$nHeight=0){
+		$arrTemp=explode('|',$GLOBALS['_option_']['wap_img_size']);
+
+		if($nWidth==0){
+			$nWidth=$arrTemp[0];
+		}
+
+		if($nHeight==0){
+			$nHeight=$arrTemp[1];
+		}
+
+		return Dyhb::U('home://misc/thumb?id='.$nId.'&w='.$nWidth.'&h='.$nHeight.'&thumb='.$nThumb);
+	}
+
 	static public function ubb($sContent,$bHomefreshmessage=true,$bUsersign=false,$nOuter=0){
 		if(!Dyhb::classExists('Ubb2html')){
 			require_once(Core_Extend::includeFile('class/Ubb2html'));

@@ -694,7 +694,8 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('wap_computer_on', '0'),
 ('search_fulltext', '0'),
 ('only_login_viewsite', '0'),
-('stat_header_code', '');
+('stat_header_code', ''),
+('wap_img_size', '100|80');
 
 -- --------------------------------------------------------
 

@@ -58,4 +58,8 @@ class MiscController extends InitController{
 		Core_Extend::doControllerAction('Misc@Socialogin','index');
 	}
 
+	public function thumb(){
+		Core_Extend::doControllerAction('Misc@Thumb','index');
+	}
+
 }
