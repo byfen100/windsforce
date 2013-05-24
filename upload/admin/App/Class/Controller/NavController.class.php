@@ -15,7 +15,7 @@ class NavController extends InitController{
 		}
 
 		$arrMap['nav_location']=$nLocation;
-		$arrNavs=NavModel::F()->where($arrMap)->order('nav_sort DESC')->getAll();
+		$arrNavs=NavModel::F()->where($arrMap)->order('nav_sort ASC')->getAll();
 		
 		$this->assign('arrLists',$arrNavs);
 		$this->assign('nLocation',$nLocation);
@@ -69,6 +69,10 @@ class NavController extends InitController{
 		$this->aInsert();
 	}
 
+	public function afterInputChangeAjax($sName=null){
+		$this->aInsert();
+	}
+
 	public function AUpdateObject_($oModel){
 		$arrStyle=G::getGpc('style');
 
@@ -119,7 +123,7 @@ class NavController extends InitController{
 	}
 
 	public function nar_parent(){
-		$arrNavs=NavModel::F()->where(array('nav_parentid'=>0,'nav_location'=>0))->order('nav_sort DESC')->getAll();
+		$arrNavs=NavModel::F()->where(array('nav_parentid'=>0,'nav_location'=>0))->order('nav_sort ASC')->getAll();
 		
 		return $arrNavs;
 	}

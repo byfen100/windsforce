@@ -38,7 +38,7 @@ class UpdateCacheNav{
 			$arrWhere2=array('nav_status'=>1,'nav_location'=>0);
 		}
 		
-		$arrNavs=NavModel::F($arrWhere)->order('nav_sort DESC')->getAll();
+		$arrNavs=NavModel::F($arrWhere)->order('nav_sort ASC')->getAll();
 		if(is_array($arrNavs)){
 			foreach($arrNavs as $key=>$oNav){
 				$arrReturnNav[$key]=array(
@@ -54,7 +54,7 @@ class UpdateCacheNav{
 				$arrReturnNav[$key]['sub']=array();
 
 				$arrWhere2['nav_parentid']=$oNav['nav_id'];
-				$arrNavSubs=NavModel::F($arrWhere2)->order('nav_sort DESC')->getAll();
+				$arrNavSubs=NavModel::F($arrWhere2)->order('nav_sort ASC')->getAll();
 				foreach($arrNavSubs as $oNavSub){
 					$arrReturnNav[$key]['sub'][]=array(
 						'title'=>$oNavSub['nav_name'],
