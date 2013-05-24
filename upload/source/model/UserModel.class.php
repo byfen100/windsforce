@@ -131,14 +131,15 @@ class UserModel extends CommonModel{
 		return true;
 	}
 
-	public function checkLoginCommon($sUserName,$sPassword,$bEmail,$sApp='admin'){
+	public function checkLoginCommon($sUserName,$sPassword,$bEmail,$sApp='admin',$nLoginCookieTime=null){
 		// 是否记住登陆状态
-		$nLoginCookieTime=null;
-		if(G::getGpc('remember_me','P')){
-			if(G::getGpc('remember_time','P')==0){
-				$nLoginCookieTime=null;
-			}else{
-				$nLoginCookieTime=intval(G::getGpc('remember_time','P'));
+		if($nLoginCookieTime===null){
+			if(G::getGpc('remember_me','P')){
+				if(G::getGpc('remember_time','P')==0){
+					$nLoginCookieTime=null;
+				}else{
+					$nLoginCookieTime=intval(G::getGpc('remember_time','P'));
+				}
 			}
 		}
 

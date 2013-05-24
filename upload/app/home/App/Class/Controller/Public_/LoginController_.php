@@ -149,7 +149,7 @@ class LoginController extends GlobalchildController{
 		}
 
 		$oUserModel=Dyhb::instance('UserModel');
-		$oUserModel->checkLoginCommon($sUserName,$sPassword,$bEmail,'home');
+		$oUserModel->checkLoginCommon($sUserName,$sPassword,$bEmail,'home',Socia::getUser()?$GLOBALS['socia_login_time']:null);
 
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());

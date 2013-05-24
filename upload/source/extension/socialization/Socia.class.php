@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** 预处理登陆时间 */
+$GLOBALS['socia_login_time']=Dyhb::cookie('SOCIA_LOGIN_TIME')?intval(Dyhb::cookie('SOCIA_LOGIN_TIME')):null;
+
 class Socia{
 	
 	private $_oVendor;
@@ -55,8 +58,8 @@ class Socia{
 		}
 
 		// 标识社会化登录
-		Dyhb::cookie('SOCIA_LOGIN',1);
-		Dyhb::cookie('SOCIA_LOGIN_TYPE',$arrUser['sociauser_vendor']);
+		Dyhb::cookie('SOCIA_LOGIN',1,$GLOBALS['socia_login_time']);
+		Dyhb::cookie('SOCIA_LOGIN_TYPE',$arrUser['sociauser_vendor'],$GLOBALS['socia_login_time']);
 
 		return $arrUser;
 	}

@@ -190,7 +190,7 @@ function insertHomefreshtopic(sContent){
 						</p>
 						<div id="remember_time" class="none">
 							<label for="remember_time"><!--<lang package='__COMMON_LANG__@Template/Common'>-->COOKIE有效期<!--</lang>--><span class="pipe">|</span><a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
-							<select name="remember_time">
+							<select name="remember_time" id="remembertime">
 								<option value="0" <!--{if $nRememberTime==0}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->及时<!--</lang>--></option>
 								<option value="3600" <!--{if $nRememberTime==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
 								<option value="86400" <!--{if $nRememberTime==86400}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一天<!--</lang>--></option>

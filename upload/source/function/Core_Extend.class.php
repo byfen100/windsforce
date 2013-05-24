@@ -1739,6 +1739,7 @@ WINDSFORCE;
 		Dyhb::cookie('the_comment_name',null,-1);
 		Dyhb::cookie('the_comment_url',null,-1);
 		Dyhb::cookie('the_comment_email',null,-1);
+		Dyhb::cookie('SOCIA_LOGIN_TIME',null,-1);
 	}
 
 }

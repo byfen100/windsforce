@@ -54,4 +54,8 @@ class MiscController extends InitController{
 		Core_Extend::doControllerAction('Misc@Stealthonline','index');
 	}
 
+	public function socia_login(){
+		Core_Extend::doControllerAction('Misc@Socialogin','index');
+	}
+
 }

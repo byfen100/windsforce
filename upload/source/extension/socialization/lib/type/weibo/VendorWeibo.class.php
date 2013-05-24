@@ -54,7 +54,7 @@ class VendorWeibo extends Vendor{
 			}
 		
 			if($arrToken){
-				Dyhb::cookie("_socia_access_token_",$arrToken['access_token']);
+				Dyhb::cookie("_socia_access_token_",$arrToken['access_token'],$GLOBALS['socia_login_time']);
 			}
 		}else{
 			$this->setErrorMessage("The state does not match. You may be a victim of CSRF.");

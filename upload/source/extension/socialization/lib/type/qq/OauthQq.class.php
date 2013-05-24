@@ -51,7 +51,7 @@ class OauthQq extends Oauth{
 				return false;
 			}
 
-			Dyhb::cookie("_socia_access_token_",$arrParams['access_token']);
+			Dyhb::cookie("_socia_access_token_",$arrParams['access_token'],$GLOBALS['socia_login_time']);
 		}else{
 			$this->setErrorMessage("The state does not match. You may be a victim of CSRF.");
 			return false;
@@ -81,7 +81,7 @@ class OauthQq extends Oauth{
 		}
 
 		// set openid to cookie
-		Dyhb::cookie('_socia_openid_',$oUser->openid);
+		Dyhb::cookie('_socia_openid_',$oUser->openid,$GLOBALS['socia_login_time']);
 	}
 
 	public function getUserInfo($sAppid){
