@@ -693,7 +693,8 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('wap_mobile_only', '0'),
 ('wap_computer_on', '0'),
 ('search_fulltext', '0'),
-('only_login_viewsite', '0');
+('only_login_viewsite', '0'),
+('stat_header_code', '');
 
 -- --------------------------------------------------------
 
