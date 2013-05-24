@@ -238,7 +238,7 @@ WINDSFORCE;
 		}
 
 		// 初始化系统和跳转
-		$sInitsystemUrl=trim(G::getGpc('baseurl')).'/index.php?app=home&c=misc&a=init_system';
+		$sInitsystemUrl=trim(G::getGpc('baseurl')).'/index.php?app=home&c=misc&a=init_system&update=1&l='.strtolower($arrConfig['FRONT_LANGUAGE_DIR']);
 		
 		echo<<<WINDSFORCE
 		<script type="text/javascript">

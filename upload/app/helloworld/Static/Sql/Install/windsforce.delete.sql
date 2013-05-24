@@ -1,5 +1,5 @@
 -- WINDSFORCE 数据库卸载清理
--- version 1.0
+-- version 1.0.1
 -- http://www.windsforce.com
 --
 -- 开发: Windsforce TEAM
