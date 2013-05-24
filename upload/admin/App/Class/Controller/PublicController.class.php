@@ -153,6 +153,8 @@ class PublicController extends InitController{
 		}
 
 		UserModel::M()->clearThisCookie();
+		Core_Extend::clearCookie();
+		Socia::clearCookie(true);
 		
 		$this->assign('sReferer',$sReferer);
 		$this->assign('nRbac',$nRbac);

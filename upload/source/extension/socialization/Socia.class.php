@@ -28,14 +28,14 @@ class Socia{
 	public function setLocal($sLocal='SociauserlocalController'){
 		$this->_oLocal=new $sLocal();
 	}
+	
+	static public function setUser($arrUser){
+		Dyhb::cookie('SOCIAUSER',serialize($arrUser));
+	}
 
 	static public function getUser(){
-		$sVendor=Dyhb::cookie('SOCIA_LOGIN_TYPE');
-
-		$oSocia=Dyhb::instance('Socia',$sVendor);
-		$arrUser=$this->_oVendor->getUser();
-
-		return !empty($arrUser)?$arrUser:FALSE;
+		$sUser=Dyhb::cookie('SOCIAUSER');
+		return !empty($sUser)?unserialize($sUser):FALSE;
 	}
 
 	public function login(){
@@ -48,6 +48,10 @@ class Socia{
 		if($this->_oVendor->isError()){
 			$this->setErrorMessage($this->_oVendor->getErrorMessage());
 			return false;
+		}
+		
+		if($arrUser){
+			self::setUser($arrUser);
 		}
 
 		// 标识社会化登录
@@ -79,6 +83,7 @@ class Socia{
 
 	static public function clearCookie($bDeep=false){
 		Dyhb::cookie('_socia_state_',NULL,-1);
+		Dyhb::cookie('SOCIAUSER',NULL,-1);
 
 		if($bDeep===true){
 			Dyhb::cookie('SOCIA_LOGIN',NULL,-1);

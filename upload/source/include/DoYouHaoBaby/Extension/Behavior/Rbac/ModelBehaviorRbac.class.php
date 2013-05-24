@@ -174,14 +174,11 @@ class ModelBehaviorRbac extends ModelBehavior{
 				if(!empty($arrSessionData['user_id'])){
 					$bSessionExists=true;
 					$this->updateSession($arrSessionData['session_hash'],$nUserId,$sAuthKey,true);
-				}else{
-					$this->clearThisCookie();
 				}
 			}
 		}
 
 		if($bSessionExists===FALSE){
-			$this->clearThisCookie();
 			$arrUserInformation['session_hash']=$sHash?$sHash:G::randString(6);
 		}
 
@@ -190,7 +187,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$sUserName=isset($arrUserInformation['user_name'])?$arrUserInformation['user_name']:'';
 
 		if(!$sHash || $sHash!=Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash')){// 设置hash值
-			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',$sHash,$this->_arrSettings['rbac_login_life']);
+			Dyhb::cookie($GLOBALS['_commonConfig_']['RBAC_DATA_PREFIX'].'hash',$sHash,31536000);
 		}
 
 		$GLOBALS[$sAuthKey]=$arrUserInformation;
