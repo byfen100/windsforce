@@ -18,10 +18,6 @@ class LoginController extends GlobalchildController{
 			$this->_oParentcontroller->wap_mes(Dyhb::L('你已经登录','Controller/Public'),Dyhb::U('wap://public/index'),0);
 		}
 
-		UserModel::M()->clearThisCookie();
-		Core_Extend::clearCookie();
-		Socia::clearCookie(true);
-
 		$this->assign('sReferer',$sReferer);
 		$this->assign('nRbac',$nRbac);
 		$this->assign('nLoginview',$nLoginview);

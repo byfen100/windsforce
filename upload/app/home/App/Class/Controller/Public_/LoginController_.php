@@ -20,10 +20,6 @@ class LoginController extends GlobalchildController{
 			$this->E(Dyhb::L('你已经登录','Controller/Public'));
 		}
 
-		UserModel::M()->clearThisCookie();
-		Core_Extend::clearCookie();
-		Socia::clearCookie(true);
-
 		Core_Extend::loadCache('sociatype');
 
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_login_status']);
@@ -214,7 +210,6 @@ class LoginController extends GlobalchildController{
 
 	public function clear(){
 		UserModel::M()->clearThisCookie();
-		Core_Extend::clearCookie();
 		Socia::clearCookie(true);
 
 		$this->S(Dyhb::L('清理登录痕迹成功','Controller/Public'));

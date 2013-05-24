@@ -64,11 +64,7 @@ class OauthQq extends Oauth{
 		$sGraphurl="https://graph.qq.com/oauth2.0/me?access_token=".$sAccesstoken;
 
 		$sStr=$this->file_get_contents($sGraphurl);
-		if(empty($sStr)){
-			$this->setErrorMessage('Empty openid result');
-			return false;
-		}
-		
+
 		if(strpos($sStr,"callback")!==false){
 			$nLpos=strpos($sStr,"(");
 			$nRpos=strrpos($sStr,")");

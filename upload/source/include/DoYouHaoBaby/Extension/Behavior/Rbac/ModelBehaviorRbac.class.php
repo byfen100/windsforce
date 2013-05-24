@@ -174,11 +174,14 @@ class ModelBehaviorRbac extends ModelBehavior{
 				if(!empty($arrSessionData['user_id'])){
 					$bSessionExists=true;
 					$this->updateSession($arrSessionData['session_hash'],$nUserId,$sAuthKey,true);
+				}else{
+					$this->clearThisCookie();
 				}
 			}
 		}
 
 		if($bSessionExists===FALSE){
+			$this->clearThisCookie();
 			$arrUserInformation['session_hash']=$sHash?$sHash:G::randString(6);
 		}
 
