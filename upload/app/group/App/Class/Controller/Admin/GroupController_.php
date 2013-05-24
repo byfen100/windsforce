@@ -645,7 +645,7 @@ class GroupController extends InitController{
 				}
 
 				// 用户被设置为小组管理员后，判断是否拥有管理员角色
-				$oUserrole=UserroleModel::F('user_id=? AND role_id=3',$nLeaderUserid)->getOne();
+				$oUserrole=UserroleModel::F('user_id=? AND role_id=3',$nAdminUserid)->getOne();
 				if(empty($oUserrole['user_id'])){
 					Dyhb::instance('RoleModel')->setGroupUsers(3,array($nAdminUserid));
 				}
