@@ -30,13 +30,9 @@ class LeavegroupController extends Controller{
 		$oGroupuser->destroy();
 
 		// 更新小组中的用户数量
-		$oGroup->group_usernum=GroupuserModel::F('group_id=?',$nGid)->getCounts();
-		$oGroup->setAutofill(false);
-		$oGroup->save(0,'update');
-		
-		if($oGroup->isError()){
-			$this->E($oGroup->getErrorMessage());
-		}
+		Dyhb::instance('GroupModel')->resetUser($nGid);
+
+		Group_Extend::chearGroupuserrole($GLOBALS['___login___']['user_id']);
 
 		$this->S(Dyhb::L('成功退出 %s 小组','Controller/Group',null,$oGroup->group_nikename));
 	}

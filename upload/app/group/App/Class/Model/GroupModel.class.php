@@ -200,4 +200,21 @@ class GroupModel extends CommonModel{
 		return $oDb->query("UPDATE ".$this->getTablePrefix()."group SET group_topiccommenttodaynum='0',group_topictodaynum='0',group_totaltodaynum='0'");
 	}
 
+	public function resetUser($nGroupid=0){
+		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
+				
+		if(!empty($oGroup['group_id'])){
+			$oGroup->group_usernum=GroupuserModel::F('group_id=?',$oGroup['group_id'])->getCounts();
+			$oGroup->setAutofill(false);
+			$oGroup->save(0,'update');
+			
+			if($oGroup->isError()){
+				$this->setErrorMessage($oGroup->getErrorMessage());
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 }

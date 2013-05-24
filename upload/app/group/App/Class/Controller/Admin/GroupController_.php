@@ -601,6 +601,9 @@ class GroupController extends InitController{
 				if(empty($oUserrole['user_id'])){
 					Dyhb::instance('RoleModel')->setGroupUsers(2,array($nLeaderUserid));
 				}
+
+				// 更新小组中的用户数量
+				Dyhb::instance('GroupModel')->resetUser($nGroupid);
 			}
 		}
 
@@ -649,6 +652,9 @@ class GroupController extends InitController{
 				if(empty($oUserrole['user_id'])){
 					Dyhb::instance('RoleModel')->setGroupUsers(3,array($nAdminUserid));
 				}
+
+				// 更新小组中的用户数量
+				Dyhb::instance('GroupModel')->resetUser($nGroupid);
 			}
 		}
 
@@ -680,6 +686,9 @@ class GroupController extends InitController{
 				if($oGroupuser->isError()){
 					$this->E($oGroupuser->getErrorMessage());
 				}
+
+				// 更新小组中的用户数量
+				Dyhb::instance('GroupModel')->resetUser($nGroupid);
 			}
 		}
 
@@ -715,6 +724,9 @@ class GroupController extends InitController{
 		}
 
 		Group_Extend::chearGroupuserrole($nUserid);
+
+		// 更新小组中的用户数量
+		Dyhb::instance('GroupModel')->resetUser($nGroupid);
 		
 		$this->S(Dyhb::L('用户删除成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 	}
