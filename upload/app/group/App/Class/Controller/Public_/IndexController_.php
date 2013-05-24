@@ -37,7 +37,7 @@ class IndexController extends Controller{
 		}
 		
 		// 小组分类赋值，根据小组分类来取得小组
-		$arrGroupcategorys=GroupcategoryModel::F()->where($arrWhere)->getAll();
+		$arrGroupcategorys=GroupcategoryModel::F()->where($arrWhere)->order('groupcategory_sort ASC')->getAll();
 		
 		$this->assign('arrGroupcategorys',$arrGroupcategorys);
 
