@@ -10,4 +10,10 @@ $arrMyappConfigs=array();
 // 读取前台应用基本配置
 $arrFrontappconfigs=(array)require(WINDSFORCE_PATH.'/source/common/Config.php');
 
+// RBAC游客权限
+$arrFrontappconfigs['RBAC_GUEST_ACCESS']=array(
+	'service@install@*'=>true,
+	'service@update@*'=>true,
+);
+
 return array_merge($arrMyappConfigs,$arrFrontappconfigs);

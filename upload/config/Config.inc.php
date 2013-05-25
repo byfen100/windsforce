@@ -90,5 +90,6 @@
   'CRON_ON' => true,
   'DB_HOST' => 'localhost',
   'DB_USER' => 'root',
+  'LOGINVIEW_IGNORE' => array(),
 )
 ?>

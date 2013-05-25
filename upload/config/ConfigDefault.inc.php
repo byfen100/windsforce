@@ -133,4 +133,7 @@ return array(
 
 	// 计划任务 && 计划任务跟系统功能紧密相关，如没有必要请不要关闭
 	'CRON_ON'=>true,
+
+	// 登陆才能够访问忽略页面,app@module@action
+	'LOGINVIEW_IGNORE'=>array(),
 );
