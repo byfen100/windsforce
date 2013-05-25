@@ -1756,4 +1756,10 @@ WINDSFORCE;
 		Dyhb::cookie('SOCIA_LOGIN_TIME',null,-1);
 	}
 
+	static public function share($sType='btn-small'){
+		if($GLOBALS['_option_']['share_on']==1 && $GLOBALS['_option_']['share_code']){
+			return $GLOBALS['_option_']['share_code'];
+		}
+	}
+
 }

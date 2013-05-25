@@ -695,7 +695,9 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 ('search_fulltext', '0'),
 ('only_login_viewsite', '0'),
 ('stat_header_code', ''),
-('wap_img_size', '100|80');
+('wap_img_size', '100|80'),
+('share_code', '<!-- Baidu Button BEGIN -->\r\n<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">\r\n<a class="bds_qzone"></a>\r\n<a class="bds_tsina"></a>\r\n<a class="bds_tqq"></a>\r\n<a class="bds_renren"></a>\r\n<a class="bds_t163"></a>\r\n<span class="bds_more"></span>\r\n<a class="shareCount"></a>\r\n</div>\r\n<script type="text/javascript" id="bdshare_js" data="type=tools&uid=0" ></script>\r\n<script type="text/javascript" id="bdshell_js"></script>\r\n<script type="text/javascript">\r\ndocument.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)\r\n</script>\r\n<!-- Baidu Button END -->'),
+('share_on', '1');
 
 -- --------------------------------------------------------
 

@@ -72,7 +72,7 @@ function insertGrouptopiccommentcontentvideo(sContent){
 							<a href="javascript:void(0);" onclick="addMusic('insertGrouptopiccommentcontentmusic');" class="icon_add_music"><!--<lang package='Template/Default/Mediabox'>-->音乐<!--</lang>--></a>
 						</div>
 						<p style="padding-left:10px;" id="emotion_parentcontainer">
-							<textarea name="grouptopiccomment_content" id="grouptopiccomment_content" style="width:700px;height:400px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:grouptopiccomment_content}--><!--</if>--></textarea>
+							<textarea name="grouptopiccomment_content" id="grouptopiccomment_content" style="width:700px;height:400px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:grouptopiccomment_content|htmlspecialchars}--><!--</if>--></textarea>
 						</p>
 						<div class="description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Grouptopiccomment'>-->网站回帖内容<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
 					</fieldset>

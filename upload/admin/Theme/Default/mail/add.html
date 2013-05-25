@@ -79,7 +79,7 @@ function complete(data,status){
 					<fieldset>
 						<label for="mail_message"><!--<lang package='Template/Default/Mail'>-->邮件内容<!--</lang>--></label>
 						<p style="padding-left:10px;">
-							<textarea name="mail_message" id="mail_message" style="width:700px;height:400px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:mail_message}--><!--</if>--></textarea>
+							<textarea name="mail_message" id="mail_message" style="width:700px;height:400px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:mail_message|htmlspecialchars}--><!--</if>--></textarea>
 						</p>
 						<div class="description"><!--<lang package='Template/Default/Mail'>-->邮件内容，邮件内容不能为空。<!--</lang>--></div>
 					</fieldset>

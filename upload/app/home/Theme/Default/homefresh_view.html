@@ -87,6 +87,10 @@ function showEmotion(){
 						<!--{~$sUsersign=UserModel::getUsernameById($oHomefresh['user_id'],'user_sign')}-->
 						<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 					</div>
+					<div class="common_share clearfix">
+						<!--{:Core_Extend::share()}-->
+					</div>
+
 					<!--{# 评论列表}-->
 					<!--<include file="homefresh+commentlist" />-->
 

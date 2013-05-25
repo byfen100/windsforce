@@ -61,5 +61,5 @@ class MiscController extends InitController{
 	public function thumb(){
 		Core_Extend::doControllerAction('Misc@Thumb','index');
 	}
-
+	
 }

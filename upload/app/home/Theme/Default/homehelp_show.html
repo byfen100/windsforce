@@ -35,6 +35,10 @@ $(function(){
 				<!--<lang package='Template/Homehelp'>-->本文最后由<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oHomehelp['homehelp_updateuserid'])}-->"><!--{$oHomehelp['homehelp_updateusername']}--></a>&nbsp;<!--<lang package='Template/Homehelp'>-->于<!--</lang>--> <!--{$oHomehelp['update_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homehelp'>-->更新<!--</lang>-->
 				</div>
 				<!--{/if}-->
+
+				<div class="common_share clearfix">
+					<!--{:Core_Extend::share()}-->
+				</div>
 			</div>
 		</div><!--/row-->
 

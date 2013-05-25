@@ -190,3 +190,8 @@ table thead th .order_asc { padding-right: 8px; background: url({IMG_DIR}/order_
 ================================*/
 a.common_tag{line-height:24px;height:24px;background:#E8F2F9;padding:4px 8px;color:#333333;text-decoration:none;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;white-space:nowrap;}
 a.common_tag:hover{background:{LINK_COLOR};color:#fff;}
+
+/**===============================
+           通用其他
+================================*/
+.common_share{}

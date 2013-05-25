@@ -118,7 +118,7 @@ function reloadCategory(){
 						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
 					</div>
 					<div id="emotion_parentcontainer">
-						<textarea name="grouptopic_content" id="grouptopic_content" style="height:350px;width:100%;padding:0;margin:0;"><!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_content}--><!--{/if}--></textarea>
+						<textarea name="grouptopic_content" id="grouptopic_content" style="height:350px;width:100%;padding:0;margin:0;"><!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_content|htmlspecialchars}--><!--{/if}--></textarea>
 					</div>
 
 					<!--{if $nDisplaySeccode==1}-->

@@ -138,7 +138,7 @@ function insertGroupdescriptionvideo(sContent){
 							<a href="javascript:void(0);" onclick="addMusic('insertGroupdescriptionmusic');" class="icon_add_music"><!--<lang package='Template/Default/Mediabox'>-->音乐<!--</lang>--></a>
 						</div>
 						<p style="padding-left:10px;" id="emotion_parentcontainer">
-							<textarea name="group_description" id="group_description" style="width:700px;height:300px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:group_description}--><!--</if>--></textarea>
+							<textarea name="group_description" id="group_description" style="width:700px;height:300px;visibility:hidden;"><!--<if condition="isset( $oValue )">--><!--{$oValue:group_description|htmlspecialchars}--><!--</if>--></textarea>
 						</p>
 						<div class="description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->详细的小组简介可以让人更好地了解小组的功能<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
 					</fieldset>

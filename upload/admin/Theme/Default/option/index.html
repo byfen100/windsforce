@@ -127,6 +127,17 @@ function option(){
 								<input type="text" name="options[fansmany_minnum_fan]" id="fansmany_minnum_fan" size="60" value="<!--{$arrOptions['fansmany_minnum_fan']}-->"/>
 								<div class="description"><!--<lang package='Template/Default/Option'>-->只有粉丝数量超过这个数目，系统才会在相关地方显示达人图标<!--</lang>--></div>
 							</fieldset>
+							<fieldset>
+								<label for="share_on"><!--<lang package='Template/Default/Option'>-->是否启用全局分享功能<!--</lang>--></label>
+								<input type="radio" id="share_on" name="options[share_on]" value="1" <!--{if $arrOptions['share_on']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+								<input type="radio" id="" name="options[share_on]" value="0" <!--{if $arrOptions['share_on']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<div class="description"><!--<lang package='Template/Default/Option'>-->启用后，你将会在内容页看到分享的按钮，以便于将内容分享到第三方社交网站<!--</lang>--></div>
+							</fieldset>
+							<fieldset>
+								<label for="share_code"><!--<lang package='Template/Default/Option'>-->分享功能代码<!--</lang>--></label>
+								<textarea name="options[share_code]" rows="5"><!--{$arrOptions['share_code']}--></textarea>
+								<div class="description"><!--<lang package='Template/Default/Option'>-->这里可以到网上搜索一些分享代码，我们这里找了一个。<!--</lang>--></div>
+							</fieldset>
 						</div>
 					</div>
 				</div>

@@ -101,7 +101,7 @@ function insertGrouptopicmusic(sContent){
 							<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
 						</div>
 						<div id="grouptopiccomment_emotion_parentcontainer">
-							<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->10<!--{d*else}-->16<!--{/if}-->" style="width:95%;"><!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_content']}--><!--{/if}--></textarea>
+							<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->10<!--{d*else}-->16<!--{/if}-->" style="width:95%;"><!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_content']|htmlspecialchars}--><!--{/if}--></textarea>
 						</div>
 
 						<!--{if $nDisplaySeccode==1}-->

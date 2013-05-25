@@ -72,7 +72,7 @@ function insertHomefreshmessagevideo(sContent){
 							<a href="javascript:void(0);" onclick="addMusic('insertHomefreshmessagemusic');" class="icon_add_music"><!--<lang package='Template/Default/Mediabox'>-->音乐<!--</lang>--></a>
 						</div>
 						<p style="padding-left:10px;" id="emotion_parentcontainer">
-							<textarea name="homefresh_message" id="homefresh_message" style="width:700px;height:400px;visibility:hidden;"><!--{$oValue:homefresh_message}--></textarea>
+							<textarea name="homefresh_message" id="homefresh_message" style="width:700px;height:400px;visibility:hidden;"><!--{$oValue:homefresh_message|htmlspecialchars}--></textarea>
 						</p>
 						<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template/Homefresh'>-->新鲜事内容信息，可以插入附件等等<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
 					</fieldset>
