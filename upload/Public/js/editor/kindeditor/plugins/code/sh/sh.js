@@ -635,6 +635,7 @@ var src = self.src;
 var root = src.indexOf('/') !== -1 ? src.substr(0, src.lastIndexOf('/'))+'/' : '';
 SyntaxHighlighter.defaults['tab-size'] = 2;
 SyntaxHighlighter.config.clipboardSwf = root+'clipboard.swf';
+/*SyntaxHighlighter.defaults['toolbar'] = false;*/
 SyntaxHighlighter.all('pre');
 delete self;
 delete root;
