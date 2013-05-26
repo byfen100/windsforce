@@ -13,6 +13,7 @@ return array(
 	'public::group'=>'groups',
 	'group::show'=>'comment,media',
 	'group::user',
+	'groupadmin'=>'media',
 	'space::index'=>'groups',
 	'tag::show',
 	'grouptopic::view'=>'media,comment',

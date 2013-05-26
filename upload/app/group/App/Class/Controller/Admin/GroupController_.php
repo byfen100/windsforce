@@ -412,7 +412,7 @@ class GroupController extends InitController{
 		
 		$oGroup=GroupModel::F('group_id=?',$nId)->query();
 		if(!empty($oGroup['group_id'])){
-			$arrGrouptopiccategorys=GrouptopiccategoryModel::F('group_id=?',$nId)->getAll();
+			$arrGrouptopiccategorys=GrouptopiccategoryModel::F('group_id=?',$nId)->order('grouptopiccategory_sort ASC')->getAll();
 			$this->assign('arrGrouptopiccategorys',$arrGrouptopiccategorys);
 			
 			$this->assign('nValue',$nId);
@@ -453,6 +453,9 @@ class GroupController extends InitController{
 			if($oGrouptopiccategoryMeta->isError()){
 				$this->E($oGrouptopiccategoryMeta->getErrorMessage());
 			}
+
+			// 将分类ID重置为0
+			Dyhb::instance('GrouptopicModel')->resetCategory($nId);
 			
 			$this->S(Dyhb::L('删除帖子分类成功','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}else{
@@ -464,9 +467,9 @@ class GroupController extends InitController{
 		$nId=intval(G::getGpc('value'));
 		$nGroupId=intval(G::getGpc('group_id'));
 		
-		$oGroupcategory=GrouptopiccategoryModel::F('grouptopiccategory_id=? AND group_id=?',$nId,$nGroupId)->query();
-		if(!empty($oGroupcategory['grouptopiccategory_id'])){
-			$this->assign('oGroupcategory',$oGroupcategory);
+		$oGrouptopiccategory=GrouptopiccategoryModel::F('grouptopiccategory_id=? AND group_id=?',$nId,$nGroupId)->query();
+		if(!empty($oGrouptopiccategory['grouptopiccategory_id'])){
+			$this->assign('oGrouptopiccategory',$oGrouptopiccategory);
 			$this->assign('nValue',$nGroupId);
 			$this->assign('nCategoryId',$nId);
 			
@@ -716,6 +719,7 @@ class GroupController extends InitController{
 			$this->E(Dyhb::L('用户不存在','__APPGROUP_COMMON_LANG__@Controller/Group'));
 		}
 		
+		// 执行删除
 		$oGroupuserMeta=GroupuserModel::M();
 		$oGroupuserMeta->deleteWhere(array('group_id'=>$nGroupid,'user_id'=>$nUserid));
 

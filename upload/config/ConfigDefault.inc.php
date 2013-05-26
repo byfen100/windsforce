@@ -88,6 +88,7 @@ return array(
 		'home@ucenter@tags'=>true,
 
 		/* group应用 */
+		'group@groupadmin@*'=>true,
 
 		/* 其它应用请到各自的配置文件设定 */
 	 ),

@@ -97,6 +97,17 @@ class Groupadmin_Extend{
 		return $bAllowedEditcomment;
 	}
 
+	static public function checkAdminGroupRbac($nGroupid){
+		$nGroupuserrole=Groupadmin_Extend::getGroupUserrole($nGroupid);
+
+		$bAllowedAdmin=false;
+		if(in_array($nGroupuserrole,array(2,4))){
+			$bAllowedAdmin=true;
+		}
+
+		return $bAllowedAdmin;
+	}
+
 	static public function checkCommentadminRbac($oGroup,$arrType=array('group@grouptopicadmin@deletecomment','group@grouptopicadmin@hidecomment','group@grouptopicadmin@stickreplycomment','group@grouptopicadmin@auditcomment')){
 		if(!Core_Extend::checkRbac($arrType)){
 			return false;

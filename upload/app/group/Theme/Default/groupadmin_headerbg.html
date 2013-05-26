@@ -1,0 +1,70 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function deleteGroupHeaderbg(id){
+	if(!id){
+		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
+		return false;
+	}
+
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+		Dyhb.AjaxSend(D.U('group://groupadmin/headerbg_delete?gid='+id),'ajax=1','',completeDelete);
+	});
+}
+
+function completeDelete(data,status){
+	if(status==1){
+		setTimeout("window.location.reload();",1000);
+	}
+}
+<!--{/script}-->
+
+			<ul class="breadcrumb">
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><!--<lang package='Template/Groupadmin'>-->小组头部背景设置<!--</lang>--></li>
+			</ul>
+			
+			<!--<include file="group+header" />-->
+
+			<div class="span12">
+				<!--<include file="groupadmin+menu" />-->
+			</div>
+			
+			<div class="span12" style="margin-top:20px;">
+				<div class="row">
+					<div class="span12">
+						<form enctype="multipart/form-data" action="<!--{:Dyhb::U('group://groupadmin/headerbg_add')}-->" method="post" id="groupAdd" class="form-horizontal">
+							<div class="control-group">
+								<label class="control-label" for="group_headerbg"><!--<lang package='Template/Groupadmin'>-->群组背景<!--</lang>-->(<!--<lang package='Template/Groupadmin'>-->当前最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSize)}-->) <!--{if !empty($oGroup['group_headerbg'])}-->[<a href="javascript:void(0);" onclick="deleteGroupHeaderbg('<!--{$oGroup['group_id']}-->')"><!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>--></a>]<!--{/if}--></label>
+								<div class="controls">
+									<input type="file" name="headerbg[]" id="headerbg" size="40" />
+									<p class="help-block"><!--<lang package='Template/Groupadmin'>-->自动缩略成 1170 X 150 像素大小的图片<!--</lang>--><br/>
+									<img src="<!--{$sGroupHeaderbg}-->" width="700" height="90"/></p>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="group_headerbg"><!--<lang package='Template/Groupadmin'>-->使用系统背景<!--</lang>--></label>
+								<div class="controls">
+									<!--<for start='1' end='5' var='myValue'>-->
+									<label class="radio">
+										<input type="radio" name="group_headerbg" value="<!--{$myValue}-->" <!--{if $oGroup['group_headerbg']==$myValue}-->checked<!--{/if}-->/><!--<lang package='Template/Groupadmin'>-->系统背景<!--</lang>--><!--{$myValue}--><br/>
+										<a href="<!--{:__ROOT__}-->/app/group/Static/Images/groupbg/<!--{$myValue}-->.jpg" target="_blank"><img src="<!--{:__ROOT__}-->/app/group/Static/Images/groupbg/thumb/<!--{$myValue}-->.jpg" /></a>
+									</label>
+									<!--</for>-->
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<input type="hidden" name="gid" value="<!--{$oGroup:group_id}-->">
+									<button type="submit" class="btn btn-success"><!--<lang package='Template/Groupadmin'>-->更新<!--</lang>--></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

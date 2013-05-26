@@ -58,4 +58,9 @@ class GrouptopicModel extends CommonModel{
 		return $sUserName?$sUserName:'';
 	}
 
+	public function resetCategory($nCategoryid){
+		$oDb=Db::RUN();
+		return $oDb->query("UPDATE ".$this->getTablePrefix().'grouptopic SET grouptopiccategory_id=0 WHERE grouptopiccategory_id='.$nCategoryid);
+	}
+
 }

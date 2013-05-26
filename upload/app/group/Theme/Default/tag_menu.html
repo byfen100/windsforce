@@ -1,6 +1,12 @@
 		<div class="row">
 			<div class="span12">
-				<ul class="nav nav-tabs">
+				<!--<include file="public+indexgroupmenu" />-->
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="span12">
+				<ul class="nav nav-pills">
 					<li <!--{if ACTION_NAME==='index'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://tag/index')}-->"><!--<lang package='Template/Tag'>-->标签列表<!--</lang>--></a></li>
 					<li <!--{if ACTION_NAME==='top'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://tag/top')}-->"><!--<lang package='Template/Tag'>-->标签排行榜<!--</lang>--></a></li>
 				</ul>

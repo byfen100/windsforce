@@ -7,7 +7,7 @@ Description: 搜索
 /**===============================
            整体
 ================================*/
-html{background:#bfd3b7 url('../../../../../Public/images/common/pagebg/search/j.jpg');}
+html{background:#bfd3b7 url('../../../../../Public/images/common/pagebg/search/j.jpg') no-repeat;}
 body{background:transparent;}
 .alert,.form-actions{background:none;border:none;}
 .alert{text-shadow:none;}
@@ -26,7 +26,7 @@ body{background:transparent;}
 .search_header h1{font-size: 80px;line-height: 1;letter-spacing: -2px;}
 .search_header .search-form{margin-top:30px;}
 .search_header .search-input,.searchresult_box .search-input{padding: 13px 24px;font-size: 15px;}
-.search_header .btn,.searchresult_box .btn{padding: 22px 24px;font-size: 15px;font-weight: 200;color: #000;border: 0;}
+.search_header .btn,.searchresult_box .btn{padding: 22px 24px;font-size: 15px;font-weight: 200;border: 0;}
 
 .search-menu{text-align:center;font-size:15px;margin-bottom:10px;}
 .search-menu a.search-active{font-weight:bold;color:#000;}

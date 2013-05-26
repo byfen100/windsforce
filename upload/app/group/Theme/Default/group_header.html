@@ -32,6 +32,9 @@
 									<li <!--{if ACTION_NAME==='show' && isset($nRecommend) && empty($nRecommend)}-->class="active"<!--{/if}-->><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->" class="WindsforceSystem-link_color"><!--<lang package='Template/Group'>-->小组首页<!--</lang>--></a></li>
 									<li <!--{if ACTION_NAME==='show' && isset($nRecommend) && $nRecommend==1}-->class="active"<!--{/if}-->><a href="<!--{:Group_Extend::getGroupurl($oGroup,'&recommend=1')}-->" class="WindsforceSystem-link_color"><!--<lang package='Template/Group'>-->推荐主题<!--</lang>--></a></li>
 									<li <!--{if ACTION_NAME==='user'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://group/user?gid='.$oGroup['group_id'])}-->" class="WindsforceSystem-link_color"><!--<lang package='Template/Group'>-->成员<!--</lang>-->&nbsp;<b>(<!--{$oGroup['group_usernum']}-->)</b></a></li>
+									<!--{if Groupadmin_Extend+checkAdminGroupRbac($oGroup['group_id'])}-->
+									<li <!--{if MODULE_NAME==='groupadmin'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://groupadmin/index?gid='.$oGroup['group_id'])}-->" class="WindsforceSystem-link_color" style="font-weight:bold;"><i class="icon-wrench"></i>&nbsp;<!--<lang package='Template/Group'>-->小组设置<!--</lang>--></a></li>
+									<!--{/if}-->
 								</ul>
 							</div>
 						</div>

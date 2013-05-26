@@ -42,59 +42,27 @@ $(document).ready(function(){
 <!--{if $GLOBALS['_option_']['js_slimbox_on']==1}-->
 <link href="<!--{:__PUBLIC__}-->/js/highslide/highslide.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/highslide/highslide-with-gallery.min.js"></script>
-<!--[if lt IE 7]>
-<link rel="stylesheet" type="text/css" href="<!--{:__PUBLIC__}-->/js/highslide/highslide-ie6.css" />
-<![endif]-->
-<!--{style}-->
-.highslide-caption {
-	width: 100%;
-	text-align: center;
-}
-.highslide-close {
-	display: none !important;
-}
-.highslide-number {
-	display: inline;
-	padding-right: 1em;
-	color: white;
-}
-<!--{/style}-->
 <!--{script}-->
 hs.graphicsDir="<!--{:__PUBLIC__}-->/js/highslide/graphics/"; 
 hs.showCredits = false; 
 hs.align = 'center';
 hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'glossy-dark';
+hs.wrapperClassName = 'dark';
 hs.fadeInOut = true;
-hs.dimmingOpacity = 0.8;
-hs.wrapperClassName = 'borderless floating-caption';
-hs.captionEval = 'this.thumb.alt';
-hs.marginLeft = 100;
-hs.marginBottom = 80;
-hs.numberPosition = 'caption';
-hs.lang.number = '%1/%2';
-hs.addSlideshow({
+hs.dimmingOpacity = 0.75;
+if(hs.addSlideshow) hs.addSlideshow({
 	interval: 5000,
 	repeat: false,
 	useControls: true,
+	fixedControls: 'fit',
 	overlayOptions: {
-		className: 'text-controls',
+		opacity: .6,
 		position: 'bottom center',
-		relativeTo: 'viewport',
-		offsetX: 50,
-		offsetY: -5
-
-	},
-	thumbstrip: {
-		position: 'middle left',
-		mode: 'vertical',
-		relativeTo: 'viewport'
+		hideOnMouseOut: true
 	}
 });
-hs.registerOverlay({
-	html: '<div class="closebutton" onclick="return hs.close(this)" title="Close"></div>',
-	position: 'top right',
-	fade: 2
-});
+
 jQuery(function($){$("a[href$=jpg],a[href$=gif],a[href$=png],a[href$=jpeg],a[href$=bmp]").addClass("highslide").each(function(){this.onclick=function(){return hs.expand(this)}});})
 <!--{/script}-->
 <!--{/if}-->

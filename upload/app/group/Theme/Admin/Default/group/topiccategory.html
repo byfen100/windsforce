@@ -23,7 +23,7 @@ function deleteGrouptopcategory(category_id,group_id){
 
 function completeDelete(data,status){
 	if(status==1){
-		setTimeout(function(){window.location.href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$_GET['value']))}-->";},1000)
+		setTimeout(function(){window.location.href="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'topiccategory','value'=>$_GET['value']))}-->";},1000);
 	}
 }
 
@@ -62,7 +62,7 @@ function updateGrouptopcategory(category_id,group_id){
 					<p><!--{if is_array($arrGrouptopiccategorys)}-->
 						<!--<foreach for=arrGrouptopiccategorys>-->
 						<a href="javascript:void(0);" title="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="deleteGrouptopcategory('<!--{$value['grouptopiccategory_id']}-->','<!--{$nValue}-->');"><img src="<!--{:At::path('no.gif')}-->"/></a>
-						<a href="javascript:void(0);" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="updateGrouptopcategory('<!--{$value['grouptopiccategory_id']}-->','<!--{$nValue}-->');" class="tags"><!--{$value['grouptopiccategory_name']}--></a>
+						<a href="javascript:void(0);" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="updateGrouptopcategory('<!--{$value['grouptopiccategory_id']}-->','<!--{$nValue}-->');" class="tags">(<!--{$value['grouptopiccategory_sort']}-->)&nbsp;<!--{$value['grouptopiccategory_name']}--></a>
 						<!--</foreach>-->
 						<!--{d*else}-->
 						<!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->帖子没有发现任何分类记录<!--</lang>-->

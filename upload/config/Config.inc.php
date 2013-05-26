@@ -69,6 +69,7 @@
     'home@ucenter@feed' => true,
     'home@ucenter@tag' => true,
     'home@ucenter@tags' => true,
+    'group@groupadmin@*' => true,
   ),
   'TIME_ZONE' => 'Asia/Shanghai',
   'TEMPLATE_TAG_NOTE' => true,

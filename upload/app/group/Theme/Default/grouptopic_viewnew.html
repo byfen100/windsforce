@@ -57,7 +57,7 @@ $(function(){
 									<span class="pipe">|</span>
 									<!--{if $oGrouptopic->grouptopic_comments}-->
 									<!--{~$arrLatestComment=unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-									<!--<lang package='Template/Grouptopic'>-->最后由<!--</lang>--> <a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;<!--<lang package='Template/Grouptopic'>-->于<!--</lang>-->&nbsp;<!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Grouptopic'>-->回复<!--</lang>-->
+									<!--<lang package='Template/Grouptopic'>-->最后由<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->" ><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;<!--<lang package='Template/Grouptopic'>-->于<!--</lang>-->&nbsp;<!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Grouptopic'>-->回复<!--</lang>-->
 									<!--{d*else}-->
 									<span><!--<lang package='Template/Grouptopic'>-->暂无回复<!--</lang>--></span>
 									<!--{/if}-->&nbsp;

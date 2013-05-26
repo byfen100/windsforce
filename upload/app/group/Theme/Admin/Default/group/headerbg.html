@@ -47,7 +47,7 @@ function completeDelete(data,status){
 			<form enctype="multipart/form-data" action="<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'headerbg_add'))}-->" method="post" id="groupIcon">
 				<div class="module_content">
 					<fieldset>
-						<label for="grouptopic_headerbg"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->群组背景<!--</lang>-->(<!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->当前最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSize)}-->) <!--{if !empty($oGroup['group_headerbg'])}-->[<a href="javascript:void(0);" onclick="deleteGroupHeaderbg('<!--{$oGroup['group_id']}-->')"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>]<!--{/if}--></label>
+						<label for="group_headerbg"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->群组背景<!--</lang>-->(<!--<lang package='__APPGROUP_COMMON_LANG__@Template/Groupoption'>-->当前最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSize)}-->) <!--{if !empty($oGroup['group_headerbg'])}-->[<a href="javascript:void(0);" onclick="deleteGroupHeaderbg('<!--{$oGroup['group_id']}-->')"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a>]<!--{/if}--></label>
 						<input type="file" name="headerbg[]" id="headerbg" size="40" />
 						<div class="description"><!--<lang package='__APPGROUP_COMMON_LANG__@Template/Group'>-->自动缩略成 1170 X 150 像素大小的图片<!--</lang>--><br/>
 						<img src="<!--{$sGroupHeaderbg}-->" width="700" height="90"/></div>

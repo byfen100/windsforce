@@ -161,7 +161,7 @@ Description: Group应用模块CSS
 /**===============================
            小组公用头部
 ================================*/
-[CURSCRIPT=group::group::show,group::group::user,group::grouptopic::view,group::grouptopic::reply,group::grouptopic::add,group::grouptopic::edit]
+[CURSCRIPT=group::group::show,group::group::user,group::grouptopic::view,group::grouptopic::reply,group::grouptopic::add,group::grouptopic::edit,group::groupadmin]
 #groupcontent_commontop{padding: 10px 0 0;position: relative;}
 .group_commontitle{border-radius: 10px 10px 0 0;height: 150px;position: relative;}
 .group_commontitle .group_info{background-color: rgba(0, 0, 0, 0.5);left: 20px;overflow: hidden;padding: 7px 10px 8px;position: absolute;top: 14px;color:#fff;}

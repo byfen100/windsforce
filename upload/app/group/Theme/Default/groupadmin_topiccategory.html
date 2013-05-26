@@ -1,0 +1,77 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function deleteGrouptopcategory(category_id,group_id){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+		Dyhb.AjaxSend(D.U('group://groupadmin/topiccategory_delete'),'cid='+category_id+'&gid='+group_id+'&ajax=1','',completeDelete);
+	});
+}
+
+function completeDelete(data,status){
+	if(status==1){
+		setTimeout("window.location.reload();",1000);
+	}
+}
+
+function updateGrouptopcategory(category_id,group_id){
+	window.location.href=D.U('group://groupadmin/updatetopiccategory?gid='+group_id+'&cid='+category_id);
+}
+<!--{/script}-->
+
+			<ul class="breadcrumb">
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><!--<lang package='Template/Groupadmin'>-->小组帖子分类设置<!--</lang>--></li>
+			</ul>
+			
+			<!--<include file="group+header" />-->
+
+			<div class="span12">
+				<!--<include file="groupadmin+menu" />-->
+			</div>
+			
+			<div class="span12" style="margin-top:20px;">
+				<div class="row">
+					<div class="span12">
+						<form action="<!--{:Dyhb::U('group://groupadmin/topiccategory_add')}-->" method="post" id="groupAdd" class="form-horizontal">
+							<div class="control-group">
+								<div class="controls">
+									<p><!--{if is_array($arrGrouptopiccategorys)}-->
+										<!--<foreach for=arrGrouptopiccategorys>-->
+										<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>-->" onclick="deleteGrouptopcategory('<!--{$value['grouptopiccategory_id']}-->','<!--{$oGroup['group_id']}-->');"><i class="icon-remove"></i></a>&nbsp;
+										<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->编辑<!--</lang>-->" onclick="updateGrouptopcategory('<!--{$value['grouptopiccategory_id']}-->','<!--{$oGroup['group_id']}-->');" class="common_tag">(<!--{$value['grouptopiccategory_sort']}-->)&nbsp;<!--{$value['grouptopiccategory_name']}--></a>&nbsp;&nbsp;
+										<!--</foreach>-->
+										<!--{d*else}-->
+										<!--<lang package='Template/Groupadmin'>-->帖子没有发现任何分类记录<!--</lang>-->
+										<!--{/if}-->
+									</p>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="grouptopiccategory_sort"><!--<lang package='Template/Groupadmin'>-->序号<!--</lang>--></label>
+								<div class="controls">
+									<input type="text" name="grouptopiccategory_sort" id="grouptopiccategory_sort" size="10" value="0"/>
+									<p class="help-block"><!--<lang package='Template/Groupadmin'>-->帖子分类序号，用于帖子分类排序<!--</lang>--></p>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="grouptopiccategory_sort"><!--<lang package='Template/Groupadmin'>-->帖子分类名字<!--</lang>--></label>
+								<div class="controls">
+									<input type="text" name="grouptopiccategory_name" id="grouptopiccategory_name" size="40" value=""/>
+									<p class="help-block"><!--<lang package='Template/Groupadmin'>-->帖子分类名字,最大长度为32个字符<!--</lang>--></p>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<input type="hidden" name="gid" value="<!--{$oGroup:group_id}-->">
+									<button type="submit" class="btn btn-success"><!--<lang package='Template/Groupadmin'>-->添加<!--</lang>--></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->
