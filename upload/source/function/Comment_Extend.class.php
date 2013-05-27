@@ -192,8 +192,8 @@ class Comment_Extend{
 
 		$arrFeeddata=array(
 			'@commentlink'=>$sCommentLink,
-			'commenttitle'=>G::subString($sCommentTitle,0,30),
-			'commentmessage'=>G::subString($sCommentMessage,0,100),
+			'commenttitle'=>G::subString(strip_tags($sCommentTitle),0,30),
+			'commentmessage'=>Core_Extend::subString($sCommentMessage,100,false,1,false),
 		);
 
 		Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
@@ -206,8 +206,8 @@ class Comment_Extend{
 			'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
 			'user_name'=>$GLOBALS['___login___']['user_name'],
 			'@commentlink'=>$sCommentLink,
-			'commenttitle'=>G::subString($sCommentTitle,0,30),
-			'commentmessage'=>G::subString($sCommentMessage,0,100),
+			'commenttitle'=>G::subString(strip_tags($sCommentTitle),0,30),
+			'commentmessage'=>Core_Extend::subString($sCommentMessage,100,false,1,false),
 		);
 
 		Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$nUserid,$sNoticeType,$nFromId);

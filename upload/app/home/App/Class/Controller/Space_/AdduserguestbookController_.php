@@ -154,8 +154,8 @@ class AdduserguestbookController extends GlobalchildController{
 
 			// 发送feed
 			$sCommentLink='home://space@?id='.$oUser['user_id'].'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id'];
-			$sCommentTitle=G::subString($oUser['user_name'],0,30);
-			$sCommentMessage=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,100);
+			$sCommentTitle=$oUser['user_name'];
+			$sCommentMessage=$oUserguestbook['userguestbook_content'];
 
 			try{
 				Comment_Extend::addFeed(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage);
@@ -166,8 +166,8 @@ class AdduserguestbookController extends GlobalchildController{
 			// 发送提醒
 			if($oUser['user_id']!=$GLOBALS['___login___']['user_id']){
 				$sCommentLink='home://space@?id='.$oUser['user_id'].'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id'];
-				$sCommentTitle=G::subString($oUser['user_name'],0,100);
-				$sCommentMessage=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,100);
+				$sCommentTitle=$oUser['user_name'];
+				$sCommentMessage=$oUserguestbook['userguestbook_content'];
 
 				try{
 					Comment_Extend::addNotice(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUser['user_id'],'adduserguestbook',$oUser['user_id']);
@@ -182,8 +182,8 @@ class AdduserguestbookController extends GlobalchildController{
 
 				if(!empty($oUserguestbookParent['userguestbook_id']) && $oUserguestbookParent['user_id']!=$GLOBALS['___login___']['user_id']){
 					$sCommentLink='home://space@?id='.$oUser['user_id'].'&type=guestbook&isolation_commentid='.$oUserguestbook['userguestbook_id'];
-					$sCommentTitle=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,30);
-					$sCommentMessage=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,100);
+					$sCommentTitle=$oUserguestbook['userguestbook_content'];
+					$sCommentMessage=$oUserguestbook['userguestbook_content'];
 
 					try{
 						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller/Space'),'replyuserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUserguestbookParent['user_id'],'replyuserguestbook',$oUserguestbookParent['userguestbook_id']);
@@ -197,7 +197,7 @@ class AdduserguestbookController extends GlobalchildController{
 			if($arrParsecontent['atuserids']){
 				foreach($arrParsecontent['atuserids'] as $nAtuserid){
 					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
-						$sUserguestbookmessage=G::subString(strip_tags($oUserguestbook['userguestbook_content']),0,100);
+						$sUserguestbookmessage=Core_Extend::subString($oUserguestbook['userguestbook_content'],100,false,1,false);
 						
 						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在留言中中提到了你','Controller/Space').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@userguestbook_link}">'.Dyhb::L('查看','Controller/Space').'</a></div></div>';
 

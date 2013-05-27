@@ -1764,4 +1764,26 @@ WINDSFORCE;
 		}
 	}
 
+	static public function subString($sContent,$nNum,$bUbb=false,$nPicture=0,$nUbbformat=true){
+		$arrAttachment=array();
+		
+		$sContent=strip_tags($sContent);
+		$sContent=preg_replace("/\[attachment\]\s*(\S+?)\s*\[\/attachment\]/ise","''==\$arrAttachment[]='\\1'",$sContent);
+
+		$sContent=G::subString(trim($sContent),0,$nNum);
+		if($arrAttachment && $nPicture>0){
+			$arrAttachment=array_slice($arrAttachment,0,$nPicture);
+		}
+
+		foreach($arrAttachment as $nAttachment){
+			$sContent.=' [attachment]'.$nAttachment.'[/attachment] ';
+		}
+
+		if($nUbbformat===true){
+			return Core_Extend::ubb($sContent,$bUbb);
+		}else{
+			return $sContent;
+		}
+	}
+
 }

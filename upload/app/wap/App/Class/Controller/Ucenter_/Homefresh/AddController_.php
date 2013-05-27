@@ -43,7 +43,7 @@ class AddController extends GlobalchildController{
 
 			$arrFeeddata=array(
 				'@homefresh_link'=>'home://fresh@?id='.$oHomefresh['homefresh_id'],
-				'homefresh_message'=>G::subString(strip_tags($oHomefresh['homefresh_message']),0,100),
+				'homefresh_message'=>Core_Extend::subString($oHomefresh['homefresh_message'],100,false,1,false),
 			);
 
 			try{

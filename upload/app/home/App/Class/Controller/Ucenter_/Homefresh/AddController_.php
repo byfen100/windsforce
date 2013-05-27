@@ -77,7 +77,7 @@ class AddController extends GlobalchildController{
 
 			$arrFeeddata=array(
 				'@homefresh_link'=>'home://fresh@?id='.$oHomefresh['homefresh_id'],
-				'homefresh_message'=>G::subString(strip_tags($oHomefresh['homefresh_message']),0,100),
+				'homefresh_message'=>Core_Extend::subString($oHomefresh['homefresh_message'],100,false,1,false),
 			);
 
 			try{
@@ -90,7 +90,7 @@ class AddController extends GlobalchildController{
 			if($arrParsemessage['atuserids']){
 				foreach($arrParsemessage['atuserids'] as $nAtuserid){
 					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
-						$sHomefreshmessage=G::subString(strip_tags($oHomefresh['homefresh_message']),0,100);
+						$sHomefreshmessage=Core_Extend::subString($oHomefresh['homefresh_message'],100,false,1,false);
 						
 						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事中提到了你','Controller/Homefresh').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefresh_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
 

@@ -120,7 +120,7 @@ class AddtopicController extends GlobalchildController{
 
 		$arrFeeddata=array(
 			'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
-			'grouptopic_message'=>G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100),
+			'grouptopic_message'=>Core_Extend::subString($oGrouptopic['grouptopic_content'],100,false,1,false),
 		);
 
 		try{
@@ -133,7 +133,7 @@ class AddtopicController extends GlobalchildController{
 		if($arrParsemessage['atuserids']){
 			foreach($arrParsemessage['atuserids'] as $nAtuserid){
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
-					$sGrouptopicmessage=G::subString(strip_tags($oGrouptopic['grouptopic_content']),0,100);
+					$sGrouptopicmessage=Core_Extend::subString($oGrouptopic['grouptopic_content'],100,false,1,false);
 					
 					$sNoticetemplate='<div class="notice_atgrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题中提到了你','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
 
