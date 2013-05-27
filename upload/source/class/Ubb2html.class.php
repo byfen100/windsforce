@@ -32,6 +32,10 @@ class Ubb2html{
 		if(isset($arrData[2])){
 			$this->_nOuter=$arrData[2];
 		}
+
+		if(APP_NAME==='wap'){
+			$this->_nOuter=1;
+		}
 	}
 
 	public function convert($sContent=null){
@@ -450,12 +454,16 @@ class Ubb2html{
 	}
 	
 	public function attachmentImg($oAttachment,$nOuter=0){
+		$sImg=Attachment_Extend::getAttachmenturl($oAttachment);
+
+		if(APP_NAME==='wap'){
+			$nOuter=0;
+		}
+
 		if($nOuter==0){
 			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
 				return $this->needLogin();
 			}else{
-				$sImg=Attachment_Extend::getAttachmenturl($oAttachment);
-				
 				if(APP_NAME==='wap'){
 					$sImg=Core_Extend::wapImage($oAttachment['attachment_id']);
 
@@ -474,7 +482,7 @@ class Ubb2html{
 				return $this->template($sContent);
 			}
 		}else{
-			return "<a href=\"{$sImg}\" target=\"_blank\"><img src=\"".$this->getAttachmentouterurl($oAttachment['attachment_id'])."\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"/>{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
+			return "<a href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"/>{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
 	}
 
@@ -638,7 +646,7 @@ class Ubb2html{
 
 	public function attachmentDownload($oAttachment,$nOuter=0){
 		if($nOuter==0){
-			if(1/*$GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE*/){
+			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/download.gif"/> ';

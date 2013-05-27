@@ -21,7 +21,7 @@ class IndexController extends Controller{
 		$arrGrouptopics=GrouptopicModel::F()->where($arrWhere)->order("grouptopic_update DESC,create_dateline DESC")->limit($oPage->returnPageStart(),$nEverynum)->getAll();
 
 		$this->assign('arrGrouptopics',$arrGrouptopics);
-		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
+		$this->assign('sPageNavbar',$oPage->P('page'));
 
 		$this->display('wap+index');
 	}
