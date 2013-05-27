@@ -161,7 +161,7 @@ table thead th .order_asc { padding-right: 8px; background: url({IMG_DIR}/order_
 /**===============================
            媒体
 ================================*/
-.ubb_media_box{background:transparent;width:90%;}
+.ubb_media_box{background:transparent;width:90%;margin:15px 0;}
 .common_ubb_box{background:transparent;}
 .hide_ubb_box{background:#f0f1f5;padding:5px;width:60%;}
 .ubb_media_box img{max-width: {CONTENT_WIDTH};width:expression(this.width>'{CONTENT_WIDTH}'?"{CONTENT_WIDTH}":this.width);overflow:hidden;}
