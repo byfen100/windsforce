@@ -120,7 +120,7 @@ class AddController extends GlobalchildController{
 			$arrHomefreshData['avatar']=Core_Extend::avatar($oHomefresh['user_id'],'small');
 			$arrHomefreshData['user_name']=$oHomefresh->user->user_name;
 			$arrHomefreshData['create_dateline']=Core_Extend::timeFormat($oHomefresh['create_dateline']);
-			$arrHomefreshData['homefresh_message']=Core_Extend::ubb(G::subString(strip_tags($oHomefresh['homefresh_message']),0,$nCutnum));
+			$arrHomefreshData['homefresh_message']=Core_Extend::subString($oHomefresh['homefresh_message'],$nCutnum,false,1);
 			$arrHomefreshData['url']=Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id']);
 			$arrHomefreshData['usericon']=Core_Extend::getUsericon($oHomefresh['user_id']);
 

@@ -261,7 +261,7 @@ class AddcommentController extends GlobalchildController{
 
 		$nQuick=intval(G::getGpc('quick','G'));
 		if($nQuick==1){
-			$arrCommentData['homefreshcomment_content']=Core_Extend::ubb(G::subString(strip_tags($arrCommentData['homefreshcomment_content']),0,$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num']),false);
+			$arrCommentData['homefreshcomment_content']=Core_Extend::subString($arrCommentData['homefreshcomment_content'],$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num'],false,1);
 			$arrCommentData['comment_name']=UserModel::getUsernameById($oHomefreshcomment->user_id);
 			$arrCommentData['create_dateline']=Core_Extend::timeFormat($arrCommentData['create_dateline']);
 			$arrCommentData['avatar']=Core_Extend::avatar($arrCommentData['user_id'],'small');
