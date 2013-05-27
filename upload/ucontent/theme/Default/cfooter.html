@@ -27,8 +27,8 @@ $(document).ready(function(){
 });
 <!--{/script}-->
 <script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/sh.js"></script>
-<link rel="stylesheet" href="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/shCore.css">
-<link rel="stylesheet" href="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/shThemeRDark.css">
+<link rel="stylesheet" href="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/styles/shCore.css">
+<link rel="stylesheet" href="<!--{:__PUBLIC__}-->/js/editor/kindeditor/plugins/code/sh/styles/shThemeDefault.css">
 <!--{if $GLOBALS['_option_']['js_lazyload_on']==1}-->
 <script src="<!--{:__PUBLIC__}-->/js/jquery/lazyload/jquery.lazyload.pack.js?v=1.5.0"></script>
 <!--{script}-->
@@ -66,6 +66,35 @@ if(hs.addSlideshow) hs.addSlideshow({
 jQuery(function($){$("a[href$=jpg],a[href$=gif],a[href$=png],a[href$=jpeg],a[href$=bmp]").addClass("highslide").each(function(){this.onclick=function(){return hs.expand(this)}});})
 <!--{/script}-->
 <!--{/if}-->
+
+<link href="<!--{:__PUBLIC__}-->/js/jquery/qtip2/css/jquery.qtip.min.css" rel="stylesheet" />
+<script src="<!--{:__PUBLIC__}-->/js/jquery/qtip2/js/jquery.qtip.min.js"></script>
+<!--{script}-->
+$(function(){
+	$(".ubb_media_box img[tips],.ubb_media_box a[tips]").qtip({
+		content: {attr: 'tips',
+			title: {
+				text: "<!--<lang package='__COMMON_LANG__@Template/Header'>-->多媒体提示信息<!--</lang>-->",
+				button: "x"
+			}
+		},
+		show: {
+			event: 'mouseenter', 
+			solo: true, 
+		},
+		position: {
+			my: 'bottom left',
+			at: 'top left'
+		},
+		style: {
+			classes: 'ui-tooltip-rlight ui-tooltip-shadow ui-tooltip-rounded'
+		},
+		hide: {
+			event: 'mouseenter'
+		}
+	});
+});
+<!--{/script}-->
 
 </body>
 </html>
