@@ -63,4 +63,11 @@ class GrouptopicModel extends CommonModel{
 		return $oDb->query("UPDATE ".$this->getTablePrefix().'grouptopic SET grouptopiccategory_id=0 WHERE grouptopiccategory_id='.$nCategoryid);
 	}
 
+	public function rebuildGrouptopicloves(){
+		$nGrouptopicloves=intval(GrouptopicloveModel::F('user_id=? AND grouptopic_id=?',$GLOBALS['___login___']['user_id'],$this->grouptopic_id)->all()->getCounts());
+
+		$this->grouptopic_loves=$nGrouptopicloves;
+		$this->save(0,'update');
+	}
+
 }

@@ -90,6 +90,8 @@ Description: Group应用模块CSS
 .grouptopicthumb{}
 .grouptopicthumb .grouptopicthumb_title{font-size:13px;font-weight:bold;color:#CDCDCD;}
 
+.love_tools{text-align:center;margin:15px 0;}
+
 /* 帖子工具条 */
 .extend_tool{border-top:1px dashed #CDCDCD;padding:10px 0px 0px 5px;}
 .extend_tool a{color:#cacbca;}

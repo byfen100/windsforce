@@ -230,7 +230,7 @@ class AddreplyController extends GlobalchildController{
 		}
 
 		// 发送提醒
-		if($oGrouptopic['user_id']!=$GLOBALS['___login___']['user_id']){
+		if($oGrouptopic['grouptopic_allownoticeauthor']==1 && $oGrouptopic['user_id']!=$GLOBALS['___login___']['user_id']){
 			$sCommentLink='group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$oGrouptopiccomment['grouptopiccomment_id'];
 			$sCommentTitle=$oGrouptopic['grouptopic_title'];
 			$sCommentMessage=$oGrouptopiccomment['grouptopiccomment_content'];

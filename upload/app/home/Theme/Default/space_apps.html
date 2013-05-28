@@ -13,7 +13,7 @@
 				<ul class="thumbnails">
 					<!--<foreach for=arrAppinfos value=arrAppinfo>-->
 					<li class="span2">
-						<a href="<!--{:Dyhb::U($arrAppinfo['app_identifier'].'://space@?id='.$nId)}-->" class="thumbnail">
+						<a href="<!--{:Dyhb::U($arrAppinfo['app_identifier'].'://space@?id='.$nId,array(),($arrAppinfo['app_identifier']=='wap'?true:false))}-->" class="thumbnail">
 							<img src="<!--{$arrAppinfo['logo']}-->" alt="">
 						</a>
 						<h5 style="margin-top:5px;text-align:center;"><!--{$arrAppinfo['app_name']}--></a>&nbsp;(<!--{$arrAppinfo['app_identifier']}-->)</h5>

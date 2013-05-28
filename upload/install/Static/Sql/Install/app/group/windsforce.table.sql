@@ -199,6 +199,26 @@ CREATE TABLE IF NOT EXISTS `#@__grouptopiccategory` (
 
 -- --------------------------------------------------------
 
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `windsforce_grouptopiclove`
+--
+
+DROP TABLE IF EXISTS `#@__grouptopiclove`;
+CREATE TABLE `#@__grouptopiclove` (
+  `user_id` int(10) NOT NULL DEFAULT '0',
+  `grouptopiclove_username` varchar(50) NOT NULL DEFAULT '' COMMENT '用户名',
+  `grouptopic_id` int(10) NOT NULL DEFAULT '0',
+  `create_dateline` int(11) NOT NULL DEFAULT '0' COMMENT '喜欢时间',
+  `grouptopiclove_note` varchar(300) NOT NULL COMMENT '喜欢帖子注释',
+  UNIQUE KEY `usergrouptopic_id` (`user_id`,`grouptopic_id`),
+  KEY `user_id` (`user_id`),
+  KEY `grouptopic_id` (`grouptopic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
 --
 -- 表的结构 `windsforce_grouptopiccomment`
 --

@@ -16,7 +16,7 @@ class GrouptopicController extends InitController{
 	
 	public function add(){
 		Core_Extend::doControllerAction('Grouptopic@Add','index');
-	}	
+	}
 	
 	public function add_topic(){
 		Core_Extend::doControllerAction('Grouptopic@Addtopic','index',$this);
@@ -60,6 +60,30 @@ class GrouptopicController extends InitController{
 
 	public function submit_reply(){
 		Core_Extend::doControllerAction('Grouptopic@Submitreply','index',$this);
+	}
+
+	public function printtable(){
+		Core_Extend::doControllerAction('Grouptopic@Printtable','index',$this);
+	}
+	
+	public function next(){
+		Core_Extend::doControllerAction('Grouptopic@Next','index',$this);
+	}
+	
+	public function prev(){
+		Core_Extend::doControllerAction('Grouptopic@Prev','index',$this);
+	}
+	
+	public function readtopic(){
+		Core_Extend::doControllerAction('Grouptopic@Readtopic','index',$this);
+	}
+
+	public function love(){
+		Core_Extend::doControllerAction('Grouptopic@Love','index',$this);
+	}
+
+	public function love_add(){
+		Core_Extend::doControllerAction('Grouptopic@Loveadd','index',$this);
 	}
 
 }

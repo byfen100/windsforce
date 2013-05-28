@@ -195,6 +195,12 @@ $(function(){
 										<img src="<!--{:Appt::path('ico_author.png')}-->" title="<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template/Grouptopic'>-->楼主<!--</lang>-->
 										<!--{/if}-->
 										&nbsp;<!--<lang package='Template/Grouptopic'>-->发布于<!--</lang>-->&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+										<span class="pipe">|</span>
+										<a href="javascript:void(0);" onclick="readTopic('<!--{$oGrouptopic->grouptopic_id}-->');"><!--<lang package='Template/Grouptopic'>-->阅读模式<!--</lang>--></a>
+										<span class="pipe">|</span>
+										<a href="<!--{:Dyhb::U('group://grouptopic/printtable?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->打印<!--</lang>-->" target="_blank"><img src="<!--{:Appt::path('print.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->打印<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
+										<a href="<!--{:Dyhb::U('group://grouptopic/prev?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->上一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_prev.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->上一主题<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
+										<a href="<!--{:Dyhb::U('group://grouptopic/next?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->下一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_next.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->下一主题<!--</lang>-->" class="vertical_middle" /></a>
 									</div>
 									<div id="grouptopicview_main">
 										<div class="grouptopiccontent_box">
@@ -227,6 +233,10 @@ $(function(){
 											</blockquote>
 										</div>
 										<!--{/if}-->
+
+										<div class="love_tools clearfix">
+											<a href="javascript:void(0);" onclick="topicLove('<!--{$oGrouptopic->grouptopic_id}-->');" class="btn btn-success"><i class="icon-heart icon-white"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->喜欢<!--</lang>-->&nbsp;<!--{$oGrouptopic->grouptopic_loves}--></a>
+										</div>
 
 										<div class="common_share clearfix">
 											<!--{:Core_Extend::share()}-->

@@ -20,6 +20,7 @@ hr{margin: 3px 0 3px 0px;width:100%;color:{INTERVAL_LINE_COLOR};}
 /* 竖直分割线 */
 .pipe{margin:0 5px;color:{INTERVAL_LINE_COLOR};}
 p{ table-layout:fixed; word-break: break-all; overflow:hidden;}
+.vertical_middle{vertical-align: middle;}
 
 /**===============================
            全局样式

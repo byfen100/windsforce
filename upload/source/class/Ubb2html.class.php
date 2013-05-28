@@ -33,7 +33,7 @@ class Ubb2html{
 			$this->_nOuter=$arrData[2];
 		}
 
-		if(APP_NAME==='wap'){
+		if(APP_NAME==='wap' || (defined('IN_WAP') && IN_WAP===true)){
 			$this->_nOuter=1;
 		}
 	}
@@ -456,7 +456,7 @@ class Ubb2html{
 	public function attachmentImg($oAttachment,$nOuter=0){
 		$sImg=Attachment_Extend::getAttachmenturl($oAttachment);
 
-		if(APP_NAME==='wap'){
+		if(APP_NAME==='wap' || (defined('IN_WAP') && IN_WAP===true)){
 			$nOuter=0;
 		}
 
@@ -464,7 +464,7 @@ class Ubb2html{
 			if($GLOBALS['_option_']['upload_loginuser_view']==1 && $GLOBALS['___login___']===FALSE){
 				return $this->needLogin();
 			}else{
-				if(APP_NAME==='wap'){
+				if(APP_NAME==='wap' || (defined('IN_WAP') && IN_WAP===true)){
 					$sImg=Core_Extend::wapImage($oAttachment['attachment_id']);
 
 					return " <img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"{$oAttachment['attachment_alt']}\" title=\"".$oAttachment['attachment_name']."\" border=\"0\"> ";

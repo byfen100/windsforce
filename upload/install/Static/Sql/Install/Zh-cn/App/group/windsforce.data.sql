@@ -117,7 +117,8 @@ INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('comment_max_len', '20000'),
 ('comment_spam_content_size', '10000'),
 ('newtopic_default', '1'),
-('allowed_creategroup', '0');
+('allowed_creategroup', '0'),
+('grouptopic_lovenum', '10');
 
 -- --------------------------------------------------------
 

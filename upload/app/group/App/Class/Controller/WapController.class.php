@@ -4,6 +4,9 @@
 
 !defined('DYHB_PATH') && exit;
 
+/** wap页面 */
+define('IN_WAP',true);
+
 class WapController extends GlobalwapController{
 
 	public function index(){

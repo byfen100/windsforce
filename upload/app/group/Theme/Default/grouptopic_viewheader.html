@@ -159,6 +159,28 @@ function insertGrouptopicmusicSimple(sContent){
 	insertMusic(editorSimple,sContent);
 }
 
+function readTopic(nId){
+	var sUrl=D.U('group://grouptopic/readtopic?id='+nId);
+	var sHtml='<iframe id="iframedialog_readtopic" name="iframedialog_readtopic" frameborder="0" style="margin: 0;width: 700px; height: 500px;overflow-x:hidden;margin:0;padding:0;" src="'+sUrl+'"></iframe>';
+
+	windsforceAlert(sHtml,'<!--<lang package='Template/Grouptopic'>-->阅读模式<!--</lang>-->','',globalCancelattachment,'',700,500,1);
+}
+
+function topicLove(nId){
+	oLovetopics=windsforceAjax(D.U('group://grouptopic/love?id='+nId),'<!--<lang package='Template/Grouptopic'>-->喜欢帖子<!--</lang>-->','',completeLovetopic,'',400,100);
+}
+
+function completeLovetopic(){
+	Dyhb.AjaxSubmit("topieloveform",'<!--{:Dyhb::U('group://grouptopic/love_add')}-->','result',function(data,status){
+		if(status==1){
+			setTimeout(function(){window.location.href=data.url;},1000);
+			return true;
+		}
+	});
+	
+	return false;
+}
+
 var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseInt('<!--{$oGrouptopic['grouptopic_id']}-->');
 <!--{/script}-->
 

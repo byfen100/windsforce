@@ -170,6 +170,11 @@ class ViewController extends Controller{
 		
 		$this->assign('arrNewGrouptopics',$arrNewGrouptopics);
 
+		// 最新喜欢
+		$arrNewGrouptopicloves=GrouptopicloveModel::F('grouptopic_id=?',$oGrouptopic['grouptopic_id'])->order('create_dateline DESC')->limit(0,$GLOBALS['_cache_']['group_option']['grouptopic_lovenum'])->getAll();
+		
+		$this->assign('arrNewGrouptopicloves',$arrNewGrouptopicloves);
+
 		$this->assign('nStyle',$nStyle);
 		$this->assign('nSide',$nSide);
 		$this->assign('nDisplaySeccode',$GLOBALS['_cache_']['home_option']['seccode_comment_status']);
