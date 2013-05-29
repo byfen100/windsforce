@@ -4,8 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-@set_time_limit(1000);
-
 class UpdateController extends Controller{
 
 	protected $_sUpdatefile='';

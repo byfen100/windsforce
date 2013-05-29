@@ -4,8 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-@set_time_limit(300);
-
 /** 配置WindsForce默认数据库名字 */
 define('WINDSFORCE_DATABASE','windsforce_v'.WINDSFORCE_SERVER_RELEASE);
 

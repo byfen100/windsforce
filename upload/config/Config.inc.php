@@ -12,16 +12,16 @@
   'SHOW_DB_TIMES' => true,
   'SHOW_GZIP_STATUS' => true,
   'RBAC_DATA_PREFIX' => 'rbac_',
-  'COOKIE_PREFIX' => 'wfF7f6FB_',
-  'DYHB_AUTH_KEY' => 'dyhbauthkey61ef14',
+  'COOKIE_PREFIX' => 'wf9d3043_',
+  'DYHB_AUTH_KEY' => 'dyhbauthkeyfE5A0F',
   'RBAC_ROLE_TABLE' => 'role',
   'RBAC_USERROLE_TABLE' => 'userrole',
   'RBAC_ACCESS_TABLE' => 'access',
   'RBAC_NODE_TABLE' => 'node',
   'USER_AUTH_ON' => true,
-  'USER_AUTH_KEY' => 'authid87622d',
+  'USER_AUTH_KEY' => 'authid8939e3',
   'ADMIN_USERID' => '1',
-  'ADMIN_AUTH_KEY' => 'admin47dB05',
+  'ADMIN_AUTH_KEY' => 'adminB3f697',
   'USER_AUTH_MODEL' => 'user',
   'AUTH_PWD_ENCODER' => 'md5',
   'USER_AUTH_GATEWAY' => 'home://public/login',
@@ -96,8 +96,10 @@
   'URL_DOMAIN' => '',
   'START_ROUTER' => true,
   'CRON_ON' => true,
+  'LOGINVIEW_IGNORE' => 
+  array (
+  ),
   'DB_HOST' => 'localhost',
   'DB_USER' => 'root',
-  'LOGINVIEW_IGNORE' => array(),
 )
 ?>

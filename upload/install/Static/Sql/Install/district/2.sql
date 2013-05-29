@@ -395,7 +395,7 @@ INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `d
 (9377, '萨马街鄂温克民族乡', 4, 1467, 0),
 (9378, '达斡尔民族乡', 4, 1467, 0),
 (9379, '鄂伦春民族乡', 4, 1467, 0);
-INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 (9380, '铁东街道', 4, 1467, 0),
 (9381, '高台子街道', 4, 1467, 0),
 (9382, '克尔伦苏木', 4, 1468, 0),
@@ -1809,7 +1809,7 @@ INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_lev
 (10790, '薛屯乡', 4, 1574, 0),
 (10791, '镇安满族乡', 4, 1574, 0),
 (10792, '黑山镇', 4, 1574, 0);
-INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 (10793, '南楼街道', 4, 1575, 0),
 (10794, '周家镇', 4, 1575, 0),
 (10795, '官屯镇', 4, 1575, 0),
@@ -3255,7 +3255,7 @@ INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_lev
 (12235, '东屏镇', 4, 1670, 0),
 (12236, '丹岱乡', 4, 1670, 0),
 (12237, '五棵树镇', 4, 1670, 0);
-INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 (12238, '保民乡', 4, 1670, 0),
 (12239, '到保镇', 4, 1670, 0),
 (12240, '哈吐气蒙古族乡', 4, 1670, 0),
@@ -4708,7 +4708,7 @@ INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_lev
 (13687, '新华乡', 4, 1801, 0),
 (13688, '永安满族镇', 4, 1801, 0),
 (13689, '津河镇', 4, 1801, 0);
-INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 (13690, '爱路街道', 4, 1801, 0),
 (13691, '秦家镇', 4, 1801, 0),
 (13692, '紫来街道', 4, 1801, 0),
@@ -6205,7 +6205,7 @@ INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_lev
 (15183, '青伊湖镇', 4, 2131, 0),
 (15184, '韩山镇', 4, 2131, 0),
 (15185, '颜集镇', 4, 2131, 0);
-INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 (15186, '马厂镇', 4, 2131, 0),
 (15187, '高墟镇', 4, 2131, 0),
 (15188, '龙庙镇', 4, 2131, 0),
@@ -7723,7 +7723,7 @@ INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_lev
 (16700, '仁宫乡', 4, 2222, 0),
 (16701, '仁庄镇', 4, 2222, 0),
 (16702, '北山镇', 4, 2222, 0);
-INSERT INTO `windsforce_district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
+INSERT INTO `#@__district` (`district_id`, `district_name`, `district_level`, `district_upid`, `district_sort`) VALUES
 (16703, '吴坑乡', 4, 2222, 0),
 (16704, '季宅乡', 4, 2222, 0),
 (16705, '小舟山乡', 4, 2222, 0),
