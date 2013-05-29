@@ -73,7 +73,7 @@ class Home_Extend{
 		$oDb=Db::RUN();
 
 		// 查询在线统计
-		$arrOnline=$oDb->getAllRows("SELECT k,COUNT(0) As countnum FROM(SELECT CASE WHEN user_id=0 THEN 'eq0' WHEN online_isstealth=1 THEN 'neq0s' ELSE 'neq0' END AS k FROM `windsforce_online`) AS temptable GROUP BY k");
+		$arrOnline=$oDb->getAllRows("SELECT k,COUNT(0) As countnum FROM(SELECT CASE WHEN user_id=0 THEN 'eq0' WHEN online_isstealth=1 THEN 'neq0s' ELSE 'neq0' END AS k FROM `".OnlineModel::F()->query()->getTablePrefix()."online`) AS temptable GROUP BY k");
 
 		$nOnlineAllnum=$nOnlineGuestnum=$nOnlineUsernum=$nOnlineStealthusernum=0;
 
