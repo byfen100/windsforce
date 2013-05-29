@@ -23,4 +23,6 @@ return array(
 	'search::result',
 	'search::groupresult'=>'groups',
 	'create::index'=>'media',
+	'ucenter::index'=>'userhome,media',
+	'ucenter::lovetopic'=>'userhome',
 );

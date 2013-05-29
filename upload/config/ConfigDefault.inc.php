@@ -62,6 +62,7 @@ return array(
 		'home@homehelp@*'=>true,
 
 		/* group应用 */
+		'group@ucenter@*'=>true,
 		'group@tag@*'=>true,
 		'group@group@joingroup'=>true,
 		'group@group@leavegroup'=>true,
@@ -89,6 +90,12 @@ return array(
 
 		/* group应用 */
 		'group@groupadmin@*'=>true,
+		'group@grouptopic@printtable'=>true,
+		'group@grouptopic@next'=>true,
+		'group@grouptopic@prev'=>true,
+		'group@grouptopic@readtopic'=>true,
+		'group@grouptopic@love'=>true,
+		'group@grouptopic@love_add'=>true,
 
 		/* 其它应用请到各自的配置文件设定 */
 	 ),

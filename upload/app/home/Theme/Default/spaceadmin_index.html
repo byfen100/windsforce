@@ -66,6 +66,8 @@ function unstealthOnline(nUserid){
 									<a href="javascript:void(0);" onclick="stealthOnline('<!--{$oUserInfo['user_id']}-->');"><!--<lang package='Template/Spaceadmin'>-->隐身<!--</lang>--></a>
 									<!--{/if}-->
 								</span>
+								<span class="pipe">|</span>
+								<span><!--<lang package='Template/Spaceadmin'>-->你的累计在线时间<!--</lang>-->&nbsp;<b><!--{$GLOBALS['___login___']['usercount']['usercount_oltime']}-->&nbsp;(h)</b></span>
 							</label>
 							<p class="alert alert-success"><!--<lang package='Template/Spaceadmin'>-->在这里你可以修改在线状态，点击图标修改在线状态<!--</lang>-->&nbsp;&nbsp;
 							<!--{if $GLOBALS['_option_']['online_stealtholtime']==1}--><b>

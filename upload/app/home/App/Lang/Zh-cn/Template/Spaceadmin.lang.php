@@ -131,6 +131,7 @@ return array(
 'cefdd033c6ad28d34d889cdbd9e224bc'=>"注意，隐身状态系统不会记录你的在线时间",
 'e38b72de42e0ee8f87e08dcd8f217245'=>"取消隐身",
 '71f9ecfcccef1a5209b3b2756dbf7a1c'=>"隐身",
+'60ad5219e8bb28555e56b3f4e0bd98ff'=>"你的累计在线时间",
 )
 
 ?>

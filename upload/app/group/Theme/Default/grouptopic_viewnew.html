@@ -69,16 +69,6 @@ $(function(){
 									<!--{:Grouptopic_Extend::grouptopicThumb($oGrouptopic->grouptopic_thumb,true)}-->
 									<!--{:Grouptopic_Extend::grouptopicHot($oGrouptopic->grouptopic_comments,$oGrouptopic->grouptopic_views,true)}-->
 									<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
-									<span class="pipe">|</span>
-									<a href="javascript:void(0);" onclick="readTopic('<!--{$oGrouptopic->grouptopic_id}-->');"><!--<lang package='Template/Grouptopic'>-->阅读模式<!--</lang>--></a>
-									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('group://grouptopic/printtable?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->打印<!--</lang>-->" target="_blank"><img src="<!--{:Appt::path('print.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->打印<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
-									<a href="<!--{:Dyhb::U('group://grouptopic/prev?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->上一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_prev.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->上一主题<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
-									<a href="<!--{:Dyhb::U('group://grouptopic/next?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->下一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_next.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->下一主题<!--</lang>-->" class="vertical_middle" /></a>
-									<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oGrouptopic->user_id)==0}-->
-									<span class="pipe">|</span>
-									<span style="margin-top:10px;"><a href="<!--{if $oGrouptopic['grouptopic_isanonymous']=='0' || ($oGrouptopic['grouptopic_isanonymous']==1 && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}--><!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}--><!--{d*else}-->javascript:void(0);<!--{/if}-->" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>
-									<!--{/if}-->
 								</div>
 							</div>
 
@@ -128,6 +118,18 @@ $(function(){
 
 							<div class="common_share clearfix">
 								<!--{:Core_Extend::share()}-->
+							</div>
+
+							<div class="alert alert-success" style="margin:10px 0;">
+								<a href="javascript:void(0);" onclick="readTopic('<!--{$oGrouptopic->grouptopic_id}-->');"><!--<lang package='Template/Grouptopic'>-->阅读模式<!--</lang>--></a>
+								<span class="pipe">|</span>
+								<a href="<!--{:Dyhb::U('group://grouptopic/printtable?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->打印<!--</lang>-->" target="_blank"><img src="<!--{:Appt::path('print.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->打印<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
+								<a href="<!--{:Dyhb::U('group://grouptopic/prev?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->上一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_prev.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->上一主题<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
+								<a href="<!--{:Dyhb::U('group://grouptopic/next?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template/Grouptopic'>-->下一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_next.png')}-->" alt="<!--<lang package='Template/Grouptopic'>-->下一主题<!--</lang>-->" class="vertical_middle" /></a>
+								<!--{if Groupadmin_Extend+getGroupuser($oGrouptopic['group_id'],$oGrouptopic->user_id)==0}-->
+								<span class="pipe">|</span>
+								<span style="margin-top:10px;"><a href="<!--{if $oGrouptopic['grouptopic_isanonymous']=='0' || ($oGrouptopic['grouptopic_isanonymous']==1 && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')))}--><!--{:Dyhb::U('group://space@?id='.$oGrouptopic['user_id'])}--><!--{d*else}-->javascript:void(0);<!--{/if}-->" title="<!--<lang package='Template/Grouptopic'>-->感谢他曾经停留在本小组，我要访问他的小组空间<!--</lang>-->"><i class="icon-eye-open"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->非小组成员<!--</lang>--></a></span>
+								<!--{/if}-->
 							</div>
 
 							<div class="floor_quickreply">

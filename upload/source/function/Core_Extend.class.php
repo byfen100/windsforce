@@ -1786,4 +1786,33 @@ WINDSFORCE;
 		}
 	}
 
+	static public function getMenu(){
+		$arrMenuinfo=array();
+		$sMenupath=WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Config/Menu.php';
+
+		if(is_file($sMenupath)){
+			$arrMenuinfo=(array)require($sMenupath);
+		}
+
+		return $arrMenuinfo;
+	}
+
+	static public function getAppucenter(){
+		$arrAppcenters=array();
+
+		$arrApps=AppModel::F('app_status=?',1)->order('app_id DESC')->getAll();
+		if(is_array($arrApps)){
+			foreach($arrApps as $oApp){
+				if(is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/App/Class/Controller/UcenterController.class.php')){
+					$arrAppcenters[$oApp['app_identifier']]=$oApp->toArray();
+					$arrAppcenters[$oApp['app_identifier']]['logo']=is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/logo.png')?
+						__ROOT__.'/app/'.$oApp['app_identifier'].'/logo.png':
+						__ROOT__.'/app/logo.png';
+				}
+			}
+		}
+
+		return $arrAppcenters;
+	}
+
 }

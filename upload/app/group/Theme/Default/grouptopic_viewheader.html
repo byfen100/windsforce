@@ -173,7 +173,7 @@ function topicLove(nId){
 function completeLovetopic(){
 	Dyhb.AjaxSubmit("topieloveform",'<!--{:Dyhb::U('group://grouptopic/love_add')}-->','result',function(data,status){
 		if(status==1){
-			setTimeout(function(){window.location.href=data.url;},1000);
+			setTimeout("window.location.reload();",1000);
 			return true;
 		}
 	});

@@ -161,6 +161,13 @@ $(document).ready(function(){
 							<li><a href="<!--{:Dyhb::U('home://friend/index')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->我的好友<!--</lang>--></a></li>
 							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->我的相册<!--</lang>--></a></li>
 							<li><a href="<!--{:Dyhb::U('home://public/myrbac')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->我的权限<!--</lang>--></a></li>
+							<!--{~$arrMenuinfo=Core_Extend::getMenu()}-->
+							<!--{if $arrMenuinfo}-->
+							<li class="divider"></li>
+							<!--<foreach for=arrMenuinfo key=sMenuinfoKey value=sMenuinfo>-->
+							<li><a href="<!--{:Dyhb::U($sMenuinfoKey)}-->"><!--{$sMenuinfo}--></a></li>
+							<!--</foreach>-->
+							<!--{/if}-->
 							<li class="divider"></li>
 							<li><a href="<!--{:Dyhb::U('home://public/logout?referer=1')}-->"><!--<lang package='__COMMON_LANG__@Template/Header'>-->注销<!--</lang>--></a></li>
 						</ul>

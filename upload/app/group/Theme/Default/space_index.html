@@ -157,13 +157,13 @@
 
 				<div style="padding:5px;">
 					<!--{if $GLOBALS['___login___']===false}-->
-					<a class="btn" href="javascript:void(0);" onclick="addFriend($oUserInfo['user_id']);"><i class="icon-plus"></i>&nbsp;<!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
+					<a class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i>&nbsp;<!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
 					<!--{d*else}-->
 					<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($GLOBALS['___login___']['user_id']);}-->
 					<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
-					<a class="btn" rel="nofollow" href="javascript:void(0);" onclick="deleteFriend($oUserInfo['user_id']);"><i class="icon-remove"></i><!--<lang package='Template/Space'>-->取消关注<!--</lang>--></a>
+					<a class="btn" rel="nofollow" href="javascript:void(0);" onclick="deleteFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-remove"></i><!--<lang package='Template/Space'>-->取消关注<!--</lang>--></a>
 					<!--{d*else}-->
-					<a rel="nofollow" class="btn" href="javascript:void(0);" onclick="addFriend($oUserInfo['user_id']);"><i class="icon-plus"></i><!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
+					<a rel="nofollow" class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i><!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
 					<!--{/if}-->
 					<!--{/if}-->&nbsp;
 					<a href="<!--{:Dyhb::U('home://pm/pmnew?uid='.$oUserInfo['user_id'])}-->" rel="nofollow" class="btn"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template/Space'>-->发消息<!--</lang>--></a>

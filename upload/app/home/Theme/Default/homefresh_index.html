@@ -23,7 +23,7 @@ function addHomefresh(){
 	
 	$("#submit_button").attr("disabled","disabled");
 	$("#submit_button").val('add...');
-	Dyhb.AjaxSubmit('homefreshAdd','<!--{:Dyhb::U('ucenter/add_homefresh')}-->','',function(data,status){ 
+	Dyhb.AjaxSubmit('homefreshAdd','<!--{:Dyhb::U('home://ucenter/add_homefresh')}-->','',function(data,status){ 
 		$("#submit_button").attr("disabled",false);
 		$("#submit_button").val("<!--<lang package='__COMMON_LANG__@Template/Common'>-->发布<!--</lang>-->");
 		
