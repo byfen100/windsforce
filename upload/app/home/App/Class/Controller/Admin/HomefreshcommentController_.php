@@ -54,7 +54,7 @@ class HomefreshcommentController extends InitController{
 	}
 
 	public function add(){
-		$this->E(Dyhb::L('后台无法添加新鲜事评论','__APPHOME_COMMON_LANG__@Controller/homefreshcomment'));
+		$this->E(Dyhb::L('后台无法添加新鲜事评论','__APPHOME_COMMON_LANG__@Controller'));
 	}
 
 	public function edit($sMode=null,$nId=null,$bDidplay=true){

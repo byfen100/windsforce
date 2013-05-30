@@ -17,11 +17,11 @@ class HometagController extends InitController{
 	}
 
 	public function edit($sMode=null,$nId=null,$bDidplay=true){
-		$this->E(Dyhb::L('用户标签不允许被编辑','__APPHOME_COMMON_LANG__@Controller/Hometag'));
+		$this->E(Dyhb::L('用户标签不允许被编辑','__APPHOME_COMMON_LANG__@Controller'));
 	}
 	
 	public function add(){
-		$this->E(Dyhb::L('不允许添加用户标签','__APPHOME_COMMON_LANG__@Controller/Hometag'));
+		$this->E(Dyhb::L('不允许添加用户标签','__APPHOME_COMMON_LANG__@Controller'));
 	}
 
 	public function aForeverdelete($sId){

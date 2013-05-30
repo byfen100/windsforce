@@ -53,7 +53,7 @@ class HomesiteController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_homesite($nId)){
-				$this->E(Dyhb::L('系统站点信息无法删除','__APPHOME_COMMON_LANG__@Controller/Homesite'));
+				$this->E(Dyhb::L('系统站点信息无法删除','__APPHOME_COMMON_LANG__@Controller'));
 			}
 		}
 	}

@@ -21,8 +21,8 @@ class HomefreshModel extends CommonModel{
 			),
 			'check'=>array(
 				'homefresh_message'=>array(
-					array('require',Dyhb::L('新鲜事内容不能为空','__APPHOME_COMMON_LANG__@Model/Homefresh')),
-					array('max_length',100000,Dyhb::L('新鲜事内容最大长度为100000','__APPHOME_COMMON_LANG__@Model/Homefresh'))
+					array('require',Dyhb::L('新鲜事内容不能为空','__APPHOME_COMMON_LANG__@Model')),
+					array('max_length',100000,Dyhb::L('新鲜事内容最大长度为100000','__APPHOME_COMMON_LANG__@Model'))
 				),
 			),
 		);

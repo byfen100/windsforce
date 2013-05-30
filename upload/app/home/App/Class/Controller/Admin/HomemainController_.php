@@ -39,7 +39,7 @@ class HomemainController extends InitController{
 		}
 		Cache_Extend::updateCache('home_option');
 
-		$this->S(Dyhb::L('配置更新成功','__APPHOME_COMMON_LANG__@Controller/Homeoption'));
+		$this->S(Dyhb::L('配置更新成功','__APPHOME_COMMON_LANG__@Controller'));
 	}
 
 }
