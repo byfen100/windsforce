@@ -16,9 +16,9 @@ class RatingModel extends CommonModel{
 			'attr_protected'=>'rating_id',
 			'check'=>array(
 				'rating_name'=>array(
-					array('require',Dyhb::L('级别名不能为空','__COMMON_LANG__@Model/Rating')),
-					array('max_length',50,Dyhb::L('级别名最大长度为50个字符','__COMMON_LANG__@Model/Rating')),
-					array('uniqueRatingName',Dyhb::L('组名已经存在','__COMMON_LANG__@Model/Rating'),'condition'=>'must','extend'=>'callback'),
+					array('require',Dyhb::L('级别名不能为空','__COMMON_LANG__@Common')),
+					array('max_length',50,Dyhb::L('级别名最大长度为50个字符','__COMMON_LANG__@Common')),
+					array('uniqueRatingName',Dyhb::L('组名已经存在','__COMMON_LANG__@Common'),'condition'=>'must','extend'=>'callback'),
 				),
 			),
 		);

@@ -181,11 +181,11 @@ function resizeDown(obj){
 function updateSeccode(){
 	if($WF("seccodeImage").innerHTML==''){
 		$WF('seccodeImage').style.display='block';
-		$WF("seccodeImage").innerHTML=D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js');
+		$WF("seccodeImage").innerHTML=D.L('验证码正在加载中','__COMMON_LANG__@Common');
 	}
 
 	var timenow=new Date().getTime();
-	$WF("seccodeImage").innerHTML='<img id="seccode" onclick="updateSeccode()" src="'+D.U('public/seccode?update='+timenow)+'" style="cursor:pointer" title="'+D.L('单击图片换个验证码','__COMMON_LANG__@Js/Global_Js')+'" alt="'+D.L('验证码正在加载中','__COMMON_LANG__@Js/Global_Js')+'" />';
+	$WF("seccodeImage").innerHTML='<img id="seccode" onclick="updateSeccode()" src="'+D.U('public/seccode?update='+timenow)+'" style="cursor:pointer" title="'+D.L('单击图片换个验证码','__COMMON_LANG__@Common')+'" alt="'+D.L('验证码正在加载中','__COMMON_LANG__@Common')+'" />';
 }
 
 function checkAll(str,bThis){
@@ -285,7 +285,7 @@ function loadEditorThin(name){
 /** 对话框 */
 function windsforceAlert(sContent,sTitle,nTime,ok,cancel,width,height,lock){
 	if(!sTitle){
-		sTitle=D.L('提示信息','__COMMON_LANG__@Js/Common_Js');
+		sTitle=D.L('提示信息','__COMMON_LANG__@Common');
 	}
 
 	if(!ok){
@@ -304,9 +304,9 @@ function windsforceAlert(sContent,sTitle,nTime,ok,cancel,width,height,lock){
 		fixed:true,
 		title:sTitle,
 		content: sContent,
-		okValue: D.L('确定','__COMMON_LANG__@Js/Common_Js'),
+		okValue: D.L('确定','__COMMON_LANG__@Common'),
 		ok: ok,
-		cancelValue: D.L('取消','__COMMON_LANG__@Js/Common_Js'),
+		cancelValue: D.L('取消','__COMMON_LANG__@Common'),
 		cancel: cancel
 	});
 
@@ -327,7 +327,7 @@ function windsforceAlert(sContent,sTitle,nTime,ok,cancel,width,height,lock){
 
 function windsforceConfirm(sContent,ok,cancel,sTitle,nTime,width,height,lock){
 	if(!sTitle){
-		sTitle=D.L('提示信息','__COMMON_LANG__@Js/Common_Js');
+		sTitle=D.L('提示信息','__COMMON_LANG__@Common');
 	}
 
 	if(!ok){
@@ -347,9 +347,9 @@ function windsforceConfirm(sContent,ok,cancel,sTitle,nTime,width,height,lock){
 		fixed:true,
 		title:sTitle,
 		content:sContent,
-		okValue: D.L('确定','__COMMON_LANG__@Js/Common_Js'),
+		okValue: D.L('确定','__COMMON_LANG__@Common'),
 		ok:ok,
-		cancelValue: D.L('取消','__COMMON_LANG__@Js/Common_Js'),
+		cancelValue: D.L('取消','__COMMON_LANG__@Common'),
 		cancel: cancel
 	});
 
@@ -423,11 +423,11 @@ function globalAddattachment(sFunction,nType){
 	var sUrl=_ROOT_+'/index.php?app=home&c=attachment&a=dialog_add&function='+sFunction+'&filetype='+nType;
 	var sHtml='<iframe id="iframe_dialog" name="iframe_dialog" frameborder="0" style="margin: 0;width: 700px; height: 450px;overflow-x:hidden;margin:0;padding:0;" src="'+sUrl+'"></iframe>';
 
-	oEditNewattachment=windsforceAlert(sHtml,D.L('媒体管理器','__COMMON_LANG__@Js/Global_Js'),'',globalCancelattachment,'',700,450,1);
+	oEditNewattachment=windsforceAlert(sHtml,D.L('媒体管理器','__COMMON_LANG__@Common'),'',globalCancelattachment,'',700,450,1);
 }
 
 function globalCancelattachment(){
-	windsforceConfirm(D.L('注意，这个不是上传按钮，请拖动垂直滚动条查看上传按钮','__COMMON_LANG__@Js/Global_Js')+'<br/>'+D.L('你确定关闭媒体管理器?','__COMMON_LANG__@Js/Global_Js'),function(){
+	windsforceConfirm(D.L('注意，这个不是上传按钮，请拖动垂直滚动条查看上传按钮','__COMMON_LANG__@Common')+'<br/>'+D.L('你确定关闭媒体管理器?','__COMMON_LANG__@Common'),function(){
 		oEditNewattachment.close();
 		return true;
 	},function(){
@@ -438,7 +438,7 @@ function globalCancelattachment(){
 
 function addEditorContent(oEditor,sContent){
 	if(oEditor.designMode==false){
-		windsforceAlert(D.L('请先切换到所见所得模式','__COMMON_LANG__@Js/Global_Js'),'',3);
+		windsforceAlert(D.L('请先切换到所见所得模式','__COMMON_LANG__@Common'),'',3);
 	}else{
 		oEditor.insertHtml(sContent);
 	}
@@ -446,7 +446,7 @@ function addEditorContent(oEditor,sContent){
 
 function replaceEditorContent(oEditor,sContent){
 	if(oEditor.designMode==false){
-		windsforceAlert(D.L('请先切换到所见所得模式','__COMMON_LANG__@Js/Global_Js'),'',3);
+		windsforceAlert(D.L('请先切换到所见所得模式','__COMMON_LANG__@Common'),'',3);
 	}else{
 		oEditor.html(sContent);
 	}
@@ -462,12 +462,12 @@ function insertAttachmentthumb(sId,nAttachmentid){
 
 var oEditNewmusic='';
 function addMusic(sFunction){
-	oEditNewmusic=windsforceAjax(_ROOT_+'/index.php?app=home&c=misc&a=music&function='+sFunction,D.L('插入音乐','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
+	oEditNewmusic=windsforceAjax(_ROOT_+'/index.php?app=home&c=misc&a=music&function='+sFunction,D.L('插入音乐','__COMMON_LANG__@Common'),'','','',500,100);
 }
 
 function insertMusic(editor,sContent){
 	if(!sContent){
-		windsforceAlert(D.L('音乐地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
+		windsforceAlert(D.L('音乐地址不能够为空','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 
@@ -478,12 +478,12 @@ function insertMusic(editor,sContent){
 
 var oEditNewvideo='';
 function addVideo(sFunction){
-	oEditNewvideo=windsforceAjax(_ROOT_+'/index.php?app=home&c=misc&a=video&function='+sFunction,D.L('插入视频','__COMMON_LANG__@Js/Global_Js'),'','','',500,100);
+	oEditNewvideo=windsforceAjax(_ROOT_+'/index.php?app=home&c=misc&a=video&function='+sFunction,D.L('插入视频','__COMMON_LANG__@Common'),'','','',500,100);
 }
 
 function insertVideo(editor,sContent){
 	if(!sContent){
-		windsforceAlert(D.L('视频地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
+		windsforceAlert(D.L('视频地址不能够为空','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 
@@ -503,7 +503,7 @@ function insertAttachmentNormal(id,nAttachmentid){
 
 function insertVideoNormal(id,sContent){
 	if(!sContent){
-		windsforceAlert(D.L('视频地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
+		windsforceAlert(D.L('视频地址不能够为空','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 
@@ -513,7 +513,7 @@ function insertVideoNormal(id,sContent){
 
 function insertMusicNormal(id,sContent){
 	if(!sContent){
-		windsforceAlert(D.L('音乐地址不能够为空','__COMMON_LANG__@Js/Global_Js'),'',3);
+		windsforceAlert(D.L('音乐地址不能够为空','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 	

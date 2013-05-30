@@ -21,7 +21,7 @@ class Profile_Extend{
 			}
 
 			if($bDisplayModify===true){
-				$sHtml.='&nbsp;(<a href="javascript:;" onclick="showDistrict(\''.$sDistrictName.'districtbox\',[\''.$sDistrictName.'province\',\''.$sDistrictName.'city\',\''.$sDistrictName.'dist\',\''.$sDistrictName.'community\'],4,\'\',\''.$sDistrictName.'\',\''.$sDistrictPrefix.'\'); return false;">'.Dyhb::L('修改','__COMMON_LANG__@Function/Profile_Extend').'</a>)';
+				$sHtml.='&nbsp;(<a href="javascript:;" onclick="showDistrict(\''.$sDistrictName.'districtbox\',[\''.$sDistrictName.'province\',\''.$sDistrictName.'city\',\''.$sDistrictName.'dist\',\''.$sDistrictName.'community\'],4,\'\',\''.$sDistrictName.'\',\''.$sDistrictPrefix.'\'); return false;">'.Dyhb::L('修改','__COMMON_LANG__@Common').'</a>)';
 				$sHtml.= '<p id="'.$sDistrictName.'districtbox"></p>';
 			}
 		}else{
@@ -134,16 +134,16 @@ class Profile_Extend{
 
 		switch($nLevel){
 			case 1:
-				$sStr.=Dyhb::L('省份','__COMMON_LANG__@Function/Profile_Extend');
+				$sStr.=Dyhb::L('省份','__COMMON_LANG__@Common');
 				break;
 			case 2:
-				$sStr.=Dyhb::L('城市','__COMMON_LANG__@Function/Profile_Extend');
+				$sStr.=Dyhb::L('城市','__COMMON_LANG__@Common');
 				break;
 			case 3:
-				$sStr.=Dyhb::L('州县','__COMMON_LANG__@Function/Profile_Extend');
+				$sStr.=Dyhb::L('州县','__COMMON_LANG__@Common');
 				break;
 			case 4:
-				$sStr.=Dyhb::L('乡镇','__COMMON_LANG__@Function/Profile_Extend');
+				$sStr.=Dyhb::L('乡镇','__COMMON_LANG__@Common');
 				break;
 		}
 
@@ -153,24 +153,24 @@ class Profile_Extend{
 	public static function getGender($nGender){
 		switch($nGender){
 			case 0:
-				return Dyhb::L('保密','__COMMON_LANG__@Function/Profile_Extend');
+				return Dyhb::L('保密','__COMMON_LANG__@Common');
 				break;
 			case 1:
-				return Dyhb::L('男','__COMMON_LANG__@Function/Profile_Extend');
+				return Dyhb::L('男','__COMMON_LANG__@Common');
 				break;
 			case 2:
-				return Dyhb::L('女','__COMMON_LANG__@Function/Profile_Extend');
+				return Dyhb::L('女','__COMMON_LANG__@Common');
 				break;
 		}
 	}
 
 	public static function getInfoMenu(){
 		$arrInfoMenus=array(
-			''=>Dyhb::L('基本资料','__COMMON_LANG__@Function/Profile_Extend'),
-			'contact'=>Dyhb::L('联系方式','__COMMON_LANG__@Function/Profile_Extend'),
-			'edu'=>Dyhb::L('教育情况','__COMMON_LANG__@Function/Profile_Extend'),
-			'work'=>Dyhb::L('工作状况','__COMMON_LANG__@Function/Profile_Extend'),
-			'info'=>Dyhb::L('个人信息','__COMMON_LANG__@Function/Profile_Extend')
+			''=>Dyhb::L('基本资料','__COMMON_LANG__@Common'),
+			'contact'=>Dyhb::L('联系方式','__COMMON_LANG__@Common'),
+			'edu'=>Dyhb::L('教育情况','__COMMON_LANG__@Common'),
+			'work'=>Dyhb::L('工作状况','__COMMON_LANG__@Common'),
+			'info'=>Dyhb::L('个人信息','__COMMON_LANG__@Common')
 		);
 
 		return $arrInfoMenus;

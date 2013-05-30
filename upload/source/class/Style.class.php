@@ -21,18 +21,18 @@ class Style{
 			unset($arrTemps);
 
 			if(!is_file($sStylePath)){
-				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表丢失','__COMMON_LANG__@Class/Style'));
+				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表丢失','__COMMON_LANG__@Common'));
 				continue;
 			}
 
 			if(!is_readable($sStylePath)){
-				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表不可读','__COMMON_LANG__@Class/Style'));
+				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表不可读','__COMMON_LANG__@Common'));
 				continue;
 			}
 
 			$arrStyleData=$this->getStyleData($sStylePath);
 			if($arrStyleData===false){
-				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表已经损坏','__COMMON_LANG__@Class/Style'));
+				$arrBrokenStyles[]=array('Name'=>$sStyleDir,'Path'=>str_replace(G::tidyPath(WINDSFORCE_PATH),'{APP_PATH}',G::tidyPath($sStylePath)),'Description'=>Dyhb::L('主题样式表已经损坏','__COMMON_LANG__@Common'));
 				continue;
 			}
 
@@ -149,7 +149,7 @@ class Style{
 			if(empty($arrStyleData['AuthorURI'])){
 				$arrStyleData['Author']=$arrStyleData['AuthorName'];
 			}else{
-				$arrStyleData['Author']=sprintf('<a href="%1$s" title="%2$s">%3$s</a>',$arrStyleData['AuthorURI'],Dyhb::L('访问作者的主页','__COMMON_LANG__@Class/Style'),$arrStyleData['AuthorName']);
+				$arrStyleData['Author']=sprintf('<a href="%1$s" title="%2$s">%3$s</a>',$arrStyleData['AuthorURI'],Dyhb::L('访问作者的主页','__COMMON_LANG__@Common'),$arrStyleData['AuthorName']);
 			}
 		}
 

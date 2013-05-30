@@ -9,19 +9,19 @@ class Credit_Extend{
 	public static function getCreditType($nCycleType){
 		switch($nCycleType){
 			case 0:
-				return Dyhb::L('一次','__COMMON_LANG__@Function/Credit_Extend');
+				return Dyhb::L('一次','__COMMON_LANG__@Common');
 				break;
 			case 1:
-				return Dyhb::L('每天','__COMMON_LANG__@Function/Credit_Extend');
+				return Dyhb::L('每天','__COMMON_LANG__@Common');
 				break;
 			case 2:
-				return Dyhb::L('整点','__COMMON_LANG__@Function/Credit_Extend');
+				return Dyhb::L('整点','__COMMON_LANG__@Common');
 				break;
 			case 3:
-				return Dyhb::L('间隔分钟','__COMMON_LANG__@Function/Credit_Extend');
+				return Dyhb::L('间隔分钟','__COMMON_LANG__@Common');
 				break;
 			case 4:
-				return Dyhb::L('不限','__COMMON_LANG__@Function/Credit_Extend');
+				return Dyhb::L('不限','__COMMON_LANG__@Common');
 				break;
 		}
 	}

@@ -89,23 +89,23 @@ function insertGrouptopicmusic(sContent){
 						</div>
 						<!--{/if}-->
 						
-						<label><!--<lang package='Template/Grouptopic'>-->回帖内容<!--</lang>--><!--{if $GLOBALS['___login___']!==false}-->&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>)<!--{/if}--></label>
+						<label><!--<lang package='Template/Grouptopic'>-->回帖内容<!--</lang>--><!--{if $GLOBALS['___login___']!==false}-->&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>)<!--{/if}--></label>
 
 						<!--{if $GLOBALS['___login___']!==false}-->
 						<div id="grouptopicreply-media-box" class="common-media-box">
 							<!--{if !isset($nDialog) && !isset($oEditGrouptopiccomment)}-->
-							<a href="javascript:void(0);" class="grouptopiccomment-face-icon icon_add_face" onclick="bugEmotion();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
+							<a href="javascript:void(0);" class="grouptopiccomment-face-icon icon_add_face" onclick="bugEmotion();"><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a>
 							<!--{/if}-->
-							<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-							<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-							<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 						</div>
 						<div id="grouptopiccomment_emotion_parentcontainer">
 							<textarea class="input-xlarge" name="grouptopiccomment_message" id="grouptopiccomment_message" rows="<!--{if (isset($nDialog) && $nDialog==1) || isset($oEditGrouptopiccomment)}-->10<!--{d*else}-->16<!--{/if}-->" style="width:95%;"><!--{if isset($oEditGrouptopiccomment)}--><!--{$oEditGrouptopiccomment['grouptopiccomment_content']|htmlspecialchars}--><!--{/if}--></textarea>
 						</div>
 
 						<!--{if $nDisplaySeccode==1}-->
-						<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+						<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label></p>
 						<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
 						<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
 						<!--{/if}-->
@@ -119,8 +119,8 @@ function insertGrouptopicmusic(sContent){
 						<!--{d*else}-->
 						<div class="commoncommentform_needloginbox">
 							<div class="commoncommentform_needloginboxinner">
-								<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></a> |
-								<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->用户注册<!--</lang>--></a>
+								<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></a> |
+								<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户注册<!--</lang>--></a>
 							</div>
 						</div>
 						<!--{/if}-->

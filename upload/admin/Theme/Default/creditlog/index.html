@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function clearCreditlog(nUserid){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('clear'),'id='+nUserid+'&ajax=1','',completeDelete);
 	});
 }

@@ -21,21 +21,21 @@ class UserguestbookModel extends CommonModel{
 			),
 			'check'=>array(
 				'userguestbook_name'=>array(
-					array('require',Dyhb::L('评论名字不能为空','__COMMON_LANG__@Model/Commoncomment')),
-					array('max_length',25,Dyhb::L('评论名字的最大字符数为25','__COMMON_LANG__@Model/Commoncomment'))
+					array('require',Dyhb::L('评论名字不能为空','__COMMON_LANG__@Common')),
+					array('max_length',25,Dyhb::L('评论名字的最大字符数为25','__COMMON_LANG__@Common'))
 				),
 				'userguestbook_email'=>array(
 					array('empty'),
-					array('max_length',300,Dyhb::L('评论Email 最大字符数为300','__COMMON_LANG__@Model/Commoncomment')),
-					array('email',Dyhb::L('评论的邮件必须为正确的Email 格式','__COMMON_LANG__@Model/Commoncomment'))
+					array('max_length',300,Dyhb::L('评论Email 最大字符数为300','__COMMON_LANG__@Common')),
+					array('email',Dyhb::L('评论的邮件必须为正确的Email 格式','__COMMON_LANG__@Common'))
 				),
 				'userguestbook_url'=>array(
 					array('empty'),
-					array('max_length',300,Dyhb::L('评论URL 最大字符数为300','__COMMON_LANG__@Model/Commoncomment')),
-					array('url',Dyhb::L('评论的邮件必须为正确的URL 格式','__COMMON_LANG__@Model/Commoncomment'))
+					array('max_length',300,Dyhb::L('评论URL 最大字符数为300','__COMMON_LANG__@Common')),
+					array('url',Dyhb::L('评论的邮件必须为正确的URL 格式','__COMMON_LANG__@Common'))
 				),
 				'userguestbook_content'=>array(
-					array('require',Dyhb::L('评论的内容不能为空','__COMMON_LANG__@Model/Commoncomment'))
+					array('require',Dyhb::L('评论的内容不能为空','__COMMON_LANG__@Common'))
 				),
 			),
 		);

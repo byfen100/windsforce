@@ -16,19 +16,19 @@ class NodeModel extends CommonModel{
 			'attr_protected'=>'node_id',
 			'check'=>array(
 				'node_name'=>array(
-					array('require',Dyhb::L('节点名不能为空','__COMMON_LANG__@Model/Node')),
-					array('max_length',150,Dyhb::L('节点名最大长度为150个字符','__COMMON_LANG__@Model/Node')),
-					array('nodeName',Dyhb::L('节点名已经存在','__COMMON_LANG__@Model/Node'),'condition'=>'must','extend'=>'callback'),
+					array('require',Dyhb::L('节点名不能为空','__COMMON_LANG__@Common')),
+					array('max_length',150,Dyhb::L('节点名最大长度为150个字符','__COMMON_LANG__@Common')),
+					array('nodeName',Dyhb::L('节点名已经存在','__COMMON_LANG__@Common'),'condition'=>'must','extend'=>'callback'),
 				),
 				'node_title'=>array(
-					array('require',Dyhb::L('显示名不能为空','__COMMON_LANG__@Model/Node')),
-					array('max_length',50,Dyhb::L('显示名最大长度为50个字符','__COMMON_LANG__@Model/Node')),
+					array('require',Dyhb::L('显示名不能为空','__COMMON_LANG__@Common')),
+					array('max_length',50,Dyhb::L('显示名最大长度为50个字符','__COMMON_LANG__@Common')),
 				),
 				'node_parentid'=>array(
-					array('nodeParentId',Dyhb::L('节点不能为自己','__COMMON_LANG__@Model/Node'),'condition'=>'must','extend'=>'callback'),
+					array('nodeParentId',Dyhb::L('节点不能为自己','__COMMON_LANG__@Common'),'condition'=>'must','extend'=>'callback'),
 				),
 				'node_sort'=>array(
-					array('number',Dyhb::L('序号只能是数字','__COMMON_LANG__@Model/Common'),'condition'=>'notempty','extend'=>'regex'),
+					array('number',Dyhb::L('序号只能是数字','__COMMON_LANG__@Common'),'condition'=>'notempty','extend'=>'regex'),
 				)
 			),
 		);

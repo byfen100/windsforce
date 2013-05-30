@@ -106,8 +106,8 @@ class Ubb2html{
 		
 		$arrRegUbbReplace=array(
 			"\$this->makeFontsize('\\1','\\2')",
-			$this->template(Dyhb::L('引用','__COMMON_LANG__@Class/Ubb2html'),"\\1"),
-			$this->template(Dyhb::L('引用自','__COMMON_LANG__@Class/Ubb2html')." \\1","\\2"),
+			$this->template(Dyhb::L('引用','__COMMON_LANG__@Common'),"\\1"),
+			$this->template(Dyhb::L('引用自','__COMMON_LANG__@Common')." \\1","\\2"),
 			"\$this->makeCode('\\1')",
 			"\$this->makeUrl('\\1',1)",
 			"\$this->makeUrl('\\1','0')",
@@ -258,7 +258,7 @@ class Ubb2html{
 
 	public function musicMp3($sSrc,$sExtName){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/mp3.gif"/> ';
-		$sTitle=$sIcon.Dyhb::L('Mp3文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
+		$sTitle=$sIcon.Dyhb::L('Mp3文件','__COMMON_LANG__@Common').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -269,7 +269,7 @@ class Ubb2html{
 
 	public function musicWmp($sSrc,$sExtName){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/wmp.gif"/> ';
-		$sTitle=$sIcon.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
+		$sTitle=$sIcon.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Common').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -302,7 +302,7 @@ class Ubb2html{
 
 	public function videoSwf($sSrc,$sExtName){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-		$sTitle=$sIcon.Dyhb::L('Flash Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
+		$sTitle=$sIcon.Dyhb::L('Flash Player文件','__COMMON_LANG__@Common').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -313,7 +313,7 @@ class Ubb2html{
 
 	public function videoWmp($sSrc,$sExtName){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/wmp.gif"/> ';
-		$sTitle=$sIcon.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
+		$sTitle=$sIcon.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Common').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -324,7 +324,7 @@ class Ubb2html{
 
 	public function videoQvod($sSrc,$sExtName){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/qvod.gif"/> ';
-		$sTitle=$sIcon.Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
+		$sTitle=$sIcon.Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Common').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -335,7 +335,7 @@ class Ubb2html{
 
 	public function videoFlv($sSrc,$sExtName){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-		$sTitle=$sIcon.Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Class/Ubb2html').' ('.$sExtName.')';
+		$sTitle=$sIcon.Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Common').' ('.$sExtName.')';
 
 		$sId=G::randString(6);
 		
@@ -370,7 +370,7 @@ class Ubb2html{
 			$sShow.=' height="'.$nHeight.'"';
 		}
 		
-		return "<a href=\"{$sUrl}\" target=\"_blank\"><img src=\"{$sSrc}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\" {$sShow}/></a>";
+		return "<a href=\"{$sUrl}\" target=\"_blank\"><img src=\"{$sSrc}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Common')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Common')."\" border=\"0\" {$sShow}/></a>";
 	}
 	
 	public function makeFontsize($nSize,$sWord){
@@ -382,7 +382,7 @@ class Ubb2html{
 	}
 	
 	public function makeCode($sStr){
-		$sTitle=Dyhb::L('代码','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle=Dyhb::L('代码','__COMMON_LANG__@Common');
 		
 		$sStr=str_replace('[autourl]','',$sStr);
 		$sStr=str_replace('[/autourl]','',$sStr);
@@ -414,7 +414,7 @@ class Ubb2html{
 	}
 	
 	public function xhtmlHighlightString($sStr){
-		$sTitle=Dyhb::L('代码','__COMMON_LANG__@Class/Ubb2html');
+		$sTitle=Dyhb::L('代码','__COMMON_LANG__@Common');
 
 		$sHlt=@highlight_string($sStr,true);
 		if(PHP_VERSION>'5'){
@@ -446,7 +446,7 @@ class Ubb2html{
 	}
 
 	protected function attachmentTips($oAttachment){
-		$sTitlemore=Dyhb::L('已下载','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_download'].')'.Dyhb::L('次','__COMMON_LANG__@Class/Ubb2html');
+		$sTitlemore=Dyhb::L('已下载','__COMMON_LANG__@Common').'('.$oAttachment['attachment_download'].')'.Dyhb::L('次','__COMMON_LANG__@Common');
 		$sTitlemore.=' | '.G::changeFileSize($oAttachment['attachment_size']);
 		$sTitlemore.=" | Upload Time:".date('Y-m-d H:i',$oAttachment['create_dateline']);
 
@@ -472,17 +472,17 @@ class Ubb2html{
 				
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/viewimage.gif"/> ';
 				$sTitle='<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_name'].'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 
-				$sTitlemore=Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html');
+				$sTitlemore=Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Common');
 				$sTitlemore.=' | '.$this->attachmentTips($oAttachment);
 				$sContent="<a onclick=\"updateDownload('".$oAttachment['attachment_id']."');\" href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"{$oAttachment['attachment_alt']}\" title=\"{$sTitlemore}\" border=\"0\" tips='<p>{$sIcon}{$sTitle}</p><p>{$sTitlemore}</p>'/></a>";
 				
 				return $this->template($sContent);
 			}
 		}else{
-			return "<a href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\"/>{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
+			return "<a href=\"{$sImg}\" target=\"_blank\"><img src=\"{$sImg}\" class=\"content-insert-image\" alt=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Common')."\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Common')."\" border=\"0\"/>{$oAttachment['attachment_name']} ('{$oAttachment['attachment_extension']}')</a>";
 		}
 	}
 
@@ -490,7 +490,7 @@ class Ubb2html{
 		$sTitle='<img src="'.__PUBLIC__.'/images/common/media/viewimage.gif"/> ';
 		$sTitle=$sTitle.'<a href="'.$sUrl.'" target="_blank">'.$sUrl.'</a> ('.$sExtension.')';
 		
-		$sContent="<a href=\"{$sUrl}\" target=\"_blank\"><img src=\"{$sUrl}\" class=\"content-insert-image\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Class/Ubb2html')."\" border=\"0\" tips='{$sTitle}'></a>";
+		$sContent="<a href=\"{$sUrl}\" target=\"_blank\"><img src=\"{$sUrl}\" class=\"content-insert-image\" title=\"".Dyhb::L('在新窗口浏览此图片','__COMMON_LANG__@Common')."\" border=\"0\" tips='{$sTitle}'></a>";
 		
 		return $this->template($sContent);
 	}
@@ -501,8 +501,8 @@ class Ubb2html{
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Player文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Player文件','__COMMON_LANG__@Common').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 
 				$sTitlemore=$this->attachmentTips($oAttachment);
@@ -525,8 +525,8 @@ class Ubb2html{
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/wmp.gif"/> ';
-				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Windows Media Player文件','__COMMON_LANG__@Common').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 				
 				$sTitlemore=$this->attachmentTips($oAttachment);
@@ -549,8 +549,8 @@ class Ubb2html{
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/mp3.gif"/> ';
-				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Mp3文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Mp3文件','__COMMON_LANG__@Common').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 				
 				$sTitlemore=$this->attachmentTips($oAttachment);
@@ -573,8 +573,8 @@ class Ubb2html{
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/qvod.gif"/> ';
-				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('QVOD视频播放器','__COMMON_LANG__@Common').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 				
 				$sTitlemore=$this->attachmentTips($oAttachment);
@@ -597,8 +597,8 @@ class Ubb2html{
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/swf.gif"/> ';
-				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.Dyhb::L('Flash Video Player文件','__COMMON_LANG__@Common').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 				
 				$sTitlemore=$this->attachmentTips($oAttachment);
@@ -621,8 +621,8 @@ class Ubb2html{
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/url.gif"/> ';
-				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('文件','__COMMON_LANG__@Common').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 				
 				$sTitlemore=$this->attachmentTips($oAttachment);
@@ -637,7 +637,7 @@ class Ubb2html{
 
 	public function attachmentUrl_($sUrl,$sExtension){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/url.gif"/> ';
-		$sTitle=$sIcon.'<a href="'.$sUrl.'" target="_blank">'.$sExtension.Dyhb::L('文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$sExtension.')';
+		$sTitle=$sIcon.'<a href="'.$sUrl.'" target="_blank">'.$sExtension.Dyhb::L('文件','__COMMON_LANG__@Common').'</a> ('.$sExtension.')';
 		
 		$sContent="<a href=\"".$sUrl."\" target=\"_blank\" tips='{$sTitle}'>{$sIcon}{$sUrl}</a>";
 		
@@ -650,8 +650,8 @@ class Ubb2html{
 				return $this->needLogin();
 			}else{
 				$sIcon='<img src="'.__PUBLIC__.'/images/common/media/download.gif"/> ';
-				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('下载文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$oAttachment['attachment_extension'].')';
-				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Class/Ubb2html').'('.$oAttachment['attachment_commentnum'].')</a>';
+				$sTitle=$sIcon.'<a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'" target="_blank">'.$oAttachment['attachment_extension'].Dyhb::L('下载文件','__COMMON_LANG__@Common').'</a> ('.$oAttachment['attachment_extension'].')';
+				$sTitle.=' | <a href="'.Dyhb::U('home://file@?id='.$oAttachment['attachment_id']).'#comments" target="_blank">'.Dyhb::L('评论','__COMMON_LANG__@Common').'('.$oAttachment['attachment_commentnum'].')</a>';
 				$sTitle.=' | <a href="'.Dyhb::U('home://space@?id='.$oAttachment['user_id']).'" target="_blank">'.$oAttachment['attachment_username'].'</a>';
 				
 				$sTitlemore=$this->attachmentTips($oAttachment);
@@ -666,7 +666,7 @@ class Ubb2html{
 
 	public function attachmentDownload_($sUrl,$sExtension){
 		$sIcon='<img src="'.__PUBLIC__.'/images/common/media/download.gif"/> ';
-		$sTitle=$sIcon.'<a href="'.$sUrl.'" target="_blank">'.$sExtension.Dyhb::L('下载文件','__COMMON_LANG__@Class/Ubb2html').'</a> ('.$sExtension.')';
+		$sTitle=$sIcon.'<a href="'.$sUrl.'" target="_blank">'.$sExtension.Dyhb::L('下载文件','__COMMON_LANG__@Common').'</a> ('.$sExtension.')';
 
 		$sContent="<a href=\"".$sUrl."\" target=\"_blank\" tips='{$sTitle}'>{$sIcon}{$sUrl}</a>";
 		
@@ -689,8 +689,8 @@ class Ubb2html{
 	
 	protected function needLogin(){
 		return $this->template(
-					Dyhb::L('这部分内容只能在登入之后看到。请先','__COMMON_LANG__@Class/Ubb2html').' <a onclick="ajaxLogin(\'\',\''.$this->_sRegisterurl.'\');" href="javascript:void(0);">'.Dyhb::L('注册','__COMMON_LANG__@Class/Ubb2html').'</a> '.Dyhb::L('或者','__COMMON_LANG__@Class/Ubb2html').' <a onclick="ajaxRegister(\'\',\''.$this->_sLoginurl.'\');" href="javascript:void(0);">'.Dyhb::L('登录','__COMMON_LANG__@Class/Ubb2html').'</a>',
-					Dyhb::L('隐藏内容','__COMMON_LANG__@Class/Ubb2html'),
+					Dyhb::L('这部分内容只能在登入之后看到。请先','__COMMON_LANG__@Common').' <a onclick="ajaxLogin(\'\',\''.$this->_sRegisterurl.'\');" href="javascript:void(0);">'.Dyhb::L('注册','__COMMON_LANG__@Common').'</a> '.Dyhb::L('或者','__COMMON_LANG__@Common').' <a onclick="ajaxRegister(\'\',\''.$this->_sLoginurl.'\');" href="javascript:void(0);">'.Dyhb::L('登录','__COMMON_LANG__@Common').'</a>',
+					Dyhb::L('隐藏内容','__COMMON_LANG__@Common'),
 					'hide_ubb_box'
 				);
 	}

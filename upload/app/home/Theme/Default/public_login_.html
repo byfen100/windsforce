@@ -30,17 +30,17 @@
 							<label class="control-label" for="remember_me"> </label>
 							<div class="controls">
 								<label class="checkbox">
-									<input id="remember_me" type="checkbox" name="remember_me" value="1" onclick="rememberme();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->记住我<!--</lang>-->
+									<input id="remember_me" type="checkbox" name="remember_me" value="1" onclick="rememberme();"><!--<lang package='__COMMON_LANG__@Common'>-->记住我<!--</lang>-->
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('home://getpassword/index')}-->" class="resetpassword-link"><!--<lang package='__COMMON_LANG__@Template/Common'>-->忘记密码?<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('home://getpassword/index')}-->" class="resetpassword-link"><!--<lang package='__COMMON_LANG__@Common'>-->忘记密码?<!--</lang>--></a>
 									<span class="pipe">|</span>
-									<a href="<!--{:Dyhb::U('home://public/clear')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->清除痕迹<!--</lang>--></a>
+									<a href="<!--{:Dyhb::U('home://public/clear')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->清除痕迹<!--</lang>--></a>
 								</label>
 							</div>
 						</div>
 						<div id="remember_time" class="none">
 							<div class="control-group">
-								<label class="control-label" for="remember_time"><!--<lang package='__COMMON_LANG__@Template/Common'>-->COOKIE有效期<!--</lang>--></label>
+								<label class="control-label" for="remember_time"><!--<lang package='__COMMON_LANG__@Common'>-->COOKIE有效期<!--</lang>--></label>
 								<div class="controls">
 									<select name="remember_time" id="remembertime">
 										<option value="0" <!--{if $nRememberTime==0}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->及时<!--</lang>--></option>
@@ -51,16 +51,16 @@
 										<option value="31536000" <!--{if $nRememberTime==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
 									</select>
 									<p class="help-block">
-										<i class=" icon-info-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->注意在网吧等共同场所请不要记住我<!--</lang>-->
+										<i class=" icon-info-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->注意在网吧等共同场所请不要记住我<!--</lang>-->
 										<span class="pipe">|</span> 
-										<a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a>
+										<a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->关闭<!--</lang>--></a>
 									</p>
 								</div>
 							</div>
 						</div>
 						<!--{if $nDisplaySeccode==1}-->
 						<div class="control-group">
-							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label>
 							<div class="controls">
 								<input class="input-small" name="seccode" id="seccode" type="text" value="">
 								<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
@@ -70,11 +70,11 @@
 						<div class="form-actions">
 							<input type="hidden" name="ajax" value="1">
 							<input type="hidden" name="windsforce_referer" value="<!--{$sReferer}-->">
-							<button type="button" class="btn btn-success" onClick="Dyhb.AjaxSubmit('login_form','<!--{:Dyhb::U('home://public/check_login')}-->','result',login_handle);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></button>&nbsp;
-							<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->新用户注册<!--</lang>--></a>
+							<button type="button" class="btn btn-success" onClick="Dyhb.AjaxSubmit('login_form','<!--{:Dyhb::U('home://public/check_login')}-->','result',login_handle);"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></button>&nbsp;
+							<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->新用户注册<!--</lang>--></a>
 							<!--{if count($arrBindeds)>=3}-->
 							<span class="pipe">|</span>
-							<a href="javascript:void(0);" onclick="showSocialogin();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->社交帐号<!--</lang>--></a>
+							<a href="javascript:void(0);" onclick="showSocialogin();"><!--<lang package='__COMMON_LANG__@Common'>-->社交帐号<!--</lang>--></a>
 							<!--{/if}-->
 						</div>
 					</fieldset>

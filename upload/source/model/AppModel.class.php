@@ -15,13 +15,13 @@ class AppModel extends CommonModel{
 			'attr_protected'=>'app_id',
 			'check'=>array(
 				'app_name'=>array(
-					array('require',Dyhb::L('应用名不能为空','__COMMON_LANG__@Model/App')),
-					array('max_length',32,Dyhb::L('应用名最大长度为32个字符','__COMMON_LANG__@Model/App')),
+					array('require',Dyhb::L('应用名不能为空','__COMMON_LANG__@Common')),
+					array('max_length',32,Dyhb::L('应用名最大长度为32个字符','__COMMON_LANG__@Common')),
 				),
 				'app_identifier'=>array(
-					array('require',Dyhb::L('应用唯一识别符不能为空','__COMMON_LANG__@Model/App')),
-					array('english',Dyhb::L('应用唯一识别符只能为英文字符','__COMMON_LANG__@Model/App')),
-					array('max_length',32,Dyhb::L('应用唯一识别符最大长度为32个字符','__COMMON_LANG__@Model/App')),
+					array('require',Dyhb::L('应用唯一识别符不能为空','__COMMON_LANG__@Common')),
+					array('english',Dyhb::L('应用唯一识别符只能为英文字符','__COMMON_LANG__@Common')),
+					array('max_length',32,Dyhb::L('应用唯一识别符最大长度为32个字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);

@@ -15,12 +15,12 @@ class PmModel extends CommonModel{
 			'attr_protected'=>'pm_id',
 			'check'=>array(
 				'pm_message'=>array(
-					array('require',Dyhb::L('短消息内容不能为空','__COMMON_LANG__@Model/Pm')),
-					array('max_length',1000,Dyhb::L('短消息内容最大长度为1000个字符','__COMMON_LANG__@Model/Pm')),
+					array('require',Dyhb::L('短消息内容不能为空','__COMMON_LANG__@Common')),
+					array('max_length',1000,Dyhb::L('短消息内容最大长度为1000个字符','__COMMON_LANG__@Common')),
 				),
 				'pm_subject'=>array(
 					array('empty'),
-					array('max_length',1000,Dyhb::L('短消息主题最大长度为225个字符','__COMMON_LANG__@Model/Pm')),
+					array('max_length',1000,Dyhb::L('短消息主题最大长度为225个字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);

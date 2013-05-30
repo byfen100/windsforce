@@ -19,8 +19,8 @@ class AttachmentcategoryModel extends CommonModel{
 			),
 			'check'=>array(
 				'attachmentcategory_name'=>array(
-					array('require',Dyhb::L('附件专辑名不能为空','__COMMON_LANG__@Model/Attachmentcategory')),
-					array('max_length',50,Dyhb::L('附件专辑名最大长度为50个字符','__COMMON_LANG__@Model/Attachmentcategory')),
+					array('require',Dyhb::L('附件专辑名不能为空','__COMMON_LANG__@Common')),
+					array('max_length',50,Dyhb::L('附件专辑名最大长度为50个字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);

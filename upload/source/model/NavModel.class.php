@@ -15,8 +15,8 @@ class NavModel extends CommonModel{
 			'attr_protected'=>'nav_id',
 			'check'=>array(
 				'nav_name'=>array(
-					array('require',Dyhb::L('导航条名字不能为空','__COMMON_LANG__@Model/Nav')),
-					array('max_length',32,Dyhb::L('导航条名字最大长度为32','__COMMON_LANG__@Model/Nav'))
+					array('require',Dyhb::L('导航条名字不能为空','__COMMON_LANG__@Common')),
+					array('max_length',32,Dyhb::L('导航条名字最大长度为32','__COMMON_LANG__@Common'))
 				),
 			),
 		);

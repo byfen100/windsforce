@@ -188,7 +188,7 @@ class Comment_Extend{
 	}
 
 	static public function addFeed($sTitle,$sType,$sCommentLink,$sCommentTitle,$sCommentMessage,$sFileinfo=''){
-		$sFeedtemplate='<div class="feed_'.$sType.'"><span class="feed_title">'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="feed_content">'.$sFileinfo.'<div class="feed_quote"><span class="feed_quoteinfo">{commentmessage}</span></div></div><div class="feed_action"><a href="{@commentlink}">'.Dyhb::L('回复','__COMMON_LANG__@Function/Comment_Extend').'</a></div></div>';
+		$sFeedtemplate='<div class="feed_'.$sType.'"><span class="feed_title">'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="feed_content">'.$sFileinfo.'<div class="feed_quote"><span class="feed_quoteinfo">{commentmessage}</span></div></div><div class="feed_action"><a href="{@commentlink}">'.Dyhb::L('回复','__COMMON_LANG__@Common').'</a></div></div>';
 
 		$arrFeeddata=array(
 			'@commentlink'=>$sCommentLink,
@@ -200,7 +200,7 @@ class Comment_Extend{
 	}
 
 	static public function addNotice($sTitle,$sType,$sCommentLink,$sCommentTitle,$sCommentMessage,$nUserid,$sNoticeType,$nFromId,$sFileinfo=''){
-		$sNoticetemplate='<div class="notice_'.$sType.'"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="notice_content">'.$sFileinfo.'<div class="notice_quote"><span class="notice_quoteinfo">{commentmessage}</span></div></div><div class="notice_action"><a href="{@commentlink}">'.Dyhb::L('查看','__COMMON_LANG__@Function/Comment_Extend').'</a></div></div>';
+		$sNoticetemplate='<div class="notice_'.$sType.'"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.$sTitle.'&nbsp;<a href="{@commentlink}">{commenttitle}</a></span><div class="notice_content">'.$sFileinfo.'<div class="notice_quote"><span class="notice_quoteinfo">{commentmessage}</span></div></div><div class="notice_action"><a href="{@commentlink}">'.Dyhb::L('查看','__COMMON_LANG__@Common').'</a></div></div>';
 
 		$arrNoticedata=array(
 			'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -255,7 +255,7 @@ class Comment_Extend{
 	}
 
 	static public function getEmailToAdminsubject($sCommentName){
-		return Dyhb::L('你的朋友【%s】在您的网站（%s）留言了！','__COMMON_LANG__@Function/Comment_Extend',null,$sCommentName,$GLOBALS['_option_']['site_name']);
+		return Dyhb::L('你的朋友【%s】在您的网站（%s）留言了！','__COMMON_LANG__@Common',null,$sCommentName,$GLOBALS['_option_']['site_name']);
 	}
 
 	static public function getEmailToAdminmessage($oMailConnect,$sCommentName,$sCommentContent,$sCommentLink,$sCommentEmail,$sCommentUrl){
@@ -264,17 +264,17 @@ class Comment_Extend{
 		$sMessage=self::getEmailToAdminsubject($sCommentName)."{$sLine}";
 		$sMessage.="-----------------------------------------------------{$sLine}";
 		$sMessage.=$sCommentContent."{$sLine}{$sLine}";
-		$sMessage.=Dyhb::L('请进入下面超链接查看留言','__COMMON_LANG__@Function/Comment_Extend').":{$sLine}";
+		$sMessage.=Dyhb::L('请进入下面超链接查看留言','__COMMON_LANG__@Common').":{$sLine}";
 		$sMessage.=$sCommentLink."{$sLine}";
 		$sMessage.="-----------------------------------------------------{$sLine}";
-		$sMessage.=Dyhb::L('名字','__COMMON_LANG__@Function/Comment_Extend').':'.$sCommentName."{$sLine}";
+		$sMessage.=Dyhb::L('名字','__COMMON_LANG__@Common').':'.$sCommentName."{$sLine}";
 
 		if(!empty($sCommentEmail)){
 			$sMessage.='E-mail:'.$sCommentEmail."{$sLine}";
 		}
 
 		if(!empty($sCommentUrl)){
-			$sMessage.=Dyhb::L('主页','__COMMON_LANG__@Function/Comment_Extend').':'.$sCommentUrl."{$sLine}";
+			$sMessage.=Dyhb::L('主页','__COMMON_LANG__@Common').':'.$sCommentUrl."{$sLine}";
 		}
 
 		$sMessage.=self::getSiteinf($sLine);
@@ -283,7 +283,7 @@ class Comment_Extend{
 	}
 
 	static function getEmailToAuthorsubject($sCommentName){
-		return Dyhb::L("我的朋友：【%s】您在网站（%s）发表的评论被回复了！",'__COMMON_LANG__@Function/Comment_Extend',null,$sCommentName,$GLOBALS['_option_']['site_name']);
+		return Dyhb::L("我的朋友：【%s】您在网站（%s）发表的评论被回复了！",'__COMMON_LANG__@Common',null,$sCommentName,$GLOBALS['_option_']['site_name']);
 	}
 
 	protected function getEmailToAuthormessage($oMailSend,$sCommentName,$sCommentContent,$sCommentLink,$sCommentEmail,$sCommentUrl,$sNewCommentContent){
@@ -291,22 +291,22 @@ class Comment_Extend{
 
 		$sMessage=self::getEmailToAuthorsubject($sCommentName).$sLine;
 		$sMessage.="-----------------------------------------------------{$sLine}";
-		$sMessage.=Dyhb::L('您的评论','__COMMON_LANG__@Function/Comment_Extend').":{$sLine}";
+		$sMessage.=Dyhb::L('您的评论','__COMMON_LANG__@Common').":{$sLine}";
 		$sMessage.=$sCommentContent."{$sLine}";
 		$sMessage.="-----------------------------------------------------{$sLine}";
-		$sMessage.="【".$sCommentName."】".Dyhb::L('回复说','__COMMON_LANG__@Function/Comment_Extend').":{$sLine}";
+		$sMessage.="【".$sCommentName."】".Dyhb::L('回复说','__COMMON_LANG__@Common').":{$sLine}";
 		$sMessage.=$sNewCommentContent."{$sLine}{$sLine}";
-		$sMessage.=Dyhb::L('请进入下面链接查看评论','__COMMON_LANG__@Function/Comment_Extend').":{$sLine}";
+		$sMessage.=Dyhb::L('请进入下面链接查看评论','__COMMON_LANG__@Common').":{$sLine}";
 		$sMessage.=$sCommentLink."{$sLine}";
 		$sMessage.="-----------------------------------------------------{$sLine}";
-		$sMessage.=Dyhb::L('名字','__COMMON_LANG__@Function/Comment_Extend').':'.$sCommentName."{$sLine}";
+		$sMessage.=Dyhb::L('名字','__COMMON_LANG__@Common').':'.$sCommentName."{$sLine}";
 
 		if(!empty($sCommentEmail)){
 			$sMessage.='E-mail:'.$sCommentEmail."{$sLine}";
 		}
 
 		if(!empty($sCommentUrl)){
-			$sMessage.=Dyhb::L('主页','__COMMON_LANG__@Function/Comment_Extend').':'.$sCommentUrl."{$sLine}";
+			$sMessage.=Dyhb::L('主页','__COMMON_LANG__@Common').':'.$sCommentUrl."{$sLine}";
 		}
 
 		$sMessage.=self::getSiteinf($sLine);
@@ -320,11 +320,11 @@ class Comment_Extend{
 
 	static public function getSiteinfo($sLine){
 		$sMessage="-----------------------------------------------------{$sLine}";
-		$sMessage.=Dyhb::L('消息来源','__COMMON_LANG__@Function/Comment_Extend').':'.$GLOBALS['_option_']['site_name']."{$sLine}";
-		$sMessage.=Dyhb::L('站点网址','__COMMON_LANG__@Function/Comment_Extend').':'.$GLOBALS['_option_']['site_url']."{$sLine}";
+		$sMessage.=Dyhb::L('消息来源','__COMMON_LANG__@Common').':'.$GLOBALS['_option_']['site_name']."{$sLine}";
+		$sMessage.=Dyhb::L('站点网址','__COMMON_LANG__@Common').':'.$GLOBALS['_option_']['site_url']."{$sLine}";
 		$sMessage.="-----------------------------------------------------{$sLine}";
-		$sMessage.=Dyhb::L('程序支持','__COMMON_LANG__@Function/Comment_Extend').':'.$GLOBALS['_option_']['windsforce_program_name']." " .WINDSFORCE_SERVER_VERSION. " Release " .WINDSFORCE_SERVER_RELEASE."{$sLine}";
-		$sMessage.=Dyhb::L('产品官网','__COMMON_LANG__@Function/Comment_Extend').':'.$GLOBALS['_option_']['windsforce_program_url']."{$sLine}";
+		$sMessage.=Dyhb::L('程序支持','__COMMON_LANG__@Common').':'.$GLOBALS['_option_']['windsforce_program_name']." " .WINDSFORCE_SERVER_VERSION. " Release " .WINDSFORCE_SERVER_RELEASE."{$sLine}";
+		$sMessage.=Dyhb::L('产品官网','__COMMON_LANG__@Common').':'.$GLOBALS['_option_']['windsforce_program_url']."{$sLine}";
 	}
 
 	static public function sendAEmail($oMailConnect,$sEmailTo,$sEmailSubject,$sEmailMessage){

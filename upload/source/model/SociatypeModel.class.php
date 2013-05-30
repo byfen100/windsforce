@@ -15,14 +15,14 @@ class SociatypeModel extends CommonModel{
 			'attr_protected'=>'sociatype_id',
 			'check'=>array(
 				'sociatype_title'=>array(
-					array('require',Dyhb::L('社会化帐号名字不能为空','__COMMON_LANG__@Model/Sociatype')),
-					array('max_length',35,Dyhb::L('社会化帐号名字最大长度为35个字符','__COMMON_LANG__@Model/Sociatype')),
+					array('require',Dyhb::L('社会化帐号名字不能为空','__COMMON_LANG__@Common')),
+					array('max_length',35,Dyhb::L('社会化帐号名字最大长度为35个字符','__COMMON_LANG__@Common')),
 				),
 				'sociatype_identifier'=>array(
-					array('require',Dyhb::L('社会化帐号唯一识别符不能为空','__COMMON_LANG__@Model/Sociatype')),
-					array('english',Dyhb::L('社会化帐号唯一识别符只能为英文字符','__COMMON_LANG__@Model/Sociatype')),
-					array('max_length',32,Dyhb::L('显社会化帐号唯一识别符为32个字符','__COMMON_LANG__@Model/Sociatype')),
-					array('sociatypeIdentifier',Dyhb::L('社会化帐号唯一识别符已经存在','__COMMON_LANG__@Model/Sociatype'),'condition'=>'must','extend'=>'callback'),
+					array('require',Dyhb::L('社会化帐号唯一识别符不能为空','__COMMON_LANG__@Common')),
+					array('english',Dyhb::L('社会化帐号唯一识别符只能为英文字符','__COMMON_LANG__@Common')),
+					array('max_length',32,Dyhb::L('显社会化帐号唯一识别符为32个字符','__COMMON_LANG__@Common')),
+					array('sociatypeIdentifier',Dyhb::L('社会化帐号唯一识别符已经存在','__COMMON_LANG__@Common'),'condition'=>'must','extend'=>'callback'),
 				),
 			),
 		);

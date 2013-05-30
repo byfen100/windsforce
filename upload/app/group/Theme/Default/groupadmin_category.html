@@ -3,11 +3,11 @@
 <!--{script}-->
 function deleteGroupcategory(id,category_id){
 	if(!id || !category_id){
-		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
+		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('group://groupadmin/category_delete?gid='+id+'&cid='+category_id),'ajax=1','',completeDelete);
 	});
 }
@@ -20,7 +20,7 @@ function completeDelete(data,status){
 <!--{/script}-->
 
 			<ul class="breadcrumb">
-				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><!--<lang package='Template/Groupadmin'>-->小组分类设置<!--</lang>--></li>
@@ -43,7 +43,7 @@ function completeDelete(data,status){
 									<p><!--{if is_array($arrCategorys)}-->
 										<!--<foreach for=arrCategorys>-->
 										<!--{~$arrCategoryids[]=$value['groupcategory_id']}-->
-										<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>-->" onclick="deleteGroupcategory('<!--{$oGroup['group_id']}-->','<!--{$value['groupcategory_id']}-->');"><i class="icon-remove"></i></a>&nbsp;
+										<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>-->" onclick="deleteGroupcategory('<!--{$oGroup['group_id']}-->','<!--{$value['groupcategory_id']}-->');"><i class="icon-remove"></i></a>&nbsp;
 										<a href="<!--{:Dyhb::U('group://public/group?cid='.$value['groupcategory_id'])}-->" target="_blank" class="common_tag"><!--{$value['groupcategory_name']}--></a>&nbsp;&nbsp;
 										<!--</foreach>-->
 										<!--{d*else}-->

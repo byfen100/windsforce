@@ -11,10 +11,10 @@ class DistrictModel extends CommonModel{
 			'table_name'=>'district',
 			'check'=>array(
 				'district_name'=>array(
-					array('require',Dyhb::L('地区名字不能为空','__COMMON_LANG__@Model/District')),
+					array('require',Dyhb::L('地区名字不能为空','__COMMON_LANG__@Common')),
 				),
 				'district_sort'=>array(
-					array('number',Dyhb::L('序号只能是数字','__COMMON_LANG__@Model/Common'),'condition'=>'notempty','extend'=>'regex'),
+					array('number',Dyhb::L('序号只能是数字','__COMMON_LANG__@Common'),'condition'=>'notempty','extend'=>'regex'),
 				)
 			),
 		);

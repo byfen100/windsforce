@@ -14,12 +14,12 @@ class MailModel extends CommonModel{
 			),
 			'check'=>array(
 				'mail_subject'=>array(
-					array('max_length',300,Dyhb::L('邮件主题的最大字符数为300','__COMMON_LANG__@Model/Mail'))
+					array('max_length',300,Dyhb::L('邮件主题的最大字符数为300','__COMMON_LANG__@Common'))
 				),
 				'mail_tomail'=>array(
-					array('require',Dyhb::L('邮件接收者不能为空','__COMMON_LANG__@Model/Mail')),
-					array('email',Dyhb::L('邮件接收者必须为正确的E-mail格式','__COMMON_LANG__@Model/Mail')),
-					array('max_length',100,Dyhb::L('邮件接收者的最大字符数为100','__COMMON_LANG__@Model/Mail')),
+					array('require',Dyhb::L('邮件接收者不能为空','__COMMON_LANG__@Common')),
+					array('email',Dyhb::L('邮件接收者必须为正确的E-mail格式','__COMMON_LANG__@Common')),
+					array('max_length',100,Dyhb::L('邮件接收者的最大字符数为100','__COMMON_LANG__@Common')),
 				),
 			),
 		);

@@ -72,7 +72,7 @@ class Core_Extend{
 		}
 
 		$page=intval(G::getGpc('page','G'));
-		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
+		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Common')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Common'):'';
 		
 		$sTitleAction=ACTION_NAME.'_title_';
 		if(method_exists($oController,$sTitleAction) && $oController->{$sTitleAction}()){
@@ -88,7 +88,7 @@ class Core_Extend{
 		}
 		
 		$page=intval(G::getGpc('page','G'));
-		$page=$page>1?",".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
+		$page=$page>1?",".Dyhb::L('第','__COMMON_LANG__@Common')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Common'):'';
 
 		$sKeywordsAction=ACTION_NAME.'_keywords_';
 		if(method_exists($oController,$sKeywordsAction) && $oController->{$sKeywordsAction}()){
@@ -104,7 +104,7 @@ class Core_Extend{
 		}
 		
 		$page=intval(G::getGpc('page','G'));
-		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Function/Core_Extend')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Function/Core_Extend'):'';
+		$page=$page>1?" | ".Dyhb::L('第','__COMMON_LANG__@Common')." {$page} ".Dyhb::L('页','__COMMON_LANG__@Common'):'';
 
 		$sDescriptionAction=ACTION_NAME.'_description_';
 		if(method_exists($oController,$sDescriptionAction)){
@@ -394,10 +394,10 @@ class Core_Extend{
 			'{site_description}'=>$GLOBALS['_option_']['site_description'],
 			'{site_url}'=>$GLOBALS['_option_']['site_url'],
 			'{time}'=>gmdate('Y-n-j H:i',CURRENT_TIMESTAMP),
-			'{user_name}'=>$GLOBALS['___login___']?$GLOBALS['___login___']['user_name']:Dyhb::L('游客','__COMMON_LANG__@Function/Core_Extend'),
+			'{user_name}'=>$GLOBALS['___login___']?$GLOBALS['___login___']['user_name']:Dyhb::L('游客','__COMMON_LANG__@Common'),
 			'{user_nikename}'=>$GLOBALS['___login___']?
 				($GLOBALS['___login___']['user_nikename']?$GLOBALS['___login___']['user_nikename']:$GLOBALS['___login___']['user_name']):
-				Dyhb::L('游客','__COMMON_LANG__@Function/Core_Extend'),
+				Dyhb::L('游客','__COMMON_LANG__@Common'),
 			'{admin_email}'=>$GLOBALS['_option_']['admin_email']
 		);
 		
@@ -623,7 +623,7 @@ WINDSFORCE;
 				var_export($arrAppconfig,true).
 				"\n?>")
 			){
-				Dyhb::E(Dyhb::L('全局配置文件 %s 不可写','__COMMON_LANG__@Function/Core_Extend',null,$sAppGlobalconfigFile));
+				Dyhb::E(Dyhb::L('全局配置文件 %s 不可写','__COMMON_LANG__@Common',null,$sAppGlobalconfigFile));
 			}
 
 			self::deleteAppconfig();
@@ -736,7 +736,7 @@ WINDSFORCE;
 
 		$nOnlinemostnum=intval($GLOBALS['_option_']['online_mostnum']);
 		if($nOnlinemostnum>0 && $nOnlinenum>$nOnlinemostnum){
-			Dyhb::E(Dyhb::L('当前在线人数 %d 超过了网站最大负载量 %d','__COMMON_LANG__@Function/Core_Extend',null,$nOnlinenum,$nOnlinemostnum));
+			Dyhb::E(Dyhb::L('当前在线人数 %d 超过了网站最大负载量 %d','__COMMON_LANG__@Common',null,$nOnlinenum,$nOnlinemostnum));
 		}
 
 		// 数据库对象
@@ -869,7 +869,7 @@ WINDSFORCE;
 			}
 
 			if(!file_put_contents($sCurscript,$sCssCurScripts)){
-				Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Function/Cache_Extend',null,$sStyleCachepath));
+				Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Common',null,$sStyleCachepath));
 			}
 		}
 
@@ -884,7 +884,7 @@ WINDSFORCE;
 		// 判断应用是否启用
 		Core_Extend::loadCache('app');
 		if(!in_array(APP_NAME,$GLOBALS['_cache_']['app']) && APP_NAME!=='home'){
-			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Function/Core_Extend',null,APP_NAME));
+			Dyhb::E(Dyhb::L('应用 %s 尚未开启或者不存在','__COMMON_LANG__@Common',null,APP_NAME));
 		}
 
 		// 站点关闭
@@ -1246,7 +1246,7 @@ WINDSFORCE;
 		
 		// 是否登录检查
 		if($bLogincheck===TRUE && $GLOBALS['___login___']===FALSE){
-			Dyhb::E(Dyhb::L('你没有登录，无法发布信息','__COMMON_LANG__@Function/Core_Extend').'<br/><a href="'.Dyhb::U('home://public/login').'">'.Dyhb::L('前往登录','__COMMON_LANG__@Function/Core_Extend').'</a>');
+			Dyhb::E(Dyhb::L('你没有登录，无法发布信息','__COMMON_LANG__@Common').'<br/><a href="'.Dyhb::U('home://public/login').'">'.Dyhb::L('前往登录','__COMMON_LANG__@Common').'</a>');
 		}
 		
 		// 两次发表时间间隔
@@ -1255,20 +1255,20 @@ WINDSFORCE;
 			$nLasttime=intval($arrData['lasttime']);
 
 			if($nLasttime>0 && CURRENT_TIMESTAMP-$nLasttime<=$nFloodctrl){
-				Dyhb::E(Dyhb::L('为防止灌水,发布信息时间间隔为 %d 秒','__COMMON_LANG__@Function/Core_Extend',null,$nFloodctrl));
+				Dyhb::E(Dyhb::L('为防止灌水,发布信息时间间隔为 %d 秒','__COMMON_LANG__@Common',null,$nFloodctrl));
 			}
 		}
 
 		// 强制用户激活邮箱
 		if($GLOBALS['_option_']['need_email']==1 && $GLOBALS['___login___']['user_isverify']==0){
-			Dyhb::E(Dyhb::L('你只有验证邮箱 %s 后才能够发布信息','__COMMON_LANG__@Function/Core_Extend',null,$GLOBALS['___login___']['user_email']).'<br/><a href="'.Dyhb::U('home://spaceadmin/verifyemail').'">'.Dyhb::L('前往验证邮箱','__COMMON_LANG__@Function/Core_Extend').'</a>');
+			Dyhb::E(Dyhb::L('你只有验证邮箱 %s 后才能够发布信息','__COMMON_LANG__@Common',null,$GLOBALS['___login___']['user_email']).'<br/><a href="'.Dyhb::U('home://spaceadmin/verifyemail').'">'.Dyhb::L('前往验证邮箱','__COMMON_LANG__@Common').'</a>');
 		}
 
 		// 强制用户上传头像
 		if($GLOBALS['_option_']['need_avatar']){
 			$arrAvatarInfo=Core_Extend::avatars($GLOBALS['___login___']['user_id']);
 			if(!$arrAvatarInfo['exist']){
-				Dyhb::E(Dyhb::L('你只有上传头像后才能够发布信息','__COMMON_LANG__@Function/Core_Extend').'<br/><a href="'.Dyhb::U('home://spaceadmin/avatar').'">'.Dyhb::L('前往上传头像','__COMMON_LANG__@Function/Core_Extend').'</a>');
+				Dyhb::E(Dyhb::L('你只有上传头像后才能够发布信息','__COMMON_LANG__@Common').'<br/><a href="'.Dyhb::U('home://spaceadmin/avatar').'">'.Dyhb::L('前往上传头像','__COMMON_LANG__@Common').'</a>');
 			}
 		}
 
@@ -1279,10 +1279,10 @@ WINDSFORCE;
 			if(!empty($oUsercount['user_id'])){
 				$nHavefriendnum=intval($oUsercount['usercount_friends']);
 				if($nHavefriendnum<$nNeedfriendnum){
-					Dyhb::E(Dyhb::L('你只有至少添加 %d 个好友后才能够发布信息','__COMMON_LANG__@Function/Core_Extend',null,$nNeedfriendnum).'<br/><a href="'.Dyhb::U('home://friend/search').'">'.Dyhb::L('前往添加好友','__COMMON_LANG__@Function/Core_Extend').'</a>');
+					Dyhb::E(Dyhb::L('你只有至少添加 %d 个好友后才能够发布信息','__COMMON_LANG__@Common',null,$nNeedfriendnum).'<br/><a href="'.Dyhb::U('home://friend/search').'">'.Dyhb::L('前往添加好友','__COMMON_LANG__@Common').'</a>');
 				}
 			}else{
-				Dyhb::E(Dyhb::L('用户统计数据不存在，请联系管理员修复','__COMMON_LANG__@Function/Core_Extend').'<br/>'.Dyhb::L('管理员邮箱地址','__COMMON_LANG__@Function/Core_Extend').' '.$GLOBALS['_option_']['admin_email']);
+				Dyhb::E(Dyhb::L('用户统计数据不存在，请联系管理员修复','__COMMON_LANG__@Common').'<br/>'.Dyhb::L('管理员邮箱地址','__COMMON_LANG__@Common').' '.$GLOBALS['_option_']['admin_email']);
 			}
 		}
 	}
@@ -1431,7 +1431,7 @@ WINDSFORCE;
 
 		if($bReturnImg===true){
 			if($bIsNew===true){
-				return ' <img class="new_data" src="'.__ROOT__.'/Public/images/common/new.gif" border="0" align="absmiddle" title="'.Dyhb::L('新发表的','__COMMON_LANG__@Function/Core_Extend').'"/>';
+				return ' <img class="new_data" src="'.__ROOT__.'/Public/images/common/new.gif" border="0" align="absmiddle" title="'.Dyhb::L('新发表的','__COMMON_LANG__@Common').'"/>';
 			}else{
 				return '';
 			}
@@ -1457,7 +1457,7 @@ WINDSFORCE;
 
 		if($bReturnImg===true){
 			if($bFansmany===true){
-				return ' <img class="fansmany_data" src="'.__ROOT__.'/Public/images/common/tag_fansmany.png" border="0" align="absmiddle" title="'.Dyhb::L('社区达人','__COMMON_LANG__@Function/Core_Extend').'"/>';
+				return ' <img class="fansmany_data" src="'.__ROOT__.'/Public/images/common/tag_fansmany.png" border="0" align="absmiddle" title="'.Dyhb::L('社区达人','__COMMON_LANG__@Common').'"/>';
 			}else{
 				return '';
 			}
@@ -1478,14 +1478,14 @@ WINDSFORCE;
 			
 			if(in_array($nUserid,$arrAdmins)){
 				$sReturn=$bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_admin.gif':3;
-				$sTitle=Dyhb::L('管理员','__COMMON_LANG__@Function/Core_Extend');
+				$sTitle=Dyhb::L('管理员','__COMMON_LANG__@Common');
 			}else{
 				$sReturn=$bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_member.gif':2;
-				$sTitle=Dyhb::L('会员','__COMMON_LANG__@Function/Core_Extend');
+				$sTitle=Dyhb::L('会员','__COMMON_LANG__@Common');
 			}
 		}else{
 			$sReturn=$bReturnImage===true?__ROOT__.'/Public/images/common/usericon/online_guest.gif':-1;
-			$sTitle=Dyhb::L('游客','__COMMON_LANG__@Function/Core_Extend');
+			$sTitle=Dyhb::L('游客','__COMMON_LANG__@Common');
 		}
 
 		if($bReturnImage===true && $bReturnImageHtml=true){
@@ -1496,7 +1496,7 @@ WINDSFORCE;
 	}
 	
 	static public function getUseronlineicon($nUserid,$bReturnImage=true,$bReturnImageHtml=true,$bReally=false){
-		$sTitle=Dyhb::L('用户不在线','__COMMON_LANG__@Function/Core_Extend');
+		$sTitle=Dyhb::L('用户不在线','__COMMON_LANG__@Common');
 		
 		$oOnline=OnlineModel::F('user_id=?',$nUserid)->getOne();
 
@@ -1505,7 +1505,7 @@ WINDSFORCE;
 				$bOnline=false;
 			}else{
 				$bOnline=true;
-				$sTitle=Dyhb::L('用户在线','__COMMON_LANG__@Function/Core_Extend');
+				$sTitle=Dyhb::L('用户在线','__COMMON_LANG__@Common');
 
 				if($GLOBALS['_option_']['online_commonshowip']==1){
 					if(!Dyhb::classExists('Misc_Extend')){

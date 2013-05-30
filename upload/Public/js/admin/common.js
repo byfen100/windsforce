@@ -51,7 +51,7 @@ function edit(id,controller,appId,sMore){
 	}
 
 	if(!keyValue){
-		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
+		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 
@@ -76,11 +76,11 @@ function foreverdel(id,appId,controller,sMore){
 	}
 
 	if(!keyValue){
-		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
+		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		if(controller){
 			Dyhb.AjaxSend(D.U('app/config?action=foreverdelete'),'id='+appId+'&ajax=1'+'&value='+keyValue+'&controller='+controller+(sMore?'&'+sMore:''),'',completeDelete);
 		}else{
@@ -154,7 +154,7 @@ function clickToInput(field,id,appId,controller){
 	var name=$.trim(idObj.html());
 	var m=$.trim(idObj.text());
 
-	idObj.html("<input type='text' value='"+name+"' id='"+field+"_input_"+id+"' title='"+D.L('点击修改值','__COMMON_LANG__@Admin/Common_Js')+"' >");
+	idObj.html("<input type='text' value='"+name+"' id='"+field+"_input_"+id+"' title='"+D.L('点击修改值','__COMMON_LANG__@Common')+"' >");
 
 	$('#'+field+'_input_'+id).focus();
 

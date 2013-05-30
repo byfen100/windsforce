@@ -39,7 +39,7 @@ function preg_replace(search, replace, str){
 }
 
 function deleteFriend(friendid,fan){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('home://friend/delete?friendid='+friendid+(fan=='1'?'&fan=1':'')),'','',function(data,status){
 			if(status==1){
 				setTimeout("window.location.reload();",1000);
@@ -50,7 +50,7 @@ function deleteFriend(friendid,fan){
 <!--{/script}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--{if $sType=='fan'}--><!--<lang package='Template/Friend'>-->我的粉丝<!--</lang>--><!--{d*else}--><!--<lang package='Template/Friend'>-->我的好友<!--</lang>--><!--{/if}--> <span class="divider">/</span></li>
 			<li><a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='Template/Friend'>-->会员列表<!--</lang>--></a></li>
 		</ul>
@@ -88,7 +88,7 @@ function deleteFriend(friendid,fan){
 									<span id="commentbox_<!--{$nUserId}-->" style="display:none"><input name="comment_<!--{$nUserId}-->" value="" id="comment_<!--{$nUserId}-->" onBlur="updateComment(<!--{$nUserId}-->,'<!--{if $sType=='fan'}-->1<!--{d*else}-->0<!--{/if}-->')" class="input-small"></span>
 								</p>
 								<p><a href="<!--{:Dyhb::U('home://pm/pmnew?uid='.$nUserId)}-->" class="btn btn-success"><i class="icon-envelope icon-white"></i>&nbsp;<!--<lang package='Template/Friend'>-->短消息<!--</lang>--></a>&nbsp;
-								<a href="javascript:void(0);" onclick="deleteFriend('<!--{$nUserId}-->','<!--{if $sType=='fan'}-->1<!--{d*else}-->0<!--{/if}-->');" class="btn"><i class="icon-remove-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>--></a></p>
+								<a href="javascript:void(0);" onclick="deleteFriend('<!--{$nUserId}-->','<!--{if $sType=='fan'}-->1<!--{d*else}-->0<!--{/if}-->');" class="btn"><i class="icon-remove-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></p>
 							</div>
 						</div>
 					</li>

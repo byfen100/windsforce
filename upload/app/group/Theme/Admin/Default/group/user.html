@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function deleteGroupuser(nGroupid,nUserid){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend('<!--{:Admin_Extend::base(array('controller'=>'group','action'=>'delete_groupuser'))}-->','gid='+nGroupid+'&uid='+nUserid+'&ajax=1','',completeDelete);
 	});
 }

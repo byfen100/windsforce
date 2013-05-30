@@ -10,7 +10,7 @@ function registerSubmit(){
 
 function registerComplete(data,status){
 	$("#register_submit").attr("disabled", false);
-	$("#register_submit").val(D.L('注册','__COMMON_LANG__@Js/Register_Js'));
+	$("#register_submit").val(D.L('注册','__COMMON_LANG__@Common'));
 	if(status==1){
 		sUrl=data.jumpurl?data.jumpurl:Dyhb.U('home://public/login');
 		setTimeout(function(){window.location.href=sUrl;},1000);
@@ -50,29 +50,29 @@ $(document).ready(function(){
 		},
 		messages: {
 			user_name: {
-				required: D.L("请输入你的注册用户名",'__COMMON_LANG__@Js/Register_Js'),
-				maxlength: jQuery.format(D.L("注册用户名最多 {0} 字符",'__COMMON_LANG__@Js/Register_Js')),
-				remote: jQuery.format(D.L("{0} 该用户已经被占用了",'__COMMON_LANG__@Js/Register_Js'))
+				required: D.L("请输入你的注册用户名",'__COMMON_LANG__@Common'),
+				maxlength: jQuery.format(D.L("注册用户名最多 {0} 字符",'__COMMON_LANG__@Common')),
+				remote: jQuery.format(D.L("{0} 该用户已经被占用了",'__COMMON_LANG__@Common'))
 			},
 			user_nikename: {
-				maxlength: jQuery.format(D.L("用户昵称最多 {0} 字符",'__COMMON_LANG__@Js/Register_Js'))
+				maxlength: jQuery.format(D.L("用户昵称最多 {0} 字符",'__COMMON_LANG__@Common'))
 			},
 			user_password: {
-				required: D.L("请输入你的用户密码",'__COMMON_LANG__@Js/Register_Js'),
-				minlength: jQuery.format(D.L("用户密码最少 {0} 字符",'__COMMON_LANG__@Js/Register_Js')),
-				maxlength: jQuery.format(D.L("用户密码最多 {0} 字符",'__COMMON_LANG__@Js/Register_Js'))
+				required: D.L("请输入你的用户密码",'__COMMON_LANG__@Common'),
+				minlength: jQuery.format(D.L("用户密码最少 {0} 字符",'__COMMON_LANG__@Common')),
+				maxlength: jQuery.format(D.L("用户密码最多 {0} 字符",'__COMMON_LANG__@Common'))
 			},
 			user_password_confirm: {
-				required: D.L("请输入你的确认密码",'__COMMON_LANG__@Js/Register_Js'),
-				minlength: jQuery.format(D.L("确认密码最少 {0} 字符",'__COMMON_LANG__@Js/Register_Js')),
-				maxlength: jQuery.format(D.L("确认密码最多 {0} 字符",'__COMMON_LANG__@Js/Register_Js')),
-				equalTo: D.L("两次填写的密码不一致",'__COMMON_LANG__@Js/Register_Js')
+				required: D.L("请输入你的确认密码",'__COMMON_LANG__@Common'),
+				minlength: jQuery.format(D.L("确认密码最少 {0} 字符",'__COMMON_LANG__@Common')),
+				maxlength: jQuery.format(D.L("确认密码最多 {0} 字符",'__COMMON_LANG__@Common')),
+				equalTo: D.L("两次填写的密码不一致",'__COMMON_LANG__@Common')
 			},
 			user_email: {
-				required: D.L("E-mail 地址不能为空",'__COMMON_LANG__@Js/Register_Js'),
-				email: D.L("请输入一个正确的E-mail 地址",'__COMMON_LANG__@Js/Register_Js'),
-				maxlength: jQuery.format(D.L("E-mail 地址最多 {0} 字符",'__COMMON_LANG__@Js/Register_Js')),
-				remote: jQuery.format(D.L("{0} 该E-mail 地址已经被占用",'__COMMON_LANG__@Js/Register_Js'))
+				required: D.L("E-mail 地址不能为空",'__COMMON_LANG__@Common'),
+				email: D.L("请输入一个正确的E-mail 地址",'__COMMON_LANG__@Common'),
+				maxlength: jQuery.format(D.L("E-mail 地址最多 {0} 字符",'__COMMON_LANG__@Common')),
+				remote: jQuery.format(D.L("{0} 该E-mail 地址已经被占用",'__COMMON_LANG__@Common'))
 			},
 			user_terms: " "
 		},

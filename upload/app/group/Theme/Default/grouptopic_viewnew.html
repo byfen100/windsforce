@@ -109,7 +109,7 @@ $(function(){
 									
 							<div class="common_usersign" style="margin-top:20px;">
 								<!--{~$sUsersign=UserModel::getUsernameById($oGrouptopic['user_id'],'user_sign')}-->
-								<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
+								<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 							</div>
 
 							<div class="love_tools clearfix">
@@ -140,7 +140,7 @@ $(function(){
 								<!--{if $nDisplaySeccode==1}-->
 								<div  id="seccode_box" class="none">
 									<p style="margin:10px 0px 5px 0;">
-									<label for="user_name"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--><span class="pipe">|</span><a href="javascript:void(0);" onclick="seccodeon(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
+									<label for="user_name"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--><span class="pipe">|</span><a href="javascript:void(0);" onclick="seccodeon(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->关闭<!--</lang>--></a></label>
 									</p>
 									<input class="input-small" name="grouptopiccomment_seccode" id="grouptopiccomment_seccode" type="text" value="">
 									<p class="help-block">
@@ -155,8 +155,8 @@ $(function(){
 								<!--{d*else}-->
 								<div class="commoncommentform_needloginbox">
 									<div class="commoncommentform_needloginboxinner">
-										<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></a> | 
-										<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->用户注册<!--</lang>--></a>
+										<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></a> | 
+										<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户注册<!--</lang>--></a>
 									</div>
 								</div>
 								<!--{/if}-->
@@ -166,7 +166,7 @@ $(function(){
 									<a href="javascript:void(0);" onclick="closeQuickreplay();"><i class="icon-remove"></i>&nbsp;<!--<lang package='Template/Grouptopic'>-->关闭<!--</lang>--></a>
 									<!--{if $nDisplaySeccode==1}-->
 									<span class="pipe">|</span>
-									<a href="javascript:void(0);" onclick="seccodeon();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="seccodeon();"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></a>
 									<!--{/if}-->
 									<span class="pipe">|</span>
 									<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" ><!--<lang package='Template/Grouptopic'>-->进入高级模式<!--</lang>-->&gt;&gt;</a>

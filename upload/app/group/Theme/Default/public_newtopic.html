@@ -3,7 +3,7 @@
 <!--{~$sNewtopic=$GLOBALS['_cache_']['group_option']['newtopic_default']==1?'index':'newtopic'}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Public'>-->新帖<!--</lang>--></li>
 		</ul>
@@ -125,15 +125,15 @@
 										<input class="span3" id="user_password" name="user_password" type="password" value="">
 									</p>
 									<p><label class="checkbox">
-											<input id="remember_me" type="checkbox" name="remember_me" value="1" onclick="rememberme();"/><!--<lang package='__COMMON_LANG__@Template/Common'>-->记住我<!--</lang>-->
+											<input id="remember_me" type="checkbox" name="remember_me" value="1" onclick="rememberme();"/><!--<lang package='__COMMON_LANG__@Common'>-->记住我<!--</lang>-->
 											<span class="pipe">|</span>
-											<a href="<!--{:Dyhb::U('home://getpassword/index')}-->" class="resetpassword-link"><!--<lang package='__COMMON_LANG__@Template/Common'>-->忘记密码?<!--</lang>--></a>
+											<a href="<!--{:Dyhb::U('home://getpassword/index')}-->" class="resetpassword-link"><!--<lang package='__COMMON_LANG__@Common'>-->忘记密码?<!--</lang>--></a>
 											<span class="pipe">|</span>
-											<a href="<!--{:Dyhb::U('home://public/clear')}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->清除痕迹<!--</lang>--></a>
+											<a href="<!--{:Dyhb::U('home://public/clear')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->清除痕迹<!--</lang>--></a>
 										</label>
 									</p>
 									<div id="remember_time" class="none">
-										<label for="remember_time"><!--<lang package='__COMMON_LANG__@Template/Common'>-->COOKIE有效期<!--</lang>--> <span class="pipe">|</span> <a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->关闭<!--</lang>--></a></label>
+										<label for="remember_time"><!--<lang package='__COMMON_LANG__@Common'>-->COOKIE有效期<!--</lang>--> <span class="pipe">|</span> <a href="javascript:void(0);" onclick="rememberme(1);"><i class="icon-remove"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->关闭<!--</lang>--></a></label>
 										<select name="remember_time" id="remembertime">
 											<option value="0" <!--{if $nRememberTime==0}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->及时<!--</lang>--></option>
 											<option value="3600" <!--{if $nRememberTime==3600}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一小时<!--</lang>--></option>
@@ -143,11 +143,11 @@
 											<option value="31536000" <!--{if $nRememberTime==31536000}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->一年<!--</lang>--></option>
 										</select>
 										<p class="help-block">
-											<i class=" icon-info-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->注意在网吧等共同场所请不要记住我<!--</lang>-->
+											<i class=" icon-info-sign"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->注意在网吧等共同场所请不要记住我<!--</lang>-->
 										</p>
 									</div>
 									<!--{if $nDisplaySeccode==1}-->
-									<label for="user_name"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+									<label for="user_name"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label>
 									<input class="input-small" name="seccode" id="seccode" type="text" value="">
 									<p class="help-block">
 										<span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span>
@@ -156,11 +156,11 @@
 									<div class="space"></div>
 									<p><input type="hidden" name="ajax" value="1">
 										<input type="hidden" name="windsforce_referer" value="<!--{:__SELF__}-->">
-										<button type="button" class="btn btn-success" onClick="Dyhb.AjaxSubmit('login_form','<!--{:Dyhb::U('home://public/check_login')}-->','result',login_handle);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--><!--</lang>--></button>&nbsp;
-										<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->新用户注册<!--</lang>--><!--</lang>--></a>
+										<button type="button" class="btn btn-success" onClick="Dyhb.AjaxSubmit('login_form','<!--{:Dyhb::U('home://public/check_login')}-->','result',login_handle);"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--><!--</lang>--></button>&nbsp;
+										<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->新用户注册<!--</lang>--><!--</lang>--></a>
 										<!--{if count($arrBindeds)>=3}-->
 										<span class="pipe">|</span>
-										<a href="javascript:void(0);" onclick="showSocialogin();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->社交帐号<!--</lang>--><!--</lang>--></a>
+										<a href="javascript:void(0);" onclick="showSocialogin();"><!--<lang package='__COMMON_LANG__@Common'>-->社交帐号<!--</lang>--><!--</lang>--></a>
 										<!--{/if}-->
 									</p>
 								</form>
@@ -213,7 +213,7 @@
 												<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}--><!--<lang package='Template/Public'>-->注册<!--</lang>--></td>
 											</tr>
 											<tr>
-												<td colspan="2"><i class="icon-heart"></i>&nbsp;<!--<lang package='Template/Public'>-->等级<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$GLOBALS['___login___']['user_id'].'&type=rating')}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->当前积分<!--</lang>-->&nbsp;<!--{$GLOBALS['___login___']['usercount']['usercount_extendcredit1']}-->,<!--<lang package='__COMMON_LANG__@Template/Common'>-->等级名字<!--</lang>-->&nbsp;<!--{$arrRatinginfo['rating_name']}-->,<!--<lang package='__COMMON_LANG__@Template/Common'>-->距离下一个等级<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_rating']['rating_name']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->还差<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_needscore']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->积分<!--</lang>-->"><!--{$arrRatinginfo['rating_name']}--></a><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></td>
+												<td colspan="2"><i class="icon-heart"></i>&nbsp;<!--<lang package='Template/Public'>-->等级<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$GLOBALS['___login___']['user_id'].'&type=rating')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->当前积分<!--</lang>-->&nbsp;<!--{$GLOBALS['___login___']['usercount']['usercount_extendcredit1']}-->,<!--<lang package='__COMMON_LANG__@Common'>-->等级名字<!--</lang>-->&nbsp;<!--{$arrRatinginfo['rating_name']}-->,<!--<lang package='__COMMON_LANG__@Common'>-->距离下一个等级<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_rating']['rating_name']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->还差<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_needscore']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->积分<!--</lang>-->"><!--{$arrRatinginfo['rating_name']}--></a><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></td>
 											</tr>
 										</tbody>
 									</table>

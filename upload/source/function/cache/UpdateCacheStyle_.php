@@ -64,7 +64,7 @@ class UpdateCacheStyle{
 
 					$arrStyleDirs=G::listDir($sStyleExtendDir);
 
-					$arrExtendstyleData[]=array('',Dyhb::L('默认','__COMMON_LANG__@Function/Cache_Extend'),$arrStyle['menu_hover_bg_color']);
+					$arrExtendstyleData[]=array('',Dyhb::L('默认','__COMMON_LANG__@Common'),$arrStyle['menu_hover_bg_color']);
 
 					foreach($arrStyleDirs as $sStyleDir){
 						$sExtendStylefile=$sStyleExtendDir.'/'.$sStyleDir.'/style.css';
@@ -138,7 +138,7 @@ class UpdateCacheStyle{
 
 				$sStyleIdPath=WINDSFORCE_PATH.'/data/~runtime/style_/'.intval($arrStyle['style_id']);
 				if(!is_dir($sStyleIdPath)&& !G::makeDir($sStyleIdPath)){
-					Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Function/Cache_Extend',null,$sStyleIdPath));
+					Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Common',null,$sStyleIdPath));
 				}
 				
 				self::writeToCache($sStyleIdPath.'/style.php',$arrStyle);
@@ -153,7 +153,7 @@ class UpdateCacheStyle{
 				var_export($arrStyle,true).
 			"\n?>")
 		){
-			Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Function/Cache_Extend',null,$sStylePath));
+			Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Common',null,$sStylePath));
 		}
 	}
 
@@ -220,7 +220,7 @@ class UpdateCacheStyle{
 				$sCssData=preg_replace(array('/\s*([,;:\{\}])\s*/','/[\t\n\r]/','/\/\*.+?\*\//'),array('\\1','',''),$sCssData);
 
 				if(!file_put_contents($sStyleIdPath.'/'.($sType!='@' && strpos($sExtra,'t_')!==0?$sType.'_':'').$sExtra.'.css',stripslashes($sCssData)) && !G::makeDir($sStyleIdPath)){
-					Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Function/Cache_Extend',null,$sStyleIdPath));
+					Dyhb::E(Dyhb::L('无法写入缓存文件,请检查缓存目录 %s 的权限是否为0777','__COMMON_LANG__@Common',null,$sStyleIdPath));
 				}else{
 					$arrCurscriptCss=Glob($sStyleIdPath.'/scriptstyle_*.css');
 					foreach($arrCurscriptCss as $sCurscriptCss){

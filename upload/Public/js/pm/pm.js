@@ -10,7 +10,7 @@ function getNewpms(userid){
 
 			if(dataJson.total>0){
 				// 显示消息框
-				var sMessage='<a href="'+D.U('home://pm/index?'+(dataJson.user?'type=new':'type=systemnew'))+'" title="'+D.L('私人消息','__COMMON_LANG__@Js/Pm_Js')+'('+dataJson.user+') '+D.L('系统消息','__COMMON_LANG__@Js/Pm_Js')+'('+dataJson.system+')"><img src="'+_ROOT_+'/Public/images/common/notice_newpm.gif"/> '+D.L('新消息','__COMMON_LANG__@Js/Pm_Js')+'+'+dataJson.total+'</a>';
+				var sMessage='<a href="'+D.U('home://pm/index?'+(dataJson.user?'type=new':'type=systemnew'))+'" title="'+D.L('私人消息','__COMMON_LANG__@Common')+'('+dataJson.user+') '+D.L('系统消息','__COMMON_LANG__@Common')+'('+dataJson.system+')"><img src="'+_ROOT_+'/Public/images/common/notice_newpm.gif"/> '+D.L('新消息','__COMMON_LANG__@Common')+'+'+dataJson.total+'</a>';
 				if(pm_sound_on==1){
 					sMessage+='<div id="pmsound" style="position:absolute;top:-100000px">&nbsp;</div>';
 				}
@@ -38,7 +38,7 @@ function getNewpms(userid){
 				var promptState=0;
 				var oldTitle=document.title;
 				flashTitle=function(){
-					document.title=(titleState?'\u3010\u3000\u3000\u3000\u3011':'【'+D.L('新消息','__COMMON_LANG__@Js/Pm_Js')+'】'+'('+dataJson.total+') ')+oldTitle;
+					document.title=(titleState?'\u3010\u3000\u3000\u3000\u3011':'【'+D.L('新消息','__COMMON_LANG__@Common')+'】'+'('+dataJson.total+') ')+oldTitle;
 					titleState=!titleState;
 				}
 
@@ -57,7 +57,7 @@ function getNewnotices(userid){
 
 			if(dataJson.num>0){
 				// 显示消息框
-				var sMessage='<a href="'+D.U('home://notice/index?type=new')+'" title="'+D.L('未读提醒','__COMMON_LANG__@Js/Pm_Js')+'('+dataJson.num+')"><img src="'+_ROOT_+'/Public/images/common/notice_new.gif"/> '+D.L('新提醒','__COMMON_LANG__@Js/Pm_Js')+'+'+dataJson.num+'</a>';
+				var sMessage='<a href="'+D.U('home://notice/index?type=new')+'" title="'+D.L('未读提醒','__COMMON_LANG__@Common')+'('+dataJson.num+')"><img src="'+_ROOT_+'/Public/images/common/notice_new.gif"/> '+D.L('新提醒','__COMMON_LANG__@Common')+'+'+dataJson.num+'</a>';
 
 				$('#new-notice-box').html(sMessage);
 

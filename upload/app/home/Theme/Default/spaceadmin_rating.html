@@ -1,7 +1,7 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
 			<li><!--<lang package='Template/Spaceadmin'>-->积分<!--</lang>--></li>
 		</ul>
@@ -15,7 +15,7 @@
 				<div class="alert alert-success">
 					<h5><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo['user_name']}--></a>&nbsp;(<!--<lang package='Template/Spaceadmin'>-->当前积分<!--</lang>-->&nbsp;<!--{$nUserscore}-->)</h5>
 					<p><div class="current_ratinginfo">
-							<!--<lang package='__COMMON_LANG__@Template/Common'>-->等级名字<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['rating_name']}--></span>,<!--<lang package='__COMMON_LANG__@Template/Common'>-->距离下一个等级<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['next_rating']['rating_name']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->还差<!--</lang>-->&nbsp;<span class="badge badge-success"><!--{$arrRatinginfo['next_needscore']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Template/Common'>-->积分<!--</lang>-->
+							<!--<lang package='__COMMON_LANG__@Common'>-->等级名字<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['rating_name']}--></span>,<!--<lang package='__COMMON_LANG__@Common'>-->距离下一个等级<!--</lang>-->&nbsp;<span class="badge"><!--{$arrRatinginfo['next_rating']['rating_name']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->还差<!--</lang>-->&nbsp;<span class="badge badge-success"><!--{$arrRatinginfo['next_needscore']}--></span>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->积分<!--</lang>-->
 						</div>
 						<p>
 							<div class="progress">

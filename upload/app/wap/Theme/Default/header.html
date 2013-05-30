@@ -40,12 +40,12 @@ a,a:link,.font-blue{color:#0051a4;text-decoration:none;}
 	<div id="sitename"><!--{$GLOBALS['_option_']['site_name']}--></div>
 </div>
 <div id="navi">
-	<a href="<!--{:Dyhb::U('wap://public/index')}-->" <!--{if MODULE_NAME==='public' && ACTION_NAME==='index'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Template/Wap'>-->首页<!--</lang>--></a>
-	<a href="<!--{:Dyhb::U('wap://apps/index')}-->" <!--{if MODULE_NAME==='apps' || APP_NAME!=='wap'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Template/Wap'>-->应用<!--</lang>--></a>
+	<a href="<!--{:Dyhb::U('wap://public/index')}-->" <!--{if MODULE_NAME==='public' && ACTION_NAME==='index'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->首页<!--</lang>--></a>
+	<a href="<!--{:Dyhb::U('wap://apps/index')}-->" <!--{if MODULE_NAME==='apps' || APP_NAME!=='wap'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->应用<!--</lang>--></a>
 	<!--{if $GLOBALS['___login___']===false}-->
-	<a href="<!--{:Dyhb::U('wap://public/login')}-->" <!--{if MODULE_NAME==='public' && ACTION_NAME==='login'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Template/Wap'>-->登录<!--</lang>--></a>
+	<a href="<!--{:Dyhb::U('wap://public/login')}-->" <!--{if MODULE_NAME==='public' && ACTION_NAME==='login'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></a>
 	<!--{d*else}-->
-	<a href="<!--{:Dyhb::U('wap://ucenter/index')}-->" <!--{if MODULE_NAME==='ucenter'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Template/Wap'>-->个人中心<!--</lang>--></a>
-	<a href="<!--{:Dyhb::U('wap://public/logout')}-->"><!--<lang package='__COMMON_LANG__@Template/Wap'>-->注销<!--</lang>--></a>
+	<a href="<!--{:Dyhb::U('wap://ucenter/index')}-->" <!--{if MODULE_NAME==='ucenter'}-->class="active"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->个人中心<!--</lang>--></a>
+	<a href="<!--{:Dyhb::U('wap://public/logout')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->注销<!--</lang>--></a>
 	<!--{/if}-->
 </div>

@@ -1,43 +1,43 @@
 					<div id="attachmentcommentform_box" class="commoncommentform_box">
-						<h3><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->发表评论<!--</lang>--></h3>
+						<h3><!--<lang package='__COMMON_LANG__@Common'>-->发表评论<!--</lang>--></h3>
 						<!--{if $GLOBALS['_cache_']['home_option']['audit_comment']==1}-->
-						<div class="alert"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->系统开启了评论审核功能，你发表的评论只有新鲜事的作者审核通过了才能够显示<!--</lang>--></div>
+						<div class="alert"><!--<lang package='__COMMON_LANG__@Common'>-->系统开启了评论审核功能，你发表的评论只有新鲜事的作者审核通过了才能够显示<!--</lang>--></div>
 						<!--{/if}-->
 						<form class="well" method="post" name="attachment-commentform" action="<!--{:Dyhb::U('home://attachment/add_attachmentcomment')}-->" id="attachment-commentform">
 							
-							<!--<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->用户昵称<!--</lang>--><em class="red">*</em></label>
+							<!--<label><!--<lang package='__COMMON_LANG__@Common'>-->用户昵称<!--</lang>--><em class="red">*</em></label>
 							<input type="text" class="span3" name="attachmentcomment_name" id="attachmentcomment_name">
-							<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->邮件地址<!--</lang>-->(<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->选填<!--</lang>-->)</label>
+							<label><!--<lang package='__COMMON_LANG__@Common'>-->邮件地址<!--</lang>-->(<!--<lang package='__COMMON_LANG__@Common'>-->选填<!--</lang>-->)</label>
 							<input type="text" class="span3" name="attachmentcomment_email" id="attachmentcomment_email">
-							<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->个人主页<!--</lang>-->(<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->选填<!--</lang>-->)</label>
+							<label><!--<lang package='__COMMON_LANG__@Common'>-->个人主页<!--</lang>-->(<!--<lang package='__COMMON_LANG__@Common'>-->选填<!--</lang>-->)</label>
 							<input type="text" class="span3" name="attachmentcomment_url" id="attachmentcomment_url">-->
 							<!--{if $GLOBALS['___login___']===false}-->
-							<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->内容<!--</lang>--><em class="red">*</em></label>
+							<label><!--<lang package='__COMMON_LANG__@Common'>-->内容<!--</lang>--><em class="red">*</em></label>
 							<div class="commoncommentform_needloginbox">
 								<div class="commoncommentform_needloginboxinner">
-									<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a> | 
-									<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->用户注册<!--</lang>--></a>
+									<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></a> | 
+									<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户注册<!--</lang>--></a>
 								</div>
 							</div>
 							<!--{d*else}-->
 							<input type="hidden" name="attachmentcomment_name" id="attachmentcomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="attachmentcommentform_name">
 							<input type="hidden" name="attachmentcomment_email" id="attachmentcomment_email" value="<!--{$GLOBALS['___login___']['user_email']}-->" class="attachmentcommentform_email">
 							<input type="hidden" name="attachmentcomment_url" id="attachmentcomment_url" value="<!--{$sUsersite}-->" class="attachmentcommentform_url">
-							<label><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->内容<!--</lang>--><em class="red">*</em>&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>)</label>
+							<label><!--<lang package='__COMMON_LANG__@Common'>-->内容<!--</lang>--><em class="red">*</em>&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>)</label>
 							<div id="attachmentcomment-media-box" class="common-media-box">
-								<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
-								<a href="javascript:void(0);" onclick="globalAddattachment('insertAttachmentcommentattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-								<a href="javascript:void(0);" onclick="addVideo('insertAttachmentcommentvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-								<a href="javascript:void(0);" onclick="addMusic('insertAttachmentcommentmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+								<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a>
+								<a href="javascript:void(0);" onclick="globalAddattachment('insertAttachmentcommentattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+								<a href="javascript:void(0);" onclick="addVideo('insertAttachmentcommentvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+								<a href="javascript:void(0);" onclick="addMusic('insertAttachmentcommentmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 							</div>
 							<div id="emotion_parentcontainer">
 								<textarea name="attachmentcomment_content" id="attachmentcomment_content" rows="6" class="commoncommentform_content attachmentcommentform_area"></textarea>
 							</div>
 							<label class="checkbox">
-								<input type="checkbox" name="attachmentcomment_isreplymail" id="attachmentcomment_isreplymail" value="1">&nbsp;<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->回复时邮件通知<!--</lang>-->&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a>
+								<input type="checkbox" name="attachmentcomment_isreplymail" id="attachmentcomment_isreplymail" value="1">&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->回复时邮件通知<!--</lang>-->&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a>
 							</label>
 							<!--{if $nDisplaySeccode==1}-->
-							<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+							<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label></p>
 							<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
 							<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
 							<!--{/if}-->
@@ -46,6 +46,6 @@
 							<input type="hidden" name="ajax" value="1" />
 							<input type="hidden" name="page" value="<!--{if isset($_GET['page'])}--><!--{$_GET['page']}--><!--{/if}-->"/>
 							<input type="hidden" name="attachment_id" value="<!--{$oAttachment['attachment_id']}-->"/>
-							<button id="comment-submit" type="button" onclick="commentSubmit();" class="btn btn-success" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->提交评论<!--</lang>--></button>
+							<button id="comment-submit" type="button" onclick="commentSubmit();" class="btn btn-success" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->提交评论<!--</lang>--></button>
 						</form>
 					</div>

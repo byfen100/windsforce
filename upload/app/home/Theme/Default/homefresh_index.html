@@ -25,7 +25,7 @@ function addHomefresh(){
 	$("#submit_button").val('add...');
 	Dyhb.AjaxSubmit('homefreshAdd','<!--{:Dyhb::U('home://ucenter/add_homefresh')}-->','',function(data,status){ 
 		$("#submit_button").attr("disabled",false);
-		$("#submit_button").val("<!--<lang package='__COMMON_LANG__@Template/Common'>-->发布<!--</lang>-->");
+		$("#submit_button").val("<!--<lang package='__COMMON_LANG__@Common'>-->发布<!--</lang>-->");
 		
 		if(status==1){
 			$("#homefresh_count").text(data.homefresh_count);
@@ -119,7 +119,7 @@ var nHomefreshviewcomment=0;
 <script src="<!--{:__APPPUB__}-->/Js/comment.js"></script>
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></li>
 		</ul>
 
@@ -156,11 +156,11 @@ var nHomefreshviewcomment=0;
 											<textarea class="input-xlarge" name="homefresh_message" id="homefresh_message" rows="5" style="width:100%;"><!--{if isset($oHomefreshtag)}-->#<!--{$oHomefreshtag['homefreshtag_name']}-->#&nbsp;<!--{/if}--></textarea>
 										</div>
 										<div id="homefresh-media-box" class="common-media-box">
-											<a href="javascript:void(0);" class="homefresh-face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a> 
+											<a href="javascript:void(0);" class="homefresh-face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a> 
 											<a href="javascript:void(0);" onclick="addHomefreshtopic();" class="icon_add_topic"><!--<lang package='Template/Homefresh'>-->话题<!--</lang>--></a> 
-											<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-											<a href="javascript:void(0);" onclick="addVideo('insertHomefreshvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-											<a href="javascript:void(0);" onclick="addMusic('insertHomefreshmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+											<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+											<a href="javascript:void(0);" onclick="addVideo('insertHomefreshvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+											<a href="javascript:void(0);" onclick="addMusic('insertHomefreshmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 										</div>
 										<div id="homefresh-title-box" class="none">
 											<input type="text" class="span6" name="homefresh_title" id="homefresh_title" value="">&nbsp;<!--<lang package='Template/Homefresh'>-->新鲜事标题<!--</lang>-->
@@ -172,12 +172,12 @@ var nHomefreshviewcomment=0;
 										<label class="checkbox">
 											<input type="checkbox" name="synchronized-to-sign" value="1"/>&nbsp;<!--<lang package='Template/Homefresh'>-->同步到个人签名<!--</lang>-->
 											<span class="pipe">|</span>
-											<a href="javascript:void(0);" onclick="showHomefreshtitle();"><!--<lang package='Template/Homefresh'>-->标题<!--</lang>--></a>&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a>
+											<a href="javascript:void(0);" onclick="showHomefreshtitle();"><!--<lang package='Template/Homefresh'>-->标题<!--</lang>--></a>&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a>
 										</label>
 									</td>
 									<td rowspan="2" style="width:70px;">
 										<input type="hidden" name="ajax" value="1">
-										<button id="submit_button" onclick="addHomefresh()" type="button" class="btn btn-large btn-success" style="height:63px;"><!--<lang package='__COMMON_LANG__@Template/Common'>-->发布<!--</lang>--></button>
+										<button id="submit_button" onclick="addHomefresh()" type="button" class="btn btn-large btn-success" style="height:63px;"><!--<lang package='__COMMON_LANG__@Common'>-->发布<!--</lang>--></button>
 									</td>
 								</tr>
 								<tr>
@@ -187,7 +187,7 @@ var nHomefreshviewcomment=0;
 								<!--{if $nDisplaySeccode==1}-->
 								<tr>
 									<td><hr />
-										<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+										<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label></p>
 										<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
 										<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
 									</td>
@@ -328,13 +328,13 @@ var nHomefreshviewcomment=0;
 							<div class="left">
 								<label class="checkbox">
 									<input type="checkbox" name="homefreshcomment_isreplymail" id="homefreshcomment_isreplymail" value="1">&nbsp;<!--<lang package='Template/Homefresh'>-->回复时邮件通知<!--</lang>-->
-									&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>)&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a>
+									&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>)&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a>
 								</label>
 								<div id="homefreshcomment-media-box" class="common-media-box none">
-									<a href="javascript:void(0);" onclick="showEmotion();" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
-									<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshcommentattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-									<a href="javascript:void(0);" onclick="addVideo('insertHomefreshcommentvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-									<a href="javascript:void(0);" onclick="addMusic('insertHomefreshcommentmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="showEmotion();" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshcommentattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="addVideo('insertHomefreshcommentvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+									<a href="javascript:void(0);" onclick="addMusic('insertHomefreshcommentmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 								</div>
 							</div>
 							<div class="right">
@@ -345,7 +345,7 @@ var nHomefreshviewcomment=0;
 						<div class="clear"></div>
 						<!--{if $nDisplayCommentSeccode==1}-->
 						<hr/>
-						<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+						<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label></p>
 						<p><input class="input-small" name="seccode" id="homefreshcomment_seccode" type="text" value="" onblur="setSeccode(this.value);"></p>
 						<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://ucenter/seccode')}-->" /></span></p>
 						<!--{/if}-->

@@ -46,7 +46,7 @@
 						</div>
 						<!--{if $nDisplaySeccode==1}-->
 						<div class="control-group">
-							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--><em class="red">*</em></label>
+							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--><em class="red">*</em></label>
 							<div class="controls">
 								<input class="input-small" name="seccode" id="seccode" type="text" value="">
 								<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
@@ -56,8 +56,8 @@
 						<div class="form-actions">
 							<input type="hidden" name="referer" value="<!--{$sReferer}-->">
 							<input type="hidden" name="ajax" value="1">
-							<button type="submit" class="btn btn-success" id="register_submit"><!--<lang package='__COMMON_LANG__@Template/Common'>-->注册<!--</lang>--></button>&nbsp;
-							<a href="<!--{if $sReferer}--><!--{$sReferer}--><!--{d*else}--><!--{:__APP__}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+							<button type="submit" class="btn btn-success" id="register_submit"><!--<lang package='__COMMON_LANG__@Common'>-->注册<!--</lang>--></button>&nbsp;
+							<a href="<!--{if $sReferer}--><!--{$sReferer}--><!--{d*else}--><!--{:__APP__}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Common'>-->取消<!--</lang>--></a>
 						</div>
 					</fieldset>
 				</form>

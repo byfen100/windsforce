@@ -11,13 +11,13 @@ class ThemeModel extends CommonModel{
 			'table_name'=>'theme',
 			'check'=>array(
 				'theme_name'=>array(
-					array('require',Dyhb::L('模板名字不能为空','__COMMON_LANG__@Model/Theme')),
-					array('max_length',32,Dyhb::L('模板名字最大长度为32个字符','__COMMON_LANG__@Model/Theme')),
+					array('require',Dyhb::L('模板名字不能为空','__COMMON_LANG__@Common')),
+					array('max_length',32,Dyhb::L('模板名字最大长度为32个字符','__COMMON_LANG__@Common')),
 				),
 				'theme_dirname'=>array(
-					array('require',Dyhb::L('模板目录不能为空','__COMMON_LANG__@Model/Theme')),
-					array('max_length',32,Dyhb::L('模板目录最大长度为32个字符','__COMMON_LANG__@Model/Theme')),
-					array('english',Dyhb::L('模板目录只能为英文字符','__COMMON_LANG__@Model/Theme')),
+					array('require',Dyhb::L('模板目录不能为空','__COMMON_LANG__@Common')),
+					array('max_length',32,Dyhb::L('模板目录最大长度为32个字符','__COMMON_LANG__@Common')),
+					array('english',Dyhb::L('模板目录只能为英文字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);
@@ -61,7 +61,7 @@ class ThemeModel extends CommonModel{
 		$oTheme=ThemeModel::F('theme_id=?',$nThemeId)->query();
 
 		if(empty($oTheme['theme_id'])){
-			return Dyhb::L('模板套系不存在','__COMMON_LANG__@Model/Theme');
+			return Dyhb::L('模板套系不存在','__COMMON_LANG__@Common');
 		}
 		
 		return $oTheme[$sField];

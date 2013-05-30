@@ -68,7 +68,7 @@ function reloadCategory(){
 <!--{/script}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--{if isset($oGrouptopic)}--><!--<lang package='Template/Grouptopic'>-->编辑帖子<!--</lang>--><!--{d*else}--><!--<lang package='Template/Grouptopic'>-->发布帖子<!--</lang>--><!--{/if}--></li>
 		</ul>
@@ -110,19 +110,19 @@ function reloadCategory(){
 					<label><!--<lang package='Template/Grouptopic'>-->帖子标题<!--</lang>--></label>
 					<input type="text" name="grouptopic_title" id="grouptopic_title" class="span8" placeholder="<!--<lang package='Template/Grouptopic'>-->请输入标题<!--</lang>-->" value="<!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_title}--><!--{/if}-->">
 					<span></span>
-					<label><!--<lang package='Template/Grouptopic'>-->帖子内容<!--</lang>-->&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>)</label>
+					<label><!--<lang package='Template/Grouptopic'>-->帖子内容<!--</lang>-->&nbsp;(<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>)</label>
 					<div id="homefresh-media-box" class="common-media-box">
-						<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
-						<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-						<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+						<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a>
+						<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+						<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+						<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 					</div>
 					<div id="emotion_parentcontainer">
 						<textarea name="grouptopic_content" id="grouptopic_content" style="height:350px;width:100%;padding:0;margin:0;"><!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_content|htmlspecialchars}--><!--{/if}--></textarea>
 					</div>
 
 					<!--{if $nDisplaySeccode==1}-->
-					<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+					<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label></p>
 					<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
 					<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
 					<!--{/if}-->
@@ -154,7 +154,7 @@ function reloadCategory(){
 								<table cellspacing="0" cellpadding="0">
 									<tr>
 										<td class="grouptopictabs_title"><!--<lang package='Template/Grouptopic'>-->缩略图<!--</lang>-->&nbsp;</td>
-										<td><input type="text" id="grouptopic_thumb" name="grouptopic_thumb" value="<!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_thumb}--><!--{/if}-->"/>&nbsp;<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicthumb',1);"><i class="icon-film"></i><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>&nbsp;
+										<td><input type="text" id="grouptopic_thumb" name="grouptopic_thumb" value="<!--{if isset($oGrouptopic)}--><!--{$oGrouptopic->grouptopic_thumb}--><!--{/if}-->"/>&nbsp;<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicthumb',1);"><i class="icon-film"></i><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>&nbsp;
 											<span class="grouptopictabs_description">(<!--<lang package='Template/Grouptopic'>-->从附件管理器中选择<!--</lang>-->)</span>
 										</td>
 									</tr>
@@ -230,7 +230,7 @@ function reloadCategory(){
 						<!--{/if}-->
 						<input type="hidden" name="ajax" value="1">
 						<button type="button" name="submit_button" id="submit_button" class="btn btn-success" onClick="grouptopicSubmit();"><!--{if isset($oGrouptopic)}--><!--<lang package='Template/Grouptopic'>-->更新帖子<!--</lang>--><!--{d*else}--><!--<lang package='Template/Grouptopic'>-->发表帖子<!--</lang>--><!--{/if}--></button>&nbsp;
-						<a href="<!--{if isset($oGrouptopic)}--><!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}--><!--{elseif empty($nGroupid)}--><!--{:Dyhb::U('group://public/index')}--><!--{d*else}--><!--{:Dyhb::U('group://gid@?id='.$nGroupid)}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+						<a href="<!--{if isset($oGrouptopic)}--><!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}--><!--{elseif empty($nGroupid)}--><!--{:Dyhb::U('group://public/index')}--><!--{d*else}--><!--{:Dyhb::U('group://gid@?id='.$nGroupid)}--><!--{/if}-->" class="btn"><!--<lang package='__COMMON_LANG__@Common'>-->取消<!--</lang>--></a>
 					</div>
 				</div>
 			</form>

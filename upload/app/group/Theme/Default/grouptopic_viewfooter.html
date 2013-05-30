@@ -88,16 +88,16 @@
 									</div>
 
 									<!--{if $nDisplaySeccode==1}-->
-									<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+									<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label></p>
 									<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
 									<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
 									<!--{/if}-->
 
 									<div id="simple-grouptopiccomment-media-box" class="common-media-box">
-										<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
-										<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachmentSimple');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-										<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideoSimple');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-										<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusicSimple');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+										<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a>
+										<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachmentSimple');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+										<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideoSimple');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+										<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusicSimple');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 									</div>
 									
 									<input type="hidden" name="simple_grouptopiccomment_name" id="simple_grouptopiccomment_name" value="<!--{$GLOBALS['___login___']['user_name']}-->" class="grouptopiccomment_name">
@@ -106,8 +106,8 @@
 									<!--{d*else}-->
 									<div class="commoncommentform_needloginbox">
 										<div class="commoncommentform_needloginboxinner">
-											<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Common'>-->登录<!--</lang>--></a> | 
-											<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->用户注册<!--</lang>--></a>
+											<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></a> | 
+											<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户注册<!--</lang>--></a>
 										</div>
 									</div>
 									<!--{/if}-->
@@ -117,7 +117,7 @@
 										<input type="hidden" name="tid" value="<!--{$oGrouptopic->grouptopic_id}-->">
 										<input id="submit_button" onclick="addGrouptopiccommentSimple();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="<!--<lang package='Template/Grouptopic'>-->发布<!--</lang>-->" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
 										<!--{if $GLOBALS['___login___']!==false}-->
-										&nbsp;<a href="javascript:void(0);" onclick="showMediaSimple();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
+										&nbsp;<a href="javascript:void(0);" onclick="showMediaSimple();"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
 										<!--{/if}-->
 										<span class="pipe">|</span>
 										<a href="<!--{:Dyhb::U('group://grouptopic/reply?id='.$oGrouptopic->grouptopic_id)}-->" ><!--<lang package='Template/Grouptopic'>-->进入高级模式<!--</lang>-->&gt;&gt;</a>

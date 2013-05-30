@@ -3,11 +3,11 @@
 <!--{script}-->
 function deleteGroupHeaderbg(id){
 	if(!id){
-		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Admin/Common_Js'),'',3);
+		windsforceAlert(D.L('请选择操作项','__COMMON_LANG__@Common'),'',3);
 		return false;
 	}
 
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('app/config?id=<!--{$_GET['id']}-->'),"value="+id+'&ajax=1&controller=group&action=delete_headerbg','',completeDelete);
 	});
 }

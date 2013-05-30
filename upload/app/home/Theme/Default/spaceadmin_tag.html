@@ -25,7 +25,7 @@ function add(){
 }
 
 function deleteHometag(tagid){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('home://spaceadmin/delete_hometag&id='+tagid),'','',completeDelete);
 	});
 }
@@ -38,7 +38,7 @@ function completeDelete(data,status){
 <!--{/script}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
 			<li><!--<lang package='Template/Spaceadmin'>-->用户标签<!--</lang>--></li>
 		</ul>
@@ -49,7 +49,7 @@ function completeDelete(data,status){
 			<div class="span12">
 				<!--{if is_array($arrHometags)}-->
 				<!--<foreach for=arrHometags value=oHometag>-->
-				<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>-->" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><i class=" icon-remove-sign"></i></a>&nbsp;
+				<a href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>-->" onclick="deleteHometag('<!--{$oHometag['hometag_id']}-->');"><i class=" icon-remove-sign"></i></a>&nbsp;
 				<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist&tag='.urlencode($oHometag['hometag_name']))}-->" class="common_tag"><!--{$oHometag['hometag_name']}--></a>&nbsp;<b><!--{$oHometag['hometag_count']}--></b>&nbsp;&nbsp;&nbsp;&nbsp;
 				<!--</foreach>-->
 				<!--{d*else}-->

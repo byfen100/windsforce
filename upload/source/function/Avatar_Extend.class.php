@@ -27,7 +27,7 @@ class Avatar_Extend{
 		$sSrc=G::getGpc('temp_image');
 		$sSrc=WINDSFORCE_PATH.'/data/avatar/'.$sSrc;
 		if(!is_file($sSrc)){
-			Dyhb::E(Dyhb::L('无法获取裁剪图像','__COMMON_LANG__@Function/Avatar_Extend'));
+			Dyhb::E(Dyhb::L('无法获取裁剪图像','__COMMON_LANG__@Common'));
 		}
 
 		$arrPhotoInfo=@getimagesize($sSrc);
@@ -64,7 +64,7 @@ class Avatar_Extend{
 
 	static public function createFileDir($sDir){
 		if(!is_dir(dirname($sDir)) && !G::makeDir(dirname($sDir))){
-			Dyhb::E(Dyhb::L('上传目录%s不可写','__COMMON_LANG__@Function/Avatar_Extend',null,dirname($sDir)));
+			Dyhb::E(Dyhb::L('上传目录%s不可写','__COMMON_LANG__@Common',null,dirname($sDir)));
 		}
 	}
 

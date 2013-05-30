@@ -15,7 +15,7 @@ class BadwordModel extends CommonModel{
 			'attr_protected'=>'badword_id',
 			'check'=>array(
 				'badword_find'=>array(
-					array('require',Dyhb::L('待过滤的词语不能为空','__COMMON_LANG__@Model/Badword')),
+					array('require',Dyhb::L('待过滤的词语不能为空','__COMMON_LANG__@Common')),
 				),
 			),
 			'autofill'=>array(

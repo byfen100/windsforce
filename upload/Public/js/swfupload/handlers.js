@@ -12,7 +12,7 @@ var uploadPlugin = function (name) {
 		"use_query_string": false,
 		"assume_success_timeout": 0,
 		"file_types": sAllAllowType,
-		"file_types_description": D.L('所有允许类型','__COMMON_LANG__@Js/Upload_Js'),
+		"file_types_description": D.L('所有允许类型','__COMMON_LANG__@Common'),
 		"file_size_limit": max_upload_size,
 		"file_upload_limit": nUploadFlashLimit,
 		"debug": false,
@@ -93,22 +93,22 @@ var uploadPlugin = function (name) {
 	}
 
 	this.swfupload_loaded_function = function () {
-		setMessage(D.L('上传组件初始化成功','__COMMON_LANG__@Js/Upload_Js'));
+		setMessage(D.L('上传组件初始化成功','__COMMON_LANG__@Common'));
 	}
 
 	this.swfupload_load_failed_function = function () {
-		setMessage(D.L('上传组件初始化失败，请确认您的浏览器已经安装了flash player插件','__COMMON_LANG__@Js/Upload_Js'),1);
+		setMessage(D.L('上传组件初始化失败，请确认您的浏览器已经安装了flash player插件','__COMMON_LANG__@Common'),1);
 	}
 
 	this.file_queued_function = function (file) {
 		Example.nember++;
 		$("#attachment_flash_box").append('<tr id="tag_' + file.index + '" tag="item">' +
 			'<td class="no">' + Example.nember + '<input type="hidden" name="attachids[]" class="attachids" id="tag_attachid_' + file.index + '" value="" /></td>' +
-			'<td class="status"><img src="' + getStatusImg(0) + '" title="'+D.L('等待上传','__COMMON_LANG__@Js/Upload_Js')+'" /></td>' +
+			'<td class="status"><img src="' + getStatusImg(0) + '" title="'+D.L('等待上传','__COMMON_LANG__@Common')+'" /></td>' +
 			'<td class="name" title="' + file.name + '">' + file.name + '</td>' +
 			'<td class="size">' + getFormatSize(file.size) + '</td>' +
 			'<td class="flashprogress"><span id="pr"><img src="' + _ROOT_ + '/Public/js/swfupload/images/im.jpg" width="0" /></span>&nbsp;<span tag="con">0</span>%</td>'+
-			'<td class="exec"><img src="' + _ROOT_ + '/Public/js/swfupload/images/remove.png" style="cursor:pointer;" title="'+D.L('移除文件','__COMMON_LANG__@Js/Upload_Js')+'" onclick="' + Example.Name + '.RemoveFile(\'' + file.id + '\',this,\'' + file.index + '\');" /> '+(insert_attach==1?'<img id="insertattach_' + file.index + '" src="' + _ROOT_ + '/Public/js/swfupload/images/insert.png" style="cursor:pointer;display:none;" title="'+D.L('插入附件','__COMMON_LANG__@Js/Upload_Js')+'" onclick="' + Example.Name + '.InsertIn(\'' + file.index + '\');" />':'')
+			'<td class="exec"><img src="' + _ROOT_ + '/Public/js/swfupload/images/remove.png" style="cursor:pointer;" title="'+D.L('移除文件','__COMMON_LANG__@Common')+'" onclick="' + Example.Name + '.RemoveFile(\'' + file.id + '\',this,\'' + file.index + '\');" /> '+(insert_attach==1?'<img id="insertattach_' + file.index + '" src="' + _ROOT_ + '/Public/js/swfupload/images/insert.png" style="cursor:pointer;display:none;" title="'+D.L('插入附件','__COMMON_LANG__@Common')+'" onclick="' + Example.Name + '.InsertIn(\'' + file.index + '\');" />':'')
 			+'</td>' +
 		'</tr>');
 
@@ -124,19 +124,19 @@ var uploadPlugin = function (name) {
 	this.file_queue_error_function = function (file, code, message) {
 		switch (code) {
 			case -100:
-				setMessage(D.L('添加文件出错！您添加的文件太多，一次最多允许添加个','__COMMON_LANG__@Js/Upload_Js') + Example.sysParameter.file_upload_limit.toString() + " "+D.L('文件','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('添加文件出错！您添加的文件太多，一次最多允许添加个','__COMMON_LANG__@Common') + Example.sysParameter.file_upload_limit.toString() + " "+D.L('文件','__COMMON_LANG__@Common'),1);
 				this.fileQueueError=true;
 				break;
 			case -110:
-				setMessage(D.L('添加文件出错！您添加太大，最大允许添加','__COMMON_LANG__@Js/Upload_Js')+ Example.sysParameter.file_size_limit + " "+D.L('的文件','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('添加文件出错！您添加太大，最大允许添加','__COMMON_LANG__@Common')+ Example.sysParameter.file_size_limit + " "+D.L('的文件','__COMMON_LANG__@Common'),1);
 				this.fileQueueError=true;
 				break;
 			case -120:
-				setMessage(D.L('添加文件出错！您添加的文件是0字节','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('添加文件出错！您添加的文件是0字节','__COMMON_LANG__@Common'),1);
 				this.fileQueueError=true;
 				break;
 			case -130:
-				setMessage(D.L('添加文件出错！您添加的文件类型不正确','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('添加文件出错！您添加的文件类型不正确','__COMMON_LANG__@Common'),1);
 				this.fileQueueError=true;
 				break;
 		}
@@ -145,14 +145,14 @@ var uploadPlugin = function (name) {
 
 	this.file_dialog_complete_function = function (selected, queued, total) {
 		if (selected == 0) {
-			setMessage(D.L('请选择文件，可以多选','__COMMON_LANG__@Js/Upload_Js'),1);
+			setMessage(D.L('请选择文件，可以多选','__COMMON_LANG__@Common'),1);
 		} else if (queued == 0) {
 			if(this.fileQueueError===false){
-				setMessage(D.L('添加文件失败！共有0个文件入队，这可能是因为您一次选择的文件太多，或文件太大','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('添加文件失败！共有0个文件入队，这可能是因为您一次选择的文件太多，或文件太大','__COMMON_LANG__@Common'),1);
 			}
 			this.fileQueueError=false;
 		} else {
-			setMessage(D.L('添加文件成功！共有','__COMMON_LANG__@Js/Upload_Js') + total.toString() + D.L('个文件加入了上传列队','__COMMON_LANG__@Js/Upload_Js'));
+			setMessage(D.L('添加文件成功！共有','__COMMON_LANG__@Common') + total.toString() + D.L('个文件加入了上传列队','__COMMON_LANG__@Common'));
 			$(".attachment_flash_mainbox").show();
 			$("#upload").show();
 			$("#delete").show();
@@ -178,42 +178,42 @@ var uploadPlugin = function (name) {
 		$("#tag_" + file.index + " #pr img").attr("height", 9);
 		$("#tag_" + file.index + " .flashprogress span[tag='con']").html(getPercentage(bytes, total).toString());
 		$("#tag_" + file.index + " .status img").attr("src", getStatusImg(1));
-		$("#tag_" + file.index + " .status img").attr("title", D.L('正在上传文件','__COMMON_LANG__@Js/Upload_Js'));
+		$("#tag_" + file.index + " .status img").attr("title", D.L('正在上传文件','__COMMON_LANG__@Common'));
 		$("#tag_" + file.index + " .exec img").attr("disabled", true);
-		$("#tag_" + file.index + " .exec img").attr("title", D.L('文件正在上传，不可以删除','__COMMON_LANG__@Js/Upload_Js'));
+		$("#tag_" + file.index + " .exec img").attr("title", D.L('文件正在上传，不可以删除','__COMMON_LANG__@Common'));
 	}
 
 	this.upload_error_function = function (file, code, message) {
 		switch (code) {
 			case -200:
-				setMessage(D.L('上传出错！服务器错误','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！服务器错误','__COMMON_LANG__@Common'),1);
 				break;
 			case -210:
-				setMessage(D.L('上传出错！找不到上传路径','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！找不到上传路径','__COMMON_LANG__@Common'),1);
 				break;
 			case -220:
-				setMessage(D.L('上传出错！可能是上传目录没有权限','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！可能是上传目录没有权限','__COMMON_LANG__@Common'),1);
 				break;
 			case -230:
-				setMessage(D.L('上传出错！安全错误，上传违反了安全约束','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！安全错误，上传违反了安全约束','__COMMON_LANG__@Common'),1);
 				break;
 			case -240:
-				setMessage(D.L('上传出错！上传文件的数量超过了限定的值','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！上传文件的数量超过了限定的值','__COMMON_LANG__@Common'),1);
 				break;
 			case -250:
-				setMessage(D.L('上传出错！尝试初始化上传时出现了错误','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！尝试初始化上传时出现了错误','__COMMON_LANG__@Common'),1);
 				break;
 			case -260:
-				setMessage(D.L('上传出错！没有找到要上传的文件','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！没有找到要上传的文件','__COMMON_LANG__@Common'),1);
 				break;
 			case -270:
-				setMessage(D.L('上传出错！未知错误','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！未知错误','__COMMON_LANG__@Common'),1);
 				break;
 			case -280:
-				setMessage(D.L('上传出错！取消了文件','__COMMON_LANG__@Js/Upload_Js') + file.name + " "+D.L('的上传','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！取消了文件','__COMMON_LANG__@Common') + file.name + " "+D.L('的上传','__COMMON_LANG__@Common'),1);
 				break;
 			case -290:
-				setMessage(D.L('上传出错！暂停了文件','__COMMON_LANG__@Js/Upload_Js')+ file.name + " "+D.L('的上传','__COMMON_LANG__@Js/Upload_Js'),1);
+				setMessage(D.L('上传出错！暂停了文件','__COMMON_LANG__@Common')+ file.name + " "+D.L('的上传','__COMMON_LANG__@Common'),1);
 				break;
 		}
 	}
@@ -231,17 +231,17 @@ var uploadPlugin = function (name) {
 		$("#insertattach_" + file.index).show();
 
 		$("#tag_" + file.index + " .status img").attr("src", getStatusImg(3));
-		$("#tag_" + file.index + " .status img").attr("title", D.L('上传成功','__COMMON_LANG__@Js/Upload_Js'));
-		$("#tag_" + file.index + " .flashprogress").html(D.L('文件上传成功','__COMMON_LANG__@Js/Upload_Js'));
+		$("#tag_" + file.index + " .status img").attr("title", D.L('上传成功','__COMMON_LANG__@Common'));
+		$("#tag_" + file.index + " .flashprogress").html(D.L('文件上传成功','__COMMON_LANG__@Common'));
 		$("#tag_" + file.index).attr("disabled", true);
 		$("#tag_" + file.index).attr("disabled", true);
 		$("#tag_" + file.index + " .exec img").attr("disabled", false);
-		$("#tag_" + file.index + " .exec img").attr("title", D.L('移除此上传完成的文件','__COMMON_LANG__@Js/Upload_Js'));
+		$("#tag_" + file.index + " .exec img").attr("title", D.L('移除此上传完成的文件','__COMMON_LANG__@Common'));
 		
-		//$("#tag_" + file.index + " .exec #insertattach_" + file.index).attr("title", D.L('插入附件','__COMMON_LANG__@Js/Upload_Js'));
+		//$("#tag_" + file.index + " .exec #insertattach_" + file.index).attr("title", D.L('插入附件','__COMMON_LANG__@Common'));
 
 		if(insert_attach==1){
-			$("#insertattach_" + file.index).attr("title", D.L('插入附件','__COMMON_LANG__@Js/Upload_Js'));
+			$("#insertattach_" + file.index).attr("title", D.L('插入附件','__COMMON_LANG__@Common'));
 		}
 
 		if(swfu.getStats().files_queued==0){
@@ -256,8 +256,8 @@ var uploadPlugin = function (name) {
 
 		/*
 		$("#tag_" + file.index + " .status img").attr("src", getStatusImg(2));
-		$("#tag_" + file.index + " .status img").attr("title", D.L('上传成功，正在保存','__COMMON_LANG__@Js/Upload_Js'));
-		$("#tag_" + file.index + " .flashprogress").html(D.L('上传成功，正在保存','__COMMON_LANG__@Js/Upload_Js'));
+		$("#tag_" + file.index + " .status img").attr("title", D.L('上传成功，正在保存','__COMMON_LANG__@Common'));
+		$("#tag_" + file.index + " .flashprogress").html(D.L('上传成功，正在保存','__COMMON_LANG__@Common'));
 		*/
 	}
 
@@ -276,7 +276,7 @@ var uploadPlugin = function (name) {
 	}
 
 	this.RemoveFile = function (id, obj, index) {
-		if(confirm(D.L('您确定要删除这个附件吗?','__COMMON_LANG__@Js/Upload_Js'))){
+		if(confirm(D.L('您确定要删除这个附件吗?','__COMMON_LANG__@Common'))){
 			var attachid = $("#tag_attachid_" + index).val();
 			$.get( D.U('home://attachment/delete_attachment'), {id:attachid},function(data){});
 			Example.nember--;
@@ -300,7 +300,7 @@ var uploadPlugin = function (name) {
 	}
 
 	this.RemoveAllFile = function () {
-		if(confirm(D.L('您确定要删除所有附件吗?','__COMMON_LANG__@Js/Upload_Js')))
+		if(confirm(D.L('您确定要删除所有附件吗?','__COMMON_LANG__@Common')))
 		{
 			var attachids = '';
 			var comma = '';
@@ -326,7 +326,7 @@ var uploadPlugin = function (name) {
 
 	this.StartUpload = function () {
 		if (swfu.getStats().files_queued <= 0) {
-			setMessage(D.L('请先添加文件','__COMMON_LANG__@Js/Upload_Js'),1);
+			setMessage(D.L('请先添加文件','__COMMON_LANG__@Common'),1);
 			return;
 		}
 		setBotton("upload", 3);

@@ -33,27 +33,27 @@ function commentCheckForm(comment_content,customContent){
 	}
 
 	if(comment_name==""){
-		windsforceAlert(D.L('评论名字不能为空','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论名字不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_name.length>25){
-		windsforceAlert(D.L('评论名字长度只能小于等于25个字符串','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论名字长度只能小于等于25个字符串','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_email!='' && !checkEmail(comment_email)){
-		windsforceAlert(D.L('评论E-mail 格式错误','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论E-mail 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_url!='' && !checkUrl(comment_url)){
-		windsforceAlert(D.L('评论Url 格式错误','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论Url 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_content == ""){
-		windsforceAlert(D.L('评论内容不能为空','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论内容不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
@@ -66,14 +66,14 @@ function commentSubmit(){
 		return false;
 	}
 
-	$("#comment-submit").val(D.L('正在提交评论','__COMMON_LANG__@Js/Commoncomment_Js'));
+	$("#comment-submit").val(D.L('正在提交评论','__COMMON_LANG__@Common'));
 	$("#comment-submit").attr("disabled", "disabled");
 	Dyhb.AjaxSubmit('attachment-commentform',D.U('home://attachment/add_attachmentcomment'),'',commentComplete);
 }
 
 function commentComplete(data,status){
 	$("#comment-submit").attr("disabled", false);
-	$("#comment-submit").val(D.L('提交评论','__COMMON_LANG__@Js/Commoncomment_Js'));
+	$("#comment-submit").val(D.L('提交评论','__COMMON_LANG__@Common'));
 	if(status==1){
 		setTimeout(function(){window.location.href=data.jumpurl;},1000);
 	}
@@ -105,7 +105,7 @@ function insertAttachmentcommentmusic(sContent){
 <!--{/script}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template/Attachment'>-->我的相册<!--</lang>--></a></li>
 		</ul>
 
@@ -169,7 +169,7 @@ function insertAttachmentcommentmusic(sContent){
 
 				<div class="common_usersign">
 					<!--{~$sUsersign=UserModel::getUsernameById($oAttachment['user_id'],'user_sign')}-->
-					<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Template/Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
+					<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 				</div>
 				
 				<div class="common_share clearfix">

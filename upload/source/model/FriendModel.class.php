@@ -16,11 +16,11 @@ class FriendModel extends CommonModel{
 			'check'=>array(
 				'friend_comment'=>array(
 					array('empty'),
-					array('max_length',255,Dyhb::L('好友注释的字符数最多为255','__COMMON_LANG__@Model/Friend')),
+					array('max_length',255,Dyhb::L('好友注释的字符数最多为255','__COMMON_LANG__@Common')),
 				),
 				'friend_fancomment'=>array(
 					array('empty'),
-					array('max_length',255,Dyhb::L('粉丝注释的字符数最多为255','__COMMON_LANG__@Model/Friend')),
+					array('max_length',255,Dyhb::L('粉丝注释的字符数最多为255','__COMMON_LANG__@Common')),
 				),
 			),
 		);
@@ -37,24 +37,24 @@ class FriendModel extends CommonModel{
 	
 	public function addFriend($nUserId,$nLoginUserId){
 		if(empty($nUserId)){
-			$this->setErrorMessage(Dyhb::L('你没有指定添加的好友','__COMMON_LANG__@Model/Friend'));
+			$this->setErrorMessage(Dyhb::L('你没有指定添加的好友','__COMMON_LANG__@Common'));
 			return false;
 		}
 		
 		$oTryUser=UserModel::F('user_id=?',$nUserId)->getOne();
 		if(empty($oTryUser['user_id'])){
-			$this->setErrorMessage(Dyhb::L('你添加的好友的好友不存在','__COMMON_LANG__@Model/Friend'));
+			$this->setErrorMessage(Dyhb::L('你添加的好友的好友不存在','__COMMON_LANG__@Common'));
 			return false;
 		}
 		
 		$oTryFriendModel=FriendModel::F('user_id=? AND friend_friendid=? AND friend_status=1',$nLoginUserId,$nUserId)->query();
 		if(!empty($oTryFriendModel['user_id'])){
-			$this->setErrorMessage(Dyhb::L('此用户已经在你的好友列表中','__COMMON_LANG__@Model/Friend'));
+			$this->setErrorMessage(Dyhb::L('此用户已经在你的好友列表中','__COMMON_LANG__@Common'));
 			return false;
 		}
 		
 		if($nUserId==$nLoginUserId){
-			$this->setErrorMessage(Dyhb::L('你不能添加自己为好友','__COMMON_LANG__@Model/Friend'));
+			$this->setErrorMessage(Dyhb::L('你不能添加自己为好友','__COMMON_LANG__@Common'));
 			return false;
 		}
 		
@@ -97,7 +97,7 @@ class FriendModel extends CommonModel{
 	
 	public function deleteFriend($nFriendId,$nLoginUserId,$nFan=0){/* $nFan=1 表示解除粉丝 */
 		if(empty($nFriendId)){
-			$this->setErrorMessage(Dyhb::L('你没有指定删除的好友','__COMMON_LANG__@Model/Friend'));
+			$this->setErrorMessage(Dyhb::L('你没有指定删除的好友','__COMMON_LANG__@Common'));
 			return false;
 		}
 
@@ -126,12 +126,12 @@ class FriendModel extends CommonModel{
 	
 	public function editFriendComment($nFriendId,$nLoginUserId,$sComment,$nFan=0){
 		if(empty($nFriendId)){
-			$this->setErrorMessage(Dyhb::L('你没有指定好友ID','__COMMON_LANG__@Model/Friend'));
+			$this->setErrorMessage(Dyhb::L('你没有指定好友ID','__COMMON_LANG__@Common'));
 			return false;
 		}
 		
 		if(strlen($sComment)>255){
-			$this->setErrorMessage(Dyhb::L('好友注释的字符数最多为255','__COMMON_LANG__@Model/Friend'));
+			$this->setErrorMessage(Dyhb::L('好友注释的字符数最多为255','__COMMON_LANG__@Common'));
 			return false;
 		}
 

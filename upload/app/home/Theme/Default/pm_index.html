@@ -2,13 +2,13 @@
 
 <!--{script}-->
 function deleteMyPm(id){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('home://pm/del_my_one_pm?id='+id),'','',completeDelete);
 	});
 }
 
 function deletePm(id,userid){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('home://pm/del_one_pm?id='+id+'&uid='+userid),'','',completeDelete);
 	});
 }
@@ -20,7 +20,7 @@ function completeDelete(data,status){
 }
 
 function deletePms(){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		$WF('pmform').submit();
 	});
 
@@ -34,7 +34,7 @@ function readPms(){
 }
 
 function deleteMyPms(){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		$WF('pmform').submit();
 	});
 
@@ -42,7 +42,7 @@ function deleteMyPms(){
 }
 
 function deleteSystemPms(){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSubmit('pmform','<!--{:Dyhb::U('home://pm/delete_systempm?ajax=1')}-->','',function(data,status){ 
 			if(status==1){
 				setTimeout("window.location.reload();",1000);
@@ -55,7 +55,7 @@ function deleteSystemPms(){
 <!--{/script}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Pm'>-->短消息<!--</lang>--></li>
 		</ul>
 
@@ -71,10 +71,10 @@ function deleteSystemPms(){
 						<div style="margin: 5px 50px 0px 0px;">
 							<span class="right">
 								<label class="checkbox">
-									<input type="checkbox" id="chkall" name="chkall" onclick="checkAll('checkList')"> <!--<lang package='__COMMON_LANG__@Template/Common'>-->全选<!--</lang>-->
+									<input type="checkbox" id="chkall" name="chkall" onclick="checkAll('checkList')"> <!--<lang package='__COMMON_LANG__@Common'>-->全选<!--</lang>-->
 								</label>
 								<span class="pipe">|</span>
-								<span class="label label-warning"><a href="javascript:void(0);" onclick="deletePms();return false;"><!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>--></a></span>
+								<span class="label label-warning"><a href="javascript:void(0);" onclick="deletePms();return false;"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></span>
 							</span>
 							
 							<!--{$sPageNavbar}-->
@@ -85,12 +85,12 @@ function deleteSystemPms(){
 						<div style="margin: 5px 50px 0px 0px;">
 							<span class="right">
 								<label class="checkbox">
-									<input type="checkbox" id="chkall" name="chkall" onclick="checkAll('checkList')"> <!--<lang package='__COMMON_LANG__@Template/Common'>-->全选<!--</lang>-->
+									<input type="checkbox" id="chkall" name="chkall" onclick="checkAll('checkList')"> <!--<lang package='__COMMON_LANG__@Common'>-->全选<!--</lang>-->
 								</label>
 								<span class="pipe">|</span>
 								<span class="label label-success"><a href="javascript:void(0);" onclick="readPms();return false;"><!--<lang package='Template/Pm'>-->标为已读<!--</lang>--></a></span>
 								<span class="pipe">|</span>
-								<span class="label label-warning"><a href="javascript:void(0);" onclick="deleteSystemPms();return false;"><!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>--></a></span>
+								<span class="label label-warning"><a href="javascript:void(0);" onclick="deleteSystemPms();return false;"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></span>
 							</span>
 						</div>
 						<!--{/if}-->
@@ -99,10 +99,10 @@ function deleteSystemPms(){
 						<div style="margin: 5px 50px 0px 0px;">
 							<span class="right">
 								<label class="checkbox">
-									<input type="checkbox" id="chkall" name="chkall" onclick="checkAll('checkList')"> <!--<lang package='__COMMON_LANG__@Template/Common'>-->全选<!--</lang>-->
+									<input type="checkbox" id="chkall" name="chkall" onclick="checkAll('checkList')"> <!--<lang package='__COMMON_LANG__@Common'>-->全选<!--</lang>-->
 								</label>
 								<span class="pipe">|</span>
-								<span class="label label-warning"><a href="javascript:void(0);" onclick="deleteMyPms();return false;"><!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>--></a></span>
+								<span class="label label-warning"><a href="javascript:void(0);" onclick="deleteMyPms();return false;"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></span>
 							</span>
 						</div>
 						<!--{/if}-->
@@ -148,7 +148,7 @@ function deleteSystemPms(){
 											<span class="pipe">|</span><a href="<!--{:Dyhb::U('home://pm/pmnew?pmid='.$oPm->pm_id.'&uid='.$oPm->pm_msgfromid)}-->"><!--<lang package='Template/Pm'>-->回复<!--</lang>--></a><!--{/if}-->
 										</p>
 									</td>
-									<td><!--{if $sType!='my'}--><p><a href="javascript:void(0);" id="pmd_<!--{$oPm:pm_id}-->" onclick="deletePm('<!--{$oPm['pm_id']}-->','<!--{$oPm['pm_msgfromid']}-->');return false;" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>--></a></p><!--{d*else}--><p><a href="javascript:void(0);" id="pmd_<!--{$oPm:pm_id}-->" onclick="deleteMyPm('<!--{$oPm['pm_id']}-->');return false;" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Common'>-->删除<!--</lang>--></a></p>
+									<td><!--{if $sType!='my'}--><p><a href="javascript:void(0);" id="pmd_<!--{$oPm:pm_id}-->" onclick="deletePm('<!--{$oPm['pm_id']}-->','<!--{$oPm['pm_msgfromid']}-->');return false;" title="<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></p><!--{d*else}--><p><a href="javascript:void(0);" id="pmd_<!--{$oPm:pm_id}-->" onclick="deleteMyPm('<!--{$oPm['pm_id']}-->');return false;" title="<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></p>
 										<!--{/if}-->
 										<p><input name="pmid[]" type="checkbox" value="<!--{$oPm:pm_id}-->" /></p>
 									</td>

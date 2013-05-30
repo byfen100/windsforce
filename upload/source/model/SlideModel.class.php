@@ -11,16 +11,16 @@ class SlideModel extends CommonModel{
 			'table_name'=>'slide',
 			'check'=>array(
 				'slide_title'=>array(
-					array('require',Dyhb::L('幻灯片标题不能为空','__COMMON_LANG__@Model/Slide')),
-					array('max_length',50,Dyhb::L('幻灯片标题最大长度为50个字符','__COMMON_LANG__@Model/Slide')),
+					array('require',Dyhb::L('幻灯片标题不能为空','__COMMON_LANG__@Common')),
+					array('max_length',50,Dyhb::L('幻灯片标题最大长度为50个字符','__COMMON_LANG__@Common')),
 				),
 				'slide_img'=>array(
-					array('require',Dyhb::L('幻灯片图片不能为空','__COMMON_LANG__@Model/Slide')),
-					array('max_length',325,Dyhb::L('幻灯片图片最大长度为325个字符','__COMMON_LANG__@Model/Slide')),
+					array('require',Dyhb::L('幻灯片图片不能为空','__COMMON_LANG__@Common')),
+					array('max_length',325,Dyhb::L('幻灯片图片最大长度为325个字符','__COMMON_LANG__@Common')),
 				),
 				'slide_url'=>array(
-					array('require',Dyhb::L('幻灯片URL不能为空','__COMMON_LANG__@Model/Slide')),
-					array('max_length',325,Dyhb::L('幻灯片URL最大长度为325个字符','__COMMON_LANG__@Model/Slide')),
+					array('require',Dyhb::L('幻灯片URL不能为空','__COMMON_LANG__@Common')),
+					array('max_length',325,Dyhb::L('幻灯片URL最大长度为325个字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);

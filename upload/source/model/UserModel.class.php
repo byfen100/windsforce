@@ -29,21 +29,21 @@ class UserModel extends CommonModel{
 			'attr_protected'=>'user_id',
 			'check'=>array(
 				'user_email'=>array(
-					array('require',Dyhb::L('E-mail不能为空','__COMMON_LANG__@Model/User')),
-					array('email',Dyhb::L('E-mail格式错误','__COMMON_LANG__@Model/User')),
-					array('max_length',150,Dyhb::L('E-mail不能超过150个字符','__COMMON_LANG__@Model/User'))
+					array('require',Dyhb::L('E-mail不能为空','__COMMON_LANG__@Common')),
+					array('email',Dyhb::L('E-mail格式错误','__COMMON_LANG__@Common')),
+					array('max_length',150,Dyhb::L('E-mail不能超过150个字符','__COMMON_LANG__@Common'))
 				),
 				'user_name'=>array(
-					array('require',Dyhb::L('用户名不能为空','__COMMON_LANG__@Model/User')),
+					array('require',Dyhb::L('用户名不能为空','__COMMON_LANG__@Common')),
 				),
 				'user_password'=>array(
-					array('require',Dyhb::L('用户密码不能为空','__COMMON_LANG__@Model/User')),
-					array('min_length',6,Dyhb::L('用户密码最小长度为6个字符','__COMMON_LANG__@Model/User')),
-					array('max_length',32,Dyhb::L('用户密码最大长度为32个字符','__COMMON_LANG__@Model/User')),
+					array('require',Dyhb::L('用户密码不能为空','__COMMON_LANG__@Common')),
+					array('min_length',6,Dyhb::L('用户密码最小长度为6个字符','__COMMON_LANG__@Common')),
+					array('max_length',32,Dyhb::L('用户密码最大长度为32个字符','__COMMON_LANG__@Common')),
 				),
 				'user_sign'=>array(
 					array('empty'),
-					array('max_length',1000,Dyhb::L('用户签名最大长度为1000个字符','__COMMON_LANG__@Model/User')),
+					array('max_length',1000,Dyhb::L('用户签名最大长度为1000个字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);
@@ -100,15 +100,15 @@ class UserModel extends CommonModel{
 		}
 
 		if($bIgnoreOldPassword===false && $sOldPassword==''){
-			$this->setErrorMessage(Dyhb::L('旧密码不能为空','__COMMON_LANG__@Model/User'));
+			$this->setErrorMessage(Dyhb::L('旧密码不能为空','__COMMON_LANG__@Common'));
 		}
 
 		if($sPassword==''){
-			$this->setErrorMessage(Dyhb::L('新密码不能为空','__COMMON_LANG__@Model/User'));
+			$this->setErrorMessage(Dyhb::L('新密码不能为空','__COMMON_LANG__@Common'));
 		}
 
 		if($sPassword!=$sNewPassword){
-			$this->setErrorMessage(Dyhb::L('两次输入的密码不一致','__COMMON_LANG__@Model/User'));
+			$this->setErrorMessage(Dyhb::L('两次输入的密码不一致','__COMMON_LANG__@Common'));
 		}
 
 		UserModel::M()->changePassword($arrUserData['user_name'],$sPassword,$sOldPassword,$bIgnoreOldPassword);
@@ -211,7 +211,7 @@ class UserModel extends CommonModel{
 		$oUser=UserModel::F('user_id=?',$nUserId)->query();
 
 		if(empty($oUser['user_id'])){
-			return Dyhb::L('佚名','__COMMON_LANG__@Model/User');
+			return Dyhb::L('佚名','__COMMON_LANG__@Common');
 		}
 		
 		return $oUser[$sField];

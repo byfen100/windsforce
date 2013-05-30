@@ -53,7 +53,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 <!--{/if}-->
 
 			<ul class="breadcrumb">
-				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><!--<lang package='Template/Group'>-->小组首页<!--</lang>--></li>
@@ -314,22 +314,22 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 											</div>
 
 											<!--{if $nDisplaySeccode==1}-->
-											<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label></p>
+											<p style="margin:10px 0px 5px 0;"><label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label></p>
 											<p><input class="input-small" name="seccode" id="seccode" type="text" value=""></p>
 											<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
 											<!--{/if}-->
 
 											<div id="grouptopic-media-box" class="common-media-box">
-												<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a>
-												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-												<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-												<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+												<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a>
+												<a href="javascript:void(0);" onclick="globalAddattachment('insertGrouptopicattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+												<a href="javascript:void(0);" onclick="addVideo('insertGrouptopicvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+												<a href="javascript:void(0);" onclick="addMusic('insertGrouptopicmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 											</div>
 											<!--{d*else}-->
 											<div class="commoncommentform_needloginbox">
 												<div class="commoncommentform_needloginboxinner">
-													<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a> | 
-													<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->用户注册<!--</lang>--></a>
+													<a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></a> | 
+													<a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户注册<!--</lang>--></a>
 												</div>
 											</div>
 											<!--{/if}-->
@@ -341,7 +341,7 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 												<input type="hidden" name="grouptopic_iscomment" value="1">
 												<input id="submit_button" onclick="grouptopicSubmit();" type="button" class="btn btn-middle btn-success" style="margin-left:0px;" value="<!--<lang package='Template/Group'>-->发布帖子<!--</lang>-->" <!--{if $GLOBALS['___login___']===false}-->disabled="true"<!--{/if}-->>
 												<!--{if $GLOBALS['___login___']!==false}-->
-												&nbsp;<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
+												&nbsp;<a href="javascript:void(0);" onclick="showMedia();"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
 												<!--{/if}-->
 												<span class="pipe">|</span>
 												<a href="<!--{:Dyhb::U('group://grouptopic/add?gid='.$oGroup['group_id'])}-->" ><!--<lang package='Template/Group'>-->进入高级模式<!--</lang>-->&gt;&gt;</a>
@@ -373,13 +373,13 @@ var nGroupid=parseInt('<!--{$oGroup['group_id']}-->'),nGrouptopicid='';
 										<div class="item active" style="height:340px;">
 											<img src="<!--{:__APPPUB__}-->/Images/groupshow/1.jpg" style="height:340px;" width="100%">
 											<div class="carousel-caption">
-												<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->注册<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->注册<!--</lang>--></a></h4>
+												<h4><a href="<!--{:Core_Extend::windsforceReferer(true)}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->注册<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Common'>-->注册<!--</lang>--></a></h4>
 											</div>
 										</div>
 										<div class="item" style="height:340px;">
 											<img src="<!--{:__APPPUB__}-->/Images/groupshow/2.jpg" style="height:340px;" width="100%">
 											<div class="carousel-caption">
-												<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->登录<!--</lang>--></a></h4>
+												<h4><a onclick="ajaxLogin('<!--{:__SELF__}-->');" href="javascript:void(0);" title="<!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Common'>-->登录<!--</lang>--></a></h4>
 											</div>
 										</div>
 										<!--{/if}-->

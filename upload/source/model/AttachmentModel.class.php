@@ -21,8 +21,8 @@ class AttachmentModel extends CommonModel{
 			),
 			'check'=>array(
 				'attachment_name'=>array(
-					array('require',Dyhb::L('附件名不能为空','__COMMON_LANG__@Model/Attachment')),
-					array('max_length',100,Dyhb::L('附件名最大长度为100个字符','__COMMON_LANG__@Model/Attachment')),
+					array('require',Dyhb::L('附件名不能为空','__COMMON_LANG__@Common')),
+					array('max_length',100,Dyhb::L('附件名最大长度为100个字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);

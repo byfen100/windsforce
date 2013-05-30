@@ -19,12 +19,12 @@ class AdminctrlmenuModel extends CommonModel{
 			),
 			'check'=>array(
 				'adminctrlmenu_title'=>array(
-					array('require',Dyhb::L('快捷导航标题不能为空','__COMMON_LANG__@Model/Adminctrlmenu')),
-					array('max_length',50,Dyhb::L('快捷导航标题最大长度为50个字符','__COMMON_LANG__@Model/Adminctrlmenu')),
+					array('require',Dyhb::L('快捷导航标题不能为空','__COMMON_LANG__@Common')),
+					array('max_length',50,Dyhb::L('快捷导航标题最大长度为50个字符','__COMMON_LANG__@Common')),
 				),
 				'adminctrlmenu_url'=>array(
-					array('require',Dyhb::L('快捷导航URL地址不能为空','__COMMON_LANG__@Model/Adminctrlmenu')),
-					array('max_length',255,Dyhb::L('快捷导航URL地址最大长度为255个字符','__COMMON_LANG__@Model/Adminctrlmenu')),
+					array('require',Dyhb::L('快捷导航URL地址不能为空','__COMMON_LANG__@Common')),
+					array('max_length',255,Dyhb::L('快捷导航URL地址最大长度为255个字符','__COMMON_LANG__@Common')),
 				),
 			),
 		);

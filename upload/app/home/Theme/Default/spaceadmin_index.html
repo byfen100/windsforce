@@ -6,7 +6,7 @@ function update(){
 	$("#submit_button").val('update...');
 	Dyhb.AjaxSubmit('informationUpd','<!--{:Dyhb::U('home://spaceadmin/change_info')}-->','',function(data,status){ 
 		$("#submit_button").attr("disabled",false);
-		$("#submit_button").val("<!--<lang package='__COMMON_LANG__@Template/Common'>-->更新<!--</lang>-->");
+		$("#submit_button").val("<!--<lang package='__COMMON_LANG__@Common'>-->更新<!--</lang>-->");
 	});
 }
 
@@ -34,7 +34,7 @@ function unstealthOnline(nUserid){
 <!--{/script}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
 			<li><!--<lang package='Template/Spaceadmin'>-->基本信息<!--</lang>--></li>
 		</ul>
@@ -302,7 +302,7 @@ function unstealthOnline(nUserid){
 						<!--{/if}-->
 						<!--{if $nDisplaySeccode==1}-->
 						<div class="control-group">
-							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--></label>
+							<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--></label>
 							<div class="controls">
 								<input class="input-small" name="seccode" id="seccode" type="text" value="">
 								<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
@@ -312,8 +312,8 @@ function unstealthOnline(nUserid){
 						<div class="form-actions">
 							<input type="hidden" name="ajax" value="1">
 							<input type="hidden" name="user_id" value="<!--{$oUserInfo:user_id}-->">
-							<button id="submit_button" onclick="update()" type="button" class="btn btn-success"><!--<lang package='__COMMON_LANG__@Template/Common'>-->更新<!--</lang>--></button>&nbsp;
-							<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+							<button id="submit_button" onclick="update()" type="button" class="btn btn-success"><!--<lang package='__COMMON_LANG__@Common'>-->更新<!--</lang>--></button>&nbsp;
+							<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Common'>-->取消<!--</lang>--></a>
 						</div>
 					</fieldset>
 				</form>

@@ -11,27 +11,27 @@ function commentCheckForm(comment_content,customContent){
 	}
 
 	if(comment_name==""){
-		windsforceAlert(D.L('评论名字不能为空','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论名字不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_name.length>25){
-		windsforceAlert(D.L('评论名字长度只能小于等于25个字符串','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论名字长度只能小于等于25个字符串','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_email!='' && !checkEmail(comment_email)){
-		windsforceAlert(D.L('评论E-mail 格式错误','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论E-mail 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_url!='' && !checkUrl(comment_url)){
-		windsforceAlert(D.L('评论Url 格式错误','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论Url 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
 	if(comment_content == ""){
-		windsforceAlert(D.L('评论内容不能为空','__COMMON_LANG__@Js/Commoncomment_Js'),D.L('评论发生错误','__COMMON_LANG__@Js/Commoncomment_Js'),3);
+		windsforceAlert(D.L('评论内容不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
 		return false;
 	}
 
@@ -45,14 +45,14 @@ function commentSubmit(){
 		return false;
 	}
 
-	$("#comment-submit").val(D.L('正在提交评论','__COMMON_LANG__@Js/Commoncomment_Js'));
+	$("#comment-submit").val(D.L('正在提交评论','__COMMON_LANG__@Common'));
 	$("#comment-submit").attr("disabled", "disabled");
 	Dyhb.AjaxSubmit('homefresh-commentform',D.U('home://ucenter/add_homefreshcomment'),'',commentComplete);
 }
 
 function commentComplete(data,status){
 	$("#comment-submit").attr("disabled", false);
-	$("#comment-submit").val(D.L('提交评论','__COMMON_LANG__@Js/Commoncomment_Js'));
+	$("#comment-submit").val(D.L('提交评论','__COMMON_LANG__@Common'));
 	if(status==1){
 		setTimeout(function(){window.location.href=data.jumpurl;},1000);
 	}

@@ -16,12 +16,12 @@ class RoleModel extends CommonModel{
 			'attr_protected'=>'role_id',
 			'check'=>array(
 				'role_name'=>array(
-					array('require',Dyhb::L('角色名不能为空','__COMMON_LANG__@Model/Role')),
-					array('max_length',50,Dyhb::L('角色名最大长度为50个字符','__COMMON_LANG__@Model/Role')),
-					array('uniqueRoleName',Dyhb::L('角色名已经存在','__COMMON_LANG__@Model/Role'),'condition'=>'must','extend'=>'callback'),
+					array('require',Dyhb::L('角色名不能为空','__COMMON_LANG__@Common')),
+					array('max_length',50,Dyhb::L('角色名最大长度为50个字符','__COMMON_LANG__@Common')),
+					array('uniqueRoleName',Dyhb::L('角色名已经存在','__COMMON_LANG__@Common'),'condition'=>'must','extend'=>'callback'),
 				),
 				'role_parentid'=>array(
-					array('uniqueRoleParentId',Dyhb::L('上级组不能为自己','__COMMON_LANG__@Model/Role'),'condition'=>'must','extend'=>'callback'),
+					array('uniqueRoleParentId',Dyhb::L('上级组不能为自己','__COMMON_LANG__@Common'),'condition'=>'must','extend'=>'callback'),
 				),
 			),
 		);
@@ -256,13 +256,13 @@ class RoleModel extends CommonModel{
 
 	public function getParentRole($nParentRoleId){
 		if($nParentRoleId==0){
-			return Dyhb::L('顶级分类','__COMMON_LANG__@Model/Role');
+			return Dyhb::L('顶级分类','__COMMON_LANG__@Common');
 		}else{
 			$oRole=self::F('role_id=?',$nParentRoleId)->query();
 			if(!empty($oRole->role_id)){
 				return $oRole->role_name;
 			}else{
-				return Dyhb::L('父级分类已经损坏，你可以编辑分类进行修复','__COMMON_LANG__@Model/Role');
+				return Dyhb::L('父级分类已经损坏，你可以编辑分类进行修复','__COMMON_LANG__@Common');
 			}
 		}
 	}

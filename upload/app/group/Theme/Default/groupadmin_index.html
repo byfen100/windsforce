@@ -47,7 +47,7 @@ function insertGroupdescriptionvideo(sContent){
 <!--{/script}-->
 
 			<ul class="breadcrumb">
-				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><!--<lang package='Template/Groupadmin'>-->小组设置<!--</lang>--></li>
@@ -101,15 +101,15 @@ function insertGroupdescriptionvideo(sContent){
 								<label class="control-label" for="group_description"><!--<lang package='Template/Groupadmin'>-->小组简介<!--</lang>--></label>
 								<div class="controls">
 									<div id="grouptopiccommentcontent-media-box" class="common-media-box">
-										<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->表情<!--</lang>--></a> 
-										<a href="javascript:void(0);" onclick="globalAddattachment('insertGroupdescriptionattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Template/Common'>-->媒体<!--</lang>--></a>
-										<a href="javascript:void(0);" onclick="addVideo('insertGroupdescriptionvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Template/Common'>-->视频<!--</lang>--></a>
-										<a href="javascript:void(0);" onclick="addMusic('insertGroupdescriptionmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Template/Common'>-->音乐<!--</lang>--></a>
+										<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a> 
+										<a href="javascript:void(0);" onclick="globalAddattachment('insertGroupdescriptionattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+										<a href="javascript:void(0);" onclick="addVideo('insertGroupdescriptionvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
+										<a href="javascript:void(0);" onclick="addMusic('insertGroupdescriptionmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 									</div>
 									<p id="emotion_parentcontainer">
 										<textarea name="group_description" id="group_description" style="width:700px;height:300px;visibility:hidden;"><!--{$oGroup:group_description|htmlspecialchars}--></textarea>
 									</p>
-									<p class="help-block"><!--<lang package='Template/Groupadmin'>-->详细的小组简介可以让人更好地了解小组的功能<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Template/Commoncomment'>-->查看内容支持的UBB代码<!--</lang>--></a></p>
+									<p class="help-block"><!--<lang package='Template/Groupadmin'>-->详细的小组简介可以让人更好地了解小组的功能<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a></p>
 								</div>
 							</div>
 							<div class="control-group">
@@ -155,10 +155,10 @@ function insertGroupdescriptionvideo(sContent){
 								<label class="control-label" for="group_audittopic"><!--<lang package='Template/Groupadmin'>-->发布帖子是否审核<!--</lang>--></label>
 								<div class="controls">
 									<label class="radio">
-										<input <!--{if $oGroup['group_audittopic']==1}-->checked="select"<!--{/if}--> name="group_audittopic" type="radio" value="1" /><!--<lang package='__COMMON_LANG__@Template/Common'>-->是<!--</lang>-->
+										<input <!--{if $oGroup['group_audittopic']==1}-->checked="select"<!--{/if}--> name="group_audittopic" type="radio" value="1" /><!--<lang package='__COMMON_LANG__@Common'>-->是<!--</lang>-->
 									</label>
 									<label class="radio">
-										<input <!--{if $oGroup['group_audittopic']==0}-->checked="select"<!--{/if}--> name="group_audittopic" type="radio" value="0" /><!--<lang package='__COMMON_LANG__@Template/Common'>-->否<!--</lang>-->
+										<input <!--{if $oGroup['group_audittopic']==0}-->checked="select"<!--{/if}--> name="group_audittopic" type="radio" value="0" /><!--<lang package='__COMMON_LANG__@Common'>-->否<!--</lang>-->
 									</label>
 									<p class="help-block"><!--<lang package='Template/Groupadmin'>-->开启浏览权限后，只有组员才能够访问<!--</lang>--></p>
 								</div>
@@ -167,10 +167,10 @@ function insertGroupdescriptionvideo(sContent){
 								<label class="control-label" for="group_auditcomment"><!--<lang package='Template/Groupadmin'>-->发布回帖是否审核<!--</lang>--></label>
 								<div class="controls">
 									<label class="radio">
-										<input <!--{if $oGroup['group_auditcomment']==1}-->checked="select"<!--{/if}--> name="group_auditcomment" type="radio" value="1" /><!--<lang package='__COMMON_LANG__@Template/Common'>-->是<!--</lang>-->
+										<input <!--{if $oGroup['group_auditcomment']==1}-->checked="select"<!--{/if}--> name="group_auditcomment" type="radio" value="1" /><!--<lang package='__COMMON_LANG__@Common'>-->是<!--</lang>-->
 									</label>
 									<label class="radio">
-										<input <!--{if $oGroup['group_auditcomment']==0}-->checked="select"<!--{/if}--> name="group_auditcomment" type="radio" value="0" /><!--<lang package='__COMMON_LANG__@Template/Common'>-->否<!--</lang>-->
+										<input <!--{if $oGroup['group_auditcomment']==0}-->checked="select"<!--{/if}--> name="group_auditcomment" type="radio" value="0" /><!--<lang package='__COMMON_LANG__@Common'>-->否<!--</lang>-->
 									</label>
 									<p class="help-block"><!--<lang package='Template/Groupadmin'>-->回帖审核的话，只有通过管理人员审核后才能够看到回帖<!--</lang>--></p>
 								</div>

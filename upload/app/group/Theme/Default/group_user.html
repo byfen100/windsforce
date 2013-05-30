@@ -3,7 +3,7 @@
 <!--{if Groupadmin_Extend+checkAdminGroupRbac($oGroup['group_id'])}-->
 <!--{script}-->
 function deleteGroupuser(nGroupid,nUserid){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('group://groupadmin/user_delete'),'gid='+nGroupid+'&uid='+nUserid+'&ajax=1','',completeDelete);
 	});
 }
@@ -17,7 +17,7 @@ function completeDelete(data,status){
 <!--{/if}-->
 
 			<ul class="breadcrumb">
-				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+				<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><a href="<!--{:Group_Extend::getGroupurl($oGroup)}-->"><!--{$oGroup:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 				<li><!--<lang package='Template/Group'>-->小组成员<!--</lang>--></li>

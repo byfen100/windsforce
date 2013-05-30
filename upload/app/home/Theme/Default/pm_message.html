@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function truncatePms(id,userid,date){
-	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Admin/Common_Js'),function(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		window.location.href=D.U('home://pm/truncatepm?id='+id+'&uid='+userid+'&date='+date);
 	});
 
@@ -30,7 +30,7 @@ function complete(data,status){
 <!--{/script}-->
 
 		<ul class="breadcrumb">
-			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template/Pm'>-->短消息<!--</lang>--></li>
 		</ul>
 
@@ -145,7 +145,7 @@ function complete(data,status){
 								</div>
 								<!--{if $nDisplaySeccode==1}-->
 								<div class="control-group">
-									<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Template/Common'>-->验证码<!--</lang>--><em class="red">*</em></label>
+									<label class="control-label" for="seccode"><!--<lang package='__COMMON_LANG__@Common'>-->验证码<!--</lang>--><em class="red">*</em></label>
 									<div class="controls">
 										<input class="input-small" name="seccode" id="seccode" type="text" value="">
 										<p class="help-block"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('home://public/seccode')}-->" /></span></p>
@@ -156,7 +156,7 @@ function complete(data,status){
 									<input type="hidden" name="ajax" value="1">
 									<input type="hidden" name="messageto" id="messageto" value="<!--{:UserModel::getUsernameById($nUserId)}-->">
 									<button type="button" onclick="pmSend()" class="btn btn-success" id="sendpm_submit"><!--<lang package='Template/Pm'>-->发送<!--</lang>--></button>&nbsp;
-									<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Template/Common'>-->取消<!--</lang>--></a>
+									<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Common'>-->取消<!--</lang>--></a>
 								</div>
 							</fieldset>
 						</form>
