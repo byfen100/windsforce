@@ -14,7 +14,7 @@ class ThemeController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -26,7 +26,7 @@ class ThemeController extends InitController{
 			
 		$sThemeDirname=WINDSFORCE_PATH.'/ucontent/theme/'.$sThemeDirname;
 		if(!is_dir($sThemeDirname)){
-			$this->E(Dyhb::L('模板目录 %s 不存在','Controller/Theme',null,$sThemeDirname));
+			$this->E(Dyhb::L('模板目录 %s 不存在','Controller',null,$sThemeDirname));
 		}
 	}
 	
@@ -40,7 +40,7 @@ class ThemeController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_theme($nId)){
-				$this->E(Dyhb::L('系统模板无法删除','Controller/Theme'));
+				$this->E(Dyhb::L('系统模板无法删除','Controller'));
 			}
 		}
 	}
@@ -49,7 +49,7 @@ class ThemeController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_theme($nId)){
-			$this->E(Dyhb::L('系统模板无法编辑','Controller/Theme'));
+			$this->E(Dyhb::L('系统模板无法编辑','Controller'));
 		}
 	}
 
@@ -57,7 +57,7 @@ class ThemeController extends InitController{
 		$nInputAjaxId=G::getGpc('input_ajax_id');
 
 		if($this->is_system_theme($nInputAjaxId)){
-			$this->E(Dyhb::L('系统模板无法编辑','Controller/Theme'));
+			$this->E(Dyhb::L('系统模板无法编辑','Controller'));
 		}
 
 		$sInputAjaxField=G::getGpc('input_ajax_field');

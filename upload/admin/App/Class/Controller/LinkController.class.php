@@ -10,7 +10,7 @@ class LinkController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -24,7 +24,7 @@ class LinkController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_link($nId)){
-				$this->E(Dyhb::L('系统链接无法删除','Controller/Link'));
+				$this->E(Dyhb::L('系统链接无法删除','Controller'));
 			}
 		}
 	}
@@ -33,7 +33,7 @@ class LinkController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_link($nId)){
-			$this->E(Dyhb::L('系统链接无法编辑','Controller/Link'));
+			$this->E(Dyhb::L('系统链接无法编辑','Controller'));
 		}
 	}
 

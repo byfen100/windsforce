@@ -10,10 +10,10 @@ class UrloptionController extends OptionController{
 		$arrOptionData=$GLOBALS['_option_'];
 		
 		$arrUrlModels=array(
-			array('name'=>Dyhb::L('普通模式','Controller/Urloption'),'value'=>0),
-			array('name'=>Dyhb::L('PATHINFO模式','Controller/Urloption'),'value'=>1),
-			array('name'=>Dyhb::L('REWRITE模式','Controller/Urloption'),'value'=>2),
-			array('name'=>Dyhb::L('兼容模式','Controller/Urloption'),'value'=>3),
+			array('name'=>Dyhb::L('普通模式','Controller'),'value'=>0),
+			array('name'=>Dyhb::L('PATHINFO模式','Controller'),'value'=>1),
+			array('name'=>Dyhb::L('REWRITE模式','Controller'),'value'=>2),
+			array('name'=>Dyhb::L('兼容模式','Controller'),'value'=>3),
 		);
 		
 		$this->assign('arrOptions',$arrOptionData);
@@ -47,7 +47,7 @@ class UrloptionController extends OptionController{
 		$sCachefile=WINDSFORCE_PATH.'/data/~runtime/cache_/data/~@nav.php';
 		$bIsFilecache && (is_file($sCachefile) && @unlink($sCachefile));
 
-		$this->S(Dyhb::L('修改URL模式成功','Controller/Urloption'));
+		$this->S(Dyhb::L('修改URL模式成功','Controller'));
 	}
 
 }

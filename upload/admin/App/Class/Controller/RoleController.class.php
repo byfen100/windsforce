@@ -10,7 +10,7 @@ class RoleController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -39,7 +39,7 @@ class RoleController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_role($nId)){
-			$this->E(Dyhb::L('系统角色无法编辑','Controller/Role'));
+			$this->E(Dyhb::L('系统角色无法编辑','Controller'));
 		}
 
 		$this->getRolegroup();
@@ -55,12 +55,12 @@ class RoleController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_role($nId)){
-			$this->E(Dyhb::L('系统角色无法禁用','Controller/Role'));
+			$this->E(Dyhb::L('系统角色无法禁用','Controller'));
 		}
 	}
 	
 	public function getRolegroup(){
-		$arrRolegroup=array_merge(array(array('rolegroup_id'=>0,'rolegroup_title'=>Dyhb::L('未分组','Controller/Role'))),
+		$arrRolegroup=array_merge(array(array('rolegroup_id'=>0,'rolegroup_title'=>Dyhb::L('未分组','Controller'))),
 				RolegroupModel::F()->setColumns('rolegroup_id,rolegroup_title')->asArray()->all()->query()
 		);
 		$this->assign('arrRolegroup',$arrRolegroup);
@@ -82,13 +82,13 @@ class RoleController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_role($nId)){
-				$this->E(Dyhb::L('系统角色无法删除','Controller/Role'));
+				$this->E(Dyhb::L('系统角色无法删除','Controller'));
 			}
 			
 			$nRoles=RoleModel::F('role_parentid=?',$nId)->all()->getCounts();
 			$oRole=RoleModel::F('role_id=?',$nId)->query();
 			if($nRoles>0){
-				$this->E(Dyhb::L('用户角色%s存在子分类，你无法删除','Controller/Role',null,$oRole->role_name));
+				$this->E(Dyhb::L('用户角色%s存在子分类，你无法删除','Controller',null,$oRole->role_name));
 			}
 		}
 	}
@@ -111,7 +111,7 @@ class RoleController extends InitController{
 
 		$arrUsers=Dyhb::normalize($sUser);
 		if(empty($arrUsers)){
-			$this->E(Dyhb::L('你没有填写待授权的用户','Controller/Role'));
+			$this->E(Dyhb::L('你没有填写待授权的用户','Controller'));
 		}
 
 		// 取得待设置权限的用户
@@ -143,7 +143,7 @@ class RoleController extends InitController{
 			}
 		}
 
-		$this->S(Dyhb::L('用户授权成功','Controller/Role'));
+		$this->S(Dyhb::L('用户授权成功','Controller'));
 	}
 
 	public function select(){
@@ -163,7 +163,7 @@ class RoleController extends InitController{
 	public function bSet_app_(){
 		$nGroupId=G::getGpc('group_id');
 		if(empty($nGroupId)){
-			$this->E(Dyhb::L('你没有选择分组','Controller/Role'));
+			$this->E(Dyhb::L('你没有选择分组','Controller'));
 		}
 	}
 
@@ -175,9 +175,9 @@ class RoleController extends InitController{
 		$oRoleModel->delGroupApp($nGroupId);
 		$bResult=$oRoleModel->setGroupApps($nGroupId,$nId);
 		if($bResult===false){
-			$this->E(Dyhb::L('项目授权失败','Controller/Role'));
+			$this->E(Dyhb::L('项目授权失败','Controller'));
 		}else{
-			$this->S(Dyhb::L('项目授权成功','Controller/Role'));
+			$this->S(Dyhb::L('项目授权成功','Controller'));
 		}
 	}
 
@@ -286,11 +286,11 @@ class RoleController extends InitController{
 		$nAppId=G::getGpc('appId');
 
 		if(empty($nGroupId)){
-			$this->E(Dyhb::L('你没有选择分组','Controller/Role'));
+			$this->E(Dyhb::L('你没有选择分组','Controller'));
 		}
 
 		if(empty($nAppId)){
-			$this->E(Dyhb::L('你没有选择APP','Controller/Role'));
+			$this->E(Dyhb::L('你没有选择APP','Controller'));
 		}
 	}
 
@@ -302,9 +302,9 @@ class RoleController extends InitController{
 		RoleModel::F()->query()->delGroupModule($nGroupId,$nAppId);
 		$bResult=RoleModel::F()->query()->setGroupModules($nGroupId,$nId);
 		if($bResult===false){
-			$this->E(Dyhb::L('模块授权失败','Controller/Role'));
+			$this->E(Dyhb::L('模块授权失败','Controller'));
 		}else{
-			$this->S(Dyhb::L('模块授权成功','Controller/Role'));
+			$this->S(Dyhb::L('模块授权成功','Controller'));
 		}
 	}
 
@@ -388,11 +388,11 @@ class RoleController extends InitController{
 		$nAppId=G::getGpc('appId','P');
 
 		if(empty($nGroupId)){
-			$this->E(Dyhb::L('你没有选择分组','Controller/Role'));
+			$this->E(Dyhb::L('你没有选择分组','Controller'));
 		}
 
 		if(empty($nAppId)){
-			$this->E(Dyhb::L('你没有选择APP','Controller/Role'));
+			$this->E(Dyhb::L('你没有选择APP','Controller'));
 		}
 	}
 
@@ -404,9 +404,9 @@ class RoleController extends InitController{
 		RoleModel::F()->query()->delGroupAction($nGroupId,$nModuleId);
 		$bResult=RoleModel::F()->query()->setGroupActions($nGroupId,$nId);
 		if($bResult===false){
-			$this->E(Dyhb::L('操作授权失败','Controller/Role'));
+			$this->E(Dyhb::L('操作授权失败','Controller'));
 		}else{
-			$this->S(Dyhb::L('操作授权成功','Controller/Role'));
+			$this->S(Dyhb::L('操作授权成功','Controller'));
 		}
 	}
 
@@ -414,7 +414,7 @@ class RoleController extends InitController{
 		$nGroupId=G::getGpc('id');
 
 		if($nGroupId==4){
-			$this->E(Dyhb::L('游客用户ID为-1，无法进行授权','Controller/Role'));
+			$this->E(Dyhb::L('游客用户ID为-1，无法进行授权','Controller'));
 		}
 		
 		$arrWhere=array();
@@ -464,7 +464,7 @@ class RoleController extends InitController{
 	public function bSet_user_(){
 		$nGroupId=G::getGpc('group_id','P');
 		if(empty($nGroupId)){
-			$this->E(Dyhb::L('授权失败','Controller/Role'));
+			$this->E(Dyhb::L('授权失败','Controller'));
 		}
 	}
 
@@ -476,9 +476,9 @@ class RoleController extends InitController{
 		RoleModel::F()->query()->delGroupUser($nGroupId,$arrThispageuser);
 		$bResult=RoleModel::F()->query()->setGroupUsers($nGroupId,$arrId);
 		if($bResult===false){
-			$this->E(Dyhb::L('授权失败','Controller/Role'));
+			$this->E(Dyhb::L('授权失败','Controller'));
 		}else{
-			$this->S(Dyhb::L('授权成功','Controller/Role'));
+			$this->S(Dyhb::L('授权成功','Controller'));
 		}
 	}
 
@@ -499,14 +499,14 @@ class RoleController extends InitController{
 				// 判断角色分组是否存在
 				$oRolegroup=RolegroupModel::F('rolegroup_id=?',$nRolegroupId)->getOne();
 				if(empty($oRolegroup['rolegroup_id'])){
-					$this->E(Dyhb::L('你要移动的角色分组不存在','Controller/Role'));
+					$this->E(Dyhb::L('你要移动的角色分组不存在','Controller'));
 				}
 			}
 			
 			$arrIds=explode(',', $sId);
 			foreach($arrIds as $nId){
 				if($this->is_system_role($nId)){
-					$this->E(Dyhb::L('系统角色无法移动','Controller/Role'));
+					$this->E(Dyhb::L('系统角色无法移动','Controller'));
 				}
 
 				$oRole=RoleModel::F('role_id=?',$nId)->getOne();
@@ -518,9 +518,9 @@ class RoleController extends InitController{
 				}
 			}
 
-			$this->S(Dyhb::L('移动角色分组成功','Controller/Role'));
+			$this->S(Dyhb::L('移动角色分组成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 

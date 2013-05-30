@@ -36,7 +36,7 @@ class AttachmentcommentController extends InitController{
 	}
 
 	public function add(){
-		$this->E(Dyhb::L('后台无法添加附件评论','Controller/Attachmentcomment'));
+		$this->E(Dyhb::L('后台无法添加附件评论','Controller'));
 	}
 
 	public function AUpdateObject_($oModel){

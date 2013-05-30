@@ -6,62 +6,62 @@ function update(){
 	$("#submit_button").val( 'update...' );
 	Dyhb.AjaxSubmit('userguestbookAdd','<!--{:Dyhb::U('userguestbook/update')}-->','',function(){
 		$("#submit_button").attr("disabled", false);
-		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
+		$("#submit_button").val( '<!--<lang package='Template'>-->更新<!--</lang>-->' ); 
 	});
 }
 <!--{/script}-->
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Userguestbook'>-->编辑用户留言<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Userguestbook'>-->编辑用户留言<!--</lang>-->_<!--{$nId}-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->编辑用户留言<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->编辑用户留言<!--</lang>-->_<!--{$nId}-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Userguestbook'>-->这里可以对用户留言进行编辑<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->这里可以对用户留言进行编辑<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Userguestbook'>-->编辑用户留言<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->编辑用户留言<!--</lang>--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Dyhb::U('userguestbook/index')}-->"><!--<lang package='Template/Default/Userguestbook'>-->用户留言列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('userguestbook/index')}-->"><!--<lang package='Template'>-->用户留言列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--{:Dyhb::U('userguestbook/update')}-->" method="post" id="userguestbookAdd">
 				<div class="module_content">
 					<fieldset>
-						<label for="userguestbook_name"><!--<lang package='Template/Default/Userguestbook'>-->用户留言名字<!--</lang>--></label>
+						<label for="userguestbook_name"><!--<lang package='Template'>-->用户留言名字<!--</lang>--></label>
 						<input type="text" name="userguestbook_name" id="userguestbook_name" size="40" value="<!--{$oValue:userguestbook_name}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Userguestbook'>-->用户留言名字，最大字符为50<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->用户留言名字，最大字符为50<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="userguestbook_email"><!--<lang package='Template/Default/Userguestbook'>-->邮件地址<!--</lang>--></label>
+						<label for="userguestbook_email"><!--<lang package='Template'>-->邮件地址<!--</lang>--></label>
 						<input type="text" name="userguestbook_email" id="userguestbook_email" size="40" value="<!--{$oValue:userguestbook_email}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Userguestbook'>-->用户留言邮件地址，最大字符为300<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->用户留言邮件地址，最大字符为300<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="userguestbook_url"><!--<lang package='Template/Default/Userguestbook'>-->作者URL<!--</lang>--></label>
+						<label for="userguestbook_url"><!--<lang package='Template'>-->作者URL<!--</lang>--></label>
 						<input type="text" name="userguestbook_url" id="userguestbook_url" size="40" value="<!--{$oValue:userguestbook_url}-->"/>
-						<div class="description"><!--<lang package='Template/Default/Userguestbook'>-->用户留言作者URL，最大字符为300<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->用户留言作者URL，最大字符为300<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="userguestbook_content"><!--<lang package='Template/Default/Userguestbook'>-->用户留言内容<!--</lang>--></label>
+						<label for="userguestbook_content"><!--<lang package='Template'>-->用户留言内容<!--</lang>--></label>
 						<p style="padding-left:10px;"><textarea name="userguestbook_content" id="userguestbook_content" style="width:700px;height:200px;"><!--{$oValue:userguestbook_content|htmlspecialchars}--></textarea></p>
-						<div class="description"><!--<lang package='Template/Default/Userguestbook'>-->用户留言内容信息<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
+						<div class="description"><!--<lang package='Template'>-->用户留言内容信息<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=misc&a=ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a></div>
 					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">
 						<input type="hidden" name="ajax" value="1">
 						<input type="hidden" name="id" id="id" value="<!--{$nId}-->"/>
-						<input type="button" id="submit_button" onclick="update()" value="<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->" class="alt_btn">
-						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+						<input type="button" id="submit_button" onclick="update()" value="<!--<lang package='Template'>-->更新<!--</lang>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->">
 					</div>
 				</footer>
 			</form>

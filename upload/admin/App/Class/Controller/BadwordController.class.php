@@ -29,7 +29,7 @@ class BadwordController extends InitController{
 	public function muit_insert(){
 		$sBadwords=G::getGpc('badwords','P');
 		if($sBadwords==''){
-			$this->E(Dyhb::L('导入词汇不能为空','Controller/Badword'));
+			$this->E(Dyhb::L('导入词汇不能为空','Controller'));
 		}
 
 		$oBadword=Dyhb::instance('BadwordModel');
@@ -38,7 +38,7 @@ class BadwordController extends InitController{
 		if($nType==0){
 			$bResult=$oBadword->truncateBadword();
 			if($bResult===false){
-				$this->E(Dyhb::L('清空badword数据出错','Controller/Badword'));
+				$this->E(Dyhb::L('清空badword数据出错','Controller'));
 			}
 
 			$nType=1;
@@ -58,7 +58,7 @@ class BadwordController extends InitController{
 			}
 		}
 
-		$this->S(Dyhb::L('导入数据成功','Controller/Badword'));
+		$this->S(Dyhb::L('导入数据成功','Controller'));
 	}
 
 	public function export(){

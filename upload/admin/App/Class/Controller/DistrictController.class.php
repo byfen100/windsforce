@@ -92,7 +92,7 @@ class DistrictController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_district($nId)){
-			$this->E(Dyhb::L('系统地理数据无法编辑','Controller/District'));
+			$this->E(Dyhb::L('系统地理数据无法编辑','Controller'));
 		}
 
 		$this->init_district_();
@@ -104,13 +104,13 @@ class DistrictController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_district($nId)){
-				$this->E(Dyhb::L('系统地理数据无法删除','Controller/District'));
+				$this->E(Dyhb::L('系统地理数据无法删除','Controller'));
 			}
 
 			$nDistricts=DistrictModel::F('district_upid=?',$nId)->all()->getCounts();
 			$oDistrict=DistrictModel::F('district_id=?',$nId)->query();
 			if($nDistricts>0){
-				$this->E(Dyhb::L('地区%s存在子地区，你无法删除','Controller/District',null,$oDistrict->district_name));
+				$this->E(Dyhb::L('地区%s存在子地区，你无法删除','Controller',null,$oDistrict->district_name));
 			}
 		}
 	}

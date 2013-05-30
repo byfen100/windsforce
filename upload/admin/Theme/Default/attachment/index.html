@@ -16,17 +16,17 @@ a.preview img{margin:10px 5px;}
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Attachment'>-->多媒体列表<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Attachment'>-->多媒体列表<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->多媒体列表<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->多媒体列表<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Attachment'>-->这里对多媒体进行统一管理<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->这里对多媒体进行统一管理<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
@@ -34,33 +34,33 @@ a.preview img{margin:10px 5px;}
 		<article class="module width_full">
 				<div class="module_content">
 					<div class="left operate" >
-						<input type="button" name="add" value="<!--<lang package='Template/Default/Common'>-->新增<!--</lang>-->" onclick="add()" class="alt_btn">&nbsp;
-						<input type="button" name="edit" value="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="edit()" class="alt_btn">&nbsp;
-						<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
+						<input type="button" name="add" value="<!--<lang package='Template'>-->新增<!--</lang>-->" onclick="add()" class="alt_btn">&nbsp;
+						<input type="button" name="edit" value="<!--<lang package='Template'>-->编辑<!--</lang>-->" onclick="edit()" class="alt_btn">&nbsp;
+						<input type="button" name="delete" value="<!--<lang package='Template'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
 					</div>
 					<form method='get' action="<!--{:Dyhb::U( 'attachment/index' )}-->" class="quick_search">
 						<input type="hidden" name="c" value="<!--{:MODULE_NAME}-->"/>
 						<input type="hidden" name="a" value="<!--{:ACTION_NAME}-->"/>
-						<input type="text" name="attachment_name" title="<!--<lang package='Template/Default/Attachment'>-->多媒体名字<!--</lang>-->">
-						&nbsp;<input type="submit" id="" value="<!--<lang package='Template/Default/Common'>-->查询<!--</lang>-->" onclick="" class="alt_btn">
+						<input type="text" name="attachment_name" title="<!--<lang package='Template'>-->多媒体名字<!--</lang>-->">
+						&nbsp;<input type="submit" id="" value="<!--<lang package='Template'>-->查询<!--</lang>-->" onclick="" class="alt_btn">
 					</form>
 				</div>
 		</article>
 		
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><a href="<!--{:Dyhb::U('attachment/index')}-->"><!--<lang package='Template/Default/Attachment'>-->多媒体列表<!--</lang>--></a></h3>
+			<header><h3 class="tabs_involved"><a href="<!--{:Dyhb::U('attachment/index')}-->"><!--<lang package='Template'>-->多媒体列表<!--</lang>--></a></h3>
 				<ul class="tabs">
 					<!--{if isset($sType)}-->
-					<li><a href="<!--{:Dyhb::U('attachment/index?type='.$sType)}-->"><!--<lang package='Template/Default/Attachment'>-->多媒体类型<!--</lang>-->&nbsp;(<!--{$sType}-->)</a></li>
+					<li><a href="<!--{:Dyhb::U('attachment/index?type='.$sType)}-->"><!--<lang package='Template'>-->多媒体类型<!--</lang>-->&nbsp;(<!--{$sType}-->)</a></li>
 					<!--{/if}-->
 					<!--{if isset($arrAttachmentcategory)}-->
-					<li><a href="<!--{:Dyhb::U('attachment/index?cid='.$arrAttachmentcategory[1])}-->"><!--<lang package='Template/Default/Attachment'>-->专辑<!--</lang>-->&nbsp;(<!--{$arrAttachmentcategory[0]}-->)</a></li>
+					<li><a href="<!--{:Dyhb::U('attachment/index?cid='.$arrAttachmentcategory[1])}-->"><!--<lang package='Template'>-->专辑<!--</lang>-->&nbsp;(<!--{$arrAttachmentcategory[0]}-->)</a></li>
 					<!--{/if}-->
 					<!--{if isset($oUser)}-->
-					<li><a href="<!--{:Dyhb::U('attachment/index?uid='.$oUser['user_id'])}-->"><!--<lang package='Template/Default/Attachment'>-->用户<!--</lang>-->&nbsp;(<!--{$oUser['user_name']}-->)</a></li>
+					<li><a href="<!--{:Dyhb::U('attachment/index?uid='.$oUser['user_id'])}-->"><!--<lang package='Template'>-->用户<!--</lang>-->&nbsp;(<!--{$oUser['user_name']}-->)</a></li>
 					<!--{/if}-->
-					<li><a href="<!--{:Dyhb::U('attachmentcomment/index')}-->"><!--<lang package='Template/Default/Attachment'>-->多媒体评论列表<!--</lang>--></a></li>
-					<li class="active"><a href="<!--{:Dyhb::U('attachmentcategory/index')}-->"><!--<lang package='Template/Default/Attachment'>-->多媒体专辑列表<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('attachmentcomment/index')}-->"><!--<lang package='Template'>-->多媒体评论列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('attachmentcategory/index')}-->"><!--<lang package='Template'>-->多媒体专辑列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<div class="module_content">
@@ -68,18 +68,18 @@ a.preview img{margin:10px 5px;}
 					<thead>
 						<tr>
 							<th><input type="checkbox" onclick="checkAll('checkList')"></th> 
-							<th><a href="javascript:sortBy('attachment_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th>
-							<th><!--<lang package='Template/Default/Attachment'>-->预览<!--</lang>--></th>
-							<th><a href="javascript:sortBy('attachment_name','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_name')}-->><!--<lang package='Template/Default/Attachment'>-->多媒体名字<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('user_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_id')}-->><!--<lang package='Template/Default/Attachment'>-->上传用户<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('attachmentcategory_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachmentcategory_id')}-->><!--<lang package='Template/Default/Attachment'>-->所属专辑<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('attachment_extension','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_extension')}-->><!--<lang package='Template/Default/Attachment'>-->多媒体类型<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('attachment_size','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_size')}-->><!--<lang package='Template/Default/Attachment'>-->多媒体大小<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('attachment_download','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_download')}-->><!--<lang package='Template/Default/Attachment'>-->下载次数<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('attachment_commentnum','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_commentnum')}-->><!--<lang package='Template/Default/Attachment'>-->评论次数<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('attachment_recommend','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_recommend')}-->><!--<lang package='Template/Default/Attachmentcategory'>-->是否推荐<!--</lang>--></a></th>
-							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
+							<th><a href="javascript:sortBy('attachment_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_id')}-->><!--<lang package='Template'>-->编号<!--</lang>--></a></th>
+							<th><!--<lang package='Template'>-->预览<!--</lang>--></th>
+							<th><a href="javascript:sortBy('attachment_name','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_name')}-->><!--<lang package='Template'>-->多媒体名字<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('user_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_id')}-->><!--<lang package='Template'>-->上传用户<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('attachmentcategory_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachmentcategory_id')}-->><!--<lang package='Template'>-->所属专辑<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('attachment_extension','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_extension')}-->><!--<lang package='Template'>-->多媒体类型<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('attachment_size','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_size')}-->><!--<lang package='Template'>-->多媒体大小<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('attachment_download','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_download')}-->><!--<lang package='Template'>-->下载次数<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('attachment_commentnum','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_commentnum')}-->><!--<lang package='Template'>-->评论次数<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template'>-->添加时间<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('attachment_recommend','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('attachment_recommend')}-->><!--<lang package='Template'>-->是否推荐<!--</lang>--></a></th>
+							<th><!--<lang package='Template'>-->操作<!--</lang>--></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -93,18 +93,18 @@ a.preview img{margin:10px 5px;}
 								<div class="row-actions">
 									<!--{if in_array($value['attachment_extension'],array('png','jpg','jpeg','gif','bmp')) && $value['attachmentcategory_id']>0}-->
 									<!--{if $value['attachment_id']==$value:attachmentcategory:attachmentcategory_cover}-->
-									<span class='delete'><a href="<!--{:Dyhb::U('attachmentcategory/uncover?id='.$value['attachmentcategory_id'])}-->"><!--<lang package='Template/Default/Attachment'>-->删除封面<!--</lang>--></a>|</span>
+									<span class='delete'><a href="<!--{:Dyhb::U('attachmentcategory/uncover?id='.$value['attachmentcategory_id'])}-->"><!--<lang package='Template'>-->删除封面<!--</lang>--></a>|</span>
 									<!--{d*else}-->
-									<span class='view'><a href="<!--{:Dyhb::U('attachment/cover?id='.$value['attachment_id'])}-->"><!--<lang package='Template/Default/Attachment'>-->封面<!--</lang>--></a>|</span>
+									<span class='view'><a href="<!--{:Dyhb::U('attachment/cover?id='.$value['attachment_id'])}-->"><!--<lang package='Template'>-->封面<!--</lang>--></a>|</span>
 									<!--{/if}-->
 									<!--{/if}-->
-									<span class='view'><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=attachment&a=show&id='.$value['attachment_id'])}-->" target="_blank"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
-									<span class='edit'><a href="javascript:edit('<!--{$value:attachment_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
-									<span class='delete'><a href="javascript:foreverdel('<!--{$value:attachment_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
+									<span class='view'><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=attachment&a=show&id='.$value['attachment_id'])}-->" target="_blank"><!--<lang package='Template'>-->查看<!--</lang>--></a>|</span>
+									<span class='edit'><a href="javascript:edit('<!--{$value:attachment_id}-->')"><!--<lang package='Template'>-->编辑<!--</lang>--></a>|</span>
+									<span class='delete'><a href="javascript:foreverdel('<!--{$value:attachment_id}-->');"><!--<lang package='Template'>-->删除<!--</lang>--></a></span>
 								</div>
 							</td>
 							<td><a href="<!--{:Dyhb::U('attachment/index?uid='.$value['user_id'])}-->"><!--{$value:user_id|UserModel+getUsernameById}--></a></td>
-							<td><a href="<!--{:Dyhb::U('attachment/index?cid='.$value['attachmentcategory_id'])}-->"><!--{if $value['attachmentcategory_id']>0}--><!--{$value:attachmentcategory:attachmentcategory_name}-->&nbsp;(<!--{$value:attachmentcategory:attachmentcategory_attachmentnum}-->)<!--{d*else}--><!--<lang package='Template/Default/Attachment'>-->默认专辑<!--</lang>--><!--{/if}--></a></td>
+							<td><a href="<!--{:Dyhb::U('attachment/index?cid='.$value['attachmentcategory_id'])}-->"><!--{if $value['attachmentcategory_id']>0}--><!--{$value:attachmentcategory:attachmentcategory_name}-->&nbsp;(<!--{$value:attachmentcategory:attachmentcategory_attachmentnum}-->)<!--{d*else}--><!--<lang package='Template'>-->默认专辑<!--</lang>--><!--{/if}--></a></td>
 							<td><a href="<!--{:Dyhb::U('attachment/index?type='.$value['attachment_extension'])}-->"><!--{$value:attachment_extension}--></a></td>
 							<td><!--{$value:attachment_size|G+changeFileSize}--></td>
 							<td><!--{$value:attachment_download}--></td>
@@ -112,15 +112,15 @@ a.preview img{margin:10px 5px;}
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
 							<td><img src="<!--{:At::path($value->attachment_recommend==1?'yes.gif':'no.gif')}-->"/></td>
 							<td><!--{if $value:attachment_recommend==1}-->
-								<a href="javascript:forbid('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template/Default/Attachment'>-->取消推荐<!--</lang>-->"></a>
-								<!--{d*else}--><a href="javascript:resume('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template/Default/Attachment'>-->推荐<!--</lang>-->"></a>
-								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a>
+								<a href="javascript:forbid('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_trash.png')}-->" title="<!--<lang package='Template'>-->取消推荐<!--</lang>-->"></a>
+								<!--{d*else}--><a href="javascript:resume('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_jump_back.png')}-->" title="<!--<lang package='Template'>-->推荐<!--</lang>-->"></a>
+								<!--{/if}-->&nbsp;<a href="javascript:edit('<!--{$value:attachment_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template'>-->编辑<!--</lang>-->"></a>
 							</td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->
 						<tr>
-							<td colspan="13"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+							<td colspan="13"><!--<lang package='Template'>-->暂时没有发现任何记录<!--</lang>--></td>
 						</tr>
 						<!--{/if}-->
 					</tbody>
@@ -137,9 +137,9 @@ a.preview img{margin:10px 5px;}
 		<article class="module width_full">
 			<div class="module_content">
 				<div class="operate" >
-					<input type="button" name="add" value="<!--<lang package='Template/Default/Common'>-->新增<!--</lang>-->" onclick="add()" class="alt_btn">&nbsp;
-					<input type="button" name="edit" value="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="edit()" class="alt_btn">&nbsp;
-					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
+					<input type="button" name="add" value="<!--<lang package='Template'>-->新增<!--</lang>-->" onclick="add()" class="alt_btn">&nbsp;
+					<input type="button" name="edit" value="<!--<lang package='Template'>-->编辑<!--</lang>-->" onclick="edit()" class="alt_btn">&nbsp;
+					<input type="button" name="delete" value="<!--<lang package='Template'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
 				</div>
 			</div>
 		</article>

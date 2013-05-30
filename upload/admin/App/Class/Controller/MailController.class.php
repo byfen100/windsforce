@@ -25,12 +25,12 @@ class MailController extends InitController{
 		$nMailId=intval(G::getGpc('id','G'));
 
 		if(empty($nMailId)){
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 
 		$oMail=MailModel::F('mail_id=?',$nMailId)->query();
 		if(empty($oMail['mail_id'])){
-			$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+			$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 		}
 
 		// 发送邮件
@@ -43,7 +43,7 @@ class MailController extends InitController{
 			$this->E($oMailObject->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('邮件发送成功','Controller/Mail'));
+		$this->S(Dyhb::L('邮件发送成功','Controller'));
 	}
 
 }

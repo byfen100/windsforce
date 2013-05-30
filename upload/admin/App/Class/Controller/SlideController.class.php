@@ -10,7 +10,7 @@ class SlideController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -46,7 +46,7 @@ class SlideController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_slide($nId)){
-			$this->E(Dyhb::L('系统幻灯片无法编辑','Controller/Slide'));
+			$this->E(Dyhb::L('系统幻灯片无法编辑','Controller'));
 		}
 	}
 
@@ -56,7 +56,7 @@ class SlideController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_slide($nId)){
-				$this->E(Dyhb::L('系统幻灯片无法删除','Controller/Slide'));
+				$this->E(Dyhb::L('系统幻灯片无法删除','Controller'));
 			}
 		}
 	}

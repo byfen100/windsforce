@@ -10,7 +10,7 @@ class RatingController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -51,7 +51,7 @@ class RatingController extends InitController{
 	}
 	
 	public function getRatinggroup(){
-		$arrRatinggroup=array_merge(array(array('ratinggroup_id'=>0,'ratinggroup_title'=>Dyhb::L('未分组','Controller/Rating'))),
+		$arrRatinggroup=array_merge(array(array('ratinggroup_id'=>0,'ratinggroup_title'=>Dyhb::L('未分组','Controller'))),
 				RatinggroupModel::F()->setColumns('ratinggroup_id,ratinggroup_title')->asArray()->all()->query()
 		);
 		$this->assign('arrRatinggroup',$arrRatinggroup);
@@ -74,7 +74,7 @@ class RatingController extends InitController{
 		if(is_array($arrIds)){
 			foreach($arrIds as $nId){
 				if($this->is_system_rating($nId)){
-					$this->E(Dyhb::L('系统级别无法删除','Controller/Rating'));
+					$this->E(Dyhb::L('系统级别无法删除','Controller'));
 				}
 			}
 		}
@@ -91,14 +91,14 @@ class RatingController extends InitController{
 				// 判断级别分组是否存在
 				$oRatinggroup=RatinggroupModel::F('ratinggroup_id=?',$nRatinggroupId)->getOne();
 				if(empty($oRatinggroup['ratinggroup_id'])){
-					$this->E(Dyhb::L('你要移动的级别分组不存在','Controller/Rating'));
+					$this->E(Dyhb::L('你要移动的级别分组不存在','Controller'));
 				}
 			}
 			
 			$arrIds=explode(',', $sId);
 			foreach($arrIds as $nId){
 				if($this->is_system_rating($nId)){
-					$this->E(Dyhb::L('系统级别无法移动','Controller/Rating'));
+					$this->E(Dyhb::L('系统级别无法移动','Controller'));
 				}
 				
 				$oRating=RatingModel::F('rating_id=?',$nId)->getOne();
@@ -110,9 +110,9 @@ class RatingController extends InitController{
 				}
 			}
 
-			$this->S(Dyhb::L('移动级别分组成功','Controller/Rating'));
+			$this->S(Dyhb::L('移动级别分组成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 

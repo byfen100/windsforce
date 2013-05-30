@@ -36,7 +36,7 @@ class UserguestbookController extends InitController{
 	}
 
 	public function add(){
-		$this->E(Dyhb::L('后台无法添加用户留言','Controller/Userguestbook'));
+		$this->E(Dyhb::L('后台无法添加用户留言','Controller'));
 	}
 
 	public function AUpdateObject_($oModel){

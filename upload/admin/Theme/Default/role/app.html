@@ -24,60 +24,60 @@ function saveAccess(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Role'>-->项目授权<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Role'>-->项目授权<!--</lang>-->_<!--{$nGroupId}-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->项目授权<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->项目授权<!--</lang>-->_<!--{$nGroupId}-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Role'>-->应用授权给整个应用进行授权<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->应用授权给整个应用进行授权<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Role'>-->项目授权<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->项目授权<!--</lang>--></h3>
 				<ul class="tabs">
-					<li><a href="<!--{:Dyhb::U('role/index')}-->"><!--<lang package='Template/Default/Role'>-->角色列表<!--</lang>--></a></li>
-					<li class="active"><a href="<!--{:Dyhb::U('role/action?group_id='.$nGroupId )}-->"><!--<lang package='Template/Default/Role'>-->操作授权<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('role/index')}-->"><!--<lang package='Template'>-->角色列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('role/action?group_id='.$nGroupId )}-->"><!--<lang package='Template'>-->操作授权<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form method="post" id="form1" name='form1'>
 				<div class="module_content">
 					<fieldset>
-						<label><span><!--<lang package='Template/Default/Role'>-->应用授权<!--</lang>--></span> | <a href="<!--{:Dyhb::U('role/module?group_id='.$nGroupId )}-->"><!--<lang package='Template/Default/Role'>-->模块授权<!--</lang>--></a> | <a href="<!--{:Dyhb::U('role/action?group_id='.$nGroupId )}-->"><!--<lang package='Template/Default/Role'>-->操作授权<!--</lang>--></a></label>
+						<label><span><!--<lang package='Template'>-->应用授权<!--</lang>--></span> | <a href="<!--{:Dyhb::U('role/module?group_id='.$nGroupId )}-->"><!--<lang package='Template'>-->模块授权<!--</lang>--></a> | <a href="<!--{:Dyhb::U('role/action?group_id='.$nGroupId )}-->"><!--<lang package='Template'>-->操作授权<!--</lang>--></a></label>
 					</fieldset>
 					<fieldset>
-						<label for="group_id"><!--<lang package='Template/Default/Role'>-->当前组<!--</lang>--></label>
+						<label for="group_id"><!--<lang package='Template'>-->当前组<!--</lang>--></label>
 						<select id="group_id" name="group_id" onchange="location.href=Dyhb.U( 'role/app?group_id='+this.options[this.selectedIndex].value );">
-							<option value=""><!--<lang package='Template/Default/Role'>-->选择组<!--</lang>--></option>
+							<option value=""><!--<lang package='Template'>-->选择组<!--</lang>--></option>
 							<!--<foreach for=arrGroupList>-->
 							<option value="<!--{$key}-->" <!--{if $nSelectGroupId==$key}-->selected="selected"<!--{/if}-->><!--{$value}--></option>
 							<!--</foreach>-->
 						</select>
-						<div class="description"><!--<lang package='Template/Default/Role'>-->系统组列表，下拉选择<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->系统组列表，下拉选择<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="groupAppId"><!--<lang package='Template/Default/Role'>-->项目<!--</lang>--></label>
+						<label for="groupAppId"><!--<lang package='Template'>-->项目<!--</lang>--></label>
 						<select id="groupAppId" name="groupAppId[]" multiple="multiple" size="15" style="width: 200px; height: 200px;">
 							<!--<foreach for=arrAppList>-->
 							<option <!--{if in_array( $key,$arrGroupAppList )}-->selected="selected"<!--{/if}--> value="<!--{$key}-->"><!--{$value}--></option>
 							<!--</foreach>-->
 						</select>
-						<div class="description"><!--<lang package='Template/Default/Role'>-->选中应用的模块列表<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->选中应用的模块列表<!--</lang>--></div>
 					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">
 						<input type="hidden" name="group_id" value="<!--{$nGroupId}-->" >
 						<input type="hidden" name="ajax" value="1">
-						<input type="button" onclick="selectAll()" value="<!--<lang package='Template/Default/Common'>-->全选<!--</lang>-->" class="alt_btn">&nbsp;
-						<input type="button" onclick="inverSelect()" value="<!--<lang package='Template/Default/Common'>-->反选<!--</lang>-->" class="alt_btn">&nbsp;
-						<input type="button" onclick="unSelectAll()" value="<!--<lang package='Template/Default/Common'>-->全否<!--</lang>-->" class="alt_btn">&nbsp;
-						<input type="button" onclick="saveAccess()" value="<!--<lang package='Template/Default/Common'>-->保存<!--</lang>-->" class="alt_btn">
+						<input type="button" onclick="selectAll()" value="<!--<lang package='Template'>-->全选<!--</lang>-->" class="alt_btn">&nbsp;
+						<input type="button" onclick="inverSelect()" value="<!--<lang package='Template'>-->反选<!--</lang>-->" class="alt_btn">&nbsp;
+						<input type="button" onclick="unSelectAll()" value="<!--<lang package='Template'>-->全否<!--</lang>-->" class="alt_btn">&nbsp;
+						<input type="button" onclick="saveAccess()" value="<!--<lang package='Template'>-->保存<!--</lang>-->" class="alt_btn">
 					</div>
 				</footer>
 			</form>

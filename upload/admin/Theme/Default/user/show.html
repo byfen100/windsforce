@@ -2,45 +2,45 @@
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/User'>-->查看用户<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/User'>-->查看用户<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->查看用户<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->查看用户<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/User'>-->这里会详细地列出用户的相关信息<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->这里会详细地列出用户的相关信息<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 		
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/User'>-->用户基本信息<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->用户基本信息<!--</lang>--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Dyhb::U('user/index')}-->"><!--<lang package='Template/Default/User'>-->用户列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('user/index')}-->"><!--<lang package='Template'>-->用户列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<div class="module_content">
 				<table class="tablesorter" cellspacing="0" id="checkList">
 					<thead>
 						<tr>
-							<th><!--<lang package='Template/Default/User'>-->当前用户<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->当前用户<!--</lang>--></th>
 							<th><a href="<!--{:Core_Extend::windsforceOuter('app=home&c=space&a=index&id='.$oValue['user_id'])}-->" target="_blank"><!--{$oValue['user_name']}--></a></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->用户名<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->用户名<!--</lang>--></td>
 							<td><!--{$oValue['user_name']}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->昵称<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->昵称<!--</lang>--></td>
 							<td><!--{$oValue['user_nikename']}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->状态<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->状态<!--</lang>--></td>
 							<td><img src="<!--{:At::path($oValue->user_status==1?'yes.gif':'no.gif')}-->"/></td>
 						</tr>
 						<tr>
@@ -48,31 +48,31 @@
 							<td><!--{$oValue['user_email']}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->注册时间<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->注册时间<!--</lang>--></td>
 							<td><!--{$oValue:create_dateline|date='Y-m-d H:i:s',**}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->注册IP<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->注册IP<!--</lang>--></td>
 							<td><!--{$oValue:user_registerip}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->最后登录时间<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->最后登录时间<!--</lang>--></td>
 							<td><!--{$oValue:user_lastlogintime|date='Y-m-d H:i:s',**}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->最后登录IP<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->最后登录IP<!--</lang>--></td>
 							<td><!--{$oValue:user_lastloginip}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->登陆次数<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->登陆次数<!--</lang>--></td>
 							<td><!--{$oValue:user_logincount}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->用户签名<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->用户签名<!--</lang>--></td>
 							<td><!--{$oValue:user_sign}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->备注<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->备注<!--</lang>--></td>
 							<td><!--{$oValue:user_remark}--></td>
 						</tr>
 					</tbody>
@@ -82,7 +82,7 @@
 		
 		<a name="userprofile">&nbsp;</a>
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/User'>-->用户个人配置信息<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->用户个人配置信息<!--</lang>--></h3>
 				<ul class="tabs">
 					<!--<foreach for=arrInfoMenus key=sInfoMenuKey value=sInfoMenu>-->
 					<li <!--{if (!$sDo && !$sInfoMenuKey) || $sDo==$sInfoMenuKey}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('user/show?id='.$oValue['user_id'].(!empty($sInfoMenuKey)?'&do='.$sInfoMenuKey:''))}-->#userprofile"><!--{$sInfoMenu}--></a></li>
@@ -163,7 +163,7 @@
 						<!--{/if}-->
 						<!--</foreach>-->
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->昵称<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->昵称<!--</lang>--></td>
 							<td><!--{$oValue:user_nikename}--></td>
 						<tr/>
 						<tr>
@@ -171,11 +171,11 @@
 							<td><!--{$oValue:user_email}--></td>
 						<tr/>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->用户备注<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->用户备注<!--</lang>--></td>
 							<td><!--{$oValue:user_remark}--></td>
 						<tr/>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->用户签名<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->用户签名<!--</lang>--></td>
 							<td><!--{$oValue:user_sign}--></td>
 						<tr/>
 					<!--{/if}-->
@@ -185,21 +185,21 @@
 		</article>
 		
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/User'>-->用户统计信息<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->用户统计信息<!--</lang>--></h3>
 			</header>
 			<div class="module_content">
 				<table class="tablesorter" cellspacing="0" id="checkList">
 					<tbody>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->好友数量<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->好友数量<!--</lang>--></td>
 							<td><!--{$oValue:usercount:usercount_friends}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->粉丝数量<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->粉丝数量<!--</lang>--></td>
 							<td><!--{$oValue:usercount:usercount_fans}--></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Default/User'>-->在线时间<!--</lang>--> (<!--<lang package='__COMMON_LANG__@Common'>-->小时<!--</lang>-->)</td>
+							<td><!--<lang package='Template'>-->在线时间<!--</lang>--> (<!--<lang package='__COMMON_LANG__@Common'>-->小时<!--</lang>-->)</td>
 							<td><!--{$oValue:usercount:usercount_oltime}--></td>
 						</tr>
 						<!--<foreach for=arrUserCounts value=arrUserCount>-->

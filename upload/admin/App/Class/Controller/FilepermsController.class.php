@@ -10,7 +10,7 @@ class FilepermsController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -22,7 +22,7 @@ class FilepermsController extends InitController{
 		$this->assign('__WaitSecond__',2);
 		$this->assign('__JumpUrl__',Dyhb::U('fileperms/step3'));
 
-		$this->S(Dyhb::L('正在进行文件权限检查，请稍候','Controller/Fileperms').'...');
+		$this->S(Dyhb::L('正在进行文件权限检查，请稍候','Controller').'...');
 	}
 
 	public function step3(){

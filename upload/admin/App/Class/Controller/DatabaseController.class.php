@@ -13,7 +13,7 @@ class DatabaseController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -26,23 +26,23 @@ class DatabaseController extends InitController{
 
 		$nMask=File_Extend::fileModeInfo(WINDSFORCE_PATH.'/data/backup');
 		if($nMask===false){
-			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,WINDSFORCE_PATH.'/data/backup'));
+			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller',null,WINDSFORCE_PATH.'/data/backup'));
 		}elseif($nMask!=15){
-			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller/Database',null,WINDSFORCE_PATH.'/data/backup');
+			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller',null,WINDSFORCE_PATH.'/data/backup');
 			if(($nMask&1)<1){
-				$sWarning.=Dyhb::L('不可读','Controller/Database');
+				$sWarning.=Dyhb::L('不可读','Controller');
 			}
 
 			if(($nMask&2)<1){
-				$sWarning.=Dyhb::L('不可写','Controller/Database');
+				$sWarning.=Dyhb::L('不可写','Controller');
 			}
 
 			if(($nMask&4)< 1){
-				$sWarning.=Dyhb::L('不可增加','Controller/Database');
+				$sWarning.=Dyhb::L('不可增加','Controller');
 			}
 
 			if(($nMask&8)<1){
-				$sWarning.=Dyhb::L('不可修改','Controller/Database');
+				$sWarning.=Dyhb::L('不可修改','Controller');
 			}
 			$this->assign('sWarning',$sWarning);
 		}
@@ -59,23 +59,23 @@ class DatabaseController extends InitController{
 
 		$nMask=File_Extend::fileModeInfo(WINDSFORCE_PATH.'/data/backup');
 		if($nMask===false){
-			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,WINDSFORCE_PATH.'/data/backup'));
+			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller',null,WINDSFORCE_PATH.'/data/backup'));
 		}else if($nMask!=15){
-			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller/Database',null,WINDSFORCE_PATH.'/data/backup');
+			$sWarning=Dyhb::L('文件夹 %s 权限警告：','Controller',null,WINDSFORCE_PATH.'/data/backup');
 			if(($nMask&1)<1){
-				$sWarning.=Dyhb::L('不可读','Controller/Database');
+				$sWarning.=Dyhb::L('不可读','Controller');
 			}
 
 			if(($nMask&2)<1){
-				$sWarning.=Dyhb::L('不可写','Controller/Database');
+				$sWarning.=Dyhb::L('不可写','Controller');
 			}
 
 			if(($nMask&4)<1){
-				$sWarning.=Dyhb::L('不可追加','Controller/Database');
+				$sWarning.=Dyhb::L('不可追加','Controller');
 			}
 
 			if(($nMask&8)<1){
-				$sWarning.=Dyhb::L('不可修改','Controller/Database');
+				$sWarning.=Dyhb::L('不可修改','Controller');
 			}
 			$this->assign('sWarning',$sWarning);
 		}
@@ -139,7 +139,7 @@ class DatabaseController extends InitController{
 		if(empty($arrTables)){
 			if($nVol>1){
 				if(!@file_put_contents(WINDSFORCE_PATH.'/data/backup/'.$sSqlFileName.'_'.$nVol.'.sql',$oBackup->getDumpSql())){
-					$this->E(Dyhb::L('备份文件写入失败%s','Controller/Database',null,$sSqlFileName.'_'.$nVol.'.sql'));
+					$this->E(Dyhb::L('备份文件写入失败%s','Controller',null,$sSqlFileName.'_'.$nVol.'.sql'));
 				}
 
 				$arrList=array();
@@ -161,7 +161,7 @@ class DatabaseController extends InitController{
 				$this->sql_dump_message($arrMessage);
 			}else{
 				if(!@file_put_contents(WINDSFORCE_PATH.'/data/backup/'.$sSqlFileName. '.sql',$oBackup->getDumpSql())){
-					$this->E(Dyhb::L('备份文件写入失败%s','Controller/Database',null,$sSqlFileName.'_'.$nVol.'.sql'));
+					$this->E(Dyhb::L('备份文件写入失败%s','Controller',null,$sSqlFileName.'_'.$nVol.'.sql'));
 				};
 
 				$arrList=array(
@@ -181,7 +181,7 @@ class DatabaseController extends InitController{
 			}
 		}else{
 			if(!@file_put_contents(WINDSFORCE_PATH.'/data/backup/'.$sSqlFileName.'_'.$nVol.'.sql',$oBackup->getDumpSql())){
-				$this->E(Dyhb::L('备份文件写入失败%s','Controller/Database',null,$sSqlFileName.'_'.$nVol.'.sql'));
+				$this->E(Dyhb::L('备份文件写入失败%s','Controller',null,$sSqlFileName.'_'.$nVol.'.sql'));
 			}
 
 			$arrList=array(
@@ -285,7 +285,7 @@ class DatabaseController extends InitController{
 					}
 					$sResult.="</tbody></table>\n";
 				}else{
-					$sResult="<center><h3>".Dyhb::L('没有发现任何记录','Controller/Database')."</h3></center>";
+					$sResult="<center><h3>".Dyhb::L('没有发现任何记录','Controller')."</h3></center>";
 				}
 				$this->assign('nType',2);
 				$this->assign('sResult',$sResult);
@@ -332,21 +332,21 @@ class DatabaseController extends InitController{
 		foreach($arrTables as $sTable){
 			if(($arrRow=$oDb->getConnect()->getRow('OPTIMIZE TABLE '.$sTable,null,false))!==false){
 				if($arrRow['Msg_type']=='error' && strpos($arrRow['Msg_text'],'repair')!==false){
-					$sResult.=Dyhb::L('优化数据库表%s失败','Controller/Database',null,$sTable).'<br/>';
+					$sResult.=Dyhb::L('优化数据库表%s失败','Controller',null,$sTable).'<br/>';
 					if($oDb->getConnect()->query('REPAIR TABLE '.$sTable)){
-						$sResult.=Dyhb::L('优化失败后，尝试修复数据库%s成功','Controller/Database',null,$sTable).'<br/>';
+						$sResult.=Dyhb::L('优化失败后，尝试修复数据库%s成功','Controller',null,$sTable).'<br/>';
 					}else{
-						$sResult.=Dyhb::L('优化失败后，尝试修复数据库%s失败','Controller/Database',null,$sTable).'<br/>';
+						$sResult.=Dyhb::L('优化失败后，尝试修复数据库%s失败','Controller',null,$sTable).'<br/>';
 					}
 				}else{
-					$sResult.=Dyhb::L('优化数据库表%s成功','Controller/Database',null,$sTable).'<br/>';
+					$sResult.=Dyhb::L('优化数据库表%s成功','Controller',null,$sTable).'<br/>';
 				}
 
 				foreach(G::getGpc('do','P') as $sDo){
 					if($oDb->query($sDo.' TABLE '.$sTable)){
-						$sResult.=Dyhb::L('数据库表%s成功','Controller/Database',null,$sTable).'<br/>';
+						$sResult.=Dyhb::L('数据库表%s成功','Controller',null,$sTable).'<br/>';
 					}else{
-						$sResult.=Dyhb::L('数据库表%s失败','Controller/Database',null,$sTable).'<br/>';
+						$sResult.=Dyhb::L('数据库表%s失败','Controller',null,$sTable).'<br/>';
 					}
 				}
 				$sResult.='<br/><br/>';
@@ -354,7 +354,7 @@ class DatabaseController extends InitController{
 		}
 		$this->assign('__WaitSecond__',10);
 
-		$this->S(Dyhb::L('数据表优化成功，共清理碎片%d','Controller/Database',null,G::getGpc('num','P'))."<br/><br/>".Dyhb::L('附加信息','Controller/Database').": ".$sResult);
+		$this->S(Dyhb::L('数据表优化成功，共清理碎片%d','Controller',null,G::getGpc('num','P'))."<br/><br/>".Dyhb::L('附加信息','Controller').": ".$sResult);
 	}
 
 	public function restore(){
@@ -362,9 +362,9 @@ class DatabaseController extends InitController{
 
 		$nMask=File_Extend::fileModeInfo(WINDSFORCE_PATH.'/data/backup');
 		if($nMask===false){
-			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller/Database',null,WINDSFORCE_PATH.'/data/backup'));
+			$this->assign('sWarning',Dyhb::L('备份目录不存在%s','Controller',null,WINDSFORCE_PATH.'/data/backup'));
 		}elseif(($nMask&1)<1){
-			$this->assign('sWarning',Dyhb::L('不可读','Controller/Database'));
+			$this->assign('sWarning',Dyhb::L('不可读','Controller'));
 		}else{
 			$arrRealList=array();
 
@@ -447,9 +447,9 @@ class DatabaseController extends InitController{
 				}
 			}
 
-			$this->S(Dyhb::L('删除备份文件成功','Controller/Database'));
+			$this->S(Dyhb::L('删除备份文件成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('你没有选择任何文件','Controller/Database'));
+			$this->E(Dyhb::L('你没有选择任何文件','Controller'));
 		}
 	}
 
@@ -467,7 +467,7 @@ class DatabaseController extends InitController{
 				$sUrl=Dyhb::U('database/import?confirm=1&file_name='. $sFileName);
 				$this->assign("__JumpUrl__",$sUrl);
 				$this->assign('__WaitSecond__',60);
-				$this->S(Dyhb::L('你确定要导入?','Controller/Database')."&nbsp;<a href='".$sUrl."'>".Dyhb::L('确定','Controller/Database')."</a>");
+				$this->S(Dyhb::L('你确定要导入?','Controller')."&nbsp;<a href='".$sUrl."'>".Dyhb::L('确定','Controller')."</a>");
 			}
 
 			$sShortName=substr($sFileName,0,strrpos($sFileName,'_'));
@@ -492,18 +492,18 @@ class DatabaseController extends InitController{
 			foreach($arrPostList as $sFile){
 				$arrInfo=Backup::getHead(WINDSFORCE_PATH.'/data/backup/'. $sFile);
 				if(!$this->sql_import(WINDSFORCE_PATH.'/data/backup/'. $sFile)){
-					$this->E(Dyhb::L('导入数据库备份文件失败','Controller/Database'));
+					$this->E(Dyhb::L('导入数据库备份文件失败','Controller'));
 				}
 			}
 			$this->assign("__JumpUrl__",Dyhb::U('database/restore'));
-			$this->S(Dyhb::L('数据导入成功','Controller/Database'));
+			$this->S(Dyhb::L('数据导入成功','Controller'));
 		}else{
 			$arrInfo=Backup::getHead(WINDSFORCE_PATH.'/data/backup/'. $sFileName);
 			if($this->sql_import(WINDSFORCE_PATH.'/data/backup/'. $sFileName)){
 				$this->assign("__JumpUrl__",Dyhb::U('database/restore'));
-				$this->S(Dyhb::L('数据导入成功','Controller/Database'));
+				$this->S(Dyhb::L('数据导入成功','Controller'));
 			}else{
-				$this->E(Dyhb::L('导入数据库备份文件失败','Controller/Database'));
+				$this->E(Dyhb::L('导入数据库备份文件失败','Controller'));
 			}
 		}
 	}
@@ -515,22 +515,22 @@ class DatabaseController extends InitController{
 		if(empty($sSqlVerConfirm)){
 			$arrSqlfile=G::getGpc('sqlfile','F');
 			if(empty($arrSqlfile)){
-				$this->E(Dyhb::L('你没有选择任何文件','Controller/Database'));
+				$this->E(Dyhb::L('你没有选择任何文件','Controller'));
 			}
 
 			if((isset($arrSqlfile['error'])
 				&& $arrSqlfile['error'] > 0)
 				||(!isset($arrSqlfile['error'])
 				&& $arrSqlfile['tmp_name']=='none')){
-				$this->E(Dyhb::L('上传文件失败','Controller/Database'));
+				$this->E(Dyhb::L('上传文件失败','Controller'));
 			}
 
 			if($arrSqlfile['type']=='application/x-zip-compressed'){
-				$this->E(Dyhb::L('不能是zip格式','Controller/Database'));
+				$this->E(Dyhb::L('不能是zip格式','Controller'));
 			}
 
 			if(!preg_match("/\.sql$/i",$arrSqlfile['name'])){
-				$this->E(Dyhb::L('不是sql格式','Controller/Database'));
+				$this->E(Dyhb::L('不是sql格式','Controller'));
 			}
 
 			if(is_file($sSqlFile)){
@@ -538,7 +538,7 @@ class DatabaseController extends InitController{
 			}
 
 			if(!move_uploaded_file($arrSqlfile['tmp_name'],$sSqlFile)){
-				$this->E(Dyhb::L('文件移动失败','Controller/Database'));
+				$this->E(Dyhb::L('文件移动失败','Controller'));
 			}
 		}
 
@@ -546,11 +546,11 @@ class DatabaseController extends InitController{
 		$arrSqlInfo=Backup::getHead($sSqlFile);
 		if(empty($sSqlVerConfirm)){// 检查数据库版本是否正确
 			if(empty($arrSqlInfo['database_ver'])){
-				$this->E(Dyhb::L('没有确定数据库版本','Controller/Database'));
+				$this->E(Dyhb::L('没有确定数据库版本','Controller'));
 			}else{
 				$nSqlVer=$oDb->getConnect()->getVersion();
 				if($arrSqlInfo['database_ver'] !=$nSqlVer){
-					$sMessage="<a href='".Dyhb::U('database/upload_sql?sql_ver_confrim=1')."'>".Dyhb::L('重试','Controller/Database')."</a></br>< href='".Dyhb::U('database/restore')."'>".Dyhb::L('返回','Controller/Database')."</a>";
+					$sMessage="<a href='".Dyhb::U('database/upload_sql?sql_ver_confrim=1')."'>".Dyhb::L('重试','Controller')."</a></br>< href='".Dyhb::U('database/restore')."'>".Dyhb::L('返回','Controller')."</a>";
 					$this->E($sMessage);
 				}
 			}
@@ -562,13 +562,13 @@ class DatabaseController extends InitController{
 				unlink($sSqlFile);
 			}
 
-			$this->S(Dyhb::L('数据库导入成功','Controller/Database'));
+			$this->S(Dyhb::L('数据库导入成功','Controller'));
 		}else{
 			if(is_file($sSqlFile)){
 				unlink($sSqlFile);
 			}
 
-			$this->E(Dyhb::L('数据库导入失败','Controller/Database'));
+			$this->E(Dyhb::L('数据库导入失败','Controller'));
 		}
 	}
 

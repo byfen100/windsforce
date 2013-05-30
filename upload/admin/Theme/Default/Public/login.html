@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN">
 <head>
-	<title>$<!--{$GLOBALS['_option_']['windsforce_program_name']}--> | <!--<lang package='Template/Default/Public'>-->登录<!--</lang>--></title>
+	<title>$<!--{$GLOBALS['_option_']['windsforce_program_name']}--> | <!--<lang package='Template'>-->登录<!--</lang>--></title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="<!--{:Dyhb::U('misc/index?type=css&file=style',array(),true)}-->"/>
 	<link rel="stylesheet" type="text/css" href="<!--{:Dyhb::U('misc/index?type=css&file=login',array(),true)}-->"/>
@@ -31,7 +31,7 @@ function login_handle(data,status){
 
 <!--[if lt IE 8]>
 <div style="background:red;padding:5px 10px;">
-	<strong><!--<lang package='Template/Default/Common'>-->本站已停止支持 IE8 以下版本, 请升级你的浏览器!<!--</lang>-->&nbsp;
+	<strong><!--<lang package='Template'>-->本站已停止支持 IE8 以下版本, 请升级你的浏览器!<!--</lang>-->&nbsp;
 		<a href="http://www.getfirefox.com" target="_blank">Firefox</a> &nbsp; 
 		<a href="http://opera.com" target="_blank">Opera</a> &nbsp; 
 		<a href="http://apple.com/safari" target="_blank">Safari</a> &nbsp; 
@@ -45,25 +45,25 @@ function login_handle(data,status){
 		<section id="main" class="column">
 			<article class="module width_full">
 				<form method='post' name="login" id="login-form">
-					<header><h3><!--<lang package='Template/Default/Public'>-->用户登录<!--</lang>--></h3></header>
+					<header><h3><!--<lang package='Template'>-->用户登录<!--</lang>--></h3></header>
 					<div class="module_content">
 						<span><img src="<!--{:At::path('logo.gif')}-->"/></span>
 						<span><div id="result" class="none"></div></span>
 						<!--{if $sReferer && $nRbac==1}-->
 						<fieldset>
-							<label><!--<lang package='Template/Default/Public'>-->你没有权限访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template/Default/Public'>-->重试<!--</lang>--></a></label>
+							<label><!--<lang package='Template'>-->你没有权限访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template'>-->重试<!--</lang>--></a></label>
 						</fieldset>
 						<!--{/if}-->
 						<fieldset>
-							<label><!--<lang package='Template/Default/Public'>-->用户名/E-mail<!--</lang>--></label>
+							<label><!--<lang package='Template'>-->用户名/E-mail<!--</lang>--></label>
 							<input type="text" name="user_name" id="user_name" size="40"/>
 						</fieldset>
 						<fieldset>
-							<label><!--<lang package='Template/Default/Public'>-->密码<!--</lang>--></label>
+							<label><!--<lang package='Template'>-->密码<!--</lang>--></label>
 							<input type="password" name="user_password" id="user_password" size="40" />
 						</fieldset>
 						<fieldset>
-							<label><!--<lang package='Template/Default/Public'>-->验证码<!--</lang>--></label>
+							<label><!--<lang package='Template'>-->验证码<!--</lang>--></label>
 							<input type="text" name="seccode" size="10" id="seccode"/>&nbsp;
 							<div class="description"><span id="seccodeImage"><img style="cursor:pointer" onclick="updateSeccode()" src="<!--{:Dyhb::U('public/seccode')}-->" /></span></div>
 						</fieldset>
@@ -71,8 +71,8 @@ function login_handle(data,status){
 					<footer>
 						<div class="submit_link">
 							<input type="hidden" name="ajax" value="1">
-							<span class="rigth"><input type="button" value="<!--<lang package='Template/Default/Public'>-->返回首页<!--</lang>-->" class="alt_btn" onClick="location.href='<!--{:__ROOT__}-->/index.php';" />&nbsp;
-							<input type="button" value="<!--<lang package='Template/Default/Public'>-->登录<!--</lang>-->" class="alt_btn" onClick="Dyhb.AjaxSubmit('login-form','<!--{:Dyhb::U('public/check_login')}-->','result',login_handle);" />
+							<span class="rigth"><input type="button" value="<!--<lang package='Template'>-->返回首页<!--</lang>-->" class="alt_btn" onClick="location.href='<!--{:__ROOT__}-->/index.php';" />&nbsp;
+							<input type="button" value="<!--<lang package='Template'>-->登录<!--</lang>-->" class="alt_btn" onClick="Dyhb.AjaxSubmit('login-form','<!--{:Dyhb::U('public/check_login')}-->','result',login_handle);" />
 							</span>
 						</div>
 					</footer>

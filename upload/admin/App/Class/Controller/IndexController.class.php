@@ -10,7 +10,7 @@ class IndexController extends InitController{
 		if($GLOBALS['___login___']===false){
 			UserModel::M()->clearThisCookie();// 清理COOKIE
 			$this->assign('__JumpUrl__',Dyhb::U('public/login'));
-			$this->E(Dyhb::L('你没有登录','Controller/Common'));
+			$this->E(Dyhb::L('你没有登录','Controller'));
 		}
 
 		// 后台页面跳转计算

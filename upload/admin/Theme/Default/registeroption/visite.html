@@ -10,117 +10,117 @@ function option(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Registeroption'>-->访问控制<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Registeroption'>-->访问控制<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->访问控制<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->访问控制<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Registeroption'>-->这里可以设置网站前台部分内容访问权限<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Registeroption'>-->这里的访问权限针对管理员，用户和游客<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->这里可以设置网站前台部分内容访问权限<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->这里的访问权限针对管理员，用户和游客<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 		
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Registeroption'>-->访问控制<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->访问控制<!--</lang>--></h3>
 				<ul class="tabs">
-					<li><a href="<!--{:Dyhb::U('registeroption/index')}-->"><!--<lang package='Template/Default/Registeroption'>-->注册设置<!--</lang>--></a></li>
-					<li class="active"><a href="<!--{:Dyhb::U('registeroption/visite')}-->"><!--<lang package='Template/Default/Registeroption'>-->访问控制<!--</lang>--></a></li>
-					<li><a href="<!--{:Dyhb::U('registeroption/login')}-->"><!--<lang package='Template/Default/Registeroption'>-->登陆安全设置<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('registeroption/index')}-->"><!--<lang package='Template'>-->注册设置<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('registeroption/visite')}-->"><!--<lang package='Template'>-->访问控制<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('registeroption/login')}-->"><!--<lang package='Template'>-->登陆安全设置<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--{:Dyhb::U('registeroption/update_option')}-->" method="post" onsubmit="return option();">
 				<div class="module_content">
 					<fieldset>
-						<label for="allowed_view_sitebase"><!--<lang package='Template/Default/Registeroption'>-->基本资料<!--</lang>--></label>
-						<input type="radio" id="allowed_view_sitebase" name="options[allowed_view_sitebase]" value="2" <!--{if $arrOptions['allowed_view_sitebase']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_sitebase]" value="1" <!--{if $arrOptions['allowed_view_sitebase']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_sitebase]" value="0" <!--{if $arrOptions['allowed_view_sitebase']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_sitebase"><!--<lang package='Template'>-->基本资料<!--</lang>--></label>
+						<input type="radio" id="allowed_view_sitebase" name="options[allowed_view_sitebase]" value="2" <!--{if $arrOptions['allowed_view_sitebase']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_sitebase]" value="1" <!--{if $arrOptions['allowed_view_sitebase']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_sitebase]" value="0" <!--{if $arrOptions['allowed_view_sitebase']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=index')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->基本信息<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=index')}-->" target="_blank"><!--<lang package='Template'>-->基本信息<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteuserlist"><!--<lang package='Template/Default/Registeroption'>-->会员列表<!--</lang>--></label>
-						<input type="radio" id="allowed_view_siteuserlist" name="options[allowed_view_siteuserlist]" value="2" <!--{if $arrOptions['allowed_view_siteuserlist']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteuserlist]" value="1" <!--{if $arrOptions['allowed_view_siteuserlist']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteuserlist]" value="0" <!--{if $arrOptions['allowed_view_siteuserlist']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_siteuserlist"><!--<lang package='Template'>-->会员列表<!--</lang>--></label>
+						<input type="radio" id="allowed_view_siteuserlist" name="options[allowed_view_siteuserlist]" value="2" <!--{if $arrOptions['allowed_view_siteuserlist']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteuserlist]" value="1" <!--{if $arrOptions['allowed_view_siteuserlist']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteuserlist]" value="0" <!--{if $arrOptions['allowed_view_siteuserlist']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->会员列表<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=userlist')}-->" target="_blank"><!--<lang package='Template'>-->会员列表<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteadminuser"><!--<lang package='Template/Default/Registeroption'>-->系统管理员<!--</lang>--></label>
-						<input type="radio" id="allowed_view_siteadminuser" name="options[allowed_view_siteadminuser]" value="2" <!--{if $arrOptions['allowed_view_siteadminuser']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteadminuser]" value="1" <!--{if $arrOptions['allowed_view_siteadminuser']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteadminuser]" value="0" <!--{if $arrOptions['allowed_view_siteadminuser']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_siteadminuser"><!--<lang package='Template'>-->系统管理员<!--</lang>--></label>
+						<input type="radio" id="allowed_view_siteadminuser" name="options[allowed_view_siteadminuser]" value="2" <!--{if $arrOptions['allowed_view_siteadminuser']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteadminuser]" value="1" <!--{if $arrOptions['allowed_view_siteadminuser']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteadminuser]" value="0" <!--{if $arrOptions['allowed_view_siteadminuser']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=adminuser')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->系统管理员<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=adminuser')}-->" target="_blank"><!--<lang package='Template'>-->系统管理员<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_sitenewuser"><!--<lang package='Template/Default/Registeroption'>-->新注册会员<!--</lang>--></label>
-						<input type="radio" id="allowed_view_sitenewuser" name="options[allowed_view_sitenewuser]" value="2" <!--{if $arrOptions['allowed_view_sitenewuser']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_sitenewuser]" value="1" <!--{if $arrOptions['allowed_view_sitenewuser']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_sitenewuser]" value="0" <!--{if $arrOptions['allowed_view_sitenewuser']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_sitenewuser"><!--<lang package='Template'>-->新注册会员<!--</lang>--></label>
+						<input type="radio" id="allowed_view_sitenewuser" name="options[allowed_view_sitenewuser]" value="2" <!--{if $arrOptions['allowed_view_sitenewuser']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_sitenewuser]" value="1" <!--{if $arrOptions['allowed_view_sitenewuser']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_sitenewuser]" value="0" <!--{if $arrOptions['allowed_view_sitenewuser']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=newuser')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->新注册会员<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=newuser')}-->" target="_blank"><!--<lang package='Template'>-->新注册会员<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_sitefeed"><!--<lang package='Template/Default/Registeroption'>-->用户动态<!--</lang>--></label>
-						<input type="radio" id="allowed_view_sitefeed" name="options[allowed_view_sitefeed]" value="2" <!--{if $arrOptions['allowed_view_sitefeed']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_sitefeed]" value="1" <!--{if $arrOptions['allowed_view_sitefeed']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_sitefeed]" value="0" <!--{if $arrOptions['allowed_view_sitefeed']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_sitefeed"><!--<lang package='Template'>-->用户动态<!--</lang>--></label>
+						<input type="radio" id="allowed_view_sitefeed" name="options[allowed_view_sitefeed]" value="2" <!--{if $arrOptions['allowed_view_sitefeed']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_sitefeed]" value="1" <!--{if $arrOptions['allowed_view_sitefeed']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_sitefeed]" value="0" <!--{if $arrOptions['allowed_view_sitefeed']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=feed')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->用户动态<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=feed')}-->" target="_blank"><!--<lang package='Template'>-->用户动态<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteexplore"><!--<lang package='Template/Default/Registeroption'>-->随便看看<!--</lang>--></label>
-						<input type="radio" id="allowed_view_siteexplore" name="options[allowed_view_siteexplore]" value="2" <!--{if $arrOptions['allowed_view_siteexplore']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteexplore]" value="1" <!--{if $arrOptions['allowed_view_siteexplore']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteexplore]" value="0" <!--{if $arrOptions['allowed_view_siteexplore']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_siteexplore"><!--<lang package='Template'>-->随便看看<!--</lang>--></label>
+						<input type="radio" id="allowed_view_siteexplore" name="options[allowed_view_siteexplore]" value="2" <!--{if $arrOptions['allowed_view_siteexplore']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteexplore]" value="1" <!--{if $arrOptions['allowed_view_siteexplore']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteexplore]" value="0" <!--{if $arrOptions['allowed_view_siteexplore']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=explore')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->随便看看<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=explore')}-->" target="_blank"><!--<lang package='Template'>-->随便看看<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteusertop"><!--<lang package='Template/Default/Registeroption'>-->用户排行<!--</lang>--></label>
-						<input type="radio" id="allowed_view_siteusertop" name="options[allowed_view_siteusertop]" value="2" <!--{if $arrOptions['allowed_view_siteusertop']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteusertop]" value="1" <!--{if $arrOptions['allowed_view_siteusertop']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteusertop]" value="0" <!--{if $arrOptions['allowed_view_siteusertop']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_siteusertop"><!--<lang package='Template'>-->用户排行<!--</lang>--></label>
+						<input type="radio" id="allowed_view_siteusertop" name="options[allowed_view_siteusertop]" value="2" <!--{if $arrOptions['allowed_view_siteusertop']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteusertop]" value="1" <!--{if $arrOptions['allowed_view_siteusertop']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteusertop]" value="0" <!--{if $arrOptions['allowed_view_siteusertop']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=usertop')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->用户排行<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=stat&a=usertop')}-->" target="_blank"><!--<lang package='Template'>-->用户排行<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_attachment"><!--<lang package='Template/Default/Registeroption'>-->附件库<!--</lang>--></label>
-						<input type="radio" id="allowed_view_attachment" name="options[allowed_view_attachment]" value="2" <!--{if $arrOptions['allowed_view_attachment']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_attachment]" value="1" <!--{if $arrOptions['allowed_view_attachment']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_attachment]" value="0" <!--{if $arrOptions['allowed_view_attachment']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_attachment"><!--<lang package='Template'>-->附件库<!--</lang>--></label>
+						<input type="radio" id="allowed_view_attachment" name="options[allowed_view_attachment]" value="2" <!--{if $arrOptions['allowed_view_attachment']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_attachment]" value="1" <!--{if $arrOptions['allowed_view_attachment']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_attachment]" value="0" <!--{if $arrOptions['allowed_view_attachment']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=attachment&a=index')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->附件库<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=attachment&a=index')}-->" target="_blank"><!--<lang package='Template'>-->附件库<!--</lang>--></a>
 						</div>
 					</fieldset>
 					<fieldset>
-						<label for="allowed_view_siteapps"><!--<lang package='Template/Default/Registeroption'>-->应用列表<!--</lang>--></label>
-						<input type="radio" id="allowed_view_siteapps" name="options[allowed_view_siteapps]" value="2" <!--{if $arrOptions['allowed_view_siteapps']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteapps]" value="1" <!--{if $arrOptions['allowed_view_siteapps']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->
-						<input type="radio" id="" name="options[allowed_view_siteapps]" value="0" <!--{if $arrOptions['allowed_view_siteapps']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Registeroption'>-->管理员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->会员<!--</lang>-->|<!--<lang package='Template/Default/Registeroption'>-->游客<!--</lang>-->
+						<label for="allowed_view_siteapps"><!--<lang package='Template'>-->应用列表<!--</lang>--></label>
+						<input type="radio" id="allowed_view_siteapps" name="options[allowed_view_siteapps]" value="2" <!--{if $arrOptions['allowed_view_siteapps']==2}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->管理员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteapps]" value="1" <!--{if $arrOptions['allowed_view_siteapps']==1}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->
+						<input type="radio" id="" name="options[allowed_view_siteapps]" value="0" <!--{if $arrOptions['allowed_view_siteapps']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->管理员<!--</lang>-->|<!--<lang package='Template'>-->会员<!--</lang>-->|<!--<lang package='Template'>-->游客<!--</lang>-->
 						<div class="description">
-							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=apps&a=index')}-->" target="_blank"><!--<lang package='Template/Default/Registeroption'>-->应用列表<!--</lang>--></a>
+							<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=apps&a=index')}-->" target="_blank"><!--<lang package='Template'>-->应用列表<!--</lang>--></a>
 						</div>
 					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">
-						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
-						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->" />
 					</div>
 				</footer>
 			</form>

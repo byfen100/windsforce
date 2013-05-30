@@ -28,12 +28,12 @@ class AttachmentcategoryController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if(empty($nId)){
-			$this->E(Dyhb::L('没有待取消封面的专辑ID','Controller/Attachmentcategory'));
+			$this->E(Dyhb::L('没有待取消封面的专辑ID','Controller'));
 		}
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nId)->getOne();
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			$this->E(Dyhb::L('待取消封面的专辑不存在','Controller/Attachmentcategory'));
+			$this->E(Dyhb::L('待取消封面的专辑不存在','Controller'));
 		}
 
 		$oAttachmentcategory->attachmentcategory_cover='0';
@@ -43,7 +43,7 @@ class AttachmentcategoryController extends InitController{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('专辑封面删除成功','Controller/Attachmentcategory'));
+		$this->S(Dyhb::L('专辑封面删除成功','Controller'));
 	}
 
 	public function forbid($sModel=null,$sId=null,$bApp=false){
@@ -55,7 +55,7 @@ class AttachmentcategoryController extends InitController{
 	}
 
 	public function add(){
-		$this->E(Dyhb::L('后台无法创建专辑','Controller/Attachmentcategory').'<br/><a href="'.Core_Extend::windsforceOuter('app=home&c=attachment&a=my_attachmentcategory').'" target="_blank">'.Dyhb::L('前往创建','Controller/Attachmentcategory').'</a>');
+		$this->E(Dyhb::L('后台无法创建专辑','Controller').'<br/><a href="'.Core_Extend::windsforceOuter('app=home&c=attachment&a=my_attachmentcategory').'" target="_blank">'.Dyhb::L('前往创建','Controller').'</a>');
 	}
 
 	public function bForeverdelete_(){
@@ -71,17 +71,17 @@ class AttachmentcategoryController extends InitController{
 
 	protected function delete_attachmentcategory_($nAttachmentcategoryid){
 		if(empty($nAttachmentcategoryid)){
-			$this->E(Dyhb::L('你没有选择你要删除的专辑','Controller/Attachmentcategory'));
+			$this->E(Dyhb::L('你没有选择你要删除的专辑','Controller'));
 		}
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->getOne();
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			$this->E(Dyhb::L('你要删除的专辑不存在','Controller/Attachmentcategory'));
+			$this->E(Dyhb::L('你要删除的专辑不存在','Controller'));
 		}
 
 		$nTotalRecord=AttachmentModel::F('attachmentcategory_id=?',$oAttachmentcategory['attachmentcategory_id'])->all()->getCounts();
 		if($nTotalRecord>0){
-			$this->E(Dyhb::L('专辑含有照片，请先删除照片后再删除专辑','Controller/Attachmentcategory'));
+			$this->E(Dyhb::L('专辑含有照片，请先删除照片后再删除专辑','Controller'));
 		}
 	}
 

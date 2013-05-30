@@ -117,7 +117,7 @@ class NavController extends InitController{
 			// 系统链接不能够被删除
 			$oNavModel=NavModel::F('nav_id=?',$nId)->getOne();
 			if(!$oNavModel['nav_type']){
-				$this->E(Dyhb::L('内置的菜单不能够被删除','Controller/Nav'));
+				$this->E(Dyhb::L('内置的菜单不能够被删除','Controller'));
 			}
 		}
 	}

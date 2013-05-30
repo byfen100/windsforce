@@ -10,7 +10,7 @@ class UserprofilesettingController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -24,7 +24,7 @@ class UserprofilesettingController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_userprofilesetting($nId)){
-				$this->E(Dyhb::L('系统用户栏目无法删除','Controller/Userprofilesetting'));
+				$this->E(Dyhb::L('系统用户栏目无法删除','Controller'));
 			}
 		}
 	}

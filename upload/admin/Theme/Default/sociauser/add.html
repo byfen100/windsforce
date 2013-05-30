@@ -6,13 +6,13 @@ function update(){
 	$("#submit_button").val( 'update...' );
 	Dyhb.AjaxSubmit('sociauserAdd','<!--{:Dyhb::U('sociauser/update')}-->','',function(){
 		$("#submit_button").attr("disabled", false);
-		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
+		$("#submit_button").val( '<!--<lang package='Template'>-->更新<!--</lang>-->' ); 
 	});
 }
 
 function complete(data,status){
 	$("#submit_button").attr("disabled", false);
-	$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->' );
+	$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
 	if(status==1){
 		$('#id').val(data.sociauser_id);
 	}
@@ -21,110 +21,110 @@ function complete(data,status){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Sociauser'>-->编辑社会化用户<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Sociauser'>-->编辑社会化用户<!--</lang>-->_<!--{$nId}-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->编辑社会化用户<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->编辑社会化用户<!--</lang>-->_<!--{$nId}-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Sociauser'>-->您可以在这里编辑社会化用户<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Sociauser'>-->注意，系统拒绝后台添加绑定数据<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Sociauser'>-->注意，没有特别需要，请不要随意删除或者修改用户的绑定信息<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->您可以在这里编辑社会化用户<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->注意，系统拒绝后台添加绑定数据<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->注意，没有特别需要，请不要随意删除或者修改用户的绑定信息<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Sociauser'>-->编辑社会化帐号<!--</lang>-->-<!--{:UserModel::getUsernameById($oValue['user_id'])}--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->编辑社会化帐号<!--</lang>-->-<!--{:UserModel::getUsernameById($oValue['user_id'])}--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Dyhb::U('sociauser/index')}-->"><!--<lang package='Template/Default/Sociauser'>-->社会化用户列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('sociauser/index')}-->"><!--<lang package='Template'>-->社会化用户列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--{:Dyhb::U('sociauser/update')}-->" method="post" id="sociauserAdd">
 				<div class="module_content">
 					<fieldset>
-						<label for="sociauser_name"><!--<lang package='Template/Default/Sociauser'>-->社会化用户名字<!--</lang>--></label>
+						<label for="sociauser_name"><!--<lang package='Template'>-->社会化用户名字<!--</lang>--></label>
 						<input type="text" name="sociauser_name" id="sociauser_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_name}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->社会化用户的名字，不能为空<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->社会化用户的名字，不能为空<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_nikename"><!--<lang package='Template/Default/Sociauser'>-->社会化用户昵称<!--</lang>--></label>
+						<label for="sociauser_nikename"><!--<lang package='Template'>-->社会化用户昵称<!--</lang>--></label>
 						<input type="text" name="sociauser_nikename" id="sociauser_nikename" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_nikename}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->社会化用户的昵称<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->社会化用户的昵称<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_appid"><!--<lang package='Template/Default/Sociauser'>-->社会化用户AppID<!--</lang>--></label>
+						<label for="sociauser_appid"><!--<lang package='Template'>-->社会化用户AppID<!--</lang>--></label>
 						<input type="text" name="sociauser_appid" id="sociauser_appid" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_appid}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->这里用户绑定的服务商的AppID<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->这里用户绑定的服务商的AppID<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_keys"><!--<lang package='Template/Default/Sociauser'>-->社会化用户AppKEY<!--</lang>--></label>
+						<label for="sociauser_keys"><!--<lang package='Template'>-->社会化用户AppKEY<!--</lang>--></label>
 						<input type="text" name="sociauser_keys" id="sociauser_keys" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_keys}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->这里用户绑定的服务商的AppKEY<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->这里用户绑定的服务商的AppKEY<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_desc"><!--<lang package='Template/Default/Sociauser'>-->社会化用户描述<!--</lang>--></label>
+						<label for="sociauser_desc"><!--<lang package='Template'>-->社会化用户描述<!--</lang>--></label>
 						<input type="text" name="sociauser_desc" id="sociauser_desc" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_desc}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->这里的描述相当于用户的自我介绍<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->这里的描述相当于用户的自我介绍<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_img"><!--<lang package='Template/Default/Sociauser'>-->社会化用户小头像<!--</lang>--></label>
+						<label for="sociauser_img"><!--<lang package='Template'>-->社会化用户小头像<!--</lang>--></label>
 						<input type="text" name="sociauser_img" id="sociauser_img" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_img}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->用户的小头像<!--</lang>--><br/>
+						<div class="description"><!--<lang package='Template'>-->用户的小头像<!--</lang>--><br/>
 						<img src="<!--{$oValue:sociauser_img}-->"/></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_img1"><!--<lang package='Template/Default/Sociauser'>-->社会化用户中等头像<!--</lang>--></label>
+						<label for="sociauser_img1"><!--<lang package='Template'>-->社会化用户中等头像<!--</lang>--></label>
 						<input type="text" name="sociauser_img1" id="sociauser_img1" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_img1}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->用户的中等头像<!--</lang>--><br/>
+						<div class="description"><!--<lang package='Template'>-->用户的中等头像<!--</lang>--><br/>
 						<img src="<!--{$oValue:sociauser_img1}-->"/></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_img2"><!--<lang package='Template/Default/Sociauser'>-->社会化用户大头像<!--</lang>--></label>
+						<label for="sociauser_img2"><!--<lang package='Template'>-->社会化用户大头像<!--</lang>--></label>
 						<input type="text" name="sociauser_img2" id="sociauser_img2" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_img2}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->用户的大头像<!--</lang>--><br/>
+						<div class="description"><!--<lang package='Template'>-->用户的大头像<!--</lang>--><br/>
 						<img src="<!--{$oValue:sociauser_img2}-->"/></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_gender"><!--<lang package='Template/Default/Sociauser'>-->社会化用户性别<!--</lang>--></label>
+						<label for="sociauser_gender"><!--<lang package='Template'>-->社会化用户性别<!--</lang>--></label>
 						<input type="text" name="sociauser_gender" id="sociauser_gender" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_gender}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->用户的性别<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->用户的性别<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_email"><!--<lang package='Template/Default/Sociauser'>-->社会化用户Email<!--</lang>--></label>
+						<label for="sociauser_email"><!--<lang package='Template'>-->社会化用户Email<!--</lang>--></label>
 						<input type="text" name="sociauser_email" id="sociauser_email" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_email}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->用户的Email<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->用户的Email<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_url"><!--<lang package='Template/Default/Sociauser'>-->社会化用户主页<!--</lang>--></label>
+						<label for="sociauser_url"><!--<lang package='Template'>-->社会化用户主页<!--</lang>--></label>
 						<input type="text" name="sociauser_url" id="sociauser_url" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_url}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->社会化用户个人主页<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->社会化用户个人主页<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_location"><!--<lang package='Template/Default/Sociauser'>-->社会化用户地址<!--</lang>--></label>
+						<label for="sociauser_location"><!--<lang package='Template'>-->社会化用户地址<!--</lang>--></label>
 						<input type="text" name="sociauser_location" id="sociauser_location" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_location}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->社会化用户地址<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->社会化用户地址<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_vip"><!--<lang package='Template/Default/Sociauser'>-->社会化用户Vip级别<!--</lang>--></label>
+						<label for="sociauser_vip"><!--<lang package='Template'>-->社会化用户Vip级别<!--</lang>--></label>
 						<input type="text" name="sociauser_vip" id="sociauser_vip" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_location}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->社会化用户Vip级别<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->社会化用户Vip级别<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="sociauser_level"><!--<lang package='Template/Default/Sociauser'>-->社会化用户级别<!--</lang>--></label>
+						<label for="sociauser_level"><!--<lang package='Template'>-->社会化用户级别<!--</lang>--></label>
 						<input type="text" name="sociauser_level" id="sociauser_level" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:sociauser_level}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/Sociauser'>-->社会化用户级别<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->社会化用户级别<!--</lang>--></div>
 					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">
 						<input type="hidden" name="ajax" value="1">
 						<input type="hidden" name="id" id="id" value="<!--{$nId}-->"/>
-						<input type="button" id="submit_button" onclick="update()" value="<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->" class="alt_btn">
-						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+						<input type="button" id="submit_button" onclick="update()" value="<!--<lang package='Template'>-->更新<!--</lang>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->">
 					</div>
 				</footer>
 			</form>

@@ -76,7 +76,7 @@ class AdminctrlmenuController extends InitController{
 		$oAdminctrlmenu=AdminctrlmenuModel::F('adminctrlmenu_url=? AND adminctrlmenu_internal=1',$sUrl)->getOne();
 		if(!empty($oAdminctrlmenu['adminctrlmenu_id'])){
 			if($oAdminctrlmenu->adminctrlmenu_status==1){
-				$this->E(Dyhb::L('快捷访问导航已经被添加','Controller/Adminctrlmenu'));
+				$this->E(Dyhb::L('快捷访问导航已经被添加','Controller'));
 			}else{
 				$oAdminctrlmenu->adminctrlmenu_status=1;
 				$oAdminctrlmenu->save(0,'update');
@@ -86,7 +86,7 @@ class AdminctrlmenuController extends InitController{
 				}else{
 					$this->aInsert();
 
-					$this->S(Dyhb::L('添加快捷访问导航成功','Controller/Adminctrlmenu'));
+					$this->S(Dyhb::L('添加快捷访问导航成功','Controller'));
 				}
 			}
 		}else{
@@ -102,7 +102,7 @@ class AdminctrlmenuController extends InitController{
 			}else{
 				$this->aInsert();
 
-				$this->S(Dyhb::L('添加快捷访问导航成功','Controller/Adminctrlmenu'));
+				$this->S(Dyhb::L('添加快捷访问导航成功','Controller'));
 			}
 		}
 	}

@@ -10,7 +10,7 @@ class FeedController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -51,10 +51,10 @@ class FeedController extends InitController{
 				
 				$this->display('feed+show');
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 

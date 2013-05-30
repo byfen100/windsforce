@@ -13,7 +13,7 @@ class CreditlogController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -44,13 +44,13 @@ class CreditlogController extends InitController{
 		$nUserid=intval(G::getGpc('id'));
 
 		if(empty($nUserid)){
-			$this->E(Dyhb::L('你没有指定待清空积分收益数据的用户','Controller/Creditlog'));
+			$this->E(Dyhb::L('你没有指定待清空积分收益数据的用户','Controller'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$nUserid)->getOne();
 
 		if(empty($oUser['user_id'])){
-			$this->E(Dyhb::L('待清空积分收益数据的用户不存在','Controller/Creditlog'));
+			$this->E(Dyhb::L('待清空积分收益数据的用户不存在','Controller'));
 		}
 
 		
@@ -62,7 +62,7 @@ class CreditlogController extends InitController{
 			$this->E($oCreditlogMeta->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('清空积分收益数据成功','Controller/Creditlog'));
+		$this->S(Dyhb::L('清空积分收益数据成功','Controller'));
 	}
 
 }

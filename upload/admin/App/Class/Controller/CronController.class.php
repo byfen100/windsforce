@@ -10,7 +10,7 @@ class CronController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -20,7 +20,7 @@ class CronController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_cron($nId)){
-				$this->E(Dyhb::L('系统计划任务无法删除','Controller/Cron'));
+				$this->E(Dyhb::L('系统计划任务无法删除','Controller'));
 			}
 		}
 	}
@@ -52,11 +52,11 @@ class CronController extends InitController{
 				}
 
 				if(empty($sCronfilename)){
-					$this->E(Dyhb::L('计划任务脚本不能为空','Controller/Cron'));
+					$this->E(Dyhb::L('计划任务脚本不能为空','Controller'));
 				}
 
 				if(preg_match("/[\\\\\/\:\*\?\"\<\>\|]+/",$sCronfilename)){
-					$this->E(Dyhb::L('计划任务脚本含有非法字符','Controller/Cron'));
+					$this->E(Dyhb::L('计划任务脚本含有非法字符','Controller'));
 				}
 
 				if($sAppid){
@@ -72,11 +72,11 @@ class CronController extends InitController{
 				}
 
 				if(!is_file(WINDSFORCE_PATH.$sCronfile)){
-					$this->E(Dyhb::L('您指定的任务脚本文件(%s)不存在或包含语法错误','Controller/Cron',null,$sCronfile));
+					$this->E(Dyhb::L('您指定的任务脚本文件(%s)不存在或包含语法错误','Controller',null,$sCronfile));
 				}
 
 				if($oCron['cron_weekday']==-1 && $oCron['cron_day']==-1 && $oCron['cron_hour']==-1 && $oCron['cron_minute']===''){
-					$this->E(Dyhb::L('计划任务时间设置不正确','Controller/Cron'));
+					$this->E(Dyhb::L('计划任务时间设置不正确','Controller'));
 				}
 
 				if(!Dyhb::classExists('Windsforce_Cron')){
@@ -85,12 +85,12 @@ class CronController extends InitController{
 
 				Windsforce_Cron::RUN($nId);
 
-				$this->S(Dyhb::L('定时任务执行成功','Controller/Cron'));
+				$this->S(Dyhb::L('定时任务执行成功','Controller'));
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -131,11 +131,11 @@ class CronController extends InitController{
 		}
 
 		if(empty($_POST['cron_filename'])){
-			$this->E(Dyhb::L('计划任务脚本不能为空','Controller/Cron'));
+			$this->E(Dyhb::L('计划任务脚本不能为空','Controller'));
 		}
 
 		if(preg_match("/[\\\\\/\:\*\?\"\<\>\|]+/",$_POST['cron_filename'])){
-			$this->E(Dyhb::L('计划任务脚本含有非法字符','Controller/Cron'));
+			$this->E(Dyhb::L('计划任务脚本含有非法字符','Controller'));
 		}
 
 		if($sAppid){
@@ -153,11 +153,11 @@ class CronController extends InitController{
 		}
 
 		if(!is_readable(WINDSFORCE_PATH.$sCronfile)){
-			$this->E(Dyhb::L('您指定的任务脚本文件(%s)不存在或包含语法错误','Controller/Cron',null,$sCronfile));
+			$this->E(Dyhb::L('您指定的任务脚本文件(%s)不存在或包含语法错误','Controller',null,$sCronfile));
 		}
 
 		if($_POST['cron_weekday']==-1 && $nDaynew==-1 && $_POST['cron_hour']==-1 && $sMinutenew===''){
-			$this->E(Dyhb::L('计划任务时间设置不正确','Controller/Cron'));
+			$this->E(Dyhb::L('计划任务时间设置不正确','Controller'));
 		}
 		
 		$oModel->cron_weekday=$_POST['cron_weekday'];
@@ -180,16 +180,16 @@ class CronController extends InitController{
 	public function get_type($sType){
 		switch($sType){
 			case 'system':
-				return Dyhb::L('系统内置','Controller/Cron');
+				return Dyhb::L('系统内置','Controller');
 				break;
 			case 'user':
-				return Dyhb::L('用户自定义','Controller/Cron');
+				return Dyhb::L('用户自定义','Controller');
 				break;
 			case 'app':
-				return Dyhb::L('应用','Controller/Cron');
+				return Dyhb::L('应用','Controller');
 				break;
 			case 'plugin':
-				return Dyhb::L('插件','Controller/Cron');
+				return Dyhb::L('插件','Controller');
 				break;
 			default:
 				return 'N/A';
@@ -200,25 +200,25 @@ class CronController extends InitController{
 	public function get_week($nWeek){
 		switch($nWeek){
 			case '0':
-				return Dyhb::L('日','Controller/Cron');
+				return Dyhb::L('日','Controller');
 				break;
 			case '1':
-				return Dyhb::L('一','Controller/Cron');
+				return Dyhb::L('一','Controller');
 				break;
 			case '2':
-				return Dyhb::L('二','Controller/Cron');
+				return Dyhb::L('二','Controller');
 				break;
 			case '3':
-				return Dyhb::L('三','Controller/Cron');
+				return Dyhb::L('三','Controller');
 				break;
 			case '4':
-				return Dyhb::L('四','Controller/Cron');
+				return Dyhb::L('四','Controller');
 				break;
 			case '5':
-				return Dyhb::L('五','Controller/Cron');
+				return Dyhb::L('五','Controller');
 				break;
 			case '6':
-				return Dyhb::L('六','Controller/Cron');
+				return Dyhb::L('六','Controller');
 				break;
 			default:
 				return 'N/A';

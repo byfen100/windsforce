@@ -10,7 +10,7 @@ class NodegroupController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -42,7 +42,7 @@ class NodegroupController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_nodegroup($nId)){
-				$this->E(Dyhb::L('系统节点分组无法删除','Controller/Nodegroup'));
+				$this->E(Dyhb::L('系统节点分组无法删除','Controller'));
 			}
 		}
 	}
@@ -53,7 +53,7 @@ class NodegroupController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_nodegroup($nId)){
-			$this->E(Dyhb::L('系统节点分组无法编辑','Controller/Nodegroup'));
+			$this->E(Dyhb::L('系统节点分组无法编辑','Controller'));
 		}
 	}
 

@@ -22,55 +22,55 @@ $(document).ready(function(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Appeal'>-->用户申诉审核<!--</lang>--></a> <div class="breadcrumb_divider"></div> 
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Templateeal'>-->用户申诉审核<!--</lang>--></a> <div class="breadcrumb_divider"></div> 
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Appeal'>-->在这里你会看到用户申诉的详细信息<!--</lang>--></li>
+					<li><!--<lang package='Templateeal'>-->在这里你会看到用户申诉的详细信息<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 		
 		<article class="module width_full">
 			<form id="appeal_form" method="post" action="<!--{:Dyhb::U('appeal/reject?id='.$oAppeal->appeal_id)}-->">
-				<header><h3 class="tabs_involved"><!--{$oUser->user_name}--><!--<lang package='Template/Default/Appeal'>-->用户的申诉信息<!--</lang>--></h3>
+				<header><h3 class="tabs_involved"><!--{$oUser->user_name}--><!--<lang package='Templateeal'>-->用户的申诉信息<!--</lang>--></h3>
 				</header>
 				<div class="module_content">
 					<table class="tablesorter" cellspacing="0">
 						<tbody>
 							<tr>
-								<td><!--<lang package='Template/Default/Appeal'>-->申诉真实姓名<!--</lang>--></td>
+								<td><!--<lang package='Templateeal'>-->申诉真实姓名<!--</lang>--></td>
 								<td><!--{$oAppeal->appeal_realname}--></td>
 							</tr>
 							<tr>
-								<td><!--<lang package='Template/Default/Appeal'>-->申诉详细地址<!--</lang>--></td>
+								<td><!--<lang package='Templateeal'>-->申诉详细地址<!--</lang>--></td>
 								<td><!--{$oAppeal->appeal_address}--></td>
 							</tr>
 							<tr>
-								<td><!--<lang package='Template/Default/Appeal'>-->申诉身份证号<!--</lang>--></td>
+								<td><!--<lang package='Templateeal'>-->申诉身份证号<!--</lang>--></td>
 								<td><!--{$oAppeal->appeal_idnumber}--></td>
 							</tr>
 							<tr>
-								<td><!--<lang package='Template/Default/Appeal'>-->申诉Email<!--</lang>--></td>
+								<td><!--<lang package='Templateeal'>-->申诉Email<!--</lang>--></td>
 								<td><!--{$oAppeal->appeal_email}--></td>
 							</tr>
 						</tbody>
 					</table>
 					<fieldset>
-						<label for="appeal_prompt"><!--<lang package='Template/Default/Appeal'>-->驳回理由<!--</lang>--></label>
+						<label for="appeal_prompt"><!--<lang package='Templateeal'>-->驳回理由<!--</lang>--></label>
 						<textarea id="appeal_reason" name="appeal_reason" rows="5"></textarea>
-						<div class="description"><!--<lang package='Template/Default/Appeal'>-->若驳回申诉,请填写驳回理由.<!--</lang>--></div>
+						<div class="description"><!--<lang package='Templateeal'>-->若驳回申诉,请填写驳回理由.<!--</lang>--></div>
 					</fieldset>
 				</div>
 				<footer>
 						<div class="submit_link">
-							<input type="button" id="appeal_pass2" name="appeal_pass2" onclick="appeal_pass(<!--{$oAppeal->appeal_id}-->);" value="<!--<lang package='Template/Default/Appeal'>-->审核通过<!--</lang>-->" class="alt_btn">
-							&nbsp;<input type="submit" id="appeal_reject" name="appeal_reject" value="<!--<lang package='Template/Default/Appeal'>-->审核驳回<!--</lang>-->" class="alt_btn">
+							<input type="button" id="appeal_pass2" name="appeal_pass2" onclick="appeal_pass(<!--{$oAppeal->appeal_id}-->);" value="<!--<lang package='Templateeal'>-->审核通过<!--</lang>-->" class="alt_btn">
+							&nbsp;<input type="submit" id="appeal_reject" name="appeal_reject" value="<!--<lang package='Templateeal'>-->审核驳回<!--</lang>-->" class="alt_btn">
 						</div>
 				</footer>
 			</form>

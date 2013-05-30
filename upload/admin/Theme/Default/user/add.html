@@ -12,7 +12,7 @@ function checkUsername(){
 	$("#check_button").val( 'check...' );
 	Dyhb.AjaxSend('<!--{:Dyhb::U('user/checkusername')}-->','ajax=1&user_name='+$('#user_name').val(),'',function(data,status){ 
 		$("#check_button").attr("disabled", false);
-		$("#check_button").val("<!--<lang package='Template/Default/User'>-->检测账户<!--</lang>-->"); 
+		$("#check_button").val("<!--<lang package='Template'>-->检测账户<!--</lang>-->"); 
 	});
 }
 
@@ -27,7 +27,7 @@ function resetPassword(){
 	$("#reset_button").val( 'reset...' );
 	Dyhb.AjaxSend('<!--{:Dyhb::U('user/resetpassword')}-->','ajax=1&id=<!--{$oValue['user_id']}-->&password='+$('#resetPassword').val(),'',function(data,status){ 
 		$("#reset_button").attr("disabled", false);
-		$("#reset_button").val("<!--<lang package='Template/Default/User'>-->重置密码<!--</lang>-->"); 
+		$("#reset_button").val("<!--<lang package='Template'>-->重置密码<!--</lang>-->"); 
 	});
 }
 
@@ -36,7 +36,7 @@ function update(){
 	$("#submit_button").val( 'update...' );
 	Dyhb.AjaxSubmit('userAdd','<!--{:Dyhb::U('user/update')}-->','',function(data,status){ 
 		$("#submit_button").attr("disabled", false);
-		$("#submit_button").val("<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->"); 
+		$("#submit_button").val("<!--<lang package='Template'>-->发布<!--</lang>-->"); 
 	});
 }
 <!--</if>-->
@@ -44,85 +44,85 @@ function update(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/User'>-->添加用户<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/User'>-->编辑用户<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/User'>-->添加用户<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/User'>-->编辑用户<!--</lang>-->_<!--{$nId}--><!--</if>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="empty( $nId )" >--><!--<lang package='Template'>-->添加用户<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->编辑用户<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="empty( $nId )" >--><!--<lang package='Template'>-->添加用户<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->编辑用户<!--</lang>-->_<!--{$nId}--><!--</if>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/User'>-->要为您的站点添加用户，请填写本页面的表单<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->要为您的站点添加用户，请填写本页面的表单<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 
 		<!--<if condition="isset( $nId ) && !empty( $nId )" >-->
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/User'>-->重置密码<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->重置密码<!--</lang>--></h3></header>
 			<div class="module_content">
 				<fieldset>
-					<label for="resetPassword"><!--<lang package='Template/Default/User'>-->重置密码<!--</lang>--></label>
+					<label for="resetPassword"><!--<lang package='Template'>-->重置密码<!--</lang>--></label>
 					<p><input type="text" name="resetPassword" type="password" id="resetPassword" size="40" class="left">
-					<input id="reset_button" type="button" value="<!--<lang package='Template/Default/User'>-->重置密码<!--</lang>-->" onclick="resetPassword()" class="alt_btn"></p>
-					<div class="description"><!--<lang package='Template/Default/User'>-->修改用户登录密码，请慎重<!--</lang>--></div>
+					<input id="reset_button" type="button" value="<!--<lang package='Template'>-->重置密码<!--</lang>-->" onclick="resetPassword()" class="alt_btn"></p>
+					<div class="description"><!--<lang package='Template'>-->修改用户登录密码，请慎重<!--</lang>--></div>
 				</fieldset>
 			</div>
 		</article>
 		<!--</if>-->
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<if condition="empty( $nId )" >--><!--<lang package='Template/Default/User'>-->添加用户<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/User'>-->编辑用户<!--</lang>--><!--</if>--></h3>
+			<header><h3 class="tabs_involved"><!--<if condition="empty( $nId )" >--><!--<lang package='Template'>-->添加用户<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->编辑用户<!--</lang>--><!--</if>--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Dyhb::U('user/index')}-->"><!--<lang package='Template/Default/User'>-->用户列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('user/index')}-->"><!--<lang package='Template'>-->用户列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--<if condition="empty( $nId )" >--><!--{:Dyhb::U('user/insert')}--><!--<else/>--><!--{:Dyhb::U('user/update')}--><!--</if>-->" method="post" id="userAdd" name="userAdd" <!--<if condition="empty( $nId )" >-->onsubmit="return add();"<!--</if>--> >
 				<div class="module_content">
 					<fieldset>
-						<label for="user_name"><!--<lang package='Template/Default/User'>-->用户名<!--</lang>--></label>
+						<label for="user_name"><!--<lang package='Template'>-->用户名<!--</lang>--></label>
 						<p><input type="text" name="user_name" id="user_name" size="40" <!--<if condition="isset( $oValue )">-->disabled="true"<!--</if>--> value="<!--<if condition="isset( $oValue )">--><!--{$oValue:user_name}--><!--</if>-->" <!--<if condition="empty( $nId )" >-->class="left"<!--</if>--> />
-						<!--<if condition="empty( $nId )" >--><input id="check_button" type="button" value="<!--<lang package='Template/Default/User'>-->检测帐号<!--</lang>-->" onclick="checkUsername()" class="alt_btn"><!--</if>--></p>
-						<div class="description"><!--<lang package='Template/Default/User'>-->用户名是用于登录网站的唯一帐号，建议没有特别的事请不要修改<!--</lang>--></div>
+						<!--<if condition="empty( $nId )" >--><input id="check_button" type="button" value="<!--<lang package='Template'>-->检测帐号<!--</lang>-->" onclick="checkUsername()" class="alt_btn"><!--</if>--></p>
+						<div class="description"><!--<lang package='Template'>-->用户名是用于登录网站的唯一帐号，建议没有特别的事请不要修改<!--</lang>--></div>
 					</fieldset>
 					<!--<if condition="!isset( $nId )" >-->
 					<fieldset>
-						<label for="user_password"><!--<lang package='Template/Default/User'>-->密码<!--</lang>--></label>
+						<label for="user_password"><!--<lang package='Template'>-->密码<!--</lang>--></label>
 						<input type="password" name="user_password" id="user_password" size="40"/>
-						<div class="description"><!--<lang package='Template/Default/User'>-->密码是用于用户登录系统的必需，进行安全认证<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->密码是用于用户登录系统的必需，进行安全认证<!--</lang>--></div>
 					</fieldset>
 					<!--</if>-->
 					<fieldset>
-						<label for="user_nikename"><!--<lang package='Template/Default/User'>-->昵称<!--</lang>--></label>
+						<label for="user_nikename"><!--<lang package='Template'>-->昵称<!--</lang>--></label>
 						<input type="text" name="user_nikename" id="user_nikename" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:user_nikename}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/User'>-->昵称是相对于用户的一种身份名字，如admin可以给一个管理员<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->昵称是相对于用户的一种身份名字，如admin可以给一个管理员<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
 						<label for="user_email">Email</label>
 						<input type="text" name="user_email" id="user_email" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:user_email}--><!--</if>-->"/>
-						<div class="description"><!--<lang package='Template/Default/User'>-->Email也可以用于登录以及接受系统邮件，可以用于找回密码等<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->Email也可以用于登录以及接受系统邮件，可以用于找回密码等<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="user_status"><!--<lang package='Template/Default/Common'>-->状态<!--</lang>--></label>
+						<label for="user_status"><!--<lang package='Template'>-->状态<!--</lang>--></label>
 						<select name="user_status">
-							<option value="1" <!--<if condition="isset( $oValue ) && $oValue:user_status==1">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->启用<!--</lang>--></option>
-							<option value="0" <!--<if condition="!isset( $oValue ) || ( isset( $oValue ) && $oValue:user_status==0 ) ">-->selected<!--</if>-->><!--<lang package='Template/Default/Common'>-->禁用<!--</lang>--></option>
+							<option value="1" <!--<if condition="isset( $oValue ) && $oValue:user_status==1">-->selected<!--</if>-->><!--<lang package='Template'>-->启用<!--</lang>--></option>
+							<option value="0" <!--<if condition="!isset( $oValue ) || ( isset( $oValue ) && $oValue:user_status==0 ) ">-->selected<!--</if>-->><!--<lang package='Template'>-->禁用<!--</lang>--></option>
 						</select>
-						<div class="description"><!--<lang package='Template/Default/User'>-->用户帐号状态，开启后才能够使用<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->用户帐号状态，开启后才能够使用<!--</lang>--></div>
 					</fieldset>
 					<fieldset>
-						<label for="user_remark"><!--<lang package='Template/Default/User'>-->备注<!--</lang>--></label>
+						<label for="user_remark"><!--<lang package='Template'>-->备注<!--</lang>--></label>
 						<textarea name="user_remark" id="user_remark" rows="5"><!--<if condition="isset( $oValue )">--><!--{$oValue:user_remark}--><!--</if>--></textarea>
-						<div class="description"><!--<lang package='Template/Default/User'>-->用户的一些其它信息可以填在这里<!--</lang>--></div>
+						<div class="description"><!--<lang package='Template'>-->用户的一些其它信息可以填在这里<!--</lang>--></div>
 					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">
 						<!--<if condition="!empty( $nId )" >--><input type="hidden" name="ajax" value="1"><!--</if>-->
 						<input type="hidden" name="id" id="id" value="<!--<if condition="!empty( $nId )" >--><!--{$nId}--><!--</if>-->"/>
-						<input id="submit_button" type="<!--<if condition="!empty( $nId )" >-->button<!--<else/>-->submit<!--</if>-->" <!--<if condition="!empty( $nId )" >-->onclick="update()"<!--</if>--> class="alt_btn" value="<!--<if condition="!empty( $nId )" >--><!--<lang package='Template/Default/Common'>-->更新<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Common'>-->发布<!--</lang>--><!--</if>-->" />
-						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+						<input id="submit_button" type="<!--<if condition="!empty( $nId )" >-->button<!--<else/>-->submit<!--</if>-->" <!--<if condition="!empty( $nId )" >-->onclick="update()"<!--</if>--> class="alt_btn" value="<!--<if condition="!empty( $nId )" >--><!--<lang package='Template'>-->更新<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->发布<!--</lang>--><!--</if>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->" />
 					</div>
 				</footer>
 			</form>

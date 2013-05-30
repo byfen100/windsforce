@@ -10,7 +10,7 @@ class NodeController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -27,7 +27,7 @@ class NodeController extends InitController{
 
 		if(!empty($nNodegroupId)){
 			$arrMap['nodegroup_id']=$nNodegroupId;
-			$this->assign('sNodeName',Dyhb::L('分组','Controller/Node'));
+			$this->assign('sNodeName',Dyhb::L('分组','Controller'));
 		}else if(empty($sSearch) && !isset($arrMap['node_parentid'])){
 			$arrMap['node_parentid']=0;
 		}
@@ -69,13 +69,13 @@ class NodeController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_node($nId)){
-				$this->E(Dyhb::L('系统节点无法删除','Controller/Node'));
+				$this->E(Dyhb::L('系统节点无法删除','Controller'));
 			}
 
 			$nNodes=NodeModel::F('node_parentid=?',$nId)->all()->getCounts();
 			$oNode=NodeModel::F('node_id=?',$nId)->query();
 			if($nNodes>0){
-				$this->E(Dyhb::L('节点%s存在子分类，你无法删除','Controller/Node',null,$oNode->node_name));
+				$this->E(Dyhb::L('节点%s存在子分类，你无法删除','Controller',null,$oNode->node_name));
 			}
 		}
 	}
@@ -99,7 +99,7 @@ class NodeController extends InitController{
 	}
 
 	public function getNodegroup(){
-		$arrNodegroup=array_merge(array(array('nodegroup_id'=>0,'nodegroup_title'=>Dyhb::L('未分组','Controller/Node'))),
+		$arrNodegroup=array_merge(array(array('nodegroup_id'=>0,'nodegroup_title'=>Dyhb::L('未分组','Controller'))),
 			NodegroupModel::F()->setColumns('nodegroup_id,nodegroup_title')->asArray()->all()->query()
 		);
 		$this->assign('arrNodegroup',$arrNodegroup);
@@ -121,7 +121,7 @@ class NodeController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_node($nId)){
-			$this->E(Dyhb::L('系统节点无法编辑','Controller/Node'));
+			$this->E(Dyhb::L('系统节点无法编辑','Controller'));
 		}
 
 		$this->getNodegroup();
@@ -133,7 +133,7 @@ class NodeController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_node($nId)){
-			$this->E(Dyhb::L('系统节点无法禁用','Controller/Node'));
+			$this->E(Dyhb::L('系统节点无法禁用','Controller'));
 		}
 	}
 
@@ -202,14 +202,14 @@ class NodeController extends InitController{
 				// 判断节点分组是否存在
 				$oNodegroup=NodegroupModel::F('nodegroup_id=?',$nNodegroupId)->getOne();
 				if(empty($oNodegroup['nodegroup_id'])){
-					$this->E(Dyhb::L('你要移动的节点分组不存在','Controller/Node'));
+					$this->E(Dyhb::L('你要移动的节点分组不存在','Controller'));
 				}
 			}
 			
 			$arrIds=explode(',', $sId);
 			foreach($arrIds as $nId){
 				if($this->is_system_node($nId)){
-					$this->E(Dyhb::L('系统节点无法移动','Controller/Node'));
+					$this->E(Dyhb::L('系统节点无法移动','Controller'));
 				}
 				
 				$oNode=NodeModel::F('node_id=?',$nId)->getOne();
@@ -221,9 +221,9 @@ class NodeController extends InitController{
 				}
 			}
 
-			$this->S(Dyhb::L('移动节点分组成功','Controller/Node'));
+			$this->S(Dyhb::L('移动节点分组成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 

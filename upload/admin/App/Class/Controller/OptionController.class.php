@@ -49,12 +49,12 @@ class OptionController extends InitController{
 		$sUid=trim(implode(',',$arrUserid),',');
 		Core_Extend::changeAppconfig('ADMIN_USERID',$sUid);
 
-		$this->S(Dyhb::L('配置更新成功','Controller/Option'));
+		$this->S(Dyhb::L('配置更新成功','Controller'));
 	}
 
 	public function admin(){
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 
 		// 读取超级管理员信息

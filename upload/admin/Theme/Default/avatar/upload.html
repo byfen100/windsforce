@@ -5,29 +5,29 @@
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Avatar'>-->头像裁剪<!--</lang>--></a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->头像裁剪<!--</lang>--></a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Avatar'>-->你可以选择裁剪图片，裁剪后的图片将会被压缩为200*200的大头像，保存后将会以大头像创建中等头像120*120和小头像48*48<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Avatar'>-->程序最后会将上传的原始图像保存下来为高清头像<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Avatar'>-->用鼠标选中你需要裁剪的块，然后点击提交<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Avatar'>-->同时，被裁剪的原图也会被上传，系统处理完毕将会为每个用户生产四张头像<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->你可以选择裁剪图片，裁剪后的图片将会被压缩为200*200的大头像，保存后将会以大头像创建中等头像120*120和小头像48*48<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->程序最后会将上传的原始图像保存下来为高清头像<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->用鼠标选中你需要裁剪的块，然后点击提交<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->同时，被裁剪的原图也会被上传，系统处理完毕将会为每个用户生产四张头像<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Avatar'>-->临时头像<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->临时头像<!--</lang>--></h3></header>
 				<form action="<!--{:Dyhb::U('avatar/save_crop')}-->" method="post" onsubmit="return checkCoords();" id="coords" class="coords">
 				<div class="module_content">
 						<fieldset>
-							<label><!--<lang package='Template/Default/Avatar'>-->临时头像<!--</lang>--></label>
+							<label><!--<lang package='Template'>-->临时头像<!--</lang>--></label>
 							<div class="description">
 								<div class="cropbox">
 									<img src="<!--{:__ROOT__}-->/data/avatar/<!--{$arrPhotoInfo['savename']}-->" id="cropbox" />
@@ -35,7 +35,7 @@
 							</div>
 						</fieldset>
 						<fieldset>
-							<label><!--<lang package='Template/Default/Avatar'>-->裁剪预览<!--</lang>--></label>
+							<label><!--<lang package='Template'>-->裁剪预览<!--</lang>--></label>
 							<div class="description">
 								<div class="preview" style="width:100px;height:100px;overflow:hidden;">
 									<img src="<!--{:__ROOT__}-->/data/avatar/<!--{$arrPhotoInfo['savename']}-->" id="preview" alt="Preview" />
@@ -43,7 +43,7 @@
 							</div>
 						</fieldset>
 						<fieldset>
-							<label><!--<lang package='Template/Default/Avatar'>-->头像参数<!--</lang>--></label>
+							<label><!--<lang package='Template'>-->头像参数<!--</lang>--></label>
 							<div class="description">
 								<input type="hidden" id="x" name="x" />
 								<input type="hidden" id="y" name="y" />
@@ -61,8 +61,8 @@
 				<footer>
 					<div class="submit_link">
 						<input type="hidden" name="temp_image" value="<!--{$arrPhotoInfo['savename']}-->" />
-						<input type="submit" value="<!--<lang package='Template/Default/Avatar'>-->裁剪图像<!--</lang>-->" class="alt_btn" />
-						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+						<input type="submit" value="<!--<lang package='Template'>-->裁剪图像<!--</lang>-->" class="alt_btn" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->">
 					</div>
 				</footer>
 				</form>

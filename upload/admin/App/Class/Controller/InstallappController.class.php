@@ -16,7 +16,7 @@ class InstallappController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -39,7 +39,7 @@ class InstallappController extends InitController{
 				
 				$arrAppData=Xml::xmlUnserialize(file_get_contents(WINDSFORCE_PATH.'/app/'.$sAppList.'/app.xml'));
 				if($arrAppData===null){
-					$this->E(Dyhb::L('应用%s的配置文件app.xml无法读取','Controller/App',null,$sAppList));
+					$this->E(Dyhb::L('应用%s的配置文件app.xml无法读取','Controller',null,$sAppList));
 				}
 
 				$arrAppData=$arrAppData['root']['data'];
@@ -74,12 +74,12 @@ class InstallappController extends InitController{
 			$arrAppData=$arrAppData['root']['data'];
 			
 			if(!$this->is_app_key($arrAppData['identifier'])) {
-				$this->E(Dyhb::L('应用唯一标识符存在非法字符','Controller/App'));
+				$this->E(Dyhb::L('应用唯一标识符存在非法字符','Controller'));
 			}
 			
 			$oTryApp=AppModel::F('app_identifier=?',$arrAppData['identifier'])->getOne();
 			if(!empty($oTryApp['app_id'])) {
-				$this->E(Dyhb::L('导入的应用 %s 已经存在','Controller/App',null,$oTryApp['app_identifier']));
+				$this->E(Dyhb::L('导入的应用 %s 已经存在','Controller',null,$oTryApp['app_identifier']));
 			}
 			
 			$this->app_database($arrAppData);
@@ -89,9 +89,9 @@ class InstallappController extends InitController{
 			}
 
 			$this->cache_site_();
-			$this->S(Dyhb::L('应用 %s 安装成功','Controller/App',null,$sName));
+			$this->S(Dyhb::L('应用 %s 安装成功','Controller',null,$sName));
 		}else{
-			$this->E(Dyhb::L('你准备安装的应用不存在','Controller/App'));
+			$this->E(Dyhb::L('你准备安装的应用不存在','Controller'));
 		}
 	}
 	
@@ -128,7 +128,7 @@ class InstallappController extends InitController{
 		if(!empty($sName)){
 			$this->import_install_or_uninstall('install',$sName);
 		}else{
-			$this->E(Dyhb::L('你准备安装的应用不存在','Controller/App'));
+			$this->E(Dyhb::L('你准备安装的应用不存在','Controller'));
 		}
 	}
 
@@ -136,7 +136,7 @@ class InstallappController extends InitController{
 		$sName=trim(G::getGpc('name','G'));
 
 		if(in_array($sName,array('home','wap','group'))){
-			$this->E(Dyhb::L('系统应用无法卸载','Controller/App'));
+			$this->E(Dyhb::L('系统应用无法卸载','Controller'));
 		}
 
 		$oApp=AppModel::F('app_identifier=?',$sName)->getOne();
@@ -149,9 +149,9 @@ class InstallappController extends InitController{
 
 			$this->cache_site_();
 			
-			$this->S(Dyhb::L('应用 %s 卸载成功','Controller/App',null,$oApp['app_identifier']));
+			$this->S(Dyhb::L('应用 %s 卸载成功','Controller',null,$oApp['app_identifier']));
 		}else{
-			$this->E(Dyhb::L('你准备卸载的应用不存在','Controller/App'));
+			$this->E(Dyhb::L('你准备卸载的应用不存在','Controller'));
 		}
 	}
 
@@ -168,7 +168,7 @@ class InstallappController extends InitController{
 				$this->import_install_or_uninstall('uninstall',$sName);
 			}
 		}else{
-			$this->E(Dyhb::L('你准备卸载的应用不存在','Controller/App'));
+			$this->E(Dyhb::L('你准备卸载的应用不存在','Controller'));
 		}
 	}
 
@@ -202,16 +202,16 @@ class InstallappController extends InitController{
 
 				if($sOperation=='install'){
 					$this->assign('__JumpUrl__',Dyhb::U('app/index'));
-					$this->S(Dyhb::L('应用 %s 安装成功','Controller/App',null,$sName));
+					$this->S(Dyhb::L('应用 %s 安装成功','Controller',null,$sName));
 				}
 
 				if($sOperation=='uninstall'){
 					$this->assign('__JumpUrl__',Dyhb::U('app/index'));
-					$this->S(Dyhb::L('卸载 %s 卸载成功','Controller/App',null,$sName));
+					$this->S(Dyhb::L('卸载 %s 卸载成功','Controller',null,$sName));
 				}
 			}
 		}else{
-			$this->E(Dyhb::L('你准备卸载的应用不存在','Controller/App'));
+			$this->E(Dyhb::L('你准备卸载的应用不存在','Controller'));
 		}
 	}
 	

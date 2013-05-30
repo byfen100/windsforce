@@ -38,7 +38,7 @@ class CreditoptionController extends OptionController{
 			}
 
 			if($arrExtendCredit['available']==1 && !$arrExtendCredit['title']){
-				$this->E(Dyhb::L('启用的积分名称不能为空','Controller/Creditoption'));
+				$this->E(Dyhb::L('启用的积分名称不能为空','Controller'));
 			}
 
 			$arrSaveExtendCredits[$sKey]=$arrExtendCredit;
@@ -94,10 +94,10 @@ class CreditoptionController extends OptionController{
 				
 				$this->display('creditoption+edit');
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -109,7 +109,7 @@ class CreditoptionController extends OptionController{
 
 			if(isset($_POST[$sCreditType])){
 				if(!Credit_Extend::checkCredit($_POST[$sCreditType])){
-					$this->E(Dyhb::L('各项积分增减允许的范围为 -99～+99','Controller/Creditoption'));
+					$this->E(Dyhb::L('各项积分增减允许的范围为 -99～+99','Controller'));
 				}else{
 					$_POST[$sCreditType]=intval($_POST[$sCreditType]);
 				}
@@ -122,7 +122,7 @@ class CreditoptionController extends OptionController{
 		if(!$oCreditruleModel->isError()){
 			$this->cache_creditrule();
 
-			$this->S(Dyhb::L('数据更新成功','Controller/Common'));
+			$this->S(Dyhb::L('数据更新成功','Controller'));
 		}else{
 			$this->E($oCreditruleModel->getErrorMessage());
 		}

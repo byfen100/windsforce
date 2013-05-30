@@ -12,7 +12,7 @@ class FilecheckController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -28,12 +28,12 @@ class FilecheckController extends InitController{
 		$this->assign('__WaitSecond__',2);
 		$this->assign('__JumpUrl__',Dyhb::U('filecheck/step3'));
 
-		$this->S(Dyhb::L('正在进行文件检验，请稍候','Controller/Filecheck').'...');
+		$this->S(Dyhb::L('正在进行文件检验，请稍候','Controller').'...');
 	}
 
 	public function step3(){
 		if(!$arrWindsforceFiles=@file(WINDSFORCE_PATH.'/admin/WindsforceFiles.md5')){
-			$this->E(Dyhb::L('系统用于检验文件的md5file字典不存在','Controller/Filecheck'));
+			$this->E(Dyhb::L('系统用于检验文件的md5file字典不存在','Controller'));
 		}
 		
 		$this->checkFiles('./','',0,'install');

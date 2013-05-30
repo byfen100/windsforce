@@ -21,11 +21,11 @@ class AppController extends InitController{
 		$this->assign('sDefaultAppname',$sDefaultAppname);
 	}
 
-	public function update_option(){Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller/App',null,5);
+	public function update_option(){Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller',null,5);
 		if($_POST['options']['default_app']!=$GLOBALS['_option_']['default_app']){
 			$sAppGlobaldefaultconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 			if(!is_file($sAppGlobaldefaultconfigFile)){
-				$this->E(Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller/App',null,$sAppGlobaldefaultconfigFile));
+				$this->E(Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller',null,$sAppGlobaldefaultconfigFile));
 			}
 
 			Core_Extend::changeAppconfig('DEFAULT_APP',$_POST['options']['default_app']);
@@ -49,17 +49,17 @@ class AppController extends InitController{
 		$nId=intval(G::getGpc('id'));
 		
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定待设置的应用','Controller/App'));
+			$this->E(Dyhb::L('你没有指定待设置的应用','Controller'));
 		}else{
 			$arrAppModel=AppModel::F('app_id=?',$nId)->getOne();
 			if(empty($arrAppModel['app_id'])){
 				$this->assign('__JumpUrl__',Dyhb::U('app/index'));
-				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller/App'));
+				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller'));
 			}
 			
 			if(!$arrAppModel['app_status']){
 				$this->assign('__JumpUrl__',Dyhb::U('app/index'));
-				$this->E(Dyhb::L('你指定待设置的应用尚未启用','Controller/App'));
+				$this->E(Dyhb::L('你指定待设置的应用尚未启用','Controller'));
 			}
 
 			// 定义应用的语言包
@@ -112,13 +112,13 @@ class AppController extends InitController{
 					call_user_func($callback);
 				}else{
 					$this->assign('__JumpUrl__',Dyhb::U('app/index'));
-					$this->E(Dyhb::L('后台管理模块 %s 回调不存在','Controller/App',null,G::dump($callback,false)));
+					$this->E(Dyhb::L('后台管理模块 %s 回调不存在','Controller',null,G::dump($callback,false)));
 				}
 				
 				exit();
 			}else{
 				$this->assign('__JumpUrl__',Dyhb::U('app/index'));
-				$this->E(Dyhb::L('后台管理模块文件 %s 不存在','Controller/App',null,str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sControllerPath))));
+				$this->E(Dyhb::L('后台管理模块文件 %s 不存在','Controller',null,str_replace(G::tidyPath(WINDSFORCE_PATH),'{WINDSFORCE_PATH}',G::tidyPath($sControllerPath))));
 			}
 		}
 	}
@@ -159,12 +159,12 @@ class AppController extends InitController{
 		$nAppId=intval(G::getGpc('id','G'));
 
 		if(empty($nAppId)){
-			$this->E(Dyhb::L('你没有指定待设置的应用','Controller/App'));
+			$this->E(Dyhb::L('你没有指定待设置的应用','Controller'));
 		}else{
 			$arrApp=AppModel::F('app_id=?',$nAppId)->asArray()->getOne();
 
 			if(empty($arrApp['app_id'])){
-				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller/App'));
+				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller'));
 			}
 			unset($arrApp['app_id']);
 			unset($arrApp['app_status']);
@@ -194,18 +194,18 @@ class AppController extends InitController{
 		$nId=intval(G::getGpc('id'));
 		
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定待设置的应用','Controller/App'));
+			$this->E(Dyhb::L('你没有指定待设置的应用','Controller'));
 		}else{
 			$oApp=AppModel::F('app_id=?',$nId)->query();
 			
 			if(empty($oApp['app_id'])){
-				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller/App'));
+				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller'));
 			}
 
 			// 判断菜单是否已经存在
 			$oTryNav=NavModel::F('nav_identifier=?','app_'.$oApp['app_identifier'])->getOne();
 			if(!empty($oTryNav['nav_id'])){
-				$this->E(Dyhb::L('菜单已经存在','Controller/App'));
+				$this->E(Dyhb::L('菜单已经存在','Controller'));
 			}
 
 			// 将菜单数据写入
@@ -220,7 +220,7 @@ class AppController extends InitController{
 				$this->E($oNav->getErrorMessage());
 			}else{
 				$this->updatecachenav_();
-				$this->S(Dyhb::L('菜单写入成功','Controller/App'));
+				$this->S(Dyhb::L('菜单写入成功','Controller'));
 			}
 		}
 	}
@@ -229,24 +229,24 @@ class AppController extends InitController{
 		$nId=intval(G::getGpc('id'));
 		
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定待设置的应用','Controller/App'));
+			$this->E(Dyhb::L('你没有指定待设置的应用','Controller'));
 		}else{
 			$oApp=AppModel::F('app_id=?',$nId)->query();
 			
 			if(empty($oApp['app_id'])){
-				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller/App'));
+				$this->E(Dyhb::L('你指定待设置的应用不存在','Controller'));
 			}
 
 			// 判断菜单是否已经存在
 			$oTryNav=NavModel::F('nav_identifier=?','app_'.$oApp['app_identifier'])->getOne();
 			if(empty($oTryNav['nav_id'])){
-				$this->E(Dyhb::L('菜单已经被取消','Controller/App'));
+				$this->E(Dyhb::L('菜单已经被取消','Controller'));
 			}else{
 				$oTryNav->destroy();
 			}
 
 			$this->updatecachenav_();
-			$this->S(Dyhb::L('菜单取消成功','Controller/App'));
+			$this->S(Dyhb::L('菜单取消成功','Controller'));
 		}
 	}
 
@@ -284,7 +284,7 @@ class AppController extends InitController{
 
 	protected function check_(){
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 

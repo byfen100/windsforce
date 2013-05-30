@@ -22,7 +22,7 @@ class UserController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -45,12 +45,12 @@ class UserController extends InitController{
 		if(!empty($sUserName)){
 			$arrUser=UserModel::F()->getByuser_name($sUserName)->toArray();
 			if(!empty($arrUser['user_id'])){
-				$this->E(Dyhb::L('用户名已经存在','Controller/User'));
+				$this->E(Dyhb::L('用户名已经存在','Controller'));
 			}else{
-				$this->S(Dyhb::L('用户名可以使用','Controller/User'));
+				$this->S(Dyhb::L('用户名可以使用','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('用户名必须','Controller/User'));
+			$this->E(Dyhb::L('用户名必须','Controller'));
 		}
 	}
 
@@ -66,10 +66,10 @@ class UserController extends InitController{
 				if($oUser->isError()){
 					$this->E($oUser->getErrorMessage());
 				}
-				$this->S(Dyhb::L('密码修改成功','Controller/User'));
+				$this->S(Dyhb::L('密码修改成功','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('密码不能为空','Controller/User'));
+			$this->E(Dyhb::L('密码不能为空','Controller'));
 		}
 	}
 
@@ -77,7 +77,7 @@ class UserController extends InitController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if($this->is_system_user($nId)){
-			$this->E(Dyhb::L('系统用户无法禁用','Controller/User'));
+			$this->E(Dyhb::L('系统用户无法禁用','Controller'));
 		}
 	}
 
@@ -87,7 +87,7 @@ class UserController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_user($nId)){
-				$this->E(Dyhb::L('系统用户无法删除','Controller/User'));
+				$this->E(Dyhb::L('系统用户无法删除','Controller'));
 			}
 		}
 	}
@@ -248,10 +248,10 @@ class UserController extends InitController{
 
 				$this->display('user+show');
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 

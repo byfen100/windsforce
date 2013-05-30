@@ -16,7 +16,7 @@ class StyleController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -63,7 +63,7 @@ class StyleController extends InitController{
 
 				$this->update_css(false);
 
-				$this->S(Dyhb::L('当前主题被禁用,现在成功已经恢复','Controller/Style'));
+				$this->S(Dyhb::L('当前主题被禁用,现在成功已经恢复','Controller'));
 			}else{
 				OptionModel::uploadOption('front_style_id',1);
 
@@ -71,10 +71,10 @@ class StyleController extends InitController{
 
 				$this->update_css(false);
 
-				$this->S(Dyhb::L('当前主题不存在,现在成功已经恢复到默认主题','Controller/Style'));
+				$this->S(Dyhb::L('当前主题不存在,现在成功已经恢复到默认主题','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -85,7 +85,7 @@ class StyleController extends InitController{
 			$oStyle=StyleModel::F('style_id=?',$nId)->getOne();
 			if(!empty($oStyle)){
 				if(!$oStyle->style_status){
-					$this->E(Dyhb::L('主题尚未开启，无法启用','Controller/Style'));
+					$this->E(Dyhb::L('主题尚未开启，无法启用','Controller'));
 				}
 
 				OptionModel::uploadOption('front_style_id',$nId);
@@ -101,12 +101,12 @@ class StyleController extends InitController{
 
 				$this->update_css(false);
 
-				$this->S(Dyhb::L('启用主题成功','Controller/Style'));
+				$this->S(Dyhb::L('启用主题成功','Controller'));
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -128,9 +128,9 @@ class StyleController extends InitController{
 				Core_Extend::removeDir($sDir);
 			}
 
-			$this->S(Dyhb::L('启用主题成功','Controller/Style'));
+			$this->S(Dyhb::L('启用主题成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -141,7 +141,7 @@ class StyleController extends InitController{
 
 		Dyhb::cookie('admin_template',null,-1);
 
-		$this->S(Dyhb::L('修复主题成功','Controller/Style'));
+		$this->S(Dyhb::L('修复主题成功','Controller'));
 	}
 
 	protected function aForbid(){
@@ -243,56 +243,56 @@ class StyleController extends InitController{
 		$sStyle=ucfirst(strtolower(trim(G::getGpc('style','G'))));
 
 		if(empty($sStyle)){
-			$this->E(Dyhb::L('你没有指定要安装的主题','Controller/Style'));
+			$this->E(Dyhb::L('你没有指定要安装的主题','Controller'));
 		}
 
 		if($this->theme_already_installed(strtolower($sStyle))){
-			$this->E(Dyhb::L('你安装的主题已经安装过了','Controller/Style'));
+			$this->E(Dyhb::L('你安装的主题已经安装过了','Controller'));
 		}
 
 		$arrXmlFiles=$this->get_xml_num($sStyle,false);
 		if($arrXmlFiles===false){
-			$this->E(Dyhb::L('你要安装的主题 %s 的默认样式表不存在','Controller/Style',null,$sStyle));
+			$this->E(Dyhb::L('你要安装的主题 %s 的默认样式表不存在','Controller',null,$sStyle));
 		}
 
 		foreach($arrXmlFiles as $sXmlFile){
 			if(!is_file($sXmlFile)){
-				$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller/Style',null,$sXmlFile));
+				$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller',null,$sXmlFile));
 			}
 
 			$this->install_a_new($sXmlFile);
 		}
 
-		$this->S(Dyhb::L('主题 %s 安装成功','Controller/Style',null,$sStyle));
+		$this->S(Dyhb::L('主题 %s 安装成功','Controller',null,$sStyle));
 	}
 
 	public function install_a_new($sThemeXml,$arrStyleData=array(),$bIgnoreversion=false){
 		if(empty($arrStyleData)){
 			if(!is_file($sThemeXml)){
-				$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller/Style',null,$sThemeXml));
+				$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller',null,$sThemeXml));
 			}
 
 			$arrStyleData=Xml::xmlUnserialize(file_get_contents($sThemeXml));
 			if(empty($arrStyleData)){
-				$this->E(Dyhb::L('你要安装的主题 %s 样式表可能已经损坏，系统无法读取其数据','Controller/Style',null,$sThemeXml));
+				$this->E(Dyhb::L('你要安装的主题 %s 样式表可能已经损坏，系统无法读取其数据','Controller',null,$sThemeXml));
 			}
 		}
 		
 		if(!is_array($arrStyleData)){
-			$this->E(Dyhb::L('你要安装的主题 %s 样式表可能已经损坏，数据库不符合我们的要求','Controller/Style',null,$sThemeXml));
+			$this->E(Dyhb::L('你要安装的主题 %s 样式表可能已经损坏，数据库不符合我们的要求','Controller',null,$sThemeXml));
 		}else{
 			// 判断版本
 			if(!isset($arrStyleData['root']['version']) || empty($arrStyleData['root']['version'])){
-				$this->E(Dyhb::L('当前导入的主题配置文件版本号无法识别','Controller/Style'));
+				$this->E(Dyhb::L('当前导入的主题配置文件版本号无法识别','Controller'));
 			}else{
 				$nResult=strcmp($arrStyleData['root']['version'],WINDSFORCE_SERVER_VERSION);
 				if($nResult>0){
-					$this->E(Dyhb::L('当前导入的主题配置文件版本号为较新版本，请下载新版本程序','Controller/Style').
-							'<br/>'.Dyhb::L('主题配置文件版本','Controller/Style').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller/Style').WINDSFORCE_SERVER_VERSION
+					$this->E(Dyhb::L('当前导入的主题配置文件版本号为较新版本，请下载新版本程序','Controller').
+							'<br/>'.Dyhb::L('主题配置文件版本','Controller').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller').WINDSFORCE_SERVER_VERSION
 						);
 				}elseif($bIgnoreversion===false && $nResult<0){
-					$this->E(Dyhb::L('当前导入的主题配置文件版本号为较旧版本，请导入新版本配置文件，或者选择允许导入旧版本','Controller/Style').
-							'<br/>'.Dyhb::L('主题配置文件版本','Controller/Style').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller/Style').WINDSFORCE_SERVER_VERSION
+					$this->E(Dyhb::L('当前导入的主题配置文件版本号为较旧版本，请导入新版本配置文件，或者选择允许导入旧版本','Controller').
+							'<br/>'.Dyhb::L('主题配置文件版本','Controller').$arrStyleData['root']['version'].' '.Dyhb::L('主程序版本','Controller').WINDSFORCE_SERVER_VERSION
 					);
 				}
 			}
@@ -302,7 +302,7 @@ class StyleController extends InitController{
 		
 		// 数据变量值验证（依靠默认的系统默认的主题变量来判断）
 		if(empty($arrStyleData['data'])){
-			$this->E(Dyhb::L('程序无法正常读取到主题配置变量信息','Controller/Style'));
+			$this->E(Dyhb::L('程序无法正常读取到主题配置变量信息','Controller'));
 		}
 		
 		$bNotExistsSomesystemvar=false;
@@ -312,7 +312,7 @@ class StyleController extends InitController{
 		foreach($arrCurtomStylevarList as $sCurtomStylevarList){
 			if(!in_array($sCurtomStylevarList,$arrStylevarKeys)){
 				if($bIgnoreversion===false){
-					$this->E(Dyhb::L('导入的配置文件变量数据不完整','Controller/Style'));
+					$this->E(Dyhb::L('导入的配置文件变量数据不完整','Controller'));
 				}else{
 					$arrStyleData['data'][$sCurtomStylevarList]='';
 				}
@@ -416,7 +416,7 @@ class StyleController extends InitController{
 				if(is_dir($sStyleExtendDir)){
 					$arrStyleDirs=G::listDir($sStyleExtendDir);
 
-					$arrDefaultextendstyle[]=array('',Dyhb::L('默认','Controller/Style'));
+					$arrDefaultextendstyle[]=array('',Dyhb::L('默认','Controller'));
 					
 					foreach($arrStyleDirs as $sStyleDir){
 						$sExtendStylefile=$sStyleExtendDir.'/'.$sStyleDir.'/style.css';
@@ -461,7 +461,7 @@ class StyleController extends InitController{
 			}
 			exit();
 		}else{
-			$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+			$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 		}
 	}
 
@@ -557,12 +557,12 @@ class StyleController extends InitController{
 
 				$this->update_css(false);
 
-				$this->S(Dyhb::L('主题 %s 更新成功','Controller/Style',null,$oStyle['style_name']));
+				$this->S(Dyhb::L('主题 %s 更新成功','Controller',null,$oStyle['style_name']));
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -587,7 +587,7 @@ class StyleController extends InitController{
 			if(!empty($oStyle['style_id'])){
 				$oTheme=ThemeModel::F('theme_id=?',$oStyle['theme_id'])->getOne();
 				if(empty($oTheme['theme_id'])){
-					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller/Style',null,$oStyle['style_name']));
+					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller',null,$oStyle['style_name']));
 				}
 
 				$arrData=array();
@@ -640,10 +640,10 @@ class StyleController extends InitController{
 
 				exit;
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -655,7 +655,7 @@ class StyleController extends InitController{
 			if(!empty($oStyle['style_id'])){
 				$oTheme=ThemeModel::F('theme_id=?',$oStyle['theme_id'])->getOne();
 				if(empty($oTheme['theme_id'])){
-					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller/Style',null,$oStyle['style_name']));
+					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller',null,$oStyle['style_name']));
 				}
 
 				// 保存主题信息
@@ -689,12 +689,12 @@ class StyleController extends InitController{
 
 				$this->update_css(false);
 
-				$this->S(Dyhb::L('主题 %s 拷贝成功','Controller/Style',null,$oStyle['style_name']));
+				$this->S(Dyhb::L('主题 %s 拷贝成功','Controller',null,$oStyle['style_name']));
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -704,7 +704,7 @@ class StyleController extends InitController{
 		if(!empty($sId)){
 			$arrIds=explode(',',$sId);
 			if(in_array(1,$arrIds)){
-				$this->E(Dyhb::L('系统默认主题无法删除','Controller/Style'));
+				$this->E(Dyhb::L('系统默认主题无法删除','Controller'));
 			}
 		}
 	}
@@ -734,7 +734,7 @@ class StyleController extends InitController{
 		if(!empty($sId)){
 			$arrIds=explode(',',$sId);
 			if(in_array(1,$arrIds)){
-				$this->E(Dyhb::L('系统默认主题无法禁用','Controller/Style'));
+				$this->E(Dyhb::L('系统默认主题无法禁用','Controller'));
 			}
 		}
 	}
@@ -747,17 +747,17 @@ class StyleController extends InitController{
 			if(!empty($oStyle['style_id'])){
 				$oTheme=ThemeModel::F('theme_id=?',$oStyle['theme_id'])->getOne();
 				if(empty($oTheme['theme_id'])){
-					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller/Style',null,$oStyle['style_name']));
+					$this->E(Dyhb::L('主题 %s 的模板不存在','Controller',null,$oStyle['style_name']));
 				}
 
 				$sThemeXml=WINDSFORCE_PATH.'/ucontent/theme/'.ucfirst($oTheme['theme_dirname']).'/windsforce_style_'.strtolower($oTheme['theme_dirname']).'.xml';
 				if(!is_file($sThemeXml)){
-					$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller/Style',null,$sThemeXml));
+					$this->E(Dyhb::L('你要安装的主题 %s 样式表不存在','Controller',null,$sThemeXml));
 				}
 
 				$arrStyleData=Xml::xmlUnserialize(file_get_contents($sThemeXml));
 				if(empty($arrStyleData)){
-					$this->E(Dyhb::L('你要安装的主题 %s 样式表可能已经损坏，系统无法读取其数据','Controller/Style',null,$sThemeXml));
+					$this->E(Dyhb::L('你要安装的主题 %s 样式表可能已经损坏，系统无法读取其数据','Controller',null,$sThemeXml));
 				}else{
 					$arrStyleData=$arrStyleData['root']['data'];
 				}
@@ -808,12 +808,12 @@ class StyleController extends InitController{
 
 				$this->update_css(false);
 				
-				$this->S(Dyhb::L('主题 %s 数据恢复成功','Controller/Style',null,$oStyle['style_name']));
+				$this->S(Dyhb::L('主题 %s 数据恢复成功','Controller',null,$oStyle['style_name']));
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -850,7 +850,7 @@ class StyleController extends InitController{
 
 		$this->update_css(false);
 
-		$this->S(Dyhb::L('新主题 %s 创建成功','Controller/Style',null,$arrNewStyle['style_name']));
+		$this->S(Dyhb::L('新主题 %s 创建成功','Controller',null,$arrNewStyle['style_name']));
 	}
 
 	public function update_css($bDisplay=true){
@@ -861,7 +861,7 @@ class StyleController extends InitController{
 
 		if($bDisplay===true){
 			$this->assign('__JumpUrl__',Dyhb::U('style/index'));
-			$this->S(Dyhb::L('CSS 缓存更新成功','Controller/Style'));
+			$this->S(Dyhb::L('CSS 缓存更新成功','Controller'));
 		}
 	}
 
@@ -878,7 +878,7 @@ class StyleController extends InitController{
 
 		if($sImporttype=='file'){
 			if($_FILES['importfile']['error']==4){
-				$this->E(Dyhb::L('你没有上传任何配置文件','Controller/Style'));
+				$this->E(Dyhb::L('你没有上传任何配置文件','Controller'));
 			}else{
 				$sData=file_get_contents($_FILES['importfile']['tmp_name']);
 				@unlink($_FILES['importfile']['tmp_name']);
@@ -889,14 +889,14 @@ class StyleController extends InitController{
 		
 		$arrStyleData=Xml::xmlUnserialize($sData);
 		if(empty($arrStyleData) || !isset($arrStyleData['root'])){
-			$this->E(Dyhb::L('你要导入的主题样式表可能已经损坏，系统无法读取其数据','Controller/Style').
+			$this->E(Dyhb::L('你要导入的主题样式表可能已经损坏，系统无法读取其数据','Controller').
 					'<div style="height: 100px; width: 500px; overflow:auto;margin-top:10px;">'.nl2br($sData).'</div>'
 				);
 		}
 
 		$this->install_a_new('',$arrStyleData,($nIgnoreversion==1?true:false));
 
-		$this->S(Dyhb::L('导入主题样式成功','Controller/Style'));
+		$this->S(Dyhb::L('导入主题样式成功','Controller'));
 	}
 	
 	protected function show_Styles($sStylePath){

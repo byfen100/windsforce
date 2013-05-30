@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><!--{$GLOBALS['_option_']['windsforce_program_name']}-->! <!--<lang package='Template/Default/Common'>-->管理平台<!--</lang>--></title>
+	<title><!--{$GLOBALS['_option_']['windsforce_program_name']}-->! <!--<lang package='Template'>-->管理平台<!--</lang>--></title>
 	<link rel="stylesheet" type="text/css" href="<!--{:Dyhb::U('misc/index?type=css&file=style',array(),true)}-->"/>
 	<!--{script}-->
 	var __DYHB_JS_ENTER__='<!--{:__APP__}-->';
@@ -25,7 +25,7 @@
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
 			<div class="sidemenu_title">
-				<p><!--<if condition="G+getGpc('title')">--><!--{$D.get.title}--><!--<else/>--><!--<lang package='Template/Default/Common'>-->首页<!--</lang>--><!--</if>--></p>
+				<p><!--<if condition="G+getGpc('title')">--><!--{$D.get.title}--><!--<else/>--><!--<lang package='Template'>-->首页<!--</lang>--><!--</if>--></p>
 			</div>
 		</div>
 	</section>
@@ -44,11 +44,11 @@
 			<!--[if lte IE 6]><table cellspacing="0"><tr><td><![endif]-->
 			<ul>
 				<li style="display:none;">&nbsp;</li>
-				<!--<if condition="!G+getGpc('title') || G+getGpc('title') eq Dyhb+L('首页','Template/Default/Common')">-->
-				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('public/fmain')}-->');currentClass(0);return false;" href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->管理中心主页<!--</lang>--></a></li>
-				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('public/program_update')}-->');currentClass(1);return false;" href="<!--{:Dyhb::U('public/program_update')}-->"><!--<lang package='Template/Default/Common'>-->程序升级<!--</lang>--><span id="update_num" >&nbsp;</span></a></li>
-				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('public/profile')}-->');currentClass(2);return false;" href="<!--{:Dyhb::U('public/profile')}-->"><!--<lang package='Template/Default/Common'>-->个人中心<!--</lang>--></a></li>
-				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('adminctrlmenu/index')}-->');currentClass(3);return false;" href="<!--{:Dyhb::U('adminctrlmenu/index')}-->"><!--<lang package='Template/Default/Common'>-->常用操作管理<!--</lang>--></a></li>
+				<!--<if condition="!G+getGpc('title') || G+getGpc('title') eq Dyhb+L('首页','Template')">-->
+				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('public/fmain')}-->');currentClass(0);return false;" href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->管理中心主页<!--</lang>--></a></li>
+				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('public/program_update')}-->');currentClass(1);return false;" href="<!--{:Dyhb::U('public/program_update')}-->"><!--<lang package='Template'>-->程序升级<!--</lang>--><span id="update_num" >&nbsp;</span></a></li>
+				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('public/profile')}-->');currentClass(2);return false;" href="<!--{:Dyhb::U('public/profile')}-->"><!--<lang package='Template'>-->个人中心<!--</lang>--></a></li>
+				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U('adminctrlmenu/index')}-->');currentClass(3);return false;" href="<!--{:Dyhb::U('adminctrlmenu/index')}-->"><!--<lang package='Template'>-->常用操作管理<!--</lang>--></a></li>
 				<!--<foreach for=arrAdminctrlmenus key=nAdminctrlmenu value=arrAdminctrlmenu>-->
 				<li class=''><a onClick="refreshmainframe('<!--{:__APP__}-->?<!--{$arrAdminctrlmenu['adminctrlmenu_url']}-->');currentClass(<!--{$nAdminctrlmenu+4}-->);menuClicknum(<!--{$arrAdminctrlmenu['adminctrlmenu_id']}-->);return false;" href="<!--{:__APP__}-->?<!--{$arrAdminctrlmenu['adminctrlmenu_url']}-->"><!--{$arrAdminctrlmenu['adminctrlmenu_title']}--></a></li>
 				<!--</foreach>-->
@@ -63,7 +63,7 @@
 						strtolower( $sNodeName ) neq 'public' &&
 						strtolower( $sNodeName ) neq 'index' &&
 						$value['node_access']==1" >-->
-				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U($sNodeName.'/index')}-->');currentClass(<!--{$nIndex}-->);return false;" href="<!--{:Dyhb::U($sNodeName.'/index')}-->"><!--{$value['node_title']|Dyhb+L='Menu'}--></a></li>
+				<li class=''><a onClick="refreshmainframe('<!--{:Dyhb::U($sNodeName.'/index')}-->');currentClass(<!--{$nIndex}-->);return false;" href="<!--{:Dyhb::U($sNodeName.'/index')}-->"><!--{$value['node_title']|Dyhb+L='Template'}--></a></li>
 				<!--{~$nIndex++}-->
 				<!--</if>-->
 				<!--</foreach>-->

@@ -2,40 +2,40 @@
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Creditoption'>-->积分策略<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Creditoption'>-->积分策略<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->积分策略<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->积分策略<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Creditoption'>-->各项积分增减允许的范围为 -99～+99。<!--</lang>--></li>
-					<li><!--<lang package='Template/Default/Creditoption'>-->如果为更多的操作设置积分策略，系统就需要更频繁的更新用户积分，同时意味着消耗更多的系统资源，因此请根据实际情况酌情设置。<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=spaceadmin&a=creditrule')}-->" target="_blank"><!--<lang package='Template/Default/Creditoption'>-->查看积分规则<!--</lang>--></a></li>
+					<li><!--<lang package='Template'>-->各项积分增减允许的范围为 -99～+99。<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->如果为更多的操作设置积分策略，系统就需要更频繁的更新用户积分，同时意味着消耗更多的系统资源，因此请根据实际情况酌情设置。<!--</lang>-->&nbsp;<a href="<!--{:Core_Extend::windsforceOuter('app=home&c=spaceadmin&a=creditrule')}-->" target="_blank"><!--<lang package='Template'>-->查看积分规则<!--</lang>--></a></li>
 				</ul>
 			</div>
 		</article>
 
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Creditoption'>-->积分策略<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->积分策略<!--</lang>--></h3>
 				<ul class="tabs">
-					<li><a href="<!--{:Dyhb::U('creditoption/index')}-->"><!--<lang package='Template/Default/Creditoption'>-->基本设置<!--</lang>--></a></li>
-					<li class="active"><a href="<!--{:Dyhb::U('creditoption/policytable')}-->"><!--<lang package='Template/Default/Creditoption'>-->积分策略<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('creditoption/index')}-->"><!--<lang package='Template'>-->基本设置<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Dyhb::U('creditoption/policytable')}-->"><!--<lang package='Template'>-->积分策略<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<div class="module_content">
 				<table class="tablesorter" cellspacing="0" id="checkList">
 					<thead>
 						<tr>
-							<th><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></th>
-							<th><!--<lang package='Template/Default/Creditoption'>-->策略名称<!--</lang>--></th>
-							<th><!--<lang package='Template/Default/Creditoption'>-->周期<!--</lang>--></th>
-							<th><!--<lang package='Template/Default/Creditoption'>-->奖励次数<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->编号<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->策略名称<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->周期<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->奖励次数<!--</lang>--></th>
 							<!--<foreach for=arrAvailableExtendCredits value=arrAvailableExtendCredit>-->
 							<th><!--{$arrAvailableExtendCredit['title']}--></th>
 							<!--</foreach>-->
-							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->操作<!--</lang>--></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -49,12 +49,12 @@
 							<!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit>-->
 							<td><!--{$oCreditrule['creditrule_extendcredit'.$nAvailableExtendCredit]}--></td>
 							<!--</foreach>-->
-							<td><a href="<!--{:Dyhb::U('creditoption/edit?id='.$oCreditrule['creditrule_id'])}-->"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a></td>
+							<td><a href="<!--{:Dyhb::U('creditoption/edit?id='.$oCreditrule['creditrule_id'])}-->"><!--<lang package='Template'>-->编辑<!--</lang>--></a></td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->
 						<tr>
-							<td colspan="<!--{:count($arrAvailableExtendCredits)+5}-->"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+							<td colspan="<!--{:count($arrAvailableExtendCredits)+5}-->"><!--<lang package='Template'>-->暂时没有发现任何记录<!--</lang>--></td>
 						</tr>
 						<!--{/if}-->
 					</tbody>

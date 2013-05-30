@@ -27,15 +27,15 @@ class MailoptionController extends OptionController{
 		$sEmailMessage=trim(G::getGpc('test_mail_message','P'));
 
 		if(empty($sEmailTo)){
-			$this->E(Dyhb::L('邮件接收者不能为空','Controller/Mailoption'));
+			$this->E(Dyhb::L('邮件接收者不能为空','Controller'));
 		}
 
 		if(empty($sEmailSubject)){
-			$this->E(Dyhb::L('邮件测试主题不能为空','Controller/Mailoption'));
+			$this->E(Dyhb::L('邮件测试主题不能为空','Controller'));
 		}
 
 		if(empty($sEmailMessage)){
-			$this->E(Dyhb::L('邮件测试内容不能为空','Controller/Mailoption'));
+			$this->E(Dyhb::L('邮件测试内容不能为空','Controller'));
 		}
 
 		// 将邮件模板保存在配置中
@@ -65,7 +65,7 @@ class MailoptionController extends OptionController{
 			$this->E($oMailConnect->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('邮件成功发送！注意：使用PHP 函数 Mail函数或者PHP 函数 SMTP发送，虽然显示发送成功，但不保证能够收得到邮件','Controller/Mailoption'));
+		$this->S(Dyhb::L('邮件成功发送！注意：使用PHP 函数 Mail函数或者PHP 函数 SMTP发送，虽然显示发送成功，但不保证能够收得到邮件','Controller'));
 	}
 
 	public function get_mail_line($oMailConnect){

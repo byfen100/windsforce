@@ -10,14 +10,14 @@ class AppconfigtoolController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
 	public function index($sName=null,$bDisplay=true){
 		$sAppGlobalconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 		if(!is_file($sAppGlobalconfigFile)){
-			$this->E(Dyhb::L('框架全局配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppGlobalconfigFile));
+			$this->E(Dyhb::L('框架全局配置文件 %s 不存在','Controller',null,$sAppGlobalconfigFile));
 		}
 
 		$sAppGlobalconfig=nl2br(htmlspecialchars(file_get_contents($sAppGlobalconfigFile)));
@@ -44,7 +44,7 @@ class AppconfigtoolController extends InitController{
 		$arrSaveLists[0]=array(
 			'app_id'=>0,
 			'app_identifier'=>'admin',
-			'app_name'=>Dyhb::L('全局后台','Controller/Appconfigtool'),
+			'app_name'=>Dyhb::L('全局后台','Controller'),
 			'logo'=>__ROOT__.'/admin/logo.png',
 			'config_file'=>'{WINDSFORCE_PATH}/'.$sConfigfile,
 			'config_file_exist'=>is_file(WINDSFORCE_PATH.'/'.$sConfigfile)?true:false,
@@ -80,7 +80,7 @@ class AppconfigtoolController extends InitController{
 	public function default_config(){
 		$sAppGlobaldefaultconfigFile=WINDSFORCE_PATH.'/config/ConfigDefault.inc.php';
 		if(!is_file($sAppGlobaldefaultconfigFile)){
-			$this->error_message(Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppGlobaldefaultconfigFile));
+			$this->error_message(Dyhb::L('框架全局惯性配置文件 %s 不存在','Controller',null,$sAppGlobaldefaultconfigFile));
 		}
 
 		$sAppGlobaldefaultconfig=nl2br(htmlspecialchars(file_get_contents($sAppGlobaldefaultconfigFile)));
@@ -100,7 +100,7 @@ class AppconfigtoolController extends InitController{
 
 		if($sType=='file'){
 			if(!is_file($sAppConfigfile)){
-				$this->error_message(Dyhb::L('应用配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppConfigfile));
+				$this->error_message(Dyhb::L('应用配置文件 %s 不存在','Controller',null,$sAppConfigfile));
 			}
 
 			$sAppconfig=nl2br(htmlspecialchars(file_get_contents($sAppConfigfile)));
@@ -110,7 +110,7 @@ class AppconfigtoolController extends InitController{
 		}else{
 			$sAppConfigcachefile=$this->get_configcachefile($sApp);
 			if(!is_file($sAppConfigcachefile)){
-				$this->error_message(Dyhb::L('应用配置缓存文件 %s 不存在','Controller/Appconfigtool',null,$sAppConfigcachefile));
+				$this->error_message(Dyhb::L('应用配置缓存文件 %s 不存在','Controller',null,$sAppConfigcachefile));
 			}
 
 			$arrAppFrameworkdefaultconfigs=(array)(include DYHB_PATH.'/Config_/DefaultConfig.inc.php');
@@ -135,7 +135,7 @@ class AppconfigtoolController extends InitController{
 		}
 
 		$this->assign('__JumpUrl__',Dyhb::U('appconfigtool/index?extra='.$sLastApp).'#apps');
-		$this->S(Dyhb::L('批量清除应用的缓存配置成功','Controller/Appconfigtool'));
+		$this->S(Dyhb::L('批量清除应用的缓存配置成功','Controller'));
 	}
 	
 	public function delete_appconfig($sApp=null,$bMessage=true){
@@ -148,7 +148,7 @@ class AppconfigtoolController extends InitController{
 	
 		if($bMessage===true){
 			$this->assign('__JumpUrl__',Dyhb::U('appconfigtool/index?extra='.$sApp).'#apps');
-			$this->S(Dyhb::L('清除应用 %s 的缓存配置成功','Controller/Appconfigtool',null,$sApp));
+			$this->S(Dyhb::L('清除应用 %s 的缓存配置成功','Controller',null,$sApp));
 		}
 	}
 
@@ -158,7 +158,7 @@ class AppconfigtoolController extends InitController{
 		if($sApp!='admin'){
 			$oApp=AppModel::F('app_identifier=? AND app_status=1',$sApp)->getOne();
 			if(empty($oApp['app_id'])){
-				$this->error_message(Dyhb::L('应用 %s 不存在或者尚未开启','Controller/Appconfigtool',null,$sApp));
+				$this->error_message(Dyhb::L('应用 %s 不存在或者尚未开启','Controller',null,$sApp));
 			}
 		}
 
@@ -169,7 +169,7 @@ class AppconfigtoolController extends InitController{
 		}
 
 		if(!is_dir($sAppConfigPath)){
-			$this->error_message(Dyhb::L('应用 %s 配置目录不存在','Controller/Appconfigtool',null,$sApp));
+			$this->error_message(Dyhb::L('应用 %s 配置目录不存在','Controller',null,$sApp));
 		}
 
 		$arrConfigfiles=array();
@@ -203,19 +203,19 @@ class AppconfigtoolController extends InitController{
 		foreach($arrDatas as $sKey=>$sData){
 			$sReallyconfigfile=str_replace('{WINDSFORCE_PATH}',G::tidyPath(WINDSFORCE_PATH),G::tidyPath($sKey));
 			if(!@file_put_contents($sReallyconfigfile,$sData)){
-				$this->E(Dyhb::L('应用配置文件 %s 不可写','Controller/Appconfigtool',null,$sReallyconfigfile));
+				$this->E(Dyhb::L('应用配置文件 %s 不可写','Controller',null,$sReallyconfigfile));
 			}
 		}
 
 		$this->delete_appconfig($sApp,false);
 
-		$this->S(Dyhb::L('应用 %s 配置文件修改成功','Controller/Appconfigtool',null,$sApp));
+		$this->S(Dyhb::L('应用 %s 配置文件修改成功','Controller',null,$sApp));
 	}
 
 	public function edit_globalconfig(){
 		$sAppGlobalconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 		if(!is_file($sAppGlobalconfigFile)){
-			$this->error_message(Dyhb::L('框架全局配置文件 %s 不存在','Controller/Appconfigtool',null,$sAppGlobalconfigFile));
+			$this->error_message(Dyhb::L('框架全局配置文件 %s 不存在','Controller',null,$sAppGlobalconfigFile));
 		}
 
 		$sAppGlobalconfig=file_get_contents($sAppGlobalconfigFile);
@@ -231,7 +231,7 @@ class AppconfigtoolController extends InitController{
 
 		$sAppGlobalconfigFile=WINDSFORCE_PATH.'/config/Config.inc.php';
 		if(!@file_put_contents($sAppGlobalconfigFile,$sData)){
-			$this->E(Dyhb::L('全局配置文件 %s 不可写','Controller/Appconfigtool',null,$sAppGlobalconfigFile));
+			$this->E(Dyhb::L('全局配置文件 %s 不可写','Controller',null,$sAppGlobalconfigFile));
 		}
 
 		$arrSaveDatas=array();
@@ -250,14 +250,14 @@ class AppconfigtoolController extends InitController{
 			$this->delete_appconfig($sApp,false);
 		}
 
-		$this->S(Dyhb::L('全局配置文件 %s 修改成功','Controller/Appconfigtool',null,$sAppGlobalconfigFile));
+		$this->S(Dyhb::L('全局配置文件 %s 修改成功','Controller',null,$sAppGlobalconfigFile));
 	}
 
 	public function get_configfile($sApp){
 		if($sApp!='admin'){
 			$oApp=AppModel::F('app_identifier=? AND app_status=1',$sApp)->getOne();
 			if(empty($oApp['app_id'])){
-				$this->error_message(Dyhb::L('应用 %s 不存在或者尚未开启','Controller/Appconfigtool',null,$sApp));
+				$this->error_message(Dyhb::L('应用 %s 不存在或者尚未开启','Controller',null,$sApp));
 			}
 		}
 

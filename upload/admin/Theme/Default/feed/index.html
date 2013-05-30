@@ -10,16 +10,16 @@ $(function(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template/Default/Feed'>-->用户动态列表<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template/Default/Feed'>-->用户动态列表<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->用户动态列表<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->用户动态列表<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template/Default/Feed'>-->这里为用户动态数据，注意,如果没有必要请不要删除用户的数据<!--</lang>--></li>
+					<li><!--<lang package='Template'>-->这里为用户动态数据，注意,如果没有必要请不要删除用户的数据<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
@@ -27,23 +27,23 @@ $(function(){
 		<article class="module width_full">
 				<div class="module_content">
 					<div class="operate" >
-						<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
+						<input type="button" name="delete" value="<!--<lang package='Template'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
 					</div>
 				</div>
 		</article>
 		
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template/Default/Feed'>-->用户动态列表<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->用户动态列表<!--</lang>--></h3>
 			</header>
 			<div class="module_content">
 				<table class="tablesorter" cellspacing="0" id="checkList">
 					<thead>
 						<tr>
 							<th width="25px"><input type="checkbox" onclick="checkAll('checkList')"></th> 
-							<th width="55px"><a href="javascript:sortBy('feed_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('feed_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th> 
-							<th><a href="javascript:sortBy('user_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_id')}-->><!--<lang package='Template/Default/Feed'>-->用户<!--</lang>--></a></th>
-							<th><!--<lang package='Template/Default/Feed'>-->动态内容<!--</lang>--></th>
-							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
+							<th width="55px"><a href="javascript:sortBy('feed_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('feed_id')}-->><!--<lang package='Template'>-->编号<!--</lang>--></a></th> 
+							<th><a href="javascript:sortBy('user_id','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('user_id')}-->><!--<lang package='Template'>-->用户<!--</lang>--></a></th>
+							<th><!--<lang package='Template'>-->动态内容<!--</lang>--></th>
+							<th><a href="javascript:sortBy('create_dateline','<!--{$sSortByUrl}-->')" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template'>-->添加时间<!--</lang>--></a></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -54,8 +54,8 @@ $(function(){
 							<td><!--{$value:feed_id}--></td>
 							<td><!--{$value:feed_username}-->
 								<div class="row-actions">
-									<span class='view'><a href="<!--{:Dyhb::U('feed/show?id='.$value->feed_id)}-->"><!--<lang package='Template/Default/Common'>-->查看<!--</lang>--></a>|</span>
-									<span class='delete'><a href="javascript:foreverdel('<!--{$value:feed_id}-->');"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
+									<span class='view'><a href="<!--{:Dyhb::U('feed/show?id='.$value->feed_id)}-->"><!--<lang package='Template'>-->查看<!--</lang>--></a>|</span>
+									<span class='delete'><a href="javascript:foreverdel('<!--{$value:feed_id}-->');"><!--<lang package='Template'>-->删除<!--</lang>--></a></span>
 								</div>
 							</td>
 							<td><div class="feed-content"><!--{$TheController:feedContent($value)|Core_Extend+ubb=false}--></div></td>
@@ -64,7 +64,7 @@ $(function(){
 						<!--</foreach>-->
 						<!--{d*else}-->
 						<tr>
-							<td colspan="5"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+							<td colspan="5"><!--<lang package='Template'>-->暂时没有发现任何记录<!--</lang>--></td>
 						</tr>
 						<!--{/if}-->
 					</tbody>
@@ -81,7 +81,7 @@ $(function(){
 		<article class="module width_full">
 			<div class="module_content">
 				<div class="operate" >
-					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
+					<input type="button" name="delete" value="<!--<lang package='Template'>-->删除<!--</lang>-->" onclick="foreverdel()" class="alt_btn">
 				</div>
 			</div>
 		</article>

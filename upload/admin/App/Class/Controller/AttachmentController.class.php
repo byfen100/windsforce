@@ -41,7 +41,7 @@ class AttachmentController extends InitController{
 		// 专辑
 		$nCid=G::getGpc('cid','G');
 		if($nCid!==null){
-			$arrAttachmentcategory=array(Dyhb::L('默认专辑','Controller/Attachment'),0);
+			$arrAttachmentcategory=array(Dyhb::L('默认专辑','Controller'),0);
 			
 			if($nCid>0){
 				$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nCid)->getOne();
@@ -56,14 +56,14 @@ class AttachmentController extends InitController{
 	}
 
 	public function add(){
-		$this->E(Dyhb::L('后台无法上传附件','Controller/Attachment').'<br/><a href="'.Core_Extend::windsforceOuter('app=home&c=attachment&a=add').'" target="_blank">'.Dyhb::L('前往上传','Controller/Attachment').'</a>');
+		$this->E(Dyhb::L('后台无法上传附件','Controller').'<br/><a href="'.Core_Extend::windsforceOuter('app=home&c=attachment&a=add').'" target="_blank">'.Dyhb::L('前往上传','Controller').'</a>');
 	}
 
 	public function cover(){
 		$nId=intval(G::getGpc('id','G'));
 	
 		if(empty($nId)){
-			$this->E(Dyhb::L('没有待设置的照片ID','Controller/Attachment'));
+			$this->E(Dyhb::L('没有待设置的照片ID','Controller'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nId)->getOne();
@@ -72,7 +72,7 @@ class AttachmentController extends InitController{
 				$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$oAttachment['attachmentcategory_id'])->getOne();
 
 				if(empty($oAttachmentcategory['attachmentcategory_id'])){
-					$this->E(Dyhb::L('照片的专辑不存在','Controller/Attachment'));
+					$this->E(Dyhb::L('照片的专辑不存在','Controller'));
 				}
 
 				$oAttachmentcategory->attachmentcategory_cover=$nId;
@@ -82,12 +82,12 @@ class AttachmentController extends InitController{
 					$this->E($oAttachmentcategory->getErrorMessage());
 				}
 
-				$this->S(Dyhb::L('专辑封面设置成功','Controller/Attachment'));
+				$this->S(Dyhb::L('专辑封面设置成功','Controller'));
 			}else{
-				$this->E(Dyhb::L('默认专辑不需要设置封面','Controller/Attachment'));
+				$this->E(Dyhb::L('默认专辑不需要设置封面','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('待设置的照片不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('待设置的照片不存在','Controller'));
 		}
 	}
 
@@ -136,12 +136,12 @@ class AttachmentController extends InitController{
 
 	protected function delete_attachment_($nId){
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有选择你要删除的附件','Controller/Attachment'));
+			$this->E(Dyhb::L('你没有选择你要删除的附件','Controller'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nId)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E(Dyhb::L('你要删除的附件不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('你要删除的附件不存在','Controller'));
 		}
 
 		// 删除附件图片

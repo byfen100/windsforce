@@ -110,7 +110,7 @@ class InitController extends Controller{
 		$sSortBy=strtoupper(G::getGpc('sort_'))=='ASC'?'ASC':'DESC' ;
 		$sOrder=G::getGpc('order_')?G::getGpc('order_'):$sName.'_id';
 		$this->assign('sSortByUrl',strtolower($sSortBy)=='desc'? 'asc':'desc');
-		$this->assign('sSortByDescription',strtolower($sSortBy)=='desc'?Dyhb::L('倒序','Controller/Common'):Dyhb::L('升序','Controller/Common'));
+		$this->assign('sSortByDescription',strtolower($sSortBy)=='desc'?Dyhb::L('倒序','Controller'):Dyhb::L('升序','Controller'));
 		$this->assign('sOrder',$sOrder);
 		$this->assign('sSortUrl','new Array('.implode(',',$arrSortUrl).')');
 
@@ -162,7 +162,7 @@ class InitController extends Controller{
 				'id'=>$sInputAjaxField.'_'.$nInputAjaxId,
 				'value'=>$sInputAjaxVal,
 			);
-			$this->A($arrVo,Dyhb::L('数据更新成功','Controller/Common'));
+			$this->A($arrVo,Dyhb::L('数据更新成功','Controller'));
 		}
 	}
 
@@ -194,7 +194,7 @@ class InitController extends Controller{
 			$sFunc='getBy'.$sField;
 			$arrResult=$oSelect->{$sFunc}($sName)->toArray();
 			if(!empty($arrResult[$sField])){
-				$this->E(Dyhb::L('该项数据已经存在','Controller/Common'));
+				$this->E(Dyhb::L('该项数据已经存在','Controller'));
 			}
 		}
 	}
@@ -224,7 +224,7 @@ class InitController extends Controller{
 			$this->aInsert($oModel->{$sPrimaryKey});
 
 			if(!in_array($sModel,array('user')) && !isset($_POST['no_ajax'])){
-				$this->A($oModel->toArray(),Dyhb::L('数据保存成功','Controller/Common'),1);
+				$this->A($oModel->toArray(),Dyhb::L('数据保存成功','Controller'),1);
 			}else{
 				$nId=$oModel->{$sPrimaryKey};
 
@@ -235,7 +235,7 @@ class InitController extends Controller{
 				}
 
 				$this->assign('__JumpUrl__',$sUrl);
-				$this->S(Dyhb::L('数据保存成功','Controller/Common'));
+				$this->S(Dyhb::L('数据保存成功','Controller'));
 			}
 		}else{
 			$this->E($oModel->getErrorMessage());
@@ -274,10 +274,10 @@ class InitController extends Controller{
 					$this->display($sModel.'+add');
 				}
 			}else{
-				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller/Common'));
+				$this->E(Dyhb::L('数据库中并不存在该项，或许它已经被删除','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -303,7 +303,7 @@ class InitController extends Controller{
 		$sPrimaryKey=$sModel.'_id';
 		if(!$oModel->isError()){
 			$this->aUpdate($oModel->{$sPrimaryKey});
-			$this->S(Dyhb::L('数据更新成功','Controller/Common'));
+			$this->S(Dyhb::L('数据更新成功','Controller'));
 		}else{
 			$this->E($oModel->getErrorMessage());
 		}
@@ -331,13 +331,13 @@ class InitController extends Controller{
 			}else{
 				$this->aForeverdelete($sId);
 				if(G::isAjax()){
-					$this->A('',Dyhb::L('删除记录成功','Controller/Common'),1);
+					$this->A('',Dyhb::L('删除记录成功','Controller'),1);
 				}else{
-					$this->S(Dyhb::L('删除记录成功','Controller/Common'));
+					$this->S(Dyhb::L('删除记录成功','Controller'));
 				}
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 
@@ -381,14 +381,14 @@ class InitController extends Controller{
 				
 				if($nStatus){
 					$this->aResume();
-					$this->S(Dyhb::L('恢复成功','Controller/Common'));
+					$this->S(Dyhb::L('恢复成功','Controller'));
 				}else{
 					$this->aForbid();
-					$this->S(Dyhb::L('禁用成功','Controller/Common'));
+					$this->S(Dyhb::L('禁用成功','Controller'));
 				}
 			}
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 
 	}
@@ -433,13 +433,13 @@ class InitController extends Controller{
 			$oDb->getConnect()->commit();
 
 			if($bResult!==false){
-				$this->S(Dyhb::L('更新成功','Controller/Common'));
+				$this->S(Dyhb::L('更新成功','Controller'));
 			}else{
 				$oDb->getConnect()->rollback();
 				$this->E($sErrorMessage);
 			}
 		}else{
-			$this->E(Dyhb::L('没有可以排序的数据','Controller/Common'));
+			$this->E(Dyhb::L('没有可以排序的数据','Controller'));
 		}
 	}
 
@@ -488,7 +488,7 @@ class InitController extends Controller{
 
 	public function check_appdevelop(){
 		if(!Dyhb::C('APP_DEVELOP')){
-			$this->E(Dyhb::L('应用开发尚未开启，请打开配置文件设置 APP_DEVELOP 的值为1','Controller/Common'));
+			$this->E(Dyhb::L('应用开发尚未开启，请打开配置文件设置 APP_DEVELOP 的值为1','Controller'));
 		}
 	}
 

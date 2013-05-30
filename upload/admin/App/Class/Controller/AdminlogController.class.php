@@ -13,7 +13,7 @@ class AdminlogController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 	
@@ -32,7 +32,7 @@ class AdminlogController extends InitController{
 		
 		$this->assign('__JumpUrl__',Dyhb::U('adminlog/index'));
 		
-		$this->S(Dyhb::L('清空后台管理数据成功','Controller/Adminlog'));
+		$this->S(Dyhb::L('清空后台管理数据成功','Controller'));
 	}
 
 }

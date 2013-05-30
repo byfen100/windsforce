@@ -13,7 +13,7 @@ class CreditrulelogController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['___login___']['user_id']!=1){
-			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller/Common'));
+			$this->E(Dyhb::L('只有用户ID为1的超级管理员才能够访问本页','Controller'));
 		}
 	}
 
@@ -38,13 +38,13 @@ class CreditrulelogController extends InitController{
 		$nUserid=intval(G::getGpc('id'));
 
 		if(empty($nUserid)){
-			$this->E(Dyhb::L('你没有指定待清空系统奖励数据的用户','Controller/Creditrulelog'));
+			$this->E(Dyhb::L('你没有指定待清空系统奖励数据的用户','Controller'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$nUserid)->getOne();
 
 		if(empty($oUser['user_id'])){
-			$this->E(Dyhb::L('待清空系统奖励数据的用户不存在','Controller/Creditrulelog'));
+			$this->E(Dyhb::L('待清空系统奖励数据的用户不存在','Controller'));
 		}
 		
 		// 执行删除
@@ -55,7 +55,7 @@ class CreditrulelogController extends InitController{
 			$this->E($oCreditrulelogMeta->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('清空系统奖励数据成功','Controller/Creditrulelog'));
+		$this->S(Dyhb::L('清空系统奖励数据成功','Controller'));
 	}
 
 }

@@ -22,7 +22,7 @@ class PublicController extends InitController{
 		if($GLOBALS['___login___']===false){
 			UserModel::M()->clearThisCookie();// 清理COOKIE
 			$this->assign('__JumpUrl__',Dyhb::U('public/login'));
-			$this->E(Dyhb::L('你没有登录','Controller/Public'));
+			$this->E(Dyhb::L('你没有登录','Controller'));
 		}
 	}
 
@@ -32,29 +32,29 @@ class PublicController extends InitController{
 		// 系统统计信息
 		Core_Extend::loadCache('site');
 		$arrStaticInfo=array(
-			array(Dyhb::L('用户数量','Controller/Public'),$GLOBALS['_cache_']['site']['user'],Core_Extend::windsforceOuter('app=home&c=stat&a=userlist')),
-			array(Dyhb::L('新注册用户数量','Controller/Public'),$GLOBALS['_option_']['todayusernum'],Core_Extend::windsforceOuter('app=home&c=stat&a=newuser')),
-			array(Dyhb::L('应用数量','Controller/Public'),$GLOBALS['_cache_']['site']['app'],Core_Extend::windsforceOuter('app=home&c=apps&a=index')),
-			array(Dyhb::L('新鲜事数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefresh'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),
-			array(Dyhb::L('评论数量','Controller/Public'),$GLOBALS['_cache_']['site']['homefreshcomment'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),
-			array(Dyhb::L('附件','Controller/Public'),$GLOBALS['_cache_']['site']['attachment'],Core_Extend::windsforceOuter('app=home&c=attachment&a=index')),
+			array(Dyhb::L('用户数量','Controller'),$GLOBALS['_cache_']['site']['user'],Core_Extend::windsforceOuter('app=home&c=stat&a=userlist')),
+			array(Dyhb::L('新注册用户数量','Controller'),$GLOBALS['_option_']['todayusernum'],Core_Extend::windsforceOuter('app=home&c=stat&a=newuser')),
+			array(Dyhb::L('应用数量','Controller'),$GLOBALS['_cache_']['site']['app'],Core_Extend::windsforceOuter('app=home&c=apps&a=index')),
+			array(Dyhb::L('新鲜事数量','Controller'),$GLOBALS['_cache_']['site']['homefresh'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),
+			array(Dyhb::L('评论数量','Controller'),$GLOBALS['_cache_']['site']['homefreshcomment'],Core_Extend::windsforceOuter('app=home&c=stat&a=explore')),
+			array(Dyhb::L('附件','Controller'),$GLOBALS['_cache_']['site']['attachment'],Core_Extend::windsforceOuter('app=home&c=attachment&a=index')),
 		);
 		$this->assign('arrStaticInfo',$arrStaticInfo);
 
 		// 服务器信息监测
 		$oDb=Db::RUN();
 		$arrInfo=array(
-			Dyhb::L('操作系统','Controller/Public')=>PHP_OS,
-			Dyhb::L('运行环境','Controller/Public')=>$_SERVER["SERVER_SOFTWARE"],
-			Dyhb::L('PHP运行方式','Controller/Public')=>php_sapi_name(),
-			Dyhb::L('数据库类型','Controller/Public')=>$GLOBALS['_commonConfig_']['DB_TYPE'],
-			Dyhb::L('数据库版本','Controller/Public')=>$oDb->getConnect()->getVersion(),
-			Dyhb::L('上传附件限制','Controller/Public')=>ini_get('upload_max_filesize'),
-			Dyhb::L('执行时间限制','Controller/Public')=>ini_get('max_execution_time').' Secconds',
-			Dyhb::L('服务器时间','Controller/Public')=>date('Y-n-j H:i:s'),
-			Dyhb::L('北京时间','Controller/Public')=>gmdate('Y-n-j H:i:s',time()+8*3600),
-			Dyhb::L('服务器域名/IP','Controller/Public')=>$_SERVER['SERVER_NAME'].' [ '.gethostbyname($_SERVER['SERVER_NAME']).' ]',
-			Dyhb::L('剩余空间','Controller/Public')=>round((@disk_free_space(".")/(1024*1024)),2).'M',
+			Dyhb::L('操作系统','Controller')=>PHP_OS,
+			Dyhb::L('运行环境','Controller')=>$_SERVER["SERVER_SOFTWARE"],
+			Dyhb::L('PHP运行方式','Controller')=>php_sapi_name(),
+			Dyhb::L('数据库类型','Controller')=>$GLOBALS['_commonConfig_']['DB_TYPE'],
+			Dyhb::L('数据库版本','Controller')=>$oDb->getConnect()->getVersion(),
+			Dyhb::L('上传附件限制','Controller')=>ini_get('upload_max_filesize'),
+			Dyhb::L('执行时间限制','Controller')=>ini_get('max_execution_time').' Secconds',
+			Dyhb::L('服务器时间','Controller')=>date('Y-n-j H:i:s'),
+			Dyhb::L('北京时间','Controller')=>gmdate('Y-n-j H:i:s',time()+8*3600),
+			Dyhb::L('服务器域名/IP','Controller')=>$_SERVER['SERVER_NAME'].' [ '.gethostbyname($_SERVER['SERVER_NAME']).' ]',
+			Dyhb::L('剩余空间','Controller')=>round((@disk_free_space(".")/(1024*1024)),2).'M',
 			'register_globals'=>get_cfg_var("register_globals")=="1"?"ON":"OFF",
 			'magic_quotes_gpc'=>(1===get_magic_quotes_gpc())?'YES':'NO',
 			'magic_quotes_runtime'=>(1===get_magic_quotes_runtime())?'YES':'NO',
@@ -67,13 +67,13 @@ class PublicController extends InitController{
 
 		// 程序信息
 		$arrVersionInfo=array(
-			'WindsForce '.Dyhb::L('程序版本','Controller/Public')=>"WindsForce " .WINDSFORCE_SERVER_VERSION. "  Release ".
+			'WindsForce '.Dyhb::L('程序版本','Controller')=>"WindsForce " .WINDSFORCE_SERVER_VERSION. "  Release ".
 			WINDSFORCE_SERVER_RELEASE.(WINDSFORCE_SERVER_BUG?' Bug-'.WINDSFORCE_SERVER_BUG:'')." [ <a href=\"http://windsforce.com\" target=\"_blank\">".
-			Dyhb::L('查看最新版本','Controller/Public')."</a>  <span id=\"newest_version\">".Dyhb::L('读取中','Controller/Public')."...</span> ]&nbsp;"."<a href=\"http://windsforce.com\" target=\"_blank\">".
-			Dyhb::L('专业支持与服务','Controller/Public')."</a>",
-			'DoYouHaoBaby'.Dyhb::L('版本','Controller/Public')=>DYHB_VERSION.
-			' [ <a href="http://bbs.doyouhaobaby.net" target="_blank">'.Dyhb::L('查看最新版本','Controller/Public').'</a> <span id="newest_frameworkversion">'.Dyhb::L('读取中','Controller/Public').'...</span> ] &nbsp;'.
-			Dyhb::L('DoYouHaoBaby 是一款性能卓越的PHP 开发框架','Controller/Public').' <img src="'.__FRAMEWORK__.'/dyhb-powered.png" />',
+			Dyhb::L('查看最新版本','Controller')."</a>  <span id=\"newest_version\">".Dyhb::L('读取中','Controller')."...</span> ]&nbsp;"."<a href=\"http://windsforce.com\" target=\"_blank\">".
+			Dyhb::L('专业支持与服务','Controller')."</a>",
+			'DoYouHaoBaby'.Dyhb::L('版本','Controller')=>DYHB_VERSION.
+			' [ <a href="http://bbs.doyouhaobaby.net" target="_blank">'.Dyhb::L('查看最新版本','Controller').'</a> <span id="newest_frameworkversion">'.Dyhb::L('读取中','Controller').'...</span> ] &nbsp;'.
+			Dyhb::L('DoYouHaoBaby 是一款性能卓越的PHP 开发框架','Controller').' <img src="'.__FRAMEWORK__.'/dyhb-powered.png" />',
 		);
 		$this->assign('arrVersionInfo',$arrVersionInfo);
 
@@ -135,7 +135,7 @@ class PublicController extends InitController{
 		$nTotalAppeal=AppealModel::F()->where(array('appeal_progress'))->all()->getCounts();
 
 		$arrTodos=array(
-			array($nTotalAppeal,Dyhb::L('待申诉用户','Controller/Public'),Dyhb::U('appeal/index?type=0')),
+			array($nTotalAppeal,Dyhb::L('待申诉用户','Controller'),Dyhb::U('appeal/index?type=0')),
 		);
 		$this->assign('arrTodos',$arrTodos);
 
@@ -184,9 +184,9 @@ class PublicController extends InitController{
 		$sPassword=G::getGpc('user_password','P');
 
 		if(empty($sUserName)){
-			$this->E(Dyhb::L('帐号或者E-mail不能为空','Controller/Public'));
+			$this->E(Dyhb::L('帐号或者E-mail不能为空','Controller'));
 		}elseif(empty($sPassword)){
-			$this->E(Dyhb::L('密码不能为空','Controller/Public'));
+			$this->E(Dyhb::L('密码不能为空','Controller'));
 		}
 
 		Check::RUN();
@@ -203,7 +203,7 @@ class PublicController extends InitController{
 			$this->E($oUserModel->getErrorMessage());
 		}else{
 			$sUrl=Dyhb::U('index/index');
-			$this->A(array('url'=>$sUrl),Dyhb::L('Hello %s,你成功登录','Controller/Public',null,$sUserName),1);
+			$this->A(array('url'=>$sUrl),Dyhb::L('Hello %s,你成功登录','Controller',null,$sUserName),1);
 		}
 	}
 
@@ -230,7 +230,7 @@ class PublicController extends InitController{
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('密码修改成功，你需要重新登录','Controller/Public'));
+			$this->S(Dyhb::L('密码修改成功，你需要重新登录','Controller'));
 		}
 	}
 
@@ -255,7 +255,7 @@ class PublicController extends InitController{
 		if($oUser->isError()){
 			$this->E($oUser->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('修改用户资料成功','Controller/Public'));
+			$this->S(Dyhb::L('修改用户资料成功','Controller'));
 		}
 	}
 
@@ -272,9 +272,9 @@ class PublicController extends InitController{
 			Socia::clearCookie(true);
 
 			$this->assign("__JumpUrl__",Dyhb::U('public/login'));
-			$this->S(Dyhb::L('登出成功','Controller/Public'));
+			$this->S(Dyhb::L('登出成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('已经登出','Controller/Public'));
+			$this->E(Dyhb::L('已经登出','Controller'));
 		}
 	}
 
@@ -328,7 +328,7 @@ class PublicController extends InitController{
 		}
 		Cache_Extend::updateCache('option');
 
-		$this->S(Dyhb::L('升级提醒信息成功关闭','Controller/Public'));
+		$this->S(Dyhb::L('升级提醒信息成功关闭','Controller'));
 	}
 
 	public function profile(){

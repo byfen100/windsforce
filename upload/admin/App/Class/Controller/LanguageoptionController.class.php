@@ -42,7 +42,7 @@ class LanguageoptionController extends OptionController{
 		OptionModel::uploadOption('language_switch_on',$nFrontlanguageSwitch);
 		Core_Extend::changeAppconfig('LANG_SWITCH',$nFrontlanguageSwitch==1?true:false);
 
-		$this->S(Dyhb::L('修改国际化语言成功','Controller/Languageoption'));
+		$this->S(Dyhb::L('修改国际化语言成功','Controller'));
 	}
 
 }

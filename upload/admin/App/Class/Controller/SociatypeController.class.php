@@ -16,7 +16,7 @@ class SociatypeController extends InitController{
 		$arrIds=explode(',',$sId);
 		foreach($arrIds as $nId){
 			if($this->is_system_sociatype($nId)){
-				$this->E(Dyhb::L('系统社会化帐号无法删除','Controller/Sociatype'));
+				$this->E(Dyhb::L('系统社会化帐号无法删除','Controller'));
 			}
 		}
 	}
