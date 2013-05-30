@@ -290,7 +290,7 @@ class Db{
 		}
 
 		if(!is_array($Row) && !($Row instanceof DbExpression)){
-			Dyhb::E(Dyhb::L('$arrRow的格式只能是数组和DbException的实例。','__DYHB__@DbDyhb'));
+			Dyhb::E(Dyhb::L('$arrRow的格式只能是数组和DbException的实例。','__DYHB__@Dyhb'));
 		}
 
 		if(!is_array($Row)){

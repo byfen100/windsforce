@@ -180,7 +180,7 @@ class DbSelect{
 
 	public function getById($Id,$IncludedLinks=null){
 		if($this->_oMeta->_nIdNameCount !=1){
-			Dyhb::E(Dyhb::L('getById 方法只适用于单一主键模型' ,'__DYHB__@DbDyhb'));
+			Dyhb::E(Dyhb::L('getById 方法只适用于单一主键模型' ,'__DYHB__@Dyhb'));
 		}
 
 		return $this->where(array(reset($this->_oMeta->_sIdName)=>$Id))->getOne($IncludedLinks);
@@ -249,14 +249,14 @@ class DbSelect{
 				$sMethod=substr($sMethod,2);
 				$arrKeys=explode('And',$sMethod);
 				if(count($arrKeys)!=count($arrArgs)){
-					Dyhb::E(Dyhb::L('参数数量不对应','__DYHB__@DbDyhb'));
+					Dyhb::E(Dyhb::L('参数数量不对应','__DYHB__@Dyhb'));
 				}
 				return $this->where(array_change_key_case(array_combine($arrKeys,$arrArgs),CASE_LOWER))->getOne();
 			}elseif(strncasecmp($sMethod,'AllBy',5)===0){// support getAllByNameAndSex etc.
 				$sMethod=substr($sMethod,5);
 				$arrKeys=explode('And',$sMethod);
 				if(count($arrKeys)!=count($arrArgs)){
-					Dyhb::E(Dyhb::L('参数数量不对应','__DYHB__@DbDyhb'));
+					Dyhb::E(Dyhb::L('参数数量不对应','__DYHB__@Dyhb'));
 				}
 				return $this->where(array_change_key_case(array_combine($arrKeys,$arrArgs),CASE_LOWER))->getAll();
 			}
@@ -266,7 +266,7 @@ class DbSelect{
 			return call_user_func_array(array($this->_oMeta->_sClassName,'find_'.$sMethod),$arrArgs);
 		}
 
-		Dyhb::E(Dyhb::L('DbSelect 没有实现魔法方法 %s.','__DYHB__@DbDyhb',null,$sMethod));
+		Dyhb::E(Dyhb::L('DbSelect 没有实现魔法方法 %s.','__DYHB__@Dyhb',null,$sMethod));
 	}
 
 	protected function queryArray_($bCleanUp=true){
@@ -518,7 +518,7 @@ class DbSelect{
 			if($Link instanceof ModelRelation){
 				$this->_arrLinks[$Link->_sMappingName]=$Link;
 			}else{
-				Dyhb::E(Dyhb::L('关联必须是 DbActiveRecordAssociation 类型' ,'__DYHB__@DbDyhb'));
+				Dyhb::E(Dyhb::L('关联必须是 DbActiveRecordAssociation 类型' ,'__DYHB__@Dyhb'));
 			}
 		}
 
@@ -571,7 +571,7 @@ class DbSelect{
 		}
 
 		if(!isset(self::$_arrUnionTypes[$sType])){
-			Dyhb::E(Dyhb::L('无效的 UNION 类型 %s','__DYHB__@DbDyhb',null,$sType));
+			Dyhb::E(Dyhb::L('无效的 UNION 类型 %s','__DYHB__@Dyhb',null,$sType));
 		}
 
 		foreach($Select as $Target){
@@ -768,7 +768,7 @@ class DbSelect{
 		$sOption=strtolower($sOption);
 
 		if(!array_key_exists($sOption,$this->_arrOptions)){
-			Dyhb::E(Dyhb::L('无效的部分名称 %s' ,'__DYHB__@DbDyhb',null,$sOption));
+			Dyhb::E(Dyhb::L('无效的部分名称 %s' ,'__DYHB__@Dyhb',null,$sOption));
 		}
 
 		return $this->_arrOptions[$sOption];
@@ -980,12 +980,12 @@ class DbSelect{
 
 	protected function join_($sJoinType,$Name,$Cols,$Cond=null,$arrCondArgs=null){
 		if(!isset(self::$_arrJoinTypes[$sJoinType])){
-			Dyhb::E(Dyhb::L('无效的 JOIN 类型 %s','__DYHB__@DbDyhb',null,$sJoinType));
+			Dyhb::E(Dyhb::L('无效的 JOIN 类型 %s','__DYHB__@Dyhb',null,$sJoinType));
 		}
 
 		// 不能在使用 UNION 查询的同时使用 JOIN 查询.
 		if(count($this->_arrOptions[self::UNION])){
-			Dyhb::E(Dyhb::L('不能在使用 UNION 查询的同时使用 JOIN 查询','__DYHB__@DbDyhb'));
+			Dyhb::E(Dyhb::L('不能在使用 UNION 查询的同时使用 JOIN 查询','__DYHB__@Dyhb'));
 		}
 
 		// 根据 $Name 的不同类型确定数据表名称、别名

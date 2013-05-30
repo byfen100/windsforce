@@ -91,17 +91,17 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$oMember=$this->_oMeta->find(array($sPn=>$sUsername))->query();
 
 		if(!$oMember->id()){
-			$this->setErrorMessage(Dyhb::L('我们无法找到%s这个用户','__DYHB__@RbacDyhb',null,$sUsername));
+			$this->setErrorMessage(Dyhb::L('我们无法找到%s这个用户','__DYHB__@Dyhb',null,$sUsername));
 			return false;
 		}
 
 		if($oMember[$this->_arrSettings['status_prop']]<=0){// 查看用户是否禁用
-			$this->setErrorMessage(Dyhb::L('用户%s的账户还没有解锁，你暂时无法登录' ,'__DYHB__@RbacDyhb',null,$sUsername));
+			$this->setErrorMessage(Dyhb::L('用户%s的账户还没有解锁，你暂时无法登录' ,'__DYHB__@Dyhb',null,$sUsername));
 			return false;
 		}
 
 		if(!$this->checkPasswordDyn($oMember,$sPassword)){// 验证密码
-			$this->setErrorMessage(Dyhb::L('用户%s的密码错误','__DYHB__@RbacDyhb',null,$sUsername));
+			$this->setErrorMessage(Dyhb::L('用户%s的密码错误','__DYHB__@Dyhb',null,$sUsername));
 			return false;
 		}
 
@@ -216,7 +216,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 				if($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE'] && !G::isAjax()){// 没有权限 抛出错误
 					G::urlGoTo(Dyhb::U($GLOBALS['_commonConfig_']['RBAC_ERROR_PAGE'],array('referer'=>__SELF__,'rbac'=>1),true));
 				}else{
-					$this->setErrorMessage(Dyhb::L('你没有访问权限','__DYHB__@RbacDyhb'));
+					$this->setErrorMessage(Dyhb::L('你没有访问权限','__DYHB__@Dyhb'));
 					return false;
 				}
 			}
@@ -264,7 +264,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$sPn=$this->_arrSettings['username_prop'];
 
 		if(!$this->_oMeta->find(array($sPn=>$sUsername))->getCounts()>0){
-			$this->setErrorMessage(Dyhb::L('用户%s的不存在','__DYHB__@RbacDyhb',null,$sUsername));
+			$this->setErrorMessage(Dyhb::L('用户%s的不存在','__DYHB__@Dyhb',null,$sUsername));
 			return false;
 		}
 
@@ -283,7 +283,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		$oMember=$this->_oMeta->find(array($sPn=>$sUsername))->query();
 
 		if(!$oMember->id()){
-			$this->setErrorMessage(Dyhb::L('我们无法找到%s这个用户' ,'__DYHB__@RbacDyhb',null,$sUsername));
+			$this->setErrorMessage(Dyhb::L('我们无法找到%s这个用户' ,'__DYHB__@Dyhb',null,$sUsername));
 			return false;
 		}
 
@@ -305,7 +305,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		
 		if(!$bIgnoreOldPassword){
 			if(!$this->checkPasswordDyn($oMember, $sOldPassword)){
-				$this->setErrorMessage(Dyhb::L('用户输入的旧密码错误','__DYHB__@RbacDyhb'));
+				$this->setErrorMessage(Dyhb::L('用户输入的旧密码错误','__DYHB__@Dyhb'));
 				return false;
 			}
 		}
@@ -367,7 +367,7 @@ class ModelBehaviorRbac extends ModelBehavior{
 		if($this->_arrSettings['unique_username']){
 			$sPn=$this->_arrSettings['username_prop'];
 			if($this->_oMeta->find(array($sPn=>$oMember[$sPn]))->getCounts()>1){
-				$this->setErrorMessage(Dyhb::L('用户名%s只能够唯一','__DYHB__@RbacDyhb',null,$oMember[$sPn]));
+				$this->setErrorMessage(Dyhb::L('用户名%s只能够唯一','__DYHB__@Dyhb',null,$oMember[$sPn]));
 				return false;
 			}
 		}

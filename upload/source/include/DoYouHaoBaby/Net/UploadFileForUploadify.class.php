@@ -20,16 +20,16 @@ class UploadFileForUploadify extends UploadFile{
 				$sSavePath=base64_decode($sSavePath);
 			}else{
 				if(!$this->_bAutoCreateStoreDir){
-					$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@NetDyhb',null,$sSavePath));
+					$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@Dyhb',null,$sSavePath));
 					return false;
 				}else if(!G::makeDir($sSavePath)){
-					$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sSavePath);
+					$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sSavePath);
 					return false;
 				}
 			}
 		}else{
 			if(!is_writeable($sSavePath)){
-				$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sSavePath);
+				$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sSavePath);
 				return false;
 			}
 		}

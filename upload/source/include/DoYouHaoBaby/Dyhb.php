@@ -330,7 +330,7 @@ class Dyhb{
 		$sErrfile=$oE->getFile();
 		$nErrline=$oE->getLine();
 		$nErrno=$oE->getCode();
-		$sErrorStr="[$nErrno] $sErrstr ".basename($sErrfile).self::L(" 第 %d 行。",'__DYHB__@LibDyhb',null,$nErrline);
+		$sErrorStr="[$nErrno] $sErrstr ".basename($sErrfile).self::L(" 第 %d 行。",'__DYHB__@Dyhb',null,$nErrline);
 
 		if($GLOBALS['_commonConfig_']['LOG_RECORD'] && self::C('LOG_MUST_RECORD_EXCEPTION')){
 			Log::W($sErrstr,Log::EXCEPTION);

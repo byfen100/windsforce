@@ -99,7 +99,7 @@ class DbTableEnter{
 
 		if(is_int($Where) || ((int)$Where==$Where && $Where>0)){
 			if($this->_bIsCpk){// 如果 $Where 是一个整数，则假定为主键字段值
-				Dyhb::E(Dyhb::L('使用复合主键时，不允许通过直接指定主键值来删除记录。' ,'__DYHB__@DbDyhb'));
+				Dyhb::E(Dyhb::L('使用复合主键时，不允许通过直接指定主键值来删除记录。' ,'__DYHB__@Dyhb'));
 			}else{
 				$Where=array(array($this->_pk[0]=>(int)$Where));
 			}

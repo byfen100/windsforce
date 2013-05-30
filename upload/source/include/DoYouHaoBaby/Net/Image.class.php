@@ -205,10 +205,10 @@ class Image{
 				case 3:
 					$oBackgroundIm=@imagecreatefrompng($sBackgroundPath);break;
 				default:
-					return Dyhb::L("错误的图像格式！",'__DYHB__@NetDyhb');
+					return Dyhb::L("错误的图像格式！",'__DYHB__@Dyhb');
 			}
 		}else{
-			return Dyhb::L("图像%d为空或者不存在！",'__DYHB__@NetDyhb',null,$sBackgroundPath);
+			return Dyhb::L("图像%d为空或者不存在！",'__DYHB__@Dyhb',null,$sBackgroundPath);
 		}
 
 		@imagealphablending($oBackgroundIm,true);// 设定图像的混色模式
@@ -236,7 +236,7 @@ class Image{
 						$oWaterIm=@imagecreatefrompng($arrWaterArgs['path']);
 						break;
 					default:
-						return Dyhb::L("错误的图像格式！",'__DYHB__@NetDyhb');
+						return Dyhb::L("错误的图像格式！",'__DYHB__@Dyhb');
 				}
 			}elseif($arrWaterArgs['type']==='text' && $arrWaterArgs['content'] !=''){
 				$bFrameworkFont=false;
@@ -252,7 +252,7 @@ class Image{
 				}
 
 				if(!is_file($sFontfile)){
-					return Dyhb::L("字体文件%s无法找到！",'__DYHB__@NetDyhb',null,$sFontfile);
+					return Dyhb::L("字体文件%s无法找到！",'__DYHB__@Dyhb',null,$sFontfile);
 				}
 
 				$sWaterText=$arrWaterArgs['content'];
@@ -265,10 +265,10 @@ class Image{
 				$nWaterHeight=$arrTemp[3]-$arrTemp[7];
 				unset($arrTemp);
 			}else{
-				return Dyhb::L("水印参数type不为img 和 text！",'__DYHB__@NetDyhb');
+				return Dyhb::L("水印参数type不为img 和 text！",'__DYHB__@Dyhb');
 			}
 		}else{
-			return Dyhb::L("水印参数不为数组！",'__DYHB__@NetDyhb');
+			return Dyhb::L("水印参数不为数组！",'__DYHB__@Dyhb');
 		}
 
 		if(($nGroundWidth<($nWaterWidth*2)) || ($nGroundHeight<($nWaterHeight*2))){// 如果水印占了原图一半就不搞水印了.影响浏览.抵制影响正常浏览的广告
@@ -328,7 +328,7 @@ class Image{
 				$G=hexdec(substr($sTextColor,3,2));
 				$B=hexdec(substr($sTextColor,5));
 			}else{
-				return Dyhb::L("水印文字颜色错误！",'__DYHB__@NetDyhb');
+				return Dyhb::L("水印文字颜色错误！",'__DYHB__@Dyhb');
 			}
 			@imagettftext($oBackgroundIm,$nTextFont,0,$nPosX,$nPosY,@imagecolorallocate($oBackgroundIm,$R,$G,$B),$sFontfile ,$sWaterText);
 		}
@@ -348,7 +348,7 @@ class Image{
 				@imagepng($oBackgroundIm,$sBackgroundPath);
 				break;
 			default:
-				return Dyhb::L("错误的图像格式！",'__DYHB__@NetDyhb');
+				return Dyhb::L("错误的图像格式！",'__DYHB__@Dyhb');
 		}
 
 		if(isset($oWaterIm)){
@@ -415,7 +415,7 @@ class Image{
 		}
 
 		if($oIm===null){
-			return Dyhb::L("错误的图像格式！",'__DYHB__@NetDyhb');
+			return Dyhb::L("错误的图像格式！",'__DYHB__@Dyhb');
 		}
 
 		// 图象目标地址
@@ -428,11 +428,11 @@ class Image{
 		}
 
 		if($sTargetFile==$sImageFile){
-			return Dyhb::L("裁剪的图像和原图像地址一样！",'__DYHB__@NetDyhb');
+			return Dyhb::L("裁剪的图像和原图像地址一样！",'__DYHB__@Dyhb');
 		}
 
 		if(is_file($sTargetFile)){
-			return Dyhb::L("保存的图像已经存在！",'__DYHB__@NetDyhb');
+			return Dyhb::L("保存的图像已经存在！",'__DYHB__@Dyhb');
 		}
 
 		$nSourceWidth=imagesx($oIm);// 取得图像地址

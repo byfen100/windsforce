@@ -97,12 +97,12 @@ class UploadFile{
 		$sFilename=$arrFile['savepath'].'/'.$arrFile['savename'];
 
 		if(!$this->_bUploadReplace && is_file($sFilename)){// 不覆盖同名文件
-			$this->_sError=Dyhb::L('文件%s已经存在！','__DYHB__@NetDyhb',null,$sFilename);
+			$this->_sError=Dyhb::L('文件%s已经存在！','__DYHB__@Dyhb',null,$sFilename);
 			return false;
 		}
 
 		if(in_array(strtolower($arrFile['extension']),array('gif','jpg','jpeg','bmp','png','swf')) && false=== getimagesize($arrFile['tmp_name'])){// 如果是图像文件 检测文件格式
-			$this->_sError=Dyhb::L('非法图像文件','__DYHB__@NetDyhb');
+			$this->_sError=Dyhb::L('非法图像文件','__DYHB__@Dyhb');
 			return false;
 		}
 
@@ -111,12 +111,12 @@ class UploadFile{
 		}
 
 		if(!is_dir(dirname($sFilename)) && !G::makeDir(dirname($sFilename))){// 如果文件名为xx/yy/zz，则还需要创建目录，否则无法移动
-			$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,dirname($sFilename));
+			$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,dirname($sFilename));
 			return false;
 		}
 
 		if(!move_uploaded_file($arrFile['tmp_name'],G::gbkToUtf8($sFilename,'utf-8','gb2312'))){
-			$this->_sError=Dyhb::L('文件上传保存错误','__DYHB__@NetDyhb');
+			$this->_sError=Dyhb::L('文件上传保存错误','__DYHB__@Dyhb');
 			return false;
 		}
 
@@ -137,10 +137,10 @@ class UploadFile{
 						$sThumbPath=base64_decode($sThumbPath);
 					}else{// 尝试创建目录
 						if(!$this->_bAutoCreateStoreDir){
-							$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@NetDyhb',null,$sThumbPath));
+							$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@Dyhb',null,$sThumbPath));
 							return false;
 						}else if(!mkdir($sThumbPath)){
-							$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sThumbPath);
+							$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sThumbPath);
 							return false;
 						}
 					}
@@ -209,16 +209,16 @@ class UploadFile{
 				$sSavePath=base64_decode($sSavePath);
 			}else{// 尝试创建目录
 				if(!$this->_bAutoCreateStoreDir){
-					$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@NetDyhb',null,$sSavePath));
+					$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@Dyhb',null,$sSavePath));
 					return false;
 				}else if(!G::makeDir($sSavePath)){
-					$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sSavePath);
+					$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sSavePath);
 					return false;
 				}
 			}
 		}else{
 			if(!is_writeable($sSavePath)){
-				$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sSavePath);
+				$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sSavePath);
 				return false;
 			}
 		}
@@ -312,25 +312,25 @@ class UploadFile{
 	protected function error($nErrorNo){
 		switch($nErrorNo){
 			case self::UPLOAD_ERR_INI_SIZE:
-				$this->_sError=Dyhb::L('上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值','__DYHB__@NetDyhb').' '.ini_get('upload_max_filesize');
+				$this->_sError=Dyhb::L('上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值','__DYHB__@Dyhb').' '.ini_get('upload_max_filesize');
 				break;
 			case self::UPLOAD_ERR_FORM_SIZE:
-				$this->_sError=Dyhb::L('超过限制字节数','__DYHB__@NetDyhb');
+				$this->_sError=Dyhb::L('超过限制字节数','__DYHB__@Dyhb');
 				break;
 			case self::UPLOAD_ERR_PARTIAL:
-				$this->_sError=Dyhb::L('文件只有部分被上传','__DYHB__@NetDyhb');
+				$this->_sError=Dyhb::L('文件只有部分被上传','__DYHB__@Dyhb');
 				break;
 			case self::UPLOAD_ERR_NO_FILE:
-				$this->_sError=Dyhb::L('文件未上传','__DYHB__@NetDyhb');
+				$this->_sError=Dyhb::L('文件未上传','__DYHB__@Dyhb');
 				break;
 			case self::UPLOAD_ERR_NO_TMP_DIR:
-				$this->_sError=Dyhb::L('无法找到临时文件夹','__DYHB__@NetDyhb');
+				$this->_sError=Dyhb::L('无法找到临时文件夹','__DYHB__@Dyhb');
 				break;
 			case self::UPLOAD_ERR_CANT_WRITE:
-				$this->_sError=Dyhb::L('文件写入失败','__DYHB__@NetDyhb');
+				$this->_sError=Dyhb::L('文件写入失败','__DYHB__@Dyhb');
 				break;
 			default:
-				$this->_sError=Dyhb::L('未知上传错误！','__DYHB__@NetDyhb');
+				$this->_sError=Dyhb::L('未知上传错误！','__DYHB__@Dyhb');
 		}
 
 		return;
@@ -385,22 +385,22 @@ class UploadFile{
 		}
 			
 		if(!$this->checkSize($arrFile['size'])){// 文件上传成功，进行自定义规则检查&检查文件大小
-			$this->_sError=Dyhb::L('上传文件大小不符,允许的大小为%s！','__DYHB__@NetDyhb',null,self::getReadableFileSize($this->_nMaxSize));
+			$this->_sError=Dyhb::L('上传文件大小不符,允许的大小为%s！','__DYHB__@Dyhb',null,self::getReadableFileSize($this->_nMaxSize));
 			return false;
 		}
 
 		if(!$this->checkType($arrFile['type'])){// 检查文件Mime类型
-			$this->_sError=Dyhb::L('上传文件MIME类型不允许！','__DYHB__@NetDyhb').'<br/>'.$arrFile['type'];
+			$this->_sError=Dyhb::L('上传文件MIME类型不允许！','__DYHB__@Dyhb').'<br/>'.$arrFile['type'];
 			return false;
 		}
 
 		if(!$this->checkExt($arrFile['extension'])){// 检查文件类型
-			$this->_sError=Dyhb::L('上传文件类型不允许!','__DYHB__@NetDyhb').'<br/>'.$arrFile['extension'];
+			$this->_sError=Dyhb::L('上传文件类型不允许!','__DYHB__@Dyhb').'<br/>'.$arrFile['extension'];
 			return false;
 		}
 
 		if(!$this->checkUpload($arrFile['tmp_name'])){// 检查是否合法上传
-			$this->_sError=Dyhb::L('没有选择上传文件！','__DYHB__@NetDyhb');
+			$this->_sError=Dyhb::L('没有选择上传文件！','__DYHB__@Dyhb');
 			return false;
 		}
 

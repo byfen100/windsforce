@@ -24,13 +24,13 @@ class DbConnectMysql extends DbConnect{
 			}
 
 			if(!$this->_arrHConnect[$nLinkid]){// 判断是否成功连接上数据
-				Dyhb::E(Dyhb::L('数据库连接失败，请检查你的数据库信息是否正确，连接数据库的配置如下：%s','__DYHB__@DbDyhb',null,G::dump($Config,false)));
+				Dyhb::E(Dyhb::L('数据库连接失败，请检查你的数据库信息是否正确，连接数据库的配置如下：%s','__DYHB__@Dyhb',null,G::dump($Config,false)));
 				return false;
 			}
 
 			$this->_hCurrentConnect=$this->_arrHConnect[$nLinkid];
 			if(empty($Config['db_name'])|| !mysql_select_db($Config['db_name'],$this->_arrHConnect[$nLinkid])){// 尝试请求数据
-				Dyhb::E(Dyhb::L('数据库不存在在或者错误，请检查你的数据库信息是否正确，连接数据库的配置如下：%s','__DYHB__@DbDyhb',null,G::dump($Config,false)));
+				Dyhb::E(Dyhb::L('数据库不存在在或者错误，请检查你的数据库信息是否正确，连接数据库的配置如下：%s','__DYHB__@Dyhb',null,G::dump($Config,false)));
 				return false;
 			}
 
@@ -224,7 +224,7 @@ class DbConnectMysql extends DbConnect{
 
 		$hResult=$this->query_($sSql);
 		if($hResult===false || !is_resource($hResult)){// 失败
-			Dyhb::E(Dyhb::L('无法取得数据库名称清单','__DYHB__@DbDyhb'));
+			Dyhb::E(Dyhb::L('无法取得数据库名称清单','__DYHB__@Dyhb'));
 		}
 
 		$arrReturn=array();// 获取结果
@@ -246,7 +246,7 @@ class DbConnectMysql extends DbConnect{
 		$sSql="SHOW TABLES;";// 执行
 		$hResult=$this->query($sSql,$sQueryDb);
 		if($hResult===false || !is_resource($hResult)){// 失败
-			Dyhb::E(Dyhb::L('无法取得数据表名称清单','__DYHB__@DbDyhb'));
+			Dyhb::E(Dyhb::L('无法取得数据表名称清单','__DYHB__@Dyhb'));
 			return false;
 		}
 
@@ -268,7 +268,7 @@ class DbConnectMysql extends DbConnect{
 		$sSql="SHOW COLUMNS FROM {$sTableName}";// 执行
 		$hResult=$this->query($sSql,$sQueryDb);
 		if($hResult===false|| !is_resource($hResult)){// 失败
-			Dyhb::E(Dyhb::L('无法取得数据表 < %s > 字段名称清单','__DYHB__@DbDyhb',null,$sTableName));
+			Dyhb::E(Dyhb::L('无法取得数据表 < %s > 字段名称清单','__DYHB__@Dyhb',null,$sTableName));
 		}
 
 		$arrReturn=array();

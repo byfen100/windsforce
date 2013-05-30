@@ -34,16 +34,16 @@ class Image2Local extends UploadFile{
 				$sSavePath=base64_decode($sSavePath);
 			}else{// 尝试创建目录
 				if(!$this->_bAutoCreateStoreDir){
-					$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@NetDyhb',null,$sSavePath));
+					$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@Dyhb',null,$sSavePath));
 					return false;
 				}else if(!G::makeDir($sSavePath)){
-					$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sSavePath);
+					$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sSavePath);
 					return false;
 				}
 			}
 		}else{
 			if(!is_writeable($sSavePath)){
-				$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sSavePath);
+				$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sSavePath);
 				return false;
 			}
 		}
@@ -62,14 +62,14 @@ class Image2Local extends UploadFile{
 		$sFilename=$arrFile['savepath'].'/'.$arrFile['savename'];
 
 		if(!$this->_bUploadReplace && is_file($sFilename)){// 不覆盖同名文件
-			$this->_sError=Dyhb::L('文件%s已经存在！','__DYHB__@NetDyhb',null,$sFilename);
+			$this->_sError=Dyhb::L('文件%s已经存在！','__DYHB__@Dyhb',null,$sFilename);
 			return false;
 		}
 
 		if(($hFp=@fopen($sFilename,'w'))!==false){// 保存文件
 			fwrite($hFp,$sImgData);
 		}else{
-			$this->_sError=Dyhb::L('写入文件%s失败！','__DYHB__@NetDyhb',null,$sFilename);
+			$this->_sError=Dyhb::L('写入文件%s失败！','__DYHB__@Dyhb',null,$sFilename);
 			return false;
 		}
 		@fclose($hFp);
@@ -93,10 +93,10 @@ class Image2Local extends UploadFile{
 						$sThumbPath=base64_decode($sThumbPath);
 					}else{// 尝试创建目录
 						if(!$this->_bAutoCreateStoreDir){
-							$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@NetDyhb',null,$sThumbPath));
+							$this->_sError(Dyhb::L("存储目录不存在：“%s”",'__DYHB__@Dyhb',null,$sThumbPath));
 							return false;
 						}else if(!mkdir($sThumbPath)){
-							$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@NetDyhb',null,$sThumbPath);
+							$this->_sError=Dyhb::L('上传目录%s不可写','__DYHB__@Dyhb',null,$sThumbPath);
 							return false;
 						}
 					}

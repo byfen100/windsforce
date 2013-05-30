@@ -53,11 +53,11 @@ class Trackback {
 					$this->_bIsError=true;
 					$this->_arrFailedTrackbacks[]=$sHost;// 记录发送失败的 trackback URL 地址
 					$sTrackbackMessage.="{$sHost}:status<br/>";
-					$sTrackbackMessage.="<font color='red'>".Dyhb::L('主机连接失败','__DYHB__@NetDyhb')."</font>"."{$sHost} faild<br>";
-					$sTrackbackMessage.=str_replace('***',Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@NetDyhb',null,$sHost,
-						Dyhb::L('主机连接失败','__DYHB__@NetDyhb')),$this->_sErrorMessageBox).'<br/>';
-					$this->_arrFailedTrackbackMessages[]=Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@NetDyhb',null,$sHost,
-						Dyhb::L('主机连接失败','__DYHB__@NetDyhb'));
+					$sTrackbackMessage.="<font color='red'>".Dyhb::L('主机连接失败','__DYHB__@Dyhb')."</font>"."{$sHost} faild<br>";
+					$sTrackbackMessage.=str_replace('***',Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@Dyhb',null,$sHost,
+						Dyhb::L('主机连接失败','__DYHB__@Dyhb')),$this->_sErrorMessageBox).'<br/>';
+					$this->_arrFailedTrackbackMessages[]=Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@Dyhb',null,$sHost,
+						Dyhb::L('主机连接失败','__DYHB__@Dyhb'));
 				}else{
 					if(strstr($sResult,"<error>0</error>")=== false){// 处理反馈消息
 						$this->_bIsError =true;
@@ -65,13 +65,13 @@ class Trackback {
 						preg_match("/<message>(.*)<\/message>/Uis",$sResult,$arrMatch);
 						$sTrackbackMessage.="{$sHost}:status<br/>";
 						$sTrackbackMessage.="<font color='red'>$arrMatch[0]</font>"."{$sHost} faild<br>";
-						$sTrackbackMessage.=str_replace('***',Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@NetDyhb',null,$sHost,$arrMatch[0]),$this->_sErrorMessageBox).'<br/>';
-						$this->_arrFailedTrackbackMessages[]=Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@NetDyhb',null,$sHost,$arrMatch[0]);
+						$sTrackbackMessage.=str_replace('***',Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@Dyhb',null,$sHost,$arrMatch[0]),$this->_sErrorMessageBox).'<br/>';
+						$this->_arrFailedTrackbackMessages[]=Dyhb::L("请求 Trackback URL %s 失败，对方返回的消息为(%s)，可能为错误消息。",'__DYHB__@Dyhb',null,$sHost,$arrMatch[0]);
 					}else{
 						$this->_arrSucessedTrackbacks[]=$sHost;// 记录发送失败的 trackback URL 地址
 						$sTrackbackMessage.="<font color='green'>{$sHost} sucessed</font><br>";
-						$sTrackbackMessage.=str_replace('***',Dyhb::L("发送 Trackback URL %s 成功!",'__DYHB__@NetDyhb',null,$sHost),$this->_sSucessedMessageBox).'<br/>';
-						$this->_arrSucessedTrackbackMessages[]=Dyhb::L("发送 Trackback URL %s 成功!",'__DYHB__@NetDyhb',null,$sHost);
+						$sTrackbackMessage.=str_replace('***',Dyhb::L("发送 Trackback URL %s 成功!",'__DYHB__@Dyhb',null,$sHost),$this->_sSucessedMessageBox).'<br/>';
+						$this->_arrSucessedTrackbackMessages[]=Dyhb::L("发送 Trackback URL %s 成功!",'__DYHB__@Dyhb',null,$sHost);
 					}
 				}
 			}

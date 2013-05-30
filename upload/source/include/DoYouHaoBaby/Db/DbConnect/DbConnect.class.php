@@ -279,7 +279,7 @@ abstract class DbConnect{
 
 		// 错误处理
 		if($bRes===false){
-			Dyhb::E(Dyhb::L('一条 SQL 语句在执行中出错:%s','__DYHB__@DbDyhb',null,$Sql));
+			Dyhb::E(Dyhb::L('一条 SQL 语句在执行中出错:%s','__DYHB__@Dyhb',null,$Sql));
 		}
 
 		return $bRes;
@@ -301,7 +301,7 @@ abstract class DbConnect{
 		}else{
 			$sMoreMessage='';
 			if($this->getErrorCode()==1062){
-				$sMoreMessage=Dyhb::L('主键重复','__DYHB__@DbDyhb').' Error:<br/>'.Dyhb::L('你的操作中出现了重复记录，请修正错误！','__DYHB__@DbDyhb');
+				$sMoreMessage=Dyhb::L('主键重复','__DYHB__@Dyhb').' Error:<br/>'.Dyhb::L('你的操作中出现了重复记录，请修正错误！','__DYHB__@Dyhb');
 			}
 			Dyhb::E($sMoreMessage);
 		}
@@ -402,7 +402,7 @@ abstract class DbConnect{
 
 	public function setConnectHandle($hConnectHandle){
 		if(!is_resource($hConnectHandle)){
-			Dyhb::E(Dyhb::L('参数 $hConnectHandle 必须是有效的数据库连接','__DYHB__@DbDyhb'));
+			Dyhb::E(Dyhb::L('参数 $hConnectHandle 必须是有效的数据库连接','__DYHB__@Dyhb'));
 		}
 
 		$hOldValue=$this->_hCurrentConnect;
@@ -697,7 +697,7 @@ abstract class DbConnect{
 								$sWhereStr.='('.$this->qualifyWhereField($sKey,$sTableName,$arrFieldsMapping,$hCallback).' BETWEEN '.
 									(isset($arrData[0])?$arrData[0]:'').' AND '.(isset($arrData[1])?$arrData[1] :'').')';
 							}else{
-								Dyhb::E(Dyhb::L('表达式错误%s','__DYHB__@DbDyhb',null,(isset($arrData[0])?$arrData[0]:'')));
+								Dyhb::E(Dyhb::L('表达式错误%s','__DYHB__@Dyhb',null,(isset($arrData[0])?$arrData[0]:'')));
 							}
 						}else{
 							$nCount=count($val);
