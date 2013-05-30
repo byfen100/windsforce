@@ -1,7 +1,7 @@
 <?php
 /** DoYouHaoBaby Framework Lang File, Do not to modify it! */
 return array(
-'69f87f36b07063db0f41927df9d174b8'=>"Helloworld入口",
+'c7232aa62e5411c6d2f4d6daec3c561c'=>"服务入口",
 )
 
 ?>

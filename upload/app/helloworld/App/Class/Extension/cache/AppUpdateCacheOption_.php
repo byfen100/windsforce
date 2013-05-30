@@ -1,6 +1,6 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   helloworld应用配置缓存($Liu.XiangMin)*/
+   Helloworld应用配置缓存($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
