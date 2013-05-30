@@ -25,7 +25,7 @@ class AddController extends GlobalchildController{
 
 		$sMessage=trim(G::cleanJs(G::getGpc('homefresh_message','P')));
 		if(empty($sMessage)){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('新鲜事内容不能为空','Controller/Homefresh'),Dyhb::U('wap://ucenter/index'),0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('新鲜事内容不能为空','Controller'),Dyhb::U('wap://ucenter/index'),0);
 		}
 
 		// 新鲜事模型
@@ -39,7 +39,7 @@ class AddController extends GlobalchildController{
 			$this->_oParentcontroller->wap_mes($oHomefresh->getErrorMessage(),Dyhb::U('wap://ucenter/index'));
 		}else{
 			// 发送feed
-			$sFeedtemplate='<div class="feed_addhomefresh"><span class="feed_title">'.Dyhb::L('发布了一条新鲜事','Controller/Homefresh').'&nbsp;<a href="{@homefresh_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></span><div class="feed_content">{homefresh_message}</div><div class="feed_action"><a href="{@homefresh_link}#comments">'.Dyhb::L('回复','Controller/Homefresh').'</a></div></div>';
+			$sFeedtemplate='<div class="feed_addhomefresh"><span class="feed_title">'.Dyhb::L('发布了一条新鲜事','Controller').'&nbsp;<a href="{@homefresh_link}">'.Dyhb::L('查看','Controller').'</a></span><div class="feed_content">{homefresh_message}</div><div class="feed_action"><a href="{@homefresh_link}#comments">'.Dyhb::L('回复','Controller').'</a></div></div>';
 
 			$arrFeeddata=array(
 				'@homefresh_link'=>'home://fresh@?id='.$oHomefresh['homefresh_id'],
@@ -61,7 +61,7 @@ class AddController extends GlobalchildController{
 			// 更新积分
 			Core_Extend::updateCreditByAction('posthomefresh',$GLOBALS['___login___']['user_id']);
 		
-			$this->_oParentcontroller->wap_mes(Dyhb::L('添加新鲜事成功','Controller/Homefresh'),Dyhb::U('wap://ucenter/index'));
+			$this->_oParentcontroller->wap_mes(Dyhb::L('添加新鲜事成功','Controller'),Dyhb::U('wap://ucenter/index'));
 		}
 	}
 

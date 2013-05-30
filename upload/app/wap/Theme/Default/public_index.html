@@ -16,12 +16,12 @@
 				<!--{$oHomefresh['homefresh_message']|Core_Extend+subString=100,true}-->...
 			</div>
 			<div class="homefresh_extend gray_color font_small">
-				<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}--> by <a href="<!--{:Dyhb::U('wap://space@?id='.$oHomefresh['user_id'])}-->"><!--{$oHomefresh:user:user_name}--></a> <span class="pipe">|</span> <a href="<!--{:Dyhb::U('wap://fresh@?id='.$oHomefresh['homefresh_id'])}-->"><!--<lang package='Template/Homefresh'>-->查看<!--</lang>--></a>
+				<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}--> by <a href="<!--{:Dyhb::U('wap://space@?id='.$oHomefresh['user_id'])}-->"><!--{$oHomefresh:user:user_name}--></a> <span class="pipe">|</span> <a href="<!--{:Dyhb::U('wap://fresh@?id='.$oHomefresh['homefresh_id'])}-->"><!--<lang package='Template'>-->查看<!--</lang>--></a>
 			</div>
 		</div>
 		<!--</foreach>-->
 		<!--{d*else}-->
-		<div class="light_box"><!--<lang package='Template/Homefresh'>-->暂时没有发现任何新鲜事<!--</lang>--></div>
+		<div class="light_box"><!--<lang package='Template'>-->暂时没有发现任何新鲜事<!--</lang>--></div>
 		<!--{/if}-->
 	</div>
 

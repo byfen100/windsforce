@@ -14,18 +14,18 @@ class ViewController extends GlobalchildController{
 
 	public function index(){
 		if(!Core_Extend::checkRbac('home@ucenter@view')){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('你没有权限查看新鲜事','Controller/Homefresh'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('你没有权限查看新鲜事','Controller'),'',0);
 		}
 		
 		$nId=intval(G::getGpc('id','G'));
 
 		if(empty($nId)){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('你没有指定要阅读的新鲜事','Controller/Homefresh'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('你没有指定要阅读的新鲜事','Controller'),'',0);
 		}
 
 		$oHomefresh=HomefreshModel::F('homefresh_id=? AND homefresh_status=1',$nId)->getOne();
 		if(empty($oHomefresh['homefresh_id'])){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('新鲜事不存在或者被屏蔽了','Controller/Homefresh'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('新鲜事不存在或者被屏蔽了','Controller'),'',0);
 		}
 		
 		if($oHomefresh->isError()){

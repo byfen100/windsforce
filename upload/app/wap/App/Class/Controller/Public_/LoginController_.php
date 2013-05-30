@@ -15,7 +15,7 @@ class LoginController extends GlobalchildController{
 		$nLoginview=intval(G::getGpc('loginview','G'));
 		
 		if($GLOBALS['___login___']!==false){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('你已经登录','Controller/Public'),Dyhb::U('wap://public/index'),0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('你已经登录','Controller'),Dyhb::U('wap://public/index'),0);
 		}
 
 		$this->assign('sReferer',$sReferer);
@@ -30,9 +30,9 @@ class LoginController extends GlobalchildController{
 		$sPassword=G::getGpc('user_password','P');
 
 		if(empty($sUserName)){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('帐号或者E-mail不能为空','Controller/Public'),Dyhb::U('wap://public/login'),0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('帐号或者E-mail不能为空','Controller'),Dyhb::U('wap://public/login'),0);
 		}elseif(empty($sPassword)){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('密码不能为空','Controller/Public'),Dyhb::U('wap://public/login'),0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('密码不能为空','Controller'),Dyhb::U('wap://public/login'),0);
 		}
 
 		Check::RUN();
@@ -59,7 +59,7 @@ class LoginController extends GlobalchildController{
 
 			Core_Extend::updateCreditByAction('daylogin',$oLoginUser['user_id']);
 
-			$this->_oParentcontroller->wap_mes(Dyhb::L('Hello %s,你成功登录','Controller/Public',null,$sUserName),$sUrl);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('Hello %s,你成功登录','Controller',null,$sUserName),$sUrl);
 		}
 	}
 
@@ -85,14 +85,14 @@ class LoginController extends GlobalchildController{
 				$sJumpUrl=Dyhb::U('wap://public/login');
 			}
 	
-			$this->_oParentcontroller->wap_mes(Dyhb::L('登出成功','Controller/Public'),$sJumpUrl);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('登出成功','Controller'),$sJumpUrl);
 		}else{
-			$this->_oParentcontroller->wap_mes(Dyhb::L('已经登出','Controller/Public'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('已经登出','Controller'),'',0);
 		}
 	}
 
 	public function login_title_(){
-		return Dyhb::L('用户登录','Controller/Public');
+		return Dyhb::L('用户登录','Controller');
 	}
 
 	public function login_keywords_(){

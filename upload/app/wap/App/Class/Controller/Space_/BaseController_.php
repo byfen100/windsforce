@@ -16,7 +16,7 @@ class BaseController extends GlobalchildController{
 
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('你指定的用户不存在','Controller/Space'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('你指定的用户不存在','Controller'),'',0);
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
 		}
@@ -29,7 +29,7 @@ class BaseController extends GlobalchildController{
 	}
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('Wap个人空间','Controller/Space');
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('Wap个人空间','Controller');
 	}
 
 	public function index_keywords_(){

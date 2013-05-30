@@ -6,9 +6,9 @@
 
 	<div id="content">
 		<div class="space_box light_box">
-			<p style="padding-bottom:5px;"><!--<lang package='Template/Space'>-->用户名<!--</lang>-->&nbsp;<!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></p>
-			<p style="padding-bottom:5px;"><!--<lang package='Template/Space'>-->性别<!--</lang>-->&nbsp;<!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></p>
-			<p style="padding-bottom:5px;"><!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Space'>-->注册<!--</lang>--></p>
+			<p style="padding-bottom:5px;"><!--<lang package='Template'>-->用户名<!--</lang>-->&nbsp;<!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></p>
+			<p style="padding-bottom:5px;"><!--<lang package='Template'>-->性别<!--</lang>-->&nbsp;<!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></p>
+			<p style="padding-bottom:5px;"><!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template'>-->注册<!--</lang>--></p>
 		</div>
 
 		<div class="link"><a href="<!--{:Dyhb::U('wap://public/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->返回首页<!--</lang>--></a></div>

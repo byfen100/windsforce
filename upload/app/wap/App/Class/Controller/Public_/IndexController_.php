@@ -27,7 +27,7 @@ class IndexController extends Controller{
 
 	public function index_title_(){
 		if($GLOBALS['_commonConfig_']['DEFAULT_APP']!='wap'){
-			return Dyhb::L('手机版','Controller/Public');
+			return Dyhb::L('手机版','Controller');
 		}
 	}
 

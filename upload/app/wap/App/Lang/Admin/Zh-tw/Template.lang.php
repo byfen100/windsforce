@@ -1,7 +1,7 @@
 <?php
 /** DoYouHaoBaby Framework Lang File, Do not to modify it! */
 return array(
-'d9804ccd949266a7cf15e92d5b2c5411'=>"应用列表",
+'e0c3275fd1b9fbdf225255c0b39f0d26'=>"Wap入口",
 )
 
 ?>

@@ -28,7 +28,7 @@ class AppsController extends InitController{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('应用列表','Controller/Apps');
+		return Dyhb::L('应用列表','Controller');
 	}
 
 	public function index_keywords_(){

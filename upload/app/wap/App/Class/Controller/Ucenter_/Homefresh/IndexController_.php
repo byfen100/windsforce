@@ -36,7 +36,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('个人中心','Controller/Homefresh');
+		return Dyhb::L('个人中心','Controller');
 	}
 
 	public function index_keywords_(){
