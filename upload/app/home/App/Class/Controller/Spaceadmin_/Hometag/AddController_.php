@@ -17,7 +17,7 @@ class AddController extends Controller{
 			$this->E($oTag->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('添加用户标签成功','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('添加用户标签成功','Controller'));
 	}
 
 }

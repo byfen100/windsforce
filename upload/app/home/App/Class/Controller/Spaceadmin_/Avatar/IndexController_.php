@@ -19,7 +19,7 @@ class IndexController extends Controller{
 	}
 
 	public function avatar_title_(){
-		return Dyhb::L('修改头像','Controller/Spaceadmin');
+		return Dyhb::L('修改头像','Controller');
 	}
 
 	public function avatar_keywords_(){

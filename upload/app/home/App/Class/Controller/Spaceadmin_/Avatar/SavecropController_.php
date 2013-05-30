@@ -11,7 +11,7 @@ class SavecropController extends Controller{
 
 		$bResult=Avatar_Extend::saveCrop();
 		if($bResult===false){
-			$this->E(Dyhb::L('你的PHP 版本或者配置中不支持如下的函数 “imagecreatetruecolor”、“imagecopyresampled”等图像函数，所以创建不了头像','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你的PHP 版本或者配置中不支持如下的函数 “imagecreatetruecolor”、“imagecopyresampled”等图像函数，所以创建不了头像','Controller'));
 		}
 
 		// 更新是否上传头像
@@ -29,7 +29,7 @@ class SavecropController extends Controller{
 		Core_Extend::updateCreditByAction('setavatar',$GLOBALS['___login___']['user_id']);
 
 		$this->assign('__JumpUrl__',Dyhb::U('spaceadmin/avatar'));
-		$this->S(Dyhb::L('头像上传成功','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('头像上传成功','Controller'));
 	}
 
 }

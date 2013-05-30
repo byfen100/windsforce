@@ -4,8 +4,8 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
-			<li><!--<lang package='Template/Spaceadmin'>-->社会化帐号<!--</lang>--></li>
+			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->社会化帐号<!--</lang>--></li>
 		</ul>
 		
 		<!--<include file="spaceadmin+menu" />-->
@@ -16,9 +16,9 @@
 					<!--<foreach for=arrBindeds value=arrBinded>-->
 					<p><img src="<!--{$arrBinded['sociatype_bindsmall']}-->" />&nbsp;<!--{$arrBinded['sociatype_title']}-->&nbsp;
 						<!--{if in_array($arrBinded['sociatype_identifier'],$arrBindedData)}-->
-						<a href="javascript:sociaWinopen('<!--{:Dyhb::U('home://public/socia_unbind?vendor='.$arrBinded['sociatype_identifier'])}-->')"><!--<lang package='Template/Spaceadmin'>-->取消绑定<!--</lang>--></a>
+						<a href="javascript:sociaWinopen('<!--{:Dyhb::U('home://public/socia_unbind?vendor='.$arrBinded['sociatype_identifier'])}-->')"><!--<lang package='Template'>-->取消绑定<!--</lang>--></a>
 						<!--{d*else}-->
-						<a href="javascript:sociaWinopen('<!--{:Dyhb::U('home://public/socia_login?vendor='.$arrBinded['sociatype_identifier'])}-->')"><!--<lang package='Template/Spaceadmin'>-->绑定<!--</lang>--></a>
+						<a href="javascript:sociaWinopen('<!--{:Dyhb::U('home://public/socia_login?vendor='.$arrBinded['sociatype_identifier'])}-->')"><!--<lang package='Template'>-->绑定<!--</lang>--></a>
 						<!--{/if}-->
 					</p>
 					<!--</foreach>-->

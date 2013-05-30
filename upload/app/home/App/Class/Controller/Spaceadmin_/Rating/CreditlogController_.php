@@ -29,7 +29,7 @@ class CreditlogController extends Controller{
 	}
 
 	public function creditlog_title_(){
-		return Dyhb::L('积分记录','Controller/Spaceadmin');
+		return Dyhb::L('积分记录','Controller');
 	}
 
 	public function creditlog_keywords_(){

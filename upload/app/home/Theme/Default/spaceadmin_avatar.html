@@ -2,7 +2,7 @@
 
 <!--{script}-->
 function deleteAvatar(){
-	windsforceConfirm('<!--<lang package='Template/Spaceadmin'>-->你确定要删除当前头像？<!--</lang>-->',function(){
+	windsforceConfirm('<!--<lang package='Template'>-->你确定要删除当前头像？<!--</lang>-->',function(){
 		window.location.href="<!--{:Dyhb::U('home://spaceadmin/avatar_un')}-->";
 	});
 }
@@ -10,8 +10,8 @@ function deleteAvatar(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
-			<li><!--<lang package='Template/Spaceadmin'>-->修改头像<!--</lang>--></li>
+			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->修改头像<!--</lang>--></li>
 		</ul>
 
 		<!--<include file="spaceadmin+menu" />-->
@@ -21,36 +21,36 @@ function deleteAvatar(){
 				<!--{if !$arrAvatarInfo['exist']}-->
 				<div class="alert fade in">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<!--<lang package='Template/Spaceadmin'>-->你还没有上传头像，头像为系统默认头像<!--</lang>-->
+					<!--<lang package='Template'>-->你还没有上传头像，头像为系统默认头像<!--</lang>-->
 				</div>
 				<!--{d*else}-->
 				<div class="hero-unit">
-					<h4><!--<lang package='Template/Spaceadmin'>-->头像不是很满意或者正在做一个更漂亮的头像?<!--</lang>-->&nbsp;<a href="javascript:void(0);" onclick="deleteAvatar();" style="color:red;"><!--<lang package='Template/Spaceadmin'>-->我要删除当前头像<!--</lang>--></a></h4>
+					<h4><!--<lang package='Template'>-->头像不是很满意或者正在做一个更漂亮的头像?<!--</lang>-->&nbsp;<a href="javascript:void(0);" onclick="deleteAvatar();" style="color:red;"><!--<lang package='Template'>-->我要删除当前头像<!--</lang>--></a></h4>
 				</div>
 				<!--{/if}-->
-				<h3><!--<lang package='Template/Spaceadmin'>-->当前头像<!--</lang>--></h3>
+				<h3><!--<lang package='Template'>-->当前头像<!--</lang>--></h3>
 				<table class="table table-bordered" style="width:95%;">
 					<thead>
 						<tr>
-							<th><!--<lang package='Template/Spaceadmin'>-->头像类型<!--</lang>--></th>
-							<th><!--<lang package='Template/Spaceadmin'>-->头像预览<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->头像类型<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->头像预览<!--</lang>--></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><!--<lang package='Template/Spaceadmin'>-->高清原始头像<!--</lang>--></td>
-							<td><a href="<!--{$arrAvatarInfo['origin']}-->" target="_blank"><!--<lang package='Template/Spaceadmin'>-->点击查看<!--</lang>--></a></td>
+							<td><!--<lang package='Template'>-->高清原始头像<!--</lang>--></td>
+							<td><a href="<!--{$arrAvatarInfo['origin']}-->" target="_blank"><!--<lang package='Template'>-->点击查看<!--</lang>--></a></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Spaceadmin'>-->大头像<!--</lang>--> 200*200</td>
+							<td><!--<lang package='Template'>-->大头像<!--</lang>--> 200*200</td>
 							<td><img src="<!--{$arrAvatarInfo['big']}-->" class="thumbnail" /></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Spaceadmin'>-->中等头像<!--</lang>--> 120×120</td>
+							<td><!--<lang package='Template'>-->中等头像<!--</lang>--> 120×120</td>
 							<td><img src="<!--{$arrAvatarInfo['middle']}-->" class="thumbnail" /></td>
 						</tr>
 						<tr>
-							<td><!--<lang package='Template/Spaceadmin'>-->小头像<!--</lang>--> 48×48</td>
+							<td><!--<lang package='Template'>-->小头像<!--</lang>--> 48×48</td>
 							<td><img src="<!--{$arrAvatarInfo['small']}-->" class="thumbnail" /></td>
 						</tr>
 					</tbody>
@@ -60,19 +60,19 @@ function deleteAvatar(){
 		
 		<div class="row">
 			<div class="span12">
-				<h3><!--<lang package='Template/Spaceadmin'>-->上传头像<!--</lang>--></h3>
+				<h3><!--<lang package='Template'>-->上传头像<!--</lang>--></h3>
 				<hr>
 				<form name="photo" enctype="multipart/form-data" action="<!--{:Dyhb::U('spaceadmin/avatar_upload')}-->" method="post" name="uploadAdd" id="uploadAdd">
 					<fieldset>
 						<div class="control-group">
-							<label class="control-label" for=""><!--<lang package='Template/Spaceadmin'>-->高清原始头像<!--</lang>--> (<!--<lang package='Template/Spaceadmin'>-->最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSize)}-->)</label>
+							<label class="control-label" for=""><!--<lang package='Template'>-->高清原始头像<!--</lang>--> (<!--<lang package='Template'>-->最大上传尺寸<!--</lang>--> <!--{:G::changeFileSize($nUploadSize)}-->)</label>
 							<div class="controls">
 								<input class="input-xlarge" type="file" name="image" size="30"/>
-								<p class="help-block"><!--<lang package='Template/Spaceadmin'>-->值得注意的是头像文件太大将无法上传成功<!--</lang>--></p>
+								<p class="help-block"><!--<lang package='Template'>-->值得注意的是头像文件太大将无法上传成功<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="form-actions">
-							<button type="submit" class="btn btn-success"><!--<lang package='Template/Spaceadmin'>-->上传头像<!--</lang>--></button>&nbsp;
+							<button type="submit" class="btn btn-success"><!--<lang package='Template'>-->上传头像<!--</lang>--></button>&nbsp;
 							<a href="<!--{:__APP__}-->" class="btn"><!--<lang package='__COMMON_LANG__@Common'>-->取消<!--</lang>--></a>
 						</div>
 					</fieldset>

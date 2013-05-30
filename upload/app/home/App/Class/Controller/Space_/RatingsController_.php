@@ -40,7 +40,7 @@ class RatingsController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('系统等级','Controller/Space');
+		return Dyhb::L('系统等级','Controller');
 	}
 
 	public function index_keywords_(){

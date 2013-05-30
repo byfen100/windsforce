@@ -19,7 +19,7 @@ class IndexController extends Controller{
 	}
 
 	public function verifyemail_title_(){
-		return Dyhb::L('Email验证','Controller/Spaceadmin');
+		return Dyhb::L('Email验证','Controller');
 	}
 
 	public function verifyemail_keywords_(){

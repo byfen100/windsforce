@@ -15,7 +15,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('找回密码','Controller/Getpassword');
+		return Dyhb::L('找回密码','Controller');
 	}
 
 	public function index_keywords_(){

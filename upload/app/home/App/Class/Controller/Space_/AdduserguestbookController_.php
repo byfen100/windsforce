@@ -11,7 +11,7 @@ class AdduserguestbookController extends GlobalchildController{
 
 	public function index(){
 		if($GLOBALS['___login___']===false){
-			$this->E(Dyhb::L('你没有登录，无法留言','Controller/Space'));
+			$this->E(Dyhb::L('你没有登录，无法留言','Controller'));
 		}
 		
 		try{
@@ -25,7 +25,7 @@ class AdduserguestbookController extends GlobalchildController{
 		$oUser=UserModel::F('user_id=?',$nUserguestbookuserid)->getOne();
 
 		if(empty($oUser['user_id'])){
-			$this->E(Dyhb::L('用户不存在','Controller/Space'));
+			$this->E(Dyhb::L('用户不存在','Controller'));
 		}
 		
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
@@ -158,7 +158,7 @@ class AdduserguestbookController extends GlobalchildController{
 			$sCommentMessage=$oUserguestbook['userguestbook_content'];
 
 			try{
-				Comment_Extend::addFeed(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage);
+				Comment_Extend::addFeed(Dyhb::L('给你留言了','Controller'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage);
 			}catch(Exception $e){
 				$this->E($e->getMessage());
 			}
@@ -170,7 +170,7 @@ class AdduserguestbookController extends GlobalchildController{
 				$sCommentMessage=$oUserguestbook['userguestbook_content'];
 
 				try{
-					Comment_Extend::addNotice(Dyhb::L('给你留言了','Controller/Space'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUser['user_id'],'adduserguestbook',$oUser['user_id']);
+					Comment_Extend::addNotice(Dyhb::L('给你留言了','Controller'),'adduserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUser['user_id'],'adduserguestbook',$oUser['user_id']);
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
@@ -186,7 +186,7 @@ class AdduserguestbookController extends GlobalchildController{
 					$sCommentMessage=$oUserguestbook['userguestbook_content'];
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller/Space'),'replyuserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUserguestbookParent['user_id'],'replyuserguestbook',$oUserguestbookParent['userguestbook_id']);
+						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller'),'replyuserguestbook',$sCommentLink,$sCommentTitle,$sCommentMessage,$oUserguestbookParent['user_id'],'replyuserguestbook',$oUserguestbookParent['userguestbook_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}
@@ -199,7 +199,7 @@ class AdduserguestbookController extends GlobalchildController{
 					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 						$sUserguestbookmessage=Core_Extend::subString($oUserguestbook['userguestbook_content'],100,false,1,false);
 						
-						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在留言中中提到了你','Controller/Space').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@userguestbook_link}">'.Dyhb::L('查看','Controller/Space').'</a></div></div>';
+						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在留言中中提到了你','Controller').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@userguestbook_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 						$arrNoticedata=array(
 							'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -259,7 +259,7 @@ class AdduserguestbookController extends GlobalchildController{
 		// 更新积分
 		Core_Extend::updateCreditByAction('commoncomment',$GLOBALS['___login___']['user_id']);
 
-		$this->A($arrCommentData,Dyhb::L('添加留言成功','Controller/Space'),1);
+		$this->A($arrCommentData,Dyhb::L('添加留言成功','Controller'),1);
 	}
 
 }

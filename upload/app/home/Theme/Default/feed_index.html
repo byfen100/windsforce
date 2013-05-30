@@ -10,8 +10,8 @@ $(function(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></a> <span class="divider">/</span></li>
-			<li><!--<lang package='Template/Feed'>-->用户动态<!--</lang>--></li>
+			<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template'>-->个人中心<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->用户动态<!--</lang>--></li>
 		</ul>
 
 		<div class="row">
@@ -22,17 +22,17 @@ $(function(){
 
 			<div class="span9">
 				<div class="hero-unit">
-					<h4><!--<lang package='Template/Feed'>-->用户动态<!--</lang>--></h4>
+					<h4><!--<lang package='Template'>-->用户动态<!--</lang>--></h4>
 				</div>
 				
 				<!--<include file="ucenter+homefreshfeedmenu" />-->
 				
 				<div class="tabb-menu">
 					<ul class="nav nav-tabs">
-						<li <!--{if empty($sType)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed')}-->"><!--<lang package='Template/Feed'>-->我关注的<!--</lang>--></a></li>
-						<li <!--{if $sType=='myself'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed?type=myself')}-->"><!--<lang package='Template/Feed'>-->我自己的<!--</lang>--></a></li>
-						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed?type=friend')}-->"><!--<lang package='Template/Feed'>-->好友的<!--</lang>--></a></li>
-						<li <!--{if $sType=='all' || isset($_GET['uid'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed?type=all')}-->"><!--<lang package='Template/Feed'>-->正在发生<!--</lang>--></a></li>
+						<li <!--{if empty($sType)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed')}-->"><!--<lang package='Template'>-->我关注的<!--</lang>--></a></li>
+						<li <!--{if $sType=='myself'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed?type=myself')}-->"><!--<lang package='Template'>-->我自己的<!--</lang>--></a></li>
+						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed?type=friend')}-->"><!--<lang package='Template'>-->好友的<!--</lang>--></a></li>
+						<li <!--{if $sType=='all' || isset($_GET['uid'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/feed?type=all')}-->"><!--<lang package='Template'>-->正在发生<!--</lang>--></a></li>
 					</ul>
 				</div>
 
@@ -40,7 +40,7 @@ $(function(){
 					<table class="table">
 						<thead>
 							<tr>
-								<th colspan="2"><!--<lang package='Template/Feed'>-->用户动态<!--</lang>--></th>
+								<th colspan="2"><!--<lang package='Template'>-->用户动态<!--</lang>--></th>
 							</tr>
 						</thead>
 						<tbody id="feedlist_box">
@@ -64,7 +64,7 @@ $(function(){
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<tr id="feed_no">
-								<td><p><!--<lang package='Template/Feed'>-->暂无任何动态<!--</lang>--></p></td>
+								<td><p><!--<lang package='Template'>-->暂无任何动态<!--</lang>--></p></td>
 							</tr>
 							<!--{/if}-->
 						</tbody>

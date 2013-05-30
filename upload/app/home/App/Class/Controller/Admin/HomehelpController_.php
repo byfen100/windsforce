@@ -148,7 +148,7 @@ class HomehelpController extends InitController{
 
 			$this->S(Dyhb::L('移动站点帮助分类成功','__APPHOME_COMMON_LANG__@Controller'));
 		}else{
-			$this->E(Dyhb::L('操作项不存在','Controller/Common'));
+			$this->E(Dyhb::L('操作项不存在','Controller'));
 		}
 	}
 

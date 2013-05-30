@@ -8,7 +8,7 @@ class AdminuserController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteadminuser')){
-			$this->E(Dyhb::L('你没有权限访问系统管理员','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问系统管理员','Controller'));
 		}
 		
 		// 取得管理员配置
@@ -30,7 +30,7 @@ class AdminuserController extends Controller{
 	}
 
 	public function adminuser_title_(){
-		return Dyhb::L('系统管理员','Controller/Stat');
+		return Dyhb::L('系统管理员','Controller');
 	}
 
 	public function adminuser_keywords_(){

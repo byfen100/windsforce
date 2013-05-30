@@ -20,7 +20,7 @@ class IndexController extends Controller{
 	}
 
 	public function tag_title_(){
-		return Dyhb::L('用户标签','Controller/Spaceadmin');
+		return Dyhb::L('用户标签','Controller');
 	}
 
 	public function tag_keywords_(){

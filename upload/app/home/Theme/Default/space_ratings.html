@@ -2,21 +2,21 @@
 	
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template/Space'>-->系统等级<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->系统等级<!--</lang>--></li>
 		</ul>
 
 		<div class="row">
 			<div class="span9">
 				<div class="alert alert-success">
-					<!--<lang package='Template/Space'>-->系统等级积分规则如下，只有用户的经验值达到该数字之间即可获得相应的等级。<!--</lang>--><br/>
-					<!--<lang package='Template/Space'>-->等级代表了用户融入社区，了解的程度。<!--</lang>-->
+					<!--<lang package='Template'>-->系统等级积分规则如下，只有用户的经验值达到该数字之间即可获得相应的等级。<!--</lang>--><br/>
+					<!--<lang package='Template'>-->等级代表了用户融入社区，了解的程度。<!--</lang>-->
 				</div>
 				<p><table class="table table-bordered">
 						<thead>
 							<tr>
-								<th width="50px"><!--<lang package='Template/Space'>-->等级ID<!--</lang>--></th>
-								<th><!--<lang package='Template/Space'>-->等级名字<!--</lang>--></th>
-								<th><!--<lang package='Template/Space'>-->等级积分<!--</lang>--></th>
+								<th width="50px"><!--<lang package='Template'>-->等级ID<!--</lang>--></th>
+								<th><!--<lang package='Template'>-->等级名字<!--</lang>--></th>
+								<th><!--<lang package='Template'>-->等级积分<!--</lang>--></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -33,9 +33,9 @@
 			</div>
 
 			<div class="span3">
-				<h4><!--<lang package='Template/Space'>-->等级分组<!--</lang>--></h4>
+				<h4><!--<lang package='Template'>-->等级分组<!--</lang>--></h4>
 				<p><ul class="nav nav-tabs nav-stacked">
-					<li <!--{if empty($nCId)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://space/ratings')}-->"><!--<lang package='Template/Space'>-->全部<!--</lang>--></a></li>
+					<li <!--{if empty($nCId)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://space/ratings')}-->"><!--<lang package='Template'>-->全部<!--</lang>--></a></li>
 					<!--<foreach for=arrRatinggroups value=oRatinggroup>-->
 					<li <!--{if $nCId==$oRatinggroup['ratinggroup_id']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://space/ratings?cid='.$oRatinggroup['ratinggroup_id'])}-->"><!--{$oRatinggroup['ratinggroup_title']}-->&nbsp;(<!--{$oRatinggroup['ratinggroup_name']}-->)</a></li>
 					<!--</foreach>-->

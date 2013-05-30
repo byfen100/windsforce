@@ -16,26 +16,26 @@ class TomailController extends GlobalchildController{
 
 		$sUserid=G::authcode($sUserid);
 		if(empty($sUserid)){
-			$this->E(Dyhb::L('页面已过期','Controller/Userappeal'));
+			$this->E(Dyhb::L('页面已过期','Controller'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$sUserid)->getOne();
 		if(empty($oUser->user_id)){
-			$this->E(Dyhb::L('Email账号不存在','Controller/Userappeal'));
+			$this->E(Dyhb::L('Email账号不存在','Controller'));
 		}
 
 		if($oUser->user_status==0){
-			$this->E(Dyhb::L('该账户已经被禁止','Controller/Userappeal'));
+			$this->E(Dyhb::L('该账户已经被禁止','Controller'));
 		}
 
 		if(empty($nAppealId)){
-			$this->E(Dyhb::L('无法获取申诉ID','Controller/Userappeal'));
+			$this->E(Dyhb::L('无法获取申诉ID','Controller'));
 		}
 
 		$oAppeal=AppealModel::F('appeal_id=?',$nAppealId)->getOne();
 
 		if(empty($oAppeal->appeal_id)){
-			$this->E(Dyhb::L('无效的申诉ID','Controller/Userappeal'));
+			$this->E(Dyhb::L('无效的申诉ID','Controller'));
 		}
 		
 		$oMailModel=Dyhb::instance('MailModel');
@@ -44,14 +44,14 @@ class TomailController extends GlobalchildController{
 		$sAppealscheduleUrl=Core_Extend::windsforceOuter('app=home&c=userappeal&a=schedule');
 		$sNlbr=$oMailConnect->getIsHtml()===true?'<br/>':"\r\n";
 
-		$sEmailSubject=$GLOBALS['_option_']['site_name'].Dyhb::L('用户申诉回执单','Controller/Userappeal');
-		$sEmailContent='<b>'.Dyhb::L('尊敬的用户','Controller/Userappeal').':</b>'.$sNlbr;
+		$sEmailSubject=$GLOBALS['_option_']['site_name'].Dyhb::L('用户申诉回执单','Controller');
+		$sEmailContent='<b>'.Dyhb::L('尊敬的用户','Controller').':</b>'.$sNlbr;
 		$sEmailContent.='-----------------------------------------------------'.$sNlbr;
-		$sEmailContent.=Dyhb::L('申诉人','Controller/Userappeal').':'.$oAppeal->appeal_realname.$sNlbr.$sNlbr;
-		$sEmailContent.=Dyhb::L('申诉回执编号','Controller/Userappeal').':'.$oAppeal->appeal_receiptnumber.$sNlbr.$sNlbr;
-		$sEmailContent.='--'.Dyhb::L('请牢记你的申诉编号，以便于随时查询申诉进度','Controller/Userappeal').$sNlbr;
+		$sEmailContent.=Dyhb::L('申诉人','Controller').':'.$oAppeal->appeal_realname.$sNlbr.$sNlbr;
+		$sEmailContent.=Dyhb::L('申诉回执编号','Controller').':'.$oAppeal->appeal_receiptnumber.$sNlbr.$sNlbr;
+		$sEmailContent.='--'.Dyhb::L('请牢记你的申诉编号，以便于随时查询申诉进度','Controller').$sNlbr;
 		$sEmailContent.="<a href=\"{$sAppealscheduleUrl}\">{$sAppealscheduleUrl}</a>".$sNlbr.$sNlbr;
-		$sEmailContent.=Dyhb::L('接受申诉结果的Email','Controller/Userappeal').':'.$oAppeal->appeal_email.$sNlbr.$sNlbr;
+		$sEmailContent.=Dyhb::L('接受申诉结果的Email','Controller').':'.$oAppeal->appeal_email.$sNlbr.$sNlbr;
 		$sEmailContent.='-----------------------------------------------------'.$sNlbr;
 		$sEmailContent.=date('Y-m-d H:i',CURRENT_TIMESTAMP);
 
@@ -67,7 +67,7 @@ class TomailController extends GlobalchildController{
 		$this->assign('__WaitSecond__',5);
 		$this->assign('__JumpUrl__','javascript:history.back(-1);');
 
-		$this->S(Dyhb::L('申诉回执编号已发送到您的邮箱','Controller/Userappeal').' '.$oAppeal->appeal_email);
+		$this->S(Dyhb::L('申诉回执编号已发送到您的邮箱','Controller').' '.$oAppeal->appeal_email);
 	}
 
 }

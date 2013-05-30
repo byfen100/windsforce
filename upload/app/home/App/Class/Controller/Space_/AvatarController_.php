@@ -13,7 +13,7 @@ class AvatarController extends Controller{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Space'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
 		}
@@ -30,7 +30,7 @@ class AvatarController extends Controller{
 	}
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('我的头像','Controller/Space');
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('我的头像','Controller');
 	}
 
 	public function index_keywords_(){

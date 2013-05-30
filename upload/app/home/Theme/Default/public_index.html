@@ -48,7 +48,7 @@ $(document).ready(function(){
 
 function addHomefresh(){
 	if($('#homefresh_message').val()==''){
-		windsforceAlert('<!--<lang package='Template/Homefresh'>-->新鲜事内容不能为空<!--</lang>-->','',3);
+		windsforceAlert('<!--<lang package='Template'>-->新鲜事内容不能为空<!--</lang>-->','',3);
 		return false;
 	}
 	
@@ -68,15 +68,15 @@ function addHomefresh(){
 						'</div>'+
 					'</td>'+
 					'<td>'+
-						'<h4>'+data.usericon+'&nbsp;<a href="'+data.space+'">'+data.user_name+'</a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;'+data.create_dateline+'&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>-->'+
+						'<h4>'+data.usericon+'&nbsp;<a href="'+data.space+'">'+data.user_name+'</a>&nbsp;<!--<lang package='Template'>-->于<!--</lang>-->&nbsp;'+data.create_dateline+'&nbsp;<!--<lang package='Template'>-->发布<!--</lang>-->'+
 						'<img class="new_data" src="<!--{:__ROOT__}-->/Public/images/common/new.gif" /></h4>'+
 						'<div class="homefresh-content">'+data.homefresh_message+'</div>'+
 						'<div class="homefresh-count">'+
-							'<a href="javascript:void(0);" onclick="goodnum(\''+data.homefresh_id+'\');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->赞<!--</lang>-->(<span id="goodnum_'+data.homefresh_id+'">'+data.homefresh_goodnum+'</span>)</a>'+
+							'<a href="javascript:void(0);" onclick="goodnum(\''+data.homefresh_id+'\');"><!--<lang package='__COMMON_LANG__@Template'>-->赞<!--</lang>-->(<span id="goodnum_'+data.homefresh_id+'">'+data.homefresh_goodnum+'</span>)</a>'+
 							'<span class="pipe">|</span>'+
-							'<a href="'+data.url+'#comments"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->评论<!--</lang>-->(<span id="homefreshcomment_'+data.homefresh_id+'">'+data.homefresh_commentnum+'</span>)</a>'+
+							'<a href="'+data.url+'#comments"><!--<lang package='__COMMON_LANG__@Template'>-->评论<!--</lang>-->(<span id="homefreshcomment_'+data.homefresh_id+'">'+data.homefresh_commentnum+'</span>)</a>'+
 							'<span class="pipe">|</span>'+
-							'<a href="'+data.url+'" title="<!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>'+
+							'<a href="'+data.url+'" title="<!--<lang package='__COMMON_LANG__@Template'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>'+
 						'</div>'+
 					'</td>'+
 				'</tr>'
@@ -108,7 +108,7 @@ function insertHomefreshmusic(sContent){
 
 var oEditNewhomefreshtopic='';
 function addHomefreshtopic(){
-	oEditNewhomefreshtopic=windsforceAjax(D.U('home://ucenter/homefreshtopic'),'<!--<lang package='Template/Homefresh'>-->插入话题<!--</lang>-->','','','',500,100);
+	oEditNewhomefreshtopic=windsforceAjax(D.U('home://ucenter/homefreshtopic'),'<!--<lang package='Template'>-->插入话题<!--</lang>-->','','','',500,100);
 }
 
 function insertHomefreshtopic(sContent){
@@ -126,20 +126,20 @@ function insertHomefreshtopic(sContent){
 				<div class="alert alert-success">
 					<div class="row">
 						<div class="span6">
-							<!--<lang package='Template/Public'>-->今日发布<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todaytotalnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todaytotalnum']}--></b>&nbsp;<span class='divider'>=</span>&nbsp;
-							<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayhomefreshnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayhomefreshnum']}--></b>&nbsp;<span class='divider'>+</span>&nbsp;
-							<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayhomefreshcommentnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayhomefreshcommentnum']}--></b>&nbsp;<span class='divider'>+</span>&nbsp;
-							<!--<lang package='Template/Public'>-->附件<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayattachmentnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayattachmentnum']}--></b>&nbsp;
+							<!--<lang package='Template'>-->今日发布<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todaytotalnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todaytotalnum']}--></b>&nbsp;<span class='divider'>=</span>&nbsp;
+							<!--<lang package='Template'>-->新鲜事<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayhomefreshnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayhomefreshnum']}--></b>&nbsp;<span class='divider'>+</span>&nbsp;
+							<!--<lang package='Template'>-->评论<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayhomefreshcommentnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayhomefreshcommentnum']}--></b>&nbsp;<span class='divider'>+</span>&nbsp;
+							<!--<lang package='Template'>-->附件<!--</lang>-->&nbsp;<b <!--{if $GLOBALS['_option_']['todayattachmentnum']>0}-->class="public_todaynum"<!--{/if}-->><!--{$GLOBALS['_option_']['todayattachmentnum']}--></b>&nbsp;
 							&nbsp;<span class='divider'>|</span>&nbsp;
-							<!--<lang package='Template/Public'>-->新注册会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/newuser')}-->" <!--{if $GLOBALS['_option_']['todayusernum']>0}-->class="public_todaynum"<!--{/if}-->><b><!--{$GLOBALS['_option_']['todayusernum']}--></b></a>
+							<!--<lang package='Template'>-->新注册会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/newuser')}-->" <!--{if $GLOBALS['_option_']['todayusernum']>0}-->class="public_todaynum"<!--{/if}-->><b><!--{$GLOBALS['_option_']['todayusernum']}--></b></a>
 						</div>
 						<div class="span5" style="text-align:right;float:right;">
-							<!--<lang package='Template/Public'>-->应用<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://apps/index')}-->"><b><!--{$arrSite['app']}--></b></a>
+							<!--<lang package='Template'>-->应用<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://apps/index')}-->"><b><!--{$arrSite['app']}--></b></a>
 							&nbsp;<span class='divider'>|</span>&nbsp;
-							<!--<lang package='Template/Public'>-->会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><b><!--{$arrSite['user']}--></b></a>&nbsp;<span class='divider'>|</span>&nbsp;
-							<!--<lang package='Template/Public'>-->新鲜事<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefresh']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
-							<!--<lang package='Template/Public'>-->评论<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefreshcomment']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
-							<!--<lang package='Template/Public'>-->附件<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->"><b><!--{$arrSite['attachment']}--></b></a>
+							<!--<lang package='Template'>-->会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><b><!--{$arrSite['user']}--></b></a>&nbsp;<span class='divider'>|</span>&nbsp;
+							<!--<lang package='Template'>-->新鲜事<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefresh']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
+							<!--<lang package='Template'>-->评论<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/explore')}-->"><b><!--{$arrSite['homefreshcomment']}--></b></a>&nbsp;<span class='divider'>/</span>&nbsp;
+							<!--<lang package='Template'>-->附件<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->"><b><!--{$arrSite['attachment']}--></b></a>
 						</div>
 						<span class="clearfix">&nbsp;</span>
 					</div>
@@ -167,13 +167,13 @@ function insertHomefreshtopic(sContent){
 			<div class="span4">
 				<div class="well" style="<!--{if $GLOBALS['___login___']===false}-->height:auto;<!--{d*else}-->height:266px;<!--{/if}-->">
 					<!--{if $GLOBALS['___login___']===false}-->
-					<h3><!--<lang package='Template/Public'>-->用户登录<!--</lang>--></h3>
+					<h3><!--<lang package='Template'>-->用户登录<!--</lang>--></h3>
 					<form class="form-horizontal" method='post' name="login_form" id="login_form">
 						<label><div id="result" class="none"></div></label>
-						<p><label for="user_name"><!--<lang package='Template/Public'>-->用户名/E-mail<!--</lang>--></label>
+						<p><label for="user_name"><!--<lang package='Template'>-->用户名/E-mail<!--</lang>--></label>
 							<input class="span3" id="user_name" name="user_name" type="text" value="">
 						</p>
-						<p><label for="user_name"><!--<lang package='Template/Public'>-->密码<!--</lang>--></label>
+						<p><label for="user_name"><!--<lang package='Template'>-->密码<!--</lang>--></label>
 							<input class="span3" id="user_password" name="user_password" type="password" value="">
 						</p>
 						<p><label class="checkbox">
@@ -238,7 +238,7 @@ function insertHomefreshtopic(sContent){
 						</div>
 					</div>
 					<!--{d*else}-->
-					<h3><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Public'>-->返回个人中心<!--</lang>--></a>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->设置在线状态<!--</lang>-->"><!--{$GLOBALS['___login___']['user_id']|Core_Extend+getUseronlineicon}--></a></h3>
+					<h3><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template'>-->返回个人中心<!--</lang>--></a>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->设置在线状态<!--</lang>-->"><!--{$GLOBALS['___login___']['user_id']|Core_Extend+getUseronlineicon}--></a></h3>
 					<table class="table">
 						<tbody>
 							<tr>
@@ -246,21 +246,21 @@ function insertHomefreshtopic(sContent){
 									<a href="<!--{:Dyhb::U('home://spaceadmin/avatar')}-->">
 									<img src="<!--{:Core_Extend::avatar($GLOBALS['___login___']['user_id'])}-->" width="120px" height="120px" class="thumbnail"/></a>
 								</td>
-								<td width="60%"><i class="icon-cog"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Public'>-->修改资料<!--</lang>--></a></td>
+								<td width="60%"><i class="icon-cog"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template'>-->修改资料<!--</lang>--></a></td>
 							</tr>
 							<tr>
-								<td><i class="icon-lock"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/password')}-->"><!--<lang package='Template/Public'>-->修改密码<!--</lang>--></a></td>
+								<td><i class="icon-lock"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/password')}-->"><!--<lang package='Template'>-->修改密码<!--</lang>--></a></td>
 							</tr>
 							<tr>
-								<td><i class="icon-tags"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/tag')}-->"><!--<lang package='Template/Public'>-->我的标签<!--</lang>--></a></td>
+								<td><i class="icon-tags"></i>&nbsp;<a href="<!--{:Dyhb::U('home://spaceadmin/tag')}-->"><!--<lang package='Template'>-->我的标签<!--</lang>--></a></td>
 							</tr>
 							<tr>
-								<td><i class="icon-off"></i>&nbsp;<a href="<!--{:Dyhb::U('home://public/logout')}-->"><!--<lang package='Template/Public'>-->注销<!--</lang>--></a></td>
+								<td><i class="icon-off"></i>&nbsp;<a href="<!--{:Dyhb::U('home://public/logout')}-->"><!--<lang package='Template'>-->注销<!--</lang>--></a></td>
 							</tr>
 						</tbody>
 					</table>
 					<hr/>
-					<a class="btn btn-success btn-large" href="<!--{:Dyhb::U('home://ucenter/index')}-->"><i class="icon-info-sign icon-white"></i>&nbsp;<!--<lang package='Template/Public'>-->个人中心<!--</lang>--></a>
+					<a class="btn btn-success btn-large" href="<!--{:Dyhb::U('home://ucenter/index')}-->"><i class="icon-info-sign icon-white"></i>&nbsp;<!--<lang package='Template'>-->个人中心<!--</lang>--></a>
 					<!--{/if}-->
 				</div>
 			</div>
@@ -281,51 +281,51 @@ function insertHomefreshtopic(sContent){
 		<div class="row">
 			<div class="span8">
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->活跃会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template/Public'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->活跃会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<p><ul class="thumbnails">
 							<!--{if is_array($arrActiveusers)}-->
 							<!--<foreach for=arrActiveusers value=oActiveuser>-->
 							<li class="span1">
 								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oActiveuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['user_lastlogintime']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}-->"></a>
-									<a rel="tooltip" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oActiveuser['user_lastlogintime']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oActiveuser['user_name']|G+subString=0,3}--></h5></a>
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oActiveuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template'>-->时间<!--</lang>--> <!--{$oActiveuser['user_lastlogintime']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template'>-->会员<!--</lang>--> <!--{$oActiveuser['user_name']}--> | <!--<lang package='Template'>-->时间<!--</lang>--> <!--{$oActiveuser['user_lastlogintime']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oActiveuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oActiveuser['user_name']|G+subString=0,3}--></h5></a>
 								</div>
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<li><!--<lang package='Template/Public'>-->暂时没有发现任何新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a></li>
+							<li><!--<lang package='Template'>-->暂时没有发现任何新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='Template'>-->注册<!--</lang>--></a></li>
 							<!--{/if}-->
 						</ul>
 					</p>
 				</div>
 
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template/Public'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->最新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://stat/userlist')}-->" title="<!--<lang package='Template'>-->更多会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<p><ul class="thumbnails">
 							<!--{if is_array($arrNewusers)}-->
 							<!--<foreach for=arrNewusers value=oNewuser>-->
 							<li class="span1">
 								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNewuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oNewuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}-->"></a>
-									<a rel="tooltip" title="<!--<lang package='Template/Public'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}--> | <!--<lang package='Template/Public'>-->时间<!--</lang>--> <!--{$oNewuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oNewuser['user_name']|G+subString=0,3}--></h5></a>
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNewuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}--> | <!--<lang package='Template'>-->时间<!--</lang>--> <!--{$oNewuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template'>-->会员<!--</lang>--> <!--{$oNewuser['user_name']}--> | <!--<lang package='Template'>-->时间<!--</lang>--> <!--{$oNewuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNewuser['user_id'])}-->"><h5 style="text-align:center;"><!--{$oNewuser['user_name']|G+subString=0,3}--></h5></a>
 								</div>
 							</li>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<li><!--<lang package='Template/Public'>-->暂时没有发现任何新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='Template/Public'>-->注册<!--</lang>--></a></li>
+							<li><!--<lang package='Template'>-->暂时没有发现任何新会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://public/register')}-->"><!--<lang package='Template'>-->注册<!--</lang>--></a></li>
 							<!--{/if}-->
 						</ul>
 					</p>
 				</div>
 				
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新话题<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" title="<!--<lang package='Template/Public'>-->更多话题<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->最新话题<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" title="<!--<lang package='Template'>-->更多话题<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<div id="home_topiclist_box" class="home_topiclist_box">
 					</div>
 				</div>
 				
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新照片<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->" title="<!--<lang package='Template/Public'>-->更多照片<!--</lang>-->"><i class="icon-th-list"></i></a><!--{if $GLOBALS['___login___']!==false}-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/add')}-->" title="<!--<lang package='Template/Public'>-->我要上传<!--</lang>-->"><i class="icon-upload"></i></a><!--{/if}--></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->最新照片<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/index')}-->" title="<!--<lang package='Template'>-->更多照片<!--</lang>-->"><i class="icon-th-list"></i></a><!--{if $GLOBALS['___login___']!==false}-->&nbsp;<a href="<!--{:Dyhb::U('home://attachment/add')}-->" title="<!--<lang package='Template'>-->我要上传<!--</lang>-->"><i class="icon-upload"></i></a><!--{/if}--></div>
 					<div id="home_attachmentlist_box" class="home_attachmentlist_box">
 						<ul class="thumbnails">
 							<!--{if is_array($arrNewattachments)}-->
@@ -340,27 +340,27 @@ function insertHomefreshtopic(sContent){
 							<!--{d*else}-->
 							<li class="span8">
 								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg" class="thumbnail">
-									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg" width="100%" height="150" alt="" title="<!--<lang package='Template/Public'>-->只<!--</lang>--> - <!--<lang package='Template/Public'>-->花<!--</lang>-->">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/1.jpg" width="100%" height="150" alt="" title="<!--<lang package='Template'>-->只<!--</lang>--> - <!--<lang package='Template'>-->花<!--</lang>-->">
 								</a>
 							</li>
 							<li class="span4">
 								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg" class="thumbnail">
-									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg" width="100%" height="270" alt="" title="<!--<lang package='Template/Public'>-->为<!--</lang>--> - <!--<lang package='Template/Public'>-->美<!--</lang>-->">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/2.jpg" width="100%" height="270" alt="" title="<!--<lang package='Template'>-->为<!--</lang>--> - <!--<lang package='Template'>-->美<!--</lang>-->">
 								</a>
 							</li>
 							<li class="span2">
 								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg" class="thumbnail">
-									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template/Public'>-->你<!--</lang>--> - <!--<lang package='Template/Public'>-->人<!--</lang>-->">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/3.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template'>-->你<!--</lang>--> - <!--<lang package='Template'>-->人<!--</lang>-->">
 								</a>
 							</li>
 							<li class="span2">
 								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg" class="thumbnail">
-									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template/Public'>-->精<!--</lang>--> - <!--<lang package='Template/Public'>-->更<!--</lang>-->">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/4.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template'>-->精<!--</lang>--> - <!--<lang package='Template'>-->更<!--</lang>-->">
 								</a>
 							</li>
 							<li class="span4">
 								<a href="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg" class="thumbnail">
-									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template/Public'>-->彩<!--</lang>--> - <!--<lang package='Template/Public'>-->美<!--</lang>-->">
+									<img src="<!--{:__PUBLIC__}-->/js/jquery/slidedeck/images/5.jpg" width="100%" height="120" alt="" title="<!--<lang package='Template'>-->彩<!--</lang>--> - <!--<lang package='Template'>-->美<!--</lang>-->">
 								</a>
 							</li>
 							<!--{/if}-->
@@ -369,7 +369,7 @@ function insertHomefreshtopic(sContent){
 				</div>
 
 				<div class="commonbox grouplist_title">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->推荐小组<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->更多小组<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->推荐小组<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template'>-->更多小组<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<ul class="groups" id="home_recommendgroup_box">
 					</ul>
 				</div>
@@ -387,7 +387,7 @@ function insertHomefreshtopic(sContent){
 							</div>
 							<div id="homefresh-media-box" class="common-media-box">
 								<a href="javascript:void(0);" class="homefresh-face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a> 
-								<a href="javascript:void(0);" onclick="addHomefreshtopic();" class="icon_add_topic"><!--<lang package='Template/Homefresh'>-->话题<!--</lang>--></a> 
+								<a href="javascript:void(0);" onclick="addHomefreshtopic();" class="icon_add_topic"><!--<lang package='Template'>-->话题<!--</lang>--></a> 
 								<a href="javascript:void(0);" onclick="globalAddattachment('insertHomefreshattachment');" class="icon_add_img"><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
 								<a href="javascript:void(0);" onclick="addVideo('insertHomefreshvideo');" class="icon_add_video" ><!--<lang package='__COMMON_LANG__@Common'>-->视频<!--</lang>--></a>
 								<a href="javascript:void(0);" onclick="addMusic('insertHomefreshmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
@@ -398,7 +398,7 @@ function insertHomefreshtopic(sContent){
 						<table class="table">
 							<thead>
 								<tr>
-									<th colspan="2"><!--<lang package='Template/Homefresh'>-->新鲜事<!--</lang>-->&nbsp;<a href="<!--{if $GLOBALS['___login___']===false}--><!--{:Dyhb::U('home://stat/explore')}--><!--{d*else}--><!--{:Dyhb::U('home://ucenter/index?type=all')}--><!--{/if}-->" title="<!--<lang package='Template/Homefresh'>-->更多新鲜事<!--</lang>-->"><i class="icon-th-list"></i></a></th>
+									<th colspan="2"><!--<lang package='Template'>-->新鲜事<!--</lang>-->&nbsp;<a href="<!--{if $GLOBALS['___login___']===false}--><!--{:Dyhb::U('home://stat/explore')}--><!--{d*else}--><!--{:Dyhb::U('home://ucenter/index?type=all')}--><!--{/if}-->" title="<!--<lang package='Template'>-->更多新鲜事<!--</lang>-->"><i class="icon-th-list"></i></a></th>
 								</tr>
 							</thead>
 							<tbody id="homefreshlist_box">
@@ -410,17 +410,17 @@ function insertHomefreshtopic(sContent){
 										</div>
 									</td>
 									<td>
-										<h4><!--{$oHomefresh['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template/Homefresh'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template/Homefresh'>-->发布<!--</lang>--><!--{:Core_Extend::newData($oHomefresh['create_dateline'],true)}-->
+										<h4><!--{$oHomefresh['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template'>-->发布<!--</lang>--><!--{:Core_Extend::newData($oHomefresh['create_dateline'],true)}-->
 										</h4>
 										<div class="homefresh-content">
 											<!--{$oHomefresh['homefresh_message']|Core_Extend+subString=50,true,1}-->
 										</div>
 										<div class="homefresh-count">
-											<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->class="goodnum_click"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
+											<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Template'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->class="goodnum_click"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
 											<span class="pipe">|</span>
-											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->评论<!--</lang>-->(<span id="homefreshcomment_<!--{$oHomefresh['homefresh_id']}-->"><!--{$oHomefresh['homefresh_commentnum']}--></span>)</a>
+											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Template'>-->评论<!--</lang>-->(<span id="homefreshcomment_<!--{$oHomefresh['homefresh_id']}-->"><!--{$oHomefresh['homefresh_commentnum']}--></span>)</a>
 											<span class="pipe">|</span>
-											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->" title="<!--<lang package='__COMMON_LANG__@Template/Homefresh'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>
+											<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->" title="<!--<lang package='__COMMON_LANG__@Template'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>
 										</div>
 									</td>
 								</tr>
@@ -429,14 +429,14 @@ function insertHomefreshtopic(sContent){
 						</table>
 						<!--{d*else}-->
 						<div id="homefresh_no">
-							<p><!--<lang package='Template/Homefresh'>-->暂时没有发现任何新鲜事<!--</lang>--></p>
+							<p><!--<lang package='Template'>-->暂时没有发现任何新鲜事<!--</lang>--></p>
 						</div>
 						<!--{/if}-->
 					</div>
 				</div>
 				
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->热门话题<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" title="<!--<lang package='Template/Public'>-->更多话题<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->热门话题<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://public/newtopic')}-->" title="<!--<lang package='Template'>-->更多话题<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<div class="commonlist">
 						<ul id="home_hottopiclist_box" class="home_hottopiclist_box">
 						</ul>
@@ -444,7 +444,7 @@ function insertHomefreshtopic(sContent){
 				</div>
 
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->最新帮助<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://homehelp/index')}-->" title="<!--<lang package='Template/Public'>-->更多帮助<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->最新帮助<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://homehelp/index')}-->" title="<!--<lang package='Template'>-->更多帮助<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 					<div class="commonlist">
 						<ul id="home_newhelplist_box" class="home_newhelp_box">
 							<!--{if is_array($arrNewhelps)}-->
@@ -452,27 +452,27 @@ function insertHomefreshtopic(sContent){
 							<li><a href="<!--{:Dyhb::U('home://help@?id='.$oNewhelp['homehelp_id'])}-->"><!--{$oNewhelp['homehelp_title']|G+subString=0,18}--></a></li>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<li><!--<lang package='Template/Public'>-->暂时没有发现任何帮助<!--</lang>--></li>
+							<li><!--<lang package='Template'>-->暂时没有发现任何帮助<!--</lang>--></li>
 							<!--{/if}-->
 						</ul>
 					</div>
 				</div>
 
 				<div class="commonbox">
-					<div class="commonboxtitle"><!--<lang package='Template/Public'>-->关注我们<!--</lang>--></div>
+					<div class="commonboxtitle"><!--<lang package='Template'>-->关注我们<!--</lang>--></div>
 					<div class="commonlist">
 						<ul id="home_followus_box" class="home_followus_box">
 							<!--{if !empty($GLOBALS['_option_']['home_followus_tqqcom'])}-->
-							<li><a href="<!--{$GLOBALS['_option_']['home_followus_tqqcom']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/tqqcom.gif" border="0">&nbsp;<!--<lang package='Template/Public'>-->腾讯微博<!--</lang>--></a></li>
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_tqqcom']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/tqqcom.gif" border="0">&nbsp;<!--<lang package='Template'>-->腾讯微博<!--</lang>--></a></li>
 							<!--{/if}-->
 							<!--{if !empty($GLOBALS['_option_']['home_followus_renren'])}-->
-							<li><a href="<!--{$GLOBALS['_option_']['home_followus_renren']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/renren.gif" border="0">&nbsp;<!--<lang package='Template/Public'>-->人人主页<!--</lang>--></a></li>
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_renren']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/renren.gif" border="0">&nbsp;<!--<lang package='Template'>-->人人主页<!--</lang>--></a></li>
 							<!--{/if}-->
 							<!--{if !empty($GLOBALS['_option_']['home_followus_weibo'])}-->
-							<li><a href="<!--{$GLOBALS['_option_']['home_followus_weibo']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/weibo.gif" border="0">&nbsp;<!--<lang package='Template/Public'>-->新浪微博<!--</lang>--></a></li>
+							<li><a href="<!--{$GLOBALS['_option_']['home_followus_weibo']}-->" target="_blank"><img src="<!--{:__PUBLIC__}-->/images/common/followus/weibo.gif" border="0">&nbsp;<!--<lang package='Template'>-->新浪微博<!--</lang>--></a></li>
 							<!--{/if}-->
 							<!--{if !empty($GLOBALS['_option_']['home_followus_qq'])}-->
-							<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<!--{$GLOBALS['_option_']['home_followus_qq']}-->&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=2:<!--{$GLOBALS['_option_']['home_followus_qq']}-->:41" alt="<!--<lang package='Template/Public'>-->点击这里给我发消息<!--</lang>-->" title="<!--<lang package='Template/Public'>-->点击这里给我发消息<!--</lang>-->" border="0"></a></li>
+							<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<!--{$GLOBALS['_option_']['home_followus_qq']}-->&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=2:<!--{$GLOBALS['_option_']['home_followus_qq']}-->:41" alt="<!--<lang package='Template'>-->点击这里给我发消息<!--</lang>-->" title="<!--<lang package='Template'>-->点击这里给我发消息<!--</lang>-->" border="0"></a></li>
 							<!--{/if}-->
 						</ul>
 					</div>
@@ -483,15 +483,15 @@ function insertHomefreshtopic(sContent){
 		<!--{if $GLOBALS['_option_']['online_on']==1 && $GLOBALS['_option_']['online_indexon']==1}-->
 		<div class="row">
 			<div class="span12 commonbox">
-				<div class="commonboxtitle"><!--<lang package='Template/Public'>-->在线会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://online/index')}-->" title="<!--<lang package='Template/Public'>-->更多在线会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
+				<div class="commonboxtitle"><!--<lang package='Template'>-->在线会员<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://online/index')}-->" title="<!--<lang package='Template'>-->更多在线会员<!--</lang>-->"><i class="icon-th-list"></i></a></div>
 				<div class="alert alert-success">
-					<a href="<!--{:Dyhb::U('home://online/index')}-->"><b><!--<lang package='Template/Online'>-->在线会员<!--</lang>--></b></a> - <b><!--{$arrOnlinedata['online_allnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->人在线<!--</lang>--> - <b><!--{$arrOnlinedata['online_usernum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->会员<!--</lang>-->(<b><!--{$arrOnlinedata['online_stealthusernum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->隐身<!--</lang>-->), <b><!--{$arrOnlinedata['online_guestnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->位游客<!--</lang>--> - <!--<lang package='Template/Online'>-->最高记录是<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_totalmostnum']}--></b>&nbsp;<!--<lang package='Template/Online'>-->于<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_mosttime']}--></b>.
+					<a href="<!--{:Dyhb::U('home://online/index')}-->"><b><!--<lang package='Template'>-->在线会员<!--</lang>--></b></a> - <b><!--{$arrOnlinedata['online_allnum']}--></b>&nbsp;<!--<lang package='Template'>-->人在线<!--</lang>--> - <b><!--{$arrOnlinedata['online_usernum']}--></b>&nbsp;<!--<lang package='Template'>-->会员<!--</lang>-->(<b><!--{$arrOnlinedata['online_stealthusernum']}--></b>&nbsp;<!--<lang package='Template'>-->隐身<!--</lang>-->), <b><!--{$arrOnlinedata['online_guestnum']}--></b>&nbsp;<!--<lang package='Template'>-->位游客<!--</lang>--> - <!--<lang package='Template'>-->最高记录是<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_totalmostnum']}--></b>&nbsp;<!--<lang package='Template'>-->于<!--</lang>-->&nbsp;<b><!--{$arrOnlinedata['online_mosttime']}--></b>.
 				</div>
 				<!--{if $GLOBALS['_option_']['online_indexmost']>0}-->
 				<div class="index_online">
-					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_admin.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Online'>-->管理员<!--</lang>-->&nbsp;&nbsp;
-					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_member.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Online'>-->会员<!--</lang>-->&nbsp;&nbsp;
-					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_guest.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Online'>-->游客<!--</lang>-->&nbsp;<!--{if $GLOBALS['_option_']['online_indexgueston']==0}-->(><!--<lang package='Template/Online'>-->未列出<!--</lang>-->)<!--{/if}-->
+					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_admin.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template'>-->管理员<!--</lang>-->&nbsp;&nbsp;
+					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_member.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template'>-->会员<!--</lang>-->&nbsp;&nbsp;
+					<img src="<!--{:__ROOT__}-->/Public/images/common/usericon/online_guest.gif" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template'>-->游客<!--</lang>-->&nbsp;<!--{if $GLOBALS['_option_']['online_indexgueston']==0}-->(><!--<lang package='Template'>-->未列出<!--</lang>-->)<!--{/if}-->
 				</div>
 				<div class="index_online_list">
 					<!--{if is_array($arrOnlines)}-->
@@ -500,15 +500,15 @@ function insertHomefreshtopic(sContent){
 						<li>
 							<!--{$oOnline['user_id']|Core_Extend+getUsericon}-->&nbsp;
 							<!--{if $oOnline['user_id']>0}-->
-							<a href='<!--{:Dyhb::U('home://space@?id='.$oOnline['user_id'])}-->' target='_blank' title='<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}--><!--{if $GLOBALS['_option_']['online_indexshowip']==1}--> | <!--<lang package='Template/Online'>-->访问IP地址<!--</lang>-->:<!--{$oOnline['online_ip']}-->&nbsp;<!--{$oOnline['online_ip']|Misc_Extend+convertIp}--><!--{/if}-->'><!--{$oOnline['online_username']}--></a>
+							<a href='<!--{:Dyhb::U('home://space@?id='.$oOnline['user_id'])}-->' target='_blank' title='<!--<lang package='Template'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}--><!--{if $GLOBALS['_option_']['online_indexshowip']==1}--> | <!--<lang package='Template'>-->访问IP地址<!--</lang>-->:<!--{$oOnline['online_ip']}-->&nbsp;<!--{$oOnline['online_ip']|Misc_Extend+convertIp}--><!--{/if}-->'><!--{$oOnline['online_username']}--></a>
 							<!--{d*else}-->
-							<span title="<!--<lang package='Template/Online'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}--> | <!--<lang package='Template/Online'>-->访问IP地址<!--</lang>-->:<!--{$oOnline['online_ip']}-->&nbsp;<!--{$oOnline['online_ip']|Misc_Extend+convertIp}-->"><!--<lang package='Template/Online'>-->游客<!--</lang>--></span>
+							<span title="<!--<lang package='Template'>-->最后活动<!--</lang>-->:<!--{$oOnline['online_activetime']|Core_Extend+timeFormat}--> | <!--<lang package='Template'>-->访问IP地址<!--</lang>-->:<!--{$oOnline['online_ip']}-->&nbsp;<!--{$oOnline['online_ip']|Misc_Extend+convertIp}-->"><!--<lang package='Template'>-->游客<!--</lang>--></span>
 							<!--{/if}-->
 						</li>
 						<!--</foreach>-->
 					</ul>
 					<!--{d*else}-->
-					<p><!--<lang package='Template/Online'>-->暂无任何在线用户<!--</lang>--></p>
+					<p><!--<lang package='Template'>-->暂无任何在线用户<!--</lang>--></p>
 					<!--{/if}-->
 				</div>
 				<!--{/if}-->
@@ -519,7 +519,7 @@ function insertHomefreshtopic(sContent){
 		<!--{if $arrLinkDatas['link_content'] || $arrLinkDatas['link_text'] || $arrLinkDatas['link_logo']}-->
 		<div class="row">
 			<div class="span12 commonbox">
-				<div class="commonboxtitle"><!--<lang package='Template/Public'>-->友情链接<!--</lang>--></div>
+				<div class="commonboxtitle"><!--<lang package='Template'>-->友情链接<!--</lang>--></div>
 				<!--{if $arrLinkDatas['link_content']}-->
 				<div class="home-links">
 					<ul class="clear span12">

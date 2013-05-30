@@ -28,8 +28,8 @@ $(document).ready(function(){
 				</div>
 				<div class="span5">
 					<div class="right">
-						<h5><!--<lang package='Template/Public'>-->没有帐号？请立刻注册<!--</lang>--></h5>
-						<p><a href="<!--{:Dyhb::U('home://public/register')}-->" class="btn btn-success btn-mini"><!--<lang package='Template/Public'>-->用户注册<!--</lang>--></a></p>
+						<h5><!--<lang package='Template'>-->没有帐号？请立刻注册<!--</lang>--></h5>
+						<p><a href="<!--{:Dyhb::U('home://public/register')}-->" class="btn btn-success btn-mini"><!--<lang package='Template'>-->用户注册<!--</lang>--></a></p>
 					</div>
 				</div>
 			</div>
@@ -71,7 +71,7 @@ $(document).ready(function(){
 					<!--{if $sReferer && $nRbac==1}-->
 					<div class="alert fade in">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
-						<!--<lang package='Template/Public'>-->你没有权限访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template/Public'>-->重试<!--</lang>--></a>
+						<!--<lang package='Template'>-->你没有权限访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template'>-->重试<!--</lang>--></a>
 					</div>
 					<!--{/if}-->
 				</div>
@@ -80,7 +80,7 @@ $(document).ready(function(){
 					<!--{if $sReferer && $nLoginview==1}-->
 					<div class="alert fade in">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
-						<!--<lang package='Template/Public'>-->你需要登陆后才能够访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template/Public'>-->重试<!--</lang>--></a>
+						<!--<lang package='Template'>-->你需要登陆后才能够访问!<!--</lang>-->&nbsp;<a href="<!--{$sReferer}-->"><!--<lang package='Template'>-->重试<!--</lang>--></a>
 					</div>
 					<!--{/if}-->
 				</div>

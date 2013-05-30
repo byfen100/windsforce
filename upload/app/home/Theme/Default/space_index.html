@@ -107,7 +107,7 @@ function insertUserguestbookmusic(sContent){
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><!--{$oUserInfo:user_name}--></a> <span class="divider">/</span></li>
-			<li><!--<lang package='Template/Space'>-->个人空间<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->个人空间<!--</lang>--></li>
 		</ul>
 		
 		<!--<include file="space+menu" />-->
@@ -123,7 +123,7 @@ function insertUserguestbookmusic(sContent){
 				<table class="table">
 					<thead>
 						<tr>
-							<th><!--<lang package='Template/Space'>-->用户名<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->用户名<!--</lang>--></th>
 							<th><!--{$oUserInfo:user_name}--></th>
 						</tr>
 					</thead>
@@ -212,7 +212,7 @@ function insertUserguestbookmusic(sContent){
 						<!--{/if}-->
 						<!--</foreach>-->
 						<tr>
-							<td><!--<lang package='Template/Space'>-->昵称<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->昵称<!--</lang>--></td>
 							<td><!--{$oUserInfo:user_nikename}--></td>
 						<tr/>
 						<tr>
@@ -220,7 +220,7 @@ function insertUserguestbookmusic(sContent){
 							<td><!--{$oUserInfo:user_email}--></td>
 						<tr/>
 						<tr>
-							<td><!--<lang package='Template/Space'>-->用户签名<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->用户签名<!--</lang>--></td>
 							<td><!--{~$sUsersign=UserModel::getUsernameById($oUserInfo['user_id'],'user_sign')}-->
 								<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
 							</td>
@@ -244,7 +244,7 @@ function insertUserguestbookmusic(sContent){
 								<a href="<!--{:Dyhb::U('home://space@?id='.$nId.'&type=avatar')}-->"><img src="<!--{:Core_Extend::avatar( $nId,'small' )}-->" width="48px" height="48px" class="thumbnail"/></a>
 							</td>
 							<td>
-								<label class="control-label" for="email-input"><i class="icon-retweet"></i>&nbsp;<!--<lang package='Template/Space'>-->与用户 Email 交流<!--</lang>--></label>
+								<label class="control-label" for="email-input"><i class="icon-retweet"></i>&nbsp;<!--<lang package='Template'>-->与用户 Email 交流<!--</lang>--></label>
 								<div class="input-prepend">
 									<span class="add-on"><i class="icon-envelope"></i></span><input style="width:140px;" id="email-input" type="text" value="<!--{$oUserInfo:user_email}-->">
 								</div>
@@ -256,56 +256,56 @@ function insertUserguestbookmusic(sContent){
 							<td colspan="2"><!--{$nId|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></a><!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}--><!--{$oUserInfo|Core_Extend+fansmany=true}--></td>
 						</tr>
 						<tr>
-							<td colspan="2"><img src="<!--{:Profile_Extend::getUserprofilegender($oUserInfo->userprofile->userprofile_gender)}-->" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template/Space'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>
+							<td colspan="2"><img src="<!--{:Profile_Extend::getUserprofilegender($oUserInfo->userprofile->userprofile_gender)}-->" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>
 						</tr>
 						<tr>
-							<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}--><!--<lang package='Template/Space'>-->注册<!--</lang>--></td>
+							<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}--><!--<lang package='Template'>-->注册<!--</lang>--></td>
 						</tr>
 						<tr>
-							<td colspan="2"><i class="icon-heart"></i>&nbsp;<!--<lang package='Template/Space'>-->等级<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->当前积分<!--</lang>-->&nbsp;<!--{$nUserscore}-->,<!--<lang package='__COMMON_LANG__@Common'>-->等级名字<!--</lang>-->&nbsp;<!--{$arrRatinginfo['rating_name']}-->,<!--<lang package='__COMMON_LANG__@Common'>-->距离下一个等级<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_rating']['rating_name']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->还差<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_needscore']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->积分<!--</lang>-->"><!--{$arrRatinginfo['rating_name']}--></a><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></td>
+							<td colspan="2"><i class="icon-heart"></i>&nbsp;<!--<lang package='Template'>-->等级<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->当前积分<!--</lang>-->&nbsp;<!--{$nUserscore}-->,<!--<lang package='__COMMON_LANG__@Common'>-->等级名字<!--</lang>-->&nbsp;<!--{$arrRatinginfo['rating_name']}-->,<!--<lang package='__COMMON_LANG__@Common'>-->距离下一个等级<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_rating']['rating_name']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->还差<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_needscore']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->积分<!--</lang>-->"><!--{$arrRatinginfo['rating_name']}--></a><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></td>
 						</tr>
 						<tr>
-							<td colspan="2"><i class="icon-star"></i>&nbsp;<!--<lang package='Template/Space'>-->积分<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit1}--></a></span>&nbsp;
-							<!--<lang package='Template/Space'>-->金币<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit2}--></a></span></td>
+							<td colspan="2"><i class="icon-star"></i>&nbsp;<!--<lang package='Template'>-->积分<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit1}--></a></span>&nbsp;
+							<!--<lang package='Template'>-->金币<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit2}--></a></span></td>
 						</tr>
 					</tbody>
 				</table>
 
 				<div style="padding:5px;">
 					<!--{if $GLOBALS['___login___']===false}-->
-					<a class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i>&nbsp;<!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
+					<a class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i>&nbsp;<!--<lang package='Template'>-->关注<!--</lang>-->+1</a>
 					<!--{d*else}-->
 					<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($GLOBALS['___login___']['user_id']);}-->
 					<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
-					<a class="btn" rel="nofollow" href="javascript:void(0);" onclick="deleteFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-remove"></i><!--<lang package='Template/Space'>-->取消关注<!--</lang>--></a>
+					<a class="btn" rel="nofollow" href="javascript:void(0);" onclick="deleteFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-remove"></i><!--<lang package='Template'>-->取消关注<!--</lang>--></a>
 					<!--{d*else}-->
-					<a rel="nofollow" class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i><!--<lang package='Template/Space'>-->关注<!--</lang>-->+1</a>
+					<a rel="nofollow" class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i><!--<lang package='Template'>-->关注<!--</lang>-->+1</a>
 					<!--{/if}-->
 					<!--{/if}-->&nbsp;
-					<a href="<!--{:Dyhb::U('home://pm/pmnew?uid='.$oUserInfo['user_id'])}-->" rel="nofollow" class="btn"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template/Space'>-->发消息<!--</lang>--></a>
+					<a href="<!--{:Dyhb::U('home://pm/pmnew?uid='.$oUserInfo['user_id'])}-->" rel="nofollow" class="btn"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template'>-->发消息<!--</lang>--></a>
 				</div>
 
 				<div style="padding:10px 5px;">
-					<h4><i class="icon-pencil"></i>&nbsp;<!--<lang package='Template/Space'>-->签名<!--</lang>--></h4>
-					<p style="margin-top:10px;"><!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign||Core_Extend+usersign}--><!--{d*else}--><!--<lang package='Template/Space'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}--></p>
+					<h4><i class="icon-pencil"></i>&nbsp;<!--<lang package='Template'>-->签名<!--</lang>--></h4>
+					<p style="margin-top:10px;"><!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign||Core_Extend+usersign}--><!--{d*else}--><!--<lang package='Template'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}--></p>
 				</div>
 
 				<div style="padding:10px 5px;">
-					<h4><!--<lang package='Template/Space'>-->他关注的用户<!--</lang>--></h4>
+					<h4><!--<lang package='Template'>-->他关注的用户<!--</lang>--></h4>
 					<p style="margin-top:10px;">
 						<!--{if is_array($arrFriends)}-->
 						<ul class="thumbnails">
 							<!--<foreach for=arrFriends value=oFriend>-->
 							<li class="span1">
 								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><img src="<!--{:Core_Extend::avatar( $oFriend['friend_friendid'],'small' )}-->" width="100%" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" alt="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->"></a>
-									<a rel="tooltip" title="<!--<lang package='Template/Space'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oFriend['friend_friendid']),0,3)}--></h5></a>
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><img src="<!--{:Core_Extend::avatar( $oFriend['friend_friendid'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" alt="<!--<lang package='Template'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oFriend['friend_friendid']),0,3)}--></h5></a>
 								</div>
 							</li>
 							<!--</foreach>-->
 						</ul>
 						<!--{d*else}-->
-						<!--<lang package='Template/Space'>-->他尚未关注任何人<!--</lang>-->
+						<!--<lang package='Template'>-->他尚未关注任何人<!--</lang>-->
 						<!--{/if}-->
 					</p>
 				</div>

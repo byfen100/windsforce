@@ -147,7 +147,7 @@ class IndexController extends Controller{
 
 	public function index_title_(){
 		if($GLOBALS['_commonConfig_']['DEFAULT_APP']!='home'){
-			return Dyhb::L('个人空间','Controller/Public');
+			return Dyhb::L('个人空间','Controller');
 		}
 	}
 

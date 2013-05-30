@@ -71,7 +71,7 @@ class MayknowController extends Controller{
 	}
 
 	public function mayknow_title_(){
-		return Dyhb::L('可能认识的人','Controller/Friend');
+		return Dyhb::L('可能认识的人','Controller');
 	}
 
 	public function mayknow_keywords_(){

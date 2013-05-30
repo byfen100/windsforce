@@ -15,7 +15,7 @@ class ExchangeController extends Controller{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
 			$this->assign('oUsercount',$oUserInfo->usercount);
@@ -32,7 +32,7 @@ class ExchangeController extends Controller{
 	}
 
 	public function exchange_title_(){
-		return Dyhb::L('积分兑换','Controller/Spaceadmin');
+		return Dyhb::L('积分兑换','Controller');
 	}
 
 	public function exchange_keywords_(){

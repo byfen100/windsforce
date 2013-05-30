@@ -8,7 +8,7 @@ class UsertopController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteusertop')){
-			$this->E(Dyhb::L('你没有权限访问会员排行','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问会员排行','Controller'));
 		}
 
 		// 读取统计缓存
@@ -33,7 +33,7 @@ class UsertopController extends Controller{
 	}
 
 	public function usertop_title_(){
-		return Dyhb::L('会员排行','Controller/Stat');
+		return Dyhb::L('会员排行','Controller');
 	}
 
 	public function usertop_keywords_(){

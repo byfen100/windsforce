@@ -56,7 +56,7 @@ function deleteSystemPms(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template/Pm'>-->短消息<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->短消息<!--</lang>--></li>
 		</ul>
 
 		<div class="row">
@@ -88,7 +88,7 @@ function deleteSystemPms(){
 									<input type="checkbox" id="chkall" name="chkall" onclick="checkAll('checkList')"> <!--<lang package='__COMMON_LANG__@Common'>-->全选<!--</lang>-->
 								</label>
 								<span class="pipe">|</span>
-								<span class="label label-success"><a href="javascript:void(0);" onclick="readPms();return false;"><!--<lang package='Template/Pm'>-->标为已读<!--</lang>--></a></span>
+								<span class="label label-success"><a href="javascript:void(0);" onclick="readPms();return false;"><!--<lang package='Template'>-->标为已读<!--</lang>--></a></span>
 								<span class="pipe">|</span>
 								<span class="label label-warning"><a href="javascript:void(0);" onclick="deleteSystemPms();return false;"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></span>
 							</span>
@@ -111,7 +111,7 @@ function deleteSystemPms(){
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th colspan="2"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template/Pm'>-->短消息<!--</lang>--></th>
+									<th colspan="2"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template'>-->短消息<!--</lang>--></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -134,18 +134,18 @@ function deleteSystemPms(){
 										<!--{/if}-->
 										&nbsp;<em><!--{$oPm:create_dateline|Core_Extend+timeFormat}--></em>
 										<!--{if $sType!='my' && $oPm:pm_isread==0}-->
-										&nbsp;<img src="<!--{:__PUBLIC__}-->/images/common/notice_newpm.gif" title="<!--<lang package='Template/Pm'>-->未读短消息<!--</lang>-->"/>
+										&nbsp;<img src="<!--{:__PUBLIC__}-->/images/common/notice_newpm.gif" title="<!--<lang package='Template'>-->未读短消息<!--</lang>-->"/>
 										<!--{/if}-->
 										<!--{if $sType=='my' && $oPm['pm_status']==0}-->
-										&nbsp;<i class="icon-remove-circle"></i>&nbsp;<!--<lang package='Template/Pm'>-->已删<!--</lang>-->
+										&nbsp;<i class="icon-remove-circle"></i>&nbsp;<!--<lang package='Template'>-->已删<!--</lang>-->
 										<!--{/if}-->
 										</p>
 										<p class="pm-summary">
 											<!--{$oPm:pm_message|G+subString=0,$GLOBALS['_cache_']['home_option']['pm_list_substring_num']|Pm_Extend+ubb}-->
 										</p>
-										<p class="pm-more"><a href="<!--{:Dyhb::U('home://pm/show?id='.$oPm->pm_id.($sType=='my'?'&muid=':'&uid=').$oPm->pm_msgfromid)}-->"><!--<lang package='Template/Pm'>-->查看消息<!--</lang>--></a>
+										<p class="pm-more"><a href="<!--{:Dyhb::U('home://pm/show?id='.$oPm->pm_id.($sType=='my'?'&muid=':'&uid=').$oPm->pm_msgfromid)}-->"><!--<lang package='Template'>-->查看消息<!--</lang>--></a>
 											<!--{if $sType!='my'}-->
-											<span class="pipe">|</span><a href="<!--{:Dyhb::U('home://pm/pmnew?pmid='.$oPm->pm_id.'&uid='.$oPm->pm_msgfromid)}-->"><!--<lang package='Template/Pm'>-->回复<!--</lang>--></a><!--{/if}-->
+											<span class="pipe">|</span><a href="<!--{:Dyhb::U('home://pm/pmnew?pmid='.$oPm->pm_id.'&uid='.$oPm->pm_msgfromid)}-->"><!--<lang package='Template'>-->回复<!--</lang>--></a><!--{/if}-->
 										</p>
 									</td>
 									<td><!--{if $sType!='my'}--><p><a href="javascript:void(0);" id="pmd_<!--{$oPm:pm_id}-->" onclick="deletePm('<!--{$oPm['pm_id']}-->','<!--{$oPm['pm_msgfromid']}-->');return false;" title="<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></p><!--{d*else}--><p><a href="javascript:void(0);" id="pmd_<!--{$oPm:pm_id}-->" onclick="deleteMyPm('<!--{$oPm['pm_id']}-->');return false;" title="<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a></p>
@@ -158,11 +158,11 @@ function deleteSystemPms(){
 									<td width="10px"><img src="<!--{:__PUBLIC__}-->/images/common/pm.gif" /></td>
 									<td>
 										<!--{if $oPm['pm_subject']}--><a href="<!--{:Dyhb::U('home://pm/show?id='.$oPm->pm_id)}-->"><h5><!--{$oPm['pm_subject']}--></h5></a><!--{/if}-->
-										<p class="pm-cite"><a href="<!--{:Dyhb::U('home://space@?id='.$oPm->pm_msgfromid)}-->" target="_blank"><!--{$oPm:pm_msgfrom}--></a> <!--<lang package='Template/Pm'>-->发布<!--</lang>-->&nbsp;<em><!--{$oPm:create_dateline|Core_Extend+timeFormat}--></em><!--{if !in_array($oPm['pm_id'],$arrReadPms)}-->&nbsp;<img src="<!--{:__PUBLIC__}-->/images/common/notice_newpm.gif" title="<!--<lang package='Template/Pm'>-->未读短消息<!--</lang>-->"/><!--{/if}--></p>
+										<p class="pm-cite"><a href="<!--{:Dyhb::U('home://space@?id='.$oPm->pm_msgfromid)}-->" target="_blank"><!--{$oPm:pm_msgfrom}--></a> <!--<lang package='Template'>-->发布<!--</lang>-->&nbsp;<em><!--{$oPm:create_dateline|Core_Extend+timeFormat}--></em><!--{if !in_array($oPm['pm_id'],$arrReadPms)}-->&nbsp;<img src="<!--{:__PUBLIC__}-->/images/common/notice_newpm.gif" title="<!--<lang package='Template'>-->未读短消息<!--</lang>-->"/><!--{/if}--></p>
 										<p class="pm-summary">
 										<!--{$oPm:pm_message|G+subString=0,$GLOBALS['_cache_']['home_option']['pm_list_substring_num']|Pm_Extend+ubb}-->
 										</p>
-										<p class="pm-more"><a href="<!--{:Dyhb::U('home://pm/show?id='.$oPm->pm_id)}-->"><!--<lang package='Template/Pm'>-->查看消息<!--</lang>--></a></p>
+										<p class="pm-more"><a href="<!--{:Dyhb::U('home://pm/show?id='.$oPm->pm_id)}-->"><!--<lang package='Template'>-->查看消息<!--</lang>--></a></p>
 									</td>
 									<!--{if in_array($sType,array('system','systemnew'))}--><td>
 										<p><input name="pmid[]" type="checkbox" value="<!--{$oPm:pm_id}-->" /></p>
@@ -176,7 +176,7 @@ function deleteSystemPms(){
 							</tbody>
 						</table>
 						<!--{d*else}-->
-						<!--<lang package='Template/Pm'>-->没有发现短消息<!--</lang>-->
+						<!--<lang package='Template'>-->没有发现短消息<!--</lang>-->
 						<!--{/if}-->
 					</div>
 				</form>

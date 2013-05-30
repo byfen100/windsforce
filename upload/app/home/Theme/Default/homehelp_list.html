@@ -2,14 +2,14 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template/Homehelp'>-->帮助信息<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->帮助信息<!--</lang>--></li>
 		</ul>
 		
 		<div class="row">
 			<div class="span2">
 				<ul class="nav nav-list">
-					<li class="nav-header"><!--<lang package='Template/Homehelp'>-->帮助信息<!--</lang>--></li>
-					<li <!--{if !$nCid}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://homehelp/index')}-->"><!--<lang package='Template/Homehelp'>-->所有帮助<!--</lang>--></a></li>
+					<li class="nav-header"><!--<lang package='Template'>-->帮助信息<!--</lang>--></li>
+					<li <!--{if !$nCid}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://homehelp/index')}-->"><!--<lang package='Template'>-->所有帮助<!--</lang>--></a></li>
 					<!--<foreach for=arrHomehelpcategorys value=oHomehelpcategory>-->
 					<li <!--{if $nCid==$oHomehelpcategory['homehelpcategory_id']}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://homehelp/index?cid='.$oHomehelpcategory['homehelpcategory_id'])}-->"><!--{$oHomehelpcategory['homehelpcategory_name']}--></a>
 					</li>
@@ -22,14 +22,14 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th><!--<lang package='Template/Homehelp'>-->帮助标题<!--</lang>--></th>
-							<th><!--<lang package='Template/Homehelp'>-->添加时间<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->帮助标题<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->添加时间<!--</lang>--></th>
 						</tr>
 					</thead>
 					<tbody>
 						<!--<foreach for=arrHomehelps value=oHomehelp>-->
 						<tr>
-							<td>[<!--{if $oHomehelp['homehelpcategory_id']}--><a href="<!--{:Dyhb::U('home://homehelp/index?cid='.$oHomehelp['homehelpcategory_id'])}-->"><!--{$oHomehelp:homehelpcategory:homehelpcategory_name}--></a><!--{d*else}--><!--<lang package='Template/Homehelp'>-->未分类<!--</lang>--><!--{/if}-->]<a href="<!--{:Dyhb::U('home://help@?id='.$oHomehelp['homehelp_id'])}-->"><!--{$oHomehelp:homehelp_title}--></a></td>
+							<td>[<!--{if $oHomehelp['homehelpcategory_id']}--><a href="<!--{:Dyhb::U('home://homehelp/index?cid='.$oHomehelp['homehelpcategory_id'])}-->"><!--{$oHomehelp:homehelpcategory:homehelpcategory_name}--></a><!--{d*else}--><!--<lang package='Template'>-->未分类<!--</lang>--><!--{/if}-->]<a href="<!--{:Dyhb::U('home://help@?id='.$oHomehelp['homehelp_id'])}-->"><!--{$oHomehelp:homehelp_title}--></a></td>
 							<td><!--{$oHomehelp:create_dateline|Core_Extend+timeFormat}--></td>
 						</tr>
 						<!--</foreach>-->

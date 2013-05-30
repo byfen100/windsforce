@@ -10,7 +10,7 @@ class ReadselectController extends Controller{
 		$arrPmIds=G::getGpc('pmid','P');
 		
 		if(empty($arrPmIds)){
-			$this->E(Dyhb::L('你没有指定要标记的短消息','Controller/Pm'));
+			$this->E(Dyhb::L('你没有指定要标记的短消息','Controller'));
 		}
 		
 		if($arrPmIds){
@@ -24,7 +24,7 @@ class ReadselectController extends Controller{
 			}
 		}
 		
-		$this->S(Dyhb::L('标记短消息已读成功','Controller/Pm'));
+		$this->S(Dyhb::L('标记短消息已读成功','Controller'));
 	}
 
 }

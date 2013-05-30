@@ -22,7 +22,7 @@ class TruncatepmController extends Controller{
 		$oDb->query($sSql);
 		
 		$this->assign('__JumpUrl__',Dyhb::U('home://pm/index?type=user'));
-		$this->S(Dyhb::L('短消息清空成功','Controller/Pm'));
+		$this->S(Dyhb::L('短消息清空成功','Controller'));
 	}
 
 }

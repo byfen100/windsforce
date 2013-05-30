@@ -14,7 +14,7 @@ class IndexController extends Controller{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
 		}
@@ -41,7 +41,7 @@ class IndexController extends Controller{
 	}
 
 	public function rating_title_(){
-		return Dyhb::L('积分','Controller/Spaceadmin');
+		return Dyhb::L('积分','Controller');
 	}
 
 	public function rating_keywords_(){

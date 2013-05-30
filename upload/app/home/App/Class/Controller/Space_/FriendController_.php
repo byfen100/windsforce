@@ -18,7 +18,7 @@ class FriendController extends Controller{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Space'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
 			$this->_oUserInfo=$oUserInfo;
@@ -72,7 +72,7 @@ class FriendController extends Controller{
 	}
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.($this->_bFan===true?Dyhb::L('我的粉丝','Controller/Space'):Dyhb::L('我的好友','Controller/Space'));
+		return $this->_oUserInfo['user_name'].' - '.($this->_bFan===true?Dyhb::L('我的粉丝','Controller'):Dyhb::L('我的好友','Controller'));
 	}
 
 	public function index_keywords_(){

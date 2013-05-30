@@ -6,7 +6,7 @@ html,body{background:none;}
 
 <!--{script}-->
 function deleteAttachment(id){
-	windsforceConfirm('<!--<lang package='Template/Attachment'>-->你确定要删除附件吗?<!--</lang>-->',function(){
+	windsforceConfirm('<!--<lang package='Template'>-->你确定要删除附件吗?<!--</lang>-->',function(){
 		Dyhb.AjaxSend(D.U('home://attachment/delete_attachment?id='+id),
 			'ajax=1','',
 			function(data,status){
@@ -27,10 +27,10 @@ function deleteAttachment(id){
 		<div class="row">
 			<div class="span12">
 				<ul class="nav nav-pills">
-					<li class="<!--{if $nAttachmentcategoryid===null && !G+getGpc('type','G') && !isset($_GET['photo'])}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment?dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template/Attachment'>-->附件列表<!--</lang>--></a></li>
+					<li class="<!--{if $nAttachmentcategoryid===null && !G+getGpc('type','G') && !isset($_GET['photo'])}-->active<!--{/if}-->"><a href="<!--{:Dyhb::U('home://attachment/my_attachment?dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template'>-->附件列表<!--</lang>--></a></li>
 					<li class="dropdown <!--{if $nAttachmentcategoryid!==null && $arrAttachmetncategoryinfo!==false}-->active<!--{/if}-->">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-							<!--<lang package='Template/Attachment'>-->所有专辑<!--</lang>-->
+							<!--<lang package='Template'>-->所有专辑<!--</lang>-->
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu"> 
@@ -40,12 +40,12 @@ function deleteAttachment(id){
 							<!--{if is_array($arrAttachmentcategorys)}-->
 							<li class="divider"></li>
 							<!--{/if}-->
-							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid=0&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid=0&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template'>-->默认专辑<!--</lang>--></a></li>
 						</ul>
 					</li>
 					<li class="dropdown <!--{if G+getGpc('type','G') || isset($_GET['photo'])}-->active<!--{/if}-->">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-							<!--<lang package='Template/Attachment'>-->所有类型<!--</lang>-->
+							<!--<lang package='Template'>-->所有类型<!--</lang>-->
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu"> 
@@ -53,8 +53,8 @@ function deleteAttachment(id){
 							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$sAllowedType.'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--{$sAllowedType}--></a></li>
 							<!--</foreach>-->
 							<li class="divider"></li>
-							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?photo=1&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template/Attachment'>-->图片<!--</lang>--></a></li>
-							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?photo=0&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template/Attachment'>-->附件<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?photo=1&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template'>-->图片<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment?photo=0&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template'>-->附件<!--</lang>--></a></li>
 						</ul>
 					</li>
 				</ul>
@@ -73,8 +73,8 @@ function deleteAttachment(id){
 							</div>
 							<div class="caption">
 								<h5 id="attachment_name_<!--{$oAttachment['attachment_id']}-->"><a target="_blank" href="<!--{:Dyhb::U('home://file@?id='.$oAttachment['attachment_id'])}-->"><!--{$oAttachment['attachment_name']|G+subString=0,5}--></a>(<a href="<!--{:Dyhb::U('home://attachment/my_attachment?type='.$oAttachment['attachment_extension'].'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--{$oAttachment:attachment_extension}--></a>)</h5>
-								<p><a href="javascript:void(0);" onclick="javascript:parent.<!--{$sFunction}-->('<!--{$oAttachment['attachment_id']}-->');"><!--<lang package='Template/Attachment'>-->插入<!--</lang>--></a>&nbsp;
-									<a href="javascript:void(0);" onclick="deleteAttachment(<!--{$oAttachment['attachment_id']}-->);"><!--<lang package='Template/Attachment'>-->删除<!--</lang>--></a>
+								<p><a href="javascript:void(0);" onclick="javascript:parent.<!--{$sFunction}-->('<!--{$oAttachment['attachment_id']}-->');"><!--<lang package='Template'>-->插入<!--</lang>--></a>&nbsp;
+									<a href="javascript:void(0);" onclick="deleteAttachment(<!--{$oAttachment['attachment_id']}-->);"><!--<lang package='Template'>-->删除<!--</lang>--></a>
 								</p>
 							</div>
 						</div>
@@ -82,7 +82,7 @@ function deleteAttachment(id){
 					<!--</foreach>-->
 				</ul>
 				<!--{d*else}-->
-				<p><!--<lang package='Template/Attachment'>-->暂时没有发现任何附件<!--</lang>--></p>
+				<p><!--<lang package='Template'>-->暂时没有发现任何附件<!--</lang>--></p>
 				<!--{/if}-->
 			</div>
 			<div class="span12">
@@ -90,40 +90,40 @@ function deleteAttachment(id){
 			</div>
 			<!--{if $nAttachmentcategoryid!==null && $arrAttachmetncategoryinfo!==false}-->
 			<div class="span12">
-				<h3><!--<lang package='Template/Attachment'>-->专辑信息<!--</lang>--></h3>
+				<h3><!--<lang package='Template'>-->专辑信息<!--</lang>--></h3>
 				<hr/>
 				<p><table class="table table-striped">
 						<!--{if $nAttachmentcategoryid>0}-->
 						<thead>
 							<tr>
-								<th width="150px"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></th>
+								<th width="150px"><!--<lang package='Template'>-->专辑描述<!--</lang>--></th>
 								<th><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--{$arrAttachmetncategoryinfo['attachmentcategory_name']}--></a></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td><!--<lang package='Template/Attachment'>-->创建时间<!--</lang>--></td>
+								<td><!--<lang package='Template'>-->创建时间<!--</lang>--></td>
 								<td><!--{$arrAttachmetncategoryinfo['create_dateline']|Core_Extend+timeFormat}--></td>
 							</tr>
 							<!--{if $arrAttachmetncategoryinfo['update_dateline']}-->
 							<tr>
-								<td><!--<lang package='Template/Attachment'>-->更新时间<!--</lang>--></td>
+								<td><!--<lang package='Template'>-->更新时间<!--</lang>--></td>
 								<td><!--{$arrAttachmetncategoryinfo['update_dateline']|Core_Extend+timeFormat}--></td>
 							</tr>
 							<!--{/if}-->
 							<tr>
-								<th width="150px"><!--<lang package='Template/Attachment'>-->附件数量<!--</lang>--></th>
+								<th width="150px"><!--<lang package='Template'>-->附件数量<!--</lang>--></th>
 								<th><!--{$arrAttachmetncategoryinfo['attachmentcategory_attachmentnum']}--></th>
 							</tr>
 						</tbody>
 						<!--{d*else}-->
 						<thead>
 							<tr>
-								<th width="150px"><!--<lang package='Template/Attachment'>-->专辑描述<!--</lang>--></th>
-								<th><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--></a></th>
+								<th width="150px"><!--<lang package='Template'>-->专辑描述<!--</lang>--></th>
+								<th><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype)}-->"><!--<lang package='Template'>-->默认专辑<!--</lang>--></a></th>
 							</tr>
 							<tr>
-								<th width="150px"><!--<lang package='Template/Attachment'>-->附件数量<!--</lang>--></th>
+								<th width="150px"><!--<lang package='Template'>-->附件数量<!--</lang>--></th>
 								<th><!--{$arrAttachmetncategoryinfo['totalnum']}--></th>
 							</tr>
 						</thead>

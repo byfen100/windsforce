@@ -20,7 +20,7 @@ class DeletesystempmController extends Controller{
 			}
 		}
 
-		$this->S(Dyhb::L('删除系统短消息成功','Controller/Pm'));
+		$this->S(Dyhb::L('删除系统短消息成功','Controller'));
 	}
 
 }

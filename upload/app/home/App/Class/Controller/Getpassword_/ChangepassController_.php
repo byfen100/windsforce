@@ -22,10 +22,10 @@ class ChangepassController extends GlobalchildController{
 		}
 
 		if(empty($oUser->user_id)){
-			$this->E(Dyhb::L('Email账号不存在','Controller/Getpassword'));
+			$this->E(Dyhb::L('Email账号不存在','Controller'));
 		}
 		if($oUser->user_status==0){
-			$this->E(Dyhb::L('该账户已经被禁止','Controller/Getpassword'));
+			$this->E(Dyhb::L('该账户已经被禁止','Controller'));
 		}
 
 		$oUserModel=Dyhb::instance('UserModel');
@@ -42,7 +42,7 @@ class ChangepassController extends GlobalchildController{
 				$this->E($oUser->getErrorMessage());
 			}
 
-			$this->S(Dyhb::L('密码修改成功，你需要重新登录','Controller/Getpassword'));
+			$this->S(Dyhb::L('密码修改成功，你需要重新登录','Controller'));
 		}
 	}
 

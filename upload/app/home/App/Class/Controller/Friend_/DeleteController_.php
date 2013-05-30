@@ -16,7 +16,7 @@ class DeleteController extends Controller{
 		if($oFriendModel->isError()){
 			$this->E($oFriendModel->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('删除好友成功','Controller/Friend'));
+			$this->S(Dyhb::L('删除好友成功','Controller'));
 		}
 	}
 

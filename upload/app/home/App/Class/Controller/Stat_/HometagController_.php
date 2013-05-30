@@ -11,7 +11,7 @@ class HometagController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteuserlist')){
-			$this->E(Dyhb::L('你没有权限访问用户标签列表','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问用户标签列表','Controller'));
 		}
 
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
@@ -29,7 +29,7 @@ class HometagController extends Controller{
 	}
 
 	public function hometag_title_(){
-		return Dyhb::L('用户标签列表','Controller/Stat');
+		return Dyhb::L('用户标签列表','Controller');
 	}
 
 	public function hometag_keywords_(){

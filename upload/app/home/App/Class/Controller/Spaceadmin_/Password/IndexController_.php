@@ -15,7 +15,7 @@ class IndexController extends Controller{
 	}
 
 	public function password_title_(){
-		return Dyhb::L('修改密码','Controller/Spaceadmin');
+		return Dyhb::L('修改密码','Controller');
 	}
 
 	public function password_keywords_(){

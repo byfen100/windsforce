@@ -11,7 +11,7 @@ class MobileController extends Controller{
 	}
 
 	public function mobile_title_(){
-		return Dyhb::L('手机版','Controller/Public');
+		return Dyhb::L('手机版','Controller');
 	}
 
 	public function mobile_keywords_(){

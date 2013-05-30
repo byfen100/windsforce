@@ -11,7 +11,7 @@ class ExploreController extends Controller{
 	
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteexplore')){
-			$this->E(Dyhb::L('你没有权限访问随便看看','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问随便看看','Controller'));
 		}
 		
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
@@ -25,7 +25,7 @@ class ExploreController extends Controller{
 			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
 			if(empty($oHomefreshtag['homefreshtag_id'])){
 				$this->assign('__JumpUrl__',Dyhb::U('home://stat/explore'));
-				$this->E(Dyhb::L('话题不存在或者被禁止了','Controller/Stat'));
+				$this->E(Dyhb::L('话题不存在或者被禁止了','Controller'));
 			}
 
 			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");
@@ -39,7 +39,7 @@ class ExploreController extends Controller{
 			$oUser=UserModel::F('user_status=1 AND user_name=?',$sAtusername)->getOne();
 			if(empty($oUser['user_id'])){
 				$this->assign('__JumpUrl__',Dyhb::U('home://stat/explore'));
-				$this->E(Dyhb::L('用户不存在或者被禁止了','Controller/Stat'));
+				$this->E(Dyhb::L('用户不存在或者被禁止了','Controller'));
 			}
 
 			$arrWhere['homefresh_message']=array('like',"%[MESSAGE]@{$sAtusername}[/MESSAGE]%");
@@ -91,7 +91,7 @@ class ExploreController extends Controller{
 			$sTitle='@'.$this->_sAtusername.' | ';
 		}
 		
-		return $sTitle.Dyhb::L('随便看看','Controller/Stat');
+		return $sTitle.Dyhb::L('随便看看','Controller');
 	}
 
 	public function explore_keywords_(){

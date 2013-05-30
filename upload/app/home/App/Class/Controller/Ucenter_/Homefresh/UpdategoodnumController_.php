@@ -13,13 +13,13 @@ class UpdategoodnumController extends Controller{
 		$cookieValue=Dyhb::cookie('homefresh_goodnum');
 		$cookieValue=explode(',',$cookieValue);
 		if(in_array($nId,$cookieValue)){
-			$this->E(Dyhb::L('你已经赞了','Controller/Homefresh'),1);
+			$this->E(Dyhb::L('你已经赞了','Controller'),1);
 		}
 
 		// 更新赞
 		$oHomefresh=HomefreshModel::F('homefresh_id=?',$nId)->getOne();
 		if(empty($oHomefresh->homefresh_id)){
-			$this->E(Dyhb::L('你赞成的新鲜事不存在','Controller/Homefresh'));
+			$this->E(Dyhb::L('你赞成的新鲜事不存在','Controller'));
 		}
 
 		$oHomefresh->homefresh_goodnum=$oHomefresh->homefresh_goodnum+1;
@@ -35,7 +35,7 @@ class UpdategoodnumController extends Controller{
 
 		$arrData['num']=$oHomefresh->homefresh_goodnum;
 
-		$this->A($arrData,Dyhb::L('赞','Controller/Homefresh').'+1',1,1);
+		$this->A($arrData,Dyhb::L('赞','Controller').'+1',1,1);
 	}
 
 }

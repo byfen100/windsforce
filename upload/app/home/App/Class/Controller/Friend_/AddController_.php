@@ -16,7 +16,7 @@ class AddController extends Controller{
 			$this->E($oFriendModel->getErrorMessage());
 		}else{
 			// 发送提醒
-			$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('成为了你的粉丝','Controller/Friend').'</span><div class="notice_action"><a href="{@fan_link}">'.Dyhb::L('查看','Controller/Friend').'</a></div></div>';
+			$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('成为了你的粉丝','Controller').'</span><div class="notice_action"><a href="{@fan_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 			$arrNoticedata=array(
 				'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -30,7 +30,7 @@ class AddController extends Controller{
 				$this->E($e->getMessage());
 			}
 
-			$this->S(Dyhb::L('添加好友成功','Controller/Friend'));
+			$this->S(Dyhb::L('添加好友成功','Controller'));
 		}
 	}
 

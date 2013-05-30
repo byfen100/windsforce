@@ -27,7 +27,7 @@ class DeleteController extends Controller{
 			}
 		}
 
-		$this->S(Dyhb::L('删除用户标签成功','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('删除用户标签成功','Controller'));
 	}
 
 }

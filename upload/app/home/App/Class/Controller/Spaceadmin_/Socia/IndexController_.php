@@ -32,7 +32,7 @@ class IndexController extends Controller{
 	}
 
 	public function socia_title_(){
-		return Dyhb::L('社会化帐号','Controller/Spaceadmin');
+		return Dyhb::L('社会化帐号','Controller');
 	}
 
 	public function socia_keywords_(){

@@ -8,7 +8,7 @@ class AudituserguestbookController extends GlobalchildController{
 
 	public function index(){
 		if($GLOBALS['___login___']===false){
-			$this->E(Dyhb::L('你没有登录，无法留言','Controller/Space'));
+			$this->E(Dyhb::L('你没有登录，无法留言','Controller'));
 		}
 
 		$nId=intval(G::getGpc('id','G'));
@@ -16,7 +16,7 @@ class AudituserguestbookController extends GlobalchildController{
 
 		$oUserguestbook=UserguestbookModel::F('userguestbook_id=? AND userguestbook_status=1',$nId)->getOne();
 		if(empty($oUserguestbook['userguestbook_id'])){
-			$this->E(Dyhb::L('待操作的留言不存在或者已被系统屏蔽','Controller/Space'));
+			$this->E(Dyhb::L('待操作的留言不存在或者已被系统屏蔽','Controller'));
 		}
 
 		$oUserguestbook->userguestbook_auditpass=$nStatus;
@@ -26,7 +26,7 @@ class AudituserguestbookController extends GlobalchildController{
 			$this->E($oUserguestbook->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('留言操作成功','Controller/Space'));
+		$this->S(Dyhb::L('留言操作成功','Controller'));
 	}
 
 }

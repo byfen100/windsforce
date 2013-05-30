@@ -84,12 +84,12 @@ class IndexController extends Controller{
 
 		switch($sType){
 			case 'new':
-				return Dyhb::L('未读提醒','Controller/Notice');
+				return Dyhb::L('未读提醒','Controller');
 				break;
 			case 'isread':
-				return Dyhb::L('已读提醒','Controller/Notice');
+				return Dyhb::L('已读提醒','Controller');
 			default:
-				return Dyhb::L('未读提醒','Controller/Notice');
+				return Dyhb::L('未读提醒','Controller');
 				break;
 		}
 	}

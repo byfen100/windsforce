@@ -11,7 +11,7 @@ class SearchresultController extends Controller{
 
 	public function index(){
 		if($GLOBALS['_option_']['allow_search_user']==0){
-			$this->E(Dyhb::L('系统关闭了好友搜索功能','Controller/Friend'));
+			$this->E(Dyhb::L('系统关闭了好友搜索功能','Controller'));
 		}
 		
 		// 扩展信息字段
@@ -129,7 +129,7 @@ class SearchresultController extends Controller{
 	}
 
 	public function searchresult_title_(){
-		return Dyhb::L('好友搜索结果','Controller/Friend');
+		return Dyhb::L('好友搜索结果','Controller');
 	}
 
 	public function searchresult_keywords_(){

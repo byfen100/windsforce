@@ -16,7 +16,7 @@ class GuestbookController extends GlobalchildController{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Space'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
 			$this->_oUserInfo=$oUserInfo;
@@ -27,7 +27,7 @@ class GuestbookController extends GlobalchildController{
 		if($nIsolationCommentid){
 			$result=UserguestbookModel::getCommenturlByid($nIsolationCommentid);
 			if($result===false){
-				$this->E(Dyhb::L('该条留言已被删除、屏蔽或者尚未通过审核','Controller/Space'));
+				$this->E(Dyhb::L('该条留言已被删除、屏蔽或者尚未通过审核','Controller'));
 			}
 
 			G::urlGoTo($result);
@@ -73,7 +73,7 @@ class GuestbookController extends GlobalchildController{
 	}
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('我的留言板','Controller/Space');
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('我的留言板','Controller');
 	}
 
 	public function index_keywords_(){

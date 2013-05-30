@@ -16,26 +16,26 @@ class TocomputerController extends GlobalchildController{
 
 		$sUserid=G::authcode($sUserid);
 		if(empty($sUserid)){
-			$this->E(Dyhb::L('页面已过期','Controller/Userappeal'));
+			$this->E(Dyhb::L('页面已过期','Controller'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$sUserid)->getOne();
 		if(empty($oUser->user_id)){
-			$this->E(Dyhb::L('Email账号不存在','Controller/Userappeal'));
+			$this->E(Dyhb::L('Email账号不存在','Controller'));
 		}
 
 		if($oUser->user_status==0){
-			$this->E(Dyhb::L('该账户已经被禁止','Controller/Userappeal'));
+			$this->E(Dyhb::L('该账户已经被禁止','Controller'));
 		}
 
 		if(empty($nAppealId)){
-			$this->E(Dyhb::L('无法获取申诉ID','Controller/Userappeal'));
+			$this->E(Dyhb::L('无法获取申诉ID','Controller'));
 		}
 
 		$oAppeal=AppealModel::F('appeal_id=?',$nAppealId)->getOne();
 
 		if(empty($oAppeal->appeal_id)){
-			$this->E(Dyhb::L('无效的申诉ID','Controller/Userappeal'));
+			$this->E(Dyhb::L('无效的申诉ID','Controller'));
 		}
 
 		$sName='APPEAL_'.date('Y_m_d_H_i_s',CURRENT_TIMESTAMP).'.txt';
@@ -52,13 +52,13 @@ class TocomputerController extends GlobalchildController{
 		$sAppealscheduleUrl=Core_Extend::windsforceOuter('app=home&c=userappeal&a=schedule');
 		$sNlbr="\r\n";
 
-		$sContent='['.$GLOBALS['_option_']['site_name'].']'.Dyhb::L('用户申诉回执单','Controller/Userappeal').$sNlbr;
+		$sContent='['.$GLOBALS['_option_']['site_name'].']'.Dyhb::L('用户申诉回执单','Controller').$sNlbr;
 		$sContent.='-----------------------------------------------------'.$sNlbr;
-		$sContent.=Dyhb::L('申诉人','Controller/Userappeal').':'.$oAppeal->appeal_realname.$sNlbr.$sNlbr;
-		$sContent.=Dyhb::L('申诉回执编号','Controller/Userappeal').':'.$oAppeal->appeal_receiptnumber.$sNlbr.$sNlbr;
-		$sContent.='--'.Dyhb::L('请牢记你的申诉编号，以便于随时查询申诉进度','Controller/Userappeal').$sNlbr;
+		$sContent.=Dyhb::L('申诉人','Controller').':'.$oAppeal->appeal_realname.$sNlbr.$sNlbr;
+		$sContent.=Dyhb::L('申诉回执编号','Controller').':'.$oAppeal->appeal_receiptnumber.$sNlbr.$sNlbr;
+		$sContent.='--'.Dyhb::L('请牢记你的申诉编号，以便于随时查询申诉进度','Controller').$sNlbr;
 		$sContent.=$sAppealscheduleUrl.$sNlbr.$sNlbr;
-		$sContent.=Dyhb::L('接受申诉结果的Email','Controller/Userappeal').':'.$oAppeal->appeal_email.$sNlbr.$sNlbr;
+		$sContent.=Dyhb::L('接受申诉结果的Email','Controller').':'.$oAppeal->appeal_email.$sNlbr.$sNlbr;
 		$sContent.='-----------------------------------------------------'.$sNlbr;
 		$sContent.=date('Y-m-d H:i',CURRENT_TIMESTAMP);
 

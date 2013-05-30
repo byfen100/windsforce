@@ -61,7 +61,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('修改资料','Controller/Spaceadmin');
+		return Dyhb::L('修改资料','Controller');
 	}
 
 	public function index_keywords_(){

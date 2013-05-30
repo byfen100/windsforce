@@ -12,7 +12,7 @@ class AuditController extends Controller{
 
 		$oHomefreshcomment=HomefreshcommentModel::F('homefreshcomment_id=? AND homefreshcomment_status=1',$nId)->getOne();
 		if(empty($oHomefreshcomment['homefreshcomment_id'])){
-			$this->E(Dyhb::L('待操作的评论不存在或者已被系统屏蔽','Controller/Homefresh'));
+			$this->E(Dyhb::L('待操作的评论不存在或者已被系统屏蔽','Controller'));
 		}
 
 		$oHomefreshcomment->homefreshcomment_auditpass=$nStatus;
@@ -30,7 +30,7 @@ class AuditController extends Controller{
 			$oHomefresh->getErrorMessage();
 		}
 
-		$this->S(Dyhb::L('评论操作成功','Controller/Homefresh'));
+		$this->S(Dyhb::L('评论操作成功','Controller'));
 	}
 
 }

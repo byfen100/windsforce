@@ -17,7 +17,7 @@ class LoginController extends GlobalchildController{
 		
 		if($GLOBALS['___login___']!==false){
 			$this->assign('__JumpUrl__',__APP__);
-			$this->E(Dyhb::L('你已经登录','Controller/Public'));
+			$this->E(Dyhb::L('你已经登录','Controller'));
 		}
 
 		Core_Extend::loadCache('sociatype');
@@ -41,7 +41,7 @@ class LoginController extends GlobalchildController{
 	}
 
 	public function login_title_(){
-		return Dyhb::L('登录','Controller/Public');
+		return Dyhb::L('登录','Controller');
 	}
 
 	public function login_keywords_(){
@@ -80,7 +80,7 @@ class LoginController extends GlobalchildController{
 
 		if(empty($arrUser)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://public/login'));
-			$this->E(Dyhb::L('你尚未登录社会化帐号','Controller/Public'));
+			$this->E(Dyhb::L('你尚未登录社会化帐号','Controller'));
 		}
 
 		$this->assign('arrUser',$arrUser);
@@ -90,7 +90,7 @@ class LoginController extends GlobalchildController{
 	}
 
 	public function socia_bind_title_(){
-		return Dyhb::L('社会化绑定','Controller/Public');
+		return Dyhb::L('社会化绑定','Controller');
 	}
 
 	public function socia_bind_keywords_(){
@@ -112,14 +112,14 @@ class LoginController extends GlobalchildController{
 		}
 
 		$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
-		$this->S(Dyhb::L('帐号解除绑定成功','Controller/Public'));
+		$this->S(Dyhb::L('帐号解除绑定成功','Controller'));
 	}
 
 	public function bind_again(){
 		$arrUser=Socia::getUser();
 
 		if(empty($arrUser)){
-			$this->E(Dyhb::L('你尚未登录社会化帐号','Controller/Public'));
+			$this->E(Dyhb::L('你尚未登录社会化帐号','Controller'));
 		}
 
 		$oSocia=Dyhb::instance('Socia',$arrUser['sociauser_vendor']);
@@ -135,9 +135,9 @@ class LoginController extends GlobalchildController{
 		$sPassword=G::getGpc('user_password','P');
 
 		if(empty($sUserName)){
-			$this->E(Dyhb::L('帐号或者E-mail不能为空','Controller/Public'));
+			$this->E(Dyhb::L('帐号或者E-mail不能为空','Controller'));
 		}elseif(empty($sPassword)){
-			$this->E(Dyhb::L('密码不能为空','Controller/Public'));
+			$this->E(Dyhb::L('密码不能为空','Controller'));
 		}
 
 		Check::RUN();
@@ -175,7 +175,7 @@ class LoginController extends GlobalchildController{
 				}
 			}
 
-			$this->A(array('url'=>$sUrl),Dyhb::L('Hello %s,你成功登录','Controller/Public',null,$sUserName),1);
+			$this->A(array('url'=>$sUrl),Dyhb::L('Hello %s,你成功登录','Controller',null,$sUserName),1);
 		}
 	}
 
@@ -202,9 +202,9 @@ class LoginController extends GlobalchildController{
 			}
 	
 			$this->assign("__JumpUrl__",$sJumpUrl);
-			$this->S(Dyhb::L('登出成功','Controller/Public'));
+			$this->S(Dyhb::L('登出成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('已经登出','Controller/Public'));
+			$this->E(Dyhb::L('已经登出','Controller'));
 		}
 	}
 
@@ -212,7 +212,7 @@ class LoginController extends GlobalchildController{
 		UserModel::M()->clearThisCookie();
 		Socia::clearCookie(true);
 
-		$this->S(Dyhb::L('清理登录痕迹成功','Controller/Public'));
+		$this->S(Dyhb::L('清理登录痕迹成功','Controller'));
 	}
 
 }

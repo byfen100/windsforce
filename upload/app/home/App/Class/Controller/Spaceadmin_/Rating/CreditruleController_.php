@@ -22,7 +22,7 @@ class CreditruleController extends Controller{
 	}
 
 	public function creditrule_title_(){
-		return Dyhb::L('积分规则','Controller/Spaceadmin');
+		return Dyhb::L('积分规则','Controller');
 	}
 
 	public function creditrule_keywords_(){

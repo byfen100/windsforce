@@ -13,7 +13,7 @@ class AppsController extends Controller{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Space'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}else{
 			$this->assign('oUserInfo',$oUserInfo);
 		}
@@ -25,7 +25,7 @@ class AppsController extends Controller{
 		$arrApps=AppModel::F('app_status=?',1)->order('app_id DESC')->getAll();
 		if(is_array($arrApps)){
 			foreach($arrApps as $oApp){
-				if(is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/App/Class/Controller/SpaceController.class.php')){
+				if(is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/App/Class/ControllerController.class.php')){
 					$arrAppinfos[$oApp['app_identifier']]=$oApp->toArray();
 					$arrAppinfos[$oApp['app_identifier']]['logo']=is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/logo.png')?
 						__ROOT__.'/app/'.$oApp['app_identifier'].'/logo.png':
@@ -43,7 +43,7 @@ class AppsController extends Controller{
 	}
 
 	public function index_title_(){
-		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('应用个人空间','Controller/Space');
+		return $this->_oUserInfo['user_name'].' - '.Dyhb::L('应用个人空间','Controller');
 	}
 
 	public function index_keywords_(){

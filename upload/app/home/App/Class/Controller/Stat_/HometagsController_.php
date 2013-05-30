@@ -11,7 +11,7 @@ class HometagsController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteuserlist')){
-			$this->E(Dyhb::L('你没有权限访问用户标签排行榜','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问用户标签排行榜','Controller'));
 		}
 
 		$nHometagHotnum=$GLOBALS['_cache_']['home_option']['hometag_hot_num'];
@@ -45,7 +45,7 @@ class HometagsController extends Controller{
 	}
 
 	public function hometags_title_(){
-		return Dyhb::L('用户标签排行榜','Controller/Stat');
+		return Dyhb::L('用户标签排行榜','Controller');
 	}
 
 	public function hometags_keywords_(){

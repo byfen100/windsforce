@@ -21,11 +21,11 @@ class Step2Controller extends GlobalchildController{
 		}
 		
 		if(empty($oUser->user_id)){
-			$this->E(Dyhb::L('用户名或者用户ID不存在','Controller/Userappeal'));
+			$this->E(Dyhb::L('用户名或者用户ID不存在','Controller'));
 		}
 
 		if($oUser->user_status==0){
-			$this->E(Dyhb::L('该账户已经被禁止','Controller/Userappeal'));
+			$this->E(Dyhb::L('该账户已经被禁止','Controller'));
 		}
 
 		$sUserid=G::authcode($oUser['user_id'],false,null,$GLOBALS['_option_']['appeal_expired']);
@@ -35,7 +35,7 @@ class Step2Controller extends GlobalchildController{
 	}
 
 	public function step2_title_(){
-		return Dyhb::L('填写联系方式','Controller/Userappeal');
+		return Dyhb::L('填写联系方式','Controller');
 	}
 
 	public function step2_keywords_(){

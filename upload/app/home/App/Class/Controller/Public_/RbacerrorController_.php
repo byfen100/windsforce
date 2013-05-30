@@ -20,7 +20,7 @@ class RbacerrorController extends Controller{
 	}
 
 	public function rbacerror_title_(){
-		return Dyhb::L('没有权限访问','Controller/Public');
+		return Dyhb::L('没有权限访问','Controller');
 	}
 
 	public function rbacerror_keywords_(){

@@ -13,12 +13,12 @@ class ViewController extends Controller{
 		$nId=intval(G::getGpc('id','G'));
 
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定要阅读的新鲜事','Controller/Homefresh'));
+			$this->E(Dyhb::L('你没有指定要阅读的新鲜事','Controller'));
 		}
 
 		$oHomefresh=HomefreshModel::F('homefresh_id=? AND homefresh_status=1',$nId)->getOne();
 		if(empty($oHomefresh['homefresh_id'])){
-			$this->E(Dyhb::L('新鲜事不存在或者被屏蔽了','Controller/Homefresh'));
+			$this->E(Dyhb::L('新鲜事不存在或者被屏蔽了','Controller'));
 		}
 
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
@@ -28,7 +28,7 @@ class ViewController extends Controller{
 		if($nIsolationCommentid){
 			$result=HomefreshcommentModel::getCommenturlByid($nIsolationCommentid);
 			if($result===false){
-				$this->E(Dyhb::L('该条评论已被删除、屏蔽或者尚未通过审核','Controller/Homefresh'));
+				$this->E(Dyhb::L('该条评论已被删除、屏蔽或者尚未通过审核','Controller'));
 			}
 
 			G::urlGoTo($result);

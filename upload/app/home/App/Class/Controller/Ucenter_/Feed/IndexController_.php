@@ -93,7 +93,7 @@ class IndexController extends Controller{
 	}
 
 	public function feed_title_(){
-		return Dyhb::L('用户动态','Controller/Feed');
+		return Dyhb::L('用户动态','Controller');
 	}
 
 	public function feed_keywords_(){

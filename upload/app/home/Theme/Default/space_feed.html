@@ -10,8 +10,8 @@ $(function(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><!--<lang package='Template/Space'>-->个人空间<!--</lang>--></a> <span class="divider">/</span></li>
-			<li><!--<lang package='Template/Space'>-->个人动态<!--</lang>--></li>
+			<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><!--<lang package='Template'>-->个人空间<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->个人动态<!--</lang>--></li>
 		</ul>
 
 		<!--<include file="space+menu" />-->
@@ -21,7 +21,7 @@ $(function(){
 				<!--{if !empty($arrFeeddatas)}-->
 				<table class="table">
 					<thead>
-						<th colspan="2"><h3><!--<lang package='Template/Space'>-->用户动态<!--</lang>--></h3></th>
+						<th colspan="2"><h3><!--<lang package='Template'>-->用户动态<!--</lang>--></h3></th>
 					</thead>
 					<tbody>
 						<!--<foreach for=arrFeeddatas value=arrFeeddata>-->
@@ -48,7 +48,7 @@ $(function(){
 					</tbody>
 				</table>
 				<!--{d*else}-->
-				<p><!--<lang package='Template/Space'>-->暂无任何动态<!--</lang>--></p>
+				<p><!--<lang package='Template'>-->暂无任何动态<!--</lang>--></p>
 				<!--{/if}-->
 
 				<!--{$sPageNavbar}-->

@@ -8,7 +8,7 @@ class AppsController extends InitController{
 	
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteapps')){
-			$this->E(Dyhb::L('你没有权限访问应用列表','Controller/Apps'));
+			$this->E(Dyhb::L('你没有权限访问应用列表','Controller'));
 		}
 		
 		$arrAppinfos=array();
@@ -30,7 +30,7 @@ class AppsController extends InitController{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('应用列表','Controller/Apps');
+		return Dyhb::L('应用列表','Controller');
 	}
 
 	public function index_keywords_(){

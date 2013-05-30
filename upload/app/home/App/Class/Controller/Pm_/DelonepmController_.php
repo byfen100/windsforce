@@ -13,7 +13,7 @@ class DelonepmController extends Controller{
 			$nId=G::getGpc('id');
 		}
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定要删除的短消息','Controller/Pm'));
+			$this->E(Dyhb::L('你没有指定要删除的短消息','Controller'));
 		}
 		
 		if(empty($nUserId)){
@@ -26,7 +26,7 @@ class DelonepmController extends Controller{
 		
 		$oPmModel=PmModel::F("pm_id=? AND pm_type='user' AND pm_msgtoid=? ".($nFromId!==0?'AND pm_msgfromid='.$nFromId:''),$nId,$nUserId)->query();
 		if(empty($oPmModel['pm_id'])){
-			$this->E(Dyhb::L('待删除的短消息不存在','Controller/Pm'));
+			$this->E(Dyhb::L('待删除的短消息不存在','Controller'));
 		}
 		
 		$oPmModel->pm_status=0;
@@ -36,7 +36,7 @@ class DelonepmController extends Controller{
 			$this->E($oPmModel->getErrorMessage());
 		}else{
 			if(empty($nOldId)){
-				$this->S(Dyhb::L('删除短消息成功','Controller/Pm'));
+				$this->S(Dyhb::L('删除短消息成功','Controller'));
 			}
 		}
 	}
@@ -46,7 +46,7 @@ class DelonepmController extends Controller{
 		$arrUserId=G::getGpc('uid','P');
 		
 		if(empty($arrPmIds)){
-			$this->E(Dyhb::L('你没有指定要删除的短消息','Controller/Pm'));
+			$this->E(Dyhb::L('你没有指定要删除的短消息','Controller'));
 		}
 		
 		if(is_array($arrPmIds)){
@@ -55,7 +55,7 @@ class DelonepmController extends Controller{
 			}
 		}
 		
-		$this->S(Dyhb::L('删除短消息成功','Controller/Pm'));
+		$this->S(Dyhb::L('删除短消息成功','Controller'));
 	}
 
 }

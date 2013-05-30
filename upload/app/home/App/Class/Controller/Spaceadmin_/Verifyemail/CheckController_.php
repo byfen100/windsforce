@@ -18,14 +18,14 @@ class CheckController extends Controller{
 
 		if(empty($sHash)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://spaceadmin/verifyemail'));
-			$this->E(Dyhb::L('Email验证链接已过期','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('Email验证链接已过期','Controller'));
 		}
 		
 		$oUser=UserModel::F('user_email=? AND user_verifycode=?',$sEmail,$sHash)->getOne();
 		
 		if(empty($oUser->user_id)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://spaceadmin/verifyemail'));
-			$this->E(Dyhb::L('Email验证链接已过期','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('Email验证链接已过期','Controller'));
 		}
 
 		// 确认验证状态
@@ -42,7 +42,7 @@ class CheckController extends Controller{
 		Core_Extend::updateCreditByAction('verifyemail',$GLOBALS['___login___']['user_id']);
 
 		$this->assign('__JumpUrl__',Dyhb::U('home://spaceadmin/verifyemail'));
-		$this->S(Dyhb::L('恭喜Email验证通过','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('恭喜Email验证通过','Controller'));
 	}
 
 }

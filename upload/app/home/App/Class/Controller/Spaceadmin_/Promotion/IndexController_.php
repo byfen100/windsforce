@@ -39,7 +39,7 @@ class IndexController extends Controller{
 	}
 
 	public function promotion_title_(){
-		return Dyhb::L('访问推广','Controller/Spaceadmin');
+		return Dyhb::L('访问推广','Controller');
 	}
 
 	public function promotion_keywords_(){

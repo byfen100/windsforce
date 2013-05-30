@@ -94,22 +94,22 @@ class IndexController extends Controller{
 
 		switch($sType){
 			case 'new':
-				return Dyhb::L('未读短消息','Controller/Pm');
+				return Dyhb::L('未读短消息','Controller');
 				break;
 			case 'user':
-				return Dyhb::L('私人短消息','Controller/Pm');
+				return Dyhb::L('私人短消息','Controller');
 				break;
 			case 'my':
-				return Dyhb::L('已发短消息','Controller/Pm');
+				return Dyhb::L('已发短消息','Controller');
 				break;
 			case 'systemnew':
-				return Dyhb::L('未读公共短消息','Controller/Pm');
+				return Dyhb::L('未读公共短消息','Controller');
 				break;
 			case 'system':
-				return Dyhb::L('公共短消息','Controller/Pm');
+				return Dyhb::L('公共短消息','Controller');
 				break;
 			default:
-				return Dyhb::L('私人短消息','Controller/Pm');
+				return Dyhb::L('私人短消息','Controller');
 				break;
 		}
 	}

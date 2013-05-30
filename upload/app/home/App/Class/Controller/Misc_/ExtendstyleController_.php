@@ -8,7 +8,7 @@ class ExtendstyleController extends Controller{
 
 	public function index(){
 		if($GLOBALS['_option_']['extendstyle_switch_on']==0){
-			$this->E(Dyhb::L('系统已经关闭了主题扩展切换功能','Controller/Misc'));
+			$this->E(Dyhb::L('系统已经关闭了主题扩展切换功能','Controller'));
 		}
 
 		$sStyleId=trim(G::getGpc('id','G'));
@@ -27,7 +27,7 @@ class ExtendstyleController extends Controller{
 			}
 		}
 
-		$this->S(Dyhb::L('主题样式切换成功','Controller/Misc'));
+		$this->S(Dyhb::L('主题样式切换成功','Controller'));
 	}
 
 }

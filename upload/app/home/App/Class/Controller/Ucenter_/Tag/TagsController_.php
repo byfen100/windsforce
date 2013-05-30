@@ -39,7 +39,7 @@ class TagsController extends Controller{
 	}
 
 	public function tags_title_(){
-		return Dyhb::L('新鲜事话题排行榜','Controller/Homefreshtag');
+		return Dyhb::L('新鲜事话题排行榜','Controller');
 	}
 
 	public function tags_keywords_(){

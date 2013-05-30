@@ -8,7 +8,7 @@ class FeedController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('sitefeed')){
-			$this->E(Dyhb::L('你没有权限访问用户动态','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问用户动态','Controller'));
 		}
 		
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
@@ -57,7 +57,7 @@ class FeedController extends Controller{
 	}
 
 	public function feed_title_(){
-		return Dyhb::L('用户动态','Controller/Stat');
+		return Dyhb::L('用户动态','Controller');
 	}
 
 	public function feed_keywords_(){

@@ -20,35 +20,35 @@ class Step3Controller extends GlobalchildController{
 		$sUserid=trim(G::getGpc('user_id','P'));
 
 		if(empty($sRealname)){
-			$this->E(Dyhb::L('真实姓名不能为空','Controller/Userappeal'));
+			$this->E(Dyhb::L('真实姓名不能为空','Controller'));
 		}
 
 		if(empty($sAppealemail)){
-			$this->E(Dyhb::L('申诉结果接收邮箱不能为','Controller/Userappeal'));
+			$this->E(Dyhb::L('申诉结果接收邮箱不能为','Controller'));
 		}
 		
 		Check::RUN();
 		if(!Check::C($sAppealemail,'email')){
-			$this->E(Dyhb::L('Email格式不正确','Controller/Userappeal'));
+			$this->E(Dyhb::L('Email格式不正确','Controller'));
 		}
 		
 		$sUserid=G::authcode($sUserid);
 		if(empty($sUserid)){
-			$this->E(Dyhb::L('页面已过期','Controller/Userappeal'));
+			$this->E(Dyhb::L('页面已过期','Controller'));
 		}
 
 		$oUser=UserModel::F('user_email=? AND user_id!=?',$sAppealemail,$sUserid)->getOne();
 		if(!empty($oUser->user_id)){
-			$this->E(Dyhb::L('该邮箱已经存在','Controller/Userappeal'));
+			$this->E(Dyhb::L('该邮箱已经存在','Controller'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$sUserid)->getOne();
 		if(empty($oUser->user_id)){
-			$this->E(Dyhb::L('Email账号不存在','Controller/Userappeal'));
+			$this->E(Dyhb::L('Email账号不存在','Controller'));
 		}
 
 		if($oUser->user_status==0){
-			$this->E(Dyhb::L('该账户已经被禁止','Controller/Userappeal'));
+			$this->E(Dyhb::L('该账户已经被禁止','Controller'));
 		}
 		
 		$sHashcode=G::randString(32);
@@ -59,18 +59,18 @@ class Step3Controller extends GlobalchildController{
 		$oMailModel=Dyhb::instance('MailModel');
 		$oMailConnect=$oMailModel->getMailConnect();
 
-		$sEmailSubject=$GLOBALS['_option_']['site_name'].Dyhb::L('会员申诉验证码','Controller/Userappeal');
+		$sEmailSubject=$GLOBALS['_option_']['site_name'].Dyhb::L('会员申诉验证码','Controller');
 		$sNlbr=$oMailConnect->getIsHtml()===true?'<br/>':"\r\n";
-		$sEmailContent='<b>'.Dyhb::L('尊敬的用户','Controller/Userappeal').':</b>'.$sNlbr;
+		$sEmailContent='<b>'.Dyhb::L('尊敬的用户','Controller').':</b>'.$sNlbr;
 		$sEmailContent.='-----------------------------------------------------'.$sNlbr;
-		$sEmailContent.=Dyhb::L('你的登录信息','Controller/Userappeal').':';
-		$sEmailContent.=Dyhb::L('用户ID','Controller/Userappeal').'('.$oUser->user_id.')'.$sNlbr;
-		$sEmailContent.=Dyhb::L('本次申诉验证码','Controller/Userappeal').':<span style="color:red;font-weight:bold;">'.$sHashcode.'</span>'.$sNlbr;
-		$sEmailContent.=Dyhb::L('如果你关闭了申诉页面，你也可以点击下面的链接','Controller/Userappeal').Dyhb::L('申诉链接','Controller/Userappeal').$sNlbr;
+		$sEmailContent.=Dyhb::L('你的登录信息','Controller').':';
+		$sEmailContent.=Dyhb::L('用户ID','Controller').'('.$oUser->user_id.')'.$sNlbr;
+		$sEmailContent.=Dyhb::L('本次申诉验证码','Controller').':<span style="color:red;font-weight:bold;">'.$sHashcode.'</span>'.$sNlbr;
+		$sEmailContent.=Dyhb::L('如果你关闭了申诉页面，你也可以点击下面的链接','Controller').Dyhb::L('申诉链接','Controller').$sNlbr;
 		$sEmailContent.="<a href=\"{$sGetPasswordUrl}\">{$sGetPasswordUrl}</a>".$sNlbr.$sNlbr;
 		$sEmailContent.="-----------------------------------------------------".$sNlbr;
-		$sEmailContent.=Dyhb::L('这是系统用于发送申诉验证码的邮件，请勿回复','Controller/Userappeal').$sNlbr;
-		$sEmailContent.=Dyhb::L('申诉验证码过期时间','Controller/Userappeal').':'.$GLOBALS['_option_']['appeal_expired'].Dyhb::L('秒','__COMMON_LANG__@Common').$sNlbr;
+		$sEmailContent.=Dyhb::L('这是系统用于发送申诉验证码的邮件，请勿回复','Controller').$sNlbr;
+		$sEmailContent.=Dyhb::L('申诉验证码过期时间','Controller').':'.$GLOBALS['_option_']['appeal_expired'].Dyhb::L('秒','__COMMON_LANG__@Common').$sNlbr;
 		
 		$oMailConnect->setEmailTo($sAppealemail);
 		$oMailConnect->setEmailSubject($sEmailSubject);
@@ -98,7 +98,7 @@ class Step3Controller extends GlobalchildController{
 	}
 
 	public function step3_title_(){
-		return Dyhb::L('填写申诉资料','Controller/Userappeal');
+		return Dyhb::L('填写申诉资料','Controller');
 	}
 
 	public function step3_keywords_(){

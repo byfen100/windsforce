@@ -106,7 +106,7 @@ function insertAttachmentcommentmusic(sContent){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template/Attachment'>-->我的相册<!--</lang>--></a></li>
+			<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='Template'>-->我的相册<!--</lang>--></a></li>
 		</ul>
 
 		<!--<include file="attachment+menu" />-->
@@ -115,8 +115,8 @@ function insertAttachmentcommentmusic(sContent){
 			<div class="span12">
 				<div class="tabbable" style="margin-bottom: 0px;">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#attachment_view" data-toggle="tab"><!--<lang package='Template/Attachment'>-->附件浏览<!--</lang>--></a></li>
-						<li><a href="#attachment_info" data-toggle="tab"><!--<lang package='Template/Attachment'>-->附件详情<!--</lang>--></a></li>
+						<li class="active"><a href="#attachment_view" data-toggle="tab"><!--<lang package='Template'>-->附件浏览<!--</lang>--></a></li>
+						<li><a href="#attachment_info" data-toggle="tab"><!--<lang package='Template'>-->附件详情<!--</lang>--></a></li>
 					</ul>
 					<div class="tab-content" style="padding-bottom: 0px;">
 						<div class="tab-pane active" id="attachment_view">
@@ -131,34 +131,34 @@ function insertAttachmentcommentmusic(sContent){
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="2"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|nl2br}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->暂无附件描述<!--</lang>--><!--{/if}--></td>
+										<td colspan="2"><!--{if $oAttachment['attachment_description']}--><!--{$oAttachment['attachment_description']|nl2br}--><!--{d*else}--><!--<lang package='Template'>-->暂无附件描述<!--</lang>--><!--{/if}--></td>
 									</tr>
 									<tr>
-										<td width="150px"><!--<lang package='Template/Attachment'>-->上传时间<!--</lang>--></td>
+										<td width="150px"><!--<lang package='Template'>-->上传时间<!--</lang>--></td>
 										<td><!--{$oAttachment['create_dateline']|Core_Extend+timeFormat}--></td>
 									</tr>
 									<tr>
-										<td><!--<lang package='Template/Attachment'>-->所属专辑<!--</lang>--></td>
-										<td><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachment['attachmentcategory_id'])}-->"><!--{if $oAttachment['attachmentcategory_id']>0}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}--><!--<lang package='Template/Attachment'>-->默认专辑<!--</lang>--><!--{/if}--></a></td>
+										<td><!--<lang package='Template'>-->所属专辑<!--</lang>--></td>
+										<td><a href="<!--{:Dyhb::U('home://attachment/my_attachment?cid='.$oAttachment['attachmentcategory_id'])}-->"><!--{if $oAttachment['attachmentcategory_id']>0}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}--><!--<lang package='Template'>-->默认专辑<!--</lang>--><!--{/if}--></a></td>
 									</tr>
 									<tr>
-										<td><!--<lang package='Template/Attachment'>-->下载次数<!--</lang>--></td>
+										<td><!--<lang package='Template'>-->下载次数<!--</lang>--></td>
 										<td><!--{$oAttachment:attachment_download}--></td>
 									</tr>
 									<tr>
-										<td><!--<lang package='Template/Attachment'>-->评论次数<!--</lang>--></td>
+										<td><!--<lang package='Template'>-->评论次数<!--</lang>--></td>
 										<td><a href="javascript:void(0);"><!--{$oAttachment:attachment_commentnum}--></a></td>
 									</tr>
 									<tr>
-										<td><!--<lang package='Template/Attachment'>-->附件大小<!--</lang>--></td>
+										<td><!--<lang package='Template'>-->附件大小<!--</lang>--></td>
 										<td><!--{$oAttachment:attachment_size|G+changeFileSize}--></td>
 									</tr>
 									<tr>
-										<td><!--<lang package='Template/Attachment'>-->附件类型<!--</lang>--></td>
+										<td><!--<lang package='Template'>-->附件类型<!--</lang>--></td>
 										<td><a href="<!--{:Dyhb::U('home://attachment/attachment?type='.$oAttachment['attachment_extension'])}-->"><!--{$oAttachment['attachment_extension']}--></a></td>
 									</tr>
 									<tr>
-										<td><!--<lang package='Template/Attachment'>-->上传用户<!--</lang>--></td>
+										<td><!--<lang package='Template'>-->上传用户<!--</lang>--></td>
 										<td><!--{$oAttachment['user_id']|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oAttachment['user_id'])}-->"><!--{$oAttachment['attachment_username']}--></a></td>
 									</tr>
 								</tbody>

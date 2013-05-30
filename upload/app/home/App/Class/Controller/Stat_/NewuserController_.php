@@ -8,7 +8,7 @@ class NewuserController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('sitenewuser')){
-			$this->E(Dyhb::L('你没有权限访问新注册会员','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问新注册会员','Controller'));
 		}
 		
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
@@ -27,7 +27,7 @@ class NewuserController extends Controller{
 	}
 
 	public function newuser_title_(){
-		return Dyhb::L('新注册会员','Controller/Stat');
+		return Dyhb::L('新注册会员','Controller');
 	}
 
 	public function newuser_keywords_(){

@@ -11,7 +11,7 @@ class SitemapController extends Controller{
 	}
 
 	public function sitemap_title_(){
-		return Dyhb::L('网站地图','Controller/Public');
+		return Dyhb::L('网站地图','Controller');
 	}
 
 	public function sitemap_keywords_(){

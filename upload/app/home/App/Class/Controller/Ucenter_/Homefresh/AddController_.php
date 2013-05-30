@@ -26,7 +26,7 @@ class AddController extends GlobalchildController{
 
 		$sMessage=trim(G::cleanJs(G::getGpc('homefresh_message','P')));
 		if(empty($sMessage)){
-			$this->E(Dyhb::L('新鲜事内容不能为空','Controller/Homefresh'));
+			$this->E(Dyhb::L('新鲜事内容不能为空','Controller'));
 		}
 
 		// 解析新鲜事内容
@@ -73,7 +73,7 @@ class AddController extends GlobalchildController{
 			}
 
 			// 发送feed
-			$sFeedtemplate='<div class="feed_addhomefresh"><span class="feed_title">'.Dyhb::L('发布了一条新鲜事','Controller/Homefresh').'&nbsp;<a href="{@homefresh_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></span><div class="feed_content">{homefresh_message}</div><div class="feed_action"><a href="{@homefresh_link}#comments">'.Dyhb::L('回复','Controller/Homefresh').'</a></div></div>';
+			$sFeedtemplate='<div class="feed_addhomefresh"><span class="feed_title">'.Dyhb::L('发布了一条新鲜事','Controller').'&nbsp;<a href="{@homefresh_link}">'.Dyhb::L('查看','Controller').'</a></span><div class="feed_content">{homefresh_message}</div><div class="feed_action"><a href="{@homefresh_link}#comments">'.Dyhb::L('回复','Controller').'</a></div></div>';
 
 			$arrFeeddata=array(
 				'@homefresh_link'=>'home://fresh@?id='.$oHomefresh['homefresh_id'],
@@ -92,7 +92,7 @@ class AddController extends GlobalchildController{
 					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 						$sHomefreshmessage=Core_Extend::subString($oHomefresh['homefresh_message'],100,false,1,false);
 						
-						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事中提到了你','Controller/Homefresh').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefresh_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
+						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事中提到了你','Controller').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefresh_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 						$arrNoticedata=array(
 							'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -134,7 +134,7 @@ class AddController extends GlobalchildController{
 			Core_Extend::updateCreditByAction('posthomefresh',$GLOBALS['___login___']['user_id']);
 			
 			$arrHomefreshData['homefresh_count']=Homefresh_Extend::getMyhomefreshnum($GLOBALS['___login___']['user_id']);
-			$this->A($arrHomefreshData,Dyhb::L('添加新鲜事成功','Controller/Homefresh'),1);
+			$this->A($arrHomefreshData,Dyhb::L('添加新鲜事成功','Controller'),1);
 		}
 	}
 

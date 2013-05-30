@@ -17,7 +17,7 @@ class EditController extends Controller{
 		if($oFriendModel->isError()){
 			$this->E($oFriendModel->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('更新备注成功','Controller/Friend'));
+			$this->S(Dyhb::L('更新备注成功','Controller'));
 		}
 	}
 

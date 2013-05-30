@@ -15,11 +15,11 @@ class RegisterController extends GlobalchildController{
 		
 		if($GLOBALS['___login___']!==false){
 			$this->assign('__JumpUrl__',__APP__);
-			$this->E(Dyhb::L('你已经登录','Controller/Public'));
+			$this->E(Dyhb::L('你已经登录','Controller'));
 		}
 
 		if($GLOBALS['_option_']['disallowed_register']){
-			$this->E(Dyhb::L('系统关闭了用户注册','Controller/Public'));
+			$this->E(Dyhb::L('系统关闭了用户注册','Controller'));
 		}
 
 		$this->assign('nDisplaySeccode',$GLOBALS['_option_']['seccode_register_status']);
@@ -37,7 +37,7 @@ class RegisterController extends GlobalchildController{
 	}
 
 	public function register_title_(){
-		return Dyhb::L('注册','Controller/Public');
+		return Dyhb::L('注册','Controller');
 	}
 
 	public function register_keywords_(){
@@ -74,11 +74,11 @@ class RegisterController extends GlobalchildController{
 		$sReferer=trim(G::getGpc('referer','P'));
 		
 		if($GLOBALS['___login___']!==false){
-			$this->E(Dyhb::L('你已经登录会员,不能重复注册','Controller/Public'));
+			$this->E(Dyhb::L('你已经登录会员,不能重复注册','Controller'));
 		}
 
 		if($GLOBALS['_option_']['disallowed_register']){
-			$this->E(Dyhb::L('系统关闭了用户注册','Controller/Public'));
+			$this->E(Dyhb::L('系统关闭了用户注册','Controller'));
 		}
 
 		if($GLOBALS['_option_']['seccode_register_status']==1){
@@ -87,23 +87,23 @@ class RegisterController extends GlobalchildController{
 
 		$sPassword=trim(G::getGpc('user_password','P'));
 		if(!$sPassword || $sPassword !=G::addslashes($sPassword)){
-			$this->E(Dyhb::L('密码空或包含非法字符','Controller/Public'));
+			$this->E(Dyhb::L('密码空或包含非法字符','Controller'));
 		}
 		if(strpos($sPassword,"\n")!==false || strpos($sPassword,"\r")!==false || strpos($sPassword,"\t")!==false){
-			$this->E(Dyhb::L('密码包含不可接受字符','Controller/Public'));
+			$this->E(Dyhb::L('密码包含不可接受字符','Controller'));
 		}
 
 		$sUsername=trim(G::getGpc('user_name','P'));
 		$sDisallowedRegisterUser=trim($GLOBALS['_option_']['disallowed_register_user']);
 		$sDisallowedRegisterUser='/^('.str_replace(array('\\*',"\r\n",' '),array('.*','|',''),preg_quote(($sDisallowedRegisterUser=trim($sDisallowedRegisterUser)),'/')).')$/i';
 		if($sDisallowedRegisterUser && @preg_match($sDisallowedRegisterUser,$sUsername)){
-			$this->E(Dyhb::L('用户名包含被系统屏蔽的字符','Controller/Public'));
+			$this->E(Dyhb::L('用户名包含被系统屏蔽的字符','Controller'));
 		}
 
 		$arrNameKeys=array("\\",'&',' ',"'",'"','/','*',',','<','>',"\r","\t","\n",'#','$','(',')','%','@','+','?',';','^');
 		foreach($arrNameKeys as $sNameKeys){
 			if(strpos($sUsername,$sNameKeys)!==false){
-				$this->E(Dyhb::L('此用户名包含不可接受字符或被管理员屏蔽,请选择其它用户名','Controller/Public'));
+				$this->E(Dyhb::L('此用户名包含不可接受字符或被管理员屏蔽,请选择其它用户名','Controller'));
 			}
 		}
 
@@ -113,7 +113,7 @@ class RegisterController extends GlobalchildController{
 			$arrDisallowedRegisterEmail=explode("\n",$sDisallowedRegisterEmail);
 			$arrDisallowedRegisterEmail=Dyhb::normalize($arrDisallowedRegisterEmail);
 			if(in_array($sUseremail,$arrDisallowedRegisterEmail)){
-				$this->E(Dyhb::L('你注册的邮件地址%s已经被官方屏蔽','Controller/Public',null,$sUseremail));
+				$this->E(Dyhb::L('你注册的邮件地址%s已经被官方屏蔽','Controller',null,$sUseremail));
 			}
 		}
 
@@ -122,7 +122,7 @@ class RegisterController extends GlobalchildController{
 			$arrAllowedRegisterEmail=explode("\n",$sAllowedRegisterEmail);
 			$arrAllowedRegisterEmail=Dyhb::normalize($arrAllowedRegisterEmail);
 			if(!in_array($sUseremail,$arrAllowedRegisterEmail)){
-				$this->E(Dyhb::L('你注册的邮件地址%s不在系统允许的邮件之列','Controller/Public',null,$sUseremail));
+				$this->E(Dyhb::L('你注册的邮件地址%s不在系统允许的邮件之列','Controller',null,$sUseremail));
 			}
 		}
 
@@ -199,7 +199,7 @@ class RegisterController extends GlobalchildController{
 				$arrSociauser=SociauserModel::F('user_id=?',$arrData['user_id'])->asArray()->getOne();
 				Socia::setUser($arrSociauser);
 
-				$this->A($arrData,Dyhb::L('绑定成功','Controller/Public'),1);
+				$this->A($arrData,Dyhb::L('绑定成功','Controller'),1);
 
 				exit();
 			}
@@ -225,7 +225,7 @@ class RegisterController extends GlobalchildController{
 			$arrData=$oUser->toArray();
 			$arrData['jumpurl']=$sJumpUrl;
 
-			$this->A($arrData,Dyhb::L('注册成功','Controller/Public'),1);
+			$this->A($arrData,Dyhb::L('注册成功','Controller'),1);
 		}
 	}
 

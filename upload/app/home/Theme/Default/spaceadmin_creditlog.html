@@ -2,8 +2,8 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template/Spaceadmin'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
-			<li><!--<lang package='Template/Spaceadmin'>-->积分记录<!--</lang>--></li>
+			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->积分记录<!--</lang>--></li>
 		</ul>
 		
 		<!--<include file="spaceadmin+menu" />-->
@@ -13,18 +13,18 @@
 				<!--<include file="spaceadmin+ratingmenu" />-->
 					
 				<p>
-					<a href="<!--{:Dyhb::U('home://spaceadmin/creditlog')}-->"><b><!--<lang package='Template/Spaceadmin'>-->积分收益<!--</lang>--></b></a>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditlog')}-->"><b><!--<lang package='Template'>-->积分收益<!--</lang>--></b></a>
 					<span class="pipe">|</span>
-					<a href="<!--{:Dyhb::U('home://spaceadmin/creditrulelog')}-->"><!--<lang package='Template/Spaceadmin'>-->系统奖励<!--</lang>--></a>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditrulelog')}-->"><!--<lang package='Template'>-->系统奖励<!--</lang>--></a>
 				</p>
 
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th><!--<lang package='Template/Spaceadmin'>-->操作<!--</lang>--></th>
-							<th><!--<lang package='Template/Spaceadmin'>-->积分变更<!--</lang>--></th>
-							<th><!--<lang package='Template/Spaceadmin'>-->详情<!--</lang>--></th>
-							<th><!--<lang package='Template/Spaceadmin'>-->变更时间<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->操作<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->积分变更<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->详情<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->变更时间<!--</lang>--></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,13 +39,13 @@
 								<!--{/if}-->
 								<!--</foreach>-->
 							</td>
-							<td><!--<lang package='Template/Spaceadmin'>-->与<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oCreditlog['creditlog_relatedid'])}-->" target="_blank"><!--{$oCreditlog:related:user_name}--></a>&nbsp;<!--<lang package='Template/Spaceadmin'>-->进行<!--</lang>--><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
+							<td><!--<lang package='Template'>-->与<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oCreditlog['creditlog_relatedid'])}-->" target="_blank"><!--{$oCreditlog:related:user_name}--></a>&nbsp;<!--<lang package='Template'>-->进行<!--</lang>--><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
 							<td><!--{$oCreditlog['create_dateline']|Core_Extend+timeFormat}--></td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->
 						<tr>
-							<td colspan="4"><!--<lang package='Template/Spaceadmin'>-->暂时没有发现任何积分记录<!--</lang>--></td>
+							<td colspan="4"><!--<lang package='Template'>-->暂时没有发现任何积分记录<!--</lang>--></td>
 						</tr>
 						<!--{/if}-->
 					</tbody>

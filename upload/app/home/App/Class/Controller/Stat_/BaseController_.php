@@ -8,7 +8,7 @@ class BaseController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('sitebase')){
-			$this->E(Dyhb::L('你没有权限访问基本概况','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问基本概况','Controller'));
 		}
 		
 		Core_Extend::loadCache('site');
@@ -18,7 +18,7 @@ class BaseController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('基本概况','Controller/Stat');
+		return Dyhb::L('基本概况','Controller');
 	}
 
 	public function index_keywords_(){

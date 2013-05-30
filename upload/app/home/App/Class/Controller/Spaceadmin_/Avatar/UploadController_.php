@@ -9,17 +9,17 @@ class UploadController extends Controller{
 	public function index(){
 		if(!isset($_FILES['image'])){
 			$this->assign('__JumpUrl__',Dyhb::U('spaceadmin/avatar'));
-			$this->E(Dyhb::L('你不能直接进入裁减界面，请先上传','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你不能直接进入裁减界面，请先上传','Controller'));
 			return;
 		}
 
 		if($_FILES['image']['error']==4){
-			$this->E(Dyhb::L('你没有选择任何文件','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你没有选择任何文件','Controller'));
 			return;
 		}
 
 		if(!is_dir(dirname(WINDSFORCE_PATH.'/data/avatar/temp')) && !G::makeDir(WINDSFORCE_PATH.'/data/avatar/temp')){
-			$this->E(Dyhb::L('上传目录 %s 不可写','Controller/Spaceadmin',null,WINDSFORCE_PATH.'/data/avatar/temp'));
+			$this->E(Dyhb::L('上传目录 %s 不可写','Controller',null,WINDSFORCE_PATH.'/data/avatar/temp'));
 		}
 
 		require_once(Core_Extend::includeFile('function/Avatar_Extend'));
@@ -36,7 +36,7 @@ class UploadController extends Controller{
 	}
 
 	public function avatar_upload_title_(){
-		return Dyhb::L('裁剪头像','Controller/Spaceadmin');
+		return Dyhb::L('裁剪头像','Controller');
 	}
 
 	public function avatar_upload_keywords_(){

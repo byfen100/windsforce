@@ -15,7 +15,7 @@ class UnController extends Controller{
 			$this->E($e->getMessage());
 		}
 
-		$this->S(Dyhb::L('删除头像成功了','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('删除头像成功了','Controller'));
 	}
 
 }

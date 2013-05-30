@@ -86,9 +86,9 @@ class MyrbacController extends Controller{
 
 	public function myrbac_title_(){
 		if($this->_oRole){
-			return Dyhb::L('角色权限','Controller/Public').' - '.$this->_oRole['role_name'];
+			return Dyhb::L('角色权限','Controller').' - '.$this->_oRole['role_name'];
 		}else{
-			return Dyhb::L('我的权限','Controller/Public');
+			return Dyhb::L('我的权限','Controller');
 		}
 	}
 

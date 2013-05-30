@@ -93,7 +93,7 @@ class UbbController extends Controller{
 	}
 
 	public function ubb_title_(){
-		return $this->_sType=='sign'?Dyhb::L('签名UBB代码','Controller/Misc'):Dyhb::L('UBB代码','Controller/Misc');
+		return $this->_sType=='sign'?Dyhb::L('签名UBB代码','Controller'):Dyhb::L('UBB代码','Controller');
 	}
 
 	public function ubb_keywords_(){

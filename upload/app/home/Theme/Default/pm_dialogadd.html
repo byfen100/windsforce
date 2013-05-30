@@ -8,24 +8,24 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="messageto"><!--<lang package='Template/Pm'>-->收件用户<!--</lang>--><em class="red">*</em></label>
+							<label class="control-label" for="messageto"><!--<lang package='Template'>-->收件用户<!--</lang>--><em class="red">*</em></label>
 							<div class="controls">
 								<input class="input-xlarge" id="messageto" name="messageto" type="text" <!--{if !empty($sUserName)}-->readonly="true"<!--{/if}--> value="<!--{$sUserName}-->">
-								<p class="help-block"><!--<lang package='Template/Pm'>-->多个收件用户或者用户ID用分号(;)或者英文逗号(,)隔开<!--</lang>--></p>
+								<p class="help-block"><!--<lang package='Template'>-->多个收件用户或者用户ID用分号(;)或者英文逗号(,)隔开<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="pm_subject"><!--<lang package='Template/Pm'>-->短消息主题<!--</lang>--></label>
+							<label class="control-label" for="pm_subject"><!--<lang package='Template'>-->短消息主题<!--</lang>--></label>
 							<div class="controls">
 								<input class="input-xlarge" id="pm_subject" name="pm_subject" type="text">
-								<p class="help-block"><!--<lang package='Template/Pm'>-->短消息主题可以为空，其最大字符不能够超过225<!--</lang>--></p>
+								<p class="help-block"><!--<lang package='Template'>-->短消息主题可以为空，其最大字符不能够超过225<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="pm_message"><!--<lang package='Template/Pm'>-->短消息内容<!--</lang>--><em class="red">*</em></label>
+							<label class="control-label" for="pm_message"><!--<lang package='Template'>-->短消息内容<!--</lang>--><em class="red">*</em></label>
 							<div class="controls">
 								<textarea class="input-xlarge" id="pm_message" name="pm_message" rows="8"><!--{$sContent}--></textarea>
-								<p class="help-block"><!--<lang package='Template/Pm'>-->短消息内容不能为空，且最大字符不能够超过1000<!--</lang>--></p>
+								<p class="help-block"><!--<lang package='Template'>-->短消息内容不能为空，且最大字符不能够超过1000<!--</lang>--></p>
 							</div>
 						</div>
 						<!--{if $nDisplaySeccode==1}-->

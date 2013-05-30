@@ -23,7 +23,7 @@ class ResetController extends Controller{
 
 		if(empty($sHash)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://getpassword/index'));
-			$this->E(Dyhb::L('找回密码链接已过期','Controller/Getpassword'));
+			$this->E(Dyhb::L('找回密码链接已过期','Controller'));
 		}
 		
 		if($nAppeal==1){
@@ -34,7 +34,7 @@ class ResetController extends Controller{
 		
 		if(empty($oUser->user_id)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://getpassword/index'));
-			$this->E(Dyhb::L('找回密码链接已过期','Controller/Getpassword'));
+			$this->E(Dyhb::L('找回密码链接已过期','Controller'));
 		}
 
 		$this->assign('sEmail',$sEmail);
@@ -45,7 +45,7 @@ class ResetController extends Controller{
 	}
 
 	public function reset_title_(){
-		return Dyhb::L('密码重置','Controller/Getpassword');
+		return Dyhb::L('密码重置','Controller');
 	}
 
 	public function reset_keywords_(){

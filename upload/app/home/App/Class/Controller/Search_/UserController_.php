@@ -23,7 +23,7 @@ class UserController extends Controller{
 	}
 
 	public function user_title_(){
-		return Dyhb::L('用户搜索','Controller/Search');
+		return Dyhb::L('用户搜索','Controller');
 	}
 
 	public function user_keywords_(){

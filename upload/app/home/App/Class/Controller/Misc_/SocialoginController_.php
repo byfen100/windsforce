@@ -13,7 +13,7 @@ class SocialoginController extends Controller{
 			Dyhb::cookie('SOCIA_LOGIN_TIME',$nTime);
 		}
 
-		$this->S(Dyhb::L('登陆COOKIE有效期','Controller/Misc').' '.$nTime.' (S)');
+		$this->S(Dyhb::L('登陆COOKIE有效期','Controller').' '.$nTime.' (S)');
 	}
 
 }

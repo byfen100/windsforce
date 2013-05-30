@@ -2,8 +2,8 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template/Homefresh'>-->个人中心<!--</lang>--></a> <span class="divider">/</span></li>
-			<li><!--<lang package='Template/Homefreshtag'>-->新鲜事话题<!--</lang>--></li>
+			<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='Template'>-->个人中心<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->新鲜事话题<!--</lang>--></li>
 		</ul>
 
 		<div class="row">
@@ -14,16 +14,16 @@
 
 			<div class="span9">
 				<div class="hero-unit">
-					<h4><!--<lang package='Template/Homefreshtag'>-->新鲜事话题<!--</lang>--></h4>
+					<h4><!--<lang package='Template'>-->新鲜事话题<!--</lang>--></h4>
 				</div>
 				
 				<!--<include file="ucenter+homefreshfeedmenu" />-->
 				
 				<div class="tabb-menu">
 					<ul class="nav nav-tabs">
-						<li <!--{if !$sType}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag')}-->"><!--<lang package='Template/Homefreshtag'>-->我的话题<!--</lang>--></a></li>
-						<li <!--{if $sType=='all'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag?type=all')}-->"><!--<lang package='Template/Homefreshtag'>-->全部话题<!--</lang>--></a></li>
-						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tags')}-->"><!--<lang package='Template/Homefreshtag'>-->话题榜<!--</lang>--></a></li>
+						<li <!--{if !$sType}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag')}-->"><!--<lang package='Template'>-->我的话题<!--</lang>--></a></li>
+						<li <!--{if $sType=='all'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tag?type=all')}-->"><!--<lang package='Template'>-->全部话题<!--</lang>--></a></li>
+						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://ucenter/tags')}-->"><!--<lang package='Template'>-->话题榜<!--</lang>--></a></li>
 					</ul>
 				</div>
 
@@ -31,7 +31,7 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th colspan="2"><!--<lang package='Template/Homefreshtag'>-->新鲜事话题<!--</lang>--></th>
+								<th colspan="2"><!--<lang package='Template'>-->新鲜事话题<!--</lang>--></th>
 							</tr>
 						</thead>
 						<tbody id="homefreshtaglist_box">
@@ -57,7 +57,7 @@
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<tr id="homefreshtag_no">
-								<td><p><!--<lang package='Template/Homefreshtag'>-->暂无任何新鲜事话题<!--</lang>--></p></td>
+								<td><p><!--<lang package='Template'>-->暂无任何新鲜事话题<!--</lang>--></p></td>
 							</tr>
 							<!--{/if}-->
 						</tbody>

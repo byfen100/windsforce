@@ -2,7 +2,7 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--{if isset($oRole)}--><!--<lang package='Template/Public'>-->角色权限<!--</lang>-->&nbsp;(<!--{$oRole['role_name']}-->)<!--{d*else}--><!--<lang package='Template/Public'>-->我的权限<!--</lang>--><!--{/if}--></li>
+			<li><!--{if isset($oRole)}--><!--<lang package='Template'>-->角色权限<!--</lang>-->&nbsp;(<!--{$oRole['role_name']}-->)<!--{d*else}--><!--<lang package='Template'>-->我的权限<!--</lang>--><!--{/if}--></li>
 		</ul>
 		
 		<div class="row">
@@ -10,7 +10,7 @@
 				<p>
 					<div class="alert alert-success">
 						<button class="close" data-dismiss="alert">&times;</button>
-						<!--<lang package='Template/Public'>-->登录用户的权限由多个角色的权限总和<!--</lang>-->
+						<!--<lang package='Template'>-->登录用户的权限由多个角色的权限总和<!--</lang>-->
 					</div>
 
 					<!--{if !isset($oRole)}-->
@@ -18,16 +18,16 @@
 
 					<!--{if is_array($arrUserroles)}-->
 					<!--<foreach for=arrUserroles value=oUserrole>-->
-					<a href="<!--{:Dyhb::U('home://public/myrbac?rid='.$oUserrole['role_id'])}-->" class="btn" title="<!--<lang package='Template/Public'>-->角色权限<!--</lang>-->"><!--{$oUserrole:role:role_name}--></a>&nbsp;&nbsp;
+					<a href="<!--{:Dyhb::U('home://public/myrbac?rid='.$oUserrole['role_id'])}-->" class="btn" title="<!--<lang package='Template'>-->角色权限<!--</lang>-->"><!--{$oUserrole:role:role_name}--></a>&nbsp;&nbsp;
 					<!--</foreach>-->
 					<!--{d*else}-->
-					<p><!--<lang package='Template/Public'>-->暂时没有发现任何角色<!--</lang>--></p>
+					<p><!--<lang package='Template'>-->暂时没有发现任何角色<!--</lang>--></p>
 					<!--{/if}-->
 					<!--{d*else}-->
-					<a href="<!--{:Dyhb::U('home://public/myrbac?rid='.$oRole['role_id'])}-->" class="btn btn-success" title="<!--<lang package='Template/Public'>-->角色权限<!--</lang>-->"><!--{$oRole['role_name']}--></a>&nbsp;&nbsp;
-					<a href="<!--{:Dyhb::U('home://public/myrbac')}-->" class="btn"><!--<lang package='Template/Public'>-->我的权限<!--</lang>--></a>
+					<a href="<!--{:Dyhb::U('home://public/myrbac?rid='.$oRole['role_id'])}-->" class="btn btn-success" title="<!--<lang package='Template'>-->角色权限<!--</lang>-->"><!--{$oRole['role_name']}--></a>&nbsp;&nbsp;
+					<a href="<!--{:Dyhb::U('home://public/myrbac')}-->" class="btn"><!--<lang package='Template'>-->我的权限<!--</lang>--></a>
 					&nbsp;&nbsp;
-					<a href="<!--{:Dyhb::U('home://public/role')}-->" class="btn"><!--<lang package='Template/Public'>-->全部角色<!--</lang>--></a>
+					<a href="<!--{:Dyhb::U('home://public/role')}-->" class="btn"><!--<lang package='Template'>-->全部角色<!--</lang>--></a>
 					<!--{/if}-->
 					
 					<div style="margin-top:10px;">
@@ -54,8 +54,8 @@
 				</p>
 
 				<p>
-					<img src="<!--{:__PUBLIC__}-->/images/common/data_valid.gif" />&nbsp;<!--<lang package='Template/Public'>-->表示拥有权限<!--</lang>-->&nbsp;&nbsp;
-					<img src="<!--{:__PUBLIC__}-->/images/common/data_invalid.gif" />&nbsp;<!--<lang package='Template/Public'>-->表示没有权限<!--</lang>-->
+					<img src="<!--{:__PUBLIC__}-->/images/common/data_valid.gif" />&nbsp;<!--<lang package='Template'>-->表示拥有权限<!--</lang>-->&nbsp;&nbsp;
+					<img src="<!--{:__PUBLIC__}-->/images/common/data_invalid.gif" />&nbsp;<!--<lang package='Template'>-->表示没有权限<!--</lang>-->
 				</p>
 			</div>
 		</div><!--/row-->

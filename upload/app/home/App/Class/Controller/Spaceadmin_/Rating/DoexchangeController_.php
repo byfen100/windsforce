@@ -15,7 +15,7 @@ class DoexchangeController extends Controller{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}
 		$oUsercount=$oUserInfo->usercount;
 
@@ -28,31 +28,31 @@ class DoexchangeController extends Controller{
 		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();// 可用积分
 
 		if(!$nFromcredits){
-			$this->E(Dyhb::L('待兑换的积分不能为空','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('待兑换的积分不能为空','Controller'));
 		}elseif(!array_key_exists($nFromcredits,$arrAvailableExtendCredits)){
-			$this->E(Dyhb::L('待兑换的积分不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('待兑换的积分不存在','Controller'));
 		}elseif($arrAvailableExtendCredits[$nFromcredits]['allowexchangeout']==0){
-			$this->E(Dyhb::L('待兑换的积分不允许兑出','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('待兑换的积分不允许兑出','Controller'));
 		}
 
 		if(!$nTocredits){
-			 $this->E(Dyhb::L('兑换成的积分不能为空','Controller/Spaceadmin'));
+			 $this->E(Dyhb::L('兑换成的积分不能为空','Controller'));
 		}elseif(!array_key_exists($nTocredits,$arrAvailableExtendCredits)){
-			$this->E(Dyhb::L('待兑换的积分不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('待兑换的积分不存在','Controller'));
 		}elseif($arrAvailableExtendCredits[$nTocredits]['allowexchangein']==0){
-			$this->E(Dyhb::L('兑换成的积分不允许兑入','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('兑换成的积分不允许兑入','Controller'));
 		}
 
 		if($nFromcredits==$nTocredits){
-			$this->E(Dyhb::L('同种积分之间无法兑换','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('同种积分之间无法兑换','Controller'));
 		}
 
 		if(!$arrAvailableExtendCredits[$nFromcredits]['ratio']){
-			$this->E(Dyhb::L('待兑换的积分的兑换比率必须大于0','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('待兑换的积分的兑换比率必须大于0','Controller'));
 		}
 		
 		if(!$arrAvailableExtendCredits[$nTocredits]['ratio']){
-			$this->E(Dyhb::L('兑换成的积分的兑换比率必须大于0','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('兑换成的积分的兑换比率必须大于0','Controller'));
 		}
 		
 		if($arrAvailableExtendCredits[$nTocredits]['ratio']<$arrAvailableExtendCredits[$nFromcredits]['ratio']){
@@ -62,17 +62,17 @@ class DoexchangeController extends Controller{
 		}
 
 		if(!$nNetamount){
-			$this->E(Dyhb::L('兑换成的积分的数量必须大于0','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('兑换成的积分的数量必须大于0','Controller'));
 		}elseif($nExchangeamount<=0){
-			$this->E(Dyhb::L('待兑换的积分的数量必须大于0','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('待兑换的积分的数量必须大于0','Controller'));
 		}elseif($oUsercount['usercount_extendcredit'.$nFromcredits]-$nNetamount<($nExchangemincredits=$GLOBALS['_option_']['exchange_mincredits'])){
-			$this->E(Dyhb::L('兑换最低余额不能小于 %d','Controller/Spaceadmin',null,$nExchangemincredits));
+			$this->E(Dyhb::L('兑换最低余额不能小于 %d','Controller',null,$nExchangemincredits));
 		}
 		
 		// 验证登录密码
 		$oUserlogin=UserModel::M()->checkLogin($GLOBALS['___login___']['user_name'],$sUserpassword,false,false,false);
 		if(UserModel::M()->isBehaviorError()){
-			$this->E(Dyhb::L('登录密码输入失败','Controller/Spaceadmin').'<br/>'.UserModel::M()->getBehaviorErrorMessage());
+			$this->E(Dyhb::L('登录密码输入失败','Controller').'<br/>'.UserModel::M()->getBehaviorErrorMessage());
 		}
 
 		// 确认兑换
@@ -83,7 +83,7 @@ class DoexchangeController extends Controller{
 		}
 
 		$this->assign('__JumpUrl__',Dyhb::U('home://spaceadmin/exchange'));
-		$this->S(Dyhb::L('兑换成功','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('兑换成功','Controller'));
 	}
 
 }

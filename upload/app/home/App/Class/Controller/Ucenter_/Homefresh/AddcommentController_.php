@@ -20,7 +20,7 @@ class AddcommentController extends GlobalchildController{
 		$oHomefresh=HomefreshModel::F('homefresh_id=?',intval(G::getGpc('homefresh_id')))->getOne();
 
 		if(empty($oHomefresh['homefresh_id'])){
-			$this->E(Dyhb::L('新鲜事不存在','Controller/Homefresh'));
+			$this->E(Dyhb::L('新鲜事不存在','Controller'));
 		}
 
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
@@ -163,7 +163,7 @@ class AddcommentController extends GlobalchildController{
 			$sCommentMessage=$oHomefreshcomment['homefreshcomment_content'];
 
 			try{
-				Comment_Extend::addFeed(Dyhb::L('评论了新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
+				Comment_Extend::addFeed(Dyhb::L('评论了新鲜事','Controller'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
 			}catch(Exception $e){
 				$this->E($e->getMessage());
 			}
@@ -176,7 +176,7 @@ class AddcommentController extends GlobalchildController{
 				$sCommentMessage=$oHomefreshcomment['homefreshcomment_content'];
 
 				try{
-					Comment_Extend::addNotice(Dyhb::L('评论了你的新鲜事','Controller/Homefresh'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
+					Comment_Extend::addNotice(Dyhb::L('评论了你的新鲜事','Controller'),'addhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefresh['user_id'],'homefreshcomment',$oHomefresh['homefresh_id']);
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
@@ -192,7 +192,7 @@ class AddcommentController extends GlobalchildController{
 					$sCommentMessage=$oHomefreshcomment['homefreshcomment_content'];
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller/Homefresh'),'replyhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefreshcommentParent['user_id'],'replyhomefreshcomment',$oHomefreshcommentParent['homefreshcomment_id']);
+						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller'),'replyhomefreshcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oHomefreshcommentParent['user_id'],'replyhomefreshcomment',$oHomefreshcommentParent['homefreshcomment_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}
@@ -205,7 +205,7 @@ class AddcommentController extends GlobalchildController{
 					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 						$sHomefreshcommentmessage=Core_Extend::subString($oHomefreshcomment['homefreshcomment_content'],100,false,1,false);
 						
-						$sNoticetemplate='<div class="notice_athomefreshcomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事评论中提到了你','Controller/Homefresh').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefreshcomment_link}">'.Dyhb::L('查看','Controller/Homefresh').'</a></div></div>';
+						$sNoticetemplate='<div class="notice_athomefreshcomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在新鲜事评论中提到了你','Controller').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@homefreshcomment_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 						$arrNoticedata=array(
 							'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -283,7 +283,7 @@ class AddcommentController extends GlobalchildController{
 		// 更新积分
 		Core_Extend::updateCreditByAction('commoncomment',$GLOBALS['___login___']['user_id']);
 
-		$this->A($arrCommentData,Dyhb::L('添加新鲜事评论成功','Controller/Homefresh'),1);
+		$this->A($arrCommentData,Dyhb::L('添加新鲜事评论成功','Controller'),1);
 	}
 
 	protected function cache_site_(){

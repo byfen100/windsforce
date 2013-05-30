@@ -38,7 +38,7 @@ class IndexController extends Controller{
 	}
 
 	public function tag_title_(){
-		return Dyhb::L('新鲜事话题','Controller/Homefreshtag');
+		return Dyhb::L('新鲜事话题','Controller');
 	}
 
 	public function tag_keywords_(){

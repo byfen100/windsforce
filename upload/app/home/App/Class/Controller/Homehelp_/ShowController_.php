@@ -12,7 +12,7 @@ class ShowController extends GlobalchildController{
 		$nId=intval(G::getGpc('id','G'));
 
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定帮助ID','Controller/Homehelp'));
+			$this->E(Dyhb::L('你没有指定帮助ID','Controller'));
 		}
 
 		$oHomehelp=HomehelpModel::F('homehelp_id=?',$nId)->getOne();
@@ -35,7 +35,7 @@ class ShowController extends GlobalchildController{
 			
 			$this->display('homehelp+show');
 		}else{
-			$this->E(Dyhb::L('你指定的帮助不存在','Controller/Homehelp'));
+			$this->E(Dyhb::L('你指定的帮助不存在','Controller'));
 		}
 	}
 

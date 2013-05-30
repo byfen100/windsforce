@@ -11,7 +11,7 @@ class UserlistController extends Controller{
 
 	public function index(){
 		if(!Home_Extend::getVisiteallowed('siteuserlist')){
-			$this->E(Dyhb::L('你没有权限访问会员列表','Controller/Stat'));
+			$this->E(Dyhb::L('你没有权限访问会员列表','Controller'));
 		}
 
 		$arrWhere=array();
@@ -32,7 +32,7 @@ class UserlistController extends Controller{
 		if(!empty($sTag)){
 			$oHometag=HometagModel::F('hometag_name=?',$sTag)->getOne();
 			if(empty($oHometag['hometag_id'])){
-				$this->E(Dyhb::L('用户标签不存在','Controller/Stat'));
+				$this->E(Dyhb::L('用户标签不存在','Controller'));
 			}
 
 			$this->assign('oHometag',$oHometag);
@@ -52,7 +52,7 @@ class UserlistController extends Controller{
 				$arrWhere['user_id']=array('in',$arrTempdata);
 			}else{
 				$this->assign('__JumpUrl__',Dyhb::U('home://stat/userlist'));
-				$this->E(Dyhb::L('没有发现任何用户','Controller/Stat'));
+				$this->E(Dyhb::L('没有发现任何用户','Controller'));
 			}
 		}else{
 			$nTotalRecord=UserModel::F()->where($arrWhere)->all()->getCounts();
@@ -70,7 +70,7 @@ class UserlistController extends Controller{
 	}
 
 	public function userlist_title_(){
-		return Dyhb::L('会员列表','Controller/Stat');
+		return Dyhb::L('会员列表','Controller');
 	}
 
 	public function userlist_keywords_(){

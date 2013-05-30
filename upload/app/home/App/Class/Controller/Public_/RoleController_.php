@@ -35,7 +35,7 @@ class RoleController extends Controller{
 	}
 
 	public function role_title_(){
-		return Dyhb::L('系统角色','Controller/Public');
+		return Dyhb::L('系统角色','Controller');
 	}
 
 	public function role_keywords_(){

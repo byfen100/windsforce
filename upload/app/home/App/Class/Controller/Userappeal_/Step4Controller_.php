@@ -27,30 +27,30 @@ class Step4Controller extends GlobalchildController{
 
 		$sUserid=G::authcode($sUserid);
 		if(empty($sUserid)){
-			$this->E(Dyhb::L('页面已过期','Controller/Userappeal'));
+			$this->E(Dyhb::L('页面已过期','Controller'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$sUserid)->getOne();
 		if(empty($oUser->user_id)){
-			$this->E(Dyhb::L('Email账号不存在','Controller/Userappeal'));
+			$this->E(Dyhb::L('Email账号不存在','Controller'));
 		}
 
 		if($oUser->user_status==0){
-			$this->E(Dyhb::L('该账户已经被禁止','Controller/Userappeal'));
+			$this->E(Dyhb::L('该账户已经被禁止','Controller'));
 		}
 
 		if($nEmaillink!=1){
 			if(empty($sHashcode)){
-				$this->E(Dyhb::L('申诉验证码不能为空','Controller/Userappeal'));
+				$this->E(Dyhb::L('申诉验证码不能为空','Controller'));
 			}
 
 			$sOldHashcode=G::authcode($sOldHashcode);
 			if(empty($sOldHashcode)){
-				$this->E(Dyhb::L('申诉验证码已过期','Controller/Userappeal'));
+				$this->E(Dyhb::L('申诉验证码已过期','Controller'));
 			}
 
 			if($sOldHashcode!=$sHashcode){
-				$this->E(Dyhb::L('申诉验证码错误','Controller/Userappeal'));
+				$this->E(Dyhb::L('申诉验证码错误','Controller'));
 			}
 		}
 
@@ -79,7 +79,7 @@ class Step4Controller extends GlobalchildController{
 	}
 
 	public function step4_title_(){
-		return Dyhb::L('获取申诉回执编号','Controller/Userappeal');
+		return Dyhb::L('获取申诉回执编号','Controller');
 	}
 
 	public function step4_keywords_(){

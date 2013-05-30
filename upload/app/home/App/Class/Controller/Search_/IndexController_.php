@@ -33,7 +33,7 @@ class IndexController extends Controller{
 
 		if($sKey){
 			if($GLOBALS['_option_']['search_keywords_minlength']>0 && strlen($sKey)<$GLOBALS['_option_']['search_keywords_minlength']){
-				$this->E(Dyhb::L('搜索的关键字最少为 %d 字节','Controller/Search',null,$GLOBALS['_option_']['search_keywords_minlength']));
+				$this->E(Dyhb::L('搜索的关键字最少为 %d 字节','Controller',null,$GLOBALS['_option_']['search_keywords_minlength']));
 			}
 			
 			// 赞
@@ -67,7 +67,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('搜索引擎','Controller/Search');
+		return Dyhb::L('搜索引擎','Controller');
 	}
 
 	public function index_keywords_(){
@@ -79,7 +79,7 @@ class IndexController extends Controller{
 	}
 
 	public function result_title_(){
-		return $this->_sKey.' - '.Dyhb::L('搜索结果','Controller/Search');
+		return $this->_sKey.' - '.Dyhb::L('搜索结果','Controller');
 	}
 
 	public function result_keywords_(){

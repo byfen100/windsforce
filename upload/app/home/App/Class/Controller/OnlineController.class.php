@@ -11,11 +11,11 @@ class OnlineController extends InitController{
 
 	public function index(){
 		if($GLOBALS['_option_']['online_on']==0){
-			$this->E(Dyhb::L('用户在线功能没有开启','Controller/Online'));
+			$this->E(Dyhb::L('用户在线功能没有开启','Controller'));
 		}
 
 		if($GLOBALS['_option_']['online_detailon']==0){
-			$this->E(Dyhb::L('系统关闭了用户在线详细页面','Controller/Online'));
+			$this->E(Dyhb::L('系统关闭了用户在线详细页面','Controller'));
 		}
 		
 		// 读取在线数据
@@ -38,7 +38,7 @@ class OnlineController extends InitController{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('用户在线','Controller/Online');
+		return Dyhb::L('用户在线','Controller');
 	}
 
 	public function index_keywords_(){

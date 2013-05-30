@@ -49,7 +49,7 @@ class ChangeController extends GlobalchildController{
 				}
 			}
 
-			$this->S(Dyhb::L('修改用户资料成功','Controller/Spaceadmin'));
+			$this->S(Dyhb::L('修改用户资料成功','Controller'));
 		}
 	}
 

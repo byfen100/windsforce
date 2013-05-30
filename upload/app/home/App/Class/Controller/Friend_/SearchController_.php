@@ -8,7 +8,7 @@ class SearchController extends Controller{
 
 	public function index(){
 		if($GLOBALS['_option_']['allow_search_user']==0){
-			$this->E(Dyhb::L('系统关闭了好友搜索功能','Controller/Friend'));
+			$this->E(Dyhb::L('系统关闭了好友搜索功能','Controller'));
 		}
 		
 		require_once(Core_Extend::includeFile('function/Profile_Extend'));
@@ -52,7 +52,7 @@ class SearchController extends Controller{
 	}
 
 	public function search_title_(){
-		return Dyhb::L('查找好友','Controller/Friend');
+		return Dyhb::L('查找好友','Controller');
 	}
 
 	public function search_keywords_(){

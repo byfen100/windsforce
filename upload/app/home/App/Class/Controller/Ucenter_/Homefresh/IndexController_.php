@@ -21,7 +21,7 @@ class IndexController extends Controller{
 			$oHomefreshtag=HomefreshtagModel::F('homefreshtag_status=1 AND homefreshtag_name=?',$sKey)->getOne();
 			if(empty($oHomefreshtag['homefreshtag_id'])){
 				$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
-				$this->E(Dyhb::L('话题不存在或者被禁止了','Controller/Homefresh'));
+				$this->E(Dyhb::L('话题不存在或者被禁止了','Controller'));
 			}
 
 			$arrWhere['homefresh_message']=array('like',"%[TAG]#{$sKey}#[/TAG]%");
@@ -35,7 +35,7 @@ class IndexController extends Controller{
 			$oUser=UserModel::F('user_status=1 AND user_name=?',$sAtusername)->getOne();
 			if(empty($oUser['user_id'])){
 				$this->assign('__JumpUrl__',Dyhb::U('home://ucenter/index'));
-				$this->E(Dyhb::L('用户不存在或者被禁止了','Controller/Homefresh'));
+				$this->E(Dyhb::L('用户不存在或者被禁止了','Controller'));
 			}
 
 			$arrWhere['homefresh_message']=array('like',"%[MESSAGE]@{$sAtusername}[/MESSAGE]%");
@@ -117,7 +117,7 @@ class IndexController extends Controller{
 			$sTitle='@'.$this->_sAtusername.' | ';
 		}
 
-		return $sTitle.Dyhb::L('用户中心','Controller/Homefresh');
+		return $sTitle.Dyhb::L('用户中心','Controller');
 	}
 
 	public function index_keywords_(){

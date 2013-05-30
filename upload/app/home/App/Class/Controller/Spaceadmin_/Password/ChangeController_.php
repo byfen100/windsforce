@@ -20,7 +20,7 @@ class ChangeController extends GlobalchildController{
 		if($oUserModel->isError()){
 			$this->E($oUserModel->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('密码修改成功，你需要重新登录','Controller/Spaceadmin'));
+			$this->S(Dyhb::L('密码修改成功，你需要重新登录','Controller'));
 		}
 	}
 

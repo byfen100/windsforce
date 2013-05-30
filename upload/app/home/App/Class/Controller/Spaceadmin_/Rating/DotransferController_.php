@@ -14,7 +14,7 @@ class DotransferController extends Controller{
 		
 		$oUserInfo=UserModel::F()->getByuser_id($nId);
 		if(empty($oUserInfo['user_id'])){
-			$this->E(Dyhb::L('你指定的用户不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你指定的用户不存在','Controller'));
 		}
 		$oUsercount=$oUserInfo->usercount;
 
@@ -27,29 +27,29 @@ class DotransferController extends Controller{
 		$arrAvailableExtendCredits=Credit_Extend::getAvailableExtendCredits();// 可用积分
 
 		if($nTransferamount<=0){
-			$this->E(Dyhb::L('你要转账的积分输入有误','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你要转账的积分输入有误','Controller'));
 		}elseif($oUsercount['usercount_extendcredit2']-$nTransferamount<($nTransferminCredits=$GLOBALS['_option_']['transfermin_credits'])){
-			$this->E(Dyhb::L('转账最低余额不能小于 %d','Controller/Spaceadmin',null,$nTransferminCredits));
+			$this->E(Dyhb::L('转账最低余额不能小于 %d','Controller',null,$nTransferminCredits));
 		}elseif(!($nNetamount=floor($nTransferamount*(1-$GLOBALS['_option_']['credit_stax'])))){
-			$this->E(Dyhb::L('扣除积分交易税后余额为0','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('扣除积分交易税后余额为0','Controller'));
 		}
 
 		if(!$sTousername){
-			$this->E(Dyhb::L('接收转账的用户不能为空','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('接收转账的用户不能为空','Controller'));
 		}
 
 		if($sTousername==$GLOBALS['___login___']['user_name']){
-			$this->E(Dyhb::L('你不能给自己转账','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('你不能给自己转账','Controller'));
 		}
 		$oTouser=UserModel::F()->getByuser_name($sTousername);
 		if(empty($oTouser['user_id'])){
-			$this->E(Dyhb::L('接收转账的用户不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('接收转账的用户不存在','Controller'));
 		}
 
 		// 验证登录密码
 		$oUserlogin=UserModel::M()->checkLogin($GLOBALS['___login___']['user_name'],$sUserpassword,false,false,false);
 		if(UserModel::M()->isBehaviorError()){
-			$this->E(Dyhb::L('登录密码输入失败','Controller/Spaceadmin').'<br/>'.UserModel::M()->getBehaviorErrorMessage());
+			$this->E(Dyhb::L('登录密码输入失败','Controller').'<br/>'.UserModel::M()->getBehaviorErrorMessage());
 		}
 
 		// 确认转账
@@ -63,13 +63,13 @@ class DotransferController extends Controller{
 		// 发送提醒
 		$sCreditchange=$arrAvailableExtendCredits['2']['title'].'&nbsp;+'.$nNetamount.'&nbsp;&nbsp;';
 		
-		$sNoticetemplate='<div class="notice_credit"><span class="notice_title">'.Dyhb::L('您收到一笔来自','Controller/Spaceadmin').'&nbsp;<a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('的积分转账','Controller/Spaceadmin').'&nbsp;'.$sCreditchange.'</span>';
+		$sNoticetemplate='<div class="notice_credit"><span class="notice_title">'.Dyhb::L('您收到一笔来自','Controller').'&nbsp;<a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('的积分转账','Controller').'&nbsp;'.$sCreditchange.'</span>';
 		
 		if($sTransfermessage){
-			$sNoticetemplate.='<div class="notice_content"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('说','Controller/Spaceadmin').':&nbsp;<span class="notice_quote"><span class="notice_quoteinfo">'.$sTransfermessage.'</span></span></div>';
+			$sNoticetemplate.='<div class="notice_content"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('说','Controller').':&nbsp;<span class="notice_quote"><span class="notice_quoteinfo">'.$sTransfermessage.'</span></span></div>';
 		};
 		
-		$sNoticetemplate.='<div class="notice_action"><a href="{@creditlog_link}">'.Dyhb::L('查看','Controller/Spaceadmin').'</a></div></div>';
+		$sNoticetemplate.='<div class="notice_action"><a href="{@creditlog_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 		$arrNoticedata=array(
 			'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -84,7 +84,7 @@ class DotransferController extends Controller{
 		}
 
 		$this->assign('__JumpUrl__',Dyhb::U('home://spaceadmin/transfer'));
-		$this->S(Dyhb::L('转账成功','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('转账成功','Controller'));
 	}
 
 }

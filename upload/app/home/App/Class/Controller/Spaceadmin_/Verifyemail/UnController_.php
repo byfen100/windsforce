@@ -8,25 +8,25 @@ class UnController extends Controller{
 
 	public function index(){
 		if($GLOBALS['___login___']['user_isverify']==0){
-			$this->E(Dyhb::L('Email验证信息不存在，无需删除','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('Email验证信息不存在，无需删除','Controller'));
 		}
 
 		$sEmail=trim($GLOBALS['___login___']['user_email']);
 		if(empty($sEmail)){
-			$this->E(Dyhb::L('Email地址不能为空','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('Email地址不能为空','Controller'));
 		}
 
 		Check::RUN();
 		if(!Check::C($sEmail,'email')){
-			$this->E(Dyhb::L('Email格式不正确','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('Email格式不正确','Controller'));
 		}
 
 		$oUser=UserModel::F('user_email=?',$sEmail)->getOne();
 		if(empty($oUser->user_id)){
-			$this->E(Dyhb::L('Email账号不存在','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('Email账号不存在','Controller'));
 		}
 		if($oUser->user_status==0){
-			$this->E(Dyhb::L('该账户已经被禁止','Controller/Spaceadmin'));
+			$this->E(Dyhb::L('该账户已经被禁止','Controller'));
 		}
 
 		// 删除验证状态
@@ -40,7 +40,7 @@ class UnController extends Controller{
 		}
 
 		$this->assign('__JumpUrl__',Dyhb::U('home://spaceadmin/verifyemail'));
-		$this->S(Dyhb::L('成功删除Email验证信息','Controller/Spaceadmin'));
+		$this->S(Dyhb::L('成功删除Email验证信息','Controller'));
 	}
 
 }
