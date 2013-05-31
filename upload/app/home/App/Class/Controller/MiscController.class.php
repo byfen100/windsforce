@@ -1,0 +1,65 @@
+<?php
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
+   主页杂项控制器($Liu.XiangMin)*/
+
+!defined('DYHB_PATH') && exit;
+
+class MiscController extends InitController{
+
+	public function district(){
+		Core_Extend::doControllerAction('Misc@District','index');
+	}
+
+	public function newpmnum(){
+		Core_Extend::doControllerAction('Misc@Newpmnum','index');
+	}
+
+	public function style(){
+		Core_Extend::doControllerAction('Misc@Style','index');
+	}
+
+	public function extendstyle(){
+		Core_Extend::doControllerAction('Misc@Extendstyle','index');
+	}
+
+	public function init_system(){
+		Core_Extend::doControllerAction('Misc@Initsystem','index');
+	}
+
+	public function music(){
+		Core_Extend::doControllerAction('Misc@Media','index');
+	}	
+	
+	public function video(){
+		Core_Extend::doControllerAction('Misc@Media','video');
+	}
+
+	public function avatar(){
+		Core_Extend::doControllerAction('Misc@Avatar','index');
+	}
+
+	public function dialogstyle(){
+		Core_Extend::doControllerAction('Misc@Dialogstyle','index');
+	}
+
+	public function newnoticenum(){
+		Core_Extend::doControllerAction('Misc@Newnoticenum','index');
+	}
+
+	public function ubb(){
+		Core_Extend::doControllerAction('Misc@Ubb','index');
+	}
+
+	public function stealth_online(){
+		Core_Extend::doControllerAction('Misc@Stealthonline','index');
+	}
+
+	public function socia_login(){
+		Core_Extend::doControllerAction('Misc@Socialogin','index');
+	}
+
+	public function thumb(){
+		Core_Extend::doControllerAction('Misc@Thumb','index');
+	}
+	
+}
