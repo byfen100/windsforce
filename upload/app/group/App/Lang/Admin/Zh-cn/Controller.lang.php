@@ -49,6 +49,7 @@ return array(
 '2ed1f78deff1a22a05b04e23decfd88f'=>"关闭的主题",
 '1ea15387f5d2fe8ec10f76e2b7228714'=>"缩略图主题",
 '7278a49b124f69c08b3d98ca52a8c434'=>"热门主题",
+'b89aa083a1ab400bdbfa3c9a1e264052'=>"小组",
 )
 
 ?>

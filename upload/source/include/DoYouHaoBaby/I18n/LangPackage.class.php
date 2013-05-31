@@ -121,6 +121,7 @@ class LangPackage{
 		$sOut.="return array(\r\n";
 
 		foreach($this->LANGS as $sKey=>$sValue){
+			$sKey=strtolower($sKey);
 			$sValue=$this->filterOptionValue($sValue);
 			$sOut.="'{$sKey}'=>$sValue,\r\n";
 		}
