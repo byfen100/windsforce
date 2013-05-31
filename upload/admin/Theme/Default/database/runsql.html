@@ -56,7 +56,7 @@ function validate(){
 			<!--<if condition="$nType==-1">-->
 			<header><h3><!--<lang package='Template'>-->执行错误<!--</lang>--></h3></header>
 			<div class="module_content">
-				<p><!--{if $sError}-->
+				<p style="color:red;font-weight:bold;"><!--{if $sError}-->
 					<!--{$sError}-->
 				<!--{d*else}-->
 					<!--<lang package='Template'>-->你的SQL语句执行遇到错误<!--</lang>-->
@@ -65,7 +65,7 @@ function validate(){
 			<!--<elseif condition="$nType==1 ">-->
 			<header><h3><!--<lang package='Template'>-->执行结果<!--</lang>--></h3></header>
 			<div class="module_content">
-				<p><!--<lang package='Template'>-->SQL语句运行成功<!--</lang>--></p>
+				<p style="color:green;font-weight:bold;"><!--<lang package='Template'>-->SQL语句运行成功<!--</lang>--></p>
 			</div>
 			<!--<elseif condition="$nType==2">-->
 			<div class="module_content">
