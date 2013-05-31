@@ -888,7 +888,7 @@ WINDSFORCE;
 		}
 
 		// 站点关闭
-		if($GLOBALS['_option_']['close_site']){
+		if($GLOBALS['_option_']['close_site'] && !Core_Extend::isAdmin()){
 			Dyhb::E('<h1 style="color:red;">The site is closed!</h1><br/>'.($GLOBALS['_option_']['close_site_reason']?$GLOBALS['_option_']['close_site_reason']:'No reason'));
 		}
 

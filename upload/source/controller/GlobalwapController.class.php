@@ -38,12 +38,12 @@ class GlobalwapController extends Controller{
 	}
 
 	protected function init(){
-		if($GLOBALS['_option_']['close_site']==1){
+		if($GLOBALS['_option_']['close_site']==1 && !Core_Extend::isAdmin()){
 			$this->assign('__JumpUrl__',Dyhb::U('wap://public/index'));
 			$this->wap_mes($GLOBALS['_option_']['close_site_reason'],'',0);
 		}
 
-		if($GLOBALS['_option_']['wap_on']==0){
+		if($GLOBALS['_option_']['wap_on']==0 && !Core_Extend::isAdmin()){
 			$this->assign('__JumpUrl__',Dyhb::U('wap://public/index'));
 			$this->wap_mes($GLOBALS['_option_']['wap_close_reason'],'',0);
 		}
