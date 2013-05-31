@@ -15,7 +15,7 @@ class SethomepagestyleController extends Controller{
 
 		Dyhb::cookie('group_homepagestyle',$nStyle);
 
-		$this->S(Dyhb::L('主页样式切换成功','Controller/Public'));
+		$this->S(Dyhb::L('主页样式切换成功','Controller'));
 	}
 
 }

@@ -2,17 +2,17 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template'>-->小组<!--</lang>-->"><!--<lang package='Template'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template/Grouptopic'>-->帖子回复<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->帖子回复<!--</lang>--></li>
 		</ul>
 
 		<!--<include file="group+header" />-->
 
 			<div class="span12">
 				<ul id="myTab" class="nav nav-tabs">
-					<li class="active"><a href="javascript:void(0);"><!--<lang package='Template/Grouptopic'>-->发表回复<!--</lang>--></a></li>
-					<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->"><!--<lang package='Template/Grouptopic'>-->返回帖子<!--</lang>--></a></li>
+					<li class="active"><a href="javascript:void(0);"><!--<lang package='Template'>-->发表回复<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'])}-->"><!--<lang package='Template'>-->返回帖子<!--</lang>--></a></li>
 				</ul>
 			</div>
 			

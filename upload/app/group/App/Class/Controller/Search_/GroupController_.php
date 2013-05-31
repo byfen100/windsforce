@@ -33,7 +33,7 @@ class GroupController extends Controller{
 
 		if($sKey){
 			if($GLOBALS['_option_']['search_keywords_minlength']>0 && strlen($sKey)<$GLOBALS['_option_']['search_keywords_minlength']){
-				$this->E(Dyhb::L('搜索的关键字最少为 %d 字节','Controller/Search',null,$GLOBALS['_option_']['search_keywords_minlength']));
+				$this->E(Dyhb::L('搜索的关键字最少为 %d 字节','Controller',null,$GLOBALS['_option_']['search_keywords_minlength']));
 			}
 			
 			$this->_sKey=$sKey;
@@ -63,7 +63,7 @@ class GroupController extends Controller{
 	}
 
 	public function groupresult_title_(){
-		return $this->_sKey.' - '.Dyhb::L('搜索结果','Controller/Search');
+		return $this->_sKey.' - '.Dyhb::L('搜索结果','Controller');
 	}
 
 	public function groupresult_keywords_(){
@@ -75,7 +75,7 @@ class GroupController extends Controller{
 	}
 
 	public function group_title_(){
-		return Dyhb::L('小组搜索','Controller/Search');
+		return Dyhb::L('小组搜索','Controller');
 	}
 
 	public function group_keywords_(){

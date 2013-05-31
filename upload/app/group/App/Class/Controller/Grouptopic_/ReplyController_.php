@@ -26,12 +26,12 @@ class ReplyController extends Controller{
 		$nId=intval(G::getGpc('id','G'));
 		
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定主题的ID','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有指定主题的ID','Controller'));
 		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=? AND grouptopic_status=1',$nId)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller'));
 		}
 
 		$this->assign('oGrouptopic',$oGrouptopic);
@@ -64,7 +64,7 @@ class ReplyController extends Controller{
 	}
 
 	public function reply_title_(){
-		return Dyhb::L('帖子回复','Controller/Grouptopic');
+		return Dyhb::L('帖子回复','Controller');
 	}
 
 	public function reply_keywords_(){

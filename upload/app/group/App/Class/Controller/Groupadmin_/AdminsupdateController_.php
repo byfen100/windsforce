@@ -11,7 +11,7 @@ class AdminsupdateController extends Controller{
 
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 		
 		// 设置完毕后系统统一进行清理
@@ -42,7 +42,7 @@ class AdminsupdateController extends Controller{
 			foreach($arrAdminUserid as $nAdminUserid){
 				$oUser=UserModel::F('user_id=? AND user_status=1',$nAdminUserid)->getOne();
 				if(empty($oUser['user_id'])){
-					$this->E(Dyhb::L('用户不存在或者被禁用','Controller/Groupadmin'));
+					$this->E(Dyhb::L('用户不存在或者被禁用','Controller'));
 				}
 
 				$arrMaychangeuserid[]=$nAdminUserid;
@@ -75,7 +75,7 @@ class AdminsupdateController extends Controller{
 			}
 		}
 
-		$this->S(Dyhb::L('小组管理员设置成功','Controller/Groupadmin'));
+		$this->S(Dyhb::L('小组管理员设置成功','Controller'));
 	}
 
 }

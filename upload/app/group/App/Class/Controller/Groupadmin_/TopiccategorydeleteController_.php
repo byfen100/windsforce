@@ -18,12 +18,12 @@ class TopiccategorydeleteController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 		
 		$oGrouptopiccategory=GrouptopiccategoryModel::F('grouptopiccategory_id=? AND group_id=?',$nGrouptopiccategoryid,$oGroup['group_id'])->query();
 		if(empty($oGrouptopiccategory['grouptopiccategory_id'])){
-			$this->E(Dyhb::L('你删除的帖子分类不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('你删除的帖子分类不存在','Controller'));
 		}
 		
 		// 执行删除
@@ -36,7 +36,7 @@ class TopiccategorydeleteController extends Controller{
 			// 将分类ID重置为0
 			Dyhb::instance('GrouptopicModel')->resetCategory($nGrouptopiccategoryid);
 			
-			$this->S(Dyhb::L('帖子分类删除成功','Controller/Groupadmin'));
+			$this->S(Dyhb::L('帖子分类删除成功','Controller'));
 		}
 	}
 

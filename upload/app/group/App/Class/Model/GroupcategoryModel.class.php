@@ -16,14 +16,14 @@ class GroupcategoryModel extends CommonModel{
 			'attr_protected'=>'groupcategory_id',
 			'check'=>array(
 				'groupcategory_name'=>array(
-					array('require',Dyhb::L('群组分类不能为空','__APPGROUP_COMMON_LANG__@Model/Groupcategory')),
-					array('max_length',32,Dyhb::L('群组分类不能超过32个字符','__APPGROUP_COMMON_LANG__@Model/Groupcategory'))
+					array('require',Dyhb::L('群组分类不能为空','Model')),
+					array('max_length',32,Dyhb::L('群组分类不能超过32个字符','Model'))
 				),
 				'groupcategory_parentid'=>array(
-					array('groupcategoryParentId',Dyhb::L('群组分类不能为自己','__APPGROUP_COMMON_LANG__@Model/Groupcategory'),'condition'=>'must','extend'=>'callback'),
+					array('groupcategoryParentId',Dyhb::L('群组分类不能为自己','Model'),'condition'=>'must','extend'=>'callback'),
 				),
 				'groupcategory_sort'=>array(
-					array('number',Dyhb::L('序号只能是数字','__APPGROUP_COMMON_LANG__@Model/Groupcategory'),'condition'=>'notempty','extend'=>'regex'),
+					array('number',Dyhb::L('序号只能是数字','Model'),'condition'=>'notempty','extend'=>'regex'),
 				)
 			),
 		);
@@ -55,13 +55,13 @@ class GroupcategoryModel extends CommonModel{
 
 	public function getParentGroupcategory($nParentGroupcategoryId){
 		if($nParentGroupcategoryId==0){
-			return Dyhb::L('顶级分类','__APPGROUP_COMMON_LANG__@Model/Groupcategory');
+			return Dyhb::L('顶级分类','Model');
 		}else{
 			$oGroupcategory=self::F('groupcategory_id=?',$nParentGroupcategoryId)->query();
 			if(!empty($oGroupcategory->groupcategory_id)){
 				return $oGroupcategory->groupcategory_name;
 			}else{
-				return Dyhb::L('群组父级分类已经损坏，你可以编辑分类进行修复','__APPGROUP_COMMON_LANG__@Model/Groupcategory');
+				return Dyhb::L('群组父级分类已经损坏，你可以编辑分类进行修复','Model');
 			}
 		}
 	}

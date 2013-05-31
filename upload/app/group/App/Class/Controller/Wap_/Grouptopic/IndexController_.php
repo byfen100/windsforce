@@ -27,7 +27,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('Wap小组','Controller/Wap');
+		return Dyhb::L('Wap小组','Controller');
 	}
 
 	public function index_keywords_(){

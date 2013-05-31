@@ -14,14 +14,14 @@ class ColortopicdialogController extends Controller{
 		$sGrouptopics=implode(',',$arrGrouptopicid);
 		
 		if(empty($sGrouptopics)){
-			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
+			$this->E(Dyhb::L('没有待操作的帖子','Controller'));
 		}
 	
 		if(count($arrGrouptopicid)==1){
 			// 读取帖子颜色
 			$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$arrGrouptopicid[0])->getOne();
 			if(empty($oGrouptopic['grouptopic_id'])){
-				$this->E(Dyhb::L('帖子不存在','Controller/Grouptopicadmin'));
+				$this->E(Dyhb::L('帖子不存在','Controller'));
 			}
 
 			$arrColor=array('',array(1=>'0',2=>'0',3=>'0'),'',);
@@ -37,7 +37,7 @@ class ColortopicdialogController extends Controller{
 		
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('sGrouptopics',$sGrouptopics);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopicid)));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller',null,count($arrGrouptopicid)));
 		
 		$this->display('grouptopicadmin+colortopicdialog');
 	}

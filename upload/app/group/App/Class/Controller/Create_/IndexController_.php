@@ -17,7 +17,7 @@ class IndexController extends Controller{
 	}
 	
 	public function index_title_(){
-		return Dyhb::L('申请创建小组','Controller/Create');
+		return Dyhb::L('申请创建小组','Controller');
 	}
 
 	public function index_keywords_(){

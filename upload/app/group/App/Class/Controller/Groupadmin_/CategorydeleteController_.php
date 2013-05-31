@@ -18,7 +18,7 @@ class CategorydeleteController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 		
 		$oGroupcategory=GroupcategoryModel::F('groupcategory_id=?',$nCategoryId)->query();
@@ -26,9 +26,9 @@ class CategorydeleteController extends Controller{
 			$oGroupModel=Dyhb::instance('GroupModel');
 			$oGroupModel->afterDelete($oGroup['group_id'],$nCategoryId);
 			
-			$this->S(Dyhb::L('删除群组分类成功','Controller/Groupadmin'));
+			$this->S(Dyhb::L('删除群组分类成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('你要删除的分类不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('你要删除的分类不存在','Controller'));
 		}
 	}
 

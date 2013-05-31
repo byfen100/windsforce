@@ -21,7 +21,7 @@ class GroupadminController extends InitController{
 		}
 
 		if(!Groupadmin_Extend::checkAdminGroupRbac($nGroupid)){
-			$this->E(Dyhb::L('你没有管理小组的权限','Controller/Groupadmin'));
+			$this->E(Dyhb::L('你没有管理小组的权限','Controller'));
 		}
 	}
 	

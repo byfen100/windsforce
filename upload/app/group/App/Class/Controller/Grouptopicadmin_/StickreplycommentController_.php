@@ -15,11 +15,11 @@ class StickreplycommentController extends Controller{
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopics)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你操作回帖的主题不存在','Controller/Grouptopicadmin'));
+			$this->E(Dyhb::L('你操作回帖的主题不存在','Controller'));
 		}
 
 		if(!Groupadmin_Extend::checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@stickreplycomment'))){
-			$this->E(Dyhb::L('你没有权限置顶或者取消置顶回帖','Controller/Grouptopicadmin'));
+			$this->E(Dyhb::L('你没有权限置顶或者取消置顶回帖','Controller'));
 		}
 		
 		$arrGrouptopiccomments=explode(',',$sGrouptopiccomments);
@@ -27,7 +27,7 @@ class StickreplycommentController extends Controller{
 		$bAdmincredit=false;
 
 		if(!$sReason){
-			$sReason=Dyhb::L('该管理人员没有填写操作原因','Controller/Grouptopicadmin');
+			$sReason=Dyhb::L('该管理人员没有填写操作原因','Controller');
 		}
 		
 		if(is_array($arrGrouptopiccomments)){
@@ -54,7 +54,7 @@ class StickreplycommentController extends Controller{
 
 					// 发送提醒
 					if($GLOBALS['___login___']['user_id']!=$oGrouptopiccomment['user_id']){
-						$sNoticetemplate='<div class="notice_'.($nStatus==1?'stickreplycomment':'unstickreplycomment').'"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.($nStatus==1?Dyhb::L('对你的回帖执行了置顶','Controller/Grouptopicadmin'):Dyhb::L('对你的回帖执行了取消置顶','Controller/Grouptopicadmin')).'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{admin_reason}</span></div>&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller/Grouptopicadmin').'</div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller/Grouptopicadmin').'</a></div></div>';
+						$sNoticetemplate='<div class="notice_'.($nStatus==1?'stickreplycomment':'unstickreplycomment').'"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.($nStatus==1?Dyhb::L('对你的回帖执行了置顶','Controller'):Dyhb::L('对你的回帖执行了取消置顶','Controller')).'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{admin_reason}</span></div>&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller').'</div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 						$arrNoticedata=array(
 							'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -83,7 +83,7 @@ class StickreplycommentController extends Controller{
 
 		$sGrouptopicurl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);
 
-		$this->A(array('group_id'=>$nGroupid,'grouptopic_url'=>$sGrouptopicurl),$nStatus==1?Dyhb::L('置顶回帖成功','Controller/Grouptopicadmin'):Dyhb::L('取消置顶回帖成功','Controller/Grouptopicadmin'));
+		$this->A(array('group_id'=>$nGroupid,'grouptopic_url'=>$sGrouptopicurl),$nStatus==1?Dyhb::L('置顶回帖成功','Controller'):Dyhb::L('取消置顶回帖成功','Controller'));
 	}
 
 }

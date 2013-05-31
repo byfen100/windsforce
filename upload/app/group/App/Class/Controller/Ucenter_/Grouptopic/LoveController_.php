@@ -29,7 +29,7 @@ class LoveController extends Controller{
 	}
 
 	public function lovetopic_title_(){
-		return Dyhb::L('我喜欢的话题','Controller/Grouptopic');
+		return Dyhb::L('我喜欢的话题','Controller');
 	}
 
 	public function lovetopic_keywords_(){

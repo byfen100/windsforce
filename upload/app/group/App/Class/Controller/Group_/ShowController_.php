@@ -30,7 +30,7 @@ class ShowController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		try{
@@ -67,7 +67,7 @@ class ShowController extends Controller{
 		}
 
 		if($nCid==-1){
-			$this->_sGroupcategory=Dyhb::L('默认分类','Controller/Group');
+			$this->_sGroupcategory=Dyhb::L('默认分类','Controller');
 			$arrWhere['grouptopiccategory_id']='0';
 		}
 
@@ -204,7 +204,7 @@ class ShowController extends Controller{
 	}
 
 	public function show_title_(){
-		return ($this->_sGroupcategory?$this->_sGroupcategory.' - ':'').$this->_oGroup['group_nikename'].' - '.Dyhb::L('小组','Controller/Group');
+		return ($this->_sGroupcategory?$this->_sGroupcategory.' - ':'').$this->_oGroup['group_nikename'].' - '.Dyhb::L('小组','Controller');
 	}
 
 	public function show_keywords_(){

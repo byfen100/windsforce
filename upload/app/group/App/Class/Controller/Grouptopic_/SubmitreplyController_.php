@@ -13,21 +13,21 @@ class SubmitreplyController extends GlobalchildController{
 		$nId=intval(G::getGpc('editcid'));
 
 		if($GLOBALS['___login___']===false){
-			$this->E(Dyhb::L('你没有登录无法编辑回帖','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有登录无法编辑回帖','Controller'));
 		}
 
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定编辑回帖的ID','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有指定编辑回帖的ID','Controller'));
 		}
 
 		$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nId)->getOne();
 		if(empty($oGrouptopiccomment['grouptopiccomment_id'])){
-			$this->E(Dyhb::L('你编辑的回帖不存在','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你编辑的回帖不存在','Controller'));
 		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$oGrouptopiccomment['grouptopic_id'])->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你要编辑的回帖的主题不存在','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你要编辑的回帖的主题不存在','Controller'));
 		}
 
 		try{
@@ -38,7 +38,7 @@ class SubmitreplyController extends GlobalchildController{
 		}
 
 		if(!Groupadmin_Extend::checkCommentRbac($oGrouptopic->group,$oGrouptopiccomment)){
-			$this->E(Dyhb::L('你没有权限编辑回帖','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有权限编辑回帖','Controller'));
 		}
 
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
@@ -128,7 +128,7 @@ class SubmitreplyController extends GlobalchildController{
 		if($GLOBALS['___login___']['user_id']!=$oGrouptopiccomment['user_id']){
 			$sGrouptopiccommentmessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
 			
-			$sNoticetemplate='<div class="notice_editgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('编辑了你的回帖','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div>&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller/Grouptopic').'</div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+			$sNoticetemplate='<div class="notice_editgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('编辑了你的回帖','Controller').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div>&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller').'</div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 			$arrNoticedata=array(
 				'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -150,7 +150,7 @@ class SubmitreplyController extends GlobalchildController{
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 					$sGrouptopiccommentmessage=G::subString(strip_tags($oGrouptopiccomment['grouptopiccomment_content']),0,100);
 					
-					$sNoticetemplate='<div class="notice_atgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题回帖中提到了你','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+					$sNoticetemplate='<div class="notice_atgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题回帖中提到了你','Controller').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 					$arrNoticedata=array(
 						'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -170,7 +170,7 @@ class SubmitreplyController extends GlobalchildController{
 
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oGrouptopiccomment->grouptopiccomment_id).'#grouptopiccomment-'.$oGrouptopiccomment->grouptopiccomment_id;
 
-		$this->A(array('url'=>$sUrl),Dyhb::L('编辑回帖成功','Controller/Grouptopic'),1);
+		$this->A(array('url'=>$sUrl),Dyhb::L('编辑回帖成功','Controller'),1);
 	}
 
 }

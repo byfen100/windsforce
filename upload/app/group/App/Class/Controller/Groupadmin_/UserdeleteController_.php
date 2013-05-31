@@ -13,19 +13,19 @@ class UserdeleteController extends Controller{
 
 		$oGroup=GroupModel::F('group_id=?',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('小组不存在','Controller'));
 		}
 
 		$oUser=UserModel::F('user_id=?',$nUserid)->getOne();
 		if(empty($oUser['user_id'])){
-			$this->E(Dyhb::L('用户不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('用户不存在','Controller'));
 		}
 
 		// 删除前判断被删除用户是否为小组长，如果为小组长则不能够被删除
 		$oTrygropuuser=GroupuserModel::F('user_id=? AND group_id=? AND groupuser_isadmin=2',$nUserid,$nGroupid)->getOne();
 
 		if(!empty($oTrygropuuser['groupuser_id'])){
-			$this->E(Dyhb::L('你不能够删除小组长','Controller/Groupadmin'));
+			$this->E(Dyhb::L('你不能够删除小组长','Controller'));
 		}
 		
 		// 执行删除
@@ -41,7 +41,7 @@ class UserdeleteController extends Controller{
 		// 更新小组中的用户数量
 		Dyhb::instance('GroupModel')->resetUser($nGroupid);
 
-		$this->S(Dyhb::L('用户删除成功','Controller/Groupadmin'));
+		$this->S(Dyhb::L('用户删除成功','Controller'));
 	}
 
 }

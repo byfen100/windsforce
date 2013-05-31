@@ -18,12 +18,12 @@ class TopiccategoryupdateController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 		
 		$oGrouptopiccategory=GrouptopiccategoryModel::F('grouptopiccategory_id=? AND group_id=?',$nGrouptopiccategoryid,$oGroup['group_id'])->query();
 		if(empty($oGrouptopiccategory['grouptopiccategory_id'])){
-			$this->E(Dyhb::L('你编辑的帖子分类不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('你编辑的帖子分类不存在','Controller'));
 		}
 
 		$oGrouptopiccategory->save(0,'update');
@@ -33,7 +33,7 @@ class TopiccategoryupdateController extends Controller{
 			$this->E($oGrouptopiccategory->getErrorMessage());
 		}else{
 			$this->assign('__JumpUrl__',Dyhb::U('group://groupadmin/topiccategory?gid='.$oGroup['group_id']));
-			$this->S(Dyhb::L('帖子分类更新成功','Controller/Groupadmin'));
+			$this->S(Dyhb::L('帖子分类更新成功','Controller'));
 		}
 	}
 

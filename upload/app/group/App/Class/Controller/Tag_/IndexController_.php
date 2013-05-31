@@ -24,7 +24,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('标签列表','Controller/Tag');
+		return Dyhb::L('标签列表','Controller');
 	}
 
 	public function index_keywords_(){

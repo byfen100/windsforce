@@ -20,17 +20,17 @@ class EditcommenttopicdialogController extends Controller{
 		$nGrouptopiccommentid=intval(G::getGpc('cid','G'));
 
 		if(!$nGrouptopiccommentid){
-			$this->E(Dyhb::L('你没有指定编辑的回帖的ID','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有指定编辑的回帖的ID','Controller'));
 		}
 
 		$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccommentid)->getOne();
 		if(empty($oGrouptopiccomment['grouptopiccomment_id'])){
-			$this->E(Dyhb::L('你要编辑的回帖不存在','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你要编辑的回帖不存在','Controller'));
 		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$oGrouptopiccomment['grouptopic_id'])->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你要编辑的回帖的主题不存在','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你要编辑的回帖的主题不存在','Controller'));
 		}
 
 		try{

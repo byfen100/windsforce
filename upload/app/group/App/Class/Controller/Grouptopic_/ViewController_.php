@@ -38,14 +38,14 @@ class ViewController extends Controller{
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=? AND grouptopic_status=1',$nId)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller'));
 		}
 
 		// 判断帖子小组
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$oGrouptopic->group_id)->getOne();
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Grouptopic'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		try{
@@ -60,7 +60,7 @@ class ViewController extends Controller{
 		if($nIsolationCommentid){
 			$result=GrouptopiccommentModel::getCommenturlByid($nIsolationCommentid);
 			if($result===false){
-				$this->E(Dyhb::L('该条回帖已被删除、屏蔽或者尚未通过审核','Controller/Grouptopic'));
+				$this->E(Dyhb::L('该条回帖已被删除、屏蔽或者尚未通过审核','Controller'));
 			}
 
 			G::urlGoTo($result);
@@ -82,7 +82,7 @@ class ViewController extends Controller{
 		}
 
 		if($oGrouptopic->grouptopic_thumb>0){
-			$oGrouptopic->grouptopic_content='<div class="grouptopicthumb"><div class="grouptopicthumb_title">'.Dyhb::L('主题缩略图','Controller/Grouptopic').'</div><p>[attachment]'.$oGrouptopic->grouptopic_thumb.'[/attachment]</p></div>'.$oGrouptopic->grouptopic_content;
+			$oGrouptopic->grouptopic_content='<div class="grouptopicthumb"><div class="grouptopicthumb_title">'.Dyhb::L('主题缩略图','Controller').'</div><p>[attachment]'.$oGrouptopic->grouptopic_thumb.'[/attachment]</p></div>'.$oGrouptopic->grouptopic_content;
 		}
 		
 		$this->assign('oGrouptopic',$oGrouptopic);
@@ -203,13 +203,13 @@ class ViewController extends Controller{
 
 		switch($nIndex){
 			case 1:
-				return Dyhb::L('沙发','Controller/Grouptopic');
+				return Dyhb::L('沙发','Controller');
 				break;
 			case 2:
-				return Dyhb::L('板凳','Controller/Grouptopic');
+				return Dyhb::L('板凳','Controller');
 				break;
 			case 3:
-				return Dyhb::L('地板','Controller/Grouptopic');
+				return Dyhb::L('地板','Controller');
 				break;
 			default:
 				return $nIndex;

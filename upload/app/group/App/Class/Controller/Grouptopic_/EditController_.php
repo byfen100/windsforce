@@ -13,7 +13,7 @@ class EditController extends Controller{
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nTid)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('不存在你要编辑的主题','Controller/Grouptopic'));
+			$this->E(Dyhb::L('不存在你要编辑的主题','Controller'));
 		}
 
 		try{
@@ -24,11 +24,11 @@ class EditController extends Controller{
 		}
 
 		if(!Groupadmin_Extend::checkTopicedit($oGrouptopic)){
-			$this->E(Dyhb::L('你没有权限编辑帖子','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有权限编辑帖子','Controller'));
 		}
 
 		if(!Groupadmin_Extend::checkTopicedit($oGrouptopic)){
-			$this->E(Dyhb::L('你没有权限编辑帖子','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有权限编辑帖子','Controller'));
 		}
 
 		$this->_oGrouptopic=$oGrouptopic;
@@ -82,7 +82,7 @@ class EditController extends Controller{
 	}
 
 	public function edit_title_(){
-		return $this->_oGrouptopic['grouptopic_title'].' - '.Dyhb::L('帖子编辑','Controller/Grouptopic');
+		return $this->_oGrouptopic['grouptopic_title'].' - '.Dyhb::L('帖子编辑','Controller');
 	}
 
 	public function edit_keywords_(){

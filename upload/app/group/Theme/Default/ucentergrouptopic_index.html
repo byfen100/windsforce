@@ -13,12 +13,12 @@ function addGrouptopic(){
 	$('#grouptopic_content').val(editor.html());
 
 	if($('#grouptopic_title').val()==''){
-		windsforceAlert('<!--<lang package='Template/Grouptopic'>-->帖子标题不能为空<!--</lang>-->','',3);
+		windsforceAlert('<!--<lang package='Template'>-->帖子标题不能为空<!--</lang>-->','',3);
 		return false;
 	}
 
 	if($('#grouptopic_content').val()==''){
-		windsforceAlert('<!--<lang package='Template/Grouptopic'>-->帖子内容不能为空<!--</lang>-->','',3);
+		windsforceAlert('<!--<lang package='Template'>-->帖子内容不能为空<!--</lang>-->','',3);
 		return false;
 	}
 	
@@ -71,7 +71,7 @@ function reloadCategory(){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template/Grouptopic'>-->小组个人中心<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->小组个人中心<!--</lang>--></li>
 		</ul>
 
 		<div class="row">
@@ -81,7 +81,7 @@ function reloadCategory(){
 			</div>
 
 			<div class="span9">
-				<em><!--<lang package='Template/Grouptopic'>-->这里可以快捷发布帖子哦，赶快试试吧!<!--</lang>--></em>
+				<em><!--<lang package='Template'>-->这里可以快捷发布帖子哦，赶快试试吧!<!--</lang>--></em>
 				<div class="grouptopic-box" >
 					<form class="well form-inline" method="post" id="grouptopicAdd" name="grouptopicAdd">
 						<table width="100%" height="100%" border="0" valign="middle" cellpadding="5px" cellspacing="0">
@@ -90,12 +90,12 @@ function reloadCategory(){
 									<td colspan="2">
 										<div id="grouptopic-title-box" style="margin-bottom:10px;">
 											<select style="width:120px;" name="grouptopiccategory_id" id="grouptopiccategory_id">
-												<option value="0" selected><!--<lang package='Template/Grouptopic'>-->默认分类<!--</lang>--></option>
+												<option value="0" selected><!--<lang package='Template'>-->默认分类<!--</lang>--></option>
 												<!--<foreach for=arrGrouptopiccategorys value=oGrouptopiccategory>-->
 												<option value="<!--{$oGrouptopiccategory['grouptopiccategory_id']}-->" <!--{if isset($oGrouptopic) && $oGrouptopic['grouptopiccategory_id']==$oGrouptopiccategory['grouptopiccategory_id']}-->selected<!--{/if}-->><!--{$oGrouptopiccategory['grouptopiccategory_name']}--></option>
 												<!--</foreach>-->
 											</select>&nbsp;
-											<input type="text" class="span5" name="grouptopic_title" id="grouptopic_title" value="">&nbsp;<!--<lang package='Template/Grouptopic'>-->帖子标题<!--</lang>-->
+											<input type="text" class="span5" name="grouptopic_title" id="grouptopic_title" value="">&nbsp;<!--<lang package='Template'>-->帖子标题<!--</lang>-->
 										</div>
 										<div id="emotion_parentcontainer">
 											<textarea class="input-xlarge" name="grouptopic_content" id="grouptopic_content" rows="5" style="width:100%;"></textarea>
@@ -111,7 +111,7 @@ function reloadCategory(){
 								<tr>
 									<td>
 										<label class="checkbox">
-											<a href="javascript:void(0);" onclick="showGrouptopictitle();"><!--<lang package='Template/Grouptopic'>-->帖子标题<!--</lang>--></a>&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a>
+											<a href="javascript:void(0);" onclick="showGrouptopictitle();"><!--<lang package='Template'>-->帖子标题<!--</lang>--></a>&nbsp;<span class="pipe">|</span>&nbsp;<a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a>
 										</label>
 									</td>
 									<td rowspan="2" style="width:70px;">
@@ -130,9 +130,9 @@ function reloadCategory(){
 											<option value="<!--{$oGroup['group_id']}-->"><!--{$oGroup['group_nikename']}--></option>
 											<!--</foreach>-->
 										</select>&nbsp;
-										<span><!--<lang package='Template/Grouptopic'>-->我的小组<!--</lang>--></span>
+										<span><!--<lang package='Template'>-->我的小组<!--</lang>--></span>
 										<!--{d*else}-->
-										<span><a href="<!--{:Dyhb::U('group://public/group')}-->"><!--<lang package='Template/Grouptopic'>-->你还没有加入任何小组，不能够发布帖子。试试运气吧！<!--</lang>--></a></span>
+										<span><a href="<!--{:Dyhb::U('group://public/group')}-->"><!--<lang package='Template'>-->你还没有加入任何小组，不能够发布帖子。试试运气吧！<!--</lang>--></a></span>
 										<!--{/if}-->
 									</td>
 									<td>&nbsp;<td>
@@ -153,10 +153,10 @@ function reloadCategory(){
 
 				<div class="tabb-menu">
 					<ul class="nav nav-tabs">
-						<li <!--{if empty($sType)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index')}-->"><!--<lang package='Template/Grouptopic'>-->我关注的<!--</lang>--></a></li>
-						<li <!--{if $sType=='myself'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index?type=myself')}-->"><!--<lang package='Template/Grouptopic'>-->我自己的<!--</lang>--></a></li>
-						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index?type=friend')}-->"><!--<lang package='Template/Grouptopic'>-->好友的<!--</lang>--></a></li>
-						<li <!--{if $sType=='all' || isset($_GET['uid'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index?type=all')}-->"><!--<lang package='Template/Grouptopic'>-->正在发生<!--</lang>--></a></li>
+						<li <!--{if empty($sType)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index')}-->"><!--<lang package='Template'>-->我关注的<!--</lang>--></a></li>
+						<li <!--{if $sType=='myself'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index?type=myself')}-->"><!--<lang package='Template'>-->我自己的<!--</lang>--></a></li>
+						<li <!--{if $sType=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index?type=friend')}-->"><!--<lang package='Template'>-->好友的<!--</lang>--></a></li>
+						<li <!--{if $sType=='all' || isset($_GET['uid'])}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('group://ucenter/index?type=all')}-->"><!--<lang package='Template'>-->正在发生<!--</lang>--></a></li>
 					</ul>
 				</div>
 
@@ -164,11 +164,11 @@ function reloadCategory(){
 					<table width="100%" class="table">
 						<thead>
 							<tr style="border-bottom:1px solid #eeeeee;">
-								<th style="width:61px;"><!--<lang package='Template/Topiclist'>-->发帖人<!--</lang>--></th>
+								<th style="width:61px;"><!--<lang package='Template'>-->发帖人<!--</lang>--></th>
 								<th colspan="2" style="text-align:right;">
-									<!--<lang package='Template/Topiclist'>-->回复<!--</lang>-->
+									<!--<lang package='Template'>-->回复<!--</lang>-->
 									<span class="pipe">|</span>
-									<!--<lang package='Template/Topiclist'>-->浏览<!--</lang>-->
+									<!--<lang package='Template'>-->浏览<!--</lang>-->
 								</th>
 							</tr>
 						</thead>
@@ -178,7 +178,7 @@ function reloadCategory(){
 							<tr>
 								<td class="author">
 									<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-									<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
+									<!--<lang package='Template'>-->匿名<!--</lang>-->
 									<!--{d*else}-->
 									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->">
 										<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
@@ -191,13 +191,13 @@ function reloadCategory(){
 										<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 										<!--{d*else}-->
-										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template/Topiclist'>-->默认分类<!--</lang>-->]</a>
+										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template'>-->默认分类<!--</lang>-->]</a>
 										<!--{/if}-->
 										<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
 										<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 										<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-										&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template/Topiclist'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
+										&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
@@ -211,33 +211,33 @@ function reloadCategory(){
 										<!--{/if}-->
 									</p>
 									<p class="info">
-										<!--<lang package='Template/Topiclist'>-->小组<!--</lang>-->&nbsp;
+										<!--<lang package='Template'>-->小组<!--</lang>-->&nbsp;
 										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>
 										<span class="pipe">|</span>
-										<!--<lang package='Template/Topiclist'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-										<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
+										<!--<lang package='Template'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+										<!--<lang package='Template'>-->匿名<!--</lang>-->
 										<!--{d*else}--><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
 										<!--{/if}-->&nbsp;
 										<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 										<span class="pipe">|</span>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
 										<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-										<!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+										<!--<lang package='Template'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
 										<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
 										<!--{d*else}-->
-										<span><!--<lang package='Template/Topiclist'>-->暂无回复<!--</lang>--></span>
+										<span><!--<lang package='Template'>-->暂无回复<!--</lang>--></span>
 										<!--{/if}-->
 									</p>
 								</td>
 								<td class="num" style="text-align:center;">
-									<span><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
-									<span><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+									<span><!--<lang package='Template'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+									<span><!--<lang package='Template'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
 								</td>
 							</tr>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<tr id="grouptopic_no">
-								<td colspan="3"><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>--></td>
+								<td colspan="3"><!--<lang package='Template'>-->暂时没有发现任何帖子<!--</lang>--></td>
 							</tr>
 							<!--{/if}-->
 						</tbody>

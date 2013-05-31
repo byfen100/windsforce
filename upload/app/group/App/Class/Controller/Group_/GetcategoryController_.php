@@ -13,7 +13,7 @@ class GetcategoryController extends Controller{
 			echo '';
 		}
 
-		echo "<option value=\"0\">".Dyhb::L('默认分类','Controller/Group')."</option>";
+		echo "<option value=\"0\">".Dyhb::L('默认分类','Controller')."</option>";
 		
 		$arrGrouptopiccategorys=GrouptopiccategoryModel::F('group_id=?',$nGid)->order('grouptopiccategory_sort ASC')->getAll();
 

@@ -23,7 +23,7 @@ class AddController extends Controller{
 			$arrGroups=$oGroup->groupbyUserid($GLOBALS['___login___']['user_id']);
 
 			if(!is_array($arrGroups)){
-				$this->E(Dyhb::L('用户尚未加入任何小组','Controller/Grouptopic'));
+				$this->E(Dyhb::L('用户尚未加入任何小组','Controller'));
 			}
 			
 			$this->assign('arrGroups',$arrGroups);
@@ -31,7 +31,7 @@ class AddController extends Controller{
 			// 访问权限
 			$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nGroupid)->getOne();
 			if(empty($oGroup['group_id'])){
-				$this->E(Dyhb::L('小组不存在或者还在审核中','Controller/Grouptopic'));
+				$this->E(Dyhb::L('小组不存在或者还在审核中','Controller'));
 			}
 
 			$this->_oGroup=$oGroup;
@@ -78,7 +78,7 @@ class AddController extends Controller{
 	}
 
 	public function add_title_(){
-		return Dyhb::L('发布帖子','Controller/Grouptopic').($this->_oGroup?' - '.$this->_oGroup['group_nikename']:'');
+		return Dyhb::L('发布帖子','Controller').($this->_oGroup?' - '.$this->_oGroup['group_nikename']:'');
 	}
 
 	public function add_keywords_(){

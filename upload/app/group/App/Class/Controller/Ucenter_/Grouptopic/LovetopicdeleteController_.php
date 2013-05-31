@@ -29,7 +29,7 @@ class LovetopicdeleteController extends Controller{
 			}
 		}
 
-		$this->S(Dyhb::L('删除喜欢帖子成功','Controller/Grouptopic'));
+		$this->S(Dyhb::L('删除喜欢帖子成功','Controller'));
 	}
 
 }

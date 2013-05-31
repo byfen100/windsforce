@@ -38,7 +38,7 @@ class TopController extends Controller{
 	}
 
 	public function top_title_(){
-		return Dyhb::L('标签排行榜','Controller/Tag');
+		return Dyhb::L('标签排行榜','Controller');
 	}
 
 	public function top_keywords_(){

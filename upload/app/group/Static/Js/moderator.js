@@ -113,7 +113,7 @@ function modTopiccommon(sAction,sExtra){
 		nTempnum=nGrouptopicid.length;
 	}
 
-	oCommonNewmodtopics=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Js/Moderator_Js',null,nTempnum),'',modTopiccommontopic,'',400,100);
+	oCommonNewmodtopics=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Template',null,nTempnum),'',modTopiccommontopic,'',400,100);
 }
 
 function modTopiccommontopic(){
@@ -196,7 +196,7 @@ function modCommentcommon(sAction,sExtra){
 
 	sCurrentActionComment=sAction;
 
-	oCommonNewmodcomments=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Js/Moderator_Js',null,nModclickcount),'',modCommentcommontopic,'',400,100);
+	oCommonNewmodcomments=windsforceAjax(sUrl,D.L('你选择了 %d 篇帖子','Template',null,nModclickcount),'',modCommentcommontopic,'',400,100);
 }
 
 function modCommentcommontopic(){

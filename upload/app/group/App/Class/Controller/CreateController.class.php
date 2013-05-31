@@ -12,7 +12,7 @@ class CreateController extends InitController{
 		$this->is_login();
 
 		if($GLOBALS['_cache_']['group_option']['allowed_creategroup']==0){
-			$this->E(Dyhb::L('系统关闭了申请创建小组功能','Controller/Create'));
+			$this->E(Dyhb::L('系统关闭了申请创建小组功能','Controller'));
 		}
 	}
 	

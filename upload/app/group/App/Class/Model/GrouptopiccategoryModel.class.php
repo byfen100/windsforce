@@ -16,8 +16,8 @@ class GrouptopiccategoryModel extends CommonModel{
 			'attr_protected'=>'grouptopiccategory_id',
 			'check'=>array(
 				'grouptopiccategory_name'=>array(
-					array('require',Dyhb::L('群组帖子分类不能为空','__APPGROUP_COMMON_LANG__@Model/Grouptopiccategory')),
-					array('max_length',30,Dyhb::L('群组帖子分类不能超过30个字符','__APPGROUP_COMMON_LANG__@Model/Grouptopiccategory'))
+					array('require',Dyhb::L('群组帖子分类不能为空','Model')),
+					array('max_length',30,Dyhb::L('群组帖子分类不能超过30个字符','Model'))
 				),
 			),
 		);

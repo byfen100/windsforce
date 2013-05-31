@@ -19,7 +19,7 @@ class UserController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		$this->_oGroup=$oGroup;
@@ -67,7 +67,7 @@ class UserController extends Controller{
 	}
 
 	public function user_title_(){
-		return Dyhb::L('小组成员','Controller/Group').' - '.$this->_oGroup['group_nikename'];
+		return Dyhb::L('小组成员','Controller').' - '.$this->_oGroup['group_nikename'];
 	}
 
 	public function user_keywords_(){

@@ -11,7 +11,7 @@ class Grouptopic_Extend{
 			$sImgurl=Appt::path('locked.gif','group');
 			
 			if($bReturnImg===true){
-				return ' <img class="grouptopicclose_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('关闭主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').'"/> ';
+				return ' <img class="grouptopicclose_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('关闭主题','Controller').'"/> ';
 			}else{
 				return $sImgurl;
 			}
@@ -25,7 +25,7 @@ class Grouptopic_Extend{
 			$sImgurl=Appt::path('grouptopic/sticktopic_'.$nStickstatus.'.gif','group');
 			
 			if($bReturnImg===true){
-				return ' <img class="grouptopicstick_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.($nStickstatus==3?Dyhb::L('全局置顶主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend'):Dyhb::L('小组置顶主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').' '.$nStickstatus).'"/> ';
+				return ' <img class="grouptopicstick_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.($nStickstatus==3?Dyhb::L('全局置顶主题','Controller'):Dyhb::L('小组置顶主题','Controller').' '.$nStickstatus).'"/> ';
 			}else{
 				return $sImgurl;
 			}
@@ -39,7 +39,7 @@ class Grouptopic_Extend{
 			$sImgurl=Appt::path('grouptopic/digest_'.$nDigeststatus.'.gif','group');
 			
 			if($bReturnImg===true){
-				return ' <img class="grouptopicdigest_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('精华主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').' '.$nDigeststatus.'"/> ';
+				return ' <img class="grouptopicdigest_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('精华主题','Controller').' '.$nDigeststatus.'"/> ';
 			}else{
 				return $sImgurl;
 			}
@@ -53,7 +53,7 @@ class Grouptopic_Extend{
 			$sImgurl=Appt::path('grouptopic/recommend_'.$nRecommendstatus.'.gif','group');
 			
 			if($bReturnImg===true){
-				return ' <img class="grouptopicrecommend_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.($nRecommendstatus==2?Dyhb::L('系统推荐主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend'):Dyhb::L('组长推荐主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend')).'"/> ';
+				return ' <img class="grouptopicrecommend_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.($nRecommendstatus==2?Dyhb::L('系统推荐主题','Controller'):Dyhb::L('组长推荐主题','Controller')).'"/> ';
 			}else{
 				return $sImgurl;
 			}
@@ -67,7 +67,7 @@ class Grouptopic_Extend{
 			$sImgurl=Appt::path('image.gif','group');
 			
 			if($bReturnImg===true){
-				return ' <img class="grouptopicthumb_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('缩略图主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').'"/> ';
+				return ' <img class="grouptopicthumb_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('缩略图主题','Controller').'"/> ';
 			}else{
 				return $sImgurl;
 			}
@@ -91,7 +91,7 @@ class Grouptopic_Extend{
 			$sImgurl=Appt::path('hot_'.$nHot.'.gif','group');
 			
 			if($bReturnImg===true){
-				return ' <img class="grouptopicthumb_date" src="'.$sImgurl.''.'" border="0" align="absmiddle" title="'.Dyhb::L('热门主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').$nHot.'"/> ';
+				return ' <img class="grouptopicthumb_date" src="'.$sImgurl.''.'" border="0" align="absmiddle" title="'.Dyhb::L('热门主题','Controller').$nHot.'"/> ';
 			}else{
 				return $sImgurl;
 			}
@@ -110,7 +110,7 @@ class Grouptopic_Extend{
 			$sImgurl=Appt::path('highlight.gif','group');
 			
 			if($bReturnImg===true){
-				return ' <img class="grouptopichighlight_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('高亮主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').'"/> ';
+				return ' <img class="grouptopichighlight_date" src="'.$sImgurl.'" border="0" align="absmiddle" title="'.Dyhb::L('高亮主题','Controller').'"/> ';
 			}else{
 				return $sImgurl;
 			}
@@ -122,7 +122,7 @@ class Grouptopic_Extend{
 	static public function grouptopiclistIcon($oGrouptopic){
 		$sGroupurl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);
 
-		$sTitle=Dyhb::L('新窗口打开','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend');
+		$sTitle=Dyhb::L('新窗口打开','Controller');
 		$sIcon=Appt::path('folder_common.gif','group');
 
 		if($oGrouptopic->grouptopic_comments>0){
@@ -130,18 +130,18 @@ class Grouptopic_Extend{
 			
 			if(CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400){
 				$sIcon=Appt::path('folder_new.gif','group');
-				$sTitle=Dyhb::L('有新回复','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').' - '.$sTitle;
+				$sTitle=Dyhb::L('有新回复','Controller').' - '.$sTitle;
 			}
 		}
 		
 		if($oGrouptopic['grouptopic_sticktopic']>0){
 			$sIcon=Appt::path('grouptopic/sticktopic_'.$oGrouptopic['grouptopic_sticktopic'].'.gif','group');
-			$sTitle=($oGrouptopic['grouptopic_sticktopic']==3?Dyhb::L('全局置顶主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend'):Dyhb::L('小组置顶主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').' '.$oGrouptopic['grouptopic_sticktopic']).' - '.$sTitle;
+			$sTitle=($oGrouptopic['grouptopic_sticktopic']==3?Dyhb::L('全局置顶主题','Controller'):Dyhb::L('小组置顶主题','Controller').' '.$oGrouptopic['grouptopic_sticktopic']).' - '.$sTitle;
 		}
 
 		if($oGrouptopic['grouptopic_isclose']==1){
 			$sIcon=Appt::path('locked.gif','group');
-			$sTitle=Dyhb::L('关闭的主题','__APPGROUP_COMMON_LANG__@Function/Grouptopic_Extend').' - '.$sTitle;
+			$sTitle=Dyhb::L('关闭的主题','Controller').' - '.$sTitle;
 		}
 
 		return '<a href="'.$sGroupurl.'" title="'.$sTitle.'" target="_blank"><img src="'.$sIcon.'" /></a>';

@@ -2,8 +2,8 @@
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://tag/index')}-->"><!--<lang package='Template/Tag'>-->标签<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template'>-->小组<!--</lang>-->"><!--<lang package='Template'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://tag/index')}-->"><!--<lang package='Template'>-->标签<!--</lang>--></a> <span class="divider">/</span></li>
 			<li><!--{$oGrouptopictag['grouptopictag_name']}--></li>
 		</ul>
 
@@ -11,23 +11,23 @@
 			<div class="span9">
 				<div class="alert alert-success">
 					<button class="close" data-dismiss="alert">&times;</button>
-					<!--<lang package='Template/Tag'>-->你搜索的标签为<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a></b>&nbsp;
+					<!--<lang package='Template'>-->你搜索的标签为<!--</lang>-->&nbsp;<b><a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oGrouptopictag['grouptopictag_name']),array(),true)}-->"><!--{$oGrouptopictag['grouptopictag_name']}--></a></b>&nbsp;
 					<span class="pipe">|</span>
-					<b><a href="<!--{:Dyhb::U('group://public/newtopic')}-->"><!--<lang package='Template/Tag'>-->查看全部帖子<!--</lang>--></a></b>
+					<b><a href="<!--{:Dyhb::U('group://public/newtopic')}-->"><!--<lang package='Template'>-->查看全部帖子<!--</lang>--></a></b>
 					<span class="pipe">|</span>
-					<b><a href="<!--{:Dyhb::U('group://tag/index')}-->"><!--<lang package='Template/Tag'>-->查看全部标签<!--</lang>--></a></b>
+					<b><a href="<!--{:Dyhb::U('group://tag/index')}-->"><!--<lang package='Template'>-->查看全部标签<!--</lang>--></a></b>
 				</div>
 
 				<div id="topic_list_box" class="topic_list_box">
 					<table width="100%" class="table">
 						<thead>
 							<tr style="border-bottom:1px solid #eeeeee;">
-								<th style="width:61px;"><!--<lang package='Template/Topiclist'>-->发帖人<!--</lang>--></th>
-								<th><!--<lang package='Template/Topiclist'>-->标题<!--</lang>--></th>
+								<th style="width:61px;"><!--<lang package='Template'>-->发帖人<!--</lang>--></th>
+								<th><!--<lang package='Template'>-->标题<!--</lang>--></th>
 								<th style="text-align:center;width:130px;">
-									<!--<lang package='Template/Topiclist'>-->回复<!--</lang>-->
+									<!--<lang package='Template'>-->回复<!--</lang>-->
 									<span class="pipe">|</span>
-									<!--<lang package='Template/Topiclist'>-->浏览<!--</lang>-->
+									<!--<lang package='Template'>-->浏览<!--</lang>-->
 								</th>
 							</tr>
 						</thead>
@@ -37,7 +37,7 @@
 							<tr>
 								<td class="author">
 									<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-									<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
+									<!--<lang package='Template'>-->匿名<!--</lang>-->
 									<!--{d*else}-->
 									<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->">
 										<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
@@ -50,13 +50,13 @@
 										<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 										<!--{d*else}-->
-										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template/Topiclist'>-->默认分类<!--</lang>-->]</a>
+										<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template'>-->默认分类<!--</lang>-->]</a>
 										<!--{/if}-->
 										<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
 										<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 										<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-										&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template/Topiclist'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
+										&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
 										<!--{/if}-->
 										<!--{/if}-->
 										<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
@@ -68,30 +68,30 @@
 										<!--{/if}-->
 									</p>
 									<p class="info">
-										<!--<lang package='Template/Topiclist'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-										<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
+										<!--<lang package='Template'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+										<!--<lang package='Template'>-->匿名<!--</lang>-->
 										<!--{d*else}--><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
 										<!--{/if}-->&nbsp;
 										<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 										<span class="pipe">|</span>
 										<!--{if $oGrouptopic->grouptopic_comments>0}-->
 										<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-										<!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+										<!--<lang package='Template'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
 										<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
 										<!--{d*else}-->
-										<span><!--<lang package='Template/Topiclist'>-->暂无回复<!--</lang>--></span>
+										<span><!--<lang package='Template'>-->暂无回复<!--</lang>--></span>
 										<!--{/if}-->
 									</p>
 								</td>
 								<td class="num" style="text-align:center;">
-									<span><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
-									<span><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+									<span><!--<lang package='Template'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+									<span><!--<lang package='Template'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
 								</td>
 							</tr>
 							<!--</foreach>-->
 							<!--{d*else}-->
 							<tr>
-								<td colspan="3"><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>--></td>
+								<td colspan="3"><!--<lang package='Template'>-->暂时没有发现任何帖子<!--</lang>--></td>
 							</tr>
 							<!--{/if}-->
 						</tbody>
@@ -103,15 +103,15 @@
 
 			<div class="span3">
 				<div class="commonbox_mini commonbox_mini_gray">
-					<h2 class="title"><!--<lang package='Template/Tag'>-->热门标签<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://tag/index')}-->" title="<!--<lang package='Template/Tag'>-->更多标签<!--</lang>-->"><i class="icon-th-list"></i></a></h2>
+					<h2 class="title"><!--<lang package='Template'>-->热门标签<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://tag/index')}-->" title="<!--<lang package='Template'>-->更多标签<!--</lang>-->"><i class="icon-th-list"></i></a></h2>
 					<div class="tags_hot clear">
 						<ul>
 							<!--{if is_array($arrHottags)}-->
 							<!--<foreach for=arrHottags value=oHottag>-->
-							<li><a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oHottag['grouptopictag_name']),array(),true)}-->" title="<!--<lang package='Template/Taglist'>-->帖子数量<!--</lang>--> <!--{$oHottag['grouptopictag_count']}-->" class="common_tag"><!--{$oHottag['grouptopictag_name']}--></a></li>
+							<li><a href="<!--{:Dyhb::U('group://tag/show?tag='.urlencode($oHottag['grouptopictag_name']),array(),true)}-->" title="<!--<lang package='Template'>-->帖子数量<!--</lang>--> <!--{$oHottag['grouptopictag_count']}-->" class="common_tag"><!--{$oHottag['grouptopictag_name']}--></a></li>
 							<!--</foreach>-->
 							<!--{d*else}-->
-							<li><!--<lang package='Template/Taglist'>-->暂时没有发现任何标签<!--</lang>--></li>
+							<li><!--<lang package='Template'>-->暂时没有发现任何标签<!--</lang>--></li>
 							<!--{/if}-->
 						</ul>
 					</div>

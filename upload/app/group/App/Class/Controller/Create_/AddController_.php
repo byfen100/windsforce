@@ -10,7 +10,7 @@ class AddController extends Controller{
 		$nAgreement=intval(G::getGpc('agreement'));
 
 		if(!$nAgreement){
-			$this->E(Dyhb::L('你必须同意用户协议中的条款才能够创建小组','Controller/Create'));
+			$this->E(Dyhb::L('你必须同意用户协议中的条款才能够创建小组','Controller'));
 		}
 		
 		// 保存小组
@@ -58,7 +58,7 @@ class AddController extends Controller{
 			$this->E($oGroup->getErrorMessage());
 		}
 
-		$this->A(array('url'=>$sUrl),Dyhb::L('创建小组成功','Controller/Create').($GLOBALS['_cache_']['group_option']['group_isaudit']==1?'<br/>'.Dyhb::L('注意，你的小组需要审核通过后才能够使用','Controller/Create'):''),1);
+		$this->A(array('url'=>$sUrl),Dyhb::L('创建小组成功','Controller').($GLOBALS['_cache_']['group_option']['group_isaudit']==1?'<br/>'.Dyhb::L('注意，你的小组需要审核通过后才能够使用','Controller'):''),1);
 	}
 
 }

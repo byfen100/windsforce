@@ -15,7 +15,7 @@ class DigesttopicdialogController extends Controller{
 		$sGrouptopics=implode(',',$arrGrouptopicid);
 		
 		if(empty($sGrouptopicid)){
-			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
+			$this->E(Dyhb::L('没有待操作的帖子','Controller'));
 		}
 
 		if(isset($_GET['status'])){
@@ -24,7 +24,7 @@ class DigesttopicdialogController extends Controller{
 
 		$this->assign('sGrouptopics',$sGrouptopics);
 		$this->assign('nGroupid',$nGroupid);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,count($arrGrouptopicid)));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller',null,count($arrGrouptopicid)));
 		
 		$this->display('grouptopicadmin+digesttopicdialog');
 	}

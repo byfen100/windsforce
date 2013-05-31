@@ -12,7 +12,7 @@ class DeletetopicController extends Controller{
 		$sReason=trim(G::getGpc('reason'));
 
 		if(!Groupadmin_Extend::checkTopicadminRbac($nGroupid,array('group@grouptopicadmin@deletetopic'))){
-			$this->E(Dyhb::L('你没有删除帖子的权限','Controller/Grouptopicadmin'));
+			$this->E(Dyhb::L('你没有删除帖子的权限','Controller'));
 		}
 		
 		$arrGrouptopics=explode(',',$sGrouptopics);
@@ -20,7 +20,7 @@ class DeletetopicController extends Controller{
 		$bAdmincredit=false;
 
 		if(!$sReason){
-			$sReason=Dyhb::L('该管理人员没有填写操作原因','Controller/Grouptopicadmin');
+			$sReason=Dyhb::L('该管理人员没有填写操作原因','Controller');
 		}
 		
 		if(is_array($arrGrouptopics)){
@@ -58,7 +58,7 @@ class DeletetopicController extends Controller{
 
 					// 发送提醒
 					if($GLOBALS['___login___']['user_id']!=$nUserid){
-						$sNoticetemplate='<div class="notice_deletegrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('对你的主题执行了删除','Controller/Grouptopicadmin').'&nbsp;<a href="{@grouptopic_link}">'.$sGrouptopictitle.'</a></span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{admin_reason}</span></div>&nbsp;'.($GLOBALS['_cache_']['group_option']['group_deletetopic_recyclebin']==1?Dyhb::L('注意，系统开启了主题回收站功能，该主题仍可以被恢复','Controller/Grouptopicadmin'):Dyhb::L('注意，系统未开启主题回收站功能，该主题已被永久删除','Controller/Grouptopicadmin')).'&nbsp;&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller/Grouptopicadmin').'</div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopicadmin').'</a></div></div>';
+						$sNoticetemplate='<div class="notice_deletegrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('对你的主题执行了删除','Controller').'&nbsp;<a href="{@grouptopic_link}">'.$sGrouptopictitle.'</a></span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{admin_reason}</span></div>&nbsp;'.($GLOBALS['_cache_']['group_option']['group_deletetopic_recyclebin']==1?Dyhb::L('注意，系统开启了主题回收站功能，该主题仍可以被恢复','Controller'):Dyhb::L('注意，系统未开启主题回收站功能，该主题已被永久删除','Controller')).'&nbsp;&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller').'</div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 						$arrNoticedata=array(
 							'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -87,7 +87,7 @@ class DeletetopicController extends Controller{
 		}
 
 		$sGroupurl=Group_Extend::getGroupurl($nGroupid);
-		$this->A(array('group_id'=>$nGroupid,'group_url'=>$sGroupurl),Dyhb::L('删除主题成功','Controller/Grouptopicadmin'));
+		$this->A(array('group_id'=>$nGroupid,'group_url'=>$sGroupurl),Dyhb::L('删除主题成功','Controller'));
 	}
 
 }

@@ -11,12 +11,12 @@ class LeavegroupController extends Controller{
 		$nGid=G::getGpc('gid','G');
 
 		if($GLOBALS['___login___']===false){
-			$this->E(Dyhb::L('退出小组需登录后才能进行','Controller/Group'));
+			$this->E(Dyhb::L('退出小组需登录后才能进行','Controller'));
 		}
 		
 		$oGroup=GroupModel::F('group_id=?',$nGid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		// 查询用户是否加入小组
@@ -24,7 +24,7 @@ class LeavegroupController extends Controller{
 
 		$oGroupuser=GroupuserModel::F($arrCondition)->getOne();
 		if(empty($oGroupuser['user_id'])){
-			$this->E(Dyhb::L('你尚未加入该小组','Controller/Group'));
+			$this->E(Dyhb::L('你尚未加入该小组','Controller'));
 		}
 
 		$oGroupuser->destroy();
@@ -34,7 +34,7 @@ class LeavegroupController extends Controller{
 
 		Group_Extend::chearGroupuserrole($GLOBALS['___login___']['user_id']);
 
-		$this->S(Dyhb::L('成功退出 %s 小组','Controller/Group',null,$oGroup->group_nikename));
+		$this->S(Dyhb::L('成功退出 %s 小组','Controller',null,$oGroup->group_nikename));
 	}
 
 }

@@ -40,12 +40,12 @@ class IndexController extends Controller{
 		}
 
 		if(empty($sKey) && $bQuickSearch===false){
-			$this->E(Dyhb::L('您没有指定要搜索的关键字','Controller/Search'));
+			$this->E(Dyhb::L('您没有指定要搜索的关键字','Controller'));
 		}
 
 		if($sKey || $bQuickSearch===true){
 			if($GLOBALS['_option_']['search_keywords_minlength']>0 && strlen($sKey)<$GLOBALS['_option_']['search_keywords_minlength'] && $bQuickSearch===false){
-				$this->E(Dyhb::L('搜索的关键字最少为 %d 字节','Controller/Search',null,$GLOBALS['_option_']['search_keywords_minlength']));
+				$this->E(Dyhb::L('搜索的关键字最少为 %d 字节','Controller',null,$GLOBALS['_option_']['search_keywords_minlength']));
 			}
 
 			// 尝试查询搜索结果缓存
@@ -69,7 +69,7 @@ class IndexController extends Controller{
 						$arrTheRightSearchIndex=$arrIndex;
 						break;
 					}elseif($arrIndex['flood']){
-						$this->E(Dyhb::L('对不起,您在 %d 秒内只能进行一次搜索','Controller/Search',null,$nSearchPostSpace));
+						$this->E(Dyhb::L('对不起,您在 %d 秒内只能进行一次搜索','Controller',null,$nSearchPostSpace));
 					}
 				}
 			}
@@ -98,7 +98,7 @@ class IndexController extends Controller{
 				}else{
 					$oUserModel=UserModel::F('user_name=? AND user_status=1',$sUser)->query();
 					if(empty($oUserModel->user_id)){
-						$this->E(Dyhb::L('你搜索的用户名 %s 不存在','Controller/Search',null,$sUser));
+						$this->E(Dyhb::L('你搜索的用户名 %s 不存在','Controller',null,$sUser));
 					}else{
 						$arrWhere['user_id']=$oUserModel->user_id;
 					}
@@ -271,7 +271,7 @@ class IndexController extends Controller{
 		if($nSearchid){
 			$oGroupsearchindexModel=GroupsearchindexModel::F('groupsearchindex_id=?',$nSearchid)->query();
 			if(empty($oGroupsearchindexModel->groupsearchindex_id)){
-				$this->E(Dyhb::L('你请求的搜索缓存ID不存在','Controller/Search'));
+				$this->E(Dyhb::L('你请求的搜索缓存ID不存在','Controller'));
 			}
 
 			$this->_sKey=$oGroupsearchindexModel->groupsearchindex_keywords;
@@ -313,12 +313,12 @@ class IndexController extends Controller{
 
 			$this->display('search+result');
 		}else{
-			$this->E(Dyhb::L('你没有指定搜索缓存ID','Controller/Search'));
+			$this->E(Dyhb::L('你没有指定搜索缓存ID','Controller'));
 		}
 	}
 
 	public function result_title_(){
-		return ($this->_sKey?$this->_sKey.' - ':'').Dyhb::L('搜索结果','Controller/Search');
+		return ($this->_sKey?$this->_sKey.' - ':'').Dyhb::L('搜索结果','Controller');
 	}
 
 	public function result_keywords_(){
@@ -330,7 +330,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('帖子搜索','Controller/Search');
+		return Dyhb::L('帖子搜索','Controller');
 	}
 
 	public function index_keywords_(){

@@ -17,7 +17,7 @@ class TopiccategoryaddController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		// 保存分类
@@ -27,7 +27,7 @@ class TopiccategoryaddController extends Controller{
 		if($oGrouptopiccategory->isError()){
 			$this->E($oGrouptopiccategory->getErrorMessage());
 		}else{
-			$this->S(Dyhb::L('添加帖子分类成功','Controller/Groupadmin'));
+			$this->S(Dyhb::L('添加帖子分类成功','Controller'));
 		}
 	}
 

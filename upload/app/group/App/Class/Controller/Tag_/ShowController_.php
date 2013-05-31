@@ -15,7 +15,7 @@ class ShowController extends Controller{
 		if(!empty($sTag)){
 			$oGrouptopictag=GrouptopictagModel::F('grouptopictag_name=?',$sTag)->getOne();
 			if(empty($oGrouptopictag['grouptopictag_id'])){
-				$this->E(Dyhb::L('用户标签不存在','Controller/Tag'));
+				$this->E(Dyhb::L('用户标签不存在','Controller'));
 			}
 
 			$this->assign('oGrouptopictag',$oGrouptopictag);
@@ -62,7 +62,7 @@ class ShowController extends Controller{
 	}
 
 	public function show_title_(){
-		return $this->_oGrouptopictag['grouptopictag_name'].' - '.Dyhb::L('标签','Controller/Tag');
+		return $this->_oGrouptopictag['grouptopictag_name'].' - '.Dyhb::L('标签','Controller');
 	}
 
 	public function show_keywords_(){

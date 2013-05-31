@@ -13,7 +13,7 @@ class IconaddController extends Controller{
 
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nId)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		require_once(Core_Extend::includeFile('function/Upload_Extend'));
@@ -39,7 +39,7 @@ class IconaddController extends Controller{
 				$this->E($oGroup->getErrorMessage());
 			}
 		
-			$this->S(Dyhb::L('图标设置成功','Controller/Groupadmin'));
+			$this->S(Dyhb::L('图标设置成功','Controller'));
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}

@@ -15,7 +15,7 @@ class SetgrouptopicsideController extends Controller{
 
 		Dyhb::cookie('group_grouptopicside',$nSide);
 
-		$this->S(Dyhb::L('帖子侧边栏切换成功','Controller/Grouptopic'));
+		$this->S(Dyhb::L('帖子侧边栏切换成功','Controller'));
 	}
 
 }

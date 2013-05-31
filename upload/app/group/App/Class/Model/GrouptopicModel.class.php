@@ -24,11 +24,11 @@ class GrouptopicModel extends CommonModel{
 			),
 			'check'=>array(
 				'grouptopic_title'=>array(
-					array('require',Dyhb::L('帖子标题不能为空','__APPGROUP_COMMON_LANG__@Model/Grouptopic')),
-					array('max_length',300,Dyhb::L('帖子标题不能超过300个字符','__APPGROUP_COMMON_LANG__@Model/Grouptopic')),
+					array('require',Dyhb::L('帖子标题不能为空','Model')),
+					array('max_length',300,Dyhb::L('帖子标题不能超过300个字符','Model')),
 				),
 				'grouptopic_content'=>array(
-					array('require',Dyhb::L('帖子内容不能为空','__APPGROUP_COMMON_LANG__@Model/Grouptopic')),
+					array('require',Dyhb::L('帖子内容不能为空','Model')),
 				),
 			),
 		);

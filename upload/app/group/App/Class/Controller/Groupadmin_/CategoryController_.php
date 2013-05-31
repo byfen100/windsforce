@@ -19,7 +19,7 @@ class CategoryController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		$this->_oGroup=$oGroup;
@@ -45,7 +45,7 @@ class CategoryController extends Controller{
 	}
 
 	public function category_title_(){
-		return Dyhb::L('小组分类设置','Controller/Groupadmin').' - '.$this->_oGroup['group_nikename'];
+		return Dyhb::L('小组分类设置','Controller').' - '.$this->_oGroup['group_nikename'];
 	}
 
 	public function category_keywords_(){

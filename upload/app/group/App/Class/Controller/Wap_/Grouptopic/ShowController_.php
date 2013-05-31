@@ -10,7 +10,7 @@ class ShowController extends GlobalchildController{
 	
 	public function index(){
 		if(!Core_Extend::checkRbac('group@grouptopic@view')){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('你没有权限查看帖子','Controller/Grouptopic'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('你没有权限查看帖子','Controller'),'',0);
 		}
 		
 		// 获取参数
@@ -18,14 +18,14 @@ class ShowController extends GlobalchildController{
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=? AND grouptopic_status=1',$nId)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('你访问的主题不存在或已删除','Controller'),'',0);
 		}
 
 		// 判断帖子小组
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$oGrouptopic->group_id)->getOne();
 
 		if(empty($oGroup['group_id'])){
-			$this->_oParentcontroller->wap_mes(Dyhb::L('小组不存在或在审核中','Controller/Grouptopic'),'',0);
+			$this->_oParentcontroller->wap_mes(Dyhb::L('小组不存在或在审核中','Controller'),'',0);
 		}
 
 		try{
@@ -47,7 +47,7 @@ class ShowController extends GlobalchildController{
 		}
 
 		if($oGrouptopic->grouptopic_thumb>0){
-			$oGrouptopic->grouptopic_content='<div class="grouptopicthumb"><div class="grouptopicthumb_title">'.Dyhb::L('主题缩略图','Controller/Grouptopic').'</div><p>[attachment]'.$oGrouptopic->grouptopic_thumb.'[/attachment]</p></div>'.$oGrouptopic->grouptopic_content;
+			$oGrouptopic->grouptopic_content='<div class="grouptopicthumb"><div class="grouptopicthumb_title">'.Dyhb::L('主题缩略图','Controller').'</div><p>[attachment]'.$oGrouptopic->grouptopic_thumb.'[/attachment]</p></div>'.$oGrouptopic->grouptopic_content;
 		}
 		
 		$this->assign('oGrouptopic',$oGrouptopic);

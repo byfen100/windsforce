@@ -89,7 +89,7 @@ class NewtopicController extends Controller{
 	}
 
 	public function newtopic_title_(){
-		return Dyhb::L('新帖','Controller/Public');
+		return Dyhb::L('新帖','Controller');
 	}
 
 	public function newtopic_keywords_(){

@@ -19,7 +19,7 @@ class HeaderbgController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		$this->_oGroup=$oGroup;
@@ -49,7 +49,7 @@ class HeaderbgController extends Controller{
 	}
 
 	public function headerbg_title_(){
-		return Dyhb::L('头部背景设置','Controller/Groupadmin').' - '.$this->_oGroup['group_nikename'];
+		return Dyhb::L('头部背景设置','Controller').' - '.$this->_oGroup['group_nikename'];
 	}
 
 	public function headerbg_keywords_(){

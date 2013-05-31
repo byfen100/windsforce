@@ -7,11 +7,11 @@ html,body{background:none;}
 	<h1><!--{$oGrouptopic->grouptopic_title}--></h1>
 	<p>
 		<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
-		<div class="locked"><!--<lang package='Template/Grouptopic'>-->本帖已经隐藏，仅具有管理权限的人才能够浏览<!--</lang>--></div>
+		<div class="locked"><!--<lang package='Template'>-->本帖已经隐藏，仅具有管理权限的人才能够浏览<!--</lang>--></div>
 		<!--{/if}-->
 		
 		<!--{if $oGrouptopic['grouptopic_onlycommentview']==1}-->
-		<div class="locked"><!--<lang package='Template/Grouptopic'>-->本帖需要回复后才能够浏览<!--</lang>--></div>
+		<div class="locked"><!--<lang package='Template'>-->本帖需要回复后才能够浏览<!--</lang>--></div>
 		<!--{/if}-->
 		
 		<!--{if ($oGrouptopic['grouptopic_isaudit']=='1' || ($oGrouptopic['grouptopic_isaudit']=='0' ) && Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic')) && in_array(Groupadmin_Extend+getGroupUserrole($oGrouptopic['group_id']),array(1,2,4))) && ($oGrouptopic['grouptopic_onlycommentview']=='0' || $bHavecomment===true)}-->

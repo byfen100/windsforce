@@ -53,7 +53,7 @@ class GrouptopicController extends InitController{
 	}
 	
 	public function add(){
-		$this->E(Dyhb::L('后台无法发布帖子','__APPGROUP_COMMON_LANG__@Controller/Grouptopic').'<br/><a href="'.Core_Extend::windsforceOuter('app=group&c=grouptopic&a=add').'" target="_blank">'.Dyhb::L('前往发布','__APPGROUP_COMMON_LANG__@Controller/Grouptopic').'</a>');
+		$this->E(Dyhb::L('后台无法发布帖子','Controller').'<br/><a href="'.Core_Extend::windsforceOuter('app=group&c=grouptopic&a=add').'" target="_blank">'.Dyhb::L('前往发布','Controller').'</a>');
 	}
 	
 	public function edit($sMode=null,$nId=null,$bDidplay=true){

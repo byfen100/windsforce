@@ -13,11 +13,11 @@ class SaveController extends Controller{
 
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nId)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		if($oGroup['group_name'] && $sGroupname){
-			$this->E(Dyhb::L('小组已经设置过了，你无法修改','Controller/Groupadmin'));
+			$this->E(Dyhb::L('小组已经设置过了，你无法修改','Controller'));
 		}
 
 		$oGroup->save(0,'update');
@@ -26,7 +26,7 @@ class SaveController extends Controller{
 			$this->E($oGroup->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('小组设置已经更新','Controller/Groupadmin'));
+		$this->S(Dyhb::L('小组设置已经更新','Controller'));
 	}
 
 }

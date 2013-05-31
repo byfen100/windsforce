@@ -21,12 +21,12 @@ class CommenttopicdialogController extends Controller{
 		$nGrouptopiccommentid=intval(G::getGpc('cid','G'));
 
 		if(!$nGrouptopicid){
-			$this->E(Dyhb::L('你没有指定回复的帖子的ID','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有指定回复的帖子的ID','Controller'));
 		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nGrouptopicid)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你要回复的帖子不存在','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你要回复的帖子不存在','Controller'));
 		}
 
 		try{
@@ -39,7 +39,7 @@ class CommenttopicdialogController extends Controller{
 		if($nGrouptopiccommentid){
 			$oGrouptopiccomment=GrouptopiccommentModel::F('grouptopiccomment_id=?',$nGrouptopiccommentid)->getOne();
 			if(empty($oGrouptopiccomment['grouptopiccomment_id'])){
-				$this->E(Dyhb::L('你要回复的回帖不存在','Controller/Grouptopic'));
+				$this->E(Dyhb::L('你要回复的回帖不存在','Controller'));
 			}
 
 			$this->assign('oGrouptopiccomment',$oGrouptopiccomment);

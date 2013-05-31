@@ -18,7 +18,7 @@ class CategoryaddController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		$oGroupcategory=GroupcategoryModel::F('groupcategory_id=?',$nCategoryId)->query();
@@ -26,15 +26,15 @@ class CategoryaddController extends Controller{
 			$oExistGroupcategoryindex=GroupcategoryindexModel::F('group_id=? AND groupcategory_id=?',$oGroup['group_id'],$nCategoryId)->query();
 
 			if(!empty($oExistGroupcategoryindex['group_id'])){
-				$this->E(Dyhb::L('群组分类已经存在','Controller/Groupadmin'));
+				$this->E(Dyhb::L('群组分类已经存在','Controller'));
 			}
 			
 			$oGroupModel=Dyhb::instance('GroupModel');
 			$oGroupModel->afterInsert($oGroup['group_id'],$nCategoryId);
 				
-			$this->S(Dyhb::L('添加群组分类成功','Controller/Groupadmin'));
+			$this->S(Dyhb::L('添加群组分类成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('你要添加的分类不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('你要添加的分类不存在','Controller'));
 		}
 	}
 

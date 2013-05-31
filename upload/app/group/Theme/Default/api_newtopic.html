@@ -2,9 +2,9 @@
 <table width="100%" class="table">
 	<thead>
 		<tr>
-			<td><!--<lang package='Template/Topiclist'>-->楼主<!--</lang>--></td>
-			<td><!--<lang package='Template/Topiclist'>-->标题<!--</lang>--></td>
-			<td style="text-align:right;"><!--<lang package='Template/Topiclist'>-->回复/评论<!--</lang>--></td>
+			<td><!--<lang package='Template'>-->楼主<!--</lang>--></td>
+			<td><!--<lang package='Template'>-->标题<!--</lang>--></td>
+			<td style="text-align:right;"><!--<lang package='Template'>-->回复/评论<!--</lang>--></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -12,7 +12,7 @@
 		<tr>
 			<td class="author">
 				<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-				<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
+				<!--<lang package='Template'>-->匿名<!--</lang>-->
 				<!--{d*else}-->
 				<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->">
 					<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
@@ -25,13 +25,13 @@
 					<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
 					<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
 					<!--{d*else}-->
-					<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template/Topiclist'>-->默认分类<!--</lang>-->]</a>
+					<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template'>-->默认分类<!--</lang>-->]</a>
 					<!--{/if}-->
 					<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
 					<!--{if $oGrouptopic->grouptopic_comments>0}-->
 					<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
 					<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
-					&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template/Topiclist'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
+					&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
 					<!--{/if}-->
 					<!--{/if}-->
 					<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
@@ -41,32 +41,32 @@
 					<!--{/if}-->
 				</p>
 				<p class="info">
-					<!--<lang package='Template/Topiclist'>-->小组<!--</lang>-->&nbsp;
+					<!--<lang package='Template'>-->小组<!--</lang>-->&nbsp;
 					<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>
 					<span class="pipe">|</span>
-					<!--<lang package='Template/Topiclist'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
-					<!--<lang package='Template/Topiclist'>-->匿名<!--</lang>-->
+					<!--<lang package='Template'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+					<!--<lang package='Template'>-->匿名<!--</lang>-->
 					<!--{d*else}--><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
 					<!--{/if}-->&nbsp;
 					<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
 					<span class="pipe">|</span>
 					<!--{if $oGrouptopic->grouptopic_comments>0}-->
 					<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
-					<!--<lang package='Template/Topiclist'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+					<!--<lang package='Template'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
 					<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
 					<!--{d*else}-->
-					<span><!--<lang package='Template/Topiclist'>-->暂无回复<!--</lang>--></span>
+					<span><!--<lang package='Template'>-->暂无回复<!--</lang>--></span>
 					<!--{/if}-->
 				</p>
 			</td>
 			<td class="num" style="text-align:center;">
-				<span><!--<lang package='Template/Topiclist'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
-				<span><!--<lang package='Template/Topiclist'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+				<span><!--<lang package='Template'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+				<span><!--<lang package='Template'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
 			</td>
 		</tr>
 		<!--</foreach>-->
 	</tbody>
 </table>
 <!--{d*else}-->
-<p><!--<lang package='Template/Topiclist'>-->暂时没有发现任何帖子<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->"><!--<lang package='Template/Topiclist'>-->我要发布<!--</lang>--></a></p>
+<p><!--<lang package='Template'>-->暂时没有发现任何帖子<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://grouptopic/add')}-->"><!--<lang package='Template'>-->我要发布<!--</lang>--></a></p>
 <!--{/if}-->

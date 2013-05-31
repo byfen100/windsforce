@@ -13,7 +13,7 @@ class HeaderbgaddController extends Controller{
 
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nId)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		if($_FILES['headerbg']['error'][0]=='4'){
@@ -53,7 +53,7 @@ class HeaderbgaddController extends Controller{
 			}
 		}
 
-		$this->S(Dyhb::L('群组背景设置成功','Controller/Groupadmin'));
+		$this->S(Dyhb::L('群组背景设置成功','Controller'));
 	}
 
 }

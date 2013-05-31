@@ -10,7 +10,7 @@ class SearchController extends InitController{
 		parent::init__();
 
 		if($GLOBALS['_option_']['allow_search']==0){
-			$this->E(Dyhb::L('系统关闭了搜索功能','Controller/Search'));
+			$this->E(Dyhb::L('系统关闭了搜索功能','Controller'));
 		}
 	}
 

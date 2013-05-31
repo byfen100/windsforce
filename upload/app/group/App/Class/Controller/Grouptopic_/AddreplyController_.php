@@ -20,17 +20,17 @@ class AddreplyController extends GlobalchildController{
 		$nSimple=intval(G::getGpc('simple_comment'));
 
 		if(empty($nId)){
-			$this->E(Dyhb::L('你没有指定回复主题的ID','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你没有指定回复主题的ID','Controller'));
 		}
 
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nId)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你回复的主题不存在','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你回复的主题不存在','Controller'));
 		}
 
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$oGrouptopic->group_id)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('你回复的帖子所在小组不存在','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你回复的帖子所在小组不存在','Controller'));
 		}
 
 		try{
@@ -224,7 +224,7 @@ class AddreplyController extends GlobalchildController{
 		$sCommentMessage=$oGrouptopiccomment['grouptopiccomment_content'];
 
 		try{
-			Comment_Extend::addFeed(Dyhb::L('评论了帖子','Controller/Grouptopic'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
+			Comment_Extend::addFeed(Dyhb::L('评论了帖子','Controller'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage);
 		}catch(Exception $e){
 			$this->E($e->getMessage());
 		}
@@ -236,7 +236,7 @@ class AddreplyController extends GlobalchildController{
 			$sCommentMessage=$oGrouptopiccomment['grouptopiccomment_content'];
 
 			try{
-				Comment_Extend::addNotice(Dyhb::L('评论了你的帖子','Controller/Grouptopic'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopic['user_id'],'grouptopiccomment',$oGrouptopic['grouptopic_id']);
+				Comment_Extend::addNotice(Dyhb::L('评论了你的帖子','Controller'),'addgrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopic['user_id'],'grouptopiccomment',$oGrouptopic['grouptopic_id']);
 			}catch(Exception $e){
 				$this->E($e->getMessage());
 			}
@@ -252,7 +252,7 @@ class AddreplyController extends GlobalchildController{
 				$sCommentMessage=$oGrouptopiccomment['grouptopiccomment_content'];
 
 				try{
-					Comment_Extend::addNotice(Dyhb::L('评论了你的回帖','Controller/Grouptopic'),'replygrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopiccommentParent['user_id'],'replygrouptopiccomment',$oGrouptopiccommentParent['grouptopic_id']);
+					Comment_Extend::addNotice(Dyhb::L('评论了你的回帖','Controller'),'replygrouptopiccomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oGrouptopiccommentParent['user_id'],'replygrouptopiccomment',$oGrouptopiccommentParent['grouptopic_id']);
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
@@ -265,7 +265,7 @@ class AddreplyController extends GlobalchildController{
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 					$sGrouptopiccommentmessage=Core_Extend::subString($oGrouptopiccomment['grouptopiccomment_content'],100,false,1,false);
 					
-					$sNoticetemplate='<div class="notice_atgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题回帖中提到了你','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+					$sNoticetemplate='<div class="notice_atgrouptopiccomment"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题回帖中提到了你','Controller').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopiccomment_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 					$arrNoticedata=array(
 						'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -285,7 +285,7 @@ class AddreplyController extends GlobalchildController{
 
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id.'&isolation_commentid='.$oGrouptopiccomment->grouptopiccomment_id).'#grouptopiccomment-'.$oGrouptopiccomment->grouptopiccomment_id;
 
-		$this->A(array('url'=>$sUrl),Dyhb::L('回复成功','Controller/Grouptopic'),1);
+		$this->A(array('url'=>$sUrl),Dyhb::L('回复成功','Controller'),1);
 	}
 
 	protected function cache_site_(){

@@ -21,8 +21,8 @@ class GrouptopicloveModel extends CommonModel{
 			),
 			'check'=>array(
 				'grouptopiclove_title'=>array(
-					array('require',Dyhb::L('喜欢备注不能为空','__APPGROUP_COMMON_LANG__@Model/Grouptopiclove')),
-					array('max_length',300,Dyhb::L('喜欢备注不能超过300个字符','__APPGROUP_COMMON_LANG__@Model/Grouptopiclove')),
+					array('require',Dyhb::L('喜欢备注不能为空','Model')),
+					array('max_length',300,Dyhb::L('喜欢备注不能超过300个字符','Model')),
 				),
 			),
 		);

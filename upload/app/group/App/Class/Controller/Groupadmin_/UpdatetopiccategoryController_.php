@@ -20,12 +20,12 @@ class UpdatetopiccategoryController extends Controller{
 		}
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 		
 		$oGrouptopiccategory=GrouptopiccategoryModel::F('grouptopiccategory_id=? AND group_id=?',$nGrouptopiccategoryid,$oGroup['group_id'])->query();
 		if(empty($oGrouptopiccategory['grouptopiccategory_id'])){
-			$this->E(Dyhb::L('你编辑的帖子分类不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('你编辑的帖子分类不存在','Controller'));
 		}
 
 		$this->_oGrouptopiccategory=$oGrouptopiccategory;
@@ -46,7 +46,7 @@ class UpdatetopiccategoryController extends Controller{
 	}
 
 	public function updatetopiccategory_title_(){
-		return Dyhb::L('小组分类编辑','Controller/Groupadmin').' - '.$this->_oGrouptopiccategory['grouptopiccategory_name'];
+		return Dyhb::L('小组分类编辑','Controller').' - '.$this->_oGrouptopiccategory['grouptopiccategory_name'];
 	}
 
 	public function updatetopiccategory_keywords_(){

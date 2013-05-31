@@ -11,7 +11,7 @@ class TagtopicdialogController extends Controller{
 		$nGrouptopicid=intval(G::getGpc('grouptopicid','G'));
 		
 		if(empty($nGrouptopicid)){
-			$this->E(Dyhb::L('没有待操作的帖子','Controller/Grouptopicadmin'));
+			$this->E(Dyhb::L('没有待操作的帖子','Controller'));
 		}
 
 		// 获取帖子标签
@@ -39,7 +39,7 @@ class TagtopicdialogController extends Controller{
 		$this->assign('nGroupid',$nGroupid);
 		$this->assign('sGrouptopics',$nGrouptopicid);
 		$this->assign('sTag',$sTag);
-		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller/Grouptopicadmin',null,1));
+		$this->assign('sTitle',Dyhb::L('你选择了 %d 篇帖子','Controller',null,1));
 		
 		$this->display('grouptopicadmin+tagtopicdialog');
 	}

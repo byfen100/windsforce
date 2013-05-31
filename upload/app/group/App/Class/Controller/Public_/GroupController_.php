@@ -94,7 +94,7 @@ class GroupController extends Controller{
 	}	
 	
 	public function group_title_(){
-		return Dyhb::L('小组列表','Controller/Public');
+		return Dyhb::L('小组列表','Controller');
 	}
 
 	public function group_keywords_(){

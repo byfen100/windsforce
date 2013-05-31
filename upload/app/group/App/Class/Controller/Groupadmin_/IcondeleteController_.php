@@ -13,7 +13,7 @@ class IcondeleteController extends Controller{
 
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nId)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Group'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		if(!empty($oGroup['group_icon'])){
@@ -26,9 +26,9 @@ class IcondeleteController extends Controller{
 				$this->E($oGroup->getErrorMessage());
 			}
 			
-			$this->S(Dyhb::L('图标删除成功','Controller/Groupadmin'));
+			$this->S(Dyhb::L('图标删除成功','Controller'));
 		}else{
-			$this->E(Dyhb::L('图标不存在','Controller/Groupadmin'));
+			$this->E(Dyhb::L('图标不存在','Controller'));
 		}
 	}
 

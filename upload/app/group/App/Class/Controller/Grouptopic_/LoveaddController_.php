@@ -12,19 +12,19 @@ class LoveaddController extends Controller{
 		$sGrouptopiclovenote=trim(G::getGpc('grouptopiclove_note'));
 
 		if(empty($sGrouptopiclovenote)){
-			$sGrouptopiclovenote=Dyhb::L('你没有填写喜欢备注','Controller/Grouptopic');
+			$sGrouptopiclovenote=Dyhb::L('你没有填写喜欢备注','Controller');
 		}
 	
 		$oGrouptopic=GrouptopicModel::F('grouptopic_id=? AND grouptopic_status=1',$nId)->getOne();
 		if(empty($oGrouptopic['grouptopic_id'])){
-			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你访问的主题不存在或已删除','Controller'));
 		}
 
 		// 判断帖子小组
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$oGrouptopic->group_id)->getOne();
 
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或在审核中','Controller/Grouptopic'));
+			$this->E(Dyhb::L('小组不存在或在审核中','Controller'));
 		}
 
 		try{
@@ -38,7 +38,7 @@ class LoveaddController extends Controller{
 		$oGrouptopiclove=GrouptopicloveModel::F('user_id=? AND grouptopic_id=?',$GLOBALS['___login___']['user_id'],$oGrouptopic['grouptopic_id'])->getOne();
 		
 		if(!empty($oGrouptopiclove['user_id'])){
-			$this->E(Dyhb::L('你已经喜欢过该帖子了，你不可以重复喜欢。','Controller/Grouptopic'));
+			$this->E(Dyhb::L('你已经喜欢过该帖子了，你不可以重复喜欢。','Controller'));
 		}
 		
 		// 添加处理
@@ -56,7 +56,7 @@ class LoveaddController extends Controller{
 				$this->E($oGrouptopic->getErrorMessage());
 			}
 			
-			$this->S(Dyhb::L('喜欢帖子成功，可以到个人中心查看你喜欢的帖子','Controller/Grouptopic'));
+			$this->S(Dyhb::L('喜欢帖子成功，可以到个人中心查看你喜欢的帖子','Controller'));
 		}
 	}
 

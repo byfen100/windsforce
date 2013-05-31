@@ -36,7 +36,7 @@ class AddtopicController extends GlobalchildController{
 		// 访问权限
 		$oGroup=GroupModel::F('group_id=? AND group_status=1 AND group_isaudit=1',$nGroupid)->getOne();
 		if(empty($oGroup['group_id'])){
-			$this->E(Dyhb::L('小组不存在或者还在审核中','Controller/Grouptopic'));
+			$this->E(Dyhb::L('小组不存在或者还在审核中','Controller'));
 		}
 
 		try{
@@ -116,7 +116,7 @@ class AddtopicController extends GlobalchildController{
 		$this->cache_site_();
 
 		// 发送feed
-		$sFeedtemplate='<div class="feed_addgrouptopic"><span class="feed_title">'.Dyhb::L('发布了一篇帖子','Controller/Grouptopic').'&nbsp;<a href="{@grouptopic_link}">'.$oGrouptopic['grouptopic_title'].'</a></span><div class="feed_content">{grouptopic_message}</div><div class="feed_action"><a href="{@grouptopic_link}#comments">'.Dyhb::L('回复','Controller/Grouptopic').'</a></div></div>';
+		$sFeedtemplate='<div class="feed_addgrouptopic"><span class="feed_title">'.Dyhb::L('发布了一篇帖子','Controller').'&nbsp;<a href="{@grouptopic_link}">'.$oGrouptopic['grouptopic_title'].'</a></span><div class="feed_content">{grouptopic_message}</div><div class="feed_action"><a href="{@grouptopic_link}#comments">'.Dyhb::L('回复','Controller').'</a></div></div>';
 
 		$arrFeeddata=array(
 			'@grouptopic_link'=>'group://grouptopic/view?id='.$oGrouptopic['grouptopic_id'],
@@ -135,7 +135,7 @@ class AddtopicController extends GlobalchildController{
 				if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 					$sGrouptopicmessage=Core_Extend::subString($oGrouptopic['grouptopic_content'],100,false,1,false);
 					
-					$sNoticetemplate='<div class="notice_atgrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题中提到了你','Controller/Grouptopic').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller/Grouptopic').'</a></div></div>';
+					$sNoticetemplate='<div class="notice_atgrouptopic"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在主题中提到了你','Controller').'</span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@grouptopic_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 					$arrNoticedata=array(
 						'@space_link'=>'group://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -156,7 +156,7 @@ class AddtopicController extends GlobalchildController{
 		// 跳转到帖子
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);
 
-		$this->A(array('url'=>$sUrl),Dyhb::L('发布帖子成功','Controller/Grouptopic'),1);
+		$this->A(array('url'=>$sUrl),Dyhb::L('发布帖子成功','Controller'),1);
 	}
 
 	protected function cache_site_(){

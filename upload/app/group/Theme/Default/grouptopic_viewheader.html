@@ -16,7 +16,7 @@ function completeSet(data,status){
 }
 
 function grouptopicComment(nTid,nCid){
-	oCommentNewtopics=windsforceAjax(D.U('group://grouptopic/commenttopic_dialog?tid='+nTid+(nCid?'&cid='+nCid:'')),'<!--<lang package='Template/Grouptopic'>-->参与/回复帖子<!--</lang>-->','',completeCommenttopic,'',400,100);
+	oCommentNewtopics=windsforceAjax(D.U('group://grouptopic/commenttopic_dialog?tid='+nTid+(nCid?'&cid='+nCid:'')),'<!--<lang package='Template'>-->参与/回复帖子<!--</lang>-->','',completeCommenttopic,'',400,100);
 }
 
 function completeCommenttopic(data,status){
@@ -32,7 +32,7 @@ function completeCommenttopic(data,status){
 }
 
 function grouptopiceditComment(nCid){
-	oEditcommentNewtopics=windsforceAjax(D.U('group://grouptopic/editcommenttopic_dialog?cid='+nCid),'<!--<lang package='Template/Grouptopic'>-->编辑帖子<!--</lang>-->','',completeEditcommenttopic,'',400,100);
+	oEditcommentNewtopics=windsforceAjax(D.U('group://grouptopic/editcommenttopic_dialog?cid='+nCid),'<!--<lang package='Template'>-->编辑帖子<!--</lang>-->','',completeEditcommenttopic,'',400,100);
 }
 
 function completeEditcommenttopic(data,status){
@@ -50,9 +50,9 @@ function completeEditcommenttopic(data,status){
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template/Public'>-->小组<!--</lang>-->"><!--<lang package='Template/Public'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('group://public/index')}-->" title="<!--<lang package='Template'>-->小组<!--</lang>-->"><!--<lang package='Template'>-->小组<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template/Grouptopic'>-->查看帖子<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->查看帖子<!--</lang>--></li>
 		</ul>
 
 <!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group) || Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group) || Groupadmin_Extend+checkTopicmove()}-->
@@ -102,7 +102,7 @@ function addGrouptopiccommentquick(){
 	var sCommentSeccode=$("#grouptopiccomment_seccode").val();
 
 	if(!sCommentMessage){
-		windsforceAlert('<!--<lang package='Template/Grouptopic'>-->回复内容不能为空<!--</lang>-->','',3);
+		windsforceAlert('<!--<lang package='Template'>-->回复内容不能为空<!--</lang>-->','',3);
 		return false;
 	}
 
@@ -123,9 +123,9 @@ function addGrouptopiccommentSimple(){
 	$("#submit_button").val( 'add...' );
 
 	if(!sGrouptopiccommentmessage){
-		windsforceAlert('<!--<lang package='Template/Grouptopic'>-->回复内容不能为空<!--</lang>-->','',3);
+		windsforceAlert('<!--<lang package='Template'>-->回复内容不能为空<!--</lang>-->','',3);
 		$("#submit_button").attr("disabled", false);
-		$("#submit_button").val( '<!--<lang package='Template/Grouptopic'>-->发布<!--</lang>-->' );
+		$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
 		return false;
 	}
 
@@ -135,7 +135,7 @@ function addGrouptopiccommentSimple(){
 		$('#simple_comment').val('0');
 
 		$("#submit_button").attr("disabled", false);
-		$("#submit_button").val( '<!--<lang package='Template/Grouptopic'>-->发布<!--</lang>-->' );
+		$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
 		
 		if(status==1){
 			setTimeout(function(){window.location.href=data.url;},1000);
@@ -163,11 +163,11 @@ function readTopic(nId){
 	var sUrl=D.U('group://grouptopic/readtopic?id='+nId);
 	var sHtml='<iframe id="iframedialog_readtopic" name="iframedialog_readtopic" frameborder="0" style="margin: 0;width: 700px; height: 500px;overflow-x:hidden;margin:0;padding:0;" src="'+sUrl+'"></iframe>';
 
-	windsforceAlert(sHtml,'<!--<lang package='Template/Grouptopic'>-->阅读模式<!--</lang>-->','',globalCancelattachment,'',700,500,1);
+	windsforceAlert(sHtml,'<!--<lang package='Template'>-->阅读模式<!--</lang>-->','',globalCancelattachment,'',700,500,1);
 }
 
 function topicLove(nId){
-	oLovetopics=windsforceAjax(D.U('group://grouptopic/love?id='+nId),'<!--<lang package='Template/Grouptopic'>-->喜欢帖子<!--</lang>-->','',completeLovetopic,'',400,100);
+	oLovetopics=windsforceAjax(D.U('group://grouptopic/love?id='+nId),'<!--<lang package='Template'>-->喜欢帖子<!--</lang>-->','',completeLovetopic,'',400,100);
 }
 
 function completeLovetopic(){
@@ -189,22 +189,22 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 </form>
 
 <div id="modActionSelect" class="commonbox_mini commonbox_mini_gray" style="display:none;z-index:350;">
-	<h2 class="title"><!--<lang package='Template/Groupadmin'>-->选中<!--</lang>-->&nbsp;<strong id="modActionSelectnum"></strong>&nbsp;<!--<lang package='Template/Groupadmin'>-->篇<!--</lang>--></h2>
+	<h2 class="title"><!--<lang package='Template'>-->选中<!--</lang>-->&nbsp;<strong id="modActionSelectnum"></strong>&nbsp;<!--<lang package='Template'>-->篇<!--</lang>--></h2>
 	<div class="modActionSelectcontent">
 		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@auditcomment'))}-->
-		<a href="javascript:void(0);" onclick="modCommentaudit();"><!--<lang package='Template/Groupadmin'>-->审核<!--</lang>--></a>
+		<a href="javascript:void(0);" onclick="modCommentaudit();"><!--<lang package='Template'>-->审核<!--</lang>--></a>
 		<span class="pipe">|</span>
 		<!--{/if}-->
 		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidecomment'))}-->
-		<a href="javascript:void(0);" onclick="modCommenthide();"><!--<lang package='Template/Groupadmin'>-->屏蔽<!--</lang>--></a>
+		<a href="javascript:void(0);" onclick="modCommenthide();"><!--<lang package='Template'>-->屏蔽<!--</lang>--></a>
 		<span class="pipe">|</span>
 		<!--{/if}-->
 		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletecomment'))}-->
-		<a href="javascript:void(0);" onclick="modCommentdelete();"><!--<lang package='Template/Groupadmin'>-->删除<!--</lang>--></a>
+		<a href="javascript:void(0);" onclick="modCommentdelete();"><!--<lang package='Template'>-->删除<!--</lang>--></a>
 		<span class="pipe">|</span>
 		<!--{/if}-->
 		<!--{if Groupadmin_Extend+checkCommentadminRbac($oGrouptopic->group,array('group@grouptopicadmin@stickreplycomment'))}-->
-		<a href="javascript:void(0);" onclick="modCommentstickreply();"><!--<lang package='Template/Groupadmin'>-->置顶<!--</lang>--></a>
+		<a href="javascript:void(0);" onclick="modCommentstickreply();"><!--<lang package='Template'>-->置顶<!--</lang>--></a>
 		<!--{/if}-->
 	</div>
 </div>
@@ -217,14 +217,14 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 					<ul class="nav nav-pills">
 						<!--{if $GLOBALS['_cache_']['group_option']['group_grouptopicstyle_on']==1 || $GLOBALS['_cache_']['group_option']['group_grouptopicside_on']==1}-->
 						<!--{if $GLOBALS['_cache_']['group_option']['group_grouptopicstyle_on']==1}-->
-						<li <!--{if $nStyle==1}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(1);"><!--<lang package='Template/Grouptopic'>-->传统BBS<!--</lang>--></a></li>
-						<li <!--{if $nStyle==2}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(2);"><!--<lang package='Template/Grouptopic'>-->小组新风格<!--</lang>--></a></li>
+						<li <!--{if $nStyle==1}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(1);"><!--<lang package='Template'>-->传统BBS<!--</lang>--></a></li>
+						<li <!--{if $nStyle==2}-->class="active"<!--{/if}-->><a href="javascript:void(0);" onclick="setGrouptopicstyle(2);"><!--<lang package='Template'>-->小组新风格<!--</lang>--></a></li>
 						<!--{/if}-->
 						<!--{if $GLOBALS['_cache_']['group_option']['group_grouptopicside_on']==1}-->
 						<!--{if $nSide==2}-->
-						<li><a href="javascript:void(0);" onclick="setGrouptopicside(1);"><!--<lang package='Template/Grouptopic'>-->关闭侧边栏<!--</lang>--></a></li>
+						<li><a href="javascript:void(0);" onclick="setGrouptopicside(1);"><!--<lang package='Template'>-->关闭侧边栏<!--</lang>--></a></li>
 						<!--{d*else}-->
-						<li><a href="javascript:void(0);" onclick="setGrouptopicside(2);"><!--<lang package='Template/Grouptopic'>-->打开侧边栏<!--</lang>--></a></li>
+						<li><a href="javascript:void(0);" onclick="setGrouptopicside(2);"><!--<lang package='Template'>-->打开侧边栏<!--</lang>--></a></li>
 						<!--{/if}-->
 						<!--{/if}-->
 						<!--{/if}-->
@@ -236,60 +236,60 @@ var nGroupid=parseInt('<!--{$oGrouptopic['group_id']}-->'),nGrouptopicid=parseIn
 			<div class="span12" style="margin-bottom:15px;">
 				<div>
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@deletetopic'))}-->
-					<a onclick="modTopicdelete();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->删除主题<!--</lang>--></a>
+					<a onclick="modTopicdelete();" href="javascript:void(0);"><!--<lang package='Template'>-->删除主题<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@closetopic'))}-->
 					<!--{if $oGrouptopic['grouptopic_isclose']=='0'}-->
-					<a onclick="modTopicclose(1);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->关闭<!--</lang>--></a>
+					<a onclick="modTopicclose(1);" href="javascript:void(0);"><!--<lang package='Template'>-->关闭<!--</lang>--></a>
 					<!--{d*else}-->
-					<a onclick="modTopicclose(0);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->打开<!--</lang>--></a>
+					<a onclick="modTopicclose(0);" href="javascript:void(0);"><!--<lang package='Template'>-->打开<!--</lang>--></a>
 					<!--{/if}-->
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@sticktopic'))}-->
-					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->置顶<!--</lang>--></a>
+					<a onclick="modTopicstick(<!--{if $oGrouptopic['grouptopic_sticktopic']>0}--><!--{$oGrouptopic['grouptopic_sticktopic']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);"><!--<lang package='Template'>-->置顶<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@digesttopic'))}-->
-					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->精华<!--</lang>--></a>
+					<a onclick="modTopicdigest(<!--{if $oGrouptopic['grouptopic_addtodigest']>0}--><!--{$oGrouptopic['grouptopic_addtodigest']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);"><!--<lang package='Template'>-->精华<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@recommendtopic'))}-->
-					<a onclick="modTopicrecommend(<!--{if $oGrouptopic['grouptopic_isrecommend']>0}--><!--{$oGrouptopic['grouptopic_isrecommend']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->推荐<!--</lang>--></a>
+					<a onclick="modTopicrecommend(<!--{if $oGrouptopic['grouptopic_isrecommend']>0}--><!--{$oGrouptopic['grouptopic_isrecommend']}--><!--{d*else}-->0<!--{/if}-->);" href="javascript:void(0);"><!--<lang package='Template'>-->推荐<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@hidetopic'))}-->
 					<!--{if $oGrouptopic['grouptopic_isaudit']=='0'}-->
-					<a onclick="modTopicstatus(1);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->显示<!--</lang>--></a>
+					<a onclick="modTopicstatus(1);" href="javascript:void(0);"><!--<lang package='Template'>-->显示<!--</lang>--></a>
 					<!--{d*else}-->
-					<a onclick="modTopicstatus(0);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->隐藏<!--</lang>--></a>
+					<a onclick="modTopicstatus(0);" href="javascript:void(0);"><!--<lang package='Template'>-->隐藏<!--</lang>--></a>
 					<!--{/if}-->
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@categorytopic'))}-->
-					<a onclick="modTopiccategory(<!--{$oGrouptopic['grouptopiccategory_id']}-->);" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->分类<!--</lang>--></a>
+					<a onclick="modTopiccategory(<!--{$oGrouptopic['grouptopiccategory_id']}-->);" href="javascript:void(0);"><!--<lang package='Template'>-->分类<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@tagtopic'))}-->
-					<a onclick="modTopictag();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->标签<!--</lang>--></a>
+					<a onclick="modTopictag();" href="javascript:void(0);"><!--<lang package='Template'>-->标签<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@colortopic'))}-->
-					<a onclick="modTopiccolor();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->高亮<!--</lang>--></a>
+					<a onclick="modTopiccolor();" href="javascript:void(0);"><!--<lang package='Template'>-->高亮<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicadminRbac($oGrouptopic->group,array('group@grouptopicadmin@uptopic'))}-->
-					<a onclick="modTopicup();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->提升下沉<!--</lang>--></a>
+					<a onclick="modTopicup();" href="javascript:void(0);"><!--<lang package='Template'>-->提升下沉<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Groupadmin_Extend+checkTopicmove()}-->
-					<a onclick="modTopicmove();" href="javascript:void(0);"><!--<lang package='Template/Groupadmin'>-->帖子移动<!--</lang>--></a>
+					<a onclick="modTopicmove();" href="javascript:void(0);"><!--<lang package='Template'>-->帖子移动<!--</lang>--></a>
 					<span class="pipe">|</span>
 					<!--{/if}-->
 					<!--{if Core_Extend+isAdmin()}-->
 					<img src="<!--{:Appt::path('recyclebin.gif')}-->" />&nbsp;
-					<a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0')}-->" target="_blank"><!--<lang package='Template/Groupadmin'>-->回帖回收站<!--</lang>--></a>&nbsp;<span><a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0')}-->" target="_blank" <!--{if $nTotalRecyclebinComment>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinComment}-->)</a></span>
+					<a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0')}-->" target="_blank"><!--<lang package='Template'>-->回帖回收站<!--</lang>--></a>&nbsp;<span><a href="<!--{:Core_Extend::adminUrl('app/config?id=3&controller=grouptopiccomment&tid='.$oGrouptopic['grouptopic_id'].'&status=0')}-->" target="_blank" <!--{if $nTotalRecyclebinComment>0}-->style="color:red;font-weight:bold;"<!--{/if}-->>(<!--{$nTotalRecyclebinComment}-->)</a></span>
 					<!--{/if}-->
 				</div>
 			</div>
