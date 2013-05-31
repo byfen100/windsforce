@@ -15,20 +15,20 @@ function option(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->主页入口<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->主页入口<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->主页入口<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->主页入口<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->主页入口<!--</lang>-->&nbsp;&nbsp;<a href="javascript:void(0);" onclick="showMianmenu();"><img src="<!--{:At::path('map.gif')}-->" /></a>&nbsp;<a href="javascript:void(0);" onclick="showMianmenu();"><!--<lang package='Template/Default/Common'>-->应用地图<!--</lang>--></a></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->主页入口<!--</lang>-->&nbsp;&nbsp;<a href="javascript:void(0);" onclick="showMianmenu();"><img src="<!--{:At::path('map.gif')}-->" /></a>&nbsp;<a href="javascript:void(0);" onclick="showMianmenu();"><!--<lang package='Template'>-->应用地图<!--</lang>--></a></h3>
 				<ul class="tabs">
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homefresh'))}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->新鲜事<!--</lang>--></a></li>
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homesite'))}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->站点信息<!--</lang>--></a></li>
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'homehelp'))}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->站点帮助<!--</lang>--></a></li>
 					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'hometag'))}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->用户标签列表<!--</lang>--></a></li>
-					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
-					<li><a href="<!--{:Dyhb::U('app/index')}-->"><!--<lang package='Template/Default/App'>-->应用列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template'>-->应用入口<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('app/index')}-->"><!--<lang package='Template'>-->应用列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
@@ -225,8 +225,8 @@ function option(){
 				</div>
 				<footer>
 					<div class="submit_link">
-						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
-						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->" />
 					</div>
 				</footer>
 			</form>

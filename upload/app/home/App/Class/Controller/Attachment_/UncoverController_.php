@@ -10,12 +10,12 @@ class UncoverController extends Controller{
 		$nId=intval(G::getGpc('id','G'));
 
 		if(empty($nId)){
-			$this->E(Dyhb::L('没有待取消封面的专辑ID','Controller/Attachment'));
+			$this->E(Dyhb::L('没有待取消封面的专辑ID','Controller'));
 		}
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nId)->getOne();
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			$this->E(Dyhb::L('待取消封面的专辑不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('待取消封面的专辑不存在','Controller'));
 		}
 
 		$oAttachmentcategory->attachmentcategory_cover='0';
@@ -25,7 +25,7 @@ class UncoverController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('专辑封面删除成功','Controller/Attachment'));
+		$this->S(Dyhb::L('专辑封面删除成功','Controller'));
 	}
 
 }

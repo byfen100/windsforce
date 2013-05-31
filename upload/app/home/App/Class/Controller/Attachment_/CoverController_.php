@@ -10,7 +10,7 @@ class CoverController extends Controller{
 		$nId=intval(G::getGpc('id','G'));
 
 		if(empty($nId)){
-			$this->E(Dyhb::L('没有待设置的照片ID','Controller/Attachment'));
+			$this->E(Dyhb::L('没有待设置的照片ID','Controller'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nId)->getOne();
@@ -19,7 +19,7 @@ class CoverController extends Controller{
 				$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$oAttachment['attachmentcategory_id'])->getOne();
 
 				if(empty($oAttachmentcategory['attachmentcategory_id'])){
-					$this->E(Dyhb::L('照片的专辑不存在','Controller/Attachment'));
+					$this->E(Dyhb::L('照片的专辑不存在','Controller'));
 				}
 
 				$oAttachmentcategory->attachmentcategory_cover=$nId;
@@ -29,12 +29,12 @@ class CoverController extends Controller{
 					$this->E($oAttachmentcategory->getErrorMessage());
 				}
 
-				$this->S(Dyhb::L('专辑封面设置成功','Controller/Attachment'));
+				$this->S(Dyhb::L('专辑封面设置成功','Controller'));
 			}else{
-				$this->E(Dyhb::L('默认专辑不需要设置封面','Controller/Attachment'));
+				$this->E(Dyhb::L('默认专辑不需要设置封面','Controller'));
 			}
 		}else{
-			$this->E(Dyhb::L('待设置的照片不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('待设置的照片不存在','Controller'));
 		}
 	}
 

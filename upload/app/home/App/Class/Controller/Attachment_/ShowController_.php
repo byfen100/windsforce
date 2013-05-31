@@ -12,12 +12,12 @@ class ShowController extends Controller{
 		$nAttachmentid=intval(G::getGpc('id','G'));
 
 		if(empty($nAttachmentid)){
-			$this->E(Dyhb::L('你没有指定要查看的附件','Controller/Attachment'));
+			$this->E(Dyhb::L('你没有指定要查看的附件','Controller'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentid)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E(Dyhb::L('你要查看的文件不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('你要查看的文件不存在','Controller'));
 		}
 
 		$arrOptionData=$GLOBALS['_cache_']['home_option'];
@@ -27,7 +27,7 @@ class ShowController extends Controller{
 		if($nIsolationCommentid){
 			$result=AttachmentcommentModel::getCommenturlByid($nIsolationCommentid);
 			if($result===false){
-				$this->E(Dyhb::L('该条评论已被删除、屏蔽或者尚未通过审核','Controller/Attachment'));
+				$this->E(Dyhb::L('该条评论已被删除、屏蔽或者尚未通过审核','Controller'));
 			}
 
 			G::urlGoTo($result);
@@ -146,10 +146,10 @@ class ShowController extends Controller{
 
 		echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 				<playlist version=\"1\" xmlns=\"http://xspf.org/ns/0/\">
-					<title>{$oUser['user_name']}".Dyhb::L('专辑','Controller/Attachment')."</title>
+					<title>{$oUser['user_name']}".Dyhb::L('专辑','Controller')."</title>
 					<creator>Dew</creator>
 					<link>{$GLOBALS['_option_']['site_url']}</link>
-					<info>{$oUser['user_name']}".Dyhb::L('专辑','Controller/Attachment')."</info>
+					<info>{$oUser['user_name']}".Dyhb::L('专辑','Controller')."</info>
 					<image></image>
 					<trackList>";
 		
@@ -158,7 +158,7 @@ class ShowController extends Controller{
 
 			if($arrAttachments){
 				foreach($arrAttachments as $oAttachment){
-					$sAttachmentcategory=$oAttachment['attachmentcategory_id']>0?$oAttachment->attachmentcategory->attachmentcategory_name:Dyhb::L('未分类','Controller/Attachment');
+					$sAttachmentcategory=$oAttachment['attachmentcategory_id']>0?$oAttachment->attachmentcategory->attachmentcategory_name:Dyhb::L('未分类','Controller');
 					echo "<track>
 							<location>".Attachment_Extend::getAttachmenturl($oAttachment)."</location>
 							<creator>{$oAttachment['attachment_username']}</creator>

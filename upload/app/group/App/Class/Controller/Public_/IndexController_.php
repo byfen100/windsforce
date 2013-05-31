@@ -91,10 +91,14 @@ class IndexController extends Controller{
 		
 		return $arrGroupcategorys;
 	}
-	
+
 	public function index_title_(){
 		if($GLOBALS['_commonConfig_']['DEFAULT_APP']!='group'){
-			return Dyhb::L('小组','Controller');
+			if($GLOBALS['_cache_']['group_option']['newtopic_default']==1){
+				return Dyhb::L('新帖','Controller');
+			}else{
+				return Dyhb::L('小组','Controller');
+			}
 		}
 	}
 
@@ -104,6 +108,18 @@ class IndexController extends Controller{
 
 	public function index_description_(){
 		return $this->index_title_();
+	}
+
+	public function newtopic_title_(){
+		return Dyhb::L('小组','Controller');
+	}
+
+	public function newtopic_keywords_(){
+		return $this->newtopic_title_();
+	}
+
+	public function newtopic_description_(){
+		return $this->newtopic_title_();
 	}
 
 }

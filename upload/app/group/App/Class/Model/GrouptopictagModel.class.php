@@ -15,8 +15,8 @@ class GrouptopictagModel extends CommonModel{
 			'attr_protected'=>'hometag_id',
 			'check'=>array(
 				'grouptopictag_name'=>array(
-					array('require',Dyhb::L('帖子标签不能为空','Model')),
-					array('max_length',32,Dyhb::L('帖子标签不能超过32个字符','Model')),
+					array('require',Dyhb::L('帖子标签不能为空','__APPGROUP_COMMON_LANG__@Model')),
+					array('max_length',32,Dyhb::L('帖子标签不能超过32个字符','__APPGROUP_COMMON_LANG__@Model')),
 				),
 			),
 		);

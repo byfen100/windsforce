@@ -20,7 +20,7 @@ class AddcommentController extends GlobalchildController{
 		$oAttachment=AttachmentModel::F('attachment_id=?',intval(G::getGpc('attachment_id')))->getOne();
 
 		if(empty($oAttachment['attachment_id'])){
-			$this->E(Dyhb::L('附件不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('附件不存在','Controller'));
 		}
 		
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
@@ -162,7 +162,7 @@ class AddcommentController extends GlobalchildController{
 			$sCommentMessage=$oAttachmentcomment['attachmentcomment_content'];
 
 			try{
-				Comment_Extend::addFeed(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
+				Comment_Extend::addFeed(Dyhb::L('评论了附件','Controller'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
 			}catch(Exception $e){
 				$this->E($e->getMessage());
 			}
@@ -174,7 +174,7 @@ class AddcommentController extends GlobalchildController{
 				$sCommentMessage=$oAttachmentcomment['attachmentcomment_content'];
 
 				try{
-					Comment_Extend::addNotice(Dyhb::L('评论了附件','Controller/Attachment'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachment['user_id'],'addattachmentcomment',$oAttachment['attachment_id'],'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
+					Comment_Extend::addNotice(Dyhb::L('评论了附件','Controller'),'addattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachment['user_id'],'addattachmentcomment',$oAttachment['attachment_id'],'[attachment]'.$oAttachment['attachment_id'].'[/attachment]');
 				}catch(Exception $e){
 					$this->E($e->getMessage());
 				}
@@ -190,7 +190,7 @@ class AddcommentController extends GlobalchildController{
 					$sCommentMessage=$oAttachmentcomment['attachmentcomment_content'];
 
 					try{
-						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller/Attachment'),'replyattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachmentcommentParent['user_id'],'replyattachmentcomment',$oAttachmentcommentParent['attachmentcomment_id']);
+						Comment_Extend::addNotice(Dyhb::L('回复了你的评论','Controller'),'replyattachmentcomment',$sCommentLink,$sCommentTitle,$sCommentMessage,$oAttachmentcommentParent['user_id'],'replyattachmentcomment',$oAttachmentcommentParent['attachmentcomment_id']);
 					}catch(Exception $e){
 						$this->E($e->getMessage());
 					}
@@ -203,7 +203,7 @@ class AddcommentController extends GlobalchildController{
 					if($nAtuserid!=$GLOBALS['___login___']['user_id']){
 						$sAttachmentcommentmessage=Core_Extend::subString($oAttachmentcomment['attachmentcomment_content'],100,false,1,false);
 						
-						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在附件评论中提到了你','Controller/Attachment').'</span><div class="notice_content">[attachment]'.$oAttachmentcomment['attachment_id'].'[/attachment]<div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@attachmentcomment_link}">'.Dyhb::L('查看','Controller/Attachment').'</a></div></div>';
+						$sNoticetemplate='<div class="notice_credit"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('在附件评论中提到了你','Controller').'</span><div class="notice_content">[attachment]'.$oAttachmentcomment['attachment_id'].'[/attachment]<div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div></div><div class="notice_action"><a href="{@attachmentcomment_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
 
 						$arrNoticedata=array(
 							'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
@@ -263,7 +263,7 @@ class AddcommentController extends GlobalchildController{
 		// 更新积分
 		Core_Extend::updateCreditByAction('commoncomment',$GLOBALS['___login___']['user_id']);
 
-		$this->A($arrCommentData,Dyhb::L('添加附件评论成功','Controller/Attachment'),1);
+		$this->A($arrCommentData,Dyhb::L('添加附件评论成功','Controller'),1);
 	}
 
 }

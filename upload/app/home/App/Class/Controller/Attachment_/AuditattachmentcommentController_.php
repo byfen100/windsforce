@@ -12,7 +12,7 @@ class AuditattachmentcommentController extends Controller{
 
 		$oAttachmentcomment=AttachmentcommentModel::F('attachmentcomment_id=? AND attachmentcomment_status=1',$nId)->getOne();
 		if(empty($oAttachmentcomment['attachmentcomment_id'])){
-			$this->E(Dyhb::L('待操作的评论不存在或者已被系统屏蔽','Controller/Attachment'));
+			$this->E(Dyhb::L('待操作的评论不存在或者已被系统屏蔽','Controller'));
 		}
 
 		$oAttachmentcomment->attachmentcomment_auditpass=$nStatus;
@@ -30,7 +30,7 @@ class AuditattachmentcommentController extends Controller{
 			$oAttachment->getErrorMessage();
 		}
 
-		$this->S(Dyhb::L('评论操作成功','Controller/Attachment'));
+		$this->S(Dyhb::L('评论操作成功','Controller'));
 	}
 
 }

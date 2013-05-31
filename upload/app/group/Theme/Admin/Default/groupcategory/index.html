@@ -2,16 +2,16 @@
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='Template'>-->群组分类<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='Template'>-->群组分类<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->群组分类<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->群组分类<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
 	<section id="main" class="column">
 		<article class="module width_full">
-			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
 			<div class="module_content">
 				<ul>
-					<li><!--<lang package='Template'>-->使用群组分类可以方便地对系统群进行管理<!--</lang>--></li>
+					<li><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->使用群组分类可以方便地对系统群进行管理<!--</lang>--></li>
 				</ul>
 			</div>
 		</article>
@@ -19,25 +19,25 @@
 		<article class="module width_full">
 			<div class="module_content">
 				<div class="left operate" >
-					<input type="button" name="add" value="<!--<lang package='Template/Default/Common'>-->新增<!--</lang>-->" onclick="addApp('<!--{$_GET['id']}-->','groupcategory');" class="alt_btn">&nbsp;
-					<input type="button" name="edit" value="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="editApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">&nbsp;
-					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdelApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">
+					<input type="button" name="add" value="<!--<lang package='Template'>-->新增<!--</lang>-->" onclick="addApp('<!--{$_GET['id']}-->','groupcategory');" class="alt_btn">&nbsp;
+					<input type="button" name="edit" value="<!--<lang package='Template'>-->编辑<!--</lang>-->" onclick="editApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">&nbsp;
+					<input type="button" name="delete" value="<!--<lang package='Template'>-->删除<!--</lang>-->" onclick="foreverdelApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">
 				</div>
 				<form method='get' action="<!--{:Dyhb::U( 'app/config' )}-->" class="quick_search">
 					<input type="hidden" name="c" value="<!--{:MODULE_NAME}-->"/>
 					<input type="hidden" name="a" value="<!--{:ACTION_NAME}-->"/>
 					<input type="hidden" name="id" value="<!--{$_GET['id']}-->"/>
 					<input type="hidden" name="controller" value="groupcategory"/>
-					<input type="text" name="groupcategory_name" title="<!--<lang package='Template'>-->群组分类名<!--</lang>-->">
-					&nbsp;<input type="submit" id="" value="<!--<lang package='Template/Default/Common'>-->查询<!--</lang>-->" onclick="" class="alt_btn">
+					<input type="text" name="groupcategory_name" title="<!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->群组分类名<!--</lang>-->">
+					&nbsp;<input type="submit" id="" value="<!--<lang package='Template'>-->查询<!--</lang>-->" onclick="" class="alt_btn">
 				</form>
 			</div>
 		</article>
 		
 		<article class="module width_full">
-			<header><h3 class="tabs_involved"><!--<lang package='Template'>-->群组分类<!--</lang>--></h3>
+			<header><h3 class="tabs_involved"><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->群组分类<!--</lang>--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template'>-->应用入口<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<div class="module_content">
@@ -45,15 +45,15 @@
 					<thead>
 						<tr>
 							<th><input type="checkbox" onclick="checkAll('checkList')"></th> 
-							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_id',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_id')}-->><!--<lang package='Template/Default/Common'>-->编号<!--</lang>--></a></th>
-							<th><a href="javascript:sortBy('groupcategory_name','<!--{$sSortByUrl}-->')<!--{:Admin_Extend::soryBy('groupcategory_id',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_name')}-->><!--<lang package='Template'>-->群组分类名<!--</lang>--></a></th>
-							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_parentid',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_parentid')}-->><!--<lang package='Template'>-->父级分类<!--</lang>--></a></th>
-							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_groupmaxnum',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_groupmaxnum')}-->><!--<lang package='Template'>-->首页最大小组数<!--</lang>--></a></th>
-							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_columns',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_columns')}-->><!--<lang package='Template'>-->首页小组横排数量<!--</lang>--></a></th>
-							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_count',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_count')}-->><!--<lang package='Template'>-->小组总数<!--</lang>--></a></th>
-							<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template/Default/Common'>-->添加时间<!--</lang>--></a></th>
-							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_sort',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_sort')}-->><!--<lang package='Template/Default/Common'>-->序号<!--</lang>--></a></th>
-							<th><!--<lang package='Template/Default/Common'>-->操作<!--</lang>--></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_id',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_id')}-->><!--<lang package='Template'>-->编号<!--</lang>--></a></th>
+							<th><a href="javascript:sortBy('groupcategory_name','<!--{$sSortByUrl}-->')<!--{:Admin_Extend::soryBy('groupcategory_id',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_name')}-->><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->群组分类名<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_parentid',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_parentid')}-->><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->父级分类<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_groupmaxnum',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_groupmaxnum')}-->><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->首页最大小组数<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_columns',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_columns')}-->><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->首页小组横排数量<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_count',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_count')}-->><!--<lang package='__APPGROUP_COMMON_LANG__@Template'>-->小组总数<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('create_dateline',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('create_dateline')}-->><!--<lang package='Template'>-->添加时间<!--</lang>--></a></th>
+							<th><a href="<!--{:Admin_Extend::soryBy('groupcategory_sort',$sSortByUrl,array('controller'=>'groupcategory'))}-->" <!--{:Admin_Extend::sortField('groupcategory_sort')}-->><!--<lang package='Template'>-->序号<!--</lang>--></a></th>
+							<th><!--<lang package='Template'>-->操作<!--</lang>--></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -64,8 +64,8 @@
 							<td><!--{$value:groupcategory_id}--></td>
 							<td><a href="javascript:editApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><!--{$value:groupcategory_name}--></a>
 								<div class="row-actions">
-									<span class='edit'><a href="javascript:editApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><!--<lang package='Template/Default/Common'>-->编辑<!--</lang>--></a>|</span>
-									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><!--<lang package='Template/Default/Common'>-->删除<!--</lang>--></a></span>
+									<span class='edit'><a href="javascript:editApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><!--<lang package='Template'>-->编辑<!--</lang>--></a>|</span>
+									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><!--<lang package='Template'>-->删除<!--</lang>--></a></span>
 									</span>
 								</div>
 							</td>
@@ -74,13 +74,13 @@
 							<td><!--{$value:groupcategory_columns}--></td>
 							<td><!--{$value:groupcategory_count}--></td>
 							<td><!--{$value:create_dateline|date='Y-m-d H:i:s',**}--></td>
-							<td class="pointer" title="<!--<lang package='Template/Default/Common'>-->点击修改数据<!--</lang>-->" id="groupcategory_sort_<!--{$value:groupcategory_id}-->" onClick="clickToInputApp('groupcategory_sort','<!--{$value:groupcategory_id}-->','<!--{$_GET['id']}-->','groupcategory')"><!--{$value:groupcategory_sort}--></td>
-							<td><a href="javascript:editApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->"></a></td>
+							<td class="pointer" title="<!--<lang package='Template'>-->点击修改数据<!--</lang>-->" id="groupcategory_sort_<!--{$value:groupcategory_id}-->" onClick="clickToInputApp('groupcategory_sort','<!--{$value:groupcategory_id}-->','<!--{$_GET['id']}-->','groupcategory')"><!--{$value:groupcategory_sort}--></td>
+							<td><a href="javascript:editApp('<!--{$_GET['id']}-->','groupcategory','<!--{$value:groupcategory_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template'>-->编辑<!--</lang>-->"></a></td>
 						</tr>
 						<!--</foreach>-->
 						<!--{d*else}-->
 						<tr>
-							<td colspan="10"><!--<lang package='Template/Default/Common'>-->暂时没有发现任何记录<!--</lang>--></td>
+							<td colspan="10"><!--<lang package='Template'>-->暂时没有发现任何记录<!--</lang>--></td>
 						</tr>
 						<!--{/if}-->
 					</tbody>
@@ -97,9 +97,9 @@
 		<article class="module width_full">
 			<div class="module_content">
 				<div class="operate" >
-					<input type="button" name="add" value="<!--<lang package='Template/Default/Common'>-->新增<!--</lang>-->" onclick="addApp('<!--{$_GET['id']}-->','groupcategory');" class="alt_btn">&nbsp;
-					<input type="button" name="edit" value="<!--<lang package='Template/Default/Common'>-->编辑<!--</lang>-->" onclick="editApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">&nbsp;
-					<input type="button" name="delete" value="<!--<lang package='Template/Default/Common'>-->删除<!--</lang>-->" onclick="foreverdelApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">
+					<input type="button" name="add" value="<!--<lang package='Template'>-->新增<!--</lang>-->" onclick="addApp('<!--{$_GET['id']}-->','groupcategory');" class="alt_btn">&nbsp;
+					<input type="button" name="edit" value="<!--<lang package='Template'>-->编辑<!--</lang>-->" onclick="editApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">&nbsp;
+					<input type="button" name="delete" value="<!--<lang package='Template'>-->删除<!--</lang>-->" onclick="foreverdelApp('<!--{$_GET['id']}-->','groupcategory')" class="alt_btn">
 				</div>
 			</div>
 		</article>

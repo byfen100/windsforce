@@ -25,7 +25,7 @@ class DialogaddattachmentcategoryController extends Controller{
 		$sAttachmentcategoryname=trim(G::getGpc('attachmentcategory_name'));
 
 		if(!$sAttachmentcategoryname){
-			G::urlGoTo(Dyhb::U('home://attachment/dialog_addattachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),2,Dyhb::L('专辑名字不能为空','Controller/Attachment'));
+			G::urlGoTo(Dyhb::U('home://attachment/dialog_addattachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),2,Dyhb::L('专辑名字不能为空','Controller'));
 			exit();
 		}
 
@@ -38,7 +38,7 @@ class DialogaddattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),1,Dyhb::L('专辑保存成功','Controller/Attachment'));
+		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),1,Dyhb::L('专辑保存成功','Controller'));
 	}
 
 }

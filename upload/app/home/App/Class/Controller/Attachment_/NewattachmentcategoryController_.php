@@ -31,7 +31,7 @@ class NewattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		$this->A($oAttachmentcategory->toArray(),Dyhb::L('新增专辑成功','Controller/Attachment'),1);
+		$this->A($oAttachmentcategory->toArray(),Dyhb::L('新增专辑成功','Controller'),1);
 	}
 
 }

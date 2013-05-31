@@ -109,7 +109,7 @@ class AddController extends Controller{
 	}
 
 	public function add_title_(){
-		return Dyhb::L('上传附件','Controller/Attachment');
+		return Dyhb::L('上传附件','Controller');
 	}
 
 	public function add_keywords_(){

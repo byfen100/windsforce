@@ -26,11 +26,11 @@ class GroupmainController extends InitController{
 		if(isset($arrOptions['group_hottopic2_views'])){
 			// 对火帖配置进行判断一下
 			if($arrOptions['group_hottopic2_views']>$arrOptions['group_hottopic3_views'] || $arrOptions['group_hottopic2_views']<$arrOptions['group_hottopic1_views']){
-				$this->E(Dyhb::L('火帖浏览次数配置参数没有依次递增','Controller'));
+				$this->E(Dyhb::L('火帖浏览次数配置参数没有依次递增','__APPGROUP_COMMON_LANG__@Controller'));
 			}
 
 			if($arrOptions['group_hottopic2_comments']>$arrOptions['group_hottopic3_comments'] || $arrOptions['group_hottopic2_comments']<$arrOptions['group_hottopic1_comments']){
-				$this->E(Dyhb::L('火帖回帖次数配置参数没有依次递增','Controller'));
+				$this->E(Dyhb::L('火帖回帖次数配置参数没有依次递增','__APPGROUP_COMMON_LANG__@Controller'));
 			}
 		}
 
@@ -50,7 +50,7 @@ class GroupmainController extends InitController{
 		}
 		Cache_Extend::updateCache('group_option');
 
-		$this->S(Dyhb::L('配置更新成功','Controller'));
+		$this->S(Dyhb::L('配置更新成功','__APPGROUP_COMMON_LANG__@Controller'));
 	}
 
 }

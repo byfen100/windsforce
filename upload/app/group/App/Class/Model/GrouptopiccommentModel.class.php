@@ -23,10 +23,10 @@ class GrouptopiccommentModel extends CommonModel{
 			),
 			'check'=>array(
 				'grouptopiccomment_title'=>array(
-					array('max_length',300,Dyhb::L('回帖标题不能超过300个字符','Model')),
+					array('max_length',300,Dyhb::L('回帖标题不能超过300个字符','__APPGROUP_COMMON_LANG__@Model')),
 				),
 				'grouptopiccomment_content'=>array(
-					array('require',Dyhb::L('帖子评论内容不能为空','Model')),
+					array('require',Dyhb::L('帖子评论内容不能为空','__APPGROUP_COMMON_LANG__@Model')),
 				),
 			),
 		);

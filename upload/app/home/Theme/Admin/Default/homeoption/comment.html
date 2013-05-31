@@ -14,7 +14,7 @@ function option(){
 
 	<section class="secondary_bar">
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论设置<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论设置<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论设置<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论设置<!--</lang>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
 		</div>
 	</section>
 
@@ -22,8 +22,8 @@ function option(){
 		<article class="module width_full">
 			<header><h3 class="tabs_involved"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->主页入口<!--</lang>--></h3>
 				<ul class="tabs">
-					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
-					<li><a href="<!--{:Dyhb::U('app/index')}-->"><!--<lang package='Template/Default/App'>-->应用列表<!--</lang>--></a></li>
+					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template'>-->应用入口<!--</lang>--></a></li>
+					<li><a href="<!--{:Dyhb::U('app/index')}-->"><!--<lang package='Template'>-->应用列表<!--</lang>--></a></li>
 				</ul>
 			</header>
 			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
@@ -47,42 +47,42 @@ function option(){
 							</fieldset>
 							<fieldset>
 								<label for="comment_mail_to_admin"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论是否邮件通知管理员<!--</lang>--></label>
-								<input type="radio" name="options[comment_mail_to_admin]" value="1" <!--{if $arrOptions['comment_mail_to_admin']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[comment_mail_to_admin]" value="0" <!--{if $arrOptions['comment_mail_to_admin']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[comment_mail_to_admin]" value="1" <!--{if $arrOptions['comment_mail_to_admin']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[comment_mail_to_admin]" value="0" <!--{if $arrOptions['comment_mail_to_admin']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->在开启本项前请设置好邮件配置，并且测试能够发送后才可以，否则请关闭此项功能<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('mailoption/index')}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->设置邮件配置<!--</lang>--></a></div>
 							</fieldset>
 							<fieldset>
 								<label for="comment_mail_to_author"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论是否邮件通知评论作者<!--</lang>--></label>
-								<input type="radio" name="options[comment_mail_to_author]" value="1" <!--{if $arrOptions['comment_mail_to_author']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[comment_mail_to_author]" value="0" <!--{if $arrOptions['comment_mail_to_author']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[comment_mail_to_author]" value="1" <!--{if $arrOptions['comment_mail_to_author']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[comment_mail_to_author]" value="0" <!--{if $arrOptions['comment_mail_to_author']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->在开启本项前请设置好邮件配置，并且测试能够发送后才可以，否则请关闭此项功能<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('mailoption/index')}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->设置邮件配置<!--</lang>--></a><br/>
 								<!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->如果要将邮件发送给管理员，首先确保管理员邮箱设置正确<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('option/admin')}-->"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->系统管理员邮箱<!--</lang>--></a>
 								</div>
 							</fieldset>
 							<fieldset>
 								<label for="close_comment_feature"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->是否关闭评论功能<!--</lang>--></label>
-								<input type="radio" name="options[close_comment_feature]" value="1" <!--{if $arrOptions['close_comment_feature']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[close_comment_feature]" value="0" <!--{if $arrOptions['close_comment_feature']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[close_comment_feature]" value="1" <!--{if $arrOptions['close_comment_feature']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[close_comment_feature]" value="0" <!--{if $arrOptions['close_comment_feature']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->如果关闭了评论，那么新鲜事将无法进行评论<!--</lang>--></div>
 							</fieldset>
 							<fieldset>
 								<label for="audit_comment"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论是否审核<!--</lang>--></label>
-								<input type="radio" name="options[audit_comment]" value="1" <!--{if $arrOptions['audit_comment']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[audit_comment]" value="0" <!--{if $arrOptions['audit_comment']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[audit_comment]" value="1" <!--{if $arrOptions['audit_comment']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[audit_comment]" value="0" <!--{if $arrOptions['audit_comment']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->如果开启了，那么评论只有通过作者审核后才能够显示出来<!--</lang>--></div>
 							</fieldset>
 							<fieldset>
 								<label for="seccode_comment_status"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论是否开启验证码<!--</lang>--></label>
-								<input type="radio" name="options[seccode_comment_status]" value="1" <!--{if $arrOptions['seccode_comment_status']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[seccode_comment_status]" value="0" <!--{if $arrOptions['seccode_comment_status']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[seccode_comment_status]" value="1" <!--{if $arrOptions['seccode_comment_status']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[seccode_comment_status]" value="0" <!--{if $arrOptions['seccode_comment_status']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->开启验证码会影响用户发布评论体验，建议没有特别必要不要开启<!--</lang>--></div>
 							</fieldset>
 						</div>
 						<div id="tab2" class="windsforce_tabcontent">
 							<fieldset>
 								<label for="comment_repeat_check"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->评论是否验证重复数据<!--</lang>--></label>
-								<input type="radio" name="options[comment_repeat_check]" value="1" <!--{if $arrOptions['comment_repeat_check']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[comment_repeat_check]" value="0" <!--{if $arrOptions['comment_repeat_check']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[comment_repeat_check]" value="1" <!--{if $arrOptions['comment_repeat_check']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[comment_repeat_check]" value="0" <!--{if $arrOptions['comment_repeat_check']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->开启此项后，同一个用户24小时之内将不能发布重复评论<!--</lang>--></div>
 							</fieldset>
 							<fieldset>
@@ -102,8 +102,8 @@ function option(){
 							</fieldset>
 							<fieldset>
 								<label for="comment_banip_enable"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->开启IP禁止功能<!--</lang>--></label>
-								<input type="radio" name="options[comment_banip_enable]" value="1" <!--{if $arrOptions['comment_banip_enable']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[comment_banip_enable]" value="0" <!--{if $arrOptions['comment_banip_enable']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[comment_banip_enable]" value="1" <!--{if $arrOptions['comment_banip_enable']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[comment_banip_enable]" value="0" <!--{if $arrOptions['comment_banip_enable']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->选择是将杜绝下面设置的IP提交评论<!--</lang>--></div>
 							</fieldset>
 							<fieldset>
@@ -113,8 +113,8 @@ function option(){
 							</fieldset>
 							<fieldset>
 								<label for="comment_spam_enable"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->开启Spam机制<!--</lang>--></label>
-								<input type="radio" name="options[comment_spam_enable]" value="1" <!--{if $arrOptions['comment_spam_enable']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[comment_spam_enable]" value="0" <!--{if $arrOptions['comment_spam_enable']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[comment_spam_enable]" value="1" <!--{if $arrOptions['comment_spam_enable']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[comment_spam_enable]" value="0" <!--{if $arrOptions['comment_spam_enable']==0}-->checked="checked"<!--{/if}--> /><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->Spam是指利用程序进行广播式的广告宣传的行为.这种行为给很多人的信箱、留言、评论里塞入大量无关或无用的信息.开启后以下设置才生效<!--</lang>--></div>
 							</fieldset>
 							<fieldset>
@@ -134,14 +134,14 @@ function option(){
 							</fieldset>
 							<fieldset>
 								<label for="disallowed_all_english_word"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->阻止纯英文评论<!--</lang>--></label>
-								<input type="radio" name="options[disallowed_all_english_word]" value="1" <!--{if $arrOptions['disallowed_all_english_word']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[disallowed_all_english_word]" value="0" <!--{if $arrOptions['disallowed_all_english_word']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[disallowed_all_english_word]" value="1" <!--{if $arrOptions['disallowed_all_english_word']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[disallowed_all_english_word]" value="0" <!--{if $arrOptions['disallowed_all_english_word']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->开启此项后，所有纯英文评论将会被阻止<!--</lang>--></div>
 							</fieldset>
 							<fieldset>
 								<label for="disallowed_spam_word_to_database"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->是否拒绝垃圾数据入库<!--</lang>--></label>
-								<input type="radio" name="options[disallowed_spam_word_to_database]" value="1" <!--{if $arrOptions['disallowed_spam_word_to_database']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
-								<input type="radio" name="options[disallowed_spam_word_to_database]" value="0" <!--{if $arrOptions['disallowed_spam_word_to_database']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+								<input type="radio" name="options[disallowed_spam_word_to_database]" value="1" <!--{if $arrOptions['disallowed_spam_word_to_database']==1}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->是<!--</lang>-->
+								<input type="radio" name="options[disallowed_spam_word_to_database]" value="0" <!--{if $arrOptions['disallowed_spam_word_to_database']==0}-->checked="checked"<!--{/if}-->/><!--<lang package='Template'>-->否<!--</lang>-->
 								<div class="description"><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->如果不开启此项，那么垃圾数据会被变成待审核状态，但是还是会写入数据库<!--</lang>--><!--<lang package='__APPHOME_COMMON_LANG__@Template'>-->如果，你启用了此项，所有被系统鉴别为垃圾的数据都会被拒绝<!--</lang>--></div>
 							</fieldset>
 						</div>
@@ -171,8 +171,8 @@ function option(){
 				</div>
 				<footer>
 					<div class="submit_link">
-						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
-						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->" />
 					</div>
 				</footer>
 			</form>

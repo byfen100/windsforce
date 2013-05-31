@@ -22,7 +22,6 @@ class PublicController extends InitController{
 		if($GLOBALS['_cache_']['group_option']['newtopic_default']==1){
 			Core_Extend::doControllerAction('Public@Index','index');
 		}else{
-			
 			Core_Extend::doControllerAction('Public@Newtopic','index');
 		}
 	}

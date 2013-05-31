@@ -17,11 +17,11 @@ class GrouptopictagController extends InitController{
 	}
 
 	public function edit($sMode=null,$nId=null,$bDidplay=true){
-		$this->E(Dyhb::L('帖子标签不允许被编辑','Controller'));
+		$this->E(Dyhb::L('帖子标签不允许被编辑','__APPGROUP_COMMON_LANG__@Controller'));
 	}
 	
 	public function add(){
-		$this->E(Dyhb::L('不允许添加帖子标签','Controller'));
+		$this->E(Dyhb::L('不允许添加帖子标签','__APPGROUP_COMMON_LANG__@Controller'));
 	}
 
 	public function aForeverdelete($sId){

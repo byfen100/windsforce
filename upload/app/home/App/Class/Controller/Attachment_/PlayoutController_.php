@@ -10,7 +10,7 @@ class PlayoutController extends Controller{
 		$sFlashpath=trim(G::getGpc('url','G'));
 		
 		if(empty($sFlashpath)){
-			Dyhb::E(Dyhb::L('没有指定播放的flash','Controller/Attachment'));
+			Dyhb::E(Dyhb::L('没有指定播放的flash','Controller'));
 		}
 		
 		$this->assign('sFlashpath',$sFlashpath);

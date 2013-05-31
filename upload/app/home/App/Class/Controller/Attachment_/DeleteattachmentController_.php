@@ -16,16 +16,16 @@ class DeleteattachmentController extends Controller{
 		}
 
 		if(empty($nAttachmentid)){
-			$this->E(Dyhb::L('你没有选择你要删除的附件','Controller/Attachment'));
+			$this->E(Dyhb::L('你没有选择你要删除的附件','Controller'));
 		}
 
 		$oAttachment=AttachmentModel::F('attachment_id=?',$nAttachmentid)->getOne();
 		if(empty($oAttachment['attachment_id'])){
-			$this->E(Dyhb::L('你要删除的附件不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('你要删除的附件不存在','Controller'));
 		}
 
 		if($oAttachment['user_id']!=$GLOBALS['___login___']['user_id']){
-			$this->E(Dyhb::L('你不能删除别人的附件','Controller/Attachment'));
+			$this->E(Dyhb::L('你不能删除别人的附件','Controller'));
 		}
 
 		$this->_nAttachmentcategoryid=$oAttachment['attachmentcategory_id'];
@@ -47,7 +47,7 @@ class DeleteattachmentController extends Controller{
 		$this->cache_site_();
 
 		if(!$nId){
-			$this->S(Dyhb::L('附件删除成功','Controller/Attachment'));
+			$this->S(Dyhb::L('附件删除成功','Controller'));
 		}
 	}
 
@@ -61,7 +61,7 @@ class DeleteattachmentController extends Controller{
 			}
 		}
 			
-		$this->S(Dyhb::L('批量删除附件成功','Controller/Attachment'));
+		$this->S(Dyhb::L('批量删除附件成功','Controller'));
 	}
 
 	protected function cache_site_(){

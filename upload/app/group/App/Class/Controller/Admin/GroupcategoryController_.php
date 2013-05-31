@@ -85,7 +85,7 @@ class GroupcategoryController extends InitController{
 				$nGroupcategorys=GroupcategoryModel::F('groupcategory_parentid=?',$nId)->all()->getCounts();
 				$oGroupcategory=GroupcategoryModel::F('groupcategory_id=?',$nId)->query();
 				if($nGroupcategorys>0){
-					$this->E(Dyhb::L('群组分类%s存在子分类，你无法删除','Controller',null,$oGroupcategory->groupcategory_name));
+					$this->E(Dyhb::L('群组分类%s存在子分类，你无法删除','__APPGROUP_COMMON_LANG__@Controller',null,$oGroupcategory->groupcategory_name));
 				}
 			}
 		}

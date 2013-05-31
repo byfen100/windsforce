@@ -42,7 +42,7 @@ class IndexController extends Controller{
 	}
 
 	public function index_title_(){
-		return Dyhb::L('我的相册','Controller/Attachment');
+		return Dyhb::L('我的相册','Controller');
 	}
 
 	public function index_keywords_(){

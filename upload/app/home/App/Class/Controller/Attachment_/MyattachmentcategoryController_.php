@@ -39,7 +39,7 @@ class MyattachmentcategoryController extends Controller{
 	}
 
 	public function my_attachmentcategory_title_(){
-		return Dyhb::L('我的专辑','Controller/Attachment');
+		return Dyhb::L('我的专辑','Controller');
 	}
 
 	public function my_attachmentcategory_keywords_(){

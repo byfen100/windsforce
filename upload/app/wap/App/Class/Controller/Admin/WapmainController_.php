@@ -37,7 +37,7 @@ class WapmainController extends InitController{
 		}
 		Cache_Extend::updateCache('option');
 
-		$this->S(Dyhb::L('配置更新成功','Controller/Option'));
+		$this->S(Dyhb::L('配置更新成功','Controller'));
 	}
 
 }

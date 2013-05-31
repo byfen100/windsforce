@@ -88,7 +88,7 @@ class MyattachmentController extends Controller{
 	}
 
 	public function my_attachment_title_(){
-		return Dyhb::L('我的附件','Controller/Attachment');
+		return Dyhb::L('我的附件','Controller');
 	}
 
 	public function my_attachment_keywords_(){

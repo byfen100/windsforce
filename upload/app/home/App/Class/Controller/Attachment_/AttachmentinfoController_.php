@@ -21,17 +21,17 @@ class AttachmentinfoController extends Controller{
 
 		if(empty($sCookieHashcode)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));
-			$this->E(Dyhb::L('附件信息编辑页面已过期','Controller/Attachment'));
+			$this->E(Dyhb::L('附件信息编辑页面已过期','Controller'));
 		}
 
 		if($sCookieHashcode!=$sHashcode){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));
-			$this->E(Dyhb::L('附件信息编辑页面Hash验证失败','Controller/Attachment'));
+			$this->E(Dyhb::L('附件信息编辑页面Hash验证失败','Controller'));
 		}
 
 		if(empty($sUploadids)){
 			$this->assign('__JumpUrl__',Dyhb::U('home://attachment/add'));
-			$this->E(Dyhb::L('你没有选择需要编辑的附件','Controller/Attachment'));
+			$this->E(Dyhb::L('你没有选择需要编辑的附件','Controller'));
 		}
 
 		$arrAttachments=AttachmentModel::F('user_id=? AND attachment_id in('.$sUploadids.')',$GLOBALS['___login___']['user_id'])->getAll();
@@ -69,11 +69,11 @@ class AttachmentinfoController extends Controller{
 
 		Dyhb::cookie('_upload_hashcode_',null,-1);
 
-		$this->S(Dyhb::L('附件信息保存成功','Controller/Attachment'));
+		$this->S(Dyhb::L('附件信息保存成功','Controller'));
 	}
 
 	public function attachmentinfo_title_(){
-		return Dyhb::L('保存附件信息','Controller/Attachment');
+		return Dyhb::L('保存附件信息','Controller');
 	}
 
 	public function attachmentinfo_keywords_(){

@@ -13,16 +13,16 @@ class EditattachmentcategoryController extends Controller{
 		$nFiletype=intval(G::getGpc('filetype','G'));
 
 		if(empty($nAttachmentcategoryid)){
-			$this->E(Dyhb::L('你没有选择你要编辑的专辑','Controller/Attachment'));
+			$this->E(Dyhb::L('你没有选择你要编辑的专辑','Controller'));
 		}
 
 		$oAttachmentcategory=AttachmentcategoryModel::F('attachmentcategory_id=?',$nAttachmentcategoryid)->getOne();
 		if(empty($oAttachmentcategory['attachmentcategory_id'])){
-			$this->E(Dyhb::L('你要编辑的专辑不存在','Controller/Attachment'));
+			$this->E(Dyhb::L('你要编辑的专辑不存在','Controller'));
 		}
 
 		if($oAttachmentcategory['user_id']!=$GLOBALS['___login___']['user_id']){
-			$this->E(Dyhb::L('你不能编辑别人的专辑','Controller/Attachment'));
+			$this->E(Dyhb::L('你不能编辑别人的专辑','Controller'));
 		}
 
 		$this->assign('oAttachmentcategory',$oAttachmentcategory);
@@ -55,7 +55,7 @@ class EditattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		$this->A($oAttachmentcategory->toArray(),Dyhb::L('更新专辑信息成功','Controller/Attachment'),1);
+		$this->A($oAttachmentcategory->toArray(),Dyhb::L('更新专辑信息成功','Controller'),1);
 	}
 
 	public function dialogsave(){
@@ -66,7 +66,7 @@ class EditattachmentcategoryController extends Controller{
 		$sAttachmentcategoryname=trim(G::getGpc('attachmentcategory_name'));
 
 		if(!$sAttachmentcategoryname){
-			G::urlGoTo(Dyhb::U('home://attachment/edit_attachmentcategory?id='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype),2,Dyhb::L('专辑名字不能为空','Controller/Attachment'));
+			G::urlGoTo(Dyhb::U('home://attachment/edit_attachmentcategory?id='.$nAttachmentcategoryid.'&dialog=1&function='.$sFunction.'&filetype='.$nFiletype),2,Dyhb::L('专辑名字不能为空','Controller'));
 			exit();
 		}
 
@@ -79,7 +79,7 @@ class EditattachmentcategoryController extends Controller{
 			$this->E($oAttachmentcategory->getErrorMessage());
 		}
 
-		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),1,Dyhb::L('更新专辑信息成功','Controller/Attachment'));
+		G::urlGoTo(Dyhb::U('home://attachment/my_attachmentcategory?dialog=1&function='.$sFunction.'&filetype='.$nFiletype),1,Dyhb::L('更新专辑信息成功','Controller'));
 	}
 
 }

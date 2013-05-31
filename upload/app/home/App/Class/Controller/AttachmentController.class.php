@@ -18,7 +18,7 @@ class AttachmentController extends InitController{
 			$this->is_login();
 		}else{
 			if(!Home_Extend::getVisiteallowed('attachment')){
-				$this->E(Dyhb::L('你没有权限访问附件库','Controller/Attachment'));
+				$this->E(Dyhb::L('你没有权限访问附件库','Controller'));
 			}
 		}
 	}
