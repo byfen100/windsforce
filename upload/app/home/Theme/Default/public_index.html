@@ -144,6 +144,24 @@ function insertHomefreshtopic(sContent){
 						<span class="clearfix">&nbsp;</span>
 					</div>
 				</div>
+
+				<!--{if $GLOBALS['_cache_']['announcement']}-->
+				<div class="row">
+					<div class="span10">
+						<div id="announcement-scroll" class="announcement-container">
+							<ul>
+								<!--<foreach for="GLOBALS['_cache_']['announcement']" value=arrAnnouncement>-->
+								<li><a href="<!--{$arrAnnouncement['announcement_url']}-->" target="_blank"><!--{$arrAnnouncement['announcement_title']|G+subString=0,15}--></a>&nbsp;(<!--{$arrAnnouncement['create_dateline']|Core_Extend+timeFormat}-->)</li>
+								<!--</foreach>-->
+							</ul>
+						</div>
+						<script src="<!--{:__PUBLIC__}-->/js/common/announcement.js"></script>
+					</div>
+					<div class="span2" style="text-align:right;">
+						<h6><a href="<!--{:Dyhb::U('home://announcement/index')}-->"><!--<lang package='Template'>-->站点公告<!--</lang>--></a></h6>
+					</div>
+				</div>
+				<!--{/if}-->
 			</div>
 		</div>
 

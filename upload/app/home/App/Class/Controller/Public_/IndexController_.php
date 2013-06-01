@@ -20,6 +20,7 @@ class IndexController extends Controller{
 		Core_Extend::loadCache('slide');
 		Core_Extend::loadCache('link');
 		Core_Extend::loadCache('sociatype');
+		Core_Extend::loadCache('announcement');
 		$sLogo=$GLOBALS['_option_']['site_logo']?$GLOBALS['_option_']['site_logo']:__PUBLIC__.'/images/common/logo.png';
 		
 		$this->assign('arrSite',$GLOBALS['_cache_']['site']);

@@ -453,7 +453,8 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 (88, 'admin@filecheck', '文件校验', 1, '', 5, 1, 2, 8, 1365789540, 1365789693, 1),
 (89, 'admin@mail', '邮件管理', 1, '', 5, 1, 2, 6, 1365789647, 1365789713, 1),
 (90, 'group@grouptopicadmin@movetopic_dialog|movetopic', '帖子移动', 1, '', 0, 71, 3, 0, 1367833115, 0, 1),
-(91, 'group@grouptopicadmin@uptopic_dialog|uptopic', '提升下沉主题', 1, '', 0, 71, 3, 0, 1368282389, 0, 1);
+(91, 'group@grouptopicadmin@uptopic_dialog|uptopic', '提升下沉主题', 1, '', 0, 71, 3, 0, 1368282389, 0, 1),
+(92, 'admin@announcement', '网站公告', 1, '', 10, 1, 2, 6, 1370012613, 1370012720, 1);
 
 -- --------------------------------------------------------
 

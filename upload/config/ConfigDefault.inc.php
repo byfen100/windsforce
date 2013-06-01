@@ -60,6 +60,7 @@ return array(
 		'home@attachment@add_attachmentcomment'=>false,
 		'home@homesite@*'=>true,
 		'home@homehelp@*'=>true,
+		'home@announcement@*'=>true,
 
 		/* group应用 */
 		'group@ucenter@*'=>true,
@@ -143,5 +144,8 @@ return array(
 	'CRON_ON'=>true,
 
 	// 登陆才能够访问忽略页面,app@module@action
-	'LOGINVIEW_IGNORE'=>array(),
+	'LOGINVIEW_IGNORE'=>array(
+		'home@ucenter@view',
+		'group@grouptopic@view',
+	),
 );

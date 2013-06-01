@@ -76,6 +76,26 @@ CREATE TABLE `#@__adminlog` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `windsforce_announcement`
+--
+
+DROP TABLE IF EXISTS `#@__announcement`;
+CREATE TABLE `#@__announcement` (
+  `announcement_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT '公告ID',
+  `announcement_username` varchar(50) NOT NULL DEFAULT '' COMMENT '公告发布用户',
+  `announcement_title` varchar(255) NOT NULL DEFAULT '' COMMENT '公告标题',
+  `announcement_type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '公告类型，0文字，1网址',
+  `announcement_sort` tinyint(3) NOT NULL DEFAULT '0' COMMENT '公告排序',
+  `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '开始时间',
+  `announcement_endtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '公告结束时间',
+  `announcement_message` text NOT NULL COMMENT '公告内容',
+  PRIMARY KEY (`announcement_id`),
+  KEY `timespan` (`create_dateline`,`announcement_endtime`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `windsforce_app`
 --
 

@@ -11,4 +11,5 @@ return array(
 	'help'=>array('homehelp/show','id'),
 	'file'=>array('attachment/show','id'),
 	'site'=>array('homesite/site','id'),
+	'msg'=>array('announcement/show','id'),
 );
