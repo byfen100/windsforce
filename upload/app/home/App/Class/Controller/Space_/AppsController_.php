@@ -25,7 +25,7 @@ class AppsController extends Controller{
 		$arrApps=AppModel::F('app_status=?',1)->order('app_id DESC')->getAll();
 		if(is_array($arrApps)){
 			foreach($arrApps as $oApp){
-				if(is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/App/Class/ControllerController.class.php')){
+				if(is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/App/Class/Controller/SpaceController.class.php')){
 					$arrAppinfos[$oApp['app_identifier']]=$oApp->toArray();
 					$arrAppinfos[$oApp['app_identifier']]['logo']=is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/logo.png')?
 						__ROOT__.'/app/'.$oApp['app_identifier'].'/logo.png':

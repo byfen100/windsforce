@@ -99,8 +99,8 @@
   'CRON_ON' => true,
   'LOGINVIEW_IGNORE' => 
   array (
-  'home@ucenter@view',
-  'group@grouptopic@view',
+    0 => 'home@ucenter@view',
+    1 => 'group@grouptopic@view',
   ),
   'DB_HOST' => 'localhost',
   'DB_USER' => 'root',
