@@ -7,7 +7,7 @@ Description: 搜索
 /**===============================
            整体
 ================================*/
-html{background:#bfd3b7 url('../../../../../Public/images/common/pagebg/search/j.jpg') no-repeat;}
+html{background:#bfd3b7 url('../../../../../Public/images/common/pagebg/search/j.jpg') no-repeat;background-size:cover;}
 body{background:transparent;}
 .alert,.form-actions{background:none;border:none;}
 .alert{text-shadow:none;}
