@@ -44,7 +44,7 @@ class SubmitreplyController extends GlobalchildController{
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 		
 		if($arrOptions['close_comment_feature']==1){
-			$this->E(Dyhb::L('系统关闭了评论功能','__COMMON_LANG__@Function/Comment_Extend'));
+			$this->E(Dyhb::L('系统关闭了评论功能','__COMMON_LANG__@Common'));
 		}
 
 		if($arrOptions['seccode_comment_status']==1){
@@ -54,7 +54,7 @@ class SubmitreplyController extends GlobalchildController{
 		// IP禁止功能
 		$sOnlineip=G::getIp();
 		if(!Comment_Extend::banIp($sOnlineip)){
-			$this->E(Dyhb::L('您的IP %s 已经被系统禁止发表评论','__COMMON_LANG__@Function/Comment_Extend',null,$sOnlineip));
+			$this->E(Dyhb::L('您的IP %s 已经被系统禁止发表评论','__COMMON_LANG__@Common',null,$sOnlineip));
 		}
 
 		$sCommentContent=trim($_POST['grouptopiccomment_message']);
@@ -62,20 +62,20 @@ class SubmitreplyController extends GlobalchildController{
 		// 评论内容长度检测
 		$nCommentMinLen=intval($arrOptions['comment_min_len']);
 		if(!Comment_Extend::commentMinLen($sCommentContent)){
-			$this->E(Dyhb::L('评论内容最少的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMinLen));
+			$this->E(Dyhb::L('评论内容最少的字节数为 %d','__COMMON_LANG__@Common',null,$nCommentMinLen));
 		}
 
 		// 回帖小组自己设置最大长度限制
 		$nCommentMaxLen=intval($GLOBALS['_cache_']['group_option']['comment_max_len']);
 		if(!Comment_Extend::commentMaxLen($sCommentContent,$nCommentMaxLen)){
-			$this->E(Dyhb::L('评论内容最大的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMaxLen));
+			$this->E(Dyhb::L('评论内容最大的字节数为 %d','__COMMON_LANG__@Common',null,$nCommentMaxLen));
 		}
 
 		// SPAM 垃圾信息阻止: URL数量限制
 		$result=Comment_Extend::commentSpamUrl($sCommentContent);
 		if($result===false){
 			$nCommentSpamUrlNum=intval($arrOptions['comment_spam_url_num']);
-			$this->E(Dyhb::L('评论内容中出现的链接数量超过了系统的限制 %d 条','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamUrlNum));
+			$this->E(Dyhb::L('评论内容中出现的链接数量超过了系统的限制 %d 条','__COMMON_LANG__@Common',null,$nCommentSpamUrlNum));
 		}
 		if($result===0){
 			$oGrouptopiccomment->grouptopiccomment_auditpass='0';
@@ -85,7 +85,7 @@ class SubmitreplyController extends GlobalchildController{
 		$result=Comment_Extend::commentSpamWords($sCommentContent);
 		if($result===false){
 			if(is_array($result)){
-				$this->E(Dyhb::L("你的评论内容包含系统屏蔽的词语%s",'__COMMON_LANG__@Function/Comment_Extend',null,$result[1]));
+				$this->E(Dyhb::L("你的评论内容包含系统屏蔽的词语%s",'__COMMON_LANG__@Common',null,$result[1]));
 			}
 		}
 		if($result===0){
@@ -96,7 +96,7 @@ class SubmitreplyController extends GlobalchildController{
 		$nCommentSpamContentSize=intval($GLOBALS['_cache_']['group_option']['comment_spam_content_size']);
 		$result=Comment_Extend::commentSpamContentsize($sCommentContent,$nCommentSpamContentSize);
 		if($result===false){
-			$this->E(Dyhb::L('评论内容最大的字节数为%d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamContentSize));
+			$this->E(Dyhb::L('评论内容最大的字节数为%d','__COMMON_LANG__@Common',null,$nCommentSpamContentSize));
 		}
 		if($result===0){
 			$oGrouptopiccomment->grouptopiccomment_auditpass='0';
@@ -105,7 +105,7 @@ class SubmitreplyController extends GlobalchildController{
 		// 纯英文评论阻止
 		$result=Comment_Extend::commentDisallowedallenglishword($sCommentContent);
 		if($result===false){
-			$this->E('You should type some Chinese word(like 你好)in your comment to pass the spam-check, thanks for your patience! '.Dyhb::L('您的评论中必须包含汉字','__COMMON_LANG__@Function/Comment_Extend'));
+			$this->E('You should type some Chinese word(like 你好)in your comment to pass the spam-check, thanks for your patience! '.Dyhb::L('您的评论中必须包含汉字','__COMMON_LANG__@Common'));
 		}
 		if($result===0){
 			$oHomefreshcomment->homefreshcomment_status=0;

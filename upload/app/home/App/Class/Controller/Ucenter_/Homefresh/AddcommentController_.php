@@ -26,7 +26,7 @@ class AddcommentController extends GlobalchildController{
 		$arrOptions=$GLOBALS['_cache_']['home_option'];
 
 		if($arrOptions['close_comment_feature']==1){
-			$this->E(Dyhb::L('系统关闭了评论功能','__COMMON_LANG__@Function/Comment_Extend'));
+			$this->E(Dyhb::L('系统关闭了评论功能','__COMMON_LANG__@Common'));
 		}
 
 		if($arrOptions['seccode_comment_status']==1){
@@ -36,29 +36,29 @@ class AddcommentController extends GlobalchildController{
 		// IP禁止功能
 		$sOnlineip=G::getIp();
 		if(!Comment_Extend::banIp($sOnlineip)){
-			$this->E(Dyhb::L('您的IP %s 已经被系统禁止发表评论','__COMMON_LANG__@Function/Comment_Extend',null,$sOnlineip));
+			$this->E(Dyhb::L('您的IP %s 已经被系统禁止发表评论','__COMMON_LANG__@Common',null,$sOnlineip));
 		}
 
 		// 评论名字检测
 		$sCommentName=trim(G::getGpc('homefreshcomment_name'));
 		if(empty($sCommentName)){
-			$this->E(Dyhb::L('评论名字不能为空','__COMMON_LANG__@Function/Comment_Extend'));
+			$this->E(Dyhb::L('评论名字不能为空','__COMMON_LANG__@Common'));
 		}
 
 		if(!Comment_Extend::commentName($sCommentName)){
-			$this->E(Dyhb::L('此评论名字包含不可接受字符或被管理员屏蔽,请选择其它名字','__COMMON_LANG__@Function/Comment_Extend'));
+			$this->E(Dyhb::L('此评论名字包含不可接受字符或被管理员屏蔽,请选择其它名字','__COMMON_LANG__@Common'));
 		}
 
 		// 评论内容长度检测
 		$sCommentContent=G::cleanJs(strip_tags(trim(G::getGpc('homefreshcomment_content'))));
 		$nCommentMinLen=intval($arrOptions['comment_min_len']);
 		if(!Comment_Extend::commentMinLen($sCommentContent)){
-			$this->E(Dyhb::L('评论内容最少的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMinLen));
+			$this->E(Dyhb::L('评论内容最少的字节数为 %d','__COMMON_LANG__@Common',null,$nCommentMinLen));
 		}
 
 		$nCommentMaxLen=intval($arrOptions['comment_max_len']);
 		if(!Comment_Extend::commentMaxLen($sCommentContent)){
-			$this->E(Dyhb::L('评论内容最大的字节数为 %d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentMaxLen));
+			$this->E(Dyhb::L('评论内容最大的字节数为 %d','__COMMON_LANG__@Common',null,$nCommentMaxLen));
 		}
 
 		// 创建评论模型
@@ -68,7 +68,7 @@ class AddcommentController extends GlobalchildController{
 		$result=Comment_Extend::commentSpamUrl($sCommentContent);
 		if($result===false){
 			$nCommentSpamUrlNum=intval($arrOptions['comment_spam_url_num']);
-			$this->E(Dyhb::L('评论内容中出现的链接数量超过了系统的限制 %d 条','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamUrlNum));
+			$this->E(Dyhb::L('评论内容中出现的链接数量超过了系统的限制 %d 条','__COMMON_LANG__@Common',null,$nCommentSpamUrlNum));
 		}
 		if($result===0){
 			$oHomefreshcomment->homefreshcomment_status=0;
@@ -78,7 +78,7 @@ class AddcommentController extends GlobalchildController{
 		$result=Comment_Extend::commentSpamWords($sCommentContent);
 		if($result===false){
 			if(is_array($result)){
-				$this->E(Dyhb::L("你的评论内容包含系统屏蔽的词语%s",'__COMMON_LANG__@Function/Comment_Extend',null,$result[1]));
+				$this->E(Dyhb::L("你的评论内容包含系统屏蔽的词语%s",'__COMMON_LANG__@Common',null,$result[1]));
 			}
 		}
 		if($result===0){
@@ -89,7 +89,7 @@ class AddcommentController extends GlobalchildController{
 		$result=Comment_Extend::commentSpamContentsize($sCommentContent);
 		if($result===false){
 			$nCommentSpamContentSize=intval($arrOptions['comment_spam_content_size']);
-			$this->E(Dyhb::L('评论内容最大的字节数为%d','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentSpamContentSize));
+			$this->E(Dyhb::L('评论内容最大的字节数为%d','__COMMON_LANG__@Common',null,$nCommentSpamContentSize));
 		}
 		if($result===0){
 			$oHomefreshcomment->homefreshcomment_status=0;
@@ -103,7 +103,7 @@ class AddcommentController extends GlobalchildController{
 			if(!empty($oUserLasthomefreshcomment['homefreshcomment_id'])){
 				$nLastPostTime=$oUserLasthomefreshcomment['create_dateline'];
 				if(!Comment_Extend::commentSpamPostSpace($nLastPostTime)){
-					$this->E(Dyhb::L('为防止灌水,发表评论时间间隔为 %d 秒','__COMMON_LANG__@Function/Comment_Extend',null,$nCommentPostSpace));
+					$this->E(Dyhb::L('为防止灌水,发表评论时间间隔为 %d 秒','__COMMON_LANG__@Common',null,$nCommentPostSpace));
 				}
 			}
 		}
@@ -113,14 +113,14 @@ class AddcommentController extends GlobalchildController{
 			$nCurrentTimeStamp=CURRENT_TIMESTAMP;
 			$oTryComment=HomefreshcommentModel::F("homefreshcomment_name=? AND homefreshcomment_content=? AND {$nCurrentTimeStamp}-create_dateline<86400 AND homefreshcomment_ip=?",$sCommentName,$sCommentContent,$sOnlineip)->order('homefreshcomment_id DESC')->query();
 			if(!empty($oTryComment['homefreshcomment_id'])){
-				$this->E(Dyhb::L('你提交的评论已经存在,24小时之内不允许出现相同的评论','__COMMON_LANG__@Function/Comment_Extend'));
+				$this->E(Dyhb::L('你提交的评论已经存在,24小时之内不允许出现相同的评论','__COMMON_LANG__@Common'));
 			}
 		}
 
 		// 纯英文评论阻止
 		$result=Comment_Extend::commentDisallowedallenglishword($sCommentContent);
 		if($result===false){
-			$this->E('You should type some Chinese word(like 你好)in your comment to pass the spam-check, thanks for your patience! '.Dyhb::L('您的评论中必须包含汉字','__COMMON_LANG__@Function/Comment_Extend'));
+			$this->E('You should type some Chinese word(like 你好)in your comment to pass the spam-check, thanks for your patience! '.Dyhb::L('您的评论中必须包含汉字','__COMMON_LANG__@Common'));
 		}
 		if($result===0){
 			$oHomefreshcomment->homefreshcomment_status=0;
