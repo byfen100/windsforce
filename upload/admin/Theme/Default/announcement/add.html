@@ -72,7 +72,7 @@ function complete(data,status){
 					</fieldset>
 					<fieldset>
 						<label for="announcement_endtime"><!--<lang package='Template'>-->终止时间<!--</lang>--></label>
-						<input type="text" name="announcement_endtime" id="announcement_endtime" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:announcement_endtime|date='Y-m-d H:i:s',**}--><!--<else/>--><!--{:date('Y-m-d H:i:s',(CURRENT_TIMESTAMP+604800))}--><!--</if>-->" onclick="WdatePicker({el:'announcement_endtime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+						<input type="text" name="announcement_endtime" id="announcement_endtime" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:announcement_endtime|date='Y-m-d H:i:s',**}--><!--<else/>--><!--{:date('Y-m-d H:i:s',(CURRENT_TIMESTAMP+604800))}--><!--</if>-->" onclick="WdatePicker({el:'announcement_endtime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'create_dateline\')}'})"/>
 						<div class="description">
 							<!--<lang package='Template'>-->注意，默认终止时间为一周，请根据你的实际情况调整。<!--</lang>-->
 						</div>
