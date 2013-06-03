@@ -7,6 +7,10 @@
 class ReadtopicController extends Controller{
 
 	public function index(){
+		if(!Core_Extend::checkRbac('group@grouptopic@view')){
+			$this->E(Dyhb::L('你没有权限查看帖子','Controller'));
+		}
+		
 		// 获取参数
 		$nId=intval(G::getGpc('id','G'));
 	
