@@ -29,7 +29,7 @@ class LangPackageForClient{
 	static public function setNewSentence($sSentenceKey,$sSentence,$sLangName,$sPackageName){
 		$thePackage=LangPackage::getPackage($sLangName,$sPackageName);
 		if(!$thePackage){
-			echo(sprintf('can not find lang:%s,package:%s.','LibDyhb',$sLangName,$sPackageName));
+			echo(sprintf('can not find lang:%s,package:%s.',$sLangName,$sPackageName));
 			return;
 		}
 

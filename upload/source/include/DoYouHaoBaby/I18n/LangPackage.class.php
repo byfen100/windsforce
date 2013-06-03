@@ -19,7 +19,7 @@ class LangPackage{
 		if(isset(self::$LANG_PACKAGES[$sLangName][$sPackageName])){// 直接返回已经被创建的享员对象
 			return self::$LANG_PACKAGES[$sLangName][$sPackageName];
 		}else{// 创建对象
-			$oThePackage=null;
+			$sPackageNameOld=$sPackageName;
 			
 			// 分析语言包路径
 			if(strpos($sPackageName,'@')!==false){
@@ -44,21 +44,20 @@ class LangPackage{
 			}
 
 			$sThePackagePath=self::findPackage($sDir,$sLangName,$sPackageName);
-			
-			if($oThePackage){
-				$oThePackage->loadPackageFile($sThePackagePath);
-			}else{
-				$oThePackage=self::createPackage($sLangName,$sPackageName,$sThePackagePath);
+
+			if(!($oThePackage=self::hasPackage($sLangName,$sPackageNameOld))){
+				$oThePackage=self::createPackage($sLangName,$sPackageNameOld,$sThePackagePath);
 			}
 
-			if($oThePackage===null){
+			if($sThePackagePath){
+				$oThePackage->loadPackageFile($sThePackagePath);
+			}else{
 				E('We can not find a lang file:<br/>'.self::$_sHistoryPath);
 				exit();
 			}
 
 			return $oThePackage;
 		}
-
 	}
 
 	static private function findPackage($sDir,$sLangName,$sPackageName=null){
@@ -95,6 +94,14 @@ class LangPackage{
 		}
 
 		return self::$LANG_PACKAGES[$sLangName][$sPackageName]=new self($sLangName,$sPackageName,$sPackagePath);
+	}
+
+	static private function hasPackage($sLangName,$sPackageName){
+		if(isset(self::$LANG_PACKAGES[$sLangName][$sPackageName])){
+			return self::$LANG_PACKAGES[$sLangName][$sPackageName];
+		}else{
+			return false;
+		}
 	}
 
 	private function __construct($sLangName,$sPackageName,$sPackagePath){
