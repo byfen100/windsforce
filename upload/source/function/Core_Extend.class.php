@@ -1787,14 +1787,11 @@ WINDSFORCE;
 	}
 
 	static public function getMenu(){
-		$arrMenuinfo=array();
-		$sMenupath=WINDSFORCE_PATH.'/app/'.APP_NAME.'/App/Config/Menu.php';
-
-		if(is_file($sMenupath)){
-			$arrMenuinfo=(array)require($sMenupath);
+		if($GLOBALS['_commonConfig_']['APP_MENU']){
+			return (array)$GLOBALS['_commonConfig_']['APP_MENU'];
+		}else{
+			return array();
 		}
-
-		return $arrMenuinfo;
 	}
 
 	static public function getAppucenter(){

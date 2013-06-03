@@ -148,4 +148,7 @@ return array(
 		'home@ucenter@view',
 		'group@grouptopic@view',
 	),
+
+	// 应用个人中心菜单,'group://ucenter/index'=>'小组个人中心',
+	'APP_MENU'=>array(),
 );
