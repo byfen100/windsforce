@@ -18,3 +18,9 @@ OptionModel::uploadOption('todaytotalnum',0);
 OptionModel::uploadOption('todayhomefreshnum',0);
 OptionModel::uploadOption('todayhomefreshcommentnum',0);
 OptionModel::uploadOption('todayattachmentnum',0);
+
+/** 清空网站登陆记录数据 */
+Dyhb::instance('LoginlogModel')->deleteAll();
+
+/** 清理网站管理记录数据 */
+Dyhb::instance('AdminlogModel')->deleteAll();
