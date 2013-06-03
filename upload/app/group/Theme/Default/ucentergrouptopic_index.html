@@ -30,7 +30,11 @@ function addGrouptopic(){
 		
 		if(status==1){
 			$("#grouptopiclist_box").prepend(
-				'test yes'
+				'<tr>'+
+					'<td colspan="3">'+
+						'<b style="color:green;"><!--<lang package='Template'>-->恭喜你，帖子发布成功！<!--</lang>--></b>&nbsp;<a href="'+data.url+'">'+data.grouptopic_title+'</a>&nbsp;<img class="new_data" src="<!--{:__ROOT__}-->/Public/images/common/new.gif" />'+
+					'</td>'+
+				'</tr>'
 			);
 
 			$('#grouptopic_no').remove();

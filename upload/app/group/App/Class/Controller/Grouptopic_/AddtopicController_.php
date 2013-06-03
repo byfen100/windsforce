@@ -153,10 +153,12 @@ class AddtopicController extends GlobalchildController{
 			}
 		}
 
-		// 跳转到帖子
+		// AJAX数据返回
+		$arrData=$oGrouptopic->toArray();
 		$sUrl=Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id']);
+		$arrData['url']=$sUrl;
 
-		$this->A(array('url'=>$sUrl),Dyhb::L('发布帖子成功','Controller'),1);
+		$this->A($arrData,Dyhb::L('发布帖子成功','Controller'),1);
 	}
 
 	protected function cache_site_(){
