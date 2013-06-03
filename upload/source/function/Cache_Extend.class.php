@@ -21,7 +21,7 @@ class Cache_Extend{
 			}
 
 			foreach($arrUpdatecache as $sUpdatecache){
-				self::updateCache($sUpdatecache);
+				self::updateCache($sUpdatecache,$arrNotallowed);
 			}
 		}else{
 			foreach($arrUpdateList as $sCache){
@@ -67,7 +67,7 @@ class Cache_Extend{
 			}
 
 			foreach($arrUpdatecache as $sUpdatecache){
-				self::appUpdateCache($sUpdatecache);
+				self::appUpdateCache($sUpdatecache,$sApp,$arrNotallowed);
 			}
 		}else{
 			foreach($arrUpdateList as $sCache){

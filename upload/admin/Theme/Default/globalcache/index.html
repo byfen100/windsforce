@@ -41,4 +41,19 @@
 			</form>
 		</article>
 
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template'>-->应用缓存<!--</lang>--></h3></header>
+			<div class="module_content">
+				<fieldset>
+					<label for="slide_duration"><!--<lang package='Template'>-->应用缓存列表<!--</lang>--></label>
+					<p style="padding:0px 8px;">
+						<!--<foreach for=arrAppinfos value=arrAppinfo>-->
+						<a href="<!--{:Dyhb::U('app/config?id='.$arrAppinfo['app_id'].'&controller=appcache')}-->" class="content-tab"><!--{$arrAppinfo['app_name']}-->&nbsp;(<!--{$arrAppinfo['app_identifier']}-->)</a>
+						<!--</foreach>-->
+					</p>
+					<div class="description"><!--<lang package='Template'>-->直接点击链接更新相应的应用缓存<!--</lang>--></div>
+				</fieldset>
+			</div>
+		</article>
+
 <!--<include file="public+footer">-->

@@ -41,15 +41,15 @@ function addHomefresh(){
 						'<img class="new_data" src="<!--{:__ROOT__}-->/Public/images/common/new.gif" /></h4>'+
 						'<div class="homefresh-content">'+data.homefresh_message+'</div>'+
 						'<div class="homefresh-count">'+
-							'<a href="javascript:void(0);" onclick="goodnum(\''+data.homefresh_id+'\');"><!--<lang package='__COMMON_LANG__@Template'>-->赞<!--</lang>-->(<span id="goodnum_'+data.homefresh_id+'">'+data.homefresh_goodnum+'</span>)</a>'+
+							'<a href="javascript:void(0);" onclick="goodnum(\''+data.homefresh_id+'\');"><!--<lang package='__COMMON_LANG__@Common'>-->赞<!--</lang>-->(<span id="goodnum_'+data.homefresh_id+'">'+data.homefresh_goodnum+'</span>)</a>'+
 							'<span class="pipe">|</span>'+
-							'<a href="'+data.url+'#comments"><!--<lang package='__COMMON_LANG__@Template'>-->评论<!--</lang>-->(<span id="homefreshcomment_'+data.homefresh_id+'">'+data.homefresh_commentnum+'</span>)</a>'+
+							'<a href="'+data.url+'#comments"><!--<lang package='__COMMON_LANG__@Common'>-->评论<!--</lang>-->(<span id="homefreshcomment_'+data.homefresh_id+'">'+data.homefresh_commentnum+'</span>)</a>'+
 							'<span class="pipe">|</span>'+
-							'<a href="'+data.url+'" title="<!--<lang package='__COMMON_LANG__@Template'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>'+
+							'<a href="'+data.url+'" title="<!--<lang package='__COMMON_LANG__@Common'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>'+
 						'</div>'+
 						'<div id="homefreshcommentlist_'+data.homefresh_id+'" class="homefreshcommentlist_box">'+
 						'</div>'+
-						'<div id="homefreshcommentdiv_'+data.homefresh_id+'" onclick="commentForm(\''+data.homefresh_id+'\');" class="homefreshcomment_div" style="color:gray;"><!--<lang package='__COMMON_LANG__@Template'>-->我也来说一句<!--</lang>--></div>'+
+						'<div id="homefreshcommentdiv_'+data.homefresh_id+'" onclick="commentForm(\''+data.homefresh_id+'\');" class="homefreshcomment_div" style="color:gray;"><!--<lang package='__COMMON_LANG__@Common'>-->我也来说一句<!--</lang>--></div>'+
 						'<div id="homefreshcommentform_'+data.homefresh_id+'" class="homefreshcomment_form"></div>'+
 					'</td>'+
 				'</tr>'
@@ -244,11 +244,11 @@ var nHomefreshviewcomment=0;
 										<!--{$oHomefresh['homefresh_message']|Core_Extend+subString=$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num'],true}-->
 									</div>
 									<div class="homefresh-count">
-										<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Template'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->class="goodnum_click"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
+										<a href="javascript:void(0);" onclick="goodnum('<!--{$oHomefresh['homefresh_id']}-->');"><!--<lang package='__COMMON_LANG__@Common'>-->赞<!--</lang>-->(<span id="goodnum_<!--{$oHomefresh['homefresh_id']}-->" <!--{if in_array($oHomefresh['homefresh_id'],$arrGoodCookie)}-->class="goodnum_click"<!--{/if}-->><!--{$oHomefresh['homefresh_goodnum']}--></span>)</a>
 										<span class="pipe">|</span>
-										<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Template'>-->评论<!--</lang>-->(<span id="homefreshcomment_<!--{$oHomefresh['homefresh_id']}-->"><!--{$oHomefresh['homefresh_commentnum']}--></span>)</a>
+										<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Common'>-->评论<!--</lang>-->(<span id="homefreshcomment_<!--{$oHomefresh['homefresh_id']}-->"><!--{$oHomefresh['homefresh_commentnum']}--></span>)</a>
 										<span class="pipe">|</span>
-										<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->" title="<!--<lang package='__COMMON_LANG__@Template'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>
+										<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->阅读全文<!--</lang>-->"><i class="icon-eye-open"></i></a>
 									</div>
 									<!--{~$arrHomefreshcomments=Homefresh_Extend::getNewcomment($oHomefresh['homefresh_id'],$oHomefresh['user_id'])}-->
 									<!--{if is_array($arrHomefreshcomments)}-->
@@ -264,8 +264,8 @@ var nHomefreshviewcomment=0;
 												<!--{$oHomefreshcomment->homefreshcomment_content|Core_Extend+subString=$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num'],false,1}--></p>
 												<p><em class="homefreshcomment_date"><!--{$oHomefreshcomment->create_dateline|Core_Extend+timeFormat}--></em><!--{:Core_Extend::newData($oHomefreshcomment['create_dateline'],true)}-->
 												<span class="pipe">|</span>
-												<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefreshcomment->homefresh_id.'&isolation_commentid='.$oHomefreshcomment->homefreshcomment_id)}-->"><!--<lang package='__COMMON_LANG__@Template'>-->查看<!--</lang>--></a>&nbsp;
-												<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Template'>-->回复<!--</lang>--></a></p>
+												<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefreshcomment->homefresh_id.'&isolation_commentid='.$oHomefreshcomment->homefreshcomment_id)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->查看<!--</lang>--></a>&nbsp;
+												<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Common'>-->回复<!--</lang>--></a></p>
 												<!--{~$arrHomefreshchildcomments=Homefresh_Extend::getNewchildcomment($oHomefresh['homefresh_id'],$oHomefreshcomment['homefreshcomment_id'],$oHomefresh['user_id'])}-->
 												<div id="homefreshchildcommentlist_<!--{$oHomefreshcomment['homefreshcomment_id']}-->" class="homefreshchildcommentlist_box">
 													<!--<foreach for=arrHomefreshchildcomments value=oHomefreshchildcomment>-->
@@ -278,8 +278,8 @@ var nHomefreshviewcomment=0;
 															<!--{$oHomefreshchildcomment->homefreshcomment_content|Core_Extend+subString=$GLOBALS['_cache_']['home_option']['homefreshcomment_substring_num'],false,1}--></p>
 															<p><em class="homefreshcomment_date"><!--{$oHomefreshchildcomment->create_dateline|Core_Extend+timeFormat}--></em><!--{:Core_Extend::newData($oHomefreshchildcomment['create_dateline'],true)}-->
 															<span class="pipe">|</span>
-															<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefreshchildcomment->homefresh_id.'&isolation_commentid='.$oHomefreshchildcomment->homefreshcomment_id)}-->"><!--<lang package='__COMMON_LANG__@Template'>-->查看<!--</lang>--></a>&nbsp;
-															<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshchildcomment['homefreshcomment_parentid']}-->',1,'<!--{$oHomefreshchildcomment:user:user_name}-->','<!--{$oHomefreshchildcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Template'>-->回复<!--</lang>--></a>
+															<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefreshchildcomment->homefresh_id.'&isolation_commentid='.$oHomefreshchildcomment->homefreshcomment_id)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->查看<!--</lang>--></a>&nbsp;
+															<a href="javascript:void(0);" onclick="childcommentForm('<!--{$oHomefresh['homefresh_id']}-->','<!--{$oHomefreshchildcomment['homefreshcomment_parentid']}-->',1,'<!--{$oHomefreshchildcomment:user:user_name}-->','<!--{$oHomefreshchildcomment['homefreshcomment_id']}-->');"><!--<lang package='__COMMON_LANG__@Common'>-->回复<!--</lang>--></a>
 															</p>
 														</div>
 													</div>
@@ -295,10 +295,10 @@ var nHomefreshviewcomment=0;
 									</div>
 									<!--{if is_array($arrHomefreshcomments)}-->
 									<div class="homefreshcomment_view">
-										<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Template'>-->查看全部评论<!--</lang>-->&raquo;</a>
+										<a href="<!--{:Dyhb::U('home://fresh@?id='.$oHomefresh['homefresh_id'])}-->#comments"><!--<lang package='__COMMON_LANG__@Common'>-->查看全部评论<!--</lang>-->&raquo;</a>
 									</div>
 									<!--{/if}-->
-									<div id="homefreshcommentdiv_<!--{$oHomefresh['homefresh_id']}-->" onclick="commentForm('<!--{$oHomefresh['homefresh_id']}-->');" class="homefreshcomment_div" style="color:gray"><!--<lang package='__COMMON_LANG__@Template'>-->我也来说一句<!--</lang>-->
+									<div id="homefreshcommentdiv_<!--{$oHomefresh['homefresh_id']}-->" onclick="commentForm('<!--{$oHomefresh['homefresh_id']}-->');" class="homefreshcomment_div" style="color:gray"><!--<lang package='__COMMON_LANG__@Common'>-->我也来说一句<!--</lang>-->
 									</div>
 									<div id="homefreshcommentform_<!--{$oHomefresh['homefresh_id']}-->" class="homefreshcomment_form">
 									</div>

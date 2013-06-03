@@ -16,6 +16,24 @@ require_once(Core_Extend::includeFile('function/Cache_Extend'));
 class GlobalcacheController extends InitController{
 
 	public function index($sModel=null,$bDisplay=true){
+		// 读取需要更新缓存的应用
+		$arrAppinfos=array();
+
+		$arrApps=AppModel::F('app_status=?',1)->order('app_id DESC')->getAll();
+		if(is_array($arrApps)){
+			foreach($arrApps as $oApp){
+				if(is_dir(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/App/Class/Extension/cache')){
+					$arrAppinfos[$oApp['app_identifier']]=$oApp->toArray();
+					$arrAppinfos[$oApp['app_identifier']]['logo']=is_file(WINDSFORCE_PATH.'/app/'.$oApp['app_identifier'].'/logo.png')?
+						__ROOT__.'/app/'.$oApp['app_identifier'].'/logo.png':
+						__ROOT__.'/app/logo.png';
+				}
+			}
+		}
+
+		$this->assign('nApps',count($arrAppinfos));
+		$this->assign('arrAppinfos',$arrAppinfos);
+		
 		$this->display();
 	}
 

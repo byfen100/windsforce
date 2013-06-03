@@ -245,6 +245,9 @@ return array(
 'cd09b7baad5d8ea227d0c396f1f4bb67'=>"最后活动",
 '22bee030df41923943fc47f2242c1293'=>"访问IP地址",
 '844eea1b2387fb968291c78788e4d8ca'=>"友情链接",
+'966a5f78ceea9659f05a590558fecfe1'=>"基本dsfsdfsf",
+'75aae0688bf56f0be19e562ce173e074'=>"基本dsfsdfsfdsffffffffffffffffffffffffffffffffffffffffff",
+'32883705e46b3e20550bf1e198d88214'=>"基本dsfsdfsfdsffwo ri ni mei",
 )
 
 ?>
