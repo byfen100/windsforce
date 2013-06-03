@@ -259,7 +259,10 @@ function insertUserguestbookmusic(sContent){
 							<td colspan="2"><img src="<!--{:Profile_Extend::getUserprofilegender($oUserInfo->userprofile->userprofile_gender)}-->" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>
 						</tr>
 						<tr>
-							<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}--><!--<lang package='Template'>-->注册<!--</lang>--></td>
+							<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template'>-->注册<!--</lang>--></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-ok"></i>&nbsp;<!--<lang package='Template'>-->最后登陆<!--</lang>-->&nbsp;<!--{$oUserInfo:user_lastlogintime|Core_Extend+timeFormat}--></td>
 						</tr>
 						<tr>
 							<td colspan="2"><i class="icon-heart"></i>&nbsp;<!--<lang package='Template'>-->等级<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->当前积分<!--</lang>-->&nbsp;<!--{$nUserscore}-->,<!--<lang package='__COMMON_LANG__@Common'>-->等级名字<!--</lang>-->&nbsp;<!--{$arrRatinginfo['rating_name']}-->,<!--<lang package='__COMMON_LANG__@Common'>-->距离下一个等级<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_rating']['rating_name']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->还差<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_needscore']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->积分<!--</lang>-->"><!--{$arrRatinginfo['rating_name']}--></a><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></td>
