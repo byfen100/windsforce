@@ -38,4 +38,34 @@ class AnnouncementController extends InitController{
 		$this->aInsert();
 	}
 
+	public function bForeverdelete_(){
+		$sId=G::getGpc('id','G');
+
+		$arrIds=explode(',',$sId);
+		foreach($arrIds as $nId){
+			if(!$this->check_admin($nId)){
+				$this->E(Dyhb::L('你无法删除别人的公告','Controller'));
+			}
+		}
+	}
+
+	public function check_admin($nId){
+		if($GLOBALS['___login___']['user_id']==1){
+			return true;
+		}
+
+		$nId=intval($nId);
+
+		$oAnnouncement=AnnouncementModel::F('announcement_id=?',$nId)->getOne();
+		if(empty($oAnnouncement['announcement_id'])){
+			return false;
+		}
+
+		if($GLOBALS['___login___']['user_name']!=$oAnnouncement['announcement_username']){
+			return false;
+		}
+
+		return true;
+	}
+
 }
