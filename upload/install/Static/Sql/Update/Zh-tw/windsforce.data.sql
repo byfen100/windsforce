@@ -34,7 +34,7 @@ DELETE FROM `#@__option` WHERE `option_name` = 'wap_computer_on';
 DELETE FROM `#@__option` WHERE `option_name` = 'search_fulltext';
 DELETE FROM `#@__option` WHERE `option_name` = 'only_login_viewsite';
 DELETE FROM `#@__option` WHERE `option_name` = 'stat_header_code';
-DELETE FROM `#@__option` WHERE `option_name` = 'wap_img_size'
+DELETE FROM `#@__option` WHERE `option_name` = 'wap_img_size';
 DELETE FROM `#@__option` WHERE `option_name` = 'share_code';
 DELETE FROM `#@__option` WHERE `option_name` = 'share_on';
 DELETE FROM `#@__option` WHERE `option_name` = 'feed_keep_time';
@@ -61,9 +61,9 @@ INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
 -- 添加表中的數據 `windsforce_groupoption`
 --
 
-DELETE FROM `#@__groupoption` WHERE `groupoption` = 'allowed_creategroup';
-DELETE FROM `#@__groupoption` WHERE `groupoption` = 'grouptopic_lovenum';
-DELETE FROM `#@__groupoption` WHERE `groupoption` = 'group_ucenter_listtopicnum';
+DELETE FROM `#@__groupoption` WHERE `groupoption_name` = 'allowed_creategroup';
+DELETE FROM `#@__groupoption` WHERE `groupoption_name` = 'grouptopic_lovenum';
+DELETE FROM `#@__groupoption` WHERE `groupoption_name` = 'group_ucenter_listtopicnum';
 
 INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
 ('allowed_creategroup', '0'),

@@ -90,18 +90,29 @@ class UpdateController extends Controller{
 
 		// 保存配置数据
 		$arrConfigDefault=(array)(include WINDSFORCE_PATH.'/config/ConfigDefault.inc.php');
-		$arrConfigDefault=array_merge($arrConfigDefault,$arrConfig);
+
+		// 数据库连接相关
+		$arrConfigDefault['DB_PASSWORD']=$arrConfig['DB_PASSWORD'];
+		$arrConfigDefault['DB_PREFIX']=$arrConfig['DB_PREFIX'];
+		$arrConfigDefault['DB_NAME']=$arrConfig['DB_NAME'];
+		$arrConfigDefault['DB_HOST']=$arrConfig['DB_HOST'];
+		$arrConfigDefault['DB_USER']=$arrConfig['DB_USER'];
 
 		// 安全配置
-		$arrConfig['USER_AUTH_KEY']='authid'.G::randString(6);
-		$arrConfig['ADMIN_AUTH_KEY']='admin'.G::randString(6);
-		$arrConfig['DYHB_AUTH_KEY']='dyhbauthkey'.G::randString(6);
-		$arrConfig['RBAC_DATA_PREFIX']='rbac_';
-		$arrConfig['COOKIE_PREFIX']='wf'.G::randString(6);
+		$arrConfigDefault['USER_AUTH_KEY']='authid'.G::randString(6);
+		$arrConfigDefault['ADMIN_AUTH_KEY']='admin'.G::randString(6);
+		$arrConfigDefault['DYHB_AUTH_KEY']='dyhbauthkey'.G::randString(6);
+		$arrConfigDefault['RBAC_DATA_PREFIX']='rbac_';
+		$arrConfigDefault['COOKIE_PREFIX']='wf'.G::randString(6);
+
+		// 恢复一些其他配置
+		$arrConfigDefault['URL_MODEL']=$arrConfig['URL_MODEL'];
+		$arrConfigDefault['URL_DOMAIN']=$arrConfig['URL_DOMAIN'];
+		$arrConfigDefault['DEFAULT_APP']=$arrConfig['DEFAULT_APP'];
 
 		if(!file_put_contents(WINDSFORCE_PATH.'/config/Config.inc.php',
 			"<?php\n /* DoYouHaoBaby Framework Config File,Do not to modify this file! */ \n return ".
-			var_export($arrConfig,true).
+			var_export($arrConfigDefault,true).
 			"\n?>")
 		){
 			$this->E(Dyhb::L('写入配置失败，请检查 %s目录是否可写入','Controller/Install',null,WINDSFORCE_PATH.'/Config'));
