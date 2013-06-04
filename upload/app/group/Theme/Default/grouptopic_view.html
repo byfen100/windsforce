@@ -366,6 +366,12 @@ $(function(){
 										<img src="<!--{:Appt::path('ico_author.png')}-->" title="<!--<lang package='Template'>-->楼主<!--</lang>-->"/>&nbsp;<!--<lang package='Template'>-->楼主<!--</lang>-->
 										<!--{/if}-->
 										&nbsp;<!--<lang package='Template'>-->发布于<!--</lang>-->&nbsp;<!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+										<span class="pipe">|</span>
+										<a href="javascript:void(0);" onclick="readTopic('<!--{$oGrouptopic->grouptopic_id}-->');"><!--<lang package='Template'>-->阅读模式<!--</lang>--></a>
+										<span class="pipe">|</span>
+										<a href="<!--{:Dyhb::U('group://grouptopic/printtable?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template'>-->打印<!--</lang>-->" target="_blank"><img src="<!--{:Appt::path('print.png')}-->" alt="<!--<lang package='Template'>-->打印<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
+										<a href="<!--{:Dyhb::U('group://grouptopic/prev?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template'>-->上一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_prev.png')}-->" alt="<!--<lang package='Template'>-->上一主题<!--</lang>-->" class="vertical_middle" /></a>&nbsp;
+										<a href="<!--{:Dyhb::U('group://grouptopic/next?id='.$oGrouptopic['grouptopic_id'])}-->" title="<!--<lang package='Template'>-->下一主题<!--</lang>-->"><img src="<!--{:Appt::path('topic_next.png')}-->" alt="<!--<lang package='Template'>-->下一主题<!--</lang>-->" class="vertical_middle" /></a>
 									</div>
 								</td>
 							</tr>
