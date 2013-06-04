@@ -24,3 +24,6 @@ Dyhb::instance('LoginlogModel')->deleteAll();
 
 /** 清理网站管理记录数据 */
 Dyhb::instance('AdminlogModel')->deleteAll();
+
+/** 清理网站过期提醒数据 */
+Dyhb::instance('NoticeModel')->deleteAllCreatedateline($GLOBALS['_option_']['notice_keep_time']);

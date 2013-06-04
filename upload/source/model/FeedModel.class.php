@@ -51,4 +51,10 @@ class FeedModel extends CommonModel{
 		return true;
 	}
 
+	public function deleteAllCreatedateline($nTime){
+		$oDb=Db::RUN();
+
+		$oDb->query("DELETE FROM ".$this->getTablePrefix()."feed WHERE create_dateline<".(CURRENT_TIMESTAMP-$nTime));
+	}
+
 }

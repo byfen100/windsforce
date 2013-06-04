@@ -5,7 +5,7 @@
 !defined('DYHB_PATH') && exit;
 
 /** 清理网站过期公告数据 */
-$nDeletenum=Dyhb::instance('AnnouncementModel')->deleteAllEndtime(CURRENT_TIMESTAMP);
+Dyhb::instance('AnnouncementModel')->deleteAllEndtime(CURRENT_TIMESTAMP);
 
 /** 更新缓存 */
 if(!Dyhb::classExists('Cache_Extend')){
