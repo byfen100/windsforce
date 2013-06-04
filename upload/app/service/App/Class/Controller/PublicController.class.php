@@ -10,4 +10,20 @@ class PublicController extends InitController{
 		$this->display('public+index');
 	}
 
+	public function notice(){
+		$this->display('public+notice');
+	}
+
+	public function license(){
+		$this->display('public+license');
+	}
+	
+	public function step(){
+		$this->display('public+step');
+	}
+	
+	public function pay(){
+		$this->display('public+pay');
+	}
+
 }

@@ -1,0 +1,36 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('service://public/index')}-->"><!--<lang package='Template'>-->官方服务中心<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>注意事项</li>
+		</ul>
+
+
+		<div class="row">
+			<div class="span12">
+				<div class="alert alert-success" style="color:red;font-weight:bold;font-size:20px;">提示：本软件不存在免费版本，所有使用本软件的用户均需要购买，可以试用一月。</div>
+
+				<!--<include file="public+menu" />-->
+				
+				<div class="row">
+					<div class="span9">
+						<h3>注意事项</h3>
+						<div style="margin-top:15px;">
+							<h6>说明：以下情况不属于服务范围</h6>
+							<ul style="margin-top:5px;">
+								<li>自行修改或使用非原始 WindsForce 程序代码产生的问题；</li>
+								<li>自行对数据库进行直接操作导致数据库出错或者崩溃；</li>
+								<li>插件的安装以及由于安装插件造成的故障；</li>
+								<li>服务器、虚拟主机原因造成的系统故障；</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span3">
+						<!--<include file="public+sidebar" />-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->
