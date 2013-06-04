@@ -25,7 +25,7 @@ function completeCommenttopic(data,status){
 	}
 
 	if(status==1){
-		setTimeout("window.location.reload();",1000);
+		setTimeout(function(){window.location.href=data.url;},1000);
 	}
 
 	return true;
@@ -41,7 +41,7 @@ function completeEditcommenttopic(data,status){
 	}
 
 	if(status==1){
-		setTimeout("window.location.reload();",1000);
+		setTimeout(function(){window.location.href=data.url;},1000);
 	}
 
 	return true;
