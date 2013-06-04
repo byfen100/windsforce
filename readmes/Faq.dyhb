@@ -24,6 +24,6 @@ WindsForce 帮助教程
           如果你希望将网址加入域名，你可以修改 upload/config/Config.inc.php ，修改 URL_DOMAIN 项的值为 http://windsforce.net,
           然后删除应用中的缓存配置文件 upload/data/~runtime/app/应用名(如home)/Config.php.
 
-                                                                                                                                    WindsForce Team, 2013-05-12 04:56
+                                                                                                                                    WindsForce Team, 2013-06-04 04:56
                                                                                                                                     http://www.windsforce.com
                                                                                                                                     http://www.windsforce.net
