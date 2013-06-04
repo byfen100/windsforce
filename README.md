@@ -19,5 +19,4 @@ A5网站源码 http://down.admin5.com/
 
 ---------------------------------
 
-http://windsforce.com && http://windsforce.net 正在备案中，请访问：
-http://doyouhaobaby.net 了解我们。
+http://windsforce.com && http://windsforce.net
