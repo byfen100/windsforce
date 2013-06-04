@@ -1,5 +1,5 @@
 -- WINDSFORCE 數據庫數據(Zh-tw - 台湾繁体中文)
--- version 1.0.1
+-- version 1.1
 -- http://www.windsforce.com
 --
 -- 開發: Windsforce TEAM

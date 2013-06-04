@@ -7,9 +7,9 @@ if(!file_exists('data/Install.lock.php') || !file_exists('data/Update.lock.php')
 	header("location:install/index.php");
 }
 
-//error_reporting(E_ERROR|E_PARSE|E_STRICT);
-error_reporting(E_ALL);
-define('DOYOUHAOBABY_DEBUG',TRUE);
+error_reporting(E_ERROR|E_PARSE|E_STRICT);
+//error_reporting(E_ALL);
+//define('DOYOUHAOBABY_DEBUG',TRUE);
 
 /** 定义Api环境 */
 define('IN_APISELF',true);

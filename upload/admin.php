@@ -7,16 +7,16 @@ if(!is_file('data/Install.lock.php') || !file_exists('data/Update.lock.php')){
 	header("location:install/index.php");
 }
 
-//error_reporting(E_ERROR|E_PARSE|E_STRICT);
-error_reporting(E_ALL);
-define('DOYOUHAOBABY_DEBUG',TRUE);
+error_reporting(E_ERROR|E_PARSE|E_STRICT);
+//error_reporting(E_ALL);
+//define('DOYOUHAOBABY_DEBUG',TRUE);
 
 /** 定义Api环境 */
 define('IN_APISELF',true);
 
 /** Defined the version of windsforce */
-define('WINDSFORCE_SERVER_VERSION','1.0.1');
-define('WINDSFORCE_SERVER_RELEASE','20130512');
+define('WINDSFORCE_SERVER_VERSION','1.1');
+define('WINDSFORCE_SERVER_RELEASE','20130604');
 define('WINDSFORCE_SERVER_BUG','1.0');
 
 /** 系统应用路径定义 */
