@@ -62,7 +62,7 @@ class SociauserlocalController extends InitController{
 			Socia::clearCookie();
 
 			$this->assign('__JumpUrl__',$sUrl);
-			$this->S(Dyhb::L('Hello %s,你成功登录','Controller/Public',null,$oUser['user_name']));
+			$this->S(Dyhb::L('Hello %s,你成功登录','Controller',null,$oUser['user_name']));
 		}else{
 			return false;
 		}

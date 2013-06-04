@@ -15,14 +15,10 @@
 -- 更新表中的数据 `windsforce_node`
 --
 
-UPDATE  `#@__node` SET  `node_name` =  'home@attachment@add|normal_upload' WHERE  `windsforce_node`.`node_id` =48;
-
-DELETE FROM `#@__node` WHERE `node_id` = 90;
-DELETE FROM `#@__node` WHERE `node_id` = 91;
+DELETE FROM `#@__node` WHERE `node_id` = 92;
 
 INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `node_remark`, `node_sort`, `node_parentid`, `node_level`, `nodegroup_id`, `create_dateline`, `update_dateline`, `node_issystem`) VALUES
-(90, 'group@grouptopicadmin@movetopic_dialog|movetopic', '帖子移动', 1, '', 0, 71, 3, 0, 1367833115, 0, 1),
-(91, 'group@grouptopicadmin@uptopic_dialog|uptopic', '提升下沉主题', 1, '', 0, 71, 3, 0, 1368282389, 0, 1);
+(92, 'admin@announcement', '网站公告', 1, '', 10, 1, 2, 6, 1370012613, 1370012720, 1);
 
 -- --------------------------------------------------------
 
@@ -30,44 +26,34 @@ INSERT INTO `#@__node` (`node_id`, `node_name`, `node_title`, `node_status`, `no
 -- 添加表中的数据 `windsforce_option`
 --
 
-DELETE FROM `#@__option` WHERE `option_name` = 'todayusernum';
-DELETE FROM `#@__option` WHERE `option_name` = 'todaytotalnum';
-DELETE FROM `#@__option` WHERE `option_name` = 'todayhomefreshnum';
-DELETE FROM `#@__option` WHERE `option_name` = 'todayhomefreshcommentnum';
-DELETE FROM `#@__option` WHERE `option_name` = 'todayattachmentnum';
+DELETE FROM `#@__option` WHERE `option_name` = 'wap_on';
+DELETE FROM `#@__option` WHERE `option_name` = 'wap_close_reason';
+DELETE FROM `#@__option` WHERE `option_name` = 'wap_baselist_num';
+DELETE FROM `#@__option` WHERE `option_name` = 'wap_mobile_only';
+DELETE FROM `#@__option` WHERE `option_name` = 'wap_computer_on';
+DELETE FROM `#@__option` WHERE `option_name` = 'search_fulltext';
+DELETE FROM `#@__option` WHERE `option_name` = 'only_login_viewsite';
+DELETE FROM `#@__option` WHERE `option_name` = 'stat_header_code';
+DELETE FROM `#@__option` WHERE `option_name` = 'wap_img_size'
+DELETE FROM `#@__option` WHERE `option_name` = 'share_code';
+DELETE FROM `#@__option` WHERE `option_name` = 'share_on';
+DELETE FROM `#@__option` WHERE `option_name` = 'feed_keep_time';
+DELETE FROM `#@__option` WHERE `option_name` = 'notice_keep_time';
 
 INSERT INTO `#@__option` (`option_name`, `option_value`) VALUES
-('todayusernum', '0'),
-('todaytotalnum', '0'),
-('todayhomefreshnum', '0'),
-('todayhomefreshcommentnum', '0'),
-('todayattachmentnum', '0');
-
--- --------------------------------------------------------
-
---
--- 添加表中的数据 `windsforce_access`
---
-
-DELETE FROM `#@__access` WHERE `role_id` = 1 AND `node_id` = 90 AND `access_level` = 3 AND `access_parentid` = 71 AND `access_status` = 1;
-DELETE FROM `#@__access` WHERE `role_id` = 2 AND `node_id` = 91 AND `access_level` = 3 AND `access_parentid` = 71 AND `access_status` = 1;
-DELETE FROM `#@__access` WHERE `role_id` = 3 AND `node_id` = 91 AND `access_level` = 3 AND `access_parentid` = 71 AND `access_status` = 1;
-
-INSERT INTO `#@__access` (`role_id`, `node_id`, `access_level`, `access_parentid`, `access_status`) VALUES
-(1, 90, 3, 71, 1),
-(2, 91, 3, 71, 1),
-(3, 91, 3, 71, 1);
-
--- --------------------------------------------------------
-
---
--- 更新表中的数据 `windsforce_creditrule`
---
-
-DELETE FROM `#@__creditrule` WHERE `creditrule_id` = 27;
-
-INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_action`, `creditrule_cycletype`, `creditrule_cycletime`, `creditrule_rewardnum`, `creditrule_extendcredit1`, `creditrule_extendcredit2`, `creditrule_extendcredit3`, `creditrule_extendcredit4`, `creditrule_extendcredit5`, `creditrule_extendcredit6`, `creditrule_extendcredit7`, `creditrule_extendcredit8`) VALUES
-(27, '帖子被提升', 'group_uptopic', 4, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0);
+('wap_on', '1'),
+('wap_close_reason', 'update...'),
+('wap_baselist_num', '10'),
+('wap_mobile_only', '0'),
+('wap_computer_on', '0'),
+('search_fulltext', '0'),
+('only_login_viewsite', '0'),
+('stat_header_code',  ''),
+('wap_img_size',  '100|80'),
+('share_code', '<!-- Baidu Button BEGIN -->\r\n<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">\r\n<a class="bds_qzone"></a>\r\n<a class="bds_tsina"></a>\r\n<a class="bds_tqq"></a>\r\n<a class="bds_renren"></a>\r\n<a class="bds_t163"></a>\r\n<span class="bds_more"></span>\r\n<a class="shareCount"></a>\r\n</div>\r\n<script type="text/javascript" id="bdshare_js" data="type=tools&uid=0" ></script>\r\n<script type="text/javascript" id="bdshell_js"></script>\r\n<script type="text/javascript">\r\ndocument.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)\r\n</script>\r\n<!-- Baidu Button END -->'),
+('share_on', '1'),
+('feed_keep_time', '31536000'),
+('notice_keep_time', '31536000');
 
 -- --------------------------------------------------------
 
@@ -75,7 +61,11 @@ INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_ac
 -- 添加表中的数据 `windsforce_groupoption`
 --
 
-DELETE FROM `#@__groupoption` WHERE `groupoption` = 'newtopic_default';
+DELETE FROM `#@__groupoption` WHERE `groupoption` = 'allowed_creategroup';
+DELETE FROM `#@__groupoption` WHERE `groupoption` = 'grouptopic_lovenum';
+DELETE FROM `#@__groupoption` WHERE `groupoption` = 'group_ucenter_listtopicnum';
 
 INSERT INTO `#@__groupoption` (`groupoption_name`, `groupoption_value`) VALUES
-('newtopic_default', '1');
+('allowed_creategroup', '0'),
+('grouptopic_lovenum', '10'),
+('group_ucenter_listtopicnum', '20');

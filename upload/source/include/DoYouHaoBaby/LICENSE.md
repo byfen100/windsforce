@@ -8,8 +8,8 @@ About Us:
 Home：http://doyouhaobaby.net
 BBS： http://bbs.doyouhaobaby.net
 
-Last updated 2012/10/23 By doyouhaobaby2009@gmail.com
+Last updated 2013/06/04 By 635750556@qq.com
 
-Copyright (C) 2010 - 2012 WindsForce Team. (http://doyouhaobaby.net)
+Copyright (C) 2010 - 2013 WindsForce Team. (http://doyouhaobaby.net)
 ---------------------------------
 All rights reserved.
