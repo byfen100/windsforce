@@ -3,7 +3,7 @@
  return array (
   'DB_PASSWORD' => '123456',
   'DB_PREFIX' => 'windsforce_',
-  'DB_NAME' => 'windsforce_v20130512',
+  'DB_NAME' => 'windsforce_v20130604',
   'DB_CACHE_FIELDS' => true,
   'DB_CACHE' => true,
   'DB_CACHE_TIME' => 86400000000,
@@ -12,16 +12,16 @@
   'SHOW_DB_TIMES' => true,
   'SHOW_GZIP_STATUS' => true,
   'RBAC_DATA_PREFIX' => 'rbac_',
-  'COOKIE_PREFIX' => 'wf9A5fd3_',
-  'DYHB_AUTH_KEY' => 'dyhbauthkey41e25C',
+  'COOKIE_PREFIX' => 'wf43e73e_',
+  'DYHB_AUTH_KEY' => 'dyhbauthkeyf0a3a9',
   'RBAC_ROLE_TABLE' => 'role',
   'RBAC_USERROLE_TABLE' => 'userrole',
   'RBAC_ACCESS_TABLE' => 'access',
   'RBAC_NODE_TABLE' => 'node',
   'USER_AUTH_ON' => true,
-  'USER_AUTH_KEY' => 'authid49d6F4',
+  'USER_AUTH_KEY' => 'authida1aFfD',
   'ADMIN_USERID' => '1',
-  'ADMIN_AUTH_KEY' => 'admin84cfF8',
+  'ADMIN_AUTH_KEY' => 'adminAbB5Da',
   'USER_AUTH_MODEL' => 'user',
   'AUTH_PWD_ENCODER' => 'md5',
   'USER_AUTH_GATEWAY' => 'home://public/login',
@@ -102,10 +102,10 @@
     0 => 'home@ucenter@view',
     1 => 'group@grouptopic@view',
   ),
-  'DB_HOST' => 'localhost',
-  'DB_USER' => 'root',
   'APP_MENU' => 
   array (
   ),
+  'DB_HOST' => 'localhost',
+  'DB_USER' => 'root',
 )
 ?>
