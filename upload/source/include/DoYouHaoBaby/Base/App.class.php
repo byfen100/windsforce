@@ -260,7 +260,7 @@ class App{
 	}
 
 	static public function U(){
-		return "var _ROOT_='".__ROOT__."',_MODULE_NAME_='".MODULE_NAME."',_ACTION_NAME_='".ACTION_NAME."',_APP_NAME_ ='".APP_NAME."',_ENTER_ ='".__ENTER__.
+		return "var _ROOT_='".__ROOT__."',_SELF_='".__SELF__."',_MODULE_NAME_='".MODULE_NAME."',_ACTION_NAME_='".ACTION_NAME."',_APP_NAME_ ='".APP_NAME."',_ENTER_ ='".__ENTER__.
 			"',_APP_VAR_NAME_='app',_CONTROL_VAR_NAME_='c',_ACTION_VAR_NAME_='a',_URL_HTML_SUFFIX_='".
 			$GLOBALS['_commonConfig_']['URL_HTML_SUFFIX']."';";
 	}
