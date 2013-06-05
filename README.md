@@ -5,6 +5,8 @@ Readmes Dir - You Must Read It Before Use This Program.
 
 ---------------------------------
 
+注意：这是一个内测版本，请勿投入正式场合。
+
 产品发布页
 http://doyouhaobaby.net/app/group/topic/182.html
 
