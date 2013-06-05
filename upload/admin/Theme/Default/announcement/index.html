@@ -68,8 +68,8 @@
 							<td><!--{$value['announcement_username']}--></td>
 							<td><!--{$value:announcement_type}--></td>
 							<td><!--{$value:announcement_message}--></td>
-							<td><!--{$value:create_dateline}--></td>
-							<td><!--{$value:announcement_endtime}--></td>
+							<td><!--{$value:create_dateline|date='Y-m-d',**}--></td>
+							<td><!--{$value:announcement_endtime|date='Y-m-d',**}--></td>
 							<td class="pointer" title="<!--<lang package='Template'>-->点击修改数据<!--</lang>-->" id="announcement_sort_<!--{$value:announcement_id}-->" onClick="clickToInput('announcement_sort','<!--{$value:announcement_id}-->')"><!--{$value:announcement_sort}--></td>
 							<td><a href="javascript:edit('<!--{$value:announcement_id}-->')"><input type="image" src="<!--{:At::path('icn_edit.png')}-->" title="<!--<lang package='Template'>-->编辑<!--</lang>-->"></a>
 							</td>
