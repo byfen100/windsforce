@@ -9,7 +9,7 @@ function joinGroup(gid,id){
 			if(id){
 				$('#'+id).html(D.L('加入成功','Template'));
 			}
-			/*setTimeout("window.location.reload();",1000);*/
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }
@@ -22,7 +22,7 @@ function leaveGroup(gid,id){
 				if(id){
 					$('#'+id).html(D.L('退出成功','Template'));
 				}
-				/*setTimeout("window.location.reload();",1000);*/
+				setTimeout("window.location.replace(_SELF_);",1000);
 			}
 		});
 	});

@@ -19,7 +19,7 @@ function usersignPreview(){
 function stealthOnline(nUserid){
 	Dyhb.AjaxSend(D.U('home://misc/stealth_online?uid='+nUserid),'ajax=1','',function(data,status){
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }
@@ -27,7 +27,7 @@ function stealthOnline(nUserid){
 function unstealthOnline(nUserid){
 	Dyhb.AjaxSend(D.U('home://misc/stealth_online?un=1&uid='+nUserid),'ajax=1','',function(data,status){
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }

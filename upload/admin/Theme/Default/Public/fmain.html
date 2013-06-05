@@ -9,7 +9,7 @@ function closeUpdateinfo(){
 		if(status==1){
 			setTimeout(function(){
 				parent.menu.location=D.U( 'public/fmenu?title='+encodeURIComponent('<!--<lang package='Template'>-->首页<!--</lang>-->')+'&notrefershmain=1' );
-				window.location.reload();
+				window.location.replace(_SELF_);
 			},1000);
 		}
 	});

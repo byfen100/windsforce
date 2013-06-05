@@ -11,7 +11,7 @@ function setGrouptopicside(nside){
 
 function completeSet(data,status){
 	if(status==1){
-		setTimeout("window.location.reload();",1000);
+		setTimeout("window.location.replace(_SELF_);",1000);
 	}
 }
 
@@ -174,7 +174,7 @@ function topicLove(nId){
 function completeLovetopic(){
 	Dyhb.AjaxSubmit("topieloveform",'<!--{:Dyhb::U('group://grouptopic/love_add')}-->','result',function(data,status){
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 			return true;
 		}
 	});

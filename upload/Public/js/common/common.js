@@ -366,7 +366,7 @@ function showYearmonthday(day,month,year){
 function setStyle(nStyle){
 	Dyhb.AjaxSend(D.U('home://misc/style?id='+nStyle),'ajax=1','',function(data,status){
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }
@@ -591,7 +591,7 @@ function addMessageok(){
 function addFriend(userid){
 	Dyhb.AjaxSend(D.U('home://friend/add'),'ajax=1&uid='+userid,'',function(data,status){
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }
@@ -600,7 +600,7 @@ function deleteFriend(friendid,fan){
 	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
 		Dyhb.AjaxSend(D.U('home://friend/delete?friendid='+friendid+(fan=='1'?'&fan=1':'')),'','',function(data,status){
 			if(status==1){
-				setTimeout("window.location.reload();",1000);
+				setTimeout("window.location.replace(_SELF_);",1000);
 			}
 		});
 	});

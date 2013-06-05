@@ -11,7 +11,7 @@ function complete(data,status){
 	$("#submit_button").attr("disabled", false);
 	$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
 	if(status==1){
-		setTimeout("window.location.reload();",1000);
+		setTimeout("window.location.replace(_SELF_);",1000);
 	}
 }
 <!--{/script}-->

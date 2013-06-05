@@ -126,7 +126,7 @@ function commonComplete(data,status){
 		if(sCurrentAction=='deletetopic'){
 			setTimeout(function(){window.location.href=data.group_url;},1000);
 		}else{
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	}
 

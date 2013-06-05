@@ -19,7 +19,7 @@ function add(){
 		$("#submit_button").val("<!--<lang package='Template'>-->添加<!--</lang>-->");
 		
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }
@@ -32,7 +32,7 @@ function deleteHometag(tagid){
 
 function completeDelete(data,status){
 	if(status==1){
-		setTimeout("window.location.reload();",1000);
+		setTimeout("window.location.replace(_SELF_);",1000);
 	}
 }
 <!--{/script}-->

@@ -98,7 +98,7 @@ function completeDelete(data,status){
 		var Table=$WF('checkList');
 		var len=selectRowIndex.length;
 		if(len==0){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 
 		for(var i=len-1;i>=0;i--){

@@ -374,7 +374,7 @@ function homefreshchildcommentCancel(){
 function homefreshcommentAudit(nCommentid,nStatus){
 	Dyhb.AjaxSend(D.U('home://ucenter/audit_homefreshcomment?id='+nCommentid+'&status='+nStatus),'ajax=1','',function(data,status){
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }

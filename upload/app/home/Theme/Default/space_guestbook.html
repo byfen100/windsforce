@@ -82,7 +82,7 @@ function commentComplete(data,status){
 function userguestbookAudit(nCommentid,nStatus){
 	Dyhb.AjaxSend(D.U('home://space/audit_userguestbook?id='+nCommentid+'&status='+nStatus),'ajax=1','',function(data,status){
 		if(status==1){
-			setTimeout("window.location.reload();",1000);
+			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
 }

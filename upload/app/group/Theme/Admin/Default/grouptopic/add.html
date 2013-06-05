@@ -16,7 +16,7 @@ function update(){
 	Dyhb.AjaxSubmit('grouptopicAdd','<!--{:Admin_Extend::update(array('controller'=>'grouptopic'))}-->','',function(){ 
 		$("#submit_button").attr("disabled", false);
 		$("#submit_button").val( '<!--<lang package='Template'>-->更新<!--</lang>-->' );
-		setTimeout("window.location.reload();",1000);
+		setTimeout("window.location.replace(_SELF_);",1000);
 	});
 }
 

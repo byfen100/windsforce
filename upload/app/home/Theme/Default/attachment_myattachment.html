@@ -19,7 +19,7 @@ function saveAttachment(){
 				$('#attachment_name_'+id).text(subStr(data.attachment_name,15));
 				$('#attachment_description_'+id).text(data.attachment_description?subStr(data.attachment_description,32):'<!--<lang package='Template'>-->暂无附件描述<!--</lang>-->');
 				oEditNewattachment.close();
-				setTimeout("window.location.reload();",1000);
+				setTimeout("window.location.replace(_SELF_);",1000);
 				return true;
 			}
 		}

@@ -9,7 +9,7 @@ function deleteGrouptopcategory(category_id,group_id){
 
 function completeDelete(data,status){
 	if(status==1){
-		setTimeout("window.location.reload();",1000);
+		setTimeout("window.location.replace(_SELF_);",1000);
 	}
 }
 
