@@ -15,7 +15,7 @@ error_reporting(E_ERROR|E_PARSE|E_STRICT);
 define('IN_APISELF',true);
 
 /** Defined the version of WindsForce */
-define('WINDSFORCE_SERVER_VERSION','1.0.1');
+define('WINDSFORCE_SERVER_VERSION','1.0.1-beta');
 define('WINDSFORCE_SERVER_RELEASE','20130512');
 define('WINDSFORCE_SERVER_BUG','1.0');
 
