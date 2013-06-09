@@ -8,11 +8,11 @@ class UpdateController extends InitController{
 
 	public function index(){
 		// 服务端版本
-		$sServerVersion='1.0.1';
-		$nServerRelease='20130512';
+		$sServerVersion='1.1';
+		$nServerRelease='20130604';
 		$nServerBug='1.0';
-		$sFrameworkServerVersion='2.5';
-		$nFrameworkServerRelease='20130426';
+		$sFrameworkServerVersion='2.5.1';
+		$nFrameworkServerRelease='20130604';
 		
 		// 获取客户端信息 & 验证
 		$sVersion=isset($_GET['version'])?htmlspecialchars(trim($_GET['version'])):'';
@@ -48,7 +48,7 @@ INFO;
 
 			$sNewcontent='';
 			if($nServerRelease>$nRelease){
-				$sNewcontent.="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://www.windsforce.net/\" target=\"_blank\">http://www.windsforce.net/</a></span>";
+				$sNewcontent.="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"https://needforbug.googlecode.com/files/WindsForce-1.1_release20130604.tar.gz\" target=\"_blank\">https://needforbug.googlecode.com/files/WindsForce-1.1_release20130604.tar.gz</a></span>";
 			}
 
 			if($nServerBug>$sBug){
@@ -73,9 +73,8 @@ INFO;
 				}
 			}else{
 				$arrUpdateContent=array(
-					'BUG修正'=>'这是一个补丁版本，主要修正了1.0版本的大量BUG',
-					'新功能'=>'本次增加了移动帖子，帖子提升下沉，今日发布数据等等。',
-					'可能需要再次补丁'=>'1.0.1发布的版本，目测QQ和新浪微博有BUG，目前官方论坛已经修复了此BUG。例外，有网友反映，360极速浏览器存在记住登录状态时间比较短的问题。该问题已经在查找了。还有就是kindeditor 浏览器在Google浏览器下面复制存在一些多余的字符。这三个问题修复后会发布一个针对1.0.1的补丁文件。',
+					'BUG修正'=>'修复了1.0.1的BUG',
+					'新功能'=>'本次增加了搜索，WAP，小组个人中心以及新模板等等。',
 				);
 
 				$sContent='';
