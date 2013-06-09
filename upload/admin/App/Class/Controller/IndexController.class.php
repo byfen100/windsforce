@@ -41,7 +41,7 @@ class IndexController extends InitController{
 				$sFmenutitle=trim($_GET['fmenutitle']);
 				unset($_GET['fmenutitle']);
 			}else{
-				$sFmenutitle=Dyhb::L("应用",'MenuHeader');
+				$sFmenutitle=Dyhb::L("应用",'Template');
 			}
 
 			$this->assign('nCurrentid',$nCurrentid);
