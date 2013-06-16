@@ -167,8 +167,8 @@ class Upload_Extend{
 				'content'=>$arrUploadoption['upload_imageswater_text'],
 				'textColor'=>$arrUploadoption['upload_imageswater_textcolor'],
 				'textFont'=>$arrUploadoption['upload_imageswater_textfontsize'],
-				'textFile'=>$arrUploadoption['upload_imageswater_textfontpath'],
-				'textPath'=>$arrUploadoption['upload_imageswater_textfonttype'],
+				'textPath'=>$arrUploadoption['upload_imageswater_textfontpath'],
+				'textFile'=>$arrUploadoption['upload_imageswater_textfonttype'],
 				'offset'=>$arrUploadoption['upload_imageswater_offset']
 			);
 			$oUploadfile->_nWaterPos=$arrUploadoption['upload_imageswater_position'];

@@ -238,16 +238,16 @@ class Image{
 					default:
 						return Dyhb::L("错误的图像格式！",'__DYHB__@Dyhb');
 				}
-			}elseif($arrWaterArgs['type']==='text' && $arrWaterArgs['content'] !=''){
+			}elseif($arrWaterArgs['type']==='text' && $arrWaterArgs['content']!=''){
 				$bFrameworkFont=false;
 				if(isset($arrWaterArgs['textPath']) && strtolower($arrWaterArgs['textPath'])=='framework-font'){// 使用框架内部提供的字体
-					$arrWaterArgs['textPath']=DYHB_PATH.'/Resource_/Seccode/Fonts';
+					$arrWaterArgs['textPath']=DYHB_PATH.'/Resource_/Images/Seccode/Fonts';
 					$bFrameworkFont=true;
 				}
 
-				$sFontfileTemp=$sFontfile=isset($arrWaterArgs['textFile']) && !empty($arrWaterArgs['textFile'])?$arrWaterArgs['textFile']:'airbrush.ttf';
-				$sFontfile=(!empty($arrWaterArgs['textPath'])?G::tidyPath($arrWaterArgs['textPath']).($bFrameworkFont===true?'/En':''):'C:\WINDOWS\Fonts').'/'. $sFontfile ;
-				if($bFrameworkFont===true && !is_file($sFontfile)){// 这里如果为框架内部字体的话，在en中找不到，那么到Zh-cn中去找字体
+				$sFontfileTemp=$sFontfile=isset($arrWaterArgs['textFile']) && !empty($arrWaterArgs['textFile'])?$arrWaterArgs['textFile']:'FetteSteinschrift.ttf';
+				$sFontfile=(!empty($arrWaterArgs['textPath'])?G::tidyPath($arrWaterArgs['textPath']).($bFrameworkFont===true?'/En-us':''):'C:\WINDOWS\Fonts').'/'. $sFontfile ;
+				if($bFrameworkFont===true && !is_file($sFontfile)){// 这里如果为框架内部字体的话，在En-us中找不到，那么到Zh-cn中去找字体
 					$sFontfile=G::tidyPath($arrWaterArgs['textPath']).'/Zh-cn/'.$sFontfileTemp;
 				}
 
