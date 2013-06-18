@@ -19,7 +19,7 @@ class LoveController extends Controller{
 
 		$oPage=Page::RUN($nTotalGrouptopicnum,$nEverynum,G::getGpc('page','G'));
 
-		$arrGrouptopicloves=GrouptopicloveModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->limit($oPage->returnPageStart(),$nEverynum)->getAll();
+		$arrGrouptopicloves=GrouptopicloveModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->limit($oPage->returnPageStart(),$nEverynum)->order('create_dateline DESC')->getAll();
 
 		$this->assign('arrGrouptopicloves',$arrGrouptopicloves);
 		$this->assign('nEverynum',$nEverynum);
