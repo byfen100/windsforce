@@ -266,9 +266,9 @@ class IndexController extends Controller{
 				Install_Extend::importTable($sWindsForceDatadir.'/app/'.$sApp.'/windsforce.table.sql');
 				Install_Extend::showJavascriptMessage(' ');
 
-				$sWindsForceAppDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/app/'.$sApp.'/windsforce.data.sql';
+				$sWindsForceAppDatapath=$sWindsForceDatadir.'/'.ucfirst(Dyhb::cookie($sLangCookieName)).'/App/'.$sApp.'/windsforce.data.sql';
 				if(!is_file($sWindsForceAppDatapath)){
-					$sWindsForceAppDatapath=$sWindsForceDatadir.'/Zh-cn/app/'.$sApp.'/windsforce.data.sql';
+					$sWindsForceAppDatapath=$sWindsForceDatadir.'/Zh-cn/App/'.$sApp.'/windsforce.data.sql';
 				}
 				Install_Extend::showJavascriptMessage(Dyhb::L('导入应用 %s 的数据库数据','Controller/Install',null,$sApp));
 				Install_Extend::runQuery($sWindsForceAppDatapath);
