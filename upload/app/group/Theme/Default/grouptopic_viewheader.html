@@ -107,9 +107,15 @@ function addGrouptopiccommentquick(){
 		return false;
 	}
 
+	$("#grouptopiccommentquick_button").attr("disabled", "disabled");
+	$("#grouptopiccommentquick_button").val( 'add...' );
+
 	var sParameter="ajax=1&grouptopiccomment_message="+encodeURIComponent(sCommentMessage)+"&tid="+<!--{$oGrouptopic->grouptopic_id}-->+'&grouptopiccomment_name='+encodeURIComponent(sCommentName)+'&grouptopiccomment_email='+encodeURIComponent(sCommentEmail)+'&grouptopiccomment_url='+encodeURIComponent(sCommentUrl)+'&seccode='+encodeURIComponent(sCommentSeccode);
 
 	Dyhb.AjaxSend('<!--{:Dyhb::U('group://grouptopic/add_reply')}-->',sParameter,'',function(data,status){
+		$("#grouptopiccommentquick_button").attr("disabled", false);
+		$("#grouptopiccommentquick_button").val( '<!--<lang package='Template'>-->回复<!--</lang>-->' );
+		
 		if(status==1){
 			setTimeout(function(){window.location.href=data.url;},1000);
 		}
