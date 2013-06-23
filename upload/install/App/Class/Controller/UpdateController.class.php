@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `{$sDbprefix}announcement` (
 			ADD  `grouptopic_update` INT( 10 ) NOT NULL DEFAULT  '0' COMMENT  '帖子排序更新时间' AFTER  `grouptopic_onlycommentview`;");
 		}
 
-		Install_Extend::queryString("UPDATE  `{$sDbprefix}option` SET  `option_value` =  '1.0.1' WHERE  `windsforce_option`.`option_name` =  'windsforce_program_version';");
+		Install_Extend::queryString("UPDATE  `{$sDbprefix}option` SET  `option_value` =  '1.1.1' WHERE  `windsforce_option`.`option_name` =  'windsforce_program_version';");
 
 		// 执行结束
 		Install_Extend::showJavascriptMessage('');

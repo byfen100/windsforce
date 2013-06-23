@@ -15,8 +15,8 @@ error_reporting(E_ERROR|E_PARSE|E_STRICT);
 define('IN_APISELF',true);
 
 /** Defined the version of WindsForce */
-define('WINDSFORCE_SERVER_VERSION','1.1');
-define('WINDSFORCE_SERVER_RELEASE','20130604');
+define('WINDSFORCE_SERVER_VERSION','1.1.1');
+define('WINDSFORCE_SERVER_RELEASE','20130623');
 define('WINDSFORCE_SERVER_BUG','1.0');
 
 /** 系统应用路径定义 */
