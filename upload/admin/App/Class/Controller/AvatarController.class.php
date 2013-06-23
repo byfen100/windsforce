@@ -43,9 +43,14 @@ class AvatarController extends InitController{
 
 	public function save_crop(){
 		require_once(Core_Extend::includeFile('function/Avatar_Extend'));
-		$bResult=Avatar_Extend::saveCrop();
-		if($bResult===false){
-			$this->E(Dyhb::L('你的PHP 版本或者配置中不支持如下的函数 “imagecreatetruecolor”、“imagecopyresampled”等图像函数，所以创建不了头像','Controller'));
+		
+		try{
+			$bResult=Avatar_Extend::saveCrop();
+			if($bResult===false){
+				$this->E(Dyhb::L('你的PHP 版本或者配置中不支持如下的函数 “imagecreatetruecolor”、“imagecopyresampled”等图像函数，所以创建不了头像','Controller'));
+			}
+		}catch(Exception $e){
+			$this->E($e->getMessage());
 		}
 
 		// 更新是否上传头像
