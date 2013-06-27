@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<title><![CDATA[WindsForce App]]></title>
+	<version><![CDATA[1.1]]></version>
+	<time><![CDATA[2013-06-04]]></time>
+	<copyright><![CDATA[WindsForce Team]]></copyright>
+	<data>
+		<identifier><![CDATA[event]]></identifier>
+		<name><![CDATA[活动]]></name>
+		<version><![CDATA[1.1]]></version>
+		<description><![CDATA[活动App，用于创建活动]]></description>
+		<url><![CDATA[http://doyouhaobaby.net]]></url>
+		<email><![CDATA[admin@doyouhaobaby.net]]></email>
+		<author><![CDATA[WindsForce Team]]></author>
+		<authorurl><![CDATA[http://doyouhaobaby.net]]></authorurl>
+		<isadmin><![CDATA[1]]></isadmin>
+		<isinstall><![CDATA[1]]></isinstall>
+		<isuninstall><![CDATA[1]]></isuninstall>
+		<issystem><![CDATA[1]]></issystem>
+		<isappnav><![CDATA[1]]></isappnav>
+	</data>
+</root>
