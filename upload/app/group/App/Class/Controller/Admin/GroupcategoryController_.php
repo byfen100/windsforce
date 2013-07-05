@@ -10,7 +10,6 @@ class GroupcategoryController extends InitController{
 		$arrMap['groupcategory_name']=array('like','%'.G::getGpc('groupcategory_name').'%');
 	}
 
-	
 	public function index($sModel=null,$bDisplay=true){
 		parent::index('groupcategory',false);
 
@@ -24,13 +23,7 @@ class GroupcategoryController extends InitController{
 	}
 	
 	public function bAdd_(){
-		$oGroupcategory=Dyhb::instance('GroupcategoryModel');
-		$arrGroupcategorys=$oGroupcategory->getGroupcategory();
-
-		$oGroupcategoryTree=new TreeCategory();
-		foreach($arrGroupcategorys as $oCategory){
-			$oGroupcategoryTree->setNode($oCategory->groupcategory_id,$oCategory->groupcategory_parentid,$oCategory->groupcategory_name);
-		}
+		$oGroupcategoryTree=Dyhb::instance('GroupcategoryModel')->getGroupcategoryTree();
 
 		$this->assign('oGroupcategoryTree',$oGroupcategoryTree);
 	}

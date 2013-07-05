@@ -1,14 +1,87 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{style}-->
+.mod {
+    margin-bottom: 30px;
+}
+.event-mod-2col .events-list, .event-mod-big .events-list, .events-list-2col, .fluid-mods, .inline-list {
+    font-size: 0;
+}
+.cats-board {
+    background: none repeat scroll 0 0 #F6F5F2;
+    padding: 9px;
+}
+.mod {
+    margin-bottom: 40px;
+}
+.mod:after {
+    clear: both;
+    content: " ";
+    display: block;
+}
+.cats-board .entry {
+    line-height: 1.95;
+    margin: 7px;
+    width: 100px;
+}
+
+
+.cats-board h5 {
+    margin-bottom: 9px;
+}
+
+
+.event-mod-2col .list-entry, .event-mod-big .list-entry, .events-list-2col .list-entry, .fluid-mods .mod, .inline-list li {
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: top;
+}
+.cats-board .entry a {
+    border-radius: 1px 1px 1px 1px;
+    display: inline-block;
+    line-height: 1.4em;
+    padding: 0 3px;
+}
+ol, ul {
+    list-style-position: outside;
+    margin-left: 0;
+}
+<!--{/style}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template'>-->Hello world！ - 世界你好！<!--</lang>--></li>
+			<li><!--<lang package='Template'>-->活动首页<!--</lang>--></li>
 		</ul>
 
 
 		<div class="row">
-			<div class="span12">
-				<p>Hello world!</p>
+			<div class="span8">
+				<!--{if is_array($arrEventcategorys)}-->
+				<div class="mod cats-board inline-list">
+					<ul>
+						<!--<foreach for=arrEventcategorys value=oEventcategory>-->
+						<!--{~$arrChildEventcategorys=$TheController->get_childEventcategory($oEventcategory['eventcategory_id'])}-->
+						<li class="entry">
+							<h5><a href="<!--{:Dyhb::U('event://public/event?cid='.$oEventcategory['eventcategory_id'])}-->"><!--{$oEventcategory['eventcategory_name']}-->»</a></h5>
+							<!--{if is_array($arrChildEventcategorys)}-->
+							<ul>
+								<!--<foreach for=arrChildEventcategorys value=oChildEventcategory>-->
+								<li><a href="<!--{:Dyhb::U('event://public/event?cid='.$oChildEventcategory['eventcategory_id'])}-->"><!--{$oChildEventcategory['eventcategory_name']}--></a></li>
+								<!--</foreach>-->
+							</ul>
+							<!--{/if}-->
+						</li>
+						<!--</foreach>-->
+					</ul>
+				</div>
+				<!--{/if}-->
+			</div>
+			<div class="span4">
+				<div class="commonbox">
+					<div class="createevent_box">
+						<p><a class="btn btn-large btn-success" href="<!--{:Dyhb::U('event://event/add')}-->"><!--<lang package='Template'>-->发起活动<!--</lang>--></a></p>
+					</div>
+				</div>
 			</div>
 		</div>
 

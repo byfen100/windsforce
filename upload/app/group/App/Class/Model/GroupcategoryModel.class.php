@@ -73,7 +73,7 @@ class GroupcategoryModel extends CommonModel{
 		foreach($arrGroupcategorys as $oCategory){
 			$oGroupcategoryTree->setNode($oCategory->groupcategory_id,$oCategory->groupcategory_parentid,$oCategory->groupcategory_name);
 		}
-		
+
 		return $oGroupcategoryTree;
 	}
 

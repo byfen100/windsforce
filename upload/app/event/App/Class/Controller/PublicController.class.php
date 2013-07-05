@@ -7,7 +7,7 @@
 class PublicController extends InitController{
 
 	public function index(){
-		$this->display('public+index');
+		Core_Extend::doControllerAction('Public@Index','index');
 	}
 
 }
