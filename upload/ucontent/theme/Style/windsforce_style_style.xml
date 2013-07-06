@@ -44,7 +44,7 @@
 		<content_separate_color><![CDATA[#FFFFFF]]></content_separate_color>
 		<menu_border_color><![CDATA[#378C32]]></menu_border_color>
 		<menu_text_color><![CDATA[#FFFFFF]]></menu_text_color>
-		<menu_hover_bg_color><![CDATA[#378C32]]></menu_hover_bg_color>
+		<menu_hover_bg_color><![CDATA[#dc4f40]]></menu_hover_bg_color>
 		<menu_hover_text_color><![CDATA[#FFFFFF]]></menu_hover_text_color>
 		<input_border><![CDATA[#999999]]></input_border>
 		<input_border_dark_color><![CDATA[#61c361]]></input_border_dark_color>
