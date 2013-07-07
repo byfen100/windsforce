@@ -29,11 +29,6 @@ input:focus,textarea:focus {border-color: #dc4f40;}
 .btn-success:active,.btn-success.active{background-color: #29333e \9;}
 
 /**===============================
-           重写通用签名
-================================*/
-.common_usersign{background:url({STYLE_IMG_DIR}/sign.gif) no-repeat;}
-
-/**===============================
            重写通用标签
 ================================*/
 a.common_tag{background:#f99d93;color:#fff;}
