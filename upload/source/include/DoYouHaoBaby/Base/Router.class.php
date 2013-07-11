@@ -153,7 +153,7 @@ class Router{
 		$sPathInfo=&$_SERVER['PATH_INFO'];
 		$sDepr=$GLOBALS['_commonConfig_']['URL_PATHINFO_DEPR'];
 		$sRegx=trim($sPathInfo,'/');
-		$arrPaths=array_filter(explode($sDepr,trim(str_ireplace(strtolower($sRouteName),'',$sRegx),$sDepr)));
+		$arrPaths=array_filter(explode($sDepr,trim(str_ireplace('/'.strtolower($sRouteName).'/','/',$sRegx),$sDepr)));
 		if(isset($arrPaths[0]) && $arrPaths[0]=='app'){
 			array_shift($arrPaths);
 			$arrVar['app']=array_shift($arrPaths);
