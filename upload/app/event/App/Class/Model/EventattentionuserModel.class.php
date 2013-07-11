@@ -11,6 +11,9 @@ class EventattentionuserModel extends CommonModel{
 			'table_name'=>'eventattentionuser',
 			'props'=>array(
 			),
+			'autofill'=>array(
+				array('user_id','userId','create','callback'),
+			),
 		);
 	}
 
@@ -24,6 +27,12 @@ class EventattentionuserModel extends CommonModel{
 	}
 
 	public function safeInput(){
+	}
+
+	protected function userId(){
+		$nUserId=$GLOBALS['___login___']['user_id'];
+
+		return $nUserId>0?$nUserId:0;
 	}
 
 }

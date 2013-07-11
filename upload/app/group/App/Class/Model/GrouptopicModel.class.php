@@ -50,7 +50,7 @@ class GrouptopicModel extends CommonModel{
 		$nUserId=$GLOBALS['___login___']['user_id'];
 
 		return $nUserId>0?$nUserId:0;
-	}	
+	}
 	
 	protected function userName(){
 		$sUserName=$GLOBALS['___login___']['user_name'];

@@ -14,4 +14,20 @@ class EventController extends InitController{
 		Core_Extend::doControllerAction('Event@Addin','index');
 	}
 
+	public function show(){
+		Core_Extend::doControllerAction('Event@Show','index');
+	}
+
+	public function join(){
+		Core_Extend::doControllerAction('Event@Join','index');
+	}
+
+	public function join_in(){
+		Core_Extend::doControllerAction('Event@Joinin','index');
+	}
+
+	public function attention(){
+		Core_Extend::doControllerAction('Event@Attention','index');
+	}
+
 }

@@ -1,0 +1,59 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('event://public/index')}-->" title="<!--<lang package='Template'>-->活动<!--</lang>-->"><!--<lang package='Template'>-->活动<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template'>-->活动列表<!--</lang>--></li>
+		</ul>
+
+		<div class="row">
+			<div class="span8">
+				<div class="commonbox">
+					<div class="commonboxtitle"><!--<lang package='Template'>-->类型活动<!--</lang>--> - <a href="<!--{:Dyhb::U('event://public/event?cid='.$oEventcategory['eventcategory_id'])}-->"><!--{$oEventcategory['eventcategory_name']}--></a></div>
+					<div class="new_event">
+						<!--{if is_array($arrEvents)}-->
+						<ul class="thumbnails">
+						  <!--<foreach for=arrEvents value=oEvent>-->
+						  <li class="span2">
+							<div class="thumbnail">
+							  <img src="<!--{:Event_Extend::getEventcolor($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
+							  <div class="caption">
+								<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']}--></a></h6>
+								<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
+									<!--{$oEvent['event_address']}--><br/>
+									<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}-->人关注</p>
+							  </div>
+							</div>
+						  </li>
+						  <!--</foreach>-->
+						</ul>
+						<!--{d*else}-->
+						<p>暂时没有发现任何活动！</p>
+						<!--{/if}-->
+
+						<!--{$sPageNavbar}-->
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="commonbox">
+					<div class="createevent_box">
+						<p><a class="btn btn-large btn-success" href="<!--{:Dyhb::U('event://event/add')}-->"><!--<lang package='Template'>-->发起活动<!--</lang>--></a></p>
+					</div>
+				</div>
+
+				<div class="commonbox_mini commonbox_mini_gray">
+				 <ul class="nav nav-list">
+				 <li><a href="#dropdowns"><i class="icon-chevron-right"></i>&nbsp;我发起的活动</a></li> 
+          <li><a href="#dropdowns"><i class="icon-chevron-right"></i>&nbsp;我参加的活动</a></li> 
+		  
+		  <li><a href="#dropdowns"><i class="icon-chevron-right"></i>&nbsp;我感兴趣的活动</a></li>
+        </ul>
+				</div>
+
+
+
+			</div>
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

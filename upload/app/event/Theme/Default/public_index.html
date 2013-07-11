@@ -53,11 +53,33 @@ ol, ul {
 			<li><!--<lang package='Template'>-->活动首页<!--</lang>--></li>
 		</ul>
 
-
 		<div class="row">
 			<div class="span8">
-				<!--{if is_array($arrEventcategorys)}-->
+				<div class="commonbox">
+					<div class="commonboxtitle"><!--<lang package='Template'>-->热门活动<!--</lang>--></div>
+					<div class="hot_event">
+						<!--{if is_array($arrHotevents)}-->
+						<ul class="thumbnails">
+						   <!--<foreach for=arrHotevents value=oHotevent>-->
+						  <li class="span2">
+							<div class="thumbnail">
+							  <img src="<!--{:Event_Extend::getEventcolor($oHotevent)}-->" alt="<!--{$oHotevent['event_title']}-->">
+							  <div class="caption">
+								<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oHotevent['event_id'])}-->" title="<!--{$oHotevent['event_title']}-->"><!--{$oHotevent['event_title']}--></a></h6>
+							  </div>
+							</div>
+						  </li>
+						 <!--</foreach>-->
+						</ul>
+						<!--{d*else}-->
+						<p>暂时没有发现任何活动！</p>
+						<!--{/if}-->
+					  </div>
+				</div>
+				
+				
 				<div class="mod cats-board inline-list">
+					<!--{if is_array($arrEventcategorys)}-->
 					<ul>
 						<!--<foreach for=arrEventcategorys value=oEventcategory>-->
 						<!--{~$arrChildEventcategorys=$TheController->get_childEventcategory($oEventcategory['eventcategory_id'])}-->
@@ -73,8 +95,37 @@ ol, ul {
 						</li>
 						<!--</foreach>-->
 					</ul>
+					<!--{d*else}-->
+					<p>暂时没有发现任何活动类型！</p>
+					<!--{/if}-->
 				</div>
-				<!--{/if}-->
+				
+				<div class="commonbox">
+					<div class="commonboxtitle"><!--<lang package='Template'>-->最新活动<!--</lang>--></div>
+					<div class="new_event">
+						<!--{if is_array($arrHotevents)}-->
+						<ul class="thumbnails">
+						  <!--<foreach for=arrEvents value=oEvent>-->
+						  <li class="span2">
+							<div class="thumbnail">
+							  <img src="<!--{:Event_Extend::getEventcolor($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
+							  <div class="caption">
+								<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']}--></a></h6>
+								<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
+									<!--{$oEvent['event_address']}--><br/>
+									<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}-->人关注</p>
+							  </div>
+							</div>
+						  </li>
+						  <!--</foreach>-->
+						</ul>
+						<!--{d*else}-->
+						<p>暂时没有发现任何活动！</p>
+						<!--{/if}-->
+
+						<!--{$sPageNavbar}-->
+					</div>
+				</div>
 			</div>
 			<div class="span4">
 				<div class="commonbox">
@@ -82,6 +133,18 @@ ol, ul {
 						<p><a class="btn btn-large btn-success" href="<!--{:Dyhb::U('event://event/add')}-->"><!--<lang package='Template'>-->发起活动<!--</lang>--></a></p>
 					</div>
 				</div>
+
+				<div class="commonbox_mini commonbox_mini_gray">
+				 <ul class="nav nav-list">
+				 <li><a href="#dropdowns"><i class="icon-chevron-right"></i>&nbsp;我发起的活动</a></li> 
+          <li><a href="#dropdowns"><i class="icon-chevron-right"></i>&nbsp;我参加的活动</a></li> 
+		  
+		  <li><a href="#dropdowns"><i class="icon-chevron-right"></i>&nbsp;我感兴趣的活动</a></li>
+        </ul>
+				</div>
+
+
+
 			</div>
 		</div>
 

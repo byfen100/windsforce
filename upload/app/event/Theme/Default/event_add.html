@@ -41,16 +41,21 @@ function complete(data,status){
 	
 	}
 }
+
+function insertEventcover(nAttachmentid){
+	insertAttachmentthumb('event_cover',nAttachmentid);
+}
 <!--{/script}-->
 
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('event://public/index')}-->" title="<!--<lang package='Template'>-->活动<!--</lang>-->"><!--<lang package='Template'>-->活动<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><!--<lang package='Template'>-->发起活动<!--</lang>--></li>
 		</ul>
 
 		<div class="row">
 			<div class="span8">
-				<form class="form-horizontal" method='post' id="createeventform" name="createeventform">
+				<form class="form-horizontal" method='post' id="createeventform" name="createeventform" enctype="multipart/form-data">
 					<fieldset>
 						<div class="control-group">
 							<label class="control-label" for="event_title"><!--<lang package='Template'>-->活动名称<!--</lang>--><em style="color:red">*</em></label>
@@ -156,6 +161,13 @@ function complete(data,status){
 									<option value="1"><!--<lang package='__COMMON_LANG__@Common'>-->是<!--</lang>--></option>
 									<option value="0" selected><!--<lang package='__COMMON_LANG__@Common'>-->否<!--</lang>--></option>
 								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="event_cover"><!--<lang package='Template'>-->活动海报<!--</lang>--></label>
+							<div class="controls">
+								<input type="text" id="event_cover" name="event_cover" value=""/>&nbsp;<a href="javascript:void(0);" onclick="globalAddattachment('insertEventcover',1);"><i class="icon-film"></i><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+								<p class="help-block"><!--<lang package='Template'>-->从附件管理器中选择<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="form-actions">

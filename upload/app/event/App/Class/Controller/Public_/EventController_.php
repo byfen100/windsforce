@@ -1,14 +1,27 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   活动首页控制器($Liu.XiangMin)*/
+   活动分类控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
-class IndexController extends Controller{
+class EventController extends Controller{
 
+	protected $_oEventcategory=null;
+	
 	public function index(){
+		$nCid=intval(G::getGpc('cid','G'));
+
+		$oEventcategory=EventcategoryModel::F('eventcategory_id=?',$nCid)->getOne();
+		if(!empty($oEventcategory['eventcategory_id'])){
+			$this->assign('oEventcategory',$oEventcategory);
+			$this->_oEventcategory=$oEventcategory;
+		}else{
+			$this->U('event://public/index');
+		}
+		
 		// 读取活动列表
 		$arrWhere['event_status']=1;
+		$arrWhere['eventcategory_id']=$nCid;
 
 		$nEverynum=12;
 			
@@ -25,12 +38,7 @@ class IndexController extends Controller{
 		
 		$this->assign('arrEventcategorys',$arrEventcategorys);
 
-		// 热门活动
-		$arrHotevents=EventModel::F()->where($arrWhere)->order('event_attentioncount DESC')->limit(0,4)->getAll();
-
-		$this->assign('arrHotevents',$arrHotevents);
-
-		$this->display('public+index');
+		$this->display('public+event');
 	}
 
 	public function get_childEventcategory($nParentid){
@@ -39,18 +47,16 @@ class IndexController extends Controller{
 		return $arrEventcategorys;
 	}
 
-	public function index_title_(){
-		if($GLOBALS['_commonConfig_']['DEFAULT_APP']!='event'){
-			return Dyhb::L('活动','Controller');
-		}
+	public function event_title_(){
+		return $this->_oEventcategory['eventcategory_name'].' - '.Dyhb::L('活动','Controller');
 	}
 
-	public function index_keywords_(){
-		return $this->index_title_();
+	public function event_keywords_(){
+		return $this->event_title_();
 	}
 
-	public function index_description_(){
-		return $this->index_title_();
+	public function event_description_(){
+		return $this->event_title_();
 	}
 
 

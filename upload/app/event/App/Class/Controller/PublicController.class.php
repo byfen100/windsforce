@@ -10,4 +10,8 @@ class PublicController extends InitController{
 		Core_Extend::doControllerAction('Public@Index','index');
 	}
 
+	public function event(){
+		Core_Extend::doControllerAction('Public@Event','index');
+	}
+
 }
