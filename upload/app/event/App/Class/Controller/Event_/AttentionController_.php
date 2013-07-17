@@ -19,7 +19,7 @@ class AttentionController extends Controller{
 		}
 
 		// 判断是否已经参加过活动了
-		$oEventattentionuser=EventattentionuserModel('event_id=? AND user_id=?',$nEventid,$GLOBALS['___login___']['user_id'])->getOne();
+		$oEventattentionuser=EventattentionuserModel::F('event_id=? AND user_id=?',$nEventid,$GLOBALS['___login___']['user_id'])->getOne();
 
 		if($oEventattentionuser['event_id']){
 			$this->E(Dyhb::L('你已经对这个应用感兴趣过了','Controller'));

@@ -1,30 +1,5 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
-<!--{script}-->
-function joinEvent(nId){
-	oJoinevents=windsforceAjax(D.U('event://event/join?id='+nId),'<!--<lang package='Template'>-->参加活动<!--</lang>-->','',completeJoinevent,'',400,100);
-}
-
-function completeJoinevent(){
-	Dyhb.AjaxSubmit("joineventform",'<!--{:Dyhb::U('event://event/join_in')}-->','result',function(data,status){
-		if(status==1){
-			setTimeout("window.location.replace(_SELF_);",1000);
-			return true;
-		}
-	});
-	
-	return false;
-}
-
-function attentionEvent(nId){
-	Dyhb.AjaxSend(D.U('event://event/attention'),'ajax=1&id='+nId,'',function(data,status){
-		if(status==1){
-			setTimeout("window.location.replace(_SELF_);",1000);
-		}
-	});
-}
-<!--{/script}-->
-
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('event://public/index')}-->" title="<!--<lang package='Template'>-->活动<!--</lang>-->"><!--<lang package='Template'>-->活动<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
@@ -37,84 +12,7 @@ function attentionEvent(nId){
 				
 				<!--<include file="event+menu" />-->
 
-				<div class="row">
-					<div class="span3">
-						<img class="thumbnail" src="<!--{:Event_Extend::getEventcolor($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
-						<br/>
-						<a class="btn" href="javascript:void(0);" onclick="attentionEvent('<!--{$oEvent->event_id}-->');">我感兴趣</a>&nbsp;<a class="btn btn-success" href="javascript:void(0);" onclick="joinEvent('<!--{$oEvent->event_id}-->');">我要参加</a>
-					</div>
-					<div class="span5">
-						<table class="table">
-							<thead>
-								<tr>
-									<th colspan="2">活动项目</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>发起者</td>
-									<td><a href="<!--{:Dyhb::U('home://space@?id='.$oEvent['user_id'])}-->"><!--{$oEvent['event_username']}--></a></td>
-								</tr>
-								<tr>
-									<td>联系方式</td>
-									<td><!--{if $oEvent['event_contactsite']}--><a href="<!--{$oEvent['event_contactsite']}-->"><!--{$oEvent['event_contact']}--></a><!--{d*else}--><!--{$oEvent['event_contact']}--><!--{/if}--></td>
-								</tr>
-								<tr>
-									<td>联合联系方式</td>
-									<td><!--{if $oEvent['event_jointcontactsite']}--><a href="<!--{$oEvent['event_jointcontactsite']}-->"><!--{$oEvent['event_jointcontact']}--></a><!--{d*else}--><!--{$oEvent['event_jointcontact']}--><!--{/if}--></td>
-								</tr>
-								<tr>
-									<td>活动时间</td>
-									<td><!--{$oEvent['event_starttime']|date="Y-m-d H:i:s",**}--> 至 <!--{$oEvent['event_endtime']|date="Y-m-d H:i:s",**}--></td>
-								</tr>
-								<tr>
-									<td>活动地点</td>
-									<td><!--{$oEvent['event_address']}--></td>
-								</tr>
-								<tr>
-									<td>活动经费</td>
-									<td><!--{$oEvent['event_cost']}--><!--{if $oEvent['event_costdescription']}-->&nbsp;(<!--{$oEvent['event_costdescription']}-->)<!--{/if}--></td>
-								</tr>
-								<tr>
-									<td>报名截止时间</td>
-									<td><!--{$oEvent['event_deadline']|date="Y-m-d H:i:s",**}--></td>
-								</tr>
-								<tr>
-									<td>剩余名额</td>
-									<td><!--{if $oEvent['event_limitcount']>0}--><!--{$oEvent['event_limitcount']-$oEvent['event_joincount']}--><!--{d*else}-->参加人数不限制<!--{/if}--></td>
-								</tr>
-								<tr>
-									<td>参加是否需要审核</td>
-									<td><!--{if $oEvent['event_isaudit']==1}-->是<!--{d*else}-->否<!--{/if}--></td>
-								</tr>
-								<tr>
-									<td colspan="2"><b><!--{$oEvent['event_attentioncount']}--></b>人感兴趣&nbsp; <b><!--{$oEvent['event_joincount']}--></b>人参加</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="commonbox" style="margin-top:20px;">
-					<div class="commonboxtitle"><!--<lang package='Template'>-->活动介绍<!--</lang>--></div>
-					<div class="backgroup_box">
-						<p><!--{$oEvent['event_content']}--></p>
-					</div>
-				</div>
 				
-				<div class="commonbox" style="margin-top:20px;">
-					<div class="commonboxtitle"><!--<lang package='Template'>-->活动照片<!--</lang>--></div>
-					<div class="backgroup_box">
-						<p><!--{$oEvent['event_content']}--></p>
-					</div>
-				</div>
-				
-				<div class="commonbox" style="margin-top:20px;">
-					<div class="commonboxtitle"><!--<lang package='Template'>-->活动评论<!--</lang>--></div>
-					<div class="backgroup_box">
-						<p><!--{$oEvent['event_content']}--></p>
-					</div>
-				</div>
 			</div>
 			<div class="span4">
 				<div class="commonbox">

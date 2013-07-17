@@ -23,7 +23,7 @@ class JoininController extends Controller{
 		$oEventuser=EventuserModel::F('event_id=? AND user_id=?',$nEventid,$GLOBALS['___login___']['user_id'])->getOne();
 
 		if(!empty($oEventuser['user_id'])){
-			$this->E(Dyhb::L('你已经参加过该活动','Controller'));
+			$this->E(Dyhb::L('你已经参加过该活动或者你是活动发起人','Controller'));
 		}
 
 		// 写入参加活动

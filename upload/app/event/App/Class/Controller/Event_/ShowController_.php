@@ -10,6 +10,7 @@ class ShowController extends Controller{
 	
 	public function index(){
 		$nEventid=intval(G::getGpc('id','G'));
+		$sType=trim(G::getGpc('type','G'));
 
 		if(empty($nEventid)){
 			$this->E(Dyhb::L('你没有指定活动ID','Controller'));
@@ -20,7 +21,12 @@ class ShowController extends Controller{
 			$this->E(Dyhb::L('你要浏览的活动不存在','Controller'));
 		}
 
+		if(!in_array($sType,array('user','attentionuser'))){
+			$sType='';
+		}
+
 		$this->assign('oEvent',$oEvent);
+		$this->assign('sType',$sType);
 
 		$this->_oEvent=$oEvent;
 
@@ -38,8 +44,12 @@ class ShowController extends Controller{
 		$arrNeweventattentionusers=EventattentionuserModel::F('event_id=?',$nEventid)->order('create_dateline DESC')->limit(0,8)->getAll();
 
 		$this->assign('arrNeweventattentionusers',$arrNeweventattentionusers);
-		
-		$this->display('event+show');
+
+		if(!empty($sType)){
+			$this->display('event+'.$sType);
+		}else{
+			$this->display('event+show');
+		}
 	}
 
 	public function show_title_(){
