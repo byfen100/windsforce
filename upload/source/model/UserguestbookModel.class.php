@@ -12,7 +12,6 @@ class UserguestbookModel extends CommonModel{
 			'props'=>array(
 				'userguestbook_id'=>array('readonly'=>true),
 				'user'=>array(Db::BELONGS_TO=>'UserModel','source_key'=>'user_id','target_key'=>'user_id'),
-				'userguestbook'=>array(Db::BELONGS_TO=>'UserguestbookModel','source_key'=>'userguestbook_id','target_key'=>'user_id','skip_empty'=>true),
 			),
 			'attr_protected'=>'userguestbook_id',
 			'autofill'=>array(
