@@ -20,7 +20,7 @@ class AnnouncementModel extends CommonModel{
 				'announcement_sort'=>array(
 					array('number',Dyhb::L('序号只能是数字','__COMMON_LANG__@Common')),
 				),
-				'announcement_name'=>array(
+				'announcement_title'=>array(
 					array('require',Dyhb::L('公告标题不能为空','__COMMON_LANG__@Common')),
 					array('max_length',225,Dyhb::L('公告标题最大长度为225','__COMMON_LANG__@Common'))
 				),
