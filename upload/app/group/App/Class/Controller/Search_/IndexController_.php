@@ -37,6 +37,7 @@ class IndexController extends Controller{
 		if($sSearchSubmit=='yes'){
 			$bQuickSearch=true;
 			$_REQUEST['search_date_before']=0;
+			$sKey='';
 		}
 
 		if(empty($sKey) && $bQuickSearch===false){
