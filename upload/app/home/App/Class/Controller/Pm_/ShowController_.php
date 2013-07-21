@@ -45,10 +45,10 @@ class ShowController extends GlobalchildController{
 
 		// 读取用户发送的短消息
 		if(empty($nUserId)){
-			$nLoginUserId=intval(G::getGpc('uid'));
+			$nToUserId=intval(G::getGpc('muid'));
 			
-			if(empty($nLoginUserId)){
-				$nLoginUserId=$GLOBALS['___login___']['user_id'];
+			if($nToUserId!=$oOnePm['pm_msgtoid'] && $GLOBALS['___login___']['user_id']!=$oOnePm['pm_msgfromid']){
+				$this->_oParentcontroller->page404();
 			}
 			
 			$this->assign('oPm',$oOnePm);
