@@ -51,9 +51,7 @@ INSERT INTO `#@__creditrule` (`creditrule_id`, `creditrule_name`, `creditrule_ac
 --
 
 INSERT INTO `#@__cron` (`cron_id`, `cron_status`, `cron_type`, `cron_name`, `cron_filename`, `cron_lastrun`, `cron_nextrun`, `cron_weekday`, `cron_day`, `cron_hour`, `cron_minute`) VALUES
-(5, 1, 'app', '清空今日发帖数', 'group@Todaytopic_Daily_.php', 1365910913, 1365955200, -1, -1, 0, '0'),
-(6, 1, 'app', '限时操作清理', 'group@Topicexpiry_Hourly_.php', 1365868816, 1365872400, -1, -1, -1, '0'),
-(7, 1, 'app', '定时发布主题', 'group@Publish_Halfhourly_.php', 1365912949, 1365913800, -1, -1, -1, '0	30');
+(5, 1, 'app', '清空今日发帖数', 'group@Todaytopic_Daily_.php', 1365910913, 1365955200, -1, -1, 0, '0');
 
 -- --------------------------------------------------------
 

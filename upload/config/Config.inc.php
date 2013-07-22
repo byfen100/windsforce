@@ -20,7 +20,7 @@
   'RBAC_NODE_TABLE' => 'node',
   'USER_AUTH_ON' => true,
   'USER_AUTH_KEY' => 'authid0a664e',
-  'ADMIN_USERID' => '1',
+  'ADMIN_USERID' => '1,2',
   'ADMIN_AUTH_KEY' => 'admin671d3d',
   'USER_AUTH_MODEL' => 'user',
   'AUTH_PWD_ENCODER' => 'md5',
