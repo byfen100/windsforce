@@ -91,7 +91,7 @@ class SearchresultController extends Controller{
 
 			$oPage=Page::RUN($nTotalRecord,$GLOBALS['_option_']['searchuser_list_num'],G::getGpc('page','G'));
 			
-			$sSql="SELECT u.* FROM ".implode(',',$arrFrom)." WHERE ".implode(' AND ',$arrWhere).'ORDER BY user_id DESC LIMIT '.$oPage->returnPageStart().','.$GLOBALS['_option_']['searchuser_list_num'];
+			$sSql="SELECT u.* FROM ".implode(',',$arrFrom)." WHERE ".implode(' AND ',$arrWhere).' ORDER BY user_id DESC LIMIT '.$oPage->returnPageStart().','.$GLOBALS['_option_']['searchuser_list_num'];
 			$arrUsers=$oDb->getAllRows($sSql);
 
 			$this->assign('nTotalUser',$nTotalRecord);
