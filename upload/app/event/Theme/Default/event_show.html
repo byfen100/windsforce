@@ -143,7 +143,7 @@ function insertEventcommentmusic(sContent){
 					<div class="span3">
 						<img class="thumbnail" src="<!--{:Event_Extend::getEventcolor($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
 						<br/>
-						<a class="btn" href="javascript:void(0);" onclick="attentionEvent('<!--{$oEvent->event_id}-->');">我感兴趣</a>&nbsp;<a class="btn btn-success" href="javascript:void(0);" onclick="joinEvent('<!--{$oEvent->event_id}-->');">我要参加</a>
+						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bAttentionuser}-->disabled<!--{/if}-->>我感兴趣</button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bJoinuser}-->disabled<!--{/if}-->>我要参加</button>
 					</div>
 					<div class="span5">
 						<table class="table">
@@ -214,71 +214,8 @@ function insertEventcommentmusic(sContent){
 				<!--{# 评论表单}-->
 				<!--<include file="event+commentform" />-->
 			</div>
-			<div class="span4">
-				<div class="commonbox">
-					<div class="backgroup_box">
-						<p><a class="btn btn-success" href="/windsforce/upload/index.php/app/group/gid/default"><i class="icon-share-alt icon-white"></i>&nbsp;返回小组</a></p>
-					</div>
-				</div>
 
-				<div class="commonbox">
-					<div class="commonboxtitle">活动组织者</div>
-					<p>
-						<!--{if !empty($oAdminuser)}-->
-						<ul class="thumbnails">
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oAdminuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oAdminuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->发起者<!--</lang>--> <!--{:UserModel::getUsernameById($oAdminuser['user_id'])}--> - <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oAdminuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oAdminuser['user_id'])}-->"></a>
-									<a rel="tooltip" title="<!--<lang package='Template'>-->发起者<!--</lang>--> <!--{:UserModel::getUsernameById($oAdminuser['user_id'])}--> | <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oAdminuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oAdminuser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oAdminuser['user_id']),0,3)}--></h5></a>
-								</div>
-							</li>
-						</ul>
-						<!--{d*else}-->
-						<!--<lang package='Template'>-->暂时没有发现活动发起人<!--</lang>-->
-						<!--{/if}-->
-					</p>
-				</div>
-				
-				<div class="commonbox_mini commonbox_mini_gray">
-					<h2 class="title"><!--<lang package='Template'>-->活动成员<!--</lang>--></h2>
-					<p>
-						<ul class="thumbnails">
-							<!--{if is_array($arrNeweventusers)}-->
-							<!--<foreach for=arrNeweventusers value=oNeweventuser>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oNeweventuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNeweventuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oNeweventuser['user_id'])}--> - <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oNeweventuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oNeweventuser['user_id'])}-->"></a>
-									<a rel="tooltip" title="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oNeweventuser['user_id'])}--> | <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oNeweventuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNeweventuser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oNeweventuser['user_id']),0,3)}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li><!--<lang package='Template'>-->暂时没有发现任何活动成员<!--</lang>--></li>
-							<!--{/if}-->
-						</ul>
-					</p>
-				</div>
-				
-				<div class="commonbox_mini commonbox_mini_gray">
-					<h2 class="title">感兴趣成员</h2>
-					<p>
-						<ul class="thumbnails">
-							<!--{if is_array($arrNeweventattentionusers)}-->
-							<!--<foreach for=arrNeweventattentionusers value=oNeweventattentionuser>-->
-							<li class="span1">
-								<div class="thumbnail">
-									<a href="<!--{:Dyhb::U('home://space@?id='.$oNeweventattentionuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oNeweventattentionuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oNeweventattentionuser['user_id'])}--> - <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oNeweventattentionuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oNeweventattentionuser['user_id'])}-->"></a>
-									<a rel="tooltip" title="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oNeweventattentionuser['user_id'])}--> | <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oNeweventattentionuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oNeweventattentionuser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oNeweventattentionuser['user_id']),0,3)}--></h5></a>
-								</div>
-							</li>
-							<!--</foreach>-->
-							<!--{d*else}-->
-							<li><!--<lang package='Template'>-->暂时没有发现任何感兴趣成员<!--</lang>--></li>
-							<!--{/if}-->
-						</ul>
-					</p>
-				</div>
-			</div>
+			<!--<include file="event+sidebar" />-->
 		</div>
 
 <!--<include file="Core_Extend::template('footer')" />-->

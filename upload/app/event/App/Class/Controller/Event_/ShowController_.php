@@ -50,6 +50,14 @@ class ShowController extends Controller{
 		$this->assign('sType',$sType);
 
 		$this->_oEvent=$oEvent;
+
+		// 判断用户是否已经参加 && 已经感兴趣过
+		$oTryjoin=EventuserModel::F('event_id=? AND user_id=?',$oEvent['event_id'],$GLOBALS['___login___']['user_id'])->getOne();
+
+		$oTryattention=EventattentionuserModel::F('event_id=? AND user_id=?',$oEvent['event_id'],$GLOBALS['___login___']['user_id'])->getOne();
+
+		$this->assign('bJoinuser',!empty($oTryjoin['event_id'])?true:false);
+		$this->assign('bAttentionuser',!empty($oTryattention['event_id'])?true:false);
 		
 		// 读取评论列表
 		if(empty($sType)){
@@ -74,6 +82,32 @@ class ShowController extends Controller{
 			$this->assign('nTotalEventcomment',$nTotalRecord);
 			$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
 			$this->assign('arrEventcommentLists',$arrEventcommentLists);
+		}
+
+		// 读取成员
+		if($sType=='user'){
+			$nTotalRecord=EventuserModel::F('event_id=? AND eventuser_status=1 AND eventuser_admin=0',$nEventid)->all()->getCounts();
+
+			$oPage=Page::RUN($nTotalRecord,36,G::getGpc('page','G'));
+
+			$arrEventuserLists=EventuserModel::F('event_id=? AND eventuser_status=1 AND eventuser_admin=0',$nEventid)->all()->order('create_dateline DESC')->limit($oPage->returnPageStart(),36)->getAll();
+
+			$this->assign('nTotalEventuser',$nTotalRecord);
+			$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
+			$this->assign('arrEventuserLists',$arrEventuserLists);
+		}
+
+		// 读取感兴趣用户
+		if($sType=='attentionuser'){
+			$nTotalRecord=EventattentionuserModel::F('event_id=?',$nEventid)->all()->getCounts();
+
+			$oPage=Page::RUN($nTotalRecord,36,G::getGpc('page','G'));
+
+			$arrEventuserLists=EventattentionuserModel::F('event_id=?',$nEventid)->all()->order('create_dateline DESC')->limit($oPage->returnPageStart(),36)->getAll();
+
+			$this->assign('nTotalEventuser',$nTotalRecord);
+			$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
+			$this->assign('arrEventuserLists',$arrEventuserLists);
 		}
 
 		// 取得活动发起者
