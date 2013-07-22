@@ -30,4 +30,12 @@ class EventController extends InitController{
 		Core_Extend::doControllerAction('Event@Attention','index');
 	}
 
+	public function add_eventcomment(){
+		Core_Extend::doControllerAction('Event@Addeventcomment','index');
+	}
+
+	public function audit_eventcomment(){
+		Core_Extend::doControllerAction('Event@Auditeventcomment','index');
+	}
+
 }

@@ -1,5 +1,10 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{:Core_Extend::emotion()}-->
+
+<script src="<!--{:__PUBLIC__}-->/js/jquery/jquery.insertcontent.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
+
 <!--{script}-->
 function joinEvent(nId){
 	oJoinevents=windsforceAjax(D.U('event://event/join?id='+nId),'<!--<lang package='Template'>-->参加活动<!--</lang>-->','',completeJoinevent,'',400,100);
@@ -22,6 +27,103 @@ function attentionEvent(nId){
 			setTimeout("window.location.replace(_SELF_);",1000);
 		}
 	});
+}
+
+$(function(){
+	$('.eventcomment-content').emotionsToHtml();
+	
+	$('#eventcomment_content').autoResize({
+		onResize:function(){
+			$(this).css({opacity:0.8});
+		},
+		animateCallback:function(){
+			$(this).css({opacity:1});
+		},
+		animateDuration:300,
+		extraSpace:0,
+		min:'100px'
+	});
+
+	$(".face-icon").jqfaceedit({txtAreaObj:$("#eventcomment_content"),textareaid:'eventcomment_content',containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+});
+
+function commentCheckForm(comment_content,customContent){
+	var comment_name=$.trim($('#eventcomment_name').val());
+	var comment_email=$.trim($("#eventcomment_email").val());
+	var comment_url=$.trim($("#eventcomment_url").val());
+	if(customContent==1){
+		comment_content=$.trim($("#eventcomment_content").val());
+	}
+
+	if(comment_name==""){
+		windsforceAlert(D.L('评论名字不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_name.length>25){
+		windsforceAlert(D.L('评论名字长度只能小于等于25个字符串','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_email!='' && !checkEmail(comment_email)){
+		windsforceAlert(D.L('评论E-mail 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_url!='' && !checkUrl(comment_url)){
+		windsforceAlert(D.L('评论Url 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_content == ""){
+		windsforceAlert(D.L('评论内容不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	return true;
+}
+
+function commentSubmit(){
+	var bResult=commentCheckForm();
+	if(bResult===false){
+		return false;
+	}
+
+	$("#comment-submit").val(D.L('正在提交评论','__COMMON_LANG__@Common'));
+	$("#comment-submit").attr("disabled", "disabled");
+	Dyhb.AjaxSubmit('event-commentform',D.U('event://event/add_eventcomment'),'',commentComplete);
+}
+
+function commentComplete(data,status){
+	$("#comment-submit").attr("disabled", false);
+	$("#comment-submit").val(D.L('提交评论','__COMMON_LANG__@Common'));
+	if(status==1){
+		setTimeout(function(){window.location.href=data.jumpurl;},1000);
+	}
+}
+
+function eventcommentAudit(nCommentid,nStatus){
+	Dyhb.AjaxSend(D.U('event://event/audit_eventcomment?id='+nCommentid+'&status='+nStatus),'ajax=1','',function(data,status){
+		if(status==1){
+			setTimeout("window.location.replace(_SELF_);",1000);
+		}
+	});
+}
+
+function showMedia(){
+	$('#eventcomment-media-box').toggle('fast');
+}
+
+function insertEventcommentattachment(nAttachmentid){
+	insertAttachmentNormal('eventcomment_content',nAttachmentid);
+}
+
+function insertEventcommentvideo(sContent){
+	insertVideoNormal('eventcomment_content',sContent);
+}
+
+function insertEventcommentmusic(sContent){
+	insertMusicNormal('eventcomment_content',sContent);
 }
 <!--{/script}-->
 
@@ -109,12 +211,15 @@ function attentionEvent(nId){
 					</div>
 				</div>
 				
-				<div class="commonbox" style="margin-top:20px;">
-					<div class="commonboxtitle"><!--<lang package='Template'>-->活动评论<!--</lang>--></div>
-					<div class="backgroup_box">
-						<p><!--{$oEvent['event_content']}--></p>
-					</div>
+				<div class="common_share clearfix">
+					<!--{:Core_Extend::share()}-->
 				</div>
+				
+				<!--{# 评论列表}-->
+				<!--<include file="event+commentlist" />-->
+
+				<!--{# 评论表单}-->
+				<!--<include file="event+commentform" />-->
 			</div>
 			<div class="span4">
 				<div class="commonbox">

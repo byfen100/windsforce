@@ -50,4 +50,23 @@ class EventModel extends CommonModel{
 		$this->event_deadline=strtotime($_POST['event_deadline']);
 	}
 
+	public function updateEventcommentnum($nEventid){
+		$nEventid=intval($nEventid);
+
+		$oEvent=EventModel::F('event_id=?',$nEventid)->getOne();
+		if(!empty($oEvent['event_id'])){
+			$nEventcommentnum=EventcommentModel::F('eventcomment_status=1 AND eventcomment_auditpass=1 AND event_id=?',$nEventid)->all()->getCounts();
+
+			$oEvent->event_commentcount=$nEventcommentnum;
+			$oEvent->save(0,'update');
+
+			if($oEvent->isError()){
+				$this->setErrorMessage($oEvent->getErrorMessage());
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 }
