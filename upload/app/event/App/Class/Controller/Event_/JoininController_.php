@@ -41,6 +41,14 @@ class JoininController extends Controller{
 			$this->E($oEventuser->getErrorMessage());
 		}
 
+		// 更新活动参加人数
+		$oEventTemp=Dyhb::instance('EventModel');
+		$oEventTemp->updateEventjoinnum($nEventid);
+
+		if($oEventTemp->isError()){
+			$oEventTemp->getErrorMessage();
+		}
+
 		$this->S(Dyhb::L('参加活动成功','Controller'));
 	}
 

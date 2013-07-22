@@ -34,6 +34,14 @@ class AttentionController extends Controller{
 			$this->E($oEventattentionuser->getErrorMessage());
 		}
 
+		// 更新活动感兴趣人数
+		$oEventTemp=Dyhb::instance('EventModel');
+		$oEventTemp->updateEventattentionnum($nEventid);
+
+		if($oEventTemp->isError()){
+			$oEventTemp->getErrorMessage();
+		}
+
 		$this->S(Dyhb::L('添加感兴趣活动成功','Controller'));
 	}
 
