@@ -141,7 +141,7 @@ function insertEventcommentmusic(sContent){
 
 				<div class="row">
 					<div class="span3">
-						<img class="thumbnail" src="<!--{:Event_Extend::getEventcolor($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
+						<img class="thumbnail" src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
 						<br/>
 						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bAttentionuser}-->disabled<!--{/if}-->>我感兴趣</button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bJoinuser || $bLimituser}-->disabled<!--{/if}-->>我要参加</button>
 					</div>
@@ -187,7 +187,7 @@ function insertEventcommentmusic(sContent){
 								</tr>
 								<tr>
 									<td>参加是否需要审核</td>
-									<td><!--{if $oEvent['event_isaudit']==1}-->是<!--{d*else}-->否<!--{/if}--></td>
+									<td><b><!--{if $oEvent['event_isaudit']==1}-->是<!--{d*else}-->否<!--{/if}--></b></td>
 								</tr>
 								<tr>
 									<td colspan="2"><b><!--{$oEvent['event_attentioncount']}--></b>人感兴趣&nbsp; <b><!--{$oEvent['event_joincount']}--></b>人参加</td>

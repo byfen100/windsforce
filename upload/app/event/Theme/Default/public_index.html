@@ -63,7 +63,7 @@ ol, ul {
 						   <!--<foreach for=arrHotevents value=oHotevent>-->
 						  <li class="span2">
 							<div class="thumbnail">
-							  <img src="<!--{:Event_Extend::getEventcolor($oHotevent)}-->" alt="<!--{$oHotevent['event_title']}-->">
+							  <img src="<!--{:Event_Extend::getEventcover($oHotevent)}-->" alt="<!--{$oHotevent['event_title']}-->">
 							  <div class="caption">
 								<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oHotevent['event_id'])}-->" title="<!--{$oHotevent['event_title']}-->"><!--{$oHotevent['event_title']}--></a></h6>
 							  </div>
@@ -108,7 +108,7 @@ ol, ul {
 						  <!--<foreach for=arrEvents value=oEvent>-->
 						  <li class="span2">
 							<div class="thumbnail">
-							  <img src="<!--{:Event_Extend::getEventcolor($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
+							  <img src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
 							  <div class="caption">
 								<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']}--></a></h6>
 								<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>

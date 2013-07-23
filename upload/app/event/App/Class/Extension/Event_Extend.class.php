@@ -6,7 +6,7 @@
 
 class Event_Extend{
 
-	public static function getEventcolor($oEvent){
+	public static function getEventcover($oEvent){
 		// 导入附件扩展函数
 		if(!Dyhb::classExists('Apptheme_Extend')){
 			require_once(Core_Extend::includeFile('function/Apptheme_Extend'));

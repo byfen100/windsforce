@@ -94,11 +94,15 @@ class ShowController extends Controller{
 
 		// 读取成员
 		if($sType=='user'){
-			$nTotalRecord=EventuserModel::F('event_id=? AND eventuser_status=1 AND eventuser_admin=0',$nEventid)->all()->getCounts();
+			$arrWhere=array();
+			$arrWhere['event_id']=$nEventid;
+			$arrWhere['eventuser_admin']='0';
+
+			$nTotalRecord=EventuserModel::F()->where($arrWhere)->all()->getCounts();
 
 			$oPage=Page::RUN($nTotalRecord,36,G::getGpc('page','G'));
 
-			$arrEventuserLists=EventuserModel::F('event_id=? AND eventuser_status=1 AND eventuser_admin=0',$nEventid)->all()->order('create_dateline DESC')->limit($oPage->returnPageStart(),36)->getAll();
+			$arrEventuserLists=EventuserModel::F()->where($arrWhere)->all()->order('eventuser_status ASC,create_dateline DESC')->limit($oPage->returnPageStart(),36)->getAll();
 
 			$this->assign('nTotalEventuser',$nTotalRecord);
 			$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));
