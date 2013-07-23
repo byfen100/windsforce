@@ -51,13 +51,21 @@ class ShowController extends Controller{
 
 		$this->_oEvent=$oEvent;
 
-		// 判断用户是否已经参加 && 已经感兴趣过
+		// 判断用户是否已经参加 && 已经感兴趣过 && 参加人数是否已满
 		$oTryjoin=EventuserModel::F('event_id=? AND user_id=?',$oEvent['event_id'],$GLOBALS['___login___']['user_id'])->getOne();
 
 		$oTryattention=EventattentionuserModel::F('event_id=? AND user_id=?',$oEvent['event_id'],$GLOBALS['___login___']['user_id'])->getOne();
 
+		$bLimituser=false;
+		if($oEvent['event_limitcount']){
+			if($oEvent['event_limitcount']-$oEvent['event_joincount']<=0){
+				$bLimituser=true;
+			}
+		}
+
 		$this->assign('bJoinuser',!empty($oTryjoin['event_id'])?true:false);
 		$this->assign('bAttentionuser',!empty($oTryattention['event_id'])?true:false);
+		$this->assign('bLimituser',$bLimituser);
 		
 		// 读取评论列表
 		if(empty($sType)){

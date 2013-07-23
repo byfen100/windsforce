@@ -143,7 +143,7 @@ function insertEventcommentmusic(sContent){
 					<div class="span3">
 						<img class="thumbnail" src="<!--{:Event_Extend::getEventcolor($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
 						<br/>
-						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bAttentionuser}-->disabled<!--{/if}-->>我感兴趣</button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bJoinuser}-->disabled<!--{/if}-->>我要参加</button>
+						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bAttentionuser}-->disabled<!--{/if}-->>我感兴趣</button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bJoinuser || $bLimituser}-->disabled<!--{/if}-->>我要参加</button>
 					</div>
 					<div class="span5">
 						<table class="table">
@@ -191,6 +191,17 @@ function insertEventcommentmusic(sContent){
 								</tr>
 								<tr>
 									<td colspan="2"><b><!--{$oEvent['event_attentioncount']}--></b>人感兴趣&nbsp; <b><!--{$oEvent['event_joincount']}--></b>人参加</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<!--{if $oEvent['event_starttime']>CURRENT_TIMESTAMP}-->
+										<b style="color:gray;">活动未开始</b>
+										<!--{elseif $oEvent['event_starttime']<=CURRENT_TIMESTAMP && $oEvent['event_endtime']>=CURRENT_TIMESTAMP}-->
+										<b style="color:green;">活动正在进行</b>
+										<!--{d*else}-->
+										<b style="color:red;">活动已经结束</b>
+										<!--{/if}-->
+									</td>
 								</tr>
 							</tbody>
 						</table>

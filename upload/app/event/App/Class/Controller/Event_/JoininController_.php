@@ -26,6 +26,13 @@ class JoininController extends Controller{
 			$this->E(Dyhb::L('你已经参加过该活动或者你是活动发起人','Controller'));
 		}
 
+		// 判断是否有剩余名额
+		if($oEvent['event_limitcount']){
+			if($oEvent['event_limitcount']-$oEvent['event_joincount']<=0){
+				$this->E(Dyhb::L('活动参加人数已满','Controller'));
+			}
+		}
+
 		// 写入参加活动
 		$oEventuser=new EventuserModel();
 		$oEventuser->event_id=$nEventid;
