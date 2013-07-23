@@ -1,7 +1,13 @@
 			<div class="span4">
 				<div class="commonbox">
 					<div class="backgroup_box">
-						<p><a class="btn btn-success" href="/windsforce/upload/index.php/app/group/gid/default"><i class="icon-share-alt icon-white"></i>&nbsp;返回小组</a></p>
+						<p>
+							<!--{if $oEvent['eventcategory_id']}-->
+							<a class="btn btn-success" href="<!--{:Dyhb::U('event://public/event?cid='.$oEvent['eventcategory_id'])}-->"><i class="icon-share-alt icon-white"></i>&nbsp;<!--{$oEvent:eventcategory:eventcategory_name}--></a>
+							<!--{d*else}-->
+							<a class="btn btn-success" href="<!--{:Dyhb::U('event://public/index')}-->"><i class="icon-share-alt icon-white"></i>&nbsp;返回活动主页</a>
+							<!--{/if}-->
+						</p>
 					</div>
 				</div>
 

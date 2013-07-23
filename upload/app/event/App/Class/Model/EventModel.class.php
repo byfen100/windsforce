@@ -11,11 +11,28 @@ class EventModel extends CommonModel{
 			'table_name'=>'event',
 			'props'=>array(
 				'event_id'=>array('readonly'=>true),
+				'eventcategory'=>array(Db::BELONGS_TO=>'EventcategoryModel','source_key'=>'eventcategory_id','target_key'=>'eventcategory_id','skip_empty'=>true),
 			),
 			'attr_protected'=>'event_id',
 			'autofill'=>array(
 				array('user_id','userId','create','callback'),
 				array('event_username','userName','create','callback'),
+			),
+			'check'=>array(
+				'event_title'=>array(
+					array('require',Dyhb::L('活动名称不能为空','__APPEVENT_COMMON_LANG__@Model')),
+					array('max_length',255,Dyhb::L('活动名称不能超过255个字符','__APPEVENT_COMMON_LANG__@Model')),
+				),
+				'event_address'=>array(
+					array('require',Dyhb::L('活动地点不能为空','__APPEVENT_COMMON_LANG__@Model')),
+					array('max_length',255,Dyhb::L('活动地点不能超过255个字符','__APPEVENT_COMMON_LANG__@Model')),
+				),
+				'eventcategory_id'=>array(
+					array('require',Dyhb::L('活动类型不能为空','__APPEVENT_COMMON_LANG__@Model')),
+				),
+				'event_content'=>array(
+					array('require',Dyhb::L('活动介绍不能为空','__APPEVENT_COMMON_LANG__@Model')),
+				),
 			),
 		);
 	}

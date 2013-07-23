@@ -7,6 +7,35 @@
 class AddinController extends Controller{
 
 	public function index(){
+		// 活动时间先验证
+		$nEventstarttime=strtotime(trim(G::getGpc('event_starttime','P')));
+		$nEventendtime=strtotime(trim(G::getGpc('event_endtime','P')));
+		$nEventdeadline=strtotime(trim(G::getGpc('event_deadline','P')));
+
+		if(!$nEventstarttime){
+			$this->E(Dyhb::L('活动开始时间不能为空','__APPEVENT_COMMON_LANG__@Model'));
+		}
+
+		if(!$nEventendtime){
+			$this->E(Dyhb::L('活动结束时间不能为空','__APPEVENT_COMMON_LANG__@Model'));
+		}
+
+		if(!$nEventdeadline){
+			$this->E(Dyhb::L('活动报名截止时间不能为空','__APPEVENT_COMMON_LANG__@Model'));
+		}
+
+		if($nEventstarttime>$nEventendtime){
+			$this->E(Dyhb::L('活动结束时间不能早于活动开始时间','__APPEVENT_COMMON_LANG__@Model'));
+		}
+		
+		if($nEventdeadline<CURRENT_TIMESTAMP){
+			$this->E(Dyhb::L('活动报名时间不能早于当前时间','__APPEVENT_COMMON_LANG__@Model'));
+		}
+		
+		if($nEventdeadline>$nEventendtime){
+			$this->E(Dyhb::L('活动报名时间不能晚于活动结束时间','__APPEVENT_COMMON_LANG__@Model'));
+		}
+		
 		// 保存活动
 		$oEvent=new EventModel();
 		$oEvent->formatTime();
@@ -27,7 +56,10 @@ class AddinController extends Controller{
 			$this->E($oEventuser->getErrorMessage());
 		}
 
-		$this->S(Dyhb::L('活动添加成功','Controller'));
+		$arrData=$oEvent->toArray();
+		$arrData['url']=Dyhb::U('event://e@?id='.$oEvent['event_id']);
+
+		$this->A($arrData,Dyhb::L('活动添加成功','Controller'));
 	}
 
 }

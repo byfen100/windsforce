@@ -38,7 +38,7 @@ function complete(data,status){
 	$("#submit_button").attr("disabled", false);
 	$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
 	if(status==1){
-	
+		setTimeout(function(){window.location.replace(data.url);},1000);
 	}
 }
 
@@ -114,7 +114,7 @@ function insertEventcover(nAttachmentid){
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="event_content"><!--<lang package='Template'>-->活动介绍<!--</lang>--></label>
+							<label class="control-label" for="event_content"><!--<lang package='Template'>-->活动介绍<!--</lang>--><em style="color:red">*</em></label>
 							<div class="controls">
 								<div id="event-media-box" class="common-media-box">
 									<a href="javascript:void(0);" class="face-icon icon_add_face" ><!--<lang package='__COMMON_LANG__@Common'>-->表情<!--</lang>--></a> 
