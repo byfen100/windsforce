@@ -125,6 +125,32 @@ function insertEventcommentvideo(sContent){
 function insertEventcommentmusic(sContent){
 	insertMusicNormal('eventcomment_content',sContent);
 }
+
+function deleteEvent(nEventid){
+	windsforceConfirm('<!--<lang package='Template'>-->你确定要删除活动吗?<!--</lang>-->',function(){
+		Dyhb.AjaxSend(D.U('event://event/delete?id='+nEventid),
+			'ajax=1','',
+			function(data,status){
+				if(status==1){
+					setTimeout("window.location.replace('<!--{:Dyhb::U('event://public/index')}-->');",1000);
+				}
+			}
+		);
+	});
+}
+
+function endEvent(nEventid){
+	windsforceConfirm('<!--<lang package='Template'>-->你确定要提前结束活动吗?<!--</lang>-->',function(){
+		Dyhb.AjaxSend(D.U('event://event/end?id='+nEventid),
+			'ajax=1','',
+			function(data,status){
+				if(status==1){
+					setTimeout("window.location.replace(_SELF_);",1000);
+				}
+			}
+		);
+	});
+}
 <!--{/script}-->
 
 		<ul class="breadcrumb">
@@ -143,7 +169,7 @@ function insertEventcommentmusic(sContent){
 					<div class="span3">
 						<img class="thumbnail" src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
 						<br/>
-						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bAttentionuser}-->disabled<!--{/if}-->>我感兴趣</button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bJoinuser || $bLimituser}-->disabled<!--{/if}-->>我要参加</button>
+						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bEventend || $bAttentionuser}-->disabled<!--{/if}-->>我感兴趣</button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bEventend || $bJoinuser || $bLimituser}-->disabled<!--{/if}-->>我要参加</button>
 					</div>
 					<div class="span5">
 						<table class="table">
@@ -203,6 +229,17 @@ function insertEventcommentmusic(sContent){
 										<!--{/if}-->
 									</td>
 								</tr>
+								<!--{if Eventadmin_Extend+checkEvent($oEvent)}-->
+								<tr>
+									<td colspan="2">
+										<!--{if $oEvent['event_endtime']>=CURRENT_TIMESTAMP}-->
+										<a href="javascript:void(0);" onclick="endEvent(<!--{$oEvent['event_id']}-->)" class="btn btn-success">提前结束</a>&nbsp;&nbsp;
+										<!--{/if}-->
+										<a class="btn btn-success" href="<!--{:Dyhb::U('event://event/edit?id='.$oEvent['event_id'])}-->">编辑活动</a>&nbsp;&nbsp;
+										<a href="javascript:void(0);" onclick="deleteEvent(<!--{$oEvent['event_id']}-->)" class="btn">删除活动</a>
+									</td>
+								</tr>
+								<!--{/if}-->
 							</tbody>
 						</table>
 					</div>

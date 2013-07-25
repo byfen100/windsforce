@@ -42,6 +42,23 @@ function complete(data,status){
 	}
 }
 
+function updateEvent(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+
+	$('#event_content').val(editor.html());
+	
+	Dyhb.AjaxSubmit('createeventform','<!--{:Dyhb::U('event://event/update')}-->','',completeUpdate);
+}
+
+function completeUpdate(data,status){
+	$("#submit_button").attr("disabled", false);
+	$("#submit_button").val( '<!--<lang package='Template'>-->更新<!--</lang>-->' );
+	if(status==1){
+		setTimeout(function(){window.location.replace(_SELF_);},1000);
+	}
+}
+
 function insertEventcover(nAttachmentid){
 	insertAttachmentthumb('event_cover',nAttachmentid);
 }
@@ -50,23 +67,23 @@ function insertEventcover(nAttachmentid){
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('event://public/index')}-->" title="<!--<lang package='Template'>-->活动<!--</lang>-->"><!--<lang package='Template'>-->活动<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
-			<li><!--<lang package='Template'>-->发起活动<!--</lang>--></li>
+			<li><!--{if isset($oEvent)}--><!--<lang package='Template'>-->编辑活动<!--</lang>--><!--{d*else}--><!--<lang package='Template'>-->发起活动<!--</lang>--><!--{/if}--></li>
 		</ul>
 
 		<div class="row">
 			<div class="span8">
-				<form class="form-horizontal" method='post' id="createeventform" name="createeventform" enctype="multipart/form-data">
+				<form class="form-horizontal" method='post' id="createeventform" name="createeventform">
 					<fieldset>
 						<div class="control-group">
 							<label class="control-label" for="event_title"><!--<lang package='Template'>-->活动名称<!--</lang>--><em style="color:red">*</em></label>
 							<div class="controls">
-								<input class="input-xlarge" id="event_title" name="event_title" type="text">
+								<input class="input-xlarge" id="event_title" name="event_title" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_title']}--><!--{/if}-->">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_address"><!--<lang package='Template'>-->活动地点<!--</lang>--><em style="color:red">*</em></label>
 							<div class="controls">
-								<input class="span5" id="event_address" name="event_address" type="text">
+								<input class="span5" id="event_address" name="event_address" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_address']}--><!--{/if}-->">
 							</div>
 						</div>
 						<div class="control-group">
@@ -76,7 +93,7 @@ function insertEventcover(nAttachmentid){
 									<option value="">- <!--<lang package='Template'>-->请选择类型<!--</lang>--> -</option>
 									<!--{~$arrEventcategory = $oEventcategoryTree->getChilds()}-->
 									<!--<foreach for=arrEventcategory value=nCId>-->
-									<option value="<!--{$nCId}-->">|<!--{$oEventcategoryTree:getLayer( $nCId, '--' )}--><!--{$oEventcategoryTree:getValue( $nCId )}--></option>
+									<option value="<!--{$nCId}-->" <!--{if $oEvent['eventcategory_id']==$nCId}-->selected<!--{/if}-->>|<!--{$oEventcategoryTree:getLayer( $nCId, '--' )}--><!--{$oEventcategoryTree:getValue( $nCId )}--></option>
 									<!--</foreach>-->
 								</select>
 							</div>
@@ -84,32 +101,32 @@ function insertEventcover(nAttachmentid){
 						<div class="control-group">
 							<label class="control-label" for="event_cost"><!--<lang package='Template'>-->活动经费<!--</lang>--></label>
 							<div class="controls">
-								<input class="input-xlarge" id="event_cost" name="event_cost" type="text">
+								<input class="input-xlarge" id="event_cost" name="event_cost" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_cost']}--><!--{/if}-->">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_costdescription"><!--<lang package='Template'>-->活动经费说明<!--</lang>--></label>
 							<div class="controls">
-								<input class="input-xlarge" id="event_costdescription" name="event_costdescription" type="text">
+								<input class="input-xlarge" id="event_costdescription" name="event_costdescription" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_costdescription']}--><!--{/if}-->">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_starttime"><!--<lang package='Template'>-->活动时间<!--</lang>--><em style="color:red">*</em></label>
 							<div class="controls">
-								<input class="span2" id="event_starttime" name="event_starttime" type="text" value="<!--{:date('Y-m-d H:i:s',CURRENT_TIMESTAMP)}-->" onclick="WdatePicker({el:'event_starttime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})"> - 
-								<input class="span2" id="event_endtime" name="event_endtime" type="text" value="<!--{:date('Y-m-d H:i:s',CURRENT_TIMESTAMP+604800)}-->" onclick="WdatePicker({el:'event_endtime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'event_starttime\')}'})">
+								<input class="span2" id="event_starttime" name="event_starttime" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oEvent)?$oEvent['event_starttime']:CURRENT_TIMESTAMP)}-->" onclick="WdatePicker({el:'event_starttime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})"> - 
+								<input class="span2" id="event_endtime" name="event_endtime" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oEvent)?$oEvent['event_endtime']:CURRENT_TIMESTAMP+604800)}-->" onclick="WdatePicker({el:'event_endtime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'event_starttime\')}'})">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_deadline"><!--<lang package='Template'>-->截止报名时间<!--</lang>--><em style="color:red">*</em></label>
 							<div class="controls">
-								<input class="span2" id="event_deadline" name="event_deadline" type="text"value="<!--{:date('Y-m-d H:i:s',CURRENT_TIMESTAMP+259200)}-->" onclick="WdatePicker({el:'event_deadline',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})">
+								<input class="span2" id="event_deadline" name="event_deadline" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oEvent)?$oEvent['event_deadline']:CURRENT_TIMESTAMP+259200)}-->" onclick="WdatePicker({el:'event_deadline',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_limitcount"><!--<lang package='Template'>-->活动人数<!--</lang>--></label>
 							<div class="controls">
-								<input class="span1" id="event_limitcount" name="event_limitcount" type="text" value="0">
+								<input class="span1" id="event_limitcount" name="event_limitcount" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_limitcount']}--><!--{d*else}-->0<!--{/if}-->">
 								<p class="help-block">活动人数上限，设0表示无限制</p>
 							</div>
 						</div>
@@ -123,7 +140,7 @@ function insertEventcover(nAttachmentid){
 									<a href="javascript:void(0);" onclick="addMusic('insertEventmusic');" class="icon_add_music"><!--<lang package='__COMMON_LANG__@Common'>-->音乐<!--</lang>--></a>
 								</div>
 								<div id="emotion_parentcontainer">
-									<textarea class="input-xlarge" name="event_content" id="event_content" style="width:100%;height:350px;"></textarea>
+									<textarea class="input-xlarge" name="event_content" id="event_content" style="width:100%;height:350px;"><!--{if isset($oEvent)}--><!--{$oEvent['event_content']|htmlspecialchars}--><!--{/if}--></textarea>
 								</div>
 								<p class="help-block"><a href="<!--{:Dyhb::U('home://misc/ubb')}-->" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->查看内容支持的UBB代码<!--</lang>--></a></p>
 							</div>
@@ -131,48 +148,51 @@ function insertEventcover(nAttachmentid){
 						<div class="control-group">
 							<label class="control-label" for="event_contact"><!--<lang package='Template'>-->活动联系人<!--</lang>--></label>
 							<div class="controls">
-								<input class="input-xlarge" id="event_contact" name="event_contact" type="text">
+								<input class="input-xlarge" id="event_contact" name="event_contact" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_contact']}--><!--{/if}-->">
 								<p class="help-block">填写联系人联系方式，如小刘 130xxxxxxxx</p>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_contactsite"><!--<lang package='Template'>-->活动联系人网站<!--</lang>--></label>
 							<div class="controls">
-								<input class="input-xlarge" id="event_contactsite" name="event_contactsite" type="text">
+								<input class="input-xlarge" id="event_contactsite" name="event_contactsite" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_contactsite']}--><!--{/if}-->">
 								<p class="help-block">如果联系人有网站，可以在这里填写</p>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_jointcontact"><!--<lang package='Template'>-->活动联合联系人<!--</lang>--></label>
 							<div class="controls">
-								<input class="input-xlarge" id="event_jointcontact" name="event_jointcontact" type="text">
+								<input class="input-xlarge" id="event_jointcontact" name="event_jointcontact" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_jointcontact']}--><!--{/if}-->">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_jointcontactsite"><!--<lang package='Template'>-->活动联合联系人网站<!--</lang>--></label>
 							<div class="controls">
-								<input class="input-xlarge" id="event_jointcontactsite" name="event_contactsite" type="text">
+								<input class="input-xlarge" id="event_jointcontactsite" name="event_contactsite" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_jointcontactsite']}--><!--{/if}-->">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_isaudit"><!--<lang package='Template'>-->是否审核参加活动用户<!--</lang>--></label>
 							<div class="controls">
 								<select id="event_isaudit" name="event_isaudit">
-									<option value="1"><!--<lang package='__COMMON_LANG__@Common'>-->是<!--</lang>--></option>
-									<option value="0" selected><!--<lang package='__COMMON_LANG__@Common'>-->否<!--</lang>--></option>
+									<option value="1" <!--{if isset($oEvent) && $oEvent['event_isaudit']==1}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->是<!--</lang>--></option>
+									<option value="0" <!--{if !isset($oEvent) || $oEvent['event_isaudit']=='0'}-->selected<!--{/if}-->><!--<lang package='__COMMON_LANG__@Common'>-->否<!--</lang>--></option>
 								</select>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_cover"><!--<lang package='Template'>-->活动海报<!--</lang>--></label>
 							<div class="controls">
-								<input type="text" id="event_cover" name="event_cover" value=""/>&nbsp;<a href="javascript:void(0);" onclick="globalAddattachment('insertEventcover',1);"><i class="icon-film"></i><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
+								<input type="text" id="event_cover" name="event_cover" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_cover']}--><!--{/if}-->"/>&nbsp;<a href="javascript:void(0);" onclick="globalAddattachment('insertEventcover',1);"><i class="icon-film"></i><!--<lang package='__COMMON_LANG__@Common'>-->媒体<!--</lang>--></a>
 								<p class="help-block"><!--<lang package='Template'>-->从附件管理器中选择<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="form-actions">
 							<input type="hidden" name="ajax" value="1">
-							<button id="submit_button" type="button" class="btn btn-success" onClick="addEvent()"><!--<lang package='Template'>-->发布<!--</lang>--></button>&nbsp;
+							<!--{if isset($oEvent)}-->
+							<input type="hidden" name="event_id" value="<!--{$oEvent['event_id']}-->">
+							<!--{/if}-->
+							<button id="submit_button" type="button" class="btn btn-success" onClick="<!--{if isset($oEvent)}-->updateEvent()<!--{d*else}-->addEvent()<!--{/if}-->"><!--{if isset($oEvent)}--><!--<lang package='Template'>-->更新<!--</lang>--><!--{d*else}--><!--<lang package='Template'>-->发布<!--</lang>--><!--{/if}--></button>&nbsp;
 							<a class="btn" href="<!--{:Dyhb::U('event://public/index')}-->"><!--<lang package='Template'>-->取消<!--</lang>--></a>
 						</div>
 					<fieldset>

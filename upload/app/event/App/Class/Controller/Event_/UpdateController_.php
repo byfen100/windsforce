@@ -1,10 +1,10 @@
 <?php
 /* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
-   添加活动入库控制器($Liu.XiangMin)*/
+   更新活动控制器($Liu.XiangMin)*/
 
 !defined('DYHB_PATH') && exit;
 
-class AddinController extends Controller{
+class UpdateController extends Controller{
 
 	public function index(){
 		// 活动时间先验证
@@ -36,10 +36,28 @@ class AddinController extends Controller{
 			$this->E(Dyhb::L('活动报名时间不能晚于活动结束时间','__APPEVENT_COMMON_LANG__@Model'));
 		}
 		
-		// 保存活动
-		$oEvent=new EventModel();
-		$oEvent->formatTime();
-		$oEvent->save(0);
+		// 更新活动
+		$nEventid=intval(G::getGpc('event_id'));
+
+		if(empty($nEventid)){
+			$this->E(Dyhb::L('你没有指定活动ID','Controller'));
+		}
+
+		$oEvent=EventModel::F('event_status=1 AND event_id=?',$nEventid)->getOne();
+		if(empty($oEvent['event_id'])){
+			$this->E(Dyhb::L('你要更新的活动不存在','Controller'));
+		}
+
+		// 判断权限
+		if(!Eventadmin_Extend::checkEvent($oEvent)){
+			$this->E(Dyhb::L('你没有权限编辑活动','Controller'));
+		}
+
+		$_POST['event_starttime']=$nEventstarttime;
+		$_POST['event_endtime']=$nEventendtime;
+		$_POST['event_deadline']=$nEventdeadline;
+
+		$oEvent->save(0,'update');
 
 		if($oEvent->isError()){
 			$this->E($oEvent->getErrorMessage());
@@ -48,7 +66,7 @@ class AddinController extends Controller{
 		$arrData=$oEvent->toArray();
 		$arrData['url']=Dyhb::U('event://e@?id='.$oEvent['event_id']);
 
-		$this->A($arrData,Dyhb::L('活动添加成功','Controller'));
+		$this->A($arrData,Dyhb::L('活动更新成功','Controller'));
 	}
 
 }

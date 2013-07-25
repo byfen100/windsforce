@@ -42,4 +42,20 @@ class EventController extends InitController{
 		Core_Extend::doControllerAction('Event@Audit','index');
 	}
 
+	public function edit(){
+		Core_Extend::doControllerAction('Event@Edit','index');
+	}
+
+	public function update(){
+		Core_Extend::doControllerAction('Event@Update','index');
+	}
+
+	public function delete(){
+		Core_Extend::doControllerAction('Event@Delete','index');
+	}
+
+	public function end(){
+		Core_Extend::doControllerAction('Event@End','index');
+	}
+
 }

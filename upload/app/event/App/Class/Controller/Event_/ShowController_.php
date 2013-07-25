@@ -63,7 +63,8 @@ class ShowController extends Controller{
 			}
 		}
 
-		$this->assign('bJoinuser',!empty($oTryjoin['event_id'])?true:false);
+		$this->assign('bEventend',$oEvent['event_endtime']<CURRENT_TIMESTAMP);
+		$this->assign('bJoinuser',$GLOBALS['___login___']['user_id']==$oEvent['user_id'] || !empty($oTryjoin['event_id'])?true:false);
 		$this->assign('bAttentionuser',!empty($oTryattention['event_id'])?true:false);
 		$this->assign('bLimituser',$bLimituser);
 		
@@ -122,13 +123,8 @@ class ShowController extends Controller{
 			$this->assign('arrEventuserLists',$arrEventuserLists);
 		}
 
-		// 取得活动发起者
-		$oAdminuser=EventuserModel::F('eventuser_status=1 AND event_id=? AND eventuser_admin=1',$nEventid)->getOne();
-
-		$this->assign('oAdminuser',$oAdminuser);
-
 		// 取得最新参加的成员
-		$arrNeweventusers=EventuserModel::F('eventuser_status=1 AND event_id=? AND eventuser_admin=0',$nEventid)->order('create_dateline DESC')->limit(0,8)->getAll();
+		$arrNeweventusers=EventuserModel::F('eventuser_status=1 AND event_id=?',$nEventid)->order('create_dateline DESC')->limit(0,8)->getAll();
 
 		$this->assign('arrNeweventusers',$arrNeweventusers);
 

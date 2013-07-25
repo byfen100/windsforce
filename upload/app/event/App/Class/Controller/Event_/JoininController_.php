@@ -22,8 +22,13 @@ class JoininController extends Controller{
 		// 判断是否已经参加活动
 		$oEventuser=EventuserModel::F('event_id=? AND user_id=?',$nEventid,$GLOBALS['___login___']['user_id'])->getOne();
 
-		if(!empty($oEventuser['user_id'])){
+		if($GLOBALS['___login___']['user_id']==$oEvent['user_id'] || !empty($oEventuser['user_id'])){
 			$this->E(Dyhb::L('你已经参加过该活动或者你是活动发起人','Controller'));
+		}
+
+		// 判断活动是否已经结束
+		if($oEvent['event_endtime']<CURRENT_TIMESTAMP){
+			$this->E(Dyhb::L('对不起，活动已经结束','Controller'));
 		}
 
 		// 判断是否有剩余名额

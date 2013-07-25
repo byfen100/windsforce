@@ -6,5 +6,6 @@
 
 return array(
 	'event::add'=>'media',
+	'event::edit'=>'media',
 	'event::show'=>'media,comment',
 );

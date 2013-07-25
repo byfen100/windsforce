@@ -25,6 +25,11 @@ class AttentionController extends Controller{
 			$this->E(Dyhb::L('你已经对这个应用感兴趣过了','Controller'));
 		}
 
+		// 判断活动是否已经结束
+		if($oEvent['event_endtime']<CURRENT_TIMESTAMP){
+			$this->E(Dyhb::L('对不起，活动已经结束','Controller'));
+		}
+
 		// 写入活动
 		$oEventattentionuser=new EventattentionuserModel();
 		$oEventattentionuser->event_id=$nEventid;
