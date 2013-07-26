@@ -79,6 +79,17 @@ function imgUpdate(id,imgid){
 
 	windsforceAlert('<!--<lang package='Template'>-->背景图像更新成功<!--</lang>--><br/>'+sUrl,'',3);
 }
+
+function submitStyle(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	Dyhb.AjaxSubmit('styleDiy','<!--{:Dyhb::U('style/diy_save')}-->','',complete);
+}
+
+function complete(data,status){
+	$("#submit_button").attr("disabled", false);
+	$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
+}
 <!--{/script}-->
 
 	<section class="secondary_bar">
@@ -116,6 +127,12 @@ function imgUpdate(id,imgid){
 					</ul>
 				</header>
 				<div class="module_content">
+					<fieldset>
+						<label>
+							<input type="button" id="submit_button" value="<!--<lang package='Template'>-->发布<!--</lang>-->" class="alt_btn" onclick="submitStyle();">&nbsp;
+							<input type="button" onclick="location.href='<!--{:Dyhb::U( 'style/edit?id='.$oValue['style_id'] )}-->'" class="alt_btn" value="<!--<lang package='Template'>-->切换到简单模式<!--</lang>-->" />
+						</label>
+					</fieldset>
 					<fieldset>
 						<label for="name_new"><!--<lang package='Template'>-->界面方案名称<!--</lang>--></label>
 						<input type="text" name="name_new" id="name_new" size="40" value="<!--{$oValue['style_name']}-->"/>
@@ -813,8 +830,9 @@ function imgUpdate(id,imgid){
 				</div>
 				<footer>
 					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
 						<input type="hidden" name="style_id" value="<!--{$oValue['style_id']}-->">
-						<input type="submit" id="submit_button" value="<!--<lang package='Template'>-->发布<!--</lang>-->" class="alt_btn">&nbsp;
+						<input type="button" id="submit_button" value="<!--<lang package='Template'>-->发布<!--</lang>-->" class="alt_btn" onclick="submitStyle();">&nbsp;
 						<input type="button" onclick="location.href='<!--{:Dyhb::U( 'style/edit?id='.$oValue['style_id'] )}-->'" class="alt_btn" value="<!--<lang package='Template'>-->切换到简单模式<!--</lang>-->" />
 					</div>
 				</footer>
