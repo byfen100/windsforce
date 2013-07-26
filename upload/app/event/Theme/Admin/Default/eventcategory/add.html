@@ -6,14 +6,17 @@ function add(){
 		update();
 		return;
 	}
+
 	$("#submit_button").attr("disabled", "disabled");
 	$("#submit_button").val( 'add...' );
+
 	Dyhb.AjaxSubmit('eventcategoryAdd','<!--{:Admin_Extend::insert(array('controller'=>'eventcategory'))}-->','',complete);
 }
 
 function update(){
 	$("#submit_button").attr("disabled", "disabled");
 	$("#submit_button").val( 'update...' );
+
 	Dyhb.AjaxSubmit('eventcategoryAdd','<!--{:Admin_Extend::update(array('controller'=>'eventcategory'))}-->','',function(){  
 		$("#submit_button").attr("disabled", false);
 		$("#submit_button").val( '<!--<lang package='Template'>-->更新<!--</lang>-->' ); 
@@ -23,8 +26,9 @@ function update(){
 function complete(data,status){
 	$("#submit_button").attr("disabled", false);
 	$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
+
 	if(status==1){
-		$('#id').val(data.eventcategory_id);
+		$('#value').val(data.eventcategory_id);
 	}
 }
 <!--{/script}-->
