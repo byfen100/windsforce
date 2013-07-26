@@ -7,14 +7,9 @@
 class LoveController extends Controller{
 
 	public function index(){
-		$arrWhere=array();
-
 		$nEverynum=$GLOBALS['_cache_']['group_option']['group_ucenter_listtopicnum'];
 
-		// 帖子
-		$arrWhere['grouptopic_status']=1;
-		$arrWhere['grouptopic_isaudit']=1;
-
+		// 喜欢的帖子
 		$nTotalGrouptopicnum=GrouptopicloveModel::F('user_id=?',$GLOBALS['___login___']['user_id'])->all()->getCounts();
 
 		$oPage=Page::RUN($nTotalGrouptopicnum,$nEverynum,G::getGpc('page','G'));
