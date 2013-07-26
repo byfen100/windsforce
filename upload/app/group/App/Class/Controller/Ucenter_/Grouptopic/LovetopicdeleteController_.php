@@ -27,6 +27,8 @@ class LovetopicdeleteController extends Controller{
 					}
 				}
 			}
+		}else{
+			$this->E(Dyhb::L('你没有选择待删除的帖子','Controller'));
 		}
 
 		$this->S(Dyhb::L('删除喜欢帖子成功','Controller'));
