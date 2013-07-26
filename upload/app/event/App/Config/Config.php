@@ -17,4 +17,14 @@ $arrFrontappconfigs['APP_MENU']=array(
 	'event://ucenter/attention'=>'我感兴趣的活动',
 );
 
+// 访问权限设置
+$arrFrontappconfigs['RBAC_GUEST_ACCESS']=array(
+	'event@event@show'=>true,
+	'event@ucenter@*'=>true,
+);
+
+$arrFrontappconfigs['RBAC_USER_ACCESS']=array(
+	'event@event@*'=>true,
+);
+
 return array_merge($arrMyappConfigs,$arrFrontappconfigs);
