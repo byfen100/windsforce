@@ -57,7 +57,7 @@ $(document).ready(function(){
 										</div>
 									</td>
 									<td>
-										<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template'>-->发布<!--</lang>-->
+										<h4><a href="<!--{:Dyhb::U('home://space@?id='.$oHomefresh['user_id'])}-->" class="bind_hover_card" bm_user_id="<!--{$oHomefresh['user_id']}-->"><!--{$oHomefresh:user:user_name}--></a>&nbsp;<!--<lang package='Template'>-->于<!--</lang>-->&nbsp;<!--{$oHomefresh['create_dateline']|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template'>-->发布<!--</lang>--><!--{:Core_Extend::newData($oHomefresh['create_dateline'],true)}-->
 										</h4>
 										<div class="homefresh-content">
 											<!--{$oHomefresh['homefresh_message']|Core_Extend+subString=$GLOBALS['_cache_']['home_option']['homefresh_list_substring_num'],true}-->
