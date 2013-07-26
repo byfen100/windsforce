@@ -26,6 +26,7 @@
 							<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
 								<!--{$oEvent['event_address']|G+subString=0,10}--><br/>
 								<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}-->人关注</p>
+							<p style="margin-top:5px;"><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" class="btn btn-success"><i class="icon-eye-open icon-white"></i>&nbsp;查看活动</a></p>
 						  </div>
 						</div>
 					  </li>
