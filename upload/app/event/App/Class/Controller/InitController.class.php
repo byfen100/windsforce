@@ -6,4 +6,12 @@
 
 class InitController extends GlobalinitController{
 
+	public function init__(){
+		parent::init__();
+
+		if($GLOBALS['_cache_']['event_option']['event_close']==1){
+			$this->E(Dyhb::L('活动APP已经关闭，你无法使用。','Controller'));
+		}
+	}
+
 }
