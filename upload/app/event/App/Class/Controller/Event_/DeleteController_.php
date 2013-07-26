@@ -25,6 +25,28 @@ class DeleteController extends Controller{
 
 		$oEvent->destroy();
 
+		// 删除关联数据(评论 && 感兴趣和参加数据)
+		$oEventcommentMeta=EventcommentModel::M();
+		$oEventcommentMeta->deleteWhere(array('event_id'=>$nId));
+
+		if($oEventcommentMeta->isError()){
+			$this->E($oEventcommentMeta->getErrorMessage());
+		}
+
+		$oEventuserMeta=EventuserModel::M();
+		$oEventuserMeta->deleteWhere(array('event_id'=>$nId));
+
+		if($oEventuserMeta->isError()){
+			$this->E($oEventuserMeta->getErrorMessage());
+		}
+
+		$oEventattentionuserMeta=EventattentionuserModel::M();
+		$oEventattentionuserMeta->deleteWhere(array('event_id'=>$nId));
+
+		if($oEventattentionuserMeta->isError()){
+			$this->E($oEventattentionuserMeta->getErrorMessage());
+		}
+
 		$this->S(Dyhb::L('活动删除成功','Controller'));
 	}
 
