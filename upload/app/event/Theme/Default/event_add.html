@@ -93,7 +93,7 @@ function insertEventcover(nAttachmentid){
 									<option value="">- <!--<lang package='Template'>-->请选择类型<!--</lang>--> -</option>
 									<!--{~$arrEventcategory = $oEventcategoryTree->getChilds()}-->
 									<!--<foreach for=arrEventcategory value=nCId>-->
-									<option value="<!--{$nCId}-->" <!--{if $oEvent['eventcategory_id']==$nCId}-->selected<!--{/if}-->>|<!--{$oEventcategoryTree:getLayer( $nCId, '--' )}--><!--{$oEventcategoryTree:getValue( $nCId )}--></option>
+									<option value="<!--{$nCId}-->" <!--{if (isset($oEvent) && $oEvent['eventcategory_id']==$nCId) || (isset($_GET['cid']) && $_GET['cid']==$nCId)}-->selected<!--{/if}-->>|<!--{$oEventcategoryTree:getLayer( $nCId, '--' )}--><!--{$oEventcategoryTree:getValue( $nCId )}--></option>
 									<!--</foreach>-->
 								</select>
 							</div>

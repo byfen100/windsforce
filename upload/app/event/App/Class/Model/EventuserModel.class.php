@@ -10,6 +10,7 @@ class EventuserModel extends CommonModel{
 		return array(
 			'table_name'=>'eventuser',
 			'props'=>array(
+				'event'=>array(Db::BELONGS_TO=>'EventModel','source_key'=>'event_id','target_key'=>'event_id'),
 			),
 			'autofill'=>array(
 				array('user_id','userId','create','callback'),

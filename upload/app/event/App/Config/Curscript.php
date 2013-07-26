@@ -8,4 +8,7 @@ return array(
 	'event::add'=>'media',
 	'event::edit'=>'media',
 	'event::show'=>'media,comment',
+	'ucenter::index'=>'userhome',
+	'ucenter::join'=>'userhome',
+	'ucenter::attention'=>'userhome',
 );

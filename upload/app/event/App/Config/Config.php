@@ -10,4 +10,11 @@ $arrMyappConfigs=array();
 // 读取前台应用基本配置
 $arrFrontappconfigs=(array)require(WINDSFORCE_PATH.'/source/common/Config.php');
 
+// 应用菜单
+$arrFrontappconfigs['APP_MENU']=array(
+	'event://ucenter/index'=>'我发起的活动',
+	'event://ucenter/join'=>'我参加的活动',
+	'event://ucenter/attention'=>'我感兴趣的活动',
+);
+
 return array_merge($arrMyappConfigs,$arrFrontappconfigs);
