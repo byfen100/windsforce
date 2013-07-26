@@ -1,5 +1,13 @@
 <!--<include file="Core_Extend::template('header')" />-->
 
+<!--{script}-->
+function deleteEventjoin(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
+		$('#eventjoin_form').submit();
+	});
+}
+<!--{/script}-->
+
 		<ul class="breadcrumb">
 			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
 			<li><a href="<!--{:Dyhb::U('event://ucenter/index')}-->"><!--<lang package='Template'>-->活动个人中心<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
@@ -15,28 +23,34 @@
 			<div class="span9">
 				<!--<include file="ucenterevent+menu" />-->
 
-				<div id="event_list_box" class="event_list_box">
-					<!--{if is_array($arrEventusers)}-->
-					<ul class="thumbnails">
-					  <!--<foreach for=arrEventusers value=oEventuser>-->
-					  <!--{~$oEvent=$oEventuser->event}-->
-					  <li class="span2">
-						<div class="thumbnail">
-						  <img src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
-						  <div class="caption">
-							<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']|G+subString=0,10}--></a></h6>
-							<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
-								<!--{$oEvent['event_address']|G+subString=0,10}--><br/>
-								<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}-->人关注</p>
-						  </div>
-						</div>
-					  </li>
-					  <!--</foreach>-->
-					</ul>
-					<!--{d*else}-->
-					<p>暂时没有发现任何活动！</p>
-					<!--{/if}-->
-				</div>
+				<form method='post' action="<!--{:Dyhb::U('event://ucenter/join_delete')}-->" name="eventjoin_form" id="eventjoin_form">
+					<div id="event_list_box" class="event_list_box">
+						<p><input type="checkbox" onclick="checkAll('event_list_box')">&nbsp;全选</p>
+						
+						<!--{if is_array($arrEventusers)}-->
+						<ul class="thumbnails">
+						  <!--<foreach for=arrEventusers value=oEventuser>-->
+						  <!--{~$oEvent=$oEventuser->event}-->
+						  <li class="span2">
+							<div class="thumbnail">
+							  <img src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
+							  <div class="caption">
+								<h6><input type="checkbox" name="key[]" value="<!--{$oEvent:event_id}-->">&nbsp;<a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']|G+subString=0,10}--></a></h6>
+								<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
+									<!--{$oEvent['event_address']|G+subString=0,10}--><br/>
+									<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}-->人关注</p>
+							  </div>
+							</div>
+						  </li>
+						  <!--</foreach>-->
+						</ul>
+						<!--{d*else}-->
+						<p>暂时没有发现任何活动！</p>
+						<!--{/if}-->
+					</div>
+
+					<a href="javascript:void(0);" onclick="deleteEventjoin();" class="btn btn-mini btn-warning"><i class="icon-remove icon-white"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a>
+				</form>
 
 				<!--{$sPageNavbar}-->
 			</div>

@@ -199,6 +199,12 @@ function insertEventcover(nAttachmentid){
 				</form>
 			</div>
 			<div class="span4">
+				<!--{if isset($oEvent)}-->
+				<div class="commonbox">
+					<p><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" class="btn btn-success btn-large"><i class="icon-eye-open icon-white"></i>&nbsp;查看活动</a></p>
+				</div>
+				<!--{/if}-->
+				
 				<div class="commonbox_mini commonbox_mini_gray">
 					<h2 class="title"><!--<lang package='Template'>-->什么是合适的活动？<!--</lang>--></h2>
 					<ul class="eventhelplist_box">

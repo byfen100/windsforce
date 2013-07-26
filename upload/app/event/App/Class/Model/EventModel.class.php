@@ -91,7 +91,7 @@ class EventModel extends CommonModel{
 
 		$oEvent=EventModel::F('event_id=?',$nEventid)->getOne();
 		if(!empty($oEvent['event_id'])){
-			$nEventjoinnum=EventuserModel::F('eventuser_admin=0 AND event_id=?',$nEventid)->all()->getCounts();
+			$nEventjoinnum=EventuserModel::F('event_id=?',$nEventid)->all()->getCounts();
 
 			$oEvent->event_joincount=$nEventjoinnum;
 			$oEvent->save(0,'update');
