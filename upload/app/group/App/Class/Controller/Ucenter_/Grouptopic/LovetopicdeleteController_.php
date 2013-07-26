@@ -18,7 +18,7 @@ class LovetopicdeleteController extends Controller{
 
 					// 整理帖子喜欢数
 					$oGrouptopic=GrouptopicModel::F('grouptopic_id=?',$nTopicid)->getOne();
-					if(empty($oGrouptopic['grouptopic_id'])){
+					if(!empty($oGrouptopic['grouptopic_id'])){
 						$oGrouptopic->rebuildGrouptopicloves();
 
 						if($oGrouptopic->isError()){
