@@ -7,6 +7,10 @@
 class AddController extends Controller{
 
 	public function index(){
+		if($GLOBALS['_cache_']['event_option']['front_add']==0){
+			$this->E(Dyhb::L('系统关闭了创建活动功能','Controller'));
+		}
+		
 		// 活动类型
 		$oEventcategoryTree=Dyhb::instance('EventcategoryModel')->getEventcategoryTree();
 		$this->assign('oEventcategoryTree',$oEventcategoryTree);

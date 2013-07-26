@@ -10,14 +10,13 @@ class IndexController extends Controller{
 		$arrWhere=array();
 
 		// 活动
-		$arrWhere['event_status']=1;
 		$arrWhere['user_id']=$GLOBALS['___login___']['user_id'];
 
 		$nTotaleventnum=EventModel::F()->where($arrWhere)->all()->getCounts();
 
 		$oPage=Page::RUN($nTotaleventnum,12,G::getGpc('page','G'));
 
-		$arrEvents=EventModel::F()->where($arrWhere)->order("create_dateline DESC")->limit($oPage->returnPageStart(),12)->getAll();
+		$arrEvents=EventModel::F()->where($arrWhere)->order("event_status ASC,create_dateline DESC")->limit($oPage->returnPageStart(),12)->getAll();
 
 		$this->assign('arrEvents',$arrEvents);
 		$this->assign('sPageNavbar',$oPage->P('pagination','li','active'));

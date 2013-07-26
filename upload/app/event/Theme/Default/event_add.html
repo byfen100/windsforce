@@ -72,6 +72,10 @@ function insertEventcover(nAttachmentid){
 
 		<div class="row">
 			<div class="span8">
+				<!--{if !isset($oEvent) && $GLOBALS['_cache_']['event_option']['event_audit']==1}-->
+				<div class="alert alert-success">发起的活动只有通过审核了才能够被浏览</div>
+				<!--{/if}-->
+				
 				<form class="form-horizontal" method='post' id="createeventform" name="createeventform">
 					<fieldset>
 						<div class="control-group">

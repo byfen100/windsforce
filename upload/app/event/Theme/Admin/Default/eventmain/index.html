@@ -35,6 +35,24 @@ function option(){
 						<div class="description"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->关闭后，用户将无法使用活动APP<!--</lang>-->
 						</div>
 					</fieldset>
+					<fieldset>
+						<label for="event_audit"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->活动是否进行审核<!--</lang>--></label>
+						<select name="options[event_audit]" id="event_audit">
+							<option value="0" <!--{if $arrOptions['event_audit']==0}-->selected<!--{/if}-->><!--<lang package='Template'>-->否<!--</lang>--></option>
+							<option value="1" <!--{if $arrOptions['event_audit']==1}-->selected<!--{/if}-->><!--<lang package='Template'>-->是<!--</lang>--></option>
+						</select>
+						<div class="description"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->开启后，创建的活动只有审核通过了才能够浏览<!--</lang>-->
+						</div>
+					</fieldset>
+					<fieldset>
+						<label for="front_add"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->前台是否可以创佳活动<!--</lang>--></label>
+						<select name="options[front_add]" id="front_add">
+							<option value="0" <!--{if $arrOptions['event_audit']==0}-->selected<!--{/if}-->><!--<lang package='Template'>-->否<!--</lang>--></option>
+							<option value="1" <!--{if $arrOptions['front_add']==1}-->selected<!--{/if}-->><!--<lang package='Template'>-->是<!--</lang>--></option>
+						</select>
+						<div class="description"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->如果关闭，那么前台将无法创建新的活动<!--</lang>-->
+						</div>
+					</fieldset>
 				</div>
 				<footer>
 					<div class="submit_link">

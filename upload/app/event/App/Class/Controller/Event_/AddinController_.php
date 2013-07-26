@@ -7,6 +7,10 @@
 class AddinController extends Controller{
 
 	public function index(){
+		if($GLOBALS['_cache_']['event_option']['front_add']==0){
+			$this->E(Dyhb::L('系统关闭了创建活动功能','Controller'));
+		}
+		
 		// 活动时间先验证
 		$nEventstarttime=strtotime(trim(G::getGpc('event_starttime','P')));
 		$nEventendtime=strtotime(trim(G::getGpc('event_endtime','P')));
@@ -39,6 +43,11 @@ class AddinController extends Controller{
 		// 保存活动
 		$oEvent=new EventModel();
 		$oEvent->formatTime();
+		
+		if($GLOBALS['_cache_']['event_option']['event_audit']==1){
+			$oEvent->event_status='0';
+		}
+		
 		$oEvent->save(0);
 
 		if($oEvent->isError()){
@@ -46,7 +55,12 @@ class AddinController extends Controller{
 		}
 
 		$arrData=$oEvent->toArray();
-		$arrData['url']=Dyhb::U('event://e@?id='.$oEvent['event_id']);
+
+		if($oEvent['event_status']==1){
+			$arrData['url']=Dyhb::U('event://e@?id='.$oEvent['event_id']);
+		}else{
+			$arrData['url']=Dyhb::U('event://ucenter/index');
+		}
 
 		$this->A($arrData,Dyhb::L('活动添加成功','Controller'));
 	}

@@ -13,6 +13,18 @@ class EventcategoryModel extends CommonModel{
 				'eventcategory_id'=>array('readonly'=>true),
 			),
 			'attr_protected'=>'eventcategory_id',
+			'check'=>array(
+				'eventcategory_name'=>array(
+					array('require',Dyhb::L('活动类型名称不能为空','__APPEVENT_COMMON_LANG__@Model')),
+					array('max_length',255,Dyhb::L('活动类型名称不能超过255个字符','__APPEVENT_COMMON_LANG__@Model')),
+				),
+				'eventcategory_parentid'=>array(
+					array('eventcategoryParentId',Dyhb::L('活动类型不能为自己','__APPEVENT_COMMON_LANG__@Model'),'condition'=>'must','extend'=>'callback'),
+				),
+				'eventcategory_sort'=>array(
+					array('number',Dyhb::L('序号只能是数字','__APPEVENT_COMMON_LANG__@Model'),'condition'=>'notempty','extend'=>'regex'),
+				)
+			),
 		);
 	}
 
@@ -30,6 +42,17 @@ class EventcategoryModel extends CommonModel{
 
 	public function getEventcategory(){
 		return self::F()->order('eventcategory_id ASC,eventcategory_sort DESC')->all()->query();
+	}
+
+	public function eventcategoryParentId(){
+		$nEventcategoryId=G::getGpc('value');
+		$nEventcategoryParentid=G::getGpc('eventcategory_parentid');
+
+		if(!empty($nEventcategoryId) && !empty($nEventcategoryParentid) && $nEventcategoryId==$nEventcategoryParentid){
+			return false;
+		}
+
+		return true;
 	}
 
 	public function getParentEventcategory($nParentEventcategoryId){
