@@ -79,16 +79,12 @@ class AttachmentcommentController extends InitController{
 		// 更新附件评论数量
 		if(is_array($arrIds)){
 			foreach($arrIds as $nId){
-				$oAttachmentcomment=AttachmentcommentModel::F('attachmentcomment_id=?',$nId)->getOne();
-				
-				if(!empty($oAttachmentcomment['attachmentcomment_id'])){
-					// 更新评论数量
-					$oAttachment=Dyhb::instance('AttachmentModel');
-					$oAttachment->updateAttachmentcommentnum(intval($oAttachmentcomment['attachment_id']));
+				// 更新评论数量
+				$oAttachment=Dyhb::instance('AttachmentModel');
+				$oAttachment->updateAttachmentcommentnum(intval($oAttachmentcomment['attachment_id']));
 
-					if($oAttachment->isError()){
-						$oAttachment->getErrorMessage();
-					}
+				if($oAttachment->isError()){
+					$oAttachment->getErrorMessage();
 				}
 			}
 		}

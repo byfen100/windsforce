@@ -118,16 +118,12 @@ class HomefreshcommentController extends InitController{
 		// 更新新鲜事评论数量
 		if(is_array($arrIds)){
 			foreach($arrIds as $nId){
-				$oHomefreshcomment=HomefreshcommentModel::F('homefreshcomment_id=?',$nId)->getOne();
-				
-				if(!empty($oHomefreshcomment['homefreshcomment_id'])){
-					// 更新评论数量
-					$oHomefresh=Dyhb::instance('HomefreshModel');
-					$oHomefresh->updateHomefreshcommentnum(intval($oHomefreshcomment['homefresh_id']));
+				// 更新评论数量
+				$oHomefresh=Dyhb::instance('HomefreshModel');
+				$oHomefresh->updateHomefreshcommentnum(intval($oHomefreshcomment['homefresh_id']));
 
-					if($oHomefresh->isError()){
-						$oHomefresh->getErrorMessage();
-					}
+				if($oHomefresh->isError()){
+					$oHomefresh->getErrorMessage();
 				}
 			}
 		}
