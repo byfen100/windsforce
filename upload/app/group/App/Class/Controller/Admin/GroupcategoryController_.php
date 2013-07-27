@@ -89,7 +89,7 @@ class GroupcategoryController extends InitController{
 
 		$arrIds=explode(',',$sId);
 		
-		// 解除关联小组数组
+		// 解除关联小组数据
 		if(is_array($arrIds)){
 			foreach($arrIds as $nId){
 				// 删除小组关联
