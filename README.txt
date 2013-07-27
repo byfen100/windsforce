@@ -17,7 +17,7 @@ WindsForce 社区APP讨论小组 (WindsForce APP Framework)
 
 于是2012年03月份开始开发WindsForce（早期名字叫做NeedForBug）,风之力APP开发框架，立足于社区。经过一年时间的开发，终于在2013年04月26日，WindsForce发布了第一个版本1.0，上线测试后，收不到不少反馈意见，经过一个多月的开发 WindsForce-1.1 终于以完善的功能再次于2013年06月04日发布。
 
-WindsForce-1.1的程序架构
+WindsForce-1.1.1的程序架构
 
 说到WindsForce的架构，我们这里不得不说的是一个强大的PHP开发框架（The DoYouHaoBaby PHP Framework），这个框架是我（也就是WindsForce的作者）在2010年下半年开始开发的，10份发布的第一个版本，当时我还在大二，兴趣爱好开发。到2012的时候，实质上这个框架已经有了一个念头，各种功能已经非常齐全了。
 
@@ -55,7 +55,7 @@ MVC是一个设计模式，它强制性的使应用程序的输入、处理和�
 类似的设计有用户个人中心，搜索，WAP等等。
 
 
-WindsForce-1.1 功能列表
+WindsForce-1.1.1 功能列表
 
 WindsForce APP Framework（风之力APP开发框架）这是最牛B之处了。
 

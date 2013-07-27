@@ -16,6 +16,7 @@ WindsForce 压缩包文件
 
 ---- ./
     ---- README.md 程序入口阅读文件
+    ---- README.txt 程序介绍文件
 
 ---- ./readmes
     ---- changelog 程序更新记录
@@ -46,13 +47,13 @@ WindsForce 压缩包文件
     ---- crossdomain.xml Flash跨域支持
     ---- favicon.ico 网站图标
     ---- index.php 前台应用入口
-    ---- LICENSE.md 版权
+    ---- LICENSE.txt 版权
     ---- README.md 安装必读
     ---- robots.txt 搜索引擎设置
     ---- urlredirect.php 地址跳转
     ---- wap.php 手机阅读入口
 
 
-                                                                                                                                    WindsForce Team, 2013-06-04 04:56
+                                                                                                                                    WindsForce Team, 2013-07-27 04:56
                                                                                                                                     http://www.windsforce.com
                                                                                                                                     http://www.windsforce.net

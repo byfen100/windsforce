@@ -18,14 +18,14 @@
     http://www.windsforce.com 上下载的本程序,很可能获得的不是最新版本.所以安装之前请
     查询上述网址,使用最新的 WindsForce 版本安装.
 
-当前版本: (版本详细升级情况,请查看 changelog/WindsForce-1.1.txt)
+当前版本: (版本详细升级情况,请查看 changelog/WindsForce-1.1.1.txt)
 
-  + WindsForce 1.1 商业版(程序无免费版)
+  + WindsForce 1.1.1 商业版(程序无免费版)
 
-  + 本文档最后更新时间 2013-06-04 04:56
+  + 本文档最后更新时间 2013-07-27 04:56
 
-  + 有关技术详情的信息,请查看 changelog/WindsForce-1.1.md
-  + 有关常见问题解答的信息,请查看 Faq.md
+  + 有关技术详情的信息,请查看 changelog/WindsForce-1.1.1.txt
+  + 有关常见问题解答的信息,请查看 Faq.txt
 
 
 简单的安装方法: (以下每一步都非常关键,请仔细阅读)
@@ -47,6 +47,6 @@
     如果通过其他方式可能不会予以解答.
 
 
-                                                                                                                                    WindsForce Team, 2013-06-04 04:56
+                                                                                                                                    WindsForce Team, 2013-07-27 04:56
                                                                                                                                     http://www.windsforce.com
                                                                                                                                     http://www.windsforce.net
