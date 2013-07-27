@@ -1,1 +1,0 @@
-a:5:{s:14:"AppsController";s:35:"Controller/AppsController.class.php";s:14:"InitController";s:35:"Controller/InitController.class.php";s:16:"PublicController";s:37:"Controller/PublicController.class.php";s:15:"SpaceController";s:36:"Controller/SpaceController.class.php";s:17:"UcenterController";s:38:"Controller/UcenterController.class.php";}

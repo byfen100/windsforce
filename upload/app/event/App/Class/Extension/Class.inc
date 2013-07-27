@@ -1,1 +1,0 @@
-a:2:{s:17:"Eventadmin_Extend";s:27:"Eventadmin_Extend.class.php";s:12:"Event_Extend";s:22:"Event_Extend.class.php";}

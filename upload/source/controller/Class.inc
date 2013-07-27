@@ -1,1 +1,0 @@
-a:4:{s:21:"GlobalchildController";s:31:"GlobalchildController.class.php";s:20:"GlobalinitController";s:30:"GlobalinitController.class.php";s:19:"GlobalwapController";s:29:"GlobalwapController.class.php";s:19:"PromotionController";s:29:"PromotionController.class.php";}

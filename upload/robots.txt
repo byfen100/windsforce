@@ -1,6 +1,0 @@
-#
-# WindsForce Robots
-#
-
-User-agent: *
-Disallow: /Public/
