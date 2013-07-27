@@ -1,0 +1,58 @@
+<link href="<!--{:__PUBLIC__}-->/js/jquery/adgallery/lib/jquery.ad-gallery.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="<!--{:__PUBLIC__}-->/js/jquery/adgallery/lib/jquery.ad-gallery.js"></script>
+
+<!--{script}-->
+$(function(){
+	sHtml=windsforceAjaxhtml(D.U('home://attachment/get_ajaximg&id=<!--{$oAttachment['attachment_id']}-->&cid=<!--{$oAttachment['attachmentcategory_id']}-->&uid=<!--{$oAttachment['user_id']}-->'),-1);
+
+	arrReturn=eval('('+sHtml+')');
+
+	$('.ad-thumb-list').html(arrReturn.content);
+	var nIndex=arrReturn.index;
+	
+	var galleries = $('.ad-gallery').adGallery(
+		{
+			start_at_index: nIndex,
+			slideshow: {
+				enable: true,
+				autostart: false,
+				speed: 5000,
+				start_label: '<!--<lang package='Template'>-->播放<!--</lang>-->',
+				stop_label: '<!--<lang package='Template'>-->停止<!--</lang>-->',
+				stop_on_scroll: true,
+				countdown_prefix: '(',
+				countdown_sufix: ')',
+				onStart: false,
+				onStop: false
+			}, 
+			effect: 'resize'
+		}
+	);
+	$('#switch-effect').change(
+		function() {
+			galleries[0].settings.effect = $(this).val();
+			return false;
+		}
+	);
+
+	$('#toggle-slideshow').click(
+		function() {
+			galleries[0].slideshow.toggle();
+			return false;
+		}
+	);
+});
+<!--{/script}-->
+
+			<div id="gallery" class="ad-gallery" style="background:#f5f5f5;">
+				<div class="ad-image-wrapper">
+				</div>
+				<div class="ad-controls">
+				</div>
+				<div class="ad-nav">
+					<div class="ad-thumbs">
+						<ul class="ad-thumb-list">
+						</ul>
+					</div>
+				</div>
+			</div>

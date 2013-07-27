@@ -1,0 +1,137 @@
+<!--<include file="Core_Extend::template('cheader')" />-->
+
+<link rel="stylesheet" type="text/css" href="<!--{:Core_Extend::path('search.css','css')}-->"/>
+
+<!--<php>-->
+if(!Dyhb::classExists('Misc_Extend')){
+	require_once(Core_Extend::includeFile('function/Misc_Extend'));
+}
+
+echo Misc_Extend::getBgjs('Public/images/common/pagebg/search');
+<!--</php>-->
+
+<!--{script}-->
+var sBgextendRepeat='no-repeat';
+
+$(document).ready(function(){
+	setInterval("changeGlobalbg();",10000);
+	$('#key').focus();
+});
+<!--{/script}-->
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<li class="dropdown <!--{if $GLOBALS['_option_']['default_app']=='home' && APP_NAME===$GLOBALS['_option_']['default_app'] && MODULE_NAME==='public' && ACTION_NAME=='index'}-->active<!--{/if}-->">
+							<a href="javascript:void(0);" class="dropdown-toggle brand" data-toggle="dropdown" title="<!--<lang package='__COMMON_LANG__@Common'>-->首页<!--</lang>-->"><!--<lang package='__COMMON_LANG__@Common'>-->首页<!--</lang>-->&nbsp;<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<!--{:__APP__}-->"><!--<lang package='__COMMON_LANG__@Common'>-->首页<!--</lang>--></a></li>
+								<li class="divider"></li>
+								<li><a href="<!--{:Dyhb::U('home://public/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->个人空间<!--</lang>--></a></li>
+							</ul>
+						</li>
+						<!--{~$arrMainNavs=$GLOBALS['_cache_']['nav']['main']}-->
+						<!--<foreach for=arrMainNavs value=arrMainNav>-->
+						<!--{if $arrMainNav['sub']}-->
+						<li class="dropdown <!--{if $arrMainNav['app']===APP_NAME}-->active<!--{/if}-->">
+							<a <!--{$arrMainNav['style']}--> title="<!--{$arrMainNav['description']}-->" href="javascript:void(0);" <!--{$arrMainNav['target']}--> class="dropdown-toggle" data-toggle="dropdown">
+								<!--{$arrMainNav['title']}-->&nbsp;<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li <!--{if $arrMainNav['app']===APP_NAME}-->class="active"<!--{/if}-->>
+									<a <!--{$arrMainNav['style']}--> title="<!--{$arrMainNav['description']}-->" href="<!--{$arrMainNav['link']}-->" <!--{$arrMainNav['target']}-->><!--{$arrMainNav['title']}--></a>
+								</li>
+								<li class="divider"></li>
+								<!--{~$arrMainSubNavs=$arrMainNav['sub']}-->
+								<!--<foreach for=arrMainSubNavs value=arrMainSubNav>-->
+								<li <!--{if $arrMainSubNav['app']===APP_NAME}-->class="active"<!--{/if}-->>
+									<a <!--{$arrMainSubNav['style']}--> title="<!--{$arrMainSubNav['description']}-->" href="<!--{$arrMainSubNav['link']}-->" <!--{$arrMainSubNav['target']}-->><!--{$arrMainSubNav['title']}--></a>
+								</li>
+								<!--</foreach>-->
+							</ul>
+						</li>
+						<!--{d*else}-->
+						<li <!--{if $arrMainNav['app']===APP_NAME}-->class="active"<!--{/if}-->>
+							<a <!--{$arrMainNav['style']}--> title="<!--{$arrMainNav['description']}-->" href="<!--{$arrMainNav['link']}-->" <!--{$arrMainNav['target']}-->><!--{$arrMainNav['title']}--></a>
+						</li>
+						<!--{/if}-->
+						<!--</foreach>-->
+					</ul>
+					<div class="btn-group pull-right">
+						<!--{if $GLOBALS['___login___']===false}-->
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+							<i class="icon-user"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->未登录<!--</lang>-->&nbsp;
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="<!--{:Core_Extend::windsforceReferer()}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户登录<!--</lang>--></a></li>
+							<li class="divider"></li>
+							<li><a href="<!--{:Core_Extend::windsforceReferer(true)}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户注册<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://public/myrbac')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->游客权限<!--</lang>--></a></li>
+						</ul>
+						<!--{d*else}-->
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+							<!--{if $GLOBALS['___login___']['socia_login']===true}-->
+							<img src="<!--{$GLOBALS['___login___']['socia']['logo']}-->"/>&nbsp;
+							<!--{$GLOBALS['___login___']['socia']['sociauser_name']}-->
+							<!--{d*else}-->
+							<i class="icon-user"></i>&nbsp;
+							<!--{if $GLOBALS['___login___']['user_nikename']}-->
+								<!--{$GLOBALS['___login___']['user_nikename']}-->
+							<!--{d*else}-->
+								<!--{$GLOBALS['___login___']['user_name']}-->
+							<!--{/if}-->
+							<!--{/if}-->
+							<!--{$GLOBALS['___login___']['user_id']|Core_Extend+getUseronlineicon}-->&nbsp;
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<!--{if Core_Extend+isAdmin()}-->
+							<li><a href="<!--{:__ROOT__}-->/admin.php" target="_blank"><!--<lang package='__COMMON_LANG__@Common'>-->管理中心<!--</lang>--></a></li>
+							<!--{/if}-->
+							<li><a href="<!--{:Dyhb::U('home://ucenter/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->个人中心<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->修改资料<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://friend/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->我的好友<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://attachment/my_attachment')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->我的相册<!--</lang>--></a></li>
+							<li><a href="<!--{:Dyhb::U('home://public/myrbac')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->我的权限<!--</lang>--></a></li>
+							<li class="divider"></li>
+							<li><a href="<!--{:Dyhb::U('home://public/logout?referer=1')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->注销<!--</lang>--></a></li>
+						</ul>
+						<!--{/if}-->
+					</div>
+
+					<ul class="nav pull-right">
+						<li class="dropdown <!--{if in_array(MODULE_NAME,array('stat','attachment'))}-->active<!--{/if}-->">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><!--<lang package='__COMMON_LANG__@Common'>-->社区广场<!--</lang>-->&nbsp;<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<!--{:Dyhb::U('home://stat/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->基本概况<!--</lang>--></a></li>
+								<li><a href="<!--{:Dyhb::U('home://stat/userlist')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->会员列表<!--</lang>--></a></li>
+								<li><a href="<!--{:Dyhb::U('home://stat/feed')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户动态<!--</lang>--></a></li>
+								<li><a href="<!--{:Dyhb::U('home://stat/explore')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->随便看看<!--</lang>--></a></li>
+								<li><a href="<!--{:Dyhb::U('home://stat/usertop')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->用户排行<!--</lang>--></a></li>
+								<li class="divider"></li>
+								<li><a href="<!--{:Dyhb::U('home://attachment/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->精彩美图<!--</lang>--></a></li>
+							</ul>
+						</li>
+						<li <!--{if MODULE_NAME==='search'}-->class="active"<!--{/if}-->>
+							<a title="<!--<lang package='__COMMON_LANG__@Common'>-->搜索<!--</lang>-->" href="<!--{:Dyhb::U('home://search/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->搜索<!--</lang>--></a>
+						</li>
+						<li <!--{if MODULE_NAME==='apps'}-->class="active"<!--{/if}-->>
+							<a title="<!--<lang package='__COMMON_LANG__@Common'>-->应用<!--</lang>-->" href="<!--{:Dyhb::U('home://apps/index')}-->"><img src="<!--{:__ROOT__}-->/app/logo_small.png" width="17" height="17" />&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->应用<!--</lang>--></a>
+						</li>
+						<li class="divider-vertical"></li>
+						<!--{if $GLOBALS['___login___']!==false}-->
+						<li <!--{if MODULE_NAME==='pm'}-->class="active"<!--{/if}--> id="new-message-box">
+							<a title="<!--<lang package='__COMMON_LANG__@Common'>-->短消息<!--</lang>-->" href="<!--{:Dyhb::U('home://pm/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->短消息<!--</lang>--></a>
+						</li>
+						<li <!--{if MODULE_NAME==='notice'}-->class="active"<!--{/if}--> id="new-notice-box">
+							<a title="<!--<lang package='__COMMON_LANG__@Common'>-->提醒<!--</lang>-->" href="<!--{:Dyhb::U('home://notice/index')}-->"><!--<lang package='__COMMON_LANG__@Common'>-->提醒<!--</lang>--></a>
+						</li>
+						<!--{/if}-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>

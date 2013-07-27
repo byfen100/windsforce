@@ -1,0 +1,42 @@
+/*
+File Name: common_append.css
+File Type: 非必需
+Description: common append
+*/
+
+/**===============================
+           重写基础元素
+================================*/
+html { background: #55616A url({STYLE_IMG_DIR}/wrapbg.gif) repeat 0 270px; }
+#top_header{height:35px;background:#d6b7a3 url("{STYLE_IMG_DIR}/header.gif")  repeat-x 0 0; border-bottom:2px dashed #949494;}
+#footer, #footer a { color: #D0D5D8; }
+
+/**===============================
+           重新定义一些颜色
+================================*/
+.label-success{background-color: #323c47;}
+.label-success[href]{background-color: #81888e;}
+.alert-success{color: #690a34;background-color: #d8dadd;border-color: #c9cacb;}
+.label a,.badge a{color:#fff;}
+.badge-success{background:#323c47;}
+/* color */
+.nav-list > .active > a,.nav-list > .active > a:hover {background-color:#323c47;}
+input:focus,textarea:focus {border-color: #323c47;}
+.nav-pills > .active > a,.nav-pills > .active > a:hover {background-color: #323c47;}
+.dropdown-menu a:hover{background-color: #323c47;}
+.dropdown-menu li > a:hover,.dropdown-menu .active > a,.dropdown-menu .active > a:hover {background-color: #323c47;}
+/* 按钮 */
+.btn-success,.d-state-highlight{background-color: #2f3944;*background-color: #26313b;background-image: -ms-linear-gradient(top, #81888e, #26313b);background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#81888e), to(#26313b));background-image: -webkit-linear-gradient(top, #81888e, #26313b);background-image: -o-linear-gradient(top, #81888e, #26313b);background-image: -moz-linear-gradient(top, #81888e, #26313b);background-image: linear-gradient(top, #81888e, #26313b);background-repeat: repeat-x;border-color: #26313b #26313b #ad6704;border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);filter: progid:dximagetransform.microsoft.gradient(startColorstr='#81888e', endColorstr='#26313b', GradientType=0);filter: progid:dximagetransform.microsoft.gradient(enabled=false);}
+.btn-success:hover,.btn-success:active,.btn-success.active,.btn-success.disabled,.btn-success[disabled]{background-color: #26313b;*background-color: #957353;}
+.btn-success:active,.btn-success.active{background-color: #29333e \9;}
+
+/**===============================
+           重写通用签名
+================================*/
+.common_usersign{background:url({STYLE_IMG_DIR}/sign.gif) no-repeat;}
+
+/**===============================
+           重写通用标签
+================================*/
+a.common_tag{background:#cfb7a2;color:#fff;}
+a.common_tag:hover{background:#bcbcbc;}

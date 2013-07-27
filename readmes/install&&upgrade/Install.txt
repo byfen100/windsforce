@@ -1,0 +1,40 @@
+/**
+ * WindsForce APP Framework (风之力APP开发框架)
+ *
+ * @copyright    Copyright (C)WindsForce TEAM Since 2012.03.17.(http://www.windsforce.com)
+ * @license        This is NOT a freeware, use is subject to license terms
+ * @notice         欢迎使用 WindsForce APP开发框架,在您开始使用之前,请务必完整阅读本软件附带的全部说明档
+ * @welcome     Welcome to http://www.windsforce.com & http://www.windsforce.net
+ */
+
+!defined('DYHB_PATH') && exit;
+
+【本文将介绍一下本软件的安装方法.】
+
+WindsForce 安装教程
+
+在线网址（http://doyouhaobaby.net/app/group/topic/181.html ）
+
+---- 将 WindsForce-1.1.1 压缩包解压至一个空文件夹.
+
+---- 上传 upload 中所有文件到服务器.
+
+---- 上传后,如果你是Linux 主机,那么还需要设定一些目录或者文件的权限为0777,具体根据安装程序的提示来做.
+      return array(
+          '/config/Config.inc.php',
+          '/data/*',
+          '/data/upload/*',
+          '/data/avatar/*',
+          '/data/backup/*',
+      );
+
+---- 在浏览器中访问 index.php，WindsForce 会自动建立数据库表。程序会自动检测你是否连接上数据库，如果
+      一直提示错误，请仔细检查你填写的数据库信息是否正确。要是依然错误，请前往 WindsForce 官方论坛寻求
+      解决方法.
+
+---- 安装程序执行结束后，程序将自动跳转到首页.
+
+
+                                                                                                                                    WindsForce Team, 2013-07-27 04:56
+                                                                                                                                    http://www.windsforce.com
+                                                                                                                                    http://www.windsforce.net

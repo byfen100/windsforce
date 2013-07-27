@@ -1,0 +1,318 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{:Core_Extend::emotion()}-->
+
+<script src="<!--{:__PUBLIC__}-->/js/jquery/jquery.insertcontent.js"></script>
+<script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
+
+<!--{script}-->
+$(function(){
+	$('.userguestbook-content').emotionsToHtml();
+	
+	$('#userguestbook_content').autoResize({
+		onResize:function(){
+			$(this).css({opacity:0.8});
+		},
+		animateCallback:function(){
+			$(this).css({opacity:1});
+		},
+		animateDuration:300,
+		extraSpace:0,
+		min:'100px'
+	});
+
+	$(".face-icon").jqfaceedit({txtAreaObj:$("#userguestbook_content"),textareaid:'userguestbook_content',containerObj:$('#emotion_parentcontainer'),top:25,left:-27});
+});
+
+function commentCheckForm(comment_content,customContent){
+	var comment_name=$.trim($('#userguestbook_name').val());
+	var comment_email=$.trim($("#userguestbook_email").val());
+	var comment_url=$.trim($("#userguestbook_url").val());
+	if(customContent==1){
+		comment_content=$.trim($("#userguestbook_content").val());
+	}
+
+	if(comment_name==""){
+		windsforceAlert(D.L('评论名字不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_name.length>25){
+		windsforceAlert(D.L('评论名字长度只能小于等于25个字符串','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_email!='' && !checkEmail(comment_email)){
+		windsforceAlert(D.L('评论E-mail 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_url!='' && !checkUrl(comment_url)){
+		windsforceAlert(D.L('评论Url 格式错误','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	if(comment_content == ""){
+		windsforceAlert(D.L('评论内容不能为空','__COMMON_LANG__@Common'),D.L('评论发生错误','__COMMON_LANG__@Common'),3);
+		return false;
+	}
+
+	return true;
+}
+
+function commentSubmit(){
+	var bResult=commentCheckForm();
+	if(bResult===false){
+		return false;
+	}
+
+	$("#comment-submit").val(D.L('正在提交评论','__COMMON_LANG__@Common'));
+	$("#comment-submit").attr("disabled", "disabled");
+	Dyhb.AjaxSubmit('userguestbook-commentform',D.U('home://space/add_userguestbook'),'',commentComplete);
+}
+
+function commentComplete(data,status){
+	$("#comment-submit").attr("disabled", false);
+	$("#comment-submit").val(D.L('提交评论','__COMMON_LANG__@Common'));
+	if(status==1){
+		setTimeout("window.location.replace(_SELF_);",1000);
+	}
+}
+
+function userguestbookAudit(nCommentid,nStatus){
+	Dyhb.AjaxSend(D.U('home://space/audit_userguestbook?id='+nCommentid+'&status='+nStatus),'ajax=1','',function(data,status){
+		if(status==1){
+			setTimeout("window.location.replace(_SELF_);",1000);
+		}
+	});
+}
+
+function showMedia(){
+	$('#userguestbook-media-box').toggle('fast');
+}
+
+function insertUserguestbookattachment(nAttachmentid){
+	insertAttachmentNormal('userguestbook_content',nAttachmentid);
+}
+
+function insertUserguestbookvideo(sContent){
+	insertVideoNormal('userguestbook_content',sContent);
+}
+
+function insertUserguestbookmusic(sContent){
+	insertMusicNormal('userguestbook_content',sContent);
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://space@?id='.$nId)}-->"><!--{$oUserInfo:user_name}--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->个人空间<!--</lang>--></li>
+		</ul>
+		
+		<!--<include file="space+menu" />-->
+		
+		<div class="row">
+			<div class="span8">
+				<ul class="nav nav-pills">
+					<!--<foreach for=arrInfoMenus key=sInfoMenuKey value=sInfoMenu>-->
+					<li <!--{if (!$sDo && !$sInfoMenuKey) || $sDo==$sInfoMenuKey}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('home://space@?id='.$nId.(!empty($sInfoMenuKey)?'&do='.$sInfoMenuKey:''))}-->"><!--{$sInfoMenu}--></a></li>
+					<!--</foreach>-->
+				</ul>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template'>-->用户名<!--</lang>--></th>
+							<th><!--{$oUserInfo:user_name}--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--{if !$sDo}-->
+						<!--<foreach for=arrBases value=sBase>-->
+						<!--{if array_key_exists($sBase,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sBase]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sBase]['userprofilesetting_privacy'])}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sBase]['userprofilesetting_title']}--></td>
+							<td>
+							<!--{if $sBase=='userprofile_gender'}-->
+							<!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}-->
+							<!--{elseif $sBase=='userprofile_birthday'}-->
+							<!--{$oUserInfo->userprofile->userprofile_birthyear}--><!--<lang package='__COMMON_LANG__@Common'>-->年<!--</lang>--><!--{$oUserInfo->userprofile->userprofile_birthmonth}--><!--<lang package='__COMMON_LANG__@Common'>-->月<!--</lang>--><!--{$oUserInfo->userprofile->userprofile_birthday}--><!--<lang package='__COMMON_LANG__@Common'>-->日<!--</lang>-->
+							<!--{elseif $sBase=='userprofile_birthcity'}-->
+							<!--{$sDirthDistrict}-->
+							<!--{elseif $sBase=='userprofile_residecity'}-->
+							<!--{$sResideDistrict}-->
+							<!--{d*else}-->
+							<!--{$oUserInfo:userprofile:$sBase}-->
+							<!--{/if}-->
+							</td>
+						</tr>
+						<!--{/if}-->
+						<!--</foreach>-->
+						
+						<!--<for start='1' end='8' var='nCustomFieldId'>-->
+						<!--{~$sCustomField='userprofile_field'.$nCustomFieldId}-->
+						<!--{if array_key_exists($sCustomField,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_privacy'])}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sCustomField]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sCustomField}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</for>-->
+						<!--{elseif $sDo=='contact'}-->
+						<!--<foreach for=arrContacts value=sContact>-->
+						<!--{if array_key_exists($sContact,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sContact]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sContact]['userprofilesetting_privacy'])}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sContact]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sContact}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<tr>
+							<td>Email</td>
+							<td><!--{$oUserInfo:user_email}--></td>
+						<tr/>
+						<!--{elseif $sDo=='edu'}-->
+						<!--<foreach for=arrEdus value=sEdu>-->
+						<!--{if array_key_exists($sEdu,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_privacy'])}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sEdu]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sEdu}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<!--{elseif $sDo=='work'}-->
+						<!--<foreach for=arrWorks value=sWork>-->
+						<!--{if array_key_exists($sWork,$arrUserprofilesettingDatas) &&  
+								$arrUserprofilesettingDatas[$sWork]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sWork]['userprofilesetting_privacy'])}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sWork]['userprofilesetting_title']}--></td>
+							<td><!--{$oUserInfo:userprofile:$sWork}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<!--{elseif $sDo=='info'}-->
+						<!--<foreach for=arrInfos value=sInfo>-->
+						<!--{if array_key_exists($sInfo,$arrUserprofilesettingDatas) && 
+								$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_showinfo']==1 && 
+								Profile_Extend+checkPrivacy($nId,$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_privacy'])}-->
+						<tr>
+							<td><!--{$arrUserprofilesettingDatas[$sInfo]['userprofilesetting_title']}--></td>
+							<td><!--{if in_array($sInfo,array('userprofile_bio','userprofile_interest'))}--><!--{$oUserInfo:userprofile:$sInfo|Profile_Extend+formatUserinfo}--><!--{d*else}--><!--{$oUserInfo:userprofile:$sInfo}--><!--{/if}--></td>
+						<tr/>
+						<!--{/if}-->
+						<!--</foreach>-->
+						<tr>
+							<td><!--<lang package='Template'>-->昵称<!--</lang>--></td>
+							<td><!--{$oUserInfo:user_nikename}--></td>
+						<tr/>
+						<tr>
+							<td>Email</td>
+							<td><!--{$oUserInfo:user_email}--></td>
+						<tr/>
+						<tr>
+							<td><!--<lang package='Template'>-->用户签名<!--</lang>--></td>
+							<td><!--{~$sUsersign=UserModel::getUsernameById($oUserInfo['user_id'],'user_sign')}-->
+								<!--{if $sUsersign}--><!--{$sUsersign|Core_Extend+usersign}--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Common'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}-->
+							</td>
+						<tr/>
+						<!--{/if}-->
+					</tbody>
+				</table>
+
+				<!--{# 评论列表}-->
+				<!--<include file="space+guestbookcommentlist" />-->
+				
+				<!--{# 评论表单}-->
+				<!--<include file="space+guestbookcommentform" />-->
+			</div>
+
+			<div class="span4">
+				<table class="table">
+					<thead>
+						<tr>
+							<td style="text-align:center;">
+								<a href="<!--{:Dyhb::U('home://space@?id='.$nId.'&type=avatar')}-->"><img src="<!--{:Core_Extend::avatar( $nId,'small' )}-->" width="48px" height="48px" class="thumbnail"/></a>
+							</td>
+							<td>
+								<label class="control-label" for="email-input"><i class="icon-retweet"></i>&nbsp;<!--<lang package='Template'>-->与用户 Email 交流<!--</lang>--></label>
+								<div class="input-prepend">
+									<span class="add-on"><i class="icon-envelope"></i></span><input style="width:140px;" id="email-input" type="text" value="<!--{$oUserInfo:user_email}-->">
+								</div>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2"><!--{$nId|Core_Extend+getUsericon}-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'])}-->"><!--{$oUserInfo:user_name}-->@<!--{$oUserInfo:user_id}--></a><!--{$oUserInfo['user_id']|Core_Extend+getUseronlineicon}--><!--{$oUserInfo|Core_Extend+fansmany=true}--></td>
+						</tr>
+						<tr>
+							<td colspan="2"><img src="<!--{:Profile_Extend::getUserprofilegender($oUserInfo->userprofile->userprofile_gender)}-->" border="0" align="absmiddle" />&nbsp;<!--<lang package='Template'>-->性别<!--</lang>--> <!--{:Profile_Extend::getGender($oUserInfo->userprofile->userprofile_gender)}--></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-user"></i>&nbsp;<!--{$oUserInfo:create_dateline|Core_Extend+timeFormat}-->&nbsp;<!--<lang package='Template'>-->注册<!--</lang>--></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-ok"></i>&nbsp;<!--<lang package='Template'>-->最后登陆<!--</lang>-->&nbsp;<!--{$oUserInfo:user_lastlogintime|Core_Extend+timeFormat}--></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-heart"></i>&nbsp;<!--<lang package='Template'>-->等级<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->当前积分<!--</lang>-->&nbsp;<!--{$nUserscore}-->,<!--<lang package='__COMMON_LANG__@Common'>-->等级名字<!--</lang>-->&nbsp;<!--{$arrRatinginfo['rating_name']}-->,<!--<lang package='__COMMON_LANG__@Common'>-->距离下一个等级<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_rating']['rating_name']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->还差<!--</lang>-->&nbsp;<!--{$arrRatinginfo['next_needscore']}-->&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->积分<!--</lang>-->"><!--{$arrRatinginfo['rating_name']}--></a><img src="<!--{$arrRatinginfo['rating_icon']}-->"/></td>
+						</tr>
+						<tr>
+							<td colspan="2"><i class="icon-star"></i>&nbsp;<!--<lang package='Template'>-->积分<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit1}--></a></span>&nbsp;
+							<!--<lang package='Template'>-->金币<!--</lang>-->&nbsp;<span class="badge badge-success"><a href="<!--{:Dyhb::U('home://space@?id='.$oUserInfo['user_id'].'&type=rating')}-->"><!--{$oUserInfo->usercount->usercount_extendcredit2}--></a></span></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div style="padding:5px;">
+					<!--{if $GLOBALS['___login___']===false}-->
+					<a class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i>&nbsp;<!--<lang package='Template'>-->关注<!--</lang>-->+1</a>
+					<!--{d*else}-->
+					<!--{~$nAlreadyFriendId=Core_Extend::isAlreadyFriend($GLOBALS['___login___']['user_id']);}-->
+					<!--{if $nAlreadyFriendId==1 || $nAlreadyFriendId==4}-->
+					<a class="btn" rel="nofollow" href="javascript:void(0);" onclick="deleteFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-remove"></i><!--<lang package='Template'>-->取消关注<!--</lang>--></a>
+					<!--{d*else}-->
+					<a rel="nofollow" class="btn" href="javascript:void(0);" onclick="addFriend(<!--{$oUserInfo['user_id']}-->);"><i class="icon-plus"></i><!--<lang package='Template'>-->关注<!--</lang>-->+1</a>
+					<!--{/if}-->
+					<!--{/if}-->&nbsp;
+					<a href="<!--{:Dyhb::U('home://pm/pmnew?uid='.$oUserInfo['user_id'])}-->" rel="nofollow" class="btn"><i class="icon-envelope"></i>&nbsp;<!--<lang package='Template'>-->发消息<!--</lang>--></a>
+				</div>
+
+				<div style="padding:10px 5px;">
+					<h4><i class="icon-pencil"></i>&nbsp;<!--<lang package='Template'>-->签名<!--</lang>--></h4>
+					<p style="margin-top:10px;"><!--{if $oUserInfo:user_sign}--><!--{$oUserInfo:user_sign||Core_Extend+usersign}--><!--{d*else}--><!--<lang package='Template'>-->该用户暂时没有设置签名<!--</lang>--><!--{/if}--></p>
+				</div>
+
+				<div style="padding:10px 5px;">
+					<h4><!--<lang package='Template'>-->他关注的用户<!--</lang>--></h4>
+					<p style="margin-top:10px;">
+						<!--{if is_array($arrFriends)}-->
+						<ul class="thumbnails">
+							<!--<foreach for=arrFriends value=oFriend>-->
+							<li class="span1">
+								<div class="thumbnail">
+									<a href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><img src="<!--{:Core_Extend::avatar( $oFriend['friend_friendid'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" alt="<!--<lang package='Template'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->"></a>
+									<a rel="tooltip" title="<!--<lang package='Template'>-->好友<!--</lang>--> <!--{$oFriend['friend_friendusername']}-->" href="<!--{:Dyhb::U('home://space@?id='.$oFriend['friend_friendid'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oFriend['friend_friendid']),0,3)}--></h5></a>
+								</div>
+							</li>
+							<!--</foreach>-->
+						</ul>
+						<!--{d*else}-->
+						<!--<lang package='Template'>-->他尚未关注任何人<!--</lang>-->
+						<!--{/if}-->
+					</p>
+				</div>
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

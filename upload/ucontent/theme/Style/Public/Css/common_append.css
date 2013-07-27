@@ -1,0 +1,53 @@
+/*
+File Name: common_append.css
+File Type: 非必需
+Description: 基本样式扩展
+*/
+
+/**===============================
+           重写基础元素
+================================*/
+body { background: #e5e5e5 url({IMG_DIR}/background.png) repeat; }
+
+/**===============================
+           重新定义一些颜色
+================================*/
+.label-success{background-color: #dc4f40;}
+.label-success[href]{background-color: #f77264;}
+.alert-success{color: #690a34;background-color: #e6e9ed;border-color: #ebecec;}
+.label a,.badge a{color:#fff;}
+.badge-success{background:#dc4f40;}
+/* color */
+.nav-list > .active > a,.nav-list > .active > a:hover {background-color:#dc4f40;}
+input:focus,textarea:focus {border-color: #dc4f40;}
+.nav-pills > .active > a,.nav-pills > .active > a:hover {background-color: #dc4f40;}
+.dropdown-menu a:hover{background-color: #dc4f40;}
+.dropdown-menu li > a:hover,.dropdown-menu .active > a,.dropdown-menu .active > a:hover {background-color: #dc4f40;}
+/* 按钮 */
+.btn-success,.d-state-highlight{background-color: #dc4f40;*background-color: #dc4f40;background-image: -ms-linear-gradient(top, #f77264, #dc4f40);background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f77264), to(#dc4f40));background-image: -webkit-linear-gradient(top, #f77264, #dc4f40);background-image: -o-linear-gradient(top, #f77264, #dc4f40);background-image: -moz-linear-gradient(top, #f77264, #dc4f40);background-image: linear-gradient(top, #f77264, #dc4f40);background-repeat: repeat-x;border-color: #dc4f40 #dc4f40 #ad6704;border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f77264', endColorstr='#dc4f40', GradientType=0);filter: progid:dximagetransform.microsoft.gradient(enabled=false);}
+.btn-success:hover,.btn-success:active,.btn-success.active,.btn-success.disabled,.btn-success[disabled]{background-color: #dc4f40;*background-color: #f75949;}
+.btn-success:active,.btn-success.active{background-color: #29333e \9;}
+
+/**===============================
+           重写通用标签
+================================*/
+a.common_tag{background:#f99d93;color:#fff;}
+a.common_tag:hover{background:#dc4f40;}
+
+/**===============================
+           定义菜单样式
+================================*/
+nav { background: url({STYLE_IMG_DIR}/menu_bg.png) repeat; }
+.main-menu { overflow: hidden; }
+.main-menu ul, .main-menu ul ul { list-style: none; margin: 0 !important; }
+.main-menu ul li { float: left; }
+.main-menu ul li a { display: block; font-size: 13px; font-weight: 700; text-transform: capitalize; }
+.main-menu ul ul { visibility: hidden; width: 140px; position: absolute; z-index: 999; }
+.main-menu ul ul li { width: 140px; position: relative; }
+.main-menu ul ul ul { left: 139px; top: 0; position: absolute; }
+.main-menu ul li:hover > ul { visibility: visible; }
+/* styling */
+.main-menu a { padding: 11px 10px; color: #fff; text-shadow: #000 1px 1px; }
+.main-menu li { background: url({STYLE_IMG_DIR}/menu_bg.png) repeat; }
+.main-menu a:hover, .main-menu .current-menu-item a, .main-menu .current-menu-item li a:hover, .main-menu .current_page_item a, .main-menu .current_page_item li a:hover { background: url({STYLE_IMG_DIR}/menu_hover_bg.png) repeat; text-decoration:none;}
+.main-menu .current-menu-item li a, .main-menu .current_page_item li a { background-image: none; }

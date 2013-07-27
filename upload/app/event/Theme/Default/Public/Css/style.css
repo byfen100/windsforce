@@ -1,0 +1,21 @@
+/*
+File Name: style.css
+File Type: 不必需
+Description: Event应用模块CSS
+*/
+
+/**===============================
+           首页
+================================*/
+[CURSCRIPT=event::public::index]
+.eventcategory-mod {margin-bottom: 30px;}
+.eventcategory-mod {margin-bottom: 40px;}
+.eventcategory-mod:after {clear: both;content: " ";display: block;}
+.eventcategory-inlinelist {font-size: 0;}
+.eventcategory-catsboard {background: none repeat scroll 0 0 #F6F5F2;padding: 9px;}
+.eventcategory-catsboard .entry {line-height: 1.95;margin: 7px;width: 100px;}
+.eventcategory-catsboard h5 {margin-bottom: 9px;}
+.eventcategory-mod, .eventcategory-inlinelist li {display: inline-block;font-size: 12px;vertical-align: top;}
+.eventcategory-catsboard .entry a {border-radius: 1px 1px 1px 1px;display: inline-block;line-height: 1.4em;padding: 0 3px;}
+.eventcategory-mod ol,.eventcategory-mod ul {list-style-position: outside;margin-left: 0;}
+[/CURSCRIPT]

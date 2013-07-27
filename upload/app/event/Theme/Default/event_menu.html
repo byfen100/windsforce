@@ -1,0 +1,5 @@
+				<ul class="nav nav-tabs">
+					<li <!--{if empty($sType)}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->"><!--<lang package='Template'>-->活动<!--</lang>--></a></li>
+					<li <!--{if $sType=='user'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'].'&type=user')}-->"><!--<lang package='Template'>-->成员<!--</lang>-->&nbsp;(<!--{$oEvent['event_joincount']}-->)</a></li>
+					<li <!--{if $sType=='attentionuser'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'].'&type=attentionuser')}-->"><!--<lang package='Template'>-->关注者<!--</lang>-->&nbsp;(<!--{$oEvent['event_attentioncount']}-->)</a></li>
+				</ul>

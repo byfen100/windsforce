@@ -1,0 +1,128 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function deleteLovetopic(){
+	windsforceConfirm(D.L('确实要永久删除选择项吗？','__COMMON_LANG__@Common'),function(){
+		$('#grouptopiclove_form').submit();
+	});
+}
+<!--{/script}-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--<lang package='Template'>-->我喜欢的帖子<!--</lang>--></li>
+		</ul>
+
+		<div class="row">
+
+			<div class="span3">
+				<!--<include file="Core_Extend::template('ucenter_sidebar','home')" />-->
+			</div>
+
+			<div class="span9">
+				<div class="hero-unit">
+					<h4><!--<lang package='Template'>-->我喜欢的话题<!--</lang>--></h4>
+					<p><a href="<!--{:Dyhb::U('group://ucenter/index')}-->" style="font-size:12px;"><i class="icon-share-alt"></i>&nbsp;<!--<lang package='Template'>-->返回小组个人空间<!--</lang>--></a></p>
+				</div>
+
+				<!--<include file="ucentergrouptopic+lovemenu" />-->
+				
+				<form method='post' action="<!--{:Dyhb::U('group://ucenter/lovetopic_delete')}-->" name="grouptopiclove_form" id="grouptopiclove_form">
+					<div id="topic_list_box" class="topic_list_box">
+						<table width="100%" class="table" id="checkList">
+							<thead>
+								<tr style="border-bottom:1px solid #eeeeee;">
+									<th style="width:3px;"><input type="checkbox" onclick="checkAll('checkList')"></th>
+									<th style="width:61px;"><!--<lang package='Template'>-->发帖人<!--</lang>--></th>
+									<th colspan="2" style="text-align:right;">
+										<!--<lang package='Template'>-->回复<!--</lang>-->
+										<span class="pipe">|</span>
+										<!--<lang package='Template'>-->浏览<!--</lang>-->
+									</th>
+								</tr>
+							</thead>
+							<tbody id="grouptopiclist_box">
+								<!--{if is_array($arrGrouptopicloves)}-->
+								<!--<foreach for=arrGrouptopicloves value=oGrouptopiclove>-->
+								<!--{~$oGrouptopic=$oGrouptopiclove->grouptopic}-->
+								<tr>
+									<td><input type="checkbox" name="key[]" value="<!--{$oGrouptopic:grouptopic_id}-->"></td>
+									<td class="author">
+										<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+										<!--<lang package='Template'>-->匿名<!--</lang>-->
+										<!--{d*else}-->
+										<a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->">
+											<img class="thumbnail" src="<!--{:Core_Extend::avatar($oGrouptopic['user_id'],'small')}-->" width="45px" height="45px" alt="<!--{$oGrouptopic->grouptopic_username}-->" />
+										</a>
+										<!--{/if}-->
+									</td>
+									<td class="subject">
+										<p class="title">
+											<!--{:Grouptopic_Extend::grouptopiclistIcon($oGrouptopic)}-->&nbsp;
+											<!--{if $oGrouptopic->grouptopiccategory_id>0}-->
+											<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid='.$oGrouptopic->grouptopiccategory_id)}-->">[<!--{$oGrouptopic->grouptopiccategory->grouptopiccategory_name}-->]</a>
+											<!--{d*else}-->
+											<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group,'&cid=-1')}-->">[<!--<lang package='Template'>-->默认分类<!--</lang>-->]</a>
+											<!--{/if}-->
+											<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic->grouptopic_id)}-->" style="<!--{$oGrouptopic['grouptopic_color']|Grouptopic_Extend+grouptopicColor}-->;" title="<!--{$oGrouptopic->grouptopic_title}-->"><!--{$oGrouptopic->grouptopic_title|G+subString=0,50}--></a>
+											<!--{if $oGrouptopic->grouptopic_comments>0}-->
+											<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
+											<!--{if CURRENT_TIMESTAMP-$arrLatestComment['commenttime']<=86400}-->
+											&nbsp;<a href="<!--{:Dyhb::U('group://topic@?id='.$oGrouptopic['grouptopic_id'].'&isolation_commentid='.$arrLatestComment['commentid'])}-->" title="<!--<lang package='Template'>-->查看新回复<!--</lang>-->">New</a>&nbsp;
+											<!--{/if}-->
+											<!--{/if}-->
+											<!--{:Grouptopic_Extend::grouptopicDigest($oGrouptopic->grouptopic_addtodigest,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicRecommend($oGrouptopic->grouptopic_isrecommend,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicThumb($oGrouptopic->grouptopic_thumb,true)}-->
+											<!--{:Grouptopic_Extend::grouptopicHot($oGrouptopic->grouptopic_comments,$oGrouptopic->grouptopic_views,true)}-->
+											<!--{:Core_Extend::newData($oGrouptopic['create_dateline'],true)}-->
+											<!--{~$sPagelinks=Grouptopic_Extend::getTopicpages($oGrouptopic)}-->
+											<!--{if $sPagelinks}-->
+											<span class="pagenav"><!--{$sPagelinks}--></span>
+											<!--{/if}-->
+										</p>
+										<p class="info">
+											<!--<lang package='Template'>-->小组<!--</lang>-->&nbsp;
+											<a href="<!--{:Group_Extend::getGroupurl($oGrouptopic->group)}-->"><!--{$oGrouptopic:group:group_nikename}--></a>
+											<span class="pipe">|</span>
+											<!--<lang package='Template'>-->楼主<!--</lang>-->&nbsp;<!--{if $oGrouptopic['grouptopic_isanonymous']==1}-->
+											<!--<lang package='Template'>-->匿名<!--</lang>-->
+											<!--{d*else}--><a href="<!--{:Dyhb::U('group://space@?id='.$oGrouptopic->user_id)}-->" class="bind_hover_card" bm_user_id="<!--{$oGrouptopic->user_id}-->"><!--{$oGrouptopic->grouptopic_username}--></a>
+											<!--{/if}-->&nbsp;
+											<span><!--{$oGrouptopic->create_dateline|Core_Extend+timeFormat}--></span>
+											<span class="pipe">|</span>
+											<!--{if $oGrouptopic->grouptopic_comments>0}-->
+											<!--{~$arrLatestComment=@unserialize($oGrouptopic->grouptopic_latestcomment)}-->
+											<!--<lang package='Template'>-->最后回复<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('group://space@?id='.$arrLatestComment['commentuserid'])}-->" class="bind_hover_card" bm_user_id="<!--{$arrLatestComment['commentuserid']}-->"><!--{$arrLatestComment['commentuserid']|UserModel+getUsernameById}--></a>&nbsp;
+											<span><!--{$arrLatestComment['commenttime']|Core_Extend+timeFormat}--></span>
+											<!--{d*else}-->
+											<span><!--<lang package='Template'>-->暂无回复<!--</lang>--></span>
+											<!--{/if}-->
+										</p>
+									</td>
+									<td class="num" style="text-align:center;">
+										<span><!--<lang package='Template'>-->浏览<!--</lang>--><em><!--{$oGrouptopic->grouptopic_views}--></em></span>
+										<span><!--<lang package='Template'>-->回复<!--</lang>--><em><!--{$oGrouptopic->grouptopic_comments}--></em></span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4"><!--{$oGrouptopiclove['grouptopiclove_note']}--></td>
+								</tr>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<tr id="grouptopic_no">
+									<td colspan="3"><!--<lang package='Template'>-->暂时没有发现任何帖子<!--</lang>--></td>
+								</tr>
+								<!--{/if}-->
+							</tbody>
+						</table>
+					</div>
+
+					<a href="javascript:void(0);" onclick="deleteLovetopic();" class="btn btn-mini btn-warning"><i class="icon-remove icon-white"></i>&nbsp;<!--<lang package='__COMMON_LANG__@Common'>-->删除<!--</lang>--></a>
+				</form>
+
+				<!--{$sPageNavbar}-->
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

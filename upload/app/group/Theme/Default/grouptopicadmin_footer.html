@@ -1,0 +1,22 @@
+		<h5 class="moderatereason_title">
+			<div class="btn-group right">
+				<a href="javascript:void(0);" id="moderate_reason" class="btn-mini dropdown-toggle" data-toggle="dropdown">^</a>
+				<ul class="dropdown-menu">
+					<!--{~$arrReasonopposition=explode("\n",str_replace(array("\r","\n\n"),array("\r","\n"),$GLOBALS['_cache_']['group_option']['group_reason_opposition']))}-->
+					<!--<foreach for=arrReasonopposition value=sReasonopposition>-->
+					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','<!--{$sReasonopposition|trim}-->');"><!--{$sReasonopposition}--></a></li>
+					<!--</foreach>-->
+					<li class="divider"></li>
+					<!--{~$arrReasonsupport=explode("\n",str_replace(array("\r","\n\n"),array("\r","\n"),$GLOBALS['_cache_']['group_option']['group_reason_support']))}-->
+					<!--<foreach for=arrReasonsupport value=sReasonsupport>-->
+					<li><a href="javascript:void(0);" onclick="replaceIdcontent('reason','<!--{$sReasonsupport|trim}-->');"><!--{$sReasonsupport}--></a></li>
+					<!--</foreach>-->
+				</ul>
+			</div>
+			<span><!--<lang package='Template'>-->操作原因<!--</lang>-->:</span>
+		</h5>
+		<p><textarea id="reason" name="reason" class="input-xlarge" rows="3"></textarea></p>
+		<input type="hidden" name="grouptopics" value="<!--{$sGrouptopics}-->">
+		<input type="hidden" name="groupid" value="<!--{$nGroupid}-->">
+	</form>
+</div>

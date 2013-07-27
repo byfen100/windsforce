@@ -1,0 +1,74 @@
+/*
+[name]灰绿[/name]
+[iconbgcolor]#009B97[/iconbgcolor]
+Description: WindsForce! Extend Stylecolor
+*/
+
+/**===============================
+           重新定义基础
+================================*/
+body{background:#009B97;color:#444;}
+a{color: #000;}
+a:hover {color: #009B97;}
+
+/**===============================
+           重新定义一些颜色
+================================*/
+.label-success{background-color: #009B97;}
+.label-success[href]{background-color: #d0f5f4;}
+.alert-success{color: #028e8a;background-color: #d0f5f4;border-color: #a7e8e6;}
+.label a,.badge a{color:#fff;}
+.badge-success{background:#028e8a;}
+/* color */
+.nav-list > .active > a,.nav-list > .active > a:hover {background-color:#009B97;}
+input:focus,textarea:focus {border-color: #009B97;}
+.nav-pills > .active > a,.nav-pills > .active > a:hover {background-color: #009B97;}
+.dropdown-menu a:hover{background-color: #009B97;}
+.dropdown-menu li > a:hover,.dropdown-menu .active > a,.dropdown-menu .active > a:hover {background-color: #009B97;}
+/* 按钮 */
+.btn-success,.d-state-highlight{background-color: #009B97;*background-color: #009B97;background-image: -ms-linear-gradient(top, #3adbd7, #009B97);background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3adbd7), to(#009B97));background-image: -webkit-linear-gradient(top, #3adbd7, #009B97);background-image: -o-linear-gradient(top, #3adbd7, #009B97);background-image: -moz-linear-gradient(top, #3adbd7, #009B97);background-image: linear-gradient(top, #3adbd7, #009B97);background-repeat: repeat-x;border-color: #009B97 #009B97 #734e28;border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);filter: progid:dximagetransform.microsoft.gradient(startColorstr='#3adbd7', endColorstr='#009B97', GradientType=0);filter: progid:dximagetransform.microsoft.gradient(enabled=false);}
+.btn-success:hover,.btn-success:active,.btn-success.active,.btn-success.disabled,.btn-success[disabled] {background-color: #009B97;*background-color: #a35f1b;}
+.btn-success:active,.btn-success.active {background-color: #b36516 \9;}
+
+/**===============================
+           重新定义头部和头部菜单
+================================*/
+#header .navbar-inner{color:#009B97;background:#f5f5f5;filter:none;_height:40px;height:40px;overflow:visible;margin-top:10px;}
+#header .navbar .divider-vertical{width:1px;height:40px;margin:0 9px;overflow:hidden;background-color:#F5F5F5;border-right:1px solid #F5F5F5;}
+#header .navbar-inner .nav .active a{color:#009B97;background:#009B97;}
+#header .navbar-inner .nav .active a:hover{background:#009B97;}
+#header .navbar-inner .nav a{color:#009B97;}#header .navbar-inner .nav a:hover{color:#FFF;background:#009B97;}#header .navbar-inner .nav .active a{color:#fff;}
+#header .navbar-inner .nav .active .dropdown-menu a{background-color:#009B97;}
+#header .navbar-inner .nav .dropdown-menu a{color:#444;}
+#header .navbar-inner .nav .dropdown-menu a:hover{color:#FFF;text-decoration:none;background-color:#009B97;}
+#header .dropdown-menu li > a:hover,#header .dropdown-menu .active > a,#header .dropdown-menu .active > a:hover{color:#FFF;text-decoration:none;background-color:#009B97;}
+#header .navbar-search .search-query{color:#444;background-color:#FFF;}
+#header .navbar-search .search-query:-moz-placeholder{color:#444;}
+#header .navbar-search .search-query::-webkit-input-placeholder{color:#444;}
+#header .navbar-search .search-query:focus,#header .navbar-search .search-query.focused{color:#444;text-shadow:0 1px 0 #FFF;background-color:#FFF;}
+
+#header .navbar-inner .nav .active a {background: #ddd;color: #009B97;}
+#header .navbar-inner .nav .active a:hover,#header .navbar-inner .nav a:hover{background: #ddd;color: #009B97;}
+
+#header .navbar-inner .nav .active .dropdown-menu a {background:none;}
+#header .navbar-inner .nav .active .dropdown-menu a:hover{background: #ddd;height:18px;color: #009B97;}
+
+/**===============================
+           重写底部
+================================*/
+#footer{background: none;color:#fff;}
+#footer a{color:#fff;}
+
+/**===============================
+           重写通用标签
+================================*/
+a.common_tag{background:#d0cbcb;color:#fff;}
+a.common_tag:hover{background:#009B97;}
+
+/**===============================
+           重写系统主题元素CSS
+================================*/
+.WindsforceSystem-link_color,.WindsforceSystem-14{color:#009B97;}/* 14 */
+.WindsforceSystem-interval_line_color-border,.WindsforceSystem-35{}/* 35 */
+.WindsforceSystem-common_background_color,.WindsforceSystem-37{background-color:#d0f5f4;}/* 37 */
+.WindsforceSystem-special_bg,.WindsforceSystem-39{background-color:#009B97;}/* 39 */

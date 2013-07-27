@@ -1,0 +1,38 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('event://public/index')}-->" title="<!--<lang package='Template'>-->活动<!--</lang>-->"><!--<lang package='Template'>-->活动<!--</lang>--></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><!--{$oEvent['event_title']}--></li>
+		</ul>
+
+		<div class="row">
+			<div class="span8">
+				<h3 class="event_title" style="margin-bottom:10px;"><!--{$oEvent['event_title']}--></h3>
+				
+				<!--<include file="event+menu" />-->
+
+				<p>
+					<ul class="thumbnails">
+						<!--{if is_array($arrEventuserLists)}-->
+						<!--<foreach for=arrEventuserLists value=oEventuser>-->
+						<li class="span1">
+							<div class="thumbnail">
+								<a href="<!--{:Dyhb::U('home://space@?id='.$oEventuser['user_id'])}-->"><img src="<!--{:Core_Extend::avatar( $oEventuser['user_id'],'small' )}-->" width="100%" title="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oEventuser['user_id'])}--> - <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oEventuser['create_dateline']|Core_Extend+timeFormat}-->" alt="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oEventuser['user_id'])}-->"></a>
+								<a rel="tooltip" title="<!--<lang package='Template'>-->活动成员<!--</lang>--> <!--{:UserModel::getUsernameById($oEventuser['user_id'])}--> | <!--<lang package='Template'>-->创建时间<!--</lang>--> <!--{$oEventuser['create_dateline']|Core_Extend+timeFormat}-->" href="<!--{:Dyhb::U('home://space@?id='.$oEventuser['user_id'])}-->"><h5 style="text-align:center;"><!--{:G::subString(UserModel::getUsernameById($oEventuser['user_id']),0,3)}--></h5></a>
+							</div>
+						</li>
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<li><!--<lang package='Template'>-->暂时没有发现任何活动成员<!--</lang>--></li>
+						<!--{/if}-->
+					</ul>
+				</p>
+
+				<!--{$sPageNavbar}-->
+			</div>
+
+			<!--<include file="event+sidebar" />-->
+		</div>
+
+<!--<include file="Core_Extend::template('footer')" />-->

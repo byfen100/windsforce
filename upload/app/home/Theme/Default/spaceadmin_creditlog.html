@@ -1,0 +1,58 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+		<ul class="breadcrumb">
+			<li><a href="<!--{:__APP__}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('home://spaceadmin/index')}-->"><!--<lang package='Template'>-->用户资料<!--</lang>--></a> <span class="divider">/</span></li>
+			<li><!--<lang package='Template'>-->积分记录<!--</lang>--></li>
+		</ul>
+		
+		<!--<include file="spaceadmin+menu" />-->
+		
+		<div class="row">
+			<div class="span12">
+				<!--<include file="spaceadmin+ratingmenu" />-->
+					
+				<p>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditlog')}-->"><b><!--<lang package='Template'>-->积分收益<!--</lang>--></b></a>
+					<span class="pipe">|</span>
+					<a href="<!--{:Dyhb::U('home://spaceadmin/creditrulelog')}-->"><!--<lang package='Template'>-->系统奖励<!--</lang>--></a>
+				</p>
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th><!--<lang package='Template'>-->操作<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->积分变更<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->详情<!--</lang>--></th>
+							<th><!--<lang package='Template'>-->变更时间<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--{if is_array($arrCreditlogs)}-->
+						<!--<foreach for=arrCreditlogs value=oCreditlog>-->
+						<tr>
+							<td><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
+							<td><!--<foreach for=arrAvailableExtendCredits key=nAvailableExtendCredit value=arrAvailableExtendCredit>-->
+								<!--{~$nCreditlogextcredits='creditlog_extcredits'.$nAvailableExtendCredit}-->
+								<!--{if $oCreditlog[$nCreditlogextcredits]}-->
+								<!--{$arrAvailableExtendCredit['title']}-->&nbsp;<!--{if $oCreditlog[$nCreditlogextcredits]>0}-->+<!--{/if}--><!--{$oCreditlog['creditlog_extcredits'.$nAvailableExtendCredit]}-->&nbsp;&nbsp;
+								<!--{/if}-->
+								<!--</foreach>-->
+							</td>
+							<td><!--<lang package='Template'>-->与<!--</lang>-->&nbsp;<a href="<!--{:Dyhb::U('home://space@?id='.$oCreditlog['creditlog_relatedid'])}-->" target="_blank"><!--{$oCreditlog:related:user_name}--></a>&nbsp;<!--<lang package='Template'>-->进行<!--</lang>--><!--{$oCreditlog:creditoperation:creditoperation_title}--></td>
+							<td><!--{$oCreditlog['create_dateline']|Core_Extend+timeFormat}--></td>
+						</tr>
+						<!--</foreach>-->
+						<!--{d*else}-->
+						<tr>
+							<td colspan="4"><!--<lang package='Template'>-->暂时没有发现任何积分记录<!--</lang>--></td>
+						</tr>
+						<!--{/if}-->
+					</tbody>
+				</table>
+
+				<!--{$sPageNavbar}-->
+			</div>
+		</div><!--/row-->
+
+<!--<include file="Core_Extend::template('footer')" />-->

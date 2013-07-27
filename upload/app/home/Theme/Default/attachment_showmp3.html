@@ -1,0 +1,30 @@
+			<div class="show_mp3">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th><img src="<!--{$sAttachmentIcon}-->">&nbsp;<!--<lang package='Template'>-->Mp3文件<!--</lang>--></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="background:none;">
+								<a href="javascript:playmedia('player_<!--{$oAttachment['attachment_id']}-->','mp3','<!--{:Attachment_Extend::getAttachmenturl($oAttachment)}-->','240','20','');updateDownload('<!--{$oAttachment['attachment_id']}-->');"><!--{$oAttachment['attachment_name']}--></a>
+								<div id="player_<!--{$oAttachment['attachment_id']}-->" style="display: none;"></div>
+							</td>
+						</tr>
+						<!--{if $oAttachment['attachment_description']}-->
+						<tr>
+							<td style="background:none;">
+								<!--{$oAttachment['attachment_description']}-->
+							</td>
+						</tr>
+						<!--{/if}-->
+						<tr>
+							<td style="background:none;">
+								<!--<lang package='Template'>-->播放本专辑<!--</lang>-->&nbsp;(<a href="javascript:playmedia('playerlist_<!--{$oAttachment['attachment_id']}-->','mp3list','<!--{$TheController->get_attachmentcategory_playlist($oAttachment)}-->','240','200','');"><!--{if $oAttachment:attachmentcategory:attachmentcategory_name}--><!--{$oAttachment:attachmentcategory:attachmentcategory_name}--><!--{d*else}--><!--<lang package='Template'>-->未分类<!--</lang>--><!--{/if}--></a>)
+								<div id="playerlist_<!--{$oAttachment['attachment_id']}-->" style="display: none;"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>

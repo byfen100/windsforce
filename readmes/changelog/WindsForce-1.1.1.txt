@@ -1,0 +1,26 @@
+/**
+ * WindsForce APP Framework (风之力APP开发框架)
+ *
+ * @copyright    Copyright (C)WindsForce TEAM Since 2012.03.17.(http://www.windsforce.com)
+ * @license        This is NOT a freeware, use is subject to license terms
+ * @notice         欢迎使用 WindsForce APP开发框架,在您开始使用之前,请务必完整阅读本软件附带的全部说明档
+ * @welcome     Welcome to http://www.windsforce.com & http://www.windsforce.net
+ */
+
+!defined('DYHB_PATH') && exit;
+
+【WindsForce 产品版本 Changelog，好好阅读有利于更好地运营网站】
+
+WindsForce 1.1.1 正式版 Changelog
+
+---- WindsForce 的第二个版本,希望多年后本软件能够为了给你带来方便.
+
+	WindsForce-1.1.1版本开发的数据库变更记
+	http://doyouhaobaby.net/app/group/topic/265.html
+	
+	WindsForce-1.1.1版本更新记录
+	http://doyouhaobaby.net/app/group/topic/302.html
+
+                                                                                                                                    WindsForce Team, 2013-06-04 04:56
+                                                                                                                                    http://www.windsforce.com
+                                                                                                                                    http://www.windsforce.net

@@ -1,0 +1,29 @@
+<?php
+/* [$WindsForce] (C)WindsForce TEAM Since 2012.03.17.
+   群组控制器($Liu.XiangMin)*/
+
+!defined('DYHB_PATH') && exit;
+
+class GroupController extends InitController{
+
+	public function show(){
+		Core_Extend::doControllerAction('Group@Show','index');
+	}
+
+	public function joingroup(){
+		Core_Extend::doControllerAction('Group@Joingroup','index');
+	}
+
+	public function leavegroup(){
+		Core_Extend::doControllerAction('Group@Leavegroup','index');
+	}
+
+	public function getcategory(){
+		Core_Extend::doControllerAction('Group@Getcategory','index');
+	}
+
+	public function user(){
+		Core_Extend::doControllerAction('Group@User','index');
+	}
+
+}
