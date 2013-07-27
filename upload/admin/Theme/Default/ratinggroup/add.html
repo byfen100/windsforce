@@ -1,0 +1,91 @@
+<!--<include file="public+header">-->
+
+<!--{script}-->
+function add(){
+	if( $('#id').val()!='' && $('#id').val()!==null){
+		update();
+		return;
+	}
+	$("#submit_button").attr("disabled","disabled");
+	$("#submit_button").val('add...');
+	Dyhb.AjaxSubmit('ratinggroupAdd','<!--{:Dyhb::U('ratinggroup/insert')}-->','',complete);
+}
+
+function update(){
+	$("#submit_button").attr("disabled","disabled");
+	$("#submit_button").val( 'update...');
+	Dyhb.AjaxSubmit('ratinggroupAdd','<!--{:Dyhb::U('ratinggroup/update')}-->','',function(){ 
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '<!--<lang package='Template'>-->更新<!--</lang>-->' ); 
+	});
+}
+
+function complete(data,status){
+	$("#submit_button").attr("disabled",false);
+	$("#submit_button").val( '<!--<lang package='Template'>-->发布<!--</lang>-->' );
+	if(status==1){
+		$('#id').val(data.ratinggroup_id);
+	}
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="empty( $nId )" >--><!--<lang package='Template'>-->添加分组<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->编辑分组<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="empty( $nId )" >--><!--<lang package='Template'>-->添加分组<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->编辑分组<!--</lang>-->_<!--{$nId}--><!--</if>-->')" title="<!--<lang package='Template'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='Template'>-->等级分组是为了更好地管理等级<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<if condition="empty( $nId )" >--><!--<lang package='Template'>-->添加分组<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->编辑分组<!--</lang>--><!--</if>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Dyhb::U('ratinggroup/index')}-->"><!--<lang package='Template'>-->分组列表<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--<if condition="empty( $nId )" >--><!--{:Dyhb::U('ratinggroup/insert')}--><!--<else/>--><!--{:Dyhb::U('ratinggroup/update')}--><!--</if>-->" method="post" id="ratinggroupAdd">
+				<div class="module_content">
+					<fieldset>
+						<label for="ratinggroup_sort"><!--<lang package='Template'>-->序号<!--</lang>--></label>
+						<input type="text" name="ratinggroup_sort" id="ratinggroup_sort" size="10" value="<!--<if condition="isset( $oValue ) && !empty( $oValue:ratinggroup_sort )">--><!--{$oValue:ratinggroup_sort}--><!--<else/>-->0<!--</if>-->"/>
+						<div class="description"><!--<lang package='Template'>-->分组序号，用于分组排序<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="ratinggroup_name"><!--<lang package='Template'>-->组名<!--</lang>--></label>
+						<input type="text" name="ratinggroup_name" id="ratinggroup_name" size="40" <!--<if condition="isset( $oValue )">-->value="<!--{$oValue:ratinggroup_name}-->" readonly="readonly"<!--</if>-->/>
+						<div class="description"><!--<lang package='Template'>-->分组的名字<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="ratinggroup_title"><!--<lang package='Template'>-->显示名<!--</lang>--></label>
+						<input type="text" name="ratinggroup_title" id="ratinggroup_title" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:ratinggroup_title}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='Template'>-->分组的别名<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="ratinggroup_status"><!--<lang package='Template'>-->状态<!--</lang>--></label>
+						<select name="ratinggroup_status">
+						<option value="1" <!--<if condition="isset( $oValue ) && $oValue:ratinggroup_status==1">-->selected<!--</if>-->><!--<lang package='Template'>-->启用<!--</lang>--></option>
+						<option value="0" <!--<if condition="!isset( $oValue ) || ( isset( $oValue ) && $oValue:ratinggroup_status==0 ) ">-->selected<!--</if>-->><!--<lang package='Template'>-->禁用<!--</lang>--></option>
+						</select>
+						<div class="description"><!--<lang package='Template'>-->分组的状态，启用后才能够使用<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="id" id="id" value="<!--<if condition="isset( $nId )">--><!--{$nId}--><!--</if>-->"/>
+						<input type="button" id="submit_button" onclick="<!--<if condition="!empty( $nId )" >-->update()<!--<else/>-->add()<!--</if>-->" value="<!--<if condition="!empty( $nId )" >--><!--<lang package='Template'>-->更新<!--</lang>--><!--<else/>--><!--<lang package='Template'>-->发布<!--</lang>--><!--</if>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

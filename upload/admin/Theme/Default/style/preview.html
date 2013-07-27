@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><!--{$GLOBALS['_option_']['site_name']}--> | <!--{$GLOBALS['_option_']['site_description']}--></title>
+	<!--[if lt IE 9]>
+	<script src="<!--{:__PUBLIC__}-->/js/common/html5.js"></script>
+	<![endif]-->
+	<!--<load file="<!--{:__PUBLIC__}-->/extension/bootstrap/2.0.3/css/bootstrap.min.css" />-->
+	<!--<load file="<!--{:__PUBLIC__}-->/extension/bootstrap/2.0.3/css/bootstrap-responsive.min.css" />-->
+	<link rel="stylesheet" type="text/css" href="<!--{$sStylepath}-->"/>
+	<script src="<!--{:__PUBLIC__}-->/js/jquery/jquery.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<a class="brand" href="javascript:void(0);" title="<!--{$GLOBALS['_option_']['site_description']}-->"><img src="<!--{:__PUBLIC__}-->/images/common/logo.png" alt="<!--{$GLOBALS['_option_']['site_name']}--> | <!--{$GLOBALS['_option_']['site_description']}-->"/></a>
+				</div>
+			</div>
+		</div>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="javascript:void(0);" title="<!--<lang package='Template'>-->首页<!--</lang>-->"><!--{$GLOBALS['_option_']['site_name']}--></a>
+					<ul class="nav">
+						<li class="active"><a href="javascript:void(0);"><!--<lang package='Template'>-->首页<!--</lang>--></a></li>
+						<li><a href="javascript:void(0);"><!--<lang package='Template'>-->小组<!--</lang>--></a></li>
+					</ul>
+					<div class="btn-group pull-right">
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+							<i class="icon-user"></i>&nbsp;
+							<!--{if $GLOBALS['___login___']['user_nikename']}-->
+								<!--{$GLOBALS['___login___']['user_nikename']}-->
+							<!--{d*else}-->
+								<!--{$GLOBALS['___login___']['user_name']}-->
+							<!--{/if}-->
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0);" target="_blank"><!--<lang package='Template'>-->管理中心<!--</lang>--></a></li>
+							<li><a href="javascript:void(0);"><!--<lang package='Template'>-->个人中心<!--</lang>--></a></li>
+							<li><a href="javascript:void(0);"><!--<lang package='Template'>-->修改资料<!--</lang>--></a></li>
+							<li><a href="javascript:void(0);"><!--<lang package='Template'>-->我的好友<!--</lang>--></a></li>
+							<li class="divider"></li>
+							<li><a href="javascript:void(0);"><!--<lang package='Template'>-->注销<!--</lang>--></a></li>
+						</ul>
+					</div>
+				</div><!--/container-fluid-->
+			</div><!--/navbar-inner-->
+		</div><!--/navbar-->
+	</div>
+	<div id="content">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><!--<lang package='Template'>-->表头<!--</lang>--></li>
+			</ul>
+
+			<div class="hero-unit">
+				<h1><!--{$GLOBALS['_option_']['site_name']}--></h1>
+				<p><a href="javascript:void(0);"><!--{$GLOBALS['_option_']['windsforce_program_name']}--></a>&nbsp;<!--<lang package='Template'>-->APP应用程序开发框架<!--</lang>-->(<!--<lang package='Template'>-->简称<!--</lang>--><stong><!--{$GLOBALS['_option_']['windsforce_program_name']}--></stong>)<!--<lang package='Template'>-->是一个采用 PHP 和 MySQL构建的应用程序开发管理器，程序采用DoYouHaoBaby框架开发。<!--</lang>--></p>
+			</div>
+
+			<div class="row">
+				<div class="span12">
+					<table class="table">
+						<tr>
+							<td>SMALL FONT</td>
+							<td><a href="javascript:void(0);"><!--<lang package='Template'>-->链接文字<!--</lang>--></a></td>
+							<td><a href="javascript:void(0);"><!--<lang package='Template'>-->高亮链接<!--</lang>--></a></td>
+						</tr>
+						<tr>
+							<td><!--<lang package='Template'>-->普通文本<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->中等文本<!--</lang>--></td>
+							<td><!--<lang package='Template'>-->浅色文字<!--</lang>--></td>
+						</tr>
+						<tr>
+							<td colspan="3"><!--<lang package='Template'>-->内容列表字体<!--</lang>--></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+		<hr/>
+		</div><!--/container-->
+	</div><!--/content-->
+
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="span12" style="text-align:center;">
+					<p><!--<lang package='Template'>-->版权及页脚信息<!--</lang>--></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!--/wrapper-->
+
+	<script src="<!--{:__PUBLIC__}-->/extension/bootstrap/2.0.3/js/bootstrap.min.js"></script>
+
+</body>
+</html>
