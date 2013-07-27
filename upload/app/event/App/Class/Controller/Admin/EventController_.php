@@ -14,6 +14,7 @@ class EventController extends InitController{
 
 		$oEventcategory=EventcategoryModel::F('eventcategory_id=?',$nCid)->getOne();
 		if(!empty($oEventcategory['eventcategory_id'])){
+			$arrMap['eventcategory_id']=$nCid;
 			$this->assign('oEventcategory',$oEventcategory);
 		}
 	}
