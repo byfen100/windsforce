@@ -78,7 +78,7 @@ class EventcategoryController extends InitController{
 				$nEventcategorys=EventcategoryModel::F('eventcategory_parentid=?',$nId)->all()->getCounts();
 				$oEventcategory=EventcategoryModel::F('eventcategory_id=?',$nId)->query();
 				if($nEventcategorys>0){
-					$this->E(Dyhb::L('群组分类%s存在子分类，你无法删除','__APPGROUP_COMMON_LANG__@Controller',null,$oEventcategory->eventcategory_name));
+					$this->E(Dyhb::L('活动类型%s存在子类型，你无法删除','__APPEVENT_COMMON_LANG__@Controller',null,$oEventcategory->eventcategory_name));
 				}
 			}
 		}
