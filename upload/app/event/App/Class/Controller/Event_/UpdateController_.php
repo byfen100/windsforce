@@ -63,6 +63,41 @@ class UpdateController extends Controller{
 			$this->E($oEvent->getErrorMessage());
 		}
 
+		// 发送feed
+		$sFeedtemplate='<div class="feed_addevent"><span class="feed_title">'.Dyhb::L('编辑了活动','Controller').'&nbsp;<a href="{@event_link}">'.$oEvent['event_title'].'</a></span><div class="feed_content">{event_content}</div><div class="feed_action"><a href="{@event_link}#comments">'.Dyhb::L('回复','Controller').'</a></div></div>';
+
+		$arrFeeddata=array(
+			'@event_link'=>'event://event/show?id='.$oEvent['event_id'],
+			'event_content'=>Core_Extend::subString($oEvent['event_content'],100,false,1,false),
+		);
+
+		try{
+			Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
+		// 发送提醒
+		if($GLOBALS['___login___']['user_id']!=$oEvent['user_id']){
+			$sEventmessage=Core_Extend::subString($oEvent['event_content'],100,false,1,false);
+			
+			$sNoticetemplate='<div class="notice_editevent"><span class="notice_title"><a href="{@space_link}">{user_name}</a>&nbsp;'.Dyhb::L('编辑了你的活动','Controller').'&nbsp;<a href="{@event_link}">'.$oEvent['event_title'].'</a></span><div class="notice_content"><div class="notice_quote"><span class="notice_quoteinfo">{content_message}</span></div>&nbsp;'.Dyhb::L('如果你对该操作有任何疑问，可以联系相关人员咨询','Controller').'</div><div class="notice_action"><a href="{@event_link}">'.Dyhb::L('查看','Controller').'</a></div></div>';
+
+			$arrNoticedata=array(
+				'@space_link'=>'home://space@?id='.$GLOBALS['___login___']['user_id'],
+				'user_name'=>$GLOBALS['___login___']['user_name'],
+				'@event_link'=>'event://event/show?id='.$oEvent['event_id'],
+				'content_message'=>$sEventmessage,
+			);
+
+			try{
+				Core_Extend::addNotice($sNoticetemplate,$arrNoticedata,$oEvent['user_id'],'editevent',$oEvent['event_id']);
+			}catch(Exception $e){
+				$this->E($e->getMessage());
+			}
+		}
+
+		// 后续处理
 		$arrData=$oEvent->toArray();
 		$arrData['url']=Dyhb::U('event://e@?id='.$oEvent['event_id']);
 

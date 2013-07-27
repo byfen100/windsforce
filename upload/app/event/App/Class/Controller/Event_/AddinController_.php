@@ -54,6 +54,21 @@ class AddinController extends Controller{
 			$this->E($oEvent->getErrorMessage());
 		}
 
+		// 发送feed
+		$sFeedtemplate='<div class="feed_addevent"><span class="feed_title">'.Dyhb::L('发布了一个活动','Controller').'&nbsp;<a href="{@event_link}">'.$oEvent['event_title'].'</a></span><div class="feed_content">{event_content}</div><div class="feed_action"><a href="{@event_link}#comments">'.Dyhb::L('回复','Controller').'</a></div></div>';
+
+		$arrFeeddata=array(
+			'@event_link'=>'event://event/show?id='.$oEvent['event_id'],
+			'event_content'=>Core_Extend::subString($oEvent['event_content'],100,false,1,false),
+		);
+
+		try{
+			Core_Extend::addFeed($sFeedtemplate,$arrFeeddata);
+		}catch(Exception $e){
+			$this->E($e->getMessage());
+		}
+
+		// 后续处理
 		$arrData=$oEvent->toArray();
 
 		if($oEvent['event_status']==1){
