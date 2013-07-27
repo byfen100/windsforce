@@ -132,7 +132,7 @@ return array(
 	'DEFAULT_APP'=>'home',
 
 	// URL模式
-	'URL_MODEL'=>1,
+	'URL_MODEL'=>0,
 
 	// 网址加上域名
 	'URL_DOMAIN'=>'',

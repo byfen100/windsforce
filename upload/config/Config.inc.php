@@ -93,7 +93,7 @@
   'ADMIN_LANGUAGE_DIR' => 'Zh-cn',
   'LANG_SWITCH' => true,
   'DEFAULT_APP' => 'home',
-  'URL_MODEL' => 1,
+  'URL_MODEL' => 0,
   'URL_DOMAIN' => '',
   'START_ROUTER' => true,
   'CRON_ON' => true,
