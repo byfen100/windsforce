@@ -53,5 +53,4 @@ class IndexController extends Controller{
 		return $this->index_title_();
 	}
 
-
 }

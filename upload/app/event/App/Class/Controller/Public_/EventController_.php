@@ -59,5 +59,4 @@ class EventController extends Controller{
 		return $this->event_title_();
 	}
 
-
 }
