@@ -37,28 +37,28 @@ $sBasedirpath=dirname(__FILE__).'/../upload/';
 /** 系统所有语言包 */
 $arrFiledirpath=array(
 	
-	/**/
+	/*
 	// 应用语言包
 	'ucontent/language/'.$sLanguage,
+	'app/event/App/Lang/'.$sLanguage,
 	'app/service/App/Lang/'.$sLanguage,
 	'app/home/App/Lang/'.$sLanguage,
 	'app/wap/App/Lang/'.$sLanguage,
 	'app/helloworld/App/Lang/'.$sLanguage,
 	'app/group/App/Lang/'.$sLanguage,
 	'app/home/App/Lang/Admin/'.$sLanguage,
+	'app/event/App/Lang/Admin/'.$sLanguage,
 	'app/service/App/Lang/Admin/'.$sLanguage,
 	'app/wap/App/Lang/Admin/'.$sLanguage,
 	'app/helloworld/App/Lang/Admin/'.$sLanguage,
 	'app/group/App/Lang/Admin/'.$sLanguage,
 	'admin/App/Lang/'.$sLanguage,
 	
-
-	
 	// 框架语言包
 	'source/include/DoYouHaoBaby/Resource_/Lang/'.$sLanguage,
 	'source/include/Tools/Tools_/App/Lang/'.$sLanguage,
 	'source/include/Tools/Tools_/Websetup/websetup/App/Lang/'.$sLanguage,
-	/**/
+	*/
 	
 );
 
