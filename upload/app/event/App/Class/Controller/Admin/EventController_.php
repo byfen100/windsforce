@@ -103,30 +103,16 @@ class EventController extends InitController{
 
 	public function AUpdateObject_($oModel){
 		$oModel->safeInput();
-		$oModel->formatTime();
+
+		$_POST['event_starttime']=$nEventstarttime;
+		$_POST['event_endtime']=$nEventendtime;
+		$_POST['event_deadline']=$nEventdeadline;
 	}
-/*
+
 	public function foreverdelete($sModel=null,$sId=null){
 		$sId=G::getGpc('value');
 
-		$this->bForeverdelete_();
-		
-		parent::foreverdelete('eventcategory',$sId);
-	}
-
-	public function bForeverdelete_(){
-		$sId=G::getGpc('value','G');
-
-		$arrIds=explode(',',$sId);
-		if(is_array($arrIds)){
-			foreach($arrIds as $nId){
-				$nEventcategorys=EventcategoryModel::F('eventcategory_parentid=?',$nId)->all()->getCounts();
-				$oEventcategory=EventcategoryModel::F('eventcategory_id=?',$nId)->query();
-				if($nEventcategorys>0){
-					$this->E(Dyhb::L('群组分类%s存在子分类，你无法删除','__APPGROUP_COMMON_LANG__@Controller',null,$oEventcategory->eventcategory_name));
-				}
-			}
-		}
+		parent::foreverdelete('event',$sId);
 	}
 
 	protected function aForeverdelete($sId){
@@ -134,29 +120,33 @@ class EventController extends InitController{
 
 		$arrIds=explode(',',$sId);
 		
-		// 解除关联小组数组
+		// 解除活动相关数据
 		if(is_array($arrIds)){
 			foreach($arrIds as $nId){
-				// 删除小组关联
-				$oEventcategoryindexMeta=EventcategoryindexModel::M();
-				$oEventcategoryindexMeta->deleteWhere(array('eventcategory_id'=>$nId));
+				// 删除关联数据(评论 && 感兴趣和参加数据)
+				$oEventcommentMeta=EventcommentModel::M();
+				$oEventcommentMeta->deleteWhere(array('event_id'=>$nId));
 
-				if($oEventcategoryindexMeta->isError()){
-					$this->E($oEventcategoryindexMeta->getErrorMessage());
+				if($oEventcommentMeta->isError()){
+					$this->E($oEventcommentMeta->getErrorMessage());
+				}
+
+				$oEventuserMeta=EventuserModel::M();
+				$oEventuserMeta->deleteWhere(array('event_id'=>$nId));
+
+				if($oEventuserMeta->isError()){
+					$this->E($oEventuserMeta->getErrorMessage());
+				}
+
+				$oEventattentionuserMeta=EventattentionuserModel::M();
+				$oEventattentionuserMeta->deleteWhere(array('event_id'=>$nId));
+
+				if($oEventattentionuserMeta->isError()){
+					$this->E($oEventattentionuserMeta->getErrorMessage());
 				}
 			}
 		}
 	}
-
-	public function get_parent_eventcategory($nParentEventcategoryId){
-		$oEventcategory=Dyhb::instance('EventcategoryModel');
-
-		return $oEventcategory->getParentEventcategory($nParentEventcategoryId);
-	}
-
-	public function input_change_ajax($sName=null){
-		parent::input_change_ajax('eventcategory');
-	}*/
 
 	public function forbid($sModel=null,$sId=null,$bApp=false){
 		$nId=intval(G::getGpc('value','G'));

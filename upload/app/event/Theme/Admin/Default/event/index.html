@@ -65,6 +65,7 @@
 							<td><!--{$value:event_id}--></td>
 							<td><a href="javascript:editApp('<!--{$_GET['id']}-->','event','<!--{$value:event_id}-->')"><!--{$value:event_title}--></a>
 								<div class="row-actions">
+									<span class='view'><a href="<!--{:Core_Extend::windsforceOuter(array('app'=>'event','c'=>'event','a'=>'show','id'=>$value['event_id']))}-->" target="_blank"><!--<lang package='Template'>-->查看<!--</lang>--></a>|</span>
 									<span class='edit'><a href="javascript:editApp('<!--{$_GET['id']}-->','event','<!--{$value:event_id}-->')"><!--<lang package='Template'>-->编辑<!--</lang>--></a>|</span>
 									<span class='delete'><a href="javascript:foreverdelApp('<!--{$_GET['id']}-->','event','<!--{$value:event_id}-->')"><!--<lang package='Template'>-->删除<!--</lang>--></a></span>
 									</span>

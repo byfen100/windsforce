@@ -120,13 +120,13 @@ function insertEventcover(nAttachmentid){
 					<fieldset>
 						<label for="event_starttime"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->活动时间<!--</lang>--></label>
 						<p style="clear:both;">
-							<input style="width:150px;float:left;" id="event_starttime" name="event_starttime" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oEvent)?$oEvent['event_starttime']:CURRENT_TIMESTAMP)}-->" onclick="WdatePicker({el:'event_starttime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})">
-							<input style="width:150px;" id="event_endtime" name="event_endtime" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oEvent)?$oEvent['event_endtime']:CURRENT_TIMESTAMP+604800)}-->" onclick="WdatePicker({el:'event_endtime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'event_starttime\')}'})">
+							<input style="width:150px;float:left;" id="event_starttime" name="event_starttime" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oValue)?$oValue['event_starttime']:CURRENT_TIMESTAMP)}-->" onclick="WdatePicker({el:'event_starttime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})">
+							<input style="width:150px;" id="event_endtime" name="event_endtime" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oValue)?$oValue['event_endtime']:CURRENT_TIMESTAMP+604800)}-->" onclick="WdatePicker({el:'event_endtime',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'event_starttime\')}'})">
 						</p>
 					</fieldset>
 					<fieldset>
 						<label for="event_deadline"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->活动报名截至时间<!--</lang>--></label>
-						<input style="width:150px;" id="event_deadline" name="event_deadline" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oEvent)?$oEvent['event_deadline']:CURRENT_TIMESTAMP+259200)}-->" onclick="WdatePicker({el:'event_deadline',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})">
+						<input style="width:150px;" id="event_deadline" name="event_deadline" type="text" value="<!--{:date('Y-m-d H:i:s',isset($oValue)?$oValue['event_deadline']:CURRENT_TIMESTAMP+259200)}-->" onclick="WdatePicker({el:'event_deadline',skin:'ext',lang:'<!--{$sCalendarLang}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'event_endtime\')}'})">
 					</fieldset>
 					<fieldset>
 						<label for="event_limitcount"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->活动人数<!--</lang>--></label>
