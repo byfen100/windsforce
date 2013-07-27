@@ -15,7 +15,7 @@
 -- 转存表中的数据 `windsforce_eventoption`
 --
 
-INSERT INTO `#@__eventoption` (`eventoption_name`, `eventoption_value`) VALUES
+INSERT INTO `{WINDSFORCE}eventoption` (`eventoption_name`, `eventoption_value`) VALUES
 ('event_close', '0'),
 ('front_add', '1'),
 ('event_audit', '0');
@@ -26,7 +26,7 @@ INSERT INTO `#@__eventoption` (`eventoption_name`, `eventoption_value`) VALUES
 -- 转存表中的数据 `windsforce_eventcategory`
 --
 
-INSERT INTO `#@__eventcategory` (`eventcategory_id`, `eventcategory_name`, `eventcategory_parentid`, `create_dateline`, `update_dateline`, `eventcategory_count`, `eventcategory_sort`) VALUES
+INSERT INTO `{WINDSFORCE}eventcategory` (`eventcategory_id`, `eventcategory_name`, `eventcategory_parentid`, `create_dateline`, `update_dateline`, `eventcategory_count`, `eventcategory_sort`) VALUES
 (1, '音乐', 0, 1372414489, 0, 0, 0),
 (2, '戏剧', 0, 1372414504, 1372414517, 0, 0),
 (3, '聚会', 0, 1372414535, 0, 0, 0),

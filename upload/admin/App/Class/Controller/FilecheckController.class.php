@@ -44,6 +44,7 @@ class FilecheckController extends InitController{
 		$this->checkFiles('app/helloworld/','',1);
 		$this->checkFiles('app/home/','',1);
 		$this->checkFiles('app/wap/','',1);
+		$this->checkFiles('app/event/','',1);
 		$this->checkFiles('config/','',1,'Config.inc.php');
 		$this->checkFiles('data/','\.html',0);
 		$this->checkFiles('data/','\.php',0,'Install.lock.php');
