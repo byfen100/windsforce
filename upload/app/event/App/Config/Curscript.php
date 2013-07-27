@@ -11,4 +11,5 @@ return array(
 	'ucenter::index'=>'userhome',
 	'ucenter::join'=>'userhome',
 	'ucenter::attention'=>'userhome',
+	'public::index',
 );

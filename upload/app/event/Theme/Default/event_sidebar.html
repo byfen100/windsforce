@@ -5,7 +5,7 @@
 							<!--{if $oEvent['eventcategory_id']}-->
 							<a class="btn btn-success" href="<!--{:Dyhb::U('event://public/event?cid='.$oEvent['eventcategory_id'])}-->"><i class="icon-share-alt icon-white"></i>&nbsp;<!--{$oEvent:eventcategory:eventcategory_name}--></a>
 							<!--{d*else}-->
-							<a class="btn btn-success" href="<!--{:Dyhb::U('event://public/index')}-->"><i class="icon-share-alt icon-white"></i>&nbsp;返回活动主页</a>
+							<a class="btn btn-success" href="<!--{:Dyhb::U('event://public/index')}-->"><i class="icon-share-alt icon-white"></i>&nbsp;<!--<lang package='Template'>-->返回活动主页<!--</lang>--></a>
 							<!--{/if}-->
 						</p>
 					</div>
@@ -46,7 +46,7 @@
 				</div>
 				
 				<div class="commonbox_mini commonbox_mini_gray">
-					<h2 class="title">感兴趣成员</h2>
+					<h2 class="title"><!--<lang package='Template'>-->感兴趣成员<!--</lang>--></h2>
 					<p>
 						<ul class="thumbnails">
 							<!--{if is_array($arrNeweventattentionusers)}-->

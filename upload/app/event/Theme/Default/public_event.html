@@ -13,22 +13,24 @@
 					<div class="new_event">
 						<!--{if is_array($arrEvents)}-->
 						<ul class="thumbnails">
-						  <!--<foreach for=arrEvents value=oEvent>-->
-						  <li class="span2">
-							<div class="thumbnail">
-							  <img src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
-							  <div class="caption">
-								<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']|G+subString=0,10}--></a></h6>
-								<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
-									<!--{$oEvent['event_address']|G+subString=0,10}--><br/>
-									<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}-->人关注</p>
-							  </div>
-							</div>
-						  </li>
-						  <!--</foreach>-->
+							<!--<foreach for=arrEvents value=oEvent>-->
+							<li class="span2">
+								<div class="thumbnail">
+									<img src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
+									<div class="caption">
+										<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']|G+subString=0,10}--></a></h6>
+										<p style="margin-top:5px;">
+											<!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;<!--<lang package='Template'>-->至<!--</lang>-->&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
+											<!--{$oEvent['event_address']|G+subString=0,10}--><br/>
+											<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}--><!--<lang package='Template'>-->人关注<!--</lang>-->
+										</p>
+									</div>
+								</div>
+							</li>
+							<!--</foreach>-->
 						</ul>
 						<!--{d*else}-->
-						<p>暂时没有发现任何活动！</p>
+						<p><!--<lang package='Template'>-->暂时没有发现任何活动！<!--</lang>--></p>
 						<!--{/if}-->
 
 						<!--{$sPageNavbar}-->

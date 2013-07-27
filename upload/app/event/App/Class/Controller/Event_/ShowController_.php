@@ -97,7 +97,6 @@ class ShowController extends Controller{
 		if($sType=='user'){
 			$arrWhere=array();
 			$arrWhere['event_id']=$nEventid;
-			$arrWhere['eventuser_admin']='0';
 
 			$nTotalRecord=EventuserModel::F()->where($arrWhere)->all()->getCounts();
 

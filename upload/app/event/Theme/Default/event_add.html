@@ -73,7 +73,7 @@ function insertEventcover(nAttachmentid){
 		<div class="row">
 			<div class="span8">
 				<!--{if !isset($oEvent) && $GLOBALS['_cache_']['event_option']['event_audit']==1}-->
-				<div class="alert alert-success">发起的活动只有通过审核了才能够被浏览</div>
+				<div class="alert alert-success"><!--<lang package='Template'>-->发起的活动只有通过审核了才能够被浏览<!--</lang>--></div>
 				<!--{/if}-->
 				
 				<form class="form-horizontal" method='post' id="createeventform" name="createeventform">
@@ -131,7 +131,7 @@ function insertEventcover(nAttachmentid){
 							<label class="control-label" for="event_limitcount"><!--<lang package='Template'>-->活动人数<!--</lang>--></label>
 							<div class="controls">
 								<input class="span1" id="event_limitcount" name="event_limitcount" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_limitcount']}--><!--{d*else}-->0<!--{/if}-->">
-								<p class="help-block">活动人数上限，设0表示无限制</p>
+								<p class="help-block"><!--<lang package='Template'>-->活动人数上限，设0表示无限制<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="control-group">
@@ -153,14 +153,14 @@ function insertEventcover(nAttachmentid){
 							<label class="control-label" for="event_contact"><!--<lang package='Template'>-->活动联系人<!--</lang>--></label>
 							<div class="controls">
 								<input class="input-xlarge" id="event_contact" name="event_contact" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_contact']}--><!--{/if}-->">
-								<p class="help-block">填写联系人联系方式，如小刘 130xxxxxxxx</p>
+								<p class="help-block"><!--<lang package='Template'>-->填写联系人联系方式，如小刘 130xxxxxxxx<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="event_contactsite"><!--<lang package='Template'>-->活动联系人网站<!--</lang>--></label>
 							<div class="controls">
 								<input class="input-xlarge" id="event_contactsite" name="event_contactsite" type="text" value="<!--{if isset($oEvent)}--><!--{$oEvent['event_contactsite']}--><!--{/if}-->">
-								<p class="help-block">如果联系人有网站，可以在这里填写</p>
+								<p class="help-block"><!--<lang package='Template'>-->如果联系人有网站，可以在这里填写<!--</lang>--></p>
 							</div>
 						</div>
 						<div class="control-group">
@@ -205,30 +205,30 @@ function insertEventcover(nAttachmentid){
 			<div class="span4">
 				<!--{if isset($oEvent)}-->
 				<div class="commonbox">
-					<p><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" class="btn btn-success btn-large"><i class="icon-eye-open icon-white"></i>&nbsp;查看活动</a></p>
+					<p><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" class="btn btn-success btn-large"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template'>-->查看活动<!--</lang>--></a></p>
 				</div>
 				<!--{/if}-->
 				
 				<div class="commonbox_mini commonbox_mini_gray">
 					<h2 class="title"><!--<lang package='Template'>-->什么是合适的活动？<!--</lang>--></h2>
 					<ul class="eventhelplist_box">
-						<li>有能最终确定的活动起止日期</li>
-						<li>具备现实中能集体参与的活动地点</li>
-						<li>是多人在现实中能碰面的活动</li>
+						<li><!--<lang package='Template'>-->有能最终确定的活动起止日期<!--</lang>--></li>
+						<li><!--<lang package='Template'>-->具备现实中能集体参与的活动地点<!--</lang>--></li>
+						<li><!--<lang package='Template'>-->是多人在现实中能碰面的活动<!--</lang>--></li>
 					</ul>
 				</div>
 				
 				<div class="commonbox_mini commonbox_mini_gray">
 					<h2 class="title"><!--<lang package='Template'>-->如何才能让你的活动更吸引人？<!--</lang>--></h2>
 					<ul class="eventhelplist_box">
-						<li>标题简单明了</li>
-						<li>活动内容和特点介绍详细</li>
-						<li>活动海报吸引人眼球</li>
+						<li><!--<lang package='Template'>-->标题简单明了<!--</lang>--></li>
+						<li><!--<lang package='Template'>-->活动内容和特点介绍详细<!--</lang>--></li>
+						<li><!--<lang package='Template'>-->活动海报吸引人眼球<!--</lang>--></li>
 					</ul>
 				</div>
 				
 				<div class="commonbox_mini commonbox_mini_gray">
-					<p><b>更重要的是，邀请好友们都来参与！</b></p>
+					<p><b><!--<lang package='Template'>-->更重要的是，邀请好友们都来参与！<!--</lang>--></b></p>
 				</div>
 			</div>
 		</div>

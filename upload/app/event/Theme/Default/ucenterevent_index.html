@@ -17,28 +17,29 @@
 				<div id="event_list_box" class="event_list_box">
 					<!--{if is_array($arrEvents)}-->
 					<ul class="thumbnails">
-					  <!--<foreach for=arrEvents value=oEvent>-->
-					  <li class="span2">
-						<div class="thumbnail">
-						  <img src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
-						  <div class="caption">
-							<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']|G+subString=0,10}--></a></h6>
-							<p style="margin-top:5px;"><!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;至&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
-								<!--{$oEvent['event_address']|G+subString=0,10}--><br/>
-								<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}-->人关注</p>
-							<p style="margin-top:5px;">
-								<!--{if $oEvent['event_status']==1}--><span style="font-weight:bold;color:green;">审核通过</span>
-								<!--{d*else}--><span style="font-weight:bold;color:red;">待审核</span>
-								<!--{/if}-->
-							</p>
-							<p style="margin-top:5px;"><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" class="btn btn-success"><i class="icon-eye-open icon-white"></i>&nbsp;查看活动</a></p>
-						  </div>
-						</div>
-					  </li>
-					  <!--</foreach>-->
+						<!--<foreach for=arrEvents value=oEvent>-->
+						<li class="span2">
+							<div class="thumbnail">
+								<img src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
+								<div class="caption">
+									<h6><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" title="<!--{$oEvent['event_title']}-->"><!--{$oEvent['event_title']|G+subString=0,10}--></a></h6>
+									<p style="margin-top:5px;">
+										<!--{$oEvent['event_starttime']|date='m月d日',**}-->&nbsp;<!--<lang package='Template'>-->至<!--</lang>-->&nbsp;<!--{$oEvent['event_endtime']|date='m月d日',**}--><br/>
+										<!--{$oEvent['event_address']|G+subString=0,10}--><br/>
+										<!--{$oEvent['event_joincount']+$oEvent['event_attentioncount']}--><!--<lang package='Template'>-->人关注<!--</lang>--></p>
+									<p style="margin-top:5px;">
+										<!--{if $oEvent['event_status']==1}--><span style="font-weight:bold;color:green;"><!--<lang package='Template'>-->审核通过<!--</lang>--></span>
+										<!--{d*else}--><span style="font-weight:bold;color:red;"><!--<lang package='Template'>-->待审核<!--</lang>--></span>
+										<!--{/if}-->
+									</p>
+									<p style="margin-top:5px;"><a href="<!--{:Dyhb::U('event://e@?id='.$oEvent['event_id'])}-->" class="btn btn-success"><i class="icon-eye-open icon-white"></i>&nbsp;<!--<lang package='Template'>-->查看活动<!--</lang>--></a></p>
+								</div>
+							</div>
+						</li>
+						<!--</foreach>-->
 					</ul>
 					<!--{d*else}-->
-					<p>暂时没有发现任何活动！</p>
+					<p><!--<lang package='Template'>-->暂时没有发现任何活动！<!--</lang>--></p>
 					<!--{/if}-->
 				</div>
 

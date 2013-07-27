@@ -169,63 +169,63 @@ function endEvent(nEventid){
 					<div class="span3">
 						<img class="thumbnail" src="<!--{:Event_Extend::getEventcover($oEvent)}-->" alt="<!--{$oEvent['event_title']}-->">
 						<br/>
-						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bEventend || $bAttentionuser}-->disabled<!--{/if}-->>我感兴趣</button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bEventend || $bJoinuser || $bLimituser}-->disabled<!--{/if}-->>我要参加</button>
+						<button class="btn" onclick="attentionEvent('<!--{$oEvent->event_id}-->');" <!--{if $bEventend || $bAttentionuser}-->disabled<!--{/if}-->><!--<lang package='Template'>-->我感兴趣<!--</lang>--></button>&nbsp;<button class="btn btn-success" onclick="joinEvent('<!--{$oEvent->event_id}-->');" <!--{if $bEventend || $bJoinuser || $bLimituser}-->disabled<!--{/if}-->><!--<lang package='Template'>-->我要参加<!--</lang>--></button>
 					</div>
 					<div class="span5">
 						<table class="table">
 							<thead>
 								<tr>
-									<th colspan="2">活动项目</th>
+									<th colspan="2"><!--<lang package='Template'>-->活动项目<!--</lang>--></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>发起者</td>
+									<td><!--<lang package='Template'>-->发起者<!--</lang>--></td>
 									<td><a href="<!--{:Dyhb::U('home://space@?id='.$oEvent['user_id'])}-->"><!--{$oEvent['event_username']}--></a></td>
 								</tr>
 								<tr>
-									<td>联系方式</td>
+									<td><!--<lang package='Template'>-->联系方式<!--</lang>--></td>
 									<td><!--{if $oEvent['event_contactsite']}--><a href="<!--{$oEvent['event_contactsite']}-->"><!--{$oEvent['event_contact']}--></a><!--{d*else}--><!--{$oEvent['event_contact']}--><!--{/if}--></td>
 								</tr>
 								<tr>
-									<td>联合联系方式</td>
+									<td><!--<lang package='Template'>-->联合联系方式<!--</lang>--></td>
 									<td><!--{if $oEvent['event_jointcontactsite']}--><a href="<!--{$oEvent['event_jointcontactsite']}-->"><!--{$oEvent['event_jointcontact']}--></a><!--{d*else}--><!--{$oEvent['event_jointcontact']}--><!--{/if}--></td>
 								</tr>
 								<tr>
-									<td>活动时间</td>
-									<td><!--{$oEvent['event_starttime']|date="Y-m-d H:i:s",**}--> 至 <!--{$oEvent['event_endtime']|date="Y-m-d H:i:s",**}--></td>
+									<td><!--<lang package='Template'>-->活动时间<!--</lang>--></td>
+									<td><!--{$oEvent['event_starttime']|date="Y-m-d H:i:s",**}--> <!--<lang package='Template'>-->至<!--</lang>--> <!--{$oEvent['event_endtime']|date="Y-m-d H:i:s",**}--></td>
 								</tr>
 								<tr>
-									<td>活动地点</td>
+									<td><!--<lang package='Template'>-->活动地点<!--</lang>--></td>
 									<td><!--{$oEvent['event_address']}--></td>
 								</tr>
 								<tr>
-									<td>活动经费</td>
+									<td><!--<lang package='Template'>-->活动经费<!--</lang>--></td>
 									<td><!--{$oEvent['event_cost']}--><!--{if $oEvent['event_costdescription']}-->&nbsp;(<!--{$oEvent['event_costdescription']}-->)<!--{/if}--></td>
 								</tr>
 								<tr>
-									<td>报名截止时间</td>
+									<td><!--<lang package='Template'>-->报名截止时间<!--</lang>--></td>
 									<td><!--{$oEvent['event_deadline']|date="Y-m-d H:i:s",**}--></td>
 								</tr>
 								<tr>
-									<td>剩余名额</td>
-									<td><!--{if $oEvent['event_limitcount']>0}--><!--{$oEvent['event_limitcount']-$oEvent['event_joincount']}--><!--{d*else}-->参加人数不限制<!--{/if}--></td>
+									<td><!--<lang package='Template'>-->剩余名额<!--</lang>--></td>
+									<td><!--{if $oEvent['event_limitcount']>0}--><!--{$oEvent['event_limitcount']-$oEvent['event_joincount']}--><!--{d*else}--><!--<lang package='Template'>-->参加人数不限制<!--</lang>--><!--{/if}--></td>
 								</tr>
 								<tr>
-									<td>参加是否需要审核</td>
-									<td><b><!--{if $oEvent['event_isaudit']==1}-->是<!--{d*else}-->否<!--{/if}--></b></td>
+									<td><!--<lang package='Template'>-->参加是否需要审核<!--</lang>--></td>
+									<td><b><!--{if $oEvent['event_isaudit']==1}--><!--<lang package='__COMMON_LANG__@Common'>-->是<!--</lang>--><!--{d*else}--><!--<lang package='__COMMON_LANG__@Common'>-->否<!--</lang>--><!--{/if}--></b></td>
 								</tr>
 								<tr>
-									<td colspan="2"><b><!--{$oEvent['event_attentioncount']}--></b>人感兴趣&nbsp; <b><!--{$oEvent['event_joincount']}--></b>人参加</td>
+									<td colspan="2"><b><!--{$oEvent['event_attentioncount']}--></b><!--<lang package='Template'>-->人感兴趣<!--</lang>-->&nbsp; <b><!--{$oEvent['event_joincount']}--></b><!--<lang package='Template'>-->人参加<!--</lang>--></td>
 								</tr>
 								<tr>
 									<td colspan="2">
 										<!--{if $oEvent['event_starttime']>CURRENT_TIMESTAMP}-->
-										<b style="color:gray;">活动未开始</b>
+										<b style="color:gray;"><!--<lang package='Template'>-->活动未开始<!--</lang>--></b>
 										<!--{elseif $oEvent['event_starttime']<=CURRENT_TIMESTAMP && $oEvent['event_endtime']>=CURRENT_TIMESTAMP}-->
-										<b style="color:green;">活动正在进行</b>
+										<b style="color:green;"><!--<lang package='Template'>-->活动正在进行<!--</lang>--></b>
 										<!--{d*else}-->
-										<b style="color:red;">活动已经结束</b>
+										<b style="color:red;"><!--<lang package='Template'>-->活动已经结束<!--</lang>--></b>
 										<!--{/if}-->
 									</td>
 								</tr>
@@ -233,10 +233,10 @@ function endEvent(nEventid){
 								<tr>
 									<td colspan="2">
 										<!--{if $oEvent['event_endtime']>=CURRENT_TIMESTAMP}-->
-										<a href="javascript:void(0);" onclick="endEvent(<!--{$oEvent['event_id']}-->)" class="btn btn-success">提前结束</a>&nbsp;&nbsp;
+										<a href="javascript:void(0);" onclick="endEvent(<!--{$oEvent['event_id']}-->)" class="btn btn-success"><!--<lang package='Template'>-->提前结束<!--</lang>--></a>&nbsp;&nbsp;
 										<!--{/if}-->
-										<a class="btn btn-success" href="<!--{:Dyhb::U('event://event/edit?id='.$oEvent['event_id'])}-->">编辑活动</a>&nbsp;&nbsp;
-										<a href="javascript:void(0);" onclick="deleteEvent(<!--{$oEvent['event_id']}-->)" class="btn">删除活动</a>
+										<a class="btn btn-success" href="<!--{:Dyhb::U('event://event/edit?id='.$oEvent['event_id'])}-->"><!--<lang package='Template'>-->编辑活动<!--</lang>--></a>&nbsp;&nbsp;
+										<a href="javascript:void(0);" onclick="deleteEvent(<!--{$oEvent['event_id']}-->)" class="btn"><!--<lang package='Template'>-->删除活动<!--</lang>--></a>
 									</td>
 								</tr>
 								<!--{/if}-->
