@@ -1,5 +1,5 @@
--- WINDSFORCE 群组数据库数据
--- version 1.0.1
+-- WINDSFORCE 服务数据库数据
+-- version 1.1.1
 -- http://www.windsforce.com
 --
 -- 开发: Windsforce TEAM

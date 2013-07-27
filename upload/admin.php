@@ -16,7 +16,7 @@ define('IN_APISELF',true);
 
 /** Defined the version of windsforce */
 define('WINDSFORCE_SERVER_VERSION','1.1.1');
-define('WINDSFORCE_SERVER_RELEASE','20130623');
+define('WINDSFORCE_SERVER_RELEASE','20130727');
 define('WINDSFORCE_SERVER_BUG','1.0');
 
 /** 系统应用路径定义 */

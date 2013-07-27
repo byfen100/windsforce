@@ -30,8 +30,8 @@ if(!is_file(APP_RUNTIME_LOCK)){
 	require(DYHB_PATH.'/Common_/InitRuntime.inc.php');
 }
 
-/** DoYouHaoBaby框架定义 | 本版本于2013/06/04发布 */
-define('DYHB_VERSION','2.5.1');
+/** DoYouHaoBaby框架定义 | 本版本于2013/07/27发布 */
+define('DYHB_VERSION','2.5.2');
 
 /** 定义内存 */
 define('MEMORY_LIMIT_ON',function_exists('memory_get_usage'));

@@ -1,4 +1,4 @@
--- WINDSFORCE 群组数据库数据
+-- WINDSFORCE Helloworld数据库数据
 -- version 1.0.1
 -- http://www.windsforce.com
 --

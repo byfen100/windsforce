@@ -142,67 +142,6 @@ class UpdateController extends Controller{
 		// 开始执行数据库结构升级
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('数据库结构添加与更新','Controller/Update').'</h3>');
 
-		// 创建帖子搜索缓存表
-		$sCreatetableSql="
-CREATE TABLE IF NOT EXISTS `{$sDbprefix}groupsearchindex` (
-  `groupsearchindex_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '搜索索引ID',
-  `groupsearchindex_keywords` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
-  `create_dateline` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_dateline` int(10) NOT NULL COMMENT '更新时间',
-  `groupsearchindex_expiration` int(10) NOT NULL COMMENT '过期时间',
-  `groupsearchindex_searchstring` text NOT NULL COMMENT '配置字符串',
-  `groupsearchindex_totals` smallint(6) NOT NULL DEFAULT '0' COMMENT '总结果数',
-  `groupsearchindex_ids` text NOT NULL COMMENT '数据索引ID值',
-  `groupsearchindex_ip` varchar(16) NOT NULL DEFAULT '' COMMENT 'IP',
-  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户',
-  PRIMARY KEY (`groupsearchindex_id`),
-  KEY `dateline` (`create_dateline`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8";
-
-		Install_Extend::queryString($sCreatetableSql);
-
-		// 创建帖子喜欢表
-		$sCreatetableSql="
-CREATE TABLE IF NOT EXISTS `{$sDbprefix}grouptopiclove` (
-  `user_id` int(10) NOT NULL DEFAULT '0',
-  `grouptopiclove_username` varchar(50) NOT NULL DEFAULT '' COMMENT '用户名',
-  `grouptopic_id` int(10) NOT NULL DEFAULT '0',
-  `create_dateline` int(11) NOT NULL DEFAULT '0' COMMENT '喜欢时间',
-  `grouptopiclove_note` varchar(300) NOT NULL COMMENT '喜欢帖子注释',
-  UNIQUE KEY `usergrouptopic_id` (`user_id`,`grouptopic_id`),
-  KEY `user_id` (`user_id`),
-  KEY `grouptopic_id` (`grouptopic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-
-		Install_Extend::queryString($sCreatetableSql);
-
-		// 创建公告表
-		$sCreatetableSql="
-CREATE TABLE IF NOT EXISTS `{$sDbprefix}announcement` (
-  `announcement_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT '公告ID',
-  `announcement_username` varchar(50) NOT NULL DEFAULT '' COMMENT '公告发布用户',
-  `announcement_title` varchar(255) NOT NULL DEFAULT '' COMMENT '公告标题',
-  `announcement_type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '公告类型，0文字，1网址',
-  `announcement_sort` tinyint(3) NOT NULL DEFAULT '0' COMMENT '公告排序',
-  `create_dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '开始时间',
-  `announcement_endtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '公告结束时间',
-  `announcement_message` text NOT NULL COMMENT '公告内容',
-  PRIMARY KEY (`announcement_id`),
-  KEY `timespan` (`create_dateline`,`announcement_endtime`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-
-		Install_Extend::queryString($sCreatetableSql);
-
-		if(Install_Extend::columnExists('user','user_lastlogintime')){
-			Install_Extend::queryString("ALTER TABLE  `{$sDbprefix}user`
-			CHANGE  `user_lastlogintime`  `user_lastlogintime` INT( 10 ) NULL DEFAULT  '0' COMMENT  '用户最后登录时间';");
-		}
-		
-		if(!Install_Extend::columnExists('grouptopic','grouptopic_update')){
-			Install_Extend::queryString("ALTER TABLE  `{$sDbprefix}grouptopic`
-			ADD  `grouptopic_update` INT( 10 ) NOT NULL DEFAULT  '0' COMMENT  '帖子排序更新时间' AFTER  `grouptopic_onlycommentview`;");
-		}
-
 		Install_Extend::queryString("UPDATE  `{$sDbprefix}option` SET  `option_value` =  '1.1.1' WHERE  `windsforce_option`.`option_name` =  'windsforce_program_version';");
 
 		// 执行结束
@@ -284,7 +223,9 @@ WINDSFORCE;
 		// 开始清理数据库数据
 		Install_Extend::showJavascriptMessage('<h3>'.Dyhb::L('多余数据库结构删除','Controller/Update').'</h3>');
 
-		Install_Extend::queryString("DROP TABLE IF EXISTS `{$sDbprefix}wapoption`;");
+		Install_Extend::queryString("DELETE FROM `{$sDbprefix}cron` WHERE `cron_id` =6;");
+		Install_Extend::queryString("DELETE FROM `{$sDbprefix}cron` WHERE `cron_id` =7;");
+		Install_Extend::queryString("ALTER TABLE  `{$sDbprefix}cron` AUTO_INCREMENT =6");
 
 		// 写入锁定文件
 		if(!file_put_contents($this->_sUpdatefile,'ok')){
