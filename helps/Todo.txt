@@ -13,13 +13,7 @@ WindsForce 即将做的
 
 	如下的功能已经纳入下一个版本开发计划中：
 
-	    帖子操作记录
-
-	    帖子操作过期设置
-
 	    插件
-
-	    定时计划完善
 
                                                                                                                                     WindsForce Team, 2013-06-04 04:56
                                                                                                                                     http://www.windsforce.com

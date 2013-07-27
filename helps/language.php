@@ -31,13 +31,13 @@ function listFile($sDir){
 }
 
 /** 基本路径 */
-$sLanguage='Zh-cn';
+$sLanguage='Zh-tw';
 $sBasedirpath=dirname(__FILE__).'/../upload/';
 
 /** 系统所有语言包 */
 $arrFiledirpath=array(
 	
-	/*
+	/**/
 	// 应用语言包
 	'ucontent/language/'.$sLanguage,
 	'app/service/App/Lang/'.$sLanguage,
@@ -58,7 +58,7 @@ $arrFiledirpath=array(
 	'source/include/DoYouHaoBaby/Resource_/Lang/'.$sLanguage,
 	'source/include/Tools/Tools_/App/Lang/'.$sLanguage,
 	'source/include/Tools/Tools_/Websetup/websetup/App/Lang/'.$sLanguage,
-	*/
+	/**/
 	
 );
 
