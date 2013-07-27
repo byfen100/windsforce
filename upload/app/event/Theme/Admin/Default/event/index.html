@@ -38,7 +38,7 @@
 			<header><h3 class="tabs_involved"><a href="<!--{:Admin_Extend::base(array('controller'=>'event'))}-->"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->活动<!--</lang>--></a></h3>
 				<ul class="tabs">
 					<!--{if isset($oEventcategory)}-->
-					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'event','cid'=>$oEventcategory['eventcategory_id']))}-->"><!--<lang package='Template'>-->活动类型<!--</lang>--> - <!--{$oEventcategory['eventcategory_name']}--></a></li>
+					<li><a href="<!--{:Admin_Extend::base(array('controller'=>'event','cid'=>$oEventcategory['eventcategory_id']))}-->"><!--<lang package='__APPEVENT_COMMON_LANG__@Template'>-->活动类型<!--</lang>--> - <!--{$oEventcategory['eventcategory_name']}--></a></li>
 					<!--{/if}-->
 					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template'>-->应用入口<!--</lang>--></a></li>
 				</ul>
