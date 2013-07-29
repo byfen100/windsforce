@@ -6,6 +6,10 @@
 <script src="<!--{:__PUBLIC__}-->/js/jquery/autoresize/jquery.autoresize.js"></script>
 
 <!--{script}-->
+$(function(){
+	$('.event-content').emotionsToHtml();
+});
+
 function joinEvent(nId){
 	oJoinevents=windsforceAjax(D.U('event://event/join?id='+nId),'<!--<lang package='Template'>-->参加活动<!--</lang>-->','',completeJoinevent,'',400,100);
 }
@@ -248,7 +252,7 @@ function endEvent(nEventid){
 				<div class="commonbox" style="margin-top:20px;">
 					<div class="commonboxtitle"><!--<lang package='Template'>-->活动介绍<!--</lang>--></div>
 					<div class="backgroup_box">
-						<p><!--{$oEvent['event_content']}--></p>
+						<div class="event-content"><!--{$oEvent['event_content']|Core_Extend+ubb=false}--></div>
 					</div>
 				</div>
 
