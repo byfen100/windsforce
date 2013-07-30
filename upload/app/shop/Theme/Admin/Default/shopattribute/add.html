@@ -1,0 +1,122 @@
+<!--<include file="public+header">-->
+
+<!--{script}-->
+function add(){
+	if( $('#value').val()!='' && $('#value').val()!==null){
+		update();
+		return;
+	}
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'add...' );
+	Dyhb.AjaxSubmit('shopattributeAdd','<!--{:Admin_Extend::insert(array('controller'=>'shopattribute'))}-->','',complete);
+}
+
+function update(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	Dyhb.AjaxSubmit('shopattributeAdd','<!--{:Admin_Extend::update(array('controller'=>'shopattribute'))}-->','',function(){ 
+		$("#submit_button").attr("disabled", false);
+		$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->更新<!--</lang>-->' ); 
+	});
+}
+
+function complete(data,status){
+	$("#submit_button").attr("disabled", false);
+	$("#submit_button").val( '<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->' );
+	if(status==1){
+		location.href=D.U('app/config?controller=shopattribute&action=edit&id=<!--{$_GET['id']}-->&value='+data.shopattribute_id);
+	}
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<if condition="isset( $_GET['value'] )">--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->编辑商品属性<!--</lang>--><!--<else/>--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->添加商品属性<!--</lang>--><!--</if>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<if condition="isset( $_GET['value'] )">--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->编辑商品属性<!--</lang>-->_<!--{$_GET['value']}--><!--<else/>--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->添加商品属性<!--</lang>--><!--</if>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3><!--<lang package='Template/Default/Common'>-->操作提示<!--</lang>--></h3></header>
+			<div class="module_content">
+				<ul>
+					<li><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->每一种商品类型都有一定的属性参数<!--</lang>--></li>
+				</ul>
+			</div>
+		</article>
+
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<if condition="isset( $_GET['value'] )">--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->编辑商品属性<!--</lang>--><!--<else/>--><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->添加商品属性<!--</lang>--><!--</if>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Admin_Extend::index(array('controller'=>'shopattribute','tid'=>(isset( $oValue )?$oValue['shopgoodstype_id']:$nShopgoodstype)))}-->"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->商品属性列表<!--</lang>--></a></li>
+					<li><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--<if condition="isset( $_GET['value'] )" >--><!--{:Admin_Extend::update(array('controller'=>'shopattribute'))}--><!--<else/>--><!--{:Admin_Extend::insert(array('controller'=>'shopattribute'))}--><!--</if>-->" method="post" id="shopattributeAdd">
+				<div class="module_content">
+					<fieldset>
+						<label for="shopattribute_name"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->商品属性名字<!--</lang>--></label>
+						<input type="text" name="shopattribute_name" id="shopattribute_name" size="40" value="<!--<if condition="isset( $oValue )">--><!--{$oValue:shopattribute_name}--><!--</if>-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->商品属性名字最大长度为60个字符<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopattribute_index"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->商品属性名字<!--</lang>--></label>
+						<p style="margin-left:5px;">
+							<input name="shopattribute_index" value="0" <!--<if condition="!isset($oValue) || (isset( $oValue ) && $oValue['shopattribute_index']==0)">-->checked="true"<!--</if>--> type="radio">不需要检索
+							<input name="shopattribute_index" <!--<if condition="isset( $oValue ) && $oValue['shopattribute_index']==1">-->checked="true"<!--</if>--> value="1" type="radio">关键字检索
+							<input name="shopattribute_index" <!--<if condition="isset( $oValue ) && $oValue['shopattribute_index']==2">-->checked="true"<!--</if>--> value="2" type="radio">范围检索
+						</p>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->不需要该属性成为检索商品条件的情况请选择不需要检索，需要该属性进行关键字检索商品时选择关键字检索，如果该属性检索时希望是指定某个范围时，选择范围检索。<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopattribute_islink"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->相同属性值是否进行关联<!--</lang>--></label>
+						<p style="margin-left:5px;">
+							<input name="shopattribute_islink" <!--<if condition="isset( $oValue ) && $oValue['shopattribute_islink']==1">-->checked="true"<!--</if>--> value="1" type="radio"><!--<lang package='Template/Default/Common'>-->是<!--</lang>-->
+							<input name="shopattribute_islink" <!--<if condition="!isset($oValue) || (isset( $oValue ) && $oValue['shopattribute_islink']==0)">-->checked="true"<!--</if>--> value="0" type="radio"><!--<lang package='Template/Default/Common'>-->否<!--</lang>-->
+						</p>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->不需要该属性成为检索商品条件的情况请选择不需要检索，需要该属性进行关键字检索商品时选择关键字检索，如果该属性检索时希望是指定某个范围时，选择范围检索。<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopattribute_type"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->商品属性名字<!--</lang>--></label>
+						<p style="margin-left:5px;">
+							<input name="shopattribute_type" value="0" <!--<if condition="!isset($oValue) || (isset( $oValue ) && $oValue['shopattribute_type']==0)">-->checked="true"<!--</if>--> type="radio">唯一属性
+							<input name="shopattribute_type" <!--<if condition="isset( $oValue ) && $oValue['shopattribute_type']==1">-->checked="true"<!--</if>--> value="1" type="radio">单选属性
+							<input name="shopattribute_type" <!--<if condition="isset( $oValue ) && $oValue['shopattribute_type']==2">-->checked="true"<!--</if>--> value="2" type="radio">复选属性 
+						</p>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->选择"单选/复选属性"时，可以对商品该属性设置多个值，同时还能对不同属性值指定不同的价格加价，用户购买商品时需要选定具体的属性值。选择"唯一属性"时，商品的该属性值只能设置一个值，用户只能查看该值。<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopattribute_inputtype"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->该属性值的录入方式<!--</lang>--></label>
+						<select name="shopattribute_inputtype">
+							<option value="number" <!--{if isset($oValue) && $oValue['shopattribute_inputtype']=='number'}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->数字<!--</lang>-->(number)</option>
+							<option value="text" <!--{if isset($oValue) && $oValue['shopattribute_inputtype']=='text'}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->字串<!--</lang>-->(text)</option>
+							<option value="textarea" <!--{if isset($oValue) && $oValue['shopattribute_inputtype']=='textarea'}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->文本<!--</lang>-->(textarea)</option>
+							<option value="radio" <!--{if isset($oValue) && $oValue['shopattribute_inputtype']=='radio'}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->开关<!--</lang>-->(radio)</option>
+							<option value="select" <!--{if isset($oValue) && $oValue['shopattribute_inputtype']=='select'}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->单选选择<!--</lang>-->(select)</option>
+							<option value="selects" <!--{if isset($oValue) && $oValue['shopattribute_inputtype']=='selects'}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->多项选择<!--</lang>-->(selects)</option>
+							<option value="color" <!--{if isset($oValue) && $oValue['shopattribute_inputtype']=='color'}-->selected<!--{/if}-->><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->颜色<!--</lang>-->(color)</option>
+						</select>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->商品属性变量配置类型<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopattribute_values"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->属性配置值<!--</lang>--></label>
+						<textarea name="shopattribute_values" id="shopattribute_values" rows="5"><!--<if condition="isset( $oValue )">--><!--{$oValue:shopattribute_values}--><!--</if>--></textarea>
+						<div class="description">
+							<!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->只在配置类型为“选择(select)”时有效，用于设定选项值。等号前面为选项索引(建议用数字)，后面为内容，例如: 1 = 光电鼠标，回车换行添加下一个项。<!--</lang>--><br/>
+							<!--<lang package='__APP_ADMIN_LANG__@Template/Shopattribute'>-->注意: 选项确定后请勿修改索引和内容的对应关系，但仍可以新增选项。如需调换显示顺序，可以通过移动整行的上下位置来实现。<!--</lang>-->
+						</div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="hidden" name="ajax" value="1">
+						<input type="hidden" name="value" id="value" value="<!--<if condition="isset( $_GET['value'] )">--><!--{$_GET['value']}--><!--</if>-->"/>
+						<input type="hidden" name="shopgoodstype_id" value="<!--<if condition="isset( $oValue )">--><!--{$oValue['shopgoodstype_id']}--><!--<else/>--><!--{$nShopgoodstype}--><!--</if>-->">
+						<input type="button" id="submit_button" onclick="<!--<if condition="isset( $oValue )">-->update()<!--<else/>-->add()<!--</if>-->" value="<!--<if condition="isset( $oValue )">--><!--<lang package='Template/Default/Common'>-->更新<!--</lang>--><!--<else/>--><!--<lang package='Template/Default/Common'>-->发布<!--</lang>--><!--</if>-->" class="alt_btn">
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->">
+					</div>
+				</footer>
+			</form>
+		</article>
+
+<!--<include file="public+footer">-->

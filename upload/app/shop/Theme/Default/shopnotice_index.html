@@ -1,0 +1,27 @@
+<!--<include file="header" />-->
+
+<!--{script}-->
+
+<!--{/script}-->
+<!--{style}-->
+#noticetitle {text-align:center;}
+<!--{/style}-->
+
+	<div class="span12" style="text-align:left;margin-top:20px;">
+		<ul class="breadcrumb">
+			<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li><a href="<!--{:Dyhb::U('shop://shopnotice/noticelist')}-->">商城公告</a> <span class="divider">/</span></li>
+			<li>公告详情</li>
+		</ul>
+	</div>
+
+	<div class="span12">
+			<div id="noticetitle">
+				<h2><!--{$oShopnotice->shoparticle_title}--></h2>
+			</div>
+			<div id="noticecontent">
+				<p><!--{$oShopnotice->shoparticle_content}--></p>
+			</div>
+	</div>
+
+<!--<include file="footer" />-->

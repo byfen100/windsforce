@@ -1,0 +1,10 @@
+	<div class="span12">
+		<div class="pagination pagination-centered">
+			<ul>
+				<li <!--{if ACTION_NAME==='index'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopcart/index')}-->">购物车</a></li>
+				<li <!--{if ACTION_NAME==='login'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopcart/login')}-->">用户登录</a></li>
+				<li <!--{if ACTION_NAME==='checkout'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopcart/checkout')}-->">确认订单信息</a></li>
+				<li <!--{if ACTION_NAME==='done'}-->class="active"<!--{/if}-->><a href="javascript:void(0);">确认付款</a></li>
+			</ul>
+		</div>
+	</div>

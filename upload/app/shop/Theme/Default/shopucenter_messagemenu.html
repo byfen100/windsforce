@@ -1,0 +1,10 @@
+			<div class="span2">
+				<div class="tabbable tabs-left">
+					<ul class="nav nav-tabs">
+						<li <!--{if ACTION_NAME==='message' && !G+getGpc('type','G')}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/message')}-->">私人消息</a></li>
+						<li <!--{if ACTION_NAME==='message' && G+getGpc('type','G')=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/message?type=friend')}-->">藏友消息</a></li>
+						<li <!--{if ACTION_NAME==='message' && G+getGpc('type','G')=='system'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/message?type=system')}-->">系统消息</a></li>
+						<li <!--{if ACTION_NAME==='announcement'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/announcement')}-->">站内公告</a></li>
+					</ul>
+				</div>
+			</div>

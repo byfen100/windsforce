@@ -1,0 +1,283 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function addShopaddress(){
+	var sHtml = $.ajax({
+		url: D.U('shop://shopcart/shopaddress'),
+		async: false
+	}).responseText;
+
+	oEditNewshopaddress=needforbugAlert(sHtml,'配送地址','',addShopaddressok,'',500,100);
+}
+
+function addShopaddressok(){
+	needforbugConfirm('你确定关闭配送地址管理器?',function(){
+		oEditNewshopaddress.close();
+		return true;
+	},function(){
+		return true;
+	});
+	return false;
+}
+
+function saveShopaddress(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'add...' );
+
+	Dyhb.AjaxSubmit('shopcartaddressForm','<!--{:Dyhb::U('shop://shopcart/save_consignee')}-->','',saveshopaddressComplete);
+}
+
+function saveshopaddressComplete(data,status){
+	$("#submit_button").attr("disabled", false);
+	$("#submit_button").val( '保存收件人地址' );
+
+	if(status==1){
+		oEditNewshopaddress.close();
+
+		var sShopaddress='<td><span class="shopaddress-tip">寄送至</span></td>'+
+						'<td><input name="shopaddress_id" value="'+data.shopaddress_id+'" checked="checked" type="radio"></td>'+
+						'<td><label>'+data.shopaddressto+data.shopaddress_address+' ('+data.shopaddress_consignee+' 收)&nbsp;<em>'+data.shopaddress_mobile+'</em></label><td>'+
+						'<td><em class="shopaddress-default" style="display:none;">默认地址</em></td>'+
+						'<td><a href="" style="display:none;">设置为默认收货地址</a></td>';
+		
+		if($('#shopaddressid_'+data.shopaddress_id).length>0){
+			$('#shopaddressid_'+data.shopaddress_id).html(sShopaddress);
+		}else{
+			sShopaddress=
+				'<tr class="shopaddress-selected" id="shopaddressid_'+data.shopaddress_id+'">'+
+					sShopaddress+
+				'</tr>';
+
+			$('#shopaddress-list').prepend(sShopaddress);
+		}
+
+		if($('#shopaddress-none').length>0){
+			$('#shopaddress-none').remove();
+		}
+	}
+}
+
+function showShoppaymentdescription(id){
+	$('#'+id).toggle('fast');
+}
+
+function shoporderinfoSubmit(){
+	document.shoporderinfoForm.submit();
+}
+<!--{/script}-->
+
+<!--{style}-->
+.shopaddress-table{
+	width: 100%;
+}
+
+.shopaddress-table th,
+.shopaddress-table td {
+  padding: 8px;
+  line-height: 18px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.shopaddress-table td {
+	padding:10px 5px 5px 5px;
+}
+
+.shopaddress-tip{
+	background: url("<!--{:__TMPLPUB__DEFAULT__}-->/Images/shopaddress_tip.gif") no-repeat scroll 0 0 transparent;
+	padding: 4px 0 0px 20px;
+	width: 15px;
+	color: #FF5500;
+	font-weight:bold;
+}
+.shopaddress-selected{
+    background-color: #FFF5CC;
+    border: 1px solid #FFE580;
+}
+<!--{/style}-->
+	
+		<div class="row">
+			<div class="span12" style="text-align:left;margin-top:20px;">
+				<ul class="breadcrumb">
+					<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+					<li class="active">提交订单</li>
+				</ul>
+			</div>
+
+			<!--<include file="shopcart+menu" />-->
+
+			<!--{if $nNotlogin==1}-->
+			<div class="span12" style="margin-top:20px;">
+				<p class="alert">亲爱的用户，你已经启用【不登录直接购买】模式<span class="pipe">|</span><a href="<!--{:Dyhb::U('shop://shopcart/clearnotlogin')}-->">清除状态</a></p>
+			</div>
+			<!--{/if}-->
+
+			<form action="<!--{:Dyhb::U('shop://shopcart/done')}-->" method="post" name="shoporderinfoForm" id="shoporderinfoForm">
+				<div class="span12" style="margin-top:20px;">
+					<h3>收货人联系方式</h3>
+					<hr/>
+					<p>
+						<table class="shopaddress-table" border="0">
+							<thead>
+								<tr>
+									<th width="60">选择</th>
+									<th width="30"></th>
+									<th colspan="4">寄送信息</th>
+								</tr>
+							</thead>
+							<tbody id="shopaddress-list">
+								<!--{if !empty($arrShopaddressDatas)}-->
+								<!--<foreach for=arrShopaddressDatas value=arrShopaddress>-->
+								<tr class="<!--{if !empty($arrShopaddress['selected'])}-->shopaddress-selected<!--{/if}-->" id="shopaddressid_<!--{$arrShopaddress['shopaddress_id']}-->">
+									<td><span class="shopaddress-tip">寄送至</span></td>
+									<td><input name="shopaddress_id" value="<!--{$arrShopaddress['shopaddress_id']}-->" <!--{if !empty($arrShopaddress['selected'])}-->checked="checked"<!--{/if}--> type="radio"></td>
+									<td><label><!--{$arrShopaddress['shopaddressto']}--> (<!--{$arrShopaddress['shopaddress_consignee']}--> 收)&nbsp;<em><!--{$arrShopaddress['shopaddress_mobile']}--></em></label>
+									<td>
+									<td><em class="shopaddress-default" style="<!--{if $arrShopaddress['default']!='1'}-->display: none;<!--{/if}-->">默认地址</em></td>
+									<td><a href="" style="display: none;">设置为默认收货地址</a></td>
+								</tr>
+								<!--</foreach>-->
+								<!--{d*else}-->
+								<tr id="shopaddress-none">
+									<td colspan="6">暂时没有任何配送地址，请点击下面的按钮新增一个</td>
+								</tr>
+								<!--{/if}-->
+							</tbody>
+						</table>
+					</p>
+					<div class="row" style="margin-top:20px;">
+						<div class="span3">&nbsp</div>
+						<div class="span9">
+							<a href="javascript:void(0);" onclick="addShopaddress();" class="btn"><i class="icon-plus"></i>&nbsp;新增配送地址</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="span12" style="margin-top:30px;">
+					<h3>购物车商品列表</h3>
+					<p>
+						<table class="table">
+							<thead>
+								<tr>
+									<th width="65">作品</th>
+									<td></th>
+									<th>购买件数</th>
+									<th>购买价格</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--<foreach for=arrShopcartsData value=arrShopcart>-->
+								<tr>
+									<td>
+										<img src="<!--{$arrShopcart['goods_img']}-->" alt="" width="60" height="60" class="thumbnail">
+									</td>
+									<td><a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopcart['goods_id'])}-->" target="_blank"><!--{$arrShopcart['goods_name']}--></a></td>
+									<td><!--{$arrShopcart['goods_count']}--></td>
+									<td><!--{$arrShopcart['goods_price']}--></td>
+								</tr>
+								<!--</foreach>-->
+							</tbody>
+						</table>
+					</p>
+					<div class="row">
+						<div class="span12">
+							购物车中商品数量为 <span style="color:red;font-size:15px;font-weight:bold;line-height:15px;"><!--{$arrShopcartsTotal['goods_count']}--></span>，购物金额小计 <span style="color:red;font-size:25px;font-weight:bold;line-height:25px;">￥<!--{$arrShopcartsTotal['goods_price0']}--></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="span12" style="margin-top:30px;">
+					<h3>支付方式</h3>
+					<hr/>
+					<!--{if $arrShoppayments}-->
+					<p>
+						<ul class="thumbnails">
+							<!--<foreach for=arrShoppayments value=oShoppayment>-->
+							<li class="span6">
+								<div class="thumbnail" style="padding:15px 10px;">
+									<h4><input name="shoppayment_id" value="<!--{$oShoppayment['shoppayment_id']}-->" type="radio" <!--{if 
+									$oShoppayment['shoppayment_id']==$nShopshippingid}-->checked="checked"<!--{/if}-->>&nbsp;&nbsp;<!--{$oShoppayment['shoppayment_name']}-->&nbsp;<i class="icon-eye-open" href="javascript:void(0);" onclick="showShoppaymentdescription('shoppaymentdescription_<!--{$oShoppayment['shoppayment_id']}-->');"></i></h4>
+									<p id="shoppaymentdescription_<!--{$oShoppayment['shoppayment_id']}-->" style="margin:10px 0px 5px 0px;background:#eeeeee;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;padding:20px 10px;display:none;"><!--{$oShoppayment['shoppayment_description']}--></p>
+									<p style="margin-top:10px;">手续费&nbsp;(<span style="color:red;font-size:13px;font-weight:bold;line-height:13px;">￥<!--{$oShoppayment['shoppayment_fee']}--></span>)</p>
+								</div>
+							</li>
+							<!--</foreach>-->
+						</ul>
+					</p>
+					<!--{d*else}-->
+					<p>网站还没有提供任何支付方式，请联系客户人员咨询</p>
+					<!--{/if}-->
+				</div>
+
+				<div class="span12" style="margin-top:30px;">
+					<h3>配送方式</h3>
+					<hr/>
+					<!--{if $arrShopshippings}-->
+					<p>
+						<div class="row">
+							<!--<foreach for=arrShopshippings value=arrShopshipping>-->
+							<div class="span6">
+								<h4><input name="shopshipping_id" value="<!--{$arrShopshipping['shopshipping_id']}-->" type="radio">&nbsp;&nbsp;<!--{$arrShopshipping['shopshipping_name']}--></h4>
+								<p style="margin:10px 0px 5px 0px;background:#eeeeee;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;padding:20px 10px;"><!--{$arrShopshipping['shopshipping_description']|G+subString=0,25}-->...
+								&nbsp;<i class="icon-eye-open" href="javascript:void(0);" onclick="showShoppaymentdescription('shopshippingdescription_<!--{$arrShopshipping['shopshipping_id']}-->');"></i></p>
+								<p id="shopshippingdescription_<!--{$arrShopshipping['shopshipping_id']}-->" style="margin:10px 0px 5px 0px;background:#eeeeee;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;padding:20px 10px;display:none;"><!--{$arrShopshipping['shopshipping_description']}--></p>
+								<p style="margin-top:10px;">
+									<!--{if !empty($arrShopshipping['shopshipping_configure'])}-->
+									<!--{~$arrShopshippingconfigures=$arrShopshipping['shopshipping_configure']}-->
+									<!--<foreach for=arrShopshippingconfigures value=arrShopshippingconfigure>-->
+									<a href="javascript:void(0);" title="<!--{$arrShopshippingconfigure['description']}-->"><!--{$arrShopshippingconfigure['title']}--></a>&nbsp;<span style="color:red;font-size:13px;font-weight:bold;line-height:13px;">￥<!--{$arrShopshippingconfigure['value']}--></span>
+									<!--{if count($arrShopshippingconfigures)-1!==$key}-->
+									<span class="pipe">|</span>
+									<!--{/if}-->
+									<!--</foreach>-->
+									<hr/>
+									<!--{/if}-->
+									免费额度&nbsp;<span style="color:red;font-size:13px;font-weight:bold;line-height:13px;">￥0.00</span>
+									<span class="pipe">|</span>
+									保价费用&nbsp;<span style="color:red;font-size:13px;font-weight:bold;line-height:13px;"><!--{if $arrShopshipping['shopshipping_insure']>0}--><!--{$arrShopshipping['shopshipping_insure']}--><!--{d*else}-->不支持保价<!--{/if}--></span>
+								</p>
+							</div>
+							<!--</foreach>-->
+						</div>
+					</p>
+					<!--{d*else}-->
+					<p>网站还没有提供任何配送方式，请联系客户人员咨询</p>
+					<!--{/if}-->
+				</div>
+
+				<div class="span12" style="margin-top:30px;">
+					<h3>其它信息</h3>
+					<hr/>
+					<div class="row">
+						<div class="span6">
+							<label>订单附言</label>
+							<textarea class="span6" name="shoporderinfo_postscript" rows="3" id="shoporderinfo_postscript" rows="3"></textarea>
+						</div>
+						<div class="span6">
+							<label>缺货处理</label>
+							<label class="radio">
+								<input name="shoporderinfo_howoos" value="0" checked="checked" onclick="" type="radio">等待所有商品备齐后再发<br/>
+								<input name="shoporderinfo_howoos" value="1" onclick="" type="radio">取消订单<br/>
+								<input name="shoporderinfo_howoos" value="2" onclick="" type="radio">与店主协商
+							</label>
+							<span class="help-block">缺货处理非常重要,请认真填写好你的方式</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="span12" style="text-align:center; margin-top:30px">
+					<div class="hero-unit">
+						<p>商品总价: <span style="color:red;font-size:18px;font-weight:bold;line-height:18px;">￥<!--{$arrShopcartsTotal['goods_price0']}-->元</span>
+							<span class="pipe">|</span>
+							实付款: <span style="color:red;font-size:25px;font-weight:bold;line-height:25px;">￥<!--{$arrShopcartsTotal['goods_price0']}--></span>
+						</p>
+						<p>
+							<input type="hidden" name="needpay" value="<!--{$arrShopcartsTotal['goods_price0']}-->">
+							<button onclick="shoporderinfoSubmit();" class="btn btn-inverse" href="javascript:void(0);">提交订单</button>
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+
+<!--<include file="footer" />-->

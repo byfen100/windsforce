@@ -1,0 +1,47 @@
+<!--<include file="public+header" />-->
+
+<!--{script}-->
+function option(){
+	$("#submit_button").attr("disabled", "disabled");
+	$("#submit_button").val( 'update...' );
+	$("#submit_button").attr("disabled", false);
+}
+<!--{/script}-->
+
+	<section class="secondary_bar">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="<!--{:Dyhb::U('public/fmain')}-->"><!--<lang package='Template/Default/Common'>-->主页<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a class="current"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopoption'>-->商城设置<!--</lang>--></a> <div class="breadcrumb_divider"></div> <a href="javascript:void(0);" onclick="adminctrlmenuAdd('<!--{:__SELF__}-->','<!--<lang package='__APP_ADMIN_LANG__@Template/Shopoption'>-->商城设置<!--</lang>-->')" title="<!--<lang package='Template/Default/Common'>-->添加到快捷导航<!--</lang>-->">[+]</a></article>
+		</div>
+	</section>
+
+	<section id="main" class="column">
+		<article class="module width_full">
+			<header><h3 class="tabs_involved"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopoption'>-->商城设置<!--</lang>--></h3>
+				<ul class="tabs">
+					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template/Default/Common'>-->应用入口<!--</lang>--></a></li>
+				</ul>
+			</header>
+			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
+				<div class="module_content">
+					<!--<include file="Admin_Extend::template('shop','shopoption/menu')" />-->
+
+					<fieldset>
+						<label for="shopgoods_imgsize"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopoption'>-->商品实际图片尺寸<!--</lang>--></label>
+						<input type="text" name="options[shopgoods_imgsize]" id="shopgoods_imgsize" size="40" value="<!--{$arrOptions['shopgoods_imgsize']}-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopoption'>-->商品的实际大小图片，如进入该商品页时介绍商品属性所显示的大图片<!--</lang>--></div>
+					</fieldset>
+					<fieldset>
+						<label for="shopgoods_thumbimgsize"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopoption'>-->商品缩略图片尺寸<!--</lang>--></label>
+						<input type="text" name="options[shopgoods_thumbimgsize]" id="shopgoods_thumbimgsize" size="40" value="<!--{$arrOptions['shopgoods_thumbimgsize']}-->"/>
+						<div class="description"><!--<lang package='__APP_ADMIN_LANG__@Template/Shopoption'>-->商品在前台显示的微缩图片，如在分类筛选时显示的小图片<!--</lang>--></div>
+					</fieldset>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input id="submit_button" type="submit" class="alt_btn" value="<!--<lang package='Template/Default/Common'>-->发布<!--</lang>-->" />
+						&nbsp;<input type="reset" value="<!--<lang package='Template/Default/Common'>-->重置<!--</lang>-->" />
+					</div>
+				</footer>
+			</form>
+		</article>
+<!--<include file="public+footer">-->

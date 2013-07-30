@@ -1,0 +1,52 @@
+<!--<include file="shopucenter+header" />-->
+
+	<div class="span12" style="margin-top:10px;">
+		<div class="row">
+			<div class="span3">
+				<div class="tabbable tabs-left">
+					<ul class="nav nav-tabs">
+						<li <!--{if !G+getGpc('type','G')}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/album')}-->">我的专辑</a></li>
+						<li <!--{if G+getGpc('type','G')=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/album?type=friend')}-->">关注我藏友的专辑</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="span9">
+				<p>
+					<div class="row">
+						<!--{d*for $i=1;$i<15;$i++}-->
+						<div class="span4" style="text-align:center;margin-bottom:20px;">
+							<div class="row">
+								<div class="span2" >
+									<img src="<!--{:__PUBLIC__}-->/images2/120&80.jpg" alt="" height="180" width="100%">
+								</div>
+								<div class="span2" >
+									<h5>我感兴趣的隶书</h5>
+									<p>好友:书法爱好者</p>
+									<p>作品数量:9</p>
+								</div>
+							</div>
+						</div>
+						<!--{/d*for}-->
+					</div>
+				</p>
+				<div style="text-align:left;margin-top:20px;">
+					<p>
+						<div id="pagination" class="pagination">
+							<ul>
+								<li class="disabled"><a href="javascript:void(0);">Total:48</a></li>
+								<li class="active"><a href="javascript:void(0);">1</a></li>
+								<li><a href="/app/group/public/index.html?page=2" title="Page 2">2</a></li>
+								<li><a href="/app/group/public/index.html?page=3" title="Page 3">3</a></li>
+								<li><a href="/app/group/public/index.html?page=4" title="Page 4">4</a></li>
+								<li><a href="/app/group/public/index.html?page=5" title="Page 5">5</a></li>
+								<li><a href="/app/group/public/index.html?page=2" title="Next">Next ›</a></li>
+								<li><a href="/app/group/public/index.html?page=5" title="Last">Last »</a></li>
+							</ul>
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--<include file="shopucenter+footer" />-->

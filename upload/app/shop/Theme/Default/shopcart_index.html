@@ -1,0 +1,86 @@
+<!--<include file="Core_Extend::template('header')" />-->
+
+<!--{script}-->
+function clearCart(){
+	windsforceConfirm('确实要清空购物车吗？',function(){
+		location.href='<!--{:Dyhb::U('shop://shopcart/clear')}-->';
+	});
+}
+
+function deleteCart(nGoodsid){
+	windsforceCConfirm('确实要删除购物车的商品吗？',function(){
+		location.href=D.U('shop://shopcart/delete?id='+nGoodsid);
+	});
+}
+
+function cartIndb(){
+	location.href=D.U('shop://shopcart/indb');
+}
+<!--{/script}-->
+
+		<div class="row">
+
+			<div class="span12" style="text-align:left;margin-top:20px;">
+				<ul class="breadcrumb">
+					<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+					<li class="active">购物车</li>
+				</ul>
+			</div>
+
+			<!--<include file="shopcart+menu" />-->
+			
+			<div class="span12">
+				<h3>购物车</h3>
+				<div class="row">
+					<!--{if !empty($arrShopcartsData)}-->
+					<div class="span12">
+						<form action="<!--{:Dyhb::U('shop://shopcart/update')}-->" method="post">
+							<table class="table">
+								<thead>
+									<tr>
+										<th colspan="2">作品</th>
+										<th>购买件数</th>
+										<th>购买价格</th>
+										<th>删除</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--<foreach for=arrShopcartsData value=arrShopcart>-->
+									<tr>
+										<td style="width:120px;"><img src="<!--{$arrShopcart['goods_img']}-->" alt="" width="120" height="120" class="thumbnail"></td>
+										<td><a href="<!--{:Dyhb::U('shop://goods@?id='.$arrShopcart['goods_id'])}-->" target="_blank"><!--{$arrShopcart['goods_name']}--></a></td>
+										<td><input type="text" name="shopcartcount[<!--{$arrShopcart['goods_id']}-->]" value="<!--{$arrShopcart['goods_count']}-->" style="width:50px;"></td>
+										<td><!--{$arrShopcart['goods_price']}--></td>
+										<th><a href="javascript:void(0);" onclick="deleteCart('<!--{$arrShopcart['goods_id']}-->');">删除</a></th>
+									</tr>
+									<!--</foreach>-->
+								</tbody>
+							</table>
+							<div class="row">
+								<div class="span8">
+									购物车中商品数量为 <span style="color:red;font-size:15px;font-weight:bold;line-height:15px;"><!--{$arrShopcartsTotal['goods_count']}--></span>，购物金额小计 <span style="color:red;font-size:25px;font-weight:bold;line-height:25px;">￥<!--{$arrShopcartsTotal['goods_price0']}--></span>
+								</div>
+								<div class="span4" style="text-align:right;">
+									<input value="清空购物车" class="btn" onclick="clearCart();" type="button">&nbsp;
+									<input name="submit" class="btn" value="更新购物车" type="submit">
+									<!--{if $GLOBALS['___login___']!==false}-->
+									&nbsp;<input value="保存购物车" class="btn" onclick="cartIndb();" type="button">
+									<!--{/if}-->
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="span12" style="margin-top:10px;text-align:center;">
+						<a class="btn btn-inverse left" href="<!--{:Dyhb::U('shop://public/index')}-->">继续购物</a>
+						<a class="btn btn-inverse right" href="<!--{:Dyhb::U('shop://shopcart/checkout')}-->">结算中心</a>
+					</div>
+					<!--{d*else}-->
+					<div class="span12" style="margin-top:10px;">
+						<p>你还没有购买任何商品&nbsp;<a href="<!--{:Dyhb::U('shop://public/index')}-->">去看看</a></p>
+					</div>
+					<!--{/if}-->
+				</div>
+			</div>
+		</div>
+
+<!--<include file="footer" />-->

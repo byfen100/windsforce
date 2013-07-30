@@ -7,7 +7,7 @@
   'DB_CACHE_FIELDS' => true,
   'DB_CACHE' => true,
   'DB_CACHE_TIME' => 86400000000,
-  'APP_DEBUG' => false,
+  'APP_DEBUG' => true,
   'SHOW_RUN_TIME' => true,
   'SHOW_DB_TIMES' => true,
   'SHOW_GZIP_STATUS' => true,

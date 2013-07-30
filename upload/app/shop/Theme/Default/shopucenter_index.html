@@ -1,0 +1,103 @@
+<!--<include file="shopucenter+header" />-->
+
+	<div class="span12" style="margin-top:20px;">
+		<div class="row">
+			<div class="span2">
+				<div class="tabbable tabs-left">
+					<ul class="nav nav-tabs">
+						<li <!--{if !G+getGpc('type','G')}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/index')}-->">我的动态</a></li>
+						<li <!--{if G+getGpc('type','G')=='artist'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/index?type=artist')}-->" >艺术家动态</a></li>
+						<li <!--{if G+getGpc('type','G')=='friend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/index?type=friend')}-->">藏友动态</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="span7">
+				<p><form>
+						<textarea class="input-xlarge" id="textarea" rows="3" style="width:98%;height:90px;"></textarea>
+					</form>
+					<label>验证码</label><input type="text" class="span1" placeholder=""></label>
+					<button type="submit" class="btn">我要留言</button>
+				</p>
+				<hr/>
+				<!--{~$arrTop=array(1,2,3,4)}-->
+				<!--<foreach for=arrTop>-->
+				<p>
+					<img src="<!--{:__PUBLIC__}-->/images2/u137_normal.png" alt="" height="100" width="100">
+					<p>jauary  <br>应用 移动客户端 音悦TV 音悦Mini 音悦直播 您还没有登录哦您进行的操作需要登录后才能继续,如您还不是音悦Tai的会员,请先注册,即可享受精彩的音悦生活!</br> <br>2012-08-09</br>
+					<h6><a href>评论</a><a href>转发</a></h6>
+						<div class="controls">
+							<input class="input-xlarge focused" id="focusedInput" type="text" value="来凑凑热闹">
+						</div>
+					</p>
+				</p>
+				<hr/>
+				<!--</foreach>-->
+
+				<div style="text-align:left;margin-top:20px;">
+					<p>
+						<div id="pagination" class="pagination">
+							<ul>
+								<li class="disabled"><a href="javascript:void(0);">Total:48</a></li>
+								<li class="active"><a href="javascript:void(0);">1</a></li>
+								<li><a href="/app/group/public/index.html?page=2" title="Page 2">2</a></li>
+								<li><a href="/app/group/public/index.html?page=3" title="Page 3">3</a></li>
+								<li><a href="/app/group/public/index.html?page=4" title="Page 4">4</a></li>
+								<li><a href="/app/group/public/index.html?page=5" title="Page 5">5</a></li>
+								<li><a href="/app/group/public/index.html?page=2" title="Next">Next ›</a></li>
+								<li><a href="/app/group/public/index.html?page=5" title="Last">Last »</a></li>
+							</ul>
+						</div>
+					</p>
+				</div>
+			</div>
+			<div class="span3">
+				<h3>您可能感兴趣的藏友</h3>
+				<p>
+					<div class="row">
+						<!--{d*for $i=1;$i<7;$i++}-->
+						<div class="span1" style="text-align:center">
+							<img src="<!--{:__PUBLIC__}-->/images2/u137_normal.png" alt="" height="50" width="50">
+							<div>
+								<h5 style="text-align:center"><a href="">马德权</a></h5>
+								<button class="btn btn-small" >关注TA</button>
+							</div>
+						</div>
+						<!--{/d*for}-->
+					</div>
+				</p>
+				<p style="text-align:right"><a href="">换一组</a> <a href="">更多</a></p>
+
+				<h3 style="margin-top:30px">关注我的藏友</h3>
+				<p>
+					<div class="row">
+						<!--{d*for $i=1;$i<4;$i++}-->
+						<div class="span1" style="text-align:center">
+							<img src="<!--{:__PUBLIC__}-->/images2/u137_normal.png" alt="" height="50" width="50">
+							<div>
+								<h5 style="text-align:center"><a href="">马德权</a></h5>
+								<button class="btn btn-small" >关注TA</button>
+							</div>
+						</div>
+						<!--{/d*for}-->
+					</div>
+				</p>
+				<h3 style="margin-top:30px">我关注的藏友</h3>
+				<p>
+					<div class="row">
+						<!--{d*for $i=1;$i<4;$i++}-->
+						<div class="span1" style="text-align:center">
+							<img src="<!--{:__PUBLIC__}-->/images2/u137_normal.png" alt="" height="50" width="50">
+							<div>
+								<h5 style="text-align:center"><a href="">马德权</a></h5>
+								<button class="btn btn-small" >关注TA</button>
+							</div>
+						</div>
+						<!--{/d*for}-->
+					</div>
+				</p>
+				<p style="text-align:right"> <a href="">更多</a></p>
+			</div>
+		</div>
+	</div>
+
+<!--<include file="shopucenter+footer" />-->

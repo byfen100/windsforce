@@ -1,0 +1,75 @@
+<!--<include file="shopucenter+header" />-->
+
+	<div class="span12" style="margin-top:10px;">
+		<div class="row">
+			<div class="span3">
+				<div class="tabbable tabs-left">
+					<ul class="nav nav-tabs">
+						<li <!--{if !G+getGpc('type','G')}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/favorite')}-->">我喜欢的创作</a></li>
+						<li <!--{if G+getGpc('type','G')=='myrecommend'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/favorite?type=myrecommend')}-->">我推荐为收藏品的创作</a></li>
+						<li <!--{if G+getGpc('type','G')=='mycomment'}-->class="active"<!--{/if}-->><a href="<!--{:Dyhb::U('shop://shopucenter/favorite?type=mycomment')}-->">我评论过的创作</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="span9">
+				<p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>藏品名</th>
+								<th>作者</th>
+								<th>推荐为收藏品次数</th>
+								<th>大家喜欢次数</th>
+								<th>创作时间</th>
+								<th>被收藏时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><img src="<!--{:__PUBLIC__}-->/images2/120&80.jpg" alt="" height="50" width="50">清明上河图</td>
+								<td>李四</td>
+								<td>100</td>
+								<td>432</td>
+								<td>2010-01-09</td>
+								<td>2012-01-09</td>
+							</tr>
+							<tr>
+								<td><img src="<!--{:__PUBLIC__}-->/images2/120&80.jpg" alt="" height="50" width="50">清明上河图</td>
+								<td>李四</td>
+								<td>100</td>
+								<td>432</td>
+								<td>2010-01-09</td>
+								<td>2012-01-09</td>
+							</tr>
+							<tr>
+								<td><img src="<!--{:__PUBLIC__}-->/images2/120&80.jpg" alt="" height="50" width="50">清明上河图</td>
+								<td>李四</td>
+								<td>100</td>
+								<td>432</td>
+								<td>2010-01-09</td>
+								<td><button class="btn btn-small" >马上购买</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</p>
+				<div style="text-align:left;margin-top:20px;">
+					<p>
+						<div id="pagination" class="pagination">
+							<ul>
+								<li class="disabled"><a href="javascript:void(0);">Total:48</a></li>
+								<li class="active"><a href="javascript:void(0);">1</a></li>
+								<li><a href="/app/group/public/index.html?page=2" title="Page 2">2</a></li>
+								<li><a href="/app/group/public/index.html?page=3" title="Page 3">3</a></li>
+								<li><a href="/app/group/public/index.html?page=4" title="Page 4">4</a></li>
+								<li><a href="/app/group/public/index.html?page=5" title="Page 5">5</a></li>
+								<li><a href="/app/group/public/index.html?page=2" title="Next">Next ›</a></li>
+								<li><a href="/app/group/public/index.html?page=5" title="Last">Last »</a></li>
+							</ul>
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--<include file="shopucenter+footer" />-->

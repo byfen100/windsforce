@@ -1,0 +1,43 @@
+<!--<include file="header" />-->
+
+<!--{script}-->
+
+<!--{/script}-->
+<!--{style}-->
+#articlesearch .search{text-align:right;border:0px;}
+#articlesearch input {margin:0px;}
+<!--{/style}-->
+
+	<div class="span12" style="text-align:left;margin-top:20px;">
+		<ul class="breadcrumb">
+			<li><a href="<!--{:Dyhb::U('shop://public/index')}-->" title="<!--<lang package='__COMMON_LANG__@Template/Common'>-->主页<!--</lang>-->"><i class='icon-home'></i></a>&nbsp;<span class="divider">/</span>&nbsp;</li>
+			<li>商城公告</li>
+		</ul>
+	</div>
+
+	<div class="span12">
+			<div id="articlelist">
+				<form action="<!--{:Dyhb::U('shop://shoparticle/index')}-->" method="get" id="articlesearch">
+					<table width="100%" class="table">
+						<tr>
+							<td colspan="3" class="search">
+							<input type="hidden" name="cid" value="<!--{$oShoparticlecategory->shoparticlecategory_id}-->"/>
+							<input class="span3" id="appendedInputButton" size="16" type="text" name="string" placeholder="输入文章标题" />
+							&nbsp;
+							<input class="btn" type="submit" value="文章搜索" />
+							</td>
+						</tr>
+						<!--<foreach for=arrShoparticle value=oShoparticle>-->
+						<tr>
+							<td width="70%"><a href="<!--{:Dyhb::U('shop://shopnotice/index?tid='.$oShoparticle->shoparticle_id)}-->"><!--{$oShoparticle->shoparticle_title}--></a></td>
+							<td width="20%"><!--{$oShoparticle->create_dateline|Core_Extend+timeFormat}--></td>
+							<td width="10%"><!--{$oShoparticle->shoparticle_username}--></td>
+						</tr>
+						<!--</foreach>-->
+					</table>
+				</form>
+			</div>
+			<div class="right"><!--{$sPageNavbar}--></div>
+	</div>
+
+<!--<include file="footer" />-->
