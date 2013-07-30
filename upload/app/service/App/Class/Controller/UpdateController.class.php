@@ -8,11 +8,11 @@ class UpdateController extends InitController{
 
 	public function index(){
 		// 服务端版本
-		$sServerVersion='1.1';
-		$nServerRelease='20130604';
+		$sServerVersion='1.1.1';
+		$nServerRelease='20130727';
 		$nServerBug='1.0';
-		$sFrameworkServerVersion='2.5.1';
-		$nFrameworkServerRelease='20130604';
+		$sFrameworkServerVersion='2.5.2';
+		$nFrameworkServerRelease='20130727';
 		
 		// 获取客户端信息 & 验证
 		$sVersion=isset($_GET['version'])?htmlspecialchars(trim($_GET['version'])):'';
@@ -48,7 +48,7 @@ INFO;
 
 			$sNewcontent='';
 			if($nServerRelease>$nRelease){
-				$sNewcontent.="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"https://needforbug.googlecode.com/files/WindsForce-1.1_release20130604.tar.gz\" target=\"_blank\">https://needforbug.googlecode.com/files/WindsForce-1.1_release20130604.tar.gz</a></span>";
+				$sNewcontent.="<span>{$sServerVersion} Build {$nServerRelease}已经发布。下载地址: <a href=\"http://doyouhaobaby.net/WindsForce-1.1.1.tar.gz\" target=\"_blank\">http://doyouhaobaby.net/WindsForce-1.1.1.tar.gz</a></span>";
 			}
 
 			if($nServerBug>$sBug){
@@ -73,8 +73,8 @@ INFO;
 				}
 			}else{
 				$arrUpdateContent=array(
-					'BUG修正'=>'修复了1.0.1的BUG',
-					'新功能'=>'本次增加了搜索，WAP，小组个人中心以及新模板等等。',
+					'BUG修正'=>'修复了1.1的大量BUG',
+					'新功能'=>'本次增加了活动APP，增加了一些人性化的功能。',
 				);
 
 				$sContent='';
