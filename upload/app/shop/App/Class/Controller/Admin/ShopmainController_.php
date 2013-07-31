@@ -4,9 +4,6 @@
 
 !defined('DYHB_PATH') && exit;
 
-/** 导入商城模型 */
-Dyhb::import(NEEDFORBUG_PATH.'/app/shop/App/Class/Model');
-
 class ShopmainController extends InitController{
 	
 	public function index($sModel=null,$bDisplay=true){
