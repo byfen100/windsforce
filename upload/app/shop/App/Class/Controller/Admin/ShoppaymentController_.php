@@ -25,7 +25,7 @@ class ShoppaymentController extends InitController{
 		// 读取支付方式中的配置数据
 		$arrPaymentlistData=array();
 
-		$sParmentpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Payment';
+		$sParmentpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Payment';
 		
 		$arrPaymentdir=G::listDir($sParmentpath);
 		if(is_array($arrPaymentdir)){
@@ -33,7 +33,7 @@ class ShoppaymentController extends InitController{
 				$sConfigfile=$sParmentpath.'/'.$sPaymentdir.'/Config.php';
 
 				if(!is_file($sConfigfile)){
-					$arrWarningmessage[]=sprintf('支付方式 %s 配置文件不存在',$sConfigfile);
+					$arrWarningmessage[]=Dyhb::L('支付方式 %s 配置文件不存在','__APPSHOP_COMMON_LANG__@Controller');
 					continue;
 				}else{
 					$sPaymentcode=$sPaymentdir;
@@ -63,21 +63,21 @@ class ShoppaymentController extends InitController{
 		$sCode=trim(G::getGpc('code','G'));
 
 		if(empty($sCode)){
-			$this->E('你没有指定要安装支付方式');
+			$this->E(Dyhb::L('你没有指定要安装支付方式','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 
 		// 查询是否已经安装了支付方式
 		$oTryshoppayment=ShoppaymentModel::F('shoppayment_code=?',$sCode)->getOne();
 		if(!empty($oTryshoppayment['shoppayment_id'])){
-			$this->E(sprintf('你安装的支付方式 %s 已经存在或者支付方式代码和已经有的重复',$sCode));
+			$this->E(Dyhb::L('你安装的支付方式 %s 已经存在或者支付方式代码和已经有的重复','__APPSHOP_COMMON_LANG__@Controller',$sCode));
 		}
 
 		// 保存支付方式数据
-		$sParmentpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Payment';
+		$sParmentpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Payment';
 
 		$sConfigfile=$sParmentpath.'/'.$sCode.'/Config.php';
 		if(!is_file($sConfigfile)){
-			$this->E(sprintf('支付方式 %s 配置文件不存在',$sConfigfile));
+			$this->E(Dyhb::L('支付方式 %s 配置文件不存在','__APPSHOP_COMMON_LANG__@Controller',$sConfigfile));
 		}else{
 			$arrPaymentData=(array)(include $sConfigfile);
 			if(!isset($arrPaymentData['shoppayment_fee'])){
@@ -101,7 +101,7 @@ class ShoppaymentController extends InitController{
 		
 		$this->assign('__JumpUrl__',Admin_Extend::base(array('controller'=>'shoppayment')));
 		
-		$this->S('安装支付方式成功');
+		$this->S(Dyhb::L('安装支付方式成功','__APPSHOP_COMMON_LANG__@Controller'));
 	}
 	
 	public function update($sModel=null,$nId=null){
@@ -137,20 +137,20 @@ class ShoppaymentController extends InitController{
 		$nId=intval(G::getGpc('value','G'));
 
 		if(empty($nId)){
-			$this->E('你没有指定要编辑支付方式');
+			$this->E(Dyhb::L('你没有指定要编辑支付方式','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 
 		// 查询是否已经安装了支付方式
 		$oShoppayment=ShoppaymentModel::F('shoppayment_id=?',$nId)->getOne();
 		if(empty($oShoppayment['shoppayment_id'])){
-			$this->E('待编辑的支付方式不存在');
+			$this->E(Dyhb::L('待编辑的支付方式不存在','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 		
-		$sParmentpath=NEEDFORBUG_PATH.'/app/shop/App/Class/Extension/Payment';
+		$sParmentpath=WINDSFORCE_PATH.'/app/shop/App/Class/Extension/Payment';
 
 		$sConfigfile=$sParmentpath.'/'.$oShoppayment['shoppayment_code'].'/Config.php';
 		if(!is_file($sConfigfile)){
-			$this->E(sprintf('支付方式 %s 配置文件不存在',$sConfigfile));
+			$this->E(Dyhb::L('支付方式 %s 配置文件不存在','__APPSHOP_COMMON_LANG__@Controller',null,$sConfigfile));
 		}else{
 			$arrPaymentData=(array)(include $sConfigfile);
 			

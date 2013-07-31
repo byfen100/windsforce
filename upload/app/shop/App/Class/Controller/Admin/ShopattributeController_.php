@@ -10,12 +10,12 @@ class ShopattributeController extends InitController{
 		// 类型
 		$nShopgoodstype=intval(G::getGpc('tid'));
 		if(empty($nShopgoodstype)){
-			$this->E('商品类型不能为空');
+			$this->E(Dyhb::L('商品类型不能为空','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 		
 		$oShopgoodstype=ShopgoodstypeModel::F('shopgoodstype_id=?',$nShopgoodstype)->getOne();
 		if(empty($oShopgoodstype['shopgoodstype_id'])){
-			$this->E('商品类型不存在');
+			$this->E(Dyhb::L('商品类型不存在','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 		
 		$this->assign('nShopgoodstype',$nShopgoodstype);
@@ -36,7 +36,7 @@ class ShopattributeController extends InitController{
 	public function add(){
 		$nShopgoodstype=intval(G::getGpc('tid','G'));
 		if(empty($nShopgoodstype)){
-			$this->E('商品类型不能为空');
+			$this->E(Dyhb::L('商品类型不能为空','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 		
 		$this->assign('nShopgoodstype',$nShopgoodstype);

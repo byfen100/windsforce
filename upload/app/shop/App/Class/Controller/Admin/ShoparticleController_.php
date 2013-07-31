@@ -18,6 +18,7 @@ class ShoparticleController extends InitController{
 	
 	public function add(){
 		$this->get_shoparticlecategorytree_();
+
 		$this->display(Admin_Extend::template('shop','shoparticle/add'));
 	}
 	
@@ -46,6 +47,7 @@ class ShoparticleController extends InitController{
 		$this->get_shoparticlecategorytree_();
 		
 		parent::edit('shoparticle',$nId,false);
+
 		$this->display(Admin_Extend::template('shop','shoparticle/add'));
 	}
 	

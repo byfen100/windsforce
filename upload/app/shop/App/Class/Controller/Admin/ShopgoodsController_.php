@@ -32,8 +32,6 @@ class ShopgoodsController extends InitController{
 	}
 
 	public function bAdd_(){
-		Core_Extend::loadCache("shop_option");
-		
 		$arrOptionData=$GLOBALS['_cache_']['shop_option'];
 		$arrShopgoodsimgsizes=explode('|',$arrOptionData['shopgoods_imgsize']);
 		$arrShopgoodsthumbimgsizes=explode('|',$arrOptionData['shopgoods_thumbimgsize']);
@@ -100,6 +98,7 @@ class ShopgoodsController extends InitController{
 		$this->get_shopcategorytree_();
 		
 		parent::edit('shopgoods',$nId,false);
+
 		$this->display(Admin_Extend::template('shop','shopgoods/add'));
 	}
 
@@ -196,7 +195,6 @@ class ShopgoodsController extends InitController{
 	protected function shopgoodsgallery_(){
 		require_once(Core_Extend::includeFile('function/Upload_Extend'));
 		
-		Core_Extend::loadCache("shop_option");
 		$arrOptionData=$GLOBALS['_cache_']['shop_option'];
 
 		$arrUploadoption=array(
@@ -223,8 +221,7 @@ class ShopgoodsController extends InitController{
 
 	protected function shopgoodsimg_(){
 		require_once(Core_Extend::includeFile('function/Upload_Extend'));
-		
-		Core_Extend::loadCache("shop_option");
+
 		$arrOptionData=$GLOBALS['_cache_']['shop_option'];
 
 		$arrShopgoodsimgsizes=explode('|',$arrOptionData['shopgoods_imgsize']);
@@ -274,7 +271,7 @@ class ShopgoodsController extends InitController{
 				
 				$arrDefaultUploadoption=array(
 					'upload_allowed_type'=>'jpg|jpeg|gif|bmp|png',
-					'upload_path'=>NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods',
+					'upload_path'=>WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods',
 					'upload_create_thumb'=>1,
 					'flash_inputname'=>'shopgoodsimg',
 					'upload_thumb_size'=>$arrShopgoodsthumbimgsizes[0].','.$arrShopgoodsimgsizes[0].'|'.$arrShopgoodsthumbimgsizes[1].','.$arrShopgoodsimgsizes[1],
@@ -292,13 +289,13 @@ class ShopgoodsController extends InitController{
 
 				if(is_array($arrUploadinfos)){
 					foreach($arrUploadinfos as $nKey=>$arrUploadinfo){
-						$arrData[$nKey]['shopgoods_originalimg']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['savepath'])).'/'.$arrUploadinfo['savename'];
+						$arrData[$nKey]['shopgoods_originalimg']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['savepath'])).'/'.$arrUploadinfo['savename'];
 			
 						if($arrUploadoption['upload_create_thumb']==1){
-							$arrData[$nKey]['shopgoods_img']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsimgsizes[0].'_'.$arrUploadinfo['savename'];
+							$arrData[$nKey]['shopgoods_img']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsimgsizes[0].'_'.$arrUploadinfo['savename'];
 							
 							if(strpos($arrUploadoption['upload_thumb'],',')){
-								$arrData[$nKey]['shopgoods_thumb']=str_replace(G::tidyPath(NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsthumbimgsizes[0].'_'.$arrUploadinfo['savename'];
+								$arrData[$nKey]['shopgoods_thumb']=str_replace(G::tidyPath(WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods').'/','',G::tidyPath($arrUploadinfo['thumbpath'])).'/thumb'.$arrShopgoodsthumbimgsizes[0].'_'.$arrUploadinfo['savename'];
 							}
 						}
 						
@@ -368,7 +365,7 @@ class ShopgoodsController extends InitController{
 		$sImgurl=trim(G::getGpc('imgurl','G'));
 		
 		if(empty($sImgurl)){
-			$this->E('没有指定传递的图片');
+			$this->E(Dyhb::L('没有指定传递的图片','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 		
 		$this->assign('sImgurl',$sImgurl);
@@ -380,15 +377,15 @@ class ShopgoodsController extends InitController{
 		$nGalleryid=intval(G::getGpc('value','G'));
 		
 		if(empty($nGalleryid)){
-			$this->E('你没有指定待删除商品图片ID');
+			$this->E(Dyhb::L('你没有指定待删除商品图片ID','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 		
 		$oShopgoodsgallery=ShopgoodsgalleryModel::F('shopgoodsgallery_id=?',$nGalleryid)->getOne();
 		if(empty($oShopgoodsgallery['shopgoodsgallery_id'])){
-			$this->E('你要删除商品图片不存在');
+			$this->E(Dyhb::L('你要删除商品图片不存在','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 		
-		$sShopgoodsgalleryUrl=NEEDFORBUG_PATH.'/data/upload/app/shop/shopgoods/';
+		$sShopgoodsgalleryUrl=WINDSFORCE_PATH.'/data/upload/app/shop/shopgoods/';
 		foreach(array('shopgoodsgallery_url','shopgoodsgallery_thumburl','shopgoodsgallery_imgoriginal') as $sValue){
 			if(is_file($sShopgoodsgalleryUrl.$sValue)){
 				@unlink($sShopgoodsgalleryUrl.$sValue);
@@ -397,7 +394,7 @@ class ShopgoodsController extends InitController{
 		
 		$oShopgoodsgallery->destroy();
 		
-		$this->A(array('id'=>$nGalleryid),'删除商品图片成功');
+		$this->A(array('id'=>$nGalleryid),Dyhb::L('删除商品图片成功','__APPSHOP_COMMON_LANG__@Controller'));
 	}
 	
 	protected function shopgoodstype_(){
@@ -417,7 +414,7 @@ class ShopgoodsController extends InitController{
 		}else{
 			$oShopgoodstype=ShopgoodstypeModel::F('shopgoodstype_id=?',$nShopgoodstypeid)->getOne();
 			if(empty($oShopgoodstype['shopgoodstype_id'])){
-				$this->E('你请求的商品类型不存在');
+				$this->E(Dyhb::L('你请求的商品类型不存在','__APPSHOP_COMMON_LANG__@Controller'));
 			}
 			
 			$arrShopattributes=ShopattributeModel::F('shopgoodstype_id=?',$nShopgoodstypeid)->getAll();
@@ -445,7 +442,7 @@ class ShopgoodsController extends InitController{
 			}
 		}
 	
-		$this->A($arrData,'加载商品属性成功',1,$nReturnmessage==1?1:0);
+		$this->A($arrData,Dyhb::L('加载商品属性成功','__APPSHOP_COMMON_LANG__@Controller'),1,$nReturnmessage==1?1:0);
 	}
 
 }

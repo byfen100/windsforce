@@ -5,9 +5,6 @@
 !defined('DYHB_PATH') && exit;
 
 class ShopoptionController extends InitController{
-
-	public function filter_(&$arrMap){
-	}
 	
 	public function index($sModel=null,$bDisplay=true){
 		$this->get_option_();
@@ -22,7 +19,6 @@ class ShopoptionController extends InitController{
 	}
 
 	protected function get_option_(){
-		Core_Extend::loadCache("shop_option");
 		$arrOptionData=$GLOBALS['_cache_']['shop_option'];
 		
 		$this->assign("nId",intval(G::getGpc("id",'G')));
@@ -38,11 +34,18 @@ class ShopoptionController extends InitController{
 			$oOptionModel=ShopoptionModel::F('shopoption_name=?',$sKey)->getOne();
 			$oOptionModel->shopoption_value=G::html($val);
 			$oOptionModel->save(0,'update');
+
+			if($oOptionModel->isError()){
+				$this->E($oOptionModel->getErrorMessage());
+			}
 		}
 
-		ShopCache_Extend::updateCacheOption();
+		if(!Dyhb::classExists('Cache_Extend')){
+			require_once(Core_Extend::includeFile('function/Cache_Extend'));
+		}
+		Cache_Extend::updateCache('shop_option');
 
-		$this->S(Dyhb::L('配置更新成功','__APP_ADMIN_LANG__@Controller/Shopoption'));
+		$this->S(Dyhb::L('配置更新成功','__APPSHOP_COMMON_LANG__@Controller'));
 	}
 
 }

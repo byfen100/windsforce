@@ -50,8 +50,9 @@ class ShoparticlecategoryController extends InitController{
 		$nId=intval(G::getGpc('value','G'));
 		
 		if(empty($nId)){
-			$this->E('请选择你要编辑的分类');
+			$this->E(Dyhb::L('请选择你要编辑的分类','__APPSHOP_COMMON_LANG__@Controller'));
 		}
+
 		$this->get_shoparticlecategorytree_();
 		
 		parent::edit('shoparticlecategory',$nId,false);
@@ -62,7 +63,7 @@ class ShoparticlecategoryController extends InitController{
 		$nId=intval(G::getGpc('value'));
 		
 		if(empty($nId)){
-			$this->E('请选择你要更新的分类');
+			$this->E(Dyhb::L('请选择你要更新的分类','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 
 		parent::update('shoparticlecategory',$nId);
@@ -72,9 +73,9 @@ class ShoparticlecategoryController extends InitController{
 		$nId=G::getGpc('value');
 
 		if(empty($nId)){
-			$this->E('请选择你要删除的分类');
+			$this->E(Dyhb::L('请选择你要删除的分类','__APPSHOP_COMMON_LANG__@Controller'));
 		}else if($nId>0 && $nId<=6){
-			$this->E('无法删除系统保留分类');
+			$this->E(Dyhb::L('无法删除系统保留分类','__APPSHOP_COMMON_LANG__@Controller'));
 		}
 
 		parent::foreverdelete('shoparticlecategory',$nId);

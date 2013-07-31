@@ -21,7 +21,7 @@ function option(){
 					<li class="active"><a href="<!--{:Admin_Extend::base()}-->"><!--<lang package='Template'>-->应用入口<!--</lang>--></a></li>
 				</ul>
 			</header>
-			<form action="<!--{:Dyhb::U('app/config?id='.$nId.'&action=update_option')}-->" method="post" onsubmit="return option();">
+			<form action="<!--{:Admin_Extend::base(array('controller'=>'shopoption','action'=>'update_option'))}-->" method="post" onsubmit="return option();">
 				<div class="module_content">
 					<!--<include file="Admin_Extend::template('shop','shopoption/menu')" />-->
 
